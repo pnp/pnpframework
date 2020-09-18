@@ -20,8 +20,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             using (var scope = new PnPMonitoredScope(this.Name))
             {
                 web.EnsureProperties(w => w.HeaderEmphasis, w => w.HeaderLayout, w => w.MegaMenuEnabled);
-                var header = new SiteHeader();
-                header.MenuStyle = web.MegaMenuEnabled ? SiteHeaderMenuStyle.MegaMenu : SiteHeaderMenuStyle.Cascading;
+                var header = new SiteHeader
+                {
+                    MenuStyle = web.MegaMenuEnabled ? SiteHeaderMenuStyle.MegaMenu : SiteHeaderMenuStyle.Cascading
+                };
                 switch (web.HeaderLayout)
                 {
                     case HeaderLayoutType.Compact:

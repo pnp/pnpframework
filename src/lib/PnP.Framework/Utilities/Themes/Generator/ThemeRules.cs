@@ -7,7 +7,7 @@ namespace PnP.Framework.Utilities.Themes.Generator
 {
     public class ThemeRules : IThemeRules
     {
-        private Dictionary<string, IThemeSlotRule> _rules = new Dictionary<string, IThemeSlotRule>();
+        private readonly Dictionary<string, IThemeSlotRule> _rules = new Dictionary<string, IThemeSlotRule>();
 
         public IThemeSlotRule this[string key]
         {

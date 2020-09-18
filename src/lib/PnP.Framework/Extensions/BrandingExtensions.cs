@@ -110,8 +110,10 @@ namespace Microsoft.SharePoint.Client
             var composedLooksList = web.GetCatalog((int)ListTemplateType.DesignCatalog);
 
             // Check for existing, by name
-            CamlQuery query = new CamlQuery();
-            query.ViewXml = string.Format(CAML_QUERY_FIND_BY_FILENAME, lookName);
+            CamlQuery query = new CamlQuery
+            {
+                ViewXml = string.Format(CAML_QUERY_FIND_BY_FILENAME, lookName)
+            };
             var existingCollection = composedLooksList.GetItems(query);
             web.Context.Load(existingCollection);
             web.Context.ExecuteQueryRetry();
@@ -184,8 +186,10 @@ namespace Microsoft.SharePoint.Client
                 var composedLooksList = web.GetCatalog((int)ListTemplateType.DesignCatalog);
 
                 // Check for existing, by name
-                CamlQuery query = new CamlQuery();
-                query.ViewXml = string.Format(CAML_QUERY_FIND_BY_FILENAME, lookName);
+                CamlQuery query = new CamlQuery
+                {
+                    ViewXml = string.Format(CAML_QUERY_FIND_BY_FILENAME, lookName)
+                };
                 var existingCollection = composedLooksList.GetItems(query);
                 web.Context.Load(existingCollection);
                 web.Context.ExecuteQueryRetry();
@@ -465,10 +469,12 @@ namespace Microsoft.SharePoint.Client
             var fileBytes = System.IO.File.ReadAllBytes(sourceFilePath);
 
             // Use CSOM to upload the file in
-            FileCreationInformation newFile = new FileCreationInformation();
-            newFile.Content = fileBytes;
-            newFile.Url = UrlUtility.Combine(rootFolder.ServerRelativeUrl, folderHierarchy, fileName);
-            newFile.Overwrite = true;
+            FileCreationInformation newFile = new FileCreationInformation
+            {
+                Content = fileBytes,
+                Url = UrlUtility.Combine(rootFolder.ServerRelativeUrl, folderHierarchy, fileName),
+                Overwrite = true
+            };
 
             File uploadFile = rootFolder.Files.Add(newFile);
             web.Context.Load(uploadFile);
@@ -547,10 +553,12 @@ namespace Microsoft.SharePoint.Client
             var fileBytes = System.IO.File.ReadAllBytes(sourceFilePath);
 
             // Use CSOM to upload the file in
-            FileCreationInformation newFile = new FileCreationInformation();
-            newFile.Content = fileBytes;
-            newFile.Url = UrlUtility.Combine(rootFolder.ServerRelativeUrl, folderPath, fileName);
-            newFile.Overwrite = true;
+            FileCreationInformation newFile = new FileCreationInformation
+            {
+                Content = fileBytes,
+                Url = UrlUtility.Combine(rootFolder.ServerRelativeUrl, folderPath, fileName),
+                Overwrite = true
+            };
 
             File uploadFile = rootFolder.Files.Add(newFile);
             web.Context.Load(uploadFile);
@@ -701,9 +709,11 @@ namespace Microsoft.SharePoint.Client
                 throw new ArgumentNullException(nameof(masterPageName));
 
             List masterPageGallery = web.GetCatalog((int)ListTemplateType.MasterPageCatalog);
-            CamlQuery query = new CamlQuery();
-            // Use query Scope='RecursiveAll' to iterate through sub folders of Master page library because we might have file in folder hierarchy
-            query.ViewXml = "<View Scope='RecursiveAll'><Query><Where><Contains><FieldRef Name='FileRef'/><Value Type='Text'>.master</Value></Contains></Where></Query></View>";
+            CamlQuery query = new CamlQuery
+            {
+                // Use query Scope='RecursiveAll' to iterate through sub folders of Master page library because we might have file in folder hierarchy
+                ViewXml = "<View Scope='RecursiveAll'><Query><Where><Contains><FieldRef Name='FileRef'/><Value Type='Text'>.master</Value></Contains></Where></Query></View>"
+            };
             ListItemCollection galleryItems = masterPageGallery.GetItems(query);
             web.Context.Load(masterPageGallery);
             web.Context.Load(galleryItems);
@@ -770,8 +780,10 @@ namespace Microsoft.SharePoint.Client
                 </ViewFields> 
             </View>";
 
-            CamlQuery camlQuery = new CamlQuery();
-            camlQuery.ViewXml = camlString;
+            CamlQuery camlQuery = new CamlQuery
+            {
+                ViewXml = camlString
+            };
 
             ListItemCollection themes = designCatalog.GetItems(camlQuery);
             web.Context.Load(themes);
@@ -1161,10 +1173,12 @@ namespace Microsoft.SharePoint.Client
             web.Context.ExecuteQueryRetry();
 
             var fileRefValue = $"{masterPageGallery.RootFolder.ServerRelativeUrl}/{pageLayoutNameWithoutPath}.aspx";
-            var query = new CamlQuery();
-            // Use query Scope='RecursiveAll' to iterate through sub folders of Master page library because we might have file in folder hierarchy
-            query.ViewXml =
-                $"<View Scope='RecursiveAll'><Query><Where><Eq><FieldRef Name='FileRef'/><Value Type='Text'>{fileRefValue}</Value></Eq></Where></Query></View>";
+            var query = new CamlQuery
+            {
+                // Use query Scope='RecursiveAll' to iterate through sub folders of Master page library because we might have file in folder hierarchy
+                ViewXml =
+                $"<View Scope='RecursiveAll'><Query><Where><Eq><FieldRef Name='FileRef'/><Value Type='Text'>{fileRefValue}</Value></Eq></Where></Query></View>"
+            };
             var galleryItems = masterPageGallery.GetItems(query);
             web.Context.Load(masterPageGallery);
             web.Context.Load(galleryItems);

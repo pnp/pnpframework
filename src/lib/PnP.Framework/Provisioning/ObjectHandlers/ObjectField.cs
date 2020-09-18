@@ -20,7 +20,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 {
     internal class ObjectField : ObjectHandlerBase
     {
-        private FieldAndListProvisioningStepHelper.Step _step;
+        private readonly FieldAndListProvisioningStepHelper.Step _step;
 
         public override string Name
         {

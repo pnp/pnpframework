@@ -215,7 +215,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml
                                 }
                             }
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             // Right now, for testing purposes, I just output and skip any issue
                             // TODO: Handle issues insteaf of skipping them, we need to find a common pattern

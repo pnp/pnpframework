@@ -33,8 +33,10 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
 
                     result = Array.CreateInstance(navigationNodeType, sourceNodes.Count);
 
-                    resolvers = new Dictionary<string, IResolver>();
-                    resolvers.Add($"{navigationNodeType}.NavigationNode1", new NavigationNodeFromModelToSchemaTypeResolver());
+                    resolvers = new Dictionary<string, IResolver>
+                    {
+                        { $"{navigationNodeType}.NavigationNode1", new NavigationNodeFromModelToSchemaTypeResolver() }
+                    };
 
                     for (Int32 c = 0; c < sourceNodes.Count; c++)
                     {

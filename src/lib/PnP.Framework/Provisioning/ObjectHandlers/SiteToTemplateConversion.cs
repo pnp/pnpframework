@@ -66,15 +66,19 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 else
                 {
                     // When no provisioning info was passed then we want to execute all handlers
-                    creationInfo = new ProvisioningTemplateCreationInformation(web);
-                    creationInfo.HandlersToProcess = Handlers.All;
+                    creationInfo = new ProvisioningTemplateCreationInformation(web)
+                    {
+                        HandlersToProcess = Handlers.All
+                    };
                 }
 
                 // Create empty object
-                ProvisioningTemplate template = new ProvisioningTemplate();
+                ProvisioningTemplate template = new ProvisioningTemplate
+                {
 
-                // Hookup connector, is handy when the generated template object is used to apply to another site
-                template.Connector = creationInfo.FileConnector;
+                    // Hookup connector, is handy when the generated template object is used to apply to another site
+                    Connector = creationInfo.FileConnector
+                };
 
                 List<ObjectHandlerBase> objectHandlers = new List<ObjectHandlerBase>();
 
@@ -231,9 +235,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             using (var scope = new PnPMonitoredScope(CoreResources.Provisioning_ObjectHandlers_Extraction))
             {
 
-                ProvisioningHierarchy tenantTemplate = new ProvisioningHierarchy();
-
-                tenantTemplate.Connector = configuration.FileConnector;
+                ProvisioningHierarchy tenantTemplate = new ProvisioningHierarchy
+                {
+                    Connector = configuration.FileConnector
+                };
 
                 List<ObjectHierarchyHandlerBase> objectHandlers = new List<ObjectHierarchyHandlerBase>();
 
@@ -308,8 +313,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 else
                 {
                     // When no provisioning info was passed then we want to execute all handlers
-                    provisioningInfo = new ProvisioningTemplateApplyingInformation();
-                    provisioningInfo.HandlersToProcess = Handlers.All;
+                    provisioningInfo = new ProvisioningTemplateApplyingInformation
+                    {
+                        HandlersToProcess = Handlers.All
+                    };
                 }
 
                 // Check if scope is present and if so, matches the current site. When scope was not set the returned value will be ProvisioningTemplateScope.Undefined

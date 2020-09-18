@@ -12,7 +12,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
       Returns = "66e2b037-f749-402d-90b2-afd643850c26")]
     internal class WebPartIdToken : TokenDefinition
     {
-        private string _webpartId = null;
+        private readonly string _webpartId = null;
         public WebPartIdToken(Web web, string name, Guid webpartid)
             : base(web, $"{{webpartid:{Regex.Escape(name)}}}")
         {

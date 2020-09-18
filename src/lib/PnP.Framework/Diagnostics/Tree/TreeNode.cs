@@ -102,7 +102,7 @@ namespace PnP.Framework.Diagnostics.Tree
             get { return (Parent == null) ? this : Parent.Root; }
         }
 
-        private TreeNodeList<T> _ChildNodes;
+        private readonly TreeNodeList<T> _ChildNodes;
 
         /// <summary>
         /// Gets children node

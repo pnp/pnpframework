@@ -24,7 +24,7 @@ namespace Microsoft.SharePoint.Client
     /// </summary>
     public static partial class ClientContextExtensions
     {
-        private static string userAgentFromConfig = null;
+        private static readonly string userAgentFromConfig = null;
         private static string accessToken = null;
         private static bool hasAuthCookies;
 

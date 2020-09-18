@@ -124,17 +124,19 @@ namespace Microsoft.SharePoint.Client
                 }
             }
 
-            SiteCreationProperties newsite = new SiteCreationProperties();
-            newsite.Url = properties.Url;
-            newsite.Owner = properties.SiteOwnerLogin;
-            newsite.Template = properties.Template;
-            newsite.Title = properties.Title;
-            newsite.StorageMaximumLevel = properties.StorageMaximumLevel;
-            newsite.StorageWarningLevel = properties.StorageWarningLevel;
-            newsite.TimeZoneId = properties.TimeZoneId;
-            newsite.UserCodeMaximumLevel = properties.UserCodeMaximumLevel;
-            newsite.UserCodeWarningLevel = properties.UserCodeWarningLevel;
-            newsite.Lcid = properties.Lcid;
+            SiteCreationProperties newsite = new SiteCreationProperties
+            {
+                Url = properties.Url,
+                Owner = properties.SiteOwnerLogin,
+                Template = properties.Template,
+                Title = properties.Title,
+                StorageMaximumLevel = properties.StorageMaximumLevel,
+                StorageWarningLevel = properties.StorageWarningLevel,
+                TimeZoneId = properties.TimeZoneId,
+                UserCodeMaximumLevel = properties.UserCodeMaximumLevel,
+                UserCodeWarningLevel = properties.UserCodeWarningLevel,
+                Lcid = properties.Lcid
+            };
 
             SpoOperation op = tenant.CreateSite(newsite);
             tenant.Context.Load(tenant);
@@ -622,21 +624,23 @@ namespace Microsoft.SharePoint.Client
 
                 foreach (var prop in props)
                 {
-                    var siteEntity = new SiteEntity();
-                    siteEntity.Lcid = prop.Lcid;
-                    siteEntity.SiteOwnerLogin = prop.Owner;
-                    siteEntity.StorageMaximumLevel = prop.StorageMaximumLevel;
-                    siteEntity.StorageWarningLevel = prop.StorageWarningLevel;
-                    siteEntity.Template = prop.Template;
-                    siteEntity.TimeZoneId = prop.TimeZoneId;
-                    siteEntity.Title = prop.Title;
-                    siteEntity.Url = prop.Url;
-                    siteEntity.UserCodeMaximumLevel = prop.UserCodeMaximumLevel;
-                    siteEntity.UserCodeWarningLevel = prop.UserCodeWarningLevel;
-                    siteEntity.CurrentResourceUsage = prop.CurrentResourceUsage;
-                    siteEntity.LastContentModifiedDate = prop.LastContentModifiedDate;
-                    siteEntity.StorageUsage = prop.StorageUsage;
-                    siteEntity.WebsCount = prop.WebsCount;
+                    var siteEntity = new SiteEntity
+                    {
+                        Lcid = prop.Lcid,
+                        SiteOwnerLogin = prop.Owner,
+                        StorageMaximumLevel = prop.StorageMaximumLevel,
+                        StorageWarningLevel = prop.StorageWarningLevel,
+                        Template = prop.Template,
+                        TimeZoneId = prop.TimeZoneId,
+                        Title = prop.Title,
+                        Url = prop.Url,
+                        UserCodeMaximumLevel = prop.UserCodeMaximumLevel,
+                        UserCodeWarningLevel = prop.UserCodeWarningLevel,
+                        CurrentResourceUsage = prop.CurrentResourceUsage,
+                        LastContentModifiedDate = prop.LastContentModifiedDate,
+                        StorageUsage = prop.StorageUsage,
+                        WebsCount = prop.WebsCount
+                    };
                     SiteLockState lockState;
                     if (Enum.TryParse(prop.LockState, out lockState))
                     {

@@ -25,27 +25,37 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
             var propertiesValueSelector = CreateSelectorLambda(propertiesType, "Value");
 
             // TODO: Find a way to avoid creating the dictionary of IResolver objects manually
-            var expressions = new Dictionary<Expression<Func<ProvisioningTemplate, Object>>, IResolver>();
-            expressions.Add(t => t.Version, new FromDecimalToDoubleValueResolver());
-            expressions.Add(t => t.Properties,
-                new FromArrayToDictionaryValueResolver<String, String>(
-                    propertiesType, propertiesKeySelector, propertiesValueSelector));
+            var expressions = new Dictionary<Expression<Func<ProvisioningTemplate, Object>>, IResolver>
+            {
+                { t => t.Version, new FromDecimalToDoubleValueResolver() },
+                {
+                    t => t.Properties,
+                    new FromArrayToDictionaryValueResolver<String, String>(
+                    propertiesType, propertiesKeySelector, propertiesValueSelector)
+                },
 
-            // Search settings
-            expressions.Add(t => t.SiteSearchSettings,
-                new ExpressionValueResolver((s, v) =>
-                s.GetPublicInstancePropertyValue("SearchSettings")?
-                .GetPublicInstancePropertyValue("SiteSearchSettings")?
-                .GetPublicInstancePropertyValue("OuterXml")));
-            expressions.Add(t => t.WebSearchSettings,
-                new ExpressionValueResolver((s, v) =>
-                s.GetPublicInstancePropertyValue("SearchSettings")?
-                .GetPublicInstancePropertyValue("WebSearchSettings")?
-                .GetPublicInstancePropertyValue("OuterXml")));
+                // Search settings
+                {
+                    t => t.SiteSearchSettings,
+                    new ExpressionValueResolver((s, v) =>
+                    s.GetPublicInstancePropertyValue("SearchSettings")?
+                    .GetPublicInstancePropertyValue("SiteSearchSettings")?
+                    .GetPublicInstancePropertyValue("OuterXml"))
+                },
+                {
+                    t => t.WebSearchSettings,
+                    new ExpressionValueResolver((s, v) =>
+                    s.GetPublicInstancePropertyValue("SearchSettings")?
+                    .GetPublicInstancePropertyValue("WebSearchSettings")?
+                    .GetPublicInstancePropertyValue("OuterXml"))
+                },
 
-            // Provisioning Template Scope
-            expressions.Add(t => t.Scope,
-                new FromStringToEnumValueResolver(typeof(Model.ProvisioningTemplateScope)));
+                // Provisioning Template Scope
+                {
+                    t => t.Scope,
+                    new FromStringToEnumValueResolver(typeof(Model.ProvisioningTemplateScope))
+                }
+            };
 
             PnPObjectsMapper.MapProperties(persistence, template, expressions);
         }
@@ -59,12 +69,16 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
             var keySelector = CreateSelectorLambda(propertiesType, "Key");
             var valueSelector = CreateSelectorLambda(propertiesType, "Value");
 
-            var expressions = new Dictionary<string, IResolver>();
-            expressions.Add($"{templateType}.Version", new FromDoubleToDecimalValueResolver());
-            expressions.Add($"{templateType}.VersionSpecified", new ExpressionValueResolver(() => true));
-            expressions.Add($"{templateType}.Properties",
-                new FromDictionaryToArrayValueResolver<String, String>(
-                    propertiesType, keySelector, valueSelector));
+            var expressions = new Dictionary<string, IResolver>
+            {
+                { $"{templateType}.Version", new FromDoubleToDecimalValueResolver() },
+                { $"{templateType}.VersionSpecified", new ExpressionValueResolver(() => true) },
+                {
+                    $"{templateType}.Properties",
+                    new FromDictionaryToArrayValueResolver<String, String>(
+                    propertiesType, keySelector, valueSelector)
+                }
+            };
 
             if (PnPSerializationScope.Current?.BaseSchemaNamespace != null &&
                 !PnPSerializationScope.Current.BaseSchemaNamespace.EndsWith("201605"))

@@ -73,9 +73,10 @@ namespace PnP.Framework.Provisioning.Model.Configuration
 
         public ProvisioningTemplateApplyingInformation ToApplyingInformation()
         {
-            var ai = new ProvisioningTemplateApplyingInformation();
-
-            ai.ApplyConfiguration = this;
+            var ai = new ProvisioningTemplateApplyingInformation
+            {
+                ApplyConfiguration = this
+            };
 
             if (this.AccessTokens != null && this.AccessTokens.Any())
             {
@@ -142,8 +143,10 @@ namespace PnP.Framework.Provisioning.Model.Configuration
 
         public static ApplyConfiguration FromApplyingInformation(ProvisioningTemplateApplyingInformation information)
         {
-            var config = new ApplyConfiguration();
-            config.AccessTokens = information.AccessTokens;
+            var config = new ApplyConfiguration
+            {
+                AccessTokens = information.AccessTokens
+            };
             config.Navigation.ClearNavigation = information.ClearNavigation;
             config.Tenant.DelayAfterModernSiteCreation = information.DelayAfterModernSiteCreation;
             config.Extensibility.Handlers = information.ExtensibilityHandlers;

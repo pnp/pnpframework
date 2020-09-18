@@ -33,8 +33,10 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
 
                     result = Array.CreateInstance(siteFooterLinkType, sourceLinks.Count);
 
-                    resolvers = new Dictionary<string, IResolver>();
-                    resolvers.Add($"{siteFooterLinkType}.FooterLink1", new SiteFooterLinkFromModelToSchemaTypeResolver());
+                    resolvers = new Dictionary<string, IResolver>
+                    {
+                        { $"{siteFooterLinkType}.FooterLink1", new SiteFooterLinkFromModelToSchemaTypeResolver() }
+                    };
 
                     for (Int32 c = 0; c < sourceLinks.Count; c++)
                     {

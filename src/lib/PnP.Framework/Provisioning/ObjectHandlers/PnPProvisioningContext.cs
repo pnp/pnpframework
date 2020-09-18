@@ -125,7 +125,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
         }
 
-        private static AsyncLocal<PnPProvisioningContext> _pnpSerializationScope = new AsyncLocal<PnPProvisioningContext>();
+        private static readonly AsyncLocal<PnPProvisioningContext> _pnpSerializationScope = new AsyncLocal<PnPProvisioningContext>();
 
         public static PnPProvisioningContext Current
         {

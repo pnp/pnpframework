@@ -24,21 +24,22 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 web.Context.Load(web.RegionalSettings.TimeZone, tz => tz.Id);
                 web.Context.ExecuteQueryRetry();
 
-                Model.RegionalSettings settings = new Model.RegionalSettings();
-
-                settings.AdjustHijriDays = web.RegionalSettings.AdjustHijriDays;
-                settings.AlternateCalendarType = (CalendarType)web.RegionalSettings.AlternateCalendarType;
-                settings.CalendarType = (CalendarType)web.RegionalSettings.CalendarType;
-                settings.Collation = web.RegionalSettings.Collation;
-                settings.FirstDayOfWeek = (DayOfWeek)web.RegionalSettings.FirstDayOfWeek;
-                settings.FirstWeekOfYear = web.RegionalSettings.FirstWeekOfYear;
-                settings.LocaleId = (int)web.RegionalSettings.LocaleId;
-                settings.ShowWeeks = web.RegionalSettings.ShowWeeks;
-                settings.Time24 = web.RegionalSettings.Time24;
-                settings.TimeZone = web.RegionalSettings.TimeZone.Id;
-                settings.WorkDayEndHour = (WorkHour)web.RegionalSettings.WorkDayEndHour;
-                settings.WorkDays = web.RegionalSettings.WorkDays;
-                settings.WorkDayStartHour = (WorkHour)web.RegionalSettings.WorkDayStartHour;
+                Model.RegionalSettings settings = new Model.RegionalSettings
+                {
+                    AdjustHijriDays = web.RegionalSettings.AdjustHijriDays,
+                    AlternateCalendarType = (CalendarType)web.RegionalSettings.AlternateCalendarType,
+                    CalendarType = (CalendarType)web.RegionalSettings.CalendarType,
+                    Collation = web.RegionalSettings.Collation,
+                    FirstDayOfWeek = (DayOfWeek)web.RegionalSettings.FirstDayOfWeek,
+                    FirstWeekOfYear = web.RegionalSettings.FirstWeekOfYear,
+                    LocaleId = (int)web.RegionalSettings.LocaleId,
+                    ShowWeeks = web.RegionalSettings.ShowWeeks,
+                    Time24 = web.RegionalSettings.Time24,
+                    TimeZone = web.RegionalSettings.TimeZone.Id,
+                    WorkDayEndHour = (WorkHour)web.RegionalSettings.WorkDayEndHour,
+                    WorkDays = web.RegionalSettings.WorkDays,
+                    WorkDayStartHour = (WorkHour)web.RegionalSettings.WorkDayStartHour
+                };
 
                 template.RegionalSettings = settings;
 

@@ -13,10 +13,10 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
     {
         public string Name => this.GetType().Name;
 
-        private String _keyField;
-        private String _valueField;
-        private Type _targetArrayItemType;
-        private String _sourcePropertyName;
+        private readonly String _keyField;
+        private readonly String _valueField;
+        private readonly Type _targetArrayItemType;
+        private readonly String _sourcePropertyName;
 
         public FromDictionaryToArrayValueResolver(Type targetArrayItemType,
             LambdaExpression keySelector, LambdaExpression valueSelector, string sourcePropertyName = null)

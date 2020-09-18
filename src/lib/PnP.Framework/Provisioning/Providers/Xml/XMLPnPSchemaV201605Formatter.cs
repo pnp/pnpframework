@@ -93,12 +93,13 @@ namespace PnP.Framework.Provisioning.Providers.Xml
 
             V201605.ProvisioningTemplate result = new V201605.ProvisioningTemplate();
 
-            V201605.Provisioning wrappedResult = new V201605.Provisioning();
-            wrappedResult.Preferences = new V201605.Preferences
+            V201605.Provisioning wrappedResult = new V201605.Provisioning
             {
-                Generator = this.GetType().Assembly.FullName
-            };
-            wrappedResult.Templates = new V201605.Templates[] {
+                Preferences = new V201605.Preferences
+                {
+                    Generator = this.GetType().Assembly.FullName
+                },
+                Templates = new V201605.Templates[] {
                 new V201605.Templates
                 {
                     ID = $"CONTAINER-{template.Id}",
@@ -107,6 +108,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml
                         result
                     }
                 }
+            }
             };
 
             #region Basic Properties
@@ -281,11 +283,12 @@ namespace PnP.Framework.Provisioning.Providers.Xml
             // Translate Security configuration, if any
             if (template.Security != null)
             {
-                result.Security = new V201605.Security();
-
-                result.Security.BreakRoleInheritance = template.Security.BreakRoleInheritance;
-                result.Security.CopyRoleAssignments = template.Security.CopyRoleAssignments;
-                result.Security.ClearSubscopes = template.Security.ClearSubscopes;
+                result.Security = new V201605.Security
+                {
+                    BreakRoleInheritance = template.Security.BreakRoleInheritance,
+                    CopyRoleAssignments = template.Security.CopyRoleAssignments,
+                    ClearSubscopes = template.Security.ClearSubscopes
+                };
 
                 if (template.Security.AdditionalAdministrators != null && template.Security.AdditionalAdministrators.Count > 0)
                 {
@@ -817,9 +820,9 @@ namespace PnP.Framework.Provisioning.Providers.Xml
             // Translate Files, if any
             if (template.Files != null && template.Files.Count > 0)
             {
-                result.Files = new ProvisioningTemplateFiles();
-
-                result.Files.File =
+                result.Files = new ProvisioningTemplateFiles
+                {
+                    File =
                     (from file in template.Files
                      select new V201605.File
                      {
@@ -845,7 +848,8 @@ namespace PnP.Framework.Provisioning.Providers.Xml
                                  Value = p.Value
                              }).ToArray() : null,
                          Security = file.Security.FromTemplateToSchemaObjectSecurityV201605()
-                     }).ToArray();
+                     }).ToArray()
+                };
             }
             else
             {
@@ -2551,10 +2555,12 @@ namespace PnP.Framework.Provisioning.Providers.Xml
 
         public static V201605.Folder FromTemplateToSchemaFolderV201605(this Model.Folder folder)
         {
-            V201605.Folder result = new V201605.Folder();
-            result.Name = folder.Name;
-            result.Security = folder.Security.FromTemplateToSchemaObjectSecurityV201605();
-            result.Folder1 = folder.Folders != null ? (from child in folder.Folders select child.FromTemplateToSchemaFolderV201605()).ToArray() : null;
+            V201605.Folder result = new V201605.Folder
+            {
+                Name = folder.Name,
+                Security = folder.Security.FromTemplateToSchemaObjectSecurityV201605(),
+                Folder1 = folder.Folders != null ? (from child in folder.Folders select child.FromTemplateToSchemaFolderV201605()).ToArray() : null
+            };
             return (result);
         }
 

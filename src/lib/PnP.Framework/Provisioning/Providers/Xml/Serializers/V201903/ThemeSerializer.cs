@@ -22,25 +22,30 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 
             if (theme != null)
             {
-                var expressions = new Dictionary<Expression<Func<Theme, Object>>, IResolver>();
-
-                // Manage Palette of Theme
-                expressions.Add(t => t.Palette, new ExpressionValueResolver((s, v) =>
+                var expressions = new Dictionary<Expression<Func<Theme, Object>>, IResolver>
                 {
 
-                    String result = null;
-
-                    if (s != null)
+                    // Manage Palette of Theme
                     {
-                        String[] text = s.GetPublicInstancePropertyValue("Text") as String[];
-                        if (text != null && text.Length > 0)
-                        {
-                            result = text.Aggregate(String.Empty, (acc, next) => acc += (next != null ? next : String.Empty));
-                        }
-                    }
+                        t => t.Palette,
+                        new ExpressionValueResolver((s, v) =>
+       {
 
-                    return (result?.Trim());
-                }));
+           String result = null;
+
+           if (s != null)
+           {
+               String[] text = s.GetPublicInstancePropertyValue("Text") as String[];
+               if (text != null && text.Length > 0)
+               {
+                   result = text.Aggregate(String.Empty, (acc, next) => acc += (next != null ? next : String.Empty));
+               }
+           }
+
+           return (result?.Trim());
+       })
+                    }
+                };
 
                 template.Theme = new Theme();
                 PnPObjectsMapper.MapProperties(theme, template.Theme, expressions, true);
@@ -55,13 +60,16 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
                 var themeType = Type.GetType(themeTypeName, true);
                 var target = Activator.CreateInstance(themeType, true);
 
-                var resolvers = new Dictionary<String, IResolver>();
-
-                resolvers.Add($"{themeType}.Text",
-                    new ExpressionValueResolver((s, v) =>
+                var resolvers = new Dictionary<String, IResolver>
+                {
                     {
-                        return (new String[] { (String)s.GetPublicInstancePropertyValue("Palette") });
-                    }));
+                        $"{themeType}.Text",
+                        new ExpressionValueResolver((s, v) =>
+                        {
+                            return (new String[] { (String)s.GetPublicInstancePropertyValue("Palette") });
+                        })
+                    }
+                };
 
                 PnPObjectsMapper.MapProperties(template.Theme, target, resolvers, recursive: true);
 

@@ -11,7 +11,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
       Returns = "My Value")]
     internal class StorageEntityValueToken : TokenDefinition
     {
-        private string _value;
+        private readonly string _value;
         public StorageEntityValueToken(Web web, string key, string value)
             : base(web, $"{{storageentityvalue:{Regex.Escape(key)}}}")
         {

@@ -18,7 +18,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 {
     internal class ObjectContentType : ObjectHandlerBase
     {
-        private FieldAndListProvisioningStepHelper.Step _step;
+        private readonly FieldAndListProvisioningStepHelper.Step _step;
 
         public override string Name
         {
@@ -554,9 +554,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                     web.Context.Load(ctFolder, fl => fl.Files.Include(f => f.Name, f => f.ServerRelativeUrl));
                                     web.Context.ExecuteQueryRetry();
 
-                                    FileCreationInformation newFile = new FileCreationInformation();
-                                    newFile.ContentStream = fsstream;
-                                    newFile.Url = $"{web.ServerRelativeUrl}/_cts/{name}/{documentTemplate}";
+                                    FileCreationInformation newFile = new FileCreationInformation
+                                    {
+                                        ContentStream = fsstream,
+                                        Url = $"{web.ServerRelativeUrl}/_cts/{name}/{documentTemplate}"
+                                    };
 
                                     Microsoft.SharePoint.Client.File uploadedFile = ctFolder.Files.Add(newFile);
                                     web.Context.Load(uploadedFile);

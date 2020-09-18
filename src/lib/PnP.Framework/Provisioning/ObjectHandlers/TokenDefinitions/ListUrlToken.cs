@@ -11,7 +11,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
      Returns = "Lists/MyList")]
     internal class ListUrlToken : TokenDefinition
     {
-        private string _listUrl = null;
+        private readonly string _listUrl = null;
         public ListUrlToken(Web web, string name, string url)
             : base(web, $"{{listurl:{Regex.Escape(name)}}}")
         {

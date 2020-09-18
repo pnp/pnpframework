@@ -964,7 +964,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     result = false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -2797,8 +2797,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             if (siteList.BaseTemplate != (int)ListTemplateType.PictureLibrary && siteList.IrmEnabled)
             {
-                list.IRMSettings = new IRMSettings();
-                list.IRMSettings.Enabled = siteList.IrmEnabled;
+                list.IRMSettings = new IRMSettings
+                {
+                    Enabled = siteList.IrmEnabled
+                };
                 list.IrmExpire = siteList.IrmExpire;
                 list.IrmReject = siteList.IrmReject;
 

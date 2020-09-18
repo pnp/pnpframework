@@ -12,9 +12,9 @@ namespace PnP.Framework.Provisioning.Providers
     /// </summary>
     public abstract class TemplateProviderBase
     {
-        private Dictionary<string, string> _parameters = new Dictionary<string, string>();
-        private bool _supportSave = false;
-        private bool _supportDelete = false;
+        private readonly Dictionary<string, string> _parameters = new Dictionary<string, string>();
+        private readonly bool _supportSave = false;
+        private readonly bool _supportDelete = false;
         private FileConnectorBase _connector = null;
         private string _uri = "";
 

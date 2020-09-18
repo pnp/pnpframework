@@ -31,9 +31,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             {
                 web.EnsureProperties(w => w.FooterEnabled, w => w.ServerRelativeUrl, w => w.Url);
 
-                var footer = new SiteFooter();
-
-                footer.Enabled = web.FooterEnabled;
+                var footer = new SiteFooter
+                {
+                    Enabled = web.FooterEnabled
+                };
                 var structureString = web.ExecuteGetAsync($"/_api/navigation/MenuState?menuNodeKey='{Constants.SITEFOOTER_NODEKEY}'").GetAwaiter().GetResult();
                 var menuState = JsonConvert.DeserializeObject<MenuState>(structureString);
 
@@ -231,9 +232,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         }
         private SiteFooterLink ParseNodes(MenuNode node, ProvisioningTemplate template, string webServerRelativeUrl)
         {
-            var link = new SiteFooterLink();
-            link.DisplayName = node.Title;
-            link.Url = Tokenize(node.SimpleUrl, webServerRelativeUrl);
+            var link = new SiteFooterLink
+            {
+                DisplayName = node.Title,
+                Url = Tokenize(node.SimpleUrl, webServerRelativeUrl)
+            };
 
             if (node.Nodes.Count > 0)
             {

@@ -88,10 +88,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                                             new CurrentNavigation(currentNavigationType,
                                                                 currentNavigationType == CurrentNavigationType.Structural | currentNavigationType == CurrentNavigationType.StructuralLocal ? GetCurrentStructuralNavigation(web, navigationSettings, template, creationInfo) : null,
                                                                 currentNavigationType == CurrentNavigationType.Managed ? GetCurrentManagedNavigation(web, navigationSettings, template, creationInfo) : null),
-                                                           (searchNavigation != null && searchNavigation.NavigationNodes.Any()) ? searchNavigation : null);
-
-                navigationEntity.AddNewPagesToNavigation = navigationSettings.AddNewPagesToNavigation;
-                navigationEntity.CreateFriendlyUrlsForNewPages = navigationSettings.CreateFriendlyUrlsForNewPages;
+                                                           (searchNavigation != null && searchNavigation.NavigationNodes.Any()) ? searchNavigation : null)
+                {
+                    AddNewPagesToNavigation = navigationSettings.AddNewPagesToNavigation,
+                    CreateFriendlyUrlsForNewPages = navigationSettings.CreateFriendlyUrlsForNewPages
+                };
 
                 if (creationInfo.ExtractConfiguration != null && creationInfo.ExtractConfiguration.Navigation != null && creationInfo.ExtractConfiguration.Navigation.RemoveExistingNodes)
                 {
@@ -294,7 +295,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             }
                             UrlValue = Regex.Replace(UrlValue, $"{{{match.Groups["tokenname"].Value}:{match.Groups["fileurl"].Value}}}", fileId, RegexOptions.IgnoreCase);
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             //Test if fileuniqueid belongs to a folder
                             try

@@ -12,7 +12,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
     /// </summary>
     internal class ObjectExtensibilityHandlers : ObjectHandlerBase
     {
-        ExtensibilityManager _extManager = new ExtensibilityManager();
+        readonly ExtensibilityManager _extManager = new ExtensibilityManager();
 
         public override string Name
         {

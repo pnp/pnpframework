@@ -24,11 +24,13 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 
             if (lists != null)
             {
-                var expressions = new Dictionary<Expression<Func<ListInstance, Object>>, IResolver>();
+                var expressions = new Dictionary<Expression<Func<ListInstance, Object>>, IResolver>
+                {
 
-                // Define custom resolver for FieldRef.ID because needs conversion from String to GUID
-                expressions.Add(l => l.FieldRefs[0].Id, new FromStringToGuidValueResolver());
-                expressions.Add(l => l.TemplateFeatureID, new FromStringToGuidValueResolver());
+                    // Define custom resolver for FieldRef.ID because needs conversion from String to GUID
+                    { l => l.FieldRefs[0].Id, new FromStringToGuidValueResolver() },
+                    { l => l.TemplateFeatureID, new FromStringToGuidValueResolver() }
+                };
 
                 // Define custom resolvers for DataRows Values and Security
                 var dataRowValueTypeName = $"{PnPSerializationScope.Current?.BaseSchemaNamespace}.DataValue, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}";

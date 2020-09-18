@@ -121,10 +121,12 @@ namespace PnP.Framework.Utilities
         /// <returns>Returns created WebPartEntity</returns>
         public static WebPartEntity GetYammerGroupDiscussionPart(string yammerNetworkName, int yammerGroupId, bool showHeader, bool showFooter)
         {
-            WebPartEntity wpYammer = new WebPartEntity();
-            wpYammer.WebPartXml = CreateYammerGroupDiscussionPartXml(yammerNetworkName, yammerGroupId, showHeader, showFooter);
-            wpYammer.WebPartIndex = 0;
-            wpYammer.WebPartTitle = "Yammer";
+            WebPartEntity wpYammer = new WebPartEntity
+            {
+                WebPartXml = CreateYammerGroupDiscussionPartXml(yammerNetworkName, yammerGroupId, showHeader, showFooter),
+                WebPartIndex = 0,
+                WebPartTitle = "Yammer"
+            };
             return wpYammer;
         }
 
@@ -141,10 +143,12 @@ namespace PnP.Framework.Utilities
         /// <returns>Returns created WebPartEntity</returns>
         public static WebPartEntity GetYammerOpenGraphDiscussionPart(string yammerNetworkName, string url, bool showHeader, bool showFooter, string postTitle = "", string postImageUrl = "", string defaultGroupId = "")
         {
-            WebPartEntity wpYammer = new WebPartEntity();
-            wpYammer.WebPartXml = CreateYammerOpenGraphDiscussionPartXml(yammerNetworkName, url, showHeader, showFooter, postTitle, postImageUrl, true, defaultGroupId);
-            wpYammer.WebPartIndex = 0;
-            wpYammer.WebPartTitle = "Yammer";
+            WebPartEntity wpYammer = new WebPartEntity
+            {
+                WebPartXml = CreateYammerOpenGraphDiscussionPartXml(yammerNetworkName, url, showHeader, showFooter, postTitle, postImageUrl, true, defaultGroupId),
+                WebPartIndex = 0,
+                WebPartTitle = "Yammer"
+            };
             return wpYammer;
         }
 

@@ -47,28 +47,30 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     w => w.Url
                     );
 
-                var webSettings = new WebSettings();
-                webSettings.NoCrawl = web.NoCrawl;
-                webSettings.CommentsOnSitePagesDisabled = web.CommentsOnSitePagesDisabled;
-                webSettings.ExcludeFromOfflineClient = web.ExcludeFromOfflineClient;
-                webSettings.MembersCanShare = web.MembersCanShare;
-                webSettings.DisableFlows = web.DisableFlows;
-                webSettings.DisableAppViews = web.DisableAppViews;
-                webSettings.HorizontalQuickLaunch = web.HorizontalQuickLaunch;
-                webSettings.QuickLaunchEnabled = web.QuickLaunchEnabled;
-                webSettings.SearchScope = (SearchScopes)Enum.Parse(typeof(SearchScopes), web.SearchScope.ToString(), true);
-                webSettings.SearchBoxInNavBar = (SearchBoxInNavBar)Enum.Parse(typeof(SearchBoxInNavBar), web.SearchBoxInNavBar.ToString(), true);
-                webSettings.SearchCenterUrl = web.GetWebSearchCenterUrl(true);
-                // We're not extracting Title and Description
-                //webSettings.Title = Tokenize(web.Title, web.Url);
-                //webSettings.Description = Tokenize(web.Description, web.Url);
-                webSettings.MasterPageUrl = Tokenize(web.MasterUrl, web.Url);
-                webSettings.CustomMasterPageUrl = Tokenize(web.CustomMasterUrl, web.Url);
-                webSettings.SiteLogo = TokenizeHost(web, Tokenize(web.SiteLogoUrl, web.Url));
-                // Notice. No tokenization needed for the welcome page, it's always relative for the site
-                webSettings.WelcomePage = web.RootFolder.WelcomePage;
-                webSettings.AlternateCSS = Tokenize(web.AlternateCssUrl, web.Url);
-                webSettings.RequestAccessEmail = web.RequestAccessEmail;
+                var webSettings = new WebSettings
+                {
+                    NoCrawl = web.NoCrawl,
+                    CommentsOnSitePagesDisabled = web.CommentsOnSitePagesDisabled,
+                    ExcludeFromOfflineClient = web.ExcludeFromOfflineClient,
+                    MembersCanShare = web.MembersCanShare,
+                    DisableFlows = web.DisableFlows,
+                    DisableAppViews = web.DisableAppViews,
+                    HorizontalQuickLaunch = web.HorizontalQuickLaunch,
+                    QuickLaunchEnabled = web.QuickLaunchEnabled,
+                    SearchScope = (SearchScopes)Enum.Parse(typeof(SearchScopes), web.SearchScope.ToString(), true),
+                    SearchBoxInNavBar = (SearchBoxInNavBar)Enum.Parse(typeof(SearchBoxInNavBar), web.SearchBoxInNavBar.ToString(), true),
+                    SearchCenterUrl = web.GetWebSearchCenterUrl(true),
+                    // We're not extracting Title and Description
+                    //webSettings.Title = Tokenize(web.Title, web.Url);
+                    //webSettings.Description = Tokenize(web.Description, web.Url);
+                    MasterPageUrl = Tokenize(web.MasterUrl, web.Url),
+                    CustomMasterPageUrl = Tokenize(web.CustomMasterUrl, web.Url),
+                    SiteLogo = TokenizeHost(web, Tokenize(web.SiteLogoUrl, web.Url)),
+                    // Notice. No tokenization needed for the welcome page, it's always relative for the site
+                    WelcomePage = web.RootFolder.WelcomePage,
+                    AlternateCSS = Tokenize(web.AlternateCssUrl, web.Url),
+                    RequestAccessEmail = web.RequestAccessEmail
+                };
 
                 // Can we get the hubsite url? This requires Tenant Admin rights
                 try

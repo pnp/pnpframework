@@ -73,9 +73,10 @@ namespace PnP.Framework.Provisioning.Model.Configuration
 
         public static ExtractConfiguration FromCreationInformation(ProvisioningTemplateCreationInformation information)
         {
-            var config = new ExtractConfiguration();
-
-            config.BaseTemplate = information.BaseTemplate;
+            var config = new ExtractConfiguration
+            {
+                BaseTemplate = information.BaseTemplate
+            };
             config.ContentTypes.Groups = information.ContentTypeGroupsToInclude;
             config.Extensibility.Handlers = information.ExtensibilityHandlers;
             config.FileConnector = information.FileConnector;
@@ -144,24 +145,25 @@ namespace PnP.Framework.Provisioning.Model.Configuration
         public ProvisioningTemplateCreationInformation ToCreationInformation(Web web)
         {
 
-            var ci = new ProvisioningTemplateCreationInformation(web);
+            var ci = new ProvisioningTemplateCreationInformation(web)
+            {
+                ExtractConfiguration = this,
 
-            ci.ExtractConfiguration = this;
-
-            ci.PersistBrandingFiles = PersistAssetFiles;
-            ci.PersistPublishingFiles = PersistAssetFiles;
-            ci.BaseTemplate = web.GetBaseTemplate();
-            ci.FileConnector = this.FileConnector;
-            ci.IncludeAllClientSidePages = this.Pages.IncludeAllClientSidePages;
-            ci.IncludeHiddenLists = this.Lists.IncludeHiddenLists;
-            ci.IncludeSiteGroups = this.SiteSecurity.IncludeSiteGroups;
-            ci.ContentTypeGroupsToInclude = this.ContentTypes.Groups;
-            ci.IncludeContentTypesFromSyndication = !this.ContentTypes.ExcludeFromSyndication;
-            ci.IncludeTermGroupsSecurity = this.Taxonomy.IncludeSecurity;
-            ci.IncludeSiteCollectionTermGroup = this.Taxonomy.IncludeSiteCollectionTermGroup;
-            ci.IncludeSearchConfiguration = this.SearchSettings.Include;
-            ci.IncludeAllTermGroups = this.Taxonomy.IncludeAllTermGroups;
-            ci.ExtensibilityHandlers = this.Extensibility.Handlers;
+                PersistBrandingFiles = PersistAssetFiles,
+                PersistPublishingFiles = PersistAssetFiles,
+                BaseTemplate = web.GetBaseTemplate(),
+                FileConnector = this.FileConnector,
+                IncludeAllClientSidePages = this.Pages.IncludeAllClientSidePages,
+                IncludeHiddenLists = this.Lists.IncludeHiddenLists,
+                IncludeSiteGroups = this.SiteSecurity.IncludeSiteGroups,
+                ContentTypeGroupsToInclude = this.ContentTypes.Groups,
+                IncludeContentTypesFromSyndication = !this.ContentTypes.ExcludeFromSyndication,
+                IncludeTermGroupsSecurity = this.Taxonomy.IncludeSecurity,
+                IncludeSiteCollectionTermGroup = this.Taxonomy.IncludeSiteCollectionTermGroup,
+                IncludeSearchConfiguration = this.SearchSettings.Include,
+                IncludeAllTermGroups = this.Taxonomy.IncludeAllTermGroups,
+                ExtensibilityHandlers = this.Extensibility.Handlers
+            };
             ci.IncludeAllTermGroups = this.Taxonomy.IncludeAllTermGroups;
             ci.IncludeNativePublishingFiles = this.Publishing.IncludeNativePublishingFiles;
             ci.ListsToExtract = this.Lists != null && this.Lists.Lists.Any() ? this.Lists.Lists.Select(l => l.Title).ToList() : null;

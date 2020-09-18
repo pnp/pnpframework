@@ -35,10 +35,10 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
         public string Name => this.GetType().Name;
         public bool CustomCollectionResolver => false;
 
-        private Type targetItemType;
-        private string propertyName;
-        private Func<object, object> sourceValueSelector = null;
-        private ITypeResolver typeResolver = null;
+        private readonly Type targetItemType;
+        private readonly string propertyName;
+        private readonly Func<object, object> sourceValueSelector = null;
+        private readonly ITypeResolver typeResolver = null;
 
         public PropertyObjectTypeResolver(Type targetItemType, string propertyName, Func<object, object> sourceValueSelector = null, ITypeResolver typeResolver = null)
         {

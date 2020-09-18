@@ -728,8 +728,10 @@ namespace PnP.Framework.Utilities
             string nameid = string.IsNullOrEmpty(sourceRealm) ? sourceApplication : string.Format("{0}@{1}", sourceApplication, sourceRealm);
             string audience = string.Format("{0}/{1}@{2}", targetApplication, targetApplicationHostName, targetRealm);
 
-            List<Claim> actorClaims = new List<Claim>();
-            actorClaims.Add(new Claim("nameid", nameid));
+            List<Claim> actorClaims = new List<Claim>
+            {
+                new Claim("nameid", nameid)
+            };
             if (trustedForDelegation && !appOnly)
             {
                 actorClaims.Add(new Claim(TrustedForImpersonationClaimType, "true"));

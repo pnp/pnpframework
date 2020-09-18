@@ -17,10 +17,10 @@ namespace PnP.Framework.Pages
         public const string ControlDataAttribute = "data-sp-controldata";
 
         private int columnFactor;
-        private int layoutIndex;
+        private readonly int layoutIndex;
         private int? zoneEmphasis;
         private CanvasSection section;
-        private string DataVersion = "1.0";
+        private readonly string DataVersion = "1.0";
         #endregion
 
         // internal constructors as we don't want users to manually create sections

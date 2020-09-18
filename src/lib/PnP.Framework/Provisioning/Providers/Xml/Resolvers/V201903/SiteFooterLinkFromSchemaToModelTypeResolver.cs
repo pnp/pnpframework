@@ -23,8 +23,10 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
                 links = source.GetPublicInstancePropertyValue("FooterLink1");
             }
 
-            resolvers = new Dictionary<string, IResolver>();
-            resolvers.Add($"{typeof(Model.SiteFooterLink).FullName}.FooterLinks", new SiteFooterLinkFromSchemaToModelTypeResolver());
+            resolvers = new Dictionary<string, IResolver>
+            {
+                { $"{typeof(Model.SiteFooterLink).FullName}.FooterLinks", new SiteFooterLinkFromSchemaToModelTypeResolver() }
+            };
 
             if (null != links)
             {

@@ -12,8 +12,8 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
     {
         public string Name => this.GetType().Name;
 
-        private Type targetItemType = null;
-        private Func<object, object> expression = null;
+        private readonly Type targetItemType = null;
+        private readonly Func<object, object> expression = null;
 
         public ExpressionCollectionValueResolver(Expression<Func<object, object>> expression, Type targetItemType)
         {
@@ -57,7 +57,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
     {
         public string Name => this.GetType().Name;
 
-        private Func<object, T> expression = null;
+        private readonly Func<object, T> expression = null;
 
         public ExpressionCollectionValueResolver(Expression<Func<object, T>> expression)
         {

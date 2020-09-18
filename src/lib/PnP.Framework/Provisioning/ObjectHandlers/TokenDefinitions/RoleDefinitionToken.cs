@@ -10,7 +10,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
         Returns = "Editors")]
     internal class RoleDefinitionToken : TokenDefinition
     {
-        private string name;
+        private readonly string name;
         public RoleDefinitionToken(Web web, RoleDefinition definition)
             : base(web, $"{{roledefinition:{definition.RoleTypeKind}}}")
         {

@@ -13,7 +13,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
      Returns = "My List Title")]
     internal class LocalizationToken : TokenDefinition
     {
-        private List<ResourceEntry> _resourceEntries;
+        private readonly List<ResourceEntry> _resourceEntries;
         public LocalizationToken(Web web, string key, List<ResourceEntry> resourceEntries)
             : base(web, $"{{loc:{Regex.Escape(key)}}}", $"{{localize:{Regex.Escape(key)}}}", $"{{localization:{Regex.Escape(key)}}}", $"{{resource:{Regex.Escape(key)}}}", $"{{res:{Regex.Escape(key)}}}")
         {

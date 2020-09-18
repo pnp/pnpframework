@@ -13,7 +13,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
         public bool CustomCollectionResolver => false;
 
 
-        private String _navigationType;
+        private readonly String _navigationType;
 
         public NavigationFromSchemaToModelTypeResolver(String navigationType)
         {

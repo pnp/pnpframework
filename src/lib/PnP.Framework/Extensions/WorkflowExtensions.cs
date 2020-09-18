@@ -142,11 +142,12 @@ namespace Microsoft.SharePoint.Client
             }
 
 
-            var sub = new WorkflowSubscription(list.Context);
-
-            sub.DefinitionId = workflowDefinition.Id;
-            sub.Enabled = true;
-            sub.Name = subscriptionName;
+            var sub = new WorkflowSubscription(list.Context)
+            {
+                DefinitionId = workflowDefinition.Id,
+                Enabled = true,
+                Name = subscriptionName
+            };
 
             var eventTypes = new List<string>();
             if (startManually) eventTypes.Add("WorkflowStart");
@@ -263,13 +264,15 @@ namespace Microsoft.SharePoint.Client
             var servicesManager = new WorkflowServicesManager(web.Context, web);
             var deploymentService = servicesManager.GetWorkflowDeploymentService();
 
-            WorkflowDefinition def = new WorkflowDefinition(web.Context);
-            def.AssociationUrl = definition.AssociationUrl;
-            def.Description = definition.Description;
-            def.DisplayName = definition.DisplayName;
-            def.DraftVersion = definition.DraftVersion;
-            def.FormField = definition.FormField;
-            def.Id = definition.Id != Guid.Empty ? definition.Id : Guid.NewGuid();
+            WorkflowDefinition def = new WorkflowDefinition(web.Context)
+            {
+                AssociationUrl = definition.AssociationUrl,
+                Description = definition.Description,
+                DisplayName = definition.DisplayName,
+                DraftVersion = definition.DraftVersion,
+                FormField = definition.FormField,
+                Id = definition.Id != Guid.Empty ? definition.Id : Guid.NewGuid()
+            };
             foreach (var prop in definition.Properties)
             {
                 def.SetProperty(prop.Key, prop.Value);

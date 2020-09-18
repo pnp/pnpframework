@@ -9,7 +9,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
     internal class FromNullableToSpecifiedValueResolver<T> : IValueResolver
         where T : struct
     {
-        private string propertySpecifiedName;
+        private readonly string propertySpecifiedName;
 
         public string Name => this.GetType().Name;
 

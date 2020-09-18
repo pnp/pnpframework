@@ -6,9 +6,9 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
     {
         public string Name => this.GetType().Name;
 
-        private Func<T, object, object, object> expression1 = null;
-        private Func<object, T, object, object> expression2 = null;
-        private Func<object, object, T, object> expression3 = null;
+        private readonly Func<T, object, object, object> expression1 = null;
+        private readonly Func<object, T, object, object> expression2 = null;
+        private readonly Func<object, object, T, object> expression3 = null;
 
 
         public ExpressionValueResolver(Func<object, object, T, object> expression)
@@ -52,7 +52,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
             get { return (this.GetType().Name); }
         }
 
-        private Func<object, object, object, object> expression = null;
+        private readonly Func<object, object, object, object> expression = null;
 
         public ExpressionValueResolver(Func<object, object, object, object> expression)
         {

@@ -15,9 +15,9 @@ namespace PnP.Framework.Graph
     ///</summary>  
     public class PnPHttpProvider : HttpProvider, IHttpProvider
     {
-        private int _retryCount;
-        private int _delay;
-        private string _userAgent;
+        private readonly int _retryCount;
+        private readonly int _delay;
+        private readonly string _userAgent;
 
         /// <summary>
         /// Constructor for the PnPHttpProvider class

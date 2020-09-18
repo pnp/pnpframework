@@ -9,9 +9,9 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
         public string Name => this.GetType().Name;
         public bool CustomCollectionResolver => false;
 
-        private Action<T, Dictionary<String, IResolver>, bool, object> expression = null;
+        private readonly Action<T, Dictionary<String, IResolver>, bool, object> expression = null;
 
-        private Type targetItemType;
+        private readonly Type targetItemType;
 
         public ExpressionTypeResolver(Type targetItemType, Action<T, object> expression)
         {

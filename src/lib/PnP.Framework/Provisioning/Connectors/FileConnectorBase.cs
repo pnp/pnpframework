@@ -15,7 +15,7 @@ namespace PnP.Framework.Provisioning.Connectors
         #endregion
 
         #region Private variables
-        private Dictionary<string, object> parameters = new Dictionary<string, object>();
+        private readonly Dictionary<string, object> parameters = new Dictionary<string, object>();
         #endregion
 
         #region Properties

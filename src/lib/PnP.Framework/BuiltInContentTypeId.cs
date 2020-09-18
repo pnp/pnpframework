@@ -103,86 +103,88 @@ namespace PnP.Framework
         public const string RepostPage = "0x0101009D1CB255DA76424F860D91F20E6C4118002A50BFCFB7614729B56886FADA02339B";
         public const string SpacesPage = "0x0101009D1CB255DA76424F860D91F20E6C41180043153F945E98468297E67C3EEE43AB70";
 
-        private static Dictionary<string, bool> s_dict = (Dictionary<string, bool>)null;
+        private static Dictionary<string, bool> s_dict = null;
 
         public static bool Contains(string id)
         {
             if (s_dict == null)
             {
-                s_dict = new Dictionary<string, bool>();
-                s_dict.Add(AdminTask, true);
-                s_dict.Add(Announcement, true);
-                s_dict.Add(BasicPage, true);
-                s_dict.Add(BlogComment, true);
-                s_dict.Add(CallTracking, true);
-                s_dict.Add(Contact, true);
-                s_dict.Add(Discussion, true);
-                s_dict.Add(DisplayTemplateJS, true);
-                s_dict.Add(Document, true);
-                s_dict.Add(DocumentSet, true);
-                s_dict.Add(DocumentWorkflowItem, true);
-                s_dict.Add(DomainGroup, true);
-                s_dict.Add(DublinCoreName, true);
-                s_dict.Add(Event, true);
-                s_dict.Add(FarEastContact, true);
-                s_dict.Add(Folder, true);
-                s_dict.Add(GbwCirculationCTName, true);
-                s_dict.Add(GbwOfficeNoticeCTName, true);
-                s_dict.Add(HealthReport, true);
-                s_dict.Add(HealthRuleDefinition, true);
-                s_dict.Add(Holiday, true);
-                s_dict.Add(IMEDictionaryItem, true);
-                s_dict.Add(Issue, true);
-                s_dict.Add(Item, true);
-                s_dict.Add(Link, true);
-                s_dict.Add(LinkToDocument, true);
-                s_dict.Add(MasterPage, true);
-                s_dict.Add(Message, true);
-                s_dict.Add(ODCDocument, true);
-                s_dict.Add(Person, true);
-                s_dict.Add(Picture, true);
-                s_dict.Add(Resource, true);
-                s_dict.Add(ResourceGroup, true);
-                s_dict.Add(ResourceReservation, true);
-                s_dict.Add(RootOfList, true);
-                s_dict.Add(Schedule, true);
-                s_dict.Add(ScheduleAndResourceReservation, true);
-                s_dict.Add(SharePointGroup, true);
-                s_dict.Add(SummaryTask, true);
-                s_dict.Add(System, true);
-                s_dict.Add(Task, true);
-                s_dict.Add(Timecard, true);
-                s_dict.Add(UDCDocument, true);
-                s_dict.Add(UntypedDocument, true);
-                s_dict.Add(WebPartPage, true);
-                s_dict.Add(WhatsNew, true);
-                s_dict.Add(Whereabouts, true);
-                s_dict.Add(WikiDocument, true);
-                s_dict.Add(WorkflowHistory, true);
-                s_dict.Add(WorkflowTask, true);
-                s_dict.Add(XMLDocument, true);
-                s_dict.Add(XSLStyle, true);
-                s_dict.Add(ReusableHTML, true);
-                s_dict.Add(PublishedLink, true);
-                s_dict.Add(ReusableText, true);
-                s_dict.Add(PageOutputCache, true);
-                s_dict.Add(DeviceChannel, true);
-                s_dict.Add(DeviceChannelMappings, true);
-                s_dict.Add(SystemPageLayout, true);
-                s_dict.Add(PageLayout, true);
-                s_dict.Add(HtmlPageLayout, true);
-                s_dict.Add(SystemMasterPage, true);
-                s_dict.Add(ASPNETMasterPage, true);
-                s_dict.Add(HtmlMasterPage, true);
-                s_dict.Add(SystemPage, true);
-                s_dict.Add(Page, true);
-                s_dict.Add(ArticlePage, true);
-                s_dict.Add(EnterpriseWikiPage, true);
-                s_dict.Add(ProjectPage, true);
-                s_dict.Add(WelcomePage, true);
-                s_dict.Add(ErrorPage, true);
-                s_dict.Add(RedirectPage, true);
-                s_dict.Add(ModernArticlePage, true);
+                s_dict = new Dictionary<string, bool>
+                {
+                    { AdminTask, true },
+                    { Announcement, true },
+                    { BasicPage, true },
+                    { BlogComment, true },
+                    { CallTracking, true },
+                    { Contact, true },
+                    { Discussion, true },
+                    { DisplayTemplateJS, true },
+                    { Document, true },
+                    { DocumentSet, true },
+                    { DocumentWorkflowItem, true },
+                    { DomainGroup, true },
+                    { DublinCoreName, true },
+                    { Event, true },
+                    { FarEastContact, true },
+                    { Folder, true },
+                    { GbwCirculationCTName, true },
+                    { GbwOfficeNoticeCTName, true },
+                    { HealthReport, true },
+                    { HealthRuleDefinition, true },
+                    { Holiday, true },
+                    { IMEDictionaryItem, true },
+                    { Issue, true },
+                    { Item, true },
+                    { Link, true },
+                    { LinkToDocument, true },
+                    { MasterPage, true },
+                    { Message, true },
+                    { ODCDocument, true },
+                    { Person, true },
+                    { Picture, true },
+                    { Resource, true },
+                    { ResourceGroup, true },
+                    { ResourceReservation, true },
+                    { RootOfList, true },
+                    { Schedule, true },
+                    { ScheduleAndResourceReservation, true },
+                    { SharePointGroup, true },
+                    { SummaryTask, true },
+                    { System, true },
+                    { Task, true },
+                    { Timecard, true },
+                    { UDCDocument, true },
+                    { UntypedDocument, true },
+                    { WebPartPage, true },
+                    { WhatsNew, true },
+                    { Whereabouts, true },
+                    { WikiDocument, true },
+                    { WorkflowHistory, true },
+                    { WorkflowTask, true },
+                    { XMLDocument, true },
+                    { XSLStyle, true },
+                    { ReusableHTML, true },
+                    { PublishedLink, true },
+                    { ReusableText, true },
+                    { PageOutputCache, true },
+                    { DeviceChannel, true },
+                    { DeviceChannelMappings, true },
+                    { SystemPageLayout, true },
+                    { PageLayout, true },
+                    { HtmlPageLayout, true },
+                    { SystemMasterPage, true },
+                    { ASPNETMasterPage, true },
+                    { HtmlMasterPage, true },
+                    { SystemPage, true },
+                    { Page, true },
+                    { ArticlePage, true },
+                    { EnterpriseWikiPage, true },
+                    { ProjectPage, true },
+                    { WelcomePage, true },
+                    { ErrorPage, true },
+                    { RedirectPage, true },
+                    { ModernArticlePage, true }
+                };
             }
             bool flag = false;
             s_dict.TryGetValue(id, out flag);

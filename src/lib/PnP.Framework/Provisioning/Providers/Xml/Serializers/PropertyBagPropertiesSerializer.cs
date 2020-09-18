@@ -35,9 +35,11 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
                 var propertyBagType = Type.GetType(propertyBagTypeName, true);
 
 
-                var expressions = new Dictionary<string, IResolver>();
-                expressions.Add($"{propertyBagType}.OverwriteSpecified", new ExpressionValueResolver(() => true));
-                expressions.Add($"{propertyBagType}.IndexedSpecified", new ExpressionValueResolver(() => true));
+                var expressions = new Dictionary<string, IResolver>
+                {
+                    { $"{propertyBagType}.OverwriteSpecified", new ExpressionValueResolver(() => true) },
+                    { $"{propertyBagType}.IndexedSpecified", new ExpressionValueResolver(() => true) }
+                };
 
                 persistence.GetPublicInstanceProperty("PropertyBagEntries")
                     .SetValue(

@@ -93,12 +93,13 @@ namespace PnP.Framework.Provisioning.Providers.Xml
 
             V201512.ProvisioningTemplate result = new V201512.ProvisioningTemplate();
 
-            V201512.Provisioning wrappedResult = new V201512.Provisioning();
-            wrappedResult.Preferences = new V201512.Preferences
+            V201512.Provisioning wrappedResult = new V201512.Provisioning
             {
-                Generator = this.GetType().Assembly.FullName
-            };
-            wrappedResult.Templates = new V201512.Templates[] {
+                Preferences = new V201512.Preferences
+                {
+                    Generator = this.GetType().Assembly.FullName
+                },
+                Templates = new V201512.Templates[] {
                 new V201512.Templates
                 {
                     ID = $"CONTAINER-{template.Id}",
@@ -107,6 +108,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml
                         result
                     }
                 }
+            }
             };
 
             #region Basic Properties
@@ -2301,10 +2303,12 @@ namespace PnP.Framework.Provisioning.Providers.Xml
 
         public static V201512.Folder FromTemplateToSchemaFolderV201512(this Model.Folder folder)
         {
-            V201512.Folder result = new V201512.Folder();
-            result.Name = folder.Name;
-            result.Security = folder.Security.FromTemplateToSchemaObjectSecurityV201512();
-            result.Folder1 = folder.Folders != null ? (from child in folder.Folders select child.FromTemplateToSchemaFolderV201512()).ToArray() : null;
+            V201512.Folder result = new V201512.Folder
+            {
+                Name = folder.Name,
+                Security = folder.Security.FromTemplateToSchemaObjectSecurityV201512(),
+                Folder1 = folder.Folders != null ? (from child in folder.Folders select child.FromTemplateToSchemaFolderV201512()).ToArray() : null
+            };
             return (result);
         }
 

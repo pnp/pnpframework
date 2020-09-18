@@ -33,14 +33,14 @@ namespace PnP.Framework.TimerJobs
     {
         #region Private Variables
         // Timerjob information
-        private string name;
-        private string version;
+        private readonly string name;
+        private readonly string version;
         private bool isRunning = false;
         private string configurationData;
         // property management information
         private bool manageState = false;
         // Authentication related variables
-        private ConcurrentDictionary<string, AuthenticationManager> authenticationManagers;
+        private readonly ConcurrentDictionary<string, AuthenticationManager> authenticationManagers;
         private AuthenticationType authenticationType;
         private string username;
         private SecureString password;
@@ -50,7 +50,7 @@ namespace PnP.Framework.TimerJobs
         private string clientSecret;
         private string accessToken;
         private AzureEnvironment azureEnvironment;
-        private bool highTrust;
+        private readonly bool highTrust;
         private string azureTenant;
         private X509Certificate2 certificate;
         private string certificatePath;

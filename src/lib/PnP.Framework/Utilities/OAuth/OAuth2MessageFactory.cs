@@ -18,11 +18,13 @@
 
         public static OAuth2AccessTokenRequest CreateAccessTokenRequestWithAuthorizationCode(string clientId, string clientSecret, string authorizationCode, System.Uri redirectUri, string resource)
         {
-            OAuth2AccessTokenRequest oAuth2AccessTokenRequest = new OAuth2AccessTokenRequest();
-            oAuth2AccessTokenRequest.GrantType = "authorization_code";
-            oAuth2AccessTokenRequest.ClientId = clientId;
-            oAuth2AccessTokenRequest.ClientSecret = clientSecret;
-            oAuth2AccessTokenRequest.Code = authorizationCode;
+            OAuth2AccessTokenRequest oAuth2AccessTokenRequest = new OAuth2AccessTokenRequest
+            {
+                GrantType = "authorization_code",
+                ClientId = clientId,
+                ClientSecret = clientSecret,
+                Code = authorizationCode
+            };
             if (redirectUri != null)
             {
                 oAuth2AccessTokenRequest.RedirectUri = redirectUri.AbsoluteUri;

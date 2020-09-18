@@ -22,12 +22,13 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 
             if (customActions != null)
             {
-                var expressions = new Dictionary<Expression<Func<CustomActions, Object>>, IResolver>();
-
-                expressions.Add(c => c.SiteCustomActions[0].CommandUIExtension, new XmlAnyFromSchemaToModelValueResolver("CommandUIExtension"));
-                expressions.Add(c => c.SiteCustomActions[0].RegistrationType, new FromStringToEnumValueResolver(typeof(UserCustomActionRegistrationType)));
-                expressions.Add(c => c.SiteCustomActions[0].Rights, new FromStringToBasePermissionsValueResolver());
-                expressions.Add(c => c.SiteCustomActions[0].ClientSideComponentId, new FromStringToGuidValueResolver());
+                var expressions = new Dictionary<Expression<Func<CustomActions, Object>>, IResolver>
+                {
+                    { c => c.SiteCustomActions[0].CommandUIExtension, new XmlAnyFromSchemaToModelValueResolver("CommandUIExtension") },
+                    { c => c.SiteCustomActions[0].RegistrationType, new FromStringToEnumValueResolver(typeof(UserCustomActionRegistrationType)) },
+                    { c => c.SiteCustomActions[0].Rights, new FromStringToBasePermissionsValueResolver() },
+                    { c => c.SiteCustomActions[0].ClientSideComponentId, new FromStringToGuidValueResolver() }
+                };
 
                 PnPObjectsMapper.MapProperties(customActions, template.CustomActions, expressions, true);
             }
@@ -48,13 +49,15 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 
                 var target = Activator.CreateInstance(customActionsType, true);
 
-                var expressions = new Dictionary<string, IResolver>();
-                expressions.Add($"{customActionType}.Rights", new FromBasePermissionsToStringValueResolver());
-                expressions.Add($"{customActionType}.RegistrationType", new FromStringToEnumValueResolver(registrationTypeType));
-                expressions.Add($"{customActionType}.RegistrationTypeSpecified", new ExpressionValueResolver(() => true));
-                expressions.Add($"{customActionType}.SequenceSpecified", new ExpressionValueResolver(() => true));
-                expressions.Add($"{customActionType}.CommandUIExtension", new XmlAnyFromModelToSchemalValueResolver(commandUIExtensionType));
-                expressions.Add($"{customActionType}.ClientSideComponentId", new ExpressionValueResolver((s, v) => v != null ? v.ToString() : s?.ToString()));
+                var expressions = new Dictionary<string, IResolver>
+                {
+                    { $"{customActionType}.Rights", new FromBasePermissionsToStringValueResolver() },
+                    { $"{customActionType}.RegistrationType", new FromStringToEnumValueResolver(registrationTypeType) },
+                    { $"{customActionType}.RegistrationTypeSpecified", new ExpressionValueResolver(() => true) },
+                    { $"{customActionType}.SequenceSpecified", new ExpressionValueResolver(() => true) },
+                    { $"{customActionType}.CommandUIExtension", new XmlAnyFromModelToSchemalValueResolver(commandUIExtensionType) },
+                    { $"{customActionType}.ClientSideComponentId", new ExpressionValueResolver((s, v) => v != null ? v.ToString() : s?.ToString()) }
+                };
 
                 PnPObjectsMapper.MapProperties(template.CustomActions, target, expressions, recursive: true);
 

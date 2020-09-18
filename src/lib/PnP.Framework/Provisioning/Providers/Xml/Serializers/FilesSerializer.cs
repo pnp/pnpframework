@@ -24,8 +24,10 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
             {
                 var files = filesCollection.GetPublicInstancePropertyValue("File");
 
-                var expressions = new Dictionary<Expression<Func<File, Object>>, IResolver>();
-                expressions.Add(c => c.Level, new FromStringToEnumValueResolver(typeof(FileLevel)));
+                var expressions = new Dictionary<Expression<Func<File, Object>>, IResolver>
+                {
+                    { c => c.Level, new FromStringToEnumValueResolver(typeof(FileLevel)) }
+                };
 
                 var dictionaryItemTypeName = $"{PnPSerializationScope.Current?.BaseSchemaNamespace}.StringDictionaryItem, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}";
                 var dictionaryItemType = Type.GetType(dictionaryItemTypeName, true);

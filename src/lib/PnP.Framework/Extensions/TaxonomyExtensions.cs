@@ -457,11 +457,12 @@ namespace Microsoft.SharePoint.Client
             TermStore ts = tSession.GetDefaultSiteCollectionTermStore();
             TermSet tset = ts.GetTermSet(termSetId);
 
-            var lmi = new LabelMatchInformation(site.Context);
-
-            lmi.Lcid = ts.EnsureProperty(tstore => tstore.DefaultLanguage);
-            lmi.TrimUnavailable = true;
-            lmi.TermLabel = term;
+            var lmi = new LabelMatchInformation(site.Context)
+            {
+                Lcid = ts.EnsureProperty(tstore => tstore.DefaultLanguage),
+                TrimUnavailable = true,
+                TermLabel = term
+            };
 
             termMatches = tset.GetTerms(lmi);
             site.Context.Load(tSession);
@@ -678,7 +679,7 @@ namespace Microsoft.SharePoint.Client
             }
             foreach (var groupDictItem in groupDict)
             {
-                var termGroup = groupDictItem.Key as TermGroup;
+                var termGroup = groupDictItem.Key;
                 foreach (var termset in groupDictItem.Value)
                 {
                     using (var memoryStream = new MemoryStream())
@@ -1452,7 +1453,7 @@ namespace Microsoft.SharePoint.Client
         /// <returns></returns>
         public static string NormalizeName(string name)
         {
-            if (name == null) return (string)null;
+            if (name == null) return null;
             name = TrimSpacesRegex.Replace(name, " ").Replace('&', '＆');
 
             if (!name.Contains(",") || !name.StartsWith("\"") || !name.EndsWith("\""))
@@ -1470,7 +1471,7 @@ namespace Microsoft.SharePoint.Client
         public static string DenormalizeName(string name)
         {
             if (name == null)
-                return (string)null;
+                return null;
 
             name = TrimSpacesRegex.Replace(name, " ").Replace('＆', '&').Replace('＂', '"');
             if (name.Contains(",") && !name.StartsWith("\"") && !name.EndsWith("\""))
@@ -1741,10 +1742,12 @@ namespace Microsoft.SharePoint.Client
                         );
                     item.Context.ExecuteQueryRetry();
 
-                    TaxonomyFieldValue taxonomyValue = new TaxonomyFieldValue();
-                    taxonomyValue.Label = string.Empty;
-                    taxonomyValue.TermGuid = "11111111-1111-1111-1111-111111111111";
-                    taxonomyValue.WssId = -1;
+                    TaxonomyFieldValue taxonomyValue = new TaxonomyFieldValue
+                    {
+                        Label = string.Empty,
+                        TermGuid = "11111111-1111-1111-1111-111111111111",
+                        WssId = -1
+                    };
                     taxonomyField.SetFieldValueByValue(item, taxonomyValue);
 
                     item[hiddenField.InternalName] = string.Empty;
@@ -2114,9 +2117,11 @@ namespace Microsoft.SharePoint.Client
         {
             var clientContext = web.Context as ClientContext;
             var list = clientContext.Site.RootWeb.GetListByUrl("Lists/TaxonomyHiddenList");
-            CamlQuery camlQuery = new CamlQuery();
-            camlQuery.ViewXml =
-                $@"<View><Query><Where><Eq><FieldRef Name='IdForTerm' /><Value Type='Text'>{term.Id}</Value></Eq></Where></Query></View>";
+            CamlQuery camlQuery = new CamlQuery
+            {
+                ViewXml =
+                $@"<View><Query><Where><Eq><FieldRef Name='IdForTerm' /><Value Type='Text'>{term.Id}</Value></Eq></Where></Query></View>"
+            };
 
             var items = list.GetItems(camlQuery);
             web.Context.Load(items);
@@ -2181,10 +2186,12 @@ namespace Microsoft.SharePoint.Client
                 clientContext.Load(defaultValTerm);
                 clientContext.ExecuteQueryRetry();
 
-                TaxonomyFieldValue taxValue = new TaxonomyFieldValue();
-                taxValue.WssId = -1;
-                taxValue.TermGuid = defaultValTerm.Id.ToString();
-                taxValue.Label = defaultValTerm.Name;
+                TaxonomyFieldValue taxValue = new TaxonomyFieldValue
+                {
+                    WssId = -1,
+                    TermGuid = defaultValTerm.Id.ToString(),
+                    Label = defaultValTerm.Name
+                };
                 //get validate string
                 var validateValue = taxField.GetValidatedString(taxValue);
                 field.Context.ExecuteQueryRetry();

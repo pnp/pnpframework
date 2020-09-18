@@ -36,7 +36,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
                 var targetAudit = Activator.CreateInstance(auditType, true);
                 targetAudit.SetPublicInstancePropertyValue("AuditFlag", targetAuditValue);
 
-                ((Array)target).SetValue(targetAudit, c);
+                target.SetValue(targetAudit, c);
             }
 
             return target;

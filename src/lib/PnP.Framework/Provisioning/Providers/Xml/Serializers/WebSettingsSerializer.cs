@@ -31,9 +31,11 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
             {
                 var webSettingsType = Type.GetType($"{PnPSerializationScope.Current?.BaseSchemaNamespace}.WebSettings, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}", true);
                 var target = Activator.CreateInstance(webSettingsType, true);
-                var expressions = new Dictionary<string, IResolver>();
-                expressions.Add($"{webSettingsType}.NoCrawlSpecified", new ExpressionValueResolver(() => true));
-                expressions.Add($"{webSettingsType}.QuickLaunchEnabledSpecified", new ExpressionValueResolver(() => true));
+                var expressions = new Dictionary<string, IResolver>
+                {
+                    { $"{webSettingsType}.NoCrawlSpecified", new ExpressionValueResolver(() => true) },
+                    { $"{webSettingsType}.QuickLaunchEnabledSpecified", new ExpressionValueResolver(() => true) }
+                };
 
                 PnPObjectsMapper.MapProperties(template.WebSettings, target, expressions, recursive: true);
 

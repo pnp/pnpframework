@@ -34,8 +34,10 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
             {
                 var composedLookType = Type.GetType($"{PnPSerializationScope.Current?.BaseSchemaNamespace}.ComposedLook, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}", true);
                 var target = Activator.CreateInstance(composedLookType, true);
-                var expressions = new Dictionary<string, IResolver>();
-                expressions.Add($"{composedLookType}.VersionSpecified", new ExpressionValueResolver(() => true));
+                var expressions = new Dictionary<string, IResolver>
+                {
+                    { $"{composedLookType}.VersionSpecified", new ExpressionValueResolver(() => true) }
+                };
 
 
                 PnPObjectsMapper.MapProperties(template.ComposedLook, target, expressions, recursive: true);

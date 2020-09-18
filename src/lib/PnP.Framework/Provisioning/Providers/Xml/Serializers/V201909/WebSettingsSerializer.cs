@@ -22,10 +22,13 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201909
 
             if (webSettings != null)
             {
-                var expressions = new Dictionary<Expression<Func<WebSettings, Object>>, IResolver>();
-
-                expressions.Add(s => s.AlternateUICultures,
-                    new AlternateUICultureFromSchemaToModelTypeResolver());
+                var expressions = new Dictionary<Expression<Func<WebSettings, Object>>, IResolver>
+                {
+                    {
+                        s => s.AlternateUICultures,
+                        new AlternateUICultureFromSchemaToModelTypeResolver()
+                    }
+                };
 
                 template.WebSettings = new WebSettings();
                 PnPObjectsMapper.MapProperties(webSettings, template.WebSettings, expressions, true);
@@ -38,9 +41,11 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201909
             {
                 var webSettingsType = Type.GetType($"{PnPSerializationScope.Current?.BaseSchemaNamespace}.WebSettings, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}", true);
                 var target = Activator.CreateInstance(webSettingsType, true);
-                var expressions = new Dictionary<string, IResolver>();
-                expressions.Add($"{webSettingsType}.NoCrawlSpecified", new ExpressionValueResolver(() => true));
-                expressions.Add($"{webSettingsType}.QuickLaunchEnabledSpecified", new ExpressionValueResolver(() => true));
+                var expressions = new Dictionary<string, IResolver>
+                {
+                    { $"{webSettingsType}.NoCrawlSpecified", new ExpressionValueResolver(() => true) },
+                    { $"{webSettingsType}.QuickLaunchEnabledSpecified", new ExpressionValueResolver(() => true) }
+                };
 
                 PnPObjectsMapper.MapProperties(template.WebSettings, target, expressions, recursive: true);
 

@@ -16,7 +16,7 @@ namespace PnP.Framework.TimerJobs.Utilities
         #region Singleton implementation
         // Singleton variables
         private static volatile SiteEnumeration instance;
-        private static object syncRoot = new Object();
+        private static readonly object syncRoot = new Object();
 
         // Singleton private constructor
         private SiteEnumeration() { }
@@ -156,9 +156,11 @@ namespace PnP.Framework.TimerJobs.Utilities
         {
             List<String> sites = new List<String>();
 
-            KeywordQuery keywordQuery = new KeywordQuery(cc);
-            // Important to avoid trimming "similar" site collections
-            keywordQuery.TrimDuplicates = false;
+            KeywordQuery keywordQuery = new KeywordQuery(cc)
+            {
+                // Important to avoid trimming "similar" site collections
+                TrimDuplicates = false
+            };
 
             if (keywordQueryValue.Length == 0)
             {

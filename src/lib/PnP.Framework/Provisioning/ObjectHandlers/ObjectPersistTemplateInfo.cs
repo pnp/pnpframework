@@ -35,12 +35,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 web.SetPropertyBagValue("_PnP_ProvisioningTemplateId", template.Id != null ? template.Id : "");
                 web.AddIndexedPropertyBagKey("_PnP_ProvisioningTemplateId");
 
-                ProvisioningTemplateInfo info = new ProvisioningTemplateInfo();
-                info.TemplateId = template.Id != null ? template.Id : "";
-                info.TemplateVersion = template.Version;
-                info.TemplateSitePolicy = template.SitePolicy;
-                info.Result = true;
-                info.ProvisioningTime = DateTime.Now;
+                ProvisioningTemplateInfo info = new ProvisioningTemplateInfo
+                {
+                    TemplateId = template.Id != null ? template.Id : "",
+                    TemplateVersion = template.Version,
+                    TemplateSitePolicy = template.SitePolicy,
+                    Result = true,
+                    ProvisioningTime = DateTime.Now
+                };
 
                 string jsonInfo = JsonConvert.SerializeObject(info);
 

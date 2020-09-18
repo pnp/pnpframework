@@ -22,8 +22,10 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 
             if (pages != null)
             {
-                var expressions = new Dictionary<Expression<Func<Page, Object>>, IResolver>();
-                expressions.Add(p => p.Layout, new FromStringToEnumValueResolver(typeof(WikiPageLayout)));
+                var expressions = new Dictionary<Expression<Func<Page, Object>>, IResolver>
+                {
+                    { p => p.Layout, new FromStringToEnumValueResolver(typeof(WikiPageLayout)) }
+                };
 
                 var dictionaryItemTypeName = $"{PnPSerializationScope.Current?.BaseSchemaNamespace}.BaseFieldValue, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}";
                 var dictionaryItemType = Type.GetType(dictionaryItemTypeName, true);

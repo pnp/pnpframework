@@ -83,12 +83,14 @@ namespace Microsoft.SharePoint.Client
 
             if (!receiverExists)
             {
-                EventReceiverDefinitionCreationInformation receiver = new EventReceiverDefinitionCreationInformation();
-                receiver.EventType = eventReceiverType;
-                receiver.ReceiverUrl = url;
-                receiver.ReceiverName = name;
-                receiver.SequenceNumber = sequenceNumber;
-                receiver.Synchronization = synchronization;
+                EventReceiverDefinitionCreationInformation receiver = new EventReceiverDefinitionCreationInformation
+                {
+                    EventType = eventReceiverType,
+                    ReceiverUrl = url,
+                    ReceiverName = name,
+                    SequenceNumber = sequenceNumber,
+                    Synchronization = synchronization
+                };
                 def = list.EventReceivers.Add(receiver);
                 list.Context.Load(def);
                 list.Context.ExecuteQueryRetry();
@@ -1720,13 +1722,15 @@ namespace Microsoft.SharePoint.Client
                     // Add the event receiver if not already there
                     if (list.GetEventReceiverByName("LocationBasedMetadataDefaultsReceiver ItemAdded") == null)
                     {
-                        EventReceiverDefinitionCreationInformation eventCi = new EventReceiverDefinitionCreationInformation();
-                        eventCi.Synchronization = EventReceiverSynchronization.Synchronous;
-                        eventCi.EventType = EventReceiverType.ItemAdded;
-                        eventCi.ReceiverAssembly = "Microsoft.Office.DocumentManagement, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c";
-                        eventCi.ReceiverClass = "Microsoft.Office.DocumentManagement.LocationBasedMetadataDefaultsReceiver";
-                        eventCi.ReceiverName = "LocationBasedMetadataDefaultsReceiver ItemAdded";
-                        eventCi.SequenceNumber = 1000;
+                        EventReceiverDefinitionCreationInformation eventCi = new EventReceiverDefinitionCreationInformation
+                        {
+                            Synchronization = EventReceiverSynchronization.Synchronous,
+                            EventType = EventReceiverType.ItemAdded,
+                            ReceiverAssembly = "Microsoft.Office.DocumentManagement, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c",
+                            ReceiverClass = "Microsoft.Office.DocumentManagement.LocationBasedMetadataDefaultsReceiver",
+                            ReceiverName = "LocationBasedMetadataDefaultsReceiver ItemAdded",
+                            SequenceNumber = 1000
+                        };
 
                         list.EventReceivers.Add(eventCi);
 

@@ -16,7 +16,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
      Returns = "0x0101")]
     internal class ListContentTypeIdToken : TokenDefinition
     {
-        private string _contentTypeId = null;
+        private readonly string _contentTypeId = null;
 
         public ListContentTypeIdToken(Web web, string listTitle, string contentTypeName, ContentTypeId contentTypeId)
             : base(web, $"{{listcontenttypeid:{Regex.Escape(listTitle)},{Regex.Escape(contentTypeName)}}}")

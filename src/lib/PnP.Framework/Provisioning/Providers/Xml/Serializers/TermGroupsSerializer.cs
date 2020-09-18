@@ -34,11 +34,13 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 
         public Dictionary<Expression<Func<TermGroup, object>>, IResolver> GetTermGroupDeserializeExpressions()
         {
-            var expressions = new Dictionary<Expression<Func<TermGroup, Object>>, IResolver>();
-            expressions.Add(g => g.Id, new FromStringToGuidValueResolver());
-            expressions.Add(g => g.TermSets[0].Id, new FromStringToGuidValueResolver());
-            expressions.Add(g => g.TermSets[0].Terms[0].Id, new FromStringToGuidValueResolver());
-            expressions.Add(g => g.TermSets[0].Terms[0].SourceTermId, new FromStringToGuidValueResolver());
+            var expressions = new Dictionary<Expression<Func<TermGroup, Object>>, IResolver>
+            {
+                { g => g.Id, new FromStringToGuidValueResolver() },
+                { g => g.TermSets[0].Id, new FromStringToGuidValueResolver() },
+                { g => g.TermSets[0].Terms[0].Id, new FromStringToGuidValueResolver() },
+                { g => g.TermSets[0].Terms[0].SourceTermId, new FromStringToGuidValueResolver() }
+            };
 
             var dictionaryItemTypeName = $"{PnPSerializationScope.Current?.BaseSchemaNamespace}.StringDictionaryItem, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}";
             var dictionaryItemType = Type.GetType(dictionaryItemTypeName, true);

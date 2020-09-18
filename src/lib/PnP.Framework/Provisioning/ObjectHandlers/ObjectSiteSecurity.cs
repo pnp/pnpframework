@@ -507,9 +507,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             if (siteRoleDefinition == null)
                             {
                                 scope.LogDebug("Creating role definition {0}", parsedRoleDefinitionName);
-                                var roleDefinitionCI = new RoleDefinitionCreationInformation();
-                                roleDefinitionCI.Name = parsedRoleDefinitionName;
-                                roleDefinitionCI.Description = parsedTemplateRoleDefinitionDesc;
+                                var roleDefinitionCI = new RoleDefinitionCreationInformation
+                                {
+                                    Name = parsedRoleDefinitionName,
+                                    Description = parsedTemplateRoleDefinitionDesc
+                                };
                                 BasePermissions basePermissions = new BasePermissions();
 
                                 foreach (var permission in templateRoleDefinition.Permissions)
@@ -582,8 +584,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                                     if (principal != null)
                                     {
-                                        var roleDefinitionBindingCollection = new RoleDefinitionBindingCollection(web.Context);
-                                        roleDefinitionBindingCollection.Add(roleDefinition);
+                                        var roleDefinitionBindingCollection = new RoleDefinitionBindingCollection(web.Context)
+                                        {
+                                            roleDefinition
+                                        };
                                         web.RoleAssignments.Add(principal, roleDefinitionBindingCollection);
                                         web.Context.ExecuteQueryRetry();
                                     }
@@ -664,8 +668,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 using (ensureGroupScope.StartCatch())
                 {
-                    GroupCreationInformation groupCreationInfo = new GroupCreationInformation();
-                    groupCreationInfo.Title = groupName;
+                    GroupCreationInformation groupCreationInfo = new GroupCreationInformation
+                    {
+                        Title = groupName
+                    };
                     newGroup = web.SiteGroups.Add(groupCreationInfo);
                 }
             }
@@ -927,10 +933,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             if (webRoleDefinition.RoleTypeKind == RoleType.None)
                             {
                                 scope.LogDebug("Processing custom role definition {0}", webRoleDefinition.Name);
-                                var modelRoleDefinitions = new Model.RoleDefinition();
-
-                                modelRoleDefinitions.Description = webRoleDefinition.Description;
-                                modelRoleDefinitions.Name = webRoleDefinition.Name;
+                                var modelRoleDefinitions = new Model.RoleDefinition
+                                {
+                                    Description = webRoleDefinition.Description,
+                                    Name = webRoleDefinition.Name
+                                };
 
                                 foreach (var permissionKey in permissionKeys)
                                 {

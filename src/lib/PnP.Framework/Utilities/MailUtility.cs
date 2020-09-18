@@ -148,8 +148,10 @@ namespace PnP.Framework.Utilities
         /// <param name="body">HTML body of the mail.</param>
         public static void SendEmail(ClientContext context, IEnumerable<String> to, IEnumerable<String> cc, string subject, string body)
         {
-            EmailProperties properties = new EmailProperties();
-            properties.To = to;
+            EmailProperties properties = new EmailProperties
+            {
+                To = to
+            };
 
             if (cc != null)
             {

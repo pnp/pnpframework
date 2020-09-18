@@ -175,9 +175,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         private ProvisioningTemplate CleanupEntities(ProvisioningTemplate template, ProvisioningTemplate baseTemplate, bool isSubSite)
         {
-            List<Guid> featuresToExclude = new List<Guid>();
-            // Seems to be an feature left over on some older online sites...
-            featuresToExclude.Add(Guid.Parse("d70044a4-9f71-4a3f-9998-e7238c11ce1a"));
+            List<Guid> featuresToExclude = new List<Guid>
+            {
+                // Seems to be an feature left over on some older online sites...
+                Guid.Parse("d70044a4-9f71-4a3f-9998-e7238c11ce1a")
+            };
 
             if (!isSubSite)
             {

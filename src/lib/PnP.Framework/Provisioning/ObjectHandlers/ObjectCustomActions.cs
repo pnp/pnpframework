@@ -398,25 +398,27 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         private CustomAction CopyUserCustomAction(UserCustomAction userCustomAction, ProvisioningTemplateCreationInformation creationInfo, ProvisioningTemplate template)
         {
-            var customAction = new CustomAction();
-            customAction.Description = userCustomAction.Description;
-            customAction.Enabled = true;
-            customAction.Group = userCustomAction.Group;
-            customAction.ImageUrl = userCustomAction.ImageUrl;
-            customAction.Location = userCustomAction.Location;
-            customAction.Name = userCustomAction.Name;
-            customAction.Rights = userCustomAction.Rights;
-            customAction.ScriptBlock = userCustomAction.ScriptBlock;
-            customAction.ScriptSrc = userCustomAction.ScriptSrc;
-            customAction.Sequence = userCustomAction.Sequence;
-            customAction.Title = userCustomAction.Title;
-            customAction.Url = userCustomAction.Url;
-            customAction.RegistrationId = userCustomAction.RegistrationId;
-            customAction.RegistrationType = userCustomAction.RegistrationType;
-            customAction.ClientSideComponentId = userCustomAction.ClientSideComponentId;
-            customAction.ClientSideComponentProperties = userCustomAction.ClientSideComponentProperties;
-            customAction.CommandUIExtension = !System.String.IsNullOrEmpty(userCustomAction.CommandUIExtension) ?
-                XElement.Parse(userCustomAction.CommandUIExtension) : null;
+            var customAction = new CustomAction
+            {
+                Description = userCustomAction.Description,
+                Enabled = true,
+                Group = userCustomAction.Group,
+                ImageUrl = userCustomAction.ImageUrl,
+                Location = userCustomAction.Location,
+                Name = userCustomAction.Name,
+                Rights = userCustomAction.Rights,
+                ScriptBlock = userCustomAction.ScriptBlock,
+                ScriptSrc = userCustomAction.ScriptSrc,
+                Sequence = userCustomAction.Sequence,
+                Title = userCustomAction.Title,
+                Url = userCustomAction.Url,
+                RegistrationId = userCustomAction.RegistrationId,
+                RegistrationType = userCustomAction.RegistrationType,
+                ClientSideComponentId = userCustomAction.ClientSideComponentId,
+                ClientSideComponentProperties = userCustomAction.ClientSideComponentProperties,
+                CommandUIExtension = !System.String.IsNullOrEmpty(userCustomAction.CommandUIExtension) ?
+                XElement.Parse(userCustomAction.CommandUIExtension) : null
+            };
 
 
             if (creationInfo.PersistMultiLanguageResources)

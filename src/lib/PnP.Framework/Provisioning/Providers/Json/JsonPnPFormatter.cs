@@ -29,8 +29,10 @@ namespace PnP.Framework.Provisioning.Providers.Json
         {
             String jsonString = JsonConvert.SerializeObject(template, new BasePermissionsConverter());
             Byte[] jsonBytes = System.Text.Encoding.Unicode.GetBytes(jsonString);
-            MemoryStream jsonStream = new MemoryStream(jsonBytes);
-            jsonStream.Position = 0;
+            MemoryStream jsonStream = new MemoryStream(jsonBytes)
+            {
+                Position = 0
+            };
 
             return (jsonStream);
         }

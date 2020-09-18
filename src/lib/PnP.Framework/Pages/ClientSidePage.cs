@@ -70,7 +70,7 @@ namespace PnP.Framework.Pages
         private List spPagesLibrary;
         private ListItem pageListItem;
         private string sitePagesServerRelativeUrl;
-        private bool securityInitialized = false;
+        private readonly bool securityInitialized = false;
         private string accessToken;
         private readonly List<CanvasSection> sections = new List<CanvasSection>(1);
         private readonly List<CanvasControl> controls = new List<CanvasControl>(5);

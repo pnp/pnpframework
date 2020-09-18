@@ -64,9 +64,10 @@ namespace Microsoft.SharePoint.Client
 
             foreach (var admin in adminLogins)
             {
-                UserCreationInformation newAdmin = new UserCreationInformation();
-
-                newAdmin.LoginName = admin.LoginName;
+                UserCreationInformation newAdmin = new UserCreationInformation
+                {
+                    LoginName = admin.LoginName
+                };
                 //User addedAdmin = users.Add(newAdmin);
                 User addedAdmin = web.EnsureUser(newAdmin.LoginName);
                 web.Context.Load(addedAdmin);
@@ -511,9 +512,11 @@ namespace Microsoft.SharePoint.Client
             if (string.IsNullOrEmpty(groupName))
                 throw new ArgumentNullException("groupName");
 
-            GroupCreationInformation groupCreationInformation = new GroupCreationInformation();
-            groupCreationInformation.Title = groupName;
-            groupCreationInformation.Description = groupDescription;
+            GroupCreationInformation groupCreationInformation = new GroupCreationInformation
+            {
+                Title = groupName,
+                Description = groupDescription
+            };
             Group group = web.SiteGroups.Add(groupCreationInformation);
             if (groupIsOwner)
             {
@@ -576,8 +579,10 @@ namespace Microsoft.SharePoint.Client
                 throw new ArgumentNullException("userLoginName");
 
             //Ensure the user is known
-            UserCreationInformation userToAdd = new UserCreationInformation();
-            userToAdd.LoginName = userLoginName;
+            UserCreationInformation userToAdd = new UserCreationInformation
+            {
+                LoginName = userLoginName
+            };
             User user = web.EnsureUser(userToAdd.LoginName);
             web.Context.Load(user);
             //web.Context.ExecuteQueryRetry();
@@ -794,8 +799,10 @@ namespace Microsoft.SharePoint.Client
             //current principal doesn't have any roles assigned for this securableObject
             if (roleAssignment == null)
             {
-                var rdc = new RoleDefinitionBindingCollection(securableObject.Context);
-                rdc.Add(roleDefinition);
+                var rdc = new RoleDefinitionBindingCollection(securableObject.Context)
+                {
+                    roleDefinition
+                };
                 securableObject.RoleAssignments.Add(principal, rdc);
                 securableObject.Context.ExecuteQueryRetry();
             }
@@ -1309,8 +1316,10 @@ namespace Microsoft.SharePoint.Client
                 }
                 if (leafBreadthLimit > 0 && list.ItemCount > 0)
                 {
-                    var query = new CamlQuery();
-                    query.ViewXml = String.Format(Constants.AllItemCamlQuery, Constants.ListItemDirField, Constants.ListItemFileNameField);
+                    var query = new CamlQuery
+                    {
+                        ViewXml = String.Format(Constants.AllItemCamlQuery, Constants.ListItemDirField, Constants.ListItemFileNameField)
+                    };
                     var items = context.LoadQuery(list.GetItems(query).Where(i => i.HasUniqueRoleAssignments));
                     context.ExecuteQueryRetry();
                     if (items.Count() <= leafBreadthLimit)
@@ -1383,7 +1392,7 @@ namespace Microsoft.SharePoint.Client
         /// ***
         /// Instead it should be replaced by a real cache with ref object to clear up intermediate records periodically.
         /// </summary>
-        private static Dictionary<string, string> MockupUserEmailCache = new Dictionary<string, string>();
+        private static readonly Dictionary<string, string> MockupUserEmailCache = new Dictionary<string, string>();
 
         /// <summary>
         /// Get user email by user id.
@@ -1406,7 +1415,7 @@ namespace Microsoft.SharePoint.Client
         /// ***
         /// Instead it should be replaced by a real cache with ref object to clear up intermediate records periodically.
         /// </summary>
-        private static Dictionary<string, UserEntity[]> MockupGroupCache = new Dictionary<string, UserEntity[]>();
+        private static readonly Dictionary<string, UserEntity[]> MockupGroupCache = new Dictionary<string, UserEntity[]>();
 
         /// <summary>
         /// Ensure all users of a given SharePoint group has been cached.

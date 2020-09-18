@@ -91,8 +91,10 @@ namespace PnP.Framework.Provisioning.Connectors
                 List list = cc.Web.GetListByUrl(GetDocumentLibrary(container));
                 string folders = GetUrlFolders(container);
 
-                CamlQuery camlQuery = new CamlQuery();
-                camlQuery.ViewXml = @"<View Scope='FilesOnly'><Query></Query></View>";
+                CamlQuery camlQuery = new CamlQuery
+                {
+                    ViewXml = @"<View Scope='FilesOnly'><Query></Query></View>"
+                };
 
                 if (folders.Length > 0)
                 {
@@ -141,8 +143,10 @@ namespace PnP.Framework.Provisioning.Connectors
                 List list = cc.Web.GetListByUrl(GetDocumentLibrary(container));
                 string folders = GetUrlFolders(container);
 
-                CamlQuery camlQuery = new CamlQuery();
-                camlQuery.ViewXml = @"<View><Query><Where><Eq><FieldRef Name='ContentType' /><Value Type='Text'>Folder</Value></Eq></Where></Query></View>";
+                CamlQuery camlQuery = new CamlQuery
+                {
+                    ViewXml = @"<View><Query><Where><Eq><FieldRef Name='ContentType' /><Value Type='Text'>Folder</Value></Eq></Where></Query></View>"
+                };
 
                 if (folders.Length > 0)
                 {

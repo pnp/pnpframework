@@ -14,7 +14,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
         public bool CustomCollectionResolver => false;
 
 
-        private Type _targetItemType;
+        private readonly Type _targetItemType;
 
         public TermSetFromModelToSchemaTypeResolver()
         {

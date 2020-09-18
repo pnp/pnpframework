@@ -11,7 +11,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
     {
         public ProvisioningMessagesDelegate MessagesDelegate { get; set; }
 
-        private Web _web;
+        private readonly Web _web;
 
         /// <summary>
         /// Creates a new instance of the template cleaner.

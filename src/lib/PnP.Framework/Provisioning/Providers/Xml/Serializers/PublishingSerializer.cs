@@ -22,13 +22,16 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
             if (publishing != null)
             {
                 template.Publishing = new Publishing();
-                var expressions = new Dictionary<Expression<Func<Publishing, Object>>, IResolver>();
-
-                expressions.Add(p => p.DesignPackage, new PropertyObjectTypeResolver<Publishing>(p => p.DesignPackage));
-                expressions.Add(p => p.DesignPackage.PackageGuid, new FromStringToGuidValueResolver());
-                expressions.Add(p => p.PageLayouts, new PageLayoutsFromSchemaToModelTypeResolver());
-                expressions.Add(p => p.AvailableWebTemplates[0].LanguageCode,
-                    new ExpressionValueResolver((s, v) => (bool)s.GetPublicInstancePropertyValue("LanguageCodeSpecified") ? v : 1033));
+                var expressions = new Dictionary<Expression<Func<Publishing, Object>>, IResolver>
+                {
+                    { p => p.DesignPackage, new PropertyObjectTypeResolver<Publishing>(p => p.DesignPackage) },
+                    { p => p.DesignPackage.PackageGuid, new FromStringToGuidValueResolver() },
+                    { p => p.PageLayouts, new PageLayoutsFromSchemaToModelTypeResolver() },
+                    {
+                        p => p.AvailableWebTemplates[0].LanguageCode,
+                        new ExpressionValueResolver((s, v) => (bool)s.GetPublicInstancePropertyValue("LanguageCodeSpecified") ? v : 1033)
+                    }
+                };
 
                 PnPObjectsMapper.MapProperties(publishing, template.Publishing, expressions, true);
             }
@@ -43,13 +46,14 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
                 var webTemplateType = Type.GetType($"{PnPSerializationScope.Current?.BaseSchemaNamespace}.PublishingWebTemplate, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}", true);
 
                 var target = Activator.CreateInstance(publishingType, true);
-                var expressions = new Dictionary<string, IResolver>();
-
-                expressions.Add($"{publishingType}.DesignPackage", new PropertyObjectTypeResolver(designPackageType, "DesignPackage"));
-                expressions.Add($"{designPackageType}.MajorVersionSpecified", new ExpressionValueResolver(() => true));
-                expressions.Add($"{designPackageType}.MinorVersionSpecified", new ExpressionValueResolver(() => true));
-                expressions.Add($"{webTemplateType}.LanguageCodeSpecified", new ExpressionValueResolver(() => true));
-                expressions.Add($"{publishingType}.PageLayouts", new PageLayoutsFromModelToSchemaTypeResolver());
+                var expressions = new Dictionary<string, IResolver>
+                {
+                    { $"{publishingType}.DesignPackage", new PropertyObjectTypeResolver(designPackageType, "DesignPackage") },
+                    { $"{designPackageType}.MajorVersionSpecified", new ExpressionValueResolver(() => true) },
+                    { $"{designPackageType}.MinorVersionSpecified", new ExpressionValueResolver(() => true) },
+                    { $"{webTemplateType}.LanguageCodeSpecified", new ExpressionValueResolver(() => true) },
+                    { $"{publishingType}.PageLayouts", new PageLayoutsFromModelToSchemaTypeResolver() }
+                };
 
                 PnPObjectsMapper.MapProperties(template.Publishing, target, expressions, recursive: true);
 

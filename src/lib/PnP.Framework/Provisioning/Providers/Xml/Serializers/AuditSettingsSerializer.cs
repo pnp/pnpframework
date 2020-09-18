@@ -22,8 +22,10 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 
             if (auditSettings != null)
             {
-                var expressions = new Dictionary<Expression<Func<AuditSettings, Object>>, IResolver>();
-                expressions.Add(a => a.AuditFlags, new FromArrayToAuditFlagsValueResolver());
+                var expressions = new Dictionary<Expression<Func<AuditSettings, Object>>, IResolver>
+                {
+                    { a => a.AuditFlags, new FromArrayToAuditFlagsValueResolver() }
+                };
 
                 template.AuditSettings = new AuditSettings();
                 PnPObjectsMapper.MapProperties(auditSettings, template.AuditSettings, expressions, true);
@@ -36,10 +38,12 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
             {
                 var auditSettingsType = Type.GetType($"{PnPSerializationScope.Current?.BaseSchemaNamespace}.AuditSettings, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}", true);
                 var target = Activator.CreateInstance(auditSettingsType, true);
-                var expressions = new Dictionary<string, IResolver>();
-                expressions.Add($"{auditSettingsType}.AuditLogTrimmingRetentionSpecified", new ExpressionValueResolver((s, p) => true));
-                expressions.Add($"{auditSettingsType}.TrimAuditLogSpecified", new ExpressionValueResolver((s, p) => true));
-                expressions.Add($"{auditSettingsType}.Audit", new FromAuditFlagsToArrayValueResolver());
+                var expressions = new Dictionary<string, IResolver>
+                {
+                    { $"{auditSettingsType}.AuditLogTrimmingRetentionSpecified", new ExpressionValueResolver((s, p) => true) },
+                    { $"{auditSettingsType}.TrimAuditLogSpecified", new ExpressionValueResolver((s, p) => true) },
+                    { $"{auditSettingsType}.Audit", new FromAuditFlagsToArrayValueResolver() }
+                };
 
                 PnPObjectsMapper.MapProperties(template.AuditSettings, target, expressions, recursive: true);
 

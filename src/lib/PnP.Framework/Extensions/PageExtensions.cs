@@ -298,8 +298,10 @@ namespace Microsoft.SharePoint.Client
 
             wikiField = brRegex.Replace(wikiField, "<br/>");
 
-            var xd = new XmlDocument();
-            xd.PreserveWhitespace = true;
+            var xd = new XmlDocument
+            {
+                PreserveWhitespace = true
+            };
             xd.LoadXml(wikiField);
 
             // Sometimes the wikifield content seems to be surrounded by an additional div?
@@ -714,8 +716,10 @@ namespace Microsoft.SharePoint.Client
 
             var wikiField = (string)item["WikiField"];
 
-            var xd = new XmlDocument();
-            xd.PreserveWhitespace = true;
+            var xd = new XmlDocument
+            {
+                PreserveWhitespace = true
+            };
             xd.LoadXml(wikiField);
 
             // Sometimes the wikifield content seems to be surrounded by an additional div?

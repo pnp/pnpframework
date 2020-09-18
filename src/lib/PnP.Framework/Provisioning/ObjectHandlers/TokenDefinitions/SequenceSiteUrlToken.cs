@@ -10,7 +10,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
     Returns = "https://contoso.sharepoint.com/sites/mynewsite")]
     internal class SequenceSiteUrlUrlToken : TokenDefinition
     {
-        private string _url = null;
+        private readonly string _url = null;
         public SequenceSiteUrlUrlToken(Web web, string provisioningId, string url)
             : base(web, $"{{sequencesiteurl:{provisioningId}}}")
         {

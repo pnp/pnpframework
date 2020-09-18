@@ -15,7 +15,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Extensions
 
     internal static class UserResourceExtensions
     {
-        private static List<Tuple<string, int, string>> ResourceTokens = new List<Tuple<string, int, string>>();
+        private static readonly List<Tuple<string, int, string>> ResourceTokens = new List<Tuple<string, int, string>>();
 
         public static ProvisioningTemplate SaveResourceValues(ProvisioningTemplate template, ProvisioningTemplateCreationInformation creationInfo)
         {

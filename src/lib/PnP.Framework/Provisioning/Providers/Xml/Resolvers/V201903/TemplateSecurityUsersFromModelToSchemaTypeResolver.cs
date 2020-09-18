@@ -13,8 +13,8 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
         public string Name => this.GetType().Name;
         public bool CustomCollectionResolver => false;
 
-        private String collectionName;
-        private String clearItemsPropertyName;
+        private readonly String collectionName;
+        private readonly String clearItemsPropertyName;
 
         public TemplateSecurityUsersFromModelToSchemaTypeResolver(String collectionName, String clearItemsPropertyName)
         {

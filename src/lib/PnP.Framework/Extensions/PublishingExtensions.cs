@@ -203,10 +203,12 @@ namespace Microsoft.SharePoint.Client
             if (!imageRenditionNames.Contains(imageRenditionName))
             {
                 Log.Info(Constants.LOGGING_SOURCE, CoreResources.WebExtensions_CreatePublishingImageRendition, imageRenditionName, imageRenditionWidth, imageRenditionHeight);
-                ImageRendition newImageRendition = new ImageRendition();
-                newImageRendition.Name = imageRenditionName;
-                newImageRendition.Width = imageRenditionWidth;
-                newImageRendition.Height = imageRenditionHeight;
+                ImageRendition newImageRendition = new ImageRendition
+                {
+                    Name = imageRenditionName,
+                    Width = imageRenditionWidth,
+                    Height = imageRenditionHeight
+                };
                 existingImageRenditions.Add(newImageRendition);
                 SiteImageRenditions.SetRenditions(web.Context, existingImageRenditions);
                 web.Context.ExecuteQueryRetry();

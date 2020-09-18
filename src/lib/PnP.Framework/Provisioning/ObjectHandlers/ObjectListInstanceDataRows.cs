@@ -441,7 +441,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 formsFolder = web.GetFolderByServerRelativeUrl(spList.RootFolder.ServerRelativeUrl + "/Forms");
                 web.Context.ExecuteQueryRetry();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 formsFolder = null;
             }
@@ -622,7 +622,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
         }
 
-        private static string[] WriteableReadOnlyField = new[]
+        private static readonly string[] WriteableReadOnlyField = new[]
         {
             "description","publishingpagelayout", "contenttypeid","bannerimageurl","_originalsourceitemid","_originalsourcelistid","_originalsourcesiteid","_originalsourcewebid","_originalsourceurl"
         };

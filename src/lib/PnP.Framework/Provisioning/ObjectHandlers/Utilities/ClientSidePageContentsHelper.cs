@@ -658,7 +658,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                     LoadAndAddPageImage(web, pageHeaderImage, template, creationInfo, scope);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Eat possible exceptions as header images may point to locations outside of the current site (other site collections, _layouts, CDN's, internet)
             }

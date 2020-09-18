@@ -22,11 +22,14 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 
             if (security != null)
             {
-                var expressions = new Dictionary<Expression<Func<SiteSecurity, Object>>, IResolver>();
-
-                expressions.Add(s => s.SiteSecurityPermissions, new PropertyObjectTypeResolver<SiteSecurity>(s => s.SiteSecurityPermissions, o => o.GetPublicInstancePropertyValue("Permissions")));
-                expressions.Add(s => s.SiteSecurityPermissions.RoleDefinitions[0].Permissions,
-                    new ExpressionCollectionValueResolver<PermissionKind>((i) => (PermissionKind)Enum.Parse(typeof(PermissionKind), i.ToString())));
+                var expressions = new Dictionary<Expression<Func<SiteSecurity, Object>>, IResolver>
+                {
+                    { s => s.SiteSecurityPermissions, new PropertyObjectTypeResolver<SiteSecurity>(s => s.SiteSecurityPermissions, o => o.GetPublicInstancePropertyValue("Permissions")) },
+                    {
+                        s => s.SiteSecurityPermissions.RoleDefinitions[0].Permissions,
+                        new ExpressionCollectionValueResolver<PermissionKind>((i) => (PermissionKind)Enum.Parse(typeof(PermissionKind), i.ToString()))
+                    }
+                };
 
                 PnPObjectsMapper.MapProperties(security, template.Security, expressions, true);
             }
@@ -39,13 +42,14 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
                 var securityTypeName = $"{PnPSerializationScope.Current?.BaseSchemaNamespace}.Security, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}";
                 var securityType = Type.GetType(securityTypeName, true);
 
-                var expressions = new Dictionary<string, IResolver>();
-
-                expressions.Add($"{securityType}.BreakRoleInheritanceSpecified", new ExpressionValueResolver(() => true));
-                expressions.Add($"{securityType}.ResetRoleInheritanceSpecified", new ExpressionValueResolver(() => true));
-                expressions.Add($"{securityType}.CopyRoleAssignmentsSpecified", new ExpressionValueResolver(() => true));
-                expressions.Add($"{securityType}.RemoveExistingUniqueRoleAssignmentsSpecified", new ExpressionValueResolver(() => true));
-                expressions.Add($"{securityType}.ClearSubscopesSpecified", new ExpressionValueResolver(() => true));
+                var expressions = new Dictionary<string, IResolver>
+                {
+                    { $"{securityType}.BreakRoleInheritanceSpecified", new ExpressionValueResolver(() => true) },
+                    { $"{securityType}.ResetRoleInheritanceSpecified", new ExpressionValueResolver(() => true) },
+                    { $"{securityType}.CopyRoleAssignmentsSpecified", new ExpressionValueResolver(() => true) },
+                    { $"{securityType}.RemoveExistingUniqueRoleAssignmentsSpecified", new ExpressionValueResolver(() => true) },
+                    { $"{securityType}.ClearSubscopesSpecified", new ExpressionValueResolver(() => true) }
+                };
 
                 var securityPermissionsType = Type.GetType($"{PnPSerializationScope.Current?.BaseSchemaNamespace}.SecurityPermissions, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}");
                 var roleDefinitionType = Type.GetType($"{PnPSerializationScope.Current?.BaseSchemaNamespace}.RoleDefinition, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}");

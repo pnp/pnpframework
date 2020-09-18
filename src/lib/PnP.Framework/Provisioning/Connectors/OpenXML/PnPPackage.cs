@@ -190,8 +190,10 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
         /// <returns>Package</returns>
         public static PnPPackage Open(string path, FileMode mode, FileAccess access)
         {
-            PnPPackage package = new PnPPackage();
-            package.Package = Package.Open(path, mode, access);
+            PnPPackage package = new PnPPackage
+            {
+                Package = Package.Open(path, mode, access)
+            };
             package.EnsureMandatoryPackageComponents();
             return package;
         }
@@ -205,8 +207,10 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
         /// <returns>Package</returns>
         public static PnPPackage Open(Stream stream, FileMode mode, FileAccess access)
         {
-            PnPPackage package = new PnPPackage();
-            package.Package = Package.Open(stream, mode, access);
+            PnPPackage package = new PnPPackage
+            {
+                Package = Package.Open(stream, mode, access)
+            };
             package.EnsureMandatoryPackageComponents();
             return package;
         }

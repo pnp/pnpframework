@@ -23,12 +23,17 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
             {
                 var directories = filesCollection.GetPublicInstancePropertyValue("Directory");
 
-                var expressions = new Dictionary<Expression<Func<Directory, Object>>, IResolver>();
-                expressions.Add(c => c.Level, new FromStringToEnumValueResolver(typeof(FileLevel)));
+                var expressions = new Dictionary<Expression<Func<Directory, Object>>, IResolver>
+                {
+                    { c => c.Level, new FromStringToEnumValueResolver(typeof(FileLevel)) },
 
-                expressions.Add(f => f.Security, new PropertyObjectTypeResolver<File>(fl => fl.Security,
-                    fl => fl.GetPublicInstancePropertyValue("Security")?.GetPublicInstancePropertyValue("BreakRoleInheritance")));
-                expressions.Add(f => f.Security.RoleAssignments, new RoleAssigmentsFromSchemaToModelTypeResolver());
+                    {
+                        f => f.Security,
+                        new PropertyObjectTypeResolver<File>(fl => fl.Security,
+                    fl => fl.GetPublicInstancePropertyValue("Security")?.GetPublicInstancePropertyValue("BreakRoleInheritance"))
+                    },
+                    { f => f.Security.RoleAssignments, new RoleAssigmentsFromSchemaToModelTypeResolver() }
+                };
 
                 template.Directories.AddRange(
                     PnPObjectsMapper.MapObjects<Directory>(directories,

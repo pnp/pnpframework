@@ -51,7 +51,7 @@ namespace PnP.Framework.Utilities.Themes.Palettes
               rgb(color) ??
               rgba(color) ??
               hsl(color) ??
-              (hsla(color) as IRGB)
+              hsla(color)
             );
         }
 

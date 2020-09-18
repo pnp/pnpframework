@@ -21,9 +21,11 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
                 folders = source.GetPublicInstancePropertyValue("Folder1");
             }
 
-            resolvers = new Dictionary<string, IResolver>();
-            resolvers.Add($"{typeof(Model.Folder).FullName}.Folders", new FoldersFromSchemaToModelTypeResolver());
-            resolvers.Add($"{typeof(Model.Folder).FullName}.Security", new SecurityFromSchemaToModelTypeResolver());
+            resolvers = new Dictionary<string, IResolver>
+            {
+                { $"{typeof(Model.Folder).FullName}.Folders", new FoldersFromSchemaToModelTypeResolver() },
+                { $"{typeof(Model.Folder).FullName}.Security", new SecurityFromSchemaToModelTypeResolver() }
+            };
 
             // DefaultColumnValues
             var defaultColumnValueTypeName = $"{PnPSerializationScope.Current?.BaseSchemaNamespace}.StringDictionaryItem, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}";

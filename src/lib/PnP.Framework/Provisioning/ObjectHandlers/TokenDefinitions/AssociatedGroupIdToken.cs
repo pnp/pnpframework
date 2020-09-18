@@ -20,7 +20,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
        Returns = "My Site Visitors Group id")]
     internal class AssociatedGroupIdToken : VolatileTokenDefinition
     {
-        private AssociatedGroupType _groupType;
+        private readonly AssociatedGroupType _groupType;
 
         public AssociatedGroupIdToken(Web web, AssociatedGroupType groupType)
             : base(web, $"{{associated{groupType.ToString().TrimEnd('s')}groupid}}")

@@ -4,9 +4,9 @@
     {
         private static readonly System.TimeSpan DefaultTimeout = System.TimeSpan.FromMinutes(10.0);
 
-        private System.Net.WebRequest _innerRequest;
+        private readonly System.Net.WebRequest _innerRequest;
 
-        private OAuth2AccessTokenRequest _request;
+        private readonly OAuth2AccessTokenRequest _request;
 
         public OAuth2WebRequest(string requestUriString, OAuth2AccessTokenRequest request)
         {
@@ -18,7 +18,7 @@
         {
             string text = this._request.ToString();
             this._innerRequest.AuthenticationLevel = System.Net.Security.AuthenticationLevel.None;
-            this._innerRequest.ContentLength = (long)text.Length;
+            this._innerRequest.ContentLength = text.Length;
             this._innerRequest.ContentType = "application/x-www-form-urlencoded";
             this._innerRequest.Method = "POST";
             this._innerRequest.Timeout = (int)OAuth2WebRequest.DefaultTimeout.TotalMilliseconds;

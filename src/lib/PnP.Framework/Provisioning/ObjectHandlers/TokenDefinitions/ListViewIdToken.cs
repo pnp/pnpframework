@@ -12,7 +12,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
      Returns = "f2cd6d5b-1391-480e-a3dc-7f7f96137382")]
     internal class ListViewIdToken : TokenDefinition
     {
-        private string _viewId = null;
+        private readonly string _viewId = null;
 
         public ListViewIdToken(Web web, string listTitle, string viewTitle, Guid viewId)
             : base(web, $"{{viewid:{Regex.Escape(listTitle)},{Regex.Escape(viewTitle)}}}")

@@ -1129,9 +1129,11 @@ namespace PnP.Framework.Graph
                         unifiedGroupUsers = new List<UnifiedGroupUser>();
                         foreach (User usr in unifiedGroupGraphUsers)
                         {
-                            UnifiedGroupUser groupUser = new UnifiedGroupUser();
-                            groupUser.UserPrincipalName = usr.UserPrincipalName != null ? usr.UserPrincipalName : string.Empty;
-                            groupUser.DisplayName = usr.DisplayName != null ? usr.DisplayName : string.Empty;
+                            UnifiedGroupUser groupUser = new UnifiedGroupUser
+                            {
+                                UserPrincipalName = usr.UserPrincipalName != null ? usr.UserPrincipalName : string.Empty,
+                                DisplayName = usr.DisplayName != null ? usr.DisplayName : string.Empty
+                            };
                             unifiedGroupUsers.Add(groupUser);
                         }
                     }
@@ -1201,9 +1203,11 @@ namespace PnP.Framework.Graph
                     {
                         foreach (User usr in unifiedGroupGraphUsers)
                         {
-                            UnifiedGroupUser groupUser = new UnifiedGroupUser();
-                            groupUser.UserPrincipalName = usr.UserPrincipalName != null ? usr.UserPrincipalName : string.Empty;
-                            groupUser.DisplayName = usr.DisplayName != null ? usr.DisplayName : string.Empty;
+                            UnifiedGroupUser groupUser = new UnifiedGroupUser
+                            {
+                                UserPrincipalName = usr.UserPrincipalName != null ? usr.UserPrincipalName : string.Empty,
+                                DisplayName = usr.DisplayName != null ? usr.DisplayName : string.Empty
+                            };
                             unifiedGroupUsers.Add(groupUser);
                         }
                     }
@@ -1508,9 +1512,11 @@ namespace PnP.Framework.Graph
                         unifiedGroupUsers = new List<UnifiedGroupUser>();
                         foreach (User usr in unifiedGroupGraphUsers)
                         {
-                            UnifiedGroupUser groupUser = new UnifiedGroupUser();
-                            groupUser.UserPrincipalName = usr.UserPrincipalName != null ? usr.UserPrincipalName : string.Empty;
-                            groupUser.DisplayName = usr.DisplayName != null ? usr.DisplayName : string.Empty;
+                            UnifiedGroupUser groupUser = new UnifiedGroupUser
+                            {
+                                UserPrincipalName = usr.UserPrincipalName != null ? usr.UserPrincipalName : string.Empty,
+                                DisplayName = usr.DisplayName != null ? usr.DisplayName : string.Empty
+                            };
                             unifiedGroupUsers.Add(groupUser);
                         }
                     }
@@ -1640,7 +1646,7 @@ namespace PnP.Framework.Graph
                             usersResult.Add(user);
                         }
                     }
-                    catch (ServiceException ex)
+                    catch (ServiceException)
                     {
                         // skip, group provisioning shouldnt stop because of error in user object
                     }

@@ -2,7 +2,7 @@
 {
     public abstract class OAuth2Message
     {
-        private System.Collections.Generic.Dictionary<string, string> _message = new System.Collections.Generic.Dictionary<string, string>(System.StringComparer.Ordinal);
+        private readonly System.Collections.Generic.Dictionary<string, string> _message = new System.Collections.Generic.Dictionary<string, string>(System.StringComparer.Ordinal);
 
         protected string this[string index]
         {

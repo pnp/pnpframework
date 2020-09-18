@@ -29,7 +29,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         private List<TokenDefinition> _tokens;
 
-        private bool _initializedFromHierarchy;
+        private readonly bool _initializedFromHierarchy;
 
         /// <summary>
         /// List of token definitions
@@ -1107,7 +1107,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
         }
 
-        private static Dictionary<String, String> listsTitles = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        private static readonly Dictionary<String, String> listsTitles = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
         /// This method retrieves the title of a list in the main language of the site

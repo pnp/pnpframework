@@ -32,15 +32,16 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         );
 
                     // Configure the output SiteSettings object
-                    var siteSettings = new SiteSettings();
-
-                    siteSettings.AllowDesigner = site.AllowDesigner;
-                    siteSettings.AllowCreateDeclarativeWorkflow = site.AllowCreateDeclarativeWorkflow;
-                    siteSettings.AllowSaveDeclarativeWorkflowAsTemplate = site.AllowSaveDeclarativeWorkflowAsTemplate;
-                    siteSettings.AllowSavePublishDeclarativeWorkflow = site.AllowSavePublishDeclarativeWorkflow;
-                    siteSettings.SocialBarOnSitePagesDisabled = site.SocialBarOnSitePagesDisabled;
-                    siteSettings.SearchBoxInNavBar = (SearchBoxInNavBar)Enum.Parse(typeof(SearchBoxInNavBar), site.SearchBoxInNavBar.ToString());
-                    siteSettings.SearchCenterUrl = site.RootWeb.GetSiteCollectionSearchCenterUrl();
+                    var siteSettings = new SiteSettings
+                    {
+                        AllowDesigner = site.AllowDesigner,
+                        AllowCreateDeclarativeWorkflow = site.AllowCreateDeclarativeWorkflow,
+                        AllowSaveDeclarativeWorkflowAsTemplate = site.AllowSaveDeclarativeWorkflowAsTemplate,
+                        AllowSavePublishDeclarativeWorkflow = site.AllowSavePublishDeclarativeWorkflow,
+                        SocialBarOnSitePagesDisabled = site.SocialBarOnSitePagesDisabled,
+                        SearchBoxInNavBar = (SearchBoxInNavBar)Enum.Parse(typeof(SearchBoxInNavBar), site.SearchBoxInNavBar.ToString()),
+                        SearchCenterUrl = site.RootWeb.GetSiteCollectionSearchCenterUrl()
+                    };
 
                     // Update the provisioning template accordingly
                     template.SiteSettings = siteSettings;

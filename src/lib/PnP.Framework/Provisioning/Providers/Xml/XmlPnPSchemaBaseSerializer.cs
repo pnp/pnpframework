@@ -24,7 +24,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml
         where TSchemaTemplate : new()
     {
         private TemplateProviderBase _provider;
-        private Stream _referenceSchema;
+        private readonly Stream _referenceSchema;
 
         protected TemplateProviderBase Provider => _provider;
 
@@ -473,8 +473,10 @@ namespace PnP.Framework.Provisioning.Providers.Xml
             using (var scope = new PnPSerializationScope(typeof(TSchemaTemplate)))
             {
                 // We prepare a dummy template to leverage the existing deserialization infrastructure
-                var dummyTemplate = new ProvisioningTemplate();
-                dummyTemplate.Id = $"DUMMY-{Guid.NewGuid()}";
+                var dummyTemplate = new ProvisioningTemplate
+                {
+                    Id = $"DUMMY-{Guid.NewGuid()}"
+                };
                 hierarchy.Templates.Add(dummyTemplate);
 
                 // Prepare the output wrapper
@@ -618,8 +620,10 @@ namespace PnP.Framework.Provisioning.Providers.Xml
             using (var scope = new PnPSerializationScope(typeof(TSchemaTemplate)))
             {
                 // We prepare a dummy template to leverage the existing serialization infrastructure
-                var dummyTemplate = new ProvisioningTemplate();
-                dummyTemplate.Id = $"DUMMY-{Guid.NewGuid()}";
+                var dummyTemplate = new ProvisioningTemplate
+                {
+                    Id = $"DUMMY-{Guid.NewGuid()}"
+                };
                 resultHierarchy.Templates.Add(dummyTemplate);
 
                 // Deserialize the whole wrapper

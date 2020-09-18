@@ -14,7 +14,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201807
 
         public bool CustomCollectionResolver => false;
 
-        private Type _targetItemType;
+        private readonly Type _targetItemType;
 
         public SiteCollectionsAndSitesFromSchemaToModelTypeResolver(Type targetItemType)
         {

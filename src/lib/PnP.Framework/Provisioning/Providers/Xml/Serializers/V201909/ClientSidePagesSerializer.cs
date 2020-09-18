@@ -89,25 +89,28 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201909
                 var objectSecurityTypeName = $"{PnPSerializationScope.Current?.BaseSchemaNamespace}.ObjectSecurity, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}";
                 var objectSecurityType = Type.GetType(objectSecurityTypeName, true);
 
-                var expressions = new Dictionary<string, IResolver>();
+                var expressions = new Dictionary<string, IResolver>
+                {
 
-                // Manage PromoteAsNewsArticleSpecified property for ClientSidePage
-                expressions.Add($"{baseClientSidePageType}.PromoteAsNewsArticleSpecified", new ExpressionValueResolver((s, p) => true));
+                    // Manage PromoteAsNewsArticleSpecified property for ClientSidePage
+                    { $"{baseClientSidePageType}.PromoteAsNewsArticleSpecified", new ExpressionValueResolver((s, p) => true) },
 
-                // Manage PromoteAsNewsArticleSpecified property for ClientSidePage
-                expressions.Add($"{baseClientSidePageType}.OverwriteSpecified", new ExpressionValueResolver((s, p) => true));
+                    // Manage PromoteAsNewsArticleSpecified property for ClientSidePage
+                    { $"{baseClientSidePageType}.OverwriteSpecified", new ExpressionValueResolver((s, p) => true) },
 
-                // Manage OrderSpecified property for CanvasZone
-                expressions.Add($"{canvasSectionType}.OrderSpecified", new ExpressionValueResolver((s, p) => true));
+                    // Manage OrderSpecified property for CanvasZone
+                    { $"{canvasSectionType}.OrderSpecified", new ExpressionValueResolver((s, p) => true) },
 
-                // Manage TypeSpecified property for CanvasZone
-                expressions.Add($"{canvasSectionType}.TypeSpecified", new ExpressionValueResolver((s, p) => true));
+                    // Manage TypeSpecified property for CanvasZone
+                    { $"{canvasSectionType}.TypeSpecified", new ExpressionValueResolver((s, p) => true) },
 
-                // Manage WebPartType for CanvasControl
-                expressions.Add($"{canvasControlType}.WebPartType",
-                    new ExpressionValueResolver(
+                    // Manage WebPartType for CanvasControl
+                    {
+                        $"{canvasControlType}.WebPartType",
+                        new ExpressionValueResolver(
                         (s, p) => Enum.Parse(canvasControlWebPartTypeType, s.GetPublicInstancePropertyValue("Type").ToString()))
-                        );
+                    }
+                };
 
                 // Manage CanvasControlProperties for CanvasControl and FieldValues for ClientSidePage
                 var dictionaryItemTypeName = $"{PnPSerializationScope.Current?.BaseSchemaNamespace}.StringDictionaryItem, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}";

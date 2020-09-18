@@ -23,8 +23,10 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
                 nodes = source.GetPublicInstancePropertyValue("NavigationNode1");
             }
 
-            resolvers = new Dictionary<string, IResolver>();
-            resolvers.Add($"{typeof(Model.NavigationNode).FullName}.NavigationNodes", new NavigationNodeFromSchemaToModelTypeResolver());
+            resolvers = new Dictionary<string, IResolver>
+            {
+                { $"{typeof(Model.NavigationNode).FullName}.NavigationNodes", new NavigationNodeFromSchemaToModelTypeResolver() }
+            };
 
             if (null != nodes)
             {

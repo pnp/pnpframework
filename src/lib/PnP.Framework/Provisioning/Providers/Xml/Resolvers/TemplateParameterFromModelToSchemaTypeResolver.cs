@@ -12,7 +12,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
         public bool CustomCollectionResolver => false;
 
 
-        private Type _parametersType;
+        private readonly Type _parametersType;
 
         public TemplateParameterFromModelToSchemaTypeResolver(Type parametersType)
         {

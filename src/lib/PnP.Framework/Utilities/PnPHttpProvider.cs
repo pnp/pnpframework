@@ -16,7 +16,7 @@ namespace PnP.Framework.Utilities
     {
         readonly int retryCount;
         readonly int delay;
-        private string userAgent;
+        private readonly string userAgent;
 
         /// <summary>
         /// Constructor without HttpMessageHandler

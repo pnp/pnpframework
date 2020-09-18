@@ -11,7 +11,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
       Returns = "0x0102004F51EFDEA49C49668EF9C6744C8CF87D")]
     internal class ContentTypeIdToken : TokenDefinition
     {
-        private string _contentTypeId = null;
+        private readonly string _contentTypeId = null;
         public ContentTypeIdToken(Web web, string name, string contenttypeid)
             : base(web, $"{{contenttypeid:{Regex.Escape(name)}}}")
         {

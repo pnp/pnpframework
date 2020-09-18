@@ -35,10 +35,12 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
                 var siteWebhookTypeName = $"{PnPSerializationScope.Current?.BaseSchemaNamespace}.SiteWebhook, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}";
                 var siteWebhookType = Type.GetType(siteWebhookTypeName, true);
 
-                var expressions = new Dictionary<string, IResolver>();
+                var expressions = new Dictionary<string, IResolver>
+                {
 
-                // Manage SiteWebhookTypeSpecified property
-                expressions.Add($"{siteWebhookType}.SiteWebhookTypeSpecified", new ExpressionValueResolver((s, p) => true));
+                    // Manage SiteWebhookTypeSpecified property
+                    { $"{siteWebhookType}.SiteWebhookTypeSpecified", new ExpressionValueResolver((s, p) => true) }
+                };
 
                 persistence.GetPublicInstanceProperty("SiteWebhooks")
                     .SetValue(

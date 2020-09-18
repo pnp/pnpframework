@@ -14,7 +14,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 {
     internal class ObjectHierarchySequenceSites : ObjectHierarchyHandlerBase
     {
-        private List<TokenDefinition> _additionalTokens = new List<TokenDefinition>();
+        private readonly List<TokenDefinition> _additionalTokens = new List<TokenDefinition>();
         public override string Name => "Sequences";
 
         public override ProvisioningHierarchy ExtractObjects(Tenant tenant, ProvisioningHierarchy hierarchy, ExtractConfiguration configuration)
@@ -42,8 +42,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
             siteCollectionUrls.AddRange(connectedSiteUrls);
 
-            ProvisioningSequence provisioningSequence = new ProvisioningSequence();
-            provisioningSequence.ID = "TENANTSEQUENCE";
+            ProvisioningSequence provisioningSequence = new ProvisioningSequence
+            {
+                ID = "TENANTSEQUENCE"
+            };
             foreach (var siteCollectionUrl in siteCollectionUrls)
             {
                 var siteProperties = tenant.GetSitePropertiesByUrl(siteCollectionUrl, true);
@@ -60,9 +62,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     {
                         case "SITEPAGEPUBLISHING#0":
                             {
-                                siteCollection = new CommunicationSiteCollection();
-
-                                siteCollection.IsHubSite = siteProperties.IsHubSite;
+                                siteCollection = new CommunicationSiteCollection
+                                {
+                                    IsHubSite = siteProperties.IsHubSite
+                                };
                                 if (siteProperties.IsHubSite)
                                 {
                                     var hubsiteProperties = tenant.GetHubSitePropertiesByUrl(siteCollectionUrl);
@@ -87,8 +90,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             }
                         case "GROUP#0":
                             {
-                                siteCollection = new TeamSiteCollection();
-                                siteCollection.IsHubSite = siteProperties.IsHubSite;
+                                siteCollection = new TeamSiteCollection
+                                {
+                                    IsHubSite = siteProperties.IsHubSite
+                                };
                                 if (siteProperties.IsHubSite)
                                 {
                                     var hubsiteProperties = tenant.GetHubSitePropertiesByUrl(siteCollectionUrl);
@@ -124,8 +129,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             {
                                 if (siteContext.Site.GroupId == Guid.Empty)
                                 {
-                                    siteCollection = new TeamNoGroupSiteCollection();
-                                    siteCollection.IsHubSite = siteProperties.IsHubSite;
+                                    siteCollection = new TeamNoGroupSiteCollection
+                                    {
+                                        IsHubSite = siteProperties.IsHubSite
+                                    };
                                     if (siteProperties.IsHubSite)
                                     {
                                         var hubsiteProperties = tenant.GetHubSitePropertiesByUrl(siteCollectionUrl);
@@ -643,8 +650,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             tenant.Context.ExecuteQueryRetry();
             if (hubSiteProperties.ServerObjectIsNull == true)
             {
-                var ci = new HubSiteCreationInformation();
-                ci.SiteId = siteId;
+                var ci = new HubSiteCreationInformation
+                {
+                    SiteId = siteId
+                };
                 if (!string.IsNullOrEmpty(logoUrl))
                 {
                     ci.LogoUrl = parser.ParseString(logoUrl);

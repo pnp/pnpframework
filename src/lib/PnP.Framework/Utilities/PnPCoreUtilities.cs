@@ -22,7 +22,7 @@ namespace PnP.Framework.Utilities
             }
         }
 
-        private static Lazy<String> PnPCoreVersionTagLazy = new Lazy<String>(
+        private static readonly Lazy<String> PnPCoreVersionTagLazy = new Lazy<String>(
             () =>
             {
                 Assembly coreAssembly = Assembly.GetExecutingAssembly();
@@ -43,7 +43,7 @@ namespace PnP.Framework.Utilities
             }
         }
 
-        private static Lazy<String> PnPCoreUserAgentLazy = new Lazy<String>(
+        private static readonly Lazy<String> PnPCoreUserAgentLazy = new Lazy<String>(
             () =>
             {
                 Assembly coreAssembly = Assembly.GetExecutingAssembly();

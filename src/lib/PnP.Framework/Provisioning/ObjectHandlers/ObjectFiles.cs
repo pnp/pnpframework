@@ -148,11 +148,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                 if (existingWebParts.FirstOrDefault(w => w.WebPart.Title == parser.ParseString(webPart.Title)) == null)
                                 {
                                     scope.LogDebug(CoreResources.Provisioning_ObjectHandlers_Files_Adding_webpart___0___to_page, webPart.Title);
-                                    var wpEntity = new WebPartEntity();
-                                    wpEntity.WebPartTitle = parser.ParseString(webPart.Title);
-                                    wpEntity.WebPartXml = parser.ParseXmlString(webPart.Contents).Trim(new[] { '\n', ' ' });
-                                    wpEntity.WebPartZone = webPart.Zone;
-                                    wpEntity.WebPartIndex = (int)webPart.Order;
+                                    var wpEntity = new WebPartEntity
+                                    {
+                                        WebPartTitle = parser.ParseString(webPart.Title),
+                                        WebPartXml = parser.ParseXmlString(webPart.Contents).Trim(new[] { '\n', ' ' }),
+                                        WebPartZone = webPart.Zone,
+                                        WebPartIndex = (int)webPart.Order
+                                    };
                                     var wpd = web.AddWebPartToWebPartPage(targetFile.ServerRelativeUrl, wpEntity);
                                     if (webPart.Title.ContainsResourceToken())
                                     {

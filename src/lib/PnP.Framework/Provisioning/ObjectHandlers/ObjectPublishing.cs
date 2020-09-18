@@ -273,8 +273,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 {
                     if (layout.Attribute("url") != null)
                     {
-                        var pageLayout = new PageLayout();
-                        pageLayout.Path = layout.Attribute("url").Value.Replace("_catalogs/masterpage/", String.Empty);
+                        var pageLayout = new PageLayout
+                        {
+                            Path = layout.Attribute("url").Value.Replace("_catalogs/masterpage/", String.Empty)
+                        };
 
                         if (pageLayout.Path == defaultPageLayoutUrl)
                         {

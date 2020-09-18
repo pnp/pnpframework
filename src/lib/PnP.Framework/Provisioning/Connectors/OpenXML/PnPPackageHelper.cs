@@ -84,12 +84,14 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
 
         private static PnPInfo LoadPnPPackage(PnPPackage package)
         {
-            PnPInfo pnpInfo = new PnPInfo();
-            pnpInfo.Manifest = package.Manifest;
-            pnpInfo.Properties = package.Properties;
-            pnpInfo.FilesMap = package.FilesMap;
+            PnPInfo pnpInfo = new PnPInfo
+            {
+                Manifest = package.Manifest,
+                Properties = package.Properties,
+                FilesMap = package.FilesMap,
 
-            pnpInfo.Files = new List<PnPFileInfo>();
+                Files = new List<PnPFileInfo>()
+            };
 
             foreach (KeyValuePair<String, PnPPackageFileItem> file in package.Files)
             {

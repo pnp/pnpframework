@@ -23,30 +23,35 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 
             if (handlers != null)
             {
-                var expressions = new Dictionary<Expression<Func<ExtensibilityHandler, Object>>, IResolver>();
-                expressions.Add(h => h.Configuration, new ExpressionValueResolver((s, v) => (v as XmlElement)?.ToProviderConfiguration()));
-                expressions.Add(h => h.Type, new ExpressionValueResolver<ExtensibilityHandler>((s, v, d) =>
+                var expressions = new Dictionary<Expression<Func<ExtensibilityHandler, Object>>, IResolver>
                 {
-                    string res = null;
-                    var typeName = s.GetPublicInstancePropertyValue("HandlerType");
-                    if (typeName != null)
+                    { h => h.Configuration, new ExpressionValueResolver((s, v) => (v as XmlElement)?.ToProviderConfiguration()) },
                     {
-                        object enabledValue = s.GetPublicInstancePropertyValue("Enabled");
-                        bool enabled = false;
-                        if (enabledValue != null)
-                        {
-                            enabled = (bool)enabledValue;
-                        }
+                        h => h.Type,
+                        new ExpressionValueResolver<ExtensibilityHandler>((s, v, d) =>
+          {
+              string res = null;
+              var typeName = s.GetPublicInstancePropertyValue("HandlerType");
+              if (typeName != null)
+              {
+                  object enabledValue = s.GetPublicInstancePropertyValue("Enabled");
+                  bool enabled = false;
+                  if (enabledValue != null)
+                  {
+                      enabled = (bool)enabledValue;
+                  }
 
-                        var type = Type.GetType(typeName.ToString(), false);
-                        if (type != null)
-                        {
-                            d.Assembly = type.Assembly.FullName;
-                            res = type.FullName;
-                        }
+                  var type = Type.GetType(typeName.ToString(), false);
+                  if (type != null)
+                  {
+                      d.Assembly = type.Assembly.FullName;
+                      res = type.FullName;
+                  }
+              }
+              return res;
+          })
                     }
-                    return res;
-                }));
+                };
 
 
                 var result = PnPObjectsMapper.MapObjects<ExtensibilityHandler>(handlers,
@@ -64,9 +69,11 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
             {
                 var providerType = Type.GetType($"{PnPSerializationScope.Current?.BaseSchemaNamespace}.Provider, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}", true);
 
-                var expressions = new Dictionary<string, IResolver>();
-                expressions.Add($"{providerType}.HandlerType", new ExpressionValueResolver<ExtensibilityHandler>((s, v) => $"{s.Type}, {s.Assembly}"));
-                expressions.Add($"{providerType}.Configuration", new ExpressionValueResolver<string>((v) => v?.ToXmlNode()));
+                var expressions = new Dictionary<string, IResolver>
+                {
+                    { $"{providerType}.HandlerType", new ExpressionValueResolver<ExtensibilityHandler>((s, v) => $"{s.Type}, {s.Assembly}") },
+                    { $"{providerType}.Configuration", new ExpressionValueResolver<string>((v) => v?.ToXmlNode()) }
+                };
 
                 persistence.GetPublicInstanceProperty("Providers").SetValue(
                     persistence,

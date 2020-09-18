@@ -21,20 +21,22 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 
             if (contentTypes != null)
             {
-                var expressions = new Dictionary<Expression<Func<ContentType, Object>>, IResolver>();
+                var expressions = new Dictionary<Expression<Func<ContentType, Object>>, IResolver>
+                {
 
-                // Define custom resolver for FieldRef.ID because needs conversion from String to GUID
-                expressions.Add(c => c.FieldRefs[0].Id, new FromStringToGuidValueResolver());
-                //document template
-                expressions.Add(c => c.DocumentTemplate, new ExpressionValueResolver((s, v) => v.GetPublicInstancePropertyValue("TargetName")));
-                //document set template
-                expressions.Add(c => c.DocumentSetTemplate, new PropertyObjectTypeResolver<ContentType>(ct => ct.DocumentSetTemplate));
-                //document set template - allowed content types
-                expressions.Add(c => c.DocumentSetTemplate.AllowedContentTypes, new ExpressionCollectionValueResolver<string>((s) => s.GetPublicInstancePropertyValue("ContentTypeID").ToString()));
-                //document set template - shared fields
-                expressions.Add(c => c.DocumentSetTemplate.SharedFields, new ExpressionCollectionValueResolver<Guid>((s) => Guid.Parse(s.GetPublicInstancePropertyValue("ID").ToString())));
-                //document set template - welcome page fields
-                expressions.Add(c => c.DocumentSetTemplate.WelcomePageFields, new ExpressionCollectionValueResolver<Guid>((s) => Guid.Parse(s.GetPublicInstancePropertyValue("ID").ToString())));
+                    // Define custom resolver for FieldRef.ID because needs conversion from String to GUID
+                    { c => c.FieldRefs[0].Id, new FromStringToGuidValueResolver() },
+                    //document template
+                    { c => c.DocumentTemplate, new ExpressionValueResolver((s, v) => v.GetPublicInstancePropertyValue("TargetName")) },
+                    //document set template
+                    { c => c.DocumentSetTemplate, new PropertyObjectTypeResolver<ContentType>(ct => ct.DocumentSetTemplate) },
+                    //document set template - allowed content types
+                    { c => c.DocumentSetTemplate.AllowedContentTypes, new ExpressionCollectionValueResolver<string>((s) => s.GetPublicInstancePropertyValue("ContentTypeID").ToString()) },
+                    //document set template - shared fields
+                    { c => c.DocumentSetTemplate.SharedFields, new ExpressionCollectionValueResolver<Guid>((s) => Guid.Parse(s.GetPublicInstancePropertyValue("ID").ToString())) },
+                    //document set template - welcome page fields
+                    { c => c.DocumentSetTemplate.WelcomePageFields, new ExpressionCollectionValueResolver<Guid>((s) => Guid.Parse(s.GetPublicInstancePropertyValue("ID").ToString())) }
+                };
 
                 template.ContentTypes.AddRange(
                     PnPObjectsMapper.MapObjects<ContentType>(contentTypes,
@@ -57,16 +59,18 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
                 var documentTemplateTypeName = $"{baseNamespace}.ContentTypeDocumentTemplate, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}";
                 var documentTemplateType = Type.GetType(documentTemplateTypeName, true);
 
-                var expressions = new Dictionary<string, IResolver>();
+                var expressions = new Dictionary<string, IResolver>
+                {
 
-                //document set template
-                expressions.Add($"{contentTypeType.FullName}.DocumentSetTemplate", new PropertyObjectTypeResolver(documentSetTemplateType, "DocumentSetTemplate"));
-                //document set template - allowed content types
-                expressions.Add($"{contentTypeType.Namespace}.DocumentSetTemplateAllowedContentType.ContentTypeID", new ExpressionValueResolver((s, v) => s));
-                //document set template - shared fields and welcome page fields (this expression also used to resolve fieldref collection ids because of same type name)
-                expressions.Add($"{contentTypeType.Namespace}.FieldRefBase.ID", new ExpressionValueResolver((s, v) => v != null ? v.ToString() : s?.ToString()));
-                //document template
-                expressions.Add($"{contentTypeType.FullName}.DocumentTemplate", new DocumentTemplateFromModelToSchemaTypeResolver(documentTemplateType));
+                    //document set template
+                    { $"{contentTypeType.FullName}.DocumentSetTemplate", new PropertyObjectTypeResolver(documentSetTemplateType, "DocumentSetTemplate") },
+                    //document set template - allowed content types
+                    { $"{contentTypeType.Namespace}.DocumentSetTemplateAllowedContentType.ContentTypeID", new ExpressionValueResolver((s, v) => s) },
+                    //document set template - shared fields and welcome page fields (this expression also used to resolve fieldref collection ids because of same type name)
+                    { $"{contentTypeType.Namespace}.FieldRefBase.ID", new ExpressionValueResolver((s, v) => v != null ? v.ToString() : s?.ToString()) },
+                    //document template
+                    { $"{contentTypeType.FullName}.DocumentTemplate", new DocumentTemplateFromModelToSchemaTypeResolver(documentTemplateType) }
+                };
 
                 persistence.GetPublicInstanceProperty("ContentTypes")
                     .SetValue(

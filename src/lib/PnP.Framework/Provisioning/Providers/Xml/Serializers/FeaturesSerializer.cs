@@ -21,8 +21,10 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 
             if (features != null)
             {
-                var expressions = new Dictionary<Expression<Func<Features, Object>>, IResolver>();
-                expressions.Add(f => f.SiteFeatures[0].Id, new FromStringToGuidValueResolver());
+                var expressions = new Dictionary<Expression<Func<Features, Object>>, IResolver>
+                {
+                    { f => f.SiteFeatures[0].Id, new FromStringToGuidValueResolver() }
+                };
 
                 PnPObjectsMapper.MapProperties(features, template.Features, expressions, true);
             }

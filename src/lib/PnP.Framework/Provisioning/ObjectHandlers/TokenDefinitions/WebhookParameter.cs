@@ -5,7 +5,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
 
     internal class WebhookParameter : SimpleTokenDefinition
     {
-        private string _value = null;
+        private readonly string _value = null;
 
         public WebhookParameter(string name, string value)
             : base($"{{webhookparam:{Regex.Escape(name)}}}", $"{{webhookparameter:{Regex.Escape(name)}}}")

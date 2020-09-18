@@ -28,34 +28,39 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V202002
 
             if (tenantSettings != null)
             {
-                var expressions = new Dictionary<Expression<Func<ProvisioningTenant, Object>>, IResolver>();
-
-                // Manage the AppCatalog
-                expressions.Add(t => t.AppCatalog, new AppCatalogFromSchemaToModelTypeResolver());
-
-                // Manage the CDN
-                expressions.Add(t => t.ContentDeliveryNetwork, new CdnFromSchemaToModelTypeResolver());
-
-                // Manage the Site Designs mapping with Site Scripts
-                expressions.Add(t => t.SiteDesigns[0].SiteScripts, new SiteScriptRefFromSchemaToModelTypeResolver());
-
-                // Manage Palette of Theme
-                expressions.Add(t => t.Themes[0].Palette, new ExpressionValueResolver((s, v) =>
+                var expressions = new Dictionary<Expression<Func<ProvisioningTenant, Object>>, IResolver>
                 {
 
-                    String result = null;
+                    // Manage the AppCatalog
+                    { t => t.AppCatalog, new AppCatalogFromSchemaToModelTypeResolver() },
 
-                    if (s != null)
+                    // Manage the CDN
+                    { t => t.ContentDeliveryNetwork, new CdnFromSchemaToModelTypeResolver() },
+
+                    // Manage the Site Designs mapping with Site Scripts
+                    { t => t.SiteDesigns[0].SiteScripts, new SiteScriptRefFromSchemaToModelTypeResolver() },
+
+                    // Manage Palette of Theme
                     {
-                        String[] text = s.GetPublicInstancePropertyValue("Text") as String[];
-                        if (text != null && text.Length > 0)
-                        {
-                            result = text.Aggregate(String.Empty, (acc, next) => acc += (next != null ? next : String.Empty));
-                        }
-                    }
+                        t => t.Themes[0].Palette,
+                        new ExpressionValueResolver((s, v) =>
+{
 
-                    return (result.Trim());
-                }));
+ String result = null;
+
+ if (s != null)
+ {
+     String[] text = s.GetPublicInstancePropertyValue("Text") as String[];
+     if (text != null && text.Length > 0)
+     {
+         result = text.Aggregate(String.Empty, (acc, next) => acc += (next != null ? next : String.Empty));
+     }
+ }
+
+ return (result.Trim());
+})
+                    }
+                };
 
                 // Define the dynamic type for the SP User Profile Properties
                 var propertiesTypeName = $"{PnPSerializationScope.Current?.BaseSchemaNamespace}.StringDictionaryItem, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}";
@@ -104,16 +109,25 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V202002
                 {
                     var target = Activator.CreateInstance(tenantType, true);
 
-                    var resolvers = new Dictionary<String, IResolver>();
-
-                    resolvers.Add($"{tenantType}.AppCatalog",
-                        new AppCatalogFromModelToSchemaTypeResolver());
-                    resolvers.Add($"{tenantType}.ContentDeliveryNetwork",
-                        new CdnFromModelToSchemaTypeResolver());
-                    resolvers.Add($"{siteDesignsType}.SiteScripts",
-                        new SiteScriptRefFromModelToSchemaTypeResolver());
-                    resolvers.Add($"{siteDesignsType}.WebTemplate",
-                        new TenantSiteDesignsWebTemplateFromModelToSchemaValueResolver());
+                    var resolvers = new Dictionary<String, IResolver>
+                    {
+                        {
+                            $"{tenantType}.AppCatalog",
+                            new AppCatalogFromModelToSchemaTypeResolver()
+                        },
+                        {
+                            $"{tenantType}.ContentDeliveryNetwork",
+                            new CdnFromModelToSchemaTypeResolver()
+                        },
+                        {
+                            $"{siteDesignsType}.SiteScripts",
+                            new SiteScriptRefFromModelToSchemaTypeResolver()
+                        },
+                        {
+                            $"{siteDesignsType}.WebTemplate",
+                            new TenantSiteDesignsWebTemplateFromModelToSchemaValueResolver()
+                        }
+                    };
 
                     if (themeType != null)
                     {

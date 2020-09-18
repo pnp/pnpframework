@@ -23,15 +23,21 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201909
 
             if (drive != null)
             {
-                var expressions = new Dictionary<Expression<Func<Drive, Object>>, IResolver>();
+                var expressions = new Dictionary<Expression<Func<Drive, Object>>, IResolver>
+                {
 
-                // Manage the DriveRoot items
-                expressions.Add(d => d.DriveRoots, new DriveRootsFromSchemaToModelTypeResolver());
-                expressions.Add(d => d.DriveRoots[0].RootFolder, new DriveRootFolderFromSchemaToModelTypeResolver());
-                expressions.Add(d => d.DriveRoots[0].RootFolder.DriveFolders,
-                    new DriveItemsFromSchemaToModelTypeResolver(typeof(Model.Drive.DriveFolder)));
-                expressions.Add(d => d.DriveRoots[0].RootFolder.DriveFiles,
-                    new DriveItemsFromSchemaToModelTypeResolver(typeof(Model.Drive.DriveFile)));
+                    // Manage the DriveRoot items
+                    { d => d.DriveRoots, new DriveRootsFromSchemaToModelTypeResolver() },
+                    { d => d.DriveRoots[0].RootFolder, new DriveRootFolderFromSchemaToModelTypeResolver() },
+                    {
+                        d => d.DriveRoots[0].RootFolder.DriveFolders,
+                        new DriveItemsFromSchemaToModelTypeResolver(typeof(Model.Drive.DriveFolder))
+                    },
+                    {
+                        d => d.DriveRoots[0].RootFolder.DriveFiles,
+                        new DriveItemsFromSchemaToModelTypeResolver(typeof(Model.Drive.DriveFile))
+                    }
+                };
 
                 PnPObjectsMapper.MapProperties(drive, template.ParentHierarchy.Drive, expressions, true);
             }
@@ -48,16 +54,22 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201909
 
                 if (driveRootType != null)
                 {
-                    var resolvers = new Dictionary<String, IResolver>();
+                    var resolvers = new Dictionary<String, IResolver>
+                    {
 
-                    //// Handle DriveRoot objects
-                    //resolvers.Add($"{PnPSerializationScope.Current?.BaseSchemaNamespace}.DriveRoot",
-                    //    new DriveRootFolderFromModelToSchemaTypeResolver());
+                        //// Handle DriveRoot objects
+                        //resolvers.Add($"{PnPSerializationScope.Current?.BaseSchemaNamespace}.DriveRoot",
+                        //    new DriveRootFolderFromModelToSchemaTypeResolver());
 
-                    resolvers.Add($"{driveRootType}.DriveItems",
-                        new DriveItemsFromModelToSchemaTypeResolver()); // DriveRootsFromModelToSchemaTypeResolver());
-                    resolvers.Add($"{driveFolderType}.Items",
-                        new DriveItemsFromModelToSchemaTypeResolver());
+                        {
+                            $"{driveRootType}.DriveItems",
+                            new DriveItemsFromModelToSchemaTypeResolver()
+                        }, // DriveRootsFromModelToSchemaTypeResolver());
+                        {
+                            $"{driveFolderType}.Items",
+                            new DriveItemsFromModelToSchemaTypeResolver()
+                        }
+                    };
 
 
                     persistence.GetPublicInstanceProperty("Drive")

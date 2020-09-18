@@ -12,8 +12,8 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
         public string Name => this.GetType().Name;
         public bool CustomCollectionResolver => false;
 
-        private String sourcePropertyName;
-        private Type destinationType;
+        private readonly String sourcePropertyName;
+        private readonly Type destinationType;
 
         public ComplexTypeFromModelToSchemaTypeResolver(Type destinationType, String sourcePropertyName)
         {

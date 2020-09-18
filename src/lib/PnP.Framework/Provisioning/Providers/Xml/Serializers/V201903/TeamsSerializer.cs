@@ -24,34 +24,51 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 
             if (teams != null)
             {
-                var expressions = new Dictionary<Expression<Func<ProvisioningTeams, Object>>, IResolver>();
-
-                // Manage Team Templates
-                expressions.Add(t => t.TeamTemplates, new TeamTemplatesFromSchemaToModelTypeResolver());
-                expressions.Add(t => t.TeamTemplates[0].JsonTemplate, new ExpressionValueResolver((s, v) =>
+                var expressions = new Dictionary<Expression<Func<ProvisioningTeams, Object>>, IResolver>
                 {
+
+                    // Manage Team Templates
+                    { t => t.TeamTemplates, new TeamTemplatesFromSchemaToModelTypeResolver() },
+                    {
+                        t => t.TeamTemplates[0].JsonTemplate,
+                        new ExpressionValueResolver((s, v) =>
+{
                     // Concatenate all the string values in the Text array of strings and return as the content of the JSON template
                     return ((s.GetPublicInstancePropertyValue("Text") as String[])?.Aggregate(String.Empty, (acc, next) => acc += (next != null ? next : String.Empty)));
-                }));
+})
+                    },
 
-                // Manage Teams
-                expressions.Add(t => t.Teams, new TeamsFromSchemaToModelTypeResolver());
-                expressions.Add(t => t.Teams[0].FunSettings,
-                    new ComplexTypeFromSchemaToModelTypeResolver<TeamFunSettings>("FunSettings"));
-                expressions.Add(t => t.Teams[0].GuestSettings,
-                    new ComplexTypeFromSchemaToModelTypeResolver<TeamGuestSettings>("GuestSettings"));
-                expressions.Add(t => t.Teams[0].MemberSettings,
-                    new ComplexTypeFromSchemaToModelTypeResolver<TeamMemberSettings>("MembersSettings"));
-                expressions.Add(t => t.Teams[0].MessagingSettings,
-                    new ComplexTypeFromSchemaToModelTypeResolver<TeamMessagingSettings>("MessagingSettings"));
-                expressions.Add(t => t.Teams[0].Security,
-                    new TeamSecurityFromSchemaToModelTypeResolver());
+                    // Manage Teams
+                    { t => t.Teams, new TeamsFromSchemaToModelTypeResolver() },
+                    {
+                        t => t.Teams[0].FunSettings,
+                        new ComplexTypeFromSchemaToModelTypeResolver<TeamFunSettings>("FunSettings")
+                    },
+                    {
+                        t => t.Teams[0].GuestSettings,
+                        new ComplexTypeFromSchemaToModelTypeResolver<TeamGuestSettings>("GuestSettings")
+                    },
+                    {
+                        t => t.Teams[0].MemberSettings,
+                        new ComplexTypeFromSchemaToModelTypeResolver<TeamMemberSettings>("MembersSettings")
+                    },
+                    {
+                        t => t.Teams[0].MessagingSettings,
+                        new ComplexTypeFromSchemaToModelTypeResolver<TeamMessagingSettings>("MessagingSettings")
+                    },
+                    {
+                        t => t.Teams[0].Security,
+                        new TeamSecurityFromSchemaToModelTypeResolver()
+                    },
 
-                expressions.Add(t => t.Teams[0].Channels[0].Tabs[0].Configuration,
-                    new ComplexTypeFromSchemaToModelTypeResolver<TeamTabConfiguration>("Configuration"));
+                    {
+                        t => t.Teams[0].Channels[0].Tabs[0].Configuration,
+                        new ComplexTypeFromSchemaToModelTypeResolver<TeamTabConfiguration>("Configuration")
+                    },
 
-                // Handle the JSON content of the Message to send to the channel
-                expressions.Add(t => t.Teams[0].Channels[0].Messages[0].Message, new ExpressionValueResolver((s, v) => s));
+                    // Handle the JSON content of the Message to send to the channel
+                    { t => t.Teams[0].Channels[0].Messages[0].Message, new ExpressionValueResolver((s, v) => s) }
+                };
 
                 PnPObjectsMapper.MapProperties(teams, template.ParentHierarchy.Teams, expressions, true);
             }
@@ -91,43 +108,65 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 
                     var target = Activator.CreateInstance(teamsType, true);
 
-                    var resolvers = new Dictionary<String, IResolver>();
-
-                    // Handle generic team objects (TeamTemplate and TeamWithSettings)
-                    resolvers.Add($"{teamsType}.Items",
-                        new TeamsItemsFromModelToSchemaTypeResolver());
-
-                    // Handle JSON template for the TeamTemplate objects
-                    resolvers.Add($"{teamTemplateType}.Text", new ExpressionValueResolver((s, v) =>
+                    var resolvers = new Dictionary<String, IResolver>
                     {
+
+                        // Handle generic team objects (TeamTemplate and TeamWithSettings)
+                        {
+                            $"{teamsType}.Items",
+                            new TeamsItemsFromModelToSchemaTypeResolver()
+                        },
+
+                        // Handle JSON template for the TeamTemplate objects
+                        {
+                            $"{teamTemplateType}.Text",
+                            new ExpressionValueResolver((s, v) =>
+{
                         // Return the JSON template as text for the node content
                         return (new String[1] { (s as TeamTemplate)?.JsonTemplate });
-                    }));
+})
+                        },
 
-                    // Handle Security for TeamWithSettings
-                    resolvers.Add($"{teamWithSettingType}.Security",
-                        new TeamSecurityFromModelToSchemaTypeResolver());
+                        // Handle Security for TeamWithSettings
+                        {
+                            $"{teamWithSettingType}.Security",
+                            new TeamSecurityFromModelToSchemaTypeResolver()
+                        },
 
-                    // Handle all the settings for the TeamWithSettings objects
-                    resolvers.Add($"{teamWithSettingType}.FunSettings",
-                        new ComplexTypeFromModelToSchemaTypeResolver(teamFunSettingsType, "FunSettings"));
-                    resolvers.Add($"{teamWithSettingType}.GuestSettings",
-                        new ComplexTypeFromModelToSchemaTypeResolver(teamGuestSettingsType, "GuestSettings"));
-                    resolvers.Add($"{teamWithSettingType}.MembersSettings",
-                        new ComplexTypeFromModelToSchemaTypeResolver(teamMembersSettingsType, "MemberSettings"));
-                    resolvers.Add($"{teamWithSettingType}.MessagingSettings",
-                        new ComplexTypeFromModelToSchemaTypeResolver(teamMessagingSettingsType, "MessagingSettings"));
+                        // Handle all the settings for the TeamWithSettings objects
+                        {
+                            $"{teamWithSettingType}.FunSettings",
+                            new ComplexTypeFromModelToSchemaTypeResolver(teamFunSettingsType, "FunSettings")
+                        },
+                        {
+                            $"{teamWithSettingType}.GuestSettings",
+                            new ComplexTypeFromModelToSchemaTypeResolver(teamGuestSettingsType, "GuestSettings")
+                        },
+                        {
+                            $"{teamWithSettingType}.MembersSettings",
+                            new ComplexTypeFromModelToSchemaTypeResolver(teamMembersSettingsType, "MemberSettings")
+                        },
+                        {
+                            $"{teamWithSettingType}.MessagingSettings",
+                            new ComplexTypeFromModelToSchemaTypeResolver(teamMessagingSettingsType, "MessagingSettings")
+                        },
 
-                    // Handle channel Messages for TeamsWithSettings objects
-                    resolvers.Add($"{teamChannelType}.Messages", new ExpressionValueResolver((s, v) =>
-                    {
+                        // Handle channel Messages for TeamsWithSettings objects
+                        {
+                            $"{teamChannelType}.Messages",
+                            new ExpressionValueResolver((s, v) =>
+{
                         // Return the JSON messages as an array of Strings
                         return ((s as TeamChannel)?.Messages.Count > 0 ? (s as TeamChannel)?.Messages.Select(m => m.Message).ToArray() : null);
-                    }));
+})
+                        },
 
-                    // Handle channel Tab Configuration for TeamsWithSettings objects
-                    resolvers.Add($"{teamChannelTabType}.Configuration",
-                        new ComplexTypeFromModelToSchemaTypeResolver(teamChannelTabConfigurationType, "Configuration"));
+                        // Handle channel Tab Configuration for TeamsWithSettings objects
+                        {
+                            $"{teamChannelTabType}.Configuration",
+                            new ComplexTypeFromModelToSchemaTypeResolver(teamChannelTabConfigurationType, "Configuration")
+                        }
+                    };
 
                     PnPObjectsMapper.MapProperties(template.ParentHierarchy.Teams, target, resolvers, recursive: true);
 

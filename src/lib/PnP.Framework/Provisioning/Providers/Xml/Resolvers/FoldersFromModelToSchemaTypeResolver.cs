@@ -30,9 +30,11 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
 
                     result = Array.CreateInstance(folderType, sourceFolders.Count);
 
-                    resolvers = new Dictionary<string, IResolver>();
-                    resolvers.Add($"{folderType}.Folder1", new FoldersFromModelToSchemaTypeResolver());
-                    resolvers.Add($"{folderType}.Security", new SecurityFromModelToSchemaTypeResolver());
+                    resolvers = new Dictionary<string, IResolver>
+                    {
+                        { $"{folderType}.Folder1", new FoldersFromModelToSchemaTypeResolver() },
+                        { $"{folderType}.Security", new SecurityFromModelToSchemaTypeResolver() }
+                    };
 
                     // Default Column Values
                     var dictionaryItemTypeName = $"{PnPSerializationScope.Current?.BaseSchemaNamespace}.StringDictionaryItem, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}";

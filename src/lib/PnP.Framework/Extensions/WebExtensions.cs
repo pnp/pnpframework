@@ -514,13 +514,15 @@ namespace Microsoft.SharePoint.Client
             var rootWeb = site.RootWeb;
             var solutionGallery = rootWeb.GetCatalog((int)ListTemplateType.SolutionCatalog);
 
-            var camlQuery = new CamlQuery();
-            camlQuery.ViewXml = $@"<View>  
+            var camlQuery = new CamlQuery
+            {
+                ViewXml = $@"<View>  
                         <Query> 
                            <Where><Eq><FieldRef Name='SolutionId' /><Value Type='Guid'>{packageGuid}</Value></Eq></Where> 
                         </Query> 
                          <ViewFields><FieldRef Name='ID' /><FieldRef Name='FileLeafRef' /></ViewFields> 
-                  </View>";
+                  </View>"
+            };
 
             var solutions = solutionGallery.GetItems(camlQuery);
             site.Context.Load(solutions);
@@ -585,8 +587,10 @@ namespace Microsoft.SharePoint.Client
 
                 List<SiteEntity> sites = new List<SiteEntity>();
 
-                KeywordQuery keywordQuery = new KeywordQuery(web.Context);
-                keywordQuery.TrimDuplicates = trimDuplicates;
+                KeywordQuery keywordQuery = new KeywordQuery(web.Context)
+                {
+                    TrimDuplicates = trimDuplicates
+                };
 
                 if (keywordQueryValue.Length == 0)
                 {
@@ -1066,12 +1070,14 @@ namespace Microsoft.SharePoint.Client
 
             if (!receiverExists)
             {
-                EventReceiverDefinitionCreationInformation receiver = new EventReceiverDefinitionCreationInformation();
-                receiver.EventType = eventReceiverType;
-                receiver.ReceiverUrl = url;
-                receiver.ReceiverName = name;
-                receiver.SequenceNumber = sequenceNumber;
-                receiver.Synchronization = synchronization;
+                EventReceiverDefinitionCreationInformation receiver = new EventReceiverDefinitionCreationInformation
+                {
+                    EventType = eventReceiverType,
+                    ReceiverUrl = url,
+                    ReceiverName = name,
+                    SequenceNumber = sequenceNumber,
+                    Synchronization = synchronization
+                };
                 def = web.EventReceivers.Add(receiver);
                 web.Context.Load(def);
                 web.Context.ExecuteQueryRetry();

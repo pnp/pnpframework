@@ -13,7 +13,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
 
         public bool CustomCollectionResolver => false;
 
-        private Type _targetType;
+        private readonly Type _targetType;
 
         public DocumentTemplateFromModelToSchemaTypeResolver(Type targetType)
         {

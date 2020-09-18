@@ -78,7 +78,7 @@ namespace PnP.Framework.Provisioning.Model
                 return (false);
             }
 
-            return (((BaseNavigationKind)this).Equals((BaseNavigationKind)other) &&
+            return (this.Equals((BaseNavigationKind)other) &&
                 this.NavigationType == other.NavigationType
                 );
         }

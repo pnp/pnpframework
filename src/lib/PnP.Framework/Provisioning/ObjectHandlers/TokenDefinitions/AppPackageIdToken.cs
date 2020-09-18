@@ -12,7 +12,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
         Returns = "55898e77-a7bf-4799-8034-506db5521b98")]
     internal class AppPackageIdToken : TokenDefinition
     {
-        private string _appPackageId = null;
+        private readonly string _appPackageId = null;
 
         public AppPackageIdToken(Web web, string name, Guid appPackageId)
             : base(web, $"{{apppackageid:{Regex.Escape(name)}}}")

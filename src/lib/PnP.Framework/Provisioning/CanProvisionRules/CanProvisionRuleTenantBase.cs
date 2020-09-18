@@ -59,8 +59,10 @@ namespace PnP.Framework.Provisioning.CanProvisionRules
                 // If we don't have templates
                 if (hierarchy.Templates.Count == 0)
                 {
-                    dummyTemplate = new Model.ProvisioningTemplate();
-                    dummyTemplate.Id = $"DUMMY-{Guid.NewGuid()}";
+                    dummyTemplate = new Model.ProvisioningTemplate
+                    {
+                        Id = $"DUMMY-{Guid.NewGuid()}"
+                    };
                     hierarchy.Templates.Add(dummyTemplate);
                 }
 

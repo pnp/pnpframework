@@ -24,80 +24,97 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 
             if (sequences != null)
             {
-                var expressions = new Dictionary<Expression<Func<ProvisioningSequence, Object>>, IResolver>();
-
-                // Handle the TermStore property of the Sequence, if any
-                expressions.Add(seq => seq.TermStore, new ExpressionValueResolver((s, v) =>
+                var expressions = new Dictionary<Expression<Func<ProvisioningSequence, Object>>, IResolver>
                 {
 
-                    if (v != null)
+                    // Handle the TermStore property of the Sequence, if any
                     {
-                        var tgs = new TermGroupsSerializer();
-                        var termGroupsExpressions = tgs.GetTermGroupDeserializeExpressions();
+                        seq => seq.TermStore,
+                        new ExpressionValueResolver((s, v) =>
+ {
 
-                        var result = new Model.ProvisioningTermStore();
-                        result.TermGroups.AddRange(
-                            PnPObjectsMapper.MapObjects<TermGroup>(v,
-                                new CollectionFromSchemaToModelTypeResolver(typeof(TermGroup)),
-                                termGroupsExpressions,
-                                recursive: true)
-                                as IEnumerable<TermGroup>);
+     if (v != null)
+     {
+         var tgs = new TermGroupsSerializer();
+         var termGroupsExpressions = tgs.GetTermGroupDeserializeExpressions();
 
-                        return (result);
-                    }
-                    else
+         var result = new Model.ProvisioningTermStore();
+         result.TermGroups.AddRange(
+             PnPObjectsMapper.MapObjects<TermGroup>(v,
+                 new CollectionFromSchemaToModelTypeResolver(typeof(TermGroup)),
+                 termGroupsExpressions,
+                 recursive: true)
+                 as IEnumerable<TermGroup>);
+
+         return (result);
+     }
+     else
+     {
+         return (null);
+     }
+ })
+                    },
+
+                    // Handle the SiteCollections property of the Sequence, if any
                     {
-                        return (null);
-                    }
-                }));
-
-                // Handle the SiteCollections property of the Sequence, if any
-                expressions.Add(seq => seq.SiteCollections,
-                    new SiteCollectionsAndSitesFromSchemaToModelTypeResolver(typeof(SiteCollection)));
-                expressions.Add(seq => seq.SiteCollections[0].Sites,
-                    new SiteCollectionsAndSitesFromSchemaToModelTypeResolver(typeof(SubSite)));
-                expressions.Add(seq => seq.SiteCollections[0].Sites[0].Sites,
-                    new SiteCollectionsAndSitesFromSchemaToModelTypeResolver(typeof(SubSite)));
-                expressions.Add(seq => seq.SiteCollections[0].Templates, new ExpressionValueResolver((s, v) =>
-                {
-
-                    var result = new List<String>();
-
-                    if (v != null)
+                        seq => seq.SiteCollections,
+                        new SiteCollectionsAndSitesFromSchemaToModelTypeResolver(typeof(SiteCollection))
+                    },
                     {
-                        foreach (var t in (IEnumerable)v)
-                        {
-                            var templateId = t.GetPublicInstancePropertyValue("ID")?.ToString();
-
-                            if (templateId != null)
-                            {
-                                result.Add(templateId);
-                            }
-                        }
-                    }
-
-                    return (result);
-                }));
-                expressions.Add(seq => seq.SiteCollections[0].Sites[0].Templates, new ExpressionValueResolver((s, v) =>
-                {
-
-                    var result = new List<String>();
-
-                    if (v != null)
+                        seq => seq.SiteCollections[0].Sites,
+                        new SiteCollectionsAndSitesFromSchemaToModelTypeResolver(typeof(SubSite))
+                    },
                     {
-                        foreach (var t in (IEnumerable)v)
-                        {
-                            var templateId = t.GetPublicInstancePropertyValue("ID")?.ToString();
+                        seq => seq.SiteCollections[0].Sites[0].Sites,
+                        new SiteCollectionsAndSitesFromSchemaToModelTypeResolver(typeof(SubSite))
+                    },
+                    {
+                        seq => seq.SiteCollections[0].Templates,
+                        new ExpressionValueResolver((s, v) =>
+{
 
-                            if (templateId != null)
-                            {
-                                result.Add(templateId);
-                            }
-                        }
+var result = new List<String>();
+
+if (v != null)
+{
+foreach (var t in (IEnumerable)v)
+{
+var templateId = t.GetPublicInstancePropertyValue("ID")?.ToString();
+
+if (templateId != null)
+{
+result.Add(templateId);
+}
+}
+}
+
+return (result);
+})
+                    },
+                    {
+                        seq => seq.SiteCollections[0].Sites[0].Templates,
+                        new ExpressionValueResolver((s, v) =>
+{
+
+var result = new List<String>();
+
+if (v != null)
+{
+foreach (var t in (IEnumerable)v)
+{
+var templateId = t.GetPublicInstancePropertyValue("ID")?.ToString();
+
+if (templateId != null)
+{
+result.Add(templateId);
+}
+}
+}
+
+return (result);
+})
                     }
-
-                    return (result);
-                }));
+                };
 
                 template.ParentHierarchy.Sequences.AddRange(
                 PnPObjectsMapper.MapObjects<ProvisioningSequence>(sequences,
@@ -117,32 +134,37 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
                 var sequenceTypeName = $"{PnPSerializationScope.Current?.BaseSchemaNamespace}.Sequence, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}";
                 var sequenceType = Type.GetType(sequenceTypeName, true);
 
-                var expressions = new Dictionary<string, IResolver>();
-
-                // Handle the TermStore property of the Sequence, if any
-                expressions.Add($"{PnPSerializationScope.Current?.BaseSchemaNamespace}.Sequence.TermStore", new ExpressionValueResolver((s, v) =>
+                var expressions = new Dictionary<string, IResolver>
                 {
 
-                    if (v != null)
+                    // Handle the TermStore property of the Sequence, if any
                     {
-                        var tgs = new TermGroupsSerializer();
-                        var termGroupsExpressions = tgs.GetTermGroupSerializationExpressions();
+                        $"{PnPSerializationScope.Current?.BaseSchemaNamespace}.Sequence.TermStore",
+                        new ExpressionValueResolver((s, v) =>
+{
 
-                        var baseNamespace = PnPSerializationScope.Current?.BaseSchemaNamespace;
-                        var termGroupType = Type.GetType($"{baseNamespace}.TermGroup, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}", true);
+if (v != null)
+{
+var tgs = new TermGroupsSerializer();
+var termGroupsExpressions = tgs.GetTermGroupSerializationExpressions();
 
-                        var sourceSequence = s as ProvisioningSequence;
+var baseNamespace = PnPSerializationScope.Current?.BaseSchemaNamespace;
+var termGroupType = Type.GetType($"{baseNamespace}.TermGroup, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}", true);
 
-                        return (PnPObjectsMapper.MapObjects(sourceSequence.TermStore.TermGroups,
-                            new CollectionFromModelToSchemaTypeResolver(termGroupType),
-                            termGroupsExpressions,
-                            true));
+var sourceSequence = s as ProvisioningSequence;
+
+return (PnPObjectsMapper.MapObjects(sourceSequence.TermStore.TermGroups,
+new CollectionFromModelToSchemaTypeResolver(termGroupType),
+termGroupsExpressions,
+true));
+}
+else
+{
+return (null);
+}
+})
                     }
-                    else
-                    {
-                        return (null);
-                    }
-                }));
+                };
 
                 // Handle SiteCollections and hierarchycal subsites
                 var siteCollectionTypeName = $"{PnPSerializationScope.Current?.BaseSchemaNamespace}.SiteCollection, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}";

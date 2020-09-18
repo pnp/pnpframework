@@ -10,8 +10,8 @@ namespace PnP.Framework.Pages
     public class CanvasSection
     {
         #region variables
-        private System.Collections.Generic.List<CanvasColumn> columns = new System.Collections.Generic.List<CanvasColumn>(3);
-        private ClientSidePage page;
+        private readonly System.Collections.Generic.List<CanvasColumn> columns = new System.Collections.Generic.List<CanvasColumn>(3);
+        private readonly ClientSidePage page;
         private int zoneEmphasis;
         #endregion
 

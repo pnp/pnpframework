@@ -280,7 +280,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
             context.ExecuteQueryRetry();
             foreach (var key in valuesToSet.Keys)
             {
-                var field = fields.FirstOrDefault(f => f.InternalName == key as string || f.Title == key as string);
+                var field = fields.FirstOrDefault(f => f.InternalName == key || f.Title == key);
 
                 if (field != null)
                 {
@@ -310,7 +310,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                     {
                                         if (!int.TryParse(arrayItem.Trim().ToString(), out int userId))
                                         {
-                                            var user = web.EnsureUser((arrayItem as string).Trim());
+                                            var user = web.EnsureUser(arrayItem.Trim());
                                             clonedContext.Load(user);
                                             clonedContext.ExecuteQueryRetry();
                                             userValues.Add(new FieldUserValue() { LookupId = user.Id });
@@ -321,20 +321,20 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                             userValues.Add(new FieldUserValue() { LookupId = userId });
                                         }
                                     }
-                                    itemValues.Add(new FieldUpdateValue(key as string, userValues.ToArray(), null));
+                                    itemValues.Add(new FieldUpdateValue(key, userValues.ToArray(), null));
                                 }
                                 else
                                 {
-                                    if (!int.TryParse((value as string).Trim(), out int userId))
+                                    if (!int.TryParse(value.Trim(), out int userId))
                                     {
-                                        var user = web.EnsureUser((value as string).Trim());
+                                        var user = web.EnsureUser(value.Trim());
                                         clonedContext.Load(user);
                                         clonedContext.ExecuteQueryRetry();
-                                        itemValues.Add(new FieldUpdateValue(key as string, new FieldUserValue() { LookupId = user.Id }));
+                                        itemValues.Add(new FieldUpdateValue(key, new FieldUserValue() { LookupId = user.Id }));
                                     }
                                     else
                                     {
-                                        itemValues.Add(new FieldUpdateValue(key as string, new FieldUserValue() { LookupId = userId }));
+                                        itemValues.Add(new FieldUpdateValue(key, new FieldUserValue() { LookupId = userId }));
                                     }
                                 }
                                 break;
@@ -344,7 +344,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                 if (value != null)
                                 {
                                     var array = value.Split(";#");
-                                    itemValues.Add(new FieldUpdateValue(key as string, array));
+                                    itemValues.Add(new FieldUpdateValue(key, array));
                                 }
                                 break;
                             }
@@ -358,10 +358,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                     foreach (var arrayItem in value.Split(new char[] { ',', ';' }))
                                     {
                                         TaxonomyItem taxonomyItem;
-                                        if (!Guid.TryParse((arrayItem as string).Trim(), out Guid termGuid))
+                                        if (!Guid.TryParse(arrayItem.Trim(), out Guid termGuid))
                                         {
                                             // Assume it's a TermPath
-                                            taxonomyItem = clonedContext.Site.GetTaxonomyItemByPath((arrayItem as string).Trim());
+                                            taxonomyItem = clonedContext.Site.GetTaxonomyItemByPath(arrayItem.Trim());
                                         }
                                         else
                                         {
@@ -385,7 +385,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                         termValuesString = termValuesString.Substring(0, termValuesString.Length - 2);
 
                                         var newTaxFieldValue = new TaxonomyFieldValueCollection(context, termValuesString, taxField);
-                                        itemValues.Add(new FieldUpdateValue(key as string, newTaxFieldValue, field.TypeAsString));
+                                        itemValues.Add(new FieldUpdateValue(key, newTaxFieldValue, field.TypeAsString));
                                     }
                                 }
                                 else
@@ -394,10 +394,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
 
                                     var taxSession = clonedContext.Site.GetTaxonomySession();
                                     TaxonomyItem taxonomyItem = null;
-                                    if (value != null && !Guid.TryParse((value as string).Trim(), out termGuid))
+                                    if (value != null && !Guid.TryParse(value.Trim(), out termGuid))
                                     {
                                         // Assume it's a TermPath
-                                        taxonomyItem = clonedContext.Site.GetTaxonomyItemByPath((value as string).Trim());
+                                        taxonomyItem = clonedContext.Site.GetTaxonomyItemByPath(value.Trim());
                                     }
                                     else
                                     {
@@ -415,7 +415,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                     {
                                         taxValue.TermGuid = taxonomyItem.Id.ToString();
                                         taxValue.Label = taxonomyItem.Name;
-                                        itemValues.Add(new FieldUpdateValue(key as string, taxValue, field.TypeAsString));
+                                        itemValues.Add(new FieldUpdateValue(key, taxValue, field.TypeAsString));
                                     }
                                     else
                                     {
@@ -452,7 +452,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                 {
                                     throw new Exception("Field " + field.InternalName + " does not support multiple values");
                                 }
-                                itemValues.Add(new FieldUpdateValue(key as string, newVals));
+                                itemValues.Add(new FieldUpdateValue(key, newVals));
                                 break;
                             }
                         case "DateTime":
@@ -460,7 +460,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                 if (value == null) goto default;
                                 if (DateTime.TryParse(value, out DateTime dateTimeValue))
                                 {
-                                    itemValues.Add(new FieldUpdateValue(key as string, dateTimeValue));
+                                    itemValues.Add(new FieldUpdateValue(key, dateTimeValue));
                                 }
                                 break;
                             }
@@ -478,11 +478,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                             Url = value.Split(new char[] { ',', ';' })[0],
                                             Description = value.Split(new char[] { ',', ';' })[1]
                                         };
-                                        itemValues.Add(new FieldUpdateValue(key as string, urlValue));
+                                        itemValues.Add(new FieldUpdateValue(key, urlValue));
                                     }
                                     else
                                     {
-                                        itemValues.Add(new FieldUpdateValue(key as string, value));
+                                        itemValues.Add(new FieldUpdateValue(key, value));
                                     }
                                 }
                                 else
@@ -492,14 +492,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                         Url = value,
                                         Description = value
                                     };
-                                    itemValues.Add(new FieldUpdateValue(key as string, urlValue));
+                                    itemValues.Add(new FieldUpdateValue(key, urlValue));
                                 }
 
                                 break;
                             }
                         default:
                             {
-                                itemValues.Add(new FieldUpdateValue(key as string, value));
+                                itemValues.Add(new FieldUpdateValue(key, value));
                                 break;
                             }
                     }
@@ -547,7 +547,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                     {
                         case "TaxonomyFieldTypeMulti":
                             {
-                                var field = fields.FirstOrDefault(f => f.InternalName == itemValue.Key as string || f.Title == itemValue.Key as string);
+                                var field = fields.FirstOrDefault(f => f.InternalName == itemValue.Key || f.Title == itemValue.Key);
                                 var taxField = context.CastTo<TaxonomyField>(field);
                                 if (itemValue.Value is TaxonomyFieldValueCollection)
                                 {
@@ -562,7 +562,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                             }
                         case "TaxonomyFieldType":
                             {
-                                var field = fields.FirstOrDefault(f => f.InternalName == itemValue.Key as string || f.Title == itemValue.Key as string);
+                                var field = fields.FirstOrDefault(f => f.InternalName == itemValue.Key || f.Title == itemValue.Key);
                                 var taxField = context.CastTo<TaxonomyField>(field);
                                 taxField.SetFieldValueByValue(item, itemValue.Value as TaxonomyFieldValue);
                                 break;

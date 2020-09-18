@@ -25,22 +25,30 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201705
 
             if (lists != null)
             {
-                var expressions = new Dictionary<Expression<Func<ListInstance, Object>>, IResolver>();
+                var expressions = new Dictionary<Expression<Func<ListInstance, Object>>, IResolver>
+                {
 
-                // Define custom resolver for FieldRef.ID because needs conversion from String to GUID
-                expressions.Add(l => l.FieldRefs[0].Id, new FromStringToGuidValueResolver());
-                expressions.Add(l => l.TemplateFeatureID, new FromStringToGuidValueResolver());
+                    // Define custom resolver for FieldRef.ID because needs conversion from String to GUID
+                    { l => l.FieldRefs[0].Id, new FromStringToGuidValueResolver() },
+                    { l => l.TemplateFeatureID, new FromStringToGuidValueResolver() },
 
-                expressions.Add(l => l.DataRows,
-                    new ListInstanceDataRowsFromSchemaToModelTypeResolver());
-                expressions.Add(l => l.DataRows.KeyColumn,
-                    new ExpressionValueResolver((s, p) => s.GetPublicInstancePropertyValue("DataRows")?.GetPublicInstancePropertyValue("KeyColumn")));
-                expressions.Add(l => l.DataRows.UpdateBehavior,
-                    new ExpressionValueResolver((s, p) =>
-                        (Model.UpdateBehavior)Enum.Parse(typeof(Model.UpdateBehavior),
-                            s.GetPublicInstancePropertyValue("DataRows")?
-                            .GetPublicInstancePropertyValue("UpdateBehavior")?
-                            .ToString())));
+                    {
+                        l => l.DataRows,
+                        new ListInstanceDataRowsFromSchemaToModelTypeResolver()
+                    },
+                    {
+                        l => l.DataRows.KeyColumn,
+                        new ExpressionValueResolver((s, p) => s.GetPublicInstancePropertyValue("DataRows")?.GetPublicInstancePropertyValue("KeyColumn"))
+                    },
+                    {
+                        l => l.DataRows.UpdateBehavior,
+                        new ExpressionValueResolver((s, p) =>
+                            (Model.UpdateBehavior)Enum.Parse(typeof(Model.UpdateBehavior),
+                                s.GetPublicInstancePropertyValue("DataRows")?
+                                .GetPublicInstancePropertyValue("UpdateBehavior")?
+                                .ToString()))
+                    }
+                };
 
                 // Define custom resolver for Fields Defaults
                 var fieldDefaultTypeName = $"{PnPSerializationScope.Current?.BaseSchemaNamespace}.FieldDefault, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}";
@@ -110,10 +118,12 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201705
                 var listInstanceTypeName = $"{PnPSerializationScope.Current?.BaseSchemaNamespace}.ListInstance, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}";
                 var listInstanceType = Type.GetType(listInstanceTypeName, true);
 
-                var resolvers = new Dictionary<String, IResolver>();
+                var resolvers = new Dictionary<String, IResolver>
+                {
 
-                // Define custom resolvers for DataRows Values and Security    
-                resolvers.Add($"{listInstanceType}.DataRows", new ListInstanceDataRowsFromModelToSchemaTypeResolver());
+                    // Define custom resolvers for DataRows Values and Security    
+                    { $"{listInstanceType}.DataRows", new ListInstanceDataRowsFromModelToSchemaTypeResolver() }
+                };
 
                 // Define custom resolver for Fields Defaults
                 var fieldDefaultTypeName = $"{PnPSerializationScope.Current?.BaseSchemaNamespace}.FieldDefault, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}";

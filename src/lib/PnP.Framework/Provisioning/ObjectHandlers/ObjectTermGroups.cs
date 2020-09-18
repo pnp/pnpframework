@@ -197,8 +197,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             if (termSet.Id == orphanedTermsTermSetId) continue;
 
                             // Extract all other term sets
-                            var modelTermSet = new Model.TermSet();
-                            modelTermSet.Name = termSet.Name;
+                            var modelTermSet = new Model.TermSet
+                            {
+                                Name = termSet.Name
+                            };
                             if (!isSiteCollectionTermGroup)
                             {
                                 modelTermSet.Id = termSet.Id;
@@ -273,10 +275,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     {
                         if ((label.Language == defaultLanguage && label.Value != term.Name) || label.Language != defaultLanguage)
                         {
-                            var modelLabel = new Model.TermLabel();
-                            modelLabel.IsDefaultForLanguage = label.IsDefaultForLanguage;
-                            modelLabel.Value = label.Value;
-                            modelLabel.Language = label.Language;
+                            var modelLabel = new Model.TermLabel
+                            {
+                                IsDefaultForLanguage = label.IsDefaultForLanguage,
+                                Value = label.Value,
+                                Language = label.Language
+                            };
 
                             modelTerm.Labels.Add(modelLabel);
                         }

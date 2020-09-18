@@ -73,15 +73,23 @@ namespace PnP.Framework.Provisioning.Model
             this._propertyBags = new PropertyBagEntryCollection(this);
             this._lists = new ListInstanceCollection(this);
 
-            this._siteSecurity = new SiteSecurity();
-            this._siteSecurity.ParentTemplate = this;
+            this._siteSecurity = new SiteSecurity
+            {
+                ParentTemplate = this
+            };
 
-            this._composedLook = new ComposedLook();
-            this._composedLook.ParentTemplate = this;
-            this._features = new Features();
-            this._features.ParentTemplate = this;
-            this._customActions = new CustomActions();
-            this._customActions.ParentTemplate = this;
+            this._composedLook = new ComposedLook
+            {
+                ParentTemplate = this
+            };
+            this._features = new Features
+            {
+                ParentTemplate = this
+            };
+            this._customActions = new CustomActions
+            {
+                ParentTemplate = this
+            };
 
             this._files = new FileCollection(this);
             this._directories = new DirectoryCollection(this);
@@ -96,11 +104,15 @@ namespace PnP.Framework.Provisioning.Model
             this._siteWebhooks = new SiteWebhookCollection(this);
             this._clientSidePages = new ClientSidePageCollection(this);
 
-            this._tenant = new ProvisioningTenant();
-            this._tenant.ParentTemplate = this;
+            this._tenant = new ProvisioningTenant
+            {
+                ParentTemplate = this
+            };
 
-            this._applicationLifecycleManagement = new ApplicationLifecycleManagement();
-            this._applicationLifecycleManagement.ParentTemplate = this;
+            this._applicationLifecycleManagement = new ApplicationLifecycleManagement
+            {
+                ParentTemplate = this
+            };
 
             this._provisioningTemplateWebhooks = new ProvisioningTemplateWebhookCollection(this);
         }

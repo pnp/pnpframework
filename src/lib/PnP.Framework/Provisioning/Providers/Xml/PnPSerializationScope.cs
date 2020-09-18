@@ -13,8 +13,8 @@ namespace PnP.Framework.Provisioning.Providers.Xml
     /// </summary>
     internal class PnPSerializationScope : IDisposable
     {
-        private String _baseSchemaNamespace;
-        private String _baseSchemaAssemblyName;
+        private readonly String _baseSchemaNamespace;
+        private readonly String _baseSchemaAssemblyName;
         private readonly PnPSerializationScope _previous;
 
         public String BaseSchemaNamespace => this._baseSchemaNamespace;
@@ -64,7 +64,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml
             }
         }
 #else
-        private static AsyncLocal<PnPSerializationScope> _pnpSerializationScope = new AsyncLocal<PnPSerializationScope>();
+        private static readonly AsyncLocal<PnPSerializationScope> _pnpSerializationScope = new AsyncLocal<PnPSerializationScope>();
 
         public static PnPSerializationScope Current
         {

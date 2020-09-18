@@ -13,7 +13,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
     {
         public string Name => this.GetType().Name;
 
-        private String _elementName;
+        private readonly String _elementName;
 
         public XmlAnyFromSchemaToModelValueResolver(String elementName)
         {

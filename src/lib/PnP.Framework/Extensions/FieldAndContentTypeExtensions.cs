@@ -1243,8 +1243,10 @@ namespace Microsoft.SharePoint.Client
                 XElement fieldElement = XElement.Parse(field.SchemaXmlWithResourceTokens);
                 fieldElement.SetAttributeValue("AllowDeletion", "TRUE"); // Default behavior when adding a field to a CT from the UI.
                 field.SchemaXml = fieldElement.ToString();
-                var fldInfo = new FieldLinkCreationInformation();
-                fldInfo.Field = field;
+                var fldInfo = new FieldLinkCreationInformation
+                {
+                    Field = field
+                };
                 contentType.FieldLinks.Add(fldInfo);
                 contentType.Update(updateChildren);
                 web.Context.ExecuteQueryRetry();

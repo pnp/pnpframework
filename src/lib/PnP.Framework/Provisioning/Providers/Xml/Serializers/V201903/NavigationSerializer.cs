@@ -21,10 +21,12 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201903
 
             if (navigation != null)
             {
-                var expressions = new Dictionary<Expression<Func<Model.Navigation, Object>>, IResolver>();
-                expressions.Add(n => n.CurrentNavigation, new NavigationFromSchemaToModelTypeResolver("CurrentNavigation"));
-                expressions.Add(n => n.GlobalNavigation, new NavigationFromSchemaToModelTypeResolver("GlobalNavigation"));
-                expressions.Add(n => n.SearchNavigation, new NavigationFromSchemaToModelTypeResolver("SearchNavigation"));
+                var expressions = new Dictionary<Expression<Func<Model.Navigation, Object>>, IResolver>
+                {
+                    { n => n.CurrentNavigation, new NavigationFromSchemaToModelTypeResolver("CurrentNavigation") },
+                    { n => n.GlobalNavigation, new NavigationFromSchemaToModelTypeResolver("GlobalNavigation") },
+                    { n => n.SearchNavigation, new NavigationFromSchemaToModelTypeResolver("SearchNavigation") }
+                };
 
                 template.Navigation = new Model.Navigation();
                 PnPObjectsMapper.MapProperties(navigation, template.Navigation, expressions, true);
@@ -39,14 +41,21 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201903
                 var navigationType = Type.GetType(navigationTypeName, true);
                 var target = Activator.CreateInstance(navigationType, true);
 
-                var resolvers = new Dictionary<String, IResolver>();
-
-                resolvers.Add($"{navigationType}.GlobalNavigation",
-                    new NavigationFromModelToSchemaTypeResolver("GlobalNavigation"));
-                resolvers.Add($"{navigationType}.CurrentNavigation",
-                    new NavigationFromModelToSchemaTypeResolver("CurrentNavigation"));
-                resolvers.Add($"{navigationType}.SearchNavigation",
-                    new NavigationFromModelToSchemaTypeResolver("SearchNavigation"));
+                var resolvers = new Dictionary<String, IResolver>
+                {
+                    {
+                        $"{navigationType}.GlobalNavigation",
+                        new NavigationFromModelToSchemaTypeResolver("GlobalNavigation")
+                    },
+                    {
+                        $"{navigationType}.CurrentNavigation",
+                        new NavigationFromModelToSchemaTypeResolver("CurrentNavigation")
+                    },
+                    {
+                        $"{navigationType}.SearchNavigation",
+                        new NavigationFromModelToSchemaTypeResolver("SearchNavigation")
+                    }
+                };
 
                 PnPObjectsMapper.MapProperties(template.Navigation, target, resolvers, recursive: true);
 

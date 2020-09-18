@@ -5,7 +5,7 @@
         public static readonly System.DateTime UnixEpoch =
             new System.DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
 
-        private long _secondsSinceUnixEpoch;
+        private readonly long _secondsSinceUnixEpoch;
 
         public long SecondsSinceUnixEpoch
         {
@@ -19,7 +19,7 @@
         {
             get
             {
-                System.TimeSpan timeSpan = System.TimeSpan.FromSeconds((double)this._secondsSinceUnixEpoch);
+                System.TimeSpan timeSpan = System.TimeSpan.FromSeconds(_secondsSinceUnixEpoch);
                 return DateTimeUtil.AddNonNegative(EpochTime.UnixEpoch, timeSpan);
             }
         }

@@ -68,10 +68,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                     foreach (var r in template.Publishing.ImageRenditions)
                     {
-                        var rendition = new Microsoft.SharePoint.Client.Publishing.ImageRendition();
-                        rendition.Name = r.Name;
-                        rendition.Height = r.Height;
-                        rendition.Width = r.Width;
+                        var rendition = new Microsoft.SharePoint.Client.Publishing.ImageRendition
+                        {
+                            Name = r.Name,
+                            Height = r.Height,
+                            Width = r.Width
+                        };
 
                         if (!renditions.Any(rd => rd.Name == rendition.Name && rd.Height == rendition.Height && rd.Width == rendition.Width))
                         {

@@ -21,7 +21,7 @@ namespace PnP.Framework.ALM
     /// </summary>
     public class AppManager
     {
-        private ClientContext _context;
+        private readonly ClientContext _context;
         private enum AppManagerAction
         {
             Install,
@@ -827,8 +827,10 @@ namespace PnP.Framework.ALM
                 // find the app by id
 
                 var list = context.Web.GetListByUrl("appcatalog");
-                var query = new CamlQuery();
-                query.ViewXml = $"<View><Query><Where><Contains><FieldRef Name='UniqueId'/><Value Type='Text'>{appId}</Value></Contains></Where></Query></View>";
+                var query = new CamlQuery
+                {
+                    ViewXml = $"<View><Query><Where><Contains><FieldRef Name='UniqueId'/><Value Type='Text'>{appId}</Value></Contains></Where></Query></View>"
+                };
                 var items = list.GetItems(query);
                 context.Load(items);
                 context.ExecuteQueryRetry();

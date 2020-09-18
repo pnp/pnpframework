@@ -78,12 +78,14 @@ namespace PnP.Framework.Provisioning.Providers.Xml
                 throw new ArgumentNullException(nameof(template));
             }
 
-            V201503.SharePointProvisioningTemplate result = new V201503.SharePointProvisioningTemplate();
+            V201503.SharePointProvisioningTemplate result = new V201503.SharePointProvisioningTemplate
+            {
 
-            // Translate basic properties
-            result.ID = template.Id;
-            result.Version = template.Version.ToString("###0.0", new CultureInfo("en-US"));
-            result.SitePolicy = template.SitePolicy;
+                // Translate basic properties
+                ID = template.Id,
+                Version = template.Version.ToString("###0.0", new CultureInfo("en-US")),
+                SitePolicy = template.SitePolicy
+            };
 
             // Translate PropertyBagEntries, if any
             if (template.PropertyBagEntries != null && template.PropertyBagEntries.Count > 0)
@@ -470,12 +472,14 @@ namespace PnP.Framework.Provisioning.Providers.Xml
             XDocument xml = XDocument.Load(sourceStream);
             V201503.SharePointProvisioningTemplate source = XMLSerializer.Deserialize<V201503.SharePointProvisioningTemplate>(xml);
 
-            ProvisioningTemplate result = new ProvisioningTemplate();
+            ProvisioningTemplate result = new ProvisioningTemplate
+            {
 
-            // Translate basic properties
-            result.Id = source.ID;
-            result.Version = Double.Parse(!String.IsNullOrEmpty(source.Version) ? source.Version : "0", new CultureInfo("en-US"));
-            result.SitePolicy = source.SitePolicy;
+                // Translate basic properties
+                Id = source.ID,
+                Version = Double.Parse(!String.IsNullOrEmpty(source.Version) ? source.Version : "0", new CultureInfo("en-US")),
+                SitePolicy = source.SitePolicy
+            };
 
             // Translate PropertyBagEntries, if any
             if (source.PropertyBagEntries != null)
@@ -557,15 +561,17 @@ namespace PnP.Framework.Provisioning.Providers.Xml
                     var Sealed = xelement.Attribute("Sealed") != null ? bool.Parse(xelement.Attribute("Sealed").Value) : false;
                     var Overwrite = xelement.Attribute("Overwrite") != null ? bool.Parse(xelement.Attribute("Overwrite").Value) : false;
 
-                    var ct = new ContentType();
-                    ct.Id = ID;
-                    ct.Name = Name;
-                    ct.Description = Description;
-                    ct.Group = Group;
-                    ct.Hidden = Hidden;
-                    ct.ReadOnly = ReadOnly;
-                    ct.Sealed = Sealed;
-                    ct.Overwrite = Overwrite;
+                    var ct = new ContentType
+                    {
+                        Id = ID,
+                        Name = Name,
+                        Description = Description,
+                        Group = Group,
+                        Hidden = Hidden,
+                        ReadOnly = ReadOnly,
+                        Sealed = Sealed,
+                        Overwrite = Overwrite
+                    };
 
                     var documentTemplateElement = xelement.Descendants("DocumentTemplate").FirstOrDefault();
                     if (documentTemplateElement != null)
@@ -575,10 +581,12 @@ namespace PnP.Framework.Provisioning.Providers.Xml
                     var fieldRefs = xelement.Descendants("FieldRefs").Descendants("FieldRef");
                     foreach (var fieldRef in fieldRefs)
                     {
-                        FieldRef fr = new FieldRef();
-                        fr.Id = fieldRef.Attribute("ID") != null ? Guid.Parse(fieldRef.Attribute("ID").Value) : Guid.Empty;
-                        fr.Required = fieldRef.Attribute("Required") != null ? bool.Parse(fieldRef.Attribute("Required").Value) : false;
-                        fr.Hidden = fieldRef.Attribute("Hidden") != null ? bool.Parse(fieldRef.Attribute("Hidden").Value) : false;
+                        FieldRef fr = new FieldRef
+                        {
+                            Id = fieldRef.Attribute("ID") != null ? Guid.Parse(fieldRef.Attribute("ID").Value) : Guid.Empty,
+                            Required = fieldRef.Attribute("Required") != null ? bool.Parse(fieldRef.Attribute("Required").Value) : false,
+                            Hidden = fieldRef.Attribute("Hidden") != null ? bool.Parse(fieldRef.Attribute("Hidden").Value) : false
+                        };
                         ct.FieldRefs.Add(fr);
                     }
                     result.ContentTypes.Add(ct);

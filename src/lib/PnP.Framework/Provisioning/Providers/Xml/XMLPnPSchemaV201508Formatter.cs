@@ -84,12 +84,13 @@ namespace PnP.Framework.Provisioning.Providers.Xml
 
             V201508.ProvisioningTemplate result = new V201508.ProvisioningTemplate();
 
-            V201508.Provisioning wrappedResult = new V201508.Provisioning();
-            wrappedResult.Preferences = new V201508.Preferences
+            V201508.Provisioning wrappedResult = new V201508.Provisioning
             {
-                Generator = this.GetType().Assembly.FullName
-            };
-            wrappedResult.Templates = new V201508.Templates[] {
+                Preferences = new V201508.Preferences
+                {
+                    Generator = this.GetType().Assembly.FullName
+                },
+                Templates = new V201508.Templates[] {
                 new V201508.Templates
                 {
                     ID = $"CONTAINER-{template.Id}",
@@ -98,6 +99,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml
                         result
                     }
                 }
+            }
             };
 
             #region Basic Properties

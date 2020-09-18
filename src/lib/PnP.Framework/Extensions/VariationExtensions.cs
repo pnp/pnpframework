@@ -124,8 +124,10 @@ namespace Microsoft.SharePoint.Client
             }
 
             // Compose the parameters
-            List<VariationLabelEntity> sourceVariations = new List<VariationLabelEntity>();
-            sourceVariations.Add(sourceVariationLabel);
+            List<VariationLabelEntity> sourceVariations = new List<VariationLabelEntity>
+            {
+                sourceVariationLabel
+            };
 
             // Create source variation label
             CreateVariationLabels(context, sourceVariations);
@@ -208,15 +210,17 @@ namespace Microsoft.SharePoint.Client
 
                 foreach (var listItem in collListItems)
                 {
-                    var label = new VariationLabelEntity();
-                    label.Title = (string)listItem["Title"];
-                    label.Description = (string)listItem["Description"];
-                    label.FlagControlDisplayName = (string)listItem["Flag_x0020_Control_x0020_Display"];
-                    label.Language = (string)listItem["Language"];
-                    label.Locale = Convert.ToUInt32(listItem["Locale"]);
-                    label.HierarchyCreationMode = (string)listItem["Hierarchy_x0020_Creation_x0020_M"];
-                    label.IsSource = (bool)listItem["Is_x0020_Source"];
-                    label.IsCreated = (bool)listItem["Hierarchy_x0020_Is_x0020_Created"];
+                    var label = new VariationLabelEntity
+                    {
+                        Title = (string)listItem["Title"],
+                        Description = (string)listItem["Description"],
+                        FlagControlDisplayName = (string)listItem["Flag_x0020_Control_x0020_Display"],
+                        Language = (string)listItem["Language"],
+                        Locale = Convert.ToUInt32(listItem["Locale"]),
+                        HierarchyCreationMode = (string)listItem["Hierarchy_x0020_Creation_x0020_M"],
+                        IsSource = (bool)listItem["Is_x0020_Source"],
+                        IsCreated = (bool)listItem["Hierarchy_x0020_Is_x0020_Created"]
+                    };
                     variationLabels.Add(label);
                 }
             }

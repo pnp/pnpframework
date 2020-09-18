@@ -1099,9 +1099,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             }
 
-            Dictionary<string, object> tabToCreate = new Dictionary<string, object>();
-            tabToCreate.Add("displayName", displayname);
-            tabToCreate.Add("configuration", tab.Configuration != null
+            Dictionary<string, object> tabToCreate = new Dictionary<string, object>
+            {
+                { "displayName", displayname },
+                {
+                    "configuration",
+                    tab.Configuration != null
                                         ? new
                                         {
                                             tab.Configuration.EntityId,
@@ -1109,8 +1112,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                             tab.Configuration.RemoveUrl,
                                             tab.Configuration.WebsiteUrl
                                         }
-                                        : null);
-            tabToCreate.Add("teamsApp@odata.bind", "https://graph.microsoft.com/v1.0/appCatalogs/teamsApps/" + teamsAppId);
+                                        : null
+                },
+                { "teamsApp@odata.bind", "https://graph.microsoft.com/v1.0/appCatalogs/teamsApps/" + teamsAppId }
+            };
 
             var tabId = GraphHelper.CreateOrUpdateGraphObject(scope,
                 HttpMethodVerb.POST,

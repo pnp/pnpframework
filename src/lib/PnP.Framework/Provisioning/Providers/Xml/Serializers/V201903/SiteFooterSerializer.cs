@@ -21,8 +21,10 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 
             if (siteFooter != null)
             {
-                var expressions = new Dictionary<Expression<Func<SiteFooter, Object>>, IResolver>();
-                expressions.Add(f => f.FooterLinks, new SiteFooterLinkFromSchemaToModelTypeResolver());
+                var expressions = new Dictionary<Expression<Func<SiteFooter, Object>>, IResolver>
+                {
+                    { f => f.FooterLinks, new SiteFooterLinkFromSchemaToModelTypeResolver() }
+                };
 
                 template.Footer = new SiteFooter();
                 PnPObjectsMapper.MapProperties(siteFooter, template.Footer, expressions, true);
@@ -37,10 +39,13 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
                 var siteFooterType = Type.GetType(siteFooterTypeName, true);
                 var target = Activator.CreateInstance(siteFooterType, true);
 
-                var resolvers = new Dictionary<String, IResolver>();
-
-                resolvers.Add($"{siteFooterType}.FooterLinks",
-                    new SiteFooterLinkFromModelToSchemaTypeResolver());
+                var resolvers = new Dictionary<String, IResolver>
+                {
+                    {
+                        $"{siteFooterType}.FooterLinks",
+                        new SiteFooterLinkFromModelToSchemaTypeResolver()
+                    }
+                };
 
                 PnPObjectsMapper.MapProperties(template.Footer, target, resolvers, recursive: true);
 

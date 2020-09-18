@@ -319,11 +319,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         private Model.File GetComposedLookFile(string asset)
         {
             int index = asset.LastIndexOf("/");
-            Model.File file = new Model.File();
-            file.Src = FixFileName(asset.Substring(index + 1));
-            file.Folder = asset.Substring(0, index);
-            file.Overwrite = true;
-            file.Security = null;
+            Model.File file = new Model.File
+            {
+                Src = FixFileName(asset.Substring(index + 1)),
+                Folder = asset.Substring(0, index),
+                Overwrite = true,
+                Security = null
+            };
             return file;
         }
 

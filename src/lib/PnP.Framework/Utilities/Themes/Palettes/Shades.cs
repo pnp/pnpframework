@@ -21,18 +21,18 @@ namespace PnP.Framework.Utilities.Themes.Palettes
     public class Shades
     {
         // Luminance multiplier constants for generating shades of a given color
-        private static float[] WhiteShadeTableBG = new float[] { 0.027F, 0.043F, 0.082F, 0.145F, 0.184F, 0.216F, 0.349F, 0.537F }; // white bg
-        private static float[] BlackTintTableBG = new float[] { 0.537F, 0.45F, 0.349F, 0.216F, 0.184F, 0.145F, 0.082F, 0.043F }; // black bg
-        private static float[] WhiteShadeTable = new float[] { 0.537F, 0.349F, 0.216F, 0.184F, 0.145F, 0.082F, 0.043F, 0.027F }; // white fg
-        private static float[] BlackTintTable = new float[] { 0.537F, 0.45F, 0.349F, 0.216F, 0.184F, 0.145F, 0.082F, 0.043F }; // black fg
-        private static float[] LumTintTable = new float[] { 0.88F, 0.77F, 0.66F, 0.55F, 0.44F, 0.33F, 0.22F, 0.11F }; // light (strongen all)
-        private static float[] LumShadeTable = new float[] { 0.11F, 0.22F, 0.33F, 0.44F, 0.55F, 0.66F, 0.77F, 0.88F }; // dark (soften all)
-        private static float[] ColorTintTable = new float[] { 0.96F, 0.84F, 0.7F, 0.4F, 0.12F }; // default soften
-        private static float[] ColorShadeTable = new float[] { 0.1F, 0.24F, 0.44F }; // default strongen
+        private static readonly float[] WhiteShadeTableBG = new float[] { 0.027F, 0.043F, 0.082F, 0.145F, 0.184F, 0.216F, 0.349F, 0.537F }; // white bg
+        private static readonly float[] BlackTintTableBG = new float[] { 0.537F, 0.45F, 0.349F, 0.216F, 0.184F, 0.145F, 0.082F, 0.043F }; // black bg
+        private static readonly float[] WhiteShadeTable = new float[] { 0.537F, 0.349F, 0.216F, 0.184F, 0.145F, 0.082F, 0.043F, 0.027F }; // white fg
+        private static readonly float[] BlackTintTable = new float[] { 0.537F, 0.45F, 0.349F, 0.216F, 0.184F, 0.145F, 0.082F, 0.043F }; // black fg
+        private static readonly float[] LumTintTable = new float[] { 0.88F, 0.77F, 0.66F, 0.55F, 0.44F, 0.33F, 0.22F, 0.11F }; // light (strongen all)
+        private static readonly float[] LumShadeTable = new float[] { 0.11F, 0.22F, 0.33F, 0.44F, 0.55F, 0.66F, 0.77F, 0.88F }; // dark (soften all)
+        private static readonly float[] ColorTintTable = new float[] { 0.96F, 0.84F, 0.7F, 0.4F, 0.12F }; // default soften
+        private static readonly float[] ColorShadeTable = new float[] { 0.1F, 0.24F, 0.44F }; // default strongen
 
         // If the given shade's luminance is below/above these values, we'll swap to using the White/Black tables above
-        private static float LowLuminanceThreshold = 0.2F;
-        private static float HighLuminanceThreshold = 0.8F;
+        private static readonly float LowLuminanceThreshold = 0.2F;
+        private static readonly float HighLuminanceThreshold = 0.8F;
 
         public static Boolean IsValidShade(Shade shade)
         {

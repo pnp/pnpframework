@@ -235,13 +235,17 @@ namespace PnP.Framework.Sites
                 {
                     string requestUrl = string.Format("{0}/_api/GroupSiteManager/CreateGroupEx", clientContext.Web.Url);
 
-                    Dictionary<string, object> payload = new Dictionary<string, object>();
-                    payload.Add("displayName", siteCollectionCreationInformation.DisplayName);
-                    payload.Add("alias", siteCollectionCreationInformation.Alias);
-                    payload.Add("isPublic", siteCollectionCreationInformation.IsPublic);
+                    Dictionary<string, object> payload = new Dictionary<string, object>
+                    {
+                        { "displayName", siteCollectionCreationInformation.DisplayName },
+                        { "alias", siteCollectionCreationInformation.Alias },
+                        { "isPublic", siteCollectionCreationInformation.IsPublic }
+                    };
 
-                    var optionalParams = new Dictionary<string, object>();
-                    optionalParams.Add("Description", siteCollectionCreationInformation.Description ?? "");
+                    var optionalParams = new Dictionary<string, object>
+                    {
+                        { "Description", siteCollectionCreationInformation.Description ?? "" }
+                    };
 
                     if (sensitivityLabelExists && sensitivityLabelId != Guid.Empty)
                     {
@@ -277,8 +281,10 @@ namespace PnP.Framework.Sites
                     var requestBody = new StringContent(jsonBody);
 
                     // Build Http request
-                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
-                    request.Content = requestBody;
+                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl)
+                    {
+                        Content = requestBody
+                    };
                     request.Headers.Add("accept", "application/json;odata.metadata=none");
                     request.Headers.Add("odata-version", "4.0");
                     if (MediaTypeHeaderValue.TryParse("application/json;odata.metadata=none;charset=utf-8", out MediaTypeHeaderValue sharePointJsonMediaType))
@@ -484,8 +490,10 @@ namespace PnP.Framework.Sites
                     var requestBody = new StringContent(jsonBody);
 
                     // Build Http request
-                    HttpRequestMessage request = new HttpRequestMessage(new HttpMethod("PATCH"), requestUrl);
-                    request.Content = requestBody;
+                    HttpRequestMessage request = new HttpRequestMessage(new HttpMethod("PATCH"), requestUrl)
+                    {
+                        Content = requestBody
+                    };
                     if (MediaTypeHeaderValue.TryParse("application/json", out MediaTypeHeaderValue jsonMediaType))
                     {
                         requestBody.Headers.ContentType = jsonMediaType;
@@ -564,8 +572,10 @@ namespace PnP.Framework.Sites
                     var requestBody = new StringContent(jsonBody);
 
                     // Build Http request
-                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
-                    request.Content = requestBody;
+                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl)
+                    {
+                        Content = requestBody
+                    };
                     request.Headers.Add("accept", "application/json;odata.metadata=none");
                     request.Headers.Add("odata-version", "4.0");
                     if (MediaTypeHeaderValue.TryParse("application/json;odata.metadata=none;charset=utf-8", out MediaTypeHeaderValue sharePointJsonMediaType))
@@ -749,7 +759,7 @@ namespace PnP.Framework.Sites
                         return;
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     // Catch this...sometimes there's that "sharepoint push feature has not been ..." error
                 }
@@ -881,14 +891,18 @@ namespace PnP.Framework.Sites
                 {
                     string requestUrl = string.Format("{0}/_api/GroupSiteManager/CreateGroupForSite", clientContext.Web.Url);
 
-                    Dictionary<string, object> payload = new Dictionary<string, object>();
-                    payload.Add("displayName", siteCollectionGroupifyInformation.DisplayName);
-                    payload.Add("alias", siteCollectionGroupifyInformation.Alias);
-                    payload.Add("isPublic", siteCollectionGroupifyInformation.IsPublic);
+                    Dictionary<string, object> payload = new Dictionary<string, object>
+                    {
+                        { "displayName", siteCollectionGroupifyInformation.DisplayName },
+                        { "alias", siteCollectionGroupifyInformation.Alias },
+                        { "isPublic", siteCollectionGroupifyInformation.IsPublic }
+                    };
 
-                    var optionalParams = new Dictionary<string, object>();
-                    optionalParams.Add("Description", siteCollectionGroupifyInformation.Description ?? "");
-                    optionalParams.Add("Classification", siteCollectionGroupifyInformation.Classification ?? "");
+                    var optionalParams = new Dictionary<string, object>
+                    {
+                        { "Description", siteCollectionGroupifyInformation.Description ?? "" },
+                        { "Classification", siteCollectionGroupifyInformation.Classification ?? "" }
+                    };
                     // Handle groupify options
                     var creationOptionsValues = new List<string>();
                     if (siteCollectionGroupifyInformation.KeepOldHomePage)
@@ -911,8 +925,10 @@ namespace PnP.Framework.Sites
                     var requestBody = new StringContent(jsonBody);
 
                     // Build Http request
-                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
-                    request.Content = requestBody;
+                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl)
+                    {
+                        Content = requestBody
+                    };
                     request.Headers.Add("accept", "application/json;odata.metadata=none");
                     request.Headers.Add("odata-version", "4.0");
                     if (MediaTypeHeaderValue.TryParse("application/json;odata.metadata=none;charset=utf-8", out MediaTypeHeaderValue sharePointJsonMediaType))

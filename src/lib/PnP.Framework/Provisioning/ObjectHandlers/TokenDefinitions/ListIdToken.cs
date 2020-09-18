@@ -13,7 +13,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
     internal class ListIdToken : VolatileTokenDefinition
     {
         private string _listId = null;
-        private string _name = null;
+        private readonly string _name = null;
         public ListIdToken(Web web, string name, Guid listid)
             : base(web, $"{{listid:{Regex.Escape(name)}}}")
         {

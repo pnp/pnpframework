@@ -50,8 +50,8 @@ namespace PnP.Framework
         private AutoResetEvent appOnlyAccessTokenResetEvent = null;
         private string azureADCredentialsToken;
         private AutoResetEvent azureADCredentialsResetEvent = null;
-        private object tokenLock = new object();
-        private CookieContainer fedAuth = null;
+        private readonly object tokenLock = new object();
+        private readonly CookieContainer fedAuth = null;
         private string _contextUrl;
         private TokenCache _tokenCache;
         private string _commonAuthority = "https://login.windows.net/Common";
@@ -370,8 +370,10 @@ namespace PnP.Framework
             var spUri = new Uri(siteUrl);
             string resourceUri = spUri.Scheme + "://" + spUri.Authority;
 
-            var clientContext = new ClientContext(siteUrl);
-            clientContext.DisableReturnValueCache = true;
+            var clientContext = new ClientContext(siteUrl)
+            {
+                DisableReturnValueCache = true
+            };
             clientContext.ExecutingWebRequest += (sender, args) =>
             {
                 EnsureAzureADCredentialsToken(resourceUri, userPrincipalName, userPassword, environment, clientId);
@@ -542,8 +544,10 @@ namespace PnP.Framework
         /// <returns>Client context object</returns>
         public ClientContext GetAzureADWebApplicationAuthenticatedContext(String siteUrl, Func<String, String> accessTokenGetter)
         {
-            var clientContext = new ClientContext(siteUrl);
-            clientContext.DisableReturnValueCache = true;
+            var clientContext = new ClientContext(siteUrl)
+            {
+                DisableReturnValueCache = true
+            };
             clientContext.ExecutingWebRequest += (sender, args) =>
             {
                 Uri resourceUri = new Uri(siteUrl);
@@ -564,8 +568,10 @@ namespace PnP.Framework
         /// <returns>Client context object</returns>
         public ClientContext GetAzureADAccessTokenAuthenticatedContext(String siteUrl, String accessToken)
         {
-            var clientContext = new ClientContext(siteUrl);
-            clientContext.DisableReturnValueCache = true;
+            var clientContext = new ClientContext(siteUrl)
+            {
+                DisableReturnValueCache = true
+            };
 
             clientContext.ExecutingWebRequest += (sender, args) =>
             {
@@ -716,8 +722,10 @@ namespace PnP.Framework
             LoggerCallbackHandler.UseDefaultLogging = false;
 
 
-            var clientContext = new ClientContext(siteUrl);
-            clientContext.DisableReturnValueCache = true;
+            var clientContext = new ClientContext(siteUrl)
+            {
+                DisableReturnValueCache = true
+            };
 
             string authority = string.Format(CultureInfo.InvariantCulture, "{0}/{1}/", GetAzureADLoginEndPoint(environment), tenant);
 
@@ -762,8 +770,10 @@ namespace PnP.Framework
         /// <returns></returns>
         public ClientContext GetAzureADAppOnlyAuthenticatedContext(string siteUrl, string clientId, string tenant, IClientAssertionCertificate clientAssertionCertificate, AzureEnvironment environment = AzureEnvironment.Production)
         {
-            var clientContext = new ClientContext(siteUrl);
-            clientContext.DisableReturnValueCache = true;
+            var clientContext = new ClientContext(siteUrl)
+            {
+                DisableReturnValueCache = true
+            };
 
             string authority = string.Format(CultureInfo.InvariantCulture, "{0}/{1}/", GetAzureADLoginEndPoint(environment), tenant);
 

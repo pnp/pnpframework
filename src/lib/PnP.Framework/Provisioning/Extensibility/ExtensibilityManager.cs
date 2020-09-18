@@ -13,7 +13,7 @@ namespace PnP.Framework.Provisioning.Extensibility
     /// </summary>
     public partial class ExtensibilityManager
     {
-        private Dictionary<ExtensibilityHandler, Object> handlerCache = new Dictionary<ExtensibilityHandler, Object>();
+        private readonly Dictionary<ExtensibilityHandler, Object> handlerCache = new Dictionary<ExtensibilityHandler, Object>();
 
         /// <summary>
         /// Method to Invoke Custom Provisioning Token Providers which implement the IProvisioningExtensibilityTokenProvider interface.

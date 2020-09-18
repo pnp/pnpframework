@@ -53,8 +53,10 @@ namespace PnP.Framework.Graph
 
             try
             {
-                Invitation invite = new Invitation();
-                invite.InvitedUserEmailAddress = guestUserEmail;
+                Invitation invite = new Invitation
+                {
+                    InvitedUserEmailAddress = guestUserEmail
+                };
                 if (!string.IsNullOrWhiteSpace(guestUserDisplayName))
                 {
                     invite.InvitedUserDisplayName = guestUserDisplayName;
@@ -65,8 +67,10 @@ namespace PnP.Framework.Graph
                 // Form the invite email message body
                 if (!string.IsNullOrWhiteSpace(customizedMessage))
                 {
-                    InvitedUserMessageInfo inviteMsgInfo = new InvitedUserMessageInfo();
-                    inviteMsgInfo.CustomizedMessageBody = customizedMessage;
+                    InvitedUserMessageInfo inviteMsgInfo = new InvitedUserMessageInfo
+                    {
+                        CustomizedMessageBody = customizedMessage
+                    };
                     invite.InvitedUserMessageInfo = inviteMsgInfo;
                 }
 

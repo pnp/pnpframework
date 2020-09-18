@@ -24,11 +24,12 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
             if (workflows != null)
             {
                 template.Workflows = new Workflows();
-                var expressions = new Dictionary<Expression<Func<Workflows, Object>>, IResolver>();
-
-                expressions.Add(w => w.WorkflowDefinitions[0].Id, new FromStringToGuidValueResolver());
-                expressions.Add(w => w.WorkflowDefinitions[0].FormField, new ExpressionValueResolver((s, v) => v != null ? ((XmlElement)v).OuterXml : null));
-                expressions.Add(w => w.WorkflowSubscriptions[0].DefinitionId, new FromStringToGuidValueResolver());
+                var expressions = new Dictionary<Expression<Func<Workflows, Object>>, IResolver>
+                {
+                    { w => w.WorkflowDefinitions[0].Id, new FromStringToGuidValueResolver() },
+                    { w => w.WorkflowDefinitions[0].FormField, new ExpressionValueResolver((s, v) => v != null ? ((XmlElement)v).OuterXml : null) },
+                    { w => w.WorkflowSubscriptions[0].DefinitionId, new FromStringToGuidValueResolver() }
+                };
                 var dictionaryItemType = Type.GetType($"{PnPSerializationScope.Current?.BaseSchemaNamespace}.StringDictionaryItem, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}", true);
                 var dictionaryItemKeySelector = CreateSelectorLambda(dictionaryItemType, "Key");
                 var dictionaryItemValueSelector = CreateSelectorLambda(dictionaryItemType, "Value");
@@ -58,13 +59,15 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
                 //WorkflowsWorkflowDefinitionRestrictToType.List, wd.RestrictToType
                 var target = Activator.CreateInstance(workflowsType, true);
 
-                var expressions = new Dictionary<string, IResolver>();
-                expressions.Add($"{workflowDefinitionType}.FormField", new ExpressionValueResolver<string>((v) => v?.ToXmlElement()));
-                expressions.Add($"{workflowDefinitionType}.PublishedSpecified", new ExpressionValueResolver<WorkflowDefinition>((s, v) => s.Published));
-                expressions.Add($"{workflowDefinitionType}.RequiresAssociationFormSpecified", new ExpressionValueResolver<WorkflowDefinition>((s, v) => s.RequiresAssociationForm));
-                expressions.Add($"{workflowDefinitionType}.RequiresInitiationFormSpecified", new ExpressionValueResolver<WorkflowDefinition>((s, v) => s.RequiresInitiationForm));
-                expressions.Add($"{workflowDefinitionType}.RestrictToType", new FromStringToEnumValueResolver(restrictToType));
-                expressions.Add($"{workflowDefinitionType}.RestrictToTypeSpecified", new ExpressionValueResolver<WorkflowDefinition>((s, v) => !string.IsNullOrEmpty(s.RestrictToType)));
+                var expressions = new Dictionary<string, IResolver>
+                {
+                    { $"{workflowDefinitionType}.FormField", new ExpressionValueResolver<string>((v) => v?.ToXmlElement()) },
+                    { $"{workflowDefinitionType}.PublishedSpecified", new ExpressionValueResolver<WorkflowDefinition>((s, v) => s.Published) },
+                    { $"{workflowDefinitionType}.RequiresAssociationFormSpecified", new ExpressionValueResolver<WorkflowDefinition>((s, v) => s.RequiresAssociationForm) },
+                    { $"{workflowDefinitionType}.RequiresInitiationFormSpecified", new ExpressionValueResolver<WorkflowDefinition>((s, v) => s.RequiresInitiationForm) },
+                    { $"{workflowDefinitionType}.RestrictToType", new FromStringToEnumValueResolver(restrictToType) },
+                    { $"{workflowDefinitionType}.RestrictToTypeSpecified", new ExpressionValueResolver<WorkflowDefinition>((s, v) => !string.IsNullOrEmpty(s.RestrictToType)) }
+                };
                 var dictionaryItemType = Type.GetType($"{PnPSerializationScope.Current?.BaseSchemaNamespace}.StringDictionaryItem, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}", true);
                 var dictionaryItemKeySelector = CreateSelectorLambda(dictionaryItemType, "Key");
                 var dictionaryItemValueSelector = CreateSelectorLambda(dictionaryItemType, "Value");

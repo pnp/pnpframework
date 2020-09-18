@@ -784,7 +784,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                 var siteClassificationSettings = tenant.GetSiteClassificationsSettings(accessToken);
                                 siteClassificationSettingsExists = true;
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
                                 // Tenant classification doesn't exist, just swallow the exception.
                             }

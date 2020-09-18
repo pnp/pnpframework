@@ -38,8 +38,10 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 
                 if (addInType != null && addinSourceType != null)
                 {
-                    var expressions = new Dictionary<string, IResolver>();
-                    expressions.Add($"{addInType}.Source", new FromStringToEnumValueResolver(addinSourceType));
+                    var expressions = new Dictionary<string, IResolver>
+                    {
+                        { $"{addInType}.Source", new FromStringToEnumValueResolver(addinSourceType) }
+                    };
 
                     persistence.GetPublicInstanceProperty("Addins").SetValue(
                         persistence,

@@ -36,7 +36,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                     modelGroupName == siteCollectionTermGroupNameToken.GetReplaceValue() ||
                     modelTermGroup.SiteCollectionTermGroup)
                 {
-                    var site = (context as ClientContext).Site;
+                    var site = context.Site;
                     group = termStore.GetSiteCollectionGroup(site, true);
                     context.Load(group, g => g.Name, g => g.Id, g => g.TermSets.Include(
                         tset => tset.Name,

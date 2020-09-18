@@ -9,7 +9,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
     {
         public string Name => this.GetType().Name;
 
-        private Type _targetItemType;
+        private readonly Type _targetItemType;
 
         public FromStringToEnumValueResolver(Type targetItemType)
         {

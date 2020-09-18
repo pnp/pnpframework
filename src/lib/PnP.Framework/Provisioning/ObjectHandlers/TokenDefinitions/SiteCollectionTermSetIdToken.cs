@@ -12,7 +12,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
         Returns = "9188a794-cfcf-48b6-9ac5-df2048e8aa5d")]
     internal class SiteCollectionTermSetIdToken : TokenDefinition
     {
-        private string _value;
+        private readonly string _value;
 
         public SiteCollectionTermSetIdToken(Web web, string termsetName, Guid id)
             : base(web, $"{{sitecollectiontermsetid:{Regex.Escape(termsetName)}}}")

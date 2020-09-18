@@ -1393,7 +1393,7 @@ namespace Microsoft.SharePoint.Client
         {
             var tenantSettings = TenantSettings.GetCurrent(web.Context);
             tenantSettings.EnsureProperties(s => s.CorporateCatalogUrl);
-            if(!string.IsNullOrEmpty(tenantSettings.CorporateCatalogUrl))
+            if (!string.IsNullOrEmpty(tenantSettings.CorporateCatalogUrl))
             {
                 return new Uri(tenantSettings.CorporateCatalogUrl);
             }
@@ -1502,7 +1502,7 @@ namespace Microsoft.SharePoint.Client
                 return sppkgFile.ListItemAllFields;
             }
         }
-    #endregion
+        #endregion
 
     }
 }

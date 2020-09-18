@@ -1,13 +1,13 @@
-﻿using PnP.Framework;
+﻿using Microsoft.SharePoint.Client.DocumentSet;
+using Microsoft.SharePoint.Client.Taxonomy;
+using PnP.Framework;
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml.Linq;
-using Microsoft.SharePoint.Client.DocumentSet;
-using Microsoft.SharePoint.Client.Taxonomy;
 using System.Linq.Expressions;
+using System.Xml.Linq;
 
 namespace Microsoft.SharePoint.Client
 {
@@ -54,7 +54,7 @@ namespace Microsoft.SharePoint.Client
 
             XElement fieldElement = XElement.Parse(schemaXml);
             XAttribute allowDeletion = fieldElement.Attribute("AllowDeletion");
-            
+
             if (allowDeletion == null)
             {
                 return null;
@@ -637,7 +637,7 @@ namespace Microsoft.SharePoint.Client
                 }
             }
 
-            string newFieldCAML = null; 
+            string newFieldCAML = null;
 
             if (additionalChildNodesList.Count > 0)
             {
@@ -1059,9 +1059,9 @@ namespace Microsoft.SharePoint.Client
             bool showInDisplayForm = true,
             bool readOnly = false)
         {
-            AddFieldById(contentType, Guid.Parse(fieldId), 
-                required, 
-                hidden, 
+            AddFieldById(contentType, Guid.Parse(fieldId),
+                required,
+                hidden,
                 updateChildren,
                 showInDisplayForm,
                 readOnly);
@@ -1077,9 +1077,9 @@ namespace Microsoft.SharePoint.Client
         /// <param name="updateChildren">True to update content types that inherit from the content type; otherwise, false.</param>
         /// <param name="showInDisplayForm">Optionally show this field in the display form.</param>
         /// <param name="readOnly">Optionally make this a read only field.</param>
-        public static void AddFieldById(this ContentType contentType, Guid fieldId, 
-            bool required = false, 
-            bool hidden = false, 
+        public static void AddFieldById(this ContentType contentType, Guid fieldId,
+            bool required = false,
+            bool hidden = false,
             bool updateChildren = true,
             bool showInDisplayForm = true,
             bool readOnly = false)
@@ -1222,10 +1222,10 @@ namespace Microsoft.SharePoint.Client
 
             // Ensure other content-type properties
             contentType.EnsureProperties(
-                c => c.Id, 
-                c => c.SchemaXml, 
+                c => c.Id,
+                c => c.SchemaXml,
                 c => c.FieldLinks.Include(
-                    fl => fl.Id, 
+                    fl => fl.Id,
                     fl => fl.Required,
                     fl => fl.Hidden,
                     fl => fl.ShowInDisplayForm,
@@ -1254,7 +1254,7 @@ namespace Microsoft.SharePoint.Client
 
             //update field link required and hidden properties
             flink.EnsureProperties(
-                f => f.Required, 
+                f => f.Required,
                 f => f.Hidden,
                 f => f.ShowInDisplayForm,
                 f => f.ReadOnly);

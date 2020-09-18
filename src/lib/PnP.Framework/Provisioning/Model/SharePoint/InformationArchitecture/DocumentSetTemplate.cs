@@ -1,10 +1,8 @@
-﻿using System;
+﻿using PnP.Framework.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Model
 {
@@ -40,7 +38,7 @@ namespace PnP.Framework.Provisioning.Model
         /// <param name="defaultDocuments">Default documents for the DocumentSet</param>
         /// <param name="sharedFields">Shared Fields for the DocumentSet</param>
         /// <param name="welcomePageFields">Welcome Page Fields for the DocumentSet</param>
-        public DocumentSetTemplate(String welcomePage, IEnumerable<String> allowedContentTypes = null, IEnumerable<DefaultDocument> defaultDocuments = null, IEnumerable<Guid> sharedFields = null, IEnumerable<Guid> welcomePageFields = null) : 
+        public DocumentSetTemplate(String welcomePage, IEnumerable<String> allowedContentTypes = null, IEnumerable<DefaultDocument> defaultDocuments = null, IEnumerable<Guid> sharedFields = null, IEnumerable<Guid> welcomePageFields = null) :
             this()
         {
             if (!String.IsNullOrEmpty(welcomePage))

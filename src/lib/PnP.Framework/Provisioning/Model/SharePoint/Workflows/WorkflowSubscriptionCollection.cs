@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PnP.Framework.Provisioning.Model
+﻿namespace PnP.Framework.Provisioning.Model
 {
     /// <summary>
     /// Defines a collection of objects of type WorkflowSubscription
@@ -15,7 +9,7 @@ namespace PnP.Framework.Provisioning.Model
         /// Constructor for WorkflowSubscriptionCollection class
         /// </summary>
         /// <param name="parentTemplate">Parent provisioning template</param>
-        public WorkflowSubscriptionCollection(ProvisioningTemplate parentTemplate):
+        public WorkflowSubscriptionCollection(ProvisioningTemplate parentTemplate) :
             base(parentTemplate)
         {
 

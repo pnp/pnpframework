@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PnP.Framework.Provisioning.Model
+﻿namespace PnP.Framework.Provisioning.Model
 {
     /// <summary>
     /// Collection of Provider objects
@@ -17,7 +11,7 @@ namespace PnP.Framework.Provisioning.Model
         /// <param name="parentTemplate">Parent provisioning template</param>
         public ProviderCollection(ProvisioningTemplate parentTemplate) : base(parentTemplate)
         {
-            
+
         }
     }
 }

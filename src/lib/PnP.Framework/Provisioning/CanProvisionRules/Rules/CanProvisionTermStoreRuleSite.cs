@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Online.SharePoint.TenantAdministration;
-using Microsoft.SharePoint.Client;
+﻿using Microsoft.SharePoint.Client;
 using Microsoft.SharePoint.Client.Taxonomy;
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
-using PnP.Framework.Provisioning.ObjectHandlers.Utilities;
+using System;
+using System.Linq;
 
 namespace PnP.Framework.Provisioning.CanProvisionRules.Rules
 {

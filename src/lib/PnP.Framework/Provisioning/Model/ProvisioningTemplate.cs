@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using PnP.Framework.Extensions;
+﻿using PnP.Framework.Extensions;
 using PnP.Framework.Provisioning.Connectors;
 using PnP.Framework.Provisioning.Providers;
 using PnP.Framework.Provisioning.Providers.Xml;
-using System.IO;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Linq;
 
 namespace PnP.Framework.Provisioning.Model
@@ -136,7 +135,8 @@ namespace PnP.Framework.Provisioning.Model
                     return _parameters;
                 }
             }
-            private set {
+            private set
+            {
                 if (this.ParentHierarchy != null)
                 {
                     this.ParentHierarchy.Parameters = value;
@@ -185,7 +185,8 @@ namespace PnP.Framework.Provisioning.Model
         /// <summary>
         /// Gets or sets the Version of the Provisioning Template
         /// </summary>
-        public double Version {
+        public double Version
+        {
             get
             {
                 if (this.ParentHierarchy != null)

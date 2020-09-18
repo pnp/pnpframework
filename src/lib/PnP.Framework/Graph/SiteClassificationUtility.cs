@@ -191,7 +191,7 @@ namespace PnP.Framework.Graph
             {
                 throw new ArgumentException("Specify a valid accesstoken", nameof(accessToken));
             }
-            if(siteClassificationsSettings == null)
+            if (siteClassificationsSettings == null)
             {
                 throw new ArgumentException("Specify a valid Site Classification Settings object", nameof(siteClassificationsSettings));
             }

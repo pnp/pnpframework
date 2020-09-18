@@ -1,18 +1,18 @@
-﻿using System;
+﻿using Microsoft.Online.SharePoint.TenantAdministration;
+using Microsoft.SharePoint.Client;
+using Newtonsoft.Json;
+using PnP.Framework.Diagnostics;
+using PnP.Framework.TimerJobs.Enums;
+using PnP.Framework.TimerJobs.Utilities;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net;
 using System.Reflection;
 using System.Security;
-using System.Threading;
-using Microsoft.Online.SharePoint.TenantAdministration;
-using Microsoft.SharePoint.Client;
-using PnP.Framework.TimerJobs.Enums;
-using PnP.Framework.TimerJobs.Utilities;
-using PnP.Framework.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
-using System.Globalization;
-using Newtonsoft.Json;
+using System.Threading;
 
 namespace PnP.Framework.TimerJobs
 {
@@ -1413,30 +1413,30 @@ namespace PnP.Framework.TimerJobs
         /// <returns>The created ClientContext object. Returns null if no ClientContext was created</returns>
         protected ClientContext CreateClientContext(string site)
         {
-                if (AuthenticationType == AuthenticationType.Office365)
+            if (AuthenticationType == AuthenticationType.Office365)
+            {
+                //return GetAuthenticationManager(site).GetSharePointOnlineAuthenticatedContextTenant(site, username, password);
+                return GetAuthenticationManager(site).GetAzureADCredentialsContext(site, username, password, this.azureEnvironment);
+            }
+            else if (AuthenticationType == AuthenticationType.AppOnly)
+            {
+                return GetAuthenticationManager(site).GetAppOnlyAuthenticatedContext(site, this.realm, this.clientId, this.clientSecret);
+            }
+            else if (AuthenticationType == AuthenticationType.AzureADAppOnly)
+            {
+                if (this.certificate != null)
                 {
-                    //return GetAuthenticationManager(site).GetSharePointOnlineAuthenticatedContextTenant(site, username, password);
-                    return GetAuthenticationManager(site).GetAzureADCredentialsContext(site, username, password, this.azureEnvironment);
+                    return GetAuthenticationManager(site).GetAzureADAppOnlyAuthenticatedContext(site, this.clientId, this.azureTenant, this.certificate, this.azureEnvironment);
                 }
-                else if (AuthenticationType == AuthenticationType.AppOnly)
+                else
                 {
-                    return GetAuthenticationManager(site).GetAppOnlyAuthenticatedContext(site, this.realm, this.clientId, this.clientSecret);
+                    return GetAuthenticationManager(site).GetAzureADAppOnlyAuthenticatedContext(site, this.clientId, this.azureTenant, this.certificatePath, this.certificatePassword, this.azureEnvironment);
                 }
-                else if (AuthenticationType == AuthenticationType.AzureADAppOnly)
-                {
-                    if (this.certificate != null)
-                    {
-                        return GetAuthenticationManager(site).GetAzureADAppOnlyAuthenticatedContext(site, this.clientId, this.azureTenant, this.certificate, this.azureEnvironment);
-                    }
-                    else
-                    {
-                        return GetAuthenticationManager(site).GetAzureADAppOnlyAuthenticatedContext(site, this.clientId, this.azureTenant, this.certificatePath, this.certificatePassword, this.azureEnvironment);
-                    }
-                }
-                else if (AuthenticationType == AuthenticationType.AccessToken)
-                {
-                    return GetAuthenticationManager(site).GetAzureADAccessTokenAuthenticatedContext(site, this.accessToken);
-                }
+            }
+            else if (AuthenticationType == AuthenticationType.AccessToken)
+            {
+                return GetAuthenticationManager(site).GetAzureADAccessTokenAuthenticatedContext(site, this.accessToken);
+            }
 
             return null;
         }
@@ -1507,9 +1507,9 @@ namespace PnP.Framework.TimerJobs
                 yield return currentUrl;
             }
         }
-#endregion
+        #endregion
 
-#region Helper methods
+        #region Helper methods
         /// <summary>
         /// Verifies if the passed Url has a valid structure
         /// </summary>
@@ -1693,6 +1693,6 @@ namespace PnP.Framework.TimerJobs
                 return false;
             }
         }
-#endregion
+        #endregion
     }
 }

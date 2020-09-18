@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.SharePoint.Client;
+﻿using Microsoft.SharePoint.Client;
 using PnP.Framework.Pages;
+using System;
+using System.Collections.Generic;
 
 namespace PnP.Framework.Utilities.CanvasControl.Processors
 {

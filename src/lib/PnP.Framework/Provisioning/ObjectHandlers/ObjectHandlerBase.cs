@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Web;
 using System.Xml.Linq;
 using System.Xml.XPath;
 
@@ -27,7 +26,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         }
 
         public ProvisioningMessagesDelegate MessagesDelegate { get; set; }
-        
+
         public abstract bool WillProvision(Web web, ProvisioningTemplate template, ProvisioningTemplateApplyingInformation applyingInformation);
 
         public abstract bool WillExtract(Web web, ProvisioningTemplate template, ProvisioningTemplateCreationInformation creationInfo);
@@ -46,7 +45,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         internal void WriteSubProgress(string title, string message, int step, int total)
         {
-            if(MessagesDelegate != null)
+            if (MessagesDelegate != null)
             {
                 MessagesDelegate($"{title}|{message}|{step}|{total}", ProvisioningMessageType.Progress);
             }

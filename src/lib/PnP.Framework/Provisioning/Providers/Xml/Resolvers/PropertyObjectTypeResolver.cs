@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using PnP.Framework.Extensions;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
 {
@@ -15,7 +11,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
     /// <typeparam name="T"></typeparam>
     internal class PropertyObjectTypeResolver<T> : PropertyObjectTypeResolver
     {
-        public PropertyObjectTypeResolver(Expression<Func<T, object>> exp, Func<object, object> sourceValueSelector = null, ITypeResolver resolver = null) : 
+        public PropertyObjectTypeResolver(Expression<Func<T, object>> exp, Func<object, object> sourceValueSelector = null, ITypeResolver resolver = null) :
             base(GetPropertyType(exp), GetPropertyName(exp), sourceValueSelector, resolver)
         {
         }

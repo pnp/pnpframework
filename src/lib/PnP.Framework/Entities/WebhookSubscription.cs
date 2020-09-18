@@ -33,6 +33,6 @@ namespace PnP.Framework.Entities
         /// </summary>
         [JsonProperty(PropertyName = "resource", NullValueHandling = NullValueHandling.Ignore)]
         public string Resource { get; set; }
-        
+
     }
 }

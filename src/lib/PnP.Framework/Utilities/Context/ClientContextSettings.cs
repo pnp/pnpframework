@@ -15,7 +15,7 @@ namespace PnP.Framework.Utilities.Context
         // User name + password flows
         internal string UserName { get; set; }
         internal string Password { get; set; }
-        
+
         // App Only flows
         internal string ClientId { get; set; }
         internal string ClientSecret { get; set; }
@@ -34,7 +34,7 @@ namespace PnP.Framework.Utilities.Context
         internal bool UsesDifferentAudience(string newSiteUrl)
         {
             Uri newAudience = new Uri(newSiteUrl);
-            Uri currentAudience = new Uri(this.SiteUrl); 
+            Uri currentAudience = new Uri(this.SiteUrl);
 
             if (newAudience.Host != currentAudience.Host)
             {

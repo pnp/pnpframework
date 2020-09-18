@@ -1,8 +1,8 @@
-﻿using System;
+﻿using PnP.Framework.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using PnP.Framework.Entities;
 
 namespace Microsoft.SharePoint.Client
 {

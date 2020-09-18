@@ -1,5 +1,4 @@
 ﻿using Microsoft.SharePoint.Client;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +22,7 @@ namespace PnP.Framework.Utilities
             if (context.Credentials == null)
             {
                 var cookieString = CookieReader.GetCookie(context.Web.Url)?.Replace("; ", ",")?.Replace(";", ",");
-                if(cookieString == null)
+                if (cookieString == null)
                 {
                     return;
                 }
@@ -103,7 +102,7 @@ namespace PnP.Framework.Utilities
                             {
 
                                 returnObject = responseString;
-                        
+
                             }
                             catch { }
                         }

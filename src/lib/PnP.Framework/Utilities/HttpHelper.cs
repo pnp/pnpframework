@@ -1,6 +1,5 @@
 ﻿using Microsoft.SharePoint.Client;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using PnP.Framework.Provisioning.ObjectHandlers.Utilities;
 using System;
 using System.Collections.Generic;
@@ -9,8 +8,6 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Web;
 
 namespace PnP.Framework.Utilities
 {
@@ -407,8 +404,8 @@ namespace PnP.Framework.Utilities
             string userAgent = null,
             ClientContext spContext = null)
         {
-            MakeHttpRequest<string>("DELETE", 
-                requestUrl, 
+            MakeHttpRequest<string>("DELETE",
+                requestUrl,
                 accessToken,
                 requestHeaders: requestHeaders,
                 cookies: cookies,
@@ -505,8 +502,8 @@ namespace PnP.Framework.Utilities
             Func<HttpResponseMessage, TResult> resultPredicate = null,
             Dictionary<string, string> requestHeaders = null,
             Dictionary<string, string> cookies = null,
-            int retryCount = 1, 
-            int delay = 500, 
+            int retryCount = 1,
+            int delay = 500,
             string userAgent = null,
             ClientContext spContext = null)
         {

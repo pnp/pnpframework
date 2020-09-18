@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.Model
 {
@@ -40,7 +36,7 @@ namespace PnP.Framework.Provisioning.Model
         /// Defines whether to hide the create a Microsoft Team option in the UI of the Team Site
         /// </summary>
         public bool HideTeamify { get; set; }
-        
+
         /// <summary>
         /// Language of the target Site
         /// </summary>

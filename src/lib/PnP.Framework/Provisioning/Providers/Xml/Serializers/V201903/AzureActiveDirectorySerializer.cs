@@ -1,15 +1,12 @@
-﻿using PnP.Framework.Provisioning.Model;
+﻿using PnP.Framework.Extensions;
+using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Model.AzureActiveDirectory;
 using PnP.Framework.Provisioning.Providers.Xml.Resolvers;
 using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Security;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 {
@@ -38,7 +35,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 
                 // Manage licenses for users
                 expressions.Add(a => a.Users[0].Licenses[0].DisabledPlans,
-                    new ExpressionValueResolver((s, p) =>  s.GetPublicInstancePropertyValue("DisabledPlans")));
+                    new ExpressionValueResolver((s, p) => s.GetPublicInstancePropertyValue("DisabledPlans")));
 
                 PnPObjectsMapper.MapProperties(aad, template.ParentHierarchy.AzureActiveDirectory, expressions, recursive: true);
             }

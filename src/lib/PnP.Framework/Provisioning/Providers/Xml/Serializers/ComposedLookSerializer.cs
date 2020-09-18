@@ -1,10 +1,8 @@
-﻿using Microsoft.SharePoint.Client;
+﻿using PnP.Framework.Extensions;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Providers.Xml.Resolvers;
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 {
@@ -27,7 +25,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 
         public override void Serialize(ProvisioningTemplate template, object persistence)
         {
-            if ((template.ComposedLook != null)&&(
+            if ((template.ComposedLook != null) && (
                 template.ComposedLook.BackgroundFile != null ||
                 template.ComposedLook.ColorFile != null ||
                 template.ComposedLook.FontFile != null ||

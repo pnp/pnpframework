@@ -1,11 +1,10 @@
-﻿using System;
-using System.Linq;
-using PnP.Framework;
+﻿using PnP.Framework;
 using PnP.Framework.Diagnostics;
-using System.Threading.Tasks;
-using System.Threading;
 using PnP.Framework.Utilities;
 using PnP.Framework.Utilities.Async;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Microsoft.SharePoint.Client
 {
@@ -135,7 +134,7 @@ namespace Microsoft.SharePoint.Client
         /// <param name="site">Site to operate against</param>
         /// <param name="featureID">ID of the feature to check</param>
         /// <returns>True if active, false otherwise</returns>
-        public static async  Task<bool> IsFeatureActiveAsync(this Site site, Guid featureID)
+        public static async Task<bool> IsFeatureActiveAsync(this Site site, Guid featureID)
         {
             await new SynchronizationContextRemover();
             return await IsFeatureActiveInternal(site.Features, featureID);
@@ -171,7 +170,7 @@ namespace Microsoft.SharePoint.Client
         /// <param name="featureID">ID of the feature to check</param>
         /// <param name="noRetry">Use regular ExecuteQuery</param>
         /// <returns>True if active, false otherwise</returns>
-        private static async Task<bool> IsFeatureActiveInternal(FeatureCollection features, Guid featureID, bool noRetry=false)
+        private static async Task<bool> IsFeatureActiveInternal(FeatureCollection features, Guid featureID, bool noRetry = false)
         {
             var featureIsActive = false;
 
@@ -216,7 +215,7 @@ namespace Microsoft.SharePoint.Client
         /// <param name="pollingIntervalSeconds">The time in seconds between polls for "IsActive"</param>
         private static Task ProcessFeature(this Site site, Guid featureID, bool activate, bool sandboxed, int pollingIntervalSeconds = 30)
         {
-            return ProcessFeatureInternal(site.Features, featureID, activate, sandboxed ? FeatureDefinitionScope.Site : FeatureDefinitionScope.Farm,pollingIntervalSeconds);
+            return ProcessFeatureInternal(site.Features, featureID, activate, sandboxed ? FeatureDefinitionScope.Site : FeatureDefinitionScope.Farm, pollingIntervalSeconds);
         }
 
         /// <summary>

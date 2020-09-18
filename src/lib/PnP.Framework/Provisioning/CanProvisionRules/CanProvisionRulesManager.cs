@@ -2,11 +2,9 @@
 using Microsoft.SharePoint.Client;
 using PnP.Framework.Provisioning.ObjectHandlers;
 using System;
-using System.Reflection;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 
 namespace PnP.Framework.Provisioning.CanProvisionRules
 {

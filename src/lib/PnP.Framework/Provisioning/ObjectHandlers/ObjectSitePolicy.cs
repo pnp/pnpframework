@@ -1,7 +1,6 @@
 ﻿using Microsoft.SharePoint.Client;
-using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Utilities;
 using PnP.Framework.Diagnostics;
+using PnP.Framework.Provisioning.Model;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {

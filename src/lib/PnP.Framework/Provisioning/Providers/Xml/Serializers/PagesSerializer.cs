@@ -1,12 +1,10 @@
-﻿using PnP.Framework.Provisioning.Model;
+﻿using PnP.Framework.Extensions;
+using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Providers.Xml.Resolvers;
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Xml;
-using System.Xml.Linq;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 {
@@ -41,7 +39,8 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
                 //Contents is deserialized to persistence differently base on schema version. 
                 //Deserialization of older schemas include <Contents> elements, newer do not. 
                 //Deserialized model should not contain <Contents> element, so skip it if present
-                expressions.Add(f => f.WebParts[0].Contents, new ExpressionValueResolver((s, v) => {
+                expressions.Add(f => f.WebParts[0].Contents, new ExpressionValueResolver((s, v) =>
+                {
                     if (v != null)
                     {
                         var xml = (XmlElement)v;

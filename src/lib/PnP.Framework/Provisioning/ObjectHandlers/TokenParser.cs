@@ -2,24 +2,19 @@
 using Microsoft.SharePoint.Client;
 using Microsoft.SharePoint.Client.Taxonomy;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using PnP.Framework.ALM;
+using PnP.Framework.Diagnostics;
+using PnP.Framework.Graph;
 using PnP.Framework.Provisioning.Connectors;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions;
 using PnP.Framework.Utilities;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Resources;
 using System.Text.RegularExpressions;
-using PnP.Framework.Diagnostics;
-using PnP.Framework.Graph;
-using System.Text.Json;
 //using System.Web.UI.WebControls.WebParts;
-using System.IO;
 //using System.Web.UI.WebControls;
 using System.Xml.Linq;
 
@@ -336,13 +331,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             if (stream != null)
                             {
                                 var xElement = XElement.Load(stream);
-                                    foreach (var dataElement in xElement.Descendants("data"))
-                                    {
-                                        var key = dataElement.Attribute("name").Value;
-                                        var value = dataElement.Value;
-                                        resourceEntries.Add(new Tuple<string, uint, string>($"{localizationEntry.Name}:{key}", (uint)localizationEntry.LCID, value.ToString().Replace("\"", "&quot;")));
-                                        resourceEntries.Add(new Tuple<string, uint, string>(key.ToString(), (uint)localizationEntry.LCID, value.ToString().Replace("\"", "&quot;")));
-                                    }
+                                foreach (var dataElement in xElement.Descendants("data"))
+                                {
+                                    var key = dataElement.Attribute("name").Value;
+                                    var value = dataElement.Value;
+                                    resourceEntries.Add(new Tuple<string, uint, string>($"{localizationEntry.Name}:{key}", (uint)localizationEntry.LCID, value.ToString().Replace("\"", "&quot;")));
+                                    resourceEntries.Add(new Tuple<string, uint, string>(key.ToString(), (uint)localizationEntry.LCID, value.ToString().Replace("\"", "&quot;")));
+                                }
                             }
                         }
                     }

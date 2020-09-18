@@ -104,9 +104,9 @@ namespace PnP.Framework.Diagnostics
             }
         }
 
-#region Public Members
+        #region Public Members
 
-#region Error
+        #region Error
         /// <summary>
         /// Logs error message and source
         /// </summary>
@@ -157,9 +157,9 @@ namespace PnP.Framework.Diagnostics
                 _logger.Error(logEntry);
             }
         }
-#endregion
+        #endregion
 
-#region Info
+        #region Info
         /// <summary>
         /// Log Information
         /// </summary>
@@ -210,9 +210,9 @@ namespace PnP.Framework.Diagnostics
                 _logger.Info(logEntry);
             }
         }
-#endregion
+        #endregion
 
-#region Warning
+        #region Warning
         /// <summary>
         /// Warning Log
         /// </summary>
@@ -264,9 +264,9 @@ namespace PnP.Framework.Diagnostics
                 _logger.Warning(logEntry);
             }
         }
-#endregion
+        #endregion
 
-#region Debug
+        #region Debug
         /// <summary>
         /// Debug Log
         /// </summary>
@@ -320,8 +320,8 @@ namespace PnP.Framework.Diagnostics
                 _logger.Debug(logEntry);
             }
         }
-#endregion
+        #endregion
 
-#endregion
+        #endregion
     }
 }

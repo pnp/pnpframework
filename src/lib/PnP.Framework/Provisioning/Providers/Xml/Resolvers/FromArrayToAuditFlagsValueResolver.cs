@@ -1,11 +1,7 @@
 ﻿using Microsoft.SharePoint.Client;
+using PnP.Framework.Extensions;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
 {
@@ -24,7 +20,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
             {
                 foreach (var a in (IEnumerable)audits)
                 {
-                    auditMask |= (AuditMaskType)Enum.Parse(typeof(AuditMaskType), 
+                    auditMask |= (AuditMaskType)Enum.Parse(typeof(AuditMaskType),
                         a.GetPublicInstancePropertyValue("AuditFlag").ToString());
                 }
             }

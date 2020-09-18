@@ -1,16 +1,11 @@
-﻿using PnP.Framework.Provisioning.Model;
+﻿using PnP.Framework.Extensions;
+using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Providers.Xml.Resolvers;
-using PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201801;
-using PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201805;
 using PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201807;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 {
@@ -32,7 +27,8 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
                 var expressions = new Dictionary<Expression<Func<ProvisioningSequence, Object>>, IResolver>();
 
                 // Handle the TermStore property of the Sequence, if any
-                expressions.Add(seq => seq.TermStore, new ExpressionValueResolver((s, v) => {
+                expressions.Add(seq => seq.TermStore, new ExpressionValueResolver((s, v) =>
+                {
 
                     if (v != null)
                     {
@@ -56,13 +52,14 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
                 }));
 
                 // Handle the SiteCollections property of the Sequence, if any
-                expressions.Add(seq => seq.SiteCollections, 
+                expressions.Add(seq => seq.SiteCollections,
                     new SiteCollectionsAndSitesFromSchemaToModelTypeResolver(typeof(SiteCollection)));
                 expressions.Add(seq => seq.SiteCollections[0].Sites,
                     new SiteCollectionsAndSitesFromSchemaToModelTypeResolver(typeof(SubSite)));
                 expressions.Add(seq => seq.SiteCollections[0].Sites[0].Sites,
                     new SiteCollectionsAndSitesFromSchemaToModelTypeResolver(typeof(SubSite)));
-                expressions.Add(seq => seq.SiteCollections[0].Templates, new ExpressionValueResolver((s, v) => {
+                expressions.Add(seq => seq.SiteCollections[0].Templates, new ExpressionValueResolver((s, v) =>
+                {
 
                     var result = new List<String>();
 
@@ -81,7 +78,8 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 
                     return (result);
                 }));
-                expressions.Add(seq => seq.SiteCollections[0].Sites[0].Templates, new ExpressionValueResolver((s, v) => {
+                expressions.Add(seq => seq.SiteCollections[0].Sites[0].Templates, new ExpressionValueResolver((s, v) =>
+                {
 
                     var result = new List<String>();
 
@@ -104,7 +102,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
                 template.ParentHierarchy.Sequences.AddRange(
                 PnPObjectsMapper.MapObjects<ProvisioningSequence>(sequences,
                         new CollectionFromSchemaToModelTypeResolver(typeof(ProvisioningSequence)),
-                        expressions, 
+                        expressions,
                         recursive: true)
                         as IEnumerable<ProvisioningSequence>);
             }
@@ -112,7 +110,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 
         public override void Serialize(ProvisioningTemplate template, object persistence)
         {
-            if (template.ParentHierarchy != null && 
+            if (template.ParentHierarchy != null &&
                 template.ParentHierarchy.Sequences != null &&
                 template.ParentHierarchy.Sequences.Count > 0)
             {
@@ -122,7 +120,8 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
                 var expressions = new Dictionary<string, IResolver>();
 
                 // Handle the TermStore property of the Sequence, if any
-                expressions.Add($"{PnPSerializationScope.Current?.BaseSchemaNamespace}.Sequence.TermStore", new ExpressionValueResolver((s, v) => {
+                expressions.Add($"{PnPSerializationScope.Current?.BaseSchemaNamespace}.Sequence.TermStore", new ExpressionValueResolver((s, v) =>
+                {
 
                     if (v != null)
                     {
@@ -134,9 +133,9 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 
                         var sourceSequence = s as ProvisioningSequence;
 
-                        return(PnPObjectsMapper.MapObjects(sourceSequence.TermStore.TermGroups,
-                            new CollectionFromModelToSchemaTypeResolver(termGroupType), 
-                            termGroupsExpressions, 
+                        return (PnPObjectsMapper.MapObjects(sourceSequence.TermStore.TermGroups,
+                            new CollectionFromModelToSchemaTypeResolver(termGroupType),
+                            termGroupsExpressions,
                             true));
                     }
                     else
@@ -158,7 +157,8 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
                 expressions.Add($"{PnPSerializationScope.Current?.BaseSchemaNamespace}.Site.Sites",
                     new SiteCollectionsAndSitesFromModelToSchemaTypeResolver(subSiteType));
 
-                expressions.Add($"{PnPSerializationScope.Current?.BaseSchemaNamespace}.SiteCollection.Templates", new ExpressionValueResolver((s, v) => {
+                expressions.Add($"{PnPSerializationScope.Current?.BaseSchemaNamespace}.SiteCollection.Templates", new ExpressionValueResolver((s, v) =>
+                {
                     return ConvertTemplateListToReferences(v);
                 }));
 
@@ -171,8 +171,8 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
                     .SetValue(
                         persistence,
                         PnPObjectsMapper.MapObjects(template.ParentHierarchy.Sequences,
-                            new CollectionFromModelToSchemaTypeResolver(sequenceType), 
-                            expressions, 
+                            new CollectionFromModelToSchemaTypeResolver(sequenceType),
+                            expressions,
                             recursive: true));
             }
         }

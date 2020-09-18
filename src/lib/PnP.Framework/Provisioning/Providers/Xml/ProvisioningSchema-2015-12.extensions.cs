@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;
@@ -231,7 +227,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.V201512
             writer.WriteAttributeString("Title", this.Title);
             writer.WriteAttributeString("Zone", this.Zone);
             writer.WriteAttributeString("Order", this.Order.ToString());
-            writer.WriteStartElement(XMLConstants.PROVISIONING_SCHEMA_PREFIX, 
+            writer.WriteStartElement(XMLConstants.PROVISIONING_SCHEMA_PREFIX,
                 "Contents",
 #pragma warning disable 0618
                 XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2015_12

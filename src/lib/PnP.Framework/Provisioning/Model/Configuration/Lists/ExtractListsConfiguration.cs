@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using PnP.Framework.Provisioning.Model.Configuration.Lists.Lists;
 using System.Collections.Generic;
 
 namespace PnP.Framework.Provisioning.Model.Configuration.Lists

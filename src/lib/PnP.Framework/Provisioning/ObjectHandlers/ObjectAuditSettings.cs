@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.SharePoint.Client;
-using PnP.Framework.Provisioning.Model;
+﻿using Microsoft.SharePoint.Client;
 using PnP.Framework.Diagnostics;
+using PnP.Framework.Provisioning.Model;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -58,7 +53,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         {
                             template.AuditSettings = auditSettings;
                         }
-                    }                    
+                    }
                     else
                     {
                         template.AuditSettings = auditSettings;

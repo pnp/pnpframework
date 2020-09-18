@@ -1,7 +1,7 @@
-﻿using System;
+﻿using PnP.Framework;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
-using PnP.Framework;
 
 namespace Microsoft.SharePoint.Client
 {

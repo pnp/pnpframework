@@ -360,10 +360,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 isCurrentlyArchived = JToken.Parse(archiveStatusReq).Value<bool>("isArchived");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 scope.LogError("Error checking archive status", ex.Message);
-            }            
+            }
 
             // If the Team is currently archived
             if (isCurrentlyArchived)
@@ -983,7 +983,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         } : null,
                 };
 
-            HttpHelper.MakePatchRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams/{teamId}/channels/{channelId}/tabs/{tabId}", tabToUpdate, HttpHelper.JsonContentType, accessToken);
+                HttpHelper.MakePatchRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams/{teamId}/channels/{channelId}/tabs/{tabId}", tabToUpdate, HttpHelper.JsonContentType, accessToken);
 
                 // Add the teamsAppId back now that we've updated the tab
                 tab.TeamsAppId = teamsAppId;
@@ -1309,7 +1309,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 if (iterations > 6)
                 {
                     wait = false;
-                }                
+                }
             }
 
             return null;

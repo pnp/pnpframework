@@ -1,13 +1,7 @@
 ﻿using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Provisioning.Providers.Xml.Resolvers;
-using PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201801;
-using PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201805;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 {

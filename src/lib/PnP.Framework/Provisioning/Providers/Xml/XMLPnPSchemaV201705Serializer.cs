@@ -1,30 +1,11 @@
-﻿using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Utilities;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Xml;
-using System.Xml.Linq;
-using System.Xml.Schema;
-using System.Xml.Serialization;
-using PnP.Framework.Provisioning.Providers.Xml.V201605;
-using ContentType = PnP.Framework.Provisioning.Model.ContentType;
-using PnP.Framework.Extensions;
-using Microsoft.SharePoint.Client;
-using Newtonsoft.Json.Serialization;
-using PnP.Framework.Provisioning.Providers.Xml.Serializers;
-using FileLevel = PnP.Framework.Provisioning.Model.FileLevel;
-
-namespace PnP.Framework.Provisioning.Providers.Xml
+﻿namespace PnP.Framework.Provisioning.Providers.Xml
 {
     /// <summary>
     /// Implements the logic to serialize a schema of version 201705
     /// </summary>
     internal class XMLPnPSchemaV201705Serializer : XmlPnPSchemaBaseSerializer<V201705.ProvisioningTemplate>
     {
-        public XMLPnPSchemaV201705Serializer():
+        public XMLPnPSchemaV201705Serializer() :
             base(typeof(XMLConstants)
                 .Assembly
                 .GetManifestResourceStream("OfficeDevPnP.Core.Framework.Provisioning.Providers.Xml.ProvisioningSchema-2017-05.xsd"))
@@ -33,11 +14,14 @@ namespace PnP.Framework.Provisioning.Providers.Xml
 
         public override string NamespaceUri
         {
-            get { return (
+            get
+            {
+                return (
 #pragma warning disable 0618
                     XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2017_05
 #pragma warning restore 0618
-                    ); }
+                    );
+            }
         }
 
         public override string NamespacePrefix

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace PnP.Framework.Provisioning.Model
+﻿namespace PnP.Framework.Provisioning.Model
 {
     /// <summary>
     /// Domain Object that represents a Collections of Custom Actions

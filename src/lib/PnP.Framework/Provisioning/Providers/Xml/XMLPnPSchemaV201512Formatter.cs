@@ -1,4 +1,7 @@
-﻿using PnP.Framework.Provisioning.Model;
+﻿using Microsoft.SharePoint.Client;
+using PnP.Framework.Extensions;
+using PnP.Framework.Provisioning.Model;
+using PnP.Framework.Provisioning.Providers.Xml.V201512;
 using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
@@ -8,10 +11,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;
 using System.Xml.Serialization;
-using PnP.Framework.Provisioning.Providers.Xml.V201512;
 using ContentType = PnP.Framework.Provisioning.Model.ContentType;
-using PnP.Framework.Extensions;
-using Microsoft.SharePoint.Client;
 
 namespace PnP.Framework.Provisioning.Providers.Xml
 {
@@ -27,11 +27,14 @@ namespace PnP.Framework.Provisioning.Providers.Xml
 
         string IXMLSchemaFormatter.NamespaceUri
         {
-            get { return (
+            get
+            {
+                return (
 #pragma warning disable 0618
                     XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2015_12
 #pragma warning restore 0618
-                    ); }
+                    );
+            }
         }
 
         string IXMLSchemaFormatter.NamespacePrefix

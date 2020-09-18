@@ -29,7 +29,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201909
             {
                 page = source as TranslatedClientSidePage;
             }
-            
+
             //var page = source as Model.ClientSidePage;
             var header = page?.Header;
 

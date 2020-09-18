@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PnP.Framework.Enums
+﻿namespace PnP.Framework.Enums
 {
     /// <summary>
     /// Timezones to use when creating sitecollections

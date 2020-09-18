@@ -1,11 +1,7 @@
-﻿using System;
+﻿using PnP.Framework.Extensions;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
 {
@@ -29,13 +25,13 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
                 var layoutCollection = layouts.GetPublicInstancePropertyValue("PageLayout");
                 if (layoutCollection != null)
                 {
-                    foreach(var layout in (IEnumerable)layoutCollection)
+                    foreach (var layout in (IEnumerable)layoutCollection)
                     {
                         var path = layout.GetPublicInstancePropertyValue("Path");
                         result.Add(new Model.PageLayout() { Path = path?.ToString(), IsDefault = string.Equals(path, defaultLayout) });
                     }
                 }
-             }
+            }
             return (result);
         }
     }

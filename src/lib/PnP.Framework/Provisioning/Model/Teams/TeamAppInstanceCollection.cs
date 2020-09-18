@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PnP.Framework.Provisioning.Model.Teams
+﻿namespace PnP.Framework.Provisioning.Model.Teams
 {
     /// <summary>
     /// Defines the Apps to install or update on the Team

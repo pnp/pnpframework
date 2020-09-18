@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.Model
 {
@@ -35,7 +31,7 @@ namespace PnP.Framework.Provisioning.Model
         /// <param name="navigationType">CurrentNavigationType object</param>
         /// <param name="structuralNavigation">StructuralNavigation object</param>
         /// <param name="managedNavigation">ManagedNavigation object</param>
-        public CurrentNavigation(CurrentNavigationType navigationType, StructuralNavigation structuralNavigation = null, ManagedNavigation managedNavigation = null):
+        public CurrentNavigation(CurrentNavigationType navigationType, StructuralNavigation structuralNavigation = null, ManagedNavigation managedNavigation = null) :
             base(structuralNavigation, managedNavigation)
         {
             this.NavigationType = navigationType;

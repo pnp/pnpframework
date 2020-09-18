@@ -1,13 +1,9 @@
-﻿using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Provisioning.Providers.Xml.Resolvers;
+﻿using PnP.Framework.Extensions;
+using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201801;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 {
@@ -39,7 +35,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
         public override void Serialize(ProvisioningTemplate template, object persistence)
         {
             if (template.ApplicationLifecycleManagement != null &&
-                (template.ApplicationLifecycleManagement.AppCatalog != null || 
+                (template.ApplicationLifecycleManagement.AppCatalog != null ||
                 (template.ApplicationLifecycleManagement.Apps != null &&
                 template.ApplicationLifecycleManagement.Apps.Count > 0)))
             {

@@ -1,9 +1,5 @@
 ﻿using PnP.Framework.Extensions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.Model
 {
@@ -58,7 +54,7 @@ namespace PnP.Framework.Provisioning.Model
         public ApplicationLifecycleManagement()
         {
             this._apps = new AppCollection(this.ParentTemplate);
-			this._appCatalog = new AppCatalog();
+            this._appCatalog = new AppCatalog();
         }
         #endregion
 

@@ -22,13 +22,15 @@ namespace PnP.Framework.Utilities
         /// <param name="path">A SharePoint URL</param>
         /// <param name="relativePaths">SharePoint relative URLs</param>
         /// <returns>Returns comibed path with a relative paths</returns>
-        public static string Combine(string path, params string[] relativePaths) {
+        public static string Combine(string path, params string[] relativePaths)
+        {
             string pathBuilder = path ?? string.Empty;
 
             if (relativePaths == null)
                 return pathBuilder;
 
-            foreach (string relPath in relativePaths) {
+            foreach (string relPath in relativePaths)
+            {
                 pathBuilder = Combine(pathBuilder, relPath);
             }
             return pathBuilder;
@@ -39,21 +41,21 @@ namespace PnP.Framework.Utilities
         /// <param name="path">A SharePoint URL</param>
         /// <param name="relative">SharePoint relative URL</param>
         /// <returns>Returns comibed path with a relative path</returns>
-        public static string Combine(string path, string relative) 
+        public static string Combine(string path, string relative)
         {
-            if(relative == null)
+            if (relative == null)
                 relative = string.Empty;
-            
-            if(path == null)
+
+            if (path == null)
                 path = string.Empty;
 
-            if(relative.Length == 0 && path.Length == 0)
+            if (relative.Length == 0 && path.Length == 0)
                 return string.Empty;
 
-            if(relative.Length == 0)
+            if (relative.Length == 0)
                 return path;
 
-            if(path.Length == 0)
+            if (path.Length == 0)
                 return relative;
 
             path = path.Replace('\\', PATH_DELIMITER);
@@ -89,7 +91,8 @@ namespace PnP.Framework.Utilities
         /// </summary>
         /// <param name="urlToProcess">SharePoint URL to process</param>
         /// <returns>Returns realtive URL of given URL</returns>
-        public static string MakeRelativeUrl(string urlToProcess) {
+        public static string MakeRelativeUrl(string urlToProcess)
+        {
             Uri uri = new Uri(urlToProcess);
             return uri.AbsolutePath;
         }
@@ -99,7 +102,7 @@ namespace PnP.Framework.Utilities
         /// </summary>
         /// <param name="urlToProcess"></param>
         /// <returns></returns>
-        public static string EnsureTrailingSlash(string urlToProcess) 
+        public static string EnsureTrailingSlash(string urlToProcess)
         {
             if (!urlToProcess.EndsWith("/"))
             {
@@ -117,7 +120,7 @@ namespace PnP.Framework.Utilities
         /// <returns>Returns true if URL contains invalid characters. Otherwise returns false.</returns>
         public static bool ContainsInvalidUrlChars(this string content)
         {
-	        return Regex.IsMatch(content, INVALID_CHARS_REGEX);
+            return Regex.IsMatch(content, INVALID_CHARS_REGEX);
         }
 
         /// <summary>
@@ -147,7 +150,7 @@ namespace PnP.Framework.Utilities
         /// <returns>Returns replaced invalid charcters from URL</returns>
         public static string ReplaceInvalidUrlChars(this string content, string replacer)
         {
-	    return new Regex(INVALID_CHARS_REGEX).Replace(content, replacer);
+            return new Regex(INVALID_CHARS_REGEX).Replace(content, replacer);
         }
 
         /// <summary>

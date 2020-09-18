@@ -1,15 +1,15 @@
-﻿using System;
+﻿using Microsoft.SharePoint.Client;
+using Microsoft.SharePoint.Client.Utilities;
+using PnP.Framework.Diagnostics;
+using PnP.Framework.Extensions;
+using PnP.Framework.Provisioning.Model;
+using PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions;
+using PnP.Framework.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.SharePoint.Client;
-using PnP.Framework.Provisioning.Model;
-using User = PnP.Framework.Provisioning.Model.User;
-using PnP.Framework.Diagnostics;
-using Microsoft.SharePoint.Client.Utilities;
-using PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions;
 using RoleDefinition = Microsoft.SharePoint.Client.RoleDefinition;
-using PnP.Framework.Utilities;
-using PnP.Framework.Extensions;
+using User = PnP.Framework.Provisioning.Model.User;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -131,7 +131,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                 web.Context.ExecuteQueryRetry();
                                 // there is no associated group yet OR
                                 // there is a group with the desired associated group title that is currently not the associated group? make it the associated group
-                                if (web.AssociatedMemberGroup.ServerObjectIsNull() 
+                                if (web.AssociatedMemberGroup.ServerObjectIsNull()
                                     || web.AssociatedMemberGroup.Id != memberGroupCandidate.Id)
                                 {
                                     web.AssociatedMemberGroup = memberGroupCandidate;
@@ -277,16 +277,16 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 {
                     AddUserToGroup(web, ownerGroup, siteSecurity.AdditionalOwners, scope, parser, WriteMessage);
 
-                    parser.AddToken(new AssociatedGroupToken(web, AssociatedGroupToken.AssociatedGroupType.owners));                    
+                    parser.AddToken(new AssociatedGroupToken(web, AssociatedGroupToken.AssociatedGroupType.owners));
                 }
                 if (!memberGroup.ServerObjectIsNull())
                 {
                     AddUserToGroup(web, memberGroup, siteSecurity.AdditionalMembers, scope, parser, WriteMessage);
 
-                    parser.AddToken(new AssociatedGroupToken(web, AssociatedGroupToken.AssociatedGroupType.members));                    
+                    parser.AddToken(new AssociatedGroupToken(web, AssociatedGroupToken.AssociatedGroupType.members));
                 }
                 if (!visitorGroup.ServerObjectIsNull())
-                {                    
+                {
                     AddUserToGroup(web, visitorGroup, siteSecurity.AdditionalVisitors, scope, parser, WriteMessage);
 
                     parser.AddToken(new AssociatedGroupToken(web, AssociatedGroupToken.AssociatedGroupType.visitors));
@@ -586,7 +586,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                         roleDefinitionBindingCollection.Add(roleDefinition);
                                         web.RoleAssignments.Add(principal, roleDefinitionBindingCollection);
                                         web.Context.ExecuteQueryRetry();
-                                    } else
+                                    }
+                                    else
                                     {
                                         WriteMessage($"Principal '{roleAssignment.Principal}' not found, cannot grant permissions", ProvisioningMessageType.Warning);
                                     }

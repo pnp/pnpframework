@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PnP.Framework.Enums
+﻿namespace PnP.Framework.Enums
 {
     /// <summary>
     /// Enums defining type of sorting for Structural Navigation

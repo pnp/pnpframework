@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.Model
 {
@@ -10,7 +6,7 @@ namespace PnP.Framework.Provisioning.Model
     /// Defines a SiteWebhook to provision
     /// </summary>
     public partial class SiteWebhook : Webhook
-    {        
+    {
         #region Public Members
 
         /// <summary>

@@ -2,7 +2,8 @@
 using System;
 using System.Text;
 
-namespace PnP.Framework.Utilities {
+namespace PnP.Framework.Utilities
+{
     /// <summary>
     /// Use this class to build your CAML xml and avoid XML issues.
     /// </summary>
@@ -21,7 +22,8 @@ namespace PnP.Framework.Utilities {
     ///     rowLimit: 5
     /// );
     /// </example>
-    public static class CAML {
+    public static class CAML
+    {
         const string VIEW_XML_WRAPPER = "<View Scope=\"{0}\"><Query>{1}{2}</Query>{3}<RowLimit>{4}</RowLimit></View>";
         const string FIELD_VALUE = "<FieldRef Name='{0}' {1}/><Value Type='{2}'>{3}</Value>";
         const string FIELD_VALUE_ID = "<FieldRef ID='{0}' {1} /><Value Type='{2}'>{3}</Value>";
@@ -42,7 +44,8 @@ namespace PnP.Framework.Utilities {
         /// </summary>
         /// <param name="offset">Time offset from today (+5 days or -5 days, for example).</param>
         /// <returns>Returns &lt;Today /&gt; node based on offset value</returns>
-        public static string Today(int? offset = null) {
+        public static string Today(int? offset = null)
+        {
             if (offset.HasValue)
                 return $"<Today Offset='{offset.Value}' />";
             return "<Today />";
@@ -55,7 +58,8 @@ namespace PnP.Framework.Utilities {
         /// <param name="orderByClause">&lt;OrderBy&gt; node.</param>
         /// <param name="rowLimit">&lt;RowLimit&gt; node.</param>
         /// <returns>String to be used in CAML queries</returns>
-        public static string ViewQuery(string whereClause = "", string orderByClause = "", int rowLimit = 100) {
+        public static string ViewQuery(string whereClause = "", string orderByClause = "", int rowLimit = 100)
+        {
             return CAML.ViewQuery(ViewScope.DefaultValue, whereClause, orderByClause, string.Empty, rowLimit);
         }
 
@@ -68,7 +72,8 @@ namespace PnP.Framework.Utilities {
         /// <param name="orderByClause">&lt;OrderBy&gt; node.</param>
         /// <param name="rowLimit">&lt;RowLimit&gt; node.</param>
         /// <returns>String to be used in CAML queries</returns>
-        public static string ViewQuery(ViewScope scope, string whereClause = "", string orderByClause = "", string viewFields = "", int rowLimit = 100) {
+        public static string ViewQuery(ViewScope scope, string whereClause = "", string orderByClause = "", string viewFields = "", int rowLimit = 100)
+        {
             string viewScopeStr = scope == ViewScope.DefaultValue ? string.Empty : scope.ToString();
             return string.Format(VIEW_XML_WRAPPER, viewScopeStr, whereClause, orderByClause, viewFields, rowLimit);
         }
@@ -79,7 +84,8 @@ namespace PnP.Framework.Utilities {
         /// <param name="value">Value of the field</param>
         /// <param name="fieldValueType">Value type of the field</param>
         /// <returns>Value string to be used for In comparisions in CAML queries</returns>
-        public static string Value(string value, string fieldValueType) {
+        public static string Value(string value, string fieldValueType)
+        {
             return string.Format(VALUE_FOR_IN_CLAUSE, fieldValueType, value);
         }
 
@@ -91,7 +97,8 @@ namespace PnP.Framework.Utilities {
         /// <param name="value">Value of the field</param>
         /// <param name="additionalFieldRefParams">Additional FieldRef Parameters</param>
         /// <returns>Returns FieldValue string to be used in CAML queries</returns>
-        public static string FieldValue(string fieldName, string fieldValueType, string value, string additionalFieldRefParams = "") {
+        public static string FieldValue(string fieldName, string fieldValueType, string value, string additionalFieldRefParams = "")
+        {
             return string.Format(FIELD_VALUE, fieldName, additionalFieldRefParams, fieldValueType, value);
         }
 
@@ -103,7 +110,8 @@ namespace PnP.Framework.Utilities {
         /// <param name="value">Value of the field</param>
         /// <param name="additionalFieldRefParams">Additional FieldRef Parameters</param>
         /// <returns>Returns FieldValue string to be used in CAML queries</returns>
-        public static string FieldValue(Guid fieldId, string fieldValueType, string value, string additionalFieldRefParams = "") {
+        public static string FieldValue(Guid fieldId, string fieldValueType, string value, string additionalFieldRefParams = "")
+        {
             return string.Format(FIELD_VALUE_ID, fieldId.ToString(), additionalFieldRefParams, fieldValueType, value);
         }
 
@@ -112,7 +120,8 @@ namespace PnP.Framework.Utilities {
         /// </summary>
         /// <param name="fieldName">Name of the field</param>
         /// <returns>Returns FieldRef string to be used in CAML queries</returns>
-        public static string FieldRef(string fieldName) {
+        public static string FieldRef(string fieldName)
+        {
             return string.Format(FIELD_REF_CLAUSE, fieldName);
         }
 
@@ -121,9 +130,11 @@ namespace PnP.Framework.Utilities {
         /// </summary>
         /// <param name="fieldRefs">Field References</param>
         /// <returns>Returns string to be used in CAML queries</returns>
-        public static string OrderBy(params OrderByField[] fieldRefs) {
+        public static string OrderBy(params OrderByField[] fieldRefs)
+        {
             var sb = new StringBuilder();
-            foreach (var field in fieldRefs){
+            foreach (var field in fieldRefs)
+            {
                 sb.Append(field.ToString());
             }
             return string.Format(GENERIC_CLAUSE, CamlClauses.OrderBy, sb.ToString());
@@ -134,7 +145,8 @@ namespace PnP.Framework.Utilities {
         /// </summary>
         /// <param name="conditionClause">The Clause condition</param>
         /// <returns>Returns string to be used in CAML queries</returns>
-        public static string Where(string conditionClause) {
+        public static string Where(string conditionClause)
+        {
             return string.Format(GENERIC_CLAUSE, CamlClauses.Where, conditionClause);
         }
 
@@ -143,10 +155,12 @@ namespace PnP.Framework.Utilities {
         /// </summary>
         /// <param name="fieldRefs">Field References</param>
         /// <returns>Returns string to be used in CAML queries</returns>
-        public static string ViewFields(params string[] fieldRefs) {
+        public static string ViewFields(params string[] fieldRefs)
+        {
             string refs = string.Empty;
 
-            foreach (var refField in fieldRefs) {
+            foreach (var refField in fieldRefs)
+            {
                 refs += refField;
             }
             return string.Format(VIEW_FIELDS_CLAUSE, refs);
@@ -159,7 +173,8 @@ namespace PnP.Framework.Utilities {
         /// <param name="clause1">Clause</param>
         /// <param name="conditionClauses">Clause Condition</param>
         /// <returns>Returns Condition string to be used in CAML queries</returns>
-        public static string And(string clause1, params string[] conditionClauses) {
+        public static string And(string clause1, params string[] conditionClauses)
+        {
             return Condition(CamlConditions.And, clause1, conditionClauses);
         }
 
@@ -169,9 +184,10 @@ namespace PnP.Framework.Utilities {
         /// <param name="clause1">Clause</param>
         /// <param name="conditionClauses">Clause Condition</param>
         /// <returns>Returns Condition string to be used in CAML queries</returns>
-        public static string Or(string clause1, params string[] conditionClauses) {
+        public static string Or(string clause1, params string[] conditionClauses)
+        {
             return Condition(CamlConditions.Or, clause1, conditionClauses);
-        } 
+        }
         #endregion
 
         #region Comparisons
@@ -180,7 +196,8 @@ namespace PnP.Framework.Utilities {
         /// </summary>
         /// <param name="fieldValue">Value of the field</param>
         /// <returns>Returns Comparison string to be used in CAML queries</returns>
-        public static string BeginsWith(string fieldValue) {
+        public static string BeginsWith(string fieldValue)
+        {
             return Comparison(CamlComparisions.BeginsWith, fieldValue);
         }
         /// <summary>
@@ -188,7 +205,8 @@ namespace PnP.Framework.Utilities {
         /// </summary>
         /// <param name="fieldValue">Value of the field</param>
         /// <returns>Returns Comparison string to be used in CAML queries</returns>
-        public static string Contains(string fieldValue) {
+        public static string Contains(string fieldValue)
+        {
             return Comparison(CamlComparisions.Contains, fieldValue);
         }
         /// <summary>
@@ -196,7 +214,8 @@ namespace PnP.Framework.Utilities {
         /// </summary>
         /// <param name="fieldValue">Value of the field</param>
         /// <returns>Returns Comparison string to be used in CAML queries</returns>
-        public static string DateRangesOverlap(string fieldValue) {
+        public static string DateRangesOverlap(string fieldValue)
+        {
             return Comparison(CamlComparisions.DateRangesOverlap, fieldValue);
         }
         /// <summary>
@@ -204,7 +223,8 @@ namespace PnP.Framework.Utilities {
         /// </summary>
         /// <param name="fieldValue">Value of the field</param>
         /// <returns>Returns Comparison string to be used in CAML queries</returns>
-        public static string Eq(string fieldValue) {
+        public static string Eq(string fieldValue)
+        {
             return Comparison(CamlComparisions.Eq, fieldValue);
         }
         /// <summary>
@@ -212,7 +232,8 @@ namespace PnP.Framework.Utilities {
         /// </summary>
         /// <param name="fieldValue">Value of the field</param>
         /// <returns>Returns Comparison string to be used in CAML queries</returns>
-        public static string Geq(string fieldValue) {
+        public static string Geq(string fieldValue)
+        {
             return Comparison(CamlComparisions.Geq, fieldValue);
         }
         /// <summary>
@@ -220,7 +241,8 @@ namespace PnP.Framework.Utilities {
         /// </summary>
         /// <param name="fieldValue">Value of the field</param>
         /// <returns>Returns Comparison string to be used in CAML queries</returns>
-        public static string Gt(string fieldValue) {
+        public static string Gt(string fieldValue)
+        {
             return Comparison(CamlComparisions.Gt, fieldValue);
         }
         /// <summary>
@@ -228,7 +250,8 @@ namespace PnP.Framework.Utilities {
         /// </summary>
         /// <param name="fieldValue">Value of the field</param>
         /// <returns>Returns Comparison string to be used in CAML queries</returns>
-        public static string In(string fieldValue) {
+        public static string In(string fieldValue)
+        {
             return Comparison(CamlComparisions.In, fieldValue);
         }
         /// <summary>
@@ -237,10 +260,12 @@ namespace PnP.Framework.Utilities {
         /// <param name="fieldRef">Field Reference</param>
         /// <param name="values">Value strings to be included inside the &lt;In&gt;-clause</param>
         /// <returns>Returns Comparison string to be used in CAML queries</returns>
-        public static string In(string fieldRef, params string[] values) {
+        public static string In(string fieldRef, params string[] values)
+        {
             var fieldValue = fieldRef;
             fieldValue += "<Values>";
-            foreach(var value in values) {
+            foreach (var value in values)
+            {
                 fieldValue += value;
             }
             fieldValue += "</Values>";
@@ -251,7 +276,8 @@ namespace PnP.Framework.Utilities {
         /// </summary>
         /// <param name="fieldValue">Value of the field</param>
         /// <returns>Returns Comparison string to be used in CAML queries</returns>
-        public static string Includes(string fieldValue) {
+        public static string Includes(string fieldValue)
+        {
             return Comparison(CamlComparisions.Includes, fieldValue);
         }
         /// <summary>
@@ -259,7 +285,8 @@ namespace PnP.Framework.Utilities {
         /// </summary>
         /// <param name="fieldValue">Value of the field</param>
         /// <returns>Returns Comparison string to be used in CAML queries</returns>
-        public static string IsNotNull(string fieldValue) {
+        public static string IsNotNull(string fieldValue)
+        {
             return Comparison(CamlComparisions.IsNotNull, fieldValue);
         }
         /// <summary>
@@ -267,7 +294,8 @@ namespace PnP.Framework.Utilities {
         /// </summary>
         /// <param name="fieldValue">Value of the field</param>
         /// <returns>Returns Comparison string to be used in CAML queries</returns>
-        public static string IsNull(string fieldValue) {
+        public static string IsNull(string fieldValue)
+        {
             return Comparison(CamlComparisions.IsNull, fieldValue);
         }
         /// <summary>
@@ -275,7 +303,8 @@ namespace PnP.Framework.Utilities {
         /// </summary>
         /// <param name="fieldValue">Value of the field</param>
         /// <returns>Returns Comparison string to be used in CAML queries</returns>
-        public static string Leq(string fieldValue) {
+        public static string Leq(string fieldValue)
+        {
             return Comparison(CamlComparisions.Leq, fieldValue);
         }
         /// <summary>
@@ -283,7 +312,8 @@ namespace PnP.Framework.Utilities {
         /// </summary>
         /// <param name="fieldValue">Value of the field</param>
         /// <returns>Returns Comparison string to be used in CAML queries</returns>
-        public static string Lt(string fieldValue) {
+        public static string Lt(string fieldValue)
+        {
             return Comparison(CamlComparisions.Lt, fieldValue);
         }
         /// <summary>
@@ -291,7 +321,8 @@ namespace PnP.Framework.Utilities {
         /// </summary>
         /// <param name="fieldValue">Value of the field</param>
         /// <returns>Returns Comparison string to be used in CAML queries</returns>
-        public static string Neq(string fieldValue) {
+        public static string Neq(string fieldValue)
+        {
             return Comparison(CamlComparisions.Neq, fieldValue);
         }
         /// <summary>
@@ -299,26 +330,31 @@ namespace PnP.Framework.Utilities {
         /// </summary>
         /// <param name="fieldValue">Value of the field</param>
         /// <returns>Returns Comparison string to be used in CAML queries</returns>
-        public static string NotIncludes(string fieldValue) {
+        public static string NotIncludes(string fieldValue)
+        {
             return Comparison(CamlComparisions.NotIncludes, fieldValue);
         }
         #endregion
 
-        static string Comparison(CamlComparisions comparison, string fieldValue) {
+        static string Comparison(CamlComparisions comparison, string fieldValue)
+        {
             return string.Format(GENERIC_CLAUSE, comparison, fieldValue);
         }
 
-        static string Condition(CamlConditions condition, string clause1, params string[] comparisonClauses) {
+        static string Condition(CamlConditions condition, string clause1, params string[] comparisonClauses)
+        {
             var formattedString = clause1;
 
-            foreach (var clause in comparisonClauses) {
+            foreach (var clause in comparisonClauses)
+            {
                 formattedString = string.Format(CONDITION_CLAUSE, condition, formattedString, clause);
             }
 
             return formattedString;
         }
 
-        enum CamlComparisions {
+        enum CamlComparisions
+        {
             BeginsWith, Contains, DateRangesOverlap,
             Eq, Geq, Gt, In, Includes, IsNotNull, IsNull,
             Leq, Lt, Neq, NotIncludes
@@ -331,7 +367,8 @@ namespace PnP.Framework.Utilities {
     /// <summary>
     /// Class is used to order the data by field.
     /// </summary>
-    public class OrderByField {
+    public class OrderByField
+    {
         const string ORDERBY_FIELD = "<FieldRef Name='{0}' Ascending='{1}' />";
         /// <summary>
         /// Constructor for OrderByField class
@@ -343,7 +380,8 @@ namespace PnP.Framework.Utilities {
         /// </summary>
         /// <param name="name">Name of the field</param>
         /// <param name="ascending">If we want to order in ascending order</param>
-        public OrderByField(string name, bool ascending) {
+        public OrderByField(string name, bool ascending)
+        {
             Name = name;
             Ascending = ascending;
         }
@@ -359,7 +397,8 @@ namespace PnP.Framework.Utilities {
         /// OrderByField string
         /// </summary>
         /// <returns>Returns string</returns>
-        public override string ToString() {
+        public override string ToString()
+        {
             return string.Format(ORDERBY_FIELD, Name, Ascending.ToString().ToUpper());
         }
     }

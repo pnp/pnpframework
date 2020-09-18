@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 
 namespace PnP.Framework.Provisioning.Extensibility
 {
-     /// <summary>
+    /// <summary>
     /// Initializes a new instance of the ExtensiblityPipelineException class. This Exception occurs when there 
     /// is an exception invoking a custom Extensibility Providers
     /// </summary>
@@ -17,7 +17,7 @@ namespace PnP.Framework.Provisioning.Extensibility
         {
         }
 
-         /// <summary>
+        /// <summary>
         /// Initializes a new instance of the ExtensiblityPipelineException class with the specified message string.
         /// </summary>
         /// <param name="message"> A string that describes the exception.</param>
@@ -43,6 +43,6 @@ namespace PnP.Framework.Provisioning.Extensibility
         /// <exception cref="System.ArgumentNullException">The info parameter is null.-or-The context parameter is null.</exception>
         private ExtensiblityPipelineException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
-        } 
+        }
     }
 }

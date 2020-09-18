@@ -1,16 +1,14 @@
-﻿using System;
+﻿using Microsoft.Online.SharePoint.TenantAdministration;
+using Microsoft.Online.SharePoint.TenantManagement;
+using PnP.Framework;
+using PnP.Framework.Entities;
+using PnP.Framework.Enums;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Net;
-using Microsoft.Online.SharePoint.TenantAdministration;
-using Microsoft.Online.SharePoint.TenantManagement;
-using PnP.Framework;
-using PnP.Framework.AppModelExtensions;
-using PnP.Framework.Entities;
-using PnP.Framework.Enums;
-using PnP.Framework.Utilities;
 
 namespace Microsoft.SharePoint.Client
 {
@@ -1422,7 +1420,8 @@ namespace Microsoft.SharePoint.Client
             {
                 var users = context.LoadQuery(obj.RoleAssignments.Groups.First(g => g.LoginName.Equals(groupLoginName, StringComparison.OrdinalIgnoreCase)).Users);
                 context.ExecuteQueryRetry();
-                MockupGroupCache[groupLoginName] = (from u in users select new UserEntity()
+                MockupGroupCache[groupLoginName] = (from u in users
+                                                    select new UserEntity()
                                                     {
                                                         Title = u.Title,
                                                         Email = u.Email,

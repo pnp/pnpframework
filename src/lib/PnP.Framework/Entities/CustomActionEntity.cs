@@ -22,16 +22,16 @@ namespace PnP.Framework.Entities
         /// Specifies the type of object associated with the custom action. A Nullable Type
         /// </summary>
         public UserCustomActionRegistrationType? RegistrationType { get; set; }
-       
+
         /// <summary>
         /// Gets or sets the name of the custom action.
         /// </summary>
-        public string Name 
+        public string Name
         {
             get;
             set;
         }
-        
+
         /// <summary>
         /// Description of the custom action
         /// </summary>

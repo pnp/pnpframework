@@ -5,7 +5,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml
     public class XMLFileSystemTemplateProvider : XMLTemplateProvider
     {
 
-        public XMLFileSystemTemplateProvider(): base()
+        public XMLFileSystemTemplateProvider() : base()
         {
         }
 

@@ -1,12 +1,7 @@
-﻿using Microsoft.SharePoint.Client;
-using PnP.Framework.Provisioning.Connectors;
-using PnP.Framework.Provisioning.Model;
+﻿using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Model.Configuration;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -44,7 +39,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         public ProvisioningMessagesDelegate MessagesDelegate { get; set; }
         public ProvisioningSiteProvisionedDelegate SiteProvisionedDelegate { get; set; }
 
-        internal ApplyConfiguration ApplyConfiguration {get;set;}
+        internal ApplyConfiguration ApplyConfiguration { get; set; }
         /// <summary>
         /// If true then persists template information
         /// </summary>

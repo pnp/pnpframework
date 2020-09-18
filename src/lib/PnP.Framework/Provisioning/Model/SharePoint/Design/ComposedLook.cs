@@ -92,7 +92,7 @@ namespace PnP.Framework.Provisioning.Model
         {
             if (!(obj is ComposedLook))
             {
-                return(false);
+                return (false);
             }
             return (Equals((ComposedLook)obj));
         }

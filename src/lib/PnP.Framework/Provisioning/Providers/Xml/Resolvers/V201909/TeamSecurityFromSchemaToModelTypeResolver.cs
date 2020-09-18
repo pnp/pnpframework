@@ -1,18 +1,14 @@
-﻿using PnP.Framework.Provisioning.Model.Teams;
+﻿using PnP.Framework.Extensions;
+using PnP.Framework.Provisioning.Model.Teams;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201909
 {
     /// <summary>
     /// Type resolver for Teams Security from Schema to Model
     /// </summary>
-    internal class TeamSecurityFromSchemaToModelTypeResolver: ITypeResolver
+    internal class TeamSecurityFromSchemaToModelTypeResolver : ITypeResolver
     {
         public string Name => this.GetType().Name;
         public bool CustomCollectionResolver => false;
@@ -40,7 +36,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201909
                 if (null != owners)
                 {
                     result.Owners.AddRange(
-                        usersResolver.Resolve(owners.GetPublicInstancePropertyValue("User")) 
+                        usersResolver.Resolve(owners.GetPublicInstancePropertyValue("User"))
                         as IEnumerable<TeamSecurityUser>);
                 }
 
@@ -48,7 +44,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201909
                 if (null != members)
                 {
                     result.Members.AddRange(
-                        usersResolver.Resolve(members.GetPublicInstancePropertyValue("User")) 
+                        usersResolver.Resolve(members.GetPublicInstancePropertyValue("User"))
                         as IEnumerable<TeamSecurityUser>);
                 }
 

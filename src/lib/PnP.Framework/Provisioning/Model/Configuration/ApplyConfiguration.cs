@@ -1,16 +1,9 @@
-﻿using Microsoft.SharePoint.Client;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Schema;
+﻿using Newtonsoft.Json;
 using PnP.Framework.Provisioning.Connectors;
 using PnP.Framework.Provisioning.ObjectHandlers;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.Model.Configuration
 {
@@ -84,7 +77,7 @@ namespace PnP.Framework.Provisioning.Model.Configuration
 
             ai.ApplyConfiguration = this;
 
-            if(this.AccessTokens != null && this.AccessTokens.Any())
+            if (this.AccessTokens != null && this.AccessTokens.Any())
             {
                 ai.AccessTokens = this.AccessTokens;
             }
@@ -104,7 +97,7 @@ namespace PnP.Framework.Provisioning.Model.Configuration
                     switch (handler)
                     {
                         case ConfigurationHandler.Pages:
-                            handlerEnumValue = Model.Handlers.Pages 
+                            handlerEnumValue = Model.Handlers.Pages
                                 | Model.Handlers.PageContents;
                             break;
                         case ConfigurationHandler.Taxonomy:
@@ -154,16 +147,17 @@ namespace PnP.Framework.Provisioning.Model.Configuration
             config.Navigation.ClearNavigation = information.ClearNavigation;
             config.Tenant.DelayAfterModernSiteCreation = information.DelayAfterModernSiteCreation;
             config.Extensibility.Handlers = information.ExtensibilityHandlers;
-            if(information.HandlersToProcess == Model.Handlers.All)
+            if (information.HandlersToProcess == Model.Handlers.All)
             {
                 config.Handlers = new List<ConfigurationHandler>();
-            } else
+            }
+            else
             {
-                foreach(var enumValue in (Handlers[])Enum.GetValues(typeof(Handlers)))
+                foreach (var enumValue in (Handlers[])Enum.GetValues(typeof(Handlers)))
                 {
-                    if(information.HandlersToProcess.Has(enumValue))
+                    if (information.HandlersToProcess.Has(enumValue))
                     {
-                        if(Enum.TryParse<ConfigurationHandler>(enumValue.ToString(),out ConfigurationHandler configHandler))
+                        if (Enum.TryParse<ConfigurationHandler>(enumValue.ToString(), out ConfigurationHandler configHandler))
                         {
                             config.Handlers.Add(configHandler);
                         }

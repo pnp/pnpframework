@@ -1,13 +1,12 @@
-﻿using System;
+﻿using PnP.Framework.Provisioning.Model;
+using PnP.Framework.Provisioning.Providers;
+using PnP.Framework.Provisioning.Providers.Xml;
+using System;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Xml.Linq;
-using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Provisioning.Providers.Xml;
-using PnP.Framework.Utilities;
-using PnP.Framework.Provisioning.Providers;
-using System.Linq;
-using System.Diagnostics;
 
 namespace Microsoft.SharePoint.Client
 {
@@ -108,7 +107,7 @@ namespace Microsoft.SharePoint.Client
                         }
                         else if (v.Build > 10300 && v.Build < 19000)
                         {
-                            
+
                             return "_2019";
                         }
                         else

@@ -1,10 +1,10 @@
-﻿using System;
-using Microsoft.SharePoint.Client;
-using PnP.Framework.Provisioning.Model;
+﻿using Microsoft.SharePoint.Client;
 using PnP.Framework.Diagnostics;
-using System.Collections.Generic;
-using PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions;
+using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
+using PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions;
+using System;
+using System.Collections.Generic;
 
 namespace PnP.Framework.Provisioning.Extensibility
 {

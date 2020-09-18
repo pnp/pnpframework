@@ -1,7 +1,6 @@
 ﻿using Microsoft.Online.SharePoint.TenantAdministration;
 using Microsoft.SharePoint.Client;
 using PnP.Framework.Diagnostics;
-using PnP.Framework.Entities;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Model.Configuration;
 using PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions;
@@ -385,7 +384,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                         siteInfo.SiteDesignId = siteDesignId;
                                     }
                                     else if (Guid.TryParse(tokenParser.ParseString(c.SiteDesign), out siteDesignId))
-									{
+                                    {
                                         siteInfo.SiteDesignId = siteDesignId;
                                     }
                                     else
@@ -541,7 +540,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             foreach (var token in _additionalTokens)
                             {
                                 siteTokenParser.AddToken(token);
-                                
+
                                 // Add the token to the global token parser, too
                                 tokenParser.AddToken(token);
                             }

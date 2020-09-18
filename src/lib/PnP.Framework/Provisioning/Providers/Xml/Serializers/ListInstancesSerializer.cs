@@ -1,14 +1,12 @@
 ﻿using Microsoft.SharePoint.Client;
+using PnP.Framework.Extensions;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Providers.Xml.Resolvers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 {
@@ -71,7 +69,8 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
                    new FoldersFromSchemaToModelTypeResolver());
 
                 // Fields
-                expressions.Add(l => l.Fields, new ExpressionValueResolver((s, v) => {
+                expressions.Add(l => l.Fields, new ExpressionValueResolver((s, v) =>
+                {
                     var fields = new Model.FieldCollection(template);
                     var sourceFields = s.GetPublicInstancePropertyValue("Fields")?.GetPublicInstancePropertyValue("Any") as System.Xml.XmlElement[];
                     if (sourceFields != null)

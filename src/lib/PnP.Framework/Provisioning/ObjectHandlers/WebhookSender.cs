@@ -4,7 +4,6 @@ using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,7 +30,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         public static void InvokeWebhook(ProvisioningWebhookBase webhook,
             HttpClient httpClient,
             ProvisioningTemplateWebhookKind kind, TokenParser parser = null,
-            string objectHandler = null, Exception exception = null, 
+            string objectHandler = null, Exception exception = null,
             PnPMonitoredScope scope = null)
         {
             var requestParameters = new Dictionary<String, String>();

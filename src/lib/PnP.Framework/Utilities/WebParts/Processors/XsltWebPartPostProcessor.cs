@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Microsoft.SharePoint.Client;
+using Microsoft.SharePoint.Client.WebParts;
+using PnP.Framework.Utilities.WebParts.Schema;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
-using Microsoft.SharePoint.Client;
-using Microsoft.SharePoint.Client.WebParts;
-using PnP.Framework.Utilities.WebParts.Schema;
 using WebPart = PnP.Framework.Utilities.WebParts.Schema.WebPart;
 
 namespace PnP.Framework.Utilities.WebParts.Processors
@@ -168,7 +168,7 @@ namespace PnP.Framework.Utilities.WebParts.Processors
 
                     foreach (View listView in list.Views)
                     {
-                        if (!listView.Hidden && 
+                        if (!listView.Hidden &&
                         listView.ServerRelativeUrl.IndexOf(urlAttribute.Value, StringComparison.OrdinalIgnoreCase) != -1)
                         {
                             return listView;
@@ -244,7 +244,7 @@ namespace PnP.Framework.Utilities.WebParts.Processors
                 return context.Site.OpenWebById(webId);
             }
 
-            return ((ClientContext) webPartPage.Context).Web;
+            return ((ClientContext)webPartPage.Context).Web;
         }
 
         private bool TryParseGuidProperty(PropertyType property, out Guid id)

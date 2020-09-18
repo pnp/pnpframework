@@ -1,19 +1,15 @@
-﻿using PnP.Framework.Provisioning.Model;
+﻿using PnP.Framework.Extensions;
+using PnP.Framework.Provisioning.Model;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
 {
     /// <summary>
     /// Resolves a list of Views from Schema to Domain Model
     /// </summary>
-    internal class PageLayoutsFromModelToSchemaTypeResolver: ITypeResolver
+    internal class PageLayoutsFromModelToSchemaTypeResolver : ITypeResolver
     {
         public string Name => this.GetType().Name;
         public bool CustomCollectionResolver => false;

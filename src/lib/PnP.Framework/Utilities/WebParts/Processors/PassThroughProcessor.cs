@@ -15,7 +15,7 @@ namespace PnP.Framework.Utilities.WebParts.Processors
         /// <param name="webPartPage">File object</param>
         public void Process(WebPartDefinition wpDefinition, File webPartPage)
         {
-            
+
         }
     }
 }

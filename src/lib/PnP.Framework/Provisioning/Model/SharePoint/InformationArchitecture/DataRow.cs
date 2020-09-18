@@ -1,10 +1,8 @@
-﻿using System;
+﻿using PnP.Framework.Extensions;
+using PnP.Framework.Provisioning.Model.SharePoint.InformationArchitecture;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
-using PnP.Framework.Provisioning.Model.SharePoint.InformationArchitecture;
 
 namespace PnP.Framework.Provisioning.Model
 {

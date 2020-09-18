@@ -1,7 +1,6 @@
-﻿using System;
+﻿using PnP.Framework.Extensions;
+using System;
 using System.Linq;
-using System.Collections.Generic;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Model
 {
@@ -167,7 +166,7 @@ namespace PnP.Framework.Provisioning.Model
         /// Specifies the default visitors group for this site. The group will automatically be added to the end of the Associated Groups list.
         /// </summary>
         public String AssociatedVisitorGroup { get; set; }
-        
+
         #endregion
 
         #region Comparison code

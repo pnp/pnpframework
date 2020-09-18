@@ -11,7 +11,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 {
     internal class ObjectClientSidePageContents : ObjectContentHandlerBase
     {
-        
+
         public override string Name
         {
             get { return "Client Side Page Contents"; }
@@ -65,7 +65,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     ListCollection listCollection = web.Lists;
                     listCollection.EnsureProperties(coll => coll.Include(li => li.BaseTemplate, li => li.RootFolder));
                     sitePagesLibrary = listCollection.Where(p => p.BaseTemplate == (int)ListTemplateType.WebPageLibrary).FirstOrDefault();
-                } 
+                }
                 catch
                 {
                     // fall back in case of exception when the site has been incorrectly provisioned which can cause access issues on lists/libraries.
@@ -103,7 +103,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     {
                         // Prep a list of pages to export allowing us hanlde translations
                         List<PageToExport> pagesToExport = new List<PageToExport>();
-                        foreach(var page in pages)
+                        foreach (var page in pages)
                         {
                             PageToExport pageToExport = new PageToExport()
                             {
@@ -188,7 +188,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         }
 
                         var currentPageIndex = 1;
-                        foreach (var page in pagesToExport.OrderBy(p=>p.IsTranslation))
+                        foreach (var page in pagesToExport.OrderBy(p => p.IsTranslation))
                         {
                             if (creationInfo.IncludeAllClientSidePages || page.IsHomePage)
                             {

@@ -1,10 +1,7 @@
 ﻿using Microsoft.SharePoint.Client;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Utilities
 {
@@ -26,11 +23,12 @@ namespace PnP.Framework.Utilities
         }
 
         private static Lazy<String> PnPCoreVersionTagLazy = new Lazy<String>(
-            () => {
+            () =>
+            {
                 Assembly coreAssembly = Assembly.GetExecutingAssembly();
-                String result = $"PnPCore:{((AssemblyFileVersionAttribute) coreAssembly.GetCustomAttribute(typeof(AssemblyFileVersionAttribute))).Version.Split('.')[2]}";
+                String result = $"PnPCore:{((AssemblyFileVersionAttribute)coreAssembly.GetCustomAttribute(typeof(AssemblyFileVersionAttribute))).Version.Split('.')[2]}";
                 return (result);
-            }, 
+            },
             true);
 
         /// <summary>
@@ -46,8 +44,9 @@ namespace PnP.Framework.Utilities
         }
 
         private static Lazy<String> PnPCoreUserAgentLazy = new Lazy<String>(
-            () => {
-                Assembly coreAssembly = Assembly.GetExecutingAssembly();         
+            () =>
+            {
+                Assembly coreAssembly = Assembly.GetExecutingAssembly();
                 String result = $"NONISV|SharePointPnP|PnPCore/{((AssemblyFileVersionAttribute)coreAssembly.GetCustomAttribute(typeof(AssemblyFileVersionAttribute))).Version}";
                 return (result);
             },

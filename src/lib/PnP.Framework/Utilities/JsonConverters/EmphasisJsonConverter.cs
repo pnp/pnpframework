@@ -17,7 +17,7 @@ namespace PnP.Framework.Utilities.JsonConverters
         {
             object initialValue = reader.Value;
             int result = 0;
-            
+
             if (initialValue != null)
             {
                 var stringValue = initialValue.ToString();
@@ -37,7 +37,7 @@ namespace PnP.Framework.Utilities.JsonConverters
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            if (value!=null)
+            if (value != null)
             {
                 int zoneEmphasis = 0;
                 int.TryParse(value.ToString(), out zoneEmphasis);

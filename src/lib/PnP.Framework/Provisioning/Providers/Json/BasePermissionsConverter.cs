@@ -2,9 +2,6 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.Providers.Json
 {
@@ -52,7 +49,7 @@ namespace PnP.Framework.Provisioning.Providers.Json
         {
             String jsonValue = null;
 
-            Microsoft.SharePoint.Client.BasePermissions basePermissions = 
+            Microsoft.SharePoint.Client.BasePermissions basePermissions =
                 value as Microsoft.SharePoint.Client.BasePermissions;
             if (basePermissions != null)
             {

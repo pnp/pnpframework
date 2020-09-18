@@ -179,7 +179,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             if (!_willProvision.HasValue && template.ApplicationLifecycleManagement != null)
             {
-                _willProvision = (template.ApplicationLifecycleManagement.AppCatalog?.Packages != null && 
+                _willProvision = (template.ApplicationLifecycleManagement.AppCatalog?.Packages != null &&
                                 template.ApplicationLifecycleManagement.AppCatalog?.Packages.Count > 0) ||
                                 template.ApplicationLifecycleManagement.Apps.Count > 0;
             }

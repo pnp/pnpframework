@@ -1,9 +1,6 @@
-﻿using System;
+﻿using PnP.Framework.Utilities.Themes.Palettes;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Utilities.Themes.Palettes;
 
 namespace PnP.Framework.Utilities.Themes.Generator
 {
@@ -40,7 +37,7 @@ namespace PnP.Framework.Utilities.Themes.Generator
                 {
                     throw new ArgumentNullException(nameof(color), "Color is invalid in setSlot(): " + color.ToString());
                 }
-                
+
                 ThemeGenerator.SetSlotInternal(rule, colorAsIColor, isInverted, isCustomization, overwriteCustomColor);
             }
             else if (rule.color != null)
@@ -60,7 +57,7 @@ namespace PnP.Framework.Utilities.Themes.Generator
         public static void InsureSlots(IThemeRules slotRules, Boolean isInverted)
         {
             // Get all the "root" rules, the ones which don't inherit. Then "set" them to trigger updating dependent slots.
-            foreach (var ruleName in slotRules) 
+            foreach (var ruleName in slotRules)
             {
                 IThemeSlotRule rule = slotRules[ruleName];
                 if (rule.inherits == null && String.IsNullOrEmpty(rule.value))
@@ -84,7 +81,7 @@ namespace PnP.Framework.Utilities.Themes.Generator
         /// <param name="slotRules"></param>
         public static string GetThemeAsJson(IThemeRules slotRules)
         {
-            var theme = new Dictionary<string,string>();
+            var theme = new Dictionary<string, string>();
             foreach (var ruleName in slotRules)
             {
                 // strip out the unnecessary shade slots from the final output theme

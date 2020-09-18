@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
 {
@@ -36,7 +33,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
         {
             object result = null;
 
-            if ((null != sourceValue)&&(sourceValue is IList))
+            if ((null != sourceValue) && (sourceValue is IList))
             {
                 var sourceList = (IList)sourceValue;
                 var resultArray = Array.CreateInstance(this.targetItemType, sourceList.Count);
@@ -56,7 +53,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
     /// <summary>
     /// Resolve collection from schema to model with expression
     /// </summary>
-    internal class ExpressionCollectionValueResolver<T> : IValueResolver 
+    internal class ExpressionCollectionValueResolver<T> : IValueResolver
     {
         public string Name => this.GetType().Name;
 
@@ -64,7 +61,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
 
         public ExpressionCollectionValueResolver(Expression<Func<object, T>> expression)
         {
-            if(expression == null)
+            if (expression == null)
             {
                 throw new ArgumentException("expression");
             }

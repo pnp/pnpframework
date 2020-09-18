@@ -33,7 +33,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
 
                     CacheValue = termGroup.Id.ToString();
                 }
-                catch(ServerUnauthorizedAccessException)
+                catch (ServerUnauthorizedAccessException)
                 {
                     Log.Warning(Constants.LOGGING_SOURCE, CoreResources.TermGroup_No_Access);
                 }

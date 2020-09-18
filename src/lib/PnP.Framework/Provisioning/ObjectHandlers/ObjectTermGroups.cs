@@ -82,7 +82,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 {
                     // Find the site collection termgroup, if any
                     TaxonomySession session = TaxonomySession.GetTaxonomySession(web.Context);
-                    
+
                     TermStore termStore = null;
 
                     try

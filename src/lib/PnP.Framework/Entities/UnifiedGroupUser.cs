@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Entities
 {
@@ -19,6 +15,6 @@ namespace PnP.Framework.Entities
         /// Unified group user's display name
         /// </summary>
         public String DisplayName { get; set; }
-        
+
     }
 }

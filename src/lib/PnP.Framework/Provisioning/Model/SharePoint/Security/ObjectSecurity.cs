@@ -1,9 +1,7 @@
-﻿using System;
+﻿using PnP.Framework.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Model
 {
@@ -28,7 +26,7 @@ namespace PnP.Framework.Provisioning.Model
         /// Constructor for ObjectSecurity class
         /// </summary>
         /// <param name="roleAssignments">RoleAssignments for security component</param>
-        public ObjectSecurity(IEnumerable<RoleAssignment> roleAssignments):
+        public ObjectSecurity(IEnumerable<RoleAssignment> roleAssignments) :
             this()
         {
             this.RoleAssignments.AddRange(roleAssignments);

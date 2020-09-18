@@ -22,7 +22,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
             {
                 TokenContext.Load(TokenContext.Web, w => w.Title);
                 TokenContext.ExecuteQueryRetry();
-                CacheValue = Regex.Replace(TokenContext.Web.Title, "[\"/\\[\\]\\\\:|<>+=;,?*\'@]", "_"); 
+                CacheValue = Regex.Replace(TokenContext.Web.Title, "[\"/\\[\\]\\\\:|<>+=;,?*\'@]", "_");
             }
             return CacheValue;
         }

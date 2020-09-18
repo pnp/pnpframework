@@ -1,11 +1,6 @@
-﻿using PnP.Framework.Provisioning.Model.Teams;
-using System;
+﻿using PnP.Framework.Extensions;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201909
 {

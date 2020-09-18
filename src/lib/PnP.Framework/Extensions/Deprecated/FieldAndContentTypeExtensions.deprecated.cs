@@ -1,10 +1,5 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Linq;
-using System.Xml;
-using PnP.Framework;
-using PnP.Framework.Entities;
-using PnP.Framework.Utilities;
 
 namespace Microsoft.SharePoint.Client
 {

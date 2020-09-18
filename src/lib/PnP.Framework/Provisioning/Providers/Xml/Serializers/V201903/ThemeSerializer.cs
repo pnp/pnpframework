@@ -1,11 +1,10 @@
-﻿using Microsoft.SharePoint.Client;
+﻿using PnP.Framework.Extensions;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Providers.Xml.Resolvers;
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
-using PnP.Framework.Extensions;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 {
@@ -26,7 +25,8 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
                 var expressions = new Dictionary<Expression<Func<Theme, Object>>, IResolver>();
 
                 // Manage Palette of Theme
-                expressions.Add(t => t.Palette, new ExpressionValueResolver((s, v) => {
+                expressions.Add(t => t.Palette, new ExpressionValueResolver((s, v) =>
+                {
 
                     String result = null;
 
@@ -58,7 +58,8 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
                 var resolvers = new Dictionary<String, IResolver>();
 
                 resolvers.Add($"{themeType}.Text",
-                    new ExpressionValueResolver((s, v) => {
+                    new ExpressionValueResolver((s, v) =>
+                    {
                         return (new String[] { (String)s.GetPublicInstancePropertyValue("Palette") });
                     }));
 

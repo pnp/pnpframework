@@ -2,17 +2,13 @@
 using Microsoft.SharePoint.Client;
 using PnP.Framework.Provisioning.ObjectHandlers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.CanProvisionRules
 {
     /// <summary>
     /// Base class to test if the Provisioning Template can be provisioned on the target SharePoint Tenant
     /// </summary>
-    internal abstract class CanProvisionRuleTenantBase: ICanProvisionRuleTenant
+    internal abstract class CanProvisionRuleTenantBase : ICanProvisionRuleTenant
     {
         public string Name { get => this.GetType().FullName; }
 
@@ -33,7 +29,7 @@ namespace PnP.Framework.Provisioning.CanProvisionRules
         }
 
         protected CanProvisionResult EvaluateSiteRule<CanProvisionRuleSite>(Tenant tenant, Model.ProvisioningHierarchy hierarchy, string sequenceId, ProvisioningTemplateApplyingInformation applyingInformation)
-            where CanProvisionRuleSite: CanProvisionRuleSiteBase
+            where CanProvisionRuleSite : CanProvisionRuleSiteBase
         {
             // Prepare the default output
             var result = new CanProvisionResult();

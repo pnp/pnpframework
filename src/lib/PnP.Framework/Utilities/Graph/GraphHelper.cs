@@ -57,14 +57,14 @@ namespace PnP.Framework.Utilities.Graph
                         if (!string.IsNullOrEmpty(json))
                         {
                             itemId = JToken.Parse(json).Value<String>("id");
-                        }                        
+                        }
                         break;
                     case HttpMethodVerb.PUT:
                         json = HttpHelper.MakePutRequestForString(uri, content, contentType, accessToken);
                         if (!string.IsNullOrEmpty(json))
                         {
                             itemId = JToken.Parse(json).Value<String>("id");
-                        }                        
+                        }
                         break;
                     case HttpMethodVerb.POST_WITH_RESPONSE_HEADERS:
                         responseHeaders = HttpHelper.MakePostRequestForHeaders(uri, content, contentType, accessToken);

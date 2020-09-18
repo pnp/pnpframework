@@ -458,7 +458,7 @@ namespace PnP.Framework.Pages
             else
             {
                 html.Append($@"<div {CanvasControlAttribute}=""{this.CanvasControlData}"" {CanvasDataVersionAttribute}=""{this.DataVersion}"" {ControlDataAttribute}=""{this.JsonControlData.Replace("\"", "&quot;")}"">");
-                html.Append($@"<div {WebPartAttribute}=""{this.WebPartData}"" {WebPartDataVersionAttribute}=""{this.DataVersion}"" {WebPartDataAttribute}=""{this.JsonWebPartData.Replace("\"", "&quot;").Replace("<","&lt;").Replace(">","&gt;")}"">");
+                html.Append($@"<div {WebPartAttribute}=""{this.WebPartData}"" {WebPartDataVersionAttribute}=""{this.DataVersion}"" {WebPartDataAttribute}=""{this.JsonWebPartData.Replace("\"", "&quot;").Replace("<", "&lt;").Replace(">", "&gt;")}"">");
                 html.Append($@"<div {WebPartComponentIdAttribute}="""">");
                 html.Append(this.WebPartId);
                 html.Append("</div>");

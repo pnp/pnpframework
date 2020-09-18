@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections;
+﻿using PnP.Framework.Extensions;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
 {
     /// <summary>
     /// Type resolver for complex types from Model to Schema
     /// </summary>
-    internal class ComplexTypeFromModelToSchemaTypeResolver: ITypeResolver
+    internal class ComplexTypeFromModelToSchemaTypeResolver : ITypeResolver
     {
         public string Name => this.GetType().Name;
         public bool CustomCollectionResolver => false;

@@ -1,12 +1,7 @@
-﻿using System;
+﻿using PnP.Framework.Extensions;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
-using System.Xml.Linq;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201705
 {
@@ -47,7 +42,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201705
             {
                 // Prepare the DataRows element wrapper
                 result = Activator.CreateInstance(listInstanceDataRowsType);
-                
+
                 result.GetPublicInstanceProperty("KeyColumn").SetValue(result, list.DataRows.KeyColumn);
                 result.GetPublicInstanceProperty("UpdateBehavior").SetValue(result, list.DataRows.UpdateBehavior);
 

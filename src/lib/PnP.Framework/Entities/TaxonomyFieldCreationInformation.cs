@@ -8,13 +8,14 @@ namespace PnP.Framework.Entities
     public class TaxonomyFieldCreationInformation : FieldCreationInformation
     {
         private bool _multiValue = false;
-       
+
         /// <summary>
         /// Allows multiple values for Taxonomy field
         /// </summary>
-        public bool MultiValue 
+        public bool MultiValue
         {
-            get {
+            get
+            {
                 return _multiValue;
             }
             set

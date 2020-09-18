@@ -1,4 +1,6 @@
-﻿using PnP.Framework.Provisioning.Model;
+﻿using PnP.Framework.Extensions;
+using PnP.Framework.Provisioning.Model;
+using PnP.Framework.Provisioning.Providers.Xml.V201508;
 using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
@@ -8,9 +10,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;
 using System.Xml.Serialization;
-using PnP.Framework.Provisioning.Providers.Xml.V201508;
 using ContentType = PnP.Framework.Provisioning.Model.ContentType;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml
 {
@@ -394,7 +394,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml
                          Group = ct.Group,
                          Name = ct.Name,
                          Sealed = ct.Sealed,
-                         Hidden =  ct.Hidden,
+                         Hidden = ct.Hidden,
                          ReadOnly = ct.ReadOnly,
                          FieldRefs = ct.FieldRefs.Count > 0 ?
                          (from fieldRef in ct.FieldRefs
@@ -976,7 +976,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml
             // Translate Providers, if any
 #pragma warning disable 618
             if ((template.Providers != null && template.Providers.Count > 0) || (template.ExtensibilityHandlers != null && template.ExtensibilityHandlers.Count > 0))
-             {
+            {
                 var extensibilityHandlers = template.ExtensibilityHandlers.Union(template.Providers);
                 result.Providers =
                     (from provider in extensibilityHandlers

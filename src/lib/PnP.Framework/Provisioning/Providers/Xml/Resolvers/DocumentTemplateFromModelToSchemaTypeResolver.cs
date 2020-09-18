@@ -1,9 +1,6 @@
-﻿using System;
+﻿using PnP.Framework.Extensions;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
 {
@@ -27,7 +24,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
         {
             Object result = null;
             Model.ContentType contentType = source as Model.ContentType;
-            
+
             if (null != contentType && !String.IsNullOrEmpty(contentType.DocumentTemplate))
             {
                 result = Activator.CreateInstance(this._targetType);

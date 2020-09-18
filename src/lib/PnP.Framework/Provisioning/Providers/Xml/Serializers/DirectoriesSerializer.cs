@@ -1,11 +1,9 @@
-﻿using PnP.Framework.Provisioning.Model;
+﻿using PnP.Framework.Extensions;
+using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Providers.Xml.Resolvers;
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Xml;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 {
@@ -28,7 +26,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
                 var expressions = new Dictionary<Expression<Func<Directory, Object>>, IResolver>();
                 expressions.Add(c => c.Level, new FromStringToEnumValueResolver(typeof(FileLevel)));
 
-                expressions.Add(f => f.Security, new PropertyObjectTypeResolver<File>(fl => fl.Security, 
+                expressions.Add(f => f.Security, new PropertyObjectTypeResolver<File>(fl => fl.Security,
                     fl => fl.GetPublicInstancePropertyValue("Security")?.GetPublicInstancePropertyValue("BreakRoleInheritance")));
                 expressions.Add(f => f.Security.RoleAssignments, new RoleAssigmentsFromSchemaToModelTypeResolver());
 

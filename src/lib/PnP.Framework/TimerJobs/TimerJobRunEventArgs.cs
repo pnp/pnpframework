@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Microsoft.SharePoint.Client;
+using System;
 using System.Collections.Generic;
-using Microsoft.SharePoint.Client;
 
 namespace PnP.Framework.TimerJobs
 {
     /// <summary>
     /// Event arguments for the TimerJobRun event
     /// </summary>
-    public class TimerJobRunEventArgs: EventArgs
+    public class TimerJobRunEventArgs : EventArgs
     {
         public ClientContext SiteClientContext;
         public ClientContext WebClientContext;
@@ -53,7 +53,7 @@ namespace PnP.Framework.TimerJobs
         /// <param name="ccWeb">ClientContext object for passed site Url</param>
         /// <param name="ccTenant">Tenant ClientContext</param>
         /// <param name="configurationData">Configuration data</param>
-        internal TimerJobRunEventArgs(string url, ClientContext ccSite, ClientContext ccWeb, ClientContext ccTenant, string configurationData) : this (url, ccSite, ccWeb, ccTenant, null, null, null, null, configurationData)
+        internal TimerJobRunEventArgs(string url, ClientContext ccSite, ClientContext ccWeb, ClientContext ccTenant, string configurationData) : this(url, ccSite, ccWeb, ccTenant, null, null, null, null, configurationData)
         {
         }
 

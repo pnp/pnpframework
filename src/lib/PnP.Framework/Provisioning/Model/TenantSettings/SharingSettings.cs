@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.Model
 {
@@ -93,7 +91,7 @@ namespace PnP.Framework.Provisioning.Model
                 this.SharingDomainRestrictionMode.GetHashCode(),
                 this.AllowedDomainList.Aggregate(0, (acc, next) => acc += next.GetHashCode()),
                 this.BlockedDomainList.Aggregate(0, (acc, next) => acc += next.GetHashCode())
-            ).GetHashCode()) ;
+            ).GetHashCode());
         }
 
         /// <summary>

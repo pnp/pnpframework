@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201807
 {
@@ -26,7 +23,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201807
             var security = page?.Security;
 
             // If we have security settings
-            if (null != security && 
+            if (null != security &&
                 security.RoleAssignments != null &&
                 security.RoleAssignments.Count > 0)
             {

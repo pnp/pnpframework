@@ -1,16 +1,14 @@
-﻿using PnP.Framework.Provisioning.Model;
+﻿using PnP.Framework.Extensions;
+using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Providers.Xml.Resolvers;
 using PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201801;
 using PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201805;
+using PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201903;
+using PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201909;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
-using PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201903;
-using PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201909;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201909
 {
@@ -41,7 +39,8 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201909
                 expressions.Add(t => t.SiteDesigns[0].SiteScripts, new SiteScriptRefFromSchemaToModelTypeResolver());
 
                 // Manage Palette of Theme
-                expressions.Add(t => t.Themes[0].Palette, new ExpressionValueResolver((s, v) => {
+                expressions.Add(t => t.Themes[0].Palette, new ExpressionValueResolver((s, v) =>
+                {
 
                     String result = null;
 
@@ -78,7 +77,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201909
 
         public override void Serialize(ProvisioningTemplate template, object persistence)
         {
-            if (template.Tenant != null && 
+            if (template.Tenant != null &&
                 (template.Tenant.AppCatalog != null || template.Tenant.ContentDeliveryNetwork != null ||
                 template.Tenant.SiteDesigns != null || template.Tenant.SiteScripts != null ||
                 template.Tenant.StorageEntities != null || template.Tenant.Themes != null ||
@@ -105,13 +104,14 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201909
                         new CdnFromModelToSchemaTypeResolver());
                     resolvers.Add($"{siteDesignsType}.SiteScripts",
                         new SiteScriptRefFromModelToSchemaTypeResolver());
-                    resolvers.Add($"{siteDesignsType}.WebTemplate", 
+                    resolvers.Add($"{siteDesignsType}.WebTemplate",
                         new TenantSiteDesignsWebTemplateFromModelToSchemaValueResolver());
 
                     if (themeType != null)
                     {
                         resolvers.Add($"{themeType}.Text",
-                            new ExpressionValueResolver((s, v) => {
+                            new ExpressionValueResolver((s, v) =>
+                            {
                                 return (new String[] { (String)s.GetPublicInstancePropertyValue("Palette") });
                             }));
                     }

@@ -29,7 +29,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     this.reusedTerms = new List<TermGroupHelper.ReusedTerm>();
 
                     var context = tenant.Context as ClientContext;
-                    
+
                     TaxonomySession taxSession = TaxonomySession.GetTaxonomySession(context);
                     TermStore termStore = null;
 

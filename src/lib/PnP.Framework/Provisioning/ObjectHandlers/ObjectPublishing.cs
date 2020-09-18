@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.SharePoint.Client;
-using PnP.Framework.Provisioning.Model;
+﻿using Microsoft.SharePoint.Client;
 using PnP.Framework.Diagnostics;
-using System.Xml.Linq;
 using PnP.Framework.Entities;
-using System.IO;
+using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Providers;
 using PnP.Framework.Provisioning.Providers.Xml;
-using System.Web;
 using PnP.Framework.Utilities;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Web;
+using System.Xml.Linq;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -126,7 +124,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                 web.EnsureProperty(w => web.ServerRelativeUrl);
                                 file.EnsureProperty(f => f.Level);
 
-                                var containerPath = folderPath.StartsWith(web.ServerRelativeUrl) && web.ServerRelativeUrl != "/"  ? folderPath.Substring(web.ServerRelativeUrl.Length) : folderPath;
+                                var containerPath = folderPath.StartsWith(web.ServerRelativeUrl) && web.ServerRelativeUrl != "/" ? folderPath.Substring(web.ServerRelativeUrl.Length) : folderPath;
                                 var container = HttpUtility.UrlDecode(containerPath).Trim('/').Replace("/", "\\");
 
                                 var publishingFile = new Model.File()

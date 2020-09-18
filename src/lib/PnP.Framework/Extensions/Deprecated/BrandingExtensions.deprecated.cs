@@ -1,10 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
-using System.IO;
-using PnP.Framework;
-using PnP.Framework.Entities;
-using PnP.Framework.Utilities;
-using LanguageTemplateHash = System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>>;
 
 namespace Microsoft.SharePoint.Client
 {

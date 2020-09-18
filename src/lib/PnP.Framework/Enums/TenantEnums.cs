@@ -1,5 +1,7 @@
-﻿namespace PnP.Framework {
-    public enum SiteLockState {
+﻿namespace PnP.Framework
+{
+    public enum SiteLockState
+    {
         Unlock,
         NoAccess,
         ReadOnly

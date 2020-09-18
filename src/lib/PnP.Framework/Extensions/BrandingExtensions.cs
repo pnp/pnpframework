@@ -1,14 +1,14 @@
-﻿using System;
+﻿using PnP.Framework;
+using PnP.Framework.Diagnostics;
+using PnP.Framework.Entities;
+using PnP.Framework.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Xml;
-using PnP.Framework;
-using PnP.Framework.Entities;
 using LanguageTemplateHash = System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>>;
-using PnP.Framework.Diagnostics;
-using PnP.Framework.Utilities;
 
 namespace Microsoft.SharePoint.Client
 {
@@ -277,7 +277,7 @@ namespace Microsoft.SharePoint.Client
             web.Context.ExecuteQueryRetry();
             Log.Info(Constants.LOGGING_SOURCE, CoreResources.BrandingExtension_ApplyTheme, paletteServerRelativeUrl, web.ServerRelativeUrl);
 
-            if(!web.IsNoScriptSite())
+            if (!web.IsNoScriptSite())
             {
                 web.AllProperties[InheritTheme] = "False";
                 web.Update();
@@ -1554,7 +1554,7 @@ namespace Microsoft.SharePoint.Client
 #else
                                     CoreResources.SP_Responsive_UI_min
 #endif
-                                    , 
+                                    ,
                                     "SP-Responsive-UI.js");
                             }
                             else
@@ -1572,7 +1572,7 @@ namespace Microsoft.SharePoint.Client
 #else
                                     CoreResources.SP_Responsive_UI_CSS_min
 #endif
-                                    , 
+                                    ,
                                     "SP-Responsive-UI.css");
                             }
                         }
@@ -1595,7 +1595,7 @@ namespace Microsoft.SharePoint.Client
 #else
                             CoreResources.SP_Responsive_UI_CSS_min
 #endif
-                            , 
+                            ,
                             "SP-Responsive-UI.css");
                     }
 

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PnP.Framework.Provisioning.Model
+﻿namespace PnP.Framework.Provisioning.Model
 {
     /// <summary>
     /// Defines a collection of objects of type WorkflowDefinition
@@ -15,7 +9,7 @@ namespace PnP.Framework.Provisioning.Model
         /// Constructor for WorkflowDefinitionCollection class
         /// </summary>
         /// <param name="parentTemplate">Parent provisioning template</param>
-        public WorkflowDefinitionCollection(ProvisioningTemplate parentTemplate):
+        public WorkflowDefinitionCollection(ProvisioningTemplate parentTemplate) :
             base(parentTemplate)
         {
         }

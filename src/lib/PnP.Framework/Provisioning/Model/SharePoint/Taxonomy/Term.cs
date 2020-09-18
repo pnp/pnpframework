@@ -1,10 +1,7 @@
-﻿using System;
+﻿using PnP.Framework.Extensions;
+using System;
 using System.Collections.Generic;
-using System.IdentityModel.Tokens;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Model
 {
@@ -117,7 +114,7 @@ namespace PnP.Framework.Provisioning.Model
         /// <param name="labels">Labels of the term</param>
         /// <param name="properties">Properties of the term</param>
         /// <param name="localProperties">LocalProperties of the term</param>
-        public Term(Guid id, string name, int? language, List<Term> terms, List<TermLabel> labels, Dictionary<string, string> properties, Dictionary<string, string> localProperties):
+        public Term(Guid id, string name, int? language, List<Term> terms, List<TermLabel> labels, Dictionary<string, string> properties, Dictionary<string, string> localProperties) :
             this()
         {
             this.Id = id;

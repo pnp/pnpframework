@@ -718,7 +718,7 @@ namespace PnP.Framework.Pages
                 StringBuilder html = new StringBuilder();
 
                 float order = 1;
-                foreach(var headerControl in headerControls)
+                foreach (var headerControl in headerControls)
                 {
                     html.Append(headerControl.ToHtml(order));
                 }
@@ -738,7 +738,7 @@ namespace PnP.Framework.Pages
         public string ToHtml()
         {
             StringBuilder html = new StringBuilder(100);
-            
+
             if (this.sections.Count == 0) return string.Empty;
 
             html.Append($@"<div>");
@@ -943,7 +943,7 @@ namespace PnP.Framework.Pages
             var pageHeaderHtml = "";
             if (this.pageHeader != null && this.pageHeader.Type != ClientSidePageHeaderType.None && this.LayoutType != ClientSidePageLayoutType.RepostPage
                 && this.LayoutType != ClientSidePageLayoutType.Topic)
-            {               
+            {
                 // this triggers resolving of the header image which has to be done early as otherwise there will be version conflicts
                 // (see here: https://github.com/SharePoint/PnP-Sites-Core/issues/2203)
                 pageHeaderHtml = this.pageHeader.ToHtml(this.PageTitle);
@@ -1155,7 +1155,7 @@ namespace PnP.Framework.Pages
             // Try to set the page banner image url if not yet set
             bool isDirty = false;
             if ((this.layoutType == ClientSidePageLayoutType.Article
-                || this.LayoutType == ClientSidePageLayoutType.Spaces) && 
+                || this.LayoutType == ClientSidePageLayoutType.Spaces) &&
                 item[ClientSidePage.BannerImageUrl] != null)
             {
                 if (string.IsNullOrEmpty((item[ClientSidePage.BannerImageUrl] as FieldUrlValue).Url) || (item[ClientSidePage.BannerImageUrl] as FieldUrlValue).Url.IndexOf("/_layouts/15/images/sitepagethumbnail.png", StringComparison.InvariantCultureIgnoreCase) >= 0)
@@ -1218,7 +1218,7 @@ namespace PnP.Framework.Pages
 
             // Try to set the page description if not yet set
             if ((this.layoutType == ClientSidePageLayoutType.Article
-                || this.LayoutType == ClientSidePageLayoutType.Spaces) && 
+                || this.LayoutType == ClientSidePageLayoutType.Spaces) &&
                 item.FieldValues.ContainsKey(ClientSidePage.DescriptionField))
             {
                 if (item[ClientSidePage.DescriptionField] == null || string.IsNullOrEmpty(item[ClientSidePage.DescriptionField].ToString()))
@@ -1605,7 +1605,7 @@ namespace PnP.Framework.Pages
             {
                 this.InitializeSecurity();
             }
-            
+
             Task<string> result = Task.Run(() => GenerateTranslationsImplementationAsync(this.accessToken, this.Context, this.PageId, null).GetAwaiter().GetResult());
 
             if (!string.IsNullOrEmpty(result.Result))
@@ -2480,6 +2480,6 @@ namespace PnP.Framework.Pages
                 this.accessToken = e.WebRequestExecutor.RequestHeaders.Get("Authorization").Replace("Bearer ", "");
             }
         }
-#endregion
+        #endregion
     }
 }

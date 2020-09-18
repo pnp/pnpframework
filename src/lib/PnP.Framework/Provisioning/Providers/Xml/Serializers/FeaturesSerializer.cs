@@ -1,10 +1,9 @@
-﻿using Microsoft.SharePoint.Client;
+﻿using PnP.Framework.Extensions;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Providers.Xml.Resolvers;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 {

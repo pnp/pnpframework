@@ -185,7 +185,8 @@ namespace PnP.Framework.Provisioning.Connectors
                 throw new ArgumentException("fileName");
             }
 
-            if (container != null) { 
+            if (container != null)
+            {
                 container = container.Replace('\\', '/');
             }
 

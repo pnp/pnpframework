@@ -1,9 +1,5 @@
 ﻿
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Utilities.Themes.Palettes
 {
@@ -45,32 +41,32 @@ namespace PnP.Framework.Utilities.Themes.Palettes
 
         private static Boolean IsBlack(IColor color)
         {
-          return color.r == 0 && color.g == 0 && color.b == 0;
+            return color.r == 0 && color.g == 0 && color.b == 0;
         }
 
         private static Boolean IsWhite(IColor color)
         {
-          return color.r == Colors.MAX_COLOR_RGBA && color.g == Colors.MAX_COLOR_RGBA && color.b == Colors.MAX_COLOR_RGBA;
+            return color.r == Colors.MAX_COLOR_RGBA && color.g == Colors.MAX_COLOR_RGBA && color.b == Colors.MAX_COLOR_RGBA;
         }
 
         private static Color Darken(IHSV hsv, float factor)
         {
-          return new Color
-          {
-            h = hsv.h,
-            s = hsv.s,
-            v = Clamp(hsv.v - hsv.v * factor, 0, 100)
-          };
+            return new Color
+            {
+                h = hsv.h,
+                s = hsv.s,
+                v = Clamp(hsv.v - hsv.v * factor, 0, 100)
+            };
         }
 
         private static Color Lighten(IHSV hsv, float factor)
         {
-          return new Color
-          {
-            h = hsv.h,
-            s = Clamp(hsv.s - hsv.s * factor, 0, 100),
-            v = Clamp(hsv.v + (100 - hsv.v) * factor, 0, 100)
-          };
+            return new Color
+            {
+                h = hsv.h,
+                s = Clamp(hsv.s - hsv.s * factor, 0, 100),
+                v = Clamp(hsv.v + (100 - hsv.v) * factor, 0, 100)
+            };
         }
 
         private static float Clamp(float n, float min, float max)
@@ -85,7 +81,7 @@ namespace PnP.Framework.Utilities.Themes.Palettes
 
         public Boolean IsDark(IColor color)
         {
-          return Colors.hsv2hsl(color.h, color.s, color.v).l < 50;
+            return Colors.hsv2hsl(color.h, color.s, color.v).l < 50;
         }
 
         private static Color Soften(IHSV color, float factor, Boolean isInverted)
@@ -131,12 +127,14 @@ namespace PnP.Framework.Utilities.Themes.Palettes
          */
         public static IColor GetShade(IColor color, Shade shade, Boolean isInverted = false)
         {
-            if (color == null) {
+            if (color == null)
+            {
                 return null;
             }
 
-            if (shade == Shade.Unshaded || !IsValidShade(shade)) {
-            return color;
+            if (shade == Shade.Unshaded || !IsValidShade(shade))
+            {
+                return color;
             }
 
             var hsl = Colors.hsv2hsl(color.h, color.s, color.v);
@@ -150,7 +148,8 @@ namespace PnP.Framework.Utilities.Themes.Palettes
 
             var tableIndex = (int)(shade - 1);
 
-            if (IsWhite(color)) {
+            if (IsWhite(color))
+            {
                 // white
                 hsv = Darken(hsv, WhiteShadeTable[tableIndex]);
             }
@@ -172,7 +171,8 @@ namespace PnP.Framework.Utilities.Themes.Palettes
             else
             {
                 // default
-                if (tableIndex < ColorTintTable.Length) {
+                if (tableIndex < ColorTintTable.Length)
+                {
                     hsv = Soften(hsv, ColorTintTable[tableIndex], isInverted);
                 }
                 else
@@ -181,7 +181,7 @@ namespace PnP.Framework.Utilities.Themes.Palettes
                 }
             }
 
-          return Colors.GetColorFromRGBA(Colors.hsv2rgb(hsv.h, hsv.s, hsv.v), color.a.GetValueOrDefault());
+            return Colors.GetColorFromRGBA(Colors.hsv2rgb(hsv.h, hsv.s, hsv.v), color.a.GetValueOrDefault());
         }
 
         // Background shades/tints are generated differently. The provided color will be guaranteed
@@ -189,18 +189,21 @@ namespace PnP.Framework.Utilities.Themes.Palettes
         //   otherwise it will always be the lightest.
         public static IColor GetBackgroundShade(IColor color, Shade shade, Boolean isInverted = false)
         {
-            if (color == null) {
+            if (color == null)
+            {
                 return null;
             }
 
-            if (shade == Shade.Unshaded || !IsValidShade(shade)) {
+            if (shade == Shade.Unshaded || !IsValidShade(shade))
+            {
                 return color;
             }
 
             var hsv = new Color { h = color.h, s = color.s, v = color.v };
             var tableIndex = (int)(shade - 1);
 
-            if (!isInverted) {
+            if (!isInverted)
+            {
                 // lightish
                 hsv = Darken(hsv, WhiteShadeTableBG[tableIndex]);
             }
@@ -221,7 +224,7 @@ namespace PnP.Framework.Utilities.Themes.Palettes
         {
             // Formula defined by: http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html#contrast-ratiodef
             // relative luminance: http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
-                        
+
             var r1 = GetThing(color1.r / Colors.MAX_COLOR_RGBA);
             var g1 = GetThing(color1.g / Colors.MAX_COLOR_RGBA);
             var b1 = GetThing(color1.b / Colors.MAX_COLOR_RGBA);

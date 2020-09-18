@@ -1,13 +1,9 @@
-﻿using PnP.Framework.Provisioning.Model;
+﻿using PnP.Framework.Extensions;
+using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Providers.Xml.Resolvers;
-using PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201805;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201909
 {
@@ -59,7 +55,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201909
                     new FromStringToGuidValueResolver());
 
                 // Manage Header for client side page
-                expressions.Add(cp => cp.Header, 
+                expressions.Add(cp => cp.Header,
                     new Resolvers.V201909.ClientSidePageHeaderFromSchemaToModelTypeResolver());
 
                 // Manage Security for client side page
@@ -142,7 +138,8 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201909
                 expressions.Add($"{objectSecurityType}.BreakRoleInheritance", new RoleAssignmentsFromModelToSchemaTypeResolver());
 
                 // Force the specified property for LCID
-                expressions.Add($"{clientSidePageType}.LCIDSpecified", new ExpressionValueResolver(((s, p) => {
+                expressions.Add($"{clientSidePageType}.LCIDSpecified", new ExpressionValueResolver(((s, p) =>
+                {
                     var csp = s as ClientSidePage;
                     if (csp != null)
                     {

@@ -3,14 +3,10 @@ using Microsoft.SharePoint.Client;
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Model.Configuration;
-using PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
-using System.Web;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -241,8 +237,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 List<ObjectHierarchyHandlerBase> objectHandlers = new List<ObjectHierarchyHandlerBase>();
 
-                if(configuration.Tenant.Sequence != null) objectHandlers.Add(new ObjectHierarchySequenceSites()); // always build up the sequence
-                if(configuration.Tenant.Teams != null) objectHandlers.Add(new ObjectTeams());
+                if (configuration.Tenant.Sequence != null) objectHandlers.Add(new ObjectHierarchySequenceSites()); // always build up the sequence
+                if (configuration.Tenant.Teams != null) objectHandlers.Add(new ObjectTeams());
 
                 int step = 1;
 

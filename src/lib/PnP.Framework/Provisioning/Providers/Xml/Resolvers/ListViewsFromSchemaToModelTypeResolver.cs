@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using PnP.Framework.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
 {
@@ -32,8 +29,9 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
             if (null != xmlAny)
             {
                 result.AddRange(
-                    from x in xmlAny select 
-                    new Model.View { SchemaXml = x.OuterXml });
+                    from x in xmlAny
+                    select
+   new Model.View { SchemaXml = x.OuterXml });
             }
 
             return (result);

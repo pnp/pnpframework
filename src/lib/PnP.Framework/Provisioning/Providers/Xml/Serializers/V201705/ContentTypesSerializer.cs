@@ -1,11 +1,10 @@
-﻿using PnP.Framework.Provisioning.Model;
+﻿using PnP.Framework.Extensions;
+using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Providers.Xml.Resolvers;
+using PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201705;
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201705;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201705
 {

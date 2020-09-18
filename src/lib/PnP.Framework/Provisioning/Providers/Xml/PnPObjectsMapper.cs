@@ -1,12 +1,9 @@
 ﻿using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Providers.Xml.Resolvers;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.Providers.Xml
 {
@@ -160,7 +157,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml
                             {
                                 dp.SetValue(destination,
                                         PnPObjectsMapper.MapObjects(sp.GetValue(source),
-                                            new CollectionFromModelToSchemaTypeResolver(dp.PropertyType.IsArray ? dp.PropertyType.GetElementType() : null), 
+                                            new CollectionFromModelToSchemaTypeResolver(dp.PropertyType.IsArray ? dp.PropertyType.GetElementType() : null),
                                             resolvers, recursive));
                             }
                             else
@@ -191,8 +188,8 @@ namespace PnP.Framework.Provisioning.Providers.Xml
                                     // Default conversion for a target nullable enum type
                                     sourceValue = Enum.Parse(dp.PropertyType.GenericTypeArguments[0], sourceValue.ToString());
                                 }
-                                else if (sourceValue == null && 
-                                    dp.ReflectedType.Namespace == typeof(ProvisioningTemplate).Namespace && 
+                                else if (sourceValue == null &&
+                                    dp.ReflectedType.Namespace == typeof(ProvisioningTemplate).Namespace &&
                                     dp.GetValue(destination) != null)
                                 {
                                     // If the destination property is an in memory Domain Model property
@@ -244,9 +241,9 @@ namespace PnP.Framework.Provisioning.Providers.Xml
         public static Object MapObjects<TDestination>(Object source, ITypeResolver resolver, Dictionary<Expression<Func<TDestination, Object>>, IResolver> resolverExpressions = null, Boolean recursive = false)
         {
             Dictionary<string, IResolver> resolvers = ConvertExpressionsToResolvers(resolverExpressions);
-            return(MapObjects(source, resolver, resolvers, recursive));
+            return (MapObjects(source, resolver, resolvers, recursive));
         }
-        
+
         /// <summary>
         /// Maps a source object, into a destination object
         /// </summary>

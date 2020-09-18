@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace PnP.Framework.Provisioning.ObjectHandlers
+﻿namespace PnP.Framework.Provisioning.ObjectHandlers
 {
     /// <summary>
     /// Types of provisioning messages

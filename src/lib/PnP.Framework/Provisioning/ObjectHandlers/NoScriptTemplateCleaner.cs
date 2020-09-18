@@ -1,10 +1,6 @@
 ﻿using Microsoft.SharePoint.Client;
 using PnP.Framework.Provisioning.Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -36,16 +32,16 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             bool isNoScriptSite = _web.IsNoScriptSite();
 
             var listsToRemove = new List<ListInstance>();
-            
-            foreach(var templateList in template.Lists)
-            { 
+
+            foreach (var templateList in template.Lists)
+            {
                 if (isNoScriptSite && templateList.Url == "Style Library")
                 {
                     listsToRemove.Add(templateList);
                     WriteMessage(string.Format(CoreResources.Provisioning_ObjectHandlers_ListInstances_List__0__is_Style_Library_of_NoScript_will_Skip, templateList.Title), ProvisioningMessageType.Warning);
                 }
             }
-            while(listsToRemove.Count > 0)
+            while (listsToRemove.Count > 0)
             {
                 var listToRemove = listsToRemove[0];
                 template.Lists.Remove(listToRemove);

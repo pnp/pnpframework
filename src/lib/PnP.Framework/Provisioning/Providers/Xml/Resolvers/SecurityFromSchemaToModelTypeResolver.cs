@@ -1,11 +1,7 @@
-﻿using PnP.Framework.Provisioning.Model;
+﻿using PnP.Framework.Extensions;
+using PnP.Framework.Provisioning.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
 {
@@ -48,7 +44,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
                                 new CollectionFromSchemaToModelTypeResolver(typeof(RoleAssignment)),
                                 null,
                                 recursive: true)
-                                as IEnumerable<RoleAssignment>);                    
+                                as IEnumerable<RoleAssignment>);
                 }
             }
 

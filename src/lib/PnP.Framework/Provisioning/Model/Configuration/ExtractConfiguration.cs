@@ -1,16 +1,10 @@
 ﻿using Microsoft.SharePoint.Client;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Schema;
 using PnP.Framework.Provisioning.Connectors;
 using PnP.Framework.Provisioning.ObjectHandlers;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.Model.Configuration
 {
@@ -216,7 +210,7 @@ namespace PnP.Framework.Provisioning.Model.Configuration
                 };
             }
 
-     
+
             return ci;
         }
 

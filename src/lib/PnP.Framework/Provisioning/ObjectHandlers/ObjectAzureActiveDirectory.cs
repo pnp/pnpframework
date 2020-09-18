@@ -1,24 +1,17 @@
-﻿using Microsoft.SharePoint.Client;
-using PnP.Framework.Diagnostics;
-using PnP.Framework.Provisioning.Model;
-using System;
-using System.Linq;
-using System.Net.Http.Headers;
-using Newtonsoft.Json.Linq;
-using PnP.Framework.Provisioning.Model.Teams;
-using PnP.Framework.Utilities;
-using System.Net;
+﻿using Microsoft.Online.SharePoint.TenantAdministration;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Web;
-using System.Net.Http;
-using Microsoft.Online.SharePoint.TenantAdministration;
-using PnP.Framework.Provisioning.Model.AzureActiveDirectory;
-using PnP.Framework.Utilities.Graph;
+using PnP.Framework.Diagnostics;
 using PnP.Framework.Provisioning.Connectors;
-using PnP.Framework.Provisioning.ObjectHandlers.Utilities;
-using System.IO;
+using PnP.Framework.Provisioning.Model;
+using PnP.Framework.Provisioning.Model.AzureActiveDirectory;
 using PnP.Framework.Provisioning.Model.Configuration;
+using PnP.Framework.Provisioning.ObjectHandlers.Utilities;
+using PnP.Framework.Utilities;
+using PnP.Framework.Utilities.Graph;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {

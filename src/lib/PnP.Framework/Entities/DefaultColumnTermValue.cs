@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Microsoft.SharePoint.Client.Taxonomy;
+﻿using Microsoft.SharePoint.Client.Taxonomy;
+using System.Collections.Generic;
 
 namespace PnP.Framework.Entities
 {
@@ -18,13 +18,13 @@ namespace PnP.Framework.Entities
         /// </summary>
         string FieldInternalName { get; set; }
     }
-    
+
     /// <summary>
     /// Specifies a default column value for a document library
     /// </summary>
     public class DefaultColumnTermValue : DefaultColumnValue
     {
-      
+
         /// <summary>
         /// Taxonomy paths in the shape of "TermGroup|TermSet|Term"
         /// </summary>

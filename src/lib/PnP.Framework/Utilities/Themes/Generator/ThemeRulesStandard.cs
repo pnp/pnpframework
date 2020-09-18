@@ -1,9 +1,7 @@
-﻿using System;
+﻿using PnP.Framework.Utilities.Themes.Palettes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Utilities.Themes.Palettes;
 
 namespace PnP.Framework.Utilities.Themes.Generator
 {

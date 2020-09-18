@@ -761,7 +761,7 @@ namespace Microsoft.SharePoint.Client
             }
             catch
             {
-                 return null;
+                return null;
             }
         }
 
@@ -827,7 +827,7 @@ namespace Microsoft.SharePoint.Client
             var titleNode = menuState["Nodes"].FirstOrDefault(n => n["Title"].Value<string>() == Constants.SITEFOOTER_TITLENODEKEY);
 
             // Ensure the title node contains the expected child elements
-            if(titleNode == null || titleNode["Nodes"] == null || titleNode["Nodes"].Count() == 0 || titleNode["Nodes"][0]["Title"] == null)
+            if (titleNode == null || titleNode["Nodes"] == null || titleNode["Nodes"].Count() == 0 || titleNode["Nodes"][0]["Title"] == null)
             {
                 // The expected child elements were not found
                 return null;
@@ -847,7 +847,7 @@ namespace Microsoft.SharePoint.Client
         public static bool SetFooterTitle(this Web web, string title)
         {
             web.EnsureProperty(w => w.ServerRelativeUrl);
-            var responseString = web.ExecutePostAsync("/_api/navigation/SaveMenuState", 
+            var responseString = web.ExecutePostAsync("/_api/navigation/SaveMenuState",
                                                 @"{""menuState"":{""StartingNodeTitle"":""" + Constants.SITEFOOTER_NODEKEY + @""",""SPSitePrefix"":""/"",""SPWebPrefix"":""" + web.ServerRelativeUrl + @""",""FriendlyUrlPrefix"":"""",""SimpleUrl"":"""",""Nodes"":[{""NodeType"":0,""Title"":""" + Constants.SITEFOOTER_TITLENODEKEY + @""",""Key"":""2004"",""FriendlyUrlSegment"":"""",""Nodes"":[{""NodeType"":0,""Title"":""" + title + @""",""FriendlyUrlSegment"":""""}]}]}}").GetAwaiter().GetResult();
             var responseJson = JObject.Parse(responseString);
             var requestSucceeded = responseJson != null && responseJson["value"] != null && responseJson["value"].Value<string>() == "200";

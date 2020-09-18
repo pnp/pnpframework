@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using PnP.Framework.Extensions;
-using PnP.Framework.Provisioning.Connectors;
 
 namespace PnP.Framework.Provisioning.Model
 {

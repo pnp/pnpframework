@@ -75,7 +75,7 @@ namespace PnP.Framework.Utilities
                 return ncred;
             }
 
-           }
+        }
 
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
         private struct Credential

@@ -26,7 +26,7 @@ namespace PnP.Framework
         /// <returns></returns>
         public static PnPClientContext ConvertFrom(ClientContext clientContext, int retryCount = 10, int delay = 500)
         {
-            var pnpContext = new PnPClientContext(clientContext.Url,retryCount,delay);
+            var pnpContext = new PnPClientContext(clientContext.Url, retryCount, delay);
             clientContext.Clone(pnpContext, new Uri(clientContext.Url));
             return pnpContext;
         }
@@ -55,6 +55,6 @@ namespace PnP.Framework
             Delay = delay;
         }
 
-       
+
     }
 }

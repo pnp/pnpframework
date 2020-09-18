@@ -1,11 +1,8 @@
-﻿using System;
+﻿using PnP.Framework.Extensions;
+using PnP.Framework.Provisioning.Model.Drive;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
-using PnP.Framework.Provisioning.Model.Drive;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
 {

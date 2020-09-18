@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.Model
 {
@@ -102,9 +98,9 @@ namespace PnP.Framework.Provisioning.Model
         /// <param name="excludeExtensions">Extensions which are excluded in drectory files</param>
         /// <param name="metadataMappingFile">Metadata Mapping File</param>
         /// <param name="security">ObjectSecurity</param>
-        public Directory(string src, string folder, bool overwrite, 
-            FileLevel level = FileLevel.Draft, bool recursive = false, 
-            string includeExtensions = null, string excludeExtensions = null, 
+        public Directory(string src, string folder, bool overwrite,
+            FileLevel level = FileLevel.Draft, bool recursive = false,
+            string includeExtensions = null, string excludeExtensions = null,
             string metadataMappingFile = null, ObjectSecurity security = null) :
             this()
         {

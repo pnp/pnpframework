@@ -626,14 +626,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                     }
                 }
             }
-            if(regexGuidPatternOptionalBrackets != null)
+            if (regexGuidPatternOptionalBrackets != null)
             {
-                if(regexGuidPatternOptionalBrackets.IsMatch(jsonControlData))
+                if (regexGuidPatternOptionalBrackets.IsMatch(jsonControlData))
                 {
-                    foreach(Match guidMatch in regexGuidPatternOptionalBrackets.Matches(jsonControlData))
+                    foreach (Match guidMatch in regexGuidPatternOptionalBrackets.Matches(jsonControlData))
                     {
                         Guid uniqueId;
-                        if(Guid.TryParse(guidMatch.Value, out uniqueId))
+                        if (Guid.TryParse(guidMatch.Value, out uniqueId))
                         {
                             if (!fileGuids.Contains(uniqueId))
                             {

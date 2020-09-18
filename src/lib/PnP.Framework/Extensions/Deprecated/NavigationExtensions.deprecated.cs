@@ -1,11 +1,4 @@
-﻿using PnP.Framework.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Microsoft.SharePoint.Client
+﻿namespace Microsoft.SharePoint.Client
 {
     /// <summary>
     /// This class holds navigation related methods

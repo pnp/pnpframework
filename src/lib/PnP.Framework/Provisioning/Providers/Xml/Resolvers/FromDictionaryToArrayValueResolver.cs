@@ -1,11 +1,8 @@
-﻿using System;
+﻿using PnP.Framework.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Linq.Expressions;
-using System.Collections;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
 {
@@ -45,7 +42,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
             }
 
             var sourceDictionary = sourceValue != null && sourceValue is IEnumerable<KeyValuePair<TKey, TValue>> ?
-                sourceValue as IEnumerable<KeyValuePair<TKey, TValue>>:
+                sourceValue as IEnumerable<KeyValuePair<TKey, TValue>> :
                 source as IEnumerable<KeyValuePair<TKey, TValue>>;
 
             if (null == sourceDictionary && null != sourceValue)

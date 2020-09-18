@@ -1,12 +1,12 @@
-﻿using PnP.Framework.Provisioning.Connectors;
+﻿using PnP.Framework.Diagnostics;
+using PnP.Framework.Provisioning.Connectors;
 using PnP.Framework.Provisioning.Model;
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.IO;
-using System.Xml.Linq;
-using PnP.Framework.Diagnostics;
+using System.Linq;
 using System.Text;
+using System.Xml.Linq;
 
 namespace PnP.Framework.Provisioning.Providers.Xml
 {

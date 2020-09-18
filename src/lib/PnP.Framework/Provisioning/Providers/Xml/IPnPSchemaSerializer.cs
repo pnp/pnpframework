@@ -1,9 +1,5 @@
 ﻿using PnP.Framework.Provisioning.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.Providers.Xml
 {
@@ -15,7 +11,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml
         /// <summary>
         /// Provides the name of the serializer type
         /// </summary>
-        String Name { get;  }
+        String Name { get; }
 
         /// <summary>
         /// The method to deserialize an XML Schema based object into a Domain Model object

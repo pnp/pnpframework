@@ -1,11 +1,11 @@
-﻿using System;
-using System.Linq;
-using Microsoft.SharePoint.Client;
+﻿using Microsoft.SharePoint.Client;
+using PnP.Framework.Diagnostics;
 using PnP.Framework.Entities;
 using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Diagnostics;
-using System.Xml.Linq;
 using PnP.Framework.Provisioning.ObjectHandlers.Extensions;
+using System;
+using System.Linq;
+using System.Xml.Linq;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -44,7 +44,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return parser;
         }
 
-        private void ProvisionCustomActionImplementation(object parent, CustomActionCollection customActions, TokenParser parser, PnPMonitoredScope scope, bool isNoScriptSite= false)
+        private void ProvisionCustomActionImplementation(object parent, CustomActionCollection customActions, TokenParser parser, PnPMonitoredScope scope, bool isNoScriptSite = false)
         {
             Web web = null;
             Site site = null;
@@ -191,7 +191,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             if (customAction.ClientSideComponentId != null && customAction.ClientSideComponentId != Guid.Empty)
             {
-                if  (existingCustomAction.ClientSideComponentId != customAction.ClientSideComponentId)
+                if (existingCustomAction.ClientSideComponentId != customAction.ClientSideComponentId)
                 {
                     existingCustomAction.ClientSideComponentId = customAction.ClientSideComponentId;
                     isDirty = true;
@@ -342,7 +342,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 foreach (var customAction in webCustomActions)
                 {
                     scope.LogDebug(CoreResources.Provisioning_ObjectHandlers_CustomActions_Adding_web_scoped_custom_action___0___to_template, customAction.Name);
-                    customActions.WebCustomActions.Add(CopyUserCustomAction(customAction, creationInfo,template));
+                    customActions.WebCustomActions.Add(CopyUserCustomAction(customAction, creationInfo, template));
                 }
 
                 // if this is a sub site then we're not creating entities for site collection scoped custom actions
@@ -351,7 +351,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     foreach (var customAction in siteCustomActions)
                     {
                         scope.LogDebug(CoreResources.Provisioning_ObjectHandlers_CustomActions_Adding_site_scoped_custom_action___0___to_template, customAction.Name);
-                        customActions.SiteCustomActions.Add(CopyUserCustomAction(customAction, creationInfo,template));
+                        customActions.SiteCustomActions.Add(CopyUserCustomAction(customAction, creationInfo, template));
                     }
                 }
 

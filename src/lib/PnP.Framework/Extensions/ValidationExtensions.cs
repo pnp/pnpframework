@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using Microsoft.SharePoint.Client;
+﻿using Microsoft.SharePoint.Client;
 using PnP.Framework;
+using System.Collections.Generic;
 
 namespace System
 {

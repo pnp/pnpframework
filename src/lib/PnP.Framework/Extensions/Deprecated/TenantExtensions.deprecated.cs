@@ -1,12 +1,8 @@
-﻿using System;
-using System.ComponentModel;
-using Microsoft.Online.SharePoint.TenantAdministration;
-using PnP.Framework;
-using PnP.Framework.Entities;
+﻿using Microsoft.Online.SharePoint.TenantAdministration;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Model.Configuration;
 using PnP.Framework.Provisioning.ObjectHandlers;
-using PnP.Framework.Utilities;
+using System;
 
 namespace Microsoft.SharePoint.Client
 {

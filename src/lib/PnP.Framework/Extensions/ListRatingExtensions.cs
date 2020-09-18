@@ -1,6 +1,6 @@
+using PnP.Framework;
 using System;
 using System.Linq;
-using PnP.Framework;
 
 namespace Microsoft.SharePoint.Client
 {
@@ -59,7 +59,7 @@ namespace Microsoft.SharePoint.Client
             {
                 AddListFields();
                 // remove already existing fields from the default view to prevent duplicates
-                RemoveViewFields(); 
+                RemoveViewFields();
                 AddViewFields(experience);
             }
 
@@ -194,7 +194,7 @@ namespace Microsoft.SharePoint.Client
             _library.Context.ExecuteQueryRetry();
 
             if (experience != VotingExperience.None)
-            { 
+            {
                 _library.RootFolder.Properties["Ratings_VotingExperience"] = experience.ToString();
             }
             else

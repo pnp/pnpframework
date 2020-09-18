@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using PnP.Framework.Extensions;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
 {
@@ -26,7 +22,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
             {
                 modelSource = source as Model.SiteFooterLink;
             }
-            
+
             if (modelSource != null)
             {
                 Model.SiteFooterLinkCollection sourceLinks = modelSource.GetPublicInstancePropertyValue("FooterLinks") as Model.SiteFooterLinkCollection;

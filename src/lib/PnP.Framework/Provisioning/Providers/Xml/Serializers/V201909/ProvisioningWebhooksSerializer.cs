@@ -1,12 +1,9 @@
-﻿using PnP.Framework.Provisioning.Model;
+﻿using PnP.Framework.Extensions;
+using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Providers.Xml.Resolvers;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201909
 {
@@ -26,7 +23,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201909
             if (provisioningTemplateWebhooks != null && template.ParentHierarchy != null)
             {
                 var expressions = new Dictionary<Expression<Func<ProvisioningWebhook, Object>>, IResolver>();
-                
+
                 // Parameters
                 var parameterTypeName = $"{PnPSerializationScope.Current?.BaseSchemaNamespace}.StringDictionaryItem, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}";
                 var parameterType = Type.GetType(parameterTypeName, true);
@@ -59,7 +56,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201909
                 var dictionaryItemKeySelector = CreateSelectorLambda(dictionaryItemType, "Key");
                 var dictionaryItemValueSelector = CreateSelectorLambda(dictionaryItemType, "Value");
 
-                expressions.Add($"{provisioningTemplateWebhookType}.Parameters", 
+                expressions.Add($"{provisioningTemplateWebhookType}.Parameters",
                     new FromDictionaryToArrayValueResolver<string, string>(
                         dictionaryItemType, dictionaryItemKeySelector, dictionaryItemValueSelector));
 

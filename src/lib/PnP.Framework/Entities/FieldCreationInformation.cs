@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Microsoft.SharePoint.Client;
+using System;
 using System.Collections.Generic;
-using Microsoft.SharePoint.Client;
 
 namespace PnP.Framework.Entities
 {
@@ -24,7 +24,7 @@ namespace PnP.Framework.Entities
         /// <summary>
         /// Adds fields to default view if value is true.
         /// </summary>
-        public bool AddToDefaultView { get; set;}
+        public bool AddToDefaultView { get; set; }
         /// <summary>
         /// List of additional properties that need to be applied to the field on creation
         /// </summary>

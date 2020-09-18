@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Microsoft.Graph;
+using PnP.Framework.Diagnostics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Graph;
-using PnP.Framework.Diagnostics;
 
 namespace PnP.Framework.Graph
 {
@@ -25,7 +25,7 @@ namespace PnP.Framework.Graph
         public static Model.Subscription GetSubscription(string accessToken, Guid subscriptionId, int startIndex = 0, int endIndex = 999, int retryCount = 10, int delay = 500)
         {
             try
-            { 
+            {
                 // Use a synchronous model to invoke the asynchronous process
                 var result = Task.Run(async () =>
                 {
@@ -166,7 +166,7 @@ namespace PnP.Framework.Graph
                                                         .Request()
                                                         .AddAsync(newSubscription);
 
-                    if(subscription == null)
+                    if (subscription == null)
                     {
                         return null;
                     }
@@ -193,7 +193,7 @@ namespace PnP.Framework.Graph
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
         /// <returns>The just updated Microsoft Graph subscription</returns>
-        public static Model.Subscription UpdateSubscription(string subscriptionId, DateTimeOffset expirationDateTime, 
+        public static Model.Subscription UpdateSubscription(string subscriptionId, DateTimeOffset expirationDateTime,
                                                             string accessToken, int retryCount = 10, int delay = 500)
         {
             if (String.IsNullOrEmpty(subscriptionId))

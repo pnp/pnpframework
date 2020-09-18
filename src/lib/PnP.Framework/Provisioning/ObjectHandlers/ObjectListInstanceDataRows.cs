@@ -1,9 +1,6 @@
 ﻿using Microsoft.SharePoint.Client;
 using PnP.Framework.Diagnostics;
-using PnP.Framework.Enums;
-using PnP.Framework.Provisioning.Connectors;
 using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Provisioning.Model.Configuration;
 using PnP.Framework.Provisioning.ObjectHandlers.Extensions;
 using PnP.Framework.Provisioning.ObjectHandlers.Utilities;
 using PnP.Framework.Utilities;
@@ -12,7 +9,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
-using Field = Microsoft.SharePoint.Client.Field;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {

@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Graph.Model
 {
@@ -20,7 +17,7 @@ namespace PnP.Framework.Graph.Model
 
         public String DisplayName { get; set; }
 
-        [JsonProperty(PropertyName="values")]
+        [JsonProperty(PropertyName = "values")]
         public List<DirectorySettingValue> SettingValues { get; set; }
     }
 }

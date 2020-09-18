@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using PnP.Framework.Extensions;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 using System.Xml.Linq;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
 {
@@ -27,7 +23,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
         {
             object res = null;
 
-            if((sourceValue != null)&&(sourceValue is XElement))
+            if ((sourceValue != null) && (sourceValue is XElement))
             {
                 var any = ((XElement)sourceValue).Elements().Select(x => x.ToXmlElement()).ToArray();
                 res = Activator.CreateInstance(this.elementType, true);

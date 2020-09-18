@@ -1,6 +1,5 @@
 using Microsoft.SharePoint.Client;
 using PnP.Framework.Attributes;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -28,7 +27,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
             {
                 return entry.Value;
             }
-            else {
+            else
+            {
                 // fallback
                 return _resourceEntries.First().Value;
             }
@@ -37,7 +37,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
 
         public List<ResourceEntry> ResourceEntries
         {
-            get { return _resourceEntries;  }
+            get { return _resourceEntries; }
         }
     }
 }

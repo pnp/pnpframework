@@ -1,7 +1,7 @@
-﻿using System;
+﻿using PnP.Framework.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Model
 {
@@ -84,7 +84,7 @@ namespace PnP.Framework.Provisioning.Model
         /// <param name="isOpenForTermCreation">IsOpenForTermCreation flag for termset</param>
         /// <param name="terms">Temset terms</param>
         /// <param name="properties">Termset properties</param>
-        public TermSet(Guid id, string name, int? language, bool isAvailableForTagging, bool isOpenForTermCreation, List<Term> terms, Dictionary<string, string> properties): 
+        public TermSet(Guid id, string name, int? language, bool isAvailableForTagging, bool isOpenForTermCreation, List<Term> terms, Dictionary<string, string> properties) :
             this()
         {
             this.Id = id;

@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.Model
-{ 
+{
     /// <summary>
     /// Defines an AlternateUICulture item for a web site settings
     /// </summary>

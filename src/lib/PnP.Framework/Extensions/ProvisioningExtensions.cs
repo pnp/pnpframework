@@ -1,10 +1,10 @@
-﻿using System;
+﻿using PnP.Framework;
+using PnP.Framework.Diagnostics;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
-using PnP.Framework;
-using PnP.Framework.Diagnostics;
 
 namespace Microsoft.SharePoint.Client
 {
@@ -162,9 +162,9 @@ namespace Microsoft.SharePoint.Client
             // If file exists, verify the files aren't the same.
             if (file != null)
                 uploadRequired = file.VerifyIfUploadRequired(path);
-            
+
             // Upload the file, if required, using the specified process for upload.
-            if (uploadRequired) 
+            if (uploadRequired)
             {
                 file = folder.UploadFile(fileName, path, replaceContent);
             }

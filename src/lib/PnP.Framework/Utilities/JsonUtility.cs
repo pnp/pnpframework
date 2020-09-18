@@ -15,7 +15,7 @@ namespace PnP.Framework.Utilities
         /// <returns>json string</returns>
         public static string Serialize<T>(T obj)
         {
-            return JsonConvert.SerializeObject(obj) ;
+            return JsonConvert.SerializeObject(obj);
         }
 
         /// <summary>

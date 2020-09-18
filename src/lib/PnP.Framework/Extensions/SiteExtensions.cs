@@ -21,7 +21,7 @@ namespace Microsoft.SharePoint.Client
             {
                 // It is a "modern" team site
                 case "GROUP#0":
-                   
+
                     if (String.IsNullOrEmpty(accessToken))
                     {
                         throw new ArgumentNullException("accessToken");
@@ -116,7 +116,7 @@ namespace Microsoft.SharePoint.Client
         {
             bool result = false;
 
-            site.EnsureProperties(s => s.RootWeb, s=>s.GroupId);
+            site.EnsureProperties(s => s.RootWeb, s => s.GroupId);
 
             // A site without a group cannot have been teamified
             if (site.GroupId == Guid.Empty)

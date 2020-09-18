@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;
@@ -91,7 +87,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.V201605
             writer.WriteAttributeString("Title", this.Title);
             writer.WriteAttributeString("Row", this.Row.ToString());
             writer.WriteAttributeString("Column", this.Column.ToString());
-            writer.WriteStartElement(XMLConstants.PROVISIONING_SCHEMA_PREFIX, 
+            writer.WriteStartElement(XMLConstants.PROVISIONING_SCHEMA_PREFIX,
                 "Contents",
 #pragma warning disable 0618
                 XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
@@ -246,7 +242,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.V201605
             writer.WriteAttributeString("Title", this.Title);
             writer.WriteAttributeString("Zone", this.Zone);
             writer.WriteAttributeString("Order", this.Order.ToString());
-            writer.WriteStartElement(XMLConstants.PROVISIONING_SCHEMA_PREFIX, 
+            writer.WriteStartElement(XMLConstants.PROVISIONING_SCHEMA_PREFIX,
                 "Contents",
 #pragma warning disable 0618
                 XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
@@ -262,7 +258,8 @@ namespace PnP.Framework.Provisioning.Providers.Xml.V201605
         }
     }
 
-    public partial class NavigationNode {
+    public partial class NavigationNode
+    {
 
         [XmlIgnore]
         public NavigationNode[] ChildNodes

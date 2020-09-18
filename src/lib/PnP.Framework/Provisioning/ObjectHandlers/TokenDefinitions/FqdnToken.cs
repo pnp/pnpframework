@@ -1,10 +1,6 @@
 ﻿using Microsoft.SharePoint.Client;
 using PnP.Framework.Attributes;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
 {
@@ -13,9 +9,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
      Description = "Returns a full url of the current host",
      Example = "{fqdn}",
      Returns = "mycompany.sharepoint.com")]
-    public class FqdnToken: TokenDefinition
+    public class FqdnToken : TokenDefinition
     {
-        public FqdnToken(Web web): base(web, "{fqdn}")
+        public FqdnToken(Web web) : base(web, "{fqdn}")
         {
         }
 
@@ -25,7 +21,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
             {
                 TokenContext.Web.EnsureProperty(w => w.Url);
                 var uri = new Uri(TokenContext.Web.Url);
-                CacheValue = $"{uri.DnsSafeHost.ToLower().Replace("-admin","")}";
+                CacheValue = $"{uri.DnsSafeHost.ToLower().Replace("-admin", "")}";
             }
             return CacheValue;
         }

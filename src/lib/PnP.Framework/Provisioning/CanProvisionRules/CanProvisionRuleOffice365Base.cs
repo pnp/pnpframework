@@ -1,18 +1,11 @@
-﻿using Microsoft.Online.SharePoint.TenantAdministration;
-using Microsoft.SharePoint.Client;
-using PnP.Framework.Provisioning.ObjectHandlers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PnP.Framework.Provisioning.ObjectHandlers;
 
 namespace PnP.Framework.Provisioning.CanProvisionRules
 {
     /// <summary>
     /// Base abstract class to test if the Provisioning Template can be provisioned on the target Office 365 Tenant
     /// </summary>
-    internal abstract class CanProvisionRuleOffice365Base: ICanProvisionRuleOffice365
+    internal abstract class CanProvisionRuleOffice365Base : ICanProvisionRuleOffice365
     {
         public string Name { get => this.GetType().FullName; }
 

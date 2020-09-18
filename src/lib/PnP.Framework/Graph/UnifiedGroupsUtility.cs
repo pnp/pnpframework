@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Graph;
-using System.Net.Http.Headers;
-using PnP.Framework.Entities;
-using System.IO;
-using PnP.Framework.Diagnostics;
-using Newtonsoft.Json.Linq;
+﻿using Microsoft.Graph;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using PnP.Framework.Diagnostics;
+using PnP.Framework.Entities;
 using PnP.Framework.Utilities;
 using PnP.Framework.Utilities.Graph;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net.Http.Headers;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace PnP.Framework.Graph
 {

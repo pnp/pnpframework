@@ -1,20 +1,17 @@
-﻿using System;
+﻿using PnP.Framework.Extensions;
+using PnP.Framework.Provisioning.Model;
+using PnP.Framework.Utilities;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;
-using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Utilities;
 using System.Xml.Serialization;
-using PnP.Framework.Provisioning.Providers.Xml.Serializers;
-using System.Collections;
-using System.Reflection;
 using System.Xml.XPath;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml
 {
@@ -24,7 +21,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml
     /// </summary>
     /// <typeparam name="TSchemaTemplate"></typeparam>
     internal abstract class XmlPnPSchemaBaseSerializer<TSchemaTemplate> : IXMLSchemaFormatter, ITemplateFormatterWithValidation, IProvisioningHierarchyFormatter
-        where TSchemaTemplate: new()
+        where TSchemaTemplate : new()
     {
         private TemplateProviderBase _provider;
         private Stream _referenceSchema;
@@ -33,7 +30,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml
 
         public XmlPnPSchemaBaseSerializer(Stream referenceSchema)
         {
-            this._referenceSchema = referenceSchema ?? 
+            this._referenceSchema = referenceSchema ??
                 throw new ArgumentNullException("referenceSchema");
         }
 
@@ -76,7 +73,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml
             this._referenceSchema.Seek(0, SeekOrigin.Begin);
             schemas.Add(((IXMLSchemaFormatter)this).NamespaceUri,
                 new XmlTextReader(this._referenceSchema));
-                        
+
             Boolean result = true;
             xml.Validate(schemas, (o, e) =>
             {

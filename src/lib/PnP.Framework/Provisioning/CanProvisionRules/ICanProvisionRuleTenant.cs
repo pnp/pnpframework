@@ -1,17 +1,12 @@
 ﻿using Microsoft.Online.SharePoint.TenantAdministration;
 using PnP.Framework.Provisioning.ObjectHandlers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.CanProvisionRules
 {
     /// <summary>
     /// Interface to test if a template can be provisioned onto a target tenant
     /// </summary>
-    internal interface ICanProvisionRuleTenant: ICanProvisionRuleBase
+    internal interface ICanProvisionRuleTenant : ICanProvisionRuleBase
     {
         /// <summary>
         /// This method allows to check if a template can be provisioned in the currently selected target

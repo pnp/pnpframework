@@ -17,6 +17,6 @@ namespace PnP.Framework.Pages
         public ClientSideSectionEmphasis Emphasis { get; set; }
 
         [JsonProperty(PropertyName = "pageSettingsSlice", NullValueHandling = NullValueHandling.Ignore)]
-        public ClientSidePageSettingsSlice PageSettingsSlice {get ;set;}
+        public ClientSidePageSettingsSlice PageSettingsSlice { get; set; }
     }
 }

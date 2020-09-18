@@ -1,15 +1,10 @@
-﻿using PnP.Framework.Provisioning.Model;
+﻿using PnP.Framework.Extensions;
+using PnP.Framework.Provisioning.Model;
+using PnP.Framework.Provisioning.Model.Drive;
 using PnP.Framework.Provisioning.Providers.Xml.Resolvers;
-using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
-using PnP.Framework.Provisioning.Model.Drive;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201909
 {
@@ -33,9 +28,9 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201909
                 // Manage the DriveRoot items
                 expressions.Add(d => d.DriveRoots, new DriveRootsFromSchemaToModelTypeResolver());
                 expressions.Add(d => d.DriveRoots[0].RootFolder, new DriveRootFolderFromSchemaToModelTypeResolver());
-                expressions.Add(d => d.DriveRoots[0].RootFolder.DriveFolders, 
+                expressions.Add(d => d.DriveRoots[0].RootFolder.DriveFolders,
                     new DriveItemsFromSchemaToModelTypeResolver(typeof(Model.Drive.DriveFolder)));
-                expressions.Add(d => d.DriveRoots[0].RootFolder.DriveFiles, 
+                expressions.Add(d => d.DriveRoots[0].RootFolder.DriveFiles,
                     new DriveItemsFromSchemaToModelTypeResolver(typeof(Model.Drive.DriveFile)));
 
                 PnPObjectsMapper.MapProperties(drive, template.ParentHierarchy.Drive, expressions, true);
@@ -69,8 +64,8 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201909
                         .SetValue(
                             persistence,
                             PnPObjectsMapper.MapObjects(template.ParentHierarchy?.Drive?.DriveRoots,
-                                new CollectionFromModelToSchemaTypeResolver(driveRootType), 
-                                resolvers, 
+                                new CollectionFromModelToSchemaTypeResolver(driveRootType),
+                                resolvers,
                                 recursive: true));
                 }
             }

@@ -1,14 +1,7 @@
-﻿using Microsoft.Online.SharePoint.TenantAdministration;
-using Microsoft.SharePoint.Client;
+﻿using Microsoft.SharePoint.Client;
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Provisioning.ObjectHandlers.Utilities;
-using PnP.Framework.Utilities;
 using System;
-using System.IO;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Web;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {

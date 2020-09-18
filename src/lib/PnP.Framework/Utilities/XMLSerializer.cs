@@ -18,9 +18,9 @@ namespace PnP.Framework.Utilities
         #region Constructors
         static XMLSerializer()
         {
-           
+
         }
-   
+
         #endregion
 
         #region Private Methods

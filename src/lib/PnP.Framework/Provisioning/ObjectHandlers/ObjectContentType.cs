@@ -13,7 +13,6 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using ContentType = PnP.Framework.Provisioning.Model.ContentType;
-using Field = PnP.Framework.Provisioning.Model.Field;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -292,9 +291,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     }
 
                     scope.LogDebug(CoreResources.Provisioning_ObjectHandlers_ContentTypes_Adding_field__0__to_content_type, fieldId);
-                    web.AddFieldToContentType(existingContentType, field, 
-                        fieldRef.Required, 
-                        fieldRef.Hidden, 
+                    web.AddFieldToContentType(existingContentType, field,
+                        fieldRef.Required,
+                        fieldRef.Hidden,
                         fieldRef.UpdateChildren,
                         fieldRef.ShowInDisplayForm,
                         fieldRef.ReadOnly);
@@ -378,7 +377,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     if (!isNoScriptSite)
                     {
                         foreach (var doc in templateContentType.DocumentSetTemplate.DefaultDocuments)
-                        {                                
+                        {
                             // Ensure the default document is not part of the document set yet
                             if (documentSetTemplate.DefaultDocuments.All(d => d.Name != doc.Name))
                             {
@@ -404,7 +403,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                     // SharedFields
                     foreach (var sharedField in templateContentType.DocumentSetTemplate.SharedFields)
-                    {                            
+                    {
                         // Ensure the shared field is not part of the document set yet
                         if (documentSetTemplate.SharedFields.All(f => f.Id != sharedField))
                         {
@@ -494,7 +493,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 // Add it to the target content type
                 // Notice that this code will fail if the field does not exist
                 web.AddFieldToContentType(createdCT, field,
-                    fieldRef.Required, 
+                    fieldRef.Required,
                     fieldRef.Hidden,
                     fieldRef.UpdateChildren,
                     fieldRef.ShowInDisplayForm,
@@ -746,13 +745,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         private IEnumerable<ContentType> GetEntities(Web web, PnPMonitoredScope scope, ProvisioningTemplateCreationInformation creationInfo, ProvisioningTemplate template)
         {
             var cts = web.ContentTypes;
-            web.Context.Load(cts, 
+            web.Context.Load(cts,
                 ctCollection => ctCollection.IncludeWithDefaultProperties(
                     ct => ct.FieldLinks,
                     ct => ct.SchemaXmlWithResourceTokens,
                     ct => ct.FieldLinks.IncludeWithDefaultProperties(
                         fl => fl.DisplayName,
-                        fl => fl.ReadOnly, 
+                        fl => fl.ReadOnly,
                         fl => fl.ShowInDisplayForm))
                 );
 

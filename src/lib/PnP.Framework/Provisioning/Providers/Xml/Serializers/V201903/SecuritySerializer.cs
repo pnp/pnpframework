@@ -1,10 +1,10 @@
 ﻿using Microsoft.SharePoint.Client;
+using PnP.Framework.Extensions;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Providers.Xml.Resolvers;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201903
 {
@@ -25,7 +25,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201903
                 var expressions = new Dictionary<Expression<Func<SiteSecurity, Object>>, IResolver>();
 
                 expressions.Add(s => s.SiteSecurityPermissions, new PropertyObjectTypeResolver<SiteSecurity>(s => s.SiteSecurityPermissions, o => o.GetPublicInstancePropertyValue("Permissions")));
-                expressions.Add(s => s.SiteSecurityPermissions.RoleDefinitions[0].Permissions, 
+                expressions.Add(s => s.SiteSecurityPermissions.RoleDefinitions[0].Permissions,
                     new ExpressionCollectionValueResolver<PermissionKind>((i) => (PermissionKind)Enum.Parse(typeof(PermissionKind), i.ToString())));
 
                 expressions.Add(s => s.AdditionalAdministrators,
@@ -34,7 +34,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201903
                     new ExpressionValueResolver((s, p) =>
                     {
                         var clearValues = s?.GetPublicInstancePropertyValue("AdditionalAdministrators")?.GetPublicInstancePropertyValue("ClearExistingItems");
-                        return(clearValues != null ? (Boolean)clearValues : false);
+                        return (clearValues != null ? (Boolean)clearValues : false);
                     }));
                 expressions.Add(s => s.AdditionalOwners,
                     new TemplateSecurityUsersFromSchemaToModelTypeResolver("AdditionalOwners"));

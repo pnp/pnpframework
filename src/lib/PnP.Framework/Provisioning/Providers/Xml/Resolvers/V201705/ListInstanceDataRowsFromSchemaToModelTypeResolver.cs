@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using PnP.Framework.Extensions;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201705
 {
@@ -50,7 +45,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201705
 
                     expressions.Add(dr => dr.Security, new SecurityFromSchemaToModelTypeResolver());
 
-                    expressions.Add(dr => dr.Key, 
+                    expressions.Add(dr => dr.Key,
                         new ExpressionValueResolver(((s, p) => (String)s.GetPublicInstancePropertyValue("Key"))));
 
                     result.AddRange(

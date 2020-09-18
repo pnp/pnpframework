@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.SharePoint.Client;
+﻿using Microsoft.SharePoint.Client;
+using System;
 using System.Xml.Linq;
 
 namespace PnP.Framework.Provisioning.Model

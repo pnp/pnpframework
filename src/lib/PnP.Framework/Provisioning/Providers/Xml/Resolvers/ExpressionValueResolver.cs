@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
 {
@@ -50,7 +45,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
         }
     }
 
-    internal class ExpressionValueResolver : IValueResolver 
+    internal class ExpressionValueResolver : IValueResolver
     {
         public string Name
         {
@@ -70,7 +65,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
 
         public ExpressionValueResolver(Func<object, object, object> expression)
         {
-            if(expression == null)
+            if (expression == null)
             {
                 throw new ArgumentException("expression");
             }

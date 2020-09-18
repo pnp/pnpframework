@@ -22,7 +22,7 @@ namespace PnP.Framework.Extensions
         /// <param name="allowNull">continue with set operation is null value is specified</param>
         /// <param name="allowEmpty">continue with set operation is null or empty value is specified</param>
         /// <returns><c>true</c> if the value has changed, otherwise <c>false</c></returns>
-        public static bool Set<TObject, T>(this TObject target, Expression<Func<TObject, T>> propertyToSet, T valueToSet, bool allowNull=true, bool allowEmpty=true)
+        public static bool Set<TObject, T>(this TObject target, Expression<Func<TObject, T>> propertyToSet, T valueToSet, bool allowNull = true, bool allowEmpty = true)
         {
             // Taken from https://stackoverflow.com/a/29092675/588868
             var members = new List<MemberInfo>();

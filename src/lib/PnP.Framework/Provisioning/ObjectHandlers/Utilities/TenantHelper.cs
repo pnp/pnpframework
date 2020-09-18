@@ -443,7 +443,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                 {
                     var parsedName = parser.ParseString(theme.Name);
                     if (themes.FirstOrDefault(t => t.Name == parsedName) != null)
-                    {                        
+                    {
                         if (theme.Overwrite)
                         {
                             var parsedPalette = parser.ParseString(theme.Palette);
@@ -461,7 +461,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                         }
                     }
                     else
-                    {                        
+                    {
                         var parsedPalette = parser.ParseString(theme.Palette);
 
                         messagesDelegate?.Invoke($"Processing theme {parsedName}", ProvisioningMessageType.Progress);

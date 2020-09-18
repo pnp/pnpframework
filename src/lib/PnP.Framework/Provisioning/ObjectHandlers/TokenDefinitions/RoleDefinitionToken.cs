@@ -1,6 +1,5 @@
 using Microsoft.SharePoint.Client;
 using PnP.Framework.Attributes;
-using System;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
 {
@@ -16,7 +15,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
             : base(web, $"{{roledefinition:{definition.RoleTypeKind}}}")
         {
             name = definition.EnsureProperty(r => r.Name);
-            
+
         }
 
         public override string GetReplaceValue()

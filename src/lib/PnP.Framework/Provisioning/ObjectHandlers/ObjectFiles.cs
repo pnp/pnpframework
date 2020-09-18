@@ -1,19 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Microsoft.SharePoint.Client;
+﻿using Microsoft.SharePoint.Client;
+using PnP.Framework.Diagnostics;
 using PnP.Framework.Entities;
 using PnP.Framework.Provisioning.Model;
-using File = Microsoft.SharePoint.Client.File;
-using PnP.Framework.Diagnostics;
 using PnP.Framework.Provisioning.ObjectHandlers.Extensions;
-using System;
-using System.Net;
-using System.IO;
-using Newtonsoft.Json;
-using PnP.Framework.Utilities;
-using Microsoft.SharePoint.Client.Taxonomy;
 using PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions;
 using PnP.Framework.Provisioning.ObjectHandlers.Utilities;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using File = Microsoft.SharePoint.Client.File;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -173,7 +170,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         {
                             file.LocalizeWebParts(web, parser, targetFile, scope);
                         }
-                        
+
                         //Set Properties before Checkin
                         if (file.Properties != null && file.Properties.Any())
                         {

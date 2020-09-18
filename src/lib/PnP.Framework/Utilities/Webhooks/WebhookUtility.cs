@@ -177,7 +177,7 @@ namespace PnP.Framework.Utilities
                     {
                         throw new Exception("Identifier of the resource cannot be determined");
                     }
-                    
+
                     string requestUrl = string.Format("{0}/{1}('{2}')", identifierUrl, SubscriptionsUrlPart, subscriptionId);
                     HttpRequestMessage request = new HttpRequestMessage(new HttpMethod("PATCH"), requestUrl);
                     request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync());

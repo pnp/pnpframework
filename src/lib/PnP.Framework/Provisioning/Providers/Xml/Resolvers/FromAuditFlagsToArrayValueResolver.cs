@@ -1,10 +1,7 @@
 ﻿using Microsoft.SharePoint.Client;
+using PnP.Framework.Extensions;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
 {
@@ -33,7 +30,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
 
             for (Int32 c = 0; c < auditValues.Count; c++)
             {
-                var targetAuditValue = Enum.Parse(auditEnumType, 
+                var targetAuditValue = Enum.Parse(auditEnumType,
                     Enum.GetName(typeof(AuditMaskType), auditValues[c]));
 
                 var targetAudit = Activator.CreateInstance(auditType, true);

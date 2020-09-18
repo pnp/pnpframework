@@ -1,7 +1,6 @@
 using Microsoft.SharePoint.Client;
 using PnP.Framework.Attributes;
 using System;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions

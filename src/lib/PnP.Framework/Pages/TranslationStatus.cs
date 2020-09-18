@@ -35,7 +35,7 @@ namespace PnP.Framework.Pages
         /// The culture of this translation
         /// </summary>
         [JsonProperty]
-        internal string Culture { get;set; }
+        internal string Culture { get; set; }
 
         /// <summary>
         /// The web-relative path to this translation

@@ -1,9 +1,5 @@
 ﻿using PnP.Framework.Extensions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.Model.Teams
 {
@@ -38,7 +34,7 @@ namespace PnP.Framework.Provisioning.Model.Teams
         /// The Discovery Settings for the Team
         /// </summary>
         public TeamDiscoverySettings DiscoverySettings { get; set; }
-        
+
         /// <summary>
         /// Defines the Security settings for the Team
         /// </summary>
@@ -181,6 +177,6 @@ namespace PnP.Framework.Provisioning.Model.Teams
         /// <summary>
         /// Team type for an optimized experience for staff in an organization, where a staff leader, like a principal, is the admin and teachers are members in a team that comes with a specialized notebook.
         /// </summary>
-        EducationStaff,    
+        EducationStaff,
     }
 }

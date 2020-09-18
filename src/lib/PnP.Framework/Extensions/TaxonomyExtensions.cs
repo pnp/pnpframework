@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Microsoft.SharePoint.Client.Taxonomy;
+using PnP.Framework;
+using PnP.Framework.Diagnostics;
+using PnP.Framework.Entities;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -6,10 +10,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
-using Microsoft.SharePoint.Client.Taxonomy;
-using PnP.Framework;
-using PnP.Framework.Entities;
-using PnP.Framework.Diagnostics;
 
 namespace Microsoft.SharePoint.Client
 {
@@ -662,7 +662,8 @@ namespace Microsoft.SharePoint.Client
                         }
                         if (termsets != null)
                         {
-                            if (termsets.ContainsKey(termSetName)) {
+                            if (termsets.ContainsKey(termSetName))
+                            {
                                 termsets[termSetName].Add(sb.ToString());
                             }
                             else
@@ -1488,12 +1489,12 @@ namespace Microsoft.SharePoint.Client
         /// <returns>Returns TaxonomyItem object</returns>
         public static TaxonomyItem GetTaxonomyItemByPath(this Site site, string path, string delimiter = "|")
         {
-            
+
             var context = site.Context;
 
             if (string.IsNullOrEmpty(path)) throw new ArgumentNullException("path");
 
-            
+
 
             var pathSplit = path.Split(new string[] { delimiter }, StringSplitOptions.RemoveEmptyEntries);
 

@@ -1,6 +1,6 @@
-﻿using System;
-using Microsoft.SharePoint.Client;
+﻿using Microsoft.SharePoint.Client;
 using PnP.Framework.Attributes;
+using System;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
 {
@@ -11,7 +11,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
        Token = "{now}",
        Description = "Returns the current date in universal date time format: yyyy-MM-ddTHH:mm:ss.fffK",
        Example = "{now}",
-       Returns = "2018-04-18T15:44:45.898+02:00")]    
+       Returns = "2018-04-18T15:44:45.898+02:00")]
     public class DateNowToken : TokenDefinition
     {
         /// <summary>

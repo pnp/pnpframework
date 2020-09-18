@@ -1,5 +1,4 @@
 using Microsoft.SharePoint.Client;
-using System;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
 {

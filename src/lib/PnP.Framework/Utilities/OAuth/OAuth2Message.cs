@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+﻿namespace SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
 {
     public abstract class OAuth2Message
     {

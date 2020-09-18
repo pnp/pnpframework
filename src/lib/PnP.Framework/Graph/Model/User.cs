@@ -18,7 +18,7 @@ namespace PnP.Framework.Graph.Model
         /// Display name for the user
         /// </summary>
         public string DisplayName { get; set; }
-        
+
         /// <summary>
         /// Given name of the user
         /// </summary>
@@ -38,7 +38,7 @@ namespace PnP.Framework.Graph.Model
         /// Mobile phone number of the user
         /// </summary>
         public string MobilePhone { get; set; }
-        
+
         /// <summary>
         /// Office location of the user
         /// </summary>

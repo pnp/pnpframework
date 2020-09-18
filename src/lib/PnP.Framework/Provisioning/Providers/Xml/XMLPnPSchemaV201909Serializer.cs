@@ -5,7 +5,7 @@
     /// </summary>
     internal class XMLPnPSchemaV201909Serializer : XmlPnPSchemaBaseSerializer<V201909.ProvisioningTemplate>
     {
-        public XMLPnPSchemaV201909Serializer():
+        public XMLPnPSchemaV201909Serializer() :
             base(typeof(XMLConstants)
                 .Assembly
                 .GetManifestResourceStream("OfficeDevPnP.Core.Framework.Provisioning.Providers.Xml.ProvisioningSchema-2019-09.xsd"))

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace SharePointPnP.IdentityModel.Extensions.S2S
+﻿namespace SharePointPnP.IdentityModel.Extensions.S2S
 {
     public class EpochTime
     {
-        public static readonly System.DateTime UnixEpoch = 
+        public static readonly System.DateTime UnixEpoch =
             new System.DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
 
         private long _secondsSinceUnixEpoch;

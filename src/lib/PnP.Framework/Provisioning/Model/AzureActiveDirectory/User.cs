@@ -1,9 +1,6 @@
 ﻿using PnP.Framework.Extensions;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.Model.AzureActiveDirectory
 {
@@ -93,7 +90,7 @@ namespace PnP.Framework.Provisioning.Model.AzureActiveDirectory
 
         #region Constructors
 
-        public User(): base()
+        public User() : base()
         {
             this.Licenses = new UserLicenseCollection(this.ParentTemplate);
         }

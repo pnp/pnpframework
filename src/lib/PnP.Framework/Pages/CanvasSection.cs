@@ -169,7 +169,7 @@ namespace PnP.Framework.Pages
         {
             get
             {
-                return this.columns.Where(p => p.LayoutIndex == 2).FirstOrDefault();                
+                return this.columns.Where(p => p.LayoutIndex == 2).FirstOrDefault();
             }
         }
 
@@ -236,7 +236,7 @@ namespace PnP.Framework.Pages
             column.MoveTo(this);
             column.Order = order;
 
-            this.AddColumn(column);            
+            this.AddColumn(column);
         }
 
         #endregion

@@ -832,7 +832,7 @@ namespace Microsoft.SharePoint.Client
                 }
             }
         }
-        
+
         /// <summary>
         /// Adds a client side "modern" page to a "classic" or "modern" site
         /// </summary>
@@ -850,7 +850,7 @@ namespace Microsoft.SharePoint.Client
             }
             return page;
         }
-        
+
         /// <summary>
         /// Loads a client side "modern" page
         /// </summary>
@@ -989,11 +989,11 @@ namespace Microsoft.SharePoint.Client
 
             if (web.WebTemplate == "ENTERWIKI")
             {
-                if(!serverRelativePageUrl.StartsWith("/"))
+                if (!serverRelativePageUrl.StartsWith("/"))
                 {
                     serverRelativePageUrl = UrlUtility.Combine(web.ServerRelativeUrl, serverRelativePageUrl);
                 }
-                var filename = serverRelativePageUrl.Substring(serverRelativePageUrl.LastIndexOf("/")+1);
+                var filename = serverRelativePageUrl.Substring(serverRelativePageUrl.LastIndexOf("/") + 1);
                 web.AddPublishingPage(filename, "EnterpriseWiki", null, folder: folder);
                 var file = web.GetFileByServerRelativeUrl(serverRelativePageUrl);
                 file.ListItemAllFields["PublishingPageContent"] = html;
@@ -1008,7 +1008,7 @@ namespace Microsoft.SharePoint.Client
                 {
                     web.AddHtmlToWikiPage(serverRelativePageUrl, html);
                 }
-            }          
+            }
         }
 
         /// <summary>

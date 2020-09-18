@@ -1,18 +1,17 @@
 ﻿using Microsoft.SharePoint.Client;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Utilities;
-using System;
-using System.Linq;
-using PnP.Framework.Utilities.CanvasControl;
-using PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions;
-using System.Collections.Generic;
-using Newtonsoft.Json;
 using PnP.Framework.Provisioning.ObjectHandlers.Extensions;
+using PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions;
 using PnP.Framework.Provisioning.ObjectHandlers.Utilities;
-using Microsoft.Online.SharePoint.TenantManagement;
+using PnP.Framework.Utilities;
+using PnP.Framework.Utilities.CanvasControl;
+using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -101,7 +100,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             if (translationResults != null && translationResults.Items.Count > 0)
                             {
                                 combinedTranslationResults = combinedTranslationResults.Union(translationResults.Items);
-                            } 
+                            }
                             // No new translations generated, so take what we got as available translations
                             else if (availableTranslations != null && availableTranslations.Items.Count > 0)
                             {
@@ -186,7 +185,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     }
                 }
 
-                foreach(var translatedPage in page.Translations)
+                foreach (var translatedPage in page.Translations)
                 {
                     if (!neededLanguages.Contains(translatedPage.LCID))
                     {
@@ -206,7 +205,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 // Enable the MUI feature
                 web.ActivateFeature(ObjectClientSidePages.MultilingualPagesFeature);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 scope.LogError($"Multilingual pages feature could not be enabled: {ex.Message}");
                 throw;
@@ -237,7 +236,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             var supportedLanguages = web.SupportedUILanguageIds;
             bool languageAdded = false;
-            foreach(var language in neededLanguages)
+            foreach (var language in neededLanguages)
             {
                 if (!supportedLanguages.Contains(language))
                 {
@@ -254,7 +253,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         }
 
         private void CreatePage(Web web, ProvisioningTemplate template, TokenParser parser, PnPMonitoredScope scope, BaseClientSidePage clientSidePage, string pagesLibrary, List pagesLibraryList, ref int currentPageIndex, List<string> preCreatedPages)
-        {            
+        {
             string pageName = DeterminePageName(parser, clientSidePage);
             string url = $"{pagesLibrary}/{pageName}";
 
@@ -273,7 +272,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             // Write page level status messages, needed in case many pages are provisioned
             currentPageIndex++;
             int totalPages = 0;
-            foreach(var p in template.ClientSidePages)
+            foreach (var p in template.ClientSidePages)
             {
                 totalPages++;
                 if (p.Translations.Any())
@@ -344,7 +343,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             {
                 page.PageTitle = newTitle;
             }
-            
+
             // Set page layout
             if (!string.IsNullOrEmpty(clientSidePage.Layout))
             {

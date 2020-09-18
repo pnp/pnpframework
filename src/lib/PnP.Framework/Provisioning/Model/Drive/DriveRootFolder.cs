@@ -1,11 +1,4 @@
-﻿using PnP.Framework.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PnP.Framework.Provisioning.Model.Drive
+﻿namespace PnP.Framework.Provisioning.Model.Drive
 {
     /// <summary>
     /// Defines a DriveFolder object

@@ -134,7 +134,7 @@ namespace PnP.Framework.Sites
         public static async Task<ClientContext> CreateAsync(
             ClientContext clientContext,
             TeamNoGroupSiteCollectionCreationInformation siteCollectionCreationInformation,
-            int delayAfterCreation = 0, 
+            int delayAfterCreation = 0,
             bool noWait = false)
         {
             Dictionary<string, object> payload = GetRequestPayload(siteCollectionCreationInformation);
@@ -142,7 +142,7 @@ namespace PnP.Framework.Sites
                 clientContext,
                 siteCollectionCreationInformation.Owner,
                 payload,
-                delayAfterCreation, 
+                delayAfterCreation,
                 noWait: noWait);
         }
 
@@ -598,7 +598,7 @@ namespace PnP.Framework.Sites
                             try
                             {
                                 var responseJson = JObject.Parse(responseString);
-                                if(responseJson["SiteStatus"].Value<int>() == 2)
+                                if (responseJson["SiteStatus"].Value<int>() == 2)
                                 {
                                     responseContext = clientContext.Clone(responseJson["SiteUrl"].ToString());
                                 }

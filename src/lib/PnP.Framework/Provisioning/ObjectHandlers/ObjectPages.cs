@@ -1,12 +1,12 @@
-﻿using System;
-using System.Linq;
-using Microsoft.SharePoint.Client;
+﻿using Microsoft.SharePoint.Client;
+using PnP.Framework.Diagnostics;
 using PnP.Framework.Entities;
 using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Diagnostics;
 using PnP.Framework.Provisioning.ObjectHandlers.Extensions;
 using PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions;
 using PnP.Framework.Utilities;
+using System;
+using System.Linq;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {

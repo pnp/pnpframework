@@ -1,11 +1,11 @@
-﻿using System.Linq;
-using Microsoft.SharePoint.Client;
-using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Diagnostics;
-using System;
-using System.Text.RegularExpressions;
+﻿using Microsoft.SharePoint.Client;
 using Microsoft.SharePoint.Client.WebParts;
+using PnP.Framework.Diagnostics;
+using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Utilities;
+using System;
+using System.Linq;
+using System.Text.RegularExpressions;
 using System.Xml;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
@@ -122,11 +122,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                         }
                         else if (listItem.FieldValues.ContainsKey("ClientSideApplicationId") && listItem.FieldValues["ClientSideApplicationId"] != null && listItem.FieldValues["ClientSideApplicationId"].ToString().ToLower() == "b6917cb1-93a0-4b97-a84d-7cf49975d4ec")
-                        { 
+                        {
                             // this is a client side page, so let's skip it since it's handled by the Client Side Page contents handler
-                        }   
+                        }
                         else
-                        {                            
+                        {
                             if (web.Context.HasMinimalServerLibraryVersion(Constants.MINIMUMZONEIDREQUIREDSERVERVERSION) || creationInfo.SkipVersionCheck)
                             {
                                 // Not a wikipage
@@ -148,7 +148,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 }
                 catch (ServerException ex)
                 {
-                    
+
                     //ignore this error. The default page is not a page but a list view.
                     if (ex.ServerErrorCode != -2146232832 && ex.HResult != -2146233088)
                     {

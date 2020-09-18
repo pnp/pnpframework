@@ -1,18 +1,17 @@
-﻿using System;
+﻿using Microsoft.SharePoint.Client;
+using Microsoft.SharePoint.Client.WorkflowServices;
+using PnP.Framework.Diagnostics;
+using PnP.Framework.Provisioning.Model;
+using PnP.Framework.Utilities;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Microsoft.SharePoint.Client;
-using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Diagnostics;
-using Microsoft.SharePoint.Client.WorkflowServices;
-using System.IO;
 using System.Threading;
 using System.Xml.Linq;
 using System.Xml.XPath;
-using System.Collections;
-using PnP.Framework.Utilities;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -323,8 +322,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                     EventSourceId = (!String.IsNullOrEmpty(subscription.EventSourceId)) ? Guid.Parse(parser.ParseString(subscription.EventSourceId)) : web.Id,
                                     EventTypes = subscription.EventTypes,
                                     ParentContentTypeId = subscription.ParentContentTypeId,
-                                    ManualStartBypassesActivationLimit =  subscription.ManualStartBypassesActivationLimit,
-                                    Name =  subscription.Name,
+                                    ManualStartBypassesActivationLimit = subscription.ManualStartBypassesActivationLimit,
+                                    Name = subscription.Name,
                                     StatusFieldName = subscription.StatusFieldName,
                                 };
 
@@ -379,8 +378,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             // Tokenize XAML to replace any ListId or ToListId attribute with the corresponding token
             XElement xamlDocument = XElement.Parse(xaml);
-            string[] listIdAttributes = {"ListId", "ToListId"};
-            
+            string[] listIdAttributes = { "ListId", "ToListId" };
+
             var elements = (IEnumerable)xamlDocument.XPathEvaluate($"//child::*[@{listIdAttributes[0]}|@{listIdAttributes[1]}]");
 
             if (elements != null) // always true, consider removing 

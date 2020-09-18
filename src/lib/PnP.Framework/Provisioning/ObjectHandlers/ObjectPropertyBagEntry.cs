@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Microsoft.SharePoint.Client;
+using PnP.Framework.Diagnostics;
+using PnP.Framework.Provisioning.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.SharePoint.Client;
-using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Diagnostics;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {

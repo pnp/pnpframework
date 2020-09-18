@@ -1,8 +1,8 @@
-﻿using System;
+﻿using PnP.Framework.Utilities.WebParts.Processors;
+using System;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
-using PnP.Framework.Utilities.WebParts.Processors;
 
 namespace PnP.Framework.Utilities.WebParts
 {

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using PnP.Framework.Extensions;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201909
 {
@@ -28,7 +24,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201909
             var settings = ((Model.ProvisioningTenant)source).Office365GroupsSettings;
 
             if (null != settings &&
-                settings.Properties != null && 
+                settings.Properties != null &&
                 settings.Properties.Count > 0)
             {
                 var resultArray = Array.CreateInstance(propertiesType, settings.Properties.Count);

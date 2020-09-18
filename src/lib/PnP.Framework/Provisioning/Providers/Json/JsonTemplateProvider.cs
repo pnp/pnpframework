@@ -1,11 +1,8 @@
 ﻿using PnP.Framework.Provisioning.Connectors;
 using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Xml;
-using System.Xml.Linq;
 
 namespace PnP.Framework.Provisioning.Providers.Json
 {
@@ -254,7 +251,7 @@ namespace PnP.Framework.Provisioning.Providers.Json
 
             this.Connector.DeleteFile(uri);
         }
-       
+
         #endregion
     }
 }

@@ -1,7 +1,7 @@
-﻿using System;
+﻿using PnP.Framework.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Model
 {
@@ -95,8 +95,8 @@ namespace PnP.Framework.Provisioning.Model
         /// <param name="managers">TermGroup Managers</param>
         public TermGroup(Guid id, string name, List<TermSet> termSets,
             bool siteCollectionTermGroup = false,
-            IEnumerable<User> contributors = null, 
-            IEnumerable<User> managers = null):
+            IEnumerable<User> contributors = null,
+            IEnumerable<User> managers = null) :
             this()
         {
             this.Id = id;
@@ -157,7 +157,7 @@ namespace PnP.Framework.Provisioning.Model
 
         #endregion
     }
-    
+
     public enum TermGroupUpdateBehavior
     {
         /// <summary>

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.Model
 {
@@ -93,7 +89,7 @@ namespace PnP.Framework.Provisioning.Model
 
             return (this.LCID == other.LCID &&
                     this.Name == other.Name &&
-                    this.ResourceFile == other.ResourceFile 
+                    this.ResourceFile == other.ResourceFile
                 );
 
         }

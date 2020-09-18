@@ -1,8 +1,8 @@
-﻿using System;
-using Microsoft.SharePoint.Client;
+﻿using Microsoft.SharePoint.Client;
 using Newtonsoft.Json;
-using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Diagnostics;
+using PnP.Framework.Provisioning.Model;
+using System;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {

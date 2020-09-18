@@ -1,11 +1,6 @@
-﻿using PnP.Framework.Provisioning.Model;
+﻿using PnP.Framework.Extensions;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
 {
@@ -22,7 +17,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
             Object result = null;
             Boolean anySecurity = false;
             var security = source.GetPublicInstancePropertyValue("Security") as Model.ObjectSecurity;
-            
+
             if (security != null)
             {
                 var securityTypeName = $"{PnPSerializationScope.Current?.BaseSchemaNamespace}.ObjectSecurity, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}";
@@ -43,7 +38,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
                 var roleAssignements = resolver.Resolve(security.RoleAssignments, null, true);
                 breakRoleInheritance.SetPublicInstancePropertyValue("RoleAssignment", roleAssignements);
 
-                anySecurity = (security.ClearSubscopes || security.CopyRoleAssignments || 
+                anySecurity = (security.ClearSubscopes || security.CopyRoleAssignments ||
                     security.RoleAssignments != null && security.RoleAssignments.Count > 0);
 
                 result.SetPublicInstancePropertyValue("BreakRoleInheritance", breakRoleInheritance);

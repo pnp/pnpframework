@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -43,7 +41,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// <summary>
         /// Property Bag of properties for the current context
         /// </summary>
-        public Dictionary<String, Object> Properties { get; private set; } = 
+        public Dictionary<String, Object> Properties { get; private set; } =
             new Dictionary<string, object>();
 
         /// <summary>
@@ -87,7 +85,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// <returns>The Access Token for the requested resource, with the requested scope</returns>
         public String AcquireToken(String resource, string scope)
         {
-            return(this.AcquireTokenAsync(resource, scope).GetAwaiter().GetResult());
+            return (this.AcquireTokenAsync(resource, scope).GetAwaiter().GetResult());
         }
 
         public string AcquireTokenWithMultipleScopes(string resource, params string[] scope)

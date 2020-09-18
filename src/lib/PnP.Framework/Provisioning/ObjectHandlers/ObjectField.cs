@@ -71,7 +71,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 web.Context.ExecuteQueryRetry();
                 var existingFieldIds = existingFields.AsEnumerable<SPField>().Select(l => l.Id).ToList();
 
-                SortedList<string,Field> fieldDict = new SortedList<string, Field>(new DuplicateKeyComparer<string>());
+                SortedList<string, Field> fieldDict = new SortedList<string, Field>(new DuplicateKeyComparer<string>());
                 foreach (Field siteField in template.SiteFields)
                 {
                     var step = siteField.GetFieldProvisioningStep(parser);
@@ -79,7 +79,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     if (step == _step)
                     {
                         var fieldRef = (string)XElement.Parse(parser.ParseXmlString(siteField.SchemaXml)).Attribute("FieldRef") + "";
-                        fieldDict.Add(fieldRef,siteField);
+                        fieldDict.Add(fieldRef, siteField);
                     }
                 }
 
@@ -92,7 +92,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     var fieldSchemaElement = XElement.Parse(parser.ParseXmlString(field.SchemaXml));
                     var fieldId = fieldSchemaElement.Attribute("ID").Value;
                     var fieldInternalName = fieldSchemaElement.Attribute("InternalName")?.Value ?? fieldSchemaElement.Attribute("Name")?.Value;
-                    WriteSubProgress("Field",!string.IsNullOrWhiteSpace(fieldInternalName) ? fieldInternalName : fieldId,currentFieldIndex,fields.Count);
+                    WriteSubProgress("Field", !string.IsNullOrWhiteSpace(fieldInternalName) ? fieldInternalName : fieldId, currentFieldIndex, fields.Count);
                     if (!existingFieldIds.Contains(Guid.Parse(fieldId)))
                     {
                         try
@@ -230,7 +230,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         }
                         if ((existingField.TypeAsString == "TaxonomyFieldType" || existingField.TypeAsString == "TaxonomyFieldTypeMulti"))
                         {
-                            var taxField = web.Context.CastTo<TaxonomyField>(existingField); 
+                            var taxField = web.Context.CastTo<TaxonomyField>(existingField);
                             web.Context.Load(taxField);
                             web.Context.ExecuteQueryRetry();
 

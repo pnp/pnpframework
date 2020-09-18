@@ -1,9 +1,7 @@
-﻿using System;
+﻿using PnP.Framework.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Model
 {
@@ -39,7 +37,7 @@ namespace PnP.Framework.Provisioning.Model
         /// <param name="designPackage">Design Package for publishing</param>
         /// <param name="availableWebTemplates">Available WebTemplates for publishing</param>
         /// <param name="pageLayouts">PageLayouts for publishing</param>
-        public Publishing(AutoCheckRequirementsOptions autoCheckRequirements, DesignPackage designPackage = null, IEnumerable<AvailableWebTemplate> availableWebTemplates = null, IEnumerable<PageLayout> pageLayouts = null) 
+        public Publishing(AutoCheckRequirementsOptions autoCheckRequirements, DesignPackage designPackage = null, IEnumerable<AvailableWebTemplate> availableWebTemplates = null, IEnumerable<PageLayout> pageLayouts = null)
             : this()
         {
             this.AutoCheckRequirements = autoCheckRequirements;

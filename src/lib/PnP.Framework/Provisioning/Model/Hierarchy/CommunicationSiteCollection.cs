@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.Model
 {
     /// <summary>
     /// Concrete type defining a Communication Site Collection
     /// </summary>
-    public partial class CommunicationSiteCollection: SiteCollection
+    public partial class CommunicationSiteCollection : SiteCollection
     {
         /// <summary>
         /// The URL of the target Site

@@ -1,11 +1,7 @@
-﻿using PnP.Framework.Provisioning.Model;
+﻿using PnP.Framework.Extensions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201807
 {
@@ -73,7 +69,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201807
 
                     PnPObjectsMapper.MapProperties(i, targetItem, resolvers, recursive);
 
-                    if (targetItem!= null)
+                    if (targetItem != null)
                     {
                         result.Add(targetItem);
                     }

@@ -1,10 +1,7 @@
-﻿using System;
+﻿using PnP.Framework.Extensions;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201705
 {
@@ -29,7 +26,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201705
 
             if (null != allowedContentTypes)
             {
-                foreach(var ac in (IEnumerable)allowedContentTypes)
+                foreach (var ac in (IEnumerable)allowedContentTypes)
                 {
                     var contentTypeId = ac?.GetPublicInstancePropertyValue("ContentTypeID");
                     result.Add((String)contentTypeId);

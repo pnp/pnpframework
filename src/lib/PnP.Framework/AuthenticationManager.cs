@@ -1,19 +1,19 @@
-﻿using System;
+﻿using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.SharePoint.Client;
+using Newtonsoft.Json.Linq;
+using PnP.Framework.Diagnostics;
+using PnP.Framework.Utilities.Async;
+using PnP.Framework.Utilities.Context;
+using System;
 using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.SharePoint.Client;
-using PnP.Framework.Diagnostics;
-using PnP.Framework.Utilities.Async;
-using System.Net.Http;
-using Newtonsoft.Json.Linq;
-using PnP.Framework.Utilities.Context;
 using System.Web;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace PnP.Framework
 {

@@ -1,11 +1,10 @@
-﻿using PnP.Framework.Provisioning.Model;
+﻿using PnP.Framework.Extensions;
+using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Providers.Xml.Resolvers;
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Xml;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 {
@@ -33,7 +32,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
                 var dictionaryItemKeySelector = CreateSelectorLambda(dictionaryItemType, "Key");
                 var dictionaryItemValueSelector = CreateSelectorLambda(dictionaryItemType, "Value");
                 expressions.Add(f => f.Properties, new FromArrayToDictionaryValueResolver<string, string>(dictionaryItemType, dictionaryItemKeySelector, dictionaryItemValueSelector));
-                expressions.Add(f => f.Security, new PropertyObjectTypeResolver<File>(fl => fl.Security, 
+                expressions.Add(f => f.Security, new PropertyObjectTypeResolver<File>(fl => fl.Security,
                     fl => fl.GetPublicInstancePropertyValue("Security")?.GetPublicInstancePropertyValue("BreakRoleInheritance")));
                 expressions.Add(f => f.Security.RoleAssignments, new RoleAssigmentsFromSchemaToModelTypeResolver());
                 expressions.Add(f => f.WebParts[0].Order, new ExpressionValueResolver<int>((v) => (uint)v));

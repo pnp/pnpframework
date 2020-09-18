@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PnP.Framework.Provisioning.Connectors
+﻿namespace PnP.Framework.Provisioning.Connectors
 {
     /// <summary>
     /// Interface for File Connectors

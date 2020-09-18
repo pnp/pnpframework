@@ -1,13 +1,10 @@
-﻿using PnP.Framework.Provisioning.Model;
+﻿using PnP.Framework.Extensions;
+using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Providers.Xml.Resolvers;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
 {
@@ -69,7 +66,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
                 new FromDictionaryToArrayValueResolver<String, String>(
                     propertiesType, keySelector, valueSelector));
 
-            if (PnPSerializationScope.Current?.BaseSchemaNamespace != null && 
+            if (PnPSerializationScope.Current?.BaseSchemaNamespace != null &&
                 !PnPSerializationScope.Current.BaseSchemaNamespace.EndsWith("201605"))
             {
                 var templateScopeType = Type.GetType($"{PnPSerializationScope.Current?.BaseSchemaNamespace}.ProvisioningTemplateScope, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}", true);
@@ -80,11 +77,11 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
             PnPObjectsMapper.MapProperties(template, persistence, expressions, true);
 
             // Search settings
-            if(!string.IsNullOrEmpty(template.SiteSearchSettings)||!string.IsNullOrEmpty(template.WebSearchSettings))
+            if (!string.IsNullOrEmpty(template.SiteSearchSettings) || !string.IsNullOrEmpty(template.WebSearchSettings))
             {
                 var searchSettingType = Type.GetType($"{PnPSerializationScope.Current?.BaseSchemaNamespace}.ProvisioningTemplateSearchSettings, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}", true);
                 var searchSettings = Activator.CreateInstance(searchSettingType, true);
-                if(!string.IsNullOrEmpty(template.SiteSearchSettings))
+                if (!string.IsNullOrEmpty(template.SiteSearchSettings))
                 {
                     searchSettings.GetPublicInstanceProperty("SiteSearchSettings").SetValue(searchSettings, XElement.Parse(template.SiteSearchSettings).ToXmlElement());
                 }

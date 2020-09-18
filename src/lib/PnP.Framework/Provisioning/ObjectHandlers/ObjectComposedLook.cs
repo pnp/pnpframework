@@ -1,11 +1,11 @@
 ﻿using Microsoft.SharePoint.Client;
+using Newtonsoft.Json;
+using PnP.Framework.Diagnostics;
 using PnP.Framework.Provisioning.Connectors;
 using PnP.Framework.Provisioning.Model;
 using System;
 using System.IO;
-using PnP.Framework.Diagnostics;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -91,7 +91,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 web.EnsureProperty(w => w.Url);
                 Site site = (web.Context as ClientContext).Site;
                 site.EnsureProperty(s => s.Url);
-               
+
                 SharePointConnector spConnector = new SharePointConnector(web.Context, web.Url, "dummy");
                 // to get files from theme catalog we need a connector linked to the root site
                 SharePointConnector spConnectorRoot;
@@ -123,7 +123,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         composedLook.ColorFile = Tokenize(composedLook.ColorFile, web.Url);
                         template.ComposedLook = composedLook;
 
-                        if (!web.IsSubSite() && creationInfo != null && 
+                        if (!web.IsSubSite() && creationInfo != null &&
                                 creationInfo.PersistBrandingFiles && creationInfo.FileConnector != null)
                         {
                             scope.LogDebug(CoreResources.Provisioning_ObjectHandlers_ComposedLooks_ExtractObjects_Creating_SharePointConnector);
@@ -174,9 +174,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return template;
         }
 
-        private ProvisioningTemplate DetectComposedLook(Web web, ProvisioningTemplate template, 
-                                                    ProvisioningTemplateCreationInformation creationInfo, 
-                                                    PnPMonitoredScope scope, SharePointConnector spConnector, 
+        private ProvisioningTemplate DetectComposedLook(Web web, ProvisioningTemplate template,
+                                                    ProvisioningTemplateCreationInformation creationInfo,
+                                                    PnPMonitoredScope scope, SharePointConnector spConnector,
                                                     SharePointConnector spConnectorRoot)
         {
 
@@ -190,7 +190,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     creationInfo.PropertyBagPropertiesToPreserve.Add("DesignPreviewThemedCssFolderUrl");
                 }
 
-                template.ComposedLook.Name = 
+                template.ComposedLook.Name =
                     theme.Name != null ? theme.Name : String.Empty;
 
                 if (theme.IsCustomComposedLook)
@@ -201,7 +201,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     template.ComposedLook.FontFile = FixFileUrl(Tokenize(theme.Font, web.Url));
 
                     // Download files if this is root site, since theme files are only stored there
-                    if (!web.IsSubSite() && creationInfo != null && 
+                    if (!web.IsSubSite() && creationInfo != null &&
                         creationInfo.PersistBrandingFiles && creationInfo.FileConnector != null)
                     {
                         scope.LogDebug(CoreResources.Provisioning_ObjectHandlers_ComposedLooks_ExtractObjects_Creating_SharePointConnector);
@@ -215,7 +215,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     // Create file entries for the custom theme files, but only if it's a root site
                     // If it's root site we do not extract or set theme files, since those are in the root of the site collection
                     if (!web.IsSubSite())
-                    {   
+                    {
                         if (!string.IsNullOrEmpty(template.ComposedLook.BackgroundFile))
                         {
                             template.Files.Add(GetComposedLookFile(template.ComposedLook.BackgroundFile));

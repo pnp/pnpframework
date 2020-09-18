@@ -1,12 +1,12 @@
-﻿using System;
-using System.Linq;
-using Microsoft.SharePoint.Client;
-using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Diagnostics;
+﻿using Microsoft.SharePoint.Client;
 using Microsoft.SharePoint.Client.Publishing.Navigation;
 using Microsoft.SharePoint.Client.Taxonomy;
+using PnP.Framework.Diagnostics;
+using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers.Extensions;
+using System;
 using System.Globalization;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers

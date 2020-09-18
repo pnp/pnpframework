@@ -1,9 +1,6 @@
-﻿using System;
+﻿using PnP.Framework.Extensions;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201805
 {
@@ -27,7 +24,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201805
 
             var scripts = (source as Model.SiteDesign)?.SiteScripts;
             var siteDesignScriptsTypeName = $"{PnPSerializationScope.Current?.BaseSchemaNamespace}.SiteDesignsSiteDesignSiteScriptRef, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}";
-            var siteDesignScriptsType= Type.GetType(siteDesignScriptsTypeName, true);
+            var siteDesignScriptsType = Type.GetType(siteDesignScriptsTypeName, true);
 
             if (null != scripts)
             {

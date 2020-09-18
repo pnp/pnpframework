@@ -1,18 +1,12 @@
-﻿using Microsoft.Online.SharePoint.TenantAdministration;
-using Microsoft.SharePoint.Client;
+﻿using Microsoft.SharePoint.Client;
 using PnP.Framework.Provisioning.ObjectHandlers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.CanProvisionRules
 {
     /// <summary>
     /// Base class to test if the Provisioning Template can be provisioned on the target SharePoint Site
     /// </summary>
-    internal abstract class CanProvisionRuleSiteBase: ICanProvisionRuleSite
+    internal abstract class CanProvisionRuleSiteBase : ICanProvisionRuleSite
     {
         /// <summary>
         /// The TenantAdminSiteUrl contains the tenant admin site url. 

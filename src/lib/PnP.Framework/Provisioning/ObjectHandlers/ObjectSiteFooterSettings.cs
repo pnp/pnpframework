@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.SharePoint.Client;
-using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Diagnostics;
-using PnP.Framework.Utilities;
-using Newtonsoft.Json.Linq;
+﻿using Microsoft.SharePoint.Client;
 using Newtonsoft.Json;
-using System.Text.RegularExpressions;
+using PnP.Framework.Diagnostics;
+using PnP.Framework.Provisioning.Model;
+using PnP.Framework.Utilities;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
@@ -255,7 +252,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             {
                 if (template.Footer != null)
                 {
-                    web.EnsureProperties(w => w.ServerRelativeUrl, 
+                    web.EnsureProperties(w => w.ServerRelativeUrl,
                         w => w.FooterEnabled,
                         w => w.FooterLayout,
                         w => w.FooterEmphasis);

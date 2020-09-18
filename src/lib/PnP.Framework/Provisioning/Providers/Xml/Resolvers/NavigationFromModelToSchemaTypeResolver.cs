@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using PnP.Framework.Extensions;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
 {
@@ -41,7 +37,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
             var managedNavigationType = Type.GetType(managedNavigationTypeName, true);
             var structuralNavigationTypeName = $"{PnPSerializationScope.Current?.BaseSchemaNamespace}.StructuralNavigation, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}";
             var structuralNavigationType = Type.GetType(structuralNavigationTypeName, true);
-            
+
             var modelSource = source as Model.Navigation;
             if (modelSource != null)
             {
@@ -77,7 +73,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
                                     break;
                                 case Model.GlobalNavigationType.Inherit:
                                     break;
-                            } 
+                            }
                         }
 
                         break;

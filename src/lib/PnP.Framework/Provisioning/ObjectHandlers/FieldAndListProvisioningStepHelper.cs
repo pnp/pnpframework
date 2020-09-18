@@ -7,11 +7,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 {
     public static class FieldAndListProvisioningStepHelper
     {
-        static readonly Dictionary<Field,XElement> _fieldXmlDictionary = new Dictionary<Field, XElement>();
+        static readonly Dictionary<Field, XElement> _fieldXmlDictionary = new Dictionary<Field, XElement>();
         internal static Step GetFieldProvisioningStep(this Field templateField, TokenParser parser)
         {
             XElement schemaElement;
-            if (!_fieldXmlDictionary.TryGetValue(templateField, out schemaElement)) {
+            if (!_fieldXmlDictionary.TryGetValue(templateField, out schemaElement))
+            {
                 schemaElement = XElement.Parse(parser.ParseXmlString(templateField.SchemaXml));
                 _fieldXmlDictionary[templateField] = schemaElement;
             }

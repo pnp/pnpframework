@@ -1,8 +1,7 @@
-﻿using System;
+﻿using PnP.Framework.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml.Linq;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Model
 {
@@ -119,7 +118,7 @@ namespace PnP.Framework.Provisioning.Model
         /// <param name="documentTemplate">Document template of the content type</param>
         /// <param name="overwrite">Specify true to overwrite</param>
         /// <param name="fieldRefs">Content Type Field References</param>
-        public ContentType(string id, string name, string description, string group, bool contenttypeSealed, bool hidden, bool readyonly, string documentTemplate, bool overwrite, IEnumerable<FieldRef> fieldRefs):
+        public ContentType(string id, string name, string description, string group, bool contenttypeSealed, bool hidden, bool readyonly, string documentTemplate, bool overwrite, IEnumerable<FieldRef> fieldRefs) :
             this()
         {
             this.Id = id;

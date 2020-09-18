@@ -252,12 +252,12 @@ namespace PnP.Framework.Provisioning.Connectors
                 // Ensure the target path exists
                 Directory.CreateDirectory(Path.GetDirectoryName(filePath));
 
-                using(var fileStream = File.Create(filePath))
+                using (var fileStream = File.Create(filePath))
                 {
                     stream.Seek(0, SeekOrigin.Begin);
                     stream.CopyTo(fileStream);
                 }
-                
+
                 Log.Info(Constants.LOGGING_SOURCE, CoreResources.Provisioning_Connectors_FileSystem_FileSaved, fileName, container);
             }
             catch (Exception ex)

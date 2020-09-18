@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Microsoft.SharePoint.Client.InformationPolicy;
+using PnP.Framework.Entities;
+using PnP.Framework.Utilities.Async;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.SharePoint.Client.InformationPolicy;
-using PnP.Framework.Entities;
-using PnP.Framework.Utilities.Async;
 
 namespace Microsoft.SharePoint.Client
 {

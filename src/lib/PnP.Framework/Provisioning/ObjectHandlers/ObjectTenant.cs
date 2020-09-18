@@ -72,9 +72,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 _willProvision = (template.Tenant.AppCatalog != null ||
                                 template.Tenant.ContentDeliveryNetwork != null ||
                                 (template.Tenant.SiteDesigns != null && template.Tenant.SiteDesigns.Count > 0) ||
-                                (template.Tenant.SiteScripts!= null && template.Tenant.SiteScripts.Count > 0) ||
+                                (template.Tenant.SiteScripts != null && template.Tenant.SiteScripts.Count > 0) ||
                                 (template.Tenant.StorageEntities != null && template.Tenant.StorageEntities.Count > 0) ||
-                                (template.Tenant.WebApiPermissions!= null && template.Tenant.WebApiPermissions.Count > 0) ||
+                                (template.Tenant.WebApiPermissions != null && template.Tenant.WebApiPermissions.Count > 0) ||
                                 (template.Tenant.Themes != null && template.Tenant.Themes.Count > 0) ||
                                 template.Tenant.SharingSettings != null
                                 );

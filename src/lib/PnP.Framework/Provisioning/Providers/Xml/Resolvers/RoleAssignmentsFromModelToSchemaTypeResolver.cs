@@ -1,12 +1,7 @@
-﻿using PnP.Framework.Provisioning.Model;
+﻿using PnP.Framework.Extensions;
+using PnP.Framework.Provisioning.Model;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
 {
@@ -33,7 +28,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
             var security = (ObjectSecurity)source;
 
             // If we have any of the flags configured, or any role assignment, then we process the item
-            if (security.ClearSubscopes || security.CopyRoleAssignments || 
+            if (security.ClearSubscopes || security.CopyRoleAssignments ||
                 (security.RoleAssignments != null && security.RoleAssignments.Count > 0))
             {
                 var breakRoleInheritance = Activator.CreateInstance(breakRoleInheritanceType, true);

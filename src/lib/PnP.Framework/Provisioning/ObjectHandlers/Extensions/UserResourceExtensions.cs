@@ -7,9 +7,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Resources;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers.Extensions
 {
@@ -143,7 +141,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Extensions
             }
             return returnValue;
         }
-      
+
         public static bool ContainsResourceToken(this string value)
         {
             if (value != null)

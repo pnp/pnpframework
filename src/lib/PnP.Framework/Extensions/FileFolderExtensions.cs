@@ -1,4 +1,9 @@
-﻿using System;
+﻿using PnP.Framework;
+using PnP.Framework.Diagnostics;
+using PnP.Framework.Enums;
+using PnP.Framework.Utilities;
+using PnP.Framework.Utilities.Async;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,11 +12,6 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using PnP.Framework;
-using PnP.Framework.Diagnostics;
-using PnP.Framework.Enums;
-using PnP.Framework.Utilities;
-using PnP.Framework.Utilities.Async;
 
 namespace Microsoft.SharePoint.Client
 {
@@ -787,10 +787,10 @@ namespace Microsoft.SharePoint.Client
         /// </remarks>
         private static async Task<Folder> EnsureFolderPathImplementation(this Web web, string webRelativeUrl, params Expression<Func<Folder, object>>[] expressions)
         {
-            
+
             if (webRelativeUrl == null) { throw new ArgumentNullException(nameof(webRelativeUrl)); }
 
-            if(webRelativeUrl.EndsWith("."))
+            if (webRelativeUrl.EndsWith("."))
             {
                 throw new Exception("Folder names cannot end on a period (.).");
             }
@@ -1349,7 +1349,7 @@ namespace Microsoft.SharePoint.Client
                 throw new FileNotFoundException("Local file was not found.", localFilePath);
 
             using (var stream = System.IO.File.OpenRead(localFilePath))
-            return Task.Run(() => folder.UploadFileImplementation(fileName, stream, overwriteIfExists)).GetAwaiter().GetResult();
+                return Task.Run(() => folder.UploadFileImplementation(fileName, stream, overwriteIfExists)).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -1514,7 +1514,7 @@ namespace Microsoft.SharePoint.Client
                 throw new FileNotFoundException("Local file was not found.", localFile);
 
             using (var file = System.IO.File.OpenRead(localFile))
-            return Task.Run(() => serverFile.VerifyIfUploadRequiredImplementation(file)).GetAwaiter().GetResult();
+                return Task.Run(() => serverFile.VerifyIfUploadRequiredImplementation(file)).GetAwaiter().GetResult();
         }
 
         /// <summary>

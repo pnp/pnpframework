@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using Microsoft.SharePoint.Client;
+﻿using Microsoft.SharePoint.Client;
+using Microsoft.SharePoint.Client.Publishing;
+using PnP.Framework.Diagnostics;
 using PnP.Framework.Provisioning.Model;
-using Feature = PnP.Framework.Provisioning.Model.Feature;
 using System;
 using System.Linq;
-using PnP.Framework.Diagnostics;
-using Microsoft.SharePoint.Client.Publishing;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -61,8 +59,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     throw new Exception("Publishing Feature not active. Provisioning failed");
                 }
 
-                if (template.Publishing != null && 
-                    template.Publishing.ImageRenditions != null && 
+                if (template.Publishing != null &&
+                    template.Publishing.ImageRenditions != null &&
                     template.Publishing.ImageRenditions.Count > 0)
                 {
                     var renditions = SiteImageRenditions.GetRenditions(context);

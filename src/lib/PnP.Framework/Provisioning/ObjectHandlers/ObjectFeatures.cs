@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using Microsoft.SharePoint.Client;
-using PnP.Framework.Provisioning.Model;
-using Feature = PnP.Framework.Provisioning.Model.Feature;
-using System;
-using System.Linq;
+﻿using Microsoft.SharePoint.Client;
 using PnP.Framework.Diagnostics;
+using PnP.Framework.Provisioning.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Feature = PnP.Framework.Provisioning.Model.Feature;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -72,7 +72,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                 }
                                 catch (ServerException ex)
                                 {
-                                    scope.LogError("Error activating feature {0}: {1}", feature.Id, ex.Message);                                       
+                                    scope.LogError("Error activating feature {0}: {1}", feature.Id, ex.Message);
                                 }
                             }
                             else
@@ -119,10 +119,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     }
                 }
             }
-            if(parent is Site)
+            if (parent is Site)
             {
                 parser.RebuildListTokens((parent as Site).RootWeb);
-            } else
+            }
+            else
             {
                 parser.RebuildListTokens(parent as Web);
             }

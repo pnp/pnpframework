@@ -170,7 +170,7 @@ namespace Microsoft.SharePoint.Client
                         {
                             clientObject.Context.Load(clientObject, expression);
                             dirty = true;
-                        }                        
+                        }
                     }
                     else
                     {
@@ -203,12 +203,12 @@ namespace Microsoft.SharePoint.Client
         /// <returns>New Expression where return type is object and not generic</returns>
         public static Expression<Func<TInput, object>> ToUntypedStaticMethodCallExpression<TInput, TOutput>(this Expression<Func<TInput, TOutput>> expression)
         {
-            var body = (MethodCallExpression) expression.Body;
+            var body = (MethodCallExpression)expression.Body;
             var clientObjectProperty = (MemberExpression)(body.Arguments[0]);
             var newArrayExpression = body.Arguments[1] as NewArrayExpression;
             var param = Expression.Parameter(typeof(TInput));
             var propertyToCall = (Expression.Property(param, clientObjectProperty.Member.Name));
-            
+
 
             return Expression.Lambda<Func<TInput, object>>(Expression.Call(null, body.Method, propertyToCall, newArrayExpression), param);
         }

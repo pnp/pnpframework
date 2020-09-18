@@ -2,7 +2,6 @@
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
-using System;
 
 namespace PnP.Framework.Provisioning.Extensibility
 {

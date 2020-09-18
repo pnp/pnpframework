@@ -1,10 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
-using Microsoft.Online.SharePoint.TenantAdministration;
-using PnP.Framework.Entities;
-
-namespace Microsoft.SharePoint.Client
+﻿namespace Microsoft.SharePoint.Client
 {
     /// <summary>
     /// Class that deals with site (both site collection and web site) creation, status, retrieval and settings

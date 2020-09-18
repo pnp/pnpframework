@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Online.SharePoint.TenantAdministration;
+﻿using Microsoft.Online.SharePoint.TenantAdministration;
 using Microsoft.SharePoint.Client;
 using Microsoft.SharePoint.Client.Search.Query;
+using System;
+using System.Collections.Generic;
 
 namespace PnP.Framework.TimerJobs.Utilities
 {
@@ -40,8 +40,8 @@ namespace PnP.Framework.TimerJobs.Utilities
                 return instance;
             }
         }
-        #endregion  
-     
+        #endregion
+
         #region Site resolving
         /// <summary>
         /// Builds up a list of site collections that match the passed site wildcard. This method can be used against Office 365
@@ -106,13 +106,13 @@ namespace PnP.Framework.TimerJobs.Utilities
         /// </summary>
         /// <param name="tenant">Tenant object to operate against</param>
         /// <param name="excludeOD4B">Exlude OD4B sites</param>
-        private void FillSitesViaTenantAPI(Tenant tenant,bool excludeOD4B)
+        private void FillSitesViaTenantAPI(Tenant tenant, bool excludeOD4B)
         {
             // Use tenant API to get the regular sites
             var props = tenant.GetSiteCollections(
                 includeDetail: false,
                 includeOD4BSites: !excludeOD4B);
-            
+
             if (props.Count == 0)
             {
                 return;
@@ -201,10 +201,10 @@ namespace PnP.Framework.TimerJobs.Utilities
             keywordQuery.SelectProperties.Add("SPSiteUrl");
             keywordQuery.SortList.Add("SPSiteUrl", SortDirection.Ascending);
             SearchExecutor searchExec = new SearchExecutor(cc);
-            
+
             // Important to avoid trimming "similar" site collections
             keywordQuery.TrimDuplicates = false;
-            
+
             ClientResult<ResultTableCollection> results = searchExec.ExecuteQuery(keywordQuery);
             cc.ExecuteQueryRetry();
 

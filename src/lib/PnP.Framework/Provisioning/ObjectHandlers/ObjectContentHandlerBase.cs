@@ -3,11 +3,8 @@ using PnP.Framework.Diagnostics;
 using PnP.Framework.Provisioning.Connectors;
 using PnP.Framework.Utilities;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers

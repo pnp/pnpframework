@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-
-namespace PnP.Framework.Provisioning.Model
+﻿namespace PnP.Framework.Provisioning.Model
 {
     /// <summary>
     /// Domain Object that is used in the Site Template for OOB Features
     /// </summary>
-    public partial class Features: BaseModel
+    public partial class Features : BaseModel
     {
         private FeatureCollection _siteFeatures;
         private FeatureCollection _webFeatures;
@@ -27,7 +25,7 @@ namespace PnP.Framework.Provisioning.Model
         /// </summary>
         public FeatureCollection SiteFeatures
         {
-            get{ return this._siteFeatures; }
+            get { return this._siteFeatures; }
             private set { this._siteFeatures = value; }
         }
 

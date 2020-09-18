@@ -1,7 +1,6 @@
 using Microsoft.SharePoint.Client;
 using Microsoft.SharePoint.Client.Taxonomy;
 using PnP.Framework.Attributes;
-using System;
 using PnP.Framework.Diagnostics;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions

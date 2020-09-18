@@ -3,7 +3,6 @@ using Microsoft.SharePoint.Client.Taxonomy;
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Utilities;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 

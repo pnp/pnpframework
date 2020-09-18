@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.Graph;
-using PnP.Framework.Diagnostics;
-using System.Linq;
+﻿using Microsoft.Graph;
 using Newtonsoft.Json;
+using PnP.Framework.Diagnostics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace PnP.Framework.Graph
@@ -104,14 +104,14 @@ namespace PnP.Framework.Graph
                             .Filter(filter)
                             .OrderBy(orderby)
                             .GetAsync();
-                    
+
                     int pageCount = 0;
                     int currentIndex = 0;
 
                     while (true)
                     {
                         pageCount++;
-                        
+
                         foreach (var u in pagedUsers)
                         {
                             currentIndex++;
@@ -120,7 +120,7 @@ namespace PnP.Framework.Graph
                             {
                                 var user = new Model.User
                                 {
-                                    Id = Guid.TryParse(u.Id, out Guid idGuid) ? (Guid?) idGuid : null,
+                                    Id = Guid.TryParse(u.Id, out Guid idGuid) ? (Guid?)idGuid : null,
                                     DisplayName = u.DisplayName,
                                     GivenName = u.GivenName,
                                     JobTitle = u.JobTitle,
@@ -187,15 +187,15 @@ namespace PnP.Framework.Graph
                 // GET https://graph.microsoft.com/v1.0/users/delta
                 string getUserDeltaUrl = $"{GraphHttpClient.MicrosoftGraphV1BaseUri}users/delta?";
 
-                if(selectProperties != null)
+                if (selectProperties != null)
                 {
                     getUserDeltaUrl += $"$select={string.Join(",", selectProperties)}&";
                 }
-                if(!string.IsNullOrEmpty(filter))
+                if (!string.IsNullOrEmpty(filter))
                 {
                     getUserDeltaUrl += $"$filter={filter}&";
                 }
-                if(!string.IsNullOrEmpty(deltaToken))
+                if (!string.IsNullOrEmpty(deltaToken))
                 {
                     getUserDeltaUrl += $"$deltatoken={deltaToken}&";
                 }
@@ -216,7 +216,7 @@ namespace PnP.Framework.Graph
 
                     var userDeltaResponse = JsonConvert.DeserializeObject<Model.UserDelta>(response);
 
-                    if(!string.IsNullOrEmpty(userDeltaResponse.DeltaToken))
+                    if (!string.IsNullOrEmpty(userDeltaResponse.DeltaToken))
                     {
                         userDelta.DeltaToken = HttpUtility.ParseQueryString(new Uri(userDeltaResponse.DeltaToken).Query).Get("$deltatoken");
                     }
@@ -230,7 +230,7 @@ namespace PnP.Framework.Graph
                             userDelta.Users.Add(user);
                         }
                     }
-                        
+
                     if (userDeltaResponse.NextLink != null && currentIndex < endIndex)
                     {
                         getUserDeltaUrl = userDeltaResponse.NextLink;

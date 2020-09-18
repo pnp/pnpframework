@@ -1,9 +1,6 @@
 ﻿using PnP.Framework.Extensions;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.Model
 {
@@ -48,7 +45,7 @@ namespace PnP.Framework.Provisioning.Model
         /// The emphasis color of the Canvas Section for a Client-side Page
         /// </summary>
         public Emphasis VerticalSectionEmphasis { get; set; }
-        
+
         #endregion
 
         #region Constructors

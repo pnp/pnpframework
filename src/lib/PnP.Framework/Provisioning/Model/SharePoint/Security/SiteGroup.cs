@@ -1,9 +1,7 @@
-﻿using System;
+﻿using PnP.Framework.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Model
 {
@@ -31,7 +29,7 @@ namespace PnP.Framework.Provisioning.Model
         /// Constructor for SiteGroup class
         /// </summary>
         /// <param name="members">SiteGroup members</param>
-        public SiteGroup(IEnumerable<User> members):
+        public SiteGroup(IEnumerable<User> members) :
             this()
         {
             this.Members.AddRange(members);

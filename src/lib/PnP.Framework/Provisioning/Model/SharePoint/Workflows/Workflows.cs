@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace PnP.Framework.Provisioning.Model
 {
     /// <summary>
     /// Defines the Workflows to provision
     /// </summary>
-    public partial class Workflows: BaseModel
+    public partial class Workflows : BaseModel
     {
         #region Private Members
 
@@ -34,7 +30,7 @@ namespace PnP.Framework.Provisioning.Model
         /// </summary>
         /// <param name="workflowDefinitions">Collection of workflow definitions</param>
         /// <param name="workflowSubscriptions">Collection of workflow subscriptions</param>
-        public Workflows(IEnumerable<WorkflowDefinition> workflowDefinitions = null, IEnumerable<WorkflowSubscription> workflowSubscriptions = null) : 
+        public Workflows(IEnumerable<WorkflowDefinition> workflowDefinitions = null, IEnumerable<WorkflowSubscription> workflowSubscriptions = null) :
             this()
         {
             this.WorkflowDefinitions.AddRange(workflowDefinitions);

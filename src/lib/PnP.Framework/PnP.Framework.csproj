@@ -1,8 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
 	<LangVersion>8.0</LangVersion>
+	<Version>4.0.0</Version>
+	<Authors>PnP</Authors>
+	<Copyright>PnP 2020</Copyright>
+	<Description>PnP Framework contains the PnP Provisioning engine, the PnP Pages API a ton of extension methods that will make you more productive while developing for Microsoft 365.</Description>
+	<PackageIcon>nugeticon.png</PackageIcon>
+	<RepositoryUrl>https://github.com/pnp/pnpframework</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
+	<PackageProjectUrl>https://aka.ms/pnp/framework</PackageProjectUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -42,6 +50,10 @@
     <None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2019-03.xsd" />
     <None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2019-09.xsd" />
     <None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2020-02.xsd" />
+    <None Include="nugeticon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -79,7 +91,23 @@
     <EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2020-02.xsd" />
   </ItemGroup>
 
-  <ItemGroup>
+	<ItemGroup>
+		<Compile Update="CoreResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>CoreResources.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Update="CoreResources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>CoreResources.Designer.cs</LastGenOutput>
+			<CustomToolNamespace></CustomToolNamespace>
+		</EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
     <PackageReference Include="AngleSharp" Version="0.14.0" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
     <PackageReference Include="Microsoft.Graph" Version="1.9.0" />

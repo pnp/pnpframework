@@ -9,12 +9,16 @@ using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 
+#if DEBUG
+[assembly: InternalsVisibleTo("PnP.Framework.Test")]
+#endif
 namespace PnP.Framework
 {
     /// <summary>

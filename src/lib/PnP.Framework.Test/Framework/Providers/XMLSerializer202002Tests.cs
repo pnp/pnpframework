@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Security;
-using System.Xml.Linq;
-using Microsoft.SharePoint.Client;
+﻿using Microsoft.SharePoint.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Model.AzureActiveDirectory;
@@ -12,6 +6,12 @@ using PnP.Framework.Provisioning.Model.Teams;
 using PnP.Framework.Provisioning.Providers.Xml;
 using PnP.Framework.Provisioning.Providers.Xml.V202002;
 using PnP.Framework.Utilities;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Security;
+using System.Xml.Linq;
 using App = PnP.Framework.Provisioning.Model.App;
 using CalendarType = Microsoft.SharePoint.Client.CalendarType;
 using CanvasSectionType = PnP.Framework.Provisioning.Model.CanvasSectionType;
@@ -1940,15 +1940,17 @@ namespace PnP.Framework.Tests.Framework.Providers
             result.ParentHierarchy.Tenant = new ProvisioningTenant(result.ApplicationLifecycleManagement.AppCatalog,
                 new PnP.Framework.Provisioning.Model.ContentDeliveryNetwork());
 
-            result.Tenant.SharingSettings = new PnP.Framework.Provisioning.Model.SharingSettings();
-            result.Tenant.SharingSettings.SharingCapability = SharingCapability.ExternalUserAndGuestSharing;
-            result.Tenant.SharingSettings.RequireAnonymousLinksExpireInDays = 30;
-            result.Tenant.SharingSettings.FileAnonymousLinkType = PnP.Framework.Provisioning.Model.AnonymousLinkType.View;
-            result.Tenant.SharingSettings.FolderAnonymousLinkType = PnP.Framework.Provisioning.Model.AnonymousLinkType.Edit;
-            result.Tenant.SharingSettings.DefaultSharingLinkType = SharingLinkType.AnonymousAccess;
-            result.Tenant.SharingSettings.PreventExternalUsersFromResharing = true;
-            result.Tenant.SharingSettings.RequireAcceptingAccountMatchInvitedAccount = true;
-            result.Tenant.SharingSettings.SharingDomainRestrictionMode = SharingDomainRestrictionMode.AllowList;
+            result.Tenant.SharingSettings = new PnP.Framework.Provisioning.Model.SharingSettings
+            {
+                SharingCapability = SharingCapability.ExternalUserAndGuestSharing,
+                RequireAnonymousLinksExpireInDays = 30,
+                FileAnonymousLinkType = PnP.Framework.Provisioning.Model.AnonymousLinkType.View,
+                FolderAnonymousLinkType = PnP.Framework.Provisioning.Model.AnonymousLinkType.Edit,
+                DefaultSharingLinkType = SharingLinkType.AnonymousAccess,
+                PreventExternalUsersFromResharing = true,
+                RequireAcceptingAccountMatchInvitedAccount = true,
+                SharingDomainRestrictionMode = SharingDomainRestrictionMode.AllowList
+            };
             result.Tenant.SharingSettings.AllowedDomainList.Add("contoso.com");
             result.Tenant.SharingSettings.AllowedDomainList.Add("contoso-elettronics.com");
             result.Tenant.SharingSettings.BlockedDomainList.Add("contoso.com");
@@ -2569,20 +2571,22 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
 
-            var result = new ProvisioningTemplate();
-            result.Security = new SiteSecurity()
+            var result = new ProvisioningTemplate
             {
-                BreakRoleInheritance = true,
-                ClearSubscopes = true,
-                CopyRoleAssignments = true,
-                AssociatedGroups = "Test Value",
-                AssociatedMemberGroup = "{parameter:AssociatedMemberGroup}",
-                AssociatedOwnerGroup = "{parameter:AssociatedOwnerGroup}",
-                AssociatedVisitorGroup = "{parameter:AssociatedVisitorGroup}",
-                ClearExistingAdministrators = true,
-                ClearExistingVisitors = true,
-                ResetRoleInheritance = true,
-                RemoveExistingUniqueRoleAssignments = true
+                Security = new SiteSecurity()
+                {
+                    BreakRoleInheritance = true,
+                    ClearSubscopes = true,
+                    CopyRoleAssignments = true,
+                    AssociatedGroups = "Test Value",
+                    AssociatedMemberGroup = "{parameter:AssociatedMemberGroup}",
+                    AssociatedOwnerGroup = "{parameter:AssociatedOwnerGroup}",
+                    AssociatedVisitorGroup = "{parameter:AssociatedVisitorGroup}",
+                    ClearExistingAdministrators = true,
+                    ClearExistingVisitors = true,
+                    ResetRoleInheritance = true,
+                    RemoveExistingUniqueRoleAssignments = true
+                }
             };
             result.Security.AdditionalAdministrators.Add(new PnP.Framework.Provisioning.Model.User() { Name = "user@contoso.com" });
             result.Security.AdditionalAdministrators.Add(new PnP.Framework.Provisioning.Model.User() { Name = "U_SHAREPOINT_ADMINS" });
@@ -2859,10 +2863,12 @@ namespace PnP.Framework.Tests.Framework.Providers
 
             result.Navigation = new PnP.Framework.Provisioning.Model.Navigation(
                  new GlobalNavigation(GlobalNavigationType.Managed, null, new PnP.Framework.Provisioning.Model.ManagedNavigation()),
-                 new CurrentNavigation(CurrentNavigationType.Structural, new PnP.Framework.Provisioning.Model.StructuralNavigation(), null), searchNavigation);
-            result.Navigation.EnableTreeView = true;
-            result.Navigation.AddNewPagesToNavigation = true;
-            result.Navigation.CreateFriendlyUrlsForNewPages = true;
+                 new CurrentNavigation(CurrentNavigationType.Structural, new PnP.Framework.Provisioning.Model.StructuralNavigation(), null), searchNavigation)
+            {
+                EnableTreeView = true,
+                AddNewPagesToNavigation = true,
+                CreateFriendlyUrlsForNewPages = true
+            };
 
             result.Navigation.GlobalNavigation.ManagedNavigation.TermSetId = "415185a1-ee1c-4ce9-9e38-cea3f854e802";
             result.Navigation.GlobalNavigation.ManagedNavigation.TermStoreId = "c1175ad1-c710-4131-a6c9-aa854a5cc4c4";
@@ -3702,8 +3708,10 @@ namespace PnP.Framework.Tests.Framework.Providers
                     ClearSubscopes = true
                 }));
             folder01.Folders.Add(new PnP.Framework.Provisioning.Model.Folder("Folder01.02"));
-            var folder03 = new PnP.Framework.Provisioning.Model.Folder("Folder03");
-            folder03.ContentTypeID = "0x0120001234567890";
+            var folder03 = new PnP.Framework.Provisioning.Model.Folder("Folder03")
+            {
+                ContentTypeID = "0x0120001234567890"
+            };
             folder03.Properties.Add("CustomProperty01", "CustomValue01");
             folder03.Properties.Add("CustomProperty02", "CustomValue02");
 
@@ -4060,8 +4068,10 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
 
-            var result = new ProvisioningTemplate();
-            result.Features = new PnP.Framework.Provisioning.Model.Features();
+            var result = new ProvisioningTemplate
+            {
+                Features = new PnP.Framework.Provisioning.Model.Features()
+            };
 
             result.Features.SiteFeatures.Add(new PnP.Framework.Provisioning.Model.Feature()
             {
@@ -4749,9 +4759,10 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
 
-            var result = new ProvisioningTemplate();
-
-            result.SiteSearchSettings = "<SearchConfigurationSettings></SearchConfigurationSettings>";
+            var result = new ProvisioningTemplate
+            {
+                SiteSearchSettings = "<SearchConfigurationSettings></SearchConfigurationSettings>"
+            };
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
@@ -4801,20 +4812,20 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
 
-            var result = new ProvisioningTemplate();
-
-            result.Publishing = new PnP.Framework.Provisioning.Model.Publishing
+            var result = new ProvisioningTemplate
             {
-                AutoCheckRequirements = AutoCheckRequirementsOptions.MakeCompliant,
-                DesignPackage = new PnP.Framework.Provisioning.Model.DesignPackage
+                Publishing = new PnP.Framework.Provisioning.Model.Publishing
                 {
-                    DesignPackagePath = "CustomDesign.wsp",
-                    MajorVersion = 1,
-                    MinorVersion = 0,
-                    PackageGuid = new Guid("A3349210-5283-44A5-A23F-00F489EB690B"),
-                    PackageName = "Custom Design"
-                },
-                AvailableWebTemplates =
+                    AutoCheckRequirements = AutoCheckRequirementsOptions.MakeCompliant,
+                    DesignPackage = new PnP.Framework.Provisioning.Model.DesignPackage
+                    {
+                        DesignPackagePath = "CustomDesign.wsp",
+                        MajorVersion = 1,
+                        MinorVersion = 0,
+                        PackageGuid = new Guid("A3349210-5283-44A5-A23F-00F489EB690B"),
+                        PackageName = "Custom Design"
+                    },
+                    AvailableWebTemplates =
                 {
                     new PnP.Framework.Provisioning.Model.AvailableWebTemplate
                     {
@@ -4822,7 +4833,7 @@ namespace PnP.Framework.Tests.Framework.Providers
                         TemplateName = "STS#0"
                     }
                 },
-                PageLayouts =
+                    PageLayouts =
                 {
                     new PnP.Framework.Provisioning.Model.PageLayout
                     {
@@ -4834,7 +4845,7 @@ namespace PnP.Framework.Tests.Framework.Providers
                         IsDefault = true
                     }
                 },
-                ImageRenditions =
+                    ImageRenditions =
                 {
                     new PnP.Framework.Provisioning.Model.ImageRendition
                     {
@@ -4842,6 +4853,7 @@ namespace PnP.Framework.Tests.Framework.Providers
                         Height = 100,
                         Width = 100
                     }
+                }
                 }
             };
 

@@ -1,9 +1,6 @@
 ﻿using PnP.Framework.Provisioning.Model;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Tests.Framework.Functional.Validators
 {
@@ -53,7 +50,7 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
                 Guid sID = sFeature.Id;
 
                 Feature tFeature = tFeatures.Where(ft => ft.Id == sID).FirstOrDefault();
-                
+
                 // Feature activation: do we see the target feature with the correct id?
                 // Feature deactivation: we shouldn't see the target feature anymore when we choose to deactivate
                 if ((tFeature != null && sID == tFeature.Id) || (sFeature.Deactivate && tFeature == null))

@@ -1,5 +1,4 @@
 ﻿using Microsoft.Online.SharePoint.TenantAdministration;
-using Microsoft.SharePoint.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework;
 using PnP.Framework.Entities;
@@ -18,7 +17,7 @@ namespace Microsoft.SharePoint.Client.Tests
         private Guid contentOrganizerWebFeatureId = new Guid("7ad5272a-2694-4349-953e-ea5ef290e97c");
         private Guid FakeFeatureId = new Guid("b475e106-9088-4342-ad9a-fa0a1863502d");
 
-        private static string sitecollectionNamePrefix = "TestPnPSC_123456789_";
+        private static readonly string sitecollectionNamePrefix = "TestPnPSC_123456789_";
         private string sitecollectionName = "";
 
         #region Test initialize and cleanup
@@ -270,7 +269,7 @@ namespace Microsoft.SharePoint.Client.Tests
             Assert.IsTrue(clientContext.Site.IsFeatureActive(sp2007WorkflowSiteFeatureId));
 
             clientContext.Site.DeactivateFeature(sp2007WorkflowSiteFeatureId);
-            
+
             Assert.IsFalse(clientContext.Site.IsFeatureActive(sp2007WorkflowSiteFeatureId));
         }
 
@@ -348,7 +347,7 @@ namespace Microsoft.SharePoint.Client.Tests
         {
             // Setup
             try
-            { 
+            {
                 clientContext.Web.DeactivateFeature(contentOrganizerWebFeatureId);
             }
             catch (Exception ex)
@@ -359,6 +358,6 @@ namespace Microsoft.SharePoint.Client.Tests
             // Test
             Assert.IsFalse(clientContext.Web.IsFeatureActive(contentOrganizerWebFeatureId));
         }
-#endregion
+        #endregion
     }
 }

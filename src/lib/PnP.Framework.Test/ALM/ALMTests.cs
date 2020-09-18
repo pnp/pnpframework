@@ -1,12 +1,7 @@
-﻿using Microsoft.Online.SharePoint.TenantAdministration;
-using Microsoft.SharePoint.Client;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.ALM;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace PnP.Framework.Tests.Sites
@@ -83,7 +78,7 @@ namespace PnP.Framework.Tests.Sites
 
                 //Test removal
                 var removeResults = manager.Remove(addedApp.Id);
-                
+
                 Assert.IsTrue(removeResults);
             }
         }

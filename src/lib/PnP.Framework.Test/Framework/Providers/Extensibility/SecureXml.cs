@@ -10,7 +10,7 @@ namespace PnP.Framework.Tests.Framework.Providers.Extensibility
 {
     public class SecureXml
     {
-        private static Rijndael rKey = new RijndaelManaged();
+        private static readonly Rijndael rKey = new RijndaelManaged();
 
         static SecureXml()
         {
@@ -36,12 +36,16 @@ namespace PnP.Framework.Tests.Framework.Providers.Extensibility
             // Costruisco la firma
             SignedXml signedXml = new SignedXml();
             System.Security.Cryptography.Xml.DataObject dataSignature =
-                new System.Security.Cryptography.Xml.DataObject();
-            dataSignature.Data = elementsToSign;
-            dataSignature.Id = doc.DocumentElement.Name;
+                new System.Security.Cryptography.Xml.DataObject
+                {
+                    Data = elementsToSign,
+                    Id = doc.DocumentElement.Name
+                };
             signedXml.AddObject(dataSignature);
-            Reference reference = new Reference();
-            reference.Uri = String.Format("#{0}", dataSignature.Id);
+            Reference reference = new Reference
+            {
+                Uri = String.Format("#{0}", dataSignature.Id)
+            };
             signedXml.AddReference(reference);
 
             if ((certificate != null) && (certificate.HasPrivateKey))

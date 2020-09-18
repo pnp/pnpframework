@@ -1,24 +1,21 @@
-﻿using Microsoft.SharePoint.Client;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PnP.Framework.Provisioning.Model;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Tests.Framework.Functional.Implementation;
-using PnP.Framework.Tests.Framework.Functional.Validators;
 
 namespace PnP.Framework.Tests.Framework.Functional
 {
     [TestClass]
-    public class CustomActionNoScriptTests: FunctionalTestBase
+    public class CustomActionNoScriptTests : FunctionalTestBase
     {
-    #region Construction
+        #region Construction
         public CustomActionNoScriptTests()
         {
             //debugMode = true;
             //centralSiteCollectionUrl = "https://bertonline.sharepoint.com/sites/TestPnPSC_12345_ab5f2990-6015-48c5-a09b-685153dcebc9";
             //centralSubSiteUrl = "https://bertonline.sharepoint.com/sites/TestPnPSC_12345_ab5f2990-6015-48c5-a09b-685153dcebc9/sub";
         }
-    #endregion
+        #endregion
 
-    #region Test setup
+        #region Test setup
         [ClassInitialize()]
         public static void ClassInit(TestContext context)
         {
@@ -30,24 +27,24 @@ namespace PnP.Framework.Tests.Framework.Functional
         {
             ClassCleanupBase();
         }
-    #endregion
+        #endregion
 
-    #region Site collection test cases
+        #region Site collection test cases
         [TestMethod]
         [Timeout(15 * 60 * 1000)]
         public void SiteCollectionCustomActionAddingTest()
         {
             new CustomActionImplementation().SiteCollectionCustomActionAdding(centralSiteCollectionUrl);
         }
-    #endregion
+        #endregion
 
-    #region Web test cases
+        #region Web test cases
         [TestMethod]
         [Timeout(15 * 60 * 1000)]
         public void WebCustomActionAddingTest()
         {
             new CustomActionImplementation().WebCustomActionAdding(centralSubSiteUrl);
         }
-    #endregion
+        #endregion
     }
 }

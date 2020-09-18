@@ -1,20 +1,11 @@
 ﻿using Microsoft.SharePoint.Client;
-using Newtonsoft.Json;
-using PnP.Framework.Enums;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
 using PnP.Framework.Provisioning.Providers.Xml;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 using System.Xml.Linq;
-using System.Xml.Serialization;
-using System.Xml.XPath;
 
 namespace PnP.Framework.Tests.Framework.Functional.Validators
 {
@@ -65,8 +56,10 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
             }
 
             // Use XML validation logic to compare source and target
-            Dictionary<string, string[]> parserSettings = new Dictionary<string, string[]>();
-            parserSettings.Add("SchemaXml", null);
+            Dictionary<string, string[]> parserSettings = new Dictionary<string, string[]>
+            {
+                { "SchemaXml", null }
+            };
             bool isTermGroupsMatch = ValidateObjectsXML(sourceTermGroups, targetTermGroups, "SchemaXml", new List<string> { "Name" }, tokenParser, parserSettings);
 
             Console.WriteLine("-- Term group validation " + isTermGroupsMatch);
@@ -158,7 +151,7 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
                                 }
                                 else
                                 {
-                                    if ((sourceTerm.Attribute("IsReused").Value.ToBoolean() && 
+                                    if ((sourceTerm.Attribute("IsReused").Value.ToBoolean() &&
                                         (sourceTerm.Attribute("IsSourceTerm") != null && !sourceTerm.Attribute("IsSourceTerm").Value.ToBoolean())))
                                     {
                                         // When a reused term had custom local properties defined then we'll export both the local properties of the "base" term and the local properties 
@@ -170,7 +163,7 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
                                             if (targetLocalCustomProperties != null && targetLocalCustomProperties.Any())
                                             {
                                                 // get target local properties
-                                                foreach(var targetLocalCustomProperty in targetLocalCustomProperties.Descendants().ToList())
+                                                foreach (var targetLocalCustomProperty in targetLocalCustomProperties.Descendants().ToList())
                                                 {
                                                     var sourceLocalCustomProperty = sourceLocalCustomProperties.Descendants().FirstOrDefault(p => p.Attribute("Key").Value.Equals(targetLocalCustomProperty.Attribute("Key").Value, StringComparison.InvariantCultureIgnoreCase));
                                                     if (sourceLocalCustomProperty == null)

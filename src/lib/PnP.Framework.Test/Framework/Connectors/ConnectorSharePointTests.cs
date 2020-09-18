@@ -9,8 +9,8 @@ namespace PnP.Framework.Tests.Framework.Connectors
     public class ConnectorSharePointTests
     {
         #region Test variables
-        static string testContainer = "pnptest";
-        static string testContainerSecure = "pnptestsecure";
+        static readonly string testContainer = "pnptest";
+        static readonly string testContainerSecure = "pnptestsecure";
         #endregion
 
         #region Test initialize and cleanup
@@ -309,6 +309,6 @@ namespace PnP.Framework.Tests.Framework.Connectors
                 Assert.IsNull(bytes);
             }
         }
-#endregion
+        #endregion
     }
 }

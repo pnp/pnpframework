@@ -1,16 +1,16 @@
-﻿using System;
+﻿using Microsoft.SharePoint.Client;
+using Microsoft.SharePoint.Client.WebParts;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PnP.Framework.Provisioning.Connectors;
+using PnP.Framework.Provisioning.Model;
+using PnP.Framework.Provisioning.ObjectHandlers;
+using PnP.Framework.Utilities;
+using PnP.Framework.Utilities.WebParts.Processors;
+using System;
 using System.IO;
 using System.Linq;
 using System.Xml;
 using System.Xml.Serialization;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PnP.Framework.Provisioning.Connectors;
-using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Utilities;
-using Microsoft.SharePoint.Client;
-using Microsoft.SharePoint.Client.WebParts;
-using PnP.Framework.Provisioning.ObjectHandlers;
-using PnP.Framework.Utilities.WebParts.Processors;
 using File = Microsoft.SharePoint.Client.File;
 using View = Microsoft.SharePoint.Client.View;
 
@@ -19,8 +19,8 @@ namespace PnP.Framework.Tests.Utilities.WebParts
     [TestClass]
     public class XsltWebPartPostProcessorTests
     {
-        private string testPage = "TestDefault.aspx";
-        private string folder = "test";
+        private readonly string testPage = "TestDefault.aspx";
+        private readonly string folder = "test";
 
         private static Guid _viewId;
         private static Guid _docsListId;

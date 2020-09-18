@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.SharePoint.Client;
+﻿using Microsoft.SharePoint.Client;
+using Microsoft.SharePoint.Client.Taxonomy;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Linq;
-using Microsoft.SharePoint.Client.Taxonomy;
 
 namespace PnP.Framework.Tests.Framework.ObjectHandlers
 {
@@ -21,7 +21,7 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
         private const string TokenizedCalculatedFieldElementSchema = @"<Field Name=""CalculatedField"" StaticName=""CalculatedField"" DisplayName=""Test Calculated Field"" Type=""Calculated"" ResultType=""Text"" ID=""{D1A33456-9FEB-4D8E-AFFA-177EACCE4B70}"" Group=""PnP"" ReadOnly=""TRUE"" ><Formula>=[{fieldtitle:DemoField}]&amp;""BlaBla""</Formula></Field>";
         private Guid calculatedFieldId = Guid.Parse("{D1A33456-9FEB-4D8E-AFFA-177EACCE4B70}");
 
-        private List<string> listsForCleanup = new List<string>();
+        private readonly List<string> listsForCleanup = new List<string>();
         private string listName;
         private string datarowListName;
 
@@ -141,11 +141,12 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
             }
 
             var template = new ProvisioningTemplate();
-            var listInstance = new PnP.Framework.Provisioning.Model.ListInstance();
-
-            listInstance.Url = string.Format("lists/{0}", listName);
-            listInstance.Title = listName;
-            listInstance.TemplateType = (int)ListTemplateType.GenericList;
+            var listInstance = new PnP.Framework.Provisioning.Model.ListInstance
+            {
+                Url = string.Format("lists/{0}", listName),
+                Title = listName,
+                TemplateType = (int)ListTemplateType.GenericList
+            };
             listInstance.FieldRefs.Add(new FieldRef() { Id = new Guid("23f27201-bee3-471e-b2e7-b64fd8b7ca38") });
 
             using (var ctx = TestCommon.CreateClientContext())
@@ -167,9 +168,11 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
 
                 termSet.CreateTerm(termName, 1033, termId);
 
-                Dictionary<string, string> dataValues = new Dictionary<string, string>();
-                dataValues.Add("Title", "Test");
-                dataValues.Add("TaxKeyword", $"{termName}|{termId.ToString()}");
+                Dictionary<string, string> dataValues = new Dictionary<string, string>
+                {
+                    { "Title", "Test" },
+                    { "TaxKeyword", $"{termName}|{termId.ToString()}" }
+                };
                 DataRow dataRow = new DataRow(dataValues);
 
                 listInstance.DataRows.Add(dataRow);
@@ -279,12 +282,14 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
         {
             using (var ctx = TestCommon.CreateClientContext())
             {
-                var listInstance = new PnP.Framework.Provisioning.Model.ListInstance();
-                listInstance.Url = listName;
-                listInstance.Title = listName;
-                listInstance.TemplateType = (int)ListTemplateType.DocumentLibrary;
-                listInstance.ContentTypesEnabled = true;
-                listInstance.RemoveExistingContentTypes = true;
+                var listInstance = new PnP.Framework.Provisioning.Model.ListInstance
+                {
+                    Url = listName,
+                    Title = listName,
+                    TemplateType = (int)ListTemplateType.DocumentLibrary,
+                    ContentTypesEnabled = true,
+                    RemoveExistingContentTypes = true
+                };
                 listInstance.ContentTypeBindings.Add(new ContentTypeBinding { ContentTypeId = BuiltInContentTypeId.DublinCoreName, Default = true });
                 var template = new ProvisioningTemplate();
                 template.Lists.Add(listInstance);
@@ -304,17 +309,19 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
             using (var ctx = TestCommon.CreateClientContext())
             {
                 // Arrange
-                var listInstance = new PnP.Framework.Provisioning.Model.ListInstance();
-                listInstance.Url = $"lists/{listName}";
-                listInstance.Title = listName;
-                // An asset must be created by using the
-                // template type AND the template feature id
-                listInstance.TemplateType = 851;
-                listInstance.TemplateFeatureID = new Guid("4bcccd62-dcaf-46dc-a7d4-e38277ef33f4");
-                // Also attachements are not allowed on an asset list
-                listInstance.EnableAttachments = false;
-                listInstance.ContentTypesEnabled = true;
-                listInstance.RemoveExistingContentTypes = true;
+                var listInstance = new PnP.Framework.Provisioning.Model.ListInstance
+                {
+                    Url = $"lists/{listName}",
+                    Title = listName,
+                    // An asset must be created by using the
+                    // template type AND the template feature id
+                    TemplateType = 851,
+                    TemplateFeatureID = new Guid("4bcccd62-dcaf-46dc-a7d4-e38277ef33f4"),
+                    // Also attachements are not allowed on an asset list
+                    EnableAttachments = false,
+                    ContentTypesEnabled = true,
+                    RemoveExistingContentTypes = true
+                };
                 listInstance.ContentTypeBindings.Add(new ContentTypeBinding
                 {
                     ContentTypeId = BuiltInContentTypeId.DublinCoreName,
@@ -342,17 +349,23 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
             template.SiteFields.Add(new PnP.Framework.Provisioning.Model.Field() { SchemaXml = ElementSchema });
             template.SiteFields.Add(new PnP.Framework.Provisioning.Model.Field() { SchemaXml = TokenizedCalculatedFieldElementSchema });
 
-            var listInstance = new ListInstance();
-            listInstance.Url = string.Format("lists/{0}", listName);
-            listInstance.Title = listName;
-            listInstance.TemplateType = (int)ListTemplateType.GenericList;
+            var listInstance = new ListInstance
+            {
+                Url = string.Format("lists/{0}", listName),
+                Title = listName,
+                TemplateType = (int)ListTemplateType.GenericList
+            };
 
-            var referencedField = new FieldRef();
-            referencedField.Id = fieldId;
+            var referencedField = new FieldRef
+            {
+                Id = fieldId
+            };
             listInstance.FieldRefs.Add(referencedField);
 
-            var calculatedFieldRef = new FieldRef();
-            calculatedFieldRef.Id = calculatedFieldId;
+            var calculatedFieldRef = new FieldRef
+            {
+                Id = calculatedFieldId
+            };
             listInstance.FieldRefs.Add(calculatedFieldRef);
             template.Lists.Add(listInstance);
 
@@ -383,17 +396,23 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
             template.SiteFields.Add(new PnP.Framework.Provisioning.Model.Field() { SchemaXml = ElementSchema });
             template.SiteFields.Add(new PnP.Framework.Provisioning.Model.Field() { SchemaXml = TokenizedCalculatedFieldElementSchema });
 
-            var listInstance = new ListInstance();
-            listInstance.Url = string.Format("lists/{0}", listName);
-            listInstance.Title = listName;
-            listInstance.TemplateType = (int)ListTemplateType.GenericList;
+            var listInstance = new ListInstance
+            {
+                Url = string.Format("lists/{0}", listName),
+                Title = listName,
+                TemplateType = (int)ListTemplateType.GenericList
+            };
 
-            var referencedField = new FieldRef();
-            referencedField.Id = fieldId;
+            var referencedField = new FieldRef
+            {
+                Id = fieldId
+            };
             listInstance.FieldRefs.Add(referencedField);
 
-            var calculatedFieldRef = new FieldRef();
-            calculatedFieldRef.Id = calculatedFieldId;
+            var calculatedFieldRef = new FieldRef
+            {
+                Id = calculatedFieldId
+            };
             listInstance.FieldRefs.Add(calculatedFieldRef);
             template.Lists.Add(listInstance);
 
@@ -437,12 +456,16 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
             listInstance.Title = listName;
             listInstance.TemplateType = (int)ListTemplateType.GenericList;
 
-            var referencedField = new FieldRef();
-            referencedField.Id = fieldId;
+            var referencedField = new FieldRef
+            {
+                Id = fieldId
+            };
             listInstance.FieldRefs.Add(referencedField);
 
-            var calculatedField = new PnP.Framework.Provisioning.Model.Field();
-            calculatedField.SchemaXml = TokenizedCalculatedFieldElementSchema;
+            var calculatedField = new PnP.Framework.Provisioning.Model.Field
+            {
+                SchemaXml = TokenizedCalculatedFieldElementSchema
+            };
             listInstance.Fields.Add(calculatedField);
 
             template.Lists.Add(listInstance);
@@ -473,16 +496,21 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
             //This test will fail as tokens does not support this scenario.
             //The test serves as a reminder that this is not supported and needs to be fixed in a future release.
             var template = new ProvisioningTemplate();
-            var listInstance = new ListInstance();
-
-            listInstance.Url = string.Format("lists/{0}", listName);
-            listInstance.Title = listName;
-            listInstance.TemplateType = (int)ListTemplateType.GenericList;
-            var referencedField = new PnP.Framework.Provisioning.Model.Field();
-            referencedField.SchemaXml = ElementSchema;
+            var listInstance = new ListInstance
+            {
+                Url = string.Format("lists/{0}", listName),
+                Title = listName,
+                TemplateType = (int)ListTemplateType.GenericList
+            };
+            var referencedField = new PnP.Framework.Provisioning.Model.Field
+            {
+                SchemaXml = ElementSchema
+            };
             listInstance.Fields.Add(referencedField);
-            var calculatedField = new PnP.Framework.Provisioning.Model.Field();
-            calculatedField.SchemaXml = TokenizedCalculatedFieldElementSchema;
+            var calculatedField = new PnP.Framework.Provisioning.Model.Field
+            {
+                SchemaXml = TokenizedCalculatedFieldElementSchema
+            };
             listInstance.Fields.Add(calculatedField);
             template.Lists.Add(listInstance);
 
@@ -516,12 +544,16 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
             listInstance.Title = listName;
             listInstance.TemplateType = (int)ListTemplateType.GenericList;
 
-            var referencedField = new FieldRef();
-            referencedField.Id = fieldId;
+            var referencedField = new FieldRef
+            {
+                Id = fieldId
+            };
             listInstance.FieldRefs.Add(referencedField);
 
-            var calculatedField = new PnP.Framework.Provisioning.Model.Field();
-            calculatedField.SchemaXml = TokenizedCalculatedFieldElementSchema;
+            var calculatedField = new PnP.Framework.Provisioning.Model.Field
+            {
+                SchemaXml = TokenizedCalculatedFieldElementSchema
+            };
             listInstance.Fields.Add(calculatedField);
 
             template.Lists.Add(listInstance);
@@ -567,12 +599,16 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
             listInstance.Title = listName;
             listInstance.TemplateType = (int)ListTemplateType.GenericList;
 
-            var referencedField = new FieldRef();
-            referencedField.Id = fieldId;
+            var referencedField = new FieldRef
+            {
+                Id = fieldId
+            };
             listInstance.FieldRefs.Add(referencedField);
 
-            var calculatedField = new PnP.Framework.Provisioning.Model.Field();
-            calculatedField.SchemaXml = TokenizedCalculatedFieldElementSchema;
+            var calculatedField = new PnP.Framework.Provisioning.Model.Field
+            {
+                SchemaXml = TokenizedCalculatedFieldElementSchema
+            };
             listInstance.Fields.Add(calculatedField);
             template.Lists.Add(listInstance);
 
@@ -611,8 +647,10 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
         {
             using (var ctx = TestCommon.CreateClientContext())
             {
-                var template = new ProvisioningTemplate();
-                template.TemplateCultureInfo = "1033";
+                var template = new ProvisioningTemplate
+                {
+                    TemplateCultureInfo = "1033"
+                };
                 var listinstance = new ListInstance()
                 {
                     Title = datarowListName,
@@ -750,12 +788,13 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
                 clientContext.ExecuteQueryRetry();
 
                 var template = new ProvisioningTemplate();
-                var listInstance = new PnP.Framework.Provisioning.Model.ListInstance();
-
-                listInstance.Url = listName;
-                listInstance.Title = listName;
-                listInstance.TemplateType = (int)ListTemplateType.DocumentLibrary;
-                listInstance.ContentTypesEnabled = true;
+                var listInstance = new PnP.Framework.Provisioning.Model.ListInstance
+                {
+                    Url = listName,
+                    Title = listName,
+                    TemplateType = (int)ListTemplateType.DocumentLibrary,
+                    ContentTypesEnabled = true
+                };
                 listInstance.ContentTypeBindings.Add(new ContentTypeBinding() { ContentTypeId = newCtype1.Id.StringValue, Default = true });
                 listInstance.ContentTypeBindings.Add(new ContentTypeBinding() { ContentTypeId = newCtype2.Id.StringValue, Hidden = false });
                 listInstance.ContentTypeBindings.Add(new ContentTypeBinding() { ContentTypeId = newCtype4.Id.StringValue, Remove = true });
@@ -863,12 +902,13 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
                 clientContext.ExecuteQueryRetry();
 
                 var template = new ProvisioningTemplate();
-                var listInstance = new PnP.Framework.Provisioning.Model.ListInstance();
-
-                listInstance.Url = listName;
-                listInstance.Title = listName;
-                listInstance.TemplateType = (int)ListTemplateType.DocumentLibrary;
-                listInstance.ContentTypesEnabled = true;
+                var listInstance = new PnP.Framework.Provisioning.Model.ListInstance
+                {
+                    Url = listName,
+                    Title = listName,
+                    TemplateType = (int)ListTemplateType.DocumentLibrary,
+                    ContentTypesEnabled = true
+                };
                 listInstance.ContentTypeBindings.Add(new ContentTypeBinding() { ContentTypeId = newCtype1.Id.StringValue, Default = true });
                 listInstance.ContentTypeBindings.Add(new ContentTypeBinding() { ContentTypeId = newCtype2.Id.StringValue, Hidden = false });
 
@@ -1039,17 +1079,21 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
             string lookupFieldToInternalListSchema = @"<Field ID=""{6bfaba20-36bf-44b5-a1b2-eb6346d49716}"" ColName=""tp_AppAuthor"" RowOrdinal=""0"" ReadOnly=""TRUE"" Hidden=""FALSE"" Type=""Lookup"" List=""AppPrincipals"" Name=""AppAuthor"" DisplayName=""App Created By"" ShowField=""Title"" JoinColName=""Id"" SourceID=""http://schemas.microsoft.com/sharepoint/v3"" StaticName=""AppAuthor"" FromBaseType=""TRUE"" />";
 
             var template = new ProvisioningTemplate();
-            var detailsList = new ListInstance();
-            detailsList.Url = string.Format("lists/{0}", detailsListName);
-            detailsList.Title = detailsListName;
-            detailsList.TemplateType = (int)ListTemplateType.GenericList;
+            var detailsList = new ListInstance
+            {
+                Url = string.Format("lists/{0}", detailsListName),
+                Title = detailsListName,
+                TemplateType = (int)ListTemplateType.GenericList
+            };
             detailsList.Fields.Add(new PnP.Framework.Provisioning.Model.Field() { SchemaXml = detailsFieldSchema });
             template.Lists.Add(detailsList);
 
-            var masterList = new ListInstance();
-            masterList.Url = string.Format("lists/{0}", masterListName);
-            masterList.Title = masterListName;
-            masterList.TemplateType = (int)ListTemplateType.GenericList;
+            var masterList = new ListInstance
+            {
+                Url = string.Format("lists/{0}", masterListName),
+                Title = masterListName,
+                TemplateType = (int)ListTemplateType.GenericList
+            };
             masterList.Fields.Add(new PnP.Framework.Provisioning.Model.Field() { SchemaXml = lookupFieldSchema });
             masterList.Fields.Add(new PnP.Framework.Provisioning.Model.Field() { SchemaXml = lookupMultiFieldSchema });
             masterList.Fields.Add(new PnP.Framework.Provisioning.Model.Field() { SchemaXml = lookupFieldToInternalListSchema });

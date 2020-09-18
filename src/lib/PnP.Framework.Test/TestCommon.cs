@@ -1,23 +1,20 @@
 ﻿using Microsoft.SharePoint.Client;
+using Newtonsoft.Json.Linq;
+using PnP.Framework.Utilities;
 using System;
 using System.Configuration;
-using System.Security;
-using System.Net;
-using System.Data;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
-using System.Threading;
+using System.Security;
 using System.Security.Cryptography.X509Certificates;
-using PnP.Framework.Utilities;
-using Newtonsoft.Json.Linq;
-using Microsoft.Online.SharePoint.TenantManagement;
 
 namespace PnP.Framework.Tests
 {
     static class TestCommon
     {
-        private static Configuration configuration = null;
+        private static readonly Configuration configuration = null;
 
         public static string AppSetting(string key)
         {
@@ -31,7 +28,7 @@ namespace PnP.Framework.Tests
             }
         }
 
-#region Constructor
+        #region Constructor
         static TestCommon()
         {
             // Load configuration in a way that's compatible with a .Net Core test project as well
@@ -130,9 +127,9 @@ namespace PnP.Framework.Tests
                 }
             }
         }
-#endregion
+        #endregion
 
-#region Properties
+        #region Properties
         public static string TenantUrl { get; set; }
         public static string DevSiteUrl { get; set; }
         static string UserName { get; set; }
@@ -237,9 +234,9 @@ namespace PnP.Framework.Tests
                 return AppSetting("ScriptSite");
             }
         }
-#endregion
+        #endregion
 
-#region Methods
+        #region Methods
         public static ClientContext CreateClientContext()
         {
             return CreateContext(DevSiteUrl, Credentials);
@@ -280,8 +277,10 @@ namespace PnP.Framework.Tests
             }
             else
             {
-                context = new PnPClientContext(DevSiteUrl, retryCount, delay);
-                context.Credentials = Credentials;
+                context = new PnPClientContext(DevSiteUrl, retryCount, delay)
+                {
+                    Credentials = Credentials
+                };
             }
 
             context.RequestTimeout = 1000 * 60 * 15;
@@ -311,7 +310,7 @@ namespace PnP.Framework.Tests
 
         private static ClientContext CreateContext(string contextUrl, ICredentials credentials)
         {
-            ClientContext context =  null;
+            ClientContext context = null;
             if (!String.IsNullOrEmpty(AppId) && !String.IsNullOrEmpty(AppSecret))
             {
                 AuthenticationManager am = new AuthenticationManager();
@@ -319,15 +318,17 @@ namespace PnP.Framework.Tests
             }
             else
             {
-                context = new ClientContext(contextUrl);
-                context.Credentials = credentials;
+                context = new ClientContext(contextUrl)
+                {
+                    Credentials = credentials
+                };
             }
 
             context.RequestTimeout = 1000 * 60 * 15;
             return context;
         }
 
-#endregion
+        #endregion
 
 
         public static string AcquireTokenAsync(string resource, string scope = null)
@@ -361,7 +362,7 @@ namespace PnP.Framework.Tests
             else // use v2 endpoint
             {
                 body = $"grant_type=password&client_id={clientId}&username={username}&password={password}&scope={scope}";
-                
+
                 // TODO: If your app is a public client, then the client_secret or client_assertion cannot be included. If the app is a confidential client, then it must be included.
                 // https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth-ropc
                 //body = $"grant_type=password&client_id={clientId}&client_secret={clientSecret}&username={username}&password={password}&scope={scope}";
@@ -371,7 +372,7 @@ namespace PnP.Framework.Tests
 
             var json = JToken.Parse(response);
             return json["access_token"].ToString();
-        }        
+        }
 
         private static Assembly _newtonsoftAssembly;
         private static string _assemblyName;

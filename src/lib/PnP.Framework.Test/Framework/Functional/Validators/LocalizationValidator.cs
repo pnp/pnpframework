@@ -12,7 +12,7 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
 {
     class LocalizationValidator : ValidatorBase
     {
-        private bool isNoScriptSite = false;
+        private readonly bool isNoScriptSite = false;
 
         #region construction
         public LocalizationValidator(Web web) : base()

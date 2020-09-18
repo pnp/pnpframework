@@ -1,19 +1,10 @@
-﻿using Microsoft.SharePoint.Client;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Provisioning.ObjectHandlers;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Tests.Framework.Functional.Implementation;
-using PnP.Framework.Tests.Framework.Functional.Validators;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Tests.Framework.Functional
 {
     [TestClass]
-    public class PropertyBagNoScriptTests: FunctionalTestBase
+    public class PropertyBagNoScriptTests : FunctionalTestBase
     {
 
         #region Construction

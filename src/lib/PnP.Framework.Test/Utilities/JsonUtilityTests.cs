@@ -1,10 +1,7 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Utilities;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace PnP.Framework.Utilities.Tests
 {
     [TestClass()]
@@ -13,8 +10,10 @@ namespace PnP.Framework.Utilities.Tests
         [TestMethod()]
         public void SerializeTest()
         {
-            List<TestObject> testObjects = new List<TestObject>();
-            testObjects.Add(new TestObject() { Param1 = "Test", Param2 = "Test" });
+            List<TestObject> testObjects = new List<TestObject>
+            {
+                new TestObject() { Param1 = "Test", Param2 = "Test" }
+            };
 
             var jsonString = JsonUtility.Serialize(testObjects);
 
@@ -41,7 +40,7 @@ namespace PnP.Framework.Utilities.Tests
 
             Assert.AreEqual("Test", testObject.Param1);
             Assert.AreEqual(3, testObject.List1.Count);
-            Assert.AreEqual("Gamma", testObject.List1[2]);            
+            Assert.AreEqual("Gamma", testObject.List1[2]);
         }
 
         [TestMethod()]

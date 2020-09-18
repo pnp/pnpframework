@@ -1,11 +1,7 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PnP.Framework.Tests;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.SharePoint.Client;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PnP.Framework.Tests;
 namespace Microsoft.SharePoint.Client.Tests
 {
     [TestClass()]
@@ -59,7 +55,7 @@ namespace Microsoft.SharePoint.Client.Tests
             using (var clientContext = TestCommon.CreateClientContext())
             {
                 // Test
-                clientContext.Web.AddJsLink(KEY, new List<string> {"/jquery-2.1.1.min.js", "/anotherjslink.js"}); // Dummy link
+                clientContext.Web.AddJsLink(KEY, new List<string> { "/jquery-2.1.1.min.js", "/anotherjslink.js" }); // Dummy link
 
                 var customActions = clientContext.Web.GetCustomActions();
                 var existingAction = customActions.FirstOrDefault(a => a.Name == KEY);

@@ -1,13 +1,10 @@
-﻿using PnP.Framework.Provisioning.Providers;
+﻿using PnP.Framework.Provisioning.Model;
+using PnP.Framework.Provisioning.Providers;
+using PnP.Framework.Provisioning.Providers.Xml;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PnP.Framework.Provisioning.Model;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
-using PnP.Framework.Provisioning.Providers.Xml;
 
 namespace PnP.Framework.Tests.Framework.Providers.Extensibility
 {
@@ -61,8 +58,10 @@ namespace PnP.Framework.Tests.Framework.Providers.Extensibility
         {
             MemoryStream result = new MemoryStream();
 
-            var namespaces = new Dictionary<string, string>();
-            namespaces.Add("pnp", XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05);
+            var namespaces = new Dictionary<string, string>
+            {
+                { "pnp", XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05 }
+            };
 
             SecureXml.EncryptXmlDocument(stream, result, "/pnp:Provisioning", namespaces, this._certificate);
             result.Position = 0;

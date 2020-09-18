@@ -32,8 +32,10 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
                 };
 
                 var result = TestProvisioningTemplate(cc, "navigation_add_1605.xml", Handlers.Navigation, null, ptci);
-                NavigationValidator nv = new NavigationValidator();
-                nv.SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05;
+                NavigationValidator nv = new NavigationValidator
+                {
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                };
                 Assert.IsTrue(nv.Validate(result.SourceTemplate.Navigation, result.TargetTemplate.Navigation, result.SourceTokenParser));
                 #endregion
 
@@ -41,8 +43,10 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
                 ChangeNavigationSettings(cc, StandardNavigationSource.PortalProvider, StandardNavigationSource.TaxonomyProvider);
 
                 var result2 = TestProvisioningTemplate(cc, "navigation_add2_1605.xml", Handlers.Navigation, null, ptci);
-                NavigationValidator nv2 = new NavigationValidator();
-                nv2.SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05;
+                NavigationValidator nv2 = new NavigationValidator
+                {
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                };
                 Assert.IsTrue(nv2.Validate(result2.SourceTemplate.Navigation, result2.TargetTemplate.Navigation, result2.SourceTokenParser));
                 #endregion
             }
@@ -67,8 +71,10 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
                 };
 
                 var result = TestProvisioningTemplate(cc, "navigation_add_1605.xml", Handlers.Navigation, null, ptci);
-                NavigationValidator nv = new NavigationValidator();
-                nv.SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05;
+                NavigationValidator nv = new NavigationValidator
+                {
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                };
                 Assert.IsTrue(nv.Validate(result.SourceTemplate.Navigation, result.TargetTemplate.Navigation, result.SourceTokenParser));
                 #endregion
 
@@ -76,8 +82,10 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
                 ChangeNavigationSettings(cc, StandardNavigationSource.PortalProvider, StandardNavigationSource.TaxonomyProvider);
 
                 var result2 = TestProvisioningTemplate(cc, "navigation_add2_1605.xml", Handlers.Navigation, null, ptci);
-                NavigationValidator nv2 = new NavigationValidator();
-                nv2.SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05;
+                NavigationValidator nv2 = new NavigationValidator
+                {
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                };
                 Assert.IsTrue(nv2.Validate(result2.SourceTemplate.Navigation, result2.TargetTemplate.Navigation, result2.SourceTokenParser));
                 #endregion
 
@@ -85,8 +93,10 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
                 ChangeNavigationSettings(cc, StandardNavigationSource.InheritFromParentWeb, StandardNavigationSource.PortalProvider);
 
                 var result3 = TestProvisioningTemplate(cc, "navigation_add3_1605.xml", Handlers.Navigation, null, ptci);
-                NavigationValidator nv3 = new NavigationValidator();
-                nv3.SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05;
+                NavigationValidator nv3 = new NavigationValidator
+                {
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                };
                 Assert.IsTrue(nv3.Validate(result3.SourceTemplate.Navigation, result3.TargetTemplate.Navigation, result3.SourceTokenParser));
                 #endregion
             }
@@ -110,7 +120,7 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
             {
                 cc.ExecuteQueryRetry();
             }
-            catch (Exception ex) // if termset not found then set newly created termset to managed navigation
+            catch (Exception) // if termset not found then set newly created termset to managed navigation
             {
                 TermStore termStore = taxonomySession.GetDefaultSiteCollectionTermStore();
                 Microsoft.SharePoint.Client.Taxonomy.TermGroup group = termStore.GetTermGroupByName("TG_1"); // TG_1 is a term group mentioned in navigation_add_1605.xml

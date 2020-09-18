@@ -29,8 +29,10 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
                 DeleteLists(cc);
 
                 var result = TestProvisioningTemplate(cc, "files_add_1605.xml", Handlers.Files | Handlers.Lists);
-                FilesValidator fv = new FilesValidator();
-                fv.SchemaVersion = PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05;
+                FilesValidator fv = new FilesValidator
+                {
+                    SchemaVersion = PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                };
                 Assert.IsTrue(fv.Validate1605(result.SourceTemplate, cc));
             }
         }
@@ -56,8 +58,10 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
                 DeleteLists(cc);
 
                 var result = TestProvisioningTemplate(cc, "files_add_1605.xml", Handlers.Files | Handlers.Lists);
-                FilesValidator fv = new FilesValidator();
-                fv.SchemaVersion = PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05;
+                FilesValidator fv = new FilesValidator
+                {
+                    SchemaVersion = PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                };
                 Assert.IsTrue(fv.Validate1605(result.SourceTemplate, cc));
             }
         }

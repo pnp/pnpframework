@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Microsoft.SharePoint.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.SharePoint.Client;
-using PnP.Framework.Utilities;
+using System;
 using System.Collections.Generic;
 
 namespace PnP.Framework.Tests.AppModelExtensions
@@ -16,12 +15,12 @@ namespace PnP.Framework.Tests.AppModelExtensions
         private Folder ensureLibraryFolderTest;
         private File file;
 
-        private string DocumentLibraryName = "Unit_Test_Library";
-        private string FolderName = "Unit_Test_Folder";
-        private string TestFilePath1 = "..\\..\\Resources\\office365.png";
-        private string TestFilePath2 = "..\\..\\Resources\\custombg.jpg";
-        private string commentText = "Unit_Test_Comment";
-        private CheckinType checkInType = CheckinType.MajorCheckIn;
+        private readonly string DocumentLibraryName = "Unit_Test_Library";
+        private readonly string FolderName = "Unit_Test_Folder";
+        private readonly string TestFilePath1 = "..\\..\\Resources\\office365.png";
+        private readonly string TestFilePath2 = "..\\..\\Resources\\custombg.jpg";
+        private readonly string commentText = "Unit_Test_Comment";
+        private readonly CheckinType checkInType = CheckinType.MajorCheckIn;
         public TestContext TestContext { get; set; }
 
         #region Test initialize and cleanup
@@ -53,10 +52,12 @@ namespace PnP.Framework.Tests.AppModelExtensions
                 folder = documentLibrary.RootFolder.CreateFolder(FolderName);
             }
 
-            var fci = new FileCreationInformation();
-            fci.Content = System.IO.File.ReadAllBytes(TestFilePath2);
-            fci.Url = folder.ServerRelativeUrl + "/office365.png";
-            fci.Overwrite = true;
+            var fci = new FileCreationInformation
+            {
+                Content = System.IO.File.ReadAllBytes(TestFilePath2),
+                Url = folder.ServerRelativeUrl + "/office365.png",
+                Overwrite = true
+            };
 
             file = folder.Files.Add(fci);
             clientContext.Load(file);
@@ -188,8 +189,10 @@ namespace PnP.Framework.Tests.AppModelExtensions
             //var file = folder.UploadFileWebDav(fileNameExpected, TestFilePath1, true);
             var file = folder.UploadFile(fileNameExpected, TestFilePath1, true);
 
-            var properties = new Dictionary<string, string>();
-            properties["Title"] = expectedTitle;
+            var properties = new Dictionary<string, string>
+            {
+                ["Title"] = expectedTitle
+            };
             file.SetFileProperties(properties);
 
             file.Context.Load(file.ListItemAllFields);
@@ -210,9 +213,9 @@ namespace PnP.Framework.Tests.AppModelExtensions
             var file3 = folder.GetFile(fileName2);
             Assert.IsNull(file3, "File should not exist, but test shows it does.");
         }
-#endregion
+        #endregion
 
-#region Folder tests
+        #region Folder tests
         [TestMethod]
         public void EnsureSiteFolderTest()
         {
@@ -274,7 +277,7 @@ namespace PnP.Framework.Tests.AppModelExtensions
             clientContext.Web.EnsureProperty(w => w.ServerRelativeUrl);
 
             clientContext.ExecuteQueryRetry();
-            Assert.AreEqual(testFolder.ServerRelativeUrl, String.Format("{0}/{1}/{2}",clientContext.Web.ServerRelativeUrl, DocumentLibraryName, folderName));
+            Assert.AreEqual(testFolder.ServerRelativeUrl, String.Format("{0}/{1}/{2}", clientContext.Web.ServerRelativeUrl, DocumentLibraryName, folderName));
         }
 
         [TestMethod]
@@ -330,7 +333,7 @@ namespace PnP.Framework.Tests.AppModelExtensions
             Assert.IsNotNull(ensureLibraryFolderTest);
             Assert.AreEqual(ensureLibraryFolderTest.ServerRelativeUrl.TrimEnd('/'), libraryFolder.ServerRelativeUrl.TrimEnd('/'));
         }
-#endregion
+        #endregion
 
     }
 }

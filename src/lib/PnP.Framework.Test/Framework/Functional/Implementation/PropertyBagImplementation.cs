@@ -39,13 +39,17 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
                 }
 
                 // Update system properties: run 1 is without specifying the override flag...no updates should happen
-                ProvisioningTemplateApplyingInformation ptai3 = new ProvisioningTemplateApplyingInformation();
-                ptai3.OverwriteSystemPropertyBagValues = false; //=default
-                ptai3.HandlersToProcess = Handlers.PropertyBagEntries;
+                ProvisioningTemplateApplyingInformation ptai3 = new ProvisioningTemplateApplyingInformation
+                {
+                    OverwriteSystemPropertyBagValues = false, //=default
+                    HandlersToProcess = Handlers.PropertyBagEntries
+                };
                 // Set base template to null to ensure all properties are fetched by the engine
-                ProvisioningTemplateCreationInformation ptci3 = new ProvisioningTemplateCreationInformation(cc.Web);
-                ptci3.BaseTemplate = null;
-                ptci3.HandlersToProcess = Handlers.PropertyBagEntries;
+                ProvisioningTemplateCreationInformation ptci3 = new ProvisioningTemplateCreationInformation(cc.Web)
+                {
+                    BaseTemplate = null,
+                    HandlersToProcess = Handlers.PropertyBagEntries
+                };
                 var result3 = TestProvisioningTemplate(cc, "propertybag_delta_2.xml", Handlers.PropertyBagEntries, ptai3, ptci3);
                 if (!isNoScriptSite)
                 {
@@ -55,14 +59,18 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
                 }
 
                 // Update system properties: run 2 is with specifying the override flag...updates should happen if the overwrite flag was set to true
-                ProvisioningTemplateApplyingInformation ptai4 = new ProvisioningTemplateApplyingInformation();
-                // Set system overwrite flag
-                ptai4.OverwriteSystemPropertyBagValues = true;
-                ptai4.HandlersToProcess = Handlers.PropertyBagEntries;
+                ProvisioningTemplateApplyingInformation ptai4 = new ProvisioningTemplateApplyingInformation
+                {
+                    // Set system overwrite flag
+                    OverwriteSystemPropertyBagValues = true,
+                    HandlersToProcess = Handlers.PropertyBagEntries
+                };
                 // Set base template to null to ensure all properties are fetched by the engine
-                ProvisioningTemplateCreationInformation ptci4 = new ProvisioningTemplateCreationInformation(cc.Web);
-                ptci4.BaseTemplate = null;
-                ptci4.HandlersToProcess = Handlers.PropertyBagEntries;
+                ProvisioningTemplateCreationInformation ptci4 = new ProvisioningTemplateCreationInformation(cc.Web)
+                {
+                    BaseTemplate = null,
+                    HandlersToProcess = Handlers.PropertyBagEntries
+                };
                 var result4 = TestProvisioningTemplate(cc, "propertybag_delta_2.xml", Handlers.PropertyBagEntries, ptai4, ptci4);
                 if (!isNoScriptSite)
                 {
@@ -101,13 +109,17 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
                 }
 
                 // Update system properties: run 1 is without specifying the override flag...no updates should happen
-                ProvisioningTemplateApplyingInformation ptai3 = new ProvisioningTemplateApplyingInformation();
-                ptai3.OverwriteSystemPropertyBagValues = false; //=default
-                ptai3.HandlersToProcess = Handlers.PropertyBagEntries;
+                ProvisioningTemplateApplyingInformation ptai3 = new ProvisioningTemplateApplyingInformation
+                {
+                    OverwriteSystemPropertyBagValues = false, //=default
+                    HandlersToProcess = Handlers.PropertyBagEntries
+                };
                 // Set base template to null to ensure all properties are fetched by the engine
-                ProvisioningTemplateCreationInformation ptci3 = new ProvisioningTemplateCreationInformation(cc.Web);
-                ptci3.BaseTemplate = null;
-                ptci3.HandlersToProcess = Handlers.PropertyBagEntries;
+                ProvisioningTemplateCreationInformation ptci3 = new ProvisioningTemplateCreationInformation(cc.Web)
+                {
+                    BaseTemplate = null,
+                    HandlersToProcess = Handlers.PropertyBagEntries
+                };
                 var result3 = TestProvisioningTemplate(cc, "propertybag_delta_2.xml", Handlers.PropertyBagEntries, ptai3, ptci3);
                 if (!isNoScriptSite)
                 {
@@ -117,14 +129,18 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
                 }
 
                 // Update system properties: run 2 is with specifying the override flag...updates should happen if the overwrite flag was set to true
-                ProvisioningTemplateApplyingInformation ptai4 = new ProvisioningTemplateApplyingInformation();
-                // Set system overwrite flag
-                ptai4.OverwriteSystemPropertyBagValues = true;
-                ptai4.HandlersToProcess = Handlers.PropertyBagEntries;
+                ProvisioningTemplateApplyingInformation ptai4 = new ProvisioningTemplateApplyingInformation
+                {
+                    // Set system overwrite flag
+                    OverwriteSystemPropertyBagValues = true,
+                    HandlersToProcess = Handlers.PropertyBagEntries
+                };
                 // Set base template to null to ensure all properties are fetched by the engine
-                ProvisioningTemplateCreationInformation ptci4 = new ProvisioningTemplateCreationInformation(cc.Web);
-                ptci4.BaseTemplate = null;
-                ptci4.HandlersToProcess = Handlers.PropertyBagEntries;
+                ProvisioningTemplateCreationInformation ptci4 = new ProvisioningTemplateCreationInformation(cc.Web)
+                {
+                    BaseTemplate = null,
+                    HandlersToProcess = Handlers.PropertyBagEntries
+                };
                 var result4 = TestProvisioningTemplate(cc, "propertybag_delta_2.xml", Handlers.PropertyBagEntries, ptai4, ptci4);
                 if (!isNoScriptSite)
                 {

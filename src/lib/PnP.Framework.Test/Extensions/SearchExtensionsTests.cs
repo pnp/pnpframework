@@ -1,10 +1,6 @@
 ﻿using Microsoft.SharePoint.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Tests.AppModelExtensions
 {
@@ -68,7 +64,7 @@ namespace PnP.Framework.Tests.AppModelExtensions
             {
                 var sites = clientContext.Web.SiteSearch();
                 Assert.IsTrue(sites.Any());
-            }           
+            }
         }
 
     }

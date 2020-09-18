@@ -1,9 +1,9 @@
-﻿using System;
-using System.Linq;
-using Microsoft.SharePoint.Client;
+﻿using Microsoft.SharePoint.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
+using System;
+using System.Linq;
 
 namespace PnP.Framework.Tests.Framework.ObjectHandlers
 {
@@ -34,9 +34,11 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
         {
             var template = new ProvisioningTemplate();
 
-            var propbagEntry = new PnP.Framework.Provisioning.Model.PropertyBagEntry();
-            propbagEntry.Key = key;
-            propbagEntry.Value = "Unit Test";
+            var propbagEntry = new PnP.Framework.Provisioning.Model.PropertyBagEntry
+            {
+                Key = key,
+                Value = "Unit Test"
+            };
 
             template.PropertyBagEntries.Add(propbagEntry);
 
@@ -51,10 +53,12 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
                 // Create same entry, but don't overwrite.
                 template = new ProvisioningTemplate();
 
-                var propbagEntry2 = new PropertyBagEntry();
-                propbagEntry2.Key = key;
-                propbagEntry2.Value = "Unit Test 2";
-                propbagEntry2.Overwrite = false;
+                var propbagEntry2 = new PropertyBagEntry
+                {
+                    Key = key,
+                    Value = "Unit Test 2",
+                    Overwrite = false
+                };
 
                 template.PropertyBagEntries.Add(propbagEntry2);
 
@@ -67,10 +71,12 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
                 // Create same entry, but overwrite
                 template = new ProvisioningTemplate();
 
-                var propbagEntry3 = new PropertyBagEntry();
-                propbagEntry3.Key = key;
-                propbagEntry3.Value = "Unit Test 3";
-                propbagEntry3.Overwrite = true;
+                var propbagEntry3 = new PropertyBagEntry
+                {
+                    Key = key,
+                    Value = "Unit Test 3",
+                    Overwrite = true
+                };
 
                 template.PropertyBagEntries.Add(propbagEntry3);
 
@@ -82,10 +88,12 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
                 // Create entry with system key. We don't specify to overwrite system keys, so the key should not be created.
                 template = new ProvisioningTemplate();
 
-                var propbagEntry4 = new PropertyBagEntry();
-                propbagEntry4.Key = systemKey;
-                propbagEntry4.Value = "Unit Test System Key";
-                propbagEntry4.Overwrite = true;
+                var propbagEntry4 = new PropertyBagEntry
+                {
+                    Key = systemKey,
+                    Value = "Unit Test System Key",
+                    Overwrite = true
+                };
 
                 template.PropertyBagEntries.Add(propbagEntry4);
 
@@ -97,14 +105,16 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
                 // Create entry with system key. We _do_ specify to overwrite system keys, so the key should be created.
                 template = new ProvisioningTemplate();
 
-                var propbagEntry5 = new PropertyBagEntry();
-                propbagEntry5.Key = systemKey;
-                propbagEntry5.Value = "Unit Test System Key 5";
-                propbagEntry5.Overwrite = true;
+                var propbagEntry5 = new PropertyBagEntry
+                {
+                    Key = systemKey,
+                    Value = "Unit Test System Key 5",
+                    Overwrite = true
+                };
 
                 template.PropertyBagEntries.Add(propbagEntry5);
 
-                parser = new  ObjectPropertyBagEntry().ProvisionObjects(ctx.Web, template, parser, new ProvisioningTemplateApplyingInformation() { OverwriteSystemPropertyBagValues = true});
+                parser = new ObjectPropertyBagEntry().ProvisionObjects(ctx.Web, template, parser, new ProvisioningTemplateApplyingInformation() { OverwriteSystemPropertyBagValues = true });
 
                 value = ctx.Web.GetPropertyBagValueString(systemKey, "default");
                 Assert.IsTrue(value == "Unit Test System Key 5");
@@ -112,10 +122,12 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
                 // Create entry with system key. We _do not_ specify to overwrite system keys, so the key should not be created.
                 template = new ProvisioningTemplate();
 
-                var propbagEntry6 = new PropertyBagEntry();
-                propbagEntry6.Key = systemKey;
-                propbagEntry6.Value = "Unit Test System Key 6";
-                propbagEntry6.Overwrite = true;
+                var propbagEntry6 = new PropertyBagEntry
+                {
+                    Key = systemKey,
+                    Value = "Unit Test System Key 6",
+                    Overwrite = true
+                };
 
                 template.PropertyBagEntries.Add(propbagEntry6);
 

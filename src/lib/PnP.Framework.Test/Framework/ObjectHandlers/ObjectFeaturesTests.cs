@@ -1,9 +1,9 @@
-﻿using System;
-using System.Linq;
-using Microsoft.SharePoint.Client;
+﻿using Microsoft.SharePoint.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
+using System;
+using System.Linq;
 
 namespace PnP.Framework.Tests.Framework.ObjectHandlers
 {
@@ -28,8 +28,8 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
         {
             var template = new ProvisioningTemplate();
             template.Features.WebFeatures.Add(
-                new PnP.Framework.Provisioning.Model.Feature() 
-                { Id = featureId, Deactivate = true});
+                new PnP.Framework.Provisioning.Model.Feature()
+                { Id = featureId, Deactivate = true });
 
 
             using (var ctx = TestCommon.CreateClientContext())

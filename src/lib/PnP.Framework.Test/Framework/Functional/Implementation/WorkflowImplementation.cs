@@ -13,9 +13,11 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
         {
             using (var cc = TestCommon.CreateClientContext(url))
             {
-                ProvisioningTemplateCreationInformation ptci = new ProvisioningTemplateCreationInformation(cc.Web);
-                ptci.HandlersToProcess = Handlers.Lists | Handlers.Workflows;
-                ptci.FileConnector = new FileSystemConnector(string.Format(@"{0}\..\..\Framework\Functional", AppDomain.CurrentDomain.BaseDirectory), "Templates");
+                ProvisioningTemplateCreationInformation ptci = new ProvisioningTemplateCreationInformation(cc.Web)
+                {
+                    HandlersToProcess = Handlers.Lists | Handlers.Workflows,
+                    FileConnector = new FileSystemConnector(string.Format(@"{0}\..\..\Framework\Functional", AppDomain.CurrentDomain.BaseDirectory), "Templates")
+                };
 
                 string xmlFileName = null;
                 xmlFileName = "workflows_add_1605.xml";

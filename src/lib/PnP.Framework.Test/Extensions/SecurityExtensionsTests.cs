@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Diagnostics;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Entities;
 using PnP.Framework.Enums;
 using PnP.Framework.Tests;
-using PnP.Framework.Utilities;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 
 namespace Microsoft.SharePoint.Client.Tests
 {
@@ -96,13 +94,13 @@ namespace Microsoft.SharePoint.Client.Tests
             {
                 // Count admins
                 int initialCount = clientContext.Web.GetAdministrators().Count;
-                var userEntity = new UserEntity {LoginName = _userLogin, Email = _userLogin};
-                clientContext.Web.AddAdministrators(new List<UserEntity> {userEntity}, false);
+                var userEntity = new UserEntity { LoginName = _userLogin, Email = _userLogin };
+                clientContext.Web.AddAdministrators(new List<UserEntity> { userEntity }, false);
 
                 List<UserEntity> admins = clientContext.Web.GetAdministrators();
                 bool found = false;
-                foreach(var admin in admins) 
-                {                    
+                foreach (var admin in admins)
+                {
                     string adminLoginName = admin.LoginName;
                     String[] parts = adminLoginName.Split(new string[] { "|" }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -137,7 +135,7 @@ namespace Microsoft.SharePoint.Client.Tests
             {
                 // Test
                 Group group = clientContext.Web.AddGroup("Test Group", "Test Description", true);
-                Assert.IsInstanceOfType(group, typeof (Group), "Group object returned not of correct type");
+                Assert.IsInstanceOfType(group, typeof(Group), "Group object returned not of correct type");
                 Assert.IsTrue(group.Title == "Test Group", "Group not created with correct title");
 
                 // Cleanup
@@ -181,138 +179,138 @@ namespace Microsoft.SharePoint.Client.Tests
             }
         }
 
-		[TestMethod]
-		public void AddPermissionLevelToGroupSubSiteTest()
-		{
-			using (ClientContext clientContext = TestCommon.CreateClientContext())
-			{
-				//Arrange
-				var subSite = CreateTestTeamSubSite(clientContext.Web);
+        [TestMethod]
+        public void AddPermissionLevelToGroupSubSiteTest()
+        {
+            using (ClientContext clientContext = TestCommon.CreateClientContext())
+            {
+                //Arrange
+                var subSite = CreateTestTeamSubSite(clientContext.Web);
 
                 subSite.EnsureProperties(s => s.HasUniqueRoleAssignments);
-				
-				if (!subSite.HasUniqueRoleAssignments)
-				{
-					subSite.BreakRoleInheritance(false, true);
-				}
 
-				// Test
-				subSite.AddPermissionLevelToGroup(_testGroupName, RoleType.Contributor, false);
+                if (!subSite.HasUniqueRoleAssignments)
+                {
+                    subSite.BreakRoleInheritance(false, true);
+                }
 
-				//Get Group
-				Group group = subSite.SiteGroups.GetByName(_testGroupName);
-				clientContext.ExecuteQueryRetry();
+                // Test
+                subSite.AddPermissionLevelToGroup(_testGroupName, RoleType.Contributor, false);
 
-				//Assert
-				Assert.IsTrue(CheckPermissionOnPrinciple(subSite, group, RoleType.Contributor));
+                //Get Group
+                Group group = subSite.SiteGroups.GetByName(_testGroupName);
+                clientContext.ExecuteQueryRetry();
 
-				//Teardown
-				subSite.DeleteObject();
-				clientContext.ExecuteQueryRetry();
-			}
-		}
+                //Assert
+                Assert.IsTrue(CheckPermissionOnPrinciple(subSite, group, RoleType.Contributor));
 
-		[TestMethod]
-		public void AddPermissionLevelToGroupListTest()
-		{
-			using (ClientContext clientContext = TestCommon.CreateClientContext())
-			{
-				//Arrange
-				var list = clientContext.Web.CreateList(ListTemplateType.GenericList, GetRandomString(), false);
+                //Teardown
+                subSite.DeleteObject();
+                clientContext.ExecuteQueryRetry();
+            }
+        }
+
+        [TestMethod]
+        public void AddPermissionLevelToGroupListTest()
+        {
+            using (ClientContext clientContext = TestCommon.CreateClientContext())
+            {
+                //Arrange
+                var list = clientContext.Web.CreateList(ListTemplateType.GenericList, GetRandomString(), false);
 
                 list.EnsureProperties(l => l.HasUniqueRoleAssignments);
-                
-				if (!list.HasUniqueRoleAssignments)
-				{
-					list.BreakRoleInheritance(false, true);
-				}
 
-				// Test
-				list.AddPermissionLevelToGroup(_testGroupName, RoleType.Contributor, false);
+                if (!list.HasUniqueRoleAssignments)
+                {
+                    list.BreakRoleInheritance(false, true);
+                }
 
-				//Get Group
-				Group group = list.ParentWeb.SiteGroups.GetByName(_testGroupName);
-				clientContext.ExecuteQueryRetry();
+                // Test
+                list.AddPermissionLevelToGroup(_testGroupName, RoleType.Contributor, false);
 
-				//Assert
-				Assert.IsTrue(CheckPermissionOnPrinciple(list, group, RoleType.Contributor));
+                //Get Group
+                Group group = list.ParentWeb.SiteGroups.GetByName(_testGroupName);
+                clientContext.ExecuteQueryRetry();
 
-				//Teardown
-				list.DeleteObject();
-				clientContext.ExecuteQueryRetry();
-			}
-		}
+                //Assert
+                Assert.IsTrue(CheckPermissionOnPrinciple(list, group, RoleType.Contributor));
 
-		[TestMethod]
-		public void AddPermissionLevelToGroupListItemTest()
-		{
-			using (ClientContext clientContext = TestCommon.CreateClientContext())
-			{
-				//Arrange
-				var list = clientContext.Web.CreateList(ListTemplateType.GenericList, GetRandomString(), false);
-				var item = list.AddItem(new ListItemCreationInformation());
-				item["Title"] = "Test";
-				item.Update();
-				clientContext.Load(item);
-				clientContext.ExecuteQueryRetry();
+                //Teardown
+                list.DeleteObject();
+                clientContext.ExecuteQueryRetry();
+            }
+        }
+
+        [TestMethod]
+        public void AddPermissionLevelToGroupListItemTest()
+        {
+            using (ClientContext clientContext = TestCommon.CreateClientContext())
+            {
+                //Arrange
+                var list = clientContext.Web.CreateList(ListTemplateType.GenericList, GetRandomString(), false);
+                var item = list.AddItem(new ListItemCreationInformation());
+                item["Title"] = "Test";
+                item.Update();
+                clientContext.Load(item);
+                clientContext.ExecuteQueryRetry();
 
                 item.EnsureProperties(i => i.HasUniqueRoleAssignments);
-				
-				if (!item.HasUniqueRoleAssignments)
-				{
-					item.BreakRoleInheritance(false, true);
-				}
 
-				//Get Group
-				Group group = list.ParentWeb.SiteGroups.GetByName(_testGroupName);
-				clientContext.ExecuteQueryRetry();
+                if (!item.HasUniqueRoleAssignments)
+                {
+                    item.BreakRoleInheritance(false, true);
+                }
 
-				// Test
-				item.AddPermissionLevelToPrincipal(group, RoleType.Contributor, false);
+                //Get Group
+                Group group = list.ParentWeb.SiteGroups.GetByName(_testGroupName);
+                clientContext.ExecuteQueryRetry();
 
-				//Assert
-				Assert.IsTrue(CheckPermissionOnPrinciple(item, group, RoleType.Contributor));
+                // Test
+                item.AddPermissionLevelToPrincipal(group, RoleType.Contributor, false);
 
-				//Teardown
-				list.DeleteObject();
-				clientContext.ExecuteQueryRetry();
-			}
-		}
+                //Assert
+                Assert.IsTrue(CheckPermissionOnPrinciple(item, group, RoleType.Contributor));
 
-		[TestMethod]
-		public void RemovePermissionLevelFromGroupSubSiteTest()
-		{
-			using (ClientContext clientContext = TestCommon.CreateClientContext())
-			{
-				//Arrange
-				var subSite = CreateTestTeamSubSite(clientContext.Web);
+                //Teardown
+                list.DeleteObject();
+                clientContext.ExecuteQueryRetry();
+            }
+        }
+
+        [TestMethod]
+        public void RemovePermissionLevelFromGroupSubSiteTest()
+        {
+            using (ClientContext clientContext = TestCommon.CreateClientContext())
+            {
+                //Arrange
+                var subSite = CreateTestTeamSubSite(clientContext.Web);
 
 
                 subSite.EnsureProperties(s => s.HasUniqueRoleAssignments);
-				
-				if (!subSite.HasUniqueRoleAssignments)
-				{
-					subSite.BreakRoleInheritance(true, true);
-				}
 
-				//Get Group
-				Group group = subSite.SiteGroups.GetByName(_testGroupName);
-				clientContext.ExecuteQueryRetry();
+                if (!subSite.HasUniqueRoleAssignments)
+                {
+                    subSite.BreakRoleInheritance(true, true);
+                }
 
-				subSite.AddPermissionLevelToPrincipal(group, RoleType.Contributor);
-				subSite.AddPermissionLevelToPrincipal(group, RoleType.Editor);
+                //Get Group
+                Group group = subSite.SiteGroups.GetByName(_testGroupName);
+                clientContext.ExecuteQueryRetry();
 
-				// Test
-				subSite.RemovePermissionLevelFromPrincipal(group, RoleType.Contributor);
+                subSite.AddPermissionLevelToPrincipal(group, RoleType.Contributor);
+                subSite.AddPermissionLevelToPrincipal(group, RoleType.Editor);
 
-				//Assert
-				Assert.IsFalse(CheckPermissionOnPrinciple(subSite, group, RoleType.Contributor));
+                // Test
+                subSite.RemovePermissionLevelFromPrincipal(group, RoleType.Contributor);
 
-				//Teardown
-				subSite.DeleteObject();
-				clientContext.ExecuteQueryRetry();
-			}
-		}
+                //Assert
+                Assert.IsFalse(CheckPermissionOnPrinciple(subSite, group, RoleType.Contributor));
+
+                //Teardown
+                subSite.DeleteObject();
+                clientContext.ExecuteQueryRetry();
+            }
+        }
 
         [TestMethod]
         public void AddPermissionLevelByRoleDefToGroupTest()
@@ -364,7 +362,7 @@ namespace Microsoft.SharePoint.Client.Tests
             using (ClientContext clientContext = TestCommon.CreateClientContext())
             {
                 Web web = clientContext.Web;
-				
+
                 //Setup: Make sure permission does not already exist
                 web.RemovePermissionLevelFromUser(_userLogin, "Approve");
 
@@ -383,23 +381,23 @@ namespace Microsoft.SharePoint.Client.Tests
             }
         }
 
-		[TestMethod]
-		public void AddSamePermissionLevelTwiceToGroupTest()
-		{
-			using (ClientContext clientContext = TestCommon.CreateClientContext())
-			{
-				// Test
-				clientContext.Web.AddPermissionLevelToGroup(_testGroupName, RoleType.Contributor, true);
-				clientContext.Web.AddPermissionLevelToGroup(_testGroupName, RoleType.Contributor, false);
+        [TestMethod]
+        public void AddSamePermissionLevelTwiceToGroupTest()
+        {
+            using (ClientContext clientContext = TestCommon.CreateClientContext())
+            {
+                // Test
+                clientContext.Web.AddPermissionLevelToGroup(_testGroupName, RoleType.Contributor, true);
+                clientContext.Web.AddPermissionLevelToGroup(_testGroupName, RoleType.Contributor, false);
 
-				//Get Group
-				Group group = clientContext.Web.SiteGroups.GetByName(_testGroupName);
-				clientContext.ExecuteQueryRetry();
+                //Get Group
+                Group group = clientContext.Web.SiteGroups.GetByName(_testGroupName);
+                clientContext.ExecuteQueryRetry();
 
-				//Assert
-				Assert.IsTrue(CheckPermissionOnPrinciple(clientContext.Web, group, RoleType.Contributor));
-			}
-		}
+                //Assert
+                Assert.IsTrue(CheckPermissionOnPrinciple(clientContext.Web, group, RoleType.Contributor));
+            }
+        }
 
         #endregion
 
@@ -420,7 +418,7 @@ namespace Microsoft.SharePoint.Client.Tests
                 User existingUser = clientContext.Web.AssociatedVisitorGroup.Users.GetByLoginName(userIdentity.LoginName);
 
                 Assert.IsNotNull(existingUser, "No user returned");
-                Assert.IsInstanceOfType(existingUser, typeof (User), "Object returned not of correct type");
+                Assert.IsInstanceOfType(existingUser, typeof(User), "Object returned not of correct type");
 
                 // Cleanup
                 if (existingUser != null)
@@ -446,7 +444,7 @@ namespace Microsoft.SharePoint.Client.Tests
 
                 User existingUser = clientContext.Web.AssociatedVisitorGroup.Users.GetByLoginName(userIdentity);
                 Assert.IsNotNull(existingUser, "No user returned");
-                Assert.IsInstanceOfType(existingUser, typeof (User), "Object returned not of correct type");
+                Assert.IsInstanceOfType(existingUser, typeof(User), "Object returned not of correct type");
 
                 // Cleanup
                 if (existingUser != null)
@@ -472,7 +470,7 @@ namespace Microsoft.SharePoint.Client.Tests
                 foreach (var item in assignments)
                 {
                     Trace.WriteLine(item);
-                }                
+                }
             }
         }
 
@@ -519,38 +517,38 @@ namespace Microsoft.SharePoint.Client.Tests
             }
 
             return roleExists;
-        
-		}
 
-	    private Web CreateTestTeamSubSite(Web parentWeb)
-	    {
-		    var siteUrl = GetRandomString();
-		    var webInfo = new WebCreationInformation
-		    {
-			    Title = siteUrl,
-			    Url = siteUrl,
-			    Description = siteUrl,
-			    Language = 1033,
-			    UseSamePermissionsAsParentSite = true,
-			    WebTemplate = "STS#0"
-		    };
+        }
 
-		    var web = parentWeb.Webs.Add(webInfo);
-			parentWeb.Context.Load(web);
-			parentWeb.Context.ExecuteQueryRetry();
+        private Web CreateTestTeamSubSite(Web parentWeb)
+        {
+            var siteUrl = GetRandomString();
+            var webInfo = new WebCreationInformation
+            {
+                Title = siteUrl,
+                Url = siteUrl,
+                Description = siteUrl,
+                Language = 1033,
+                UseSamePermissionsAsParentSite = true,
+                WebTemplate = "STS#0"
+            };
+
+            var web = parentWeb.Webs.Add(webInfo);
+            parentWeb.Context.Load(web);
+            parentWeb.Context.ExecuteQueryRetry();
 
             using (var ctxTestTeamSubSite = parentWeb.Context.Clone(TestCommon.DevSiteUrl + "/" + siteUrl))
             {
                 return ctxTestTeamSubSite.Web;
             }
-	    }
+        }
 
-	    private string GetRandomString()
-	    {
-			var chars = "abcdefghijklmnopqrstuvwxyz";
-			var random = new Random();
-			return new string(Enumerable.Repeat(chars, 4).Select(s => s[random.Next(s.Length)]).ToArray());
-	    }
+        private string GetRandomString()
+        {
+            var chars = "abcdefghijklmnopqrstuvwxyz";
+            var random = new Random();
+            return new string(Enumerable.Repeat(chars, 4).Select(s => s[random.Next(s.Length)]).ToArray());
+        }
         #endregion
     }
 }

@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Tests.Framework.Functional.Validators
 {
-    public class ValidateEventArgs: EventArgs
+    public class ValidateEventArgs : EventArgs
     {
         public string PropertyName { get; set; }
         public string SourceValue { get; set; }

@@ -1,14 +1,12 @@
-﻿using System;
+﻿using Microsoft.SharePoint.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Model;
-using System.Xml.Linq;
-using PnP.Framework.Utilities;
-using System.IO;
-using System.Linq;
-using Microsoft.SharePoint.Client;
-using PnP.Framework.Provisioning.Providers.Xml;
 using PnP.Framework.Provisioning.Providers;
 using PnP.Framework.Provisioning.Providers.Json;
+using PnP.Framework.Provisioning.Providers.Xml;
+using System;
+using System.IO;
+using System.Linq;
 
 namespace PnP.Framework.Tests.Framework.ProvisioningTemplates
 {
@@ -17,21 +15,21 @@ namespace PnP.Framework.Tests.Framework.ProvisioningTemplates
     {
         private string _provisioningTemplatePath1 = string.Empty;
 #pragma warning disable CS0618 // Type or member is obsolete
-        private string _provisioningTemplatePath1NamespaceURI = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2015_03;
+        private readonly string _provisioningTemplatePath1NamespaceURI = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2015_03;
 #pragma warning restore CS0618 // Type or member is obsolete
         private string _provisioningTemplatePath2 = string.Empty;
 #pragma warning restore CS0618 // Type or member is obsolete
         private string _provisioningTemplatePath5 = string.Empty;
 #pragma warning disable CS0618 // Type or member is obsolete
-        private string _provisioningTemplatePath5NamespaceURI = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2015_05;
+        private readonly string _provisioningTemplatePath5NamespaceURI = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2015_05;
 #pragma warning restore CS0618 // Type or member is obsolete
         private string _provisioningTemplatePath6 = string.Empty;
 #pragma warning disable CS0618 // Type or member is obsolete
-        private string _provisioningTemplatePath6NamespaceURI = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2015_05;
+        private readonly string _provisioningTemplatePath6NamespaceURI = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2015_05;
 #pragma warning restore CS0618 // Type or member is obsolete
         private string _provisioningTemplatePath7 = string.Empty;
         private string _provisioningTemplatePath8 = string.Empty;
-        private string _provisioningTemplatePath8NamespaceURI = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2015_12;
+        private readonly string _provisioningTemplatePath8NamespaceURI = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2015_12;
 
         private const string TEST_CATEGORY = "Framework Provisioning Domain Model";
 

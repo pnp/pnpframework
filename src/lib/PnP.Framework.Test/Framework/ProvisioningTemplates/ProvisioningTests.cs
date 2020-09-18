@@ -3,12 +3,8 @@ using Microsoft.SharePoint.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Model.Configuration;
-using Configuration = PnP.Framework.Provisioning.Model.Configuration;
-using PnP.Framework.Provisioning.ObjectHandlers;
 using PnP.Framework.Provisioning.Providers.Xml;
 using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Tests.Framework.ProvisioningTemplates
 {
@@ -47,7 +43,7 @@ namespace PnP.Framework.Tests.Framework.ProvisioningTemplates
         //                TeamSiteUrls = { "https://erwinmcm.sharepoint.com/sites/teamchild" },
         //                IncludeMessages = true
         //            };
-                    
+
         //            //      configuration.Handlers.Add(ConfigurationHandler.Lists);
         //            //configuration.Handlers.Add(ConfigurationHandler.WebSettings);
 
@@ -71,7 +67,7 @@ namespace PnP.Framework.Tests.Framework.ProvisioningTemplates
             {
                 Assert.Inconclusive("This test does not yet work with app-only due to group connected site creation");
             }
-            
+
             string tenantNameParamValue = new Uri(TestCommon.DevSiteUrl).DnsSafeHost.Split('.')[0];
             string accountDomainParamValue = TestCommon.O365AccountDomain;
             if (string.IsNullOrEmpty(accountDomainParamValue))
@@ -86,8 +82,10 @@ namespace PnP.Framework.Tests.Framework.ProvisioningTemplates
 
             Guid siteGuid = Guid.NewGuid();
             int siteId = siteGuid.GetHashCode();
-            var template = new ProvisioningTemplate();
-            template.Id = "TestTemplate";
+            var template = new ProvisioningTemplate
+            {
+                Id = "TestTemplate"
+            };
             template.Lists.Add(new ListInstance()
             {
                 Title = "Testlist",
@@ -119,7 +117,7 @@ namespace PnP.Framework.Tests.Framework.ProvisioningTemplates
 
                 TermStore = new ProvisioningTermStore()
             };
-            
+
             var termGroup = new TermGroup() { Name = "Contoso TermGroup" };
             var termSet = new TermSet() { Name = "Projects", Id = Guid.NewGuid(), IsAvailableForTagging = true, Language = 1033 };
             var term = new Term() { Name = "Contoso Term" };
@@ -176,13 +174,15 @@ namespace PnP.Framework.Tests.Framework.ProvisioningTemplates
 
             using (var tenantContext = TestCommon.CreateTenantClientContext())
             {
-                var applyConfiguration = new ApplyConfiguration();
-                applyConfiguration.ProgressDelegate = (message, step, total) =>
+                var applyConfiguration = new ApplyConfiguration
                 {
-                    if (message != null)
+                    ProgressDelegate = (message, step, total) =>
                     {
+                        if (message != null)
+                        {
 
 
+                        }
                     }
                 };
 

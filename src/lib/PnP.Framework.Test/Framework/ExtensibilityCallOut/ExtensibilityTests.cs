@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Microsoft.SharePoint.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PnP.Framework.Provisioning.Model;
-using Microsoft.SharePoint.Client;
 using PnP.Framework.Provisioning.Extensibility;
+using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
+using System;
 
 namespace PnP.Framework.Tests.Framework.ExtensibilityCallOut
 {
@@ -12,20 +12,24 @@ namespace PnP.Framework.Tests.Framework.ExtensibilityCallOut
     {
         private const string TEST_CATEGORY = "Framework Provisioning Extensibility Providers";
 
-#region Providers
+        #region Providers
 
         [TestMethod]
         [TestCategory(TEST_CATEGORY)]
         public void CanProviderCallOut()
         {
-            var _mockProvider = new Provider();
-            _mockProvider.Assembly = "PnP.Framework.Tests";
-            _mockProvider.Type = "PnP.Framework.Tests.Framework.ExtensibilityCallOut.ExtensibilityMockProvider";
-            _mockProvider.Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA;
+            var _mockProvider = new Provider
+            {
+                Assembly = "PnP.Framework.Tests",
+                Type = "PnP.Framework.Tests.Framework.ExtensibilityCallOut.ExtensibilityMockProvider",
+                Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA
+            };
 
             var _mockctx = new ClientContext(ExtensibilityTestConstants.MOCK_URL);
-            var _mockTemplate = new ProvisioningTemplate();
-            _mockTemplate.Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID;
+            var _mockTemplate = new ProvisioningTemplate
+            {
+                Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID
+            };
 
             var _em = new ExtensibilityManager();
             _em.ExecuteExtensibilityCallOut(_mockctx, _mockProvider, _mockTemplate);
@@ -36,14 +40,18 @@ namespace PnP.Framework.Tests.Framework.ExtensibilityCallOut
         [TestCategory(TEST_CATEGORY)]
         public void CanHandlerProvisioningCallOut()
         {
-            var _mockProvider = new ExtensibilityHandler();
-            _mockProvider.Assembly = "PnP.Framework.Tests";
-            _mockProvider.Type = "PnP.Framework.Tests.Framework.ExtensibilityCallOut.ExtensibilityMockHandler";
-            _mockProvider.Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA;
+            var _mockProvider = new ExtensibilityHandler
+            {
+                Assembly = "PnP.Framework.Tests",
+                Type = "PnP.Framework.Tests.Framework.ExtensibilityCallOut.ExtensibilityMockHandler",
+                Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA
+            };
 
             var _mockctx = new ClientContext(ExtensibilityTestConstants.MOCK_URL);
-            var _mockTemplate = new ProvisioningTemplate();
-            _mockTemplate.Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID;
+            var _mockTemplate = new ProvisioningTemplate
+            {
+                Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID
+            };
 
             var _em = new ExtensibilityManager();
             _em.ExecuteExtensibilityProvisionCallOut(_mockctx, _mockProvider, _mockTemplate, null, null, null);
@@ -53,14 +61,18 @@ namespace PnP.Framework.Tests.Framework.ExtensibilityCallOut
         [TestCategory(TEST_CATEGORY)]
         public void CanHandlerExtractionCallOut()
         {
-            var _mockProvider = new ExtensibilityHandler();
-            _mockProvider.Assembly = "PnP.Framework.Tests";
-            _mockProvider.Type = "PnP.Framework.Tests.Framework.ExtensibilityCallOut.ExtensibilityMockHandler";
-            _mockProvider.Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA;
+            var _mockProvider = new ExtensibilityHandler
+            {
+                Assembly = "PnP.Framework.Tests",
+                Type = "PnP.Framework.Tests.Framework.ExtensibilityCallOut.ExtensibilityMockHandler",
+                Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA
+            };
 
             var _mockctx = new ClientContext(ExtensibilityTestConstants.MOCK_URL);
-            var _mockTemplate = new ProvisioningTemplate();
-            _mockTemplate.Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID;
+            var _mockTemplate = new ProvisioningTemplate
+            {
+                Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID
+            };
 
             var _em = new ExtensibilityManager();
             var template = _em.ExecuteExtensibilityExtractionCallOut(_mockctx, _mockProvider, _mockTemplate, null, null);
@@ -73,14 +85,18 @@ namespace PnP.Framework.Tests.Framework.ExtensibilityCallOut
         [TestCategory(TEST_CATEGORY)]
         public void ProvisioningCallOutThrowsExceptionOnUnavailableExtensibilityProvider()
         {
-            var _mockProvider = new ExtensibilityHandler();
-            _mockProvider.Assembly = "NonexistingAssembly";
-            _mockProvider.Type = "PnP.Framework.Tests.Framework.ExtensibilityCallOut.ExtensibilityMockHandler";
-            _mockProvider.Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA;
+            var _mockProvider = new ExtensibilityHandler
+            {
+                Assembly = "NonexistingAssembly",
+                Type = "PnP.Framework.Tests.Framework.ExtensibilityCallOut.ExtensibilityMockHandler",
+                Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA
+            };
 
             var _mockctx = new ClientContext(ExtensibilityTestConstants.MOCK_URL);
-            var _mockTemplate = new ProvisioningTemplate();
-            _mockTemplate.Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID;
+            var _mockTemplate = new ProvisioningTemplate
+            {
+                Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID
+            };
 
             var _em = new ExtensibilityManager();
             _em.ExecuteExtensibilityProvisionCallOut(_mockctx, _mockProvider, _mockTemplate, null, null, null);
@@ -91,14 +107,18 @@ namespace PnP.Framework.Tests.Framework.ExtensibilityCallOut
         [TestCategory(TEST_CATEGORY)]
         public void ExtractionCallOutThrowsExceptionOnUnavailableExtensibilityProvider()
         {
-            var _mockProvider = new ExtensibilityHandler();
-            _mockProvider.Assembly = "NonexistingAssembly";
-            _mockProvider.Type = "PnP.Framework.Tests.Framework.ExtensibilityCallOut.ExtensibilityMockHandler";
-            _mockProvider.Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA;
+            var _mockProvider = new ExtensibilityHandler
+            {
+                Assembly = "NonexistingAssembly",
+                Type = "PnP.Framework.Tests.Framework.ExtensibilityCallOut.ExtensibilityMockHandler",
+                Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA
+            };
 
             var _mockctx = new ClientContext(ExtensibilityTestConstants.MOCK_URL);
-            var _mockTemplate = new ProvisioningTemplate();
-            _mockTemplate.Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID;
+            var _mockTemplate = new ProvisioningTemplate
+            {
+                Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID
+            };
 
             var _em = new ExtensibilityManager();
             _em.ExecuteExtensibilityExtractionCallOut(_mockctx, _mockProvider, _mockTemplate, null, null);
@@ -109,14 +129,18 @@ namespace PnP.Framework.Tests.Framework.ExtensibilityCallOut
         [TestCategory(TEST_CATEGORY)]
         public void ProvisioningCallOutThrowsExceptionOnInvalidExtensibilityProvider()
         {
-            var _mockProvider = new ExtensibilityHandler();
-            _mockProvider.Assembly = "PnP.Framework.Tests";
-            _mockProvider.Type = "PnP.Framework.Tests.Framework.ExtensibilityCallOut.ExtensibilityMockInvalidHandler";
-            _mockProvider.Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA;
+            var _mockProvider = new ExtensibilityHandler
+            {
+                Assembly = "PnP.Framework.Tests",
+                Type = "PnP.Framework.Tests.Framework.ExtensibilityCallOut.ExtensibilityMockInvalidHandler",
+                Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA
+            };
 
             var _mockctx = new ClientContext(ExtensibilityTestConstants.MOCK_URL);
-            var _mockTemplate = new ProvisioningTemplate();
-            _mockTemplate.Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID;
+            var _mockTemplate = new ProvisioningTemplate
+            {
+                Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID
+            };
 
             var _em = new ExtensibilityManager();
             _em.ExecuteExtensibilityProvisionCallOut(_mockctx, _mockProvider, _mockTemplate, null, null, null);
@@ -127,14 +151,18 @@ namespace PnP.Framework.Tests.Framework.ExtensibilityCallOut
         [TestCategory(TEST_CATEGORY)]
         public void ExtractionCallOutThrowsExceptionOnInvalidExtensibilityProvider()
         {
-            var _mockProvider = new ExtensibilityHandler();
-            _mockProvider.Assembly = "PnP.Framework.Tests";
-            _mockProvider.Type = "PnP.Framework.Tests.Framework.ExtensibilityCallOut.ExtensibilityMockInvalidHandler";
-            _mockProvider.Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA;
+            var _mockProvider = new ExtensibilityHandler
+            {
+                Assembly = "PnP.Framework.Tests",
+                Type = "PnP.Framework.Tests.Framework.ExtensibilityCallOut.ExtensibilityMockInvalidHandler",
+                Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA
+            };
 
             var _mockctx = new ClientContext(ExtensibilityTestConstants.MOCK_URL);
-            var _mockTemplate = new ProvisioningTemplate();
-            _mockTemplate.Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID;
+            var _mockTemplate = new ProvisioningTemplate
+            {
+                Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID
+            };
 
             var _em = new ExtensibilityManager();
             _em.ExecuteExtensibilityExtractionCallOut(_mockctx, _mockProvider, _mockTemplate, null, null);
@@ -145,14 +173,18 @@ namespace PnP.Framework.Tests.Framework.ExtensibilityCallOut
         [ExpectedException(typeof(ExtensiblityPipelineException))]
         public void ProviderCallOutThrowsException()
         {
-            var _mockProvider = new Provider();
-            _mockProvider.Assembly = "BLAHASSEMLBY";
-            _mockProvider.Type = "BLAHTYPE";
-            _mockProvider.Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA;
+            var _mockProvider = new Provider
+            {
+                Assembly = "BLAHASSEMLBY",
+                Type = "BLAHTYPE",
+                Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA
+            };
 
             var _mockctx = new ClientContext(ExtensibilityTestConstants.MOCK_URL);
-            var _mockTemplate = new ProvisioningTemplate();
-            _mockTemplate.Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID;
+            var _mockTemplate = new ProvisioningTemplate
+            {
+                Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID
+            };
 
             var _em = new ExtensibilityManager();
             _em.ExecuteExtensibilityCallOut(_mockctx, _mockProvider, _mockTemplate);
@@ -163,14 +195,18 @@ namespace PnP.Framework.Tests.Framework.ExtensibilityCallOut
         [ExpectedException(typeof(ArgumentException))]
         public void ProviderAssemblyMissingThrowsAgrumentException()
         {
-            var _mockProvider = new Provider();
-            _mockProvider.Assembly = "";
-            _mockProvider.Type = "TYPE";
-            _mockProvider.Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA;
+            var _mockProvider = new Provider
+            {
+                Assembly = "",
+                Type = "TYPE",
+                Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA
+            };
 
             var _mockctx = new ClientContext(ExtensibilityTestConstants.MOCK_URL);
-            var _mockTemplate = new ProvisioningTemplate();
-            _mockTemplate.Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID;
+            var _mockTemplate = new ProvisioningTemplate
+            {
+                Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID
+            };
 
             var _em = new ExtensibilityManager();
             _em.ExecuteExtensibilityCallOut(_mockctx, _mockProvider, _mockTemplate);
@@ -181,14 +217,18 @@ namespace PnP.Framework.Tests.Framework.ExtensibilityCallOut
         [ExpectedException(typeof(ArgumentException))]
         public void ProviderTypeNameMissingThrowsAgrumentException()
         {
-            var _mockProvider = new Provider();
-            _mockProvider.Assembly = "BLAHASSEMBLY";
-            _mockProvider.Type = "";
-            _mockProvider.Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA;
+            var _mockProvider = new Provider
+            {
+                Assembly = "BLAHASSEMBLY",
+                Type = "",
+                Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA
+            };
 
             var _mockctx = new ClientContext(ExtensibilityTestConstants.MOCK_URL);
-            var _mockTemplate = new ProvisioningTemplate();
-            _mockTemplate.Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID;
+            var _mockTemplate = new ProvisioningTemplate
+            {
+                Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID
+            };
 
             var _em = new ExtensibilityManager();
             _em.ExecuteExtensibilityCallOut(_mockctx, _mockProvider, _mockTemplate);
@@ -199,22 +239,26 @@ namespace PnP.Framework.Tests.Framework.ExtensibilityCallOut
         [ExpectedException(typeof(ArgumentNullException))]
         public void ProviderClientCtxIsNullThrowsAgrumentNullException()
         {
-            var _mockProvider = new Provider();
-            _mockProvider.Assembly = "BLAHASSEMBLY";
-            _mockProvider.Type = "BLAH";
-            _mockProvider.Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA;
+            var _mockProvider = new Provider
+            {
+                Assembly = "BLAHASSEMBLY",
+                Type = "BLAH",
+                Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA
+            };
 
             ClientContext _mockCtx = null;
-            var _mockTemplate = new ProvisioningTemplate();
-            _mockTemplate.Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID;
+            var _mockTemplate = new ProvisioningTemplate
+            {
+                Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID
+            };
 
             var _em = new ExtensibilityManager();
             _em.ExecuteExtensibilityCallOut(_mockCtx, _mockProvider, _mockTemplate);
         }
 
-#endregion
+        #endregion
 
-#region TokenProviders
+        #region TokenProviders
 
         [TestMethod]
         [TestCategory(TEST_CATEGORY)]
@@ -233,8 +277,10 @@ namespace PnP.Framework.Tests.Framework.ExtensibilityCallOut
                     Enabled = true
                 };
 
-                var provisioningInfo = new ProvisioningTemplateApplyingInformation();
-                provisioningInfo.HandlersToProcess = Handlers.All;
+                var provisioningInfo = new ProvisioningTemplateApplyingInformation
+                {
+                    HandlersToProcess = Handlers.All
+                };
                 provisioningInfo.ExtensibilityHandlers.Add(_mockProvider);
 
                 var _mockTemplate = new ProvisioningTemplate();
@@ -266,12 +312,16 @@ namespace PnP.Framework.Tests.Framework.ExtensibilityCallOut
                     Enabled = true
                 };
 
-                var provisioningInfo = new ProvisioningTemplateApplyingInformation();
-                provisioningInfo.HandlersToProcess = Handlers.All;
+                var provisioningInfo = new ProvisioningTemplateApplyingInformation
+                {
+                    HandlersToProcess = Handlers.All
+                };
                 provisioningInfo.ExtensibilityHandlers.Add(_mockProvider);
 
-                var _mockTemplate = new ProvisioningTemplate();
-                _mockTemplate.Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID;
+                var _mockTemplate = new ProvisioningTemplate
+                {
+                    Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID
+                };
                 _mockTemplate.ExtensibilityHandlers.Add(_mockProvider);
 
                 var extensibilityHandler = new ObjectExtensibilityHandlers();
@@ -297,12 +347,16 @@ namespace PnP.Framework.Tests.Framework.ExtensibilityCallOut
                     Enabled = false
                 };
 
-                var provisioningInfo = new ProvisioningTemplateApplyingInformation();
-                provisioningInfo.HandlersToProcess = Handlers.All;
+                var provisioningInfo = new ProvisioningTemplateApplyingInformation
+                {
+                    HandlersToProcess = Handlers.All
+                };
                 provisioningInfo.ExtensibilityHandlers.Add(_mockProvider);
 
-                var _mockTemplate = new ProvisioningTemplate();
-                _mockTemplate.Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID;
+                var _mockTemplate = new ProvisioningTemplate
+                {
+                    Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID
+                };
                 _mockTemplate.ExtensibilityHandlers.Add(_mockProvider);
 
                 var extensibilityHandler = new ObjectExtensibilityHandlers();
@@ -319,14 +373,18 @@ namespace PnP.Framework.Tests.Framework.ExtensibilityCallOut
         [ExpectedException(typeof(ExtensiblityPipelineException))]
         public void TokenProviderCallOutThrowsException()
         {
-            var _mockProvider = new Provider();
-            _mockProvider.Assembly = "BLAHASSEMLBY";
-            _mockProvider.Type = "BLAHTYPE";
-            _mockProvider.Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA;
+            var _mockProvider = new Provider
+            {
+                Assembly = "BLAHASSEMLBY",
+                Type = "BLAHTYPE",
+                Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA
+            };
 
             var _mockctx = new ClientContext(ExtensibilityTestConstants.MOCK_URL);
-            var _mockTemplate = new ProvisioningTemplate();
-            _mockTemplate.Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID;
+            var _mockTemplate = new ProvisioningTemplate
+            {
+                Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID
+            };
 
             var _em = new ExtensibilityManager();
             _em.ExecuteTokenProviderCallOut(_mockctx, _mockProvider, _mockTemplate);
@@ -337,14 +395,18 @@ namespace PnP.Framework.Tests.Framework.ExtensibilityCallOut
         [ExpectedException(typeof(ArgumentException))]
         public void TokenProviderAssemblyMissingThrowsAgrumentException()
         {
-            var _mockProvider = new Provider();
-            _mockProvider.Assembly = "";
-            _mockProvider.Type = "TYPE";
-            _mockProvider.Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA;
+            var _mockProvider = new Provider
+            {
+                Assembly = "",
+                Type = "TYPE",
+                Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA
+            };
 
             var _mockctx = new ClientContext(ExtensibilityTestConstants.MOCK_URL);
-            var _mockTemplate = new ProvisioningTemplate();
-            _mockTemplate.Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID;
+            var _mockTemplate = new ProvisioningTemplate
+            {
+                Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID
+            };
 
             var _em = new ExtensibilityManager();
             _em.ExecuteTokenProviderCallOut(_mockctx, _mockProvider, _mockTemplate);
@@ -355,14 +417,18 @@ namespace PnP.Framework.Tests.Framework.ExtensibilityCallOut
         [ExpectedException(typeof(ArgumentException))]
         public void TokenProviderTypeNameMissingThrowsAgrumentException()
         {
-            var _mockProvider = new Provider();
-            _mockProvider.Assembly = "BLAHASSEMBLY";
-            _mockProvider.Type = "";
-            _mockProvider.Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA;
+            var _mockProvider = new Provider
+            {
+                Assembly = "BLAHASSEMBLY",
+                Type = "",
+                Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA
+            };
 
             var _mockctx = new ClientContext(ExtensibilityTestConstants.MOCK_URL);
-            var _mockTemplate = new ProvisioningTemplate();
-            _mockTemplate.Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID;
+            var _mockTemplate = new ProvisioningTemplate
+            {
+                Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID
+            };
 
             var _em = new ExtensibilityManager();
             _em.ExecuteTokenProviderCallOut(_mockctx, _mockProvider, _mockTemplate);
@@ -373,19 +439,23 @@ namespace PnP.Framework.Tests.Framework.ExtensibilityCallOut
         [ExpectedException(typeof(ArgumentNullException))]
         public void TokenProviderClientCtxIsNullThrowsAgrumentNullException()
         {
-            var _mockProvider = new Provider();
-            _mockProvider.Assembly = "BLAHASSEMBLY";
-            _mockProvider.Type = "BLAH";
-            _mockProvider.Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA;
+            var _mockProvider = new Provider
+            {
+                Assembly = "BLAHASSEMBLY",
+                Type = "BLAH",
+                Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA
+            };
 
             ClientContext _mockCtx = null;
-            var _mockTemplate = new ProvisioningTemplate();
-            _mockTemplate.Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID;
+            var _mockTemplate = new ProvisioningTemplate
+            {
+                Id = ExtensibilityTestConstants.PROVISIONINGTEMPLATE_ID
+            };
 
             var _em = new ExtensibilityManager();
             _em.ExecuteTokenProviderCallOut(_mockCtx, _mockProvider, _mockTemplate);
         }
 
-#endregion
+        #endregion
     }
 }

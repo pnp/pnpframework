@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.SharePoint.Client;
+﻿using Microsoft.SharePoint.Client;
 using Microsoft.SharePoint.Client.WebParts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Connectors;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
 using PnP.Framework.Provisioning.Providers.Xml;
-using File = PnP.Framework.Provisioning.Model.File;
-using WebPart = PnP.Framework.Provisioning.Model.WebPart;
 using PnP.Framework.Utilities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using WebPart = PnP.Framework.Provisioning.Model.WebPart;
 
 namespace PnP.Framework.Tests.Framework.ObjectHandlers
 {
@@ -20,7 +19,7 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
         private string resourceFolder;
         private const string fileName = "ProvisioningTemplate-2015-03-Sample-01.xml";
         private string folder;
-        private string webpartcontents = @"<webParts><webPart xmlns=""http://schemas.microsoft.com/WebPart/v3""><metaData><type name=""Microsoft.SharePoint.WebPartPages.ScriptEditorWebPart, Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"" /><importErrorMessage>Cannot import this Web Part.</importErrorMessage>
+        private readonly string webpartcontents = @"<webParts><webPart xmlns=""http://schemas.microsoft.com/WebPart/v3""><metaData><type name=""Microsoft.SharePoint.WebPartPages.ScriptEditorWebPart, Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"" /><importErrorMessage>Cannot import this Web Part.</importErrorMessage>
     </metaData>
     <data>
       <properties>
@@ -105,7 +104,7 @@ alert(""Hello!"");
                 ctx.Web.EnsureProperties(w => w.ServerRelativeUrl);
                 var serverRelativeUrl = UrlUtility.Combine(ctx.Web.ServerRelativeUrl, UrlUtility.Combine(folder, fileName));
                 var file = ctx.Web.GetFileByServerRelativeUrl(serverRelativeUrl);
-                
+
                 // This call will fail as we're creating a file not bound to a list
                 ctx.Load(file);
                 try
@@ -173,7 +172,7 @@ alert(""Hello!"");
                 // first of all do we even find the form ?
                 Assert.IsTrue(file.Exists);
                 var webParts = file.GetLimitedWebPartManager(PersonalizationScope.Shared).WebParts;
-                ctx.Load(webParts, wp => wp.IncludeWithDefaultProperties(w=>w.Id, w=>w.WebPart, w=>w.WebPart.Title));
+                ctx.Load(webParts, wp => wp.IncludeWithDefaultProperties(w => w.Id, w => w.WebPart, w => w.WebPart.Title));
                 ctx.ExecuteQueryRetry();
 
                 var webPartsArray = webParts.ToArray();
@@ -186,7 +185,7 @@ alert(""Hello!"");
                         // cleanup after ourselves if we can find the webpart... 
                         webPartDefinition.DeleteWebPart();
                     }
-                   
+
                 }
                 ctx.ExecuteQueryRetry();
                 Assert.IsTrue(webPartExists);

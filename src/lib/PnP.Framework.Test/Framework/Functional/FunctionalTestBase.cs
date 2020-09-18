@@ -4,14 +4,13 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Entities;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 
 namespace PnP.Framework.Tests.Framework.Functional
 {
     [TestClass()]
     public abstract class FunctionalTestBase
     {
-        private static string sitecollectionNamePrefix = "TestPnPSC_12345_";
+        private static readonly string sitecollectionNamePrefix = "TestPnPSC_12345_";
 
         internal static string centralSiteCollectionUrl = "";
         internal static string centralSubSiteUrl = "";
@@ -21,7 +20,7 @@ namespace PnP.Framework.Tests.Framework.Functional
 
         #region Test preparation
         public static void ClassInitBase(TestContext context, bool noScriptSite = false)
-        {            
+        {
             // Drop all previously created site collections to keep the environment clean
             using (var tenantContext = TestCommon.CreateTenantClientContext())
             {
@@ -36,7 +35,7 @@ namespace PnP.Framework.Tests.Framework.Functional
                     // Add a default sub site
                     centralSubSiteUrl = CreateTestSubSite(tenant, centralSiteCollectionUrl, centralSubSiteName);
 
-                   // Apply noscript setting
+                    // Apply noscript setting
                     if (noScriptSite)
                     {
                         Console.WriteLine("Setting site {0} as NoScript", centralSiteCollectionUrl);
@@ -64,9 +63,9 @@ namespace PnP.Framework.Tests.Framework.Functional
             sitecollectionName = sitecollectionNamePrefix + Guid.NewGuid().ToString();
         }
 
-#endregion
+        #endregion
 
-#region Helper methods
+        #region Helper methods
         internal static string CreateTestSiteCollection(Tenant tenant, string sitecollectionName)
         {
             try
@@ -172,7 +171,7 @@ namespace PnP.Framework.Tests.Framework.Functional
                 }
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.ToDetailedString());
                 throw;
@@ -208,7 +207,7 @@ namespace PnP.Framework.Tests.Framework.Functional
 
             return string.Format("{0}{1}/{2}", host, path, siteCollection);
         }
-#endregion
+        #endregion
 
     }
 }

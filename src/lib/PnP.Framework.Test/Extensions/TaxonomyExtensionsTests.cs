@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Microsoft.SharePoint.Client.Taxonomy;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PnP.Framework.Tests;
-using Microsoft.SharePoint.Client.Taxonomy;
-using System.Linq;
-using System.Collections.Generic;
 using PnP.Framework.Entities;
+using PnP.Framework.Tests;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.SharePoint.Client.Tests
 {
@@ -22,9 +22,9 @@ namespace Microsoft.SharePoint.Client.Tests
 
         private Guid _listId; // For easy reference
 
-        private string SampleTermSetPath = "../../Resources/ImportTermSet.csv";
-        private string SampleUpdateTermSetPath = "../../Resources/UpdateTermSet.csv";
-        private string SampleGuidTermSetPath = "../../Resources/GuidTermSet.csv";
+        private readonly string SampleTermSetPath = "../../Resources/ImportTermSet.csv";
+        private readonly string SampleUpdateTermSetPath = "../../Resources/UpdateTermSet.csv";
+        private readonly string SampleGuidTermSetPath = "../../Resources/GuidTermSet.csv";
         private Guid UpdateTermSetId = new Guid("{35585956-83E4-4A44-8FC5-AC50942E3187}");
         private Guid GuidTermSetId = new Guid("{90FD4208-8281-40CC-872E-DD85F33B50AB}");
 
@@ -108,9 +108,11 @@ namespace Microsoft.SharePoint.Client.Tests
                     }
 
                     // List
-                    ListCreationInformation listCI = new ListCreationInformation();
-                    listCI.TemplateType = (int)ListTemplateType.GenericList;
-                    listCI.Title = "Test_List_" + DateTime.Now.ToFileTime();
+                    ListCreationInformation listCI = new ListCreationInformation
+                    {
+                        TemplateType = (int)ListTemplateType.GenericList,
+                        Title = "Test_List_" + DateTime.Now.ToFileTime()
+                    };
                     var list = clientContext.Web.Lists.Add(listCI);
                     clientContext.Load(list);
                     clientContext.ExecuteQueryRetry();
@@ -134,7 +136,7 @@ namespace Microsoft.SharePoint.Client.Tests
 
                 // Clean up Taxonomy
                 try
-                {                    
+                {
                     this.CleanupTaxonomy();
                 }
                 catch (ServerException serverEx)
@@ -389,7 +391,7 @@ namespace Microsoft.SharePoint.Client.Tests
 
                 //Set a blank value in one of the taxonomy fields.
                 item.SetTaxonomyFieldValue(fieldId, string.Empty, Guid.Empty);
-                
+
                 var taxonomyField = clientContext.CastTo<TaxonomyField>(field);
                 clientContext.Load(taxonomyField, t => t.TextField);
                 clientContext.Load(item, i => i[fieldName], i => i["TaxCatchAll"]);
@@ -749,9 +751,11 @@ namespace Microsoft.SharePoint.Client.Tests
                 var termName1 = "Test_Term_1" + DateTime.Now.ToFileTime();
                 var termName2 = "Test_Term_2" + DateTime.Now.ToFileTime();
 
-                List<string> termLines = new List<string>();
-                termLines.Add(_termGroupName + "|" + _termSetName1 + "|" + termName1);
-                termLines.Add(_termGroupName + "|" + _termSetName2 + "|" + termName2);
+                List<string> termLines = new List<string>
+                {
+                    _termGroupName + "|" + _termSetName1 + "|" + termName1,
+                    _termGroupName + "|" + _termSetName2 + "|" + termName2
+                };
                 site.ImportTerms(termLines.ToArray(), 1033, "|");
 
                 var taxonomySession = TaxonomySession.GetTaxonomySession(clientContext);
@@ -780,9 +784,11 @@ namespace Microsoft.SharePoint.Client.Tests
                 var termName1 = "Test_Term_1" + DateTime.Now.ToFileTime();
                 var termName2 = "Test_Term_2" + DateTime.Now.ToFileTime();
 
-                List<string> termLines = new List<string>();
-                termLines.Add(_termGroupName + "|" + _termSetName1 + "|" + termName1);
-                termLines.Add(_termGroupName + "|" + _termSetName1 + "|" + termName2);
+                List<string> termLines = new List<string>
+                {
+                    _termGroupName + "|" + _termSetName1 + "|" + termName1,
+                    _termGroupName + "|" + _termSetName1 + "|" + termName2
+                };
 
                 TaxonomySession session = TaxonomySession.GetTaxonomySession(clientContext);
                 var termStore = session.GetDefaultSiteCollectionTermStore();

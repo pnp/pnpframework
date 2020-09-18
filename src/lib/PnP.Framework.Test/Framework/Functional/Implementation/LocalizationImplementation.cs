@@ -17,11 +17,13 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
             {
                 CleanUpTestData(cc);
 
-                ProvisioningTemplateCreationInformation ptci = new ProvisioningTemplateCreationInformation(cc.Web);
-                ptci.BaseTemplate = null;
-                ptci.PersistMultiLanguageResources = true;
-                ptci.FileConnector = new FileSystemConnector(string.Format(@"{0}\..\..\Framework\Functional", AppDomain.CurrentDomain.BaseDirectory), "Templates");
-                ptci.HandlersToProcess = Handlers.Fields | Handlers.ContentTypes | Handlers.Lists | Handlers.SupportedUILanguages | Handlers.CustomActions | Handlers.Pages | Handlers.Files | Handlers.Navigation;
+                ProvisioningTemplateCreationInformation ptci = new ProvisioningTemplateCreationInformation(cc.Web)
+                {
+                    BaseTemplate = null,
+                    PersistMultiLanguageResources = true,
+                    FileConnector = new FileSystemConnector(string.Format(@"{0}\..\..\Framework\Functional", AppDomain.CurrentDomain.BaseDirectory), "Templates"),
+                    HandlersToProcess = Handlers.Fields | Handlers.ContentTypes | Handlers.Lists | Handlers.SupportedUILanguages | Handlers.CustomActions | Handlers.Pages | Handlers.Files | Handlers.Navigation
+                };
 
                 var result = TestProvisioningTemplate(cc, "localization_add.xml", ptci.HandlersToProcess, null, ptci);
                 LocalizationValidator validator = new LocalizationValidator(cc.Web);
@@ -36,11 +38,13 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
             {
                 CleanUpTestData(cc);
 
-                ProvisioningTemplateCreationInformation ptci = new ProvisioningTemplateCreationInformation(cc.Web);
-                ptci.BaseTemplate = null;
-                ptci.PersistMultiLanguageResources = true;
-                ptci.FileConnector = new FileSystemConnector(string.Format(@"{0}\..\..\Framework\Functional", AppDomain.CurrentDomain.BaseDirectory), "Templates");
-                ptci.HandlersToProcess = Handlers.Fields | Handlers.ContentTypes | Handlers.Lists | Handlers.SupportedUILanguages | Handlers.CustomActions | Handlers.Pages | Handlers.Files;
+                ProvisioningTemplateCreationInformation ptci = new ProvisioningTemplateCreationInformation(cc.Web)
+                {
+                    BaseTemplate = null,
+                    PersistMultiLanguageResources = true,
+                    FileConnector = new FileSystemConnector(string.Format(@"{0}\..\..\Framework\Functional", AppDomain.CurrentDomain.BaseDirectory), "Templates"),
+                    HandlersToProcess = Handlers.Fields | Handlers.ContentTypes | Handlers.Lists | Handlers.SupportedUILanguages | Handlers.CustomActions | Handlers.Pages | Handlers.Files
+                };
 
                 var result = TestProvisioningTemplate(cc, "localization_add.xml", ptci.HandlersToProcess, null, ptci);
                 LocalizationValidator validator = new LocalizationValidator(cc.Web);
@@ -49,7 +53,7 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
         }
 
 
-#region Helper methods
+        #region Helper methods
         private void CleanUpTestData(ClientContext cc)
         {
             DeleteLists(cc);
@@ -170,7 +174,7 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
                 }
             }
         }
-#endregion
+        #endregion
 
 
     }

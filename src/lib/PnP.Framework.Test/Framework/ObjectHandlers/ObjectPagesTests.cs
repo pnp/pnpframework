@@ -1,19 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.SharePoint.Client;
+﻿using Microsoft.SharePoint.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
-using WebPart = PnP.Framework.Provisioning.Model.WebPart;
 using PnP.Framework.Utilities;
+using System;
+using System.Linq;
+using WebPart = PnP.Framework.Provisioning.Model.WebPart;
 
 namespace PnP.Framework.Tests.Framework.ObjectHandlers
 {
     [TestClass]
     public class ObjectPagesTests
     {
-        private string webpartcontents = @"<webParts><webPart xmlns=""http://schemas.microsoft.com/WebPart/v3""><metaData><type name=""Microsoft.SharePoint.WebPartPages.ScriptEditorWebPart, Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"" /><importErrorMessage>Cannot import this Web Part.</importErrorMessage>
+        private readonly string webpartcontents = @"<webParts><webPart xmlns=""http://schemas.microsoft.com/WebPart/v3""><metaData><type name=""Microsoft.SharePoint.WebPartPages.ScriptEditorWebPart, Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"" /><importErrorMessage>Cannot import this Web Part.</importErrorMessage>
     </metaData>
     <data>
       <properties>
@@ -44,7 +43,7 @@ alert(""Hello!"");
     </data>
   </webPart>
 </webParts>";
-        private string TestFilePath = "..\\..\\Resources\\office365.png";
+        private readonly string TestFilePath = "..\\..\\Resources\\office365.png";
 
         private void DeleteFile(ClientContext ctx, string serverRelativeFileUrl)
         {
@@ -73,10 +72,12 @@ alert(""Hello!"");
                 ctx.ExecuteQueryRetry();
                 var folder = assetsLibrary.RootFolder;
 
-                var fci = new FileCreationInformation();
-                fci.Content = System.IO.File.ReadAllBytes(TestFilePath);
-                fci.Url = folder.ServerRelativeUrl + "/office365.png";
-                fci.Overwrite = true;
+                var fci = new FileCreationInformation
+                {
+                    Content = System.IO.File.ReadAllBytes(TestFilePath),
+                    Url = folder.ServerRelativeUrl + "/office365.png",
+                    Overwrite = true
+                };
 
                 Microsoft.SharePoint.Client.File file = folder.Files.Add(fci);
                 ctx.Load(file);
@@ -100,18 +101,22 @@ alert(""Hello!"");
         public void CanProvisionObjects()
         {
             var template = new ProvisioningTemplate();
-            
-            Page page = new Page();
-            page.Layout = WikiPageLayout.TwoColumns;
-            page.Overwrite = true;
-            page.Url = "{site}/sitepages/pagetest.aspx";
 
-           
-            var webPart = new WebPart();
-            webPart.Column = 1;
-            webPart.Row = 1;
-            webPart.Contents = webpartcontents;
-            webPart.Title = "Script Test";
+            Page page = new Page
+            {
+                Layout = WikiPageLayout.TwoColumns,
+                Overwrite = true,
+                Url = "{site}/sitepages/pagetest.aspx"
+            };
+
+
+            var webPart = new WebPart
+            {
+                Column = 1,
+                Row = 1,
+                Contents = webpartcontents,
+                Title = "Script Test"
+            };
 
             page.WebParts.Add(webPart);
 
@@ -160,10 +165,12 @@ alert(""Hello!"");
         {
             var template = new ProvisioningTemplate();
 
-            Page page = new Page();
-            page.Layout = WikiPageLayout.TwoColumns;
-            page.Overwrite = true;
-            page.Url = "{site}/sitepages/pagetest.aspx";
+            Page page = new Page
+            {
+                Layout = WikiPageLayout.TwoColumns,
+                Overwrite = true,
+                Url = "{site}/sitepages/pagetest.aspx"
+            };
 
             var security = new ObjectSecurity()
             {
@@ -179,11 +186,13 @@ alert(""Hello!"");
             {
                 var currentUser = ctx.Web.EnsureProperty(w => w.CurrentUser);
 
-                var roleAssignment = new PnP.Framework.Provisioning.Model.RoleAssignment();
-                roleAssignment.Principal = currentUser.LoginName;
-                roleAssignment.Remove = true;
+                var roleAssignment = new PnP.Framework.Provisioning.Model.RoleAssignment
+                {
+                    Principal = currentUser.LoginName,
+                    Remove = true,
 
-                roleAssignment.RoleDefinition = "{roledefinition:Administrator}";               
+                    RoleDefinition = "{roledefinition:Administrator}"
+                };
 
                 page.Security.RoleAssignments.Add(roleAssignment);
 

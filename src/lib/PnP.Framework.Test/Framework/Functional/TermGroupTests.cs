@@ -1,18 +1,5 @@
-﻿using Microsoft.SharePoint.Client;
-using Microsoft.SharePoint.Client.Taxonomy;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PnP.Framework.Enums;
-using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Provisioning.ObjectHandlers;
-using PnP.Framework.Provisioning.Providers.Xml;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Tests.Framework.Functional.Implementation;
-using PnP.Framework.Tests.Framework.Functional.Validators;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Linq;
-using System.Xml.XPath;
 
 namespace PnP.Framework.Tests.Framework.Functional
 {
@@ -20,7 +7,7 @@ namespace PnP.Framework.Tests.Framework.Functional
     /// Test cases for the provisioning engine term group functionality
     /// </summary>
     [TestClass]
-   public class TermGroupTests : FunctionalTestBase
+    public class TermGroupTests : FunctionalTestBase
     {
         #region Construction
         public TermGroupTests()

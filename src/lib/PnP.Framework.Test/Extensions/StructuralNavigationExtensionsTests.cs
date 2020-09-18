@@ -1,12 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.SharePoint.Client;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.SharePoint.Client;
 using PnP.Framework.Enums;
+using System;
 
 namespace PnP.Framework.Tests.AppModelExtensions
 {
@@ -14,8 +10,8 @@ namespace PnP.Framework.Tests.AppModelExtensions
     public class StructuralNavigationExtensionsTests
     {
 
-        static string CurrentDynamicChildLimit = "__CurrentDynamicChildLimit";
-        static string GlobalDynamicChildLimit = "__GlobalDynamicChildLimit";
+        static readonly string CurrentDynamicChildLimit = "__CurrentDynamicChildLimit";
+        static readonly string GlobalDynamicChildLimit = "__GlobalDynamicChildLimit";
 
         #region Test initialize and cleanup
         static bool deactivateSiteFeatureOnTeardown = false;
@@ -77,8 +73,8 @@ namespace PnP.Framework.Tests.AppModelExtensions
                 var web = clientContext.Web;
                 AreaNavigationEntity nav = web.GetNavigationSettings();
 
-                Assert.AreEqual(18, (int)nav.CurrentNavigation.MaxDynamicItems);
-                Assert.AreEqual(22, (int)nav.GlobalNavigation.MaxDynamicItems);
+                Assert.AreEqual(18, nav.CurrentNavigation.MaxDynamicItems);
+                Assert.AreEqual(22, nav.GlobalNavigation.MaxDynamicItems);
 
             }
         }
@@ -95,7 +91,7 @@ namespace PnP.Framework.Tests.AppModelExtensions
                 clientContext.Web.AllProperties[GlobalDynamicChildLimit] = 20;
                 clientContext.Web.Update();
                 clientContext.ExecuteQueryRetry();
-                
+
                 AreaNavigationEntity nav = new AreaNavigationEntity();
                 nav.GlobalNavigation.ManagedNavigation = false;
                 nav.GlobalNavigation.MaxDynamicItems = 13;
@@ -108,7 +104,7 @@ namespace PnP.Framework.Tests.AppModelExtensions
                 nav.CurrentNavigation.ShowPages = true;
 
                 nav.Sorting = StructuralNavigationSorting.Automatically;
-                nav.SortBy = StructuralNavigationSortBy.Title ;
+                nav.SortBy = StructuralNavigationSortBy.Title;
                 nav.SortAscending = true;
 
                 clientContext.Web.UpdateNavigationSettings(nav);

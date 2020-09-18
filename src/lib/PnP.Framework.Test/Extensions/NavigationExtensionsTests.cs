@@ -1,9 +1,8 @@
-﻿using System;
-using System.Linq;
+﻿using Microsoft.SharePoint.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.SharePoint.Client;
 using PnP.Framework.Enums;
-using PnP.Framework.Entities;
+using System;
+using System.Linq;
 
 namespace PnP.Framework.Tests.AppModelExtensions
 {
@@ -145,7 +144,7 @@ namespace PnP.Framework.Tests.AppModelExtensions
 
                 // First clear all search nav nodes
                 var nodeCollection = web.LoadSearchNavigation();
-                foreach(var node in nodeCollection.ToList())
+                foreach (var node in nodeCollection.ToList())
                 {
                     node.DeleteObject();
                 }

@@ -11,9 +11,11 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
         {
             using (var cc = TestCommon.CreateClientContext(url))
             {
-                ProvisioningTemplateCreationInformation ptci = new ProvisioningTemplateCreationInformation(cc.Web);
-                ptci.IncludeSiteGroups = true;
-                ptci.HandlersToProcess = Handlers.SiteSecurity;
+                ProvisioningTemplateCreationInformation ptci = new ProvisioningTemplateCreationInformation(cc.Web)
+                {
+                    IncludeSiteGroups = true,
+                    HandlersToProcess = Handlers.SiteSecurity
+                };
 
                 var result = TestProvisioningTemplate(cc, "security_add.xml", Handlers.SiteSecurity, null, ptci);
                 SecurityValidator sv = new SecurityValidator();

@@ -2,7 +2,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
-using System.Linq;
 
 namespace PnP.Framework.Tests.Framework.ObjectHandlers
 {
@@ -62,12 +61,15 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
                 using (var ctx = TestCommon.CreateClientContext())
                 {
                     // Load the base template which will be used for the comparison work
-                    var template = new ProvisioningTemplate();
-
-                    template.AuditSettings = new AuditSettings();
-                    template.AuditSettings.AuditFlags = AuditMaskType.CheckIn;
-                    template.AuditSettings.AuditLogTrimmingRetention = 5;
-                    template.AuditSettings.TrimAuditLog = true;
+                    var template = new ProvisioningTemplate
+                    {
+                        AuditSettings = new AuditSettings
+                        {
+                            AuditFlags = AuditMaskType.CheckIn,
+                            AuditLogTrimmingRetention = 5,
+                            TrimAuditLog = true
+                        }
+                    };
 
                     var parser = new TokenParser(ctx.Web, template);
                     new ObjectAuditSettings().ProvisionObjects(ctx.Web, template, parser, new ProvisioningTemplateApplyingInformation());

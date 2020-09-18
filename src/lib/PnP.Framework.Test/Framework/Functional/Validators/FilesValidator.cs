@@ -1,16 +1,11 @@
-﻿using System;
+﻿using Microsoft.SharePoint.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Tests.Framework.Functional.Validators;
-using System.Collections.Generic;
 using PnP.Framework.Provisioning.ObjectHandlers;
-using System.Xml;
-using System.Xml.Linq;
-using PnP.Framework.Provisioning.Providers.Xml;
-using System.Linq;
-using PnP.Framework.Utilities;
-using Microsoft.SharePoint.Client;
 using PnP.Framework.Provisioning.ObjectHandlers.Utilities;
+using PnP.Framework.Utilities;
+using System;
+using System.Collections.Generic;
 
 namespace PnP.Framework.Tests.Framework.Functional.Validators
 {
@@ -92,7 +87,7 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 // Return false if we get an exception
                 Console.WriteLine(ex.ToDetailedString(ctx));
@@ -105,7 +100,7 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
         public bool Validate1605(ProvisioningTemplate template, Microsoft.SharePoint.Client.ClientContext ctx)
         {
             var directoryFiles = new List<PnP.Framework.Provisioning.Model.File>();
-            
+
             // Get all files from directories
             foreach (var directory in template.Directories)
             {
@@ -115,13 +110,15 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
                 // Add directory files to template file collection
                 foreach (var dFile in directoryFiles)
                 {
-                    var file = new PnP.Framework.Provisioning.Model.File();
-                    file.Src = dFile.Src.Replace(directory.Src + "\\", "");
-                    file.Folder = directory.Folder;
+                    var file = new PnP.Framework.Provisioning.Model.File
+                    {
+                        Src = dFile.Src.Replace(directory.Src + "\\", ""),
+                        Folder = directory.Folder
+                    };
                     template.Files.Add(file);
                 }
             }
-           
+
             // validate all files
             return Validate(template.Files, ctx);
         }

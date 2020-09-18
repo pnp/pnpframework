@@ -1,11 +1,5 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Tests.Framework.Functional.Validators;
-using System.Collections.Generic;
-using PnP.Framework.Provisioning.ObjectHandlers;
-using System.Xml;
-using System.Xml.Linq;
 
 namespace PnP.Framework.Tests.Framework.Functional.Validators
 {

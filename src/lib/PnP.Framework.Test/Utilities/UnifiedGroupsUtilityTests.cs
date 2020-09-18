@@ -1,6 +1,6 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Graph;
+using System;
 
 namespace PnP.Framework.Tests.Utilities
 {
@@ -58,7 +58,7 @@ namespace PnP.Framework.Tests.Utilities
         public void ListDeletedUnifiedGroups()
         {
             if (string.IsNullOrEmpty(_accessToken)) Assert.Inconclusive("Access token could not be retrieved, so skipping this test");
-            
+
             var results = UnifiedGroupsUtility.ListDeletedUnifiedGroups(_accessToken);
 
             Assert.IsTrue(results.Count > 0);

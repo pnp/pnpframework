@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace PnP.Framework.Tests.Framework.Functional.Validators
 {
-    public class ValidateXmlEventArgs: EventArgs
+    public class ValidateXmlEventArgs : EventArgs
     {
         public XElement SourceObject { get; set; }
         public XElement TargetObject { get; set; }

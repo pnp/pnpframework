@@ -1,13 +1,9 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Tests.Framework.Functional.Validators;
-using System.Collections.Generic;
 using PnP.Framework.Provisioning.ObjectHandlers;
-using System.Xml;
-using System.Xml.Linq;
 using PnP.Framework.Provisioning.Providers.Xml;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace PnP.Framework.Tests.Framework.Functional.Validators
 {
@@ -34,12 +30,16 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
 
         public bool Validate(Navigation source, Navigation target, TokenParser tokenParser)
         {
-            ProvisioningTemplate ptSource = new ProvisioningTemplate();
-            ptSource.Navigation = source;
+            ProvisioningTemplate ptSource = new ProvisioningTemplate
+            {
+                Navigation = source
+            };
             var sourceXml = ExtractElementXml(ptSource);
 
-            ProvisioningTemplate ptTarget = new ProvisioningTemplate();
-            ptTarget.Navigation = target;
+            ProvisioningTemplate ptTarget = new ProvisioningTemplate
+            {
+                Navigation = target
+            };
             var targetXml = ExtractElementXml(ptTarget);
 
             navigationParser = tokenParser;

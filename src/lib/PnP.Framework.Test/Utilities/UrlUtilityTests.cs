@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Utilities;
 using System.Collections.Generic;
 
@@ -14,7 +13,7 @@ namespace PnP.Framework.Tests.AppModelExtensions
             string validString = "abd-123";
             Assert.IsFalse(validString.ContainsInvalidUrlChars());
         }
-	
+
         [TestMethod]
         public void ContainsInvalidUrlCharsReturnsTrueForInvalidString()
         {

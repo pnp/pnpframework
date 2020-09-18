@@ -75,14 +75,14 @@ namespace PnP.Framework.Tests.Framework.Providers
     [TestClass]
     public class XMLSerializer201903Tests
     {
-#region Test variables
+        #region Test variables
         private const string TEST_CATEGORY = "Framework Provisioning XML Serialization\\Deserialization 201903";
         private const string TEST_OUT_FILE = "ProvisioningTemplate-2019-03-Sample-01-test.xml";
         private const string TEST_TEMPLATE = "ProvisioningSchema-2019-03-FullSample-01.xml";
 
-#endregion
+        #endregion
 
-#region Test initialize
+        #region Test initialize
         [ClassCleanup]
         public static void Clean()
         {
@@ -92,7 +92,7 @@ namespace PnP.Framework.Tests.Framework.Providers
                 File.Delete(testFilePath);
             }
         }
-#endregion
+        #endregion
 
         [TestMethod]
         [TestCategory(TEST_CATEGORY)]
@@ -2003,20 +2003,22 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
 
-            var result = new ProvisioningTemplate();
-            result.Security = new SiteSecurity()
+            var result = new ProvisioningTemplate
             {
-                BreakRoleInheritance = true,
-                ClearSubscopes = true,
-                CopyRoleAssignments = true,
-                AssociatedGroups = "Test Value",
-                AssociatedMemberGroup = "{parameter:AssociatedMemberGroup}",
-                AssociatedOwnerGroup = "{parameter:AssociatedOwnerGroup}",
-                AssociatedVisitorGroup = "{parameter:AssociatedVisitorGroup}",
-                ClearExistingAdministrators = true,
-                ClearExistingVisitors = true,
-                ResetRoleInheritance = true,
-                RemoveExistingUniqueRoleAssignments = true
+                Security = new SiteSecurity()
+                {
+                    BreakRoleInheritance = true,
+                    ClearSubscopes = true,
+                    CopyRoleAssignments = true,
+                    AssociatedGroups = "Test Value",
+                    AssociatedMemberGroup = "{parameter:AssociatedMemberGroup}",
+                    AssociatedOwnerGroup = "{parameter:AssociatedOwnerGroup}",
+                    AssociatedVisitorGroup = "{parameter:AssociatedVisitorGroup}",
+                    ClearExistingAdministrators = true,
+                    ClearExistingVisitors = true,
+                    ResetRoleInheritance = true,
+                    RemoveExistingUniqueRoleAssignments = true
+                }
             };
             result.Security.AdditionalAdministrators.Add(new PnP.Framework.Provisioning.Model.User() { Name = "user@contoso.com" });
             result.Security.AdditionalAdministrators.Add(new PnP.Framework.Provisioning.Model.User() { Name = "U_SHAREPOINT_ADMINS" });
@@ -2297,10 +2299,12 @@ namespace PnP.Framework.Tests.Framework.Providers
 
             result.Navigation = new PnP.Framework.Provisioning.Model.Navigation(
                  new GlobalNavigation(GlobalNavigationType.Managed, null, new PnP.Framework.Provisioning.Model.ManagedNavigation()),
-                 new CurrentNavigation(CurrentNavigationType.Structural, new PnP.Framework.Provisioning.Model.StructuralNavigation(), null), searchNavigation);
-            result.Navigation.EnableTreeView = true;
-            result.Navigation.AddNewPagesToNavigation = true;
-            result.Navigation.CreateFriendlyUrlsForNewPages = true;
+                 new CurrentNavigation(CurrentNavigationType.Structural, new PnP.Framework.Provisioning.Model.StructuralNavigation(), null), searchNavigation)
+            {
+                EnableTreeView = true,
+                AddNewPagesToNavigation = true,
+                CreateFriendlyUrlsForNewPages = true
+            };
 
             result.Navigation.GlobalNavigation.ManagedNavigation.TermSetId = "415185a1-ee1c-4ce9-9e38-cea3f854e802";
             result.Navigation.GlobalNavigation.ManagedNavigation.TermStoreId = "c1175ad1-c710-4131-a6c9-aa854a5cc4c4";
@@ -3471,8 +3475,10 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
 
-            var result = new ProvisioningTemplate();
-            result.Features = new PnP.Framework.Provisioning.Model.Features();
+            var result = new ProvisioningTemplate
+            {
+                Features = new PnP.Framework.Provisioning.Model.Features()
+            };
 
             result.Features.SiteFeatures.Add(new PnP.Framework.Provisioning.Model.Feature()
             {
@@ -4184,9 +4190,10 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
 
-            var result = new ProvisioningTemplate();
-
-            result.SiteSearchSettings = "<SearchConfigurationSettings></SearchConfigurationSettings>";
+            var result = new ProvisioningTemplate
+            {
+                SiteSearchSettings = "<SearchConfigurationSettings></SearchConfigurationSettings>"
+            };
 
             var serializer = new XMLPnPSchemaV201903Serializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
@@ -4240,20 +4247,20 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
 
-            var result = new ProvisioningTemplate();
-
-            result.Publishing = new PnP.Framework.Provisioning.Model.Publishing
+            var result = new ProvisioningTemplate
             {
-                AutoCheckRequirements = AutoCheckRequirementsOptions.MakeCompliant,
-                DesignPackage = new PnP.Framework.Provisioning.Model.DesignPackage
+                Publishing = new PnP.Framework.Provisioning.Model.Publishing
                 {
-                    DesignPackagePath = "CustomDesign.wsp",
-                    MajorVersion = 1,
-                    MinorVersion = 0,
-                    PackageGuid = new Guid("A3349210-5283-44A5-A23F-00F489EB690B"),
-                    PackageName = "Custom Design"
-                },
-                AvailableWebTemplates =
+                    AutoCheckRequirements = AutoCheckRequirementsOptions.MakeCompliant,
+                    DesignPackage = new PnP.Framework.Provisioning.Model.DesignPackage
+                    {
+                        DesignPackagePath = "CustomDesign.wsp",
+                        MajorVersion = 1,
+                        MinorVersion = 0,
+                        PackageGuid = new Guid("A3349210-5283-44A5-A23F-00F489EB690B"),
+                        PackageName = "Custom Design"
+                    },
+                    AvailableWebTemplates =
                 {
                     new PnP.Framework.Provisioning.Model.AvailableWebTemplate
                     {
@@ -4261,7 +4268,7 @@ namespace PnP.Framework.Tests.Framework.Providers
                         TemplateName = "STS#0"
                     }
                 },
-                PageLayouts =
+                    PageLayouts =
                 {
                     new PnP.Framework.Provisioning.Model.PageLayout
                     {
@@ -4273,7 +4280,7 @@ namespace PnP.Framework.Tests.Framework.Providers
                         IsDefault = true
                     }
                 },
-                ImageRenditions =
+                    ImageRenditions =
                 {
                     new PnP.Framework.Provisioning.Model.ImageRendition
                     {
@@ -4281,6 +4288,7 @@ namespace PnP.Framework.Tests.Framework.Providers
                         Height = 100,
                         Width = 100
                     }
+                }
                 }
             };
 

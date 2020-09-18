@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Online.SharePoint.TenantAdministration;
+﻿using Microsoft.Online.SharePoint.TenantAdministration;
 using Microsoft.SharePoint.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Entities;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
 using PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using User = PnP.Framework.Provisioning.Model.User;
 
 namespace PnP.Framework.Tests.Framework.ObjectHandlers
@@ -191,7 +191,8 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
                 }
 
                 var websToDelete = new List<Web>();
-                try { 
+                try
+                {
                     var subWebs = ctx.Web.Webs; // this call fails in NoScript sites
                     ctx.Load(subWebs, wc => wc.Include(w => w.Title, w => w.ServerRelativeUrl));
                     ctx.ExecuteQueryRetry();
@@ -203,7 +204,8 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
                             websToDelete.Add(subWeb);
                         }
                     }
-                } catch (Exception e)
+                }
+                catch (Exception e)
                 {
                     Console.WriteLine("Error while accessing subwebs: " + e.ToDetailedString());
                 }
@@ -264,7 +266,7 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
                     ctx.ExecuteQueryRetry();
                     Assert.IsNotNull(existingUser);
                 }
-                Assert.IsTrue(roleDefinitions.Any(rd => rd.Name == roleDefinitionName),"New role definition wasn't found after provisioning");
+                Assert.IsTrue(roleDefinitions.Any(rd => rd.Name == roleDefinitionName), "New role definition wasn't found after provisioning");
             }
         }
 
@@ -316,7 +318,7 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
                 // default groups created during site creation assigned as associated owner group,
                 // associated member group, and associated visitor group.
                 // This is a prerequisite for the site collection used for unit testing purposes.        
-                
+
                 // Makes no sense to evaluate this as the site collection can perfectly have no associated groups set due to other tests that ran/failed before
                 //Assert.IsTrue(template.Security.AssociatedOwnerGroup.Contains("{groupsitetitle}"), "Associated owner group title does not contain the Group Site Title token.");
                 //Assert.IsTrue(template.Security.AssociatedMemberGroup.Contains("{groupsitetitle}"), "Associated owner group title does not contain the Group Site Title token.");
@@ -558,8 +560,10 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
             using (var clientContext = TestCommon.CreateClientContext())
             {
                 // get the template from real site as this produced the template that lead to too many groups being created which lead to #2127
-                var creationInfo = new ProvisioningTemplateCreationInformation(clientContext.Web);
-                creationInfo.HandlersToProcess = Handlers.SiteSecurity;
+                var creationInfo = new ProvisioningTemplateCreationInformation(clientContext.Web)
+                {
+                    HandlersToProcess = Handlers.SiteSecurity
+                };
                 template = clientContext.Web.GetProvisioningTemplate();
 
                 var user = clientContext.Web.CurrentUser;
@@ -599,7 +603,7 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
                     Assert.AreEqual(newSiteTitle + " Members", web.AssociatedMemberGroup.Title);
                     Assert.AreEqual(newSiteTitle + " Owners", web.AssociatedOwnerGroup.Title);
                 }
-            } 
+            }
             finally
             {
                 using (var clientContext = TestCommon.CreateTenantClientContext())
@@ -1025,7 +1029,8 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
                     w => w.SiteGroups.Include(
                         sg => sg.Id
                         ));
-            } else
+            }
+            else
             {
                 ctx.Load(ctx.Web,
                     w => w.AssociatedOwnerGroup.Id,

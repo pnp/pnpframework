@@ -3,7 +3,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
 using System;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace PnP.Framework.Tests.Framework.ObjectHandlers
@@ -28,9 +27,11 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
             {
                 this.CleanupWorkflowDefinitionsAndSubscriptions(cc.Web);
 
-                var listCI = new ListCreationInformation();
-                listCI.TemplateType = (int)ListTemplateType.GenericList;
-                listCI.Title = "Test_List_Workflows_" + DateTime.Now.ToFileTime();
+                var listCI = new ListCreationInformation
+                {
+                    TemplateType = (int)ListTemplateType.GenericList,
+                    Title = "Test_List_Workflows_" + DateTime.Now.ToFileTime()
+                };
                 var list = cc.Web.Lists.Add(listCI);
                 cc.Load(list);
                 cc.ExecuteQueryRetry();
@@ -132,7 +133,7 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
                 RestrictToType = "List",
                 RestrictToScope = _listId.ToString(),
                 XamlPath = SampleWorkflowPath,
-                DraftVersion = "1",               
+                DraftVersion = "1",
             };
 
             template.Workflows.WorkflowDefinitions.Add(wfDefinition);
@@ -152,7 +153,7 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
 
             wfSubscription.PropertyDefinitions.Add("SharePointWorkflowContext.Subscription.Id", "d21cf99d-ada1-486b-bfcf-7d58b8a56974");
             wfSubscription.PropertyDefinitions.Add("SharePointWorkflowContext.Subscription.Name", "PnPTestWorkflow_v1_0_0_WorkflowAssociation");
- 
+
             template.Workflows.WorkflowSubscriptions.Add(wfSubscription);
 
             using (var ctx = TestCommon.CreateClientContext())

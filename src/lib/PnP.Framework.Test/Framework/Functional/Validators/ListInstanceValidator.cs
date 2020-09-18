@@ -1,20 +1,11 @@
 ﻿using Microsoft.SharePoint.Client;
-using Newtonsoft.Json;
-using PnP.Framework.Enums;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
 using PnP.Framework.Provisioning.Providers.Xml;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 using System.Xml.Linq;
-using System.Xml.Serialization;
-using System.Xml.XPath;
 
 namespace PnP.Framework.Tests.Framework.Functional.Validators
 {
@@ -26,7 +17,7 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
 
     public class ListInstanceValidator : ValidatorBase
     {
-        private bool isNoScriptSite = false;
+        private readonly bool isNoScriptSite = false;
 
         #region construction        
         public ListInstanceValidator(Web web) : base()
@@ -74,8 +65,10 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
             }
 
             // Use XML validation logic to compare source and target
-            Dictionary<string, string[]> parserSettings = new Dictionary<string, string[]>();
-            parserSettings.Add("SchemaXml", null);
+            Dictionary<string, string[]> parserSettings = new Dictionary<string, string[]>
+            {
+                { "SchemaXml", null }
+            };
             bool isListsMatch = ValidateObjectsXML(sourceLists, targetLists, "SchemaXml", new List<string> { "Title" }, tokenParser, parserSettings);
 
             // Use CustomAction validator to validate the custom actions on the list
@@ -408,9 +401,11 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
                                 if (sourceFolderSecurity != null && sourceFolderSecurity.Any())
                                 {
                                     // convert XML in ObjectSecurity object
-                                    ObjectSecurity sourceFolderSecurityElement = new ObjectSecurity();
-                                    sourceFolderSecurityElement.ClearSubscopes = sourceFolderSecurity.Descendants(ns + "BreakRoleInheritance").First().Attribute("ClearSubscopes").Value.ToBoolean();
-                                    sourceFolderSecurityElement.CopyRoleAssignments = sourceFolderSecurity.Descendants(ns + "BreakRoleInheritance").First().Attribute("CopyRoleAssignments").Value.ToBoolean();
+                                    ObjectSecurity sourceFolderSecurityElement = new ObjectSecurity
+                                    {
+                                        ClearSubscopes = sourceFolderSecurity.Descendants(ns + "BreakRoleInheritance").First().Attribute("ClearSubscopes").Value.ToBoolean(),
+                                        CopyRoleAssignments = sourceFolderSecurity.Descendants(ns + "BreakRoleInheritance").First().Attribute("CopyRoleAssignments").Value.ToBoolean()
+                                    };
 
                                     var sourceRoleAssignments = folder.Descendants(ns + "RoleAssignment");
                                     foreach (var sourceRoleAssignment in sourceRoleAssignments)
@@ -470,9 +465,11 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
                         if (sourceDataRowSecurity != null && sourceDataRowSecurity.Any())
                         {
                             // convert XML in ObjectSecurity object
-                            sourceDataRowSecurityElement = new ObjectSecurity();
-                            sourceDataRowSecurityElement.ClearSubscopes = sourceDataRowSecurity.Descendants(ns + "BreakRoleInheritance").First().Attribute("ClearSubscopes").Value.ToBoolean();
-                            sourceDataRowSecurityElement.CopyRoleAssignments = sourceDataRowSecurity.Descendants(ns + "BreakRoleInheritance").First().Attribute("CopyRoleAssignments").Value.ToBoolean();
+                            sourceDataRowSecurityElement = new ObjectSecurity
+                            {
+                                ClearSubscopes = sourceDataRowSecurity.Descendants(ns + "BreakRoleInheritance").First().Attribute("ClearSubscopes").Value.ToBoolean(),
+                                CopyRoleAssignments = sourceDataRowSecurity.Descendants(ns + "BreakRoleInheritance").First().Attribute("CopyRoleAssignments").Value.ToBoolean()
+                            };
 
                             var sourceRoleAssignments = sourceDataRowSecurity.Descendants(ns + "RoleAssignment");
                             foreach (var sourceRoleAssignment in sourceRoleAssignments)
@@ -554,6 +551,6 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
             #endregion
         }
 
-#endregion
+        #endregion
     }
 }

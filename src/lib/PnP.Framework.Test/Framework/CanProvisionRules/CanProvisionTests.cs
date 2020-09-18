@@ -1,9 +1,9 @@
-﻿using System;
-using Microsoft.Online.SharePoint.TenantAdministration;
+﻿using Microsoft.Online.SharePoint.TenantAdministration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.CanProvisionRules;
 using PnP.Framework.Provisioning.ObjectHandlers;
 using PnP.Framework.Provisioning.Providers.Xml;
+using System;
 
 namespace PnP.Framework.Tests.Framework.CanProvisionRules
 {

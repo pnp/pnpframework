@@ -1,8 +1,8 @@
-using System;
-using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework;
 using PnP.Framework.Tests;
+using System;
+using System.Linq;
 
 namespace Microsoft.SharePoint.Client.Tests
 {

@@ -1,27 +1,22 @@
-﻿using System;
+﻿using Microsoft.SharePoint.Client;
+using Microsoft.SharePoint.Client.WebParts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Tests.Framework.Functional.Validators;
-using System.Collections.Generic;
-using PnP.Framework.Provisioning.ObjectHandlers;
-using System.Xml;
-using System.Xml.Linq;
 using PnP.Framework.Provisioning.Providers.Xml;
+using System;
 using System.Linq;
-using PnP.Framework.Utilities;
-using Microsoft.SharePoint.Client;
-using Microsoft.SharePoint.Client.WebParts;
+using System.Xml;
 
 namespace PnP.Framework.Tests.Framework.Functional.Validators
 {
     [TestClass]
     public class PagesValidator : ValidatorBase
     {
-        private static string[] chromeType = new string[] { "NA", "Default", "None", "Title and Border", "Title Only", "Border Only" };
-        private static string[] chromeState = new string[] { "Normal", "Minimized" };
-        private static string[] direction = new string[] { "NotSet", "Left to Right", "Right to Left" };
-        private static string[] exportMode = new string[] { "Non-sensitive data only", "Export all data" };
-        private static string[] helpMode = new string[] { "Modal", "Modeless", "Navigate" };
+        private static readonly string[] chromeType = new string[] { "NA", "Default", "None", "Title and Border", "Title Only", "Border Only" };
+        private static readonly string[] chromeState = new string[] { "Normal", "Minimized" };
+        private static readonly string[] direction = new string[] { "NotSet", "Left to Right", "Right to Left" };
+        private static readonly string[] exportMode = new string[] { "Non-sensitive data only", "Export all data" };
+        private static readonly string[] helpMode = new string[] { "Modal", "Modeless", "Navigate" };
         public PagesValidator() : base()
         {
             // optionally override schema version

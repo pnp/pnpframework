@@ -2,13 +2,12 @@
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
 using System;
-using System.Collections;
 using System.Linq;
 using System.Xml.Linq;
 
 namespace PnP.Framework.Tests.Framework.Functional.Validators
 {
-    public class CustomActionValidator: ValidatorBase
+    public class CustomActionValidator : ValidatorBase
     {
 
         public static bool Validate(CustomActions sourceCustomActions, CustomActions targetCustomActions, TokenParser tokenParser, Web web)

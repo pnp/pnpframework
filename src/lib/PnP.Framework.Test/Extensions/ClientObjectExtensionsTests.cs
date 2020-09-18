@@ -1,6 +1,5 @@
 ﻿using Microsoft.SharePoint.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PnP.Framework.Utilities;
 using System;
 using System.Linq;
 

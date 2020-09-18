@@ -1,16 +1,4 @@
-﻿using Microsoft.SharePoint.Client;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PnP.Framework.Enums;
-using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Provisioning.ObjectHandlers;
-using PnP.Framework.Provisioning.Providers.Xml;
-using PnP.Framework.Tests.Framework.Functional.Validators;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Linq;
-using System.Xml.XPath;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace PnP.Framework.Tests.Framework.Functional
 {
@@ -18,7 +6,7 @@ namespace PnP.Framework.Tests.Framework.Functional
     /// Test cases for the provisioning engine security functionality
     /// </summary>
     [TestClass]
-   public class SitePolicyTests : FunctionalTestBase
+    public class SitePolicyTests : FunctionalTestBase
     {
         #region Construction
         public SitePolicyTests()

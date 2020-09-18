@@ -1,20 +1,12 @@
 ﻿using Microsoft.SharePoint.Client;
-using Newtonsoft.Json;
 using PnP.Framework.Enums;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
 using PnP.Framework.Provisioning.Providers.Xml;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 using System.Xml.Linq;
-using System.Xml.Serialization;
-using System.Xml.XPath;
 
 namespace PnP.Framework.Tests.Framework.Functional.Validators
 {
@@ -26,10 +18,10 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
 
     public class ContentTypeValidator : ValidatorBase
     {
-        private bool isNoScriptSite = false;
+        private readonly bool isNoScriptSite = false;
 
         #region construction
-        public ContentTypeValidator(Web web): base()
+        public ContentTypeValidator(Web web) : base()
         {
             // optionally override schema version
             SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2015_12;
@@ -52,7 +44,7 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
                 ProvisioningTemplate pt = new ProvisioningTemplate();
                 pt.ContentTypes.Add(ct);
 
-                sourceContentTypes.Add(new SerializedContentType() { SchemaXml = ExtractElementXml(pt) });                
+                sourceContentTypes.Add(new SerializedContentType() { SchemaXml = ExtractElementXml(pt) });
             }
 
             foreach (PnP.Framework.Provisioning.Model.ContentType ct in targetCollection)
@@ -64,8 +56,10 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
             }
 
             // Use XML validation logic to compare source and target
-            Dictionary<string, string[]> parserSettings = new Dictionary<string, string[]>();
-            parserSettings.Add("SchemaXml", null);
+            Dictionary<string, string[]> parserSettings = new Dictionary<string, string[]>
+            {
+                { "SchemaXml", null }
+            };
             bool isContentTypeMatch = ValidateObjectsXML(sourceContentTypes, targetContentTypes, "SchemaXml", new List<string> { "ID" }, tokenParser, parserSettings);
             Console.WriteLine("-- Content type validation " + isContentTypeMatch);
             return isContentTypeMatch;
@@ -117,7 +111,7 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
             foreach (var fieldRef in fieldRefElements)
             {
                 // Delete the OOB fieldrefs
-                if (BuiltInFieldId.Contains(new Guid(fieldRef.Attribute("ID").Value)) || 
+                if (BuiltInFieldId.Contains(new Guid(fieldRef.Attribute("ID").Value)) ||
                     fieldRef.Attribute("Name").Value.StartsWith("_dlc_") ||
                     fieldRef.Attribute("ID").Value.Equals("cbb92da4-fd46-4c7d-af6c-3128c2a5576e", StringComparison.InvariantCultureIgnoreCase) //DocumentSetDescription 
                     )
@@ -154,7 +148,7 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
                 {
                     sourceObject.Element(ns + "DocumentSetTemplate").Attribute("WelcomePage").Remove();
                 }
-                
+
                 if (isNoScriptSite)
                 {
                     // Setting default documents is not supported in NoScript sites so let's drop that from the comparison

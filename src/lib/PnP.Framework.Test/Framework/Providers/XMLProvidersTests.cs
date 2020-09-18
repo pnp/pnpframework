@@ -16,17 +16,17 @@ namespace PnP.Framework.Tests.Framework.Providers
     [TestClass]
     public class XMLProvidersTests
     {
-#region Test variables
+        #region Test variables
 
-        static string testContainer = "pnptest";
-        static string testContainerSecure = "pnptestsecure";
-        static string testTemplatesDocLib = "PnPTemplatesTests";
+        static readonly string testContainer = "pnptest";
+        static readonly string testContainerSecure = "pnptestsecure";
+        static readonly string testTemplatesDocLib = "PnPTemplatesTests";
 
         private const string TEST_CATEGORY = "Framework Provisioning XML Providers";
 
-#endregion=
+        #endregion=
 
-#region Test initialize and cleanup
+        #region Test initialize and cleanup
         [ClassInitialize()]
         public static void ClassInit(TestContext context)
         {
@@ -83,9 +83,9 @@ namespace PnP.Framework.Tests.Framework.Providers
                 context.ExecuteQueryRetry();
             }
         }
-#endregion
+        #endregion
 
-#region XML File System tests
+        #region XML File System tests
 
         [TestMethod]
         [TestCategory(TEST_CATEGORY)]
@@ -167,9 +167,9 @@ namespace PnP.Framework.Tests.Framework.Providers
             Assert.IsTrue(result.SiteFields.Count == 4);
         }
 
-#endregion
+        #endregion
 
-#region XML SharePoint tests
+        #region XML SharePoint tests
 
         [TestMethod]
         [TestCategory(TEST_CATEGORY)]
@@ -193,7 +193,7 @@ namespace PnP.Framework.Tests.Framework.Providers
             Assert.IsTrue(result.SiteFields.Count == 4);
         }
 
-#endregion
+        #endregion
 
         [TestMethod]
         [TestCategory(TEST_CATEGORY)]
@@ -258,7 +258,7 @@ namespace PnP.Framework.Tests.Framework.Providers
 
 
 
-#region XInclude Tests
+        #region XInclude Tests
 
         [TestMethod]
         [TestCategory(TEST_CATEGORY)]
@@ -290,9 +290,9 @@ namespace PnP.Framework.Tests.Framework.Providers
             Assert.IsTrue(result.PropertyBagEntries.Count == 0);
         }
 
-#endregion
+        #endregion
 
-#region Provider Extensibility Tests
+        #region Provider Extensibility Tests
 
         [TestMethod]
         [TestCategory(TEST_CATEGORY)]
@@ -357,9 +357,9 @@ namespace PnP.Framework.Tests.Framework.Providers
             return cert;
         }
 
-#endregion
+        #endregion
 
-#region Formatter Refactoring Tests
+        #region Formatter Refactoring Tests
 
         [TestMethod]
         [TestCategory(TEST_CATEGORY)]
@@ -584,9 +584,9 @@ namespace PnP.Framework.Tests.Framework.Providers
             Assert.IsTrue(hierarchyIsValid);
 
             // Test with a NOT valid hierarchy file
-            hierarchyStream = provider.Connector.GetFileStream("ProvisioningSchema-2018-07-FullSample-01-NOT-VALID.xml");            
+            hierarchyStream = provider.Connector.GetFileStream("ProvisioningSchema-2018-07-FullSample-01-NOT-VALID.xml");
             hierarchyIsValid = serializer.IsValid(hierarchyStream);
-            Assert.IsFalse(hierarchyIsValid);            
+            Assert.IsFalse(hierarchyIsValid);
         }
 
         [TestMethod]
@@ -653,11 +653,11 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_ProvisioningHierarchy_Save_201903()
         {
-           XMLTemplateProvider provider =
-                new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
-                    AppDomain.CurrentDomain.BaseDirectory),
-                    "Templates");
+            XMLTemplateProvider provider =
+                 new XMLFileSystemTemplateProvider(
+                     String.Format(@"{0}\..\..\Resources",
+                     AppDomain.CurrentDomain.BaseDirectory),
+                     "Templates");
 
             var hierarchy = provider.GetHierarchy("ProvisioningSchema-2019-03-FullSample-01.xml");
 
@@ -777,7 +777,7 @@ namespace PnP.Framework.Tests.Framework.Providers
                     "Templates");
 
             var serializer = new XMLPnPSchemaV201605Serializer();
-            var result =  new ProvisioningTemplate();
+            var result = new ProvisioningTemplate();
 
             var nct = new PnP.Framework.Provisioning.Model.ContentType()
             {
@@ -825,7 +825,7 @@ namespace PnP.Framework.Tests.Framework.Providers
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\ProvisioningTemplate-2016-05-Sample-03-OUT-ct.xml";
             Assert.IsTrue(System.IO.File.Exists(path));
             XDocument xml = XDocument.Load(path);
-            PnP.Framework.Provisioning.Providers.Xml.V201605.Provisioning wrappedResult = 
+            PnP.Framework.Provisioning.Providers.Xml.V201605.Provisioning wrappedResult =
                 XMLSerializer.Deserialize<PnP.Framework.Provisioning.Providers.Xml.V201605.Provisioning>(xml);
 
             Assert.IsNotNull(wrappedResult);
@@ -946,10 +946,13 @@ namespace PnP.Framework.Tests.Framework.Providers
                     "Templates");
 
             var serializer = new XMLPnPSchemaV201605Serializer();
-            var result = new ProvisioningTemplate();
-            result.CustomActions = new CustomActions();
+            var result = new ProvisioningTemplate
+            {
+                CustomActions = new CustomActions()
+            };
 
-            var can = new CustomAction() {
+            var can = new CustomAction()
+            {
                 Name = "CA_SITE_SETTINGS_SITECLASSIFICATION",
                 Description = "Site Classification Application",
                 Location = "Microsoft.SharePoint.SiteSettings",
@@ -982,7 +985,7 @@ namespace PnP.Framework.Tests.Framework.Providers
                 Name = "CA_SUBSITE_OVERRIDE",
                 Description = "Override new sub-site link",
                 Location = "ScriptLink",
-                Title  = "SubSiteOveride",
+                Title = "SubSiteOveride",
                 Sequence = 100,
                 ScriptSrc = "~site/PnP_Provisioning_JS/PnP_EmbeddedJS.js",
                 RegistrationType = UserCustomActionRegistrationType.ContentType
@@ -1158,7 +1161,7 @@ namespace PnP.Framework.Tests.Framework.Providers
 
             newfile = new PnP.Framework.Provisioning.Model.File()
             {
-                Src= "/Resources/Files/SAMPLE.js",
+                Src = "/Resources/Files/SAMPLE.js",
                 Folder = "SAMPLE",
                 Level = PnP.Framework.Provisioning.Model.FileLevel.Draft,
                 Overwrite = false
@@ -1254,7 +1257,7 @@ namespace PnP.Framework.Tests.Framework.Providers
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
-             var dir = result.Directories.FirstOrDefault(d => d.Folder == "MyFolder");
+            var dir = result.Directories.FirstOrDefault(d => d.Folder == "MyFolder");
             Assert.IsNotNull(dir);
             Assert.AreEqual("SiteAssets", dir.Src);
             Assert.AreEqual(PnP.Framework.Provisioning.Model.FileLevel.Published, dir.Level);
@@ -1446,7 +1449,7 @@ namespace PnP.Framework.Tests.Framework.Providers
             Assert.AreEqual("<webParts><webPart>[!<![CDATA[web part definition goes here]]></webPart></webParts>", webpart.Contents);
 
             Assert.IsNotNull(page.Fields);
-            Assert.AreEqual(4, page.Fields.Count() );
+            Assert.AreEqual(4, page.Fields.Count());
             Assert.IsNotNull(page.Fields.FirstOrDefault(f => f.Key == "TestField"));
             Assert.IsNotNull(page.Fields.FirstOrDefault(f => f.Key == "TestField2"));
             Assert.IsNotNull(page.Fields.FirstOrDefault(f => f.Key == "TestField3"));
@@ -1549,7 +1552,7 @@ namespace PnP.Framework.Tests.Framework.Providers
             Assert.AreEqual("<webPart>[!<![CDATA[web part definition goes here]]></webPart>", webpart.Contents.InnerXml);
 
             Assert.IsNotNull(page.Fields);
-            Assert.AreEqual(4, page.Fields.Count() );
+            Assert.AreEqual(4, page.Fields.Count());
             Assert.IsNotNull(page.Fields.FirstOrDefault(f => f.FieldName == "TestField"));
             Assert.IsNotNull(page.Fields.FirstOrDefault(f => f.FieldName == "TestField2"));
             Assert.IsNotNull(page.Fields.FirstOrDefault(f => f.FieldName == "TestField3"));
@@ -1715,7 +1718,7 @@ namespace PnP.Framework.Tests.Framework.Providers
             termgroup.Managers.Add(new PnP.Framework.Provisioning.Model.User() { Name = "manager1@termgroup1" });
             termgroup.Managers.Add(new PnP.Framework.Provisioning.Model.User() { Name = "manager2@termgroup1" });
 
-#region termset 1 group 1
+            #region termset 1 group 1
             var termset = new TermSet()
             {
                 Id = new Guid("ce70be1b-1772-49e9-a08f-47192d88dd64"),
@@ -1743,7 +1746,7 @@ namespace PnP.Framework.Tests.Framework.Providers
                 Language = 1055,
                 Owner = "term1owner@termgroup1",
                 SourceTermId = new Guid("bd36d6f6-ee5f-4ce5-961c-93867d8f1f3d"),
-                
+
             };
             term.LocalProperties.Add("Term1LocalProperty1", "Value1");
             term.LocalProperties.Add("Term1LocalProperty2", "Value2");
@@ -1786,8 +1789,8 @@ namespace PnP.Framework.Tests.Framework.Providers
                 Owner = "term2owner@termgroup1"
             });
             termgroup.TermSets.Add(termset);
-#endregion
-#region termset 2 group 1
+            #endregion
+            #region termset 2 group 1
             termset = new TermSet()
             {
                 Id = new Guid("d0610999-539c-4949-ba60-0375deea3023"),
@@ -1797,7 +1800,7 @@ namespace PnP.Framework.Tests.Framework.Providers
                 IsOpenForTermCreation = false,
             };
             termgroup.TermSets.Add(termset);
-#endregion
+            #endregion
             result.TermGroups.Add(termgroup);
             termgroup = new TermGroup()
             {
@@ -1834,7 +1837,7 @@ namespace PnP.Framework.Tests.Framework.Providers
             Assert.IsTrue(group.SiteCollectionTermGroup);
             Assert.IsNotNull(group.Contributors);
             Assert.AreEqual(2, group.Contributors.Count());
-            Assert.IsNotNull(group.Contributors.FirstOrDefault(u=>u.Name == "contributor1@termgroup1"));
+            Assert.IsNotNull(group.Contributors.FirstOrDefault(u => u.Name == "contributor1@termgroup1"));
             Assert.IsNotNull(group.Contributors.FirstOrDefault(u => u.Name == "contributor2@termgroup1"));
             Assert.IsNotNull(group.Managers);
             Assert.AreEqual(2, group.Managers.Count());
@@ -2264,10 +2267,11 @@ namespace PnP.Framework.Tests.Framework.Providers
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
-            var result = new ProvisioningTemplate();
-
-            result.SiteSearchSettings = "<SiteSearchSettings></SiteSearchSettings>";
-            result.WebSearchSettings = "<WebSearchSettings></WebSearchSettings>";
+            var result = new ProvisioningTemplate
+            {
+                SiteSearchSettings = "<SiteSearchSettings></SiteSearchSettings>",
+                WebSearchSettings = "<WebSearchSettings></WebSearchSettings>"
+            };
             var serializer = new XMLPnPSchemaV201605Serializer();
             provider.SaveAs(result, "ProvisioningTemplate-2016-05-Sample-03-OUT-srch.xml", serializer);
 
@@ -2339,17 +2343,19 @@ namespace PnP.Framework.Tests.Framework.Providers
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
-            var result = new ProvisioningTemplate();
-
-            result.Publishing = new Publishing()
+            var result = new ProvisioningTemplate
             {
-                AutoCheckRequirements = AutoCheckRequirementsOptions.SkipIfNotCompliant,
-                DesignPackage = new DesignPackage() {
-                    DesignPackagePath ="mypackage",
-                    MajorVersion = 2,
-                    MinorVersion = 3,
-                    PackageGuid = new Guid("306ab10d-981d-471d-a8f9-16e1260ad4eb"),
-                    PackageName = "MyTestPackage"
+                Publishing = new Publishing()
+                {
+                    AutoCheckRequirements = AutoCheckRequirementsOptions.SkipIfNotCompliant,
+                    DesignPackage = new DesignPackage()
+                    {
+                        DesignPackagePath = "mypackage",
+                        MajorVersion = 2,
+                        MinorVersion = 3,
+                        PackageGuid = new Guid("306ab10d-981d-471d-a8f9-16e1260ad4eb"),
+                        PackageName = "MyTestPackage"
+                    }
                 }
             };
             result.Publishing.AvailableWebTemplates.Add(new AvailableWebTemplate()
@@ -2630,13 +2636,15 @@ namespace PnP.Framework.Tests.Framework.Providers
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
-            var result = new ProvisioningTemplate();
+            var result = new ProvisioningTemplate
+            {
+                AuditSettings = new AuditSettings()
+                {
+                    AuditFlags = AuditMaskType.ProfileChange | AuditMaskType.Move,
+                    AuditLogTrimmingRetention = 10,
+                    TrimAuditLog = true
 
-            result.AuditSettings = new AuditSettings() {
-                AuditFlags = AuditMaskType.ProfileChange | AuditMaskType.Move,
-                AuditLogTrimmingRetention = 10,
-                TrimAuditLog = true
-
+                }
             };
 
             var serializer = new XMLPnPSchemaV201605Serializer();
@@ -2658,7 +2666,7 @@ namespace PnP.Framework.Tests.Framework.Providers
             Assert.IsNotNull(template.AuditSettings);
             Assert.IsNotNull(template.AuditSettings.Audit);
             Assert.AreEqual(2, template.AuditSettings.Audit.Length);
-            Assert.IsNotNull(template.AuditSettings.Audit.FirstOrDefault(a=> a.AuditFlag == PnP.Framework.Provisioning.Providers.Xml.V201605.AuditSettingsAuditAuditFlag.ProfileChange));
+            Assert.IsNotNull(template.AuditSettings.Audit.FirstOrDefault(a => a.AuditFlag == PnP.Framework.Provisioning.Providers.Xml.V201605.AuditSettingsAuditAuditFlag.ProfileChange));
             Assert.IsNotNull(template.AuditSettings.Audit.FirstOrDefault(a => a.AuditFlag == PnP.Framework.Provisioning.Providers.Xml.V201605.AuditSettingsAuditAuditFlag.Move));
             Assert.AreEqual(10, template.AuditSettings.AuditLogTrimmingRetention);
             Assert.IsTrue(template.AuditSettings.AuditLogTrimmingRetentionSpecified);
@@ -2717,9 +2725,10 @@ namespace PnP.Framework.Tests.Framework.Providers
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
-            var result = new ProvisioningTemplate();
-
-            result.Features = new Features();
+            var result = new ProvisioningTemplate
+            {
+                Features = new Features()
+            };
 
             result.Features.SiteFeatures.Add(new PnP.Framework.Provisioning.Model.Feature()
             {
@@ -2882,20 +2891,22 @@ namespace PnP.Framework.Tests.Framework.Providers
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
-            var result = new ProvisioningTemplate();
-
-            result.WebSettings = new WebSettings() {
-                AlternateCSS = "Resources/Themes/Contoso/Contoso.css",
-                MasterPageUrl= "seattle.master",
-                CustomMasterPageUrl="custom.master",
-                Description="Test site",
-                NoCrawl=true,
-                RequestAccessEmail="admin@contoso.com",
-                SiteLogo = "Resources/Themes/Contoso/contosologo.png",
-                Title="Contoso Portal",
-                WelcomePage="/Pages/home.aspx"
+            var result = new ProvisioningTemplate
+            {
+                WebSettings = new WebSettings()
+                {
+                    AlternateCSS = "Resources/Themes/Contoso/Contoso.css",
+                    MasterPageUrl = "seattle.master",
+                    CustomMasterPageUrl = "custom.master",
+                    Description = "Test site",
+                    NoCrawl = true,
+                    RequestAccessEmail = "admin@contoso.com",
+                    SiteLogo = "Resources/Themes/Contoso/contosologo.png",
+                    Title = "Contoso Portal",
+                    WelcomePage = "/Pages/home.aspx"
+                }
             };
-            
+
             var serializer = new XMLPnPSchemaV201605Serializer();
             provider.SaveAs(result, "ProvisioningTemplate-2016-05-Sample-03-OUT-web.xml", serializer);
 
@@ -2962,23 +2973,24 @@ namespace PnP.Framework.Tests.Framework.Providers
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
-            var result = new ProvisioningTemplate();
-
-            result.RegionalSettings = new PnP.Framework.Provisioning.Model.RegionalSettings()
+            var result = new ProvisioningTemplate
             {
-                AdjustHijriDays = 2,
-                AlternateCalendarType = CalendarType.GregorianArabic,
-                CalendarType = CalendarType.Gregorian,
-                Collation = 1,
-                FirstDayOfWeek = DayOfWeek.Sunday,
-                FirstWeekOfYear = 1,
-                LocaleId = 1040,
-                ShowWeeks = true,
-                Time24 = true,
-                TimeZone = 2,
-                WorkDayEndHour = WorkHour.PM0600,
-                WorkDays = 5,
-                WorkDayStartHour = WorkHour.AM0900
+                RegionalSettings = new PnP.Framework.Provisioning.Model.RegionalSettings()
+                {
+                    AdjustHijriDays = 2,
+                    AlternateCalendarType = CalendarType.GregorianArabic,
+                    CalendarType = CalendarType.Gregorian,
+                    Collation = 1,
+                    FirstDayOfWeek = DayOfWeek.Sunday,
+                    FirstWeekOfYear = 1,
+                    LocaleId = 1040,
+                    ShowWeeks = true,
+                    Time24 = true,
+                    TimeZone = 2,
+                    WorkDayEndHour = WorkHour.PM0600,
+                    WorkDays = 5,
+                    WorkDayStartHour = WorkHour.AM0900
+                }
             };
 
             var serializer = new XMLPnPSchemaV201605Serializer();
@@ -3118,7 +3130,8 @@ namespace PnP.Framework.Tests.Framework.Providers
 
             var result = new ProvisioningTemplate();
 
-            result.PropertyBagEntries.Add(new PropertyBagEntry() {
+            result.PropertyBagEntries.Add(new PropertyBagEntry()
+            {
                 Key = "KEY1",
                 Value = "value1",
                 Overwrite = true,
@@ -3289,8 +3302,10 @@ namespace PnP.Framework.Tests.Framework.Providers
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
-            var result = new ProvisioningTemplate();
-            result.Version = 1.2;
+            var result = new ProvisioningTemplate
+            {
+                Version = 1.2
+            };
             result.Properties.Add("Key1", "Value1");
             result.Properties.Add("Key2", "Value2");
             result.Properties.Add("Key3", "Value3");
@@ -3481,11 +3496,13 @@ namespace PnP.Framework.Tests.Framework.Providers
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
-            var result = new ProvisioningTemplate();
-            result.Navigation = new PnP.Framework.Provisioning.Model.Navigation(
-                new GlobalNavigation(GlobalNavigationType.Managed, null, new ManagedNavigation()), 
-                new CurrentNavigation(CurrentNavigationType.Structural, new StructuralNavigation(), null));
-            
+            var result = new ProvisioningTemplate
+            {
+                Navigation = new PnP.Framework.Provisioning.Model.Navigation(
+                new GlobalNavigation(GlobalNavigationType.Managed, null, new ManagedNavigation()),
+                new CurrentNavigation(CurrentNavigationType.Structural, new StructuralNavigation(), null))
+            };
+
             result.Navigation.GlobalNavigation.ManagedNavigation.TermSetId = "415185a1-ee1c-4ce9-9e38-cea3f854e802";
             result.Navigation.GlobalNavigation.ManagedNavigation.TermStoreId = "c1175ad1-c710-4131-a6c9-aa854a5cc4c4";
 
@@ -3495,7 +3512,7 @@ namespace PnP.Framework.Tests.Framework.Providers
                 IsExternal = false,
                 Title = "Node 1",
                 Url = "/Node1.aspx",
-                
+
             };
             var node11 = new PnP.Framework.Provisioning.Model.NavigationNode()
             {
@@ -3692,12 +3709,14 @@ namespace PnP.Framework.Tests.Framework.Providers
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
-            var result = new ProvisioningTemplate();
-            result.Security = new SiteSecurity()
+            var result = new ProvisioningTemplate
             {
-                BreakRoleInheritance = true,
-                ClearSubscopes = true,
-                CopyRoleAssignments = true
+                Security = new SiteSecurity()
+                {
+                    BreakRoleInheritance = true,
+                    ClearSubscopes = true,
+                    CopyRoleAssignments = true
+                }
             };
             result.Security.AdditionalAdministrators.Add(new PnP.Framework.Provisioning.Model.User() { Name = "user@contoso.com" });
             result.Security.AdditionalAdministrators.Add(new PnP.Framework.Provisioning.Model.User() { Name = "U_SHAREPOINT_ADMINS" });
@@ -3723,7 +3742,8 @@ namespace PnP.Framework.Tests.Framework.Providers
                 Name = "EmptyRole",
                 Description = "Empty Role"
             });
-            result.Security.SiteSecurityPermissions.RoleAssignments.Add(new PnP.Framework.Provisioning.Model.RoleAssignment() {
+            result.Security.SiteSecurityPermissions.RoleAssignments.Add(new PnP.Framework.Provisioning.Model.RoleAssignment()
+            {
                 Principal = "admin@contoso.com",
                 RoleDefinition = "Owner"
             });
@@ -3942,7 +3962,7 @@ namespace PnP.Framework.Tests.Framework.Providers
 
             Assert.IsNotNull(l.DataRows);
             Assert.AreEqual(3, l.DataRows.Count);
-#region data row 1 asserts
+            #region data row 1 asserts
             var dr = l.DataRows.FirstOrDefault(r => r.Values.Any(d => d.Value.StartsWith("Value01")));
             Assert.IsNotNull(dr);
             security = dr.Security;
@@ -3973,8 +3993,8 @@ namespace PnP.Framework.Tests.Framework.Providers
             dv = dr.Values.FirstOrDefault(d => d.Key == "Field04");
             Assert.IsNotNull(dv);
             Assert.AreEqual("Value01-04", dv.Value);
-#endregion
-#region data row 2 asserts
+            #endregion
+            #region data row 2 asserts
             dr = l.DataRows.FirstOrDefault(r => r.Values.Any(d => d.Value.StartsWith("Value02")));
             Assert.IsNotNull(dr);
             security = dr.Security;
@@ -4005,8 +4025,8 @@ namespace PnP.Framework.Tests.Framework.Providers
             dv = dr.Values.FirstOrDefault(d => d.Key == "Field04");
             Assert.IsNotNull(dv);
             Assert.AreEqual("Value02-04", dv.Value);
-#endregion
-#region data row 3 asserts
+            #endregion
+            #region data row 3 asserts
             dr = l.DataRows.FirstOrDefault(r => r.Values.Any(d => d.Value.StartsWith("Value03")));
             Assert.IsNotNull(dr);
             Assert.IsTrue(dr.Security == null || dr.Security.RoleAssignments == null || dr.Security.RoleAssignments.Count == 0);
@@ -4023,9 +4043,9 @@ namespace PnP.Framework.Tests.Framework.Providers
             dv = dr.Values.FirstOrDefault(d => d.Key == "Field04");
             Assert.IsNotNull(dv);
             Assert.AreEqual("Value03-04", dv.Value);
-#endregion
+            #endregion
 
-#region user custom action
+            #region user custom action
             Assert.IsNotNull(l.UserCustomActions);
             Assert.AreEqual(1, l.UserCustomActions.Count);
             var ua = l.UserCustomActions.FirstOrDefault(a => a.Name == "SampleCustomAction");
@@ -4047,12 +4067,12 @@ namespace PnP.Framework.Tests.Framework.Providers
             Assert.AreEqual(1, ua.CommandUIExtension.Nodes().Count());
             Assert.IsNotNull(ua.Rights);
             Assert.IsTrue(ua.Rights.Has(PermissionKind.AddListItems));
-#endregion
+            #endregion
 
             Assert.IsNotNull(l.Views);
             Assert.AreEqual(2, l.Views.Count);
 
-#region field refs
+            #region field refs
             Assert.IsNotNull(l.FieldRefs);
             Assert.AreEqual(3, l.FieldRefs.Count);
             var fr = l.FieldRefs.FirstOrDefault(f => f.Name == "ProjectID");
@@ -4073,9 +4093,9 @@ namespace PnP.Framework.Tests.Framework.Providers
             Assert.AreEqual("Project Manager", fr.DisplayName);
             Assert.IsFalse(fr.Hidden);
             Assert.IsTrue(fr.Required);
-#endregion
+            #endregion
 
-#region folders
+            #region folders
             Assert.IsNotNull(l.Folders);
             Assert.AreEqual(2, l.Folders.Count);
             var fl = l.Folders.FirstOrDefault(f => f.Name == "Folder02");
@@ -4104,7 +4124,7 @@ namespace PnP.Framework.Tests.Framework.Providers
             ra = security.RoleAssignments.FirstOrDefault(r => r.Principal == "Principal03");
             Assert.IsNotNull(ra);
             Assert.AreEqual("FullControl", ra.RoleDefinition);
-#endregion
+            #endregion
 
             Assert.IsNotNull(l.Fields);
             Assert.AreEqual(2, l.Fields.Count);
@@ -4126,9 +4146,9 @@ namespace PnP.Framework.Tests.Framework.Providers
             {
                 Title = "Project Documents",
                 ContentTypesEnabled = true,
-                Description= "Project Documents are stored here",
+                Description = "Project Documents are stored here",
                 DocumentTemplate = "document.dotx",
-                DraftVersionVisibility = 1, 
+                DraftVersionVisibility = 1,
                 EnableAttachments = true,
                 EnableFolderCreation = true,
                 EnableMinorVersions = true,
@@ -4165,7 +4185,7 @@ namespace PnP.Framework.Tests.Framework.Providers
                 {
                     ClearSubscopes = true,
                     CopyRoleAssignments = true,
-                    
+
                 }
             };
             list.ContentTypeBindings.Add(new ContentTypeBinding()
@@ -4188,7 +4208,7 @@ namespace PnP.Framework.Tests.Framework.Providers
             list.FieldDefaults.Add("Field03", "DefaultValue03");
             list.FieldDefaults.Add("Field04", "DefaultValue04");
 
-#region data rows
+            #region data rows
             list.DataRows.Add(new DataRow(new Dictionary<string, string>() {
                 { "Field01", "Value01-01" },
                 { "Field02", "Value01-02" },
@@ -4251,7 +4271,7 @@ namespace PnP.Framework.Tests.Framework.Providers
                 { "Field03", "Value03-03" },
                 { "Field04", "Value03-04" },
             }));
-#endregion
+            #endregion
 
             var ca = new CustomAction()
             {
@@ -4275,7 +4295,7 @@ namespace PnP.Framework.Tests.Framework.Providers
             ca.Rights.Set(PermissionKind.AddListItems);
             list.UserCustomActions.Add(ca);
 
-#region views
+            #region views
             list.Views.Add(new PnP.Framework.Provisioning.Model.View()
             {
                 SchemaXml = @"<View DisplayName=""View One"">
@@ -4298,7 +4318,7 @@ namespace PnP.Framework.Tests.Framework.Providers
                 </View>"
             });
             list.Views.Add(new PnP.Framework.Provisioning.Model.View()
-            { 
+            {
                 SchemaXml = @"<View DisplayName=""View Two"">
                   <ViewFields>
                     <FieldRef Name=""ID"" />
@@ -4308,9 +4328,9 @@ namespace PnP.Framework.Tests.Framework.Providers
                   </ViewFields>
                 </View>"
             });
-#endregion
+            #endregion
 
-#region fieldrefs
+            #region fieldrefs
             list.FieldRefs.Add(new FieldRef("ProjectID")
             {
                 Id = new Guid("{23203E97-3BFE-40CB-AFB4-07AA2B86BF45}"),
@@ -4332,9 +4352,9 @@ namespace PnP.Framework.Tests.Framework.Providers
                 Hidden = false,
                 Required = true
             });
-#endregion
+            #endregion
 
-#region folders
+            #region folders
             var folder01 = new PnP.Framework.Provisioning.Model.Folder("Folder01");
             var folder02 = new PnP.Framework.Provisioning.Model.Folder("Folder02");
             folder01.Folders.Add(new PnP.Framework.Provisioning.Model.Folder("Folder01.01",
@@ -4362,7 +4382,7 @@ namespace PnP.Framework.Tests.Framework.Providers
             folder01.Folders.Add(new PnP.Framework.Provisioning.Model.Folder("Folder01.02"));
             list.Folders.Add(folder01);
             list.Folders.Add(folder02);
-#endregion
+            #endregion
 
             list.Fields.Add(new PnP.Framework.Provisioning.Model.Field()
             {
@@ -4467,7 +4487,7 @@ namespace PnP.Framework.Tests.Framework.Providers
 
             Assert.IsNotNull(l.DataRows);
             Assert.AreEqual(3, l.DataRows.Length);
-#region data row 1 asserts
+            #region data row 1 asserts
             var dr = l.DataRows.FirstOrDefault(r => r.DataValue.Any(d => d.Value.StartsWith("Value01")));
             Assert.IsNotNull(dr);
             Assert.IsNotNull(dr.Security);
@@ -4500,8 +4520,8 @@ namespace PnP.Framework.Tests.Framework.Providers
             dv = dr.DataValue.FirstOrDefault(d => d.FieldName == "Field04");
             Assert.IsNotNull(dv);
             Assert.AreEqual("Value01-04", dv.Value);
-#endregion
-#region data row 2 asserts
+            #endregion
+            #region data row 2 asserts
             dr = l.DataRows.FirstOrDefault(r => r.DataValue.Any(d => d.Value.StartsWith("Value02")));
             Assert.IsNotNull(dr);
             Assert.IsNotNull(dr.Security);
@@ -4534,12 +4554,12 @@ namespace PnP.Framework.Tests.Framework.Providers
             dv = dr.DataValue.FirstOrDefault(d => d.FieldName == "Field04");
             Assert.IsNotNull(dv);
             Assert.AreEqual("Value02-04", dv.Value);
-#endregion
-#region data row 3 asserts
+            #endregion
+            #region data row 3 asserts
             dr = l.DataRows.FirstOrDefault(r => r.DataValue.Any(d => d.Value.StartsWith("Value03")));
             Assert.IsNotNull(dr);
             Assert.IsNull(dr.Security);
-            
+
             Assert.IsNotNull(dr.DataValue);
             dv = dr.DataValue.FirstOrDefault(d => d.FieldName == "Field01");
             Assert.IsNotNull(dv);
@@ -4553,9 +4573,9 @@ namespace PnP.Framework.Tests.Framework.Providers
             dv = dr.DataValue.FirstOrDefault(d => d.FieldName == "Field04");
             Assert.IsNotNull(dv);
             Assert.AreEqual("Value03-04", dv.Value);
-#endregion
+            #endregion
 
-#region user custom action
+            #region user custom action
             Assert.IsNotNull(l.UserCustomActions);
             Assert.AreEqual(1, l.UserCustomActions.Length);
             var ua = l.UserCustomActions.FirstOrDefault(a => a.Name == "SampleCustomAction");
@@ -4578,13 +4598,13 @@ namespace PnP.Framework.Tests.Framework.Providers
             Assert.AreEqual(1, ua.CommandUIExtension.Any.Length);
             Assert.IsNotNull(ua.Rights);
             Assert.IsTrue(ua.Rights.Contains("AddListItems"));
-#endregion
+            #endregion
 
             Assert.IsNotNull(l.Views);
             Assert.IsNotNull(l.Views.Any);
             Assert.AreEqual(2, l.Views.Any.Length);
 
-#region field refs
+            #region field refs
             Assert.IsNotNull(l.FieldRefs);
             Assert.AreEqual(3, l.FieldRefs.Length);
             var fr = l.FieldRefs.FirstOrDefault(f => f.Name == "ProjectID");
@@ -4605,9 +4625,9 @@ namespace PnP.Framework.Tests.Framework.Providers
             Assert.AreEqual("Project Manager", fr.DisplayName);
             Assert.IsFalse(fr.Hidden);
             Assert.IsTrue(fr.Required);
-#endregion
+            #endregion
 
-#region folders
+            #region folders
             Assert.IsNotNull(l.Folders);
             Assert.AreEqual(2, l.Folders.Length);
             var fl = l.Folders.FirstOrDefault(f => f.Name == "Folder02");
@@ -4616,7 +4636,7 @@ namespace PnP.Framework.Tests.Framework.Providers
             fl = l.Folders.FirstOrDefault(f => f.Name == "Folder01");
             Assert.IsNotNull(fl);
             Assert.IsNotNull(fl.Folder1);
-            var fl1 = fl.Folder1.FirstOrDefault(f=>f.Name == "Folder01.02");
+            var fl1 = fl.Folder1.FirstOrDefault(f => f.Name == "Folder01.02");
             Assert.IsNotNull(fl1);
             Assert.IsNull(fl1.Folder1);
             fl1 = fl.Folder1.FirstOrDefault(f => f.Name == "Folder01.01");
@@ -4637,13 +4657,13 @@ namespace PnP.Framework.Tests.Framework.Providers
             ra = security.RoleAssignment.FirstOrDefault(r => r.Principal == "Principal03");
             Assert.IsNotNull(ra);
             Assert.AreEqual("FullControl", ra.RoleDefinition);
-#endregion
+            #endregion
 
             Assert.IsNotNull(l.Fields);
             Assert.IsNotNull(l.Fields.Any);
             Assert.AreEqual(2, l.Fields.Any.Length);
             Assert.IsTrue(l.Fields.Any.All(x => x.OuterXml.StartsWith("<Field")));
         }
-#endregion
+        #endregion
     }
 }

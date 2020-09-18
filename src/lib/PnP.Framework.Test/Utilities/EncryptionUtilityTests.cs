@@ -1,7 +1,6 @@
-﻿using System;
-using System.Security;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Utilities;
+using System.Security;
 
 namespace PnP.Framework.Tests.Utilities
 {

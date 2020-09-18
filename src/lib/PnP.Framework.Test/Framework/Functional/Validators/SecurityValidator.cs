@@ -1,14 +1,11 @@
-﻿using System;
+﻿using Microsoft.SharePoint.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Tests.Framework.Functional.Validators;
-using System.Collections.Generic;
 using PnP.Framework.Provisioning.ObjectHandlers;
-using System.Xml;
-using System.Xml.Linq;
 using PnP.Framework.Provisioning.Providers.Xml;
+using System.Collections.Generic;
 using System.Linq;
-using Microsoft.SharePoint.Client;
+using System.Xml.Linq;
 
 namespace PnP.Framework.Tests.Framework.Functional.Validators
 {
@@ -32,12 +29,16 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
             cc = context;
             XPathQuery = "/pnp:Templates/pnp:ProvisioningTemplate/pnp:Security";
 
-            ProvisioningTemplate pt = new ProvisioningTemplate();
-            pt.Security = source;
+            ProvisioningTemplate pt = new ProvisioningTemplate
+            {
+                Security = source
+            };
             string sSchemaXml = ExtractElementXml(pt);
 
-            ProvisioningTemplate ptTarget = new ProvisioningTemplate();
-            ptTarget.Security = target;
+            ProvisioningTemplate ptTarget = new ProvisioningTemplate
+            {
+                Security = target
+            };
             string tSchemaXml = ExtractElementXml(ptTarget);
 
             // Use XML validation logic to compare source and target
@@ -141,13 +142,13 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
                 name = item.Attribute(attributeName).Value;
                 if (!name.Contains("@"))
                 {
-                    var existingUser =cc.Web.EnsureUser(name);
+                    var existingUser = cc.Web.EnsureUser(name);
                     cc.Web.Context.Load(existingUser);
                     cc.Web.Context.ExecuteQueryRetry();
                     loginName = existingUser.LoginName;
                     if (loginName.Contains("|") && !name.StartsWith("c:"))
                     {
-                        loginName= loginName.Substring(loginName.LastIndexOf(("|")) + 1);
+                        loginName = loginName.Substring(loginName.LastIndexOf(("|")) + 1);
                     }
                     item.Attribute(attributeName).Value = loginName;
                 }

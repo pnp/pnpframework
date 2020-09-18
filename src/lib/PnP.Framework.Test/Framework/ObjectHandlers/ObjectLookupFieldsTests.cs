@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.SharePoint.Client;
+﻿using Microsoft.SharePoint.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Provisioning.ObjectHandlers;
+using System;
 
 namespace PnP.Framework.Tests.Framework.ObjectHandlers
 {
@@ -50,10 +44,10 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
                 // create our list that we do lookups against
                 var sourceList = ctx.Web.CreateList(ListTemplateType.GenericList, listName: ListTitle,
                     enableVersioning: false, urlPath: "Lists/" + ListTitle);
-                ctx.Load(sourceList, x=>x.Id);
+                ctx.Load(sourceList, x => x.Id);
                 ctx.ExecuteQueryRetry();
                 // listId with braces... this is how SharePoint maintains the list reference in the schema xml in the lookup field
-                _listIdWithBraces = sourceList.Id.ToString("B"); 
+                _listIdWithBraces = sourceList.Id.ToString("B");
 
 
             }

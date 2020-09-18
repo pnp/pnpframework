@@ -1,19 +1,9 @@
-﻿using Microsoft.SharePoint.Client;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PnP.Framework.Enums;
-using PnP.Framework.Provisioning.Model;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Tests.Framework.Functional.Implementation;
-using PnP.Framework.Tests.Framework.Functional.Validators;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Linq;
-using System.Xml.XPath;
 
 namespace PnP.Framework.Tests.Framework.Functional
 {
-   /// <summary>
+    /// <summary>
     /// Test cases for the provisioning engine Publishing functionality
     /// </summary>
     [TestClass]

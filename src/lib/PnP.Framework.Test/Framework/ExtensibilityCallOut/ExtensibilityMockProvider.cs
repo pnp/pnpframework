@@ -17,7 +17,7 @@ namespace PnP.Framework.Tests.Framework.ExtensibilityCallOut
 
             bool _configDataCheck = configurationData.Equals(ExtensibilityTestConstants.PROVIDER_MOCK_DATA, StringComparison.OrdinalIgnoreCase);
             if (!_configDataCheck) throw new Exception("CONFIGDATANOTTHESAME");
-            
+
         }
     }
 }

@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Web;
-using Microsoft.Online.SharePoint.TenantAdministration;
+﻿using Microsoft.Online.SharePoint.TenantAdministration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Model.Teams;
 using PnP.Framework.Provisioning.ObjectHandlers;
 using PnP.Framework.Utilities;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Web;
 
 namespace PnP.Framework.Tests.Framework.ObjectHandlers
 {
@@ -112,7 +112,7 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
                             {
                                 DeleteTeam(team["id"].ToString());
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
                                 // NOOP
                             }
@@ -160,7 +160,8 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
             return JToken.Parse(HttpHelper.MakeGetRequestForString($"{MicrosoftGraphBaseURI}beta/teams/{teamId}/channels/{channelId}/tabs", accessToken))["value"];
         }
 
-        private static bool GetAllowToAddGuests(string teamId) {
+        private static bool GetAllowToAddGuests(string teamId)
+        {
             var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, "Group.Read.All");
             var response = JToken.Parse(HttpHelper.MakeGetRequestForString($"{MicrosoftGraphBaseURI}v1.0/groups/{teamId}/settings", accessToken));
             var groupGuestSettings = response["value"]?.FirstOrDefault(x => x["templateId"].ToString() == "08d542b9-071f-4e16-94b0-74abb372e3d9");
@@ -192,7 +193,7 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
                 }
             }
         }
-        
+
         #endregion
 
         [TestMethod]

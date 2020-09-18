@@ -19,24 +19,30 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
                 // delete termgroups first
                 DeleteTermGroups(cc);
 
-                ProvisioningTemplateCreationInformation ptci = new ProvisioningTemplateCreationInformation(cc.Web);
-                ptci.IncludeAllTermGroups = true;
-                ptci.IncludeSiteCollectionTermGroup = true;
-                ptci.IncludeTermGroupsSecurity = true;
-                ptci.HandlersToProcess = Handlers.TermGroups;
+                ProvisioningTemplateCreationInformation ptci = new ProvisioningTemplateCreationInformation(cc.Web)
+                {
+                    IncludeAllTermGroups = true,
+                    IncludeSiteCollectionTermGroup = true,
+                    IncludeTermGroupsSecurity = true,
+                    HandlersToProcess = Handlers.TermGroups
+                };
 
                 var result = TestProvisioningTemplate(cc, "termgroup_add.xml", Handlers.TermGroups, null, ptci);
                 TermGroupValidator tv = new TermGroupValidator();
                 Assert.IsTrue(tv.Validate(result.SourceTemplate.TermGroups, result.TargetTemplate.TermGroups, result.TargetTokenParser));
 
                 var result2 = TestProvisioningTemplate(cc, "termgroup_delta_1605.xml", Handlers.TermGroups, null, ptci);
-                TermGroupValidator tv2 = new TermGroupValidator();
-                tv2.SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05;
+                TermGroupValidator tv2 = new TermGroupValidator
+                {
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                };
                 Assert.IsTrue(tv2.Validate(result2.SourceTemplate.TermGroups, result2.TargetTemplate.TermGroups, result2.TargetTokenParser));
 
                 var result3 = TestProvisioningTemplate(cc, "termgroup_delta_1605_1.xml", Handlers.TermGroups, null, ptci);
-                TermGroupValidator tv3 = new TermGroupValidator();
-                tv3.SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05;
+                TermGroupValidator tv3 = new TermGroupValidator
+                {
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                };
                 Assert.IsTrue(tv3.Validate(result3.SourceTemplate.TermGroups, result3.TargetTemplate.TermGroups, result3.TargetTokenParser));
             }
         }
@@ -49,24 +55,30 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
                 // delete termgroups first
                 DeleteTermGroups(cc);
 
-                ProvisioningTemplateCreationInformation ptci = new ProvisioningTemplateCreationInformation(cc.Web);
-                ptci.IncludeAllTermGroups = true;
-                ptci.IncludeSiteCollectionTermGroup = true;
-                ptci.IncludeTermGroupsSecurity = true;
-                ptci.HandlersToProcess = Handlers.TermGroups;
+                ProvisioningTemplateCreationInformation ptci = new ProvisioningTemplateCreationInformation(cc.Web)
+                {
+                    IncludeAllTermGroups = true,
+                    IncludeSiteCollectionTermGroup = true,
+                    IncludeTermGroupsSecurity = true,
+                    HandlersToProcess = Handlers.TermGroups
+                };
 
                 var result = TestProvisioningTemplate(cc, "termgroup_add.xml", Handlers.TermGroups, null, ptci);
                 TermGroupValidator tv = new TermGroupValidator();
                 Assert.IsTrue(tv.Validate(result.SourceTemplate.TermGroups, result.TargetTemplate.TermGroups, result.TargetTokenParser));
 
                 var result2 = TestProvisioningTemplate(cc, "termgroup_delta_1605.xml", Handlers.TermGroups, null, ptci);
-                TermGroupValidator tv2 = new TermGroupValidator();
-                tv2.SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05;
+                TermGroupValidator tv2 = new TermGroupValidator
+                {
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                };
                 Assert.IsTrue(tv2.Validate(result2.SourceTemplate.TermGroups, result2.TargetTemplate.TermGroups, result2.TargetTokenParser));
 
                 var result3 = TestProvisioningTemplate(cc, "termgroup_delta_1605_1.xml", Handlers.TermGroups, null, ptci);
-                TermGroupValidator tv3 = new TermGroupValidator();
-                tv3.SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05;
+                TermGroupValidator tv3 = new TermGroupValidator
+                {
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                };
                 Assert.IsTrue(tv3.Validate(result3.SourceTemplate.TermGroups, result3.TargetTemplate.TermGroups, result3.TargetTokenParser));
             }
         }
@@ -92,13 +104,13 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
 
         private void DeleteTermGroupsImplementation(ClientContext cc, TermStore termStore)
         {
-            cc.Load(termStore.Groups, 
+            cc.Load(termStore.Groups,
                 p => p.Include(
-                    t => t.Name, 
+                    t => t.Name,
                     t => t.TermSets.Include(
                         s => s.Name,
                         s => s.Terms.Include(
-                            q => q.IsDeprecated, 
+                            q => q.IsDeprecated,
                             q => q.ReusedTerms
                             )
                         )
@@ -113,12 +125,12 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
             }
 
             var siteCollectionGroup = termStore.GetSiteCollectionGroup(cc.Site, true);
-            cc.Load(siteCollectionGroup, 
-                t => t.Name, 
+            cc.Load(siteCollectionGroup,
+                t => t.Name,
                 t => t.TermSets.Include(
-                    s => s.Name, 
+                    s => s.Name,
                     s => s.Terms.Include(
-                        q => q.IsDeprecated, 
+                        q => q.IsDeprecated,
                         q => q.ReusedTerms
                         )
                     )

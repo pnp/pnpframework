@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.IO;
-using Microsoft.SharePoint.Client;
+﻿using Microsoft.SharePoint.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using PnP.Framework.Utilities;
+using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 
 namespace PnP.Framework.Tests.Utilities
 {
@@ -37,7 +36,7 @@ namespace PnP.Framework.Tests.Utilities
             if (string.IsNullOrEmpty(HttpHelperTests.TestAPIUrl)) Assert.Inconclusive("No value set for HttpHelperFunctionAppUrl property in the config file");
 
             var mem = HttpHelper.MakeGetRequestForStream(
-                $"{HttpHelperTests.TestAPIUrl}&requestType=MakeGetRequestForStream", 
+                $"{HttpHelperTests.TestAPIUrl}&requestType=MakeGetRequestForStream",
                 "text/plain");
             using (var sr = new StreamReader(mem))
             {
@@ -53,7 +52,7 @@ namespace PnP.Framework.Tests.Utilities
 
             System.Net.Http.Headers.HttpResponseHeaders responseHeaders;
             var mem = HttpHelper.MakeGetRequestForStreamWithResponseHeaders(
-                $"{HttpHelperTests.TestAPIUrl}&requestType=MakeGetRequestForStreamWithResponseHeaders", 
+                $"{HttpHelperTests.TestAPIUrl}&requestType=MakeGetRequestForStreamWithResponseHeaders",
                 "text/plain",
                 out responseHeaders);
             using (var sr = new StreamReader(mem))
@@ -142,8 +141,10 @@ namespace PnP.Framework.Tests.Utilities
                 var web = clientContext.Web;
                 web.EnsureProperties(w => w.Url, w => w.Title);
 
-                var requestHeaders = new Dictionary<string, string>();
-                requestHeaders.Add("X-RequestDigest", (clientContext as ClientContext).GetRequestDigest().GetAwaiter().GetResult());
+                var requestHeaders = new Dictionary<string, string>
+                {
+                    { "X-RequestDigest", (clientContext as ClientContext).GetRequestDigest().GetAwaiter().GetResult() }
+                };
 
                 var result = HttpHelper.MakeGetRequestForString(
                     $"{web.Url}/_api/web",
@@ -166,8 +167,10 @@ namespace PnP.Framework.Tests.Utilities
                 var web = clientContext.Web;
                 web.EnsureProperties(w => w.Url, w => w.Title);
 
-                var requestHeaders = new Dictionary<string, string>();
-                requestHeaders.Add("X-RequestDigest", (clientContext as ClientContext).GetRequestDigest().GetAwaiter().GetResult());
+                var requestHeaders = new Dictionary<string, string>
+                {
+                    { "X-RequestDigest", (clientContext as ClientContext).GetRequestDigest().GetAwaiter().GetResult() }
+                };
 
                 var result = HttpHelper.MakePostRequestForString(
                     $"{web.Url}/_api/web",

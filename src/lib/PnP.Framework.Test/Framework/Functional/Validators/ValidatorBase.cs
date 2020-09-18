@@ -6,8 +6,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
@@ -79,7 +77,7 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
             return sourceCount == targetCount;
         }
 
-        public virtual bool ValidateObjects<T>(T sourceElement, T targetElement, List<string> properties, TokenParser tokenParser=null, Dictionary<string, string[]> parsedProperties=null) where T : class
+        public virtual bool ValidateObjects<T>(T sourceElement, T targetElement, List<string> properties, TokenParser tokenParser = null, Dictionary<string, string[]> parsedProperties = null) where T : class
         {
             IEnumerable sElements = (IEnumerable)sourceElement;
             IEnumerable tElements = (IEnumerable)targetElement;
@@ -110,7 +108,7 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
                     {
                         targetCount++;
                         //compare objects
-                        foreach(string property in properties)
+                        foreach (string property in properties)
                         {
                             string sourceProperty = sElem.GetType().GetProperty(property).GetValue(sElem).ToString();
                             if (tokenParser != null && parsedProperties != null)
@@ -152,7 +150,7 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
             return sourceCount == targetCount;
         }
 
-        public virtual bool ValidateObjectsXML<T>(IEnumerable<T> sElements, IEnumerable<T> tElements, string XmlPropertyName, List<string> properties, TokenParser tokenParser = null, Dictionary<string, string[]> parsedProperties = null) where T: class
+        public virtual bool ValidateObjectsXML<T>(IEnumerable<T> sElements, IEnumerable<T> tElements, string XmlPropertyName, List<string> properties, TokenParser tokenParser = null, Dictionary<string, string[]> parsedProperties = null) where T : class
         {
             string key = properties[0];
             int sourceCount = 0;
@@ -235,7 +233,7 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
             return sourceCount == targetCount;
         }
 
-        public virtual bool ValidateObjectXML(string source, string target, List<string> properties, TokenParser tokenParser = null, Dictionary<string, string[]> parsedProperties = null) 
+        public virtual bool ValidateObjectXML(string source, string target, List<string> properties, TokenParser tokenParser = null, Dictionary<string, string[]> parsedProperties = null)
         {
             XElement sourceXml = XElement.Parse(source);
             XElement targetXml = XElement.Parse(target);
@@ -391,7 +389,7 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
             context.ExecuteQueryRetry();
 
             // Validate item values
-            foreach(var dataValue in dataRow.Values)
+            foreach (var dataValue in dataRow.Values)
             {
                 if (!item[dataValue.Key].ToString().Equals(dataValue.Value, StringComparison.InvariantCultureIgnoreCase))
                 {

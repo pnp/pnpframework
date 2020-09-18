@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.SharePoint.Client;
+﻿using Microsoft.SharePoint.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
-using PnP.Framework.Provisioning.Providers.Xml;
-using ContentType = PnP.Framework.Provisioning.Model.ContentType;
+using System.Linq;
 
 namespace PnP.Framework.Tests.Framework.ObjectHandlers
 {
@@ -34,10 +28,12 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
         public void CanProvisionObjects()
         {
             var template = new ProvisioningTemplate();
-            var ca = new PnP.Framework.Provisioning.Model.CustomAction();
-            ca.Name = "Test Custom Action";
-            ca.Location = "ScriptLink";
-            ca.ScriptBlock = "alert('Hello PnP!');";
+            var ca = new PnP.Framework.Provisioning.Model.CustomAction
+            {
+                Name = "Test Custom Action",
+                Location = "ScriptLink",
+                ScriptBlock = "alert('Hello PnP!');"
+            };
 
             template.CustomActions.SiteCustomActions.Add(ca);
 

@@ -1,13 +1,10 @@
-﻿using Microsoft.SharePoint.Client;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PnP.Framework.Provisioning.Model;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Tests.Framework.Functional.Implementation;
-using PnP.Framework.Tests.Framework.Functional.Validators;
 
 namespace PnP.Framework.Tests.Framework.Functional
 {
     [TestClass]
-    public class CustomActionTests: FunctionalTestBase
+    public class CustomActionTests : FunctionalTestBase
     {
 
         #region Construction

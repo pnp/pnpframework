@@ -1,27 +1,24 @@
-﻿using System.Security.Cryptography;
+﻿using Microsoft.SharePoint.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.SharePoint.Client;
-using System.IO;
 using System.Configuration;
-using PnP.Framework.Utilities;
-using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Security.Cryptography;
 
 namespace PnP.Framework.Tests.AppModelExtensions
 {
     [TestClass()]
     public class BrandingExtensionsTests
     {
-        private string builtInLookSeaMonster = "Sea Monster"; // oslo, palette005, image_bg005, fontscheme003
-        private string builtInLookBlossom = "Blossom"; // seattle, palette002,image_bg002
-        private string builtInMasterOslo = "oslo.master";
-        private string builtInMasterSeattle = "seattle.master";
-        private string builtInPalette003 = "palette003.spcolor";
-        private string knownHashOfSeattle = "DA-39-A3-EE-5E-6B-4B-0D-32-55-BF-EF-95-60-18-90-AF-D8-07-09";
+        private readonly string builtInLookSeaMonster = "Sea Monster"; // oslo, palette005, image_bg005, fontscheme003
+        private readonly string builtInLookBlossom = "Blossom"; // seattle, palette002,image_bg002
+        private readonly string builtInMasterOslo = "oslo.master";
+        private readonly string builtInMasterSeattle = "seattle.master";
+        private readonly string builtInPalette003 = "palette003.spcolor";
+        private readonly string knownHashOfSeattle = "DA-39-A3-EE-5E-6B-4B-0D-32-55-BF-EF-95-60-18-90-AF-D8-07-09";
 
         private string customColorFilePath = string.Empty;
         private string customBackgroundFilePath = string.Empty;
@@ -38,18 +35,18 @@ namespace PnP.Framework.Tests.AppModelExtensions
                         </Where>
                      </Query>
                 </View>";
-        
-        private static string htmlPublishingPageWithoutExtension = "TestHtmlPublishingPageLayout";
-        private static string publishingPageWithoutExtension = "TestPublishingPageLayout";
-        private string htmlPublishingPagePath = string.Format("../../Resources/{0}.html", htmlPublishingPageWithoutExtension);
-        private string publishingPagePath = string.Format("../../Resources/{0}.aspx", publishingPageWithoutExtension);
-        private string pageLayoutTitle = "CustomHtmlPageLayout";
-        private string welcomePageContentTypeId = "0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF390064DEA0F50FC8C147B0B6EA0636C4A7D4";
+
+        private static readonly string htmlPublishingPageWithoutExtension = "TestHtmlPublishingPageLayout";
+        private static readonly string publishingPageWithoutExtension = "TestPublishingPageLayout";
+        private readonly string htmlPublishingPagePath = string.Format("../../Resources/{0}.html", htmlPublishingPageWithoutExtension);
+        private readonly string publishingPagePath = string.Format("../../Resources/{0}.aspx", publishingPageWithoutExtension);
+        private readonly string pageLayoutTitle = "CustomHtmlPageLayout";
+        private readonly string welcomePageContentTypeId = "0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF390064DEA0F50FC8C147B0B6EA0636C4A7D4";
         private string testWebName;
         bool deactivateSiteFeatureOnTeardown = false;
         bool deactivateWebFeatureOnTeardown = false;
         private Web pageLayoutTestWeb = null;
-        private string AvailablePageLayouts = "__PageLayouts";
+        private readonly string AvailablePageLayouts = "__PageLayouts";
 
         #region Test initialize and cleanup
         [TestInitialize()]
@@ -283,10 +280,12 @@ namespace PnP.Framework.Tests.AppModelExtensions
             {
                 try
                 {
-                    var wci1 = new WebCreationInformation();
-                    wci1.Url = urlAndName;
-                    wci1.Title = urlAndName;
-                    wci1.WebTemplate = "CMSPUBLISHING#0";
+                    var wci1 = new WebCreationInformation
+                    {
+                        Url = urlAndName,
+                        Title = urlAndName,
+                        WebTemplate = "CMSPUBLISHING#0"
+                    };
                     var web1 = wciCtx.Web.Webs.Add(wci1);
                     wciCtx.ExecuteQueryRetry();
                     Console.WriteLine("Web {0} created", urlAndName);
@@ -345,7 +344,7 @@ namespace PnP.Framework.Tests.AppModelExtensions
                 htmlPublishLayout.DeleteObject();
                 web.Context.ExecuteQueryRetry();
             }
-            
+
             web.DeployHtmlPageLayout(htmlPublishingPagePath, pageLayoutTitle, "", welcomePageContentTypeId);
             web.Context.Load(web, w => w.ServerRelativeUrl);
             web.Context.ExecuteQueryRetry();
@@ -451,8 +450,10 @@ namespace PnP.Framework.Tests.AppModelExtensions
             using (var context = TestCommon.CreateClientContext())
             {
                 var composedLooksList = context.Web.GetCatalog((int)ListTemplateType.DesignCatalog);
-                CamlQuery query = new CamlQuery();
-                query.ViewXml = string.Format(CAML_QUERY_FIND_BY_FILENAME, testLookName);
+                CamlQuery query = new CamlQuery
+                {
+                    ViewXml = string.Format(CAML_QUERY_FIND_BY_FILENAME, testLookName)
+                };
                 var existingCollection = composedLooksList.GetItems(query);
                 context.Load(existingCollection);
                 context.ExecuteQueryRetry();
@@ -481,8 +482,10 @@ namespace PnP.Framework.Tests.AppModelExtensions
             using (var context = TestCommon.CreateClientContext())
             {
                 var composedLooksList = context.Web.GetCatalog((int)ListTemplateType.DesignCatalog);
-                CamlQuery query = new CamlQuery();
-                query.ViewXml = string.Format(CAML_QUERY_FIND_BY_FILENAME, testLookName);
+                CamlQuery query = new CamlQuery
+                {
+                    ViewXml = string.Format(CAML_QUERY_FIND_BY_FILENAME, testLookName)
+                };
                 var existingCollection = composedLooksList.GetItems(query);
                 context.Load(existingCollection);
                 context.ExecuteQueryRetry();
@@ -561,7 +564,7 @@ namespace PnP.Framework.Tests.AppModelExtensions
 
                 // Act
                 webToChangeA.SetComposedLookByUrl(builtInLookBlossom);
-                webToChangeRoot.SetComposedLookByUrl(builtInLookSeaMonster, resetSubsitesToInherit: true, updateRootOnly:false);
+                webToChangeRoot.SetComposedLookByUrl(builtInLookSeaMonster, resetSubsitesToInherit: true, updateRootOnly: false);
             }
 
             using (var context = TestCommon.CreateClientContext())

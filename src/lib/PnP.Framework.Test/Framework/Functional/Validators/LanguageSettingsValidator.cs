@@ -1,20 +1,8 @@
 ﻿using Microsoft.SharePoint.Client;
-using Newtonsoft.Json;
-using PnP.Framework.Enums;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
 using PnP.Framework.Provisioning.Providers.Xml;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 using System.Xml.Linq;
-using System.Xml.Serialization;
-using System.Xml.XPath;
 
 namespace PnP.Framework.Tests.Framework.Functional.Validators
 {
@@ -39,12 +27,16 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
         #region Validation logic
         public bool Validate(SupportedUILanguageCollection sourceLanguageSettings, SupportedUILanguageCollection targetLanguageSettings, TokenParser tokenParser)
         {
-            ProvisioningTemplate sourcePt = new ProvisioningTemplate();
-            sourcePt.SupportedUILanguages = sourceLanguageSettings;
+            ProvisioningTemplate sourcePt = new ProvisioningTemplate
+            {
+                SupportedUILanguages = sourceLanguageSettings
+            };
             var sourceXml = ExtractElementXml(sourcePt);
 
-            ProvisioningTemplate targetPt = new ProvisioningTemplate();
-            targetPt.SupportedUILanguages = targetLanguageSettings;
+            ProvisioningTemplate targetPt = new ProvisioningTemplate
+            {
+                SupportedUILanguages = targetLanguageSettings
+            };
             var targetXml = ExtractElementXml(targetPt);
 
             return ValidateObjectXML(sourceXml, targetXml, null);

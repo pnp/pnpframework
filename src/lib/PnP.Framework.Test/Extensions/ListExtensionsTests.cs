@@ -1,13 +1,11 @@
-﻿using System;
+﻿using Microsoft.SharePoint.Client.Taxonomy;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PnP.Framework.Entities;
+using PnP.Framework.Tests;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Microsoft.SharePoint.Client;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.SharePoint.Client.Taxonomy;
-using PnP.Framework.Tests;
-using PnP.Framework.Entities;
 namespace Microsoft.SharePoint.Client.Tests
 {
     [TestClass()]
@@ -169,7 +167,7 @@ namespace Microsoft.SharePoint.Client.Tests
 
             // Clean up Taxonomy
             try
-            {                
+            {
                 this.CleanupTaxonomy();
             }
             catch (ServerException serverEx)
@@ -401,18 +399,21 @@ namespace Microsoft.SharePoint.Client.Tests
                 TaxonomySession taxSession = TaxonomySession.GetTaxonomySession(clientContext);
                 List<IDefaultColumnValue> defaultValues = new List<IDefaultColumnValue>();
 
-                var defaultColumnValue = new DefaultColumnTermValue();
-
-                defaultColumnValue.FieldInternalName = "TaxKeyword"; // Enterprise metadata field, should be present on the list
-                defaultColumnValue.FolderRelativePath = "/"; // Root Folder
+                var defaultColumnValue = new DefaultColumnTermValue
+                {
+                    FieldInternalName = "TaxKeyword", // Enterprise metadata field, should be present on the list
+                    FolderRelativePath = "/" // Root Folder
+                };
                 var term = taxSession.GetTerm(_termId);
                 defaultColumnValue.Terms.Add(term);
                 defaultValues.Add(defaultColumnValue);
 
-                var testDefaultValue = new DefaultColumnTextValue();
-                testDefaultValue.Text = "Bla";
-                testDefaultValue.FieldInternalName = _textFieldName;
-                testDefaultValue.FolderRelativePath = "/"; // Root folder
+                var testDefaultValue = new DefaultColumnTextValue
+                {
+                    Text = "Bla",
+                    FieldInternalName = _textFieldName,
+                    FolderRelativePath = "/" // Root folder
+                };
 
                 defaultValues.Add(testDefaultValue);
 
@@ -430,15 +431,19 @@ namespace Microsoft.SharePoint.Client.Tests
                 // arrange
                 List<IDefaultColumnValue> defaultValues = new List<IDefaultColumnValue>();
 
-                var testFooDefaultValue = new DefaultColumnTextValue();
-                testFooDefaultValue.Text = "Foo";
-                testFooDefaultValue.FieldInternalName = _textFieldName;
-                testFooDefaultValue.FolderRelativePath = "/"; // Root folder
+                var testFooDefaultValue = new DefaultColumnTextValue
+                {
+                    Text = "Foo",
+                    FieldInternalName = _textFieldName,
+                    FolderRelativePath = "/" // Root folder
+                };
 
-                var testBarDefaultValue = new DefaultColumnTextValue();
-                testBarDefaultValue.Text = "Bar";
-                testBarDefaultValue.FieldInternalName = _textFieldName2;
-                testBarDefaultValue.FolderRelativePath = "/"; // Root folder
+                var testBarDefaultValue = new DefaultColumnTextValue
+                {
+                    Text = "Bar",
+                    FieldInternalName = _textFieldName2,
+                    FolderRelativePath = "/" // Root folder
+                };
 
                 defaultValues.Add(testFooDefaultValue);
                 defaultValues.Add(testBarDefaultValue);
@@ -468,15 +473,19 @@ namespace Microsoft.SharePoint.Client.Tests
                 // arrange
                 List<IDefaultColumnValue> defaultValues = new List<IDefaultColumnValue>();
 
-                var testFooDefaultValue = new DefaultColumnTextValue();
-                testFooDefaultValue.Text = "Foo";
-                testFooDefaultValue.FieldInternalName = _textFieldName;
-                testFooDefaultValue.FolderRelativePath = "/"; // Root folder
+                var testFooDefaultValue = new DefaultColumnTextValue
+                {
+                    Text = "Foo",
+                    FieldInternalName = _textFieldName,
+                    FolderRelativePath = "/" // Root folder
+                };
 
-                var testBarDefaultValue = new DefaultColumnTextValue();
-                testBarDefaultValue.Text = "Bar";
-                testBarDefaultValue.FieldInternalName = _textFieldName2;
-                testBarDefaultValue.FolderRelativePath = "/"; // Root folder
+                var testBarDefaultValue = new DefaultColumnTextValue
+                {
+                    Text = "Bar",
+                    FieldInternalName = _textFieldName2,
+                    FolderRelativePath = "/" // Root folder
+                };
 
                 defaultValues.Add(testFooDefaultValue);
                 defaultValues.Add(testBarDefaultValue);
@@ -502,15 +511,19 @@ namespace Microsoft.SharePoint.Client.Tests
                 // arrange
                 List<IDefaultColumnValue> defaultValues = new List<IDefaultColumnValue>();
 
-                var testFooDefaultValue = new DefaultColumnTextValue();
-                testFooDefaultValue.Text = "Foo";
-                testFooDefaultValue.FieldInternalName = _textFieldName;
-                testFooDefaultValue.FolderRelativePath = "/"; // Root folder
+                var testFooDefaultValue = new DefaultColumnTextValue
+                {
+                    Text = "Foo",
+                    FieldInternalName = _textFieldName,
+                    FolderRelativePath = "/" // Root folder
+                };
 
-                var testBarDefaultValue = new DefaultColumnTextValue();
-                testBarDefaultValue.Text = "Bar";
-                testBarDefaultValue.FieldInternalName = _textFieldName2;
-                testBarDefaultValue.FolderRelativePath = "/"; // Root folder
+                var testBarDefaultValue = new DefaultColumnTextValue
+                {
+                    Text = "Bar",
+                    FieldInternalName = _textFieldName2,
+                    FolderRelativePath = "/" // Root folder
+                };
 
                 defaultValues.Add(testFooDefaultValue);
                 defaultValues.Add(testBarDefaultValue);
@@ -553,7 +566,7 @@ namespace Microsoft.SharePoint.Client.Tests
                 WebhookSubscription actualSubscription = testList.AddWebhookSubscription(TestCommon.TestWebhookUrl, 3);
 
                 // Compare properties of expected and actual
-                Assert.IsTrue(Equals(expectedSubscription.ClientState, actualSubscription.ClientState) 
+                Assert.IsTrue(Equals(expectedSubscription.ClientState, actualSubscription.ClientState)
                     && Equals(expectedSubscription.ExpirationDateTime.Date, actualSubscription.ExpirationDateTime.Date)
                     && Equals(expectedSubscription.NotificationUrl, actualSubscription.NotificationUrl)
                     && expectedSubscription.Resource.Contains(actualSubscription.Resource));
@@ -569,7 +582,7 @@ namespace Microsoft.SharePoint.Client.Tests
                 var testList = clientContext.Web.Lists.GetById(webHookListId);
                 clientContext.Load(testList);
                 clientContext.ExecuteQueryRetry();
-                
+
                 testList.AddWebhookSubscription(TestCommon.TestWebhookUrl, 12);
             }
         }
@@ -582,7 +595,7 @@ namespace Microsoft.SharePoint.Client.Tests
                 var testList = clientContext.Web.Lists.GetById(webHookListId);
                 clientContext.Load(testList);
                 clientContext.ExecuteQueryRetry();
-                
+
                 DateTime veryLastValidExpiration = DateTime.UtcNow.AddDays(180);
 
                 WebhookSubscription expectedSubscription = new WebhookSubscription()
@@ -665,7 +678,7 @@ namespace Microsoft.SharePoint.Client.Tests
 
                 WebhookSubscription createdSubscription = testList.AddWebhookSubscription(TestCommon.TestWebhookUrl, 3);
 
-                IList<WebhookSubscription> actualSubscriptions = Task.Run(()=> testList.GetWebhookSubscriptionsAsync()).Result;
+                IList<WebhookSubscription> actualSubscriptions = Task.Run(() => testList.GetWebhookSubscriptionsAsync()).Result;
 
                 Assert.IsTrue(actualSubscriptions.Count > 0);
             }

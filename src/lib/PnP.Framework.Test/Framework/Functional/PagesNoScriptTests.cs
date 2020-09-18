@@ -1,13 +1,5 @@
-﻿using Microsoft.SharePoint.Client;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Provisioning.ObjectHandlers;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Tests.Framework.Functional.Implementation;
-using PnP.Framework.Tests.Framework.Functional.Validators;
-using System;
-using System.Linq;
-using System.Xml.Linq;
-using System.Xml.XPath;
 
 namespace PnP.Framework.Tests.Framework.Functional
 {

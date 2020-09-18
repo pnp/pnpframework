@@ -3,10 +3,6 @@ using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
 using PnP.Framework.Provisioning.Providers.Xml;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Tests.Framework.Functional.Implementation
 {
@@ -23,8 +19,10 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
 
                 if (ptai == null)
                 {
-                    ptai = new ProvisioningTemplateApplyingInformation();
-                    ptai.HandlersToProcess = handlersToProcess;
+                    ptai = new ProvisioningTemplateApplyingInformation
+                    {
+                        HandlersToProcess = handlersToProcess
+                    };
                 }
 
                 if (ptai.ProgressDelegate == null)
@@ -44,8 +42,10 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
                 // Read the site we applied the template to 
                 if (ptci == null)
                 {
-                    ptci = new ProvisioningTemplateCreationInformation(cc.Web);
-                    ptci.HandlersToProcess = handlersToProcess;
+                    ptci = new ProvisioningTemplateCreationInformation(cc.Web)
+                    {
+                        HandlersToProcess = handlersToProcess
+                    };
                 }
 
                 if (ptci.ProgressDelegate == null)

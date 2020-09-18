@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
-using Microsoft.SharePoint.Client;
+﻿using Microsoft.SharePoint.Client;
 using Microsoft.SharePoint.Client.Taxonomy;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using Term = PnP.Framework.Provisioning.Model.Term;
 using TermGroup = PnP.Framework.Provisioning.Model.TermGroup;
 using TermSet = PnP.Framework.Provisioning.Model.TermSet;
@@ -260,9 +260,9 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
                 ctx.ExecuteQueryRetry();
 
                 var createdReusedTerm = set1.GetTerm(reusedTerm.Id);
-                ctx.Load(createdReusedTerm, 
+                ctx.Load(createdReusedTerm,
                     c => c.SourceTerm.Id,
-                    c => c.IsReused                    
+                    c => c.IsReused
                     );
                 ctx.ExecuteQueryRetry();
 

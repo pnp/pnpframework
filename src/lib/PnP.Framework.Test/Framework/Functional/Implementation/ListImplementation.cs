@@ -57,8 +57,10 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
                 // Ensure the needed tokens are added to the target token parser, this is needed due to the tokenparser perf optimalizations
                 result.TargetTokenParser.Tokens.Add(new SiteToken(cc.Web));
 
-                ListInstanceValidator lv = new ListInstanceValidator(cc);
-                lv.SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05;
+                ListInstanceValidator lv = new ListInstanceValidator(cc)
+                {
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                };
                 Assert.IsTrue(lv.Validate(result.SourceTemplate.Lists, result.TargetTemplate.Lists, result.TargetTokenParser));
 
                 // Delta lists
@@ -67,8 +69,10 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
                 // Ensure the needed tokens are added to the target token parser, this is needed due to the tokenparser perf optimalizations
                 result2.TargetTokenParser.Tokens.Add(new SiteToken(cc.Web));
 
-                ListInstanceValidator lv2 = new ListInstanceValidator(cc);
-                lv2.SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05;
+                ListInstanceValidator lv2 = new ListInstanceValidator(cc)
+                {
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                };
                 Assert.IsTrue(lv2.Validate(result2.SourceTemplate.Lists, result2.TargetTemplate.Lists, result2.TargetTokenParser));
             }
 
@@ -95,8 +99,10 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
                 // Ensure the needed tokens are added to the target token parser, this is needed due to the tokenparser perf optimalizations
                 result2.TargetTokenParser.Tokens.Add(new SiteToken(cc.Web));
 
-                ListInstanceValidator lv2 = new ListInstanceValidator(cc);
-                lv2.SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2017_05;
+                ListInstanceValidator lv2 = new ListInstanceValidator(cc)
+                {
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2017_05
+                };
                 Assert.IsTrue(lv2.Validate(result2.SourceTemplate.Lists, result2.TargetTemplate.Lists, result2.TargetTokenParser));
             }
         }
@@ -151,8 +157,10 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
                 // Ensure the needed tokens are added to the target token parser, this is needed due to the tokenparser perf optimalizations
                 result.TargetTokenParser.Tokens.Add(new SiteToken(cc.Web));
 
-                ListInstanceValidator lv = new ListInstanceValidator(cc);
-                lv.SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05;
+                ListInstanceValidator lv = new ListInstanceValidator(cc)
+                {
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                };
                 Assert.IsTrue(lv.Validate(result.SourceTemplate.Lists, result.TargetTemplate.Lists, result.TargetTokenParser));
 
                 // Delta lists
@@ -161,8 +169,10 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
                 // Ensure the needed tokens are added to the target token parser, this is needed due to the tokenparser perf optimalizations
                 result2.TargetTokenParser.Tokens.Add(new SiteToken(cc.Web));
 
-                ListInstanceValidator lv2 = new ListInstanceValidator(cc);
-                lv2.SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05;
+                ListInstanceValidator lv2 = new ListInstanceValidator(cc)
+                {
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                };
                 Assert.IsTrue(lv2.Validate(result2.SourceTemplate.Lists, result2.TargetTemplate.Lists, result2.TargetTokenParser));
             }
         }
@@ -187,8 +197,10 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
                 // Ensure the needed tokens are added to the target token parser, this is needed due to the tokenparser perf optimalizations
                 result2.TargetTokenParser.Tokens.Add(new SiteToken(cc.Web));
 
-                ListInstanceValidator lv2 = new ListInstanceValidator(cc);
-                lv2.SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2017_05;
+                ListInstanceValidator lv2 = new ListInstanceValidator(cc)
+                {
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2017_05
+                };
                 Assert.IsTrue(lv2.Validate(result2.SourceTemplate.Lists, result2.TargetTemplate.Lists, result2.TargetTokenParser));
             }
         }

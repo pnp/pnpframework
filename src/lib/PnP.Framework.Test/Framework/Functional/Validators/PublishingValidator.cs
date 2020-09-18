@@ -1,11 +1,7 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.SharePoint.Client;
 using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Tests.Framework.Functional.Validators;
+using System;
 using System.Collections.Generic;
-using PnP.Framework.Provisioning.ObjectHandlers;
-using Microsoft.SharePoint.Client;
-using System.Linq;
 
 namespace PnP.Framework.Tests.Framework.Functional.Validators
 {
@@ -37,13 +33,15 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
 
             // Check if the solution file is uploaded
             var solutionGallery = clientContext.Site.RootWeb.GetCatalog((int)ListTemplateType.SolutionCatalog);
-            var camlQuery = new CamlQuery();
-            camlQuery.ViewXml = string.Format(@"<View>  
+            var camlQuery = new CamlQuery
+            {
+                ViewXml = string.Format(@"<View>  
                                                     <Query> 
                                                         <Where><Eq><FieldRef Name='SolutionId' /><Value Type='Guid'>{0}</Value></Eq></Where> 
                                                     </Query> 
                                                         <ViewFields><FieldRef Name='ID' /></ViewFields> 
-                                                </View>", SourceDesignPackage.PackageGuid);
+                                                </View>", SourceDesignPackage.PackageGuid)
+            };
 
             var solutions = solutionGallery.GetItems(camlQuery);
             clientContext.Load(solutions);
@@ -58,7 +56,7 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
                 foreach (ListItem packageItem in solutions)
                 {
                     string targetdesignPackageName = Convert.ToString(packageItem["FileLeafRef"]);
-                    
+
                     if (targetdesignPackageName.ToLower().Equals(sourceesignPackageName.ToLower()))
                     {
                         isValidDesignPackage = true;

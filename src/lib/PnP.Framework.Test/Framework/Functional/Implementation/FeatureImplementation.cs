@@ -4,7 +4,7 @@ using PnP.Framework.Tests.Framework.Functional.Validators;
 
 namespace PnP.Framework.Tests.Framework.Functional.Implementation
 {
-    internal class FeatureImplementation: ImplementationBase
+    internal class FeatureImplementation : ImplementationBase
     {
         internal void SiteCollectionFeatureActivationDeactivation(string url)
         {

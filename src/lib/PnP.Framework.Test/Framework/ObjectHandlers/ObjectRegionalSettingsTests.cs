@@ -2,7 +2,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
-using System.Linq;
 
 namespace PnP.Framework.Tests.Framework.ObjectHandlers
 {
@@ -52,13 +51,16 @@ namespace PnP.Framework.Tests.Framework.ObjectHandlers
                 using (var ctx = TestCommon.CreateClientContext())
                 {
                     // Load the base template which will be used for the comparison work
-                    var template = new ProvisioningTemplate();
-
-                    template.RegionalSettings = new PnP.Framework.Provisioning.Model.RegionalSettings();
-                    template.RegionalSettings.FirstDayOfWeek = System.DayOfWeek.Monday;
-                    template.RegionalSettings.WorkDayEndHour = WorkHour.PM0700;
-                    template.RegionalSettings.TimeZone = 5;
-                    template.RegionalSettings.Time24 = true;
+                    var template = new ProvisioningTemplate
+                    {
+                        RegionalSettings = new PnP.Framework.Provisioning.Model.RegionalSettings
+                        {
+                            FirstDayOfWeek = System.DayOfWeek.Monday,
+                            WorkDayEndHour = WorkHour.PM0700,
+                            TimeZone = 5,
+                            Time24 = true
+                        }
+                    };
 
                     var parser = new TokenParser(ctx.Web, template);
                     new ObjectRegionalSettings().ProvisionObjects(ctx.Web, template, parser, new ProvisioningTemplateApplyingInformation());

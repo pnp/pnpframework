@@ -11,9 +11,11 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
         {
             using (var cc = TestCommon.CreateClientContext(url))
             {
-                ProvisioningTemplateCreationInformation ptci = new ProvisioningTemplateCreationInformation(cc.Web);
-                ptci.IncludeSearchConfiguration = true;
-                ptci.HandlersToProcess = Handlers.SearchSettings;
+                ProvisioningTemplateCreationInformation ptci = new ProvisioningTemplateCreationInformation(cc.Web)
+                {
+                    IncludeSearchConfiguration = true,
+                    HandlersToProcess = Handlers.SearchSettings
+                };
 
                 var result = TestProvisioningTemplate(cc, "searchsettings_site_1605_add.xml", Handlers.SearchSettings, null, ptci);
                 SearchSettingValidator sv = new SearchSettingValidator();
@@ -25,9 +27,11 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
         {
             using (var cc = TestCommon.CreateClientContext(url))
             {
-                ProvisioningTemplateCreationInformation ptci = new ProvisioningTemplateCreationInformation(cc.Web);
-                ptci.IncludeSearchConfiguration = true;
-                ptci.HandlersToProcess = Handlers.SearchSettings;
+                ProvisioningTemplateCreationInformation ptci = new ProvisioningTemplateCreationInformation(cc.Web)
+                {
+                    IncludeSearchConfiguration = true,
+                    HandlersToProcess = Handlers.SearchSettings
+                };
 
                 var result = TestProvisioningTemplate(cc, "searchsettings_web_1605_add.xml", Handlers.SearchSettings, null, ptci);
                 SearchSettingValidator sv = new SearchSettingValidator();

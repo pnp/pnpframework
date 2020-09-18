@@ -1,17 +1,14 @@
-﻿using System;
-using System.CodeDom;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PnP.Framework;
+using PnP.Framework.Entities;
+using PnP.Framework.Provisioning.Model;
+using PnP.Framework.Provisioning.ObjectHandlers;
+using PnP.Framework.Tests;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Microsoft.SharePoint.Client;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PnP.Framework.Tests;
-using System.IO;
-using PnP.Framework.Provisioning.Model;
-using PnP.Framework;
-using PnP.Framework.Provisioning.ObjectHandlers;
-using PnP.Framework.Entities;
 
 namespace Microsoft.SharePoint.Client.Tests
 {
@@ -21,7 +18,7 @@ namespace Microsoft.SharePoint.Client.Tests
         const string INDEXED_PROPERTY_KEY = "vti_indexedpropertykeys";
         private string _key = null;
         private string _value_string = null;
-        private int _value_int = 12345;
+        private readonly int _value_int = 12345;
         const string APPNAME = "HelloWorldApp";
         const string contentTypeName = "PnP Test Content Type";
         const string contentTypeGroupName = "PnP Web Extensions Test";
@@ -486,8 +483,10 @@ namespace Microsoft.SharePoint.Client.Tests
                 var web = clientContext.Web;
 
                 // Arrange
-                var creationInfo = new ProvisioningTemplateCreationInformation(web);
-                creationInfo.HandlersToProcess = Handlers.ContentTypes;
+                var creationInfo = new ProvisioningTemplateCreationInformation(web)
+                {
+                    HandlersToProcess = Handlers.ContentTypes
+                };
 
                 // Act
                 var template = web.GetProvisioningTemplate(creationInfo);
@@ -640,14 +639,16 @@ namespace Microsoft.SharePoint.Client.Tests
                 // Check if the solution file is uploaded
                 var solutionGallery = clientContext.Site.RootWeb.GetCatalog((int)ListTemplateType.SolutionCatalog);
 
-                var camlQuery = new CamlQuery();
-                camlQuery.ViewXml = string.Format(
+                var camlQuery = new CamlQuery
+                {
+                    ViewXml = string.Format(
       @"<View>  
             <Query> 
                <Where><Eq><FieldRef Name='SolutionId' /><Value Type='Guid'>{0}</Value></Eq></Where> 
             </Query> 
              <ViewFields><FieldRef Name='ID' /></ViewFields> 
-      </View>", new Guid(PnP.Framework.Tests.Properties.Resources.TestSolutionGuid));
+      </View>", new Guid(PnP.Framework.Tests.Properties.Resources.TestSolutionGuid))
+                };
 
                 var solutions = solutionGallery.GetItems(camlQuery);
                 clientContext.Load(solutions);
@@ -689,14 +690,16 @@ namespace Microsoft.SharePoint.Client.Tests
             // Check if the solution file is uploaded
             var solutionGallery = clientContext.Site.RootWeb.GetCatalog((int)ListTemplateType.SolutionCatalog);
 
-            var camlQuery = new CamlQuery();
-            camlQuery.ViewXml = string.Format(
+            var camlQuery = new CamlQuery
+            {
+                ViewXml = string.Format(
   @"<View>  
             <Query> 
                <Where><Eq><FieldRef Name='SolutionId' /><Value Type='Guid'>{0}</Value></Eq></Where> 
             </Query> 
              <ViewFields><FieldRef Name='ID' /></ViewFields> 
-      </View>", new Guid(PnP.Framework.Tests.Properties.Resources.TestSolutionGuid));
+      </View>", new Guid(PnP.Framework.Tests.Properties.Resources.TestSolutionGuid))
+            };
 
             var solutions = solutionGallery.GetItems(camlQuery);
             clientContext.Load(solutions);
@@ -732,7 +735,7 @@ namespace Microsoft.SharePoint.Client.Tests
         public void DeploySharePointFrameworkSolutionTest()
         {
             using (var ctx = TestCommon.CreateClientContext())
-            {                
+            {
                 var app = ctx.Web.DeployApplicationPackageToAppCatalog("hello-world.sppkg", "../../Resources", true, true, true);
             }
         }
@@ -774,7 +777,7 @@ namespace Microsoft.SharePoint.Client.Tests
                     Template = "STS#0"
                 };
                 Web subSite = ctx.Web.CreateWeb(subSiteInfo);
-                
+
                 string subWebName = subSite.GetName();
                 Assert.AreEqual(subWebUrl, subWebName);
             }

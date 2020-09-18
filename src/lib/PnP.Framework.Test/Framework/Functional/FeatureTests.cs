@@ -1,6 +1,4 @@
-﻿using PnP.Framework.Provisioning.Model;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PnP.Framework.Tests.Framework.Functional.Validators;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Tests.Framework.Functional.Implementation;
 
 namespace PnP.Framework.Tests.Framework.Functional
@@ -9,7 +7,7 @@ namespace PnP.Framework.Tests.Framework.Functional
     /// Test cases for the provisioning engine feature functionality
     /// </summary>
     [TestClass]
-    public class FeatureTests: FunctionalTestBase
+    public class FeatureTests : FunctionalTestBase
     {
         #region Construction
         public FeatureTests()
@@ -24,7 +22,7 @@ namespace PnP.Framework.Tests.Framework.Functional
         [ClassInitialize()]
         public static void ClassInit(TestContext context)
         {
-            ClassInitBase(context);            
+            ClassInitBase(context);
         }
 
         [ClassCleanup()]

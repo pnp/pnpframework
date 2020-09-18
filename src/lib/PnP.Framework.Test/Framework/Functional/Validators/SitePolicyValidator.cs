@@ -1,13 +1,7 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Tests.Framework.Functional.Validators;
-using System.Collections.Generic;
 using PnP.Framework.Provisioning.ObjectHandlers;
-using System.Xml;
 using System.Xml.Linq;
-using PnP.Framework.Provisioning.Providers.Xml;
-using System.Linq;
 
 namespace PnP.Framework.Tests.Framework.Functional.Validators
 {
@@ -24,12 +18,16 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
         {
             XPathQuery = "/pnp:Templates/pnp:ProvisioningTemplate/pnp:SitePolicy";
 
-            ProvisioningTemplate pt = new ProvisioningTemplate();
-            pt.SitePolicy = source;
+            ProvisioningTemplate pt = new ProvisioningTemplate
+            {
+                SitePolicy = source
+            };
             string sSchemaXml = ExtractElementXml(pt);
 
-            ProvisioningTemplate ptTarget = new ProvisioningTemplate();
-            ptTarget.SitePolicy = target;
+            ProvisioningTemplate ptTarget = new ProvisioningTemplate
+            {
+                SitePolicy = target
+            };
             string tSchemaXml = ExtractElementXml(ptTarget);
 
             // Use XML validation logic to compare source and target

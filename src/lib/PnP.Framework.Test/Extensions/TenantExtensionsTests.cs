@@ -1,22 +1,19 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.Online.SharePoint.TenantAdministration;
+using Microsoft.SharePoint.Client;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PnP.Framework.Entities;
+using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.SharePoint.Client;
-using Microsoft.Online.SharePoint.TenantAdministration;
-using System.Configuration;
-using PnP.Framework.Entities;
 using System.Threading;
-using PnP.Framework.Utilities;
 
 namespace PnP.Framework.Tests.AppModelExtensions
 {
     [TestClass()]
     public class TenantExtensionsTests
     {
-        private static string sitecollectionNamePrefix = "TestPnPSC_123456789_";
+        private static readonly string sitecollectionNamePrefix = "TestPnPSC_123456789_";
         private string sitecollectionName = "";
 
         #region Test initialize and cleanup
@@ -81,12 +78,12 @@ namespace PnP.Framework.Tests.AppModelExtensions
             }
             // catch exceptions with the GetSiteCollections call and log them so we can grab the corelation ID
             catch (Exception ex)
-            {                
+            {
                 Console.WriteLine(ex.ToDetailedString(tenant.Context));
                 throw;
             }
         }
-    
+
 
         [TestInitialize()]
         public void Initialize()
@@ -114,8 +111,10 @@ namespace PnP.Framework.Tests.AppModelExtensions
         #region Site existance tests
         [TestMethod()]
         [Timeout(15 * 60 * 1000)]
-        public void CheckIfSiteExistsTest() {
-            using (var tenantContext = TestCommon.CreateTenantClientContext()) {
+        public void CheckIfSiteExistsTest()
+        {
+            using (var tenantContext = TestCommon.CreateTenantClientContext())
+            {
                 var tenant = new Tenant(tenantContext);
                 var siteCollections = tenant.GetSiteCollections();
 
@@ -126,7 +125,8 @@ namespace PnP.Framework.Tests.AppModelExtensions
                 var siteExists1 = tenant.CheckIfSiteExists(site.Url, "Active");
                 Assert.IsTrue(siteExists1);
 
-                try {
+                try
+                {
                     string devSiteUrl = TestCommon.AppSetting("SPODevSiteUrl");
                     string siteToCreateUrl = GetTestSiteCollectionName(devSiteUrl, "aaabbbccc");
                     var siteExists2 = tenant.CheckIfSiteExists(siteToCreateUrl, "Active");

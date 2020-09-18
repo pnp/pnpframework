@@ -1,13 +1,11 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Tests.Framework.Functional.Validators;
-using System.Collections.Generic;
 using PnP.Framework.Provisioning.ObjectHandlers;
-using System.Xml;
-using System.Xml.Linq;
 using PnP.Framework.Provisioning.Providers.Xml;
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace PnP.Framework.Tests.Framework.Functional.Validators
 {
@@ -30,12 +28,16 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
             tParser = parser;
             XPathQuery = "/pnp:Templates/pnp:ProvisioningTemplate/pnp:Workflows";
 
-            ProvisioningTemplate pt = new ProvisioningTemplate();
-            pt.Workflows = source;
+            ProvisioningTemplate pt = new ProvisioningTemplate
+            {
+                Workflows = source
+            };
             string sSchemaXml = ExtractElementXml(pt);
 
-            ProvisioningTemplate ptTarget = new ProvisioningTemplate();
-            ptTarget.Workflows = target;
+            ProvisioningTemplate ptTarget = new ProvisioningTemplate
+            {
+                Workflows = target
+            };
             string tSchemaXml = ExtractElementXml(ptTarget);
 
             // Use XML validation logic to compare source and target
@@ -108,7 +110,7 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
             foreach (var item in coll)
             {
                 name = item.Attribute(attributeName).Value;
-                if (name!=null)
+                if (name != null)
                 {
                     item.Attribute(attributeName).Remove();
                     break;
@@ -143,7 +145,7 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
             var sColl = sourceObject.Descendants(ns + elementName);
             var tColl = targetObject.Descendants(ns + elementName);
 
-            if ((sColl != null && sColl.Any())  || !sColl.Any()&&tColl!=null&&tColl.Any() )
+            if ((sColl != null && sColl.Any()) || !sColl.Any() && tColl != null && tColl.Any())
             {
                 if (tColl != null && tColl.Any())
                 {
@@ -156,7 +158,7 @@ namespace PnP.Framework.Tests.Framework.Functional.Validators
                     }
                 }
             }
-            
+
         }
 
     }

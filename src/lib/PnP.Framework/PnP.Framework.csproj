@@ -15,6 +15,7 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>obj\Debug\netstandard2.0\PnP.Framework.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -107,6 +108,23 @@
 		</EmbeddedResource>
 	</ItemGroup>
 
+	
+	<ItemGroup>
+		<Compile Update="CanProvisionIssuesMessages.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>CanProvisionIssuesMessages.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Update="CanProvisionIssuesMessages.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>CanProvisionIssuesMessages.Designer.cs</LastGenOutput>
+			<CustomToolNamespace></CustomToolNamespace>
+		</EmbeddedResource>
+	</ItemGroup>
+				
 	<ItemGroup>
     <PackageReference Include="AngleSharp" Version="0.14.0" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />

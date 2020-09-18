@@ -1,0 +1,29 @@
+using Microsoft.SharePoint.Client;
+using PnP.Framework.Attributes;
+
+namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
+{
+    [TokenDefinitionDescription(
+      Token = "{site}",
+      Description = "Returns the server relative url of the current site",
+      Example = "{site}",
+      Returns = "/sites/mysitecollection/mysite")]
+    internal class SiteToken : VolatileTokenDefinition
+    {
+        public SiteToken(Web web)
+            : base(web, "{site}")
+        {
+        }
+
+        public override string GetReplaceValue()
+        {
+            if (CacheValue == null)
+            {
+                TokenContext.Load(TokenContext.Web, w => w.ServerRelativeUrl);
+                TokenContext.ExecuteQueryRetry();
+                CacheValue = TokenContext.Web.ServerRelativeUrl.TrimEnd('/');
+            }
+            return CacheValue;
+        }
+    }
+}

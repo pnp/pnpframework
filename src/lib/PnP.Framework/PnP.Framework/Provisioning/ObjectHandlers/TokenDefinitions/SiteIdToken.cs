@@ -1,0 +1,29 @@
+using Microsoft.SharePoint.Client;
+using PnP.Framework.Attributes;
+
+namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
+{
+    [TokenDefinitionDescription(
+       Token = "{siteid}",
+       Description = "Returns the id of the current site",
+       Example = "{siteid}",
+       Returns = "9188a794-cfcf-48b6-9ac5-df2048e8aa5d")]
+    internal class SiteIdToken : VolatileTokenDefinition
+    {
+        public SiteIdToken(Web web)
+            : base(web, "{siteid}")
+        {
+        }
+
+        public override string GetReplaceValue()
+        {
+            if (CacheValue == null)
+            {
+                TokenContext.Load(TokenContext.Web, w => w.Id);
+                TokenContext.ExecuteQueryRetry();
+                CacheValue = TokenContext.Web.Id.ToString();
+            }
+            return CacheValue;
+        }
+    }
+}

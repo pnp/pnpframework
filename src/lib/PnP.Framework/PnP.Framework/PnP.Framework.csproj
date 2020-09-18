@@ -1,0 +1,97 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+	<LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Provisioning\BaseTemplates\Common\Publishing-Feature-Native-Files.xml" />
+    <None Remove="Provisioning\BaseTemplates\SPO\BDR0Template.xml" />
+    <None Remove="Provisioning\BaseTemplates\SPO\BICenterSite0Template.xml" />
+    <None Remove="Provisioning\BaseTemplates\SPO\BLANKINTERNET0Template.xml" />
+    <None Remove="Provisioning\BaseTemplates\SPO\BLOG0Template.xml" />
+    <None Remove="Provisioning\BaseTemplates\SPO\CMSPUBLISHING0Template.xml" />
+    <None Remove="Provisioning\BaseTemplates\SPO\COMMUNITY0Template.xml" />
+    <None Remove="Provisioning\BaseTemplates\SPO\COMMUNITYPORTAL0Template.xml" />
+    <None Remove="Provisioning\BaseTemplates\SPO\DEV0Template.xml" />
+    <None Remove="Provisioning\BaseTemplates\SPO\EHS1Template.xml" />
+    <None Remove="Provisioning\BaseTemplates\SPO\ENTERWIKI0Template.xml" />
+    <None Remove="Provisioning\BaseTemplates\SPO\GROUP0Template.xml" />
+    <None Remove="Provisioning\BaseTemplates\SPO\OFFILE1Template.xml" />
+    <None Remove="Provisioning\BaseTemplates\SPO\PROJECTSITE0Template.xml" />
+    <None Remove="Provisioning\BaseTemplates\SPO\SITEPAGEPUBLISHING0Template.xml" />
+    <None Remove="Provisioning\BaseTemplates\SPO\SRCHCEN0Template.xml" />
+    <None Remove="Provisioning\BaseTemplates\SPO\SRCHCENTERLITE0Template.xml" />
+    <None Remove="Provisioning\BaseTemplates\SPO\STS0Template.xml" />
+    <None Remove="Provisioning\BaseTemplates\SPO\STS3Template.xml" />
+    <None Remove="Provisioning\BaseTemplates\SPO\VISPRUS0Template.xml" />
+    <None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2015-03.xsd" />
+    <None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2015-05.xsd" />
+    <None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2015-08.xsd" />
+    <None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2015-12.xsd" />
+    <None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2016-05.xsd" />
+    <None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2017-05.xsd" />
+    <None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2018-01.xsd" />
+    <None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2018-05.xsd" />
+    <None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2018-07.xsd" />
+    <None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2019-03.xsd" />
+    <None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2019-09.xsd" />
+    <None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2020-02.xsd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Provisioning\BaseTemplates\Common\Publishing-Feature-Native-Files.xml" />
+    <EmbeddedResource Include="Provisioning\BaseTemplates\SPO\BDR0Template.xml" />
+    <EmbeddedResource Include="Provisioning\BaseTemplates\SPO\BICenterSite0Template.xml" />
+    <EmbeddedResource Include="Provisioning\BaseTemplates\SPO\BLANKINTERNET0Template.xml" />
+    <EmbeddedResource Include="Provisioning\BaseTemplates\SPO\BLOG0Template.xml" />
+    <EmbeddedResource Include="Provisioning\BaseTemplates\SPO\CMSPUBLISHING0Template.xml" />
+    <EmbeddedResource Include="Provisioning\BaseTemplates\SPO\COMMUNITY0Template.xml" />
+    <EmbeddedResource Include="Provisioning\BaseTemplates\SPO\COMMUNITYPORTAL0Template.xml" />
+    <EmbeddedResource Include="Provisioning\BaseTemplates\SPO\DEV0Template.xml" />
+    <EmbeddedResource Include="Provisioning\BaseTemplates\SPO\EHS1Template.xml" />
+    <EmbeddedResource Include="Provisioning\BaseTemplates\SPO\ENTERWIKI0Template.xml" />
+    <EmbeddedResource Include="Provisioning\BaseTemplates\SPO\GROUP0Template.xml" />
+    <EmbeddedResource Include="Provisioning\BaseTemplates\SPO\OFFILE1Template.xml" />
+    <EmbeddedResource Include="Provisioning\BaseTemplates\SPO\PROJECTSITE0Template.xml" />
+    <EmbeddedResource Include="Provisioning\BaseTemplates\SPO\SITEPAGEPUBLISHING0Template.xml" />
+    <EmbeddedResource Include="Provisioning\BaseTemplates\SPO\SRCHCEN0Template.xml" />
+    <EmbeddedResource Include="Provisioning\BaseTemplates\SPO\SRCHCENTERLITE0Template.xml" />
+    <EmbeddedResource Include="Provisioning\BaseTemplates\SPO\STS0Template.xml" />
+    <EmbeddedResource Include="Provisioning\BaseTemplates\SPO\STS3Template.xml" />
+    <EmbeddedResource Include="Provisioning\BaseTemplates\SPO\VISPRUS0Template.xml" />
+    <EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2015-03.xsd" />
+    <EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2015-05.xsd" />
+    <EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2015-08.xsd" />
+    <EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2015-12.xsd" />
+    <EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2016-05.xsd" />
+    <EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2017-05.xsd" />
+    <EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2018-01.xsd" />
+    <EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2018-05.xsd" />
+    <EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2018-07.xsd" />
+    <EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2019-03.xsd" />
+    <EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2019-09.xsd" />
+    <EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2020-02.xsd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AngleSharp" Version="0.14.0" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Graph" Version="1.9.0" />
+    <PackageReference Include="Microsoft.Graph.Core" Version="1.9.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="3.19.8" />
+    <PackageReference Include="Microsoft.SharePointOnline.CSOM" Version="16.1.20412.12000" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
+    <PackageReference Include="Portable.Xaml" Version="0.25.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.7.1" />
+    <PackageReference Include="System.IO.Packaging" Version="4.7.0" />
+    <PackageReference Include="System.Text.Json" Version="4.7.2" />
+  </ItemGroup>
+
+</Project>

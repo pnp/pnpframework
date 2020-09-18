@@ -8,7 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 
-namespace PnP.Framework.Tests.AppModelExtensions
+namespace PnP.Framework.Test.AppModelExtensions
 {
     [TestClass()]
     public class BrandingExtensionsTests
@@ -55,7 +55,7 @@ namespace PnP.Framework.Tests.AppModelExtensions
             Console.WriteLine("BrandingExtensionsTests.Initialise");
 
             customColorFilePath = Path.Combine(Path.GetTempPath(), "custom.spcolor");
-            System.IO.File.WriteAllBytes(customColorFilePath, PnP.Framework.Tests.Properties.Resources.custom);
+            System.IO.File.WriteAllBytes(customColorFilePath, PnP.Framework.Test.Properties.Resources.custom);
             customBackgroundFilePath = Path.Combine(Path.GetTempPath(), "custombg.jpg");
             //Properties.Resources.custombg.Save(customBackgroundFilePath);
 
@@ -591,7 +591,6 @@ namespace PnP.Framework.Tests.AppModelExtensions
         #endregion
 
         #region Master page tests
-        // Manually taken over from Gavin Barron's commit https://github.com/gavinbarron/PnP/blob/17c4d3647f4a509fb1eedb949ef07af7f962929c/OfficeDevPnP.Core/PnP.Framework.Tests/AppModelExtensions/BrandingExtensionsTests.cs 
         [TestMethod]
         public void SeattleMasterPageIsUnchangedTest()
         {

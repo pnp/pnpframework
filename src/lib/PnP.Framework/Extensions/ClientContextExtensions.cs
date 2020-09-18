@@ -711,7 +711,7 @@ namespace Microsoft.SharePoint.Client
                         var method = t.GetFrame(i + 1).GetMethod();
 
                         // Only return the calling method in case ExecuteQueryRetry was called from inside the PnP core library
-                        if (method.Module.Name.Equals("OfficeDevPnP.Core.dll", StringComparison.InvariantCultureIgnoreCase))
+                        if (method.Module.Name.Equals("PnP.Framework.dll", StringComparison.InvariantCultureIgnoreCase))
                         {
                             pnpMethod = method.Name;
                         }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PnP.Framework.Tests.Framework.Functional
+namespace PnP.Framework.Test.Framework.Functional
 {
     /// <summary>
     /// Test cases for the provisioning engine security functionality

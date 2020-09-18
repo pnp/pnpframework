@@ -2,7 +2,7 @@
 using PnP.Framework.Diagnostics;
 using System;
 
-namespace PnP.Framework.Tests.Diagnostics
+namespace PnP.Framework.Test.Diagnostics
 {
     [TestClass]
     public class PnPMonitoredScopeTests

@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Model;
 
-namespace PnP.Framework.Tests.Framework.Functional.Validators
+namespace PnP.Framework.Test.Framework.Functional.Validators
 {
     [TestClass]
     public class ComposedLookValidator : ValidatorBase

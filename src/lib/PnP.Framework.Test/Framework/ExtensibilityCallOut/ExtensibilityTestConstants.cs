@@ -1,4 +1,4 @@
-﻿namespace PnP.Framework.Tests.Framework.ExtensibilityCallOut
+﻿namespace PnP.Framework.Test.Framework.ExtensibilityCallOut
 {
     public static class ExtensibilityTestConstants
     {

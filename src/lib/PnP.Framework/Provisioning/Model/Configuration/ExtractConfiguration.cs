@@ -219,7 +219,7 @@ namespace PnP.Framework.Provisioning.Model.Configuration
         public static ExtractConfiguration FromString(string input)
         {
             //var assembly = Assembly.GetExecutingAssembly();
-            //var resourceName = "OfficeDevPnP.Core.Framework.Provisioning.Model.Configuration.extract-configuration.schema.json";
+            //var resourceName = "PnP.Framework.Provisioning.Model.Configuration.extract-configuration.schema.json";
 
             //using (Stream stream = assembly.GetManifestResourceStream(resourceName))
             //using (StreamReader reader = new StreamReader(stream))

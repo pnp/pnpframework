@@ -8,7 +8,7 @@
         public XMLPnPSchemaV201807Serializer() :
             base(typeof(XMLConstants)
                 .Assembly
-                .GetManifestResourceStream("OfficeDevPnP.Core.Framework.Provisioning.Providers.Xml.ProvisioningSchema-2018-07.xsd"))
+                .GetManifestResourceStream("PnP.Framework.Provisioning.Providers.Xml.ProvisioningSchema-2018-07.xsd"))
         {
         }
 

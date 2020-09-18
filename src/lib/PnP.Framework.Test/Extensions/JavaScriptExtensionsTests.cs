@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PnP.Framework.Tests;
+using PnP.Framework.Test;
 using System.Collections.Generic;
 using System.Linq;
 namespace Microsoft.SharePoint.Client.Tests

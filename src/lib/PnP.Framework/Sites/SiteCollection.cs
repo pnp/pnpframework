@@ -389,7 +389,7 @@ namespace PnP.Framework.Sites
                                 }
                                 else
                                 {
-                                    throw new Exception("OfficeDevPnP.Core.Sites.SiteCollection.CreateAsync: Could not create team site.");
+                                    throw new Exception("PnP.Framework.Sites.SiteCollection.CreateAsync: Could not create team site.");
                                 }
                             }
                             else
@@ -699,7 +699,7 @@ namespace PnP.Framework.Sites
                                             errorSb.AppendLine($"CurrentUser / Owner: {clientContext.Web.CurrentUser.LoginName}");
                                             Log.Error(Constants.LOGGING_SOURCE, CoreResources.ClientContextExtensions_ExecuteQueryRetryException, errorSb.ToString());
 
-                                            throw new Exception($"OfficeDevPnP.Core.Sites.SiteCollection.CreateAsync: Could not create {payload["WebTemplate"].ToString()} site.");
+                                            throw new Exception($"PnP.Framework.Sites.SiteCollection.CreateAsync: Could not create {payload["WebTemplate"].ToString()} site.");
                                         }
                                     }
                                     else

@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace PnP.Framework.Tests.Framework.ObjectHandlers
+namespace PnP.Framework.Test.Framework.ObjectHandlers
 {
     [TestClass]
     public class ObjectLookupFieldsTests

@@ -6,7 +6,7 @@ using PnP.Framework.Provisioning.Model.Configuration;
 using PnP.Framework.Provisioning.Providers.Xml;
 using System;
 
-namespace PnP.Framework.Tests.Framework.ProvisioningTemplates
+namespace PnP.Framework.Test.Framework.ProvisioningTemplates
 {
     [TestClass]
     public class ProvisioningTests
@@ -75,7 +75,7 @@ namespace PnP.Framework.Tests.Framework.ProvisioningTemplates
                 accountDomainParamValue = "contoso.com";
             }
 
-            var resourceFolder = string.Format(@"{0}\..\..\Resources\Templates", AppDomain.CurrentDomain.BaseDirectory);
+            var resourceFolder = string.Format(@"{0}\..\..\..\Resources\Templates", AppDomain.CurrentDomain.BaseDirectory);
             XMLTemplateProvider provider = new XMLFileSystemTemplateProvider(resourceFolder, "");
 
             var existingTemplate = provider.GetTemplate("ProvisioningSchema-2018-07-FullSample-01.xml");

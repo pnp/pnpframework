@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Threading.Tasks;
 
-namespace PnP.Framework.Tests.Sites
+namespace PnP.Framework.Test.Sites
 {
     [TestClass]
     public class SiteCollectionTests

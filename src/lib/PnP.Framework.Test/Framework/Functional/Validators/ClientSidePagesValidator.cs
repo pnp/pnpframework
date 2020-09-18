@@ -2,7 +2,7 @@
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Providers.Xml;
 
-namespace PnP.Framework.Tests.Framework.Functional.Validators
+namespace PnP.Framework.Test.Framework.Functional.Validators
 {
     [TestClass]
     public class ClientSidePagesValidator : ValidatorBase

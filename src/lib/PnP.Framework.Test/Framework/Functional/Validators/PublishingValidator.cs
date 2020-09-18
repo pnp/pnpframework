@@ -3,7 +3,7 @@ using PnP.Framework.Provisioning.Model;
 using System;
 using System.Collections.Generic;
 
-namespace PnP.Framework.Tests.Framework.Functional.Validators
+namespace PnP.Framework.Test.Framework.Functional.Validators
 {
     class PublishingValidator : ValidatorBase
     {

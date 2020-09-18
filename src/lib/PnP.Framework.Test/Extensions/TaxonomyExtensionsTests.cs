@@ -1,7 +1,7 @@
 ﻿using Microsoft.SharePoint.Client.Taxonomy;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Entities;
-using PnP.Framework.Tests;
+using PnP.Framework.Test;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -177,7 +177,7 @@ namespace Microsoft.SharePoint.Client.Tests
                 // exceptions like the following happen:
                 // Microsoft.SharePoint.Client.ServerException: Microsoft.SharePoint.Client.ServerException: A Group cannot be deleted unless it is empty..
 
-                PnP.Framework.Tests.Utilities.RetryHelper.Do(
+                PnP.Framework.Test.Utilities.RetryHelper.Do(
                     () => this.InnerCleanupTaxonomy(),
                     TimeSpan.FromSeconds(30),
                     3);

@@ -2,7 +2,7 @@
 using PnP.Framework.Utilities.WebParts;
 using PnP.Framework.Utilities.WebParts.Processors;
 
-namespace PnP.Framework.Tests.Utilities.WebParts
+namespace PnP.Framework.Test.Utilities.WebParts
 {
     [TestClass]
     public class WebPartPostProcessorFactoryTests

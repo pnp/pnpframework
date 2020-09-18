@@ -5,7 +5,7 @@ using PnP.Framework.Provisioning.Providers.Xml;
 using System.Linq;
 using System.Xml.Linq;
 
-namespace PnP.Framework.Tests.Framework.Functional.Validators
+namespace PnP.Framework.Test.Framework.Functional.Validators
 {
     /// <summary>
     /// Summary description for NavigationValidator

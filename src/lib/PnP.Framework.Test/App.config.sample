@@ -4,7 +4,7 @@
     <sectionGroup name="pnp">
       <section
         name="tracing"
-        type="PnP.Framework.Diagnostics.LogConfigurationTracingSection, OfficeDevPnP.Core"
+        type="PnP.Framework.Diagnostics.LogConfigurationTracingSection, PnP.Framework"
         allowLocation="true"
         allowDefinition="Everywhere"
       />
@@ -13,7 +13,7 @@
   </configSections>
   <pnp>
     <tracing logLevel="Debug">
-      <logger type="PnP.Framework.Diagnostics.TraceLogger, OfficeDevPnP.Core, Culture=neutral, PublicKeyToken=null" />
+      <logger type="PnP.Framework.Diagnostics.TraceLogger, PnP.Framework, Culture=neutral, PublicKeyToken=null" />
     </tracing>
   </pnp>
   <appSettings>
@@ -95,7 +95,7 @@
       <add name="console" type="System.Diagnostics.ConsoleTraceListener" />
     </sharedListeners>
     <sources>
-      <source name="OfficeDevPnP.Core" switchValue="Verbose" >
+      <source name="PnP.Framework" switchValue="Verbose" >
         <listeners>
           <add name="console" />
         </listeners>

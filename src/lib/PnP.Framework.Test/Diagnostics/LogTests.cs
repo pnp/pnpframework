@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Diagnostics;
 
-namespace PnP.Framework.Tests.Diagnostics
+namespace PnP.Framework.Test.Diagnostics
 {
     [TestClass]
     public class LogTests

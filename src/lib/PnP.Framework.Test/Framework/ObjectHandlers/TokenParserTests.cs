@@ -5,7 +5,7 @@ using PnP.Framework.Provisioning.ObjectHandlers;
 using PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions;
 using System;
 
-namespace PnP.Framework.Tests.Framework.ObjectHandlers
+namespace PnP.Framework.Test.Framework.ObjectHandlers
 {
     [TestClass]
     public class TokenParserTests

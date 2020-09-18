@@ -4,7 +4,7 @@ using PnP.Framework.Provisioning.ObjectHandlers;
 using PnP.Framework.Provisioning.Providers.Xml;
 using System;
 
-namespace PnP.Framework.Tests.Framework.Functional.Implementation
+namespace PnP.Framework.Test.Framework.Functional.Implementation
 {
     internal abstract class ImplementationBase
     {
@@ -14,7 +14,7 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
             try
             {
                 // Read the template from XML and apply it
-                XMLTemplateProvider provider = new XMLFileSystemTemplateProvider(string.Format(@"{0}\..\..\Framework\Functional", AppDomain.CurrentDomain.BaseDirectory), "Templates");
+                XMLTemplateProvider provider = new XMLFileSystemTemplateProvider(string.Format(@"{0}\..\..\..\Framework\Functional", AppDomain.CurrentDomain.BaseDirectory), "Templates");
                 ProvisioningTemplate sourceTemplate = provider.GetTemplate(templateName);
 
                 if (ptai == null)

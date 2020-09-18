@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace PnP.Framework.Tests.Utilities
+namespace PnP.Framework.Test.Utilities
 {
     public static class RetryHelper
     {

@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 
-namespace PnP.Framework.Tests.AppModelExtensions
+namespace PnP.Framework.Test.AppModelExtensions
 {
     [TestClass()]
     public class TenantExtensionsTests

@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Connectors;
 
-namespace PnP.Framework.Tests.Framework.Connectors
+namespace PnP.Framework.Test.Framework.Connectors
 {
     [TestClass]
     public class ConnectorFileSystemTests

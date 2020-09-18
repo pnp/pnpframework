@@ -27,7 +27,7 @@ namespace PnP.Framework.Provisioning.Extensibility
         /// <exception cref="ArgumentNullException">ClientContext is Null></exception>
         public IEnumerable<TokenDefinition> ExecuteTokenProviderCallOut(ClientContext ctx, ExtensibilityHandler provider, ProvisioningTemplate template)
         {
-            var _loggingSource = "OfficeDevPnP.Core.Framework.Provisioning.Extensibility.ExtensibilityManager.ExecuteTokenProviderCallOut";
+            var _loggingSource = "PnP.Framework.Provisioning.Extensibility.ExtensibilityManager.ExecuteTokenProviderCallOut";
 
             if (ctx == null)
                 throw new ArgumentNullException(nameof(ctx), CoreResources.Provisioning_Extensibility_Pipeline_ClientCtxNull);
@@ -100,7 +100,7 @@ namespace PnP.Framework.Provisioning.Extensibility
             ProvisioningTemplate template, ProvisioningTemplateApplyingInformation applyingInformation,
             TokenParser tokenParser, PnPMonitoredScope scope)
         {
-            var _loggingSource = "OfficeDevPnP.Core.Framework.Provisioning.Extensibility.ExtensibilityManager.ExecuteCallout";
+            var _loggingSource = "PnP.Framework.Provisioning.Extensibility.ExtensibilityManager.ExecuteCallout";
 
             if (ctx == null)
                 throw new ArgumentNullException(nameof(ctx), CoreResources.Provisioning_Extensibility_Pipeline_ClientCtxNull);
@@ -185,7 +185,7 @@ namespace PnP.Framework.Provisioning.Extensibility
         /// <exception cref="ArgumentNullException">ClientContext is Null></exception>
         public ProvisioningTemplate ExecuteExtensibilityExtractionCallOut(ClientContext ctx, ExtensibilityHandler handler, ProvisioningTemplate template, ProvisioningTemplateCreationInformation creationInformation, PnPMonitoredScope scope)
         {
-            var _loggingSource = "OfficeDevPnP.Core.Framework.Provisioning.Extensibility.ExtensibilityManager.ExecuteCallout";
+            var _loggingSource = "PnP.Framework.Provisioning.Extensibility.ExtensibilityManager.ExecuteCallout";
 
             if (ctx == null)
                 throw new ArgumentNullException(nameof(ctx), CoreResources.Provisioning_Extensibility_Pipeline_ClientCtxNull);

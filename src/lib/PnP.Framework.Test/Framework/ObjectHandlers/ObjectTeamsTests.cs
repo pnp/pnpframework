@@ -13,7 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace PnP.Framework.Tests.Framework.ObjectHandlers
+namespace PnP.Framework.Test.Framework.ObjectHandlers
 {
     [TestClass]
     public class ObjectTeamsTests

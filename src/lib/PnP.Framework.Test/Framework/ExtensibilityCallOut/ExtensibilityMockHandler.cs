@@ -7,7 +7,7 @@ using PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions;
 using System;
 using System.Collections.Generic;
 
-namespace PnP.Framework.Tests.Framework.ExtensibilityCallOut
+namespace PnP.Framework.Test.Framework.ExtensibilityCallOut
 {
     public class ExtensibilityMockHandler : IProvisioningExtensibilityHandler
     {

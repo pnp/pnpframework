@@ -1,8 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PnP.Framework.Tests.Framework.Functional.Implementation;
+using PnP.Framework.Test.Framework.Functional.Implementation;
 using System;
 
-namespace PnP.Framework.Tests.Framework.Functional
+namespace PnP.Framework.Test.Framework.Functional
 {
     [TestClass]
     public class WorkflowsNoScriptTests : FunctionalTestBase

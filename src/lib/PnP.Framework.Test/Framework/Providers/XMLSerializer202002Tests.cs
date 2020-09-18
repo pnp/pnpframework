@@ -26,7 +26,7 @@ using ProvisioningTemplate = PnP.Framework.Provisioning.Model.ProvisioningTempla
 using TeamTemplate = PnP.Framework.Provisioning.Model.Teams.TeamTemplate;
 using WorkHour = PnP.Framework.Provisioning.Model.WorkHour;
 
-namespace PnP.Framework.Tests.Framework.Providers
+namespace PnP.Framework.Test.Framework.Providers
 {
     /// <summary>
     /// Covers below objects:
@@ -105,7 +105,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_Apps()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -122,7 +122,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_Apps()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate();
 
@@ -170,7 +170,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_SiteHeader()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -184,7 +184,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_SiteHeader()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate
             {
@@ -216,7 +216,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_TemplateTheme()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -231,7 +231,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_TemplateTheme()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate
             {
@@ -265,7 +265,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_SiteFooter()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -288,7 +288,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_SiteFooter()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate
             {
@@ -352,7 +352,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_AppCatalog()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -378,7 +378,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_AppCatalog()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate();
 
@@ -433,7 +433,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_ProvisioningTemplateWebhook()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -454,7 +454,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_ProvisioningTemplateWebhook()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate();
 
@@ -515,7 +515,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_ProvisioningWebhook()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var hierarchy = provider.GetHierarchy(TEST_TEMPLATE);
 
@@ -535,7 +535,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_ProvisioningWebhook()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate { ParentHierarchy = new ProvisioningHierarchy() };
 
@@ -594,7 +594,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_TeamTemplate()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var hierarchy = provider.GetHierarchy(TEST_TEMPLATE);
             var teamsTemplate = hierarchy.Teams.TeamTemplates;
@@ -611,7 +611,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_TeamTemplate()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate { ParentHierarchy = new ProvisioningHierarchy() };
 
@@ -647,7 +647,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_Team()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var hierarchy = provider.GetHierarchy(TEST_TEMPLATE);
             var teams = hierarchy.Teams.Teams;
@@ -736,7 +736,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_Team()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate { ParentHierarchy = new ProvisioningHierarchy() };
 
@@ -963,7 +963,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_TeamApps()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var hierarchy = provider.GetHierarchy(TEST_TEMPLATE);
             var apps = hierarchy.Teams.Apps;
@@ -977,7 +977,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_TeamApps()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate { ParentHierarchy = new ProvisioningHierarchy() };
 
@@ -1006,7 +1006,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_AzureAD()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var hierarchy = provider.GetHierarchy(TEST_TEMPLATE);
             var users = hierarchy.AzureActiveDirectory.Users;
@@ -1042,7 +1042,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_AzureAD()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var passWord = new SecureString();
             foreach (char c in "Pass@w0rd") passWord.AppendChar(c);
@@ -1118,7 +1118,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_Drive()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var hierarchy = provider.GetHierarchy(TEST_TEMPLATE);
             var driveRoots = hierarchy.Drive.DriveRoots;
@@ -1147,7 +1147,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_Drive()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             #region Prepare source model
 
@@ -1281,7 +1281,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_Tenant_AppCatalog()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var hierarchy = provider.GetHierarchy(TEST_TEMPLATE);
             var appCatalog = hierarchy.Tenant.AppCatalog;
@@ -1299,7 +1299,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_Tenant_AppCatalog()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var passWord = new SecureString();
             foreach (char c in "Pass@w0rd") passWord.AppendChar(c);
@@ -1344,7 +1344,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_Tenant_WebApiPermissions()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var hierarchy = provider.GetHierarchy(TEST_TEMPLATE);
             var apiPermission = hierarchy.Tenant.WebApiPermissions;
@@ -1357,7 +1357,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_Tenant_WebApiPermissions()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var passWord = new SecureString();
             foreach (char c in "Pass@w0rd") passWord.AppendChar(c);
@@ -1390,7 +1390,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_Tenant_ContentDeliveryNetwork()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var hierarchy = provider.GetHierarchy(TEST_TEMPLATE);
             var cdn = hierarchy.Tenant.ContentDeliveryNetwork;
@@ -1415,7 +1415,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_Tenant_ContentDeliveryNetwork()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var passWord = new SecureString();
             foreach (char c in "Pass@w0rd") passWord.AppendChar(c);
@@ -1467,7 +1467,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_Tenant_SiteDesigns()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var hierarchy = provider.GetHierarchy(TEST_TEMPLATE);
             var siteDesigns = hierarchy.Tenant.SiteDesigns;
@@ -1478,7 +1478,7 @@ namespace PnP.Framework.Tests.Framework.Providers
             Assert.AreEqual("PnP Site Design Preview", siteDesigns[0].PreviewImageAltText);
             Assert.AreEqual("PnPSiteDesign.png", siteDesigns[0].PreviewImageUrl);
             Assert.AreEqual("PnP Site Design", siteDesigns[0].Title);
-            Assert.AreEqual(1, (int)siteDesigns[0].WebTemplate); // TenantHelper.ProcessSiteDesigns handles conversion to SiteDesignWebTemplate from valid integer
+            Assert.AreEqual(68, (int)siteDesigns[0].WebTemplate); // TenantHelper.ProcessSiteDesigns handles conversion to SiteDesignWebTemplate from valid integer
 
             Assert.AreEqual("user1@contoso.com", siteDesigns[0].Grants[0].Principal);
             Assert.AreEqual(SiteDesignRight.View, siteDesigns[0].Grants[0].Right);
@@ -1491,7 +1491,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_Tenant_SiteDesigns()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var passWord = new SecureString();
             foreach (char c in "Pass@w0rd") passWord.AppendChar(c);
@@ -1548,7 +1548,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_Tenant_SiteScripts()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
             var hierarchy = provider.GetHierarchy(TEST_TEMPLATE);
             var siteScripts = hierarchy.Tenant.SiteScripts;
 
@@ -1563,7 +1563,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_Tenant_SiteScripts()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var passWord = new SecureString();
             foreach (char c in "Pass@w0rd") passWord.AppendChar(c);
@@ -1609,7 +1609,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_Tenant_StorageEntities()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var hierarchy = provider.GetHierarchy(TEST_TEMPLATE);
             var storageEntities = hierarchy.Tenant.StorageEntities;
@@ -1624,7 +1624,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_Tenant_StorageEntities()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var passWord = new SecureString();
             foreach (char c in "Pass@w0rd") passWord.AppendChar(c);
@@ -1661,7 +1661,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_Tenant_Themes()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var hierarchy = provider.GetHierarchy(TEST_TEMPLATE);
             var themes = hierarchy.Tenant.Themes;
@@ -1677,7 +1677,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_Tenant_Themes()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var passWord = new SecureString();
             foreach (char c in "Pass@w0rd") passWord.AppendChar(c);
@@ -1714,7 +1714,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_Tenant_SPUserProfiles()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var hierarchy = provider.GetHierarchy(TEST_TEMPLATE);
             var ups = hierarchy.Tenant.SPUsersProfiles;
@@ -1745,7 +1745,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_Tenant_SPUserProfiles()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate { ParentHierarchy = new ProvisioningHierarchy() };
 
@@ -1800,7 +1800,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_Tenant_Office365GroupsLifecyclePolicies()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var hierarchy = provider.GetHierarchy(TEST_TEMPLATE);
             var o365LifecyclePolicies = hierarchy.Tenant.Office365GroupLifecyclePolicies;
@@ -1817,7 +1817,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_Tenant_Office365GroupsLifecyclePolicies()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate { ParentHierarchy = new ProvisioningHierarchy() };
 
@@ -1856,7 +1856,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_Tenant_Office365GroupsSettings()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var hierarchy = provider.GetHierarchy(TEST_TEMPLATE);
             var o365GroupsSettings = hierarchy.Tenant.Office365GroupsSettings;
@@ -1872,7 +1872,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_Tenant_Office365GroupsSettings()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate { ParentHierarchy = new ProvisioningHierarchy() };
 
@@ -1908,7 +1908,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_Tenant_SharingSettings()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var hierarchy = provider.GetHierarchy(TEST_TEMPLATE);
             var sharingSettings = hierarchy.Tenant.SharingSettings;
@@ -1933,7 +1933,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_Tenant_SharingSettings()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate { ParentHierarchy = new ProvisioningHierarchy() };
 
@@ -1981,7 +1981,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_Properties()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -1995,7 +1995,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_Properties()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate();
 
@@ -2022,7 +2022,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_SitePolicy()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -2035,7 +2035,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_SitePolicy()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate { SitePolicy = "HBI" };
 
@@ -2058,7 +2058,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_WebSettings()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -2097,7 +2097,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_WebSettings()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate
             {
@@ -2181,7 +2181,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_SiteSettings()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -2200,7 +2200,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_SiteSettings()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate
             {
@@ -2241,7 +2241,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_RegionalSettings()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -2266,7 +2266,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_RegionalSettings()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate
             {
@@ -2319,7 +2319,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_SupportedUILanguages()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -2333,7 +2333,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_SupportedUILanguages()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate();
             result.SupportedUILanguages.Add(new SupportedUILanguage
@@ -2361,7 +2361,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_AuditSettings()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -2376,7 +2376,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_AuditSettings()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate
             {
@@ -2413,7 +2413,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_PropertyBagEntries()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -2429,7 +2429,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_PropertyBagEntries()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate();
             result.PropertyBagEntries.Add(new PnP.Framework.Provisioning.Model.PropertyBagEntry
@@ -2467,7 +2467,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_Security()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -2569,7 +2569,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_Security()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate
             {
@@ -2773,7 +2773,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_Navigation()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -2839,7 +2839,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_Navigation()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate();
             var searchNavigation = new PnP.Framework.Provisioning.Model.StructuralNavigation
@@ -2980,7 +2980,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_SiteFields()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -2997,7 +2997,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_SiteFields()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate();
             result.SiteFields.Add(new PnP.Framework.Provisioning.Model.Field()
@@ -3040,7 +3040,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_ContentTypes()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -3090,7 +3090,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_ContentTypes()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate();
 
@@ -3195,7 +3195,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_ListInstances()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -3442,7 +3442,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_ListInstances()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate();
             var list = new PnP.Framework.Provisioning.Model.ListInstance()
@@ -4029,7 +4029,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_Features()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -4066,7 +4066,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_Features()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate
             {
@@ -4127,7 +4127,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_CustomActions()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -4159,7 +4159,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_CustomActions()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate
             {
@@ -4277,7 +4277,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_Files()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -4312,7 +4312,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_Files()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate();
 
@@ -4422,7 +4422,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_Pages()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -4452,7 +4452,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_Pages()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate();
 
@@ -4532,7 +4532,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_TermGroups()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -4568,7 +4568,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_TermGroups()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate();
 
@@ -4682,7 +4682,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_ComposedLook()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -4700,7 +4700,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_ComposedLook()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate();
 
@@ -4738,7 +4738,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_SearchSettings()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -4757,7 +4757,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_SearchSettings()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate
             {
@@ -4782,7 +4782,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_Publishing()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -4810,7 +4810,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_Publishing()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate
             {
@@ -4890,7 +4890,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_SiteWebhooks()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -4906,7 +4906,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_SiteWebhooks()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate();
 
@@ -4940,7 +4940,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Deserialize_ClientSidePages()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var serializer = new XMLPnPSchemaV202002Serializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
@@ -5009,7 +5009,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLSerializer_Serialize_ClientSidePages()
         {
-            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources", "Templates");
+            var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
             var result = new ProvisioningTemplate();
 

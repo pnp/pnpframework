@@ -7,7 +7,7 @@ using System;
 using System.Linq;
 using WebPart = PnP.Framework.Provisioning.Model.WebPart;
 
-namespace PnP.Framework.Tests.Framework.ObjectHandlers
+namespace PnP.Framework.Test.Framework.ObjectHandlers
 {
     [TestClass]
     public class ObjectPagesTests

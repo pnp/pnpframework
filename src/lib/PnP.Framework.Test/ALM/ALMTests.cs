@@ -1,10 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.ALM;
+using PnP.Framework.Test.Properties;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PnP.Framework.Tests.Sites
+namespace PnP.Framework.Test.Sites
 {
     [TestClass]
     public class ALMTests
@@ -30,7 +31,7 @@ namespace PnP.Framework.Tests.Sites
             using (var clientContext = TestCommon.CreateClientContext())
             {
                 AppManager manager = new AppManager(clientContext);
-                var appBytes = PnP.Framework.Tests.Properties.Resources.alm;
+                var appBytes = Resources.alm;
 
                 //Test adding app
                 var addedApp = await manager.AddAsync(appBytes, $"app-{appGuid}.sppkg", true);
@@ -60,7 +61,7 @@ namespace PnP.Framework.Tests.Sites
             using (var clientContext = TestCommon.CreateClientContext())
             {
                 AppManager manager = new AppManager(clientContext);
-                var appBytes = PnP.Framework.Tests.Properties.Resources.alm;
+                var appBytes = Resources.alm;
 
                 //Test adding app
                 var addedApp = manager.Add(appBytes, $"app-{appGuid}.sppkg", true);
@@ -89,7 +90,7 @@ namespace PnP.Framework.Tests.Sites
             using (var clientContext = TestCommon.CreateClientContext())
             {
                 AppManager manager = new AppManager(clientContext);
-                var appBytes = PnP.Framework.Tests.Properties.Resources.almskip;
+                var appBytes = Resources.almskip;
 
                 var results = manager.Add(appBytes, $"appalmskip-{appGuid}.sppkg", true);
 
@@ -115,7 +116,7 @@ namespace PnP.Framework.Tests.Sites
             using (var clientContext = TestCommon.CreateClientContext())
             {
                 AppManager manager = new AppManager(clientContext);
-                var appBytes = PnP.Framework.Tests.Properties.Resources.almskip;
+                var appBytes = Resources.almskip;
 
                 var results = await manager.AddAsync(appBytes, $"appalmskip-{appGuid}.sppkg", true);
 

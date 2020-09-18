@@ -62,7 +62,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml
             // Load the XSD embedded resource
             Stream stream = typeof(XMLPnPSchemaV201512Formatter)
                 .Assembly
-                .GetManifestResourceStream("OfficeDevPnP.Core.Framework.Provisioning.Providers.Xml.ProvisioningSchema-2015-12.xsd");
+                .GetManifestResourceStream("PnP.Framework.Provisioning.Providers.Xml.ProvisioningSchema-2015-12.xsd");
 
             // Prepare the XML Schema Set
             XmlSchemaSet schemas = new XmlSchemaSet();

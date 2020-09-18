@@ -27,7 +27,7 @@ namespace PnP.Framework
         internal const string SITEFOOTER_LOGONODEKEY = "2e456c2e-3ded-4a6c-a9ea-f7ac4c1b5100";
         internal const string SITEFOOTER_MENUNODEKEY = "3a94b35f-030b-468e-80e3-b75ee84ae0ad";
 
-        internal const string LOGGING_SOURCE = "OfficeDevPnP.Core";
+        internal const string LOGGING_SOURCE = "PnP.Framework";
         internal const string LOGGING_SOURCE_FRAMEWORK_PROVISIONING = "PnP Provisioning";
 
         internal const string FIELD_XML_FORMAT = @"<Field Type=""{0}"" Name=""{1}"" DisplayName=""{2}"" ID=""{3}"" Group=""{4}"" Required=""{5}"" {6}/>";

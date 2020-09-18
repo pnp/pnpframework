@@ -11,7 +11,7 @@ using Term = PnP.Framework.Provisioning.Model.Term;
 using TermGroup = PnP.Framework.Provisioning.Model.TermGroup;
 using TermSet = PnP.Framework.Provisioning.Model.TermSet;
 
-namespace PnP.Framework.Tests.Framework.ObjectHandlers
+namespace PnP.Framework.Test.Framework.ObjectHandlers
 {
     [TestClass]
     public class ObjectTermGroupsTests

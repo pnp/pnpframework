@@ -5,16 +5,14 @@ using System;
 using System.Configuration;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Reflection;
 using System.Security;
-using System.Security.Cryptography.X509Certificates;
 
-namespace PnP.Framework.Tests
+namespace PnP.Framework.Test
 {
     static class TestCommon
     {
-        private static readonly Configuration configuration = null;
+        private static Configuration configuration;
 
         public static string AppSetting(string key)
         {
@@ -34,7 +32,7 @@ namespace PnP.Framework.Tests
             // Load configuration in a way that's compatible with a .Net Core test project as well
             ExeConfigurationFileMap fileMap = new ExeConfigurationFileMap
             {
-                ExeConfigFilename = @"..\..\App.config" //Path to your config file
+                ExeConfigFilename = @"..\..\..\App.config" //Path to your config file
             };
             configuration = ConfigurationManager.OpenMappedExeConfiguration(fileMap, ConfigurationUserLevel.None);
 
@@ -72,54 +70,14 @@ namespace PnP.Framework.Tests
 
                 UserName = tempCred.UserName;
                 Password = tempCred.SecurePassword;
-
-                // username in format domain\user means we're testing in on-premises
-                if (tempCred.UserName.IndexOf("\\") > 0)
-                {
-                    string[] userParts = tempCred.UserName.Split('\\');
-                    Credentials = new NetworkCredential(userParts[1], tempCred.SecurePassword, userParts[0]);
-                }
             }
             else
             {
-                if (!String.IsNullOrEmpty(AppSetting("OnPremUserName")) &&
-                         !String.IsNullOrEmpty(AppSetting("OnPremDomain")) &&
-                         !String.IsNullOrEmpty(AppSetting("OnPremPassword")))
-                {
-                    Password = EncryptionUtility.ToSecureString(AppSetting("OnPremPassword"));
-                    Credentials = new NetworkCredential(AppSetting("OnPremUserName"), Password, AppSetting("OnPremDomain"));
-                }
-                else if (!String.IsNullOrEmpty(AppSetting("AppId")) &&
+                if (!String.IsNullOrEmpty(AppSetting("AppId")) &&
                          !String.IsNullOrEmpty(AppSetting("AppSecret")))
                 {
                     AppId = AppSetting("AppId");
                     AppSecret = AppSetting("AppSecret");
-                }
-                else if (!String.IsNullOrEmpty(AppSetting("AppId")) &&
-                        !String.IsNullOrEmpty(AppSetting("HighTrustIssuerId")))
-                {
-                    AppId = AppSetting("AppId");
-                    HighTrustCertificatePassword = AppSetting("HighTrustCertificatePassword");
-                    HighTrustCertificatePath = AppSetting("HighTrustCertificatePath");
-                    HighTrustIssuerId = AppSetting("HighTrustIssuerId");
-
-                    if (!String.IsNullOrEmpty(AppSetting("HighTrustCertificateStoreName")))
-                    {
-                        StoreName result;
-                        if (Enum.TryParse(AppSetting("HighTrustCertificateStoreName"), out result))
-                        {
-                            HighTrustCertificateStoreName = result;
-                        }
-                    }
-                    if (!String.IsNullOrEmpty(AppSetting("HighTrustCertificateStoreLocation")))
-                    {
-                        StoreLocation result;
-                        if (Enum.TryParse(AppSetting("HighTrustCertificateStoreLocation"), out result))
-                        {
-                            HighTrustCertificateStoreLocation = result;
-                        }
-                    }
-                    HighTrustCertificateStoreThumbprint = AppSetting("HighTrustCertificateStoreThumbprint").Replace(" ", string.Empty);
                 }
                 else
                 {
@@ -134,7 +92,6 @@ namespace PnP.Framework.Tests
         public static string DevSiteUrl { get; set; }
         static string UserName { get; set; }
         static SecureString Password { get; set; }
-        public static ICredentials Credentials { get; set; }
         public static string AppId { get; set; }
         static string AppSecret { get; set; }
 
@@ -145,36 +102,6 @@ namespace PnP.Framework.Tests
         /// </summary>
         public static string DefaultSiteOwner { get; set; }
 
-        /// <summary>
-        /// The path to the PFX file for the High Trust
-        /// </summary>
-        public static String HighTrustCertificatePath { get; set; }
-
-        /// <summary>
-        /// The password of the PFX file for the High Trust
-        /// </summary>
-        public static String HighTrustCertificatePassword { get; set; }
-
-        /// <summary>
-        /// The IssuerID under which the CER counterpart of the PFX has been registered in SharePoint as a Trusted Security Token issuer
-        /// </summary>
-        public static String HighTrustIssuerId { get; set; }
-
-        /// <summary>
-        /// The name of the store in the Windows certificate store where the High Trust certificate is stored
-        /// </summary>
-        public static StoreName? HighTrustCertificateStoreName { get; set; }
-
-        /// <summary>
-        /// The location of the High Trust certificate in the Windows certificate store
-        /// </summary>
-        public static StoreLocation? HighTrustCertificateStoreLocation { get; set; }
-
-        /// <summary>
-        /// The thumbprint / hash of the High Trust certificate in the Windows certificate store
-        /// </summary>
-        public static string HighTrustCertificateStoreThumbprint { get; set; }
-
         public static string TestWebhookUrl
         {
             get
@@ -183,20 +110,6 @@ namespace PnP.Framework.Tests
             }
         }
 
-        public static String AzureStorageKey
-        {
-            get
-            {
-                return AppSetting("AzureStorageKey");
-            }
-        }
-        public static String TestAutomationDatabaseConnectionString
-        {
-            get
-            {
-                return AppSetting("TestAutomationDatabaseConnectionString");
-            }
-        }
         public static String AzureADCertPfxPassword
         {
             get
@@ -239,26 +152,26 @@ namespace PnP.Framework.Tests
         #region Methods
         public static ClientContext CreateClientContext()
         {
-            return CreateContext(DevSiteUrl, Credentials);
+            return CreateContext(DevSiteUrl);
         }
 
         public static ClientContext CreateClientContext(string url)
         {
-            return CreateContext(url, Credentials);
+            return CreateContext(url);
         }
 
         public static ClientContext CreateTenantClientContext()
         {
-            return CreateContext(TenantUrl, Credentials);
+            return CreateContext(TenantUrl);
         }
 
         public static PnPClientContext CreatePnPClientContext(int retryCount = 10, int delay = 500)
         {
             PnPClientContext context;
+            AuthenticationManager am = new AuthenticationManager();
             if (!String.IsNullOrEmpty(AppId) && !String.IsNullOrEmpty(AppSecret))
             {
-                AuthenticationManager am = new AuthenticationManager();
-                ClientContext clientContext = null;
+                ClientContext clientContext;
 
                 if (new Uri(DevSiteUrl).DnsSafeHost.Contains("spoppe.com"))
                 {
@@ -277,10 +190,8 @@ namespace PnP.Framework.Tests
             }
             else
             {
-                context = new PnPClientContext(DevSiteUrl, retryCount, delay)
-                {
-                    Credentials = Credentials
-                };
+                ClientContext clientContext = am.GetAzureADCredentialsContext(DevSiteUrl, UserName, Password);
+                context = PnPClientContext.ConvertFrom(clientContext, retryCount, delay);
             }
 
             context.RequestTimeout = 1000 * 60 * 15;
@@ -294,10 +205,7 @@ namespace PnP.Framework.Tests
                 !String.IsNullOrEmpty(AppSetting("AppSecret")) &&
                 String.IsNullOrEmpty(AppSetting("SPOCredentialManagerLabel")) &&
                 String.IsNullOrEmpty(AppSetting("SPOUserName")) &&
-                String.IsNullOrEmpty(AppSetting("SPOPassword")) &&
-                String.IsNullOrEmpty(AppSetting("OnPremUserName")) &&
-                String.IsNullOrEmpty(AppSetting("OnPremDomain")) &&
-                String.IsNullOrEmpty(AppSetting("OnPremPassword")))
+                String.IsNullOrEmpty(AppSetting("SPOPassword")))
             {
                 return true;
             }
@@ -308,20 +216,17 @@ namespace PnP.Framework.Tests
         }
 
 
-        private static ClientContext CreateContext(string contextUrl, ICredentials credentials)
+        private static ClientContext CreateContext(string contextUrl)
         {
+            AuthenticationManager am = new AuthenticationManager();
             ClientContext context = null;
             if (!String.IsNullOrEmpty(AppId) && !String.IsNullOrEmpty(AppSecret))
             {
-                AuthenticationManager am = new AuthenticationManager();
                 context = am.GetAppOnlyAuthenticatedContext(contextUrl, AppId, AppSecret);
             }
             else
             {
-                context = new ClientContext(contextUrl)
-                {
-                    Credentials = credentials
-                };
+                context = am.GetAzureADCredentialsContext(contextUrl, UserName, Password);
             }
 
             context.RequestTimeout = 1000 * 60 * 15;
@@ -334,7 +239,6 @@ namespace PnP.Framework.Tests
         public static string AcquireTokenAsync(string resource, string scope = null)
         {
             var tenantId = TenantExtensions.GetTenantIdByUrl(TestCommon.AppSetting("SPOTenantUrl"));
-            //var tenantId = GetTenantIdByUrl(TestCommon.AppSetting("SPOTenantUrl"));
             if (tenantId == null) return null;
 
             var clientId = TestCommon.AppSetting("AzureADClientId");

@@ -2,7 +2,7 @@
 using PnP.Framework.Graph;
 using System;
 
-namespace PnP.Framework.Tests.Utilities
+namespace PnP.Framework.Test.Utilities
 {
 #if !ONPREMISES
     [TestClass]

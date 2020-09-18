@@ -7,7 +7,7 @@ using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
 
-namespace PnP.Framework.Tests.Framework.Functional.Validators
+namespace PnP.Framework.Test.Framework.Functional.Validators
 {
     [TestClass]
     public class FilesValidator : ValidatorBase

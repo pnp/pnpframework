@@ -2,7 +2,7 @@
 using PnP.Framework.Utilities;
 using System.Security;
 
-namespace PnP.Framework.Tests.Utilities
+namespace PnP.Framework.Test.Utilities
 {
     [TestClass]
     public class EncryptionUtilityTests

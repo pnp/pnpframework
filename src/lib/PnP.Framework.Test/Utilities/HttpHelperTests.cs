@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 
-namespace PnP.Framework.Tests.Utilities
+namespace PnP.Framework.Test.Utilities
 {
     [TestClass]
     public class HttpHelperTests

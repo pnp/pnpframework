@@ -3,7 +3,7 @@ using PnP.Framework;
 using PnP.Framework.Entities;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
-using PnP.Framework.Tests;
+using PnP.Framework.Test;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -569,11 +569,7 @@ namespace Microsoft.SharePoint.Client.Tests
             Assert.IsInstanceOfType(instances, typeof(ClientObjectList<AppInstance>), "Incorrect return value");
             int instanceCount = instances.Count;
 
-#if !ONPREMISES
-            byte[] appToLoad = PnP.Framework.Tests.Properties.Resources.HelloWorldApp;
-#else
-            byte[] appToLoad = PnP.Framework.Tests.Properties.Resources.HelloWorldApp15;
-#endif
+            byte[] appToLoad = PnP.Framework.Test.Properties.Resources.HelloWorldApp;            
 
             using (MemoryStream stream = new MemoryStream(appToLoad))
             {
@@ -595,9 +591,9 @@ namespace Microsoft.SharePoint.Client.Tests
             int instanceCount = instances.Count;
 
 #if !ONPREMISES
-            byte[] appToLoad = PnP.Framework.Tests.Properties.Resources.HelloWorldApp;
+            byte[] appToLoad = PnP.Framework.Test.Properties.Resources.HelloWorldApp;
 #else
-            byte[] appToLoad = PnP.Framework.Tests.Properties.Resources.HelloWorldApp15;
+            byte[] appToLoad = PnP.Framework.Test.Properties.Resources.HelloWorldApp15;
 #endif
 
             using (MemoryStream stream = new MemoryStream(appToLoad))
@@ -632,9 +628,9 @@ namespace Microsoft.SharePoint.Client.Tests
 
                 // Write the test solution to a local temporary file
                 string solutionpath = Path.Combine(Path.GetTempPath(), "testsolution.wsp");
-                System.IO.File.WriteAllBytes(solutionpath, PnP.Framework.Tests.Properties.Resources.TestSolution);
+                System.IO.File.WriteAllBytes(solutionpath, PnP.Framework.Test.Properties.Resources.TestSolution);
 
-                clientContext.Site.InstallSolution(new Guid(PnP.Framework.Tests.Properties.Resources.TestSolutionGuid), solutionpath);
+                clientContext.Site.InstallSolution(new Guid(PnP.Framework.Test.Properties.Resources.TestSolutionGuid), solutionpath);
 
                 // Check if the solution file is uploaded
                 var solutionGallery = clientContext.Site.RootWeb.GetCatalog((int)ListTemplateType.SolutionCatalog);
@@ -647,7 +643,7 @@ namespace Microsoft.SharePoint.Client.Tests
                <Where><Eq><FieldRef Name='SolutionId' /><Value Type='Guid'>{0}</Value></Eq></Where> 
             </Query> 
              <ViewFields><FieldRef Name='ID' /></ViewFields> 
-      </View>", new Guid(PnP.Framework.Tests.Properties.Resources.TestSolutionGuid))
+      </View>", new Guid(PnP.Framework.Test.Properties.Resources.TestSolutionGuid))
                 };
 
                 var solutions = solutionGallery.GetItems(camlQuery);
@@ -662,13 +658,13 @@ namespace Microsoft.SharePoint.Client.Tests
                 clientContext.Load(clientContext.Web);
                 clientContext.ExecuteQueryRetry();
 
-                //  clientContext.Web.ActivateFeature(new Guid(PnP.Framework.Tests.Properties.Resources.TestSolutionFeatureGuid));
-                //  Assert.IsTrue(clientContext.Web.IsFeatureActive(new Guid(PnP.Framework.Tests.Properties.Resources.TestSolutionFeatureGuid)), "Test feature not activated");
+                //  clientContext.Web.ActivateFeature(new Guid(PnP.Framework.Test.Properties.Resources.TestSolutionFeatureGuid));
+                //  Assert.IsTrue(clientContext.Web.IsFeatureActive(new Guid(PnP.Framework.Test.Properties.Resources.TestSolutionFeatureGuid)), "Test feature not activated");
 
                 // Teardown
                 // Done using the local file, remove it
                 System.IO.File.Delete(solutionpath);
-                clientContext.Site.UninstallSolution(new Guid(PnP.Framework.Tests.Properties.Resources.TestSolutionGuid), "testsolution.wsp");
+                clientContext.Site.UninstallSolution(new Guid(PnP.Framework.Test.Properties.Resources.TestSolutionGuid), "testsolution.wsp");
             }
         }
 
@@ -679,13 +675,13 @@ namespace Microsoft.SharePoint.Client.Tests
         {
             // Set up
             string solutionpath = Path.Combine(Path.GetTempPath(), "testsolution.wsp");
-            System.IO.File.WriteAllBytes(solutionpath, PnP.Framework.Tests.Properties.Resources.TestSolution);
+            System.IO.File.WriteAllBytes(solutionpath, PnP.Framework.Test.Properties.Resources.TestSolution);
 
-            clientContext.Site.InstallSolution(new Guid(PnP.Framework.Tests.Properties.Resources.TestSolutionGuid), solutionpath);
+            clientContext.Site.InstallSolution(new Guid(PnP.Framework.Test.Properties.Resources.TestSolutionGuid), solutionpath);
 
             // Execute test
 
-            clientContext.Site.UninstallSolution(new Guid(PnP.Framework.Tests.Properties.Resources.TestSolutionGuid), "testsolution.wsp");
+            clientContext.Site.UninstallSolution(new Guid(PnP.Framework.Test.Properties.Resources.TestSolutionGuid), "testsolution.wsp");
 
             // Check if the solution file is uploaded
             var solutionGallery = clientContext.Site.RootWeb.GetCatalog((int)ListTemplateType.SolutionCatalog);
@@ -698,7 +694,7 @@ namespace Microsoft.SharePoint.Client.Tests
                <Where><Eq><FieldRef Name='SolutionId' /><Value Type='Guid'>{0}</Value></Eq></Where> 
             </Query> 
              <ViewFields><FieldRef Name='ID' /></ViewFields> 
-      </View>", new Guid(PnP.Framework.Tests.Properties.Resources.TestSolutionGuid))
+      </View>", new Guid(PnP.Framework.Test.Properties.Resources.TestSolutionGuid))
             };
 
             var solutions = solutionGallery.GetItems(camlQuery);
@@ -706,7 +702,7 @@ namespace Microsoft.SharePoint.Client.Tests
             clientContext.ExecuteQueryRetry();
             Assert.IsFalse(solutions.Any(), "There are still solutions installed");
 
-            Assert.IsFalse(clientContext.Web.IsFeatureActive(new Guid(PnP.Framework.Tests.Properties.Resources.TestSolutionFeatureGuid)));
+            Assert.IsFalse(clientContext.Web.IsFeatureActive(new Guid(PnP.Framework.Test.Properties.Resources.TestSolutionFeatureGuid)));
 
             // Teardown
             System.IO.File.Delete(solutionpath);

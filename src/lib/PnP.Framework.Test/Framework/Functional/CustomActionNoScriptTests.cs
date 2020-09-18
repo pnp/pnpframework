@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PnP.Framework.Tests.Framework.Functional.Implementation;
+using PnP.Framework.Test.Framework.Functional.Implementation;
 
-namespace PnP.Framework.Tests.Framework.Functional
+namespace PnP.Framework.Test.Framework.Functional
 {
     [TestClass]
     public class CustomActionNoScriptTests : FunctionalTestBase

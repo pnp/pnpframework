@@ -4,7 +4,7 @@ using PnP.Framework.Entities;
 using PnP.Framework.Enums;
 using System;
 
-namespace PnP.Framework.Tests.AppModelExtensions
+namespace PnP.Framework.Test.AppModelExtensions
 {
     [TestClass()]
     public class StructuralNavigationExtensionsTests

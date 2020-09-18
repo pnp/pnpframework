@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.XPath;
 
-namespace PnP.Framework.Tests.Framework.Providers
+namespace PnP.Framework.Test.Framework.Providers
 {
     [TestClass]
     public class BaseTemplateTests

@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Connectors;
 using System;
 
-namespace PnP.Framework.Tests.Framework.Connectors
+namespace PnP.Framework.Test.Framework.Connectors
 {
     [TestClass]
     public class ConnectorSharePointTests

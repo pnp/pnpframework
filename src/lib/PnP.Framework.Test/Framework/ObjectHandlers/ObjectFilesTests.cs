@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using WebPart = PnP.Framework.Provisioning.Model.WebPart;
 
-namespace PnP.Framework.Tests.Framework.ObjectHandlers
+namespace PnP.Framework.Test.Framework.ObjectHandlers
 {
     [TestClass]
     public class ObjectFilesTests
@@ -54,7 +54,7 @@ alert(""Hello!"");
         [TestInitialize]
         public void Initialize()
         {
-            resourceFolder = string.Format(@"{0}\..\..\Resources\Templates",
+            resourceFolder = string.Format(@"{0}\..\..\..\Resources\Templates",
                 AppDomain.CurrentDomain.BaseDirectory);
 
             folder = string.Format("test{0}", DateTime.Now.Ticks);

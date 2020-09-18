@@ -2,10 +2,10 @@
 using PnP.Framework.Provisioning.Connectors;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
-using PnP.Framework.Tests.Framework.Functional.Validators;
+using PnP.Framework.Test.Framework.Functional.Validators;
 using System;
 
-namespace PnP.Framework.Tests.Framework.Functional.Implementation
+namespace PnP.Framework.Test.Framework.Functional.Implementation
 {
     internal class WorkflowImplementation : ImplementationBase
     {
@@ -16,7 +16,7 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
                 ProvisioningTemplateCreationInformation ptci = new ProvisioningTemplateCreationInformation(cc.Web)
                 {
                     HandlersToProcess = Handlers.Lists | Handlers.Workflows,
-                    FileConnector = new FileSystemConnector(string.Format(@"{0}\..\..\Framework\Functional", AppDomain.CurrentDomain.BaseDirectory), "Templates")
+                    FileConnector = new FileSystemConnector(string.Format(@"{0}\..\..\..\Framework\Functional", AppDomain.CurrentDomain.BaseDirectory), "Templates")
                 };
 
                 string xmlFileName = null;

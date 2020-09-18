@@ -2,7 +2,7 @@
 // Code taken from http://xmlspecificationcompare.codeplex.com/
 using System.Xml.Linq;
 
-namespace PnP.Framework.Tests.Framework.Functional.Validators
+namespace PnP.Framework.Test.Framework.Functional.Validators
 {
     /// <summary>
     /// The result of an equiality comparison with <see cref="XmlComparer"/>

@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework;
 using PnP.Framework.Entities;
-using PnP.Framework.Tests;
+using PnP.Framework.Test;
 using System;
 using System.Collections.Generic;
 

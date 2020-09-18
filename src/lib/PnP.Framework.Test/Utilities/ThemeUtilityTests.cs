@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using PnP.Framework.Utilities.Themes;
 
-namespace PnP.Framework.Tests.Utilities
+namespace PnP.Framework.Test.Utilities
 {
     [TestClass]
     public class ThemeUtilityTests

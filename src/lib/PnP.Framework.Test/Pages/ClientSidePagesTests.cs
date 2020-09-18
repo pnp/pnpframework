@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 using System.Globalization;
 using PnP.Framework.Pages;
 
-namespace PnP.Framework.Tests.Authentication
+namespace PnP.Framework.Test.Authentication
 {
     [TestClass]
     public class ClientSidePagesTests

@@ -11,7 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using User = PnP.Framework.Provisioning.Model.User;
 
-namespace PnP.Framework.Tests.Framework.ObjectHandlers
+namespace PnP.Framework.Test.Framework.ObjectHandlers
 {
     [TestClass]
     public class ObjectSiteSecurityTests

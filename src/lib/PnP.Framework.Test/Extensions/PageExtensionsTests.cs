@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Utilities;
 using System;
 
-namespace PnP.Framework.Tests.AppModelExtensions
+namespace PnP.Framework.Test.AppModelExtensions
 {
     [TestClass]
     public class PageExtensionsTests

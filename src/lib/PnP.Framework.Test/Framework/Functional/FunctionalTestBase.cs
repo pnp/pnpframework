@@ -5,7 +5,7 @@ using PnP.Framework.Entities;
 using System;
 using System.Collections.Generic;
 
-namespace PnP.Framework.Tests.Framework.Functional
+namespace PnP.Framework.Test.Framework.Functional
 {
     [TestClass()]
     public abstract class FunctionalTestBase

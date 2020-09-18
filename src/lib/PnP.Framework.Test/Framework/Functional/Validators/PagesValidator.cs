@@ -7,7 +7,7 @@ using System;
 using System.Linq;
 using System.Xml;
 
-namespace PnP.Framework.Tests.Framework.Functional.Validators
+namespace PnP.Framework.Test.Framework.Functional.Validators
 {
     [TestClass]
     public class PagesValidator : ValidatorBase

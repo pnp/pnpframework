@@ -2,7 +2,7 @@
 using PnP.Framework.Utilities;
 using System.Collections.Generic;
 
-namespace PnP.Framework.Tests.AppModelExtensions
+namespace PnP.Framework.Test.AppModelExtensions
 {
     [TestClass]
     public class UrlUtilityTests

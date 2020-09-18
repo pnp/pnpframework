@@ -11,6 +11,128 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\alm.sppkg" />
+    <None Remove="Resources\almskip.sppkg" />
+    <None Remove="Resources\custom.spcolor" />
+    <None Remove="Resources\custombg.jpg" />
+    <None Remove="Resources\EditForm.aspx" />
+    <None Remove="Resources\garagebg.jpg" />
+    <None Remove="Resources\garagelogo.png" />
+    <None Remove="Resources\garagewhite.spcolor" />
+    <None Remove="Resources\GuidTermSet.csv" />
+    <None Remove="Resources\hello-world.sppkg" />
+    <None Remove="Resources\HelloWorldApp.app" />
+    <None Remove="Resources\HelloWorldApp15.app" />
+    <None Remove="Resources\ImportTermSet.csv" />
+    <None Remove="Resources\office365.png" />
+    <None Remove="Resources\PnPAzureAppTest.pfx" />
+    <None Remove="Resources\Templates\ClientSidePagesWithHeader.xml" />
+    <None Remove="Resources\Templates\MeetingsTemplate.xml" />
+    <None Remove="Resources\Templates\ProjectsTemplate.xml" />
+    <None Remove="Resources\Templates\ProvisioningSchema-2015-05-FullSample-01.xml" />
+    <None Remove="Resources\Templates\ProvisioningSchema-2015-05-ReferenceSample-01.json" />
+    <None Remove="Resources\Templates\ProvisioningSchema-2015-05-ReferenceSample-01.xml" />
+    <None Remove="Resources\Templates\ProvisioningSchema-2015-12-FullSample-02.xml" />
+    <None Remove="Resources\Templates\ProvisioningSchema-2015-12-ReferenceSample-01.xml" />
+    <None Remove="Resources\Templates\ProvisioningSchema-2017-05-FullSample-01-OUT.xml" />
+    <None Remove="Resources\Templates\ProvisioningSchema-2017-05-FullSample-01.xml" />
+    <None Remove="Resources\Templates\ProvisioningSchema-2018-01-FullSample-01-OUT.xml" />
+    <None Remove="Resources\Templates\ProvisioningSchema-2018-01-FullSample-01.xml" />
+    <None Remove="Resources\Templates\ProvisioningSchema-2018-05-FullSample-01-OUT.xml" />
+    <None Remove="Resources\Templates\ProvisioningSchema-2018-05-FullSample-01.xml" />
+    <None Remove="Resources\Templates\ProvisioningSchema-2018-07-FullSample-01-NOT-VALID.xml" />
+    <None Remove="Resources\Templates\ProvisioningSchema-2018-07-FullSample-01-OUT.xml" />
+    <None Remove="Resources\Templates\ProvisioningSchema-2018-07-FullSample-01.xml" />
+    <None Remove="Resources\Templates\ProvisioningSchema-2019-03-FullSample-01-OUT.xml" />
+    <None Remove="Resources\Templates\ProvisioningSchema-2019-03-FullSample-01.xml" />
+    <None Remove="Resources\Templates\ProvisioningSchema-2019-09-FullSample-01-OUT.xml" />
+    <None Remove="Resources\Templates\ProvisioningSchema-2019-09-FullSample-01.xml" />
+    <None Remove="Resources\Templates\ProvisioningSchema-2020-02-FullSample-01.xml" />
+    <None Remove="Resources\Templates\ProvisioningTemplate-2015-03-Sample-01.xml" />
+    <None Remove="Resources\Templates\ProvisioningTemplate-2015-03-Sample-02.xml" />
+    <None Remove="Resources\Templates\ProvisioningTemplate-2015-05-NOT-Valid-XInclude-01.xml" />
+    <None Remove="Resources\Templates\ProvisioningTemplate-2015-05-Valid-XInclude-01.xml" />
+    <None Remove="Resources\Templates\ProvisioningTemplate-2015-05-XInclude-PropertyBags.xml" />
+    <None Remove="Resources\Templates\ProvisioningTemplate-2016-05-Sample-01.xml" />
+    <None Remove="Resources\Templates\ProvisioningTemplate-2016-05-Sample-02.xml" />
+    <None Remove="Resources\Templates\ProvisioningTemplate-2016-05-Sample-03-OUT-ct.xml" />
+    <None Remove="Resources\Templates\ProvisioningTemplate-2016-05-Sample-03-OUT-nav.xml" />
+    <None Remove="Resources\Templates\ProvisioningTemplate-2016-05-Sample-03-OUT.xml" />
+    <None Remove="Resources\Templates\ProvisioningTemplate-2016-05-Sample-03.xml" />
+    <None Remove="Resources\Templates\TestTemplateOriginal.pnp" />
+    <None Remove="Resources\Templates\TestTemplateOriginal2.pnp" />
+    <None Remove="Resources\Templates\UnavailableExtensibilityHandlerTemplates\ProvisioningSchema-2015-12-Sample.xml" />
+    <None Remove="Resources\Templates\UnavailableExtensibilityHandlerTemplates\ProvisioningTemplate-2016-05-Sample.xml" />
+    <None Remove="Resources\TestDefault.aspx" />
+    <None Remove="Resources\TestHtmlPublishingPageLayout.html" />
+    <None Remove="Resources\TestPublishingPageLayout.aspx" />
+    <None Remove="Resources\TestSolution.wsp" />
+    <None Remove="Resources\UpdateTermSet.csv" />
+    <None Remove="Resources\workflow.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\alm.sppkg" />
+    <Content Include="Resources\almskip.sppkg" />
+    <Content Include="Resources\custom.spcolor" />
+    <Content Include="Resources\custombg.jpg" />
+    <Content Include="Resources\EditForm.aspx" />
+    <Content Include="Resources\garagebg.jpg" />
+    <Content Include="Resources\garagelogo.png" />
+    <Content Include="Resources\garagewhite.spcolor" />
+    <Content Include="Resources\GuidTermSet.csv" />
+    <Content Include="Resources\hello-world.sppkg" />
+    <Content Include="Resources\HelloWorldApp.app" />
+    <Content Include="Resources\HelloWorldApp15.app" />
+    <Content Include="Resources\ImportTermSet.csv" />
+    <Content Include="Resources\office365.png" />
+    <Content Include="Resources\PnPAzureAppTest.pfx" />
+    <Content Include="Resources\Templates\ClientSidePagesWithHeader.xml" />
+    <Content Include="Resources\Templates\MeetingsTemplate.xml" />
+    <Content Include="Resources\Templates\ProjectsTemplate.xml" />
+    <Content Include="Resources\Templates\ProvisioningSchema-2015-05-FullSample-01.xml" />
+    <Content Include="Resources\Templates\ProvisioningSchema-2015-05-ReferenceSample-01.json" />
+    <Content Include="Resources\Templates\ProvisioningSchema-2015-05-ReferenceSample-01.xml" />
+    <Content Include="Resources\Templates\ProvisioningSchema-2015-12-FullSample-02.xml" />
+    <Content Include="Resources\Templates\ProvisioningSchema-2015-12-ReferenceSample-01.xml" />
+    <Content Include="Resources\Templates\ProvisioningSchema-2017-05-FullSample-01-OUT.xml" />
+    <Content Include="Resources\Templates\ProvisioningSchema-2017-05-FullSample-01.xml" />
+    <Content Include="Resources\Templates\ProvisioningSchema-2018-01-FullSample-01-OUT.xml" />
+    <Content Include="Resources\Templates\ProvisioningSchema-2018-01-FullSample-01.xml" />
+    <Content Include="Resources\Templates\ProvisioningSchema-2018-05-FullSample-01-OUT.xml" />
+    <Content Include="Resources\Templates\ProvisioningSchema-2018-05-FullSample-01.xml" />
+    <Content Include="Resources\Templates\ProvisioningSchema-2018-07-FullSample-01-NOT-VALID.xml" />
+    <Content Include="Resources\Templates\ProvisioningSchema-2018-07-FullSample-01-OUT.xml" />
+    <Content Include="Resources\Templates\ProvisioningSchema-2018-07-FullSample-01.xml" />
+    <Content Include="Resources\Templates\ProvisioningSchema-2019-03-FullSample-01-OUT.xml" />
+    <Content Include="Resources\Templates\ProvisioningSchema-2019-03-FullSample-01.xml" />
+    <Content Include="Resources\Templates\ProvisioningSchema-2019-09-FullSample-01-OUT.xml" />
+    <Content Include="Resources\Templates\ProvisioningSchema-2019-09-FullSample-01.xml" />
+    <Content Include="Resources\Templates\ProvisioningSchema-2020-02-FullSample-01.xml" />
+    <Content Include="Resources\Templates\ProvisioningTemplate-2015-03-Sample-01.xml" />
+    <Content Include="Resources\Templates\ProvisioningTemplate-2015-03-Sample-02.xml" />
+    <Content Include="Resources\Templates\ProvisioningTemplate-2015-05-NOT-Valid-XInclude-01.xml" />
+    <Content Include="Resources\Templates\ProvisioningTemplate-2015-05-Valid-XInclude-01.xml" />
+    <Content Include="Resources\Templates\ProvisioningTemplate-2015-05-XInclude-PropertyBags.xml" />
+    <Content Include="Resources\Templates\ProvisioningTemplate-2016-05-Sample-01.xml" />
+    <Content Include="Resources\Templates\ProvisioningTemplate-2016-05-Sample-02.xml" />
+    <Content Include="Resources\Templates\ProvisioningTemplate-2016-05-Sample-03-OUT-ct.xml" />
+    <Content Include="Resources\Templates\ProvisioningTemplate-2016-05-Sample-03-OUT-nav.xml" />
+    <Content Include="Resources\Templates\ProvisioningTemplate-2016-05-Sample-03-OUT.xml" />
+    <Content Include="Resources\Templates\ProvisioningTemplate-2016-05-Sample-03.xml" />
+    <Content Include="Resources\Templates\TestTemplateOriginal.pnp" />
+    <Content Include="Resources\Templates\TestTemplateOriginal2.pnp" />
+    <Content Include="Resources\Templates\UnavailableExtensibilityHandlerTemplates\ProvisioningSchema-2015-12-Sample.xml" />
+    <Content Include="Resources\Templates\UnavailableExtensibilityHandlerTemplates\ProvisioningTemplate-2016-05-Sample.xml" />
+    <Content Include="Resources\TestDefault.aspx" />
+    <Content Include="Resources\TestHtmlPublishingPageLayout.html" />
+    <Content Include="Resources\TestPublishingPageLayout.aspx" />
+    <Content Include="Resources\TestSolution.wsp" />
+    <Content Include="Resources\UpdateTermSet.csv" />
+    <Content Include="Resources\workflow.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
     <PackageReference Include="Microsoft.SharePointOnline.CSOM" Version="16.1.20412.12000" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.1.0" />
@@ -24,8 +146,20 @@
     <ProjectReference Include="..\PnP.Framework\PnP.Framework.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Framework\Providers\Extensibility\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Update="Properties\Resources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Resources.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Update="Properties\Resources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
+			<CustomToolNamespace></CustomToolNamespace>
+		</EmbeddedResource>
+	</ItemGroup>	
 
 </Project>

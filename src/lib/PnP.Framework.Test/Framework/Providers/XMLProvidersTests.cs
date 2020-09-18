@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Providers;
 using PnP.Framework.Provisioning.Providers.Xml;
-using PnP.Framework.Tests.Framework.Providers.Extensibility;
+using PnP.Framework.Test.Framework.Providers.Extensibility;
 using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml.Linq;
 
-namespace PnP.Framework.Tests.Framework.Providers
+namespace PnP.Framework.Test.Framework.Providers
 {
     [TestClass]
     public class XMLProvidersTests
@@ -61,7 +61,7 @@ namespace PnP.Framework.Tests.Framework.Providers
             foreach (var tempFile in templatesToUpload)
             {
                 // Create or overwrite the "myblob" blob with contents from a local file.
-                using (var fileStream = System.IO.File.OpenRead(String.Format(@"{0}\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, tempFile)))
+                using (var fileStream = System.IO.File.OpenRead(String.Format(@"{0}\..\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, tempFile)))
                 {
                     docLib.RootFolder.UploadFile(tempFile, fileStream, true);
                     context.ExecuteQueryRetry();
@@ -93,7 +93,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -111,7 +111,7 @@ namespace PnP.Framework.Tests.Framework.Providers
 
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -133,7 +133,7 @@ namespace PnP.Framework.Tests.Framework.Providers
 
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -155,7 +155,7 @@ namespace PnP.Framework.Tests.Framework.Providers
 
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -201,7 +201,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -221,7 +221,7 @@ namespace PnP.Framework.Tests.Framework.Providers
 
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -243,7 +243,7 @@ namespace PnP.Framework.Tests.Framework.Providers
 
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -266,7 +266,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -281,7 +281,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -314,7 +314,7 @@ namespace PnP.Framework.Tests.Framework.Providers
 
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -370,7 +370,7 @@ namespace PnP.Framework.Tests.Framework.Providers
 
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -398,7 +398,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -416,7 +416,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -437,7 +437,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -458,7 +458,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -482,7 +482,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -506,7 +506,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -530,7 +530,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -551,7 +551,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -572,7 +572,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -595,7 +595,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -616,7 +616,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -639,7 +639,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -655,7 +655,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                  new XMLFileSystemTemplateProvider(
-                     String.Format(@"{0}\..\..\Resources",
+                     String.Format(@"{0}\..\..\..\Resources",
                      AppDomain.CurrentDomain.BaseDirectory),
                      "Templates");
 
@@ -678,7 +678,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -694,7 +694,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                  new XMLFileSystemTemplateProvider(
-                     String.Format(@"{0}\..\..\Resources",
+                     String.Format(@"{0}\..\..\..\Resources",
                      AppDomain.CurrentDomain.BaseDirectory),
                      "Templates");
 
@@ -716,7 +716,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -772,7 +772,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -886,7 +886,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -941,7 +941,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -1069,7 +1069,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -1133,7 +1133,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -1244,7 +1244,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -1253,7 +1253,7 @@ namespace PnP.Framework.Tests.Framework.Providers
 
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.Directories); new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -1295,7 +1295,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -1402,7 +1402,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -1411,7 +1411,7 @@ namespace PnP.Framework.Tests.Framework.Providers
 
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.Directories); new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -1473,7 +1473,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -1575,7 +1575,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -1700,7 +1700,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -1948,7 +1948,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -1970,7 +1970,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -2017,7 +2017,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -2096,7 +2096,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -2246,7 +2246,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -2263,7 +2263,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -2301,7 +2301,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -2339,7 +2339,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -2426,7 +2426,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -2447,7 +2447,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -2495,7 +2495,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -2524,7 +2524,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         //{
         //    XMLTemplateProvider provider =
         //        new XMLFileSystemTemplateProvider(
-        //            String.Format(@"{0}\..\..\Resources\Templates",
+        //            String.Format(@"{0}\..\..\..\Resources\Templates",
         //            AppDomain.CurrentDomain.BaseDirectory),
         //            "UnavailableExtensibilityHandlerTemplates");
 
@@ -2539,7 +2539,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         //{
         //    XMLTemplateProvider provider =
         //        new XMLFileSystemTemplateProvider(
-        //            String.Format(@"{0}\..\..\Resources\Templates",
+        //            String.Format(@"{0}\..\..\..\Resources\Templates",
         //            AppDomain.CurrentDomain.BaseDirectory),
         //            "UnavailableExtensibilityHandlerTemplates");
 
@@ -2553,7 +2553,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -2611,7 +2611,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -2632,7 +2632,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -2680,7 +2680,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -2721,7 +2721,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -2791,7 +2791,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                new XMLFileSystemTemplateProvider(
-                   String.Format(@"{0}\..\..\Resources",
+                   String.Format(@"{0}\..\..\..\Resources",
                    AppDomain.CurrentDomain.BaseDirectory),
                    "Templates");
 
@@ -2816,7 +2816,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -2864,7 +2864,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                new XMLFileSystemTemplateProvider(
-                   String.Format(@"{0}\..\..\Resources",
+                   String.Format(@"{0}\..\..\..\Resources",
                    AppDomain.CurrentDomain.BaseDirectory),
                    "Templates");
 
@@ -2887,7 +2887,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -2941,7 +2941,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                new XMLFileSystemTemplateProvider(
-                   String.Format(@"{0}\..\..\Resources",
+                   String.Format(@"{0}\..\..\..\Resources",
                    AppDomain.CurrentDomain.BaseDirectory),
                    "Templates");
 
@@ -2969,7 +2969,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -3043,7 +3043,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                new XMLFileSystemTemplateProvider(
-                   String.Format(@"{0}\..\..\Resources",
+                   String.Format(@"{0}\..\..\..\Resources",
                    AppDomain.CurrentDomain.BaseDirectory),
                    "Templates");
 
@@ -3061,7 +3061,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -3098,7 +3098,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                new XMLFileSystemTemplateProvider(
-                   String.Format(@"{0}\..\..\Resources",
+                   String.Format(@"{0}\..\..\..\Resources",
                    AppDomain.CurrentDomain.BaseDirectory),
                    "Templates");
 
@@ -3124,7 +3124,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -3180,7 +3180,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                new XMLFileSystemTemplateProvider(
-                   String.Format(@"{0}\..\..\Resources",
+                   String.Format(@"{0}\..\..\..\Resources",
                    AppDomain.CurrentDomain.BaseDirectory),
                    "Templates");
 
@@ -3209,7 +3209,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -3268,7 +3268,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                new XMLFileSystemTemplateProvider(
-                   String.Format(@"{0}\..\..\Resources",
+                   String.Format(@"{0}\..\..\..\Resources",
                    AppDomain.CurrentDomain.BaseDirectory),
                    "Templates");
 
@@ -3298,7 +3298,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -3355,7 +3355,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                new XMLFileSystemTemplateProvider(
-                   String.Format(@"{0}\..\..\Resources",
+                   String.Format(@"{0}\..\..\..\Resources",
                    AppDomain.CurrentDomain.BaseDirectory),
                    "Templates");
 
@@ -3375,7 +3375,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -3428,7 +3428,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                new XMLFileSystemTemplateProvider(
-                   String.Format(@"{0}\..\..\Resources",
+                   String.Format(@"{0}\..\..\..\Resources",
                    AppDomain.CurrentDomain.BaseDirectory),
                    "Templates");
 
@@ -3492,7 +3492,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -3615,7 +3615,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                new XMLFileSystemTemplateProvider(
-                   String.Format(@"{0}\..\..\Resources",
+                   String.Format(@"{0}\..\..\..\Resources",
                    AppDomain.CurrentDomain.BaseDirectory),
                    "Templates");
 
@@ -3705,7 +3705,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -3884,7 +3884,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                new XMLFileSystemTemplateProvider(
-                   String.Format(@"{0}\..\..\Resources",
+                   String.Format(@"{0}\..\..\..\Resources",
                    AppDomain.CurrentDomain.BaseDirectory),
                    "Templates");
 
@@ -4137,7 +4137,7 @@ namespace PnP.Framework.Tests.Framework.Providers
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 

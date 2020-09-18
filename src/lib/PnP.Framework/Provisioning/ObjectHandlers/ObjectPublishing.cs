@@ -189,7 +189,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             ProvisioningTemplate result = null;
 
-            string nativeFilesTemplatePath = string.Format("OfficeDevPnP.Core.Framework.Provisioning.BaseTemplates.Common.Publishing-Feature-Native-Files.xml");
+            string nativeFilesTemplatePath = string.Format("PnP.Framework.Provisioning.BaseTemplates.Common.Publishing-Feature-Native-Files.xml");
             using (Stream stream = typeof(BaseTemplateManager).Assembly.GetManifestResourceStream(nativeFilesTemplatePath))
             {
                 // Figure out the formatter to use

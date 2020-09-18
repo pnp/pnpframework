@@ -14,7 +14,7 @@ using System.Xml.Serialization;
 using File = Microsoft.SharePoint.Client.File;
 using View = Microsoft.SharePoint.Client.View;
 
-namespace PnP.Framework.Tests.Utilities.WebParts
+namespace PnP.Framework.Test.Utilities.WebParts
 {
     [TestClass]
     public class XsltWebPartPostProcessorTests
@@ -98,7 +98,7 @@ namespace PnP.Framework.Tests.Utilities.WebParts
         {
             using (var ctx = TestCommon.CreateClientContext())
             {
-                var resourceFolder = $@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\Resources";
+                var resourceFolder = $@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources";
                 var template = new ProvisioningTemplate();
                 var fileSystemConnector = new FileSystemConnector(resourceFolder, string.Empty);
                 template.Connector = fileSystemConnector;

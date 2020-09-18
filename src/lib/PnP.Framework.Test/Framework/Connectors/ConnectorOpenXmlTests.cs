@@ -4,7 +4,7 @@ using PnP.Framework.Provisioning.Providers.Xml;
 using System;
 using System.IO;
 
-namespace PnP.Framework.Tests.Framework.Connectors
+namespace PnP.Framework.Test.Framework.Connectors
 {
     [TestClass]
     public class ConnectorOpenXmlTests
@@ -25,11 +25,11 @@ namespace PnP.Framework.Tests.Framework.Connectors
         public static void ClassCleanup()
         {
             // File system setup
-            if (File.Exists(String.Format(@"{0}\..\..\Resources",
+            if (File.Exists(String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory)
                     + @"\Templates\TestTemplate.pnp"))
             {
-                System.IO.File.Delete(String.Format(@"{0}\..\..\Resources",
+                System.IO.File.Delete(String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory)
                     + @"\Templates\TestTemplate.pnp");
             }
@@ -45,7 +45,7 @@ namespace PnP.Framework.Tests.Framework.Connectors
         [TestMethod]
         public void OpenXMLSaveTemplate()
         {
-            Boolean checkFileExistence = File.Exists(String.Format(@"{0}\..\..\Resources",
+            Boolean checkFileExistence = File.Exists(String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory)
                     + @"\Templates\TestTemplate.pnp");
             Assert.IsTrue(checkFileExistence);
@@ -54,7 +54,7 @@ namespace PnP.Framework.Tests.Framework.Connectors
         private static void OpenXMLSaveTemplateInternal()
         {
             var fileSystemConnector = new FileSystemConnector(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -76,7 +76,7 @@ namespace PnP.Framework.Tests.Framework.Connectors
         public void OpenXMLLoadTemplateOriginal()
         {
             var fileSystemConnector = new FileSystemConnector(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -100,7 +100,7 @@ namespace PnP.Framework.Tests.Framework.Connectors
         public void OpenXMLLoadTemplateOriginal2()
         {
             var fileSystemConnector = new FileSystemConnector(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -124,7 +124,7 @@ namespace PnP.Framework.Tests.Framework.Connectors
         public void OpenXMLLoadTemplate()
         {
             var fileSystemConnector = new FileSystemConnector(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -147,7 +147,7 @@ namespace PnP.Framework.Tests.Framework.Connectors
         public void OpenXMLDeleteFileFromTemplate()
         {
             var fileSystemConnector = new FileSystemConnector(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -172,7 +172,7 @@ namespace PnP.Framework.Tests.Framework.Connectors
         [TestMethod]
         public void OpenXMLGetFileFromTemplate()
         {
-            var fileSystemConnector = new FileSystemConnector(String.Format(@"{0}\..\..\Resources", AppDomain.CurrentDomain.BaseDirectory), "Templates");
+            var fileSystemConnector = new FileSystemConnector(String.Format(@"{0}\..\..\..\Resources", AppDomain.CurrentDomain.BaseDirectory), "Templates");
             var openXMLConnector = new OpenXMLConnector(packageFileName, fileSystemConnector);
             var file = openXMLConnector.GetFile("garagebg.jpg");
             Assert.IsNull(file);
@@ -188,7 +188,7 @@ namespace PnP.Framework.Tests.Framework.Connectors
         public void OpenXMLGetFilesFromFolder()
         {
             var fileSystemConnector = new FileSystemConnector(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -231,7 +231,7 @@ namespace PnP.Framework.Tests.Framework.Connectors
         public void OpenXMLFileDuplicationTest()
         {
             var fileSystemConnector = new FileSystemConnector(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 

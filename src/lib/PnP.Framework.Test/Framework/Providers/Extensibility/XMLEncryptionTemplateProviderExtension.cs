@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
 
-namespace PnP.Framework.Tests.Framework.Providers.Extensibility
+namespace PnP.Framework.Test.Framework.Providers.Extensibility
 {
     public class XMLEncryptionTemplateProviderExtension : ITemplateProviderExtension
     {

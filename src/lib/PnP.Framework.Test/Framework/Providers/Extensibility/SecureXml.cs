@@ -6,7 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography.Xml;
 using System.Xml;
 
-namespace PnP.Framework.Tests.Framework.Providers.Extensibility
+namespace PnP.Framework.Test.Framework.Providers.Extensibility
 {
     public class SecureXml
     {

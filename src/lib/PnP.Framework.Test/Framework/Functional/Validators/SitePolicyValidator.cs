@@ -3,7 +3,7 @@ using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
 using System.Xml.Linq;
 
-namespace PnP.Framework.Tests.Framework.Functional.Validators
+namespace PnP.Framework.Test.Framework.Functional.Validators
 {
     [TestClass]
     public class SitePolicyValidator : ValidatorBase

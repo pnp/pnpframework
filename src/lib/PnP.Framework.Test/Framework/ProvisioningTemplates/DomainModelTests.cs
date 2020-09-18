@@ -8,7 +8,7 @@ using System;
 using System.IO;
 using System.Linq;
 
-namespace PnP.Framework.Tests.Framework.ProvisioningTemplates
+namespace PnP.Framework.Test.Framework.ProvisioningTemplates
 {
     [TestClass]
     public class DomainModelTests
@@ -36,12 +36,12 @@ namespace PnP.Framework.Tests.Framework.ProvisioningTemplates
         [TestInitialize()]
         public void Initialize()
         {
-            this._provisioningTemplatePath1 = string.Format(@"{0}\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "ProvisioningTemplate-2015-03-Sample-01.xml");
-            this._provisioningTemplatePath2 = string.Format(@"{0}\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "ProvisioningTemplate-2015-03-Sample-02.xml");
-            this._provisioningTemplatePath5 = string.Format(@"{0}\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "ProvisioningSchema-2015-05-FullSample-01.xml");
-            this._provisioningTemplatePath6 = string.Format(@"{0}\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "ProvisioningSchema-2015-05-ReferenceSample-01.xml");
-            this._provisioningTemplatePath7 = string.Format(@"{0}\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "ProvisioningSchema-2015-05-ReferenceSample-01.json");
-            this._provisioningTemplatePath8 = string.Format(@"{0}\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "ProvisioningSchema-2015-12-FullSample-02.xml");
+            this._provisioningTemplatePath1 = string.Format(@"{0}\..\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "ProvisioningTemplate-2015-03-Sample-01.xml");
+            this._provisioningTemplatePath2 = string.Format(@"{0}\..\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "ProvisioningTemplate-2015-03-Sample-02.xml");
+            this._provisioningTemplatePath5 = string.Format(@"{0}\..\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "ProvisioningSchema-2015-05-FullSample-01.xml");
+            this._provisioningTemplatePath6 = string.Format(@"{0}\..\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "ProvisioningSchema-2015-05-ReferenceSample-01.xml");
+            this._provisioningTemplatePath7 = string.Format(@"{0}\..\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "ProvisioningSchema-2015-05-ReferenceSample-01.json");
+            this._provisioningTemplatePath8 = string.Format(@"{0}\..\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "ProvisioningSchema-2015-12-FullSample-02.xml");
         }
 
         #region Formatter Tests
@@ -381,7 +381,7 @@ namespace PnP.Framework.Tests.Framework.ProvisioningTemplates
 
                 XMLTemplateProvider provider =
                     new XMLFileSystemTemplateProvider(
-                        String.Format(@"{0}\..\..\Resources",
+                        String.Format(@"{0}\..\..\..\Resources",
                         AppDomain.CurrentDomain.BaseDirectory),
                         "Templates");
 
@@ -404,7 +404,7 @@ namespace PnP.Framework.Tests.Framework.ProvisioningTemplates
 
         //        XMLTemplateProvider xmlProvider =
         //            new XMLFileSystemTemplateProvider(
-        //                String.Format(@"{0}\..\..\Resources",
+        //                String.Format(@"{0}\..\..\..\Resources",
         //                AppDomain.CurrentDomain.BaseDirectory),
         //                "Templates");
 
@@ -413,7 +413,7 @@ namespace PnP.Framework.Tests.Framework.ProvisioningTemplates
 
         //        JsonTemplateProvider jsonProvider =
         //            new JsonFileSystemTemplateProvider(
-        //                String.Format(@"{0}\..\..\Resources",
+        //                String.Format(@"{0}\..\..\..\Resources",
         //                AppDomain.CurrentDomain.BaseDirectory),
         //                "Templates");
 
@@ -435,7 +435,7 @@ namespace PnP.Framework.Tests.Framework.ProvisioningTemplates
 
                 JsonTemplateProvider provider =
                     new JsonFileSystemTemplateProvider(
-                        String.Format(@"{0}\..\..\Resources",
+                        String.Format(@"{0}\..\..\..\Resources",
                         AppDomain.CurrentDomain.BaseDirectory),
                         "Templates");
 

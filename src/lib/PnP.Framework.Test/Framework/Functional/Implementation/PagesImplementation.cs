@@ -1,8 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Tests.Framework.Functional.Validators;
+using PnP.Framework.Test.Framework.Functional.Validators;
 
-namespace PnP.Framework.Tests.Framework.Functional.Implementation
+namespace PnP.Framework.Test.Framework.Functional.Implementation
 {
     internal class PagesImplementation : ImplementationBase
     {

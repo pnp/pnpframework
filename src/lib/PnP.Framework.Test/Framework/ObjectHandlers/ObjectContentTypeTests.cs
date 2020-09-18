@@ -8,7 +8,7 @@ using System.Linq;
 using ContentType = PnP.Framework.Provisioning.Model.ContentType;
 using Field = PnP.Framework.Provisioning.Model.Field;
 
-namespace PnP.Framework.Tests.Framework.ObjectHandlers
+namespace PnP.Framework.Test.Framework.ObjectHandlers
 {
     [TestClass]
     public class ObjectContentTypeTests

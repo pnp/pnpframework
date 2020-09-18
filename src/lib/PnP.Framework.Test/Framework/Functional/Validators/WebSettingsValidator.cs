@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
 
-namespace PnP.Framework.Tests.Framework.Functional.Validators
+namespace PnP.Framework.Test.Framework.Functional.Validators
 {
 
     public class WebSettingsValidator : ValidatorBase

@@ -3,11 +3,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Connectors;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
-using PnP.Framework.Tests.Framework.Functional.Validators;
+using PnP.Framework.Test.Framework.Functional.Validators;
 using System;
 using System.Linq;
 
-namespace PnP.Framework.Tests.Framework.Functional.Implementation
+namespace PnP.Framework.Test.Framework.Functional.Implementation
 {
     internal class LocalizationImplementation : ImplementationBase
     {
@@ -21,7 +21,7 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
                 {
                     BaseTemplate = null,
                     PersistMultiLanguageResources = true,
-                    FileConnector = new FileSystemConnector(string.Format(@"{0}\..\..\Framework\Functional", AppDomain.CurrentDomain.BaseDirectory), "Templates"),
+                    FileConnector = new FileSystemConnector(string.Format(@"{0}\..\..\..\Framework\Functional", AppDomain.CurrentDomain.BaseDirectory), "Templates"),
                     HandlersToProcess = Handlers.Fields | Handlers.ContentTypes | Handlers.Lists | Handlers.SupportedUILanguages | Handlers.CustomActions | Handlers.Pages | Handlers.Files | Handlers.Navigation
                 };
 
@@ -42,7 +42,7 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
                 {
                     BaseTemplate = null,
                     PersistMultiLanguageResources = true,
-                    FileConnector = new FileSystemConnector(string.Format(@"{0}\..\..\Framework\Functional", AppDomain.CurrentDomain.BaseDirectory), "Templates"),
+                    FileConnector = new FileSystemConnector(string.Format(@"{0}\..\..\..\Framework\Functional", AppDomain.CurrentDomain.BaseDirectory), "Templates"),
                     HandlersToProcess = Handlers.Fields | Handlers.ContentTypes | Handlers.Lists | Handlers.SupportedUILanguages | Handlers.CustomActions | Handlers.Pages | Handlers.Files
                 };
 

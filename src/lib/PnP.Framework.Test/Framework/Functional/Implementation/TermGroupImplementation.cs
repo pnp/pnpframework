@@ -4,11 +4,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
 using PnP.Framework.Provisioning.Providers.Xml;
-using PnP.Framework.Tests.Framework.Functional.Validators;
+using PnP.Framework.Test.Framework.Functional.Validators;
 using System;
 using System.Linq;
 
-namespace PnP.Framework.Tests.Framework.Functional.Implementation
+namespace PnP.Framework.Test.Framework.Functional.Implementation
 {
     internal class TermGroupImplementation : ImplementationBase
     {
@@ -96,7 +96,7 @@ namespace PnP.Framework.Tests.Framework.Functional.Implementation
             // exceptions like the following happen:
             // Microsoft.SharePoint.Client.ServerException: Microsoft.SharePoint.Client.ServerException: A Group cannot be deleted unless it is empty..
 
-            PnP.Framework.Tests.Utilities.RetryHelper.Do(
+            PnP.Framework.Test.Utilities.RetryHelper.Do(
                 () => this.DeleteTermGroupsImplementation(cc, termStore),
                 TimeSpan.FromSeconds(10),
                 3);

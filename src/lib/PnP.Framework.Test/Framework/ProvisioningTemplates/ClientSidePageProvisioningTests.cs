@@ -6,7 +6,7 @@ using PnP.Framework.Provisioning.Providers.Xml;
 using PnP.Framework.Utilities;
 using System;
 
-namespace PnP.Framework.Tests.Framework.ProvisioningTemplates
+namespace PnP.Framework.Test.Framework.ProvisioningTemplates
 {
     [TestClass]
     public class ClientSidePageProvisioningTests

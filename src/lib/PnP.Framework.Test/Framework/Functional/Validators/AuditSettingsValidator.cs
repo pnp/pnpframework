@@ -5,7 +5,7 @@ using PnP.Framework.Provisioning.Providers.Xml;
 using System;
 using System.Xml.Linq;
 
-namespace PnP.Framework.Tests.Framework.Functional.Validators
+namespace PnP.Framework.Test.Framework.Functional.Validators
 {
 
     public class AuditSettingsValidator : ValidatorBase

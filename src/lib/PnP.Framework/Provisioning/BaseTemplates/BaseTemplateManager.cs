@@ -41,7 +41,7 @@ namespace Microsoft.SharePoint.Client
 
             try
             {
-                string baseTemplate = $"OfficeDevPnP.Core.Framework.Provisioning.BaseTemplates.{GetSharePointVersion()}.{webTemplate}{configuration}Template.xml";
+                string baseTemplate = $"PnP.Framework.Provisioning.BaseTemplates.{GetSharePointVersion()}.{webTemplate}{configuration}Template.xml";
                 using (Stream stream = typeof(BaseTemplateManager).Assembly.GetManifestResourceStream(baseTemplate))
                 {
                     // Figure out the formatter to use

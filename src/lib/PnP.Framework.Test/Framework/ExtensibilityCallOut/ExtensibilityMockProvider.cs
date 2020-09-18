@@ -3,7 +3,7 @@ using PnP.Framework.Provisioning.Extensibility;
 using PnP.Framework.Provisioning.Model;
 using System;
 
-namespace PnP.Framework.Tests.Framework.ExtensibilityCallOut
+namespace PnP.Framework.Test.Framework.ExtensibilityCallOut
 {
     public class ExtensibilityMockProvider : IProvisioningExtensibilityProvider
     {

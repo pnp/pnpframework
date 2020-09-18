@@ -5,7 +5,7 @@ using PnP.Framework.Provisioning.ObjectHandlers;
 using PnP.Framework.Provisioning.Providers.Xml;
 using System;
 
-namespace PnP.Framework.Tests.Framework.CanProvisionRules
+namespace PnP.Framework.Test.Framework.CanProvisionRules
 {
     [TestClass]
     public class CanProvisionTests
@@ -17,7 +17,7 @@ namespace PnP.Framework.Tests.Framework.CanProvisionRules
 
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -82,7 +82,7 @@ namespace PnP.Framework.Tests.Framework.CanProvisionRules
 
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
@@ -136,7 +136,7 @@ namespace PnP.Framework.Tests.Framework.CanProvisionRules
         {
             XMLTemplateProvider provider =
                 new XMLFileSystemTemplateProvider(
-                    String.Format(@"{0}\..\..\Resources",
+                    String.Format(@"{0}\..\..\..\Resources",
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 

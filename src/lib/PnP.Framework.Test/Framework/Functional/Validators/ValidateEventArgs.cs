@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PnP.Framework.Tests.Framework.Functional.Validators
+namespace PnP.Framework.Test.Framework.Functional.Validators
 {
     public class ValidateEventArgs : EventArgs
     {

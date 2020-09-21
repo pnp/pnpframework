@@ -5,6 +5,8 @@ using PnP.Framework.Provisioning.ObjectHandlers;
 using PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Loader;
 
 namespace PnP.Framework.Provisioning.Extensibility
 {
@@ -252,11 +254,16 @@ namespace PnP.Framework.Provisioning.Extensibility
 
             if (!handlerCache.ContainsKey(handler))
             {
-#if NETSTANDARD2_0
-                var _instance = Activator.CreateInstance(handler.GetType());
-#else
-                var _instance = Activator.CreateInstance(handler.Assembly, handler.Type).Unwrap();
-#endif
+
+                // Does not work as the assembly was not loaded upfront
+                // See https://jeremybytes.blogspot.com/2020/01/using-typegettype-with-net-core.html for some more context
+                //var _instance = Activator.CreateInstance(handler.GetType());
+
+                var handlerAssemblyPath = AppDomain.CurrentDomain.BaseDirectory + handler.Assembly + ".dll";
+                var handlerAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(handlerAssemblyPath);
+                var handlerType = handlerAssembly.ExportedTypes.Where(p => p.FullName == handler.Type).FirstOrDefault();
+                var _instance = Activator.CreateInstance(handlerType);
+
                 handlerCache.Add(handler, _instance);
             }
             return handlerCache[handler];

@@ -476,6 +476,8 @@ namespace PnP.Framework.Test.Framework.ObjectHandlers
                 Web subWeb = web.CreateWeb(testWebName, testWebName, "Test", "STS#0", 1033);
                 clientContext.ExecuteQuery();
 
+                subWeb.EnsureProperty(p => p.Url);
+
                 var parser = new TokenParser(clientContext.Web, template);
                 new ObjectSiteSecurity().ProvisionObjects(subWeb, template, parser, new ProvisioningTemplateApplyingInformation());
 
@@ -789,7 +791,8 @@ namespace PnP.Framework.Test.Framework.ObjectHandlers
                     var newVisitorGroupId = ctx.Web.AssociatedVisitorGroup.Id;
                     var newGroupCount = ctx.Web.SiteGroups.Count;
 
-                    Assert.AreNotEqual(oldOwnerGroupId, newOwnerGroupId, "Expected owners group is different since the added group 'Site Owners' was seen as a new group due to the waiting for async site creation completion in SPO");
+                    // Not relevant as the Creation of a modern site now waits for it's completion
+                    //Assert.AreNotEqual(oldOwnerGroupId, newOwnerGroupId, "Expected owners group is different since the added group 'Site Owners' was seen as a new group due to the waiting for async site creation completion in SPO");
                     Assert.AreEqual(oldGroupCount, newGroupCount - 1, "Expected owners group is different since the added group 'Site Owners' was seen as a new group due to the waiting for async site creation completion in SPO");
                     Assert.AreEqual(oldMemberGroupId, newMemberGroupId, "Expected members group to stay the same");
                     Assert.AreEqual(oldVisitorGroupId, newVisitorGroupId, "Expected visitors group to stay the same");

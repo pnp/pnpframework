@@ -20,7 +20,7 @@ namespace PnP.Framework.Test.Framework.ExtensibilityCallOut
         {
             var _mockProvider = new Provider
             {
-                Assembly = "PnP.Framework.Tests",
+                Assembly = "PnP.Framework.Test",
                 Type = "PnP.Framework.Test.Framework.ExtensibilityCallOut.ExtensibilityMockProvider",
                 Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA
             };
@@ -42,7 +42,7 @@ namespace PnP.Framework.Test.Framework.ExtensibilityCallOut
         {
             var _mockProvider = new ExtensibilityHandler
             {
-                Assembly = "PnP.Framework.Tests",
+                Assembly = "PnP.Framework.Test",
                 Type = "PnP.Framework.Test.Framework.ExtensibilityCallOut.ExtensibilityMockHandler",
                 Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA
             };
@@ -63,7 +63,7 @@ namespace PnP.Framework.Test.Framework.ExtensibilityCallOut
         {
             var _mockProvider = new ExtensibilityHandler
             {
-                Assembly = "PnP.Framework.Tests",
+                Assembly = "PnP.Framework.Test",
                 Type = "PnP.Framework.Test.Framework.ExtensibilityCallOut.ExtensibilityMockHandler",
                 Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA
             };
@@ -131,7 +131,7 @@ namespace PnP.Framework.Test.Framework.ExtensibilityCallOut
         {
             var _mockProvider = new ExtensibilityHandler
             {
-                Assembly = "PnP.Framework.Tests",
+                Assembly = "PnP.Framework.Test",
                 Type = "PnP.Framework.Test.Framework.ExtensibilityCallOut.ExtensibilityMockInvalidHandler",
                 Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA
             };
@@ -153,7 +153,7 @@ namespace PnP.Framework.Test.Framework.ExtensibilityCallOut
         {
             var _mockProvider = new ExtensibilityHandler
             {
-                Assembly = "PnP.Framework.Tests",
+                Assembly = "PnP.Framework.Test",
                 Type = "PnP.Framework.Test.Framework.ExtensibilityCallOut.ExtensibilityMockInvalidHandler",
                 Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA
             };
@@ -271,7 +271,7 @@ namespace PnP.Framework.Test.Framework.ExtensibilityCallOut
             {
                 var _mockProvider = new Provider
                 {
-                    Assembly = "PnP.Framework.Tests",
+                    Assembly = "PnP.Framework.Test",
                     Type = "PnP.Framework.Test.Framework.ExtensibilityCallOut.ExtensibilityMockTokenProvider",
                     Configuration = givenConfiguration,
                     Enabled = true
@@ -306,7 +306,7 @@ namespace PnP.Framework.Test.Framework.ExtensibilityCallOut
             {
                 var _mockProvider = new Provider
                 {
-                    Assembly = "PnP.Framework.Tests",
+                    Assembly = "PnP.Framework.Test",
                     Type = "PnP.Framework.Test.Framework.ExtensibilityCallOut.ExtensibilityMockTokenProvider",
                     Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA,
                     Enabled = true
@@ -341,7 +341,7 @@ namespace PnP.Framework.Test.Framework.ExtensibilityCallOut
             {
                 var _mockProvider = new Provider
                 {
-                    Assembly = "PnP.Framework.Tests",
+                    Assembly = "PnP.Framework.Test",
                     Type = "PnP.Framework.Test.Framework.ExtensibilityCallOut.ExtensibilityMockTokenProvider",
                     Configuration = ExtensibilityTestConstants.PROVIDER_MOCK_DATA,
                     Enabled = false

@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestPlatform.ObjectModel;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Test.Framework.Functional.Implementation;
 
 namespace PnP.Framework.Test.Framework.Functional
@@ -9,9 +10,8 @@ namespace PnP.Framework.Test.Framework.Functional
         #region Construction
         public FilesTests()
         {
-            //debugMode = true;
-            //centralSiteCollectionUrl = "https://bertonline.sharepoint.com/sites/TestPnPSC_12345_da2a59c7-f789-4314-9889-2c57cb98d088";
-            //centralSubSiteUrl = "https://bertonline.sharepoint.com/sites/TestPnPSC_12345_da2a59c7-f789-4314-9889-2c57cb98d088/sub";
+            //centralSiteCollectionUrl = "https://bertonline.sharepoint.com/sites/TestPnPSC_12345_742b8043-e886-4d54-a62c-c9509cb90993";
+            //centralSubSiteUrl = "https://bertonline.sharepoint.com/sites/TestPnPSC_12345_742b8043-e886-4d54-a62c-c9509cb90993/sub";
         }
         #endregion
 
@@ -19,6 +19,7 @@ namespace PnP.Framework.Test.Framework.Functional
         [ClassInitialize()]
         public static void ClassInit(TestContext context)
         {
+            //debugMode = false;
             ClassInitBase(context);
         }
 

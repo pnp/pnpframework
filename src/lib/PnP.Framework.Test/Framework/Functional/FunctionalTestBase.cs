@@ -83,19 +83,28 @@ namespace PnP.Framework.Test.Framework.Functional
                     }
                 }
 
-                SiteEntity siteToCreate = new SiteEntity()
+                //SiteEntity siteToCreate = new SiteEntity()
+                //{
+                //    Url = siteToCreateUrl,
+                //    Template = "STS#0",
+                //    Title = "Test",
+                //    Description = "Test site collection",
+                //    SiteOwnerLogin = siteOwnerLogin,
+                //    Lcid = 1033,
+                //    StorageMaximumLevel = 100,
+                //    UserCodeMaximumLevel = 0
+                //};
+
+                //tenant.CreateSiteCollection(siteToCreate, false, true);
+
+                var commResults = (tenant.Context as ClientContext).CreateSiteAsync(new PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation()
                 {
                     Url = siteToCreateUrl,
-                    Template = "STS#0",
+                    SiteDesign = PnP.Framework.Sites.CommunicationSiteDesign.Blank,
                     Title = "Test",
-                    Description = "Test site collection",
-                    SiteOwnerLogin = siteOwnerLogin,
-                    Lcid = 1033,
-                    StorageMaximumLevel = 100,
-                    UserCodeMaximumLevel = 0
-                };
-
-                tenant.CreateSiteCollection(siteToCreate, false, true);
+                    Owner = siteOwnerLogin,
+                    Lcid = 1033
+                }).GetAwaiter().GetResult();
 
                 return siteToCreateUrl;
             }

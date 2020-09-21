@@ -43,7 +43,7 @@ alert(""Hello!"");
     </data>
   </webPart>
 </webParts>";
-        private readonly string TestFilePath = "..\\..\\Resources\\office365.png";
+        private readonly string TestFilePath = "..\\..\\..\\Resources\\office365.png";
 
         private void DeleteFile(ClientContext ctx, string serverRelativeFileUrl)
         {

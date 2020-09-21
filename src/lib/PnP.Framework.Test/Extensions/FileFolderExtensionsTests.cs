@@ -17,8 +17,8 @@ namespace PnP.Framework.Test.AppModelExtensions
 
         private readonly string DocumentLibraryName = "Unit_Test_Library";
         private readonly string FolderName = "Unit_Test_Folder";
-        private readonly string TestFilePath1 = "..\\..\\Resources\\office365.png";
-        private readonly string TestFilePath2 = "..\\..\\Resources\\custombg.jpg";
+        private readonly string TestFilePath1 = "..\\..\\..\\Resources\\office365.png";
+        private readonly string TestFilePath2 = "..\\..\\..\\Resources\\custombg.jpg";
         private readonly string commentText = "Unit_Test_Comment";
         private readonly CheckinType checkInType = CheckinType.MajorCheckIn;
         public TestContext TestContext { get; set; }

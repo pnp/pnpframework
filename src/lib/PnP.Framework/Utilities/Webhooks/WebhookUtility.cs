@@ -65,10 +65,6 @@ namespace PnP.Framework.Utilities
             using (var handler = new HttpClientHandler())
             {
                 context.Web.EnsureProperty(p => p.Url);
-                if (String.IsNullOrEmpty(accessToken))
-                {
-                    handler.SetAuthenticationCookies(context);
-                }
 
                 using (var httpClient = new PnPHttpProvider(handler))
                 {
@@ -165,10 +161,6 @@ namespace PnP.Framework.Utilities
             using (var handler = new HttpClientHandler())
             {
                 context.Web.EnsureProperty(p => p.Url);
-                if (String.IsNullOrEmpty(accessToken))
-                {
-                    handler.SetAuthenticationCookies(context);
-                }
 
                 using (var httpClient = new PnPHttpProvider(handler))
                 {
@@ -240,10 +232,6 @@ namespace PnP.Framework.Utilities
             using (var handler = new HttpClientHandler())
             {
                 context.Web.EnsureProperty(p => p.Url);
-                if (String.IsNullOrEmpty(accessToken))
-                {
-                    handler.SetAuthenticationCookies(context);
-                }
 
                 using (var httpClient = new PnPHttpProvider(handler))
                 {
@@ -298,10 +286,6 @@ namespace PnP.Framework.Utilities
             using (var handler = new HttpClientHandler())
             {
                 context.Web.EnsureProperty(p => p.Url);
-                if (String.IsNullOrEmpty(accessToken))
-                {
-                    handler.SetAuthenticationCookies(context);
-                }
 
                 using (var httpClient = new PnPHttpProvider(handler))
                 {

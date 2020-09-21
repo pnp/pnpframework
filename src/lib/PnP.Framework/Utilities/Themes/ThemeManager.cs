@@ -104,12 +104,6 @@ namespace PnP.Framework.Utilities.Themes
             {
                 context.Web.EnsureProperty(w => w.Url);
 
-                // We're not in app-only or user + app context, so let's fall back to cookie based auth
-                if (String.IsNullOrEmpty(accessToken))
-                {
-                    handler.SetAuthenticationCookies(context);
-                }
-
                 using (var httpClient = new PnPHttpProvider(handler))
                 {
                     // Reference here: https://docs.microsoft.com/en-us/sharepoint/dev/declarative-customization/site-theming/sharepoint-site-theming-rest-api
@@ -184,12 +178,6 @@ namespace PnP.Framework.Utilities.Themes
             using (var handler = new HttpClientHandler())
             {
                 context.Web.EnsureProperty(w => w.Url);
-
-                // We're not in app-only or user + app context, so let's fall back to cookie based auth
-                if (String.IsNullOrEmpty(accessToken))
-                {
-                    handler.SetAuthenticationCookies(context);
-                }
 
                 using (var httpClient = new PnPHttpProvider(handler))
                 {

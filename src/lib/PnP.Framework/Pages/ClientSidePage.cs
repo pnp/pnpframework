@@ -2280,19 +2280,6 @@ namespace PnP.Framework.Pages
             {
                 context.Web.EnsureProperty(w => w.Url);
 
-                // we're not in app-only or user + app context, so let's fall back to cookie based auth
-                if (String.IsNullOrEmpty(accessToken))
-                {
-                    handler.SetAuthenticationCookies(context);
-                }
-                else
-                {
-                    if (context.Credentials is System.Net.NetworkCredential networkCredential)
-                    {
-                        handler.Credentials = networkCredential;
-                    }
-                }
-
                 using (var httpClient = new PnPHttpProvider(handler))
                 {
                     string requestUrl = $"{context.Web.Url}/_api/sitepages/pages({pageID.Value})/translations";
@@ -2343,12 +2330,6 @@ namespace PnP.Framework.Pages
             using (var handler = new HttpClientHandler())
             {
                 context.Web.EnsureProperty(w => w.Url);
-
-                // we're not in app-only or user + app context, so let's fall back to cookie based auth
-                if (String.IsNullOrEmpty(accessToken))
-                {
-                    handler.SetAuthenticationCookies(context);
-                }
 
                 using (var httpClient = new PnPHttpProvider(handler))
                 {
@@ -2410,11 +2391,6 @@ namespace PnP.Framework.Pages
             using (var handler = new HttpClientHandler())
             {
                 context.Web.EnsureProperty(w => w.Url);
-                // we're not in app-only or user + app context, so let's fall back to cookie based auth
-                if (String.IsNullOrEmpty(accessToken))
-                {
-                    handler.SetAuthenticationCookies(context);
-                }
 
                 using (var httpClient = new PnPHttpProvider(handler))
                 {

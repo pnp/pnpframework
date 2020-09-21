@@ -217,11 +217,6 @@ namespace PnP.Framework.Sites
             using (var handler = new HttpClientHandler())
             {
                 clientContext.Web.EnsureProperty(w => w.Url);
-                // we're not in app-only or user + app context, so let's fall back to cookie based auth
-                if (string.IsNullOrEmpty(accessToken))
-                {
-                    handler.SetAuthenticationCookies(clientContext);
-                }
 
                 bool sensitivityLabelExists = !string.IsNullOrEmpty(siteCollectionCreationInformation.SensitivityLabel);
 
@@ -548,18 +543,6 @@ namespace PnP.Framework.Sites
             using (var handler = new HttpClientHandler())
             {
                 clientContext.Web.EnsureProperty(w => w.Url);
-                // we're not in app-only or user + app context, so let's fall back to cookie based auth
-                if (string.IsNullOrEmpty(accessToken))
-                {
-                    handler.SetAuthenticationCookies(clientContext);
-                }
-                else
-                {
-                    if (clientContext.Credentials is System.Net.NetworkCredential networkCredential)
-                    {
-                        handler.Credentials = networkCredential;
-                    }
-                }
 
                 using (var httpClient = new PnPHttpProvider(handler))
                 {
@@ -874,18 +857,6 @@ namespace PnP.Framework.Sites
             using (var handler = new HttpClientHandler())
             {
                 clientContext.Web.EnsureProperty(w => w.Url);
-                // we're not in app-only or user + app context, so let's fall back to cookie based auth
-                if (string.IsNullOrEmpty(accessToken))
-                {
-                    handler.SetAuthenticationCookies(clientContext);
-                }
-                else
-                {
-                    if (clientContext.Credentials is System.Net.NetworkCredential networkCredential)
-                    {
-                        handler.Credentials = networkCredential;
-                    }
-                }
 
                 using (var httpClient = new PnPHttpProvider(handler))
                 {
@@ -1024,11 +995,6 @@ namespace PnP.Framework.Sites
             {
                 context.Web.EnsureProperty(w => w.Url);
 
-                if (string.IsNullOrEmpty(accessToken))
-                {
-                    handler.SetAuthenticationCookies(context);
-                }
-
                 using (var httpClient = new HttpClient(handler))
                 {
                     string requestUrl = string.Format("{0}/_api/SP.Directory.DirectorySession/Group(alias='{1}')", context.Web.Url, alias);
@@ -1101,11 +1067,6 @@ namespace PnP.Framework.Sites
             {
                 context.Web.EnsureProperty(w => w.Url);
 
-                if (string.IsNullOrEmpty(accessToken))
-                {
-                    handler.SetAuthenticationCookies(context);
-                }
-
                 using (var httpClient = new HttpClient(handler))
                 {
                     string requestUrl = string.Format("{0}/_api/SP.Directory.DirectorySession/Group(alias='{1}')", context.Web.Url, alias);
@@ -1162,12 +1123,6 @@ namespace PnP.Framework.Sites
             {
                 context.Web.EnsureProperty(w => w.Url);
 
-                // we're not in app-only or user + app context, so let's fall back to cookie based auth
-                if (string.IsNullOrEmpty(accessToken))
-                {
-                    handler.SetAuthenticationCookies(context);
-                }
-
                 using (var httpClient = new PnPHttpProvider(handler))
                 {
 
@@ -1221,11 +1176,6 @@ namespace PnP.Framework.Sites
             using (var handler = new HttpClientHandler())
             {
                 context.Web.EnsureProperty(w => w.Url);
-
-                if (string.IsNullOrEmpty(accessToken))
-                {
-                    handler.SetAuthenticationCookies(context);
-                }
 
                 using (var httpClient = new HttpClient(handler))
                 {
@@ -1432,11 +1382,6 @@ namespace PnP.Framework.Sites
             using (var handler = new HttpClientHandler())
             {
                 context.Web.EnsureProperty(w => w.Url);
-
-                if (string.IsNullOrEmpty(accessToken))
-                {
-                    handler.SetAuthenticationCookies(context);
-                }
 
                 using (var httpClient = new HttpClient(handler))
                 {

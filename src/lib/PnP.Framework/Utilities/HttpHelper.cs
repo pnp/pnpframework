@@ -517,31 +517,6 @@ namespace PnP.Framework.Utilities
                 // Let's create a custom HttpHandler
                 var handler = new HttpClientHandler();
 
-                // Process any SPO authentication cookies, if we have an SPO context
-                if (spContext != null)
-                {
-                    SetAuthenticationCookies(handler, spContext);
-
-                    if (requestHeaders == null)
-                    {
-                        requestHeaders = new Dictionary<string, string>();
-                    }
-
-                    if (!requestHeaders.ContainsKey("X-RequestDigest"))
-                    {
-                        requestHeaders.Add("X-RequestDigest", spContext.GetRequestDigestAsync().GetAwaiter().GetResult());
-                    }
-                }
-
-                // Process any other request cookies
-                if (cookies != null)
-                {
-                    foreach (var cookie in cookies)
-                    {
-                        handler.CookieContainer.Add(new System.Net.Cookie(cookie.Key, cookie.Value));
-                    }
-                }
-
                 // And now create the customized HttpClient object
                 client = new PnPHttpProvider(handler, true, retryCount, delay, userAgent);
             }
@@ -645,38 +620,5 @@ namespace PnP.Framework.Utilities
             return (result);
         }
 
-        private static void SetAuthenticationCookies(HttpClientHandler handler, ClientContext context)
-        {
-            context.Web.EnsureProperty(w => w.Url);
-#if !NETSTANDARD2_0
-            if (context.Credentials is SharePointOnlineCredentials spCred)
-            {
-                handler.Credentials = context.Credentials;
-                handler.CookieContainer.SetCookies(new Uri(context.Web.Url), spCred.GetAuthenticationCookie(new Uri(context.Web.Url)));
-            }
-            else 
-#endif            
-            if (context.Credentials == null)
-            {
-                var cookieString = CookieReader.GetCookie(context.Web.Url).Replace("; ", ",").Replace(";", ",");
-                var authCookiesContainer = new System.Net.CookieContainer();
-                // Get FedAuth and rtFa cookies issued by ADFS when accessing claims aware applications.
-                // - or get the EdgeAccessCookie issued by the Web Application Proxy (WAP) when accessing non-claims aware applications (Kerberos).
-                IEnumerable<string> authCookies = null;
-                if (Regex.IsMatch(cookieString, "FedAuth", RegexOptions.IgnoreCase))
-                {
-                    authCookies = cookieString.Split(',').Where(c => c.StartsWith("FedAuth", StringComparison.InvariantCultureIgnoreCase) || c.StartsWith("rtFa", StringComparison.InvariantCultureIgnoreCase));
-                }
-                else if (Regex.IsMatch(cookieString, "EdgeAccessCookie", RegexOptions.IgnoreCase))
-                {
-                    authCookies = cookieString.Split(',').Where(c => c.StartsWith("EdgeAccessCookie", StringComparison.InvariantCultureIgnoreCase));
-                }
-                if (authCookies != null)
-                {
-                    authCookiesContainer.SetCookies(new Uri(context.Web.Url), string.Join(",", authCookies));
-                }
-                handler.CookieContainer = authCookiesContainer;
-            }
-        }
     }
 }

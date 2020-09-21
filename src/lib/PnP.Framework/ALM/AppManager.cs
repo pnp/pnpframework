@@ -652,12 +652,6 @@ namespace PnP.Framework.ALM
             {
                 _context.Web.EnsureProperty(w => w.Url);
 
-                // we're not in app-only or user + app context, so let's fall back to cookie based auth
-                if (String.IsNullOrEmpty(accessToken))
-                {
-                    handler.SetAuthenticationCookies(_context);
-                }
-
                 using (var httpClient = new PnPHttpProvider(handler))
                 {
 
@@ -744,13 +738,6 @@ namespace PnP.Framework.ALM
             {
                 context.Web.EnsureProperty(w => w.Url);
 
-                // we're not in app-only or user + app context, so let's fall back to cookie based auth
-                if (String.IsNullOrEmpty(accessToken))
-                {
-                    handler.SetAuthenticationCookies(context);
-                }
-
-
                 using (var httpClient = new PnPHttpProvider(handler))
                 {
                     httpClient.Timeout = new TimeSpan(0, 0, timeoutSeconds);
@@ -835,11 +822,6 @@ namespace PnP.Framework.ALM
                 context.Load(items);
                 context.ExecuteQueryRetry();
 
-                // we're not in app-only or user + app context, so let's fall back to cookie based auth
-                if (String.IsNullOrEmpty(accessToken))
-                {
-                    handler.SetAuthenticationCookies(context);
-                }
                 if (items.Count > 0)
                 {
                     using (var httpClient = new PnPHttpProvider(handler))
@@ -905,12 +887,6 @@ namespace PnP.Framework.ALM
             using (var handler = new HttpClientHandler())
             {
                 context.Web.EnsureProperty(w => w.Url);
-
-                // we're not in app-only or user + app context, so let's fall back to cookie based auth
-                if (String.IsNullOrEmpty(accessToken))
-                {
-                    handler.SetAuthenticationCookies(context);
-                }
 
                 using (var httpClient = new PnPHttpProvider(handler))
                 {

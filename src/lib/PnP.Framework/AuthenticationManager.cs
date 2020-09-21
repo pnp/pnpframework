@@ -55,7 +55,6 @@ namespace PnP.Framework
         private string azureADCredentialsToken;
         private AutoResetEvent azureADCredentialsResetEvent = null;
         private readonly object tokenLock = new object();
-        private readonly CookieContainer fedAuth = null;
         private string _contextUrl;
         private TokenCache _tokenCache;
         private string _commonAuthority = "https://login.windows.net/Common";

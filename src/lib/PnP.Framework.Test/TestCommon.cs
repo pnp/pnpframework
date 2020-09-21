@@ -226,7 +226,7 @@ namespace PnP.Framework.Test
             }
             else
             {
-                context = am.GetAzureADCredentialsContext(contextUrl, UserName, Password);
+                context = am.GetAzureADCredentialsContext(contextUrl, UserName, Password, clientId: KnownClientId.PnPManagementShell);
             }
 
             context.RequestTimeout = 1000 * 60 * 15;

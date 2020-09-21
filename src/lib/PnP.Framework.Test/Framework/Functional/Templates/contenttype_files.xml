@@ -5,7 +5,12 @@ supporting template: add files needed in content type tests
 -->
 
 <pnp:ProvisioningTemplate ID="contenttype_files" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2015/12/ProvisioningSchema">
-  <pnp:Files>
+	<pnp:Features>
+		<pnp:SiteFeatures>
+			<pnp:Feature ID="3bae86a2-776d-499d-9db8-fa4cdc7884f8" Description="Document set" />
+		</pnp:SiteFeatures>
+	</pnp:Features>
+	<pnp:Files>
     <pnp:File Src="ct1document.docx" Folder="SiteAssets" Overwrite="true" />
     <pnp:File Src="ct3document.docx" Folder="SiteAssets" Overwrite="true" />
     <pnp:File Src="CT3DisplayForm.aspx" Folder="SiteAssets" Overwrite="true" />

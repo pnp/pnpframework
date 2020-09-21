@@ -15,7 +15,7 @@ namespace PnP.Framework.Test.Framework.Functional.Implementation
             {
 
                 // Add supporting files, note that files validation will be done in the files test cases
-                TestProvisioningTemplate(cc, "contenttype_files.xml", Handlers.Files);
+                TestProvisioningTemplate(cc, "contenttype_files.xml", Handlers.Files | Handlers.Features);
 
                 // Ensure we can test clean
                 DeleteContentTypes(cc);

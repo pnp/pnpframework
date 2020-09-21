@@ -13,8 +13,8 @@ namespace PnP.Framework.Test.Framework.Functional
         public NavigationTests()
         {
             //debugMode = true;
-            //centralSiteCollectionUrl = "https://bertonline.sharepoint.com/sites/TestPnPSC_12345_fdde9ab9-339a-443c-a951-7d1f30cf582b";
-            //centralSubSiteUrl = "https://bertonline.sharepoint.com/sites/TestPnPSC_12345_fdde9ab9-339a-443c-a951-7d1f30cf582b/sub";
+            //centralSiteCollectionUrl = "https://bertonline.sharepoint.com/sites/TestPnPSC_12345_94b8afb5-455d-45e4-b3eb-e404527a6fed";
+            //centralSubSiteUrl = "https://bertonline.sharepoint.com/sites/TestPnPSC_12345_94b8afb5-455d-45e4-b3eb-e404527a6fed/sub";
         }
         #endregion
 
@@ -22,7 +22,8 @@ namespace PnP.Framework.Test.Framework.Functional
         [ClassInitialize()]
         public static void ClassInit(TestContext context)
         {
-            ClassInitBase(context);
+            //debugMode = true;
+            ClassInitBase(context, useSTS: true);
         }
 
         [ClassCleanup()]

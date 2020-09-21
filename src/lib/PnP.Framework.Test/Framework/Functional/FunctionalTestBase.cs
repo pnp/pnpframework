@@ -19,7 +19,7 @@ namespace PnP.Framework.Test.Framework.Functional
         internal string sitecollectionName = "";
 
         #region Test preparation
-        public static void ClassInitBase(TestContext context, bool noScriptSite = false)
+        public static void ClassInitBase(TestContext context, bool noScriptSite = false, bool useSTS = false)
         {
             // Drop all previously created site collections to keep the environment clean
             using (var tenantContext = TestCommon.CreateTenantClientContext())
@@ -30,7 +30,7 @@ namespace PnP.Framework.Test.Framework.Functional
 
                     // Each class inheriting from this base class gets a central test site collection, so let's create that one
                     var tenant = new Tenant(tenantContext);
-                    centralSiteCollectionUrl = CreateTestSiteCollection(tenant, sitecollectionNamePrefix + Guid.NewGuid().ToString());
+                    centralSiteCollectionUrl = CreateTestSiteCollection(tenant, sitecollectionNamePrefix + Guid.NewGuid().ToString(), useSTS);
 
                     // Add a default sub site
                     centralSubSiteUrl = CreateTestSubSite(tenant, centralSiteCollectionUrl, centralSubSiteName);
@@ -66,7 +66,7 @@ namespace PnP.Framework.Test.Framework.Functional
         #endregion
 
         #region Helper methods
-        internal static string CreateTestSiteCollection(Tenant tenant, string sitecollectionName)
+        internal static string CreateTestSiteCollection(Tenant tenant, string sitecollectionName, bool useSts)
         {
             try
             {
@@ -83,28 +83,33 @@ namespace PnP.Framework.Test.Framework.Functional
                     }
                 }
 
-                //SiteEntity siteToCreate = new SiteEntity()
-                //{
-                //    Url = siteToCreateUrl,
-                //    Template = "STS#0",
-                //    Title = "Test",
-                //    Description = "Test site collection",
-                //    SiteOwnerLogin = siteOwnerLogin,
-                //    Lcid = 1033,
-                //    StorageMaximumLevel = 100,
-                //    UserCodeMaximumLevel = 0
-                //};
-
-                //tenant.CreateSiteCollection(siteToCreate, false, true);
-
-                var commResults = (tenant.Context as ClientContext).CreateSiteAsync(new PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation()
+                if (useSts)
                 {
-                    Url = siteToCreateUrl,
-                    SiteDesign = PnP.Framework.Sites.CommunicationSiteDesign.Blank,
-                    Title = "Test",
-                    Owner = siteOwnerLogin,
-                    Lcid = 1033
-                }).GetAwaiter().GetResult();
+                    SiteEntity siteToCreate = new SiteEntity()
+                    {
+                        Url = siteToCreateUrl,
+                        Template = "STS#0",
+                        Title = "Test",
+                        Description = "Test site collection",
+                        SiteOwnerLogin = siteOwnerLogin,
+                        Lcid = 1033,
+                        StorageMaximumLevel = 100,
+                        UserCodeMaximumLevel = 0
+                    };
+
+                    tenant.CreateSiteCollection(siteToCreate, false, true);
+                }
+                else
+                {
+                    var commResults = (tenant.Context as ClientContext).CreateSiteAsync(new PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation()
+                    {
+                        Url = siteToCreateUrl,
+                        SiteDesign = PnP.Framework.Sites.CommunicationSiteDesign.Blank,
+                        Title = "Test",
+                        Owner = siteOwnerLogin,
+                        Lcid = 1033
+                    }).GetAwaiter().GetResult();
+                }
 
                 return siteToCreateUrl;
             }

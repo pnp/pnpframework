@@ -148,7 +148,6 @@ namespace PnP.Framework.Sites
         }
     }
 
-#if !ONPREMISES
     /// <summary>
     /// Class for site groupify information
     /// </summary>
@@ -182,7 +181,7 @@ namespace PnP.Framework.Sites
         {
         }
     }
-#endif
+
     /// <summary>
     /// Class for group site creation information
     /// </summary>

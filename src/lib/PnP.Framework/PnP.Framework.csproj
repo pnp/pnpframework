@@ -134,6 +134,7 @@
     <PackageReference Include="Microsoft.SharePointOnline.CSOM" Version="16.1.20412.12000" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
     <PackageReference Include="Portable.Xaml" Version="0.25.0" />
+    <PackageReference Include="ResXResourceReader.NetStandard" Version="1.0.1" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.7.1" />
     <PackageReference Include="System.IO.Packaging" Version="4.7.0" />

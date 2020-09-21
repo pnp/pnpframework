@@ -7,6 +7,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Resources;
+using System.Resources.NetStandard;
 using System.Text.RegularExpressions;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers.Extensions
@@ -31,6 +32,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Extensions
                 {
                     // Read existing entries, if any
                     using (ResourceReader resxReader = new ResourceReader(resourceFileName))
+                    //using (ResXResourceReader resxReader = new ResXResourceReader(resourceFileName))
                     {
                         foreach (DictionaryEntry entry in resxReader)
                         {
@@ -44,10 +46,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Extensions
                     }
                 }
 
-                // Create new resource file
-                using (ResourceWriter resx = new ResourceWriter(resourceFileName))
+                // Create new resource file - use implementation copied from .Net Framework cause otherwise we end up with binary serialized files
+                //using (ResourceWriter resx = new ResourceWriter(resourceFileName))
+                using (ResXResourceWriter resx = new ResXResourceWriter(resourceFileName))
                 {
-                    foreach (var token in ResourceTokens.Where(t => t.Item2 == language))
+                    foreach (var token in ResourceTokens.Distinct().Where(t => t.Item2 == language))
                     {
 
                         resx.AddResource(token.Item1, token.Item3);

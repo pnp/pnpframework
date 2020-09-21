@@ -14,9 +14,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Xml.Linq;
 //using System.Web.UI.WebControls.WebParts;
 //using System.Web.UI.WebControls;
-using System.Xml.Linq;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -330,14 +330,32 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         {
                             if (stream != null)
                             {
+                                // Use raw XML approach as the .Net Framework resxreader seems to choke on some resx files 
+                                // TODO: research this!
                                 var xElement = XElement.Load(stream);
                                 foreach (var dataElement in xElement.Descendants("data"))
                                 {
                                     var key = dataElement.Attribute("name").Value;
-                                    var value = dataElement.Value;
+                                    var value = dataElement.Descendants().First().Value;
                                     resourceEntries.Add(new Tuple<string, uint, string>($"{localizationEntry.Name}:{key}", (uint)localizationEntry.LCID, value.ToString().Replace("\"", "&quot;")));
                                     resourceEntries.Add(new Tuple<string, uint, string>(key.ToString(), (uint)localizationEntry.LCID, value.ToString().Replace("\"", "&quot;")));
                                 }
+
+                                /**
+                                // are we talking a resx file or a json file?
+                                if (filePath.ToLower().EndsWith(".resx"))
+                                {
+                                    using (ResXResourceReader resxReader = new ResXResourceReader(stream))
+                                    {
+                                        foreach (DictionaryEntry entry in resxReader)
+                                        {
+                                            // One can have multiple resource files in a single file, by adding tokens with resource file name and without we allow both scenarios to resolve
+                                            resourceEntries.Add(new Tuple<string, uint, string>($"{localizationEntry.Name}:{entry.Key}", (uint)localizationEntry.LCID, entry.Value.ToString().Replace("\"", "&quot;")));
+                                            resourceEntries.Add(new Tuple<string, uint, string>(entry.Key.ToString(), (uint)localizationEntry.LCID, entry.Value.ToString().Replace("\"", "&quot;")));
+                                        }
+                                    }
+                                }
+                                */
                             }
                         }
                     }

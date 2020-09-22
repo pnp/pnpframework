@@ -22,7 +22,7 @@ namespace Microsoft.SharePoint.Client
         /// Get a list of site collection administrators
         /// </summary>
         /// <param name="web">Site to operate on</param>
-        /// <returns>List of <see cref="OfficeDevPnP.Core.Entities.UserEntity"/> objects</returns>
+        /// <returns>List of <see cref="PnP.Framework.Entities.UserEntity"/> objects</returns>
         public static List<UserEntity> GetAdministrators(this Web web)
         {
             var retrievalExpressions = new Expression<Func<User, object>>[]
@@ -90,7 +90,7 @@ namespace Microsoft.SharePoint.Client
         /// Removes an administrators from the site collection
         /// </summary>
         /// <param name="web">Site to operate on</param>
-        /// <param name="admin"><see cref="OfficeDevPnP.Core.Entities.UserEntity"/> that describes the admin to be removed</param>
+        /// <param name="admin"><see cref="PnP.Framework.Entities.UserEntity"/> that describes the admin to be removed</param>
         public static void RemoveAdministrator(this Web web, UserEntity admin)
         {
             var retrievalExpressions = new Expression<Func<User, object>>[]
@@ -367,7 +367,7 @@ namespace Microsoft.SharePoint.Client
         /// Returns a list all external users in your tenant
         /// </summary>
         /// <param name="web">Tenant administration web</param>
-        /// <returns>A list of <see cref="OfficeDevPnP.Core.Entities.ExternalUserEntity"/> objects</returns>
+        /// <returns>A list of <see cref="PnP.Framework.Entities.ExternalUserEntity"/> objects</returns>
         public static List<ExternalUserEntity> GetExternalUsersTenant(this Web web)
         {
             Tenant tenantAdmin = new Tenant(web.Context);
@@ -413,7 +413,7 @@ namespace Microsoft.SharePoint.Client
         /// </summary>
         /// <param name="web">Tenant administration web</param>
         /// <param name="siteUrl">Url of the site fetch the external users for</param>
-        /// <returns>A list of <see cref="OfficeDevPnP.Core.Entities.ExternalUserEntity"/> objects</returns>
+        /// <returns>A list of <see cref="PnP.Framework.Entities.ExternalUserEntity"/> objects</returns>
         public static List<ExternalUserEntity> GetExternalUsersForSiteTenant(this Web web, Uri siteUrl)
         {
             if (siteUrl == null)

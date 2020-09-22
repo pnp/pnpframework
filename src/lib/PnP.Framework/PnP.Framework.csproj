@@ -19,6 +19,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Modernization\Publishing\pagelayoutmapping.xml" />
+    <None Remove="Modernization\Publishing\pagelayoutmapping.xsd" />
+    <None Remove="Modernization\webpartmapping.xml" />
+    <None Remove="Modernization\webpartmapping.xsd" />
     <None Remove="Provisioning\BaseTemplates\Common\Publishing-Feature-Native-Files.xml" />
     <None Remove="Provisioning\BaseTemplates\SPO\BDR0Template.xml" />
     <None Remove="Provisioning\BaseTemplates\SPO\BICenterSite0Template.xml" />
@@ -58,6 +62,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Modernization\Publishing\pagelayoutmapping.xml" />
+    <EmbeddedResource Include="Modernization\Publishing\pagelayoutmapping.xsd" />
+    <EmbeddedResource Include="Modernization\webpartmapping.xml" />
+    <EmbeddedResource Include="Modernization\webpartmapping.xsd" />
     <EmbeddedResource Include="Provisioning\BaseTemplates\Common\Publishing-Feature-Native-Files.xml" />
     <EmbeddedResource Include="Provisioning\BaseTemplates\SPO\BDR0Template.xml" />
     <EmbeddedResource Include="Provisioning\BaseTemplates\SPO\BICenterSite0Template.xml" />
@@ -127,7 +135,11 @@
 				
 	<ItemGroup>
     <PackageReference Include="AngleSharp" Version="0.14.0" />
+    <PackageReference Include="AngleSharp.Css" Version="0.14.2" />
+    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.15.0" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Data.OData" Version="5.8.4" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="3.1.8" />
     <PackageReference Include="Microsoft.Graph" Version="1.9.0" />
     <PackageReference Include="Microsoft.Graph.Core" Version="1.9.0" />
     <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="3.19.8" />
@@ -136,10 +148,17 @@
     <PackageReference Include="Portable.Xaml" Version="0.25.0" />
     <PackageReference Include="ResXResourceReader.NetStandard" Version="1.0.1" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+    <PackageReference Include="System.DirectoryServices" Version="4.7.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.7.1" />
     <PackageReference Include="System.IO.Packaging" Version="4.7.0" />
     <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
     <PackageReference Include="System.Text.Json" Version="4.7.2" />
   </ItemGroup>
+				
+	<ItemGroup>
+	  <None Update="Modernization\Nuget\webpartmapping.xml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
 
 </Project>

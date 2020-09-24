@@ -1,5 +1,4 @@
-﻿/*
-using Microsoft.Online.SharePoint.TenantAdministration;
+﻿using Microsoft.Online.SharePoint.TenantAdministration;
 using Microsoft.SharePoint.Client;
 using Newtonsoft.Json;
 using PnP.Framework.Diagnostics;
@@ -51,7 +50,6 @@ namespace PnP.Framework.TimerJobs
         private string clientSecret;
         private string accessToken;
         private AzureEnvironment azureEnvironment;
-        private readonly bool highTrust;
         private string azureTenant;
         private X509Certificate2 certificate;
         private string certificatePath;
@@ -943,7 +941,27 @@ namespace PnP.Framework.TimerJobs
             }
             else
             {
-                AuthenticationManager am = new AuthenticationManager();
+                AuthenticationManager am = null;
+                if (this.AuthenticationType == AuthenticationType.Office365)
+                {
+                    am = new AuthenticationManager(this.username, this.password, this.AzureEnvironment);
+                }
+                else if (this.AuthenticationType == AuthenticationType.AzureADAppOnly)
+                {
+                    if (this.certificate != null)
+                    {
+                        am = new AuthenticationManager(this.clientId, this.certificate, azureEnvironment: this.AzureEnvironment);
+                    }
+                    else
+                    {
+                        am = new AuthenticationManager(this.clientId, this.certificatePath, this.certificatePassword, azureEnvironment: this.AzureEnvironment);
+                    }
+                }
+                else if (this.AuthenticationType == AuthenticationType.AppOnly || this.AuthenticationType == AuthenticationType.AccessToken)
+                {
+                    am = new AuthenticationManager();
+                }
+
                 this.authenticationManagers.TryAdd(uri.Host, am);
                 return am;
             }
@@ -1414,29 +1432,17 @@ namespace PnP.Framework.TimerJobs
         /// <returns>The created ClientContext object. Returns null if no ClientContext was created</returns>
         protected ClientContext CreateClientContext(string site)
         {
-            if (AuthenticationType == AuthenticationType.Office365)
+            if (AuthenticationType == AuthenticationType.Office365 || AuthenticationType == AuthenticationType.AzureADAppOnly)
             {
-                //return GetAuthenticationManager(site).GetSharePointOnlineAuthenticatedContextTenant(site, username, password);
-                return GetAuthenticationManager(site).GetAzureADCredentialsContext(site, username, password, this.azureEnvironment);
+                return GetAuthenticationManager(site).GetContextAsync(site).GetAwaiter().GetResult();
             }
             else if (AuthenticationType == AuthenticationType.AppOnly)
             {
-                return GetAuthenticationManager(site).GetAppOnlyAuthenticatedContext(site, this.realm, this.clientId, this.clientSecret);
-            }
-            else if (AuthenticationType == AuthenticationType.AzureADAppOnly)
-            {
-                if (this.certificate != null)
-                {
-                    return GetAuthenticationManager(site).GetAzureADAppOnlyAuthenticatedContext(site, this.clientId, this.azureTenant, this.certificate, this.azureEnvironment);
-                }
-                else
-                {
-                    return GetAuthenticationManager(site).GetAzureADAppOnlyAuthenticatedContext(site, this.clientId, this.azureTenant, this.certificatePath, this.certificatePassword, this.azureEnvironment);
-                }
+                return GetAuthenticationManager(site).GetACSAppOnlyContext(site, this.realm, this.clientId, this.clientSecret);
             }
             else if (AuthenticationType == AuthenticationType.AccessToken)
             {
-                return GetAuthenticationManager(site).GetAzureADAccessTokenAuthenticatedContext(site, this.accessToken);
+                return GetAuthenticationManager(site).GetAccessTokenAuthenticatedContext(site, this.accessToken);
             }
 
             return null;
@@ -1455,22 +1461,15 @@ namespace PnP.Framework.TimerJobs
                 if (AuthenticationType == AuthenticationType.AppOnly)
                 {
                     // with the proper tenant scoped permissions one can do search with app-only in SPO
-                    ccEnumerate = GetAuthenticationManager(site).GetAppOnlyAuthenticatedContext(GetTenantAdminSite(site), this.realm, this.clientId, this.clientSecret);
+                    ccEnumerate = GetAuthenticationManager(site).GetACSAppOnlyContext(GetTenantAdminSite(site), this.realm, this.clientId, this.clientSecret);
                 }
-                else if (AuthenticationType == AuthenticationType.AzureADAppOnly)
+                else if (AuthenticationType == AuthenticationType.AzureADAppOnly || AuthenticationType == AuthenticationType.Office365)
                 {
-                    if (this.certificate != null)
-                    {
-                        ccEnumerate = GetAuthenticationManager(site).GetAzureADAppOnlyAuthenticatedContext(GetTenantAdminSite(site), this.clientId, this.azureTenant, this.certificate, this.azureEnvironment);
-                    }
-                    else
-                    {
-                        ccEnumerate = GetAuthenticationManager(site).GetAzureADAppOnlyAuthenticatedContext(GetTenantAdminSite(site), this.clientId, this.azureTenant, this.certificatePath, this.certificatePassword, this.azureEnvironment);
-                    }
+                    ccEnumerate = GetAuthenticationManager(site).GetContextAsync(GetTenantAdminSite(site)).GetAwaiter().GetResult();
                 }
-                else
+                else if (AuthenticationType == AuthenticationType.AccessToken)
                 {
-                    ccEnumerate = GetAuthenticationManager(site).GetAzureADCredentialsContext(GetTenantAdminSite(site), EnumerationUser, EnumerationPassword, this.azureEnvironment);
+                    ccEnumerate = GetAuthenticationManager(site).GetAccessTokenAuthenticatedContext(GetTenantAdminSite(site), this.accessToken);
                 }
                 Tenant tenant = new Tenant(ccEnumerate);
                 SiteEnumeration.Instance.ResolveSite(tenant, site, resolvedSites, this.excludeOD4B);
@@ -1697,4 +1696,3 @@ namespace PnP.Framework.TimerJobs
         #endregion
     }
 }
-*/

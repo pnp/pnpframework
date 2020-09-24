@@ -101,7 +101,7 @@ namespace PnP.Framework.Test.Framework.Functional
                 }
                 else
                 {
-                    var commResults = (tenant.Context as ClientContext).CreateSiteAsync(new PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation()
+                    var commResults = (tenant.Context.Clone(devSiteUrl) as ClientContext).CreateSiteAsync(new PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation()
                     {
                         Url = siteToCreateUrl,
                         SiteDesign = PnP.Framework.Sites.CommunicationSiteDesign.Blank,

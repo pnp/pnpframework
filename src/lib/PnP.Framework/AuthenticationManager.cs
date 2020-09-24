@@ -1,11 +1,9 @@
-﻿using Microsoft.IdentityModel.Clients.ActiveDirectory;
+﻿using Microsoft.Identity.Client;
 using Microsoft.SharePoint.Client;
 using Newtonsoft.Json.Linq;
 using PnP.Framework.Diagnostics;
-using PnP.Framework.Utilities.Async;
 using PnP.Framework.Utilities.Context;
 using System;
-using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -26,10 +24,25 @@ namespace PnP.Framework
     /// </summary>
     public enum AzureEnvironment
     {
+        /// <summary>
+        /// 
+        /// </summary>
         Production = 0,
+        /// <summary>
+        /// 
+        /// </summary>
         PPE = 1,
+        /// <summary>
+        /// 
+        /// </summary>
         China = 2,
+        /// <summary>
+        /// 
+        /// </summary>
         Germany = 3,
+        /// <summary>
+        /// 
+        /// </summary>
         USGovernment = 4
     }
 
@@ -40,7 +53,13 @@ namespace PnP.Framework
 
     public enum KnownClientId
     {
+        /// <summary>
+        /// 
+        /// </summary>
         PnPManagementShell,
+        /// <summary>
+        /// 
+        /// </summary>
         SPOManagementShell
     }
 
@@ -53,15 +72,22 @@ namespace PnP.Framework
         private string appOnlyAccessToken;
         private AutoResetEvent appOnlyAccessTokenResetEvent = null;
         private string azureADCredentialsToken;
-        private AutoResetEvent azureADCredentialsResetEvent = null;
         private readonly object tokenLock = new object();
         private string _contextUrl;
-        private TokenCache _tokenCache;
         private string _commonAuthority = "https://login.windows.net/Common";
-        private static AuthenticationContext _authContext = null;
         private string _clientId;
         private Uri _redirectUri;
         private bool disposedValue;
+
+        private IPublicClientApplication publicClientApplication;
+        private IConfidentialClientApplication confidentialClientApplication;
+        private string azureADEndPoint;
+        private ClientContextType authenticationType;
+        private string username;
+        private X509Certificate2 certificate;
+        private string clientSecret;
+        private SecureString password;
+        internal string RedirectUrl { get; set; }
 
         #region Construction
         public AuthenticationManager()
@@ -69,7 +95,239 @@ namespace PnP.Framework
             // Set the TLS preference. Needed on some server os's to work when Office 365 removes support for TLS 1.0
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
         }
+
+        /// <summary>
+        /// /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts. It uses the PnP Management Shell multi-tenant Azure AD application ID to authenticate.
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <param name="azureEnvironment"></param>
+        public AuthenticationManager(string username, SecureString password, AzureEnvironment azureEnvironment = AzureEnvironment.Production) : this(GetKnownClientId(KnownClientId.PnPManagementShell), username, password, "https://login.microsoftonline.com/common/oauth2/nativeclient", azureEnvironment)
+        {
+        }
+
+        /// <summary>
+        /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts.
+        /// </summary>
+        /// <param name="clientId"></param>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <param name="redirectUrl"></param>
+        /// <param name="azureEnvironment"></param>
+        public AuthenticationManager(string clientId, string username, SecureString password, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+        {
+            azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
+
+            var builder = PublicClientApplicationBuilder.Create(clientId).WithAuthority($"{azureADEndPoint}/organizations/");
+            if (!string.IsNullOrEmpty(redirectUrl))
+            {
+                builder = builder.WithRedirectUri(redirectUrl);
+            }
+            this.username = username;
+            this.password = password;
+            publicClientApplication = builder.Build();
+            authenticationType = ClientContextType.AzureADCredentials;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="clientId"></param>
+        /// <param name="redirectUrl"></param>
+        /// <param name="azureEnvironment"></param>
+        public AuthenticationManager(string clientId, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+        {
+            azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
+            var builder = PublicClientApplicationBuilder.Create(clientId).WithAuthority($"{azureADEndPoint}/organizations/");
+            if (!string.IsNullOrEmpty(redirectUrl))
+            {
+                builder = builder.WithRedirectUri(redirectUrl);
+            }
+            publicClientApplication = builder.Build();
+            authenticationType = ClientContextType.AzureADInteractive;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="clientId"></param>
+        /// <param name="certificate"></param>
+        /// <param name="redirectUrl"></param>
+        /// <param name="azureEnvironment"></param>
+        public AuthenticationManager(string clientId, X509Certificate2 certificate, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+        {
+            azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
+            var builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithAuthority($"{azureADEndPoint}/organizations/");
+            if (!string.IsNullOrEmpty(redirectUrl))
+            {
+                builder = builder.WithRedirectUri(redirectUrl);
+            }
+            confidentialClientApplication = builder.Build();
+            this.certificate = certificate;
+            authenticationType = ClientContextType.AzureADCredentials;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="clientId"></param>
+        /// <param name="certificatePath"></param>
+        /// <param name="certificatePassword"></param>
+        /// <param name="redirectUrl"></param>
+        /// <param name="azureEnvironment"></param>
+        public AuthenticationManager(string clientId, string certificatePath, string certificatePassword, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+        {
+            azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
+            var builder = ConfidentialClientApplicationBuilder.Create(clientId).WithAuthority($"{azureADEndPoint}/organizations/");
+            if (!string.IsNullOrEmpty(redirectUrl))
+            {
+                builder = builder.WithRedirectUri(redirectUrl);
+            }
+            confidentialClientApplication = builder.Build();
+
+            var certfile = System.IO.File.OpenRead(certificatePath);
+            var certificateBytes = new byte[certfile.Length];
+            certfile.Read(certificateBytes, 0, (int)certfile.Length);
+            var certificate = new X509Certificate2(
+                certificateBytes,
+                certificatePassword,
+                X509KeyStorageFlags.Exportable |
+                X509KeyStorageFlags.MachineKeySet |
+                X509KeyStorageFlags.PersistKeySet);
+            this.certificate = certificate;
+            authenticationType = ClientContextType.AzureADCertificate;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="clientId"></param>
+        /// <param name="storeName"></param>
+        /// <param name="storeLocation"></param>
+        /// <param name="thumbPrint"></param>
+        /// <param name="redirectUrl"></param>
+        /// <param name="azureEnvironment"></param>
+        public AuthenticationManager(string clientId, StoreName storeName, StoreLocation storeLocation, string thumbPrint, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+        {
+            azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
+            var builder = ConfidentialClientApplicationBuilder.Create(clientId).WithAuthority($"{azureADEndPoint}/organizations/");
+            if (!string.IsNullOrEmpty(redirectUrl))
+            {
+                builder = builder.WithRedirectUri(redirectUrl);
+            }
+            confidentialClientApplication = builder.Build();
+
+            this.certificate = Utilities.X509CertificateUtility.LoadCertificate(storeName, storeLocation, thumbPrint); ;
+            authenticationType = ClientContextType.AzureADCertificate;
+        }
         #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="siteUrl"></param>
+        /// <returns></returns>
+        public ClientContext GetContext(string siteUrl)
+        {
+            return GetContextAsync(siteUrl).GetAwaiter().GetResult();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="siteUrl"></param>
+        /// <returns></returns>
+        public async Task<ClientContext> GetContextAsync(string siteUrl)
+        {
+            var uri = new Uri(siteUrl);
+
+            var scopes = new[] { $"{uri.Scheme}://{uri.Authority}/.default" };
+
+            AuthenticationResult authResult = null;
+            switch (authenticationType)
+            {
+                case ClientContextType.AzureADCredentials:
+                    {
+                        var accounts = await publicClientApplication.GetAccountsAsync();
+                        try
+                        {
+                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
+                        }
+                        catch
+                        {
+                            authResult = await publicClientApplication.AcquireTokenByUsernamePassword(scopes, username, password).ExecuteAsync();
+                        }
+                        if (authResult.AccessToken != null)
+                        {
+                            return BuildClientContext(publicClientApplication, siteUrl, scopes, authenticationType);
+                        }
+                        break;
+                    }
+                case ClientContextType.AzureADInteractive:
+                    {
+                        var accounts = await publicClientApplication.GetAccountsAsync();
+
+                        try
+                        {
+                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
+                        }
+                        catch
+                        {
+                            authResult = await publicClientApplication.AcquireTokenInteractive(scopes).ExecuteAsync();
+                        }
+                        if (authResult.AccessToken != null)
+                        {
+                            return BuildClientContext(publicClientApplication, siteUrl, scopes, authenticationType);
+                        }
+                        break;
+                    }
+                case ClientContextType.AzureADCertificate:
+                    {
+                        var accounts = await confidentialClientApplication.GetAccountsAsync();
+
+                        try
+                        {
+                            authResult = await confidentialClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
+                        }
+                        catch
+                        {
+                            authResult = await confidentialClientApplication.AcquireTokenForClient(scopes).ExecuteAsync();
+                        }
+                        if (authResult.AccessToken != null)
+                        {
+                            return BuildClientContext(confidentialClientApplication, siteUrl, scopes, authenticationType);
+                        }
+                        break;
+                    }
+            }
+            return null;
+        }
+
+
+        private ClientContext BuildClientContext(IClientApplicationBase application, string siteUrl, string[] scopes, ClientContextType contextType)
+        {
+            var clientContext = new ClientContext(siteUrl)
+            {
+                DisableReturnValueCache = true
+            };
+
+            clientContext.ExecutingWebRequest += (sender, args) =>
+            {
+                var accounts = application.GetAccountsAsync().GetAwaiter().GetResult();
+                var ar = application.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync().GetAwaiter().GetResult();
+                args.WebRequestExecutor.RequestHeaders["Authorization"] = "Bearer " + ar.AccessToken;
+            };
+
+            ClientContextSettings clientContextSettings = new ClientContextSettings()
+            {
+                Type = contextType,
+                SiteUrl = siteUrl,
+                AuthenticationManager = this,
+            };
+
+            clientContext.AddContextSettings(clientContextSettings);
+
+            return clientContext;
+        }
 
         private static string GetKnownClientId(KnownClientId id)
         {
@@ -97,9 +355,9 @@ namespace PnP.Framework
         /// <param name="appId">Application ID which is requesting the ClientContext object</param>
         /// <param name="appSecret">Application secret of the Application which is requesting the ClientContext object</param>
         /// <returns>ClientContext to be used by CSOM code</returns>
-        public ClientContext GetAppOnlyAuthenticatedContext(string siteUrl, string appId, string appSecret)
+        public ClientContext GetACSAppOnlyContext(string siteUrl, string appId, string appSecret)
         {
-            return GetAppOnlyAuthenticatedContext(siteUrl, Utilities.TokenHelper.GetRealmFromTargetUrl(new Uri(siteUrl)), appId, appSecret);
+            return GetACSAppOnlyContext(siteUrl, Utilities.TokenHelper.GetRealmFromTargetUrl(new Uri(siteUrl)), appId, appSecret);
         }
 
         /// <summary>
@@ -110,9 +368,9 @@ namespace PnP.Framework
         /// <param name="appSecret">Application secret of the Application which is requesting the ClientContext object</param>
         /// <param name="environment">SharePoint environment being used</param>
         /// <returns>ClientContext to be used by CSOM code</returns>
-        public ClientContext GetAppOnlyAuthenticatedContext(string siteUrl, string appId, string appSecret, AzureEnvironment environment = AzureEnvironment.Production)
+        public ClientContext GetACSAppOnlyContext(string siteUrl, string appId, string appSecret, AzureEnvironment environment = AzureEnvironment.Production)
         {
-            return GetAppOnlyAuthenticatedContext(siteUrl, Utilities.TokenHelper.GetRealmFromTargetUrl(new Uri(siteUrl)), appId, appSecret, GetAzureADACSEndPoint(environment), GetAzureADACSEndPointPrefix(environment));
+            return GetACSAppOnlyContext(siteUrl, Utilities.TokenHelper.GetRealmFromTargetUrl(new Uri(siteUrl)), appId, appSecret, GetACSEndPoint(environment), GetACSEndPointPrefix(environment));
         }
 
         /// <summary>
@@ -125,9 +383,9 @@ namespace PnP.Framework
         /// <param name="acsHostUrl">Azure ACS host, defaults to accesscontrol.windows.net but internal pre-production environments use other hosts</param>
         /// <param name="globalEndPointPrefix">Azure ACS endpoint prefix, defaults to accounts but internal pre-production environments use other prefixes</param>
         /// <returns>ClientContext to be used by CSOM code</returns>
-        public ClientContext GetAppOnlyAuthenticatedContext(string siteUrl, string realm, string appId, string appSecret, string acsHostUrl = "accesscontrol.windows.net", string globalEndPointPrefix = "accounts")
+        public ClientContext GetACSAppOnlyContext(string siteUrl, string realm, string appId, string appSecret, string acsHostUrl = "accesscontrol.windows.net", string globalEndPointPrefix = "accounts")
         {
-            EnsureToken(siteUrl, realm, appId, appSecret, acsHostUrl, globalEndPointPrefix);
+            ACSEnsureToken(siteUrl, realm, appId, appSecret, acsHostUrl, globalEndPointPrefix);
             ClientContext clientContext = Utilities.TokenHelper.GetClientContextWithAccessToken(siteUrl, appOnlyAccessToken);
             clientContext.DisableReturnValueCache = true;
 
@@ -153,7 +411,7 @@ namespace PnP.Framework
         /// </summary>
         /// <param name="environment">Environment to get the login information for</param>
         /// <returns>Azure ASC login endpoint</returns>
-        public string GetAzureADACSEndPoint(AzureEnvironment environment)
+        public string GetACSEndPoint(AzureEnvironment environment)
         {
             switch (environment)
             {
@@ -189,7 +447,7 @@ namespace PnP.Framework
         /// </summary>
         /// <param name="environment">Environment to get the login information for</param>
         /// <returns>Azure ACS login endpoint prefix</returns>
-        public string GetAzureADACSEndPointPrefix(AzureEnvironment environment)
+        public string GetACSEndPointPrefix(AzureEnvironment environment)
         {
             switch (environment)
             {
@@ -230,7 +488,7 @@ namespace PnP.Framework
         /// <param name="acsHostUrl">Azure ACS host, defaults to accesscontrol.windows.net but internal pre-production environments use other hosts</param>
         /// <param name="globalEndPointPrefix">Azure ACS endpoint prefix, defaults to accounts but internal pre-production environments use other prefixes</param>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1303:Do not pass literals as localized parameters", MessageId = "OfficeDevPnP.Core.Diagnostics.Log.Debug(System.String,System.String,System.Object[])")]
-        private void EnsureToken(string siteUrl, string realm, string appId, string appSecret, string acsHostUrl, string globalEndPointPrefix)
+        private void ACSEnsureToken(string siteUrl, string realm, string appId, string appSecret, string acsHostUrl, string globalEndPointPrefix)
         {
             if (appOnlyAccessToken == null)
             {
@@ -342,60 +600,60 @@ namespace PnP.Framework
             return lease;
         }
 
-        /// <summary>
-        /// Returns a SharePoint ClientContext using Azure Active Directory credential authentication. This depends on the SPO Management Shell app or the PnP Management Shell app being registered in your Azure AD.
-        /// </summary>
-        /// <param name="siteUrl">Site for which the ClientContext object will be instantiated</param>
-        /// <param name="userPrincipalName">The user id</param>
-        /// <param name="userPassword">The user's password as a secure string</param>
-        /// <param name="environment">SharePoint environment being used</param>
-        /// <param name="clientId">Enum value pointing to one of the known client ids</param></parm>
-        /// <returns>Client context object</returns>
-        public ClientContext GetAzureADCredentialsContext(string siteUrl, string userPrincipalName, SecureString userPassword, AzureEnvironment environment = AzureEnvironment.Production, KnownClientId clientId = KnownClientId.SPOManagementShell)
-        {
-            string password = new System.Net.NetworkCredential(string.Empty, userPassword).Password;
-            return GetAzureADCredentialsContext(siteUrl, userPrincipalName, password, environment, clientId);
-        }
+        ///// <summary>
+        ///// Returns a SharePoint ClientContext using Azure Active Directory credential authentication. This depends on the SPO Management Shell app or the PnP Management Shell app being registered in your Azure AD.
+        ///// </summary>
+        ///// <param name="siteUrl">Site for which the ClientContext object will be instantiated</param>
+        ///// <param name="userPrincipalName">The user id</param>
+        ///// <param name="userPassword">The user's password as a secure string</param>
+        ///// <param name="environment">SharePoint environment being used</param>
+        ///// <param name="clientId">Enum value pointing to one of the known client ids</param></parm>
+        ///// <returns>Client context object</returns>
+        //public ClientContext GetCredentialsContext(string siteUrl, string userPrincipalName, SecureString userPassword, AzureEnvironment environment = AzureEnvironment.Production, KnownClientId clientId = KnownClientId.SPOManagementShell)
+        //{
+        //    string password = new System.Net.NetworkCredential(string.Empty, userPassword).Password;
+        //    return GetCredentialsContext(siteUrl, userPrincipalName, password, environment, clientId);
+        //}
 
-        /// <summary>
-        /// Returns a SharePoint ClientContext using Azure Active Directory credential authentication. This depends on the SPO Management Shell app or the PnP Management Shell app being registered in your Azure AD.
-        /// </summary>
-        /// <param name="siteUrl">Site for which the ClientContext object will be instantiated</param>
-        /// <param name="userPrincipalName">The user id</param>
-        /// <param name="userPassword">The user's password as a string</param>
-        /// <param name="environment">SharePoint environment being used</param>
-        /// <returns>Client context object</returns>
-        public ClientContext GetAzureADCredentialsContext(string siteUrl, string userPrincipalName, string userPassword, AzureEnvironment environment = AzureEnvironment.Production, KnownClientId clientId = KnownClientId.SPOManagementShell)
-        {
-            Log.Info(Constants.LOGGING_SOURCE, CoreResources.AuthenticationManager_GetContext, siteUrl);
-            Log.Debug(Constants.LOGGING_SOURCE, CoreResources.AuthenticationManager_TenantUser, userPrincipalName);
+        ///// <summary>
+        ///// Returns a SharePoint ClientContext using Azure Active Directory credential authentication. This depends on the SPO Management Shell app or the PnP Management Shell app being registered in your Azure AD.
+        ///// </summary>
+        ///// <param name="siteUrl">Site for which the ClientContext object will be instantiated</param>
+        ///// <param name="userPrincipalName">The user id</param>
+        ///// <param name="userPassword">The user's password as a string</param>
+        ///// <param name="environment">SharePoint environment being used</param>
+        ///// <returns>Client context object</returns>
+        //public ClientContext GetCredentialsContext(string siteUrl, string userPrincipalName, string userPassword, AzureEnvironment environment = AzureEnvironment.Production, KnownClientId clientId = KnownClientId.SPOManagementShell)
+        //{
+        //    Log.Info(Constants.LOGGING_SOURCE, CoreResources.AuthenticationManager_GetContext, siteUrl);
+        //    Log.Debug(Constants.LOGGING_SOURCE, CoreResources.AuthenticationManager_TenantUser, userPrincipalName);
 
-            var spUri = new Uri(siteUrl);
-            string resourceUri = spUri.Scheme + "://" + spUri.Authority;
+        //    var spUri = new Uri(siteUrl);
+        //    string resourceUri = spUri.Scheme + "://" + spUri.Authority;
 
-            var clientContext = new ClientContext(siteUrl)
-            {
-                DisableReturnValueCache = true
-            };
-            clientContext.ExecutingWebRequest += (sender, args) =>
-            {
-                EnsureAzureADCredentialsToken(resourceUri, userPrincipalName, userPassword, environment, clientId);
-                args.WebRequestExecutor.RequestHeaders["Authorization"] = "Bearer " + azureADCredentialsToken;
-            };
+        //    var clientContext = new ClientContext(siteUrl)
+        //    {
+        //        DisableReturnValueCache = true
+        //    };
+        //    clientContext.ExecutingWebRequest += (sender, args) =>
+        //    {
+        //        EnsureAzureADCredentialsToken(resourceUri, userPrincipalName, userPassword, environment, clientId);
+        //        args.WebRequestExecutor.RequestHeaders["Authorization"] = "Bearer " + azureADCredentialsToken;
+        //    };
 
-            ClientContextSettings clientContextSettings = new ClientContextSettings()
-            {
-                Type = ClientContextType.AzureADCredentials,
-                SiteUrl = siteUrl,
-                AuthenticationManager = this,
-                UserName = userPrincipalName,
-                Password = userPassword
-            };
+        //    ClientContextSettings clientContextSettings = new ClientContextSettings()
+        //    {
+        //        Type = ClientContextType.AzureADCredentials,
+        //        SiteUrl = siteUrl,
+        //        AuthenticationManager = this,
+        //        UserName = userPrincipalName,
+        //        Password = userPassword
+        //    };
 
-            clientContext.AddContextSettings(clientContextSettings);
+        //    clientContext.AddContextSettings(clientContextSettings);
 
-            return clientContext;
-        }
+        //    return clientContext;
+        //}
 
         /// <summary>
         /// Acquires an access token using Azure AD credential flow. This depends on the SPO Management Shell app or the PnP Management Shell app  being registered in your Azure AD.
@@ -441,46 +699,6 @@ namespace PnP.Framework
             return token;
         }
 
-        private void EnsureAzureADCredentialsToken(string resourceUri, string userPrincipalName, string userPassword, AzureEnvironment environment, KnownClientId clientId = KnownClientId.SPOManagementShell)
-        {
-            if (azureADCredentialsToken == null)
-            {
-                lock (tokenLock)
-                {
-                    if (azureADCredentialsToken == null)
-                    {
-                        var clientIdString = GetKnownClientId(clientId);
-                        string accessToken = Task.Run(() => AcquireTokenAsync(resourceUri, userPrincipalName, userPassword, environment, clientIdString)).GetAwaiter().GetResult();
-
-                        try
-                        {
-                            var token = new System.IdentityModel.Tokens.Jwt.JwtSecurityToken(accessToken);
-                            Log.Debug(Constants.LOGGING_SOURCE, "Lease expiration date: {0}", token.ValidTo);
-                            var lease = GetAccessTokenLease(token.ValidTo);
-                            lease = TimeSpan.FromSeconds(lease.TotalSeconds - TimeSpan.FromMinutes(5).TotalSeconds > 0 ? lease.TotalSeconds - TimeSpan.FromMinutes(5).TotalSeconds : lease.TotalSeconds);
-
-                            azureADCredentialsResetEvent = new AutoResetEvent(false);
-
-                            AzureADCredentialsTokenWaitInfo wi = new AzureADCredentialsTokenWaitInfo();
-
-                            wi.Handle = ThreadPool.RegisterWaitForSingleObject(azureADCredentialsResetEvent,
-                                                                               new WaitOrTimerCallback(AzureADCredentialsTokenWaitProc),
-                                                                               wi,
-                                                                               (uint)lease.TotalMilliseconds,
-                                                                               true);
-                        }
-                        catch (Exception ex)
-                        {
-                            Log.Warning(Constants.LOGGING_SOURCE, CoreResources.AuthenticationManger_ProblemDeterminingTokenLease, ex);
-                            azureADCredentialsToken = null;
-                        }
-
-                        azureADCredentialsToken = accessToken;
-                    }
-                }
-            }
-        }
-
         internal class AzureADCredentialsTokenWaitInfo
         {
             public RegisteredWaitHandle Handle = null;
@@ -502,42 +720,40 @@ namespace PnP.Framework
             }
         }
 
-        /// <summary>
-        /// Returns a SharePoint ClientContext using Azure Active Directory authentication. This requires that you have a Azure AD Native Application registered. The user will be prompted for authentication.
-        /// </summary>
-        /// <param name="siteUrl">Site for which the ClientContext object will be instantiated</param>
-        /// <param name="clientId">The Azure AD Native Application Client ID</param>
-        /// <param name="redirectUrl">The Azure AD Native Application Redirect Uri as a string</param>
-        /// <param name="tokenCache">Optional token cache. If not specified an in-memory token cache will be used</param>
-        /// <param name="environment">SharePoint environment being used</param>
-        /// <returns>Client context object</returns>
-        public ClientContext GetAzureADNativeApplicationAuthenticatedContext(string siteUrl, string clientId, string redirectUrl, TokenCache tokenCache = null, AzureEnvironment environment = AzureEnvironment.Production)
-        {
-            return GetAzureADNativeApplicationAuthenticatedContext(siteUrl, clientId, new Uri(redirectUrl), tokenCache, environment);
-        }
+        ///// <summary>
+        ///// Returns a SharePoint ClientContext using Azure Active Directory authentication. This requires that you have a Azure AD Native Application registered. The user will be prompted for authentication.
+        ///// </summary>
+        ///// <param name="siteUrl">Site for which the ClientContext object will be instantiated</param>
+        ///// <param name="clientId">The Azure AD Native Application Client ID</param>
+        ///// <param name="redirectUrl">The Azure AD Native Application Redirect Uri as a string</param>
+        ///// <param name="tokenCache">Optional token cache. If not specified an in-memory token cache will be used</param>
+        ///// <param name="environment">SharePoint environment being used</param>
+        ///// <returns>Client context object</returns>
+        //public ClientContext GetInteractiveContext(string siteUrl, string clientId, string redirectUrl, AzureEnvironment environment = AzureEnvironment.Production)
+        //{
+        //    return GetInteractiveContext(siteUrl, clientId, new Uri(redirectUrl), environment);
+        //}
 
-        /// <summary>
-        /// Returns a SharePoint ClientContext using Azure Active Directory authentication. This requires that you have a Azure AD Native Application registered. The user will be prompted for authentication.
-        /// </summary>
-        /// <param name="siteUrl">Site for which the ClientContext object will be instantiated</param>
-        /// <param name="clientId">The Azure AD Native Application Client ID</param>
-        /// <param name="redirectUri">The Azure AD Native Application Redirect Uri</param>
-        /// <param name="tokenCache">Optional token cache. If not specified an in-memory token cache will be used</param>
-        /// <param name="environment">SharePoint environment being used</param>
-        /// <returns>Client context object</returns>
-        public ClientContext GetAzureADNativeApplicationAuthenticatedContext(string siteUrl, string clientId, Uri redirectUri, TokenCache tokenCache = null, AzureEnvironment environment = AzureEnvironment.Production)
-        {
-            var clientContext = new ClientContext(siteUrl);
-            _contextUrl = siteUrl;
-            _tokenCache = tokenCache;
-            _clientId = clientId;
-            _redirectUri = redirectUri;
-            _commonAuthority = String.Format("{0}/common", GetAzureADLoginEndPoint(environment));
+        ///// <summary>
+        ///// Returns a SharePoint ClientContext using Azure Active Directory authentication. This requires that you have a Azure AD Native Application registered. The user will be prompted for authentication.
+        ///// </summary>
+        ///// <param name="siteUrl">Site for which the ClientContext object will be instantiated</param>
+        ///// <param name="clientId">The Azure AD Native Application Client ID</param>
+        ///// <param name="redirectUri">The Azure AD Native Application Redirect Uri</param>
+        ///// <param name="environment">SharePoint environment being used</param>
+        ///// <returns>Client context object</returns>
+        //public ClientContext GetInteractiveContext(string siteUrl, string clientId, Uri redirectUri, AzureEnvironment environment = AzureEnvironment.Production)
+        //{
+        //    var clientContext = new ClientContext(siteUrl);
+        //    _contextUrl = siteUrl;
+        //    _clientId = clientId;
+        //    _redirectUri = redirectUri;
+        //    _commonAuthority = String.Format("{0}/common", GetAzureADLoginEndPoint(environment));
 
-            clientContext.ExecutingWebRequest += clientContext_NativeApplicationExecutingWebRequest;
+        //    clientContext.ExecutingWebRequest += clientContext_ApplicationTokenInteractiveExecutingWebRequest;
 
-            return clientContext;
-        }
+        //    return clientContext;
+        //}
 
         /// <summary>
         /// Returns a SharePoint ClientContext using Azure Active Directory authentication. This requires that you have a Azure AD Web Application registered. The user will not be prompted for authentication, the current user's authentication context will be used by leveraging ADAL.
@@ -545,7 +761,7 @@ namespace PnP.Framework
         /// <param name="siteUrl">Site for which the ClientContext object will be instantiated</param>
         /// <param name="accessTokenGetter">The AccessToken getter method to use</param>
         /// <returns>Client context object</returns>
-        public ClientContext GetAzureADWebApplicationAuthenticatedContext(String siteUrl, Func<String, String> accessTokenGetter)
+        public ClientContext GetAzureADWebApplicationAuthenticatedContext(string siteUrl, Func<string, string> accessTokenGetter)
         {
             var clientContext = new ClientContext(siteUrl)
             {
@@ -556,7 +772,7 @@ namespace PnP.Framework
                 Uri resourceUri = new Uri(siteUrl);
                 resourceUri = new Uri(resourceUri.Scheme + "://" + resourceUri.Host + "/");
 
-                String accessToken = accessTokenGetter(resourceUri.ToString());
+                string accessToken = accessTokenGetter(resourceUri.ToString());
                 args.WebRequestExecutor.RequestHeaders["Authorization"] = "Bearer " + accessToken;
             };
 
@@ -569,7 +785,7 @@ namespace PnP.Framework
         /// <param name="siteUrl">Site for which the ClientContext object will be instantiated</param>
         /// <param name="accessToken">An explicit value for the AccessToken</param>
         /// <returns>Client context object</returns>
-        public ClientContext GetAzureADAccessTokenAuthenticatedContext(String siteUrl, String accessToken)
+        public ClientContext GetAccessTokenAuthenticatedContext(string siteUrl, string accessToken)
         {
             var clientContext = new ClientContext(siteUrl)
             {
@@ -580,232 +796,6 @@ namespace PnP.Framework
             {
                 args.WebRequestExecutor.RequestHeaders["Authorization"] = "Bearer " + accessToken;
             };
-
-            return clientContext;
-        }
-
-        async void clientContext_NativeApplicationExecutingWebRequest(object sender, WebRequestEventArgs e)
-        {
-            var host = new Uri(_contextUrl);
-            var ar = await AcquireNativeApplicationTokenAsync(_commonAuthority, host.Scheme + "://" + host.Host + "/");
-
-            if (ar != null)
-            {
-                e.WebRequestExecutor.RequestHeaders["Authorization"] = "Bearer " + ar.AccessToken;
-            }
-        }
-
-        private async Task<AuthenticationResult> AcquireNativeApplicationTokenAsync(string authContextUrl, string resourceId)
-        {
-            AuthenticationResult ar = null;
-
-            await new SynchronizationContextRemover();
-
-            try
-            {
-                if (_tokenCache != null)
-                {
-                    _authContext = new AuthenticationContext(authContextUrl, _tokenCache);
-                }
-                else
-                {
-
-                    _authContext = new AuthenticationContext(authContextUrl);
-                }
-
-                if (_authContext.TokenCache.ReadItems().Any())
-                {
-                    string cachedAuthority =
-                        _authContext.TokenCache.ReadItems().First().Authority;
-
-                    if (_tokenCache != null)
-                    {
-                        _authContext = new AuthenticationContext(cachedAuthority, _tokenCache);
-                    }
-                    else
-                    {
-                        _authContext = new AuthenticationContext(cachedAuthority);
-                    }
-                }
-                ar = (await _authContext.AcquireTokenSilentAsync(resourceId, _clientId));
-            }
-            catch (Exception)
-            {
-                //not in cache; we'll get it with the full oauth flow
-            }
-
-            if (ar == null)
-            {
-                try
-                {
-                    ar = await _authContext.AcquireTokenAsync(resourceId, _clientId, _redirectUri, new PlatformParameters());
-                }
-                catch (Exception acquireEx)
-                {
-                    Log.Error(Constants.LOGGING_SOURCE, acquireEx.ToDetailedString());
-                }
-            }
-
-            return ar;
-        }
-
-        /// <summary>
-        /// Returns a SharePoint ClientContext using Azure Active Directory App Only Authentication. This requires that you have a certificated created, and updated the key credentials key in the application manifest in the azure AD accordingly.
-        /// </summary>
-        /// <param name="siteUrl">Site for which the ClientContext object will be instantiated</param>
-        /// <param name="clientId">The Azure AD Application Client ID</param>
-        /// <param name="tenant">The Azure AD Tenant, e.g. mycompany.onmicrosoft.com</param>
-        /// <param name="storeName">The name of the store for the certificate</param>
-        /// <param name="storeLocation">The location of the store for the certificate</param>
-        /// <param name="thumbPrint">The thumbprint of the certificate to locate in the store</param>
-        /// <param name="environment">SharePoint environment being used</param>
-        /// <returns>ClientContext being used</returns>
-        public ClientContext GetAzureADAppOnlyAuthenticatedContext(string siteUrl, string clientId, string tenant, StoreName storeName, StoreLocation storeLocation, string thumbPrint, AzureEnvironment environment = AzureEnvironment.Production)
-        {
-            var cert = Utilities.X509CertificateUtility.LoadCertificate(storeName, storeLocation, thumbPrint);
-
-            return GetAzureADAppOnlyAuthenticatedContext(siteUrl, clientId, tenant, cert, environment);
-        }
-
-
-        /// <summary>
-        /// Returns a SharePoint ClientContext using Azure Active Directory App Only Authentication. This requires that you have a certificated created, and updated the key credentials key in the application manifest in the azure AD accordingly.
-        /// </summary>
-        /// <param name="siteUrl">Site for which the ClientContext object will be instantiated</param>
-        /// <param name="clientId">The Azure AD Application Client ID</param>
-        /// <param name="tenant">The Azure AD Tenant, e.g. mycompany.onmicrosoft.com</param>
-        /// <param name="certificatePath">The path to the certificate (*.pfx) file on the file system</param>
-        /// <param name="certificatePassword">Password to the certificate</param>
-        /// <param name="environment">SharePoint environment being used</param>
-        /// <returns>Client context object</returns>
-        public ClientContext GetAzureADAppOnlyAuthenticatedContext(string siteUrl, string clientId, string tenant, string certificatePath, string certificatePassword, AzureEnvironment environment = AzureEnvironment.Production)
-        {
-            var certPassword = Utilities.EncryptionUtility.ToSecureString(certificatePassword);
-
-            return GetAzureADAppOnlyAuthenticatedContext(siteUrl, clientId, tenant, certificatePath, certPassword, environment);
-        }
-
-
-        /// <summary>
-        /// Returns a SharePoint ClientContext using Azure Active Directory App Only Authentication. This requires that you have a certificated created, and updated the key credentials key in the application manifest in the azure AD accordingly.
-        /// </summary>
-        /// <param name="siteUrl">Site for which the ClientContext object will be instantiated</param>
-        /// <param name="clientId">The Azure AD Application Client ID</param>
-        /// <param name="tenant">The Azure AD Tenant, e.g. mycompany.onmicrosoft.com</param>
-        /// <param name="certificatePath">The path to the certificate (*.pfx) file on the file system</param>
-        /// <param name="certificatePassword">Password to the certificate</param>
-        /// <param name="environment">SharePoint environment being used</param>
-        /// <returns>Client context object</returns>
-        public ClientContext GetAzureADAppOnlyAuthenticatedContext(string siteUrl, string clientId, string tenant, string certificatePath, SecureString certificatePassword, AzureEnvironment environment = AzureEnvironment.Production)
-        {
-            var certfile = System.IO.File.OpenRead(certificatePath);
-            var certificateBytes = new byte[certfile.Length];
-            certfile.Read(certificateBytes, 0, (int)certfile.Length);
-            var cert = new X509Certificate2(
-                certificateBytes,
-                certificatePassword,
-                X509KeyStorageFlags.Exportable |
-                X509KeyStorageFlags.MachineKeySet |
-                X509KeyStorageFlags.PersistKeySet);
-
-            return GetAzureADAppOnlyAuthenticatedContext(siteUrl, clientId, tenant, cert, environment);
-        }
-
-        /// <summary>
-        /// Returns a SharePoint ClientContext using Azure Active Directory App Only Authentication. This requires that you have a certificated created, and updated the key credentials key in the application manifest in the azure AD accordingly.
-        /// </summary>
-        /// <param name="siteUrl">Site for which the ClientContext object will be instantiated</param>
-        /// <param name="clientId">The Azure AD Application Client ID</param>
-        /// <param name="tenant">The Azure AD Tenant, e.g. mycompany.onmicrosoft.com</param>
-        /// <param name="certificate">Certificate used to authenticate</param>
-        /// <param name="environment">SharePoint environment being used</param>
-        /// <returns></returns>
-        public ClientContext GetAzureADAppOnlyAuthenticatedContext(string siteUrl, string clientId, string tenant, X509Certificate2 certificate, AzureEnvironment environment = AzureEnvironment.Production)
-        {
-            LoggerCallbackHandler.UseDefaultLogging = false;
-
-
-            var clientContext = new ClientContext(siteUrl)
-            {
-                DisableReturnValueCache = true
-            };
-
-            string authority = string.Format(CultureInfo.InvariantCulture, "{0}/{1}/", GetAzureADLoginEndPoint(environment), tenant);
-
-            var authContext = new AuthenticationContext(authority);
-
-            var clientAssertionCertificate = new ClientAssertionCertificate(clientId, certificate);
-
-            var host = new Uri(siteUrl);
-
-            clientContext.ExecutingWebRequest += (sender, args) =>
-            {
-                var ar = Task.Run(() => authContext
-                    .AcquireTokenAsync(host.Scheme + "://" + host.Host + "/", clientAssertionCertificate))
-                    .GetAwaiter().GetResult();
-                args.WebRequestExecutor.RequestHeaders["Authorization"] = "Bearer " + ar.AccessToken;
-            };
-
-            ClientContextSettings clientContextSettings = new ClientContextSettings()
-            {
-                Type = ClientContextType.AzureADCertificate,
-                SiteUrl = siteUrl,
-                AuthenticationManager = this,
-                ClientId = clientId,
-                Tenant = tenant,
-                Certificate = certificate,
-                Environment = environment
-            };
-
-            clientContext.AddContextSettings(clientContextSettings);
-
-            return clientContext;
-        }
-
-        /// <summary>
-        /// Returns a SharePoint ClientContext using Azure Active Directory App Only Authentication. This requires that you have a certificated created, and updated the key credentials key in the application manifest in the azure AD accordingly.
-        /// </summary>
-        /// <param name="siteUrl">Site for which the ClientContext object will be instantiated</param>
-        /// <param name="clientId">The Azure AD Application Client ID</param>
-        /// <param name="tenant">The Azure AD Tenant, e.g. mycompany.onmicrosoft.com</param>
-        /// <param name="clientAssertionCertificate">IClientAssertionCertificate used to authenticate</param>
-        /// <param name="environment">SharePoint environment being used</param>
-        /// <returns></returns>
-        public ClientContext GetAzureADAppOnlyAuthenticatedContext(string siteUrl, string clientId, string tenant, IClientAssertionCertificate clientAssertionCertificate, AzureEnvironment environment = AzureEnvironment.Production)
-        {
-            var clientContext = new ClientContext(siteUrl)
-            {
-                DisableReturnValueCache = true
-            };
-
-            string authority = string.Format(CultureInfo.InvariantCulture, "{0}/{1}/", GetAzureADLoginEndPoint(environment), tenant);
-
-            var authContext = new AuthenticationContext(authority);
-
-            //var clientAssertionCertificate = new ClientAssertionCertificate(clientId, certificate);
-
-            var host = new Uri(siteUrl);
-
-            clientContext.ExecutingWebRequest += (sender, args) =>
-            {
-                var ar = Task.Run(() => authContext
-                    .AcquireTokenAsync(host.Scheme + "://" + host.Host + "/", clientAssertionCertificate))
-                    .GetAwaiter().GetResult();
-                args.WebRequestExecutor.RequestHeaders["Authorization"] = "Bearer " + ar.AccessToken;
-            };
-
-            ClientContextSettings clientContextSettings = new ClientContextSettings()
-            {
-                Type = ClientContextType.AzureADCertificate,
-                SiteUrl = siteUrl,
-                AuthenticationManager = this,
-                ClientId = clientId,
-                Tenant = tenant,
-                ClientAssertionCertificate = clientAssertionCertificate,
-                Environment = environment
-            };
-
-            clientContext.AddContextSettings(clientContextSettings);
 
             return clientContext;
         }
@@ -878,12 +868,6 @@ namespace PnP.Framework
                     {
                         appOnlyAccessTokenResetEvent.Set();
                         appOnlyAccessTokenResetEvent?.Dispose();
-                    }
-
-                    if (azureADCredentialsResetEvent != null)
-                    {
-                        azureADCredentialsResetEvent.Set();
-                        azureADCredentialsResetEvent?.Dispose();
                     }
                 }
 

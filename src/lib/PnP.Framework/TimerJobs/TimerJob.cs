@@ -1,4 +1,5 @@
-﻿using Microsoft.Online.SharePoint.TenantAdministration;
+﻿/*
+using Microsoft.Online.SharePoint.TenantAdministration;
 using Microsoft.SharePoint.Client;
 using Newtonsoft.Json;
 using PnP.Framework.Diagnostics;
@@ -1696,3 +1697,4 @@ namespace PnP.Framework.TimerJobs
         #endregion
     }
 }
+*/

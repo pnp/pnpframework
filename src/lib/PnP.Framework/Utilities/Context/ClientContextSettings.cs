@@ -1,5 +1,4 @@
-﻿using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using System;
+﻿using System;
 using System.Security.Cryptography.X509Certificates;
 
 namespace PnP.Framework.Utilities.Context
@@ -24,9 +23,6 @@ namespace PnP.Framework.Utilities.Context
         internal string GlobalEndPointPrefix { get; set; }
         internal string Tenant { get; set; }
         internal X509Certificate2 Certificate { get; set; }
-
-        internal IClientAssertionCertificate ClientAssertionCertificate { get; set; }
-
         internal AzureEnvironment Environment { get; set; }
         #endregion
 

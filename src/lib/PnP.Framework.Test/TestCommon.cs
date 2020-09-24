@@ -176,22 +176,25 @@ namespace PnP.Framework.Test
                 if (new Uri(DevSiteUrl).DnsSafeHost.Contains("spoppe.com"))
                 {
                     //clientContext = am.GetAppOnlyAuthenticatedContext(DevSiteUrl, Core.Utilities.TokenHelper.GetRealmFromTargetUrl(new Uri(DevSiteUrl)), AppId, AppSecret, acsHostUrl: "windows-ppe.net", globalEndPointPrefix: "login");
-                    clientContext = am.GetAppOnlyAuthenticatedContext(DevSiteUrl, AppId, AppSecret, AzureEnvironment.PPE);
+                    clientContext = am.GetACSAppOnlyContext(DevSiteUrl, AppId, AppSecret, AzureEnvironment.PPE);
                 }
                 else if (new Uri(DevSiteUrl).DnsSafeHost.Contains("sharepoint.de"))
                 {
-                    clientContext = am.GetAppOnlyAuthenticatedContext(DevSiteUrl, AppId, AppSecret, AzureEnvironment.Germany);
+                    clientContext = am.GetACSAppOnlyContext(DevSiteUrl, AppId, AppSecret, AzureEnvironment.Germany);
                 }
                 else
                 {
-                    clientContext = am.GetAppOnlyAuthenticatedContext(DevSiteUrl, AppId, AppSecret);
+                    clientContext = am.GetACSAppOnlyContext(DevSiteUrl, AppId, AppSecret);
                 }
                 context = PnPClientContext.ConvertFrom(clientContext, retryCount, delay);
             }
             else
             {
-                ClientContext clientContext = am.GetAzureADCredentialsContext(DevSiteUrl, UserName, Password);
-                context = PnPClientContext.ConvertFrom(clientContext, retryCount, delay);
+                using (var authMgr = new AuthenticationManager(UserName, Password))
+                {
+                    ClientContext clientContext = authMgr.GetContextAsync(DevSiteUrl).GetAwaiter().GetResult();
+                    context = PnPClientContext.ConvertFrom(clientContext, retryCount, delay);
+                }
             }
 
             context.RequestTimeout = 1000 * 60 * 15;
@@ -218,15 +221,21 @@ namespace PnP.Framework.Test
 
         private static ClientContext CreateContext(string contextUrl)
         {
-            AuthenticationManager am = new AuthenticationManager();
+            
             ClientContext context = null;
             if (!String.IsNullOrEmpty(AppId) && !String.IsNullOrEmpty(AppSecret))
             {
-                context = am.GetAppOnlyAuthenticatedContext(contextUrl, AppId, AppSecret);
+                using (AuthenticationManager am = new AuthenticationManager())
+                {
+                    context = am.GetACSAppOnlyContext(contextUrl, AppId, AppSecret);
+                }
             }
             else
             {
-                context = am.GetAzureADCredentialsContext(contextUrl, UserName, Password, clientId: KnownClientId.PnPManagementShell);
+                using (AuthenticationManager am = new AuthenticationManager(UserName, Password))
+                {
+                    context = am.GetContext(contextUrl);
+                }
             }
 
             context.RequestTimeout = 1000 * 60 * 15;

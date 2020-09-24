@@ -1,4 +1,4 @@
-﻿/*
+﻿
 using System;
 using Microsoft.SharePoint.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -29,13 +29,26 @@ namespace PnP.Framework.Test.Authentication
         [ClassCleanup()]
         public static void ClassCleanup()
         {
-            using (var clientContext = TestCommon.CreateClientContext())
-            {
+            //using (var clientContext = TestCommon.CreateClientContext())
+            //{
                 
-            }
+            //}
         }
         #endregion
 
+        [TestMethod]
+        public void Bla()
+        {
+            using (var tenantContext = TestCommon.CreateTenantClientContext())
+            {
+                using (var clientContext = tenantContext.Clone("https://erwinmcm.sharepoint.com"))
+                {
+                    var web = clientContext.Web;
+                    clientContext.Load(web);
+                    clientContext.ExecuteQueryRetry();
+                }
+            }
+        }
         //[TestMethod]
         //public void ExportPagesTest()
         //{
@@ -236,4 +249,3 @@ namespace PnP.Framework.Test.Authentication
         #endregion
     }
 }
-*/

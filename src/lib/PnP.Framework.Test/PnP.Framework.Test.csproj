@@ -136,9 +136,6 @@
     <Content Include="Resources\office365.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\PnPAzureAppTest.pfx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Resources\Templates\ClientSidePagesWithHeader.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

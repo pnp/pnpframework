@@ -43,11 +43,10 @@ namespace PnP.Framework
         USGovernment = 4
     }
 
-    /// <summary>
-    /// This manager class can be used to obtain a SharePointContext object
-    /// </summary>
-    ///
 
+    /// <summary>
+    /// A Known Client Ids to use for authentication
+    /// </summary>
     public enum KnownClientId
     {
         /// <summary>
@@ -60,6 +59,9 @@ namespace PnP.Framework
         SPOManagementShell
     }
 
+    /// <summary>
+    /// This manager class can be used to obtain a SharePoint Client Context object
+    /// </summary>
     public class AuthenticationManager : IDisposable
     {
         private const string SHAREPOINT_PRINCIPAL = "00000003-0000-0ff1-ce00-000000000000";
@@ -88,24 +90,26 @@ namespace PnP.Framework
         }
 
         /// <summary>
-        /// /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts. It uses the PnP Management Shell multi-tenant Azure AD application ID to authenticate.
+        /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts. It uses the PnP Management Shell multi-tenant Azure AD application ID to authenticate. By default tokens will be cached in memory.
         /// </summary>
-        /// <param name="username"></param>
-        /// <param name="password"></param>
-        /// <param name="azureEnvironment"></param>
-        public AuthenticationManager(string username, SecureString password, AzureEnvironment azureEnvironment = AzureEnvironment.Production) : this(GetKnownClientId(KnownClientId.PnPManagementShell), username, password, "https://login.microsoftonline.com/common/oauth2/nativeclient", azureEnvironment)
+        /// <param name="username">The username to use for authentication</param>
+        /// <param name="password">The password to use for authentication</param>
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
+        public AuthenticationManager(string username, SecureString password, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this(GetKnownClientId(KnownClientId.PnPManagementShell), username, password, "https://login.microsoftonline.com/common/oauth2/nativeclient", azureEnvironment, tokenCacheCallback)
         {
         }
 
         /// <summary>
         /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts.
         /// </summary>
-        /// <param name="clientId"></param>
-        /// <param name="username"></param>
-        /// <param name="password"></param>
-        /// <param name="redirectUrl"></param>
-        /// <param name="azureEnvironment"></param>
-        public AuthenticationManager(string clientId, string username, SecureString password, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production): this()
+        /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
+        /// <param name="username">The username to use for authentication</param>
+        /// <param name="password">The password to use for authentication</param>
+        /// <param name="redirectUrl">Optional redirect URL to use for authentication as set up in the Azure AD Application</param>
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
+        public AuthenticationManager(string clientId, string username, SecureString password, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
             azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
 
@@ -117,16 +121,20 @@ namespace PnP.Framework
             this.username = username;
             this.password = password;
             publicClientApplication = builder.Build();
+
+            // register tokencache if callback provided
+            tokenCacheCallback?.Invoke(publicClientApplication.UserTokenCache);
             authenticationType = ClientContextType.AzureADCredentials;
         }
 
         /// <summary>
-        /// 
+        /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts.
         /// </summary>
-        /// <param name="clientId"></param>
-        /// <param name="redirectUrl"></param>
-        /// <param name="azureEnvironment"></param>
-        public AuthenticationManager(string clientId, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production): this()
+        /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
+        /// <param name="redirectUrl">Optional redirect URL to use for authentication as set up in the Azure AD Application</param>
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
+        public AuthenticationManager(string clientId, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
             azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
             var builder = PublicClientApplicationBuilder.Create(clientId).WithAuthority($"{azureADEndPoint}/organizations/");
@@ -135,17 +143,22 @@ namespace PnP.Framework
                 builder = builder.WithRedirectUri(redirectUrl);
             }
             publicClientApplication = builder.Build();
+            
+            // register tokencache if callback provided
+            tokenCacheCallback?.Invoke(publicClientApplication.UserTokenCache);
+
             authenticationType = ClientContextType.AzureADInteractive;
         }
 
         /// <summary>
-        /// 
+        /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts.
         /// </summary>
-        /// <param name="clientId"></param>
-        /// <param name="certificate"></param>
-        /// <param name="redirectUrl"></param>
-        /// <param name="azureEnvironment"></param>
-        public AuthenticationManager(string clientId, X509Certificate2 certificate, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production): this()
+        /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
+        /// <param name="certificate">A valid certificate</param>
+        /// <param name="redirectUrl">Optional redirect URL to use for authentication as set up in the Azure AD Application</param>
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
+        public AuthenticationManager(string clientId, X509Certificate2 certificate, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
             azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
             var builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithAuthority($"{azureADEndPoint}/organizations/");
@@ -154,51 +167,66 @@ namespace PnP.Framework
                 builder = builder.WithRedirectUri(redirectUrl);
             }
             confidentialClientApplication = builder.Build();
+
+            // register tokencache if callback provided
+            tokenCacheCallback?.Invoke(confidentialClientApplication.UserTokenCache);
+
             authenticationType = ClientContextType.AzureADCredentials;
         }
 
         /// <summary>
-        /// 
+        /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts.
         /// </summary>
-        /// <param name="clientId"></param>
-        /// <param name="certificatePath"></param>
-        /// <param name="certificatePassword"></param>
-        /// <param name="redirectUrl"></param>
-        /// <param name="azureEnvironment"></param>
-        public AuthenticationManager(string clientId, string certificatePath, string certificatePassword, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production): this()
+        /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
+        /// <param name="certificatePath">A valid path to a certificate file</param>
+        /// <param name="certificatePassword">The password for the certificate</param>
+        /// <param name="redirectUrl">Optional redirect URL to use for authentication as set up in the Azure AD Application</param>
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
+        public AuthenticationManager(string clientId, string certificatePath, string certificatePassword, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
             azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
 
-            var certfile = System.IO.File.OpenRead(certificatePath);
-            var certificateBytes = new byte[certfile.Length];
-            certfile.Read(certificateBytes, 0, (int)certfile.Length);
-            var certificate = new X509Certificate2(
-                certificateBytes,
-                certificatePassword,
-                X509KeyStorageFlags.Exportable |
-                X509KeyStorageFlags.MachineKeySet |
-                X509KeyStorageFlags.PersistKeySet);
-
-            var builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithAuthority($"{azureADEndPoint}/organizations/");
-            if (!string.IsNullOrEmpty(redirectUrl))
+            if (System.IO.File.Exists(certificatePath))
             {
-                builder = builder.WithRedirectUri(redirectUrl);
-            }
-            confidentialClientApplication = builder.Build();
+                var certfile = System.IO.File.OpenRead(certificatePath);
+                var certificateBytes = new byte[certfile.Length];
+                certfile.Read(certificateBytes, 0, (int)certfile.Length);
+                var certificate = new X509Certificate2(
+                    certificateBytes,
+                    certificatePassword,
+                    X509KeyStorageFlags.Exportable |
+                    X509KeyStorageFlags.MachineKeySet |
+                    X509KeyStorageFlags.PersistKeySet);
 
-            authenticationType = ClientContextType.AzureADCertificate;
+                var builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithAuthority($"{azureADEndPoint}/organizations/");
+                if (!string.IsNullOrEmpty(redirectUrl))
+                {
+                    builder = builder.WithRedirectUri(redirectUrl);
+                }
+                confidentialClientApplication = builder.Build();
+
+                // register tokencache if callback provided. ApptokenCache as AcquireTokenForClient is beind called to acquire tokens.
+                tokenCacheCallback?.Invoke(confidentialClientApplication.AppTokenCache);
+
+                authenticationType = ClientContextType.AzureADCertificate;
+            } else
+            {
+                throw new Exception("Certificate path not found");
+            }
         }
 
         /// <summary>
-        /// 
+        /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts.
         /// </summary>
-        /// <param name="clientId"></param>
-        /// <param name="storeName"></param>
-        /// <param name="storeLocation"></param>
-        /// <param name="thumbPrint"></param>
-        /// <param name="redirectUrl"></param>
-        /// <param name="azureEnvironment"></param>
-        public AuthenticationManager(string clientId, StoreName storeName, StoreLocation storeLocation, string thumbPrint, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production) : this()
+        /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
+        /// <param name="storeName">The name of the certificate store to find the certificate in.</param>
+        /// <param name="storeLocation">The location of the certificate store to find the certificate in.</param>
+        /// <param name="thumbPrint">The thumbprint of the certificate to use.</param>
+        /// <param name="redirectUrl">Optional redirect URL to use for authentication as set up in the Azure AD Application</param>
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
+        public AuthenticationManager(string clientId, StoreName storeName, StoreLocation storeLocation, string thumbPrint, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
             azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
 
@@ -211,12 +239,15 @@ namespace PnP.Framework
             }
             confidentialClientApplication = builder.Build();
 
+            // register tokencache if callback provided. ApptokenCache as AcquireTokenForClient is beind called to acquire tokens.
+            tokenCacheCallback?.Invoke(confidentialClientApplication.AppTokenCache);
+
             authenticationType = ClientContextType.AzureADCertificate;
         }
         #endregion
 
         /// <summary>
-        /// 
+        /// Returns a CSOM ClientContext which has been set up for Azure AD OAuth authentication
         /// </summary>
         /// <param name="siteUrl"></param>
         /// <returns></returns>
@@ -225,7 +256,7 @@ namespace PnP.Framework
             return GetContextAsync(siteUrl).GetAwaiter().GetResult();
         }
         /// <summary>
-        /// 
+        /// Returns a CSOM ClientContext which has been set up for Azure AD OAuth authentication
         /// </summary>
         /// <param name="siteUrl"></param>
         /// <returns></returns>
@@ -235,7 +266,8 @@ namespace PnP.Framework
 
             var scopes = new[] { $"{uri.Scheme}://{uri.Authority}/.default" };
 
-            AuthenticationResult authResult = null;
+            AuthenticationResult authResult;
+
             switch (authenticationType)
             {
                 case ClientContextType.AzureADCredentials:
@@ -655,6 +687,11 @@ namespace PnP.Framework
             }
         }
 
+        /// <summary>
+        /// Returns a domain suffix (com, us, de, cn) for an Azure Environment
+        /// </summary>
+        /// <param name="environment"></param>
+        /// <returns></returns>
         public static string GetSharePointDomainSuffix(AzureEnvironment environment)
         {
             if (environment == AzureEnvironment.Production)
@@ -677,6 +714,10 @@ namespace PnP.Framework
             return "com";
         }
 
+        /// <summary>
+        /// called when disposing the object
+        /// </summary>
+        /// <param name="disposing"></param>
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
@@ -694,6 +735,9 @@ namespace PnP.Framework
             }
         }
 
+        /// <summary>
+        /// Dispose the object
+        /// </summary>
         public void Dispose()
         {
             // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method

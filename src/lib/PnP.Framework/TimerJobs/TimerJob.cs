@@ -1442,7 +1442,7 @@ namespace PnP.Framework.TimerJobs
             }
             else if (AuthenticationType == AuthenticationType.AccessToken)
             {
-                return GetAuthenticationManager(site).GetAccessTokenAuthenticatedContext(site, this.accessToken);
+                return GetAuthenticationManager(site).GetAccessTokenContext(site, this.accessToken);
             }
 
             return null;
@@ -1469,7 +1469,7 @@ namespace PnP.Framework.TimerJobs
                 }
                 else if (AuthenticationType == AuthenticationType.AccessToken)
                 {
-                    ccEnumerate = GetAuthenticationManager(site).GetAccessTokenAuthenticatedContext(GetTenantAdminSite(site), this.accessToken);
+                    ccEnumerate = GetAuthenticationManager(site).GetAccessTokenContext(GetTenantAdminSite(site), this.accessToken);
                 }
                 Tenant tenant = new Tenant(ccEnumerate);
                 SiteEnumeration.Instance.ResolveSite(tenant, site, resolvedSites, this.excludeOD4B);

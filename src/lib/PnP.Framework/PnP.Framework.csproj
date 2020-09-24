@@ -136,12 +136,12 @@
 	<ItemGroup>
     <PackageReference Include="AngleSharp" Version="0.14.0" />
     <PackageReference Include="AngleSharp.Css" Version="0.14.2" />
-    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.15.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.13.1" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
     <PackageReference Include="Microsoft.Data.OData" Version="5.8.4" />
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="3.1.8" />
-    <PackageReference Include="Microsoft.Graph" Version="1.9.0" />
-    <PackageReference Include="Microsoft.Graph.Core" Version="1.9.0" />
+    <PackageReference Include="Microsoft.Graph" Version="3.14.0" />
+    <PackageReference Include="Microsoft.Graph.Core" Version="1.21.0" />
     <PackageReference Include="Microsoft.Identity.Client" Version="4.18.0" />
     <PackageReference Include="Microsoft.SharePointOnline.CSOM" Version="16.1.20412.12000" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />

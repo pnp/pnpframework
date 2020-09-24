@@ -12,17 +12,17 @@ namespace PnP.Framework.Provisioning.Model.Drive
         /// <summary>
         /// The Name of the target DriveFile
         /// </summary>
-        public String Name { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// The Source of the target DriveFile
         /// </summary>
-        public String Src { get; set; }
+        public string Src { get; set; }
 
         /// <summary>
         /// Defines whether to Overwrite the target DriveFile
         /// </summary>
-        public Boolean Overwrite { get; set; }
+        public bool Overwrite { get; set; }
 
         #endregion
 

@@ -12,7 +12,7 @@ namespace PnP.Framework.Provisioning.Model
         /// <summary>
         /// Defines the AppId for the App to manage
         /// </summary>
-        public String AppId { get; set; }
+        public string AppId { get; set; }
 
         /// <summary>
         /// Defines the Action for the App to manage

@@ -265,7 +265,7 @@ namespace PnP.Framework.Modernization.Extensions
             int i;
             int len = s.Length;
             StringBuilder sb = new StringBuilder(len + 4);
-            String t;
+            string t;
 
             for (i = 0; i < len; i += 1)
             {
@@ -299,7 +299,7 @@ namespace PnP.Framework.Modernization.Extensions
                     default:
                         if (c < ' ')
                         {
-                            t = "000" + String.Format("X", c);
+                            t = "000" + string.Format("X", c);
                             sb.Append("\\u" + t.Substring(t.Length - 4));
                         }
                         else

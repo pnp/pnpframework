@@ -12,7 +12,7 @@ namespace PnP.Framework.Provisioning.Model.Drive
         /// <summary>
         /// The DriveUrl of the target DriveRoot
         /// </summary>
-        public String DriveUrl { get; set; }
+        public string DriveUrl { get; set; }
 
         /// <summary>
         /// Defines the RootFolder of a DriveRoot item

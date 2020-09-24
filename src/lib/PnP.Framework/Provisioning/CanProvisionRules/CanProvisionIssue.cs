@@ -10,12 +10,12 @@ namespace PnP.Framework.Provisioning.CanProvisionRules
         /// <summary>
         /// The Source of the CanProvision Issue
         /// </summary>
-        public String Source { get; set; }
+        public string Source { get; set; }
 
         /// <summary>
         /// Provides a text-based description of the Issue
         /// </summary>
-        public String Message { get; set; }
+        public string Message { get; set; }
 
         /// <summary>
         /// Provides a unique Tag for the current issue
@@ -25,11 +25,11 @@ namespace PnP.Framework.Provisioning.CanProvisionRules
         /// <summary>
         /// Provides the Message of the source Exception of an Issue
         /// </summary>
-        public String ExceptionMessage { get; set; }
+        public string ExceptionMessage { get; set; }
 
         /// <summary>
         /// Provides the StackTrace of the source Exception of an Issue
         /// </summary>
-        public String ExceptionStackTrace { get; set; }
+        public string ExceptionStackTrace { get; set; }
     }
 }

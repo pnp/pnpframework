@@ -1022,7 +1022,7 @@ namespace PnP.Framework.Modernization.Pages
             try
             {
                 LogInfo($"{LogStrings.RetreivingExportWebPartXmlWorkaround} WebPartId: {webPartGuid}", LogStrings.Heading_ContentTransform);
-                string webPartXml = String.Empty;
+                string webPartXml = string.Empty;
                 string serverRelativeUrl = cc.Web.EnsureProperty(w => w.ServerRelativeUrl);
                 var uri = new Uri(cc.Site.Url);
 
@@ -1393,7 +1393,7 @@ namespace PnP.Framework.Modernization.Pages
             try
             {
                 LogInfo(LogStrings.CallingWebServicesToExtractWebPartPageFromPage, LogStrings.Heading_ContentTransform);
-                string webPartPage = String.Empty;
+                string webPartPage = string.Empty;
                 string webUrl = cc.Web.GetUrl();
                 string webServiceUrl = webUrl + "/_vti_bin/WebPartPages.asmx";
 
@@ -1469,7 +1469,7 @@ namespace PnP.Framework.Modernization.Pages
             try
             {
                 LogInfo(LogStrings.CallingWebServicesToExtractWebPartPropertiesFromPage, LogStrings.Heading_ContentTransform);
-                string webPartProperties = String.Empty;
+                string webPartProperties = string.Empty;
                 string webUrl = cc.Web.GetUrl();
                 string webServiceUrl = webUrl + "/_vti_bin/WebPartPages.asmx";
 

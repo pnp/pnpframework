@@ -35,17 +35,17 @@ namespace PnP.Framework.Provisioning.Model
         /// <summary>
         /// Title of the site
         /// </summary>
-        public String Title { get; set; }
+        public string Title { get; set; }
 
         /// <summary>
         /// Defines the Description for the Site
         /// </summary>
-        public String Description { get; set; }
+        public string Description { get; set; }
 
         /// <summary>
         /// Defines the list of Provisioning Templates to apply to the sub-site, if any
         /// </summary>
-        public List<String> Templates { get; internal set; }
+        public List<string> Templates { get; internal set; }
 
         /// <summary>
         /// Defines the list of sub-sites, if any
@@ -55,7 +55,7 @@ namespace PnP.Framework.Provisioning.Model
         /// <summary>
         /// Defines the Theme to apply to the SiteCollection
         /// </summary>
-        public String Theme { get; set; }
+        public string Theme { get; set; }
 
         /// <summary>
         /// Defines an optional ID in the sequence for use in tokens.

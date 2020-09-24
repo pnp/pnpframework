@@ -12,12 +12,12 @@ namespace PnP.Framework.Provisioning.Model
         /// <summary>
         /// Defines the Package Id of the Package, optional attribute.
         /// </summary>
-        public String PackageId { get; set; }
+        public string PackageId { get; set; }
 
         /// <summary>
         /// Defines the Src of the Package, optional attribute.
         /// </summary>
-        public String Src { get; set; }
+        public string Src { get; set; }
 
         /// <summary>
         /// Defines the Action to execute with the Package in the AppCatalog, required attribute.
@@ -27,12 +27,12 @@ namespace PnP.Framework.Provisioning.Model
         /// <summary>
         /// Defines whether to skip the feature deployment for tenant-wide enabled packages
         /// </summary>
-        public Boolean SkipFeatureDeployment { get; set; }
+        public bool SkipFeatureDeployment { get; set; }
 
         /// <summary>
         /// Defines whether to overwrite an already existing package in the AppCatalog
         /// </summary>
-        public Boolean Overwrite { get; set; }
+        public bool Overwrite { get; set; }
 
         #endregion
 

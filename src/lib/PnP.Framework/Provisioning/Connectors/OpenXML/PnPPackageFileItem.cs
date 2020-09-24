@@ -10,14 +10,14 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
         /// <summary>
         /// Name of the package file item
         /// </summary>
-        public String Name { get; set; }
+        public string Name { get; set; }
         /// <summary>
         /// Folder containing the package file item
         /// </summary>
-        public String Folder { get; set; }
+        public string Folder { get; set; }
         /// <summary>
         /// Content of the package file item
         /// </summary>
-        public Byte[] Content { get; set; }
+        public byte[] Content { get; set; }
     }
 }

@@ -37,7 +37,7 @@ namespace PnP.Framework.Entities
         /// <summary>
         /// The site owner
         /// </summary>
-        public String SiteOwnerLogin
+        public string SiteOwnerLogin
         {
             get;
             set;

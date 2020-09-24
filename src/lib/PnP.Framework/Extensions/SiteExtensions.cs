@@ -13,7 +13,7 @@ namespace Microsoft.SharePoint.Client
         /// <param name="classificationValue">The new value for the Site Classification</param>
         /// <param name="accessToken">The OAuth Access Token to consume Microsoft Graph, required only for GROUP#0 site collections</param>
         /// <returns>The classification for the site</returns>
-        public static void SetSiteClassification(this Site site, String classificationValue, String accessToken = null)
+        public static void SetSiteClassification(this Site site, string classificationValue, string accessToken = null)
         {
             // Determine the modern site template
             var baseTemplateValue = site.RootWeb.GetBaseTemplateId();

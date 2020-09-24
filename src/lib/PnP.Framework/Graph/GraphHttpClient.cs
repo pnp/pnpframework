@@ -6,18 +6,17 @@ namespace PnP.Framework.Graph
 {
     public static class GraphHttpClient
     {
-        public const String GraphBaseUrl = "https://graph.microsoft.com";
-        public const String MicrosoftGraphV1BaseUri = GraphBaseUrl + "/v1.0/";
-        public const String MicrosoftGraphBetaBaseUri = GraphBaseUrl + "/beta/";
+        public const string GraphBaseUrl = "https://graph.microsoft.com";
+        public const string MicrosoftGraphV1BaseUri = GraphBaseUrl + "/v1.0/";
+        public const string MicrosoftGraphBetaBaseUri = GraphBaseUrl + "/beta/";
 
         /// <summary>
         /// This helper method makes an HTTP GET request and returns the result as a String
         /// </summary>
         /// <param name="requestUrl">The URL of the request</param>
         /// <param name="accessToken">The AccessToken to use for the request</param>
-        /// <returns>The String value of the result</returns>
-        public static String MakeGetRequestForString(String requestUrl,
-            String accessToken = null)
+        /// <returns>The string value of the result</returns>
+        public static string MakeGetRequestForString(string requestUrl, string accessToken = null)
         {
             return (MakeHttpRequest<String>("GET",
                 requestUrl,
@@ -32,8 +31,7 @@ namespace PnP.Framework.Graph
         /// <param name="accept">The accept header for the response</param>
         /// <param name="accessToken">The AccessToken to use for the request</param>
         /// <returns>The Stream  of the result</returns>
-        public static System.IO.Stream MakeGetRequestForStream(String requestUrl,
-            String accept, String accessToken = null)
+        public static System.IO.Stream MakeGetRequestForStream(string requestUrl, string accept, string accessToken = null)
         {
             return (MakeHttpRequest<System.IO.Stream>("GET",
                 requestUrl,
@@ -48,12 +46,9 @@ namespace PnP.Framework.Graph
         /// <param name="content">The content of the request</param>
         /// <param name="contentType">The content/type of the request</param>
         /// <param name="accessToken">The AccessToken to use for the request</param>
-        public static void MakePostRequest(String requestUrl,
-            Object content = null,
-            String contentType = null,
-            String accessToken = null)
+        public static void MakePostRequest(string requestUrl, object content = null, string contentType = null, string accessToken = null)
         {
-            MakeHttpRequest<String>("POST",
+            MakeHttpRequest<string>("POST",
                 requestUrl,
                 content: content,
                 contentType: contentType,
@@ -68,12 +63,9 @@ namespace PnP.Framework.Graph
         /// <param name="contentType">The content/type of the request</param>
         /// <param name="accessToken">The AccessToken to use for the request</param>
         /// <returns>The String value of the result</returns>
-        public static String MakePostRequestForString(String requestUrl,
-            Object content = null,
-            String contentType = null,
-            String accessToken = null)
+        public static string MakePostRequestForString(string requestUrl, object content = null, string contentType = null, string accessToken = null)
         {
-            return (MakeHttpRequest<String>("POST",
+            return (MakeHttpRequest<string>("POST",
                 requestUrl,
                 content: content,
                 contentType: contentType,
@@ -88,12 +80,9 @@ namespace PnP.Framework.Graph
         /// <param name="content">The content of the request</param>
         /// <param name="contentType">The content/type of the request</param>
         /// <param name="accessToken">The AccessToken to use for the request</param>
-        public static void MakePutRequest(String requestUrl,
-            Object content = null,
-            String contentType = null,
-            String accessToken = null)
+        public static void MakePutRequest(string requestUrl, object content = null, string contentType = null, string accessToken = null)
         {
-            MakeHttpRequest<String>("PUT",
+            MakeHttpRequest<string>("PUT",
                 requestUrl,
                 content: content,
                 contentType: contentType,
@@ -108,12 +97,9 @@ namespace PnP.Framework.Graph
         /// <param name="contentType">The content/type of the request</param>
         /// <param name="accessToken">The AccessToken to use for the request</param>
         /// <returns>The String value of the result</returns>
-        public static String MakePatchRequestForString(String requestUrl,
-            Object content = null,
-            String contentType = null,
-            String accessToken = null)
+        public static string MakePatchRequestForString(string requestUrl, object content = null, string contentType = null, string accessToken = null)
         {
-            return (MakeHttpRequest<String>("PATCH",
+            return (MakeHttpRequest<string>("PATCH",
                 requestUrl,
                 content: content,
                 contentType: contentType,
@@ -127,10 +113,9 @@ namespace PnP.Framework.Graph
         /// <param name="requestUrl">The URL of the request</param>
         /// <param name="accessToken">The AccessToken to use for the request</param>
         /// <returns>The String value of the result</returns>
-        public static void MakeDeleteRequest(String requestUrl,
-            String accessToken = null)
+        public static void MakeDeleteRequest(string requestUrl, string accessToken = null)
         {
-            MakeHttpRequest<String>("DELETE", requestUrl, accessToken: accessToken);
+            MakeHttpRequest<string>("DELETE", requestUrl, accessToken: accessToken);
         }
 
         /// <summary>
@@ -146,12 +131,12 @@ namespace PnP.Framework.Graph
         /// <typeparam name="TResult">The type of the result, if any</typeparam>
         /// <returns>The value of the result, if any</returns>
         private static TResult MakeHttpRequest<TResult>(
-            String httpMethod,
-            String requestUrl,
-            String accept = null,
-            Object content = null,
-            String contentType = null,
-            String accessToken = null,
+            string httpMethod,
+            string requestUrl,
+            string accept = null,
+            object content = null,
+            string contentType = null,
+            string accessToken = null,
             Func<HttpResponseMessage, TResult> resultPredicate = null)
         {
             HttpResponseHeaders responseHeaders;

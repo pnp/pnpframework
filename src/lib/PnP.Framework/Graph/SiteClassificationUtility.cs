@@ -68,7 +68,7 @@ namespace PnP.Framework.Graph
         /// <param name="classificationsList">The list of classification values</param>
         /// <param name="defaultClassification">The default classification</param>
         /// <param name="usageGuidelinesUrl">The URL of a guidance page</param>
-        public static void EnableSiteClassifications(string accessToken, IEnumerable<String> classificationsList, String defaultClassification = "", String usageGuidelinesUrl = "")
+        public static void EnableSiteClassifications(string accessToken, IEnumerable<string> classificationsList, string defaultClassification = "", string usageGuidelinesUrl = "")
         {
             if (string.IsNullOrEmpty(accessToken))
             {
@@ -97,7 +97,7 @@ namespace PnP.Framework.Graph
 
             if (unifiedGroupSetting != null)
             {
-                var directorySettingValues = new Dictionary<String, String>();
+                var directorySettingValues = new Dictionary<string, string>();
                 foreach (var v in unifiedGroupSetting.SettingValues)
                 {
                     switch (v.Name)
@@ -205,7 +205,7 @@ namespace PnP.Framework.Graph
         /// <param name="classificationsList">The list of classification values</param>
         /// <param name="defaultClassification">The default classification</param>
         /// <param name="usageGuidelinesUrl">The URL of a guidance page</param>
-        public static void UpdateSiteClassificationsSettings(String accessToken, IEnumerable<String> classificationsList = null, String defaultClassification = "", String usageGuidelinesUrl = "")
+        public static void UpdateSiteClassificationsSettings(string accessToken, IEnumerable<string> classificationsList = null, string defaultClassification = "", string usageGuidelinesUrl = "")
         {
             if (string.IsNullOrEmpty(accessToken))
             {

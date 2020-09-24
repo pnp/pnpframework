@@ -138,7 +138,7 @@ namespace PnP.Framework.Extensions
         /// <param name="source">The source object</param>
         /// <param name="propertyName">The property name, case insensitive</param>
         /// <returns>The property value, if any</returns>
-        public static Object GetPublicInstancePropertyValue(this Object source, String propertyName)
+        public static Object GetPublicInstancePropertyValue(this object source, string propertyName)
         {
             return (source?.GetType()?.GetProperty(propertyName,
                     System.Reflection.BindingFlags.Instance |
@@ -153,7 +153,7 @@ namespace PnP.Framework.Extensions
         /// <param name="source">The source object</param>
         /// <param name="propertyName">The property name, case insensitive</param>
         /// <returns>The property, if any</returns>
-        public static PropertyInfo GetPublicInstanceProperty(this Object source, String propertyName)
+        public static PropertyInfo GetPublicInstanceProperty(this object source, string propertyName)
         {
             return (source?.GetType()?.GetProperty(propertyName,
                     System.Reflection.BindingFlags.Instance |
@@ -167,7 +167,7 @@ namespace PnP.Framework.Extensions
         /// <param name="source">The source object</param>
         /// <param name="propertyName">The property name, case insensitive</param>
         /// <param name="value">The value to set</param>
-        public static void SetPublicInstancePropertyValue(this Object source, String propertyName, object value)
+        public static void SetPublicInstancePropertyValue(this object source, string propertyName, object value)
         {
             source?.GetType()?.GetProperty(propertyName,
                 System.Reflection.BindingFlags.Instance |

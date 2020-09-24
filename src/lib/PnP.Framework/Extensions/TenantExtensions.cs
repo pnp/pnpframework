@@ -847,7 +847,7 @@ namespace Microsoft.SharePoint.Client
                 var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri("https://graph.microsoft.com/").Authority, null);
 
                 // Retrieve (using the Microsoft Graph) the current user's roles
-                String jsonResponse = HttpHelper.MakeGetRequestForString(
+                string jsonResponse = HttpHelper.MakeGetRequestForString(
                     "https://graph.microsoft.com/v1.0/me/memberOf?$select=id,displayName",
                     accessToken);
 

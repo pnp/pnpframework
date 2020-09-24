@@ -14,12 +14,12 @@ namespace PnP.Framework.Provisioning.Model.AzureActiveDirectory
         /// <summary>
         /// Defines the SKU of the license
         /// </summary>
-        public String SkuId { get; set; }
+        public string SkuId { get; set; }
 
         /// <summary>
         /// List of disabled plans
         /// </summary>
-        public String[] DisabledPlans { get; set; }
+        public string[] DisabledPlans { get; set; }
 
         #endregion
 

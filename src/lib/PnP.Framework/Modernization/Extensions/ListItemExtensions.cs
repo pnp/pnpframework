@@ -215,7 +215,7 @@ namespace Microsoft.SharePoint.Client
                 string audiences = (item[Constants.AudienceField]).ToString();
                 if (!string.IsNullOrEmpty(audiences))
                 {
-                    String[] audienceIDsStringArray = Regex.Split(audiences, ";;");
+                    string[] audienceIDsStringArray = Regex.Split(audiences, ";;");
 
                     audienceEntity.GlobalAudiences = audienceIDsStringArray[0].Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries).ToList();
                     audienceEntity.SecurityGroups = audienceIDsStringArray[1].Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();

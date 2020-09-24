@@ -13,9 +13,9 @@ namespace PnP.Framework.Graph.Model
 
         public DateTime? DeletedDateTime { get; set; }
 
-        public String Description { get; set; }
+        public string Description { get; set; }
 
-        public String DisplayName { get; set; }
+        public string DisplayName { get; set; }
 
         [JsonProperty(PropertyName = "values")]
         public List<DirectorySettingValue> SettingValues { get; set; }

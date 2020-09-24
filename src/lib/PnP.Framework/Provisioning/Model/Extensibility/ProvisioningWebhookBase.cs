@@ -12,7 +12,7 @@ namespace PnP.Framework.Provisioning.Model
         /// <summary>
         /// Defines the custom parameters for the Provisioning Template Webhook
         /// </summary>
-        public Dictionary<String, String> Parameters { get; set; } = new Dictionary<string, string>();
+        public Dictionary<string, string> Parameters { get; set; } = new Dictionary<string, string>();
 
         /// <summary>
         /// Defines the .app file of the SharePoint Add-in to provision
@@ -22,7 +22,7 @@ namespace PnP.Framework.Provisioning.Model
         /// <summary>
         /// Defines the URL of a Provisioning Template Webhook, can be a replaceable string
         /// </summary>
-        public String Url { get; set; }
+        public string Url { get; set; }
 
         /// <summary>
         /// Defines how to call the target Webhook URL

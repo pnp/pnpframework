@@ -34,7 +34,7 @@ namespace Microsoft.SharePoint.Client
         /// </summary>
         /// <param name="parentWeb">The parent Web (site) to get the base template from</param>
         /// <returns>The Base Template ID for the current web</returns>
-        public static String GetBaseTemplateId(this Web parentWeb)
+        public static string GetBaseTemplateId(this Web parentWeb)
         {
             parentWeb.EnsureProperties(w => w.WebTemplate, w => w.Configuration);
             return ($"{parentWeb.WebTemplate}#{parentWeb.Configuration}");

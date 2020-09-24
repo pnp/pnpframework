@@ -271,7 +271,7 @@ if (scriptsSrc.indexOf('{1}') === -1)  {
         /// <param name="web">Web to be processed</param>
         /// <param name="key">Identifier (key) for the custom action that will be created</param>
         /// <returns></returns>
-        public static Boolean ExistsJsLink(this Web web, String key)
+        public static Boolean ExistsJsLink(this Web web, string key)
         {
             return (ExistsJsLinkImplementation(web, key));
         }
@@ -282,7 +282,7 @@ if (scriptsSrc.indexOf('{1}') === -1)  {
         /// <param name="site">Site to be processed</param>
         /// <param name="key">Identifier (key) for the custom action that will be created</param>
         /// <returns>True if custom JsLink exists, false otherwise</returns>
-        public static Boolean ExistsJsLink(this Site site, String key)
+        public static Boolean ExistsJsLink(this Site site, string key)
         {
             return (ExistsJsLinkImplementation(site, key));
         }
@@ -293,7 +293,7 @@ if (scriptsSrc.indexOf('{1}') === -1)  {
         /// <param name="clientObject">clientObject to operate on</param>
         /// <param name="key">Identifier (key) for the custom action that will be created</param>
         /// <returns>True if custom JsLink exists, false otherwise</returns>
-        public static Boolean ExistsJsLinkImplementation(ClientObject clientObject, String key)
+        public static Boolean ExistsJsLinkImplementation(ClientObject clientObject, string key)
         {
             UserCustomActionCollection existingActions;
             if (clientObject is Web)

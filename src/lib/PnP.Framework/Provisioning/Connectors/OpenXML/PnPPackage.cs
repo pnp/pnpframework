@@ -145,14 +145,14 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
         {
             get
             {
-                Dictionary<String, PnPPackageFileItem> result = new Dictionary<String, PnPPackageFileItem>();
+                Dictionary<string, PnPPackageFileItem> result = new Dictionary<string, PnPPackageFileItem>();
                 var map = FilesMap?.Map;
                 List<PackagePart> fileParts = GetAllPackagePartsWithRelationshipType(R_PROVISIONINGTEMPLATE_FILE, FilesOriginPart);
                 foreach (PackagePart p in fileParts)
                 {
-                    String fileName = p.Uri.ToString().Remove(0, U_DIR_FILES.Length);
-                    String folder = fileName.LastIndexOf('/') >= 0 ?
-                        fileName.Substring(0, fileName.LastIndexOf('/')) : String.Empty;
+                    string fileName = p.Uri.ToString().Remove(0, U_DIR_FILES.Length);
+                    string folder = fileName.LastIndexOf('/') >= 0 ?
+                        fileName.Substring(0, fileName.LastIndexOf('/')) : string.Empty;
 
                     fileName = fileName.Substring(fileName.LastIndexOf('/') + 1);
 
@@ -161,7 +161,7 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
                         //try get folder from original name
                         var originalName = map[fileName].Replace(@"\", "/");
                         folder = originalName.LastIndexOf('/') >= 0 ?
-                            originalName.Substring(0, originalName.LastIndexOf('/')) : String.Empty;
+                            originalName.Substring(0, originalName.LastIndexOf('/')) : string.Empty;
                     }
 
                     Byte[] content = ReadPackagePartBytes(p);

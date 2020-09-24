@@ -19,7 +19,7 @@ namespace PnP.Framework.Provisioning.Connectors
     {
         private readonly PnPInfo pnpInfo;
         private readonly FileConnectorBase persistenceConnector;
-        private readonly String packageFileName;
+        private readonly string packageFileName;
 
         #region Constructors
 
@@ -54,11 +54,11 @@ namespace PnP.Framework.Provisioning.Connectors
         /// <param name="templateFileName">The name of the tempalte file, optional</param>
         public OpenXMLConnector(string packageFileName,
             FileConnectorBase persistenceConnector,
-            String author = null,
-            X509Certificate2 signingCertificate = null, String templateFileName = null)
+            string author = null, 
+            X509Certificate2 signingCertificate = null, string templateFileName = null)
             : base()
         {
-            if (String.IsNullOrEmpty(packageFileName))
+            if (string.IsNullOrEmpty(packageFileName))
             {
                 throw new ArgumentException("packageFileName");
             }
@@ -96,7 +96,7 @@ namespace PnP.Framework.Provisioning.Connectors
                     Properties = new PnPProperties()
                     {
                         Generator = PnPCoreUtilities.PnPCoreVersionTag,
-                        Author = !String.IsNullOrEmpty(author) ? author : String.Empty,
+                        Author = !string.IsNullOrEmpty(author) ? author : string.Empty,
                         TemplateFileName = templateFileName ?? ""
                     },
                 };
@@ -192,17 +192,17 @@ namespace PnP.Framework.Provisioning.Connectors
         /// <returns>String containing the file contents</returns>
         public override string GetFile(string fileName, string container)
         {
-            if (String.IsNullOrEmpty(fileName))
+            if (string.IsNullOrEmpty(fileName))
             {
                 throw new ArgumentException("fileName");
             }
 
-            if (String.IsNullOrEmpty(container))
+            if (string.IsNullOrEmpty(container))
             {
                 container = "";
             }
 
-            String result = null;
+            string result = null;
             MemoryStream stream = null;
             try
             {

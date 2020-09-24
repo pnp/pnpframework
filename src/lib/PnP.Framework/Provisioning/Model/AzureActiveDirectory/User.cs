@@ -19,67 +19,67 @@ namespace PnP.Framework.Provisioning.Model.AzureActiveDirectory
         /// <summary>
         /// Declares whether the user's account is enabled or not
         /// </summary>
-        public Boolean AccountEnabled { get; set; }
+        public bool AccountEnabled { get; set; }
 
         /// <summary>
         /// The Display Name of the user
         /// </summary>
-        public String DisplayName { get; set; }
+        public string DisplayName { get; set; }
 
         /// <summary>
         /// The Mail Nickname of the user
         /// </summary>
-        public String MailNickname { get; set; }
+        public string MailNickname { get; set; }
 
         /// <summary>
         /// The Password Policies	for the user
         /// </summary>
-        public String PasswordPolicies { get; set; }
+        public string PasswordPolicies { get; set; }
 
         /// <summary>
         /// The UPN for the user
         /// </summary>
-        public String UserPrincipalName { get; set; }
+        public string UserPrincipalName { get; set; }
 
         /// <summary>
         /// The Profile Photo for the user
         /// </summary>
-        public String ProfilePhoto { get; set; }
+        public string ProfilePhoto { get; set; }
 
         /// <summary>
         /// The Given Name for the user
         /// </summary>
-        public String GivenName { get; set; }
+        public string GivenName { get; set; }
 
         /// <summary>
         /// The Surname for the user
         /// </summary>
-        public String Surname { get; set; }
+        public string Surname { get; set; }
 
         /// <summary>
         /// The Job Title for the user
         /// </summary>
-        public String JobTitle { get; set; }
+        public string JobTitle { get; set; }
 
         /// <summary>
         /// The Office Location for the user
         /// </summary>
-        public String OfficeLocation { get; set; }
+        public string OfficeLocation { get; set; }
 
         /// <summary>
         /// The Preferred Language for the user
         /// </summary>
-        public String PreferredLanguage { get; set; }
+        public string PreferredLanguage { get; set; }
 
         /// <summary>
         /// The Mobile Phone for the user
         /// </summary>
-        public String MobilePhone { get; set; }
+        public string MobilePhone { get; set; }
 
         /// <summary>
         /// The Mobile Phone for the user
         /// </summary>
-        public String UsageLocation { get; set; }
+        public string UsageLocation { get; set; }
 
         /// <summary>
         /// Collection of user's licenses

@@ -63,15 +63,14 @@ namespace PnP.Framework.Graph
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
         /// <returns>The URL of the modern site backing the Office 365 Group</returns>
-        public static String GetUnifiedGroupSiteUrl(String groupId, String accessToken,
-            int retryCount = 10, int delay = 500)
+        public static string GetUnifiedGroupSiteUrl(string groupId, string accessToken, int retryCount = 10, int delay = 500)
         {
-            if (String.IsNullOrEmpty(groupId))
+            if (string.IsNullOrEmpty(groupId))
             {
                 throw new ArgumentNullException(nameof(groupId));
             }
 
-            if (String.IsNullOrEmpty(accessToken))
+            if (string.IsNullOrEmpty(accessToken))
             {
                 throw new ArgumentNullException(nameof(accessToken));
             }
@@ -81,7 +80,7 @@ namespace PnP.Framework.Graph
                 // Use a synchronous model to invoke the asynchronous process
                 result = Task.Run(async () =>
                 {
-                    String siteUrl = null;
+                    string siteUrl = null;
 
                     var graphClient = CreateGraphClient(accessToken, retryCount, delay);
 
@@ -91,7 +90,7 @@ namespace PnP.Framework.Graph
                         var rootFolder = await graphClient.Groups[groupId].Drive.Root.Request().GetAsync();
                         if (rootFolder != null)
                         {
-                            if (!String.IsNullOrEmpty(rootFolder.WebUrl))
+                            if (!string.IsNullOrEmpty(rootFolder.WebUrl))
                             {
                                 var modernSiteUrl = rootFolder.WebUrl;
                                 siteUrl = modernSiteUrl.Substring(0, modernSiteUrl.LastIndexOf("/"));
@@ -186,7 +185,7 @@ namespace PnP.Framework.Graph
                     }
 
                     Microsoft.Graph.Group addedGroup = null;
-                    String modernSiteUrl = null;
+                    string modernSiteUrl = null;
 
                     // Add the group to the collection of groups (if it does not exist)
                     if (addedGroup == null)
@@ -246,7 +245,7 @@ namespace PnP.Framework.Graph
 
                             int driveRetryCount = retryCount;
 
-                            while (driveRetryCount > 0 && String.IsNullOrEmpty(modernSiteUrl))
+                            while (driveRetryCount > 0 && string.IsNullOrEmpty(modernSiteUrl))
                             {
                                 try
                                 {
@@ -258,7 +257,7 @@ namespace PnP.Framework.Graph
                                 }
 
                                 // In case of failure retry up to 10 times, with 500ms delay in between
-                                if (String.IsNullOrEmpty(modernSiteUrl))
+                                if (string.IsNullOrEmpty(modernSiteUrl))
                                 {
                                     await Task.Delay(delay * (retryCount - driveRetryCount));
                                     driveRetryCount--;
@@ -342,7 +341,7 @@ namespace PnP.Framework.Graph
                 foreach (var member in fullListOfMembers)
                 {
                     var currentMemberPrincipalName = (member as Microsoft.Graph.User)?.UserPrincipalName;
-                    if (!String.IsNullOrEmpty(currentMemberPrincipalName) &&
+                    if (!string.IsNullOrEmpty(currentMemberPrincipalName) &&
                         !members.Contains(currentMemberPrincipalName, StringComparer.InvariantCultureIgnoreCase))
                     {
                         try
@@ -431,7 +430,7 @@ namespace PnP.Framework.Graph
                 foreach (var owner in fullListOfOwners)
                 {
                     var currentOwnerPrincipalName = (owner as Microsoft.Graph.User)?.UserPrincipalName;
-                    if (!String.IsNullOrEmpty(currentOwnerPrincipalName) &&
+                    if (!string.IsNullOrEmpty(currentOwnerPrincipalName) &&
                         !owners.Contains(currentOwnerPrincipalName, StringComparer.InvariantCultureIgnoreCase))
                     {
                         try
@@ -681,14 +680,14 @@ namespace PnP.Framework.Graph
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
         /// <returns>The just created Office 365 Group</returns>
         public static UnifiedGroupEntity CreateUnifiedGroup(string displayName, string description, string mailNickname,
-            string accessToken, string[] owners = null, string[] members = null, String groupLogoPath = null,
+            string accessToken, string[] owners = null, string[] members = null, string groupLogoPath = null,
             bool isPrivate = false, bool createTeam = false, int retryCount = 10, int delay = 500)
         {
-            if (!String.IsNullOrEmpty(groupLogoPath) && !System.IO.File.Exists(groupLogoPath))
+            if (!string.IsNullOrEmpty(groupLogoPath) && !System.IO.File.Exists(groupLogoPath))
             {
                 throw new FileNotFoundException(CoreResources.GraphExtensions_GroupLogoFileDoesNotExist, groupLogoPath);
             }
-            else if (!String.IsNullOrEmpty(groupLogoPath))
+            else if (!string.IsNullOrEmpty(groupLogoPath))
             {
                 using (var groupLogoStream = new FileStream(groupLogoPath, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
@@ -738,15 +737,14 @@ namespace PnP.Framework.Graph
         /// <param name="accessToken">The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
-        public static void DeleteUnifiedGroup(String groupId, String accessToken,
-            int retryCount = 10, int delay = 500)
+        public static void DeleteUnifiedGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500)
         {
-            if (String.IsNullOrEmpty(groupId))
+            if (string.IsNullOrEmpty(groupId))
             {
                 throw new ArgumentNullException(nameof(groupId));
             }
 
-            if (String.IsNullOrEmpty(accessToken))
+            if (string.IsNullOrEmpty(accessToken))
             {
                 throw new ArgumentNullException(nameof(accessToken));
             }
@@ -777,14 +775,14 @@ namespace PnP.Framework.Graph
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
         /// <param name="includeClassification">Defines whether to return classification value of the unified group. Default is false.</param>
         /// <param name="includeHasTeam">Defines whether to check for each unified group if it has a Microsoft Team provisioned for it. Default is false.</param>
-        public static UnifiedGroupEntity GetUnifiedGroup(String groupId, String accessToken, int retryCount = 10, int delay = 500, bool includeSite = true, bool includeClassification = false, bool includeHasTeam = false)
+        public static UnifiedGroupEntity GetUnifiedGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500, bool includeSite = true, bool includeClassification = false, bool includeHasTeam = false)
         {
-            if (String.IsNullOrEmpty(groupId))
+            if (string.IsNullOrEmpty(groupId))
             {
                 throw new ArgumentNullException(nameof(groupId));
             }
 
-            if (String.IsNullOrEmpty(accessToken))
+            if (string.IsNullOrEmpty(accessToken))
             {
                 throw new ArgumentNullException(nameof(accessToken));
             }
@@ -860,12 +858,12 @@ namespace PnP.Framework.Graph
         /// <returns>An IList of SiteEntity objects</returns>
         [Obsolete("ListUnifiedGroups is deprecated, please use GetUnifiedGroups instead.")]
         public static List<UnifiedGroupEntity> ListUnifiedGroups(string accessToken,
-            String displayName = null, string mailNickname = null,
+            string displayName = null, string mailNickname = null,
             int startIndex = 0, int endIndex = 999, bool includeSite = true,
             int retryCount = 10, int delay = 500, bool includeClassification = false,
             bool includeHasTeam = false)
         {
-            if (String.IsNullOrEmpty(accessToken))
+            if (string.IsNullOrEmpty(accessToken))
             {
                 throw new ArgumentNullException(nameof(accessToken));
             }
@@ -881,8 +879,8 @@ namespace PnP.Framework.Graph
                     var graphClient = CreateGraphClient(accessToken, retryCount, delay);
 
                     // Apply the DisplayName filter, if any
-                    var displayNameFilter = !String.IsNullOrEmpty(displayName) ? $" and (DisplayName eq '{Uri.EscapeDataString(displayName.Replace("'", "''"))}')" : String.Empty;
-                    var mailNicknameFilter = !String.IsNullOrEmpty(mailNickname) ? $" and (MailNickname eq '{Uri.EscapeDataString(mailNickname.Replace("'", "''"))}')" : String.Empty;
+                    var displayNameFilter = !string.IsNullOrEmpty(displayName) ? $" and (DisplayName eq '{Uri.EscapeDataString(displayName.Replace("'", "''"))}')" : string.Empty;
+                    var mailNicknameFilter = !string.IsNullOrEmpty(mailNickname) ? $" and (MailNickname eq '{Uri.EscapeDataString(mailNickname.Replace("'", "''"))}')" : string.Empty;
 
                     var pagedGroups = await graphClient.Groups
                         .Request()
@@ -976,11 +974,11 @@ namespace PnP.Framework.Graph
         /// <param name="pageSize">Page size used for the individual requests to Micrsoft Graph. Defaults to 999 which is currently the maximum value.</param>
         /// <returns>An IList of SiteEntity objects</returns>
         public static List<UnifiedGroupEntity> GetUnifiedGroups(string accessToken,
-            String displayName = null, string mailNickname = null,
+            string displayName = null, string mailNickname = null,
             int startIndex = 0, int? endIndex = null, bool includeSite = true,
             int retryCount = 10, int delay = 500, bool includeClassification = false, bool includeHasTeam = false, int pageSize = 999)
         {
-            if (String.IsNullOrEmpty(accessToken))
+            if (string.IsNullOrEmpty(accessToken))
             {
                 throw new ArgumentNullException(nameof(accessToken));
             }
@@ -996,8 +994,8 @@ namespace PnP.Framework.Graph
                     var graphClient = CreateGraphClient(accessToken, retryCount, delay);
 
                     // Apply the DisplayName filter, if any
-                    var displayNameFilter = !String.IsNullOrEmpty(displayName) ? $" and (DisplayName eq '{Uri.EscapeDataString(displayName.Replace("'", "''"))}')" : String.Empty;
-                    var mailNicknameFilter = !String.IsNullOrEmpty(mailNickname) ? $" and (MailNickname eq '{Uri.EscapeDataString(mailNickname.Replace("'", "''"))}')" : String.Empty;
+                    var displayNameFilter = !string.IsNullOrEmpty(displayName) ? $" and (DisplayName eq '{Uri.EscapeDataString(displayName.Replace("'", "''"))}')" : string.Empty;
+                    var mailNicknameFilter = !string.IsNullOrEmpty(mailNickname) ? $" and (MailNickname eq '{Uri.EscapeDataString(mailNickname.Replace("'", "''"))}')" : string.Empty;
 
                     var pagedGroups = await graphClient.Groups
                         .Request()

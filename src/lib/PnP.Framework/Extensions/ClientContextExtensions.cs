@@ -47,7 +47,7 @@ namespace Microsoft.SharePoint.Client
         /// <param name="siteUrl">Site URL to be used for cloned ClientContext</param>
         /// <param name="accessTokens">Dictionary of access tokens for sites URLs</param>
         /// <returns>A ClientContext object created for the passed site URL</returns>
-        public static ClientContext Clone(this ClientRuntimeContext clientContext, string siteUrl, Dictionary<String, String> accessTokens = null)
+        public static ClientContext Clone(this ClientRuntimeContext clientContext, string siteUrl, Dictionary<string, string> accessTokens = null)
         {
             if (string.IsNullOrWhiteSpace(siteUrl))
             {
@@ -259,7 +259,7 @@ namespace Microsoft.SharePoint.Client
         /// <param name="siteUrl">Site URL to be used for cloned ClientContext</param>
         /// <param name="accessTokens">Dictionary of access tokens for sites URLs</param>
         /// <returns>A ClientContext object created for the passed site URL</returns>
-        public static ClientContext Clone(this ClientRuntimeContext clientContext, Uri siteUrl, Dictionary<String, String> accessTokens = null)
+        public static ClientContext Clone(this ClientRuntimeContext clientContext, Uri siteUrl, Dictionary<string, string> accessTokens = null)
         {
             return Clone(clientContext, new ClientContext(siteUrl), siteUrl, accessTokens);
         }
@@ -271,7 +271,7 @@ namespace Microsoft.SharePoint.Client
         /// <param name="siteUrl">Site URL to be used for cloned ClientContext</param>
         /// <param name="accessTokens">Dictionary of access tokens for sites URLs</param>
         /// <returns>A ClientContext object created for the passed site URL</returns>
-        internal static ClientContext Clone(this ClientRuntimeContext clientContext, ClientContext targetContext, Uri siteUrl, Dictionary<String, String> accessTokens = null)
+        internal static ClientContext Clone(this ClientRuntimeContext clientContext, ClientContext targetContext, Uri siteUrl, Dictionary<string, string> accessTokens = null)
         {
             if (siteUrl == null)
             {

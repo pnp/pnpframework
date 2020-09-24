@@ -10,35 +10,35 @@ namespace PnP.Framework.Entities
         /// <summary>
         /// Unified group id
         /// </summary>
-        public String GroupId { get; set; }
+        public string GroupId { get; set; }
         /// <summary>
         /// Unified group display name
         /// </summary>
-        public String DisplayName { get; set; }
+        public string DisplayName { get; set; }
         /// <summary>
         /// Unified group description 
         /// </summary>
-        public String Description { get; set; }
+        public string Description { get; set; }
         /// <summary>
         /// Unified group mail
         /// </summary>
-        public String Mail { get; set; }
+        public string Mail { get; set; }
         /// <summary>
         /// Unified group nick name
         /// </summary>
-        public String MailNickname { get; set; }
+        public string MailNickname { get; set; }
         /// <summary>
         /// Url of site to configure unified group
         /// </summary>
-        public String SiteUrl { get; set; }
+        public string SiteUrl { get; set; }
         /// <summary>
         /// Classification of the Office 365 group
         /// </summary>
-        public String Classification { get; set; }
+        public string Classification { get; set; }
         /// <summary>
         /// Visibility of the Office 365 group
         /// </summary>
-        public String Visibility { get; set; }
+        public string Visibility { get; set; }
         /// <summary>
         /// Indication if the Office 365 Group has a Microsoft Team provisioned for it
         /// </summary>

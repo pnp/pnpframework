@@ -11,17 +11,17 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML.Model
         /// <summary>
         /// The Internal Name of the file in the PnP OpenXML file
         /// </summary>
-        public String InternalName { get; set; }
+        public string InternalName { get; set; }
 
         /// <summary>
         /// The Original Name of the file in the source template
         /// </summary>
-        public String OriginalName { get; set; }
+        public string OriginalName { get; set; }
 
         /// <summary>
         /// The name of the folder within the PnP OpenXML file
         /// </summary>
-        public String Folder { get; set; }
+        public string Folder { get; set; }
 
         /// <summary>
         /// The binary content of the file

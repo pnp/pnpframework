@@ -16,7 +16,7 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML.Model
         /// <summary>
         /// The version of the package file
         /// </summary>
-        public String Version
+        public string Version
         {
             get { return ("1.0"); }
         }

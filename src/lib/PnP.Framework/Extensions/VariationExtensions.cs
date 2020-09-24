@@ -87,7 +87,7 @@ namespace Microsoft.SharePoint.Client
                         ListItem item = collListItems[0];
                         item["Deleted"] = false;
                         item["ObjectID"] = web.ServerRelativeUrl;
-                        item["ParentAreaID"] = String.Empty;
+                        item["ParentAreaID"] = string.Empty;
 
                         item.Update();
                         context.ExecuteQueryRetry();
@@ -102,7 +102,7 @@ namespace Microsoft.SharePoint.Client
                         olistItem["GroupGuid"] = new Guid("F68A02C8-2DCC-4894-B67D-BBAED5A066F9");
                         olistItem["Deleted"] = false;
                         olistItem["ObjectID"] = web.ServerRelativeUrl;
-                        olistItem["ParentAreaID"] = String.Empty;
+                        olistItem["ParentAreaID"] = string.Empty;
 
                         olistItem.Update();
                         context.ExecuteQueryRetry();

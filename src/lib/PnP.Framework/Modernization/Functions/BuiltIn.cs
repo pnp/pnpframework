@@ -1507,7 +1507,7 @@ namespace PnP.Framework.Modernization.Functions
             List siteUserInfoList = context.Web.SiteUserInfoList;
             CamlQuery query = new CamlQuery
             {
-                ViewXml = String.Format(CAMLQueryByName, person)
+                ViewXml = string.Format(CAMLQueryByName, person)
             };
             var loadedUsers = context.LoadQuery(siteUserInfoList.GetItems(query));
             context.ExecuteQueryRetry();

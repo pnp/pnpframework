@@ -391,7 +391,7 @@ namespace Microsoft.SharePoint.Client
         /// <param name="instance">the workflow instance to publish event</param>
         /// <param name="eventName">The name of the target event</param>
         /// <param name="payload">The payload that will be sent to the event</param>
-        public static void PublishCustomEvent(this WorkflowInstance instance, String eventName, String payload)
+        public static void PublishCustomEvent(this WorkflowInstance instance, string eventName, string payload)
         {
             var clientContext = instance.Context as ClientContext;
             var servicesManager = new WorkflowServicesManager(clientContext, clientContext.Web);
@@ -407,7 +407,7 @@ namespace Microsoft.SharePoint.Client
         /// <param name="subscriptionName">The name of the workflow subscription to start</param>
         /// <param name="payload">Any input argument for the workflow instance</param>
         /// <returns>The ID of the just started workflow instance</returns>
-        public static Guid StartWorkflowInstance(this Web web, String subscriptionName, IDictionary<String, Object> payload)
+        public static Guid StartWorkflowInstance(this Web web, string subscriptionName, IDictionary<string, object> payload)
         {
             var clientContext = web.Context as ClientContext;
             var servicesManager = new WorkflowServicesManager(clientContext, clientContext.Web);
@@ -469,7 +469,7 @@ namespace Microsoft.SharePoint.Client
         /// <param name="subscriptionName">The name of the workflow subscription to start</param>
         /// <param name="payload">Any input argument for the workflow instance</param>
         /// <returns>The ID of the just started workflow instance</returns>
-        public static Guid StartWorkflowInstance(this ListItem item, String subscriptionName, IDictionary<String, Object> payload)
+        public static Guid StartWorkflowInstance(this ListItem item, string subscriptionName, IDictionary<string, object> payload)
         {
             var parentList = item.EnsureProperty(i => i.ParentList);
 

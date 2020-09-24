@@ -16,7 +16,7 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML.Model
         /// <summary>
         /// Author of the PnP OpenXML file
         /// </summary>
-        public String Author { get; set; }
+        public string Author { get; set; }
 
         /// <summary>
         /// Date and Time of creation for the PnP OpenXML file
@@ -26,8 +26,8 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML.Model
         /// <summary>
         /// Name of the Generator (engine) of the PnP OpenXML file
         /// </summary>
-        public String Generator { get; set; }
+        public string Generator { get; set; }
 
-        public String TemplateFileName { get; set; }
+        public string TemplateFileName { get; set; }
     }
 }

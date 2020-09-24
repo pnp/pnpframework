@@ -10,11 +10,11 @@ namespace PnP.Framework.Entities
         /// <summary>
         /// Unified group user's user principal name
         /// </summary>
-        public String UserPrincipalName { get; set; }
+        public string UserPrincipalName { get; set; }
         /// <summary>
         /// Unified group user's display name
         /// </summary>
-        public String DisplayName { get; set; }
+        public string DisplayName { get; set; }
 
     }
 }

@@ -12,7 +12,7 @@ namespace PnP.Framework.Provisioning.Model.Office365Groups
         /// <summary>
         /// The ID of the target Office365GroupLifecyclePolicy
         /// </summary>
-        public String ID { get; set; }
+        public string ID { get; set; }
 
         /// <summary>
         /// The GroupLifetimeInDays of the target Office365GroupLifecyclePolicy
@@ -22,7 +22,7 @@ namespace PnP.Framework.Provisioning.Model.Office365Groups
         /// <summary>
         /// The AlternateNotificationEmails of the target Office365GroupLifecyclePolicy
         /// </summary>
-        public String AlternateNotificationEmails { get; set; }
+        public string AlternateNotificationEmails { get; set; }
 
         /// <summary>
         /// The AlternateNotificationEmails of the target Office365GroupLifecyclePolicy

@@ -24,7 +24,7 @@ namespace PnP.Framework.Provisioning.Model
         /// The Search Settings for the Provisioning Template
         /// </summary>
         [Obsolete("Use SiteSearchSettings or WebSearchSettings. This property will be removed in the September 2016 release.")]
-        public String SearchSettings
+        public string SearchSettings
         {
             get { return this.SiteSearchSettings; }
             set { this.SiteSearchSettings = value; }

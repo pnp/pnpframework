@@ -10,6 +10,6 @@ namespace PnP.Framework.Provisioning.CanProvisionRules
         /// <summary>
         /// The name of the CanProvision Rule
         /// </summary>
-        String Name { get; }
+        string Name { get; }
     }
 }

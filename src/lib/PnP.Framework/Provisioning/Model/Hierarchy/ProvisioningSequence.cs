@@ -34,7 +34,7 @@ namespace PnP.Framework.Provisioning.Model
         /// <summary>
         /// A unique identifier of the Sequence, required attribute.
         /// </summary>
-        public String ID { get; set; }
+        public string ID { get; set; }
 
         public SiteCollectionCollection SiteCollections { get; private set; }
 

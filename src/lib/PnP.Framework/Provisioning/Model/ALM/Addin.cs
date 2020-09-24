@@ -12,7 +12,7 @@ namespace PnP.Framework.Provisioning.Model
         /// <summary>
         /// Defines the .app file of the SharePoint Add-in to provision
         /// </summary>
-        public String PackagePath { get; set; }
+        public string PackagePath { get; set; }
 
         /// <summary>
         /// Defines the Source of the SharePoint Add-in to provision
@@ -20,7 +20,7 @@ namespace PnP.Framework.Provisioning.Model
         /// <remarks>
         /// Possible values are: CorporateCatalog, DeveloperSite, InvalidSource, Marketplace, ObjectModel, RemoteObjectModel
         /// </remarks>
-        public String Source { get; set; }
+        public string Source { get; set; }
 
         #endregion
 

@@ -33,10 +33,16 @@ namespace Microsoft.SharePoint.Client
         /// </summary>
         static ClientContextExtensions()
         {
-            ClientContextExtensions.userAgentFromConfig = ConfigurationManager.AppSettings["SharePointPnPUserAgent"];
+            try
+            {
+                ClientContextExtensions.userAgentFromConfig = ConfigurationManager.AppSettings["SharePointPnPUserAgent"];
+            } catch // throws exception if being called from a .NET Standard 2.0 application
+            {
+
+            }
             if (string.IsNullOrWhiteSpace(ClientContextExtensions.userAgentFromConfig))
             {
-                ClientContextExtensions.userAgentFromConfig = System.Environment.GetEnvironmentVariable("SharePointPnPUserAgent", EnvironmentVariableTarget.Process);
+                ClientContextExtensions.userAgentFromConfig = Environment.GetEnvironmentVariable("SharePointPnPUserAgent", EnvironmentVariableTarget.Process);
             }
         }
 
@@ -483,18 +489,32 @@ namespace Microsoft.SharePoint.Client
             }
             else
             {
-                EventHandler<WebRequestEventArgs> handler = (s, e) =>
+                if (clientContext.GetContextSettings().AuthenticationManager != null)
                 {
-                    string authorization = e.WebRequestExecutor.RequestHeaders["Authorization"];
-                    if (!string.IsNullOrEmpty(authorization))
+                    var contextSettings = clientContext.GetContextSettings();
+                    if(contextSettings.Type == ClientContextType.SharePointACSAppOnly)
                     {
-                        accessToken = authorization.Replace("Bearer ", string.Empty);
+
+                    } else
+                    {
+                        accessToken = contextSettings.AuthenticationManager.GetAccessTokenAsync(clientContext.Url).GetAwaiter().GetResult();
                     }
-                };
-                // Issue a dummy request to get it from the Authorization header
-                clientContext.ExecutingWebRequest += handler;
-                clientContext.ExecuteQuery();
-                clientContext.ExecutingWebRequest -= handler;
+                }
+                else
+                {
+                    EventHandler<WebRequestEventArgs> handler = (s, e) =>
+                    {
+                        string authorization = e.WebRequestExecutor.RequestHeaders["Authorization"];
+                        if (!string.IsNullOrEmpty(authorization))
+                        {
+                            accessToken = authorization.Replace("Bearer ", string.Empty);
+                        }
+                    };
+                    // Issue a dummy request to get it from the Authorization header
+                    clientContext.ExecutingWebRequest += handler;
+                    clientContext.ExecuteQuery();
+                    clientContext.ExecutingWebRequest -= handler;
+                }
             }
 
             return accessToken;

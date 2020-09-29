@@ -1,6 +1,8 @@
 ﻿using PnP.Framework.Enums;
 using System;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("PnP.Framework.Test")]
 namespace PnP.Framework.Entities
 {
     /// <summary>

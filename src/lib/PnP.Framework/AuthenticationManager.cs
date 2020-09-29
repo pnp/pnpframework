@@ -65,7 +65,13 @@ namespace PnP.Framework
     public class AuthenticationManager : IDisposable
     {
         private const string SHAREPOINT_PRINCIPAL = "00000003-0000-0ff1-ce00-000000000000";
+        /// <summary>
+        /// The client id of the Microsoft SharePoint Online Management Shell application
+        /// </summary>
         public const string CLIENTID_SPOMANAGEMENTSHELL = "9bc3ab49-b65d-410a-85ad-de819febfddc";
+        /// <summary>
+        /// The client id of the Microsoft 365 Patters and Practices Management Shell application
+        /// </summary>
         public const string CLIENTID_PNPMANAGEMENTSHELL = "31359c7f-bd7e-475c-86db-fdb8c937548e";
 
         private string appOnlyAccessToken;
@@ -83,6 +89,9 @@ namespace PnP.Framework
         internal string RedirectUrl { get; set; }
 
         #region Construction
+        /// <summary>
+        /// Empty constructor, to be used if you want to execute ACS based authentication methods.
+        /// </summary>
         public AuthenticationManager()
         {
             // Set the TLS preference. Needed on some server os's to work when Office 365 removes support for TLS 1.0
@@ -245,6 +254,70 @@ namespace PnP.Framework
             authenticationType = ClientContextType.AzureADCertificate;
         }
         #endregion
+
+        /// <summary>
+        /// Returns an access token for a given site.
+        /// </summary>
+        /// <param name="siteUrl"></param>
+        /// <returns></returns>
+        internal async Task<string> GetAccessTokenAsync(string siteUrl)
+        {
+            var uri = new Uri(siteUrl);
+
+            AuthenticationResult authResult = null;
+
+            var scopes = new[] { $"{uri.Scheme}://{uri.Authority}/.default" };
+
+            switch (authenticationType)
+            {
+                case ClientContextType.AzureADCredentials:
+                    {
+                        var accounts = await publicClientApplication.GetAccountsAsync();
+                        try
+                        {
+                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
+                        }
+                        catch
+                        {
+                            authResult = await publicClientApplication.AcquireTokenByUsernamePassword(scopes, username, password).ExecuteAsync();
+                        }
+                        break;
+                    }
+                case ClientContextType.AzureADInteractive:
+                    {
+                        var accounts = await publicClientApplication.GetAccountsAsync();
+
+                        try
+                        {
+                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
+                        }
+                        catch
+                        {
+                            authResult = await publicClientApplication.AcquireTokenInteractive(scopes).ExecuteAsync();
+                        }
+                        break;
+                    }
+                case ClientContextType.AzureADCertificate:
+                    {
+                        var accounts = await confidentialClientApplication.GetAccountsAsync();
+
+                        try
+                        {
+                            authResult = await confidentialClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
+                        }
+                        catch
+                        {
+                            authResult = await confidentialClientApplication.AcquireTokenForClient(scopes).ExecuteAsync();
+                        }
+                        break;
+                    }
+            }
+            if(authResult?.AccessToken != null)
+            {
+                return authResult.AccessToken;
+            }
+            return null;
+        }
 
         /// <summary>
         /// Returns a CSOM ClientContext which has been set up for Azure AD OAuth authentication

@@ -140,10 +140,10 @@
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
     <PackageReference Include="Microsoft.Data.OData" Version="5.8.4" />
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="3.1.8" />
-    <PackageReference Include="Microsoft.Graph" Version="3.14.0" />
+    <PackageReference Include="Microsoft.Graph" Version="3.15.0" />
     <PackageReference Include="Microsoft.Graph.Core" Version="1.21.0" />
-    <PackageReference Include="Microsoft.Identity.Client" Version="4.18.0" />
-    <PackageReference Include="Microsoft.SharePointOnline.CSOM" Version="16.1.20412.12000" />
+    <PackageReference Include="Microsoft.Identity.Client" Version="4.19.0" />
+    <PackageReference Include="Microsoft.SharePointOnline.CSOM" Version="16.1.20518.12000" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
     <PackageReference Include="Portable.Xaml" Version="0.25.0" />
     <PackageReference Include="ResXResourceReader.NetStandard" Version="1.0.1" />

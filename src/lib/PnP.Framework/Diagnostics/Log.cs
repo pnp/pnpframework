@@ -36,7 +36,12 @@ namespace PnP.Framework.Diagnostics
         {
             if (_logger == null)
             {
-                var config = (PnP.Framework.Diagnostics.LogConfigurationTracingSection)System.Configuration.ConfigurationManager.GetSection("pnp/tracing");
+                LogConfigurationTracingSection config = null;
+                try
+                {
+                    config = (PnP.Framework.Diagnostics.LogConfigurationTracingSection)System.Configuration.ConfigurationManager.GetSection("pnp/tracing");
+                }
+                catch { } // throws exception when being called from .NET Standard 2.0
 
                 if (config != null)
                 {

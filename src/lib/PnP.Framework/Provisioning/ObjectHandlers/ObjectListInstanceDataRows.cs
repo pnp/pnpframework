@@ -905,6 +905,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             if (queryConfig != null && queryConfig.IncludeAttachments && siteList.EnableAttachments && (bool)item["Attachments"])
             {
                 item.Context.ExecuteQueryRetry();
+                item.EnsureProperty(i => i.AttachmentFiles);
                 foreach (var attachmentFile in item.AttachmentFiles)
                 {
                     var fullUri = new Uri(baseUri, attachmentFile.ServerRelativePath.DecodedUrl);

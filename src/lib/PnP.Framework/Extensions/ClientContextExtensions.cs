@@ -1,4 +1,3 @@
-using Newtonsoft.Json;
 using PnP.Framework;
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Provisioning.ObjectHandlers;
@@ -15,6 +14,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Microsoft.SharePoint.Client
@@ -36,7 +36,8 @@ namespace Microsoft.SharePoint.Client
             try
             {
                 ClientContextExtensions.userAgentFromConfig = ConfigurationManager.AppSettings["SharePointPnPUserAgent"];
-            } catch // throws exception if being called from a .NET Standard 2.0 application
+            }
+            catch // throws exception if being called from a .NET Standard 2.0 application
             {
 
             }
@@ -492,10 +493,11 @@ namespace Microsoft.SharePoint.Client
                 if (clientContext.GetContextSettings().AuthenticationManager != null)
                 {
                     var contextSettings = clientContext.GetContextSettings();
-                    if(contextSettings.Type == ClientContextType.SharePointACSAppOnly)
+                    if (contextSettings.Type == ClientContextType.SharePointACSAppOnly)
                     {
 
-                    } else
+                    }
+                    else
                     {
                         accessToken = contextSettings.AuthenticationManager.GetAccessTokenAsync(clientContext.Url).GetAwaiter().GetResult();
                     }
@@ -666,9 +668,9 @@ namespace Microsoft.SharePoint.Client
                         throw new Exception(errorSb.ToString());
                     }
                 }
-                var contextInformation = JsonConvert.DeserializeObject<dynamic>(responseString);
+                var contextInformation = JsonSerializer.Deserialize<JsonElement>(responseString);
 
-                string formDigestValue = contextInformation.d.GetContextWebInformation.FormDigestValue;
+                string formDigestValue = contextInformation.GetProperty("d").GetProperty("GetContextWebInformation").GetProperty("FormDigestValue").GetString();
                 return await Task.Run(() => formDigestValue).ConfigureAwait(false);
             }
         }

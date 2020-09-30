@@ -1,6 +1,5 @@
 ﻿using Microsoft.SharePoint.Client.Publishing.Navigation;
 using Microsoft.SharePoint.Client.Taxonomy;
-using Newtonsoft.Json.Linq;
 using PnP.Framework;
 using PnP.Framework.Entities;
 using PnP.Framework.Enums;
@@ -9,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Text.Json;
 using System.Xml.Linq;
 using System.Xml.XPath;
 
@@ -773,21 +773,21 @@ namespace Microsoft.SharePoint.Client
         public static NavigationNodeCollection LoadFooterNavigation(this Web web)
         {
             var structureString = web.ExecuteGetAsync($"/_api/navigation/MenuState?menuNodeKey='{Constants.SITEFOOTER_NODEKEY}'").GetAwaiter().GetResult();
-            var menuState = JObject.Parse(structureString);
+            var menuState = JsonSerializer.Deserialize<JsonElement>(structureString);
+            //var menuState = JObject.Parse(structureString);
 
-            if (menuState["StartingNodeKey"] == null)
+            if (menuState.GetProperty("StartingNodeKey").ValueKind == JsonValueKind.Undefined)
             {
                 web.EnsureProperties(w => w.ServerRelativeUrl);
                 var now = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss:Z");
                 web.ExecutePostAsync($"/_api/navigation/SaveMenuState", $@"{{ ""menuState"":{{ ""Version"":""{now}"",""StartingNodeTitle"":""3a94b35f-030b-468e-80e3-b75ee84ae0ad"",""SPSitePrefix"":""/"",""SPWebPrefix"":""{web.ServerRelativeUrl}"",""FriendlyUrlPrefix"":"""",""SimpleUrl"":"""",""Nodes"":[]}}}}").GetAwaiter().GetResult();
                 structureString = web.ExecuteGetAsync($"/_api/navigation/MenuState?menuNodeKey='{Constants.SITEFOOTER_NODEKEY}'").GetAwaiter().GetResult();
-                menuState = JObject.Parse(structureString);
+                menuState = JsonSerializer.Deserialize<JsonElement>(structureString);
             }
 
-            if (menuState["Nodes"] != null)
+            if (menuState.GetProperty("Nodes").ValueKind != JsonValueKind.Null)
             {
-                var nodes = menuState["Nodes"] as JArray;
-                var topNode = web.Navigation.GetNodeById(Convert.ToInt32(menuState["StartingNodeKey"].Value<string>()));
+                var topNode = web.Navigation.GetNodeById(Convert.ToInt32(menuState.GetProperty("StartingNodeKey").GetString()));
                 web.Context.Load(topNode, n => n.Children.IncludeWithDefaultProperties());
                 web.Context.ExecuteQueryRetry();
                 var menuNode = topNode.Children.FirstOrDefault(n => n.Title == Constants.SITEFOOTER_MENUNODEKEY);
@@ -815,26 +815,26 @@ namespace Microsoft.SharePoint.Client
         public static string GetFooterTitle(this Web web)
         {
             var structureString = web.ExecuteGetAsync($"/_api/navigation/MenuState?menuNodeKey='{Constants.SITEFOOTER_NODEKEY}'").GetAwaiter().GetResult();
-            var menuState = JObject.Parse(structureString);
+            var menuState = JsonSerializer.Deserialize<JsonElement>(structureString);
 
-            if (menuState["Nodes"] == null)
+            if (menuState.GetProperty("Nodes").ValueKind == JsonValueKind.Null)
             {
                 // No information is returned which helps us to identity the title node
                 return null;
             }
 
             // Retrieve the Node representing the title node
-            var titleNode = menuState["Nodes"].FirstOrDefault(n => n["Title"].Value<string>() == Constants.SITEFOOTER_TITLENODEKEY);
+            var titleNode = menuState.GetProperty("Nodes").EnumerateArray().FirstOrDefault(n => n.GetProperty("Title").GetString() == Constants.SITEFOOTER_TITLENODEKEY);
 
             // Ensure the title node contains the expected child elements
-            if (titleNode == null || titleNode["Nodes"] == null || titleNode["Nodes"].Count() == 0 || titleNode["Nodes"][0]["Title"] == null)
+            if (titleNode.ValueKind == JsonValueKind.Undefined || titleNode.GetProperty("Nodes").ValueKind == JsonValueKind.Undefined || titleNode.GetProperty("Nodes").EnumerateArray().Count() == 0 || titleNode.GetProperty("Nodes").EnumerateArray().First().GetProperty("Title").ValueKind == JsonValueKind.Undefined)
             {
                 // The expected child elements were not found
                 return null;
             }
 
             // Retrieve the title
-            var title = titleNode["Nodes"][0]["Title"].Value<string>();
+            var title = titleNode.GetProperty("Nodes").EnumerateArray().First().GetProperty("Title").GetString();
             return title;
         }
 
@@ -849,8 +849,8 @@ namespace Microsoft.SharePoint.Client
             web.EnsureProperty(w => w.ServerRelativeUrl);
             var responseString = web.ExecutePostAsync("/_api/navigation/SaveMenuState",
                                                 @"{""menuState"":{""StartingNodeTitle"":""" + Constants.SITEFOOTER_NODEKEY + @""",""SPSitePrefix"":""/"",""SPWebPrefix"":""" + web.ServerRelativeUrl + @""",""FriendlyUrlPrefix"":"""",""SimpleUrl"":"""",""Nodes"":[{""NodeType"":0,""Title"":""" + Constants.SITEFOOTER_TITLENODEKEY + @""",""Key"":""2004"",""FriendlyUrlSegment"":"""",""Nodes"":[{""NodeType"":0,""Title"":""" + title + @""",""FriendlyUrlSegment"":""""}]}]}}").GetAwaiter().GetResult();
-            var responseJson = JObject.Parse(responseString);
-            var requestSucceeded = responseJson != null && responseJson["value"] != null && responseJson["value"].Value<string>() == "200";
+            var responseJson = JsonSerializer.Deserialize<JsonElement>(responseString);
+            var requestSucceeded = responseJson.ValueKind != JsonValueKind.Undefined && responseJson.GetProperty("value").ValueKind != JsonValueKind.Undefined && responseJson.GetProperty("value").GetInt32() == 200;
             return requestSucceeded;
         }
 
@@ -862,26 +862,27 @@ namespace Microsoft.SharePoint.Client
         public static string GetFooterLogoUrl(this Web web)
         {
             var structureString = web.ExecuteGetAsync($"/_api/navigation/MenuState?menuNodeKey='{Constants.SITEFOOTER_NODEKEY}'").GetAwaiter().GetResult();
-            var menuState = JObject.Parse(structureString);
+            var menuState = JsonSerializer.Deserialize<JsonElement>(structureString);
+            //var menuState = JObject.Parse(structureString);
 
-            if (menuState["Nodes"] == null)
+            if (menuState.GetProperty("Nodes").ValueKind == JsonValueKind.Null)
             {
                 // No information is returned which helps us to identity the logo node
                 return null;
             }
 
             // Retrieve the Node representing the logo node
-            var logoUrlNode = menuState["Nodes"].FirstOrDefault(n => n["Title"].Value<string>() == Constants.SITEFOOTER_LOGONODEKEY);
+            var logoUrlNode = menuState.GetProperty("Nodes").EnumerateArray().FirstOrDefault(n => n.GetProperty("Title").GetString() == Constants.SITEFOOTER_LOGONODEKEY);
 
             // Ensure the logo node contains the expected child elements
-            if (logoUrlNode == null || logoUrlNode["SimpleUrl"] == null)
+            if (logoUrlNode.ValueKind == JsonValueKind.Undefined || logoUrlNode.GetProperty("SimpleUrl").ValueKind == JsonValueKind.Undefined)
             {
                 // The expected child elements were not found
                 return null;
             }
 
             // Retrieve the logo url
-            var logoUrl = logoUrlNode["SimpleUrl"].Value<string>();
+            var logoUrl = logoUrlNode.GetProperty("SimpleUrl").GetString();
             return logoUrl;
         }
 
@@ -896,8 +897,8 @@ namespace Microsoft.SharePoint.Client
             web.EnsureProperty(w => w.ServerRelativeUrl);
             var responseString = web.ExecutePostAsync("/_api/navigation/SaveMenuState",
                                                 @"{""menuState"":{""StartingNodeTitle"":""" + Constants.SITEFOOTER_NODEKEY + @""",""SPSitePrefix"":""/"",""SPWebPrefix"":""" + web.ServerRelativeUrl + @""",""FriendlyUrlPrefix"":"""",""SimpleUrl"":"""",""Nodes"":[{""NodeType"":0,""Title"":""" + Constants.SITEFOOTER_LOGONODEKEY + @""",""Key"":""2006"",""SimpleUrl"":""" + logoUrl + @""",""FriendlyUrlSegment"":""""}]}}").GetAwaiter().GetResult();
-            var responseJson = JObject.Parse(responseString);
-            var requestSucceeded = responseJson != null && responseJson["value"] != null && responseJson["value"].Value<string>() == "200";
+            var responseJson = JsonSerializer.Deserialize<JsonElement>(responseString);
+            var requestSucceeded = responseJson.ValueKind != JsonValueKind.Undefined && responseJson.GetProperty("value").ValueKind != JsonValueKind.Undefined && responseJson.GetProperty("value").GetInt32() == 200;
             return requestSucceeded;
         }
 
@@ -911,8 +912,8 @@ namespace Microsoft.SharePoint.Client
             web.EnsureProperty(w => w.ServerRelativeUrl);
             var responseString = web.ExecutePostAsync("/_api/navigation/SaveMenuState",
                                                 @"{""menuState"":{""StartingNodeTitle"":""" + Constants.SITEFOOTER_NODEKEY + @""",""SPSitePrefix"":""/"",""SPWebPrefix"":""" + web.ServerRelativeUrl + @""",""FriendlyUrlPrefix"":"""",""SimpleUrl"":"""",""Nodes"":[{""NodeType"":0,""Title"":""" + Constants.SITEFOOTER_LOGONODEKEY + @""",""IsDeleted"":""True"",""FriendlyUrlSegment"":""""}]}}").GetAwaiter().GetResult();
-            var responseJson = JObject.Parse(responseString);
-            var requestSucceeded = responseJson != null && responseJson["value"] != null && responseJson["value"].Value<string>() == "200";
+            var responseJson = JsonSerializer.Deserialize<JsonElement>(responseString);
+            var requestSucceeded = responseJson.ValueKind != JsonValueKind.Undefined && responseJson.GetProperty("value").ValueKind != JsonValueKind.Undefined && responseJson.GetProperty("value").GetInt32() == 200;
             return requestSucceeded;
         }
         #endregion

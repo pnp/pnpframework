@@ -1,12 +1,12 @@
 ﻿using Microsoft.Online.SharePoint.TenantAdministration;
 using Microsoft.SharePoint.Client.Search.Administration;
 using Microsoft.SharePoint.Client.Search.Portability;
-using Newtonsoft.Json;
 using PnP.Framework;
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Utilities;
 using System;
 using System.Text;
+using System.Text.Json;
 
 namespace Microsoft.SharePoint.Client
 {
@@ -433,32 +433,34 @@ namespace Microsoft.SharePoint.Client
                 searchSettingsValue = web.GetPropertyBagValueString("SRCH_SB_SET_WEB", string.Empty);
             }
 
-            // Convert the settings into a typed object
-            var searchSettings = JsonConvert.DeserializeAnonymousType(searchSettingsValue, new
+            if (!string.IsNullOrEmpty(searchSettingsValue))
             {
-                Inherit = false,
-                ResultsPageAddress = String.Empty,
-                ShowNavigation = false,
-            });
+                // Convert the settings into a typed object
+                var searchSettingsElement = JsonSerializer.Deserialize<JsonElement>(searchSettingsValue);
 
-            if (searchSettings != null && !searchSettings.Inherit)
-            {
-                if (!urlOnly)
+                var searchSettings = new
                 {
-                    // Return the whole JSON settings
-                    return searchSettingsValue;
-                }
-                else
+                    Inherit = searchSettingsElement.GetProperty("Inherit").ValueKind != JsonValueKind.Undefined ? searchSettingsElement.GetProperty("Inherit").GetBoolean() : false,
+                    ResultsPageAddress = searchSettingsElement.GetProperty("ResultsPageAddress").ValueKind != JsonValueKind.Undefined ? searchSettingsElement.GetProperty("ResultsPageAddress").GetString() : string.Empty,
+                    ShowNavigation = searchSettingsElement.GetProperty("ShowNavigation").ValueKind != JsonValueKind.Undefined ? searchSettingsElement.GetProperty("ShowNavigation").GetBoolean() : false
+                };
+
+                if (searchSettings != null && !searchSettings.Inherit)
                 {
-                    // Return the search results page URL of the current web
-                    return searchSettings?.ResultsPageAddress;
+                    if (!urlOnly)
+                    {
+                        // Return the whole JSON settings
+                        return searchSettingsValue;
+                    }
+                    else
+                    {
+                        // Return the search results page URL of the current web
+                        return searchSettings?.ResultsPageAddress;
+                    }
                 }
             }
-            else
-            {
-                // If we're inheriting settings, just return NULL
-                return null;
-            }
+            // If we're inheriting settings, just return NULL
+            return null;
         }
     }
 }

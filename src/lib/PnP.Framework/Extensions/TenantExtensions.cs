@@ -1,7 +1,5 @@
 ﻿using Microsoft.Online.SharePoint.TenantAdministration;
 using Microsoft.Online.SharePoint.TenantManagement;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using PnP.Framework;
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Entities;
@@ -17,6 +15,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -826,6 +825,11 @@ namespace Microsoft.SharePoint.Client
         #endregion
 
 
+        /// <summary>
+        /// Returns if the current user is a tenant administrator
+        /// </summary>
+        /// <param name="clientContext"></param>
+        /// <returns></returns>
         public static bool IsCurrentUserTenantAdmin(ClientContext clientContext)
         {
             if (PnPProvisioningContext.Current != null)
@@ -853,18 +857,11 @@ namespace Microsoft.SharePoint.Client
 
                 if (jsonResponse != null)
                 {
-                    var result = JsonConvert.DeserializeAnonymousType(jsonResponse,
-                        new
-                        {
-                            value = new[] {
-                                new {
-                                    Id = Guid.Empty,
-                                    DisplayName = ""
-                                }
-                            }
-                        });
-                    // Check if the requested role is included in the list
-                    return (result.value.Any(r => r.DisplayName == globalTenantAdminRole));
+                    var resultsElement = JsonSerializer.Deserialize<JsonElement>(jsonResponse);
+                    if (resultsElement.GetProperty("value").ValueKind != JsonValueKind.Undefined)
+                    {
+                        return resultsElement.GetProperty("value").EnumerateArray().Any(r => r.GetProperty("displayName").GetString() == globalTenantAdminRole);
+                    }
                 }
             }
             catch (Exception)
@@ -1327,9 +1324,9 @@ namespace Microsoft.SharePoint.Client
 
             var url = $"https://login.microsoftonline.com/{tenantName}.onmicrosoft.com/.well-known/openid-configuration";
             var response = HttpHelper.MakeGetRequestForString(url);
-            var json = JToken.Parse(response);
+            var json = JsonSerializer.Deserialize<JsonElement>(response);
 
-            var tokenEndpointUrl = json["token_endpoint"].ToString();
+            var tokenEndpointUrl = json.GetProperty("token_endpoint").GetString();
             return GetTenantIdFromAadEndpointUrl(tokenEndpointUrl);
         }
 

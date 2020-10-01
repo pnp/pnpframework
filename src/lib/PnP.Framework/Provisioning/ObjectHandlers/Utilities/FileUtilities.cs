@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json;
-using PnP.Framework.Provisioning.Model;
+﻿using PnP.Framework.Provisioning.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text.Json;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
 {
@@ -115,9 +115,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
             return (result);
         }
 
-        public static Dictionary<String, Dictionary<String, String>> GetMetadataProperties(this Model.Directory directory)
+        public static Dictionary<string, Dictionary<string, string>> GetMetadataProperties(this Model.Directory directory)
         {
-            Dictionary<String, Dictionary<String, String>> result = null;
+            Dictionary<string, Dictionary<string, string>> result = null;
 
             if (!string.IsNullOrEmpty(directory.MetadataMappingFile))
             {
@@ -127,7 +127,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                     using (var sr = new StreamReader(metadataPropertiesStream))
                     {
                         var metadataPropertiesString = sr.ReadToEnd();
-                        result = JsonConvert.DeserializeObject<Dictionary<String, Dictionary<String, String>>>(metadataPropertiesString);
+                        result = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(metadataPropertiesString);
                     }
                 }
             }

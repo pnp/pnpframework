@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace PnP.Framework.Provisioning.Model.Configuration.SiteSecurity
 {
     public class ExtractConfiguration
     {
-        [JsonProperty("includeSiteGroups")]
+        [JsonPropertyName("includeSiteGroups")]
         public bool IncludeSiteGroups { get; set; }
     }
 }

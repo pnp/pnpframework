@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace PnP.Framework.Provisioning.Model.Configuration.SearchSettings
 {
     public class ExtractSearchConfiguration
     {
-        [JsonProperty("include")]
+        [JsonPropertyName("include")]
         public bool Include { get; set; }
     }
 }

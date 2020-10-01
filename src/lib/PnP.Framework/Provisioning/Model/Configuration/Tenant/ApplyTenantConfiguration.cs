@@ -1,11 +1,11 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
+using System.Text.Json.Serialization;
 
 namespace PnP.Framework.Provisioning.Model.Configuration.Tenant
 {
     public class ApplyTenantConfiguration
     {
-        [JsonProperty("doNotWaitForSitesToBeFullyCreated")]
+        [JsonPropertyName("doNotWaitForSitesToBeFullyCreated")]
         public bool DoNotWaitForSitesToBeFullyCreated { get; set; }
 
         [JsonIgnore]

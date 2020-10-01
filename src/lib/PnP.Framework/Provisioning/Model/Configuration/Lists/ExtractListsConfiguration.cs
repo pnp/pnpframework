@@ -1,14 +1,14 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace PnP.Framework.Provisioning.Model.Configuration.Lists
 {
     public class ExtractListsConfiguration
     {
-        [JsonProperty("includeHiddenLists")]
+        [JsonPropertyName("includeHiddenLists")]
         public bool IncludeHiddenLists { get; set; }
 
-        [JsonProperty("lists")]
+        [JsonPropertyName("lists")]
         public List<Lists.ExtractListsListsConfiguration> Lists { get; set; } = new List<Lists.ExtractListsListsConfiguration>();
 
         public bool HasLists

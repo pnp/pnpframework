@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace PnP.Framework.Provisioning.Model.Configuration.Navigation
 {
     public class ExtractNavigationConfiguration
     {
-        [JsonProperty("RemoveExistingNodes")]
+        [JsonPropertyName("RemoveExistingNodes")]
         public bool RemoveExistingNodes { get; set; }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.Online.SharePoint.TenantAdministration;
-using Newtonsoft.Json;
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Provisioning.Connectors;
 using PnP.Framework.Provisioning.Model;
@@ -12,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -84,6 +85,15 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return (content);
         }
 
+        private class AssignedLicense
+        {
+            [JsonPropertyName("disabledPlans")]
+            public Guid[] DisabledPlans { get; set; }
+
+            [JsonPropertyName("skuId")]
+            public Guid SkuId { get; set; }
+        }
+
         /// <summary>
         /// Manages User licenses with delta handling
         /// </summary>
@@ -94,36 +104,26 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         private void ManageUserLicenses(PnPMonitoredScope scope, object userId, UserLicenseCollection licenses, string accessToken)
         {
             // Get the currently assigned licenses
-            var jsoncurrentLicenses = HttpHelper.MakeGetRequestForString(
-                $"{GraphHelper.MicrosoftGraphBaseURI}beta/users/{userId}", accessToken);
-            var currentLicenses = JsonConvert.DeserializeAnonymousType(jsoncurrentLicenses, new
-            {
-                assignedLicenses = new[]
-                {
-                    new {
-                        disabledPlans = new[]
-                        {
-                            Guid.Empty
-                        },
-                        skuId = Guid.Empty
-                    }
-                }
-            });
+            var jsoncurrentLicenses = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}beta/users/{userId}", accessToken);
+
+            var userElement = JsonSerializer.Deserialize<JsonElement>(jsoncurrentLicenses);
+
+            var assignedLicenses = JsonSerializer.Deserialize<List<AssignedLicense>>(userElement.GetProperty("assignedLicenses").GetRawText());
 
             // Manage the license to remove
             var removeLicenses = new List<Guid>();
-            foreach (var l in currentLicenses.assignedLicenses)
+            foreach (var l in assignedLicenses)
             {
                 // If the already assigned license is not in the list of new licenses
-                if (!licenses.Any(lic => Guid.Parse(lic.SkuId) == l.skuId))
+                if (!licenses.Any(lic => Guid.Parse(lic.SkuId) == l.SkuId))
                 {
                     // We need to remove it
-                    removeLicenses.Add(l.skuId);
+                    removeLicenses.Add(l.SkuId);
                 }
             }
 
             // Prepare the new request to update assigned licenses
-            var assigneLicenseBody = new
+            var assignedLicenseBody = new
             {
                 addLicenses = from l in licenses
                               select new
@@ -138,7 +138,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             };
             HttpHelper.MakePostRequest(
                 $"{GraphHelper.MicrosoftGraphBaseURI}v1.0/users/{userId}/assignLicense",
-                assigneLicenseBody, HttpHelper.JsonContentType, accessToken);
+                assignedLicenseBody, HttpHelper.JsonContentType, accessToken);
         }
 
         /// <summary>

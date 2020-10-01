@@ -1,13 +1,13 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace PnP.Framework.Provisioning.Model.Configuration.MultiLanguage
 {
     public class ExtractMultiLanguageConfiguration
     {
-        [JsonProperty("persistMultilanguageResources")]
+        [JsonPropertyName("persistMultilanguageResources")]
         public bool PersistResources { get; set; }
 
-        [JsonProperty("resourceFilePrefix")]
+        [JsonPropertyName("resourceFilePrefix")]
         public string ResourceFilePrefix { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace PnP.Framework.Provisioning.Model.Configuration.Tenant
 {
@@ -7,13 +7,13 @@ namespace PnP.Framework.Provisioning.Model.Configuration.Tenant
         /// <summary>
         /// If defined will extract site collections as defined in the SiteUrls array
         /// </summary>
-        [JsonProperty("sequence")]
+        [JsonPropertyName("sequence")]
         public Sequence.ExtractSequenceConfiguration Sequence { get; set; }
 
         /// <summary>
         /// If defined will extract teams as defined
         /// </summary>
-        [JsonProperty("teams")]
+        [JsonPropertyName("teams")]
         public Teams.ExtractTeamsConfiguration Teams { get; set; }
     }
 }

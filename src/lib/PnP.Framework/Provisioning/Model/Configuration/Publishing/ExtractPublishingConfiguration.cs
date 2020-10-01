@@ -1,13 +1,13 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace PnP.Framework.Provisioning.Model.Configuration.Publishing
 {
     public class ExtractPublishingConfiguration
     {
-        [JsonProperty("includeNativePublishingFiles")]
+        [JsonPropertyName("includeNativePublishingFiles")]
         public bool IncludeNativePublishingFiles { get; set; }
 
-        [JsonProperty("persist")]
+        [JsonPropertyName("persist")]
         public bool Persist { get; set; }
     }
 }

@@ -1,20 +1,20 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace PnP.Framework.Provisioning.Model.Configuration.Tenant.Teams
 {
     public class ExtractTeamsConfiguration
     {
-        [JsonProperty("includeAllTeams")]
+        [JsonPropertyName("includeAllTeams")]
         public bool IncludeAllTeams { get; set; }
 
-        [JsonProperty("includeMessages")]
+        [JsonPropertyName("includeMessages")]
         public bool IncludeMessages { get; set; }
 
-        [JsonProperty("teamSiteUrls")]
+        [JsonPropertyName("teamSiteUrls")]
         public List<string> TeamSiteUrls { get; set; } = new List<string>();
 
-        [JsonProperty("includeGroupId")]
+        [JsonPropertyName("includeGroupId")]
         public bool IncludeGroupId { get; set; }
     }
 }

@@ -1,28 +1,28 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace PnP.Framework.Provisioning.Model.Configuration.Lists.Lists
 {
     public class ExtractListsListsConfiguration
     {
-        [JsonProperty("title")]
+        [JsonPropertyName("title")]
         public string Title { get; set; }
 
-        [JsonProperty("includeItems")]
+        [JsonPropertyName("includeItems")]
         public bool IncludeItems { get; set; }
 
-        [JsonProperty("keyColumn")]
+        [JsonPropertyName("keyColumn")]
         public string KeyColumn { get; set; }
 
-        [JsonProperty("updateBehavior")]
+        [JsonPropertyName("updateBehavior")]
         public UpdateBehavior UpdateBehavior { get; set; }
 
-        [JsonProperty("skipEmptyFields")]
+        [JsonPropertyName("skipEmptyFields")]
         public bool SkipEmptyFields { get; set; }
 
-        [JsonProperty("query")]
+        [JsonPropertyName("query")]
         public ExtractListsQueryConfiguration Query { get; set; } = new ExtractListsQueryConfiguration();
 
-        [JsonProperty("removeExistingContentTypes")]
+        [JsonPropertyName("removeExistingContentTypes")]
         public bool RemoveExistingContentTypes { get; set; }
 
     }

@@ -1,9 +1,10 @@
-﻿using Newtonsoft.Json;
-using PnP.Framework.Provisioning.Connectors;
+﻿using PnP.Framework.Provisioning.Connectors;
 using PnP.Framework.Provisioning.ObjectHandlers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace PnP.Framework.Provisioning.Model.Configuration
 {
@@ -42,33 +43,33 @@ namespace PnP.Framework.Provisioning.Model.Configuration
 
 
 
-        [JsonProperty("handlers")]
+        [JsonPropertyName("handlers")]
         public List<ConfigurationHandler> Handlers { get; set; } = new List<ConfigurationHandler>();
 
-        [JsonProperty("parameters")]
+        [JsonPropertyName("parameters")]
         public Dictionary<string, string> Parameters { get; set; } = new Dictionary<string, string>();
         /// <summary>
         /// Defines Tenant Extraction Settings
         /// </summary>
-        [JsonProperty("tenant")]
+        [JsonPropertyName("tenant")]
         public Tenant.ApplyTenantConfiguration Tenant { get; set; } = new Tenant.ApplyTenantConfiguration();
 
-        [JsonProperty("contentTypes")]
+        [JsonPropertyName("contentTypes")]
         public ContentTypes.ApplyContentTypeConfiguration ContentTypes { get; set; } = new ContentTypes.ApplyContentTypeConfiguration();
 
-        [JsonProperty("propertyBag")]
+        [JsonPropertyName("propertyBag")]
         public PropertyBag.ApplyPropertyBagConfiguration PropertyBag { get; set; } = new PropertyBag.ApplyPropertyBagConfiguration();
 
-        [JsonProperty("fields")]
+        [JsonPropertyName("fields")]
         public Fields.ApplyFieldsConfiguration Fields { get; set; } = new Fields.ApplyFieldsConfiguration();
 
-        [JsonProperty("lists")]
+        [JsonPropertyName("lists")]
         public Lists.ApplyListsConfiguration Lists { get; set; } = new Lists.ApplyListsConfiguration();
 
-        [JsonProperty("navigation")]
+        [JsonPropertyName("navigation")]
         public Navigation.ApplyNavigationConfiguration Navigation { get; set; } = new Navigation.ApplyNavigationConfiguration();
 
-        [JsonProperty("extensibility")]
+        [JsonPropertyName("extensibility")]
         public Extensibility.ApplyExtensibilityConfiguration Extensibility { get; set; } = new Extensibility.ApplyExtensibilityConfiguration();
 
         public ProvisioningTemplateApplyingInformation ToApplyingInformation()
@@ -176,6 +177,7 @@ namespace PnP.Framework.Provisioning.Model.Configuration
             config.SiteProvisionedDelegate = information.SiteProvisionedDelegate;
             return config;
         }
+
         public static ApplyConfiguration FromString(string input)
         {
             //var assembly = Assembly.GetExecutingAssembly();
@@ -196,7 +198,7 @@ namespace PnP.Framework.Provisioning.Model.Configuration
             //    }
             //}
 
-            return JsonConvert.DeserializeObject<ApplyConfiguration>(input);
+            return JsonSerializer.Deserialize<ApplyConfiguration>(input);
         }
     }
 }

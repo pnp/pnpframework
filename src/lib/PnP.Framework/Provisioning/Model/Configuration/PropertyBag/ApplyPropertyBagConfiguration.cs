@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace PnP.Framework.Provisioning.Model.Configuration.PropertyBag
 {
     public class ApplyPropertyBagConfiguration
     {
-        [JsonProperty("overwriteSystemValues")]
+        [JsonPropertyName("overwriteSystemValues")]
         public bool OverwriteSystemValues { get; set; }
     }
 }

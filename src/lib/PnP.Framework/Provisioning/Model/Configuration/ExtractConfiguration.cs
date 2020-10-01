@@ -1,10 +1,11 @@
 ﻿using Microsoft.SharePoint.Client;
-using Newtonsoft.Json;
 using PnP.Framework.Provisioning.Connectors;
 using PnP.Framework.Provisioning.ObjectHandlers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace PnP.Framework.Provisioning.Model.Configuration
 {
@@ -23,52 +24,52 @@ namespace PnP.Framework.Provisioning.Model.Configuration
         [JsonIgnore]
         public ProvisioningMessagesDelegate MessagesDelegate { get; set; }
 
-        [JsonProperty("persistAssetFiles")]
+        [JsonPropertyName("persistAssetFiles")]
         public bool PersistAssetFiles { get; set; }
 
-        [JsonProperty("handlers")]
+        [JsonPropertyName("handlers")]
         public List<ConfigurationHandler> Handlers { get; set; } = new List<ConfigurationHandler>();
 
-        [JsonProperty("lists")]
+        [JsonPropertyName("lists")]
         public Lists.ExtractListsConfiguration Lists { get; set; } = new Lists.ExtractListsConfiguration();
 
-        [JsonProperty("pages")]
+        [JsonPropertyName("pages")]
         public Pages.ExtractPagesConfiguration Pages { get; set; } = new Pages.ExtractPagesConfiguration();
 
-        [JsonProperty("siteSecurity")]
+        [JsonPropertyName("siteSecurity")]
         public SiteSecurity.ExtractConfiguration SiteSecurity { get; set; } = new SiteSecurity.ExtractConfiguration();
 
-        [JsonProperty("taxonomy")]
+        [JsonPropertyName("taxonomy")]
         public Taxonomy.ExtractTaxonomyConfiguration Taxonomy { get; set; } = new Taxonomy.ExtractTaxonomyConfiguration();
 
-        [JsonProperty("navigation")]
+        [JsonPropertyName("navigation")]
         public Navigation.ExtractNavigationConfiguration Navigation { get; set; } = new Navigation.ExtractNavigationConfiguration();
 
-        [JsonProperty("siteFooter")]
+        [JsonPropertyName("siteFooter")]
         public SiteFooter.ExtractSiteFooterConfiguration SiteFooter { get; set; } = new SiteFooter.ExtractSiteFooterConfiguration();
 
-        [JsonProperty("contentTypes")]
+        [JsonPropertyName("contentTypes")]
         public ContentTypes.ExtractContentTypeConfiguration ContentTypes { get; set; } = new ContentTypes.ExtractContentTypeConfiguration();
 
-        [JsonProperty("searchSettings")]
+        [JsonPropertyName("searchSettings")]
         public SearchSettings.ExtractSearchConfiguration SearchSettings { get; set; } = new SearchSettings.ExtractSearchConfiguration();
 
-        [JsonProperty("extensibility")]
+        [JsonPropertyName("extensibility")]
         public Extensibility.ExtractExtensibilityConfiguration Extensibility { get; set; } = new Extensibility.ExtractExtensibilityConfiguration();
 
         /// <summary>
         /// Defines Tenant Extraction Settings
         /// </summary>
-        [JsonProperty("tenant")]
+        [JsonPropertyName("tenant")]
         public Tenant.ExtractTenantConfiguration Tenant { get; set; } = new Tenant.ExtractTenantConfiguration();
 
-        [JsonProperty("propertyBag")]
+        [JsonPropertyName("propertyBag")]
         public PropertyBag.ExtractPropertyBagConfiguration PropertyBag { get; set; } = new PropertyBag.ExtractPropertyBagConfiguration();
 
-        [JsonProperty("multiLanguage")]
+        [JsonPropertyName("multiLanguage")]
         public MultiLanguage.ExtractMultiLanguageConfiguration MultiLanguage { get; set; } = new MultiLanguage.ExtractMultiLanguageConfiguration();
 
-        [JsonProperty("publishing")]
+        [JsonPropertyName("publishing")]
         public Publishing.ExtractPublishingConfiguration Publishing { get; set; } = new Publishing.ExtractPublishingConfiguration();
 
         public static ExtractConfiguration FromCreationInformation(ProvisioningTemplateCreationInformation information)
@@ -218,25 +219,7 @@ namespace PnP.Framework.Provisioning.Model.Configuration
 
         public static ExtractConfiguration FromString(string input)
         {
-            //var assembly = Assembly.GetExecutingAssembly();
-            //var resourceName = "PnP.Framework.Provisioning.Model.Configuration.extract-configuration.schema.json";
-
-            //using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-            //using (StreamReader reader = new StreamReader(stream))
-            //{
-            //    string result = reader.ReadToEnd();
-
-            //    JsonSchema schema = JsonSchema.Parse(result);
-
-            //    var jobject = JObject.Parse(input);
-
-            //    if(!jobject.IsValid(schema))
-            //    {
-            //        throw new JsonSerializationException("Configuration is not valid according to schema");
-            //    }
-            //}
-
-            return JsonConvert.DeserializeObject<ExtractConfiguration>(input);
+            return JsonSerializer.Deserialize<ExtractConfiguration>(input);
         }
     }
 }

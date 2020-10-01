@@ -1,14 +1,14 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace PnP.Framework.Provisioning.Model.Configuration.ContentTypes
 {
     public class ExtractContentTypeConfiguration
     {
-        [JsonProperty("Groups")]
+        [JsonPropertyName("Groups")]
         public List<string> Groups { get; set; } = new List<string>();
 
-        [JsonProperty("IncludeFromSyndication")]
+        [JsonPropertyName("IncludeFromSyndication")]
         public bool ExcludeFromSyndication { get; set; }
     }
 }

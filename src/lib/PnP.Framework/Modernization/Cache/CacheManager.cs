@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.SharePoint.Client;
 using Microsoft.SharePoint.Client.Taxonomy;
-using Newtonsoft.Json;
 using PnP.Framework.Pages;
 using PnP.Framework.Modernization.Entities;
 using PnP.Framework.Modernization.Extensions;
@@ -16,6 +15,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Text.Json;
 
 namespace PnP.Framework.Modernization.Cache
 {
@@ -225,7 +225,7 @@ namespace PnP.Framework.Modernization.Cache
                     var clientSideComponents = Store.GetAndInitialize<ConcurrentDictionary<string, string>>(StoreOptions.GetKey(keyClientSideComponents));
                     if (clientSideComponents.TryGetValue(componentKey, out string componentList))
                     {
-                        return JsonConvert.DeserializeObject<List<ClientSideComponent>>(componentList);
+                        return JsonSerializer.Deserialize<List<ClientSideComponent>>(componentList);
                     }
                 }
             }
@@ -234,7 +234,7 @@ namespace PnP.Framework.Modernization.Cache
             var componentsToAdd = page.AvailableClientSideComponents().ToList();
 
             // calculate the componentkey
-            string jsonComponentsToAdd = JsonConvert.SerializeObject(componentsToAdd);
+            string jsonComponentsToAdd = JsonSerializer.Serialize(componentsToAdd);
             string componentKeyToCache = Sha256(jsonComponentsToAdd);
 
             // store the retrieved data in cache
@@ -1453,7 +1453,7 @@ namespace PnP.Framework.Modernization.Cache
         private static string Sha256(string randomString)
         {
             SHA256CryptoServiceProvider provider = new SHA256CryptoServiceProvider();
-            byte[] hash = provider.ComputeHash(Encoding.Unicode.GetBytes(JsonConvert.SerializeObject(randomString)));
+            byte[] hash = provider.ComputeHash(Encoding.Unicode.GetBytes(JsonSerializer.Serialize(randomString)));
             string componentKeyToCache = BitConverter.ToString(hash).Replace("-", "");
             return componentKeyToCache;
         }

@@ -1,13 +1,13 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace PnP.Framework.Provisioning.Model.Configuration.Pages
 {
     public class ExtractPagesConfiguration
     {
-        [JsonProperty("excludeAuthorInformation")]
+        [JsonPropertyName("excludeAuthorInformation")]
         public bool ExcludeAuthorInformation { get; set; }
 
-        [JsonProperty("includeAllClientSidePages")]
+        [JsonPropertyName("includeAllClientSidePages")]
         public bool IncludeAllClientSidePages { get; set; }
     }
 }

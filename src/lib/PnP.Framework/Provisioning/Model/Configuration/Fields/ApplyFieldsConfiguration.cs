@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace PnP.Framework.Provisioning.Model.Configuration.Fields
 {
     public class ApplyFieldsConfiguration
     {
-        [JsonProperty("provisionFieldsToSubWebs")]
+        [JsonPropertyName("provisionFieldsToSubWebs")]
         public bool ProvisionFieldsToSubWebs { get; set; }
     }
 }

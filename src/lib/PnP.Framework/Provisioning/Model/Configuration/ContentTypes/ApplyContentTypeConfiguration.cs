@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace PnP.Framework.Provisioning.Model.Configuration.ContentTypes
 {
     public class ApplyContentTypeConfiguration
     {
-        [JsonProperty("provisionContentTypesToSubWebs")]
+        [JsonPropertyName("provisionContentTypesToSubWebs")]
         public bool ProvisionContentTypesToSubWebs { get; set; }
     }
 }

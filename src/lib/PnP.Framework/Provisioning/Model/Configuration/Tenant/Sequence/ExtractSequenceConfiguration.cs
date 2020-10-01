@@ -1,20 +1,20 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace PnP.Framework.Provisioning.Model.Configuration.Tenant.Sequence
 {
     public class ExtractSequenceConfiguration
     {
-        [JsonProperty("siteUrls")]
+        [JsonPropertyName("siteUrls")]
         public List<string> SiteUrls { get; set; } = new List<string>();
 
-        [JsonProperty("maxSubsiteDepth")]
+        [JsonPropertyName("maxSubsiteDepth")]
         public int MaxSubsiteDepth { get; set; }
 
-        [JsonProperty("includeJoinedSites")]
+        [JsonPropertyName("includeJoinedSites")]
         public bool IncludeJoinedSites { get; set; }
 
-        [JsonProperty("includeSubsites")]
+        [JsonPropertyName("includeSubsites")]
         public bool IncludeSubsites { get; set; }
     }
 }

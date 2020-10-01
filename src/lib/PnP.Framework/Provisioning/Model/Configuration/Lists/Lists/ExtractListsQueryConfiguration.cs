@@ -1,24 +1,24 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace PnP.Framework.Provisioning.Model.Configuration.Lists.Lists
 {
 
     public class ExtractListsQueryConfiguration
     {
-        [JsonProperty("camlQuery")]
+        [JsonPropertyName("camlQuery")]
         public string CamlQuery { get; set; }
 
-        [JsonProperty("rowLimit")]
+        [JsonPropertyName("rowLimit")]
         public int RowLimit { get; set; }
 
-        [JsonProperty("viewFields")]
+        [JsonPropertyName("viewFields")]
         public List<string> ViewFields { get; set; } = new List<string>();
 
-        [JsonProperty("includeAttachments")]
+        [JsonPropertyName("includeAttachments")]
         public bool IncludeAttachments { get; set; }
 
-        [JsonProperty("pageSize")]
+        [JsonPropertyName("pageSize")]
         public int PageSize { get; set; }
     }
 }

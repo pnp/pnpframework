@@ -2,15 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-	<LangVersion>8.0</LangVersion>
-	<Version>4.0.0</Version>
-	<Authors>PnP</Authors>
-	<Copyright>PnP 2020</Copyright>
-	<Description>PnP Framework contains the PnP Provisioning engine, the PnP Pages API a ton of extension methods that will make you more productive while developing for Microsoft 365.</Description>
-	<PackageIcon>nugeticon.png</PackageIcon>
-	<RepositoryUrl>https://github.com/pnp/pnpframework</RepositoryUrl>
-	<RepositoryType>git</RepositoryType>
-	<PackageProjectUrl>https://aka.ms/pnp/framework</PackageProjectUrl>
+    <LangVersion>8.0</LangVersion>
+    <Version>4.0.0</Version>
+    <Authors>PnP</Authors>
+    <Copyright>PnP 2020</Copyright>
+    <Description>PnP Framework contains the PnP Provisioning engine, the PnP Pages API a ton of extension methods that will make you more productive while developing for Microsoft 365.</Description>
+    <PackageIcon>nugeticon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/pnp/pnpframework</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://aka.ms/pnp/framework</PackageProjectUrl>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -100,40 +101,40 @@
     <EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2020-02.xsd" />
   </ItemGroup>
 
-	<ItemGroup>
-		<Compile Update="CoreResources.Designer.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>CoreResources.resx</DependentUpon>
-		</Compile>
-	</ItemGroup>
+  <ItemGroup>
+    <Compile Update="CoreResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CoreResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
 
-	<ItemGroup>
-		<EmbeddedResource Update="CoreResources.resx">
-			<Generator>ResXFileCodeGenerator</Generator>
-			<LastGenOutput>CoreResources.Designer.cs</LastGenOutput>
-			<CustomToolNamespace></CustomToolNamespace>
-		</EmbeddedResource>
-	</ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="CoreResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CoreResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace></CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
 
-	
-	<ItemGroup>
-		<Compile Update="CanProvisionIssuesMessages.Designer.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>CanProvisionIssuesMessages.resx</DependentUpon>
-		</Compile>
-	</ItemGroup>
 
-	<ItemGroup>
-		<EmbeddedResource Update="CanProvisionIssuesMessages.resx">
-			<Generator>ResXFileCodeGenerator</Generator>
-			<LastGenOutput>CanProvisionIssuesMessages.Designer.cs</LastGenOutput>
-			<CustomToolNamespace></CustomToolNamespace>
-		</EmbeddedResource>
-	</ItemGroup>
-				
-	<ItemGroup>
+  <ItemGroup>
+    <Compile Update="CanProvisionIssuesMessages.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CanProvisionIssuesMessages.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="CanProvisionIssuesMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CanProvisionIssuesMessages.Designer.cs</LastGenOutput>
+      <CustomToolNamespace></CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AngleSharp" Version="0.14.0" />
     <PackageReference Include="AngleSharp.Css" Version="0.14.2" />
     <PackageReference Include="Microsoft.ApplicationInsights" Version="2.13.1" />
@@ -154,11 +155,11 @@
     <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
     <PackageReference Include="System.Text.Json" Version="4.7.2" />
   </ItemGroup>
-				
-	<ItemGroup>
-	  <None Update="Modernization\Nuget\webpartmapping.xml">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	</ItemGroup>
+
+  <ItemGroup>
+    <None Update="Modernization\Nuget\webpartmapping.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 
 </Project>

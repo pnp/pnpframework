@@ -152,7 +152,7 @@ namespace PnP.Framework
                 builder = builder.WithRedirectUri(redirectUrl);
             }
             publicClientApplication = builder.Build();
-            
+
             // register tokencache if callback provided
             tokenCacheCallback?.Invoke(publicClientApplication.UserTokenCache);
 
@@ -167,10 +167,11 @@ namespace PnP.Framework
         /// <param name="redirectUrl">Optional redirect URL to use for authentication as set up in the Azure AD Application</param>
         /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
         /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
-        public AuthenticationManager(string clientId, X509Certificate2 certificate, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
+        public AuthenticationManager(string clientId, X509Certificate2 certificate, string tenantId, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
             azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
-            var builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithAuthority($"{azureADEndPoint}/organizations/");
+            var builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId);
+            //.WithAuthority($"{azureADEndPoint}/organizations/");
             if (!string.IsNullOrEmpty(redirectUrl))
             {
                 builder = builder.WithRedirectUri(redirectUrl);
@@ -180,7 +181,7 @@ namespace PnP.Framework
             // register tokencache if callback provided
             tokenCacheCallback?.Invoke(confidentialClientApplication.UserTokenCache);
 
-            authenticationType = ClientContextType.AzureADCredentials;
+            authenticationType = ClientContextType.AzureADCertificate;
         }
 
         /// <summary>
@@ -219,7 +220,8 @@ namespace PnP.Framework
                 tokenCacheCallback?.Invoke(confidentialClientApplication.AppTokenCache);
 
                 authenticationType = ClientContextType.AzureADCertificate;
-            } else
+            }
+            else
             {
                 throw new Exception("Certificate path not found");
             }
@@ -260,7 +262,7 @@ namespace PnP.Framework
         /// </summary>
         /// <param name="siteUrl"></param>
         /// <returns></returns>
-        internal async Task<string> GetAccessTokenAsync(string siteUrl)
+        public async Task<string> GetAccessTokenAsync(string siteUrl)
         {
             var uri = new Uri(siteUrl);
 
@@ -312,7 +314,7 @@ namespace PnP.Framework
                         break;
                     }
             }
-            if(authResult?.AccessToken != null)
+            if (authResult?.AccessToken != null)
             {
                 return authResult.AccessToken;
             }
@@ -410,9 +412,40 @@ namespace PnP.Framework
 
             clientContext.ExecutingWebRequest += (sender, args) =>
             {
+                AuthenticationResult ar = null;
+
                 var accounts = application.GetAccountsAsync().GetAwaiter().GetResult();
-                var ar = application.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync().GetAwaiter().GetResult();
-                args.WebRequestExecutor.RequestHeaders["Authorization"] = "Bearer " + ar.AccessToken;
+                if (accounts.Count() > 0)
+                {
+                    ar = application.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync().GetAwaiter().GetResult();
+                }
+                else
+                {
+                    switch (contextType)
+                    {
+                        case ClientContextType.AzureADCertificate:
+                            {
+                                ar = ((IConfidentialClientApplication)application).AcquireTokenForClient(scopes).ExecuteAsync().GetAwaiter().GetResult();
+                                break;
+                            }
+                        case ClientContextType.AzureADCredentials:
+                            {
+                                ar = ((IPublicClientApplication)application).AcquireTokenByUsernamePassword(scopes, username, password).ExecuteAsync().GetAwaiter().GetResult();
+                                break;
+                            }
+                        case ClientContextType.AzureADInteractive:
+                            {
+                                ar = ((IPublicClientApplication)application).AcquireTokenInteractive(scopes).ExecuteAsync().GetAwaiter().GetResult();
+                                break;
+                            }
+
+                    }
+
+                }
+                if (ar != null && ar.AccessToken != null)
+                {
+                    args.WebRequestExecutor.RequestHeaders["Authorization"] = "Bearer " + ar.AccessToken;
+                }
             };
 
             ClientContextSettings clientContextSettings = new ClientContextSettings()

@@ -950,11 +950,12 @@ namespace PnP.Framework.TimerJobs
                 {
                     if (this.certificate != null)
                     {
-                        am = new AuthenticationManager(this.clientId, this.certificate, azureEnvironment: this.AzureEnvironment);
+                        am = new AuthenticationManager(this.clientId, this.certificate, this.azureTenant, azureEnvironment: this.AzureEnvironment);
                     }
                     else
                     {
-                        am = new AuthenticationManager(this.clientId, this.certificatePath, this.certificatePassword, azureEnvironment: this.AzureEnvironment);
+                        var certificate = new X509Certificate2(this.certificatePath, this.certificatePassword);
+                        am = new AuthenticationManager(this.clientId, certificate, this.azureTenant, azureEnvironment: this.AzureEnvironment);
                     }
                 }
                 else if (this.AuthenticationType == AuthenticationType.AppOnly || this.AuthenticationType == AuthenticationType.AccessToken)

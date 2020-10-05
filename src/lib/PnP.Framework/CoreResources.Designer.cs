@@ -2626,24 +2626,6 @@ namespace PnP.Framework {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .mobile-only{display:none}#contentRow,#sideNavBox,#siteIcon{-webkit-transition:all .4s ease;-moz-transition:all .4s ease;-ms-transition:all .4s ease;-o-transition:all .4s ease;transition:all .4s ease}#contentBox,#s4-bodyContainer .contentwrapper{min-width:auto}.ms-dialog #contentRow{margin-left:0}.ms-dialog #contentBox{margin-top:0}.ms-dialog #s4-bodyContainer{min-width:0;font-size:1em}#s4-bodyContainer .contentwrapper{min-width:0;margin-top:0}#suiteBar #suiteBarLeft #PnP_MainLink_Hamburger{min-width:30px;p [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string SP_Responsive_UI_CSS_min {
-            get {
-                return ResourceManager.GetString("SP_Responsive_UI_CSS_min", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to function responsiveStartup(){var e=PnPResponsiveApp.Main.getInstance();e.addViewport(),e.init()}window.hasOwnProperty(&quot;Type&quot;)?Type.registerNamespace(&quot;PnPResponsiveApp&quot;):window.PnPResponsiveApp=window.PnPResponsiveApp||{},PnPResponsiveApp.Main=function(){function e(e,n){if(t(e,n)){var i=new RegExp(&quot;(\\s|^)&quot;+n+&quot;(\\s|$)&quot;);e.className=e.className.replace(i,&quot; &quot;)}else e.className=e.className+&quot; &quot;+n}function t(e,t){try{return-1!==(&quot; &quot;+e.className+&quot; &quot;).indexOf(&quot; &quot;+t+&quot; &quot;)}catch(e){return!1}}function n(e){var t=docume [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string SP_Responsive_UI_min {
-            get {
-                return ResourceManager.GetString("SP_Responsive_UI_min", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Creating term &apos;{0}|{1}&apos; under parent &apos;{2}&apos;..
         /// </summary>
         internal static string TaxonomyExtension_CreateTerm01UnderParent2 {

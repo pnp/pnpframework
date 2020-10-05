@@ -56,10 +56,6 @@
     <None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2019-03.xsd" />
     <None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2019-09.xsd" />
     <None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2020-02.xsd" />
-    <None Remove="Resources\SP-Responsive-UI.js" />
-    <None Remove="Resources\SP-Responsive-UI.min.js" />
-    <None Remove="Resources\SP-Responsive-UI_CSS.css" />
-    <None Remove="Resources\SP-Responsive-UI_CSS.min.css" />
     <None Include="nugeticon.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>

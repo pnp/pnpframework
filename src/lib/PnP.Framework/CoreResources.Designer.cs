@@ -2592,40 +2592,6 @@ namespace PnP.Framework {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  /* SP-Responsive-UI.js
-        ///
-        ///512 characters to avoid compiler warnings inside the summary
-        ///
-        ///1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
-        ///1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
-        ///1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
-        ///1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
-        ///1234567890123 [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string SP_Responsive_UI {
-            get {
-                return ResourceManager.GetString("SP_Responsive_UI", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to  /* SP-Responsive-UI_CSS.css
-        ///
-        ///512 characters to avoid compiler warnings inside the summary
-        ///
-        ///1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
-        ///1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
-        ///1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
-        ///1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
-        ///12345678 [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string SP_Responsive_UI_CSS {
-            get {
-                return ResourceManager.GetString("SP_Responsive_UI_CSS", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Creating term &apos;{0}|{1}&apos; under parent &apos;{2}&apos;..
         /// </summary>
         internal static string TaxonomyExtension_CreateTerm01UnderParent2 {

@@ -158,7 +158,7 @@ namespace PnP.Framework.Graph
                     var newGroup = new GroupExtended
                     {
                         DisplayName = displayName,
-                        Description = description,
+                        Description = string.IsNullOrEmpty(description) ? null : description,
                         MailNickname = mailNickname,
                         MailEnabled = true,
                         SecurityEnabled = false,

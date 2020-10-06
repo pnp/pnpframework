@@ -1,7 +1,7 @@
 $ErrorActionPreference = "Stop"
 Set-StrictMode -Version 2.0
 
-$versionIncrement = Get-Content .\version.debug.increment -Raw
+$versionIncrement = Get-Content ./build/version.debug.increment -Raw
 $versionIncrement = $versionIncrement -as [int]
 $versionIncrement++
 

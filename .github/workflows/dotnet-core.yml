@@ -30,6 +30,6 @@ jobs:
     - name: Build
       run: dotnet build --configuration debug --no-restore --verbosity normal
       working-directory: src/lib
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal
-      working-directory: src/lib
+    #- name: Test
+    #  run: dotnet test --no-restore --verbosity normal
+    #  working-directory: src/lib

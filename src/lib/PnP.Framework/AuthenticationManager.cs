@@ -141,15 +141,20 @@ namespace PnP.Framework
         /// </summary>
         /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
         /// <param name="redirectUrl">Optional redirect URL to use for authentication as set up in the Azure AD Application</param>
+        /// <param name="tenantId">Optional tenant id or tenant url</param>
         /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
         /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
-        public AuthenticationManager(string clientId, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
+        public AuthenticationManager(string clientId, string redirectUrl = null, string tenantId = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
             azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
             var builder = PublicClientApplicationBuilder.Create(clientId).WithAuthority($"{azureADEndPoint}/organizations/");
             if (!string.IsNullOrEmpty(redirectUrl))
             {
                 builder = builder.WithRedirectUri(redirectUrl);
+            }
+            if(!string.IsNullOrEmpty(tenantId))
+            {
+                builder = builder.WithTenantId(tenantId);
             }
             publicClientApplication = builder.Build();
 

@@ -15,3 +15,7 @@ We've shipped our first PnP Framework preview version and preview 3 of the [PnP 
 Between now and the end of 2020 both [PnP-Sites-Core](https://github.com/PnP/PnP-Sites-Core) and PnP Framework are actively maintained. Once PnP Framework GA's we'll stop maintaining [PnP-Sites-Core](https://github.com/PnP/PnP-Sites-Core).
 
 Given PnP Framework is our future going forward we would prefer issues and PR's being created in the PnP Framework repo. If you want your PR to apply to both then it's recommended to create the PR in both repositories for the time being.
+
+**Community rocks, sharing is caring!**
+
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.

@@ -4,6 +4,10 @@
 
 Next to PnP Framework that will be replacing [PnP-Sites-Core](https://github.com/PnP/PnP-Sites-Core) we're also building a brand new [PnP Core SDK](https://github.com/pnp/pnpcore) that targets modern .Net development (including .Net 5) and which will be working everywhere where .Net will run. This library is the long term evolution of PnP Framework, but we'll enable a phased transition from PnP Framework to [PnP Core SDK](https://github.com/pnp/pnpcore).
 
+## Getting started
+
+Pull down the latest version of PnP Framework here: [![PnP.Framework Nuget package](https://img.shields.io/nuget/vpre/PnP.Framework.svg)](https://www.nuget.org/packages/PnP.Framework/). 
+
 ## PnP .Net roadmap status
 
 We've shipped our first PnP Framework preview version and preview 3 of the [PnP Core SDK](https://github.com/pnp/pnpcore).

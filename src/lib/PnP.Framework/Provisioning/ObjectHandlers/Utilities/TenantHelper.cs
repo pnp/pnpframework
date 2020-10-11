@@ -109,7 +109,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                     if (items.Count > 0)
                                     {
                                         exists = true;
-                                        appId = Guid.Parse(items[0].FieldValues["UniqueId"].ToString());
+                                        appId = Guid.Parse(items[0].FieldValues["AppProductID"].ToString());
                                     }
 
                                 }
@@ -123,7 +123,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                 else
                                 {
                                     messagesDelegate?.Invoke($"Skipping existing solution {app.Src}", ProvisioningMessageType.Progress);
-                                    appMetadata = manager.GetAvailable().FirstOrDefault(a => a.Id == appId);
+                                    appMetadata = manager.GetAvailable(appId);
                                 }
                                 if (appMetadata != null)
                                 {
@@ -134,7 +134,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
 
                             if (app.Action == PackageAction.Publish || app.Action == PackageAction.UploadAndPublish)
                             {
-                                if (appMetadata == null)
+                                if (appMetadata == null && !string.IsNullOrEmpty(app.PackageId))
                                 {
                                     appMetadata = manager.GetAvailable()
                                         .FirstOrDefault(a => a.Id == Guid.Parse(parser.ParseString(app.PackageId)));

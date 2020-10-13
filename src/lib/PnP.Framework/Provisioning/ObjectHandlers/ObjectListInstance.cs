@@ -2111,7 +2111,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     parentFolder.Context.ExecuteQueryRetry();
                     foreach (var p in folder.Properties.Where(p => !p.Key.Equals("ContentTypeId")))
                     {
-                        currentFolderItem[p.Key] = parser.ParseString(p.Value);
+                        currentFolderItem[parser.ParseString(p.Key)] = parser.ParseString(p.Value);
                     }
                     currentFolderItem.UpdateOverwriteVersion();
                     currentFolder.Update();

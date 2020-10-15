@@ -22,12 +22,12 @@ namespace PnP.Framework.Utilities
             }
         }
 
-        private static readonly Lazy<String> PnPCoreVersionTagLazy = new Lazy<String>(
+        private static readonly Lazy<string> PnPCoreVersionTagLazy = new Lazy<string>(
             () =>
             {
                 Assembly coreAssembly = Assembly.GetExecutingAssembly();
-                String result = $"PnPCore:{((AssemblyFileVersionAttribute)coreAssembly.GetCustomAttribute(typeof(AssemblyFileVersionAttribute))).Version.Split('.')[2]}";
-                return (result);
+                var version = ((AssemblyFileVersionAttribute)coreAssembly.GetCustomAttribute(typeof(AssemblyFileVersionAttribute))).Version.Split('.');
+                return $"PnPCore:{version[0]}.{version[1]}";
             },
             true);
 

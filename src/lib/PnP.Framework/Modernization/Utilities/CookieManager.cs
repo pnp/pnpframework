@@ -23,7 +23,7 @@ namespace PnP.Framework.Modernization.Utilities
                 //// Trigger the handler to fire by loading something
                 cc.ExecuteQueryRetry();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Eating the exception
             }

@@ -291,7 +291,7 @@ namespace PnP.Framework.Modernization.Transform
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //TODO: Record any failure
             }
@@ -560,7 +560,7 @@ namespace PnP.Framework.Modernization.Transform
 
                 #endregion
             }
-            catch (WebException ex)
+            catch (WebException)
             {
                 //LogError("An error occurred calling the web services", LogStrings.Heading_ContentTransform, ex);
 
@@ -707,7 +707,7 @@ namespace PnP.Framework.Modernization.Transform
 
                 #endregion
             }
-            catch (WebException ex)
+            catch (WebException)
             {
                 //LogError("An error occurred calling the web services", LogStrings.Heading_ContentTransform, ex);
 

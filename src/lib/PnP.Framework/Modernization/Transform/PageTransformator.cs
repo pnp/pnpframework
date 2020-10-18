@@ -900,7 +900,7 @@ namespace PnP.Framework.Modernization.Transform
                     context.ExecuteQueryRetry();
                     pageListItemWasReloaded = true;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     // Eat exceptions as this is not critical for the generated page
                     LogWarning(LogStrings.Warning_NonCriticalErrorDuringVersionStampAndPublish, LogStrings.Heading_ArticlePageHandling);
@@ -932,7 +932,7 @@ namespace PnP.Framework.Modernization.Transform
                         context.ExecuteQueryRetry();
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     // Eat any exception
                 }

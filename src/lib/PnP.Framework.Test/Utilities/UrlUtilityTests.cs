@@ -36,5 +36,16 @@ namespace PnP.Framework.Test.AppModelExtensions
             var invalidString = "a#%*\\:<>?/+|b";
             Assert.AreEqual("a---------------------------------b", invalidString.ReplaceInvalidUrlChars("---"));
         }
+
+        [TestMethod]
+        public void UrlPathEncodePerformsUrlEncodingButLeavesSlashesAlone()
+        {
+            var input = "/sites/site001/document library/folder abc";
+            var expected = "/sites/site001/document%20library/folder%20abc";
+            
+            var actual = input.UrlPathEncode();
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

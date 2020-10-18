@@ -143,14 +143,24 @@ namespace PnP.Framework.Utilities
             return ReplaceInvalidUrlChars(content, "");
         }
         /// <summary>
-        /// Replaces invalid charcters with other characters
+        /// Replaces invalid characters with other characters
         /// </summary>
         /// <param name="content">Url value</param>
         /// <param name="replacer">string need to replace with invalid characters</param>
-        /// <returns>Returns replaced invalid charcters from URL</returns>
+        /// <returns>Returns replaced invalid characters from URL</returns>
         public static string ReplaceInvalidUrlChars(this string content, string replacer)
         {
             return new Regex(INVALID_CHARS_REGEX).Replace(content, replacer);
+        }
+
+        /// <summary>
+        /// Encodes URL encoded in a way that SharePoint expected URLs to be encoded in client_LocationBasedDefaults.html
+        /// </summary>
+        /// <param name="content">Url value</param>
+        /// <returns>Returns URL encoded in a way that SharePoint expected URLs to be encoded in client_LocationBasedDefaults.html</returns>
+        public static string UrlPathEncode(this string content)
+        {
+            return System.Web.HttpUtility.UrlPathEncode(content);
         }
 
         /// <summary>

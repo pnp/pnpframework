@@ -1645,7 +1645,7 @@ namespace Microsoft.SharePoint.Client
                         path = path.Equals("/") ? list.RootFolder.ServerRelativeUrl : UrlUtility.Combine(list.RootFolder.ServerRelativeUrl, path);
                         // Find all in the same path:
                         var defaultColumnValuesInSamePath = columnValues.Where(x => x.FolderRelativePath == defaultColumnValue.FolderRelativePath);
-                        path = System.Web.HttpUtility.UrlEncode(path);
+                        path = path.UrlPathEncode();
 
                         var xATag = new XElement("a", new XAttribute("href", path));
 

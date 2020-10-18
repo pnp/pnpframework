@@ -359,7 +359,6 @@ namespace PnP.Framework.Modernization.Publishing
         /// <summary>
         /// Get Metadata mapping from the page layout associated content type
         /// </summary>
-        /// <param name="contentTypeId">Id of the content type</param>
         internal MetaDataField[] ExtractMetaDataFromPageLayoutAssociatedContentType(FieldCollection spFields, List<WebPartField> webPartFields, Header extractedHeader)
         {
             List<MetaDataField> fields = new List<MetaDataField>();
@@ -427,7 +426,7 @@ namespace PnP.Framework.Modernization.Publishing
         /// </summary>
         /// <param name="pageLayout"></param>
         /// <returns>
-        ///     List<Tuple<string, string>>
+        ///     List&lt;Tuple&lt;string, string&gt;&gt;
         ///     Item1 = tagprefix
         ///     Item2 = Namespace
         /// </returns>
@@ -812,8 +811,7 @@ namespace PnP.Framework.Modernization.Publishing
         /// <summary>
         /// Sets the page layout header field defaults
         /// </summary>
-        /// <param name="oobPageLayoutDefaults"></param>
-        /// <param name="layoutMapping"></param>
+        /// <param name="spFields"></param>
         private Header ExtractPageHeaderFromPageLayoutAssociatedContentType(FieldCollection spFields)
         {
             try

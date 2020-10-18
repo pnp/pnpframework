@@ -806,6 +806,7 @@ namespace PnP.Framework.Utilities
         {
         }
 
+        /*
         /// <summary>
         /// Constructor for SharePointContextToken class
         /// </summary>
@@ -816,10 +817,11 @@ namespace PnP.Framework.Utilities
         /// <param name="claims">IEnumerable of JsonWebTokenClaim object</param>
         /// <param name="issuerToken">SecurityToken object</param>
         /// <param name="actorToken">JsonWebSecurityToken object</param>
-        //public SharePointContextToken(string issuer, string audience, DateTime validFrom, DateTime validTo, IEnumerable<Claim> claims, SecurityToken issuerToken, JwtSecurityToken actorToken)
-        //    : base(issuer, audience, claims, validFrom, validTo, issuerToken, actorToken)
-        //{
-        //}
+        public SharePointContextToken(string issuer, string audience, DateTime validFrom, DateTime validTo, IEnumerable<Claim> claims, SecurityToken issuerToken, JwtSecurityToken actorToken)
+            : base(issuer, audience, claims, validFrom, validTo, issuerToken, actorToken)
+        {
+        }
+        */
 
         /// <summary>
         /// Constructor for SharePointContextToken class

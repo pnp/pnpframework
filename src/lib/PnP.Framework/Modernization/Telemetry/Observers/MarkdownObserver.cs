@@ -67,7 +67,7 @@ namespace PnP.Framework.Modernization.Telemetry.Observers
         #endregion
 
         /// <summary>
-        /// Get the single List<LogEntry> instance, singleton pattern
+        /// Get the single List&lt;LogEntry&gt; instance, singleton pattern
         /// </summary>
         public static List<Tuple<LogLevel, LogEntry>> Logs
         {
@@ -316,7 +316,7 @@ namespace PnP.Framework.Modernization.Telemetry.Observers
         /// Generate a summary report
         /// </summary>
         /// <param name="report"></param>
-        /// <param name="summeries"></param>
+        /// <param name="summaries"></param>
         private void GenerateIssueSummaryReport(StringBuilder report, List<TransformationLogAnalysis> summaries)
         {
             StringBuilder errorSummary = new StringBuilder();

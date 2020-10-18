@@ -415,8 +415,7 @@ namespace PnP.Framework.Modernization.Transform
         /// <summary>
         /// Stores an asset transfer reference
         /// </summary>
-        /// <param name="assetTransferReferenceEntity"></param>
-        /// <param name="update"></param>
+        /// <param name="assetTransferredEntity"></param>
         public void StoreAssetTransferred(AssetTransferredEntity assetTransferredEntity)
         {
             // Using the Cache Manager store the asset transfer references

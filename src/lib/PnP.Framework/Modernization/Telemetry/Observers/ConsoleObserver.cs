@@ -13,7 +13,7 @@ namespace PnP.Framework.Modernization.Telemetry.Observers
         private string _pageBeingTransformed;
 
         /// <summary>
-        /// Get the single List<LogEntry> instance, singleton pattern
+        /// Get the single List&lt;LogEntry&gt; instance, singleton pattern
         /// </summary>
         public static List<Tuple<LogLevel, LogEntry>> Logs
         {
@@ -122,7 +122,7 @@ namespace PnP.Framework.Modernization.Telemetry.Observers
         /// <summary>
         /// Sets the id of the page that's being transformed
         /// </summary>
-        /// <param name="pageName">Id of the page</param>
+        /// <param name="pageId">Id of the page</param>
         public void SetPageId(string pageId)
         {
             this._pageBeingTransformed = pageId;

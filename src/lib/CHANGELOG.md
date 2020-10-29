@@ -20,3 +20,4 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - fix url encoding issue when writing href values to client_LocationBasedDefaults.html as part of SetDefaultColumnValuesImplementation() #11 [Jaap Vossers - jvossers]
 - Fix issue with handling of terms with comma and provided GUID #14 [reusto]
 - Ported https://github.com/pnp/PnP-Sites-Core/pull/2797 [jansenbe - Bert Jansen]
+- Ported https://github.com/pnp/PnP-Sites-Core/pull/2759 [jansenbe - Bert Jansen]

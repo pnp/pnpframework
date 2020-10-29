@@ -16,3 +16,4 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Fix for instantiation of extensibility handlers #5 [patrikhellgren - Patrik Hellgren]
 - Fix for token parsing when provisioning folders #6 [patrikhellgren - Patrik Hellgren]
 - Fix some warnings related to XML comments #9 [jackpoz - Giacomo Pozzoni]
+- Fix some warnings #10 [jackpoz - Giacomo Pozzoni]

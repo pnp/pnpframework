@@ -129,7 +129,7 @@ namespace PnP.Framework.Modernization.Transform
         /// <summary>
         /// Remap principal to target principal
         /// </summary>
-        /// <param name="principal"></param>
+        /// <param name="principalInput"></param>
         /// <returns>Principal for the target site</returns>
         public string RemapPrincipal(string principalInput)
         {

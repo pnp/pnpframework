@@ -971,7 +971,7 @@ namespace PnP.Framework.Modernization.Functions
         /// <summary>
         /// Throws an exception when link to .aspx file.
         /// </summary>
-        /// <param name="listId">Link value if set</param>
+        /// <param name="contentLink">Link value if set</param>
         /// <returns>Unused variable</returns>
         [FunctionDocumentation(Description = "Throws an exception when link to .aspx file.",
                                Example = "{Temp} = ContentEmbedCrossSiteCheck({ContentLink})")]
@@ -1063,10 +1063,6 @@ namespace PnP.Framework.Modernization.Functions
         /// <summary>
         /// Maps the user documents web part data into a properties collection and supporting serverProcessedContent nodes for the content rollup (= Highlighted Content) web part
         /// </summary>
-        /// <param name="dataProviderJson"></param>
-        /// <param name="selectedPropertiesJson"></param>
-        /// <param name="resultsPerPage"></param>
-        /// <param name="renderTemplateId"></param>
         /// <returns>A properties collection and supporting serverProcessedContent nodes for the content rollup (= Highlighted Content) web part</returns>
         [FunctionDocumentation(Description = "Maps the user documents web part data into a properties collection and supporting serverProcessedContent nodes for the content rollup (= Highlighted Content) web part",
                                    Example = "SiteDocumentsToHighlightedContentProperties()")]
@@ -1412,7 +1408,7 @@ namespace PnP.Framework.Modernization.Functions
         /// <summary>
         /// Uses the UseCommunityScriptEditor mapping property provided via the PageTransformationInformation instance to determine the mapping
         /// </summary>
-        /// <param name="useQuickLinks">The UseCommunityScriptEditor mapping property provided via the PageTransformationInformation instance</param>
+        /// <param name="useCommunityScriptEditor">The UseCommunityScriptEditor mapping property provided via the PageTransformationInformation instance</param>
         /// <returns>Whether to transform via the community script editor web part</returns>
         [SelectorDocumentation(Description = "Uses the UseCommunityScriptEditor mapping property provided via the PageTransformationInformation instance to determine the mapping",
                                Example = "ScriptEditorSelector({UseCommunityScriptEditor})")]

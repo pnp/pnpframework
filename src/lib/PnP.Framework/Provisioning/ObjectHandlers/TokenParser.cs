@@ -341,7 +341,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                     resourceEntries.Add(new Tuple<string, uint, string>(key.ToString(), (uint)localizationEntry.LCID, value.ToString().Replace("\"", "&quot;")));
                                 }
 
-                                /**
+                                /*
                                 // are we talking a resx file or a json file?
                                 if (filePath.ToLower().EndsWith(".resx"))
                                 {

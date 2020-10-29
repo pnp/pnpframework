@@ -1221,7 +1221,6 @@ namespace PnP.Framework.Modernization.Cache
         /// Get Term Path by ID
         /// </summary>
         /// <param name="context"></param>
-        /// <param name="termData"></param>
         /// <returns></returns>
         public void StoreTermSetTerms(ClientContext context, Guid termSetId, Guid sourceSspId, bool isSP2010, bool isSourceTerm)
         {

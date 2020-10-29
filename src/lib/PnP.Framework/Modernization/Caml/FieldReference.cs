@@ -109,7 +109,7 @@
         }
 
         /// <summary>
-        /// Creates an instance of FieldReference with the initial specified <param name="name"></param>. 
+        /// Creates an instance of FieldReference with the initial specified <paramref name="name"/>. 
         /// </summary>
         /// <param name="name">Internal name of the field.</param>
         public FieldReference(string name)

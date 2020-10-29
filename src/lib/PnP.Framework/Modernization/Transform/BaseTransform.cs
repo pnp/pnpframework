@@ -89,7 +89,7 @@ namespace PnP.Framework.Modernization.Transform
         /// <summary>
         /// Notifies the observers of error messages
         /// </summary>
-        /// <param name="logEntry">The message.</param>
+        /// <param name="message">The message.</param>
         public void LogError(string message, string heading = "", Exception exception = null, bool ignoreException = false, bool isCriticalException = false)
         {
             StackTrace stackTrace = new StackTrace();
@@ -109,7 +109,7 @@ namespace PnP.Framework.Modernization.Transform
         /// <summary>
         /// Notifies the observers of info messages
         /// </summary>
-        /// <param name="logEntry">The message.</param>
+        /// <param name="message">The message.</param>
         public void LogInfo(string message, string heading = "", LogEntrySignificance significance = LogEntrySignificance.None)
         {
             StackTrace stackTrace = new StackTrace();
@@ -121,7 +121,7 @@ namespace PnP.Framework.Modernization.Transform
         /// <summary>
         /// Notifies the observers of warning messages
         /// </summary>
-        /// <param name="logEntry">The message.</param>
+        /// <param name="message">The message.</param>
         public void LogWarning(string message, string heading = "")
         {
             StackTrace stackTrace = new StackTrace();
@@ -133,7 +133,7 @@ namespace PnP.Framework.Modernization.Transform
         /// <summary>
         /// Notifies the observers of debug messages
         /// </summary>
-        /// <param name="logEntry">The message.</param>
+        /// <param name="message">The message.</param>
         public void LogDebug(string message, string heading = "")
         {
             StackTrace stackTrace = new StackTrace();

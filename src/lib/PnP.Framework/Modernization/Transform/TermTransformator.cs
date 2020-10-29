@@ -76,9 +76,9 @@ namespace PnP.Framework.Modernization.Transform
         /// Transforms a collection of terms in a dictionary
         /// </summary>
         /// <returns>
-        ///     Tuple<TaxonomyFieldValueCollection,List<TaxonomyFieldValue>> 
+        ///     Tuple&lt;TaxonomyFieldValueCollection,List&lt;TaxonomyFieldValue&gt;&gt; 
         ///     TaxonomyFieldValueCollection - Original Array
-        ///     List<TaxonomyFieldValue> - Items to remove as they are not resolved
+        ///     List&lt;TaxonomyFieldValue&gt; - Items to remove as they are not resolved
         /// </returns>
         public Tuple<TaxonomyFieldValueCollection,List<TaxonomyFieldValue>>  TransformCollection(TaxonomyFieldValueCollection taxonomyFieldValueCollection)
         {
@@ -304,8 +304,7 @@ namespace PnP.Framework.Modernization.Transform
         /// </summary>
         /// <param name="subTermPath"></param>
         /// <param name="term"></param>
-        /// <param name="includeId"></param>
-        /// <param name="delimiter"></param>
+        /// <param name="termSetId"></param>
         /// <param name="clientContext"></param>
         /// <returns></returns>
         /// Reference: https://github.com/SharePoint/PnP-Sites-Core/blob/master/Core/OfficeDevPnP.Core/Extensions/TaxonomyExtensions.cs

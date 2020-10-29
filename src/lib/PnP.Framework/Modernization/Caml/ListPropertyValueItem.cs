@@ -21,7 +21,7 @@
 
         /// <summary>
         /// True to insert break-line tags into the text stream and to
-        /// replace multiple spaces with a nonbreaking space (&nbsp;).
+        /// replace multiple spaces with a nonbreaking space (&amp;nbsp;).
         /// </summary>
         public bool? AutoNewLine { get; set; }
 

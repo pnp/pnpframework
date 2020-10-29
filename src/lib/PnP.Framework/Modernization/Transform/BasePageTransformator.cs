@@ -1296,7 +1296,6 @@ namespace PnP.Framework.Modernization.Transform
         /// Loads the User Mapping Files
         /// </summary>
         /// <param name="baseTransformationInformation"></param>
-        /// <param name="sourceClientContext"></param>
         internal void InitializeUserMapping(BaseTransformationInformation baseTransformationInformation)
         {
             // Create an instance of the user transformation class

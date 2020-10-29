@@ -453,7 +453,6 @@ namespace PnP.Framework.Modernization.Transform
         /// <summary>
         /// Generate contentrollup (=highlighted content) web part properties coming from a content by search web part
         /// </summary>
-        /// <param name="cbs">Properties coming from the content by search web part</param>
         /// <returns>Properties for highlighted content web part</returns>
         public ContentByQuerySearchTransformatorResult TransformUserDocuments()
         {

@@ -41,8 +41,6 @@ namespace PnP.Framework.Modernization.Extensions
         /// Removes a relative section of by string where context not available
         /// </summary>
         /// <param name="value"></param>
-        /// <param name="seperator"></param>
-        /// <param name="instanceFrom"></param>
         /// <returns></returns>
         public static string StripRelativeUrlSectionString(this string value)
         {
@@ -79,7 +77,7 @@ namespace PnP.Framework.Modernization.Extensions
         /// <summary>
         /// Gets base url from string
         /// </summary>
-        /// <param name="sourceSite"></param>
+        /// <param name="url"></param>
         /// <returns></returns>
         public static string GetBaseUrl(this string url)
         {

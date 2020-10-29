@@ -112,7 +112,7 @@ namespace PnP.Framework.Modernization.KQL
 
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 // Eat exceptions for now, KQL query parsing will be obsolete when the AdvancedQuery option becomes available
             }

@@ -307,7 +307,7 @@ namespace PnP.Framework.Modernization.Transform
                         }
                     }
                 }
-                catch (WebException ex)
+                catch (WebException)
                 {
                     // todo
                 }

@@ -387,7 +387,7 @@ namespace PnP.Framework.Modernization.Transform
                             {
                                 this.targetClientContext.ExecuteQueryRetry();
                             }
-                            catch(Exception ex)
+                            catch(Exception)
                             {
                                 LogWarning(LogStrings.Warning_TransformGetItemPermissionsAccessDenied, LogStrings.Heading_ApplyItemLevelPermissions);
                                 return lip;

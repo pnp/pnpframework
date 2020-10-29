@@ -1112,7 +1112,7 @@ namespace PnP.Framework.Modernization.Transform
 
                 return siteMetadata;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }

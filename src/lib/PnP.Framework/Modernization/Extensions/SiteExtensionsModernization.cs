@@ -44,7 +44,7 @@ namespace Microsoft.SharePoint.Client
                         }
                     }
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
                     // Eat exceptions when certain subsites aren't accessible, better this then breaking the complete flow
                 }

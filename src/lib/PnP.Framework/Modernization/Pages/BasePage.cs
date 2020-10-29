@@ -1374,7 +1374,7 @@ namespace PnP.Framework.Modernization.Pages
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     // Catch exceptions during processing of Web Service Responses
                 }

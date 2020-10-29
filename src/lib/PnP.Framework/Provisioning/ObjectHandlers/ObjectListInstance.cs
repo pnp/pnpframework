@@ -2605,7 +2605,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     //include the list field if settings on List field instance are different then the ones on the web field
                     if (siteColumn.PinnedToFiltersPane != field.PinnedToFiltersPane
                         || siteColumn.ShowInFiltersPane != field.ShowInFiltersPane
-                        || siteColumn.CustomFormatter != field.CustomFormatter)
+                        || string.IsNullOrWhiteSpace(siteColumn.CustomFormatter) != string.IsNullOrWhiteSpace(field.CustomFormatter)
+                        || !string.IsNullOrWhiteSpace(siteColumn.CustomFormatter) && !string.IsNullOrWhiteSpace(field.CustomFormatter) && !siteColumn.CustomFormatter.Equals(field.CustomFormatter))
                     {
                         includeAsListField = true;
                     }

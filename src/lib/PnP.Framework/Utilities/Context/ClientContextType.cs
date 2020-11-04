@@ -6,6 +6,7 @@
         AzureADCredentials = 1,
         AzureADCertificate = 2,
         Cookie = 3,
-        AzureADInteractive = 4
+        AzureADInteractive = 4,
+        AzureOnBehalfOf = 5
     }
 }

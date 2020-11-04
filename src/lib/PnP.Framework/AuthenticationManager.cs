@@ -1,4 +1,5 @@
 ﻿using Microsoft.Identity.Client;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.SharePoint.Client;
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Utilities.Context;
@@ -85,6 +86,7 @@ namespace PnP.Framework
         private readonly ClientContextType authenticationType;
         private readonly string username;
         private readonly SecureString password;
+        private readonly UserAssertion assertion;
 
         internal string RedirectUrl { get; set; }
 
@@ -260,6 +262,35 @@ namespace PnP.Framework
 
             authenticationType = ClientContextType.AzureADCertificate;
         }
+
+        /// <summary>
+        /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContext.
+        /// </summary>
+        /// <param name="clientId">The client id of the Azure AD application to use for authentication.</param>
+        /// <param name="clientSecret">The client secret of the Azure AD application to use for authentication.</param>
+        /// <param name="tenantId">The if of the tenant, if a specific tenant is to be used for authentication.</param>
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        /// <param name="userAssertion">The user assertion (token) of the user on whose behalf to acquire the context</param>
+        /// <param name="tokenCacheCallback"></param>
+        public AuthenticationManager(string clientId, string clientSecret, UserAssertion userAssertion, string tenantId = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
+        {
+            
+
+            var azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
+
+            var builder = ConfidentialClientApplicationBuilder.Create(clientId).WithClientSecret(clientSecret).WithAuthority($"{azureADEndPoint}/organizations/");
+            if (!string.IsNullOrEmpty(tenantId))
+            {
+                builder = builder.WithTenantId(tenantId);
+            }
+
+            this.assertion = userAssertion;
+            confidentialClientApplication = builder.Build();
+
+            // register tokencache if callback provided
+            tokenCacheCallback?.Invoke(confidentialClientApplication.UserTokenCache);
+            authenticationType = ClientContextType.AzureOnBehalfOf;
+        }
         #endregion
 
         /// <summary>
@@ -403,6 +434,24 @@ namespace PnP.Framework
                         }
                         break;
                     }
+                case ClientContextType.AzureOnBehalfOf:
+                    {
+                        var accounts = await confidentialClientApplication.GetAccountsAsync();
+
+                        try
+                        {
+                            authResult = await confidentialClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
+                        }
+                        catch
+                        {
+                            authResult = await confidentialClientApplication.AcquireTokenOnBehalfOf(scopes, assertion).ExecuteAsync();
+                        }
+                        if (authResult.AccessToken != null)
+                        {
+                            return BuildClientContext(confidentialClientApplication, siteUrl, scopes, authenticationType);
+                        }
+                        break;
+                    }
             }
             return null;
         }
@@ -441,6 +490,11 @@ namespace PnP.Framework
                         case ClientContextType.AzureADInteractive:
                             {
                                 ar = ((IPublicClientApplication)application).AcquireTokenInteractive(scopes).ExecuteAsync().GetAwaiter().GetResult();
+                                break;
+                            }
+                        case ClientContextType.AzureOnBehalfOf:
+                            {
+                                ar = ((IConfidentialClientApplication)application).AcquireTokenOnBehalfOf(scopes, this.assertion).ExecuteAsync().GetAwaiter().GetResult();
                                 break;
                             }
 

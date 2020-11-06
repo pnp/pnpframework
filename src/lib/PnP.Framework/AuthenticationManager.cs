@@ -267,7 +267,7 @@ namespace PnP.Framework
         /// </summary>
         /// <param name="clientId">The client id of the Azure AD application to use for authentication.</param>
         /// <param name="clientSecret">The client secret of the Azure AD application to use for authentication.</param>
-        /// <param name="tenantId">The if of the tenant, if a specific tenant is to be used for authentication.</param>
+        /// <param name="tenantId">Optional tenant id or tenant url.</param>
         /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
         /// <param name="userAssertion">The user assertion (token) of the user on whose behalf to acquire the context</param>
         /// <param name="tokenCacheCallback"></param>

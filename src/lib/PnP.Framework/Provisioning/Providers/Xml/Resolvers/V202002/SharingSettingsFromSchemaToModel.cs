@@ -35,7 +35,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers.V202002
                 }
             }
 
-            return (result);
+            return null;
         }
     }
 }

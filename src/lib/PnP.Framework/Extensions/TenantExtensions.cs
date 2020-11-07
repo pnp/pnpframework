@@ -832,14 +832,16 @@ namespace Microsoft.SharePoint.Client
         /// <returns></returns>
         public static bool IsCurrentUserTenantAdmin(ClientContext clientContext)
         {
+            if (IsCurrentUserTenantAdminViaSPO(clientContext))
+            {
+                return true;
+            }
             if (PnPProvisioningContext.Current != null)
             {
                 return IsCurrentUserTenantAdminViaGraph();
             }
-            else
-            {
-                return IsCurrentUserTenantAdminViaSPO(clientContext);
-            }
+
+            return false;
         }
 
         private static bool IsCurrentUserTenantAdminViaGraph()

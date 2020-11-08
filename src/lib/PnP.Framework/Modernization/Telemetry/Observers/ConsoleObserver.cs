@@ -129,9 +129,10 @@ namespace PnP.Framework.Modernization.Telemetry.Observers
         }
 
         /// <summary>
-        /// Cental method to output to console
+        /// Central method to output to console
         /// </summary>
         /// <param name="message"></param>
+        /// <param name="color">Foreground console color</param>
         public void Write(string message, ConsoleColor color = ConsoleColor.White)
         {
             message = message.Replace(LogStrings.KeyValueSeperatorToken, "=");

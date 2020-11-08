@@ -22,7 +22,10 @@ namespace PnP.Framework.Modernization.Telemetry.Observers
         /// Constructor to save a markdown report to SharePoint Modern Site Assets library
         /// </summary>
         /// <param name="context"></param>
-        /// <param name="folderName"></param>
+        /// <param name="folderName">Folder that will hold the log file</param>
+        /// <param name="fileName">Name used to construct the log file name</param>
+        /// <param name="includeDebugEntries">Include Debug Log Entries</param>
+        /// <param name="includeVerbose">Include verbose details</param>
         public MarkdownToSharePointObserver(ClientContext context, string folderName = "Transformation-Reports", string fileName = "", bool includeDebugEntries = false, bool includeVerbose = false) : base(fileName, null, includeDebugEntries, includeVerbose)
         {
             _clientContext = context;

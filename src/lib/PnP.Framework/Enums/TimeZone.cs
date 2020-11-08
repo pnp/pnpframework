@@ -219,7 +219,7 @@
         /// </summary>
         UTCPLUS0400_BAKU = 54,
         /// <summary>
-        /// Timezone for CENTAL AMERICA
+        /// Timezone for CENTRAL AMERICA
         /// </summary>
         UTCMINUS0600_CENTRAL_AMERICA = 55,
         /// <summary>

@@ -310,6 +310,7 @@ namespace PnP.Framework.Modernization.Cache
         /// </summary>
         /// <param name="web">Web to operate against</param>
         /// <param name="sourceLibrary">Pages library instance</param>
+        /// <param name="pageType">Type of page</param>
         /// <returns>List of fields that need to be copied</returns>
         public List<FieldData> GetFieldsToCopy(Web web, List sourceLibrary, string pageType)
         {

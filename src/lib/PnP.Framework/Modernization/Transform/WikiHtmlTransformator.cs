@@ -58,6 +58,9 @@ namespace PnP.Framework.Modernization.Transform
         /// with image and/or video parts. Later on these web parts will be transformed to client side web parts
         /// </summary>
         /// <param name="wikiPageWebParts">List of web parts on the page</param>
+        /// <param name="handleWikiImagesAndVideos">If true images and videos embedded in wiki text will be transformed to actual image/video web parts,
+        /// else they'll get a placeholder and will be added as separate web parts at the end of the page</param>
+        /// <param name="addTableListImageAsImageWebPart">When an image lives inside a table (or list) then also add it as a separate image web part</param>
         /// <returns>Updated list of web parts</returns>
         public List<WebPartEntity> TransformPlusSplit(List<WebPartEntity> wikiPageWebParts, bool handleWikiImagesAndVideos, bool addTableListImageAsImageWebPart)
         {

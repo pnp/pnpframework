@@ -17,13 +17,14 @@ namespace PnP.Framework.Modernization.Pages
     /// </summary>
     public class PublishingPageOnPremises : PublishingPage
     {
-        
+
         #region Construction
         /// <summary>
         /// Instantiates a publishing page object
         /// </summary>
         /// <param name="page">ListItem holding the page to analyze</param>
         /// <param name="pageTransformation">Page transformation information</param>
+        /// <param name="baseTransformationInformation">Page transformation information</param>
         public PublishingPageOnPremises(ListItem page, PageTransformation pageTransformation, BaseTransformationInformation baseTransformationInformation, IList<ILogObserver> logObservers = null) : base(page, pageTransformation, baseTransformationInformation, logObservers)
         {
            
@@ -34,6 +35,7 @@ namespace PnP.Framework.Modernization.Pages
         /// </summary>
         /// <param name="page">ListItem holding the page to analyze</param>
         /// <param name="pageTransformation">Page transformation information</param>
+        /// <param name="baseTransformationInformation">Page transformation information</param>
         public PublishingPageOnPremises(ListItem page, PageTransformation pageTransformation, PublishingPageTransformation publishingPageTransformation, BaseTransformationInformation baseTransformationInformation, ClientContext targetContext = null, IList<ILogObserver> logObservers = null) : base(page, pageTransformation, publishingPageTransformation,  baseTransformationInformation, targetContext, logObservers)
         {
 

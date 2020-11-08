@@ -169,6 +169,7 @@ namespace PnP.Framework
         /// </summary>
         /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
         /// <param name="certificate">A valid certificate</param>
+        /// <param name="tenantId">Tenant id or tenant url</param>
         /// <param name="redirectUrl">Optional redirect URL to use for authentication as set up in the Azure AD Application</param>
         /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
         /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>

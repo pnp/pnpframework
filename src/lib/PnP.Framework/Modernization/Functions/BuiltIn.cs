@@ -29,6 +29,7 @@ namespace PnP.Framework.Modernization.Functions
         /// <summary>
         /// Instantiates the base builtin function library
         /// </summary>
+        /// <param name="baseTransformationInformation">Page transformation information</param>
         /// <param name="pageClientContext">ClientContext object for the site holding the page being transformed</param>
         /// <param name="sourceClientContext">The ClientContext for the source </param>
         /// <param name="clientSidePage">Reference to the client side page</param>
@@ -1302,6 +1303,8 @@ namespace PnP.Framework.Modernization.Functions
         /// Rewrites summarylinks web part html to be compliant with the html supported by the client side text part
         /// </summary>
         /// <param name="text">Original wiki html content</param>
+        /// <param name="chromeType">Specifies the kind of border that surrounds the webpart, see PartChromeType for a complete list of possible values</param>
+        /// <param name="title">Webpart title</param>
         /// <returns>Html compliant with client side text part</returns>
         [FunctionDocumentation(Description = "Rewrites summarylinks web part html to be compliant with the html supported by the client side text part.",
                        Example = "{CleanedText} = TextCleanUpSummaryLinks({Text})")]

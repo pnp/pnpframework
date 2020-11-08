@@ -544,7 +544,7 @@ namespace PnP.Framework
         }
 
         /// <summary>
-        /// Get's the Azure ASC login end point for the given environment
+        /// Gets the Azure ASC login end point for the given environment
         /// </summary>
         /// <param name="environment">Environment to get the login information for</param>
         /// <returns>Azure ASC login endpoint</returns>
@@ -580,7 +580,7 @@ namespace PnP.Framework
         }
 
         /// <summary>
-        /// Get's the Azure ACS login end point prefix for the given environment
+        /// Gets the Azure ACS login end point prefix for the given environment
         /// </summary>
         /// <param name="environment">Environment to get the login information for</param>
         /// <returns>Azure ACS login endpoint prefix</returns>
@@ -764,7 +764,7 @@ namespace PnP.Framework
         }
 
         /// <summary>
-        /// Get's the Azure AD login end point for the given environment
+        /// Gets the Azure AD login end point for the given environment
         /// </summary>
         /// <param name="environment">Environment to get the login information for</param>
         /// <returns>Azure AD login endpoint</returns>

@@ -96,7 +96,7 @@ namespace Microsoft.SharePoint.Client
 
         #region Page usage information
         /// <summary>
-        /// Get's the page last modified date time
+        /// Gets the page last modified date time
         /// </summary>
         /// <param name="item">Page list item</param>
         /// <returns>DateTime of the last modification</returns>
@@ -115,7 +115,7 @@ namespace Microsoft.SharePoint.Client
         }
 
         /// <summary>
-        /// Get's the page last modified by
+        /// Gets the page last modified by
         /// </summary>
         /// <param name="item">Page list item</param>
         /// <returns>Last modified by user/account</returns>
@@ -137,7 +137,7 @@ namespace Microsoft.SharePoint.Client
 
         #region Blog information
         /// <summary>
-        /// Get's the blog last published date time
+        /// Gets the blog last published date time
         /// </summary>
         /// <param name="item">Page list item</param>
         /// <returns>DateTime of the last modification</returns>
@@ -158,7 +158,7 @@ namespace Microsoft.SharePoint.Client
 
         #region Publishing Page information
         /// <summary>
-        /// Get's the page page layout file
+        /// Gets the page page layout file
         /// </summary>
         /// <param name="item">Page list item</param>
         /// <returns>Page layout file defined for this page</returns>
@@ -178,7 +178,7 @@ namespace Microsoft.SharePoint.Client
         }
 
         /// <summary>
-        /// Get's the page page layout
+        /// Gets the page page layout
         /// </summary>
         /// <param name="item">Page list item</param>
         /// <returns>Page layout defined for this page</returns>
@@ -201,7 +201,7 @@ namespace Microsoft.SharePoint.Client
         }
 
         /// <summary>
-        /// Get's the page audience(s)
+        /// Gets the page audience(s)
         /// </summary>
         /// <param name="item">Page list item</param>
         /// <returns>Page layout defined for this page</returns>

@@ -33,3 +33,4 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Add some missing XML comments #20 [jackpoz - Giacomo Pozzoni]
 - Ported https://github.com/pnp/PnP-Sites-Core/pull/2802 [jansenbe - Bert Jansen]
 - Ported https://github.com/pnp/PnP-Sites-Core/pull/2801 [jansenbe - Bert Jansen]
+- Ported https://github.com/pnp/PnP-Sites-Core/pull/2803 [jansenbe - Bert Jansen]

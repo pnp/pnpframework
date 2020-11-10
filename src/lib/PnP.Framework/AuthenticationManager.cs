@@ -169,6 +169,7 @@ namespace PnP.Framework
         /// </summary>
         /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
         /// <param name="certificate">A valid certificate</param>
+        /// <param name="tenantId">Tenant id or tenant url</param>
         /// <param name="redirectUrl">Optional redirect URL to use for authentication as set up in the Azure AD Application</param>
         /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
         /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
@@ -543,7 +544,7 @@ namespace PnP.Framework
         }
 
         /// <summary>
-        /// Get's the Azure ASC login end point for the given environment
+        /// Gets the Azure ASC login end point for the given environment
         /// </summary>
         /// <param name="environment">Environment to get the login information for</param>
         /// <returns>Azure ASC login endpoint</returns>
@@ -579,7 +580,7 @@ namespace PnP.Framework
         }
 
         /// <summary>
-        /// Get's the Azure ACS login end point prefix for the given environment
+        /// Gets the Azure ACS login end point prefix for the given environment
         /// </summary>
         /// <param name="environment">Environment to get the login information for</param>
         /// <returns>Azure ACS login endpoint prefix</returns>
@@ -763,7 +764,7 @@ namespace PnP.Framework
         }
 
         /// <summary>
-        /// Get's the Azure AD login end point for the given environment
+        /// Gets the Azure AD login end point for the given environment
         /// </summary>
         /// <param name="environment">Environment to get the login information for</param>
         /// <returns>Azure AD login endpoint</returns>

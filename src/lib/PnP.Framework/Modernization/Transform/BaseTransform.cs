@@ -90,6 +90,10 @@ namespace PnP.Framework.Modernization.Transform
         /// Notifies the observers of error messages
         /// </summary>
         /// <param name="message">The message.</param>
+        /// <param name="heading">The logical grouping for the messages based on the stage of transformation</param>
+        /// <param name="exception">Exception object</param>
+        /// <param name="ignoreException">For those areas where we swallow errors or they are non-critical to report</param>
+        /// <param name="isCriticalException">Marks this error as a critical exception that prevents transformation</param>
         public void LogError(string message, string heading = "", Exception exception = null, bool ignoreException = false, bool isCriticalException = false)
         {
             StackTrace stackTrace = new StackTrace();
@@ -110,6 +114,8 @@ namespace PnP.Framework.Modernization.Transform
         /// Notifies the observers of info messages
         /// </summary>
         /// <param name="message">The message.</param>
+        /// <param name="heading">The logical grouping for the messages based on the stage of transformation</param>
+        /// <param name="significance">Extra significance of the entry for the logs</param>
         public void LogInfo(string message, string heading = "", LogEntrySignificance significance = LogEntrySignificance.None)
         {
             StackTrace stackTrace = new StackTrace();
@@ -122,6 +128,7 @@ namespace PnP.Framework.Modernization.Transform
         /// Notifies the observers of warning messages
         /// </summary>
         /// <param name="message">The message.</param>
+        /// <param name="heading">The logical grouping for the messages based on the stage of transformation</param>
         public void LogWarning(string message, string heading = "")
         {
             StackTrace stackTrace = new StackTrace();
@@ -134,6 +141,7 @@ namespace PnP.Framework.Modernization.Transform
         /// Notifies the observers of debug messages
         /// </summary>
         /// <param name="message">The message.</param>
+        /// <param name="heading">The logical grouping for the messages based on the stage of transformation</param>
         public void LogDebug(string message, string heading = "")
         {
             StackTrace stackTrace = new StackTrace();

@@ -28,6 +28,7 @@ namespace PnP.Framework.Modernization.Functions
         /// </summary>
         /// <param name="page">Client side page for which we're executing the functions/selectors as part of the mapping</param>
         /// <param name="pageTransformation">Webpart mapping information</param>
+        /// <param name="baseTransformationInformation">Page transformation information</param>
         public FunctionProcessor(ClientContext sourceClientContext, ClientSidePage page, PageTransformation pageTransformation, BaseTransformationInformation baseTransformationInformation, IList<ILogObserver> logObservers = null)
         {
             this.page = page;

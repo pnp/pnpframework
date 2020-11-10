@@ -223,6 +223,7 @@ namespace PnP.Framework.Modernization.Transform
         /// </summary>
         /// <param name="sourceFileUrl"></param>
         /// <param name="targetLocationUrl"></param>
+        /// <param name="fileChunkSizeInMB">Size of chunks in MB in which the file will be split to be copied</param>
         /// <remarks>
         ///     Based on the documentation: https://docs.microsoft.com/en-us/sharepoint/dev/solution-guidance/upload-large-files-sample-app-for-sharepoint
         /// </remarks>

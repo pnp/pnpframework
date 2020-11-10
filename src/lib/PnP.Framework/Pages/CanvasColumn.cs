@@ -183,7 +183,7 @@ namespace PnP.Framework.Pages
                 controlWrittenToSection = true;
             }
 
-            // if a section does not contain a control we still need to render it, otherwise it get's "lost"
+            // if a section does not contain a control we still need to render it, otherwise it gets "lost"
             if (!controlWrittenToSection)
             {
                 // Obtain the json data

@@ -87,7 +87,7 @@ namespace PnP.Framework.Modernization.Pages
         #endregion
 
         /// <summary>
-        /// Get's the type of the web part
+        /// Gets the type of the web part
         /// </summary>
         /// <param name="webPartXml">Web part xml to analyze</param>
         /// <returns>Type of the web part as fully qualified name</returns>
@@ -602,9 +602,10 @@ namespace PnP.Framework.Modernization.Pages
 
 
         /// <summary>
-        /// Get's the type of the web part by detecting if from the available properties
+        /// Gets the type of the web part by detecting it from the available properties
         /// </summary>
         /// <param name="properties">Web part properties to analyze</param>
+        /// <param name="isLegacy">If true tries additional webpart types used in legacy versions</param>
         /// <returns>Type of the web part as fully qualified name</returns>
         public string GetTypeFromProperties(Dictionary<string, object> properties, bool isLegacy = false)
         {

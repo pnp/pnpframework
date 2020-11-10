@@ -30,6 +30,7 @@ namespace PnP.Framework.Modernization.Telemetry.Observers
         /// <param name="fileName">Name used to construct the log file name</param>
         /// <param name="folder">Folder that will hold the log file</param>
         /// <param name="includeDebugEntries">Include Debug Log Entries</param>
+        /// <param name="includeVerbose">Include verbose details</param>
         public MarkdownObserver(string fileName = "", string folder = "", bool includeDebugEntries = false, bool includeVerbose = false)
         {
             _includeDebugEntries = includeDebugEntries;

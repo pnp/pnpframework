@@ -377,8 +377,9 @@ namespace PnP.Framework.Modernization.Transform
         /// <summary>
         /// Extracts the term set id from the xml schema
         /// </summary>
-        /// <param name="xmlfieldSchema"></param>
-        /// <returns></returns>
+        /// <param name="xmlfieldSchema">XML Schema</param>
+        /// <param name="findSspId">If true the SspId will be returned, otherwise the TermSetId will be</param>
+        /// <returns>TermSetId or SspId depending on <paramref name="findSspId"/> value</returns>
         public static string ExtractTermSetIdOrSspIdFromXmlSchema(string xmlfieldSchema, bool findSspId = false)
         {
             //Credit: https://sharepointfieldnotes.blogspot.com/2011/08/sharepoint-2010-code-tips-setting.html

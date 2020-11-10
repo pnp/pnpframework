@@ -25,6 +25,7 @@ namespace PnP.Framework.Modernization.Publishing
         /// <summary>
         /// Instantiates the base builtin function library
         /// </summary>
+        /// <param name="baseTransformationInformation">Page transformation information</param>
         /// <param name="sourceClientContext">The ClientContext for the source </param>
         public PublishingBuiltIn(BaseTransformationInformation baseTransformationInformation, ClientContext sourceClientContext, ClientContext targetClientContext, IList<ILogObserver> logObservers = null) : base(sourceClientContext)
         {

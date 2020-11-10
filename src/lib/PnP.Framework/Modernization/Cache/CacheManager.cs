@@ -61,7 +61,7 @@ namespace PnP.Framework.Modernization.Cache
         private static readonly string keyTermTransformatorCache = "keyTermTransformatorCache";
 
         /// <summary>
-        /// Get's the single cachemanager instance, singleton pattern
+        /// Gets the single cachemanager instance, singleton pattern
         /// </summary>
         public static CacheManager Instance
         {
@@ -91,7 +91,7 @@ namespace PnP.Framework.Modernization.Cache
 
         #region SharePoint Versions and AAD
         /// <summary>
-        /// Get's the cached SharePoint version for a given site
+        /// Gets the cached SharePoint version for a given site
         /// </summary>
         /// <param name="site">Site to get the SharePoint version for</param>
         /// <returns>Found SharePoint version or "Unknown" if not found in cache</returns>
@@ -122,7 +122,7 @@ namespace PnP.Framework.Modernization.Cache
         }
 
         /// <summary>
-        /// Get's the exact SharePoint version from cache
+        /// Gets the exact SharePoint version from cache
         /// </summary>
         /// <param name="site">Site to get the exact version for</param>
         /// <returns>Exact version from cache</returns>
@@ -207,7 +207,7 @@ namespace PnP.Framework.Modernization.Cache
 
         #region Client Side Components
         /// <summary>
-        /// Get's the clientside components from cache or if needed retrieves and caches them
+        /// Gets the clientside components from cache or if needed retrieves and caches them
         /// </summary>
         /// <param name="page">Page to grab the components for</param>
         /// <returns></returns>
@@ -266,7 +266,7 @@ namespace PnP.Framework.Modernization.Cache
 
         #region Base template and metadata
         /// <summary>
-        /// Get's the base template that will be used to filter out "OOB" fields
+        /// Gets the base template that will be used to filter out "OOB" fields
         /// </summary>
         /// <param name="web">web to operate against</param>
         /// <returns>Provisioning template of the base template of STS#0</returns>
@@ -310,6 +310,7 @@ namespace PnP.Framework.Modernization.Cache
         /// </summary>
         /// <param name="web">Web to operate against</param>
         /// <param name="sourceLibrary">Pages library instance</param>
+        /// <param name="pageType">Type of page</param>
         /// <returns>List of fields that need to be copied</returns>
         public List<FieldData> GetFieldsToCopy(Web web, List sourceLibrary, string pageType)
         {
@@ -1138,7 +1139,7 @@ namespace PnP.Framework.Modernization.Cache
 
         #region Content types
         /// <summary>
-        /// Get's the ID of a contenttype
+        /// Gets the ID of a contenttype
         /// </summary>
         /// <param name="pagesLibrary">Pages library holding the content type</param>
         /// <param name="contentTypeName">Name of the content type</param>

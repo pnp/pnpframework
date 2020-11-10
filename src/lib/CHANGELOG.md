@@ -31,3 +31,4 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Ported https://github.com/pnp/PnP-Sites-Core/pull/2762 [gautamdsheth - Gautam Sheth]
 - Ported https://github.com/pnp/PnP-Sites-Core/pull/2760 [gautamdsheth - Gautam Sheth]
 - Add some missing XML comments #20 [jackpoz - Giacomo Pozzoni]
+- Ported https://github.com/pnp/PnP-Sites-Core/pull/2802 [jansenbe - Bert Jansen]

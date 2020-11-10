@@ -23,3 +23,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Ported https://github.com/pnp/PnP-Sites-Core/pull/2759 [jansenbe - Bert Jansen]
 - Ported https://github.com/pnp/PnP-Sites-Core/pull/2763 [jansenbe - Bert Jansen]
 - Ported https://github.com/pnp/PnP-Sites-Core/pull/2746 [jansenbe - Bert Jansen]
+- Ported https://github.com/pnp/PnP-Sites-Core/pull/2790 [gautamdsheth - Gautam Sheth]
+- Ported https://github.com/pnp/PnP-Sites-Core/pull/2784 [gautamdsheth - Gautam Sheth]
+- Ported https://github.com/pnp/PnP-Sites-Core/pull/2775 [gautamdsheth - Gautam Sheth]
+- Ported https://github.com/pnp/PnP-Sites-Core/pull/2762 [gautamdsheth - Gautam Sheth]
+- Ported https://github.com/pnp/PnP-Sites-Core/pull/2760 [gautamdsheth - Gautam Sheth]

@@ -494,7 +494,7 @@ namespace PnP.Framework
                             }
                         case ClientContextType.AzureOnBehalfOf:
                             {
-                                ar = ((IConfidentialClientApplication)application).AcquireTokenOnBehalfOf(scopes, this.assertion).ExecuteAsync().GetAwaiter().GetResult();
+                                ar = ((IConfidentialClientApplication)application).AcquireTokenOnBehalfOf(scopes, assertion).ExecuteAsync().GetAwaiter().GetResult();
                                 break;
                             }
 

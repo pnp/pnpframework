@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Providers;
 using PnP.Framework.Provisioning.Providers.Json;
+using PnP.Framework.Provisioning.Providers.Markdown;
 using PnP.Framework.Provisioning.Providers.Xml;
 using System;
 using System.IO;
@@ -116,6 +117,22 @@ namespace PnP.Framework.Test.Framework.ProvisioningTemplates
                 var _formattedTemplateBack = formatter.ToFormattedTemplate(_pt);
 
                 Assert.IsTrue(formatter.IsValid(_formattedTemplateBack));
+            }
+
+        }
+
+        [TestMethod]
+        [TestCategory(TEST_CATEGORY)]
+        public void CanSerializeDomainObjectToMarkdown()
+        {
+            using (Stream _formattedTemplate = new FileStream(this._provisioningTemplatePath2, FileMode.Open, FileAccess.Read, FileShare.Read))
+            {
+                ITemplateFormatter formatter = XMLPnPSchemaFormatter.GetSpecificFormatter(this._provisioningTemplatePath1NamespaceURI);
+                var _pt = formatter.ToProvisioningTemplate(_formattedTemplate);
+                ITemplateFormatter mdFormatter = new MarkdownPnPFormatter();
+                var outputStream = mdFormatter.ToFormattedTemplate(_pt);
+
+                Assert.IsTrue(mdFormatter.IsValid(outputStream));
             }
 
         }

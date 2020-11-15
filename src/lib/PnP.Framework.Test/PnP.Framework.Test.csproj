@@ -27,6 +27,7 @@
     <None Remove="Resources\office365.png" />
     <None Remove="Resources\PnPAzureAppTest.pfx" />
     <None Remove="Resources\Templates\ClientSidePagesWithHeader.xml" />
+    <None Remove="Resources\Templates\InitiativesTemplate.xml" />
     <None Remove="Resources\Templates\MeetingsTemplate.xml" />
     <None Remove="Resources\Templates\ProjectsTemplate.xml" />
     <None Remove="Resources\Templates\ProvisioningSchema-2015-05-FullSample-01.xml" />
@@ -137,6 +138,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Templates\ClientSidePagesWithHeader.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Templates\InitiativesTemplate.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Templates\MeetingsTemplate.xml">

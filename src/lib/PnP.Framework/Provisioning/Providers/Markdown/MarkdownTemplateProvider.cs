@@ -7,7 +7,7 @@ using System.IO;
 namespace PnP.Framework.Provisioning.Providers.Markdown
 {
     /// <summary>
-    /// Provider for JSON based configurations
+    /// Provider for Markdown based exports
     /// </summary>
     public abstract class MarkdownTemplateProvider : TemplateProviderBase
     {

@@ -12,9 +12,9 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
     /// <summary>
     /// Class to write out the markdown for the base properties
     /// </summary>
-    [TemplateSchemaWriter(WriterSequence = 1000,
+    [TemplateSchemaWriter(WriterSequence = 1010,
         Scope = WriterScope.ProvisioningTemplate)]
-    internal class TemplateBasePropertiesWriter : IPnPSchemaWriter
+    internal class TemplateWebSettingsWriter : IPnPSchemaWriter
     {
         public string Name
         {
@@ -36,9 +36,27 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
 
         public void Writer(ProvisioningTemplate template, TextWriter writer)
         {
-            writer.WriteLine($"# Template - {template.Id}");
+            writer.WriteLine("## Web Info");
             writer.WriteLine();
-            writer.WriteLine($"This is an export of the PnP Provisioning Template for this site.");
+            writer.WriteLine($"Landing page - {template.WebSettings.WelcomePage}");
+            writer.WriteLine();
+            writer.WriteLine($"Request Access Email - {template.WebSettings.RequestAccessEmail}");
+            writer.WriteLine();
+            bool commentsEnabled = template.WebSettings.CommentsOnSitePagesDisabled;
+            string commentsEnabledText = "Comments on pages enabled";
+            if (commentsEnabled)
+            {
+                commentsEnabledText = "Comments on pages disabled";
+            }
+            writer.WriteLine(commentsEnabledText);
+            writer.WriteLine();
+
+            string searchScopeText = "Default search scope";
+            if (template.WebSettings.SearchScope != SearchScopes.DefaultScope)
+            {
+                searchScopeText = $"Search scope - {template.WebSettings.SearchScope.ToString()}";
+            }
+            writer.WriteLine(searchScopeText);
             writer.WriteLine();
         }
     }

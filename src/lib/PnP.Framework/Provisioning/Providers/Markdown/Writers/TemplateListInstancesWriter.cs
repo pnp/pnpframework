@@ -12,9 +12,9 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
     /// <summary>
     /// Class to write out the markdown for the base properties
     /// </summary>
-    [TemplateSchemaWriter(WriterSequence = 1000,
+    [TemplateSchemaWriter(WriterSequence = 1060,
         Scope = WriterScope.ProvisioningTemplate)]
-    internal class TemplateBasePropertiesWriter : IPnPSchemaWriter
+    internal class TemplateListInstancesWriter : IPnPSchemaWriter
     {
         public string Name
         {
@@ -36,9 +36,9 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
 
         public void Writer(ProvisioningTemplate template, TextWriter writer)
         {
-            writer.WriteLine($"# Template - {template.Id}");
+            writer.WriteLine("## Lists");
             writer.WriteLine();
-            writer.WriteLine($"This is an export of the PnP Provisioning Template for this site.");
+            writer.WriteLine($"Coming soon");
             writer.WriteLine();
         }
     }

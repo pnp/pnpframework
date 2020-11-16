@@ -490,7 +490,7 @@ namespace Microsoft.SharePoint.Client
             }
             else
             {
-                if (clientContext.GetContextSettings().AuthenticationManager != null)
+                if (clientContext.GetContextSettings()?.AuthenticationManager != null)
                 {
                     var contextSettings = clientContext.GetContextSettings();
                     if (contextSettings.Type == ClientContextType.SharePointACSAppOnly)

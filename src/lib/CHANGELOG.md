@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Added Azure OnBehalfOf token acquiring #17 [titns - TTs]
+- Added support to extract all teams #27 [gautamdsheth - Gautam Sheth]
 
 ### Changed
 

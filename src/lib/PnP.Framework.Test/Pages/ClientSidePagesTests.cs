@@ -12,6 +12,7 @@ using PnP.Framework.Provisioning.Providers.Xml;
 using System.Threading.Tasks;
 using System.Globalization;
 using PnP.Framework.Pages;
+using Microsoft.SharePoint.Client.Taxonomy;
 
 namespace PnP.Framework.Test.Authentication
 {
@@ -90,20 +91,72 @@ namespace PnP.Framework.Test.Authentication
         //    }
         //}
 
-        //[TestMethod]
-        //public void MUITest()
-        //{
-        //    //using (var cc = new AuthenticationManager().GetWebLoginClientContext("https://contoso.sharepoint.com/teams/TEST_Provisioning"))
-        //    using (var cc = TestCommon.CreateClientContext("https://bertonline.sharepoint.com/sites/KnowledgeCenter"))
-        //    {
-        //        var page = cc.Web.LoadClientSidePage("pnp2.aspx");
+        [TestMethod]
+        public void MUITest()
+        {
+            //using (var cc = new AuthenticationManager().GetWebLoginClientContext("https://contoso.sharepoint.com/teams/TEST_Provisioning"))
+            using (var cc = TestCommon.CreateClientContext("https://bertonline.sharepoint.com/sites/prov-1"))
+            {
+                var list = cc.Web.GetListByTitle("FieldTypes");
+                var item = list.GetItemById(1);
+                cc.Load(item);
+                cc.ExecuteQueryRetry();
+
+                //item["Url"] = new FieldUrlValue() { Url = "", Description = "" }; 
+
+                //item["PersonSingle"] = new FieldUserValue() { LookupId = 0 };
+                item["PersonSingle"] = null;
+                //item["PersonMultiple"] = new List<FieldUserValue>().ToArray();
+
+                //item["Url"] = new FieldUrlValue() { Url = "https://bla1", Description = "fdmslkfqmsl" };
+
+                //item["PersonSingle"] = new FieldUserValue() { LookupId = 6};
+
+                //item["ChoiceSingle"] = "Choice 1";
+
+                //item["ChoiceMultiple"] = new List<string>() { "Choice 1", "Choice 4" }.ToArray();
+
+                //item["PersonSingle"] = new FieldUserValue() { LookupId = 15 };
+
+                //var personMultiple = new List<FieldUserValue>
+                //{
+                //    new FieldUserValue() { LookupId = 15 },
+                //    new FieldUserValue() { LookupId = 6 }
+                //};
+
+                //item["PersonMultiple"] = personMultiple.ToArray();
+
+                TaxonomyFieldValue mbiTermValue = new TaxonomyFieldValue
+                {
+                    Label = "MBI",
+                    TermGuid = "1824510b-00e1-40ac-8294-528b1c9421e0",
+                    WssId = 2
+                };
+
+                TaxonomyFieldValue lbiTermValue = new TaxonomyFieldValue
+                {
+                    Label = "LBI",
+                    TermGuid = "ed5449ec-4a4f-4102-8f07-5a207c438571",
+                    WssId = 1
+                };
+
+                //var field = list.Fields.GetByInternalNameOrTitle("MMMultiple");
+                //cc.Load(field);
+                //cc.ExecuteQueryRetry();
 
 
-        //        page.Save("pnpclone.aspx");
+                //item["MMSingle"] = mbiTermValue;
+
+                //TaxonomyFieldValueCollection termCollection = new TaxonomyFieldValueCollection(cc, null, field);
+                //termCollection.PopulateFromLabelGuidPairs("MBI|1824510b-00e1-40ac-8294-528b1c9421e0;LBI|ed5449ec-4a4f-4102-8f07-5a207c438571");
+
+                //item["MMMultiple"] = termCollection;
 
 
-        //    }
-        //}
+                item.UpdateOverwriteVersion();
+                cc.ExecuteQueryRetry();
+            }
+        }
 
         //[TestMethod]
         //public void BertTest5()

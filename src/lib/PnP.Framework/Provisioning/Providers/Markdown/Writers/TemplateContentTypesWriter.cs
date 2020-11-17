@@ -4,6 +4,7 @@ using PnP.Framework.Provisioning.Providers.Markdown;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Xml.Linq;
 
@@ -38,7 +39,42 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
         {
             writer.WriteLine("## Content Types");
             writer.WriteLine();
-            writer.WriteLine($"Coming soon");
+            writer.WriteLine("| Name | Description |");
+            writer.WriteLine("| :------------- | :----------: |");
+            TextWriter groupDetailsWriter = new StringWriter();
+
+            string currentGroup = "";
+
+            foreach (var ct in template.ContentTypes.OrderBy(o => o.Group))
+            {
+                if (currentGroup != ct.Group)
+                {
+                    groupDetailsWriter.Write($"### Group - {ct.Group}");
+                    groupDetailsWriter.WriteLine();
+                }
+
+                
+                writer.WriteLine($"|  {ct.Name} | {ct.Description}   |");
+
+                groupDetailsWriter.WriteLine();
+                groupDetailsWriter.WriteLine($"#### {ct.Name}");
+                groupDetailsWriter.WriteLine();
+                groupDetailsWriter.WriteLine($"Description - {ct.Description}");
+                groupDetailsWriter.WriteLine();
+                groupDetailsWriter.WriteLine($"ID - {ct.Id}");
+                groupDetailsWriter.WriteLine();
+                groupDetailsWriter.WriteLine("Fields:");
+                groupDetailsWriter.WriteLine();
+                groupDetailsWriter.WriteLine("| Display Name | ID | Name | Required | Hidden |");
+                groupDetailsWriter.WriteLine("| :------------- | :----------: | :----------: | :----------: | :----------: |");
+
+                foreach (var ctField in ct.FieldRefs)
+                {
+                    groupDetailsWriter.WriteLine($"| {ctField.DisplayName} | {ctField.Id} | {ctField.DisplayName} | {ctField.Required.ToString()} | {ctField.Hidden.ToString()}|");
+                    groupDetailsWriter.WriteLine();
+                }
+            }
+            writer.WriteLine(groupDetailsWriter.ToString());
             writer.WriteLine();
         }
     }

@@ -145,9 +145,9 @@
     <PackageReference Include="Microsoft.Graph" Version="3.15.0" />
     <PackageReference Include="Microsoft.Graph.Core" Version="1.21.0" />
     <PackageReference Include="Microsoft.Identity.Client" Version="4.19.0" />
-    <PackageReference Include="Microsoft.SharePointOnline.CSOM" Version="16.1.20518.12000" />
+    <PackageReference Include="Microsoft.SharePointOnline.CSOM" Version="16.1.20616.12000" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
-    <PackageReference Include="Portable.Xaml" Version="0.25.0" />
+    <PackageReference Include="Portable.Xaml" Version="0.26.0" />
     <PackageReference Include="ResXResourceReader.NetStandard" Version="1.0.1" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
     <PackageReference Include="System.DirectoryServices" Version="4.7.0" />

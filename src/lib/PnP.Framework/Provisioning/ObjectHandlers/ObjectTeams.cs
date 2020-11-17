@@ -1009,7 +1009,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             else
             {
                 // Simply delete the tab
-                HttpHelper.MakeDeleteRequest($"{GraphHelper.MicrosoftGraphBaseURI}beta/teams/{teamId}/channels/{channelId}/tabs/{tabId}", accessToken);
+                RemoveTeamTab(tabId, channelId, teamId, accessToken);
             }
 
             return tabId;

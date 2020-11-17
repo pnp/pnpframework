@@ -260,6 +260,10 @@ namespace PnP.Framework.Sites
                     {
                         creationOptionsValues.Add($"SPSiteLanguage:{siteCollectionCreationInformation.Lcid}");
                     }
+                    if (!string.IsNullOrEmpty(siteCollectionCreationInformation.SiteAlias))
+                    {
+                        creationOptionsValues.Add($"SiteAlias:{siteCollectionCreationInformation.SiteAlias}");
+                    }
                     creationOptionsValues.Add($"HubSiteId:{siteCollectionCreationInformation.HubSiteId}");
                     optionalParams.Add("CreationOptions", creationOptionsValues);
 

@@ -36,7 +36,7 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
 
         public void Writer(ProvisioningTemplate template, TextWriter writer)
         {
-            writer.WriteLine("## Web Info");
+            writer.WriteLine("# Web Info");
             writer.WriteLine();
             writer.WriteLine($"Landing page - {template.WebSettings.WelcomePage}");
             writer.WriteLine();

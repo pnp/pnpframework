@@ -37,7 +37,7 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
 
         public void Writer(ProvisioningTemplate template, TextWriter writer)
         {
-            writer.WriteLine("## Content Types");
+            writer.WriteLine("# Content Types");
             writer.WriteLine();
             writer.WriteLine("| Name | Description |");
             writer.WriteLine("| :------------- | :----------: |");
@@ -49,6 +49,8 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
             {
                 if (currentGroup != ct.Group)
                 {
+                    groupDetailsWriter.WriteLine("<br/>");
+                    groupDetailsWriter.WriteLine();
                     groupDetailsWriter.Write($"### Group - {ct.Group}");
                     groupDetailsWriter.WriteLine();
                 }
@@ -56,25 +58,26 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
                 
                 writer.WriteLine($"|  {ct.Name} | {ct.Description}   |");
 
+                groupDetailsWriter.WriteLine("<br/>");
                 groupDetailsWriter.WriteLine();
                 groupDetailsWriter.WriteLine($"#### {ct.Name}");
                 groupDetailsWriter.WriteLine();
-                groupDetailsWriter.WriteLine($"Description - {ct.Description}");
+                groupDetailsWriter.WriteLine($"**Description** - {ct.Description}");
                 groupDetailsWriter.WriteLine();
-                groupDetailsWriter.WriteLine($"ID - {ct.Id}");
+                groupDetailsWriter.WriteLine($"**ID** - {ct.Id}");
                 groupDetailsWriter.WriteLine();
-                groupDetailsWriter.WriteLine("Fields:");
+                groupDetailsWriter.WriteLine("**Fields**:");
                 groupDetailsWriter.WriteLine();
-                groupDetailsWriter.WriteLine("| Display Name | ID | Name | Required | Hidden |");
-                groupDetailsWriter.WriteLine("| :------------- | :----------: | :----------: | :----------: | :----------: |");
+                groupDetailsWriter.WriteLine("| Name   |     Required     | Hidden       |");
+                groupDetailsWriter.WriteLine("| :------------- | :----------: | :----------: |");
 
                 foreach (var ctField in ct.FieldRefs)
                 {
-                    groupDetailsWriter.WriteLine($"| {ctField.DisplayName} | {ctField.Id} | {ctField.DisplayName} | {ctField.Required.ToString()} | {ctField.Hidden.ToString()}|");
-                    groupDetailsWriter.WriteLine();
+                    groupDetailsWriter.WriteLine($"| {ctField.Name}   | {ctField.Required.ToString()}     | {ctField.Hidden.ToString()}       |");
                 }
             }
             writer.WriteLine(groupDetailsWriter.ToString());
+            writer.WriteLine("<br/>");
             writer.WriteLine();
         }
     }

@@ -38,21 +38,22 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
 
         public void Writer(ProvisioningTemplate template, TextWriter writer)
         {
-            writer.WriteLine("## Lists");
+            writer.WriteLine("<br/>");
+            writer.WriteLine();
+            writer.WriteLine("# Lists");
             writer.WriteLine();
             writer.WriteLine("| Name | Description |");
             writer.WriteLine("| :------------- | :----------: |");
             TextWriter groupDetailsWriter = new StringWriter();
-
-            string currentGroup = "";
 
             foreach (var list in template.Lists)
             {
 
                 writer.WriteLine($"|  {list.Title} | {list.Description}   |");
 
+                groupDetailsWriter.WriteLine("<br/>"); 
                 groupDetailsWriter.WriteLine();
-                groupDetailsWriter.WriteLine($"#### {list.Title}");
+                groupDetailsWriter.WriteLine($"## {list.Title}");
                 groupDetailsWriter.WriteLine();
                 groupDetailsWriter.WriteLine($"Description - {list.Description}");
                 groupDetailsWriter.WriteLine();
@@ -63,6 +64,8 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
                 groupDetailsWriter.WriteLine($"Enable versioning - {list.EnableVersioning}");
                 groupDetailsWriter.WriteLine();
                 groupDetailsWriter.WriteLine("Views:");
+                groupDetailsWriter.WriteLine();
+                groupDetailsWriter.WriteLine("<br/>");
                 groupDetailsWriter.WriteLine();
                 groupDetailsWriter.WriteLine("| Display Name |  Default?  |   Name    |");
                 groupDetailsWriter.WriteLine("| :------------- | :----------: | :----------: |");
@@ -81,6 +84,7 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
                 }
             }
             writer.WriteLine(groupDetailsWriter.ToString());
+            writer.WriteLine("<br/>");
             writer.WriteLine();
 
             /*

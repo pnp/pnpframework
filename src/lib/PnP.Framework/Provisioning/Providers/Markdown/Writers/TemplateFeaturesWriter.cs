@@ -36,7 +36,7 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
 
         public void Writer(ProvisioningTemplate template, TextWriter writer)
         {
-            writer.WriteLine("## Features");
+            writer.WriteLine("# Features");
             writer.WriteLine();
             writer.WriteLine($"Coming soon");
             writer.WriteLine();

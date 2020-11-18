@@ -41,7 +41,7 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
         {
             //TODO: Handle null values and add write line after each value for a new line.
 
-            writer.WriteLine("## Site Columns");
+            writer.WriteLine("# Site Columns");
             writer.WriteLine();
             var xmlFields = from f in template.SiteFields
                             //TODO: sort by group - orderby XElement.Parse(f.SchemaXml).ToXmlElement().Attributes["Group"]
@@ -60,59 +60,75 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
 
                 writer.WriteLine($"|  {fieldDisplayName} | {fieldType}   |");
 
+                groupDetailsWriter.WriteLine("<br/><br/>");
                 groupDetailsWriter.WriteLine();
-                groupDetailsWriter.WriteLine($"#### {fieldDisplayName}");
+                groupDetailsWriter.WriteLine($"### {fieldDisplayName}");
                 groupDetailsWriter.WriteLine();
-                groupDetailsWriter.WriteLine($"Type - {fieldType}");
-                groupDetailsWriter.WriteLine($"Name - {xmlField.Attributes["Name"].Value}");
-                groupDetailsWriter.WriteLine($"Static name - {xmlField.Attributes["StaticName"].Value}");
-                groupDetailsWriter.WriteLine($"Required - {xmlField.Attributes["Required"].Value}");
-                groupDetailsWriter.WriteLine($"ID - {xmlField.Attributes["ID"].Value}");
-                groupDetailsWriter.WriteLine($"Enforce Unique Values - {xmlField.Attributes["EnforceUniqueValues"].Value}");
-                
+                groupDetailsWriter.WriteLine($"**Type** - {fieldType}");
+                groupDetailsWriter.WriteLine();
+                groupDetailsWriter.WriteLine($"**Name** - {xmlField.Attributes["Name"].Value}");
+                groupDetailsWriter.WriteLine();
+                groupDetailsWriter.WriteLine($"**Static name** - {xmlField.Attributes["StaticName"].Value}");
+                groupDetailsWriter.WriteLine();
+                groupDetailsWriter.WriteLine($"**Required** - {xmlField.Attributes["Required"].Value}");
+                groupDetailsWriter.WriteLine();
+                groupDetailsWriter.WriteLine($"**ID** - {xmlField.Attributes["ID"].Value}");
+                groupDetailsWriter.WriteLine();
+                groupDetailsWriter.WriteLine($"**Enforce Unique Values** - {xmlField.Attributes["EnforceUniqueValues"].Value}");
+                groupDetailsWriter.WriteLine();
+
                 switch (fieldType.ToString().ToLower())
                 {
                     case "text":
-                        TextWriter(template, writer, xmlField);
+                        TextWriter(template, groupDetailsWriter, xmlField);
                         break;
                     case "number":
-                        NumberWriter(template, writer, xmlField);
+                        NumberWriter(template, groupDetailsWriter, xmlField);
                         break;
                     case "choice":
-                        ChoiceWriter(template, writer, xmlField);
+                        ChoiceWriter(template, groupDetailsWriter, xmlField);
                         break;
                     case "user":
-                        UserWriter(template, writer, xmlField);
+                        UserWriter(template, groupDetailsWriter, xmlField);
                         break;
                     case "datetime":
-                        DateTimeWriter(template, writer, xmlField);
+                        DateTimeWriter(template, groupDetailsWriter, xmlField);
                         break;
                     case "note":
-                        NoteWriter(template, writer, xmlField);
+                        NoteWriter(template, groupDetailsWriter, xmlField);
                         break;
                 }
             }
 
-            writer.WriteLine(groupDetailsWriter.ToString());
+            writer.Write(groupDetailsWriter.ToString());
+            writer.WriteLine("<br/>");
+            writer.WriteLine();
 
         }
 
-        private void TextWriter(ProvisioningTemplate template, TextWriter writer, XmlElement xmlField)
+        private void TextWriter(ProvisioningTemplate template, TextWriter detailWriter, XmlElement xmlField)
         {
-            writer.WriteLine($"Indexed - {xmlField.Attributes["Indexed"].Value}");
-            writer.WriteLine($"Max length - {xmlField.Attributes["MaxLength"].Value}");
+            detailWriter.WriteLine($"**Indexed** - {xmlField.Attributes["Indexed"].Value}");
+            detailWriter.WriteLine();
+            detailWriter.WriteLine($"**Max length** - {xmlField.Attributes["MaxLength"].Value}");
+            detailWriter.WriteLine();
         }
 
-        private void NumberWriter(ProvisioningTemplate template, TextWriter writer, XmlElement xmlField)
+        private void NumberWriter(ProvisioningTemplate template, TextWriter detailWriter, XmlElement xmlField)
         {
-            writer.WriteLine($"Indexed - {xmlField.Attributes["Indexed"].Value}");
-            writer.WriteLine($"Decimals - {xmlField.Attributes["Decimals"].Value}");
+            detailWriter.WriteLine($"**Indexed** - {xmlField.Attributes["Indexed"].Value}");
+            detailWriter.WriteLine();
+            detailWriter.WriteLine($"**Decimals** - {xmlField.Attributes["Decimals"].Value}");
+            detailWriter.WriteLine();
         }
-        private void ChoiceWriter(ProvisioningTemplate template, TextWriter writer, XmlElement xmlField)
+        private void ChoiceWriter(ProvisioningTemplate template, TextWriter detailWriter, XmlElement xmlField)
         {
-            writer.WriteLine($"Indexed - {xmlField.Attributes["Indexed"].Value}");
-            writer.WriteLine($"Format - {xmlField.Attributes["Format"].Value}");
-            writer.WriteLine($"Allow fill in choices? - {xmlField.Attributes["FillInChoice"].Value}");
+            detailWriter.WriteLine($"**Indexed** - {xmlField.Attributes["Indexed"].Value}");
+            detailWriter.WriteLine();
+            detailWriter.WriteLine($"**Format** - {xmlField.Attributes["Format"].Value}");
+            detailWriter.WriteLine();
+            detailWriter.WriteLine($"**Allow fill in choices?** - {xmlField.Attributes["FillInChoice"].Value}");
+            detailWriter.WriteLine();
             //TODO: show choices - innerxml?
             /*
             <CHOICES>
@@ -122,38 +138,52 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
       </CHOICES>
              */
         }
-        private void UserWriter(ProvisioningTemplate template, TextWriter writer, XmlElement xmlField)
+        private void UserWriter(ProvisioningTemplate template, TextWriter detailWriter, XmlElement xmlField)
         {
-            writer.WriteLine($"List - {xmlField.Attributes["List"].Value}");
-            writer.WriteLine($"Field to show - {xmlField.Attributes["ShowField"].Value}");
+            detailWriter.WriteLine($"**List** - {xmlField.Attributes["List"].Value}");
+            detailWriter.WriteLine();
+            detailWriter.WriteLine($"**Field to show** - {xmlField.Attributes["ShowField"].Value}");
+            detailWriter.WriteLine();
             //TODO: show this in a nicer way
-            writer.WriteLine($"User Selection Mode - {xmlField.Attributes["UserSelectionMode"].Value}");
-            writer.WriteLine($"User Selection Scope - {xmlField.Attributes["UserSelectionScope"].Value}");
+            detailWriter.WriteLine($"**User Selection Mode** - {xmlField.Attributes["UserSelectionMode"].Value}");
+            detailWriter.WriteLine();
+            detailWriter.WriteLine($"**User Selection Scope** - {xmlField.Attributes["UserSelectionScope"].Value}");
+            detailWriter.WriteLine();
 
             /*
              <Field List="UserInfo" ShowField="ImnName" UserSelectionMode="PeopleOnly" UserSelectionScope="0"  />
              */
         }
-        private void DateTimeWriter(ProvisioningTemplate template, TextWriter writer, XmlElement xmlField)
+        private void DateTimeWriter(ProvisioningTemplate template, TextWriter detailWriter, XmlElement xmlField)
         {
-            writer.WriteLine($"Indexed - {xmlField.Attributes["Indexed"].Value}");
-            writer.WriteLine($"Format - {xmlField.Attributes["Format"].Value}");
-            writer.WriteLine($"Show in friendly display format? - {xmlField.Attributes["FriendlyDisplayFormat"].Value}");
-            writer.WriteLine($"Cal Type - {xmlField.Attributes["CalType"].Value}");
+            detailWriter.WriteLine($"**Indexed** - {xmlField.Attributes["Indexed"].Value}");
+            detailWriter.WriteLine();
+            detailWriter.WriteLine($"**Format** - {xmlField.Attributes["Format"].Value}");
+            detailWriter.WriteLine();
+            detailWriter.WriteLine($"**Show in friendly display format?** - {xmlField.Attributes["FriendlyDisplayFormat"].Value}");
+            detailWriter.WriteLine();
+            detailWriter.WriteLine($"**Cal Type** - {xmlField.Attributes["CalType"].Value}");
+            detailWriter.WriteLine();
             /*
              <Field Format="DateOnly" FriendlyDisplayFormat="Disabled" CalType="0">
     </Field>
              */
         }
 
-        private void NoteWriter(ProvisioningTemplate template, TextWriter writer, XmlElement xmlField)
+        private void NoteWriter(ProvisioningTemplate template, TextWriter detailWriter, XmlElement xmlField)
         {
-            writer.WriteLine($"Indexed - {xmlField.Attributes["Indexed"].Value}");
-            writer.WriteLine($"Number of lines - {xmlField.Attributes["NumLines"].Value}");
-            writer.WriteLine($"Rich text? - {xmlField.Attributes["RichText"].Value}");
-            writer.WriteLine($"Rich text mode - {xmlField.Attributes["RichTextMode"].Value}");
-            writer.WriteLine($"Isolate styles? - {xmlField.Attributes["IsolateStyles"].Value}");
-            writer.WriteLine($"Sortable? - {xmlField.Attributes["Sortable"].Value}");
+            detailWriter.WriteLine($"**Indexed** - {xmlField.Attributes["Indexed"].Value}");
+            detailWriter.WriteLine();
+            detailWriter.WriteLine($"**Number of lines** - {xmlField.Attributes["NumLines"].Value}");
+            detailWriter.WriteLine();
+            detailWriter.WriteLine($"**Rich text?** - {xmlField.Attributes["RichText"].Value}");
+            detailWriter.WriteLine();
+            detailWriter.WriteLine($"**Rich text mode** - {xmlField.Attributes["RichTextMode"].Value}");
+            detailWriter.WriteLine();
+            detailWriter.WriteLine($"**Isolate styles?** - {xmlField.Attributes["IsolateStyles"].Value}");
+            detailWriter.WriteLine();
+            detailWriter.WriteLine($"**Sortable?** - {xmlField.Attributes["Sortable"].Value}");
+            detailWriter.WriteLine();
         }
     }
 }

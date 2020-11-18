@@ -44,25 +44,50 @@
     </Field>
   </pnp:SiteFields>
   <pnp:ContentTypes>
-    <pnp:ContentType ID="0x01005D4F34E4BE7F4B6892AEBE088EDD215E" Name="General Project Document" Description="General Project Document Content Type" Group="Base Foundation Content Types">
+    <pnp:ContentType ID="0x0100492753E3DF3AAC449C2A649FEE3A023E" Name="Intiative" Description="" Group="InitiativesBoard" NewFormUrl="" EditFormUrl="" DisplayFormUrl="">
       <pnp:FieldRefs>
-        <pnp:FieldRef ID="23203e97-3bfe-40cb-afb4-07aa2b86bf45" />
-        <pnp:FieldRef ID="b01b3dbc-4630-4ed1-b5ba-321bc7841e3d" />
-        <pnp:FieldRef ID="a5de9600-b7a6-42dd-a05e-10d4f1500208" />
-        <pnp:FieldRef ID="f1a1715e-6c52-40de-8403-e9aafd0470d0" />
+        <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
+        <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" Required="true" UpdateChildren="true" />
+        <pnp:FieldRef ID="00e17c8e-2a07-42be-87df-e75ddc48f58a" Name="_x0032_StarArea" UpdateChildren="true" />
+        <pnp:FieldRef ID="6d9de3be-883f-43b3-8de0-b458d5daa1df" Name="PrimaryContact" UpdateChildren="true" />
+        <pnp:FieldRef ID="45a5baee-2b1b-4361-ba0a-b07ea1dae280" Name="Synopsis" UpdateChildren="true" />
+        <pnp:FieldRef ID="2e73c90a-b913-4aea-a606-01519a6cb49f" Name="Benefits_x0020_to_x0020_org" UpdateChildren="true" />
+        <pnp:FieldRef ID="72ba0781-289c-4ee9-b072-5e529bd3c321" Name="Benefits_x0020_by_x0020_Mar_x0020_21" UpdateChildren="true" />
       </pnp:FieldRefs>
     </pnp:ContentType>
   </pnp:ContentTypes>
   <pnp:Lists>
-    <pnp:ListInstance Title="Project Documents" Description="Project Documents are stored here" DocumentTemplate="" OnQuickLaunch="true" TemplateType="101" Url="Lists/ProjectDocuments" EnableVersioning="true" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0">
+    <pnp:ListInstance Title="Initiatives" Description="List of current initiatives for the board" DocumentTemplate="" TemplateType="100" Url="Lists/Initiatives" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" ContentTypesEnabled="true" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/Lists/Initiatives/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/Initiatives/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/Initiatives/NewForm.aspx" ImageUrl="/_layouts/15/images/itgen.png?rev=47" IrmExpire="false" IrmReject="false" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
       <pnp:ContentTypeBindings>
-        <pnp:ContentTypeBinding ContentTypeID="0x01005D4F34E4BE7F4B6892AEBE088EDD215E" Default="true" />
+        <pnp:ContentTypeBinding ContentTypeID="0x0100492753E3DF3AAC449C2A649FEE3A023E" Default="true" />
       </pnp:ContentTypeBindings>
-    </pnp:ListInstance>
-    <pnp:ListInstance Title="General Documents" Description="Project Documents are stored here" DocumentTemplate="" OnQuickLaunch="true" TemplateType="101" Url="Lists/GeneralDocuments" EnableVersioning="true" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0">
-      <pnp:ContentTypeBindings>
-        <pnp:ContentTypeBinding ContentTypeID="0x01005D4F34E4BE7F4B6892AEBE088EDD215E" Default="true" />
-      </pnp:ContentTypeBindings>
+      <pnp:Views>
+        <View Name="{BD0B9ADD-9E5A-42C3-A6A8-FF95A190C8C1}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Items" Url="{site}/Lists/Initiatives/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=47">
+          <Query />
+          <ViewFields>
+            <FieldRef Name="LinkTitle" />
+            <FieldRef Name="_x0032_StarArea" />
+            <FieldRef Name="PrimaryContact" />
+            <FieldRef Name="Synopsis" />
+            <FieldRef Name="Benefits_x0020_to_x0020_org" />
+            <FieldRef Name="Benefits_x0020_by_x0020_Mar_x002" />
+          </ViewFields>
+          <RowLimit Paged="TRUE">30</RowLimit>
+          <JSLink>clienttemplates.js</JSLink>
+        </View>
+      </pnp:Views>
+      <pnp:Fields>
+        <Field Type="Note" DisplayName="Local field for comments" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="6" RichText="TRUE" RichTextMode="FullHtml" IsolateStyles="TRUE" Sortable="FALSE" Group="InitiativesBoard" ID="{2e73c90a-b913-4aea-a606-01519a6cb49f}" SourceID="{{siteid}}" StaticName="Benefits_x0020_to_x0020_org" Name="Benefits_x0020_to_x0020_org" Version="2" CustomFormatter="" RestrictedMode="TRUE" AppendOnly="FALSE" UnlimitedLengthInDocumentLibrary="FALSE" Customization="" AllowDeletion="TRUE" ColName="ntext2" RowOrdinal="0" />
+      </pnp:Fields>
+      <pnp:FieldRefs>
+        <pnp:FieldRef ID="00e17c8e-2a07-42be-87df-e75ddc48f58a" Name="_x0032_StarArea" DisplayName="2StarArea" />
+        <pnp:FieldRef ID="6d9de3be-883f-43b3-8de0-b458d5daa1df" Name="PrimaryContact" DisplayName="PrimaryContact" />
+        <pnp:FieldRef ID="45a5baee-2b1b-4361-ba0a-b07ea1dae280" Name="Synopsis" DisplayName="Synopsis" />
+        <pnp:FieldRef ID="72ba0781-289c-4ee9-b072-5e529bd3c321" Name="Benefits_x0020_by_x0020_Mar_x002" DisplayName="Benefits by Mar 21" />
+      </pnp:FieldRefs>
+      <pnp:Webhooks>
+        <pnp:Webhook ServerNotificationUrl="https://uksouth1.pushnp.svc.ms/notifications?token=7a68eddb-0162-4133-a32a-cbcbd4be3cca" ExpiresInDays="1" />
+      </pnp:Webhooks>
     </pnp:ListInstance>
   </pnp:Lists>
   <pnp:Features>

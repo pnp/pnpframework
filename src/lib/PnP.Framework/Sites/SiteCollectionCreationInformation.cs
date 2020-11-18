@@ -264,6 +264,11 @@ namespace PnP.Framework.Sites
         /// </summary>
         public Enums.Office365Geography? PreferredDataLocation { get; set; }
 
+        /// <summary>
+        /// SiteAlias of the underlying Office 365 Group, i.e. the site part of the url: https://contoso.sharepoint.com/sites/&lt;SiteAlias&gt;
+        /// </summary>
+        public string SiteAlias { get; set; }
+
         public SiteCreationGroupInformation()
         {
 

@@ -14,33 +14,17 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
     /// </summary>
     [TemplateSchemaWriter(WriterSequence = 1010,
         Scope = WriterScope.ProvisioningTemplate)]
-    internal class TemplateWebSettingsWriter : IPnPSchemaWriter
+    internal class TemplateWebSettingsWriter : PnPBaseSchemaWriter<WebSettings>
     {
-        public string Name
+        public override void Writer(ProvisioningTemplate template, TextWriter writer)
         {
-            get { return (this.GetType().Name); }
-        }
-
-        protected LambdaExpression CreateSelectorLambda(Type targetType, String propertyName)
-        {
-            return (Expression.Lambda(
-                Expression.Convert(
-                    Expression.MakeMemberAccess(
-                        Expression.Parameter(targetType, "i"),
-                        targetType.GetProperty(propertyName,
-                            System.Reflection.BindingFlags.Instance |
-                            System.Reflection.BindingFlags.Public)),
-                    typeof(object)),
-                ParameterExpression.Parameter(targetType, "i")));
-        }
-
-        public void Writer(ProvisioningTemplate template, TextWriter writer)
-        {
-            writer.WriteLine("# Web Info");
+            writer.WriteLine("# Site Summary");
+            writer.WriteLine();
+            writer.WriteLine($"Site name - To be set manually");
+            writer.WriteLine();
+            writer.WriteLine(GetSiteTemplateNameFromTemplateCode(template.BaseSiteTemplate));
             writer.WriteLine();
             writer.WriteLine($"Landing page - {template.WebSettings.WelcomePage}");
-            writer.WriteLine();
-            writer.WriteLine($"Request Access Email - {template.WebSettings.RequestAccessEmail}");
             writer.WriteLine();
             bool commentsEnabled = template.WebSettings.CommentsOnSitePagesDisabled;
             string commentsEnabledText = "Comments on pages enabled";
@@ -50,7 +34,8 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
             }
             writer.WriteLine(commentsEnabledText);
             writer.WriteLine();
-
+            //TODO: set out search scope
+            /*
             string searchScopeText = "Default search scope";
             if (template.WebSettings.SearchScope != SearchScopes.DefaultScope)
             {
@@ -58,6 +43,7 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
             }
             writer.WriteLine(searchScopeText);
             writer.WriteLine();
+            */
         }
     }
 }

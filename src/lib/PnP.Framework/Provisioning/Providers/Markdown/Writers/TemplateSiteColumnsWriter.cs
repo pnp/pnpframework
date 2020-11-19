@@ -17,38 +17,23 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
     /// </summary>
     [TemplateSchemaWriter(WriterSequence = 1040,
         Scope = WriterScope.ProvisioningTemplate)]
-    internal class TemplateSiteColumnsWriter : IPnPSchemaWriter
+    internal class TemplateSiteColumnsWriter : PnPBaseSchemaWriter<Field>
     {
-        public string Name
-        {
-            get { return (this.GetType().Name); }
-        }
-
-        protected LambdaExpression CreateSelectorLambda(Type targetType, String propertyName)
-        {
-            return (Expression.Lambda(
-                Expression.Convert(
-                    Expression.MakeMemberAccess(
-                        Expression.Parameter(targetType, "i"),
-                        targetType.GetProperty(propertyName,
-                            System.Reflection.BindingFlags.Instance |
-                            System.Reflection.BindingFlags.Public)),
-                    typeof(object)),
-                ParameterExpression.Parameter(targetType, "i")));
-        }
-
-        public void Writer(ProvisioningTemplate template, TextWriter writer)
+        public override void Writer(ProvisioningTemplate template, TextWriter writer)
         {
             //TODO: Handle null values and add write line after each value for a new line.
 
             writer.WriteLine("# Site Columns");
             writer.WriteLine();
+            writer.WriteLine("The table below lists the columns with their display name to help eyeball from the list of columns in Site Settings . When creating, ensure you use the Internal Name documented in the sections below.");
+            writer.WriteLine();
+
             var xmlFields = from f in template.SiteFields
                             //TODO: sort by group - orderby XElement.Parse(f.SchemaXml).ToXmlElement().Attributes["Group"]
                             select XElement.Parse(f.SchemaXml).ToXmlElement();
 
 
-            writer.WriteLine("| Column | Type |");
+            writer.WriteLine("| Name | Type |");
             writer.WriteLine("| :------------- | :----------: |");
             TextWriter groupDetailsWriter = new StringWriter();
 
@@ -64,18 +49,19 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
                 groupDetailsWriter.WriteLine();
                 groupDetailsWriter.WriteLine($"### {fieldDisplayName}");
                 groupDetailsWriter.WriteLine();
-                groupDetailsWriter.WriteLine($"**Type** - {fieldType}");
+                
+                groupDetailsWriter.WriteLine($"{GetSiteColumnTypeNameFromTemplateCode(xmlField.Attributes["Type"].Value)}");
                 groupDetailsWriter.WriteLine();
-                groupDetailsWriter.WriteLine($"**Name** - {xmlField.Attributes["Name"].Value}");
+                groupDetailsWriter.WriteLine($"**Internal name** - {xmlField.Attributes["StaticName"].Value}");
                 groupDetailsWriter.WriteLine();
-                groupDetailsWriter.WriteLine($"**Static name** - {xmlField.Attributes["StaticName"].Value}");
-                groupDetailsWriter.WriteLine();
+                //TODO: check if items are null
+                //groupDetailsWriter.WriteLine($"**Description** - {xmlField.Attributes["Description"].Value}");
+                //groupDetailsWriter.WriteLine();
                 groupDetailsWriter.WriteLine($"**Required** - {xmlField.Attributes["Required"].Value}");
-                groupDetailsWriter.WriteLine();
-                groupDetailsWriter.WriteLine($"**ID** - {xmlField.Attributes["ID"].Value}");
                 groupDetailsWriter.WriteLine();
                 groupDetailsWriter.WriteLine($"**Enforce Unique Values** - {xmlField.Attributes["EnforceUniqueValues"].Value}");
                 groupDetailsWriter.WriteLine();
+
 
                 switch (fieldType.ToString().ToLower())
                 {
@@ -97,7 +83,10 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
                     case "note":
                         NoteWriter(template, groupDetailsWriter, xmlField);
                         break;
+                    //TODO: add calculated column example
                 }
+
+                //TODO: add column formatting
             }
 
             writer.Write(groupDetailsWriter.ToString());

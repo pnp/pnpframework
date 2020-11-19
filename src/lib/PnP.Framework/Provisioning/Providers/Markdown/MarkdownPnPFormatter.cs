@@ -71,7 +71,8 @@ namespace PnP.Framework.Provisioning.Providers.Markdown
 
             var writers = currentAssembly.GetTypes()
                 // Get all the writers
-                .Where(t => t.GetInterface(typeof(IPnPSchemaWriter).FullName) != null)
+                .Where(t => t.GetInterface(typeof(IPnPSchemaWriter).FullName) != null
+                       && t.BaseType.Name == typeof(PnPBaseSchemaWriter<>).Name)
                 // Order the writers by sequence
                 .OrderBy(s =>
                 {

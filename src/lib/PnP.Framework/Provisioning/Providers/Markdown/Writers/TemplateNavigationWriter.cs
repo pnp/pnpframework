@@ -14,31 +14,19 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
     /// </summary>
     [TemplateSchemaWriter(WriterSequence = 1030,
         Scope = WriterScope.ProvisioningTemplate)]
-    internal class TemplateNavigationWriter : IPnPSchemaWriter
+    internal class TemplateNavigationWriter : PnPBaseSchemaWriter<Navigation>
     {
-        public string Name
-        {
-            get { return (this.GetType().Name); }
-        }
-
-        protected LambdaExpression CreateSelectorLambda(Type targetType, String propertyName)
-        {
-            return (Expression.Lambda(
-                Expression.Convert(
-                    Expression.MakeMemberAccess(
-                        Expression.Parameter(targetType, "i"),
-                        targetType.GetProperty(propertyName,
-                            System.Reflection.BindingFlags.Instance |
-                            System.Reflection.BindingFlags.Public)),
-                    typeof(object)),
-                ParameterExpression.Parameter(targetType, "i")));
-        }
-
-        public void Writer(ProvisioningTemplate template, TextWriter writer)
+        public override void Writer(ProvisioningTemplate template, TextWriter writer)
         {
             writer.WriteLine("# Navigation");
             writer.WriteLine();
-            writer.WriteLine($"Coming soon");
+            writer.WriteLine($"## Left navigation:");
+            writer.WriteLine();
+            writer.WriteLine($"Leave as default.");
+            writer.WriteLine();
+            writer.WriteLine($"## Top navigation:");
+            writer.WriteLine();
+            writer.WriteLine($"Leave as default.");
             writer.WriteLine();
         }
     }

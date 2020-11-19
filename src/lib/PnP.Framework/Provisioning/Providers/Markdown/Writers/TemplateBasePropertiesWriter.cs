@@ -14,27 +14,9 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
     /// </summary>
     [TemplateSchemaWriter(WriterSequence = 1000,
         Scope = WriterScope.ProvisioningTemplate)]
-    internal class TemplateBasePropertiesWriter : IPnPSchemaWriter
+    internal class TemplateBasePropertiesWriter : PnPBaseSchemaWriter<ProvisioningTemplate>
     {
-        public string Name
-        {
-            get { return (this.GetType().Name); }
-        }
-
-        protected LambdaExpression CreateSelectorLambda(Type targetType, String propertyName)
-        {
-            return (Expression.Lambda(
-                Expression.Convert(
-                    Expression.MakeMemberAccess(
-                        Expression.Parameter(targetType, "i"),
-                        targetType.GetProperty(propertyName,
-                            System.Reflection.BindingFlags.Instance |
-                            System.Reflection.BindingFlags.Public)),
-                    typeof(object)),
-                ParameterExpression.Parameter(targetType, "i")));
-        }
-
-        public void Writer(ProvisioningTemplate template, TextWriter writer)
+        public override void Writer(ProvisioningTemplate template, TextWriter writer)
         {
             writer.WriteLine($"# Template - {template.Id}");
             writer.WriteLine();

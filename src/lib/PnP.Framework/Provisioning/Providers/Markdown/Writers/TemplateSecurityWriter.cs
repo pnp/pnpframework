@@ -14,31 +14,13 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
     /// </summary>
     [TemplateSchemaWriter(WriterSequence = 1020,
         Scope = WriterScope.ProvisioningTemplate)]
-    internal class TemplateSecurityWriter : IPnPSchemaWriter
+    internal class TemplateSecurityWriter : PnPBaseSchemaWriter<SiteSecurity>
     {
-        public string Name
+        public override void Writer(ProvisioningTemplate template, TextWriter writer)
         {
-            get { return (this.GetType().Name); }
-        }
-
-        protected LambdaExpression CreateSelectorLambda(Type targetType, String propertyName)
-        {
-            return (Expression.Lambda(
-                Expression.Convert(
-                    Expression.MakeMemberAccess(
-                        Expression.Parameter(targetType, "i"),
-                        targetType.GetProperty(propertyName,
-                            System.Reflection.BindingFlags.Instance |
-                            System.Reflection.BindingFlags.Public)),
-                    typeof(object)),
-                ParameterExpression.Parameter(targetType, "i")));
-        }
-
-        public void Writer(ProvisioningTemplate template, TextWriter writer)
-        {
-            writer.WriteLine("# Security");
+            writer.WriteLine("# Permissions");
             writer.WriteLine();
-            writer.WriteLine($"Coming soon");
+            writer.WriteLine($"Permissions should be left as default, making use of the default Visitor, Member and Owner groups.");
             writer.WriteLine();
         }
     }

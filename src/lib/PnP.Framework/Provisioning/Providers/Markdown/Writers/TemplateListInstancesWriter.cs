@@ -16,27 +16,9 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
     /// </summary>
     [TemplateSchemaWriter(WriterSequence = 1060,
         Scope = WriterScope.ProvisioningTemplate)]
-    internal class TemplateListInstancesWriter : IPnPSchemaWriter
+    internal class TemplateListInstancesWriter : PnPBaseSchemaWriter<ListInstance>
     {
-        public string Name
-        {
-            get { return (this.GetType().Name); }
-        }
-
-        protected LambdaExpression CreateSelectorLambda(Type targetType, String propertyName)
-        {
-            return (Expression.Lambda(
-                Expression.Convert(
-                    Expression.MakeMemberAccess(
-                        Expression.Parameter(targetType, "i"),
-                        targetType.GetProperty(propertyName,
-                            System.Reflection.BindingFlags.Instance |
-                            System.Reflection.BindingFlags.Public)),
-                    typeof(object)),
-                ParameterExpression.Parameter(targetType, "i")));
-        }
-
-        public void Writer(ProvisioningTemplate template, TextWriter writer)
+        public override void Writer(ProvisioningTemplate template, TextWriter writer)
         {
             writer.WriteLine("<br/>");
             writer.WriteLine();
@@ -57,7 +39,7 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
                 groupDetailsWriter.WriteLine();
                 groupDetailsWriter.WriteLine($"Description - {list.Description}");
                 groupDetailsWriter.WriteLine();
-                groupDetailsWriter.WriteLine($"Template type - {list.TemplateType}");
+                groupDetailsWriter.WriteLine(GetListTemplateNameFromTemplateCode(list.TemplateType.ToString()));
                 groupDetailsWriter.WriteLine();
                 groupDetailsWriter.WriteLine($"Url - {list.Url}");
                 groupDetailsWriter.WriteLine();
@@ -70,10 +52,10 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
                 groupDetailsWriter.WriteLine("| Display Name |  Default?  |   Name    |");
                 groupDetailsWriter.WriteLine("| :------------- | :----------: | :----------: |");
 
-                var xmlFields = from f in list.Views
+                var xmlViewFields = from f in list.Views
                                 select XElement.Parse(f.SchemaXml).ToXmlElement();
 
-                foreach (var xmlField in xmlFields)
+                foreach (var xmlField in xmlViewFields)
                 {
                     var viewDisplayName = xmlField.Attributes["DisplayName"].Value;
                     //var viewType = xmlField.Attributes["Type"].Value;
@@ -82,6 +64,8 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
                     groupDetailsWriter.WriteLine($"| {viewDisplayName} | TBC | {viewName} |");
                     groupDetailsWriter.WriteLine();
                 }
+
+
             }
             writer.WriteLine(groupDetailsWriter.ToString());
             writer.WriteLine("<br/>");

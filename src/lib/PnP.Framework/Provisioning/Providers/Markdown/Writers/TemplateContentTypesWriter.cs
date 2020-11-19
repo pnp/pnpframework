@@ -15,32 +15,14 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
     /// </summary>
     [TemplateSchemaWriter(WriterSequence = 1050,
         Scope = WriterScope.ProvisioningTemplate)]
-    internal class TemplateContentTypesWriter : IPnPSchemaWriter
+    internal class TemplateContentTypesWriter : PnPBaseSchemaWriter<ContentType>
     {
-        public string Name
-        {
-            get { return (this.GetType().Name); }
-        }
-
-        protected LambdaExpression CreateSelectorLambda(Type targetType, String propertyName)
-        {
-            return (Expression.Lambda(
-                Expression.Convert(
-                    Expression.MakeMemberAccess(
-                        Expression.Parameter(targetType, "i"),
-                        targetType.GetProperty(propertyName,
-                            System.Reflection.BindingFlags.Instance |
-                            System.Reflection.BindingFlags.Public)),
-                    typeof(object)),
-                ParameterExpression.Parameter(targetType, "i")));
-        }
-
-        public void Writer(ProvisioningTemplate template, TextWriter writer)
+        public override void Writer(ProvisioningTemplate template, TextWriter writer)
         {
             writer.WriteLine("# Content Types");
             writer.WriteLine();
-            writer.WriteLine("| Name | Description |");
-            writer.WriteLine("| :------------- | :----------: |");
+            writer.WriteLine("| Name | Description | Group |");
+            writer.WriteLine("| :------------- | :----------: | :----------: |");
             TextWriter groupDetailsWriter = new StringWriter();
 
             string currentGroup = "";
@@ -56,7 +38,7 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
                 }
 
                 
-                writer.WriteLine($"|  {ct.Name} | {ct.Description}   |");
+                writer.WriteLine($"|  {ct.Name} | {ct.Description}   | {ct.Group}   |");
 
                 groupDetailsWriter.WriteLine("<br/>");
                 groupDetailsWriter.WriteLine();
@@ -64,11 +46,11 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
                 groupDetailsWriter.WriteLine();
                 groupDetailsWriter.WriteLine($"**Description** - {ct.Description}");
                 groupDetailsWriter.WriteLine();
-                groupDetailsWriter.WriteLine($"**ID** - {ct.Id}");
-                groupDetailsWriter.WriteLine();
                 groupDetailsWriter.WriteLine("**Fields**:");
                 groupDetailsWriter.WriteLine();
+                //TODO: get parent content type
                 groupDetailsWriter.WriteLine("| Name   |     Required     | Hidden       |");
+                //TODO: cna we list with field is from a parent content type
                 groupDetailsWriter.WriteLine("| :------------- | :----------: | :----------: |");
 
                 foreach (var ctField in ct.FieldRefs)

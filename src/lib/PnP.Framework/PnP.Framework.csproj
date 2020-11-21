@@ -139,7 +139,7 @@
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
-		<PackageReference Include="Microsoft.ApplicationInsights" Version="2.15.0" />
+		<PackageReference Include="Microsoft.ApplicationInsights" Version="2.13.1" />
 		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="3.1.8" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.8" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="3.1.8" />
@@ -178,7 +178,7 @@
 		<PackageReference Include="Microsoft.Graph.Core" Version="1.22.0" />
 		<PackageReference Include="Microsoft.Identity.Client" Version="4.21.0" />
 		<PackageReference Include="Microsoft.SharePointOnline.CSOM" Version="16.1.*" />
-		<PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
+		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
 		<PackageReference Include="Portable.Xaml" Version="0.26.0" />
 		<PackageReference Include="ResXResourceReader.NetStandard" Version="1.0.1" />
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />

@@ -1,10 +1,5 @@
 ﻿using System;
-#if !NETSTANDARD2_0
-using System.Runtime.Remoting.Messaging;
-#endif
-#if NETSTANDARD2_0
 using System.Threading;
-#endif
 
 namespace PnP.Framework.Provisioning.Providers.Xml
 {
@@ -53,17 +48,6 @@ namespace PnP.Framework.Provisioning.Providers.Xml
             }
         }
 
-#if !NETSTANDARD2_0
-        public static PnPSerializationScope Current
-        {
-            get { return CallContext.LogicalGetData(nameof(PnPSerializationScope)) as PnPSerializationScope; }
-            set
-            {
-                System.Configuration.ConfigurationManager.GetSection("system.xml/xmlReader");
-                CallContext.LogicalSetData(nameof(PnPSerializationScope), value);
-            }
-        }
-#else
         private static readonly AsyncLocal<PnPSerializationScope> _pnpSerializationScope = new AsyncLocal<PnPSerializationScope>();
 
         public static PnPSerializationScope Current
@@ -74,6 +58,5 @@ namespace PnP.Framework.Provisioning.Providers.Xml
                 _pnpSerializationScope.Value = value;
             }
         }
-#endif
     }
 }

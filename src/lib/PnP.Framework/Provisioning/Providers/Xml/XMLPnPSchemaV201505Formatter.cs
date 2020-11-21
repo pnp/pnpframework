@@ -4,9 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-#if !NETSTANDARD2_0
-using System.Web.Http.ModelBinding;
-#endif
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;

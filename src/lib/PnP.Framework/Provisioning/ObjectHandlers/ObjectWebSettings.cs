@@ -209,7 +209,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                     try
                     {
-                        var file = web.GetFileByServerRelativeUrl(serverRelativeUrl);
+                        var file = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(serverRelativeUrl));
                         string fileName = string.Empty;
                         if (serverRelativeUrl.IndexOf("/") > -1)
                         {
@@ -225,7 +225,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         web.Context.ExecuteQueryRetry();
 
                         var baseUri = new Uri(web.Url);
-                        var fullUri = new Uri(baseUri, file.ServerRelativeUrl);
+                        var fullUri = new Uri(baseUri, file.ServerRelativePath.DecodedUrl);
                         var folderPath = HttpUtility.UrlDecode(fullUri.Segments.Take(fullUri.Segments.Count() - 1).ToArray().Aggregate((i, x) => i + x).TrimEnd('/'));
 
                         // Configure the filename to use 

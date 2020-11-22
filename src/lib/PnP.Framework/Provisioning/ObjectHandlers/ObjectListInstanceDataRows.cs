@@ -950,7 +950,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             try
             {
-                var file = context.Web.GetFileByServerRelativeUrl(fileServerRelativeUrl);
+                var file = context.Web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(fileServerRelativeUrl));
                 context.Load(file);
                 context.ExecuteQueryRetry();
                 if (file.Exists)

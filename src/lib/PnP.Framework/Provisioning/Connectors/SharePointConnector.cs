@@ -347,7 +347,7 @@ namespace PnP.Framework.Provisioning.Connectors
                 using (ClientContext cc = GetClientContext().Clone(GetConnectionString()))
                 {
                     string fileServerRelativeUrl = GetFileServerRelativeUrl(cc, fileName, container);
-                    File file = cc.Web.GetFileByServerRelativeUrl(fileServerRelativeUrl);
+                    File file = cc.Web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(fileServerRelativeUrl));
                     cc.Load(file);
                     cc.ExecuteQueryRetry();
 
@@ -430,7 +430,7 @@ namespace PnP.Framework.Provisioning.Connectors
                 using (ClientContext cc = GetClientContext().Clone(GetConnectionString()))
                 {
                     string fileServerRelativeUrl = GetFileServerRelativeUrl(cc, fileName, container);
-                    var file = cc.Web.GetFileByServerRelativeUrl(fileServerRelativeUrl);
+                    var file = cc.Web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(fileServerRelativeUrl));
                     cc.Load(file);
                     cc.ExecuteQueryRetry();
                     if (file.Exists)

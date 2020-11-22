@@ -733,7 +733,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
 
                         try
                         {
-                            var file = web.GetFileByServerRelativeUrl(s);
+                            var file = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(s));
                             web.Context.Load(file, f => f.UniqueId);
                             web.Context.ExecuteQueryRetry();
                             fileGuids.Add(file.UniqueId);

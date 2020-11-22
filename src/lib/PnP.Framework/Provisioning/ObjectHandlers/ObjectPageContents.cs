@@ -215,14 +215,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     Title = webPart.WebPart.Title,
                     Row = (uint)webPart.WebPart.ZoneIndex,
                     Order = (uint)webPart.WebPart.ZoneIndex,
-                    Contents = webPartxml
+                    Contents = webPartxml,
+                    Zone = webPart.ZoneId
                 };
-
-                // As long as we've no CSOM library that has the ZoneID we can't use the version check as things don't compile...
-                if (web.Context.HasMinimalServerLibraryVersion(Constants.MINIMUMZONEIDREQUIREDSERVERVERSION))
-                {
-                    newWp.Zone = webPart.ZoneId;
-                }
 
                 homeFile.WebParts.Add(newWp);
             }

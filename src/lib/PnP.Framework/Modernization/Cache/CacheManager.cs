@@ -97,7 +97,7 @@ namespace PnP.Framework.Modernization.Cache
         /// <returns>Found SharePoint version or "Unknown" if not found in cache</returns>
         public SPVersion GetSharePointVersion(Uri site)
         {
-            var sharepointVersions = Store.GetAndInitialize<ConcurrentDictionary<Uri, SPVersion>>(StoreOptions.GetKey(keySharePointVersions));
+            var sharepointVersions = Store.GetAndInitialize<Dictionary<Uri, SPVersion>>(StoreOptions.GetKey(keySharePointVersions));
             if (sharepointVersions.ContainsKey(site))
             {
                 return sharepointVersions[site];
@@ -113,11 +113,11 @@ namespace PnP.Framework.Modernization.Cache
         /// <param name="version">SharePoint version of the site</param>
         public void SetSharePointVersion(Uri site, SPVersion version)
         {
-            var sharepointVersions = Store.GetAndInitialize<ConcurrentDictionary<Uri, SPVersion>>(StoreOptions.GetKey(keySharePointVersions));
+            var sharepointVersions = Store.GetAndInitialize<Dictionary<Uri, SPVersion>>(StoreOptions.GetKey(keySharePointVersions));
             if (!sharepointVersions.ContainsKey(site))
             {
-                sharepointVersions.TryAdd(site, version);
-                Store.Set<ConcurrentDictionary<Uri, SPVersion>>(StoreOptions.GetKey(keySharePointVersions), sharepointVersions, StoreOptions.EntryOptions);
+                sharepointVersions.Add(site, version);
+                Store.Set<Dictionary<Uri, SPVersion>>(StoreOptions.GetKey(keySharePointVersions), sharepointVersions, StoreOptions.EntryOptions);
             }
         }
 
@@ -128,7 +128,7 @@ namespace PnP.Framework.Modernization.Cache
         /// <returns>Exact version from cache</returns>
         public string GetExactSharePointVersion(Uri site)
         {
-            var exactSharepointVersions = Store.GetAndInitialize<ConcurrentDictionary<Uri, string>>(StoreOptions.GetKey(keyExactSharepointVersions));
+            var exactSharepointVersions = Store.GetAndInitialize<Dictionary<Uri, string>>(StoreOptions.GetKey(keyExactSharepointVersions));
             if (exactSharepointVersions.ContainsKey(site))
             {
                 return exactSharepointVersions[site];
@@ -144,11 +144,11 @@ namespace PnP.Framework.Modernization.Cache
         /// <param name="version">Version to add</param>
         public void SetExactSharePointVersion(Uri site, string version)
         {
-            var exactSharepointVersions = Store.GetAndInitialize<ConcurrentDictionary<Uri, string>>(StoreOptions.GetKey(keyExactSharepointVersions));
+            var exactSharepointVersions = Store.GetAndInitialize<Dictionary<Uri, string>>(StoreOptions.GetKey(keyExactSharepointVersions));
             if (!exactSharepointVersions.ContainsKey(site))
             {
-                exactSharepointVersions.TryAdd(site, version);
-                Store.Set<ConcurrentDictionary<Uri, string>>(StoreOptions.GetKey(keyExactSharepointVersions), exactSharepointVersions, StoreOptions.EntryOptions);
+                exactSharepointVersions.Add(site, version);
+                Store.Set<Dictionary<Uri, string>>(StoreOptions.GetKey(keyExactSharepointVersions), exactSharepointVersions, StoreOptions.EntryOptions);
             }
         }
 
@@ -159,7 +159,7 @@ namespace PnP.Framework.Modernization.Cache
         /// <returns>Azure AD tenant id</returns>
         public Guid GetAADTenantId(Uri site)
         {
-            var aadTenantId = Store.GetAndInitialize<ConcurrentDictionary<Uri, Guid>>(StoreOptions.GetKey(keyAadTenantId));
+            var aadTenantId = Store.GetAndInitialize<Dictionary<Uri, Guid>>(StoreOptions.GetKey(keyAadTenantId));
 
             if (aadTenantId.ContainsKey(site))
             {
@@ -178,12 +178,12 @@ namespace PnP.Framework.Modernization.Cache
         /// <param name="site">Site url</param>
         public void SetAADTenantId(Guid tenantId, Uri site)
         {
-            var aadTenantId = Store.GetAndInitialize<ConcurrentDictionary<Uri, Guid>>(StoreOptions.GetKey(keyAadTenantId));
+            var aadTenantId = Store.GetAndInitialize<Dictionary<Uri, Guid>>(StoreOptions.GetKey(keyAadTenantId));
             
             if (!aadTenantId.ContainsKey(site))
             {
-                aadTenantId.TryAdd(site, tenantId);
-                Store.Set<ConcurrentDictionary<Uri, Guid>>(StoreOptions.GetKey(keyAadTenantId), aadTenantId, StoreOptions.EntryOptions);
+                aadTenantId.Add(site, tenantId);
+                Store.Set<Dictionary<Uri, Guid>>(StoreOptions.GetKey(keyAadTenantId), aadTenantId, StoreOptions.EntryOptions);
             }
         }
         #endregion
@@ -215,15 +215,15 @@ namespace PnP.Framework.Modernization.Cache
         {
             Guid webId = page.Context.Web.EnsureProperty(o => o.Id);
 
-            var siteToComponentMapping = Store.GetAndInitialize<ConcurrentDictionary<Guid, string>>(StoreOptions.GetKey(keySiteToComponentMapping));
+            var siteToComponentMapping = Store.GetAndInitialize<Dictionary<Guid, string>>(StoreOptions.GetKey(keySiteToComponentMapping));
 
             if (siteToComponentMapping.ContainsKey(webId))
             {
                 // Components are cached for this site, get the component key
                 if (siteToComponentMapping.TryGetValue(webId, out string componentKey))
                 {
-                    var clientSideComponents = Store.GetAndInitialize<ConcurrentDictionary<string, string>>(StoreOptions.GetKey(keyClientSideComponents));
-                    if (clientSideComponents.TryGetValue(componentKey, out string componentList))
+                    var clientSideComponents2 = Store.GetAndInitialize<Dictionary<string, string>>(StoreOptions.GetKey(keyClientSideComponents));
+                    if (clientSideComponents2.TryGetValue(componentKey, out string componentList))
                     {
                         return JsonSerializer.Deserialize<List<ClientSideComponent>>(componentList);
                     }
@@ -238,17 +238,15 @@ namespace PnP.Framework.Modernization.Cache
             string componentKeyToCache = Sha256(jsonComponentsToAdd);
 
             // store the retrieved data in cache
-            if (siteToComponentMapping.TryAdd(webId, componentKeyToCache))
-            {
-                Store.Set<ConcurrentDictionary<Guid, string>>(StoreOptions.GetKey(keySiteToComponentMapping), siteToComponentMapping, StoreOptions.EntryOptions);
+            siteToComponentMapping.Add(webId, componentKeyToCache);
+            Store.Set<Dictionary<Guid, string>>(StoreOptions.GetKey(keySiteToComponentMapping), siteToComponentMapping, StoreOptions.EntryOptions);
 
-                // Since the components list is big and often the same across webs we only store it in cache if it's different
-                var clientSideComponents = Store.GetAndInitialize<ConcurrentDictionary<string, string>>(StoreOptions.GetKey(keyClientSideComponents));
-                if (!clientSideComponents.ContainsKey(componentKeyToCache))
-                {
-                    clientSideComponents.TryAdd(componentKeyToCache, jsonComponentsToAdd);
-                    Store.Set<ConcurrentDictionary<string, string>>(StoreOptions.GetKey(keyClientSideComponents), clientSideComponents, StoreOptions.EntryOptions);
-                }
+            // Since the components list is big and often the same across webs we only store it in cache if it's different
+            var clientSideComponents = Store.GetAndInitialize<Dictionary<string, string>>(StoreOptions.GetKey(keyClientSideComponents));
+            if (!clientSideComponents.ContainsKey(componentKeyToCache))
+            {
+                clientSideComponents.Add(componentKeyToCache, jsonComponentsToAdd);
+                Store.Set<Dictionary<string, string>>(StoreOptions.GetKey(keyClientSideComponents), clientSideComponents, StoreOptions.EntryOptions);
             }
 
             return componentsToAdd;
@@ -316,7 +314,7 @@ namespace PnP.Framework.Modernization.Cache
         {
             List<FieldData> fieldsToCopyRetrieved = new List<FieldData>();
 
-            var fieldsToCopy = Store.GetAndInitialize<ConcurrentDictionary<string, List<FieldData>>>(StoreOptions.GetKey(keyFieldsToCopy));
+            var fieldsToCopy = Store.GetAndInitialize<Dictionary<string, List<FieldData>>>(StoreOptions.GetKey(keyFieldsToCopy));
 
             // Did we already do the calculation for this sitepages library? If so then return from cache
             if (fieldsToCopy.ContainsKey(sourceLibrary.Id.ToString()))
@@ -360,11 +358,10 @@ namespace PnP.Framework.Modernization.Cache
                     }
 
                     // Add to cache
-                    if (fieldsToCopy.TryAdd(sourceLibrary.Id.ToString(), fieldsToCopyRetrieved))
-                    {
-                        Store.Set<ConcurrentDictionary<string, List<FieldData>>>(StoreOptions.GetKey(keyFieldsToCopy), fieldsToCopy, StoreOptions.EntryOptions);
-                        return fieldsToCopyRetrieved;
-                    }
+                    fieldsToCopy.Add(sourceLibrary.Id.ToString(), fieldsToCopyRetrieved);
+                    Store.Set<Dictionary<string, List<FieldData>>>(StoreOptions.GetKey(keyFieldsToCopy), fieldsToCopy, StoreOptions.EntryOptions);
+                    return fieldsToCopyRetrieved;
+
                 }
             }
 
@@ -382,7 +379,7 @@ namespace PnP.Framework.Modernization.Cache
         public FieldData GetPublishingContentTypeField(List pagesLibrary, string contentTypeId, string fieldName)
         {
             // Try to get from cache
-            var publishingContentTypeFields = Store.GetAndInitialize<ConcurrentDictionary<string, List<FieldData>>>(StoreOptions.GetKey(keyPublishingContentTypeFields));
+            var publishingContentTypeFields = Store.GetAndInitialize<Dictionary<string, List<FieldData>>>(StoreOptions.GetKey(keyPublishingContentTypeFields));
             if (publishingContentTypeFields.TryGetValue(contentTypeId, out List<FieldData> fieldsFromCache))
             {
                 // return field if found
@@ -432,8 +429,8 @@ namespace PnP.Framework.Modernization.Cache
             }
 
             // Store in cache
-            publishingContentTypeFields.TryAdd(contentTypeId, contentTypeFieldsInList);
-            Store.Set<ConcurrentDictionary<string, List<FieldData>>>(StoreOptions.GetKey(keyPublishingContentTypeFields), publishingContentTypeFields, StoreOptions.EntryOptions);
+            publishingContentTypeFields.Add(contentTypeId, contentTypeFieldsInList);
+            Store.Set<Dictionary<string, List<FieldData>>>(StoreOptions.GetKey(keyPublishingContentTypeFields), publishingContentTypeFields, StoreOptions.EntryOptions);
 
             // Return field, if found
             return contentTypeFieldsInList.Where(p => p.FieldName.Equals(fieldName, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
@@ -457,12 +454,12 @@ namespace PnP.Framework.Modernization.Cache
         /// <param name="webUrl">Url of the web</param>
         public void SetPublishingWeb(string webUrl)
         {
-            var webType = Store.GetAndInitialize<ConcurrentDictionary<string, string>>(StoreOptions.GetKey(keyWebType));
+            var webType = Store.GetAndInitialize<Dictionary<string, string>>(StoreOptions.GetKey(keyWebType));
 
             if (!webType.ContainsKey(webUrl))
             {
-                webType.TryAdd(webUrl, CacheManager.Publishing);
-                Store.Set<ConcurrentDictionary<string, string>>(StoreOptions.GetKey(keyWebType), webType, StoreOptions.EntryOptions);
+                webType.Add(webUrl, CacheManager.Publishing);
+                Store.Set<Dictionary<string, string>>(StoreOptions.GetKey(keyWebType), webType, StoreOptions.EntryOptions);
             }
         }
 
@@ -472,11 +469,11 @@ namespace PnP.Framework.Modernization.Cache
         /// <param name="webUrl">Url of the web</param>
         public void SetBlogWeb(string webUrl)
         {
-            var webType = Store.GetAndInitialize<ConcurrentDictionary<string, string>>(StoreOptions.GetKey(keyWebType));
+            var webType = Store.GetAndInitialize<Dictionary<string, string>>(StoreOptions.GetKey(keyWebType));
             if (!webType.ContainsKey(webUrl))
             {
-                webType.TryAdd(webUrl, CacheManager.Blog);
-                Store.Set<ConcurrentDictionary<string, string>>(StoreOptions.GetKey(keyWebType), webType, StoreOptions.EntryOptions);
+                webType.Add(webUrl, CacheManager.Blog);
+                Store.Set<Dictionary<string, string>>(StoreOptions.GetKey(keyWebType), webType, StoreOptions.EntryOptions);
             }
         }
 
@@ -487,7 +484,7 @@ namespace PnP.Framework.Modernization.Cache
         /// <returns>True if publishing, false otherwise</returns>
         public bool IsPublishingWeb(string webUrl)
         {
-            var webType = Store.GetAndInitialize<ConcurrentDictionary<string, string>>(StoreOptions.GetKey(keyWebType));
+            var webType = Store.GetAndInitialize<Dictionary<string, string>>(StoreOptions.GetKey(keyWebType));
             if (webType.ContainsKey(webUrl))
             {
                 if (webType.TryGetValue(webUrl, out string type))
@@ -509,7 +506,7 @@ namespace PnP.Framework.Modernization.Cache
         /// <returns>True if blog, false otherwise</returns>
         public bool IsBlogWeb(string webUrl)
         {
-            var webType = Store.GetAndInitialize<ConcurrentDictionary<string, string>>(StoreOptions.GetKey(keyWebType));
+            var webType = Store.GetAndInitialize<Dictionary<string, string>>(StoreOptions.GetKey(keyWebType));
             if (webType.ContainsKey(webUrl))
             {
                 if (webType.TryGetValue(webUrl, out string type))
@@ -550,7 +547,7 @@ namespace PnP.Framework.Modernization.Cache
 
             var propertyBagKey = Constants.WebPropertyKeyPagesListId;
             
-            var publishingPagesLibraryNames = Store.GetAndInitialize<ConcurrentDictionary<uint, string>>(StoreOptions.GetKey(keyPublishingPagesLibraryNames));
+            var publishingPagesLibraryNames = Store.GetAndInitialize<Dictionary<uint, string>>(StoreOptions.GetKey(keyPublishingPagesLibraryNames));
             if (publishingPagesLibraryNames.ContainsKey(lcid))
             {
                 if (publishingPagesLibraryNames.TryGetValue(lcid, out string name))
@@ -576,8 +573,8 @@ namespace PnP.Framework.Modernization.Cache
                         pagesLibraryName = list.RootFolder.ServerRelativeUrl.Replace(webServerRelativeUrl, "").Trim('/').ToLower();
 
                         // add to cache
-                        publishingPagesLibraryNames.TryAdd(lcid, pagesLibraryName);
-                        Store.Set<ConcurrentDictionary<uint, string>>(StoreOptions.GetKey(keyPublishingPagesLibraryNames), publishingPagesLibraryNames, StoreOptions.EntryOptions);
+                        publishingPagesLibraryNames.Add(lcid, pagesLibraryName);
+                        Store.Set<Dictionary<uint, string>>(StoreOptions.GetKey(keyPublishingPagesLibraryNames), publishingPagesLibraryNames, StoreOptions.EntryOptions);
 
                         return pagesLibraryName;
                     }
@@ -596,8 +593,8 @@ namespace PnP.Framework.Modernization.Cache
                     }
 
                     // add to cache
-                    publishingPagesLibraryNames.TryAdd(lcid, altPagesLibraryName.ToLower());
-                    Store.Set<ConcurrentDictionary<uint, string>>(StoreOptions.GetKey(keyPublishingPagesLibraryNames), publishingPagesLibraryNames, StoreOptions.EntryOptions);
+                    publishingPagesLibraryNames.Add(lcid, altPagesLibraryName.ToLower());
+                    Store.Set<Dictionary<uint, string>>(StoreOptions.GetKey(keyPublishingPagesLibraryNames), publishingPagesLibraryNames, StoreOptions.EntryOptions);
 
                     return altPagesLibraryName.ToLower();
                 }
@@ -624,7 +621,7 @@ namespace PnP.Framework.Modernization.Cache
             }
 
             uint lcid = context.Web.EnsureProperty(p => p.Language);
-            var blogListNames = Store.GetAndInitialize<ConcurrentDictionary<uint, string>>(StoreOptions.GetKey(keyBlogListNames));
+            var blogListNames = Store.GetAndInitialize<Dictionary<uint, string>>(StoreOptions.GetKey(keyBlogListNames));
 
             if (blogListNames.ContainsKey(lcid))
             {
@@ -659,8 +656,8 @@ namespace PnP.Framework.Modernization.Cache
                 }
 
                 // add to cache
-                blogListNames.TryAdd(lcid, altBlogListName.ToLower());
-                Store.Set<ConcurrentDictionary<uint, string>>(StoreOptions.GetKey(keyBlogListNames), blogListNames, StoreOptions.EntryOptions);
+                blogListNames.Add(lcid, altBlogListName.ToLower());
+                Store.Set<Dictionary<uint, string>>(StoreOptions.GetKey(keyBlogListNames), blogListNames, StoreOptions.EntryOptions);
 
                 return altBlogListName.ToLower();
             }
@@ -678,7 +675,7 @@ namespace PnP.Framework.Modernization.Cache
         {
             uint lcid = context.Web.EnsureProperty(p => p.Language);
 
-            var resourceStrings = Store.GetAndInitialize<ConcurrentDictionary<string, Dictionary<uint, string>>>(StoreOptions.GetKey(keyResourceStrings));
+            var resourceStrings = Store.GetAndInitialize<Dictionary<string, Dictionary<uint, string>>>(StoreOptions.GetKey(keyResourceStrings));
 
             if (resourceStrings.ContainsKey(resource))
             {
@@ -728,8 +725,8 @@ namespace PnP.Framework.Modernization.Cache
                         {
                             { lcid, result.Value }
                         };
-                        resourceStrings.TryUpdate(resource, newResourceValues, resourceValues);
-                        Store.Set<ConcurrentDictionary<string, Dictionary<uint, string>>>(StoreOptions.GetKey(keyResourceStrings), resourceStrings, StoreOptions.EntryOptions);
+                        resourceStrings[resource] = newResourceValues;
+                        Store.Set<Dictionary<string, Dictionary<uint, string>>>(StoreOptions.GetKey(keyResourceStrings), resourceStrings, StoreOptions.EntryOptions);
                     }
                 }
             }
@@ -741,8 +738,8 @@ namespace PnP.Framework.Modernization.Cache
                     { lcid, result.Value }
                 };
 
-                resourceStrings.TryAdd(resource, translations);
-                Store.Set<ConcurrentDictionary<string, Dictionary<uint, string>>>(StoreOptions.GetKey(keyResourceStrings), resourceStrings, StoreOptions.EntryOptions);
+                resourceStrings.Add(resource, translations);
+                Store.Set<Dictionary<string, Dictionary<uint, string>>>(StoreOptions.GetKey(keyResourceStrings), resourceStrings, StoreOptions.EntryOptions);
             }
 
             return result.Value;
@@ -760,7 +757,7 @@ namespace PnP.Framework.Modernization.Cache
             string key = page.PageLayoutFile();
 
             // Try get the page layout from cache
-            var generatedPageLayoutMappings = Store.GetAndInitialize<ConcurrentDictionary<string, PageLayout>>(StoreOptions.GetKey(keyGeneratedPageLayoutMappings));
+            var generatedPageLayoutMappings = Store.GetAndInitialize<Dictionary<string, PageLayout>>(StoreOptions.GetKey(keyGeneratedPageLayoutMappings));
             if (generatedPageLayoutMappings.TryGetValue(key, out PageLayout pageLayoutFromCache))
             {
                 return pageLayoutFromCache;
@@ -772,8 +769,8 @@ namespace PnP.Framework.Modernization.Cache
             var newPageLayoutMapping = pageLayoutAnalyzer.AnalysePageLayoutFromPublishingPage(page);
 
             // Add to cache for future reuse
-            generatedPageLayoutMappings.TryAdd(key, newPageLayoutMapping);
-            Store.Set<ConcurrentDictionary<string, PageLayout>>(StoreOptions.GetKey(keyGeneratedPageLayoutMappings), generatedPageLayoutMappings, StoreOptions.EntryOptions);
+            generatedPageLayoutMappings.Add(key, newPageLayoutMapping);
+            Store.Set<Dictionary<string, PageLayout>>(StoreOptions.GetKey(keyGeneratedPageLayoutMappings), generatedPageLayoutMappings, StoreOptions.EntryOptions);
 
             // Return to requestor
             return newPageLayoutMapping;
@@ -861,7 +858,7 @@ namespace PnP.Framework.Modernization.Cache
 
             string key = context.Web.GetUrl();
 
-            var ensuredUsers = Store.GetAndInitialize<ConcurrentDictionary<string, Dictionary<string, ResolvedUser>>>(StoreOptions.GetKey(keyEnsuredUsers));
+            var ensuredUsers = Store.GetAndInitialize<Dictionary<string, Dictionary<string, ResolvedUser>>>(StoreOptions.GetKey(keyEnsuredUsers));
             if (ensuredUsers.TryGetValue(key, out Dictionary<string, ResolvedUser> ensuredUsersFromCache))
             {
                 if (ensuredUsersFromCache.TryGetValue(userValue, out ResolvedUser userLoginName))
@@ -893,8 +890,8 @@ namespace PnP.Framework.Modernization.Cache
                                 { userValue, resolvedUser }
                             };
 
-                        ensuredUsers.TryUpdate(key, newEnsuredUsersFromCache, ensuredUsersFromCache);
-                        Store.Set<ConcurrentDictionary<string, Dictionary<string, ResolvedUser>>>(StoreOptions.GetKey(keyEnsuredUsers), ensuredUsers, StoreOptions.EntryOptions);
+                        ensuredUsers[key] = newEnsuredUsersFromCache;
+                        Store.Set<Dictionary<string, Dictionary<string, ResolvedUser>>>(StoreOptions.GetKey(keyEnsuredUsers), ensuredUsers, StoreOptions.EntryOptions);
                     }
                     else
                     {
@@ -904,8 +901,8 @@ namespace PnP.Framework.Modernization.Cache
                                 { userValue, resolvedUser }
                             };
 
-                        ensuredUsers.TryAdd(key, newEnsuredUsersFromCache);
-                        Store.Set<ConcurrentDictionary<string, Dictionary<string, ResolvedUser>>>(StoreOptions.GetKey(keyEnsuredUsers), ensuredUsers, StoreOptions.EntryOptions);
+                        ensuredUsers.Add(key, newEnsuredUsersFromCache);
+                        Store.Set<Dictionary<string, Dictionary<string, ResolvedUser>>>(StoreOptions.GetKey(keyEnsuredUsers), ensuredUsers, StoreOptions.EntryOptions);
                     }
 
                     return resolvedUser;
@@ -939,7 +936,7 @@ namespace PnP.Framework.Modernization.Cache
                 userUpn = $"i:0#.f|membership|{userUpn}";
             }
 
-            var userJsonStringsViaUpn = Store.GetAndInitialize<ConcurrentDictionary<string, Dictionary<string, UserEntity>>>(StoreOptions.GetKey(keyUserJsonStringsViaUpn));
+            var userJsonStringsViaUpn = Store.GetAndInitialize<Dictionary<string, Dictionary<string, UserEntity>>>(StoreOptions.GetKey(keyUserJsonStringsViaUpn));
             if (userJsonStringsViaUpn.TryGetValue(key, out Dictionary<string, UserEntity> userListFromCache))
             {
                 if (userListFromCache.TryGetValue(userUpn, out UserEntity userJsonFromCache))
@@ -1005,8 +1002,8 @@ namespace PnP.Framework.Modernization.Cache
                                 { userUpn, author }
                             };
 
-                            userJsonStringsViaUpn.TryUpdate(key, newUserListToCache, userListFromCache);
-                            Store.Set<ConcurrentDictionary<string, Dictionary<string, UserEntity>>>(StoreOptions.GetKey(keyUserJsonStringsViaUpn), userJsonStringsViaUpn, StoreOptions.EntryOptions);
+                            userJsonStringsViaUpn[key] = newUserListToCache;
+                            Store.Set<Dictionary<string, Dictionary<string, UserEntity>>>(StoreOptions.GetKey(keyUserJsonStringsViaUpn), userJsonStringsViaUpn, StoreOptions.EntryOptions);
                         }
                         else
                         {
@@ -1016,8 +1013,8 @@ namespace PnP.Framework.Modernization.Cache
                                 { userUpn, author }
                             };
 
-                            userJsonStringsViaUpn.TryAdd(key, newUserListToCache);
-                            Store.Set<ConcurrentDictionary<string, Dictionary<string, UserEntity>>>(StoreOptions.GetKey(keyUserJsonStringsViaUpn), userJsonStringsViaUpn, StoreOptions.EntryOptions);
+                            userJsonStringsViaUpn.Add(key, newUserListToCache);
+                            Store.Set<Dictionary<string, Dictionary<string, UserEntity>>>(StoreOptions.GetKey(keyUserJsonStringsViaUpn), userJsonStringsViaUpn, StoreOptions.EntryOptions);
                         }
 
                         // return 
@@ -1043,7 +1040,7 @@ namespace PnP.Framework.Modernization.Cache
         {
             string key = context.Web.GetUrl();
 
-            var userJsonStrings = Store.GetAndInitialize<ConcurrentDictionary<string, Dictionary<int, UserEntity>>>(StoreOptions.GetKey(keyUserJsonStrings));
+            var userJsonStrings = Store.GetAndInitialize<Dictionary<string, Dictionary<int, UserEntity>>>(StoreOptions.GetKey(keyUserJsonStrings));
             if (userJsonStrings.TryGetValue(key, out Dictionary<int, UserEntity> userListFromCache))
             {
                 if (userListFromCache.TryGetValue(userListId, out UserEntity userJsonFromCache))
@@ -1108,8 +1105,8 @@ namespace PnP.Framework.Modernization.Cache
                                 { userListId, author }
                             };
 
-                            userJsonStrings.TryUpdate(key, newUserListToCache, userListFromCache);
-                            Store.Set<ConcurrentDictionary<string, Dictionary<int, UserEntity>>>(StoreOptions.GetKey(keyUserJsonStrings), userJsonStrings, StoreOptions.EntryOptions);
+                            userJsonStrings[key] = newUserListToCache;
+                            Store.Set<Dictionary<string, Dictionary<int, UserEntity>>>(StoreOptions.GetKey(keyUserJsonStrings), userJsonStrings, StoreOptions.EntryOptions);
                         }
                         else
                         {
@@ -1119,8 +1116,8 @@ namespace PnP.Framework.Modernization.Cache
                                 { userListId, author }
                             };
 
-                            userJsonStrings.TryAdd(key, newUserListToCache);
-                            Store.Set<ConcurrentDictionary<string, Dictionary<int, UserEntity>>>(StoreOptions.GetKey(keyUserJsonStrings), userJsonStrings, StoreOptions.EntryOptions);
+                            userJsonStrings.Add(key, newUserListToCache);
+                            Store.Set<Dictionary<string, Dictionary<int, UserEntity>>>(StoreOptions.GetKey(keyUserJsonStrings), userJsonStrings, StoreOptions.EntryOptions);
                         }
 
                         // return 
@@ -1149,7 +1146,7 @@ namespace PnP.Framework.Modernization.Cache
             string contentTypeId = null;
 
             // try to get from cache
-            var contentTypes = Store.GetAndInitialize<ConcurrentDictionary<string, string>>(StoreOptions.GetKey(keyContentTypes));
+            var contentTypes = Store.GetAndInitialize<Dictionary<string, string>>(StoreOptions.GetKey(keyContentTypes));
             contentTypes.TryGetValue(contentTypeName, out string contentTypeIdFromCache);
             if (!string.IsNullOrEmpty(contentTypeIdFromCache))
             {
@@ -1172,8 +1169,8 @@ namespace PnP.Framework.Modernization.Cache
                 }
 
                 // add to cache
-                contentTypes.TryAdd(contentTypeName, contentTypeId);
-                Store.Set<ConcurrentDictionary<string, string>>(StoreOptions.GetKey(keyContentTypes), contentTypes, StoreOptions.EntryOptions);
+                contentTypes.Add(contentTypeName, contentTypeId);
+                Store.Set<Dictionary<string, string>>(StoreOptions.GetKey(keyContentTypes), contentTypes, StoreOptions.EntryOptions);
             }
 
             return contentTypeId;
@@ -1191,7 +1188,7 @@ namespace PnP.Framework.Modernization.Cache
         {
             string termInfo = null;
 
-            var termCache = Store.GetAndInitialize<ConcurrentDictionary<Guid, string>>(StoreOptions.GetKey(keyTermCache));
+            var termCache = Store.GetAndInitialize<Dictionary<Guid, string>>(StoreOptions.GetKey(keyTermCache));
             termCache.TryGetValue(termId, out string termInfoFromCache);
             if (!string.IsNullOrEmpty(termInfoFromCache))
             {
@@ -1209,8 +1206,8 @@ namespace PnP.Framework.Modernization.Cache
                 termInfo = loadedTerm.Name;
                 
                 // add to cache
-                termCache.TryAdd(termId, termInfo);
-                Store.Set<ConcurrentDictionary<Guid, string>>(StoreOptions.GetKey(keyTermCache), termCache, StoreOptions.EntryOptions);
+                termCache.Add(termId, termInfo);
+                Store.Set<Dictionary<Guid, string>>(StoreOptions.GetKey(keyTermCache), termCache, StoreOptions.EntryOptions);
             }
 
             return termInfo;
@@ -1228,7 +1225,7 @@ namespace PnP.Framework.Modernization.Cache
             var termsAlreadyInCache = GetTransformTermCacheTermsByTermSet(context, termSetId);
             if(termsAlreadyInCache == default)
             {
-                var termCache = Store.GetAndInitialize<ConcurrentDictionary<Guid, TermData>>(StoreOptions.GetKey(keyTermTransformatorCache));
+                var termCache = Store.GetAndInitialize<Dictionary<Guid, TermData>>(StoreOptions.GetKey(keyTermTransformatorCache));
                 var termSetTerms = isSP2010 ? TermTransformator.CallTaxonomyWebServiceFindTermSetId(context, sourceSspId, termSetId) 
                     : TermTransformator.GetAllTermsFromTermSet(termSetId, context);
 
@@ -1236,9 +1233,9 @@ namespace PnP.Framework.Modernization.Cache
                 {
                     var term = termSetTerm.Value;
                     term.IsSourceTerm = isSourceTerm;
-                    termCache.TryAdd(termSetTerm.Key, term);
+                    termCache.Add(termSetTerm.Key, term);
                 }
-                Store.Set<ConcurrentDictionary<Guid, TermData>>(StoreOptions.GetKey(keyTermTransformatorCache), termCache, StoreOptions.EntryOptions);
+                Store.Set<Dictionary<Guid, TermData>>(StoreOptions.GetKey(keyTermTransformatorCache), termCache, StoreOptions.EntryOptions);
             }
         }
 
@@ -1250,7 +1247,7 @@ namespace PnP.Framework.Modernization.Cache
         /// <returns></returns>
         public TermData GetTransformTermCacheTermById(ClientContext context, Guid termId)
         {
-            var termCache = Store.GetAndInitialize<ConcurrentDictionary<Guid, TermData>>(StoreOptions.GetKey(keyTermTransformatorCache));
+            var termCache = Store.GetAndInitialize<Dictionary<Guid, TermData>>(StoreOptions.GetKey(keyTermTransformatorCache));
             termCache.TryGetValue(termId, out TermData termInfoFromCache);
             if (termInfoFromCache != default)
             {
@@ -1269,7 +1266,7 @@ namespace PnP.Framework.Modernization.Cache
         /// <returns></returns>
         public List<TermData> GetTransformTermCacheTermByName(ClientContext context, string termLabel = "", string termPath = "")
         {
-            var termCache = Store.GetAndInitialize<ConcurrentDictionary<Guid, TermData>>(StoreOptions.GetKey(keyTermTransformatorCache));
+            var termCache = Store.GetAndInitialize<Dictionary<Guid, TermData>>(StoreOptions.GetKey(keyTermTransformatorCache));
 
             var candidateTerms = termCache.Where(o => o.Value.TermLabel == termLabel || o.Value.TermPath == termPath);
             if (candidateTerms.Any())
@@ -1288,7 +1285,7 @@ namespace PnP.Framework.Modernization.Cache
         /// <returns></returns>
         public Dictionary<Guid, TermData> GetTransformTermCacheTermsByTermSet(ClientContext context, Guid termSetId)
         {
-            var termCache = Store.GetAndInitialize<ConcurrentDictionary<Guid, TermData>>(StoreOptions.GetKey(keyTermTransformatorCache));
+            var termCache = Store.GetAndInitialize<Dictionary<Guid, TermData>>(StoreOptions.GetKey(keyTermTransformatorCache));
 
             var candidateTerms = termCache.Where(o => o.Value.TermSetId == termSetId);
             if (candidateTerms.Any())

@@ -85,7 +85,14 @@ namespace PnP.Framework.Modernization.Transform
             {
                 // Load xml mapping data
                 XmlSerializer xmlMapping = new XmlSerializer(typeof(PageTransformation));
-                using (var stream = new FileStream(pageTransformationFile, FileMode.Open))
+
+                var fileToLoad = pageTransformationFile;
+                if (!System.IO.File.Exists(pageTransformationFile))
+                {
+                    fileToLoad = "Modernization" + Path.AltDirectorySeparatorChar + pageTransformationFile;
+                }
+
+                using (var stream = new FileStream(fileToLoad, FileMode.Open))
                 {
                     // Ensure the provided file complies with the current schema
                     ValidateSchema(schema, stream);

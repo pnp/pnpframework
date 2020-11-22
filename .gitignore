@@ -349,3 +349,4 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 /src/lib/PnP.Framework.Test/App.config
+/src/lib/PnP.Framework.Modernization.Test/App.config

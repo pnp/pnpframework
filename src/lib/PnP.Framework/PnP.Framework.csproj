@@ -69,8 +69,12 @@
 	<ItemGroup>
 		<EmbeddedResource Include="Modernization\Publishing\pagelayoutmapping.xml" />
 		<EmbeddedResource Include="Modernization\Publishing\pagelayoutmapping.xsd" />
-		<EmbeddedResource Include="Modernization\webpartmapping.xml" />
-		<EmbeddedResource Include="Modernization\webpartmapping.xsd" />
+		<EmbeddedResource Include="Modernization\webpartmapping.xml">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Modernization\webpartmapping.xsd">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
 		<EmbeddedResource Include="Provisioning\BaseTemplates\Common\Publishing-Feature-Native-Files.xml" />
 		<EmbeddedResource Include="Provisioning\BaseTemplates\SPO\BDR0Template.xml" />
 		<EmbeddedResource Include="Provisioning\BaseTemplates\SPO\BICenterSite0Template.xml" />
@@ -141,10 +145,10 @@
 	<ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
 		<PackageReference Include="Microsoft.ApplicationInsights" Version="2.13.1" />
 		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.2.0" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.8" />
-		<PackageReference Include="Microsoft.Extensions.Http" Version="3.1.8" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.8" />
-		<PackageReference Include="Microsoft.Extensions.Options" Version="3.1.8" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Options" Version="2.2.0" />
 		<PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
 		<PackageReference Include="System.DirectoryServices" Version="4.7.0" />
 		<PackageReference Include="System.IO.Packaging" Version="4.7.0" />

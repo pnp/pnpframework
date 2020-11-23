@@ -484,7 +484,7 @@ namespace Microsoft.SharePoint.Client
         {
             string accessToken = null;
 
-            if (PnPProvisioningContext.Current != null)
+            if (PnPProvisioningContext.Current?.AcquireTokenAsync != null)
             {
                 accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(clientContext.Url).Authority, null);
             }
@@ -493,14 +493,7 @@ namespace Microsoft.SharePoint.Client
                 if (clientContext.GetContextSettings()?.AuthenticationManager != null)
                 {
                     var contextSettings = clientContext.GetContextSettings();
-                    if (contextSettings.Type == ClientContextType.SharePointACSAppOnly)
-                    {
-
-                    }
-                    else
-                    {
-                        accessToken = contextSettings.AuthenticationManager.GetAccessTokenAsync(clientContext.Url).GetAwaiter().GetResult();
-                    }
+                    accessToken = contextSettings.AuthenticationManager.GetAccessTokenAsync(clientContext.Url).GetAwaiter().GetResult();
                 }
                 else
                 {

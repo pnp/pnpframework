@@ -349,6 +349,10 @@ namespace PnP.Framework
                         }
                         break;
                     }
+                case ClientContextType.SharePointACSAppOnly:
+                    {
+                        return appOnlyAccessToken;
+                    }
             }
             if (authResult?.AccessToken != null)
             {

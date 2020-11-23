@@ -38,3 +38,4 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Ported https://github.com/pnp/PnP-Sites-Core/pull/2803 [jansenbe - Bert Jansen]
 - Fixed NullReferenceException when adding Webhook Subscription #24 [martinewald]
 - Replaced graph beta call with already existing private method with v1 graph call #28 [patrikhellgren - Patrik Hellgren]
+- Enabled metadata copy of taxonomy and user fields during in-place page modernization [jansenbe - Bert Jansen]

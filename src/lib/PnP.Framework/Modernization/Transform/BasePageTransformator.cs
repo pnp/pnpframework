@@ -541,7 +541,15 @@ namespace PnP.Framework.Modernization.Transform
                         }
 
                         var taxFieldBeforeCast = targetSitePagesLibrary.Fields.Where(p => p.StaticName.Equals(fieldToCopy.FieldName)).FirstOrDefault();
-                        var sourceTaxFieldBeforeCast = sourceSitesPagesLibrary.Fields.Where(p => p.StaticName.Equals(fieldToCopy.FieldName)).FirstOrDefault();
+                        Field sourceTaxFieldBeforeCast = null;
+                        if (pageTransformationInformation.IsCrossSiteTransformation)
+                        {
+                            sourceTaxFieldBeforeCast = sourceSitesPagesLibrary.Fields.Where(p => p.StaticName.Equals(fieldToCopy.FieldName)).FirstOrDefault();
+                        }
+                        else
+                        {
+                            sourceTaxFieldBeforeCast = taxFieldBeforeCast;
+                        }
 
                         switch (fieldToCopy.FieldType)
                         {
@@ -899,7 +907,10 @@ namespace PnP.Framework.Modernization.Transform
                                     // Source User
                                     var fieldUser = (fieldValueToSet as FieldUserValue).LookupValue;
                                     // Mapped target user
-                                    fieldUser = this.userTransformator.RemapPrincipal(this.sourceClientContext, (fieldValueToSet as FieldUserValue));
+                                    if (this.userTransformator != null)
+                                    {
+                                        fieldUser = this.userTransformator.RemapPrincipal(this.sourceClientContext, (fieldValueToSet as FieldUserValue));
+                                    }
 
                                     // Ensure user exists on target site
                                     var ensuredUserOnTarget = CacheManager.Instance.GetEnsuredUser(targetPage.Context, fieldUser);
@@ -934,7 +945,10 @@ namespace PnP.Framework.Modernization.Transform
                                         // Source User
                                         var fieldUser = (currentUser as FieldUserValue).LookupValue;
                                         // Mapped target user
-                                        fieldUser = this.userTransformator.RemapPrincipal(this.sourceClientContext, (currentUser as FieldUserValue));
+                                        if (this.userTransformator != null)
+                                        {
+                                            fieldUser = this.userTransformator.RemapPrincipal(this.sourceClientContext, (currentUser as FieldUserValue));
+                                        }
 
                                         // Ensure user exists on target site
                                         var ensuredUserOnTarget = CacheManager.Instance.GetEnsuredUser(targetPage.Context, fieldUser);

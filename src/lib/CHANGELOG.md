@@ -40,3 +40,4 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Replaced graph beta call with already existing private method with v1 graph call #28 [patrikhellgren - Patrik Hellgren]
 - Enabled metadata copy of taxonomy and user fields during in-place page modernization [jansenbe - Bert Jansen]
 - Fix - Honour Overwrite attribute on Package in Tenant template #33 [YannickRe - Yannick Reekmans]
+- Feature - replaced GetFileByServerRelativeUrl to GetFileByServerRelativePath method #31 [gautamdsheth - Gautam Sheth]

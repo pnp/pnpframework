@@ -115,7 +115,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                 }
                                 var appFilename = appSrc.Substring(appSrc.LastIndexOf('\\') + 1);
 
-                                if (!exists)
+                                if (app.Overwrite || !exists)
                                 {
                                     messagesDelegate?.Invoke($"Processing solution {app.Src}", ProvisioningMessageType.Progress);
                                     appMetadata = manager.Add(appBytes, appFilename, app.Overwrite, timeoutSeconds: 500);

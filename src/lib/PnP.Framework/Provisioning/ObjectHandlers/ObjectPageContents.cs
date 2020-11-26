@@ -126,23 +126,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             // this is a client side page, so let's skip it since it's handled by the Client Side Page contents handler
                         }
                         else
-                        {
-                            if (web.Context.HasMinimalServerLibraryVersion(Constants.MINIMUMZONEIDREQUIREDSERVERVERSION) || creationInfo.SkipVersionCheck)
+                        {                            
+                            // Not a wikipage
+                            template = GetFileContents(web, template, welcomePageUrl, creationInfo, scope);
+                            if (template.WebSettings == null)
                             {
-                                // Not a wikipage
-                                template = GetFileContents(web, template, welcomePageUrl, creationInfo, scope);
-                                if (template.WebSettings == null)
-                                {
-                                    template.WebSettings = new WebSettings();
-                                }
-                                template.WebSettings.WelcomePage = homepageUrl;
+                                template.WebSettings = new WebSettings();
                             }
-                            else
-                            {
-                                WriteMessage(
-                                    $"Page content export requires a server version that is newer than the current server. Server version is {web.Context.ServerLibraryVersion}, minimal required is {Constants.MINIMUMZONEIDREQUIREDSERVERVERSION}. Set SkipVersionCheck to true to override this check.", ProvisioningMessageType.Warning);
-                                scope.LogWarning("Page content export requires a server version that is newer than the current server. Server version is {0}, minimal required is {1}", web.Context.ServerLibraryVersion, Constants.MINIMUMZONEIDREQUIREDSERVERVERSION);
-                            }
+                            template.WebSettings.WelcomePage = homepageUrl;                            
                         }
                     }
                 }
@@ -157,23 +148,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     else
                     {
                         if (ex.HResult != -2146233088)
-                        {
-                            if (web.Context.HasMinimalServerLibraryVersion(Constants.MINIMUMZONEIDREQUIREDSERVERVERSION) || creationInfo.SkipVersionCheck)
+                        {                            
+                            // Page does not belong to a list, extract the file as is
+                            template = GetFileContents(web, template, welcomePageUrl, creationInfo, scope);
+                            if (template.WebSettings == null)
                             {
-                                // Page does not belong to a list, extract the file as is
-                                template = GetFileContents(web, template, welcomePageUrl, creationInfo, scope);
-                                if (template.WebSettings == null)
-                                {
-                                    template.WebSettings = new WebSettings();
-                                }
-                                template.WebSettings.WelcomePage = homepageUrl;
+                                template.WebSettings = new WebSettings();
                             }
-                            else
-                            {
-                                WriteMessage(
-                                    $"Page content export requires a server version that is newer than the current server. Server version is {web.Context.ServerLibraryVersion}, minimal required is {Constants.MINIMUMZONEIDREQUIREDSERVERVERSION}. Set SkipVersionCheck to true to override this check.", ProvisioningMessageType.Warning);
-                                scope.LogWarning("Page content export requires a server version that is newer than the current server. Server version is {0}, minimal required is {1}", web.Context.ServerLibraryVersion, Constants.MINIMUMZONEIDREQUIREDSERVERVERSION);
-                            }
+                            template.WebSettings.WelcomePage = homepageUrl;                            
                         }
                     }
                 }
@@ -233,14 +215,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     Title = webPart.WebPart.Title,
                     Row = (uint)webPart.WebPart.ZoneIndex,
                     Order = (uint)webPart.WebPart.ZoneIndex,
-                    Contents = webPartxml
+                    Contents = webPartxml,
+                    Zone = webPart.ZoneId
                 };
-
-                // As long as we've no CSOM library that has the ZoneID we can't use the version check as things don't compile...
-                if (web.Context.HasMinimalServerLibraryVersion(Constants.MINIMUMZONEIDREQUIREDSERVERVERSION))
-                {
-                    newWp.Zone = webPart.ZoneId;
-                }
 
                 homeFile.WebParts.Add(newWp);
             }

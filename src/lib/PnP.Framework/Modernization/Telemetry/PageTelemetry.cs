@@ -15,6 +15,7 @@ namespace PnP.Framework.Modernization.Telemetry
     public class PageTelemetry
     {
         private readonly TelemetryClient telemetryClient;
+        private readonly TelemetryConfiguration telemetryConfiguration = TelemetryConfiguration.CreateDefault();       
         private Guid aadTenantId;
         private string version;
 
@@ -40,14 +41,10 @@ namespace PnP.Framework.Modernization.Telemetry
             {
                 this.version = version;
 
-                this.telemetryClient = new TelemetryClient
-                {
-                    InstrumentationKey = "373400f5-a9cc-48f3-8298-3fd7f4c063d6"
-                };
+                this.telemetryConfiguration.InstrumentationKey = "373400f5-a9cc-48f3-8298-3fd7f4c063d6";
 
-                // Setting this is needed to make metric tracking work
-                TelemetryConfiguration.Active.InstrumentationKey = this.telemetryClient.InstrumentationKey;
-
+                this.telemetryClient = new TelemetryClient(this.telemetryConfiguration);
+                
                 this.telemetryClient.Context.Session.Id = Guid.NewGuid().ToString();
                 this.telemetryClient.Context.Cloud.RoleInstance = "SharePointPnPPageTransformation";
                 this.telemetryClient.Context.Device.OperatingSystem = Environment.OSVersion.ToString();

@@ -41,3 +41,4 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Enabled metadata copy of taxonomy and user fields during in-place page modernization [jansenbe - Bert Jansen]
 - Fix - Honour Overwrite attribute on Package in Tenant template #33 [YannickRe - Yannick Reekmans]
 - Feature - replaced GetFileByServerRelativeUrl to GetFileByServerRelativePath method #31 [gautamdsheth - Gautam Sheth]
+- Improvements - removed some extra checks + fix obsolete Telemetry API call #32 [gautamdsheth - Gautam Sheth]

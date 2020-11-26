@@ -39,7 +39,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 }
                 var welcomePageUrl = UrlUtility.Combine(web.ServerRelativeUrl, homepageUrl);
 
-                var file = web.GetFileByServerRelativeUrl(welcomePageUrl);
+                var file = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(welcomePageUrl));
                 try
                 {
                     var listItem = file.EnsureProperty(f => f.ListItemAllFields);
@@ -53,7 +53,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             //var folderPath = fullUri.Segments.Take(fullUri.Segments.Count() - 1).ToArray().Aggregate((i, x) => i + x).TrimEnd('/');
                             //var fileName = fullUri.Segments[fullUri.Segments.Count() - 1];
 
-                            var homeFile = web.GetFileByServerRelativeUrl(welcomePageUrl);
+                            var homeFile = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(welcomePageUrl));
 
                             var limitedWPManager = homeFile.GetLimitedWebPartManager(PersonalizationScope.Shared);
 
@@ -202,7 +202,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             var webParts = web.GetWebParts(welcomePageUrl);
 
-            var file = web.GetFileByServerRelativeUrl(welcomePageUrl);
+            var file = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(welcomePageUrl));
 
             file.EnsureProperty(f => f.Level);
 

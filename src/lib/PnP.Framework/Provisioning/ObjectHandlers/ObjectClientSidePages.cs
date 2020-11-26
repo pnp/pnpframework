@@ -823,7 +823,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             if (clientSidePage.Properties != null && clientSidePage.Properties.Any())
             {
                 string pageFilePath = page.PageListItem[FileRefField].ToString();
-                var pageFile = web.GetFileByServerRelativeUrl(pageFilePath);
+                var pageFile = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(pageFilePath));
                 web.Context.Load(pageFile, p => p.Properties);
 
                 foreach (var pageProperty in clientSidePage.Properties)

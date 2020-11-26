@@ -42,7 +42,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     Microsoft.SharePoint.Client.File file = null;
                     try
                     {
-                        file = web.GetFileByServerRelativeUrl(url);
+                        file = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(url));
                         web.Context.Load(file);
                         web.Context.ExecuteQueryRetry();
                     }
@@ -179,7 +179,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         page.LocalizeWebParts(web, parser, scope);
                     }
 
-                    file = web.GetFileByServerRelativeUrl(url);
+                    file = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(url));
                     file.EnsureProperty(f => f.ListItemAllFields);
 
                     if (page.Fields.Any())

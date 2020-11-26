@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.Linq.Expressions;
+using System.Xml;
 
 namespace PnP.Framework.Provisioning.Providers.Markdown
 {
@@ -37,6 +38,57 @@ namespace PnP.Framework.Provisioning.Providers.Markdown
                 ParameterExpression.Parameter(targetType, "i")));
         }
 
+        protected void WriteAttributeField(string attributeName, string fieldName, TextWriter fieldWriter, XmlElement xmlField)
+        {
+            fieldWriter.WriteLine($"**{fieldName}** - {GetAttributeValue(attributeName, xmlField)}");
+            fieldWriter.WriteLine();
+        }
+
+        protected void WriteTextField(string fieldValue, string fieldName, TextWriter fieldWriter)
+        {
+            fieldWriter.WriteLine($"**{fieldName}** - {fieldValue}");
+            fieldWriter.WriteLine();
+        }
+
+        protected void WriteYesNoAttributeField(string attributeName, string fieldName, TextWriter fieldWriter, XmlElement xmlField)
+        {
+
+            var fieldText = GetAttributeValue("fieldName", xmlField);
+            if (fieldText.ToUpper() == "TRUE")
+            {
+                fieldText = "Yes";
+            }
+            else
+            {
+                fieldText = "No";
+            }
+
+
+            fieldWriter.WriteLine($"**{fieldName}** - {fieldText}");
+            fieldWriter.WriteLine();
+        }
+
+        protected void WriteNewLine(TextWriter fieldWriter)
+        {
+            fieldWriter.WriteLine("<br/>");
+            fieldWriter.WriteLine();
+        }
+
+        protected void WriteHeader(string headerText, int headerLevel, TextWriter fieldWriter)
+        {
+            var headerPrefix =  "".PadLeft(headerLevel, '#');
+            fieldWriter.WriteLine($"{headerPrefix} {headerText}");
+            fieldWriter.WriteLine();
+        }
+
+        protected string GetAttributeValue(string attributeName, XmlElement xmlField)
+        {
+            if (xmlField.Attributes[attributeName] != null) {
+
+                return xmlField.Attributes[attributeName].Value;
+            }
+            return "";
+        }
         protected string GetSiteColumnTypeNameFromTemplateCode(string templateCode)
         {
             switch (templateCode)

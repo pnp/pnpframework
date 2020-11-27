@@ -18,14 +18,12 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
     {
         public override void Writer(ProvisioningTemplate template, TextWriter writer)
         {
-            writer.WriteLine("# Site Summary");
-            writer.WriteLine();
-            writer.WriteLine($"Site name - To be set manually");
-            writer.WriteLine();
+            WriteHeader("Site Summary", 1, writer);
+            WriteTextField("To be set manually", "Site name", writer);
             writer.WriteLine(GetSiteTemplateNameFromTemplateCode(template.BaseSiteTemplate));
             writer.WriteLine();
-            writer.WriteLine($"Landing page - {template.WebSettings.WelcomePage}");
-            writer.WriteLine();
+            WriteTextField(template.WebSettings.WelcomePage, "Landing page", writer);
+
             bool commentsEnabled = template.WebSettings.CommentsOnSitePagesDisabled;
             string commentsEnabledText = "Comments on pages enabled";
             if (commentsEnabled)

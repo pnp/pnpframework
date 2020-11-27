@@ -49,39 +49,39 @@
       </pnp:Navigation>
       <pnp:SiteFields>
         
-        <Field Type="Number" DisplayName="InitiativeId" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Min="0" Decimals="0" Group="Initiatives Board" ID="{01e4a503-de28-4e39-b532-17b4c72e947e}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="navyInitiativeId" Name="navyInitiativeId" CustomFormatter="" Percentage="FALSE">
+        <Field Type="Number" DisplayName="InitiativeId" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Min="0" Decimals="0" Group="Initiatives Board" ID="{01e4a503-de28-4e39-b532-17b4c72e947e}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="sampleInitiativeId" Name="sampleInitiativeId" CustomFormatter="" Percentage="FALSE">
         </Field>
-        <Field Type="Text" DisplayName="ROM Annual Efficiencies" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{26a58218-859a-4885-9134-add32785329f}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="navyROMAnnualEfficiencies" Name="navyROMAnnualEfficiencies" CustomFormatter="">
+        <Field Type="Text" DisplayName="ROM Annual Efficiencies" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{26a58218-859a-4885-9134-add32785329f}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="sampleROMAnnualEfficiencies" Name="sampleROMAnnualEfficiencies" CustomFormatter="">
         </Field>
-        <Field Type="Number" DisplayName="Estimated Amount" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Decimals="2" Group="Initiatives Board" ID="{5b650c23-93d7-4df3-9d12-5635c7f3cbbd}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="navyEstimatedAmount" Name="navyEstimatedAmount" CustomFormatter="" Percentage="FALSE">
+        <Field Type="Number" DisplayName="Estimated Amount" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Decimals="2" Group="Initiatives Board" ID="{5b650c23-93d7-4df3-9d12-5635c7f3cbbd}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="sampleEstimatedAmount" Name="sampleEstimatedAmount" CustomFormatter="" Percentage="FALSE">
         </Field>
-        <Field Type="User" DisplayName="Primary Contact" List="UserInfo" Required="FALSE" EnforceUniqueValues="FALSE" ShowField="ImnName" UserSelectionMode="PeopleOnly" UserSelectionScope="0" Group="Initiatives Board" ID="{a4fff425-574c-467c-8c12-b68ad3d97b85}" SourceID="{{siteid}}" StaticName="navyPrimaryContact" Name="navyPrimaryContact" />
-        <Field Type="DateTime" DisplayName="Snapshot Date" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="DateOnly" Group="Initiatives Board" FriendlyDisplayFormat="Disabled" ID="{01015029-f3b6-4d0f-a632-de99277756f3}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="navySnapshotDate" Name="navySnapshotDate" CustomFormatter="" CalType="0">
+        <Field Type="User" DisplayName="Primary Contact" List="UserInfo" Required="FALSE" EnforceUniqueValues="FALSE" ShowField="ImnName" UserSelectionMode="PeopleOnly" UserSelectionScope="0" Group="Initiatives Board" ID="{a4fff425-574c-467c-8c12-b68ad3d97b85}" SourceID="{{siteid}}" StaticName="samplePrimaryContact" Name="samplePrimaryContact" />
+        <Field Type="DateTime" DisplayName="Snapshot Date" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="DateOnly" Group="Initiatives Board" FriendlyDisplayFormat="Disabled" ID="{01015029-f3b6-4d0f-a632-de99277756f3}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="sampleSnapshotDate" Name="sampleSnapshotDate" CustomFormatter="" CalType="0">
         </Field>
-        <Field Type="Text" DisplayName="Estimated Amount Question" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{b6e93e2a-17a6-4e21-8a4c-c9e9b0e29272}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="navyEstimatedAmountConfig" Name="navyEstimatedAmountConfig" CustomFormatter="">
+        <Field Type="Text" DisplayName="Estimated Amount Question" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{b6e93e2a-17a6-4e21-8a4c-c9e9b0e29272}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="sampleEstimatedAmountConfig" Name="sampleEstimatedAmountConfig" CustomFormatter="">
         </Field>
-        <Field Type="Number" DisplayName="SnapshotId" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Decimals="0" Group="Initiatives Board" ID="{e82ec02a-93ff-4216-8790-9bae2859d02e}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="navySnapshotId" Name="navySnapshotId" CustomFormatter="" Percentage="FALSE">
+        <Field Type="Number" DisplayName="SnapshotId" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Decimals="0" Group="Initiatives Board" ID="{e82ec02a-93ff-4216-8790-9bae2859d02e}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="sampleSnapshotId" Name="sampleSnapshotId" CustomFormatter="" Percentage="FALSE">
         </Field>
-        <Field Type="Number" DisplayName="Percent Budget Spent" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Percentage="TRUE" Decimals="2" Group="Initiatives Board" ID="{fba0542e-8b97-48ee-85cc-1492ba70593a}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="navyPercentBudgetSpent" Name="navyPercentBudgetSpent" CustomFormatter="">
+        <Field Type="Number" DisplayName="Percent Budget Spent" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Percentage="TRUE" Decimals="2" Group="Initiatives Board" ID="{fba0542e-8b97-48ee-85cc-1492ba70593a}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="samplePercentBudgetSpent" Name="samplePercentBudgetSpent" CustomFormatter="">
         </Field>
-        <Field Type="Note" DisplayName="Benefits by Mar 21" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="6" RichText="FALSE" Sortable="FALSE" Group="Initiatives Board" ID="{27015e31-7ddf-4e68-98d2-3539a6ed314e}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="navyBenefitsByMar21" Name="navyBenefitsByMar21" CustomFormatter="" RestrictedMode="TRUE" RichTextMode="Compatible" IsolateStyles="FALSE" AppendOnly="FALSE" UnlimitedLengthInDocumentLibrary="FALSE">
+        <Field Type="Note" DisplayName="Benefits by Mar 21" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="6" RichText="FALSE" Sortable="FALSE" Group="Initiatives Board" ID="{27015e31-7ddf-4e68-98d2-3539a6ed314e}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="sampleBenefitsByMar21" Name="sampleBenefitsByMar21" CustomFormatter="" RestrictedMode="TRUE" RichTextMode="Compatible" IsolateStyles="FALSE" AppendOnly="FALSE" UnlimitedLengthInDocumentLibrary="FALSE">
         </Field>
-        <Field Type="DateTime" DisplayName="Event Start" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="DateTime" Group="Initiatives Board" FriendlyDisplayFormat="Disabled" ID="{ae79e134-f63a-4d43-b22d-ef3abf2980dd}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="navyEventStart" Name="navyEventStart" CustomFormatter="" CalType="0">
+        <Field Type="DateTime" DisplayName="Event Start" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="DateTime" Group="Initiatives Board" FriendlyDisplayFormat="Disabled" ID="{ae79e134-f63a-4d43-b22d-ef3abf2980dd}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="sampleEventStart" Name="sampleEventStart" CustomFormatter="" CalType="0">
         </Field>
-        <Field Type="Choice" DisplayName="2 Star Area" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" Group="Initiatives Board" ID="{f4b4a63e-c225-44c2-aeb9-4d8726fd73df}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="navyTwoStarArea" Name="navyTwoStarArea" CustomFormatter="">
+        <Field Type="Choice" DisplayName="2 Star Area" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" Group="Initiatives Board" ID="{f4b4a63e-c225-44c2-aeb9-4d8726fd73df}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="sampleTwoStarArea" Name="sampleTwoStarArea" CustomFormatter="">
           <CHOICES>
             <CHOICE>Area One</CHOICE>
             <CHOICE>Area Two</CHOICE>
             <CHOICE>Area Three</CHOICE>
           </CHOICES>
         </Field>
-        <Field Type="Text" DisplayName="EventId" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{41713d5b-09de-4d9a-a05f-ba28a152af37}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="navyEventId" Name="navyEventId" CustomFormatter="">
+        <Field Type="Text" DisplayName="EventId" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{41713d5b-09de-4d9a-a05f-ba28a152af37}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="sampleEventId" Name="sampleEventId" CustomFormatter="">
         </Field>
-        <Field Type="Number" DisplayName="Amount Spent" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Decimals="2" Group="Initiatives Board" ID="{b2b23664-5dbe-4480-aa76-cfe4a7d955c0}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="navyAmountSpent" Name="navyAmountSpent" CustomFormatter="" Percentage="FALSE">
+        <Field Type="Number" DisplayName="Amount Spent" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Decimals="2" Group="Initiatives Board" ID="{b2b23664-5dbe-4480-aa76-cfe4a7d955c0}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="sampleAmountSpent" Name="sampleAmountSpent" CustomFormatter="" Percentage="FALSE">
         </Field>
-        <Field Type="Lookup" DisplayName="navyInitiative:ID" List="{{listid:Initiatives}}" WebId="{siteid}" ShowField="ID" FieldRef="44d9a6fe-c3f6-45e0-af80-5bdf96d60572" ReadOnly="TRUE" UnlimitedLengthInDocumentLibrary="FALSE" Group="Initiatives Board" ID="{f910ca6c-92ce-4b71-b4da-1a7ffbfd896f}" SourceID="{{siteid}}" StaticName="navyInitiative_x003a_ID" Name="navyInitiative_x003A_ID" />
-        <Field Type="UserMulti" DisplayName="Delegates" List="UserInfo" Required="FALSE" EnforceUniqueValues="FALSE" ShowField="ImnName" UserSelectionMode="PeopleOnly" UserSelectionScope="0" Mult="TRUE" Sortable="FALSE" Group="Initiatives Board" ID="{2ae88e78-0725-4c5d-9c10-bd5b195f0527}" SourceID="{{siteid}}" StaticName="navyDelegates" Name="navyDelegates" />
-        <Field Type="Note" DisplayName="Benefits to Org" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="6" RichText="FALSE" Sortable="FALSE" Group="Initiatives Board" ID="{8b74287d-5fbc-40d1-8b6a-52694a754a5e}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="navyBenefitsToOrg" Name="navyBenefitsToOrg" CustomFormatter="" RestrictedMode="TRUE" RichTextMode="Compatible" IsolateStyles="FALSE" AppendOnly="FALSE" UnlimitedLengthInDocumentLibrary="FALSE">
+        <Field Type="Lookup" DisplayName="sampleInitiative:ID" List="{{listid:Initiatives}}" WebId="{siteid}" ShowField="ID" FieldRef="44d9a6fe-c3f6-45e0-af80-5bdf96d60572" ReadOnly="TRUE" UnlimitedLengthInDocumentLibrary="FALSE" Group="Initiatives Board" ID="{f910ca6c-92ce-4b71-b4da-1a7ffbfd896f}" SourceID="{{siteid}}" StaticName="sampleInitiative_x003a_ID" Name="sampleInitiative_x003A_ID" />
+        <Field Type="UserMulti" DisplayName="Delegates" List="UserInfo" Required="FALSE" EnforceUniqueValues="FALSE" ShowField="ImnName" UserSelectionMode="PeopleOnly" UserSelectionScope="0" Mult="TRUE" Sortable="FALSE" Group="Initiatives Board" ID="{2ae88e78-0725-4c5d-9c10-bd5b195f0527}" SourceID="{{siteid}}" StaticName="sampleDelegates" Name="sampleDelegates" />
+        <Field Type="Note" DisplayName="Benefits to Org" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="6" RichText="FALSE" Sortable="FALSE" Group="Initiatives Board" ID="{8b74287d-5fbc-40d1-8b6a-52694a754a5e}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="sampleBenefitsToOrg" Name="sampleBenefitsToOrg" CustomFormatter="" RestrictedMode="TRUE" RichTextMode="Compatible" IsolateStyles="FALSE" AppendOnly="FALSE" UnlimitedLengthInDocumentLibrary="FALSE">
         </Field>
         <Field Type="Choice" DisplayName="AM / PM" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" Group="CPS Site Columns" ID="{bc26c97d-a547-4261-8f3f-7b12f5a27463}" SourceID="{b325af47-6115-4822-a06e-a9601d9c3ada}" StaticName="AmPm" Name="AmPm">
           <Default>N/A</Default>
@@ -92,37 +92,37 @@
           </CHOICES>
         </Field>
         
-        <Field Type="DateTime" DisplayName="Event End" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="DateTime" Group="Initiatives Board" FriendlyDisplayFormat="Disabled" ID="{87e03397-1e6d-454c-9a40-0423071a67dc}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="navyEventEnd" Name="navyEventEnd" CustomFormatter="" CalType="0">
+        <Field Type="DateTime" DisplayName="Event End" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="DateTime" Group="Initiatives Board" FriendlyDisplayFormat="Disabled" ID="{87e03397-1e6d-454c-9a40-0423071a67dc}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="sampleEventEnd" Name="sampleEventEnd" CustomFormatter="" CalType="0">
         </Field>
-        <Field Type="Note" DisplayName="Event Description" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="4" RichText="FALSE" Sortable="FALSE" Group="Initiatives Board" ID="{4574a59a-7e99-42ca-a4e6-1a524cefd497}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="navyEventDescription" Name="navyEventDescription" CustomFormatter="" RestrictedMode="TRUE" RichTextMode="Compatible" IsolateStyles="FALSE" AppendOnly="FALSE" UnlimitedLengthInDocumentLibrary="FALSE">
+        <Field Type="Note" DisplayName="Event Description" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="4" RichText="FALSE" Sortable="FALSE" Group="Initiatives Board" ID="{4574a59a-7e99-42ca-a4e6-1a524cefd497}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="sampleEventDescription" Name="sampleEventDescription" CustomFormatter="" RestrictedMode="TRUE" RichTextMode="Compatible" IsolateStyles="FALSE" AppendOnly="FALSE" UnlimitedLengthInDocumentLibrary="FALSE">
         </Field>
-        <Field Type="Text" DisplayName="ROM Annual Costs" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{eebf19a4-b0b0-446c-b160-acdfff07fb6e}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="navyROMAnnualCosts" Name="navyROMAnnualCosts" CustomFormatter="">
+        <Field Type="Text" DisplayName="ROM Annual Costs" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{eebf19a4-b0b0-446c-b160-acdfff07fb6e}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="sampleROMAnnualCosts" Name="sampleROMAnnualCosts" CustomFormatter="">
         </Field>
-        <Field Name="navySynopsis" FromBaseType="FALSE" Type="Note" DisplayName="Synopsis" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="4" RichText="FALSE" Sortable="FALSE" Group="Initiatives Board" ID="{a1e75ea7-6f51-4f82-b499-61c63449a6ec}" StaticName="navySynopsis" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}">
+        <Field Name="sampleSynopsis" FromBaseType="FALSE" Type="Note" DisplayName="Synopsis" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="4" RichText="FALSE" Sortable="FALSE" Group="Initiatives Board" ID="{a1e75ea7-6f51-4f82-b499-61c63449a6ec}" StaticName="sampleSynopsis" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}">
         </Field>
-        <Field Type="Boolean" DisplayName="Updated For Meeting" EnforceUniqueValues="FALSE" Indexed="FALSE" Group="Initiatives Board" ID="{79acffaa-fd24-4198-9d0c-12bf304dd860}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="navyUpdatedForMeeting" Name="navyUpdatedForMeeting" CustomFormatter="" Required="FALSE">
+        <Field Type="Boolean" DisplayName="Updated For Meeting" EnforceUniqueValues="FALSE" Indexed="FALSE" Group="Initiatives Board" ID="{79acffaa-fd24-4198-9d0c-12bf304dd860}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="sampleUpdatedForMeeting" Name="sampleUpdatedForMeeting" CustomFormatter="" Required="FALSE">
           <Default>0</Default>
         </Field>
-        <Field Type="Text" DisplayName="Percent Budget Spent Question" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{a47871d0-f742-4018-a468-a082caeb7f2a}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="navyPercentBudgetSpentConfig" Name="navyPercentBudgetSpentConfig" CustomFormatter="">
+        <Field Type="Text" DisplayName="Percent Budget Spent Question" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{a47871d0-f742-4018-a468-a082caeb7f2a}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="samplePercentBudgetSpentConfig" Name="samplePercentBudgetSpentConfig" CustomFormatter="">
         </Field>
-        <Field Type="Choice" DisplayName="Committed/Uncommitted" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" Group="Initiatives Board" ID="{f97cbdd6-62f5-422d-b100-51ec9e3f3e7c}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="navyCommitted" Name="navyCommitted" CustomFormatter="">
+        <Field Type="Choice" DisplayName="Committed/Uncommitted" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" Group="Initiatives Board" ID="{f97cbdd6-62f5-422d-b100-51ec9e3f3e7c}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="sampleCommitted" Name="sampleCommitted" CustomFormatter="">
           <CHOICES>
             <CHOICE>Committed</CHOICE>
             <CHOICE>Uncommitted</CHOICE>
           </CHOICES>
         </Field>
-        <Field Type="UserMulti" DisplayName="DDB Secretariat(s)" List="UserInfo" Required="FALSE" EnforceUniqueValues="FALSE" ShowField="ImnName" UserSelectionMode="PeopleOnly" UserSelectionScope="0" Mult="TRUE" Sortable="FALSE" Group="Initiatives Board" ID="{140caddd-247f-4182-8a1d-f7b35f585ac7}" SourceID="{{siteid}}" StaticName="navyDDBSecretariat" Name="navyDDBSecretariat" />
-        <Field Name="navyDeliveryUpdate" FromBaseType="FALSE" Type="Note" DisplayName="Delivery Update" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="6" Sortable="FALSE" Group="Initiatives Board" ID="{433578e7-0186-439d-9871-2297bc034d62}" StaticName="navyDeliveryUpdate" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}">
+        <Field Type="UserMulti" DisplayName="DDB Secretariat(s)" List="UserInfo" Required="FALSE" EnforceUniqueValues="FALSE" ShowField="ImnName" UserSelectionMode="PeopleOnly" UserSelectionScope="0" Mult="TRUE" Sortable="FALSE" Group="Initiatives Board" ID="{140caddd-247f-4182-8a1d-f7b35f585ac7}" SourceID="{{siteid}}" StaticName="sampleDDBSecretariat" Name="sampleDDBSecretariat" />
+        <Field Name="sampleDeliveryUpdate" FromBaseType="FALSE" Type="Note" DisplayName="Delivery Update" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="6" Sortable="FALSE" Group="Initiatives Board" ID="{433578e7-0186-439d-9871-2297bc034d62}" StaticName="sampleDeliveryUpdate" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}">
         </Field>
-        <Field Type="Text" DisplayName="Further Investment Required" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{1362a7ec-59ab-4fe6-8dbf-a35d9d61264c}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="navyFurtherInvestmentRequired" Name="navyFurtherInvestmentRequired" CustomFormatter="">
+        <Field Type="Text" DisplayName="Further Investment Required" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{1362a7ec-59ab-4fe6-8dbf-a35d9d61264c}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="sampleFurtherInvestmentRequired" Name="sampleFurtherInvestmentRequired" CustomFormatter="">
         </Field>
-        <Field Type="Text" DisplayName="Amount Spent Question" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{c1b45fee-108d-421b-bdb1-f97a89a4c6f9}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="navyAmountSpentConfig" Name="navyAmountSpentConfig" CustomFormatter="">
+        <Field Type="Text" DisplayName="Amount Spent Question" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{c1b45fee-108d-421b-bdb1-f97a89a4c6f9}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="sampleAmountSpentConfig" Name="sampleAmountSpentConfig" CustomFormatter="">
         </Field>
-        <Field Type="Text" DisplayName="Work Contracted" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{7d6b03f3-0533-4010-acdc-902a6b225d66}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="navyWorkContracted" Name="navyWorkContracted" CustomFormatter="">
+        <Field Type="Text" DisplayName="Work Contracted" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{7d6b03f3-0533-4010-acdc-902a6b225d66}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="sampleWorkContracted" Name="sampleWorkContracted" CustomFormatter="">
         </Field>
-        <Field Type="Number" DisplayName="Amount Committed" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Decimals="2" Group="Initiatives Board" ID="{ec603efb-8811-480c-ab2d-0b1d7701294e}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="navyAmountCommitted" Name="navyAmountCommitted" CustomFormatter="" Percentage="FALSE">
+        <Field Type="Number" DisplayName="Amount Committed" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Decimals="2" Group="Initiatives Board" ID="{ec603efb-8811-480c-ab2d-0b1d7701294e}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="sampleAmountCommitted" Name="sampleAmountCommitted" CustomFormatter="" Percentage="FALSE">
         </Field>
-        <Field Type="Lookup" DisplayName="Initiative Name" Required="FALSE" EnforceUniqueValues="FALSE" List="{{listid:Initiatives}}" WebId="{siteid}" ShowField="Title" UnlimitedLengthInDocumentLibrary="FALSE" Group="Initiatives Board" ID="{44d9a6fe-c3f6-45e0-af80-5bdf96d60572}" SourceID="{{siteid}}" StaticName="navyInitiative" Name="navyInitiative" />
+        <Field Type="Lookup" DisplayName="Initiative Name" Required="FALSE" EnforceUniqueValues="FALSE" List="{{listid:Initiatives}}" WebId="{siteid}" ShowField="Title" UnlimitedLengthInDocumentLibrary="FALSE" Group="Initiatives Board" ID="{44d9a6fe-c3f6-45e0-af80-5bdf96d60572}" SourceID="{{siteid}}" StaticName="sampleInitiative" Name="sampleInitiative" />
      
       </pnp:SiteFields>
       <pnp:ContentTypes>
@@ -130,76 +130,76 @@
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" Required="true" UpdateChildren="true" />
-            <pnp:FieldRef ID="e82ec02a-93ff-4216-8790-9bae2859d02e" Name="navySnapshotId" UpdateChildren="true" />
-            <pnp:FieldRef ID="01015029-f3b6-4d0f-a632-de99277756f3" Name="navySnapshotDate" UpdateChildren="true" />
-            <pnp:FieldRef ID="f4b4a63e-c225-44c2-aeb9-4d8726fd73df" Name="navyTwoStarArea" UpdateChildren="true" />
-            <pnp:FieldRef ID="a4fff425-574c-467c-8c12-b68ad3d97b85" Name="navyPrimaryContact" UpdateChildren="true" />
-            <pnp:FieldRef ID="2ae88e78-0725-4c5d-9c10-bd5b195f0527" Name="navyDelegates" UpdateChildren="true" />
-            <pnp:FieldRef ID="433578e7-0186-439d-9871-2297bc034d62" Name="navyDeliveryUpdate" UpdateChildren="true" />
-            <pnp:FieldRef ID="a1e75ea7-6f51-4f82-b499-61c63449a6ec" Name="navySynopsis" UpdateChildren="true" />
-            <pnp:FieldRef ID="8b74287d-5fbc-40d1-8b6a-52694a754a5e" Name="navyBenefitsToOrg" UpdateChildren="true" />
-            <pnp:FieldRef ID="27015e31-7ddf-4e68-98d2-3539a6ed314e" Name="navyBenefitsByMar21" UpdateChildren="true" />
-            <pnp:FieldRef ID="ec603efb-8811-480c-ab2d-0b1d7701294e" Name="navyAmountCommitted" UpdateChildren="true" />
-            <pnp:FieldRef ID="5b650c23-93d7-4df3-9d12-5635c7f3cbbd" Name="navyEstimatedAmount" UpdateChildren="true" />
-            <pnp:FieldRef ID="b2b23664-5dbe-4480-aa76-cfe4a7d955c0" Name="navyAmountSpent" UpdateChildren="true" />
-            <pnp:FieldRef ID="fba0542e-8b97-48ee-85cc-1492ba70593a" Name="navyPercentBudgetSpent" UpdateChildren="true" />
-            <pnp:FieldRef ID="f97cbdd6-62f5-422d-b100-51ec9e3f3e7c" Name="navyCommitted" UpdateChildren="true" />
-            <pnp:FieldRef ID="7d6b03f3-0533-4010-acdc-902a6b225d66" Name="navyWorkContracted" UpdateChildren="true" />
-            <pnp:FieldRef ID="1362a7ec-59ab-4fe6-8dbf-a35d9d61264c" Name="navyFurtherInvestmentRequired" UpdateChildren="true" />
-            <pnp:FieldRef ID="eebf19a4-b0b0-446c-b160-acdfff07fb6e" Name="navyROMAnnualCosts" UpdateChildren="true" />
-            <pnp:FieldRef ID="26a58218-859a-4885-9134-add32785329f" Name="navyROMAnnualEfficiencies" UpdateChildren="true" />
+            <pnp:FieldRef ID="e82ec02a-93ff-4216-8790-9bae2859d02e" Name="sampleSnapshotId" UpdateChildren="true" />
+            <pnp:FieldRef ID="01015029-f3b6-4d0f-a632-de99277756f3" Name="sampleSnapshotDate" UpdateChildren="true" />
+            <pnp:FieldRef ID="f4b4a63e-c225-44c2-aeb9-4d8726fd73df" Name="sampleTwoStarArea" UpdateChildren="true" />
+            <pnp:FieldRef ID="a4fff425-574c-467c-8c12-b68ad3d97b85" Name="samplePrimaryContact" UpdateChildren="true" />
+            <pnp:FieldRef ID="2ae88e78-0725-4c5d-9c10-bd5b195f0527" Name="sampleDelegates" UpdateChildren="true" />
+            <pnp:FieldRef ID="433578e7-0186-439d-9871-2297bc034d62" Name="sampleDeliveryUpdate" UpdateChildren="true" />
+            <pnp:FieldRef ID="a1e75ea7-6f51-4f82-b499-61c63449a6ec" Name="sampleSynopsis" UpdateChildren="true" />
+            <pnp:FieldRef ID="8b74287d-5fbc-40d1-8b6a-52694a754a5e" Name="sampleBenefitsToOrg" UpdateChildren="true" />
+            <pnp:FieldRef ID="27015e31-7ddf-4e68-98d2-3539a6ed314e" Name="sampleBenefitsByMar21" UpdateChildren="true" />
+            <pnp:FieldRef ID="ec603efb-8811-480c-ab2d-0b1d7701294e" Name="sampleAmountCommitted" UpdateChildren="true" />
+            <pnp:FieldRef ID="5b650c23-93d7-4df3-9d12-5635c7f3cbbd" Name="sampleEstimatedAmount" UpdateChildren="true" />
+            <pnp:FieldRef ID="b2b23664-5dbe-4480-aa76-cfe4a7d955c0" Name="sampleAmountSpent" UpdateChildren="true" />
+            <pnp:FieldRef ID="fba0542e-8b97-48ee-85cc-1492ba70593a" Name="samplePercentBudgetSpent" UpdateChildren="true" />
+            <pnp:FieldRef ID="f97cbdd6-62f5-422d-b100-51ec9e3f3e7c" Name="sampleCommitted" UpdateChildren="true" />
+            <pnp:FieldRef ID="7d6b03f3-0533-4010-acdc-902a6b225d66" Name="sampleWorkContracted" UpdateChildren="true" />
+            <pnp:FieldRef ID="1362a7ec-59ab-4fe6-8dbf-a35d9d61264c" Name="sampleFurtherInvestmentRequired" UpdateChildren="true" />
+            <pnp:FieldRef ID="eebf19a4-b0b0-446c-b160-acdfff07fb6e" Name="sampleROMAnnualCosts" UpdateChildren="true" />
+            <pnp:FieldRef ID="26a58218-859a-4885-9134-add32785329f" Name="sampleROMAnnualEfficiencies" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
         <pnp:ContentType ID="0x0100492753E3DF3AAC449C2A649FEE3A023E" Name="Intiative" Description="" Group="InitiativesBoard" NewFormUrl="" EditFormUrl="" DisplayFormUrl="">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" Required="true" UpdateChildren="true" />
-            <pnp:FieldRef ID="f4b4a63e-c225-44c2-aeb9-4d8726fd73df" Name="navyTwoStarArea" UpdateChildren="true" />
-            <pnp:FieldRef ID="27015e31-7ddf-4e68-98d2-3539a6ed314e" Name="navyBenefitsByMar21" UpdateChildren="true" />
-            <pnp:FieldRef ID="8b74287d-5fbc-40d1-8b6a-52694a754a5e" Name="navyBenefitsToOrg" UpdateChildren="true" />
-            <pnp:FieldRef ID="a4fff425-574c-467c-8c12-b68ad3d97b85" Name="navyPrimaryContact" UpdateChildren="true" />
-            <pnp:FieldRef ID="a1e75ea7-6f51-4f82-b499-61c63449a6ec" Name="navySynopsis" UpdateChildren="true" />
-            <pnp:FieldRef ID="2ae88e78-0725-4c5d-9c10-bd5b195f0527" Name="navyDelegates" UpdateChildren="true" />
-            <pnp:FieldRef ID="433578e7-0186-439d-9871-2297bc034d62" Name="navyDeliveryUpdate" UpdateChildren="true" />
-            <pnp:FieldRef ID="79acffaa-fd24-4198-9d0c-12bf304dd860" Name="navyUpdatedForMeeting" UpdateChildren="true" />
+            <pnp:FieldRef ID="f4b4a63e-c225-44c2-aeb9-4d8726fd73df" Name="sampleTwoStarArea" UpdateChildren="true" />
+            <pnp:FieldRef ID="27015e31-7ddf-4e68-98d2-3539a6ed314e" Name="sampleBenefitsByMar21" UpdateChildren="true" />
+            <pnp:FieldRef ID="8b74287d-5fbc-40d1-8b6a-52694a754a5e" Name="sampleBenefitsToOrg" UpdateChildren="true" />
+            <pnp:FieldRef ID="a4fff425-574c-467c-8c12-b68ad3d97b85" Name="samplePrimaryContact" UpdateChildren="true" />
+            <pnp:FieldRef ID="a1e75ea7-6f51-4f82-b499-61c63449a6ec" Name="sampleSynopsis" UpdateChildren="true" />
+            <pnp:FieldRef ID="2ae88e78-0725-4c5d-9c10-bd5b195f0527" Name="sampleDelegates" UpdateChildren="true" />
+            <pnp:FieldRef ID="433578e7-0186-439d-9871-2297bc034d62" Name="sampleDeliveryUpdate" UpdateChildren="true" />
+            <pnp:FieldRef ID="79acffaa-fd24-4198-9d0c-12bf304dd860" Name="sampleUpdatedForMeeting" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
         <pnp:ContentType ID="0x010081A4298ECBA86648BBB7C63250AE1C0A" Name="Quarterly Meeting Initiatives" Description="" Group="InitiativesBoard" NewFormUrl="" EditFormUrl="" DisplayFormUrl="">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" Required="true" UpdateChildren="true" />
-            <pnp:FieldRef ID="4574a59a-7e99-42ca-a4e6-1a524cefd497" Name="navyEventDescription" UpdateChildren="true" />
-            <pnp:FieldRef ID="87e03397-1e6d-454c-9a40-0423071a67dc" Name="navyEventEnd" UpdateChildren="true" />
-            <pnp:FieldRef ID="ae79e134-f63a-4d43-b22d-ef3abf2980dd" Name="navyEventStart" UpdateChildren="true" />
-            <pnp:FieldRef ID="41713d5b-09de-4d9a-a05f-ba28a152af37" Name="navyEventId" UpdateChildren="true" />
+            <pnp:FieldRef ID="4574a59a-7e99-42ca-a4e6-1a524cefd497" Name="sampleEventDescription" UpdateChildren="true" />
+            <pnp:FieldRef ID="87e03397-1e6d-454c-9a40-0423071a67dc" Name="sampleEventEnd" UpdateChildren="true" />
+            <pnp:FieldRef ID="ae79e134-f63a-4d43-b22d-ef3abf2980dd" Name="sampleEventStart" UpdateChildren="true" />
+            <pnp:FieldRef ID="41713d5b-09de-4d9a-a05f-ba28a152af37" Name="sampleEventId" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
         <pnp:ContentType ID="0x0100A080543120EA8D4FA871B0AFFEC51C38" Name="Private Initiative" Description="" Group="InitiativesBoard" NewFormUrl="" EditFormUrl="" DisplayFormUrl="">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" Required="true" UpdateChildren="true" />
-            <pnp:FieldRef ID="ec603efb-8811-480c-ab2d-0b1d7701294e" Name="navyAmountCommitted" UpdateChildren="true" />
-            <pnp:FieldRef ID="b2b23664-5dbe-4480-aa76-cfe4a7d955c0" Name="navyAmountSpent" UpdateChildren="true" />
-            <pnp:FieldRef ID="f97cbdd6-62f5-422d-b100-51ec9e3f3e7c" Name="navyCommitted" UpdateChildren="true" />
-            <pnp:FieldRef ID="5b650c23-93d7-4df3-9d12-5635c7f3cbbd" Name="navyEstimatedAmount" UpdateChildren="true" />
-            <pnp:FieldRef ID="1362a7ec-59ab-4fe6-8dbf-a35d9d61264c" Name="navyFurtherInvestmentRequired" UpdateChildren="true" />
-            <pnp:FieldRef ID="fba0542e-8b97-48ee-85cc-1492ba70593a" Name="navyPercentBudgetSpent" UpdateChildren="true" />
-            <pnp:FieldRef ID="eebf19a4-b0b0-446c-b160-acdfff07fb6e" Name="navyROMAnnualCosts" UpdateChildren="true" />
-            <pnp:FieldRef ID="26a58218-859a-4885-9134-add32785329f" Name="navyROMAnnualEfficiencies" UpdateChildren="true" />
-            <pnp:FieldRef ID="79acffaa-fd24-4198-9d0c-12bf304dd860" Name="navyUpdatedForMeeting" UpdateChildren="true" />
-            <pnp:FieldRef ID="7d6b03f3-0533-4010-acdc-902a6b225d66" Name="navyWorkContracted" UpdateChildren="true" />
-            <pnp:FieldRef ID="44d9a6fe-c3f6-45e0-af80-5bdf96d60572" Name="navyInitiative" UpdateChildren="true" />
-            <pnp:FieldRef ID="01e4a503-de28-4e39-b532-17b4c72e947e" Name="navyInitiativeId" UpdateChildren="true" />
+            <pnp:FieldRef ID="ec603efb-8811-480c-ab2d-0b1d7701294e" Name="sampleAmountCommitted" UpdateChildren="true" />
+            <pnp:FieldRef ID="b2b23664-5dbe-4480-aa76-cfe4a7d955c0" Name="sampleAmountSpent" UpdateChildren="true" />
+            <pnp:FieldRef ID="f97cbdd6-62f5-422d-b100-51ec9e3f3e7c" Name="sampleCommitted" UpdateChildren="true" />
+            <pnp:FieldRef ID="5b650c23-93d7-4df3-9d12-5635c7f3cbbd" Name="sampleEstimatedAmount" UpdateChildren="true" />
+            <pnp:FieldRef ID="1362a7ec-59ab-4fe6-8dbf-a35d9d61264c" Name="sampleFurtherInvestmentRequired" UpdateChildren="true" />
+            <pnp:FieldRef ID="fba0542e-8b97-48ee-85cc-1492ba70593a" Name="samplePercentBudgetSpent" UpdateChildren="true" />
+            <pnp:FieldRef ID="eebf19a4-b0b0-446c-b160-acdfff07fb6e" Name="sampleROMAnnualCosts" UpdateChildren="true" />
+            <pnp:FieldRef ID="26a58218-859a-4885-9134-add32785329f" Name="sampleROMAnnualEfficiencies" UpdateChildren="true" />
+            <pnp:FieldRef ID="79acffaa-fd24-4198-9d0c-12bf304dd860" Name="sampleUpdatedForMeeting" UpdateChildren="true" />
+            <pnp:FieldRef ID="7d6b03f3-0533-4010-acdc-902a6b225d66" Name="sampleWorkContracted" UpdateChildren="true" />
+            <pnp:FieldRef ID="44d9a6fe-c3f6-45e0-af80-5bdf96d60572" Name="sampleInitiative" UpdateChildren="true" />
+            <pnp:FieldRef ID="01e4a503-de28-4e39-b532-17b4c72e947e" Name="sampleInitiativeId" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
         <pnp:ContentType ID="0x0100AC97DAF5F2FC0E4BB3632D50D0BA4E72" Name="Configuration Initiatives" Description="" Group="InitiativesBoard" NewFormUrl="" EditFormUrl="" DisplayFormUrl="">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" Required="true" UpdateChildren="true" />
-            <pnp:FieldRef ID="140caddd-247f-4182-8a1d-f7b35f585ac7" Name="navyDDBSecretariat" UpdateChildren="true" />
-            <pnp:FieldRef ID="c1b45fee-108d-421b-bdb1-f97a89a4c6f9" Name="navyAmountSpentConfig" UpdateChildren="true" />
-            <pnp:FieldRef ID="b6e93e2a-17a6-4e21-8a4c-c9e9b0e29272" Name="navyEstimatedAmountConfig" UpdateChildren="true" />
-            <pnp:FieldRef ID="a47871d0-f742-4018-a468-a082caeb7f2a" Name="navyPercentBudgetSpentConfig" UpdateChildren="true" />
+            <pnp:FieldRef ID="140caddd-247f-4182-8a1d-f7b35f585ac7" Name="sampleDDBSecretariat" UpdateChildren="true" />
+            <pnp:FieldRef ID="c1b45fee-108d-421b-bdb1-f97a89a4c6f9" Name="sampleAmountSpentConfig" UpdateChildren="true" />
+            <pnp:FieldRef ID="b6e93e2a-17a6-4e21-8a4c-c9e9b0e29272" Name="sampleEstimatedAmountConfig" UpdateChildren="true" />
+            <pnp:FieldRef ID="a47871d0-f742-4018-a468-a082caeb7f2a" Name="samplePercentBudgetSpentConfig" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
       </pnp:ContentTypes>
@@ -320,14 +320,14 @@
               <ViewFields>
                 <FieldRef Name="ID" />
                 <FieldRef Name="LinkTitle" />
-                <FieldRef Name="navyTwoStarArea" />
-                <FieldRef Name="navyPrimaryContact" />
-                <FieldRef Name="navyDelegates" />
-                <FieldRef Name="navySynopsis" />
-                <FieldRef Name="navyDeliveryUpdate" />
-                <FieldRef Name="navyBenefitsToOrg" />
-                <FieldRef Name="navyBenefitsByMar21" />
-                <FieldRef Name="navyUpdatedForMeeting" />
+                <FieldRef Name="sampleTwoStarArea" />
+                <FieldRef Name="samplePrimaryContact" />
+                <FieldRef Name="sampleDelegates" />
+                <FieldRef Name="sampleSynopsis" />
+                <FieldRef Name="sampleDeliveryUpdate" />
+                <FieldRef Name="sampleBenefitsToOrg" />
+                <FieldRef Name="sampleBenefitsByMar21" />
+                <FieldRef Name="sampleUpdatedForMeeting" />
               </ViewFields>
               <RowLimit Paged="TRUE">30</RowLimit>
               <Aggregations Value="Off" />
@@ -336,24 +336,24 @@
             </View>
           </pnp:Views>
           <pnp:Fields>
-            <Field Type="Choice" DisplayName="2 Star Area" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" Group="Initiatives Board" ID="{f4b4a63e-c225-44c2-aeb9-4d8726fd73df}" SourceID="{{siteid}}" StaticName="navyTwoStarArea" Name="navyTwoStarArea" Version="5" CustomFormatter="{&quot;elmType&quot;:&quot;div&quot;,&quot;style&quot;:{&quot;box-sizing&quot;:&quot;border-box&quot;,&quot;padding&quot;:&quot;0 2px&quot;},&quot;attributes&quot;:{&quot;class&quot;:{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$navyTwoStarArea]&quot;,&quot;Area One&quot;]},&quot;sp-css-backgroundColor-blueBackground27&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$navyTwoStarArea]&quot;,&quot;Area Two&quot;]},&quot;sp-css-backgroundColor-successBackground50&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$navyTwoStarArea]&quot;,&quot;Area Three&quot;]},&quot;sp-css-backgroundColor-warningBackground50&quot;,&quot;&quot;]}]}]}},&quot;children&quot;:[{&quot;elmType&quot;:&quot;span&quot;,&quot;style&quot;:{&quot;line-height&quot;:&quot;16px&quot;,&quot;height&quot;:&quot;14px&quot;},&quot;attributes&quot;:{&quot;iconName&quot;:{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$navyTwoStarArea]&quot;,&quot;Area One&quot;]},&quot;&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$navyTwoStarArea]&quot;,&quot;Area Two&quot;]},&quot;&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$navyTwoStarArea]&quot;,&quot;Area Three&quot;]},&quot;&quot;,&quot;&quot;]}]}]}}},{&quot;elmType&quot;:&quot;span&quot;,&quot;style&quot;:{&quot;overflow&quot;:&quot;hidden&quot;,&quot;text-overflow&quot;:&quot;ellipsis&quot;,&quot;padding&quot;:&quot;0 3px&quot;},&quot;txtContent&quot;:&quot;[$navyTwoStarArea]&quot;,&quot;attributes&quot;:{&quot;class&quot;:{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$navyTwoStarArea]&quot;,&quot;Area One&quot;]},&quot;sp-field-bold&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$navyTwoStarArea]&quot;,&quot;Area Two&quot;]},&quot;&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$navyTwoStarArea]&quot;,&quot;Area Three&quot;]},&quot;&quot;,&quot;&quot;]}]}]}}}],&quot;templateId&quot;:&quot;BgColorChoice&quot;}" ColName="nvarchar4" RowOrdinal="0">
+            <Field Type="Choice" DisplayName="2 Star Area" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" Group="Initiatives Board" ID="{f4b4a63e-c225-44c2-aeb9-4d8726fd73df}" SourceID="{{siteid}}" StaticName="sampleTwoStarArea" Name="sampleTwoStarArea" Version="5" CustomFormatter="{&quot;elmType&quot;:&quot;div&quot;,&quot;style&quot;:{&quot;box-sizing&quot;:&quot;border-box&quot;,&quot;padding&quot;:&quot;0 2px&quot;},&quot;attributes&quot;:{&quot;class&quot;:{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$sampleTwoStarArea]&quot;,&quot;Area One&quot;]},&quot;sp-css-backgroundColor-blueBackground27&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$sampleTwoStarArea]&quot;,&quot;Area Two&quot;]},&quot;sp-css-backgroundColor-successBackground50&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$sampleTwoStarArea]&quot;,&quot;Area Three&quot;]},&quot;sp-css-backgroundColor-warningBackground50&quot;,&quot;&quot;]}]}]}},&quot;children&quot;:[{&quot;elmType&quot;:&quot;span&quot;,&quot;style&quot;:{&quot;line-height&quot;:&quot;16px&quot;,&quot;height&quot;:&quot;14px&quot;},&quot;attributes&quot;:{&quot;iconName&quot;:{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$sampleTwoStarArea]&quot;,&quot;Area One&quot;]},&quot;&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$sampleTwoStarArea]&quot;,&quot;Area Two&quot;]},&quot;&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$sampleTwoStarArea]&quot;,&quot;Area Three&quot;]},&quot;&quot;,&quot;&quot;]}]}]}}},{&quot;elmType&quot;:&quot;span&quot;,&quot;style&quot;:{&quot;overflow&quot;:&quot;hidden&quot;,&quot;text-overflow&quot;:&quot;ellipsis&quot;,&quot;padding&quot;:&quot;0 3px&quot;},&quot;txtContent&quot;:&quot;[$sampleTwoStarArea]&quot;,&quot;attributes&quot;:{&quot;class&quot;:{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$sampleTwoStarArea]&quot;,&quot;Area One&quot;]},&quot;sp-field-bold&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$sampleTwoStarArea]&quot;,&quot;Area Two&quot;]},&quot;&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$sampleTwoStarArea]&quot;,&quot;Area Three&quot;]},&quot;&quot;,&quot;&quot;]}]}]}}}],&quot;templateId&quot;:&quot;BgColorChoice&quot;}" ColName="nvarchar4" RowOrdinal="0">
               <CHOICES>
                 <CHOICE>Area One</CHOICE>
                 <CHOICE>Area Two</CHOICE>
                 <CHOICE>Area Three</CHOICE>
               </CHOICES>
             </Field>
-            <Field Type="Note" DisplayName="Benefits by Mar 21" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="6" RichText="FALSE" Sortable="FALSE" Group="Initiatives Board" ID="{27015e31-7ddf-4e68-98d2-3539a6ed314e}" SourceID="{{siteid}}" StaticName="navyBenefitsByMar21" Name="navyBenefitsByMar21" Version="2" CustomFormatter="" RestrictedMode="TRUE" RichTextMode="Compatible" IsolateStyles="FALSE" AppendOnly="FALSE" UnlimitedLengthInDocumentLibrary="FALSE" ColName="ntext2" RowOrdinal="0" />
-            <Field Type="Note" DisplayName="Benefits to Org" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="6" RichText="FALSE" Sortable="FALSE" Group="Initiatives Board" ID="{8b74287d-5fbc-40d1-8b6a-52694a754a5e}" SourceID="{{siteid}}" StaticName="navyBenefitsToOrg" Name="navyBenefitsToOrg" Version="2" CustomFormatter="" RestrictedMode="TRUE" RichTextMode="Compatible" IsolateStyles="FALSE" AppendOnly="FALSE" UnlimitedLengthInDocumentLibrary="FALSE" ColName="ntext3" RowOrdinal="0" />
-            <Field Type="Boolean" DisplayName="Updated For Meeting" EnforceUniqueValues="FALSE" Indexed="FALSE" Group="Initiatives Board" ID="{79acffaa-fd24-4198-9d0c-12bf304dd860}" SourceID="{{siteid}}" StaticName="navyUpdatedForMeeting" Name="navyUpdatedForMeeting" Version="2" CustomFormatter="" Required="FALSE" ColName="bit1" RowOrdinal="0">
+            <Field Type="Note" DisplayName="Benefits by Mar 21" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="6" RichText="FALSE" Sortable="FALSE" Group="Initiatives Board" ID="{27015e31-7ddf-4e68-98d2-3539a6ed314e}" SourceID="{{siteid}}" StaticName="sampleBenefitsByMar21" Name="sampleBenefitsByMar21" Version="2" CustomFormatter="" RestrictedMode="TRUE" RichTextMode="Compatible" IsolateStyles="FALSE" AppendOnly="FALSE" UnlimitedLengthInDocumentLibrary="FALSE" ColName="ntext2" RowOrdinal="0" />
+            <Field Type="Note" DisplayName="Benefits to Org" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="6" RichText="FALSE" Sortable="FALSE" Group="Initiatives Board" ID="{8b74287d-5fbc-40d1-8b6a-52694a754a5e}" SourceID="{{siteid}}" StaticName="sampleBenefitsToOrg" Name="sampleBenefitsToOrg" Version="2" CustomFormatter="" RestrictedMode="TRUE" RichTextMode="Compatible" IsolateStyles="FALSE" AppendOnly="FALSE" UnlimitedLengthInDocumentLibrary="FALSE" ColName="ntext3" RowOrdinal="0" />
+            <Field Type="Boolean" DisplayName="Updated For Meeting" EnforceUniqueValues="FALSE" Indexed="FALSE" Group="Initiatives Board" ID="{79acffaa-fd24-4198-9d0c-12bf304dd860}" SourceID="{{siteid}}" StaticName="sampleUpdatedForMeeting" Name="sampleUpdatedForMeeting" Version="2" CustomFormatter="" Required="FALSE" ColName="bit1" RowOrdinal="0">
               <Default>0</Default>
             </Field>
           </pnp:Fields>
           <pnp:FieldRefs>
-            <pnp:FieldRef ID="a4fff425-574c-467c-8c12-b68ad3d97b85" Name="navyPrimaryContact" DisplayName="Primary Contact" />
-            <pnp:FieldRef ID="a1e75ea7-6f51-4f82-b499-61c63449a6ec" Name="navySynopsis" DisplayName="Synopsis" />
-            <pnp:FieldRef ID="2ae88e78-0725-4c5d-9c10-bd5b195f0527" Name="navyDelegates" DisplayName="Delegates" />
-            <pnp:FieldRef ID="433578e7-0186-439d-9871-2297bc034d62" Name="navyDeliveryUpdate" DisplayName="Delivery Update" />
+            <pnp:FieldRef ID="a4fff425-574c-467c-8c12-b68ad3d97b85" Name="samplePrimaryContact" DisplayName="Primary Contact" />
+            <pnp:FieldRef ID="a1e75ea7-6f51-4f82-b499-61c63449a6ec" Name="sampleSynopsis" DisplayName="Synopsis" />
+            <pnp:FieldRef ID="2ae88e78-0725-4c5d-9c10-bd5b195f0527" Name="sampleDelegates" DisplayName="Delegates" />
+            <pnp:FieldRef ID="433578e7-0186-439d-9871-2297bc034d62" Name="sampleDeliveryUpdate" DisplayName="Delivery Update" />
           </pnp:FieldRefs>
           <pnp:Webhooks>
             <pnp:Webhook ServerNotificationUrl="https://uksouth1.pushnp.svc.ms/notifications?token=f6312350-4a04-48af-929e-2ae030785ad0" ExpiresInDays="1" />
@@ -368,10 +368,10 @@
               <Query />
               <ViewFields>
                 <FieldRef Name="Title" />
-                <FieldRef Name="navyDDBSecretariat" />
-                <FieldRef Name="navyAmountSpentConfig" />
-                <FieldRef Name="navyEstimatedAmountConfig" />
-                <FieldRef Name="navyPercentBudgetSpentConfig" />
+                <FieldRef Name="sampleDDBSecretariat" />
+                <FieldRef Name="sampleAmountSpentConfig" />
+                <FieldRef Name="sampleEstimatedAmountConfig" />
+                <FieldRef Name="samplePercentBudgetSpentConfig" />
               </ViewFields>
               <RowLimit Paged="TRUE">30</RowLimit>
               <Aggregations Value="Off" />
@@ -380,12 +380,12 @@
             </View>
           </pnp:Views>
           <pnp:Fields>
-            <Field Type="Text" DisplayName="Amount Spent Question" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{c1b45fee-108d-421b-bdb1-f97a89a4c6f9}" SourceID="{{siteid}}" StaticName="navyAmountSpentConfig" Name="navyAmountSpentConfig" Version="3" CustomFormatter="" ColName="nvarchar4" RowOrdinal="0" />
-            <Field Type="Text" DisplayName="Estimated Amount Question" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{b6e93e2a-17a6-4e21-8a4c-c9e9b0e29272}" SourceID="{{siteid}}" StaticName="navyEstimatedAmountConfig" Name="navyEstimatedAmountConfig" Version="3" CustomFormatter="" ColName="nvarchar5" RowOrdinal="0" />
-            <Field Type="Text" DisplayName="Percent Budget Spent Question" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{a47871d0-f742-4018-a468-a082caeb7f2a}" SourceID="{{siteid}}" StaticName="navyPercentBudgetSpentConfig" Name="navyPercentBudgetSpentConfig" Version="3" CustomFormatter="" ColName="nvarchar6" RowOrdinal="0" />
+            <Field Type="Text" DisplayName="Amount Spent Question" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{c1b45fee-108d-421b-bdb1-f97a89a4c6f9}" SourceID="{{siteid}}" StaticName="sampleAmountSpentConfig" Name="sampleAmountSpentConfig" Version="3" CustomFormatter="" ColName="nvarchar4" RowOrdinal="0" />
+            <Field Type="Text" DisplayName="Estimated Amount Question" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{b6e93e2a-17a6-4e21-8a4c-c9e9b0e29272}" SourceID="{{siteid}}" StaticName="sampleEstimatedAmountConfig" Name="sampleEstimatedAmountConfig" Version="3" CustomFormatter="" ColName="nvarchar5" RowOrdinal="0" />
+            <Field Type="Text" DisplayName="Percent Budget Spent Question" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{a47871d0-f742-4018-a468-a082caeb7f2a}" SourceID="{{siteid}}" StaticName="samplePercentBudgetSpentConfig" Name="samplePercentBudgetSpentConfig" Version="3" CustomFormatter="" ColName="nvarchar6" RowOrdinal="0" />
           </pnp:Fields>
           <pnp:FieldRefs>
-            <pnp:FieldRef ID="140caddd-247f-4182-8a1d-f7b35f585ac7" Name="navyDDBSecretariat" DisplayName="DDB Secretariat(s)" />
+            <pnp:FieldRef ID="140caddd-247f-4182-8a1d-f7b35f585ac7" Name="sampleDDBSecretariat" DisplayName="DDB Secretariat(s)" />
           </pnp:FieldRefs>
           <pnp:Webhooks>
             <pnp:Webhook ServerNotificationUrl="https://uksouth1.pushnp.svc.ms/notifications?token=4ccc4e17-8092-4f0f-a559-a8e79d4f9d98" ExpiresInDays="1" />
@@ -399,18 +399,18 @@
             <View Name="{BE524992-D481-4039-8C5E-5491C5B01B3B}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Items" Url="{site}/Lists/PrivateInitiatives/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=47">
               <Query />
               <ViewFields>
-                <FieldRef Name="navyInitiativeId" />
-                <FieldRef Name="navyInitiative" />
-                <FieldRef Name="navyAmountCommitted" />
-                <FieldRef Name="navyAmountSpent" />
-                <FieldRef Name="navyEstimatedAmount" />
-                <FieldRef Name="navyPercentBudgetSpent" />
-                <FieldRef Name="navyWorkContracted" />
-                <FieldRef Name="navyFurtherInvestmentRequired" />
-                <FieldRef Name="navyROMAnnualCosts" />
-                <FieldRef Name="navyROMAnnualEfficiencies" />
-                <FieldRef Name="navyUpdatedForMeeting" />
-                <FieldRef Name="navyCommitted" />
+                <FieldRef Name="sampleInitiativeId" />
+                <FieldRef Name="sampleInitiative" />
+                <FieldRef Name="sampleAmountCommitted" />
+                <FieldRef Name="sampleAmountSpent" />
+                <FieldRef Name="sampleEstimatedAmount" />
+                <FieldRef Name="samplePercentBudgetSpent" />
+                <FieldRef Name="sampleWorkContracted" />
+                <FieldRef Name="sampleFurtherInvestmentRequired" />
+                <FieldRef Name="sampleROMAnnualCosts" />
+                <FieldRef Name="sampleROMAnnualEfficiencies" />
+                <FieldRef Name="sampleUpdatedForMeeting" />
+                <FieldRef Name="sampleCommitted" />
               </ViewFields>
               <RowLimit Paged="TRUE">30</RowLimit>
               <Aggregations Value="Off" />
@@ -419,27 +419,27 @@
             </View>
           </pnp:Views>
           <pnp:Fields>
-            <Field Type="Number" DisplayName="Amount Committed" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Decimals="2" Group="Initiatives Board" ID="{ec603efb-8811-480c-ab2d-0b1d7701294e}" SourceID="{{siteid}}" StaticName="navyAmountCommitted" Name="navyAmountCommitted" Version="2" CustomFormatter="" Percentage="FALSE" ColName="float1" RowOrdinal="0" />
-            <Field Type="Number" DisplayName="Amount Spent" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Decimals="2" Group="Initiatives Board" ID="{b2b23664-5dbe-4480-aa76-cfe4a7d955c0}" SourceID="{{siteid}}" StaticName="navyAmountSpent" Name="navyAmountSpent" Version="2" CustomFormatter="" Percentage="FALSE" ColName="float2" RowOrdinal="0" />
-            <Field Type="Choice" DisplayName="Committed/Uncommitted" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" Group="Initiatives Board" ID="{f97cbdd6-62f5-422d-b100-51ec9e3f3e7c}" SourceID="{{siteid}}" StaticName="navyCommitted" Name="navyCommitted" Version="2" CustomFormatter="" ColName="nvarchar4" RowOrdinal="0">
+            <Field Type="Number" DisplayName="Amount Committed" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Decimals="2" Group="Initiatives Board" ID="{ec603efb-8811-480c-ab2d-0b1d7701294e}" SourceID="{{siteid}}" StaticName="sampleAmountCommitted" Name="sampleAmountCommitted" Version="2" CustomFormatter="" Percentage="FALSE" ColName="float1" RowOrdinal="0" />
+            <Field Type="Number" DisplayName="Amount Spent" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Decimals="2" Group="Initiatives Board" ID="{b2b23664-5dbe-4480-aa76-cfe4a7d955c0}" SourceID="{{siteid}}" StaticName="sampleAmountSpent" Name="sampleAmountSpent" Version="2" CustomFormatter="" Percentage="FALSE" ColName="float2" RowOrdinal="0" />
+            <Field Type="Choice" DisplayName="Committed/Uncommitted" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" Group="Initiatives Board" ID="{f97cbdd6-62f5-422d-b100-51ec9e3f3e7c}" SourceID="{{siteid}}" StaticName="sampleCommitted" Name="sampleCommitted" Version="2" CustomFormatter="" ColName="nvarchar4" RowOrdinal="0">
               <CHOICES>
                 <CHOICE>Committed</CHOICE>
                 <CHOICE>Uncommitted</CHOICE>
               </CHOICES>
             </Field>
-            <Field Type="Number" DisplayName="Estimated Amount" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Decimals="2" Group="Initiatives Board" ID="{5b650c23-93d7-4df3-9d12-5635c7f3cbbd}" SourceID="{{siteid}}" StaticName="navyEstimatedAmount" Name="navyEstimatedAmount" Version="2" CustomFormatter="" Percentage="FALSE" ColName="float3" RowOrdinal="0" />
-            <Field Type="Text" DisplayName="Further Investment Required" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{1362a7ec-59ab-4fe6-8dbf-a35d9d61264c}" SourceID="{{siteid}}" StaticName="navyFurtherInvestmentRequired" Name="navyFurtherInvestmentRequired" Version="2" CustomFormatter="" ColName="nvarchar5" RowOrdinal="0" />
-            <Field Type="Number" DisplayName="Percent Budget Spent" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Percentage="TRUE" Decimals="2" Group="Initiatives Board" ID="{fba0542e-8b97-48ee-85cc-1492ba70593a}" SourceID="{{siteid}}" StaticName="navyPercentBudgetSpent" Name="navyPercentBudgetSpent" Version="2" CustomFormatter="" ColName="float4" RowOrdinal="0" />
-            <Field Type="Text" DisplayName="ROM Annual Costs" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{eebf19a4-b0b0-446c-b160-acdfff07fb6e}" SourceID="{{siteid}}" StaticName="navyROMAnnualCosts" Name="navyROMAnnualCosts" Version="2" CustomFormatter="" ColName="nvarchar6" RowOrdinal="0" />
-            <Field Type="Text" DisplayName="ROM Annual Efficiencies" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{26a58218-859a-4885-9134-add32785329f}" SourceID="{{siteid}}" StaticName="navyROMAnnualEfficiencies" Name="navyROMAnnualEfficiencies" Version="2" CustomFormatter="" ColName="nvarchar7" RowOrdinal="0" />
-            <Field Type="Boolean" DisplayName="Updated For Meeting" EnforceUniqueValues="FALSE" Indexed="FALSE" Group="Initiatives Board" ID="{79acffaa-fd24-4198-9d0c-12bf304dd860}" SourceID="{{siteid}}" StaticName="navyUpdatedForMeeting" Name="navyUpdatedForMeeting" Version="2" CustomFormatter="" Required="FALSE" ColName="bit1" RowOrdinal="0">
+            <Field Type="Number" DisplayName="Estimated Amount" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Decimals="2" Group="Initiatives Board" ID="{5b650c23-93d7-4df3-9d12-5635c7f3cbbd}" SourceID="{{siteid}}" StaticName="sampleEstimatedAmount" Name="sampleEstimatedAmount" Version="2" CustomFormatter="" Percentage="FALSE" ColName="float3" RowOrdinal="0" />
+            <Field Type="Text" DisplayName="Further Investment Required" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{1362a7ec-59ab-4fe6-8dbf-a35d9d61264c}" SourceID="{{siteid}}" StaticName="sampleFurtherInvestmentRequired" Name="sampleFurtherInvestmentRequired" Version="2" CustomFormatter="" ColName="nvarchar5" RowOrdinal="0" />
+            <Field Type="Number" DisplayName="Percent Budget Spent" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Percentage="TRUE" Decimals="2" Group="Initiatives Board" ID="{fba0542e-8b97-48ee-85cc-1492ba70593a}" SourceID="{{siteid}}" StaticName="samplePercentBudgetSpent" Name="samplePercentBudgetSpent" Version="2" CustomFormatter="" ColName="float4" RowOrdinal="0" />
+            <Field Type="Text" DisplayName="ROM Annual Costs" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{eebf19a4-b0b0-446c-b160-acdfff07fb6e}" SourceID="{{siteid}}" StaticName="sampleROMAnnualCosts" Name="sampleROMAnnualCosts" Version="2" CustomFormatter="" ColName="nvarchar6" RowOrdinal="0" />
+            <Field Type="Text" DisplayName="ROM Annual Efficiencies" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{26a58218-859a-4885-9134-add32785329f}" SourceID="{{siteid}}" StaticName="sampleROMAnnualEfficiencies" Name="sampleROMAnnualEfficiencies" Version="2" CustomFormatter="" ColName="nvarchar7" RowOrdinal="0" />
+            <Field Type="Boolean" DisplayName="Updated For Meeting" EnforceUniqueValues="FALSE" Indexed="FALSE" Group="Initiatives Board" ID="{79acffaa-fd24-4198-9d0c-12bf304dd860}" SourceID="{{siteid}}" StaticName="sampleUpdatedForMeeting" Name="sampleUpdatedForMeeting" Version="2" CustomFormatter="" Required="FALSE" ColName="bit1" RowOrdinal="0">
               <Default>0</Default>
             </Field>
-            <Field Type="Text" DisplayName="Work Contracted" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{7d6b03f3-0533-4010-acdc-902a6b225d66}" SourceID="{{siteid}}" StaticName="navyWorkContracted" Name="navyWorkContracted" Version="2" CustomFormatter="" ColName="nvarchar8" RowOrdinal="0" />
-            <Field Type="Number" DisplayName="InitiativeId" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Min="0" Decimals="0" Group="Initiatives Board" ID="{01e4a503-de28-4e39-b532-17b4c72e947e}" SourceID="{{siteid}}" StaticName="navyInitiativeId" Name="navyInitiativeId" Version="2" CustomFormatter="" Percentage="FALSE" ColName="float5" RowOrdinal="0" />
+            <Field Type="Text" DisplayName="Work Contracted" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{7d6b03f3-0533-4010-acdc-902a6b225d66}" SourceID="{{siteid}}" StaticName="sampleWorkContracted" Name="sampleWorkContracted" Version="2" CustomFormatter="" ColName="nvarchar8" RowOrdinal="0" />
+            <Field Type="Number" DisplayName="InitiativeId" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Min="0" Decimals="0" Group="Initiatives Board" ID="{01e4a503-de28-4e39-b532-17b4c72e947e}" SourceID="{{siteid}}" StaticName="sampleInitiativeId" Name="sampleInitiativeId" Version="2" CustomFormatter="" Percentage="FALSE" ColName="float5" RowOrdinal="0" />
           </pnp:Fields>
           <pnp:FieldRefs>
-            <pnp:FieldRef ID="44d9a6fe-c3f6-45e0-af80-5bdf96d60572" Name="navyInitiative" DisplayName="Initiative Name" />
+            <pnp:FieldRef ID="44d9a6fe-c3f6-45e0-af80-5bdf96d60572" Name="sampleInitiative" DisplayName="Initiative Name" />
           </pnp:FieldRefs>
           <pnp:Webhooks>
             <pnp:Webhook ServerNotificationUrl="https://uksouth1.pushnp.svc.ms/notifications?token=96ca3395-99e3-4857-9eea-114df4dc89b8" ExpiresInDays="1" />
@@ -453,11 +453,11 @@
             <View Name="{201001BA-B515-4650-9772-EF8AD933C2BD}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Items" Url="{site}/Lists/InitiativesQuarterlyMeetings/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=47">
               <Query />
               <ViewFields>
-                <FieldRef Name="navyEventId" />
+                <FieldRef Name="sampleEventId" />
                 <FieldRef Name="LinkTitle" />
-                <FieldRef Name="navyEventDescription" />
-                <FieldRef Name="navyEventEnd" />
-                <FieldRef Name="navyEventStart" />
+                <FieldRef Name="sampleEventDescription" />
+                <FieldRef Name="sampleEventEnd" />
+                <FieldRef Name="sampleEventStart" />
               </ViewFields>
               <RowLimit Paged="TRUE">30</RowLimit>
               <Aggregations Value="Off" />
@@ -466,10 +466,10 @@
             </View>
           </pnp:Views>
           <pnp:Fields>
-            <Field Type="Note" DisplayName="Event Description" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="4" RichText="FALSE" Sortable="FALSE" Group="Initiatives Board" ID="{4574a59a-7e99-42ca-a4e6-1a524cefd497}" SourceID="{{siteid}}" StaticName="navyEventDescription" Name="navyEventDescription" Version="3" CustomFormatter="" RestrictedMode="TRUE" RichTextMode="Compatible" IsolateStyles="FALSE" AppendOnly="FALSE" UnlimitedLengthInDocumentLibrary="FALSE" ColName="ntext2" RowOrdinal="0" />
-            <Field Type="DateTime" DisplayName="Event End" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="DateTime" Group="Initiatives Board" FriendlyDisplayFormat="Disabled" ID="{87e03397-1e6d-454c-9a40-0423071a67dc}" SourceID="{{siteid}}" StaticName="navyEventEnd" Name="navyEventEnd" Version="3" CustomFormatter="" CalType="0" ColName="datetime1" RowOrdinal="0" />
-            <Field Type="DateTime" DisplayName="Event Start" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="DateTime" Group="Initiatives Board" FriendlyDisplayFormat="Disabled" ID="{ae79e134-f63a-4d43-b22d-ef3abf2980dd}" SourceID="{{siteid}}" StaticName="navyEventStart" Name="navyEventStart" Version="3" CustomFormatter="" CalType="0" ColName="datetime2" RowOrdinal="0" />
-            <Field Type="Text" DisplayName="EventId" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{41713d5b-09de-4d9a-a05f-ba28a152af37}" SourceID="{{siteid}}" StaticName="navyEventId" Name="navyEventId" Version="4" CustomFormatter="" ColName="nvarchar4" RowOrdinal="0" />
+            <Field Type="Note" DisplayName="Event Description" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="4" RichText="FALSE" Sortable="FALSE" Group="Initiatives Board" ID="{4574a59a-7e99-42ca-a4e6-1a524cefd497}" SourceID="{{siteid}}" StaticName="sampleEventDescription" Name="sampleEventDescription" Version="3" CustomFormatter="" RestrictedMode="TRUE" RichTextMode="Compatible" IsolateStyles="FALSE" AppendOnly="FALSE" UnlimitedLengthInDocumentLibrary="FALSE" ColName="ntext2" RowOrdinal="0" />
+            <Field Type="DateTime" DisplayName="Event End" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="DateTime" Group="Initiatives Board" FriendlyDisplayFormat="Disabled" ID="{87e03397-1e6d-454c-9a40-0423071a67dc}" SourceID="{{siteid}}" StaticName="sampleEventEnd" Name="sampleEventEnd" Version="3" CustomFormatter="" CalType="0" ColName="datetime1" RowOrdinal="0" />
+            <Field Type="DateTime" DisplayName="Event Start" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="DateTime" Group="Initiatives Board" FriendlyDisplayFormat="Disabled" ID="{ae79e134-f63a-4d43-b22d-ef3abf2980dd}" SourceID="{{siteid}}" StaticName="sampleEventStart" Name="sampleEventStart" Version="3" CustomFormatter="" CalType="0" ColName="datetime2" RowOrdinal="0" />
+            <Field Type="Text" DisplayName="EventId" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{41713d5b-09de-4d9a-a05f-ba28a152af37}" SourceID="{{siteid}}" StaticName="sampleEventId" Name="sampleEventId" Version="4" CustomFormatter="" ColName="nvarchar4" RowOrdinal="0" />
           </pnp:Fields>
         </pnp:ListInstance>
         <pnp:ListInstance Title="Initiatives (snapshot)" Description="" DocumentTemplate="" OnQuickLaunch="true" TemplateType="100" Url="Lists/SnapshotInitiatives" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" ContentTypesEnabled="true" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/Lists/SnapshotInitiatives/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/SnapshotInitiatives/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/SnapshotInitiatives/NewForm.aspx" ImageUrl="/_layouts/15/images/itgen.png?rev=47" IrmExpire="false" IrmReject="false" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
@@ -481,24 +481,24 @@
               <Query />
               <ViewFields>
                 <FieldRef Name="LinkTitleNoMenu" />
-                <FieldRef Name="navySnapshotId" />
-                <FieldRef Name="navySnapshotDate" />
-                <FieldRef Name="navyPrimaryContact" />
-                <FieldRef Name="navyDelegates" />
-                <FieldRef Name="navyTwoStarArea" />
-                <FieldRef Name="navySynopsis" />
-                <FieldRef Name="navyBenefitsByMar21" />
-                <FieldRef Name="navyBenefitsToOrg" />
-                <FieldRef Name="navyDeliveryUpdate" />
-                <FieldRef Name="navyAmountCommitted" />
-                <FieldRef Name="navyAmountSpent" />
-                <FieldRef Name="navyCommitted" />
-                <FieldRef Name="navyEstimatedAmount" />
-                <FieldRef Name="navyFurtherInvestmentRequired" />
-                <FieldRef Name="navyPercentBudgetSpent" />
-                <FieldRef Name="navyROMAnnualCosts" />
-                <FieldRef Name="navyROMAnnualEfficiencies" />
-                <FieldRef Name="navyWorkContracted" />
+                <FieldRef Name="sampleSnapshotId" />
+                <FieldRef Name="sampleSnapshotDate" />
+                <FieldRef Name="samplePrimaryContact" />
+                <FieldRef Name="sampleDelegates" />
+                <FieldRef Name="sampleTwoStarArea" />
+                <FieldRef Name="sampleSynopsis" />
+                <FieldRef Name="sampleBenefitsByMar21" />
+                <FieldRef Name="sampleBenefitsToOrg" />
+                <FieldRef Name="sampleDeliveryUpdate" />
+                <FieldRef Name="sampleAmountCommitted" />
+                <FieldRef Name="sampleAmountSpent" />
+                <FieldRef Name="sampleCommitted" />
+                <FieldRef Name="sampleEstimatedAmount" />
+                <FieldRef Name="sampleFurtherInvestmentRequired" />
+                <FieldRef Name="samplePercentBudgetSpent" />
+                <FieldRef Name="sampleROMAnnualCosts" />
+                <FieldRef Name="sampleROMAnnualEfficiencies" />
+                <FieldRef Name="sampleWorkContracted" />
               </ViewFields>
               <RowLimit Paged="TRUE">30</RowLimit>
               <Aggregations Value="Off" />
@@ -507,37 +507,37 @@
             </View>
           </pnp:Views>
           <pnp:Fields>
-            <Field Type="Number" DisplayName="SnapshotId" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Decimals="0" Group="Initiatives Board" ID="{e82ec02a-93ff-4216-8790-9bae2859d02e}" SourceID="{{siteid}}" StaticName="navySnapshotId" Name="navySnapshotId" Version="3" CustomFormatter="" Percentage="FALSE" ColName="float1" RowOrdinal="0" />
-            <Field Type="DateTime" DisplayName="Snapshot Date" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="DateOnly" Group="Initiatives Board" FriendlyDisplayFormat="Disabled" ID="{01015029-f3b6-4d0f-a632-de99277756f3}" SourceID="{{siteid}}" StaticName="navySnapshotDate" Name="navySnapshotDate" Version="2" CustomFormatter="" CalType="0" ColName="datetime1" RowOrdinal="0" />
-            <Field Type="Choice" DisplayName="2 Star Area" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" Group="Initiatives Board" ID="{f4b4a63e-c225-44c2-aeb9-4d8726fd73df}" SourceID="{{siteid}}" StaticName="navyTwoStarArea" Name="navyTwoStarArea" Version="3" CustomFormatter="" AllowDeletion="TRUE" ColName="nvarchar4" RowOrdinal="0">
+            <Field Type="Number" DisplayName="SnapshotId" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Decimals="0" Group="Initiatives Board" ID="{e82ec02a-93ff-4216-8790-9bae2859d02e}" SourceID="{{siteid}}" StaticName="sampleSnapshotId" Name="sampleSnapshotId" Version="3" CustomFormatter="" Percentage="FALSE" ColName="float1" RowOrdinal="0" />
+            <Field Type="DateTime" DisplayName="Snapshot Date" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="DateOnly" Group="Initiatives Board" FriendlyDisplayFormat="Disabled" ID="{01015029-f3b6-4d0f-a632-de99277756f3}" SourceID="{{siteid}}" StaticName="sampleSnapshotDate" Name="sampleSnapshotDate" Version="2" CustomFormatter="" CalType="0" ColName="datetime1" RowOrdinal="0" />
+            <Field Type="Choice" DisplayName="2 Star Area" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" Group="Initiatives Board" ID="{f4b4a63e-c225-44c2-aeb9-4d8726fd73df}" SourceID="{{siteid}}" StaticName="sampleTwoStarArea" Name="sampleTwoStarArea" Version="3" CustomFormatter="" AllowDeletion="TRUE" ColName="nvarchar4" RowOrdinal="0">
               <CHOICES>
                 <CHOICE>Area One</CHOICE>
                 <CHOICE>Area Two</CHOICE>
                 <CHOICE>Area Three</CHOICE>
               </CHOICES>
             </Field>
-            <Field Type="Note" DisplayName="Benefits to Org" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="6" RichText="FALSE" Sortable="FALSE" Group="Initiatives Board" ID="{8b74287d-5fbc-40d1-8b6a-52694a754a5e}" SourceID="{{siteid}}" StaticName="navyBenefitsToOrg" Name="navyBenefitsToOrg" Version="2" CustomFormatter="" RestrictedMode="TRUE" RichTextMode="Compatible" IsolateStyles="FALSE" AppendOnly="FALSE" UnlimitedLengthInDocumentLibrary="FALSE" AllowDeletion="TRUE" ColName="ntext3" RowOrdinal="0" />
-            <Field Type="Note" DisplayName="Benefits by Mar 21" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="6" RichText="FALSE" Sortable="FALSE" Group="Initiatives Board" ID="{27015e31-7ddf-4e68-98d2-3539a6ed314e}" SourceID="{{siteid}}" StaticName="navyBenefitsByMar21" Name="navyBenefitsByMar21" Version="2" CustomFormatter="" RestrictedMode="TRUE" RichTextMode="Compatible" IsolateStyles="FALSE" AppendOnly="FALSE" UnlimitedLengthInDocumentLibrary="FALSE" AllowDeletion="TRUE" ColName="ntext4" RowOrdinal="0" />
-            <Field Type="Number" DisplayName="Amount Committed" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Decimals="2" Group="Initiatives Board" ID="{ec603efb-8811-480c-ab2d-0b1d7701294e}" SourceID="{{siteid}}" StaticName="navyAmountCommitted" Name="navyAmountCommitted" Version="2" CustomFormatter="" Percentage="FALSE" ColName="float2" RowOrdinal="0" />
-            <Field Type="Number" DisplayName="Estimated Amount" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Decimals="2" Group="Initiatives Board" ID="{5b650c23-93d7-4df3-9d12-5635c7f3cbbd}" SourceID="{{siteid}}" StaticName="navyEstimatedAmount" Name="navyEstimatedAmount" Version="2" CustomFormatter="" Percentage="FALSE" ColName="float3" RowOrdinal="0" />
-            <Field Type="Number" DisplayName="Amount Spent" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Decimals="2" Group="Initiatives Board" ID="{b2b23664-5dbe-4480-aa76-cfe4a7d955c0}" SourceID="{{siteid}}" StaticName="navyAmountSpent" Name="navyAmountSpent" Version="2" CustomFormatter="" Percentage="FALSE" ColName="float4" RowOrdinal="0" />
-            <Field Type="Number" DisplayName="Percent Budget Spent" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Percentage="TRUE" Decimals="2" Group="Initiatives Board" ID="{fba0542e-8b97-48ee-85cc-1492ba70593a}" SourceID="{{siteid}}" StaticName="navyPercentBudgetSpent" Name="navyPercentBudgetSpent" Version="2" CustomFormatter="" ColName="float5" RowOrdinal="0" />
-            <Field Type="Choice" DisplayName="Committed/Uncommitted" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" Group="Initiatives Board" ID="{f97cbdd6-62f5-422d-b100-51ec9e3f3e7c}" SourceID="{{siteid}}" StaticName="navyCommitted" Name="navyCommitted" Version="2" CustomFormatter="" ColName="nvarchar6" RowOrdinal="0">
+            <Field Type="Note" DisplayName="Benefits to Org" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="6" RichText="FALSE" Sortable="FALSE" Group="Initiatives Board" ID="{8b74287d-5fbc-40d1-8b6a-52694a754a5e}" SourceID="{{siteid}}" StaticName="sampleBenefitsToOrg" Name="sampleBenefitsToOrg" Version="2" CustomFormatter="" RestrictedMode="TRUE" RichTextMode="Compatible" IsolateStyles="FALSE" AppendOnly="FALSE" UnlimitedLengthInDocumentLibrary="FALSE" AllowDeletion="TRUE" ColName="ntext3" RowOrdinal="0" />
+            <Field Type="Note" DisplayName="Benefits by Mar 21" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="6" RichText="FALSE" Sortable="FALSE" Group="Initiatives Board" ID="{27015e31-7ddf-4e68-98d2-3539a6ed314e}" SourceID="{{siteid}}" StaticName="sampleBenefitsByMar21" Name="sampleBenefitsByMar21" Version="2" CustomFormatter="" RestrictedMode="TRUE" RichTextMode="Compatible" IsolateStyles="FALSE" AppendOnly="FALSE" UnlimitedLengthInDocumentLibrary="FALSE" AllowDeletion="TRUE" ColName="ntext4" RowOrdinal="0" />
+            <Field Type="Number" DisplayName="Amount Committed" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Decimals="2" Group="Initiatives Board" ID="{ec603efb-8811-480c-ab2d-0b1d7701294e}" SourceID="{{siteid}}" StaticName="sampleAmountCommitted" Name="sampleAmountCommitted" Version="2" CustomFormatter="" Percentage="FALSE" ColName="float2" RowOrdinal="0" />
+            <Field Type="Number" DisplayName="Estimated Amount" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Decimals="2" Group="Initiatives Board" ID="{5b650c23-93d7-4df3-9d12-5635c7f3cbbd}" SourceID="{{siteid}}" StaticName="sampleEstimatedAmount" Name="sampleEstimatedAmount" Version="2" CustomFormatter="" Percentage="FALSE" ColName="float3" RowOrdinal="0" />
+            <Field Type="Number" DisplayName="Amount Spent" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Decimals="2" Group="Initiatives Board" ID="{b2b23664-5dbe-4480-aa76-cfe4a7d955c0}" SourceID="{{siteid}}" StaticName="sampleAmountSpent" Name="sampleAmountSpent" Version="2" CustomFormatter="" Percentage="FALSE" ColName="float4" RowOrdinal="0" />
+            <Field Type="Number" DisplayName="Percent Budget Spent" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Percentage="TRUE" Decimals="2" Group="Initiatives Board" ID="{fba0542e-8b97-48ee-85cc-1492ba70593a}" SourceID="{{siteid}}" StaticName="samplePercentBudgetSpent" Name="samplePercentBudgetSpent" Version="2" CustomFormatter="" ColName="float5" RowOrdinal="0" />
+            <Field Type="Choice" DisplayName="Committed/Uncommitted" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" Group="Initiatives Board" ID="{f97cbdd6-62f5-422d-b100-51ec9e3f3e7c}" SourceID="{{siteid}}" StaticName="sampleCommitted" Name="sampleCommitted" Version="2" CustomFormatter="" ColName="nvarchar6" RowOrdinal="0">
               <CHOICES>
                 <CHOICE>Committed</CHOICE>
                 <CHOICE>Uncommitted</CHOICE>
               </CHOICES>
             </Field>
-            <Field Type="Text" DisplayName="Work Contracted" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{7d6b03f3-0533-4010-acdc-902a6b225d66}" SourceID="{{siteid}}" StaticName="navyWorkContracted" Name="navyWorkContracted" Version="2" CustomFormatter="" ColName="nvarchar7" RowOrdinal="0" />
-            <Field Type="Text" DisplayName="Further Investment Required" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{1362a7ec-59ab-4fe6-8dbf-a35d9d61264c}" SourceID="{{siteid}}" StaticName="navyFurtherInvestmentRequired" Name="navyFurtherInvestmentRequired" Version="2" CustomFormatter="" ColName="nvarchar8" RowOrdinal="0" />
-            <Field Type="Text" DisplayName="ROM Annual Costs" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{eebf19a4-b0b0-446c-b160-acdfff07fb6e}" SourceID="{{siteid}}" StaticName="navyROMAnnualCosts" Name="navyROMAnnualCosts" Version="2" CustomFormatter="" ColName="nvarchar9" RowOrdinal="0" />
-            <Field Type="Text" DisplayName="ROM Annual Efficiencies" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{26a58218-859a-4885-9134-add32785329f}" SourceID="{{siteid}}" StaticName="navyROMAnnualEfficiencies" Name="navyROMAnnualEfficiencies" Version="2" CustomFormatter="" ColName="nvarchar10" RowOrdinal="0" />
+            <Field Type="Text" DisplayName="Work Contracted" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{7d6b03f3-0533-4010-acdc-902a6b225d66}" SourceID="{{siteid}}" StaticName="sampleWorkContracted" Name="sampleWorkContracted" Version="2" CustomFormatter="" ColName="nvarchar7" RowOrdinal="0" />
+            <Field Type="Text" DisplayName="Further Investment Required" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{1362a7ec-59ab-4fe6-8dbf-a35d9d61264c}" SourceID="{{siteid}}" StaticName="sampleFurtherInvestmentRequired" Name="sampleFurtherInvestmentRequired" Version="2" CustomFormatter="" ColName="nvarchar8" RowOrdinal="0" />
+            <Field Type="Text" DisplayName="ROM Annual Costs" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{eebf19a4-b0b0-446c-b160-acdfff07fb6e}" SourceID="{{siteid}}" StaticName="sampleROMAnnualCosts" Name="sampleROMAnnualCosts" Version="2" CustomFormatter="" ColName="nvarchar9" RowOrdinal="0" />
+            <Field Type="Text" DisplayName="ROM Annual Efficiencies" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Initiatives Board" ID="{26a58218-859a-4885-9134-add32785329f}" SourceID="{{siteid}}" StaticName="sampleROMAnnualEfficiencies" Name="sampleROMAnnualEfficiencies" Version="2" CustomFormatter="" ColName="nvarchar10" RowOrdinal="0" />
           </pnp:Fields>
           <pnp:FieldRefs>
-            <pnp:FieldRef ID="a4fff425-574c-467c-8c12-b68ad3d97b85" Name="navyPrimaryContact" DisplayName="Primary Contact" />
-            <pnp:FieldRef ID="2ae88e78-0725-4c5d-9c10-bd5b195f0527" Name="navyDelegates" DisplayName="Delegates" />
-            <pnp:FieldRef ID="433578e7-0186-439d-9871-2297bc034d62" Name="navyDeliveryUpdate" DisplayName="Delivery Update" />
-            <pnp:FieldRef ID="a1e75ea7-6f51-4f82-b499-61c63449a6ec" Name="navySynopsis" DisplayName="Synopsis" />
+            <pnp:FieldRef ID="a4fff425-574c-467c-8c12-b68ad3d97b85" Name="samplePrimaryContact" DisplayName="Primary Contact" />
+            <pnp:FieldRef ID="2ae88e78-0725-4c5d-9c10-bd5b195f0527" Name="sampleDelegates" DisplayName="Delegates" />
+            <pnp:FieldRef ID="433578e7-0186-439d-9871-2297bc034d62" Name="sampleDeliveryUpdate" DisplayName="Delivery Update" />
+            <pnp:FieldRef ID="a1e75ea7-6f51-4f82-b499-61c63449a6ec" Name="sampleSynopsis" DisplayName="Synopsis" />
           </pnp:FieldRefs>
         </pnp:ListInstance>
         <pnp:ListInstance Title="Initiatives Tracker" Description="Track priorities and progress as you work towards delivering products and services." DocumentTemplate="" TemplateType="100" Url="Lists/Initiatives Tracker" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/Lists/Initiatives Tracker/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/Initiatives Tracker/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/Initiatives Tracker/NewForm.aspx" ImageUrl="/_layouts/15/images/itgen.png?rev=47" IrmExpire="false" IrmReject="false" IsApplicationList="false" ValidationFormula="" ValidationMessage="">

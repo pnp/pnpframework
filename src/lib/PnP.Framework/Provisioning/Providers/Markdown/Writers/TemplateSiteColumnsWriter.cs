@@ -48,7 +48,7 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
                 if (currentGroup != fieldGroup)
                 {
                     WriteNewLine(groupDetailsWriter);
-                    WriteHeader(fieldDisplayName, 3, groupDetailsWriter);
+                    WriteHeader(fieldGroup, 3, groupDetailsWriter);
                     currentGroup = fieldGroup;
                 }
 
@@ -62,8 +62,8 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
                 groupDetailsWriter.WriteLine();
                 WriteAttributeField("StaticName", "Internal name", groupDetailsWriter, xmlField);
                 WriteAttributeField("Description", "Description", groupDetailsWriter, xmlField);
-                WriteYesNoAttributeField("Required", "Require that this column contains information:   - ", groupDetailsWriter, xmlField);
-                WriteYesNoAttributeField("EnforceUniqueValues", "Enforce Unique Values:", groupDetailsWriter, xmlField);
+                WriteYesNoAttributeField("Required", "Require that this column contains information", groupDetailsWriter, xmlField);
+                WriteYesNoAttributeField("EnforceUniqueValues", "Enforce Unique Values", groupDetailsWriter, xmlField);
 
                 switch (fieldType.ToString().ToLower())
                 {
@@ -103,7 +103,7 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
             WriteAttributeField("MaxLength", "Maximum number of characters", detailWriter, xmlField);
             if (xmlField.SelectSingleNode("Default") != null)
             {
-                WriteTextField(xmlField.SelectSingleNode("Default").Value, "Default value:", detailWriter);
+                WriteTextField(xmlField.SelectSingleNode("Default").Value, "Default value", detailWriter);
             }
         }
 
@@ -114,7 +114,7 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
             WriteAttributeField("Min", "Min", detailWriter, xmlField);
             WriteAttributeField("Max", "Max", detailWriter, xmlField);
             if (xmlField.SelectSingleNode("Default") != null) {
-                WriteTextField(xmlField.SelectSingleNode("Default").Value, "Default value:", detailWriter);
+                WriteTextField(xmlField.SelectSingleNode("Default").Value, "Default value", detailWriter);
             }
         }
         private void ChoiceWriter(TextWriter detailWriter, XmlElement xmlField)
@@ -137,7 +137,7 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
 
             if (xmlField.SelectSingleNode("Default") != null)
             {
-                WriteTextField(xmlField.SelectSingleNode("Default").Value, "Default value:", detailWriter);
+                WriteTextField(xmlField.SelectSingleNode("Default").Value, "Default value", detailWriter);
             }
         }
         private void UserWriter(TextWriter detailWriter, XmlElement xmlField)
@@ -242,34 +242,39 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
         }
         private void DateTimeWriter(TextWriter detailWriter, XmlElement xmlField)
         {
-            detailWriter.WriteLine($"**Indexed** - {GetAttributeValue("Indexed", xmlField)}");
-            detailWriter.WriteLine();
-            detailWriter.WriteLine($"**Format** - {GetAttributeValue("Format", xmlField)}");
-            detailWriter.WriteLine();
-            detailWriter.WriteLine($"**Show in friendly display format?** - {GetAttributeValue("FriendlyDisplayFormat", xmlField)}");
-            detailWriter.WriteLine();
-            detailWriter.WriteLine($"**Cal Type** - {GetAttributeValue("CalType", xmlField)}");
-            detailWriter.WriteLine();
-            /*
-             <Field Format="DateOnly" FriendlyDisplayFormat="Disabled" CalType="0">
-    </Field>
-             */
+            WriteAttributeField("Indexed", "Indexed", detailWriter, xmlField);
+            WriteAttributeField("Format", "Date and Time Format", detailWriter, xmlField);
+            // DateOnly or Datetime
+            WriteAttributeField("FriendlyDisplayFormat", "Display Format", detailWriter, xmlField);
+            // CalType
+            if (xmlField.SelectSingleNode("Default") != null)
+            {
+                WriteTextField(xmlField.SelectSingleNode("Default").Value, "Default value", detailWriter);
+            }
         }
 
         private void NoteWriter(TextWriter detailWriter, XmlElement xmlField)
         {
-            detailWriter.WriteLine($"**Indexed** - {GetAttributeValue("Indexed", xmlField)}");
-            detailWriter.WriteLine();
-            detailWriter.WriteLine($"**Number of lines** - {GetAttributeValue("NumLines", xmlField)}");
-            detailWriter.WriteLine();
-            detailWriter.WriteLine($"**Rich text?** - {GetAttributeValue("RichText", xmlField)}");
-            detailWriter.WriteLine();
-            detailWriter.WriteLine($"**Rich text mode** - {GetAttributeValue("RichTextMode", xmlField)}");
-            detailWriter.WriteLine();
-            detailWriter.WriteLine($"**Isolate styles?** - {GetAttributeValue("IsolateStyles", xmlField)}");
-            detailWriter.WriteLine();
-            detailWriter.WriteLine($"**Sortable?** - {GetAttributeValue("Sortable", xmlField)}");
-            detailWriter.WriteLine();
+            WriteAttributeField("Indexed", "Indexed", detailWriter, xmlField);
+            WriteAttributeField("UnlimitedLengthInDocumentLibrary", "Allow unlimited length in document libraries", detailWriter, xmlField);
+            WriteAttributeField("NumLines", "Number of lines for editing", detailWriter, xmlField);
+            string richTextValue = "Plain text";
+            if (GetAttributeValue("RichText", xmlField).ToUpper()=="TRUE")
+            {
+                switch (GetAttributeValue("RichTextMode", xmlField))
+                {
+                    case "Compatible":
+                        richTextValue = "Rich text(Bold, italics, text alignment, hyperlinks)";
+                        break;
+                    case "FullHtml":
+                        richTextValue = "Enhanced rich text(Rich text with pictures, tables, and hyperlinks)";
+                        break;
+                }
+            }
+            WriteTextField(richTextValue, "Specify the type of text to allow", detailWriter);
+
+            WriteYesNoAttributeField("AppendOnly", "Append Changes to Existing Text", detailWriter, xmlField);
+
         }
     }
 }

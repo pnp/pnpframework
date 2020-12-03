@@ -66,9 +66,6 @@ namespace PnP.Framework.Provisioning.Providers.Markdown
             // Get all serializers to run in automated mode, ordered by sortingSelector
             var currentAssembly = this.GetType().Assembly;
 
-            //PnP.Framework.Provisioning.Providers.Xml.XMLPnPSchemaVersion currentSchemaVersion = GetCurrentSchemaVersion();
-            //TODO: finish off sorting
-
             var writers = currentAssembly.GetTypes()
                 // Get all the writers
                 .Where(t => t.GetInterface(typeof(IPnPSchemaWriter).FullName) != null

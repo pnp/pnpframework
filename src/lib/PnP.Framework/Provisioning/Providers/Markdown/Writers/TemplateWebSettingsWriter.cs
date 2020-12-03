@@ -32,16 +32,6 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
             }
             writer.WriteLine(commentsEnabledText);
             writer.WriteLine();
-            //TODO: set out search scope
-            /*
-            string searchScopeText = "Default search scope";
-            if (template.WebSettings.SearchScope != SearchScopes.DefaultScope)
-            {
-                searchScopeText = $"Search scope - {template.WebSettings.SearchScope.ToString()}";
-            }
-            writer.WriteLine(searchScopeText);
-            writer.WriteLine();
-            */
         }
     }
 }

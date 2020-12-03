@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
@@ -32,25 +33,37 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
             {
 
                 writer.WriteLine($"|  {list.Title} | {list.Description}   |");
+                WriteNewLine(groupDetailsWriter);
+                WriteHeader(list.Title, 2, groupDetailsWriter);
+                WriteNewLine(groupDetailsWriter);
+                WriteTextField(list.Description, "Description", groupDetailsWriter);
+                WriteTextField(list.OnQuickLaunch.ToString(), "Show on quick launch?", groupDetailsWriter);
+                WriteTextField(GetListTemplateNameFromTemplateCode(list.TemplateType.ToString()), "List template", groupDetailsWriter);
+                WriteTextField(list.Url, "URL", groupDetailsWriter);
+                WriteNewLine(groupDetailsWriter);
 
-                groupDetailsWriter.WriteLine("<br/>"); 
-                groupDetailsWriter.WriteLine();
-                groupDetailsWriter.WriteLine($"## {list.Title}");
-                groupDetailsWriter.WriteLine();
-                groupDetailsWriter.WriteLine($"Description - {list.Description}");
-                groupDetailsWriter.WriteLine();
-                groupDetailsWriter.WriteLine(GetListTemplateNameFromTemplateCode(list.TemplateType.ToString()));
-                groupDetailsWriter.WriteLine();
-                groupDetailsWriter.WriteLine($"Url - {list.Url}");
-                groupDetailsWriter.WriteLine();
-                groupDetailsWriter.WriteLine($"Enable versioning - {list.EnableVersioning}");
-                groupDetailsWriter.WriteLine();
-                groupDetailsWriter.WriteLine("Views:");
-                groupDetailsWriter.WriteLine();
-                groupDetailsWriter.WriteLine("<br/>");
-                groupDetailsWriter.WriteLine();
+                WriteHeader("Versioning", 3, groupDetailsWriter);                
+                WriteTextField("TBC", "Require content approval?", groupDetailsWriter);
+                WriteTextField(list.EnableVersioning.ToString(), "Create a version each time you edit an item in this list ?", groupDetailsWriter);
+                WriteTextField("TBC", "Draft item security", groupDetailsWriter);
+                WriteNewLine(groupDetailsWriter);
+
+                WriteHeader("Advanced settings", 3, groupDetailsWriter);
+                WriteTextField(list.ContentTypesEnabled.ToString(), "Allow management of content types?", groupDetailsWriter);
+                WriteNewLine(groupDetailsWriter);
+
+                WriteHeader("Content Types", 3, groupDetailsWriter);
+                foreach (var binding in list.ContentTypeBindings)
+                {
+                    WriteText($"- {binding.ContentTypeId}", groupDetailsWriter);
+                }
+                WriteNewLine(groupDetailsWriter);
+
+                WriteHeader("Views", 3, groupDetailsWriter);
                 groupDetailsWriter.WriteLine("| Display Name |  Default?  |   Name    |");
                 groupDetailsWriter.WriteLine("| :------------- | :----------: | :----------: |");
+
+                TextWriter viewDetailsWriter = new StringWriter();
 
                 var xmlViewFields = from f in list.Views
                                 select XElement.Parse(f.SchemaXml).ToXmlElement();
@@ -62,45 +75,39 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
                     var viewName = xmlField.Attributes["Name"].Value;
 
                     groupDetailsWriter.WriteLine($"| {viewDisplayName} | TBC | {viewName} |");
-                    groupDetailsWriter.WriteLine();
+
+                    WriteHeader(viewDisplayName, 4, viewDetailsWriter);
+                    WriteNewLine(viewDetailsWriter);
+                   
+                    WriteAttributeField("Url", "View Url", viewDetailsWriter, xmlField);
+                    WriteText("**Fields:**", viewDetailsWriter);
+
+                    foreach (XmlElement fieldNode in xmlField.SelectNodes("//ViewFields//FieldRef"))
+                    {
+                        WriteText($"- {GetAttributeValue("Name", fieldNode)}", viewDetailsWriter);
+                    }
+                }
+                groupDetailsWriter.WriteLine(viewDetailsWriter.ToString());
+                WriteNewLine(viewDetailsWriter);
+
+                WriteText("NB: Currently the documentation assumes you are using Content Types so it just shows the field refs", viewDetailsWriter);
+
+                if (list.FieldRefs != null && list.FieldRefs.Count() > 0)
+                {
+                    WriteText("**Fields:**", groupDetailsWriter);
                 }
 
+                foreach (var fieldRef in list.FieldRefs)
+                {
+                    var fieldDisplayName = fieldRef.DisplayName;
+                    var fieldName = fieldRef.Name;
 
+                    groupDetailsWriter.WriteLine($"| {fieldDisplayName} | {fieldRef.Required.ToString()} | {fieldName} |");
+                }
             }
             writer.WriteLine(groupDetailsWriter.ToString());
-            writer.WriteLine("<br/>");
-            writer.WriteLine();
+            WriteNewLine(writer);
 
-            /*
-             * <pnp:ListInstance Title="Style Library" Description="Use the style library to store style sheets, such as CSS or XSL files. The style sheets in this gallery can be used by this site or any of its subsites." 
-             * DocumentTemplate="" TemplateType="101" Url="tyle Library" EnableVersioning="true" MinorVersionLimit="0" MaxVersionLimit="500" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-e717-4e80-aa17-d0c71b360101" EnableAttachments="false" DefaultDisplayFormUrl="{site}/Style Library/Forms/DispForm.aspx" DefaultEditFormUrl="{site}/Style Library/Forms/EditForm.aspx" DefaultNewFormUrl="{site}/Style Library/Forms/Upload.aspx" ImageUrl="/_layouts/15/images/itdl.png?rev=47" IrmExpire="false" IrmReject="false" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
-          <pnp:ContentTypeBindings>
-            <pnp:ContentTypeBinding ContentTypeID="0x0101" Default="true" />
-            <pnp:ContentTypeBinding ContentTypeID="0x0120" />
-          </pnp:ContentTypeBindings>
-          <pnp:Views>
-            <View Name="{73E8B349-5F9E-458B-BC1F-7BC77E7AAE8E}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Documents" Url="{site}/Style Library/Forms/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/dlicon.png?rev=47">
-              <Query>
-                <OrderBy>
-                  <FieldRef Name="FileLeafRef" />
-                </OrderBy>
-              </Query>
-              <ViewFields>
-                <FieldRef Name="DocIcon" />
-                <FieldRef Name="LinkFilename" />
-                <FieldRef Name="Modified" />
-                <FieldRef Name="Editor" />
-              </ViewFields>
-              <RowLimit Paged="TRUE">30</RowLimit>
-              <JSLink>clienttemplates.js</JSLink>
-            </View>
-          </pnp:Views>
-          <pnp:FieldRefs>
-            <pnp:FieldRef ID="d307dff3-340f-44a2-9f4b-fbfe1ba07459" Name="_CommentCount" DisplayName="Comment count" />
-            <pnp:FieldRef ID="db8d9d6d-dc9a-4fbd-85f3-4a753bfdc58c" Name="_LikeCount" DisplayName="Like count" />
-          </pnp:FieldRefs>
-        </pnp:ListInstance>
-            */
         }
     }
 }

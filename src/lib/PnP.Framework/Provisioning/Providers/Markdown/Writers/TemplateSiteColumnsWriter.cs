@@ -121,7 +121,7 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
         {
             WriteAttributeField("Indexed", "Indexed", detailWriter, xmlField);
 
-            detailWriter.WriteLine("Choices:");
+            detailWriter.WriteLine("**Choices:**");
             detailWriter.WriteLine();
             if (xmlField.SelectSingleNode("CHOICES") != null)
             {

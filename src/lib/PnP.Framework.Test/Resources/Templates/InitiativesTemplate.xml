@@ -68,7 +68,7 @@
         </Field>
         <Field Type="DateTime" DisplayName="Event Start" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="DateTime" Group="Initiatives Board" FriendlyDisplayFormat="Disabled" ID="{ae79e134-f63a-4d43-b22d-ef3abf2980dd}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="sampleEventStart" Name="sampleEventStart" CustomFormatter="" CalType="0">
         </Field>
-        <Field Type="Choice" DisplayName="2 Star Area" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" Group="Initiatives Board" ID="{f4b4a63e-c225-44c2-aeb9-4d8726fd73df}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="sampleTwoStarArea" Name="sampleTwoStarArea" CustomFormatter="">
+        <Field Type="Choice" DisplayName="2 Star Area" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" Group="Initiatives Board" ID="{f4b4a63e-c225-44c2-aeb9-4d8726fd73df}" SourceID="{3df7348c-9057-4167-abc6-6458c23110ca}" StaticName="sampleSecondLevelArea" Name="sampleSecondLevelArea" CustomFormatter="">
           <CHOICES>
             <CHOICE>Area One</CHOICE>
             <CHOICE>Area Two</CHOICE>
@@ -132,7 +132,7 @@
             <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" Required="true" UpdateChildren="true" />
             <pnp:FieldRef ID="e82ec02a-93ff-4216-8790-9bae2859d02e" Name="sampleSnapshotId" UpdateChildren="true" />
             <pnp:FieldRef ID="01015029-f3b6-4d0f-a632-de99277756f3" Name="sampleSnapshotDate" UpdateChildren="true" />
-            <pnp:FieldRef ID="f4b4a63e-c225-44c2-aeb9-4d8726fd73df" Name="sampleTwoStarArea" UpdateChildren="true" />
+            <pnp:FieldRef ID="f4b4a63e-c225-44c2-aeb9-4d8726fd73df" Name="sampleSecondLevelArea" UpdateChildren="true" />
             <pnp:FieldRef ID="a4fff425-574c-467c-8c12-b68ad3d97b85" Name="samplePrimaryContact" UpdateChildren="true" />
             <pnp:FieldRef ID="2ae88e78-0725-4c5d-9c10-bd5b195f0527" Name="sampleDelegates" UpdateChildren="true" />
             <pnp:FieldRef ID="433578e7-0186-439d-9871-2297bc034d62" Name="sampleDeliveryUpdate" UpdateChildren="true" />
@@ -154,7 +154,7 @@
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" Required="true" UpdateChildren="true" />
-            <pnp:FieldRef ID="f4b4a63e-c225-44c2-aeb9-4d8726fd73df" Name="sampleTwoStarArea" UpdateChildren="true" />
+            <pnp:FieldRef ID="f4b4a63e-c225-44c2-aeb9-4d8726fd73df" Name="sampleSecondLevelArea" UpdateChildren="true" />
             <pnp:FieldRef ID="27015e31-7ddf-4e68-98d2-3539a6ed314e" Name="sampleBenefitsByMar21" UpdateChildren="true" />
             <pnp:FieldRef ID="8b74287d-5fbc-40d1-8b6a-52694a754a5e" Name="sampleBenefitsToOrg" UpdateChildren="true" />
             <pnp:FieldRef ID="a4fff425-574c-467c-8c12-b68ad3d97b85" Name="samplePrimaryContact" UpdateChildren="true" />
@@ -320,7 +320,7 @@
               <ViewFields>
                 <FieldRef Name="ID" />
                 <FieldRef Name="LinkTitle" />
-                <FieldRef Name="sampleTwoStarArea" />
+                <FieldRef Name="sampleSecondLevelArea" />
                 <FieldRef Name="samplePrimaryContact" />
                 <FieldRef Name="sampleDelegates" />
                 <FieldRef Name="sampleSynopsis" />
@@ -336,7 +336,7 @@
             </View>
           </pnp:Views>
           <pnp:Fields>
-            <Field Type="Choice" DisplayName="2 Star Area" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" Group="Initiatives Board" ID="{f4b4a63e-c225-44c2-aeb9-4d8726fd73df}" SourceID="{{siteid}}" StaticName="sampleTwoStarArea" Name="sampleTwoStarArea" Version="5" CustomFormatter="{&quot;elmType&quot;:&quot;div&quot;,&quot;style&quot;:{&quot;box-sizing&quot;:&quot;border-box&quot;,&quot;padding&quot;:&quot;0 2px&quot;},&quot;attributes&quot;:{&quot;class&quot;:{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$sampleTwoStarArea]&quot;,&quot;Area One&quot;]},&quot;sp-css-backgroundColor-blueBackground27&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$sampleTwoStarArea]&quot;,&quot;Area Two&quot;]},&quot;sp-css-backgroundColor-successBackground50&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$sampleTwoStarArea]&quot;,&quot;Area Three&quot;]},&quot;sp-css-backgroundColor-warningBackground50&quot;,&quot;&quot;]}]}]}},&quot;children&quot;:[{&quot;elmType&quot;:&quot;span&quot;,&quot;style&quot;:{&quot;line-height&quot;:&quot;16px&quot;,&quot;height&quot;:&quot;14px&quot;},&quot;attributes&quot;:{&quot;iconName&quot;:{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$sampleTwoStarArea]&quot;,&quot;Area One&quot;]},&quot;&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$sampleTwoStarArea]&quot;,&quot;Area Two&quot;]},&quot;&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$sampleTwoStarArea]&quot;,&quot;Area Three&quot;]},&quot;&quot;,&quot;&quot;]}]}]}}},{&quot;elmType&quot;:&quot;span&quot;,&quot;style&quot;:{&quot;overflow&quot;:&quot;hidden&quot;,&quot;text-overflow&quot;:&quot;ellipsis&quot;,&quot;padding&quot;:&quot;0 3px&quot;},&quot;txtContent&quot;:&quot;[$sampleTwoStarArea]&quot;,&quot;attributes&quot;:{&quot;class&quot;:{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$sampleTwoStarArea]&quot;,&quot;Area One&quot;]},&quot;sp-field-bold&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$sampleTwoStarArea]&quot;,&quot;Area Two&quot;]},&quot;&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$sampleTwoStarArea]&quot;,&quot;Area Three&quot;]},&quot;&quot;,&quot;&quot;]}]}]}}}],&quot;templateId&quot;:&quot;BgColorChoice&quot;}" ColName="nvarchar4" RowOrdinal="0">
+            <Field Type="Choice" DisplayName="2 Star Area" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" Group="Initiatives Board" ID="{f4b4a63e-c225-44c2-aeb9-4d8726fd73df}" SourceID="{{siteid}}" StaticName="sampleSecondLevelArea" Name="sampleSecondLevelArea" Version="5" CustomFormatter="{&quot;elmType&quot;:&quot;div&quot;,&quot;style&quot;:{&quot;box-sizing&quot;:&quot;border-box&quot;,&quot;padding&quot;:&quot;0 2px&quot;},&quot;attributes&quot;:{&quot;class&quot;:{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$sampleSecondLevelArea]&quot;,&quot;Area One&quot;]},&quot;sp-css-backgroundColor-blueBackground27&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$sampleSecondLevelArea]&quot;,&quot;Area Two&quot;]},&quot;sp-css-backgroundColor-successBackground50&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$sampleSecondLevelArea]&quot;,&quot;Area Three&quot;]},&quot;sp-css-backgroundColor-warningBackground50&quot;,&quot;&quot;]}]}]}},&quot;children&quot;:[{&quot;elmType&quot;:&quot;span&quot;,&quot;style&quot;:{&quot;line-height&quot;:&quot;16px&quot;,&quot;height&quot;:&quot;14px&quot;},&quot;attributes&quot;:{&quot;iconName&quot;:{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$sampleSecondLevelArea]&quot;,&quot;Area One&quot;]},&quot;&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$sampleSecondLevelArea]&quot;,&quot;Area Two&quot;]},&quot;&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$sampleSecondLevelArea]&quot;,&quot;Area Three&quot;]},&quot;&quot;,&quot;&quot;]}]}]}}},{&quot;elmType&quot;:&quot;span&quot;,&quot;style&quot;:{&quot;overflow&quot;:&quot;hidden&quot;,&quot;text-overflow&quot;:&quot;ellipsis&quot;,&quot;padding&quot;:&quot;0 3px&quot;},&quot;txtContent&quot;:&quot;[$sampleSecondLevelArea]&quot;,&quot;attributes&quot;:{&quot;class&quot;:{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$sampleSecondLevelArea]&quot;,&quot;Area One&quot;]},&quot;sp-field-bold&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$sampleSecondLevelArea]&quot;,&quot;Area Two&quot;]},&quot;&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$sampleSecondLevelArea]&quot;,&quot;Area Three&quot;]},&quot;&quot;,&quot;&quot;]}]}]}}}],&quot;templateId&quot;:&quot;BgColorChoice&quot;}" ColName="nvarchar4" RowOrdinal="0">
               <CHOICES>
                 <CHOICE>Area One</CHOICE>
                 <CHOICE>Area Two</CHOICE>
@@ -485,7 +485,7 @@
                 <FieldRef Name="sampleSnapshotDate" />
                 <FieldRef Name="samplePrimaryContact" />
                 <FieldRef Name="sampleDelegates" />
-                <FieldRef Name="sampleTwoStarArea" />
+                <FieldRef Name="sampleSecondLevelArea" />
                 <FieldRef Name="sampleSynopsis" />
                 <FieldRef Name="sampleBenefitsByMar21" />
                 <FieldRef Name="sampleBenefitsToOrg" />
@@ -509,7 +509,7 @@
           <pnp:Fields>
             <Field Type="Number" DisplayName="SnapshotId" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Decimals="0" Group="Initiatives Board" ID="{e82ec02a-93ff-4216-8790-9bae2859d02e}" SourceID="{{siteid}}" StaticName="sampleSnapshotId" Name="sampleSnapshotId" Version="3" CustomFormatter="" Percentage="FALSE" ColName="float1" RowOrdinal="0" />
             <Field Type="DateTime" DisplayName="Snapshot Date" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="DateOnly" Group="Initiatives Board" FriendlyDisplayFormat="Disabled" ID="{01015029-f3b6-4d0f-a632-de99277756f3}" SourceID="{{siteid}}" StaticName="sampleSnapshotDate" Name="sampleSnapshotDate" Version="2" CustomFormatter="" CalType="0" ColName="datetime1" RowOrdinal="0" />
-            <Field Type="Choice" DisplayName="2 Star Area" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" Group="Initiatives Board" ID="{f4b4a63e-c225-44c2-aeb9-4d8726fd73df}" SourceID="{{siteid}}" StaticName="sampleTwoStarArea" Name="sampleTwoStarArea" Version="3" CustomFormatter="" AllowDeletion="TRUE" ColName="nvarchar4" RowOrdinal="0">
+            <Field Type="Choice" DisplayName="2 Star Area" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" Group="Initiatives Board" ID="{f4b4a63e-c225-44c2-aeb9-4d8726fd73df}" SourceID="{{siteid}}" StaticName="sampleSecondLevelArea" Name="sampleSecondLevelArea" Version="3" CustomFormatter="" AllowDeletion="TRUE" ColName="nvarchar4" RowOrdinal="0">
               <CHOICES>
                 <CHOICE>Area One</CHOICE>
                 <CHOICE>Area Two</CHOICE>

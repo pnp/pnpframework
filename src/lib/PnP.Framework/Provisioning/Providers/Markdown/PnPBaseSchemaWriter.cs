@@ -50,6 +50,12 @@ namespace PnP.Framework.Provisioning.Providers.Markdown
             fieldWriter.WriteLine();
         }
 
+        protected void WriteText(string textValue, TextWriter fieldWriter)
+        {
+            fieldWriter.WriteLine($"{textValue}");
+            fieldWriter.WriteLine();
+        }
+
         protected void WriteYesNoAttributeField(string attributeName, string fieldName, TextWriter fieldWriter, XmlElement xmlField)
         {
 
@@ -113,7 +119,7 @@ namespace PnP.Framework.Provisioning.Providers.Markdown
                 default:
                     return $"**Site type** - Other ({templateCode})";
             }
-            //TODO: map other template types
+            //TODO: map other template types but need to identify template names from somewhere
             /*
              <pnp:WebTemplate LanguageCode="1033" TemplateName="GLOBAL#0" />
   <pnp:WebTemplate LanguageCode="1033" TemplateName="STS#3" />

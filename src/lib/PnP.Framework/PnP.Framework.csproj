@@ -24,6 +24,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+			<_Parameter1>PnP.PowerShell</_Parameter1>
+		</AssemblyAttribute>
+	</ItemGroup>
+
+	<ItemGroup>
 		<None Remove="Modernization\Publishing\pagelayoutmapping.xml" />
 		<None Remove="Modernization\Publishing\pagelayoutmapping.xsd" />
 		<None Remove="Modernization\webpartmapping.xml" />
@@ -70,10 +76,10 @@
 		<EmbeddedResource Include="Modernization\Publishing\pagelayoutmapping.xml" />
 		<EmbeddedResource Include="Modernization\Publishing\pagelayoutmapping.xsd" />
 		<EmbeddedResource Include="Modernization\webpartmapping.xml">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Modernization\webpartmapping.xsd">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Provisioning\BaseTemplates\Common\Publishing-Feature-Native-Files.xml" />
 		<EmbeddedResource Include="Provisioning\BaseTemplates\SPO\BDR0Template.xml" />

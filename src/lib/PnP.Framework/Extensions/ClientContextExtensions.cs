@@ -300,15 +300,38 @@ namespace Microsoft.SharePoint.Client
                 // A diffent host = different audience ==> new access token is needed
                 if (contextSettings.UsesDifferentAudience(newSiteUrl))
                 {
+
                     var authManager = contextSettings.AuthenticationManager;
                     ClientContext newClientContext = null;
-                    if (contextSettings.Type == ClientContextType.SharePointACSAppOnly)
+                    if (contextSettings.Type != ClientContextType.Cookie)
                     {
-                        newClientContext = authManager.GetACSAppOnlyContext(newSiteUrl, contextSettings.ClientId, contextSettings.ClientSecret, contextSettings.Environment);
+                        if (contextSettings.Type == ClientContextType.SharePointACSAppOnly)
+                        {
+                            newClientContext = authManager.GetACSAppOnlyContext(newSiteUrl, contextSettings.ClientId, contextSettings.ClientSecret, contextSettings.Environment);
+                        }
+                        else
+                        {
+                            newClientContext = authManager.GetContextAsync(newSiteUrl).GetAwaiter().GetResult();
+                        }
                     }
                     else
                     {
-                        newClientContext = authManager.GetContextAsync(newSiteUrl).GetAwaiter().GetResult();
+                        newClientContext = new ClientContext(newSiteUrl);
+                        newClientContext.ExecutingWebRequest += (sender, webRequestEventArgs) =>
+                        {
+                            // Call the ExecutingWebRequest delegate method from the original ClientContext object, but pass along the webRequestEventArgs of 
+                            // the new delegate method
+                            MethodInfo methodInfo = clientContext.GetType().GetMethod("OnExecutingWebRequest", BindingFlags.Instance | BindingFlags.NonPublic);
+                            object[] parametersArray = new object[] { webRequestEventArgs };
+                            methodInfo.Invoke(clientContext, parametersArray);
+                        };
+                        ClientContextSettings clientContextSettings = new ClientContextSettings()
+                        {
+                            Type = ClientContextType.Cookie,
+                            SiteUrl = newSiteUrl
+                        };
+
+                        newClientContext.AddContextSettings(clientContextSettings);
                     }
                     if (newClientContext != null)
                     {

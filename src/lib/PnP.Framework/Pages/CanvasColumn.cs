@@ -29,7 +29,7 @@ namespace PnP.Framework.Pages
         {
             if (section == null)
             {
-                throw new ArgumentNullException("Passed section cannot be null");
+                throw new ArgumentNullException(nameof(section),"Passed section cannot be null");
             }
 
             this.section = section;
@@ -42,7 +42,7 @@ namespace PnP.Framework.Pages
         {
             if (section == null)
             {
-                throw new ArgumentNullException("Passed section cannot be null");
+                throw new ArgumentNullException(nameof(section),"Passed section cannot be null");
             }
 
             this.section = section;
@@ -54,7 +54,7 @@ namespace PnP.Framework.Pages
         {
             if (section == null)
             {
-                throw new ArgumentNullException("Passed section cannot be null");
+                throw new ArgumentNullException(nameof(section),"Passed section cannot be null");
             }
 
             this.section = section;
@@ -67,7 +67,7 @@ namespace PnP.Framework.Pages
         {
             if (section == null)
             {
-                throw new ArgumentNullException("Passed section cannot be null");
+                throw new ArgumentNullException(nameof(section),"Passed section cannot be null");
             }
 
             this.section = section;

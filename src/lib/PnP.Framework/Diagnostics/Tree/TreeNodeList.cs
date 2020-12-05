@@ -58,7 +58,7 @@ namespace PnP.Framework.Diagnostics.Tree
         protected internal bool Remove(ITreeNode<T> node, bool updateParent)
         {
             if (node == null)
-                throw new ArgumentNullException("node");
+                throw new ArgumentNullException(nameof(node));
 
             // if we don't have it, we can't remove it
             if (!Contains(node))

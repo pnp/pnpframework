@@ -28,10 +28,10 @@ namespace PnP.Framework.Modernization.Functions
         public static XmlEqualityResult AreEqual(XElement xmlA, XElement xmlB)
         {
             if (xmlA == null)
-                throw new ArgumentNullException("xmlA", "The input Xml cannot be null");
+                throw new ArgumentNullException(nameof(xmlA), "The input Xml cannot be null");
 
             if (xmlB == null)
-                throw new ArgumentNullException("xmlB", "The input Xml cannot be null");
+                throw new ArgumentNullException(nameof(xmlB), "The input Xml cannot be null");
 
             if (!xmlA.Name.Equals(xmlB.Name))
             {

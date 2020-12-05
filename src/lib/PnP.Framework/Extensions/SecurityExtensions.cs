@@ -354,7 +354,7 @@ namespace Microsoft.SharePoint.Client
         public static string GetSharingCapabilitiesTenant(this Web web, Uri siteUrl)
         {
             if (siteUrl == null)
-                throw new ArgumentNullException("siteUrl");
+                throw new ArgumentNullException(nameof(siteUrl));
 
             Tenant tenant = new Tenant(web.Context);
             SiteProperties site = tenant.GetSitePropertiesByUrl(siteUrl.OriginalString, true);
@@ -417,7 +417,7 @@ namespace Microsoft.SharePoint.Client
         public static List<ExternalUserEntity> GetExternalUsersForSiteTenant(this Web web, Uri siteUrl)
         {
             if (siteUrl == null)
-                throw new ArgumentNullException("siteUrl");
+                throw new ArgumentNullException(nameof(siteUrl));
 
             Tenant tenantAdmin = new Tenant(web.Context);
             Office365Tenant tenant = new Office365Tenant(web.Context);
@@ -482,7 +482,7 @@ namespace Microsoft.SharePoint.Client
         public static int GetGroupID(this Web web, string groupName)
         {
             if (string.IsNullOrEmpty(groupName))
-                throw new ArgumentNullException("groupName");
+                throw new ArgumentNullException(nameof(groupName));
 
             int groupID = 0;
 
@@ -510,7 +510,7 @@ namespace Microsoft.SharePoint.Client
         public static Group AddGroup(this Web web, string groupName, string groupDescription, bool groupIsOwner, bool updateAndExecuteQuery = true, bool onlyAllowMembersViewMembership = false)
         {
             if (string.IsNullOrEmpty(groupName))
-                throw new ArgumentNullException("groupName");
+                throw new ArgumentNullException(nameof(groupName));
 
             GroupCreationInformation groupCreationInformation = new GroupCreationInformation
             {
@@ -573,10 +573,10 @@ namespace Microsoft.SharePoint.Client
         public static void AddUserToGroup(this Web web, string groupName, string userLoginName)
         {
             if (string.IsNullOrEmpty(groupName))
-                throw new ArgumentNullException("groupName");
+                throw new ArgumentNullException(nameof(groupName));
 
             if (string.IsNullOrEmpty(userLoginName))
-                throw new ArgumentNullException("userLoginName");
+                throw new ArgumentNullException(nameof(userLoginName));
 
             //Ensure the user is known
             UserCreationInformation userToAdd = new UserCreationInformation
@@ -606,7 +606,7 @@ namespace Microsoft.SharePoint.Client
         public static void AddUserToGroup(this Web web, int groupId, string userLoginName)
         {
             if (string.IsNullOrEmpty(userLoginName))
-                throw new ArgumentNullException("userLoginName");
+                throw new ArgumentNullException(nameof(userLoginName));
 
             Group group = web.SiteGroups.GetById(groupId);
             web.Context.Load(group);
@@ -628,10 +628,10 @@ namespace Microsoft.SharePoint.Client
         public static void AddUserToGroup(this Web web, Group group, User user)
         {
             if (group == null)
-                throw new ArgumentNullException("group");
+                throw new ArgumentNullException(nameof(group));
 
             if (user == null)
-                throw new ArgumentNullException("user");
+                throw new ArgumentNullException(nameof(user));
 
             group.Users.AddUser(user);
             web.Context.ExecuteQueryRetry();
@@ -646,10 +646,10 @@ namespace Microsoft.SharePoint.Client
         public static void AddUserToGroup(this Web web, Group group, string userLoginName)
         {
             if (group == null)
-                throw new ArgumentNullException("group");
+                throw new ArgumentNullException(nameof(group));
 
             if (string.IsNullOrEmpty(userLoginName))
-                throw new ArgumentNullException("userLoginName");
+                throw new ArgumentNullException(nameof(userLoginName));
 
             User user = web.EnsureUser(userLoginName);
             web.Context.ExecuteQueryRetry();
@@ -670,7 +670,7 @@ namespace Microsoft.SharePoint.Client
         public static void AddPermissionLevelToUser(this SecurableObject securableObject, string userLoginName, RoleType permissionLevel, bool removeExistingPermissionLevels = false)
         {
             if (string.IsNullOrEmpty(userLoginName))
-                throw new ArgumentNullException("userLoginName");
+                throw new ArgumentNullException(nameof(userLoginName));
 
             Web web = securableObject.GetAssociatedWeb();
 
@@ -688,10 +688,10 @@ namespace Microsoft.SharePoint.Client
         public static void AddPermissionLevelToUser(this SecurableObject securableObject, string userLoginName, string roleDefinitionName, bool removeExistingPermissionLevels = false)
         {
             if (string.IsNullOrEmpty(userLoginName))
-                throw new ArgumentNullException("userLoginName");
+                throw new ArgumentNullException(nameof(userLoginName));
 
             if (string.IsNullOrEmpty(roleDefinitionName))
-                throw new ArgumentNullException("roleDefinitionName");
+                throw new ArgumentNullException(nameof(roleDefinitionName));
 
             Web web = securableObject.GetAssociatedWeb();
 
@@ -709,7 +709,7 @@ namespace Microsoft.SharePoint.Client
         public static void AddPermissionLevelToGroup(this SecurableObject securableObject, string groupName, RoleType permissionLevel, bool removeExistingPermissionLevels = false)
         {
             if (string.IsNullOrEmpty(groupName))
-                throw new ArgumentNullException("groupName");
+                throw new ArgumentNullException(nameof(groupName));
 
             Web web = securableObject.GetAssociatedWeb();
 
@@ -728,7 +728,7 @@ namespace Microsoft.SharePoint.Client
         public static void AddPermissionLevelToPrincipal(this SecurableObject securableObject, Principal principal, RoleType permissionLevel, bool removeExistingPermissionLevels = false)
         {
             if (principal == null)
-                throw new ArgumentNullException("principal");
+                throw new ArgumentNullException(nameof(principal));
 
             Web web = securableObject.GetAssociatedWeb();
 
@@ -748,10 +748,10 @@ namespace Microsoft.SharePoint.Client
         public static void AddPermissionLevelToGroup(this SecurableObject securableObject, string groupName, string roleDefinitionName, bool removeExistingPermissionLevels = false)
         {
             if (string.IsNullOrEmpty(groupName))
-                throw new ArgumentNullException("groupName");
+                throw new ArgumentNullException(nameof(groupName));
 
             if (string.IsNullOrEmpty(roleDefinitionName))
-                throw new ArgumentNullException("roleDefinitionName");
+                throw new ArgumentNullException(nameof(roleDefinitionName));
 
             Web web = securableObject.GetAssociatedWeb();
 
@@ -770,10 +770,10 @@ namespace Microsoft.SharePoint.Client
         public static void AddPermissionLevelToPrincipal(this SecurableObject securableObject, Principal principal, string roleDefinitionName, bool removeExistingPermissionLevels = false)
         {
             if (principal == null)
-                throw new ArgumentNullException("principal");
+                throw new ArgumentNullException(nameof(principal));
 
             if (string.IsNullOrEmpty(roleDefinitionName))
-                throw new ArgumentNullException("roleDefinitionName");
+                throw new ArgumentNullException(nameof(roleDefinitionName));
 
             Web web = securableObject.GetAssociatedWeb();
 
@@ -841,7 +841,7 @@ namespace Microsoft.SharePoint.Client
         public static void RemovePermissionLevelFromUser(this SecurableObject securableObject, string userLoginName, RoleType permissionLevel, bool removeAllPermissionLevels = false)
         {
             if (string.IsNullOrEmpty(userLoginName))
-                throw new ArgumentNullException("userLoginName");
+                throw new ArgumentNullException(nameof(userLoginName));
 
             Web web = securableObject.GetAssociatedWeb();
 
@@ -860,7 +860,7 @@ namespace Microsoft.SharePoint.Client
         public static void RemovePermissionLevelFromPrincipal(this SecurableObject securableObject, Principal principal, RoleType permissionLevel, bool removeAllPermissionLevels = false)
         {
             if (principal == null)
-                throw new ArgumentNullException("principal");
+                throw new ArgumentNullException(nameof(principal));
 
             Web web = securableObject.GetAssociatedWeb();
 
@@ -881,7 +881,7 @@ namespace Microsoft.SharePoint.Client
         public static void RemovePermissionLevelFromUser(this SecurableObject securableObject, string userLoginName, string roleDefinitionName, bool removeAllPermissionLevels = false)
         {
             if (string.IsNullOrEmpty(userLoginName))
-                throw new ArgumentNullException("userLoginName");
+                throw new ArgumentNullException(nameof(userLoginName));
 
             Web web = securableObject.GetAssociatedWeb();
 
@@ -900,7 +900,7 @@ namespace Microsoft.SharePoint.Client
         public static void RemovePermissionLevelFromPrincipal(this SecurableObject securableObject, Principal principal, string roleDefinitionName, bool removeAllPermissionLevels = false)
         {
             if (principal == null)
-                throw new ArgumentNullException("principal");
+                throw new ArgumentNullException(nameof(principal));
 
             Web web = securableObject.GetAssociatedWeb();
 
@@ -921,7 +921,7 @@ namespace Microsoft.SharePoint.Client
         public static void RemovePermissionLevelFromGroup(this SecurableObject securableObject, string groupName, RoleType permissionLevel, bool removeAllPermissionLevels = false)
         {
             if (string.IsNullOrEmpty(groupName))
-                throw new ArgumentNullException("groupName");
+                throw new ArgumentNullException(nameof(groupName));
 
             Web web = securableObject.GetAssociatedWeb();
 
@@ -942,7 +942,7 @@ namespace Microsoft.SharePoint.Client
         public static void RemovePermissionLevelFromGroup(this SecurableObject securableObject, string groupName, string roleDefinitionName, bool removeAllPermissionLevels = false)
         {
             if (string.IsNullOrEmpty(groupName))
-                throw new ArgumentNullException("groupName");
+                throw new ArgumentNullException(nameof(groupName));
 
             Web web = securableObject.GetAssociatedWeb();
 
@@ -1030,7 +1030,7 @@ namespace Microsoft.SharePoint.Client
         public static void RemoveUserFromGroup(this Web web, string groupName, string userLoginName)
         {
             if (string.IsNullOrEmpty(groupName))
-                throw new ArgumentNullException("groupName");
+                throw new ArgumentNullException(nameof(groupName));
 
             var group = web.SiteGroups.GetByName(groupName);
             web.Context.Load(group);
@@ -1061,10 +1061,10 @@ namespace Microsoft.SharePoint.Client
         public static void RemoveUserFromGroup(this Web web, Group group, User user)
         {
             if (group == null)
-                throw new ArgumentNullException("group");
+                throw new ArgumentNullException(nameof(group));
 
             if (user == null)
-                throw new ArgumentNullException("user");
+                throw new ArgumentNullException(nameof(user));
 
             group.Users.Remove(user);
             group.Update();
@@ -1079,7 +1079,7 @@ namespace Microsoft.SharePoint.Client
         public static void RemoveGroup(this Web web, string groupName)
         {
             if (string.IsNullOrEmpty(groupName))
-                throw new ArgumentNullException("groupName");
+                throw new ArgumentNullException(nameof(groupName));
 
             var group = web.SiteGroups.GetByName(groupName);
             web.Context.Load(group);
@@ -1098,7 +1098,7 @@ namespace Microsoft.SharePoint.Client
         public static void RemoveGroup(this Web web, Group group)
         {
             if (group == null)
-                throw new ArgumentNullException("group");
+                throw new ArgumentNullException(nameof(group));
 
             GroupCollection groups = web.SiteGroups;
             groups.Remove(group);
@@ -1115,10 +1115,10 @@ namespace Microsoft.SharePoint.Client
         public static bool IsUserInGroup(this Web web, string groupName, string userLoginName)
         {
             if (string.IsNullOrEmpty(groupName))
-                throw new ArgumentNullException("groupName");
+                throw new ArgumentNullException(nameof(groupName));
 
             if (string.IsNullOrEmpty(userLoginName))
-                throw new ArgumentNullException("userLoginName");
+                throw new ArgumentNullException(nameof(userLoginName));
 
             bool result = false;
 
@@ -1147,7 +1147,7 @@ namespace Microsoft.SharePoint.Client
         public static bool GroupExists(this Web web, string groupName)
         {
             if (string.IsNullOrEmpty(groupName))
-                throw new ArgumentNullException("groupName");
+                throw new ArgumentNullException(nameof(groupName));
 
             bool result = false;
 
@@ -1352,9 +1352,9 @@ namespace Microsoft.SharePoint.Client
         internal static void Visit(this SecurableObject obj, int leafBreadthLimit, Action<SecurableObject, string> action)
         {
             if (obj == null)
-                throw new ArgumentNullException("obj");
+                throw new ArgumentNullException(nameof(obj));
             if (action == null)
-                throw new ArgumentNullException("action");
+                throw new ArgumentNullException(nameof(action));
             string path = string.Empty;
             var stack = new Stack<SecurableObject>();
             stack.Push(obj);

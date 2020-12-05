@@ -332,7 +332,7 @@ namespace PnP.Framework.Test.Framework.Providers
         private static X509Certificate2 RetrieveCertificateFromStore(X509Store store, String subjectName)
         {
             if (store == null)
-                throw new ArgumentNullException("store");
+                throw new ArgumentNullException(nameof(store));
 
             X509Certificate2 cert = null;
 

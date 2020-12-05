@@ -101,7 +101,7 @@ namespace Microsoft.SharePoint.Client
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1303:Do not pass literals as localized parameters", MessageId = "OfficeDevPnP.Core.Diagnostics.Log.Debug(System.String,System.String,System.Object[])")]
         public static TermGroup EnsureTermGroup(this Site site, string groupName, Guid groupId = default(Guid), string groupDescription = null)
         {
-            if (string.IsNullOrEmpty(groupName)) { throw new ArgumentNullException("groupName"); }
+            if (string.IsNullOrEmpty(groupName)) { throw new ArgumentNullException(nameof(groupName)); }
 
             TaxonomySession session = TaxonomySession.GetTaxonomySession(site.Context);
             var termStore = session.GetDefaultSiteCollectionTermStore();
@@ -367,7 +367,7 @@ namespace Microsoft.SharePoint.Client
         public static TermSetCollection GetTermSetsByName(this Site site, string name, int lcid = 1033)
         {
             if (string.IsNullOrEmpty(name))
-                throw new ArgumentNullException("name");
+                throw new ArgumentNullException(nameof(name));
 
             TaxonomySession session = TaxonomySession.GetTaxonomySession(site.Context);
             TermStore store = session.GetDefaultSiteCollectionTermStore();
@@ -387,7 +387,7 @@ namespace Microsoft.SharePoint.Client
         public static TermGroup GetTermGroupByName(this Site site, string name)
         {
             if (string.IsNullOrEmpty(name))
-                throw new ArgumentNullException("name");
+                throw new ArgumentNullException(nameof(name));
 
             TaxonomySession session = TaxonomySession.GetTaxonomySession(site.Context);
             var store = session.GetDefaultSiteCollectionTermStore();
@@ -427,7 +427,7 @@ namespace Microsoft.SharePoint.Client
         {
             if (termGroupId == null || termGroupId.Equals(Guid.Empty))
             {
-                throw new ArgumentNullException("termGroupId");
+                throw new ArgumentNullException(nameof(termGroupId));
             }
 
             TaxonomySession session = TaxonomySession.GetTaxonomySession(site.Context);
@@ -783,7 +783,10 @@ namespace Microsoft.SharePoint.Client
         /// </remarks>
         public static TermSet ImportTermSet(this TermGroup termGroup, string filePath, Guid termSetId = default(Guid), bool synchroniseDeletions = false, bool? termSetIsOpen = null, string termSetContact = null, string termSetOwner = null)
         {
-            if (filePath == null) { throw new ArgumentNullException("filePath"); }
+            if (filePath == null)
+            {
+                throw new ArgumentNullException(nameof(filePath));
+            }
             if (string.IsNullOrWhiteSpace(filePath)) { throw new ArgumentException(CoreResources.TaxonomyExtensions_ImportTermSet_File_path_is_required_, "filePath"); }
 
             using (var fs = new FileStream(filePath, FileMode.Open))
@@ -834,7 +837,7 @@ namespace Microsoft.SharePoint.Client
         /// </remarks>
         public static TermSet ImportTermSet(this TermGroup termGroup, Stream termSetData, Guid termSetId = default(Guid), bool synchroniseDeletions = false, bool? termSetIsOpen = null, string termSetContact = null, string termSetOwner = null)
         {
-            if (termSetData == null) { throw new ArgumentNullException("termSetData"); }
+            if (termSetData == null) { throw new ArgumentNullException(nameof(termSetData)); }
 
             Log.Info(Constants.LOGGING_SOURCE, CoreResources.TaxonomyExtension_ImportTermSet);
 
@@ -859,11 +862,11 @@ namespace Microsoft.SharePoint.Client
         {
             if (parentGroup == null)
             {
-                throw new ArgumentNullException("parentGroup");
+                throw new ArgumentNullException(nameof(parentGroup));
             }
             if (reader == null)
             {
-                throw new ArgumentNullException("reader");
+                throw new ArgumentNullException(nameof(reader));
             }
 
             Log.Debug(Constants.LOGGING_SOURCE, "Begin import term set");
@@ -1498,7 +1501,7 @@ namespace Microsoft.SharePoint.Client
 
             var context = site.Context;
 
-            if (string.IsNullOrEmpty(path)) throw new ArgumentNullException("path");
+            if (string.IsNullOrEmpty(path)) throw new ArgumentNullException(nameof(path));
 
 
 
@@ -2042,7 +2045,7 @@ namespace Microsoft.SharePoint.Client
                 throw new NullReferenceException("The default term store is not available.");
 
             if (string.IsNullOrEmpty(mmsTermSetName))
-                throw new ArgumentNullException("mmsTermSetName", "The MMS term set is not specified.");
+                throw new ArgumentNullException(nameof(mmsTermSetName), "The MMS term set is not specified.");
 
             // get the term group and term set
             TermGroup termGroup = termStore.Groups.GetByName(mmsGroupName);

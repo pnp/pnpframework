@@ -401,7 +401,7 @@ namespace Microsoft.SharePoint.Client
         public static Guid GetSiteGuidByUrl(this Tenant tenant, string siteFullUrl)
         {
             if (string.IsNullOrEmpty(siteFullUrl))
-                throw new ArgumentNullException("siteFullUrl");
+                throw new ArgumentNullException(nameof(siteFullUrl));
 
             return tenant.GetSiteGuidByUrl(new Uri(siteFullUrl));
         }
@@ -563,10 +563,10 @@ namespace Microsoft.SharePoint.Client
         public static void AddAdministrators(this Tenant tenant, IEnumerable<UserEntity> adminLogins, Uri siteUrl, bool addToOwnersGroup = false)
         {
             if (adminLogins == null)
-                throw new ArgumentNullException("adminLogins");
+                throw new ArgumentNullException(nameof(adminLogins));
 
             if (siteUrl == null)
-                throw new ArgumentNullException("siteUrl");
+                throw new ArgumentNullException(nameof(siteUrl));
 
             foreach (UserEntity admin in adminLogins)
             {

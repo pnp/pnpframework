@@ -114,7 +114,7 @@ namespace PnP.Framework.Pages
         {
             if (cc == null)
             {
-                throw new ArgumentNullException("Passed ClientContext object cannot be null");
+                throw new ArgumentNullException(nameof(cc), "Passed ClientContext object cannot be null");
             }
             this.context = cc;
 
@@ -507,7 +507,7 @@ namespace PnP.Framework.Pages
         {
             if (section == null)
             {
-                throw new ArgumentNullException("Passed section cannot be null");
+                throw new ArgumentNullException(nameof(section), "Passed section cannot be null");
             }
 
             if (CanThisSectionBeAdded(section))
@@ -525,7 +525,7 @@ namespace PnP.Framework.Pages
         {
             if (section == null)
             {
-                throw new ArgumentNullException("Passed section cannot be null");
+                throw new ArgumentNullException(nameof(section), "Passed section cannot be null");
             }
 
             if (CanThisSectionBeAdded(section))
@@ -543,7 +543,7 @@ namespace PnP.Framework.Pages
         {
             if (control == null)
             {
-                throw new ArgumentNullException("Passed control cannot be null");
+                throw new ArgumentNullException(nameof(control), "Passed control cannot be null");
             }
 
             // add to defaultsection and column
@@ -568,7 +568,7 @@ namespace PnP.Framework.Pages
         {
             if (control == null)
             {
-                throw new ArgumentNullException("Passed control cannot be null");
+                throw new ArgumentNullException(nameof(control), "Passed control cannot be null");
             }
 
             // add to default section and column
@@ -594,11 +594,11 @@ namespace PnP.Framework.Pages
         {
             if (control == null)
             {
-                throw new ArgumentNullException("Passed control cannot be null");
+                throw new ArgumentNullException(nameof(control), "Passed control cannot be null");
             }
             if (section == null)
             {
-                throw new ArgumentNullException("Passed section cannot be null");
+                throw new ArgumentNullException(nameof(section), "Passed section cannot be null");
             }
 
             control.section = section;
@@ -617,11 +617,11 @@ namespace PnP.Framework.Pages
         {
             if (control == null)
             {
-                throw new ArgumentNullException("Passed control cannot be null");
+                throw new ArgumentNullException(nameof(control), "Passed control cannot be null");
             }
             if (section == null)
             {
-                throw new ArgumentNullException("Passed section cannot be null");
+                throw new ArgumentNullException(nameof(section), "Passed section cannot be null");
             }
 
             control.section = section;
@@ -640,11 +640,11 @@ namespace PnP.Framework.Pages
         {
             if (control == null)
             {
-                throw new ArgumentNullException("Passed control cannot be null");
+                throw new ArgumentNullException(nameof(control), "Passed control cannot be null");
             }
             if (column == null)
             {
-                throw new ArgumentNullException("Passed column cannot be null");
+                throw new ArgumentNullException(nameof(column), "Passed column cannot be null");
             }
 
             control.section = column.Section;
@@ -663,11 +663,11 @@ namespace PnP.Framework.Pages
         {
             if (control == null)
             {
-                throw new ArgumentNullException("Passed control cannot be null");
+                throw new ArgumentNullException(nameof(control), "Passed control cannot be null");
             }
             if (column == null)
             {
-                throw new ArgumentNullException("Passed column cannot be null");
+                throw new ArgumentNullException(nameof(column), "Passed column cannot be null");
             }
 
             control.section = column.Section;
@@ -687,7 +687,7 @@ namespace PnP.Framework.Pages
         {
             if (control == null)
             {
-                throw new ArgumentNullException("Passed control cannot be null");
+                throw new ArgumentNullException(nameof(control), "Passed control cannot be null");
             }
 
             control.section = this.DefaultSection;
@@ -774,12 +774,12 @@ namespace PnP.Framework.Pages
         {
             if (cc == null)
             {
-                throw new ArgumentNullException("Passed ClientContext object cannot be null");
+                throw new ArgumentNullException(nameof(cc), "Passed ClientContext object cannot be null");
             }
 
             if (String.IsNullOrEmpty(pageName))
             {
-                throw new ArgumentException("Passed pageName object cannot be null or empty");
+                throw new ArgumentException(nameof(pageName), "Passed pageName object cannot be null or empty");
             }
 
             ClientSidePage page = new ClientSidePage(cc)

@@ -938,7 +938,7 @@ namespace PnP.Framework.Utilities
         {
             if (token == null)
             {
-                throw new ArgumentNullException("token");
+                throw new ArgumentNullException(nameof(token));
             }
 
             foreach (Claim claim in token.Claims)

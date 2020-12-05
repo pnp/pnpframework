@@ -316,7 +316,7 @@ namespace PnP.Framework.Pages
         {
             if (controlDataJson == null)
             {
-                throw new ArgumentNullException("ControlDataJson cannot be null");
+                throw new ArgumentNullException(nameof(controlDataJson),"ControlDataJson cannot be null");
             }
 
             // Deserialize the json string

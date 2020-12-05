@@ -20,7 +20,7 @@ namespace PnP.Framework.Pages
         {
             if (page == null)
             {
-                throw new ArgumentNullException("Passed page cannot be null");
+                throw new ArgumentNullException(nameof(page), "Passed page cannot be null");
             }
 
             this.page = page;
@@ -38,7 +38,7 @@ namespace PnP.Framework.Pages
         {
             if (page == null)
             {
-                throw new ArgumentNullException("Passed page cannot be null");
+                throw new ArgumentNullException(nameof(page), "Passed page cannot be null");
             }
 
             this.page = page;
@@ -216,7 +216,7 @@ namespace PnP.Framework.Pages
         {
             if (column == null)
             {
-                throw new ArgumentNullException("Passed column cannot be null");
+                throw new ArgumentNullException(nameof(column), "Passed column cannot be null");
             }
 
             this.columns.Add(column);

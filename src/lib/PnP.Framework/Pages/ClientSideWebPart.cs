@@ -70,7 +70,7 @@ namespace PnP.Framework.Pages
         {
             if (component == null)
             {
-                throw new ArgumentNullException("Passed in component cannot be null");
+                throw new ArgumentNullException(nameof(component), "Passed in component cannot be null");
             }
             this.Import(component);
         }

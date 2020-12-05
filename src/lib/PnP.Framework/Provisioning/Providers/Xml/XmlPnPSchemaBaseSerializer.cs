@@ -31,7 +31,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml
         public XmlPnPSchemaBaseSerializer(Stream referenceSchema)
         {
             this._referenceSchema = referenceSchema ??
-                throw new ArgumentNullException("referenceSchema");
+                throw new ArgumentNullException(nameof(referenceSchema));
         }
 
         public abstract string NamespacePrefix { get; }

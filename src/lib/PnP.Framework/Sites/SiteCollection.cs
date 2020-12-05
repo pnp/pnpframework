@@ -1321,7 +1321,7 @@ namespace PnP.Framework.Sites
 
             if (context == null)
             {
-                throw new ArgumentNullException("context");
+                throw new ArgumentNullException(nameof(context));
             }
 
             context.Web.EnsureProperty(p => p.Url);

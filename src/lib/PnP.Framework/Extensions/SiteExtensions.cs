@@ -24,7 +24,7 @@ namespace Microsoft.SharePoint.Client
 
                     if (String.IsNullOrEmpty(accessToken))
                     {
-                        throw new ArgumentNullException("accessToken");
+                        throw new ArgumentNullException(nameof(accessToken));
                     }
 
                     // Ensure the GroupId value

@@ -272,7 +272,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         #region Utility methods
 
-        private string ReplaceFileUniqueToken(Web web, string UrlValue)
+        private static string ReplaceFileUniqueToken(Web web, string UrlValue)
         {
             if (!string.IsNullOrWhiteSpace(UrlValue))
             {
@@ -323,7 +323,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return UrlValue;
         }
 
-        private bool WebSupportsProvisionNavigation(Web web, ProvisioningTemplate template)
+        private static bool WebSupportsProvisionNavigation(Web web, ProvisioningTemplate template)
         {
             bool isNavSupported = true;
             // The Navigation handler for managed metedata only works for sites with Publishing Features enabled
@@ -346,7 +346,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return isNavSupported;
         }
 
-        private bool WebSupportsExtractNavigation(Web web)
+        private static bool WebSupportsExtractNavigation(Web web)
         {
             bool isNavSupported = true;
             // The Navigation handler for managed metedata only works for sites with Publishing Features enabled
@@ -368,7 +368,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return isNavSupported;
         }
 
-        private Boolean AreSiblingsEnabledForCurrentStructuralNavigation(Web web)
+        private static bool AreSiblingsEnabledForCurrentStructuralNavigation(Web web)
         {
             bool siblingsEnabled = false;
 
@@ -560,7 +560,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return (result);
         }
 
-        private StructuralNavigation GetStructuralNavigation(Web web, WebNavigationSettings navigationSettings, Enums.NavigationType navigationType, ProvisioningTemplate template, ProvisioningTemplateCreationInformation creationInfo)
+        private static StructuralNavigation GetStructuralNavigation(Web web, WebNavigationSettings navigationSettings, Enums.NavigationType navigationType, ProvisioningTemplate template, ProvisioningTemplateCreationInformation creationInfo)
         {
             // By default avoid removing existing nodes
             var result = new StructuralNavigation { RemoveExistingNodes = false };

@@ -1187,7 +1187,7 @@ namespace Microsoft.SharePoint.Client
         {
             ProvisioningTemplateCreationInformation creationInfo = new ProvisioningTemplateCreationInformation(web);
 
-            return new SiteToTemplateConversion().GetRemoteTemplate(web, creationInfo);
+            return SiteToTemplateConversion.GetRemoteTemplate(web, creationInfo);
         }
 
         /// <summary>
@@ -1199,7 +1199,7 @@ namespace Microsoft.SharePoint.Client
         /// <returns>ProvisioningTemplate object with generated values from existing site</returns>
         public static ProvisioningTemplate GetProvisioningTemplate(this Web web, ProvisioningTemplateCreationInformation creationInfo)
         {
-            return new SiteToTemplateConversion().GetRemoteTemplate(web, creationInfo);
+            return SiteToTemplateConversion.GetRemoteTemplate(web, creationInfo);
         }
 
         #endregion

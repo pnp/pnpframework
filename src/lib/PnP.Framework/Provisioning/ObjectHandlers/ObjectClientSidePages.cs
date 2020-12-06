@@ -277,7 +277,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 totalPages++;
                 if (p.Translations.Any())
                 {
-                    totalPages += p.Translations.Count();
+                    totalPages += p.Translations.Count;
                 }
             }
             WriteSubProgress("Provision ClientSidePage", pageName, currentPageIndex, totalPages);

@@ -64,7 +64,7 @@ namespace PnP.Framework.Provisioning.Model
             return (XNode.DeepEquals(currentXml, otherXml));
         }
 
-        private XElement PrepareViewForCompare(string schemaXML)
+        private static XElement PrepareViewForCompare(string schemaXML)
         {
             XElement element = XElement.Parse(schemaXML);
             if (element.Attribute("Name") != null)

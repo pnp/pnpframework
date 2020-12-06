@@ -217,7 +217,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         }
 
 
-        private void AddAttachment(ProvisioningTemplate template, ListItem listitem, Model.SharePoint.InformationArchitecture.DataRowAttachment attachment, bool SkipExecuteQuery = false)
+        private static void AddAttachment(ProvisioningTemplate template, ListItem listitem, Model.SharePoint.InformationArchitecture.DataRowAttachment attachment, bool SkipExecuteQuery = false)
         {
             listitem.AttachmentFiles.AddUsingPath(ResourcePath.FromDecodedUrl(attachment.Name), FileUtilities.GetFileStream(template, attachment.Src));
             if (!SkipExecuteQuery)
@@ -431,7 +431,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         }
 
         //Export Files referred to in NewDocumentTemplates
-        private void ProcessFormsFolder(Web web, List spList, ListInstance listInstance, ProvisioningTemplate template, PnPMonitoredScope scope)
+        private static void ProcessFormsFolder(Web web, List spList, ListInstance listInstance, ProvisioningTemplate template, PnPMonitoredScope scope)
         {
             Microsoft.SharePoint.Client.Folder formsFolder = null;
             try
@@ -468,8 +468,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                     if (!string.IsNullOrWhiteSpace(url) && !string.IsNullOrWhiteSpace(contentTypeId))
                                     {
                                         var fullUri = new Uri(baseUri, url.Replace("{site}", baseUri.AbsolutePath.TrimEnd('/')));
-                                        var folderPath = HttpUtility.UrlDecode(fullUri.Segments.Take(fullUri.Segments.Count() - 1).ToArray().Aggregate((i, x) => i + x).TrimEnd('/'));
-                                        var fileName = HttpUtility.UrlDecode(fullUri.Segments[fullUri.Segments.Count() - 1]);
+                                        var folderPath = HttpUtility.UrlDecode(fullUri.Segments.Take(fullUri.Segments.Length - 1).ToArray().Aggregate((i, x) => i + x).TrimEnd('/'));
+                                        var fileName = HttpUtility.UrlDecode(fullUri.Segments[fullUri.Segments.Length - 1]);
 
                                         var templateFolderPath = folderPath.Substring(web.ServerRelativeUrl.Length).TrimStart('/');
 
@@ -511,8 +511,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             // If we got here it's a file, let's grab the file's path and name
             var fullUri = new Uri(baseUri, myFile.ServerRelativePath.DecodedUrl);
-            var folderPath = System.Web.HttpUtility.UrlDecode(fullUri.Segments.Take(fullUri.Segments.Count() - 1).ToArray().Aggregate((i, x) => i + x).TrimEnd('/'));
-            var fileName = System.Web.HttpUtility.UrlDecode(fullUri.Segments[fullUri.Segments.Count() - 1]);
+            var folderPath = System.Web.HttpUtility.UrlDecode(fullUri.Segments.Take(fullUri.Segments.Length - 1).ToArray().Aggregate((i, x) => i + x).TrimEnd('/'));
+            var fileName = System.Web.HttpUtility.UrlDecode(fullUri.Segments[fullUri.Segments.Length - 1]);
 
             var templateFolderPath = folderPath.Substring(web.ServerRelativeUrl.Length).TrimStart("/".ToCharArray());
 
@@ -909,7 +909,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 foreach (var attachmentFile in item.AttachmentFiles)
                 {
                     var fullUri = new Uri(baseUri, attachmentFile.ServerRelativePath.DecodedUrl);
-                    var folderPath = HttpUtility.UrlDecode(fullUri.Segments.Take(fullUri.Segments.Count() - 1).ToArray().Aggregate((i, x) => i + x).TrimEnd('/'));
+                    var folderPath = HttpUtility.UrlDecode(fullUri.Segments.Take(fullUri.Segments.Length - 1).ToArray().Aggregate((i, x) => i + x).TrimEnd('/'));
                     var targetFolder = $"ListData/SITE_{web.Id.ToString("N")}/LIST_{siteList.Id.ToString("N")}/Attachments/{item.Id}";
                     dataRow.Attachments.Add(new Model.SharePoint.InformationArchitecture.DataRowAttachment()
                     {
@@ -946,7 +946,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
         }
 
-        Stream GetAttachmentStream(ClientContext context, string fileServerRelativeUrl)
+        private static Stream GetAttachmentStream(ClientContext context, string fileServerRelativeUrl)
         {
             try
             {

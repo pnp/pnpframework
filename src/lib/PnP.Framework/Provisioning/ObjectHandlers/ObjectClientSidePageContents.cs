@@ -220,7 +220,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return (item.FieldValues.ContainsKey(fieldName) && item[fieldName] != null);
         }
 
-        private ProvisioningTemplate CleanupEntities(ProvisioningTemplate template, ProvisioningTemplate baseTemplate)
+        private static ProvisioningTemplate CleanupEntities(ProvisioningTemplate template, ProvisioningTemplate baseTemplate)
         {
             return template;
         }

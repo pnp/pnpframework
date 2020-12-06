@@ -601,7 +601,7 @@ namespace PnP.Framework
         /// </summary>
         /// <param name="environment">Environment to get the login information for</param>
         /// <returns>Azure ASC login endpoint</returns>
-        public string GetACSEndPoint(AzureEnvironment environment)
+        public static string GetACSEndPoint(AzureEnvironment environment)
         {
             switch (environment)
             {
@@ -637,7 +637,7 @@ namespace PnP.Framework
         /// </summary>
         /// <param name="environment">Environment to get the login information for</param>
         /// <returns>Azure ACS login endpoint prefix</returns>
-        public string GetACSEndPointPrefix(AzureEnvironment environment)
+        public static string GetACSEndPointPrefix(AzureEnvironment environment)
         {
             switch (environment)
             {

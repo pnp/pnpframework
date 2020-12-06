@@ -66,7 +66,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
             return (result.Length > 0 ? result : null);
         }
 
-        private LambdaExpression CreateSelectorLambda(Type targetType, String propertyName)
+        private static LambdaExpression CreateSelectorLambda(Type targetType, String propertyName)
         {
             return (Expression.Lambda(
                 Expression.Convert(

@@ -70,7 +70,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201705
         /// <param name="targetType">The Type of the .NET property to apply the Lambda Expression to</param>
         /// <param name="propertyName">The name of the property of the target object</param>
         /// <returns></returns>
-        protected LambdaExpression CreateSelectorLambda(Type targetType, String propertyName)
+        protected static LambdaExpression CreateSelectorLambda(Type targetType, String propertyName)
         {
             return (Expression.Lambda(
                 Expression.Convert(

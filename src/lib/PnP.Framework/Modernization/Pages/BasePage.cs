@@ -510,7 +510,7 @@ namespace PnP.Framework.Modernization.Pages
             }
         }
 
-        private bool IsUntransformableBlockElement(IElement element)
+        private static bool IsUntransformableBlockElement(IElement element)
         {
             var tag = element.TagName.ToLower();
             if (tag == "article" ||
@@ -730,7 +730,7 @@ namespace PnP.Framework.Modernization.Pages
             return "Unsupported Web Part Type";
         }
 
-        private bool CheckWebPartProperties(string[] propertiesToCheck, Dictionary<string, object> properties)
+        private static bool CheckWebPartProperties(string[] propertiesToCheck, Dictionary<string, object> properties)
         {
             bool isWebPart = true;
             foreach (var wpProp in propertiesToCheck)

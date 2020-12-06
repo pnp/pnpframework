@@ -787,7 +787,7 @@ namespace Microsoft.SharePoint.Client
             {
                 throw new ArgumentNullException(nameof(filePath));
             }
-            if (string.IsNullOrWhiteSpace(filePath)) { throw new ArgumentException(CoreResources.TaxonomyExtensions_ImportTermSet_File_path_is_required_, "filePath"); }
+            if (string.IsNullOrWhiteSpace(filePath)) { throw new ArgumentException(CoreResources.TaxonomyExtensions_ImportTermSet_File_path_is_required_, nameof(filePath)); }
 
             using (var fs = new FileStream(filePath, FileMode.Open))
             {
@@ -890,7 +890,7 @@ namespace Microsoft.SharePoint.Client
                             // Check file look vaguely like a CSV -- ensure the first line (headers) has some commas:
                             if (!rowText.Contains(","))
                             {
-                                throw new ArgumentException(CoreResources.TaxonomyExtensions_ImportTermSetImplementation_Invalid_CSV_format__was_expecting_a_comma_in_the_first__header__line_, "reader");
+                                throw new ArgumentException(CoreResources.TaxonomyExtensions_ImportTermSetImplementation_Invalid_CSV_format__was_expecting_a_comma_in_the_first__header__line_, nameof(reader));
                             }
                         }
                         else

@@ -224,7 +224,7 @@ namespace PnP.Framework.Modernization.Pages
             return 1;
         }
 
-        private WebPartEntity CreateImagePart(Dictionary<string, string> properties, int row, int col, int order)
+        private static WebPartEntity CreateImagePart(Dictionary<string, string> properties, int row, int col, int order)
         {
             return new WebPartEntity()
             {
@@ -238,7 +238,7 @@ namespace PnP.Framework.Modernization.Pages
             };
         }
 
-        private WebPartEntity CreateVideoPart(Dictionary<string, string> properties, int row, int col, int order)
+        private static WebPartEntity CreateVideoPart(Dictionary<string, string> properties, int row, int col, int order)
         {
             return new WebPartEntity()
             {
@@ -252,7 +252,7 @@ namespace PnP.Framework.Modernization.Pages
             };
         }
 
-        private WebPartEntity CreateEmbedPart(Dictionary<string, string> properties, int row, int col, int order)
+        private static WebPartEntity CreateEmbedPart(Dictionary<string, string> properties, int row, int col, int order)
         {
             return new WebPartEntity()
             {
@@ -265,7 +265,7 @@ namespace PnP.Framework.Modernization.Pages
                 Properties = properties,
             };
         }
-        private string CleanHtml(string html)
+        private static string CleanHtml(string html)
         {
             if (html.IndexOf("<span style=", StringComparison.InvariantCultureIgnoreCase) >= 0)
             {
@@ -277,7 +277,7 @@ namespace PnP.Framework.Modernization.Pages
             return html;
         }
 
-        private string GetValueAsString(JToken token, string name)
+        private static string GetValueAsString(JToken token, string name)
         {
             if (token[name] != null)
             {
@@ -289,7 +289,7 @@ namespace PnP.Framework.Modernization.Pages
             }
         }
 
-        private int GetSubType(JToken token)
+        private static int GetSubType(JToken token)
         {
             if (token["Subtype"] != null)
             {

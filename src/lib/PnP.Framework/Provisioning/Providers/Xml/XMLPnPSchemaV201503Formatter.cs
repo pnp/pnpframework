@@ -456,7 +456,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml
                 throw new ArgumentNullException(nameof(template));
             }
 
-            // Crate a copy of the source stream
+            // Create a copy of the source stream
             MemoryStream sourceStream = new MemoryStream();
             template.CopyTo(sourceStream);
             sourceStream.Position = 0;
@@ -470,6 +470,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml
 
             sourceStream.Position = 0;
             XDocument xml = XDocument.Load(sourceStream);
+            
             V201503.SharePointProvisioningTemplate source = XMLSerializer.Deserialize<V201503.SharePointProvisioningTemplate>(xml);
 
             ProvisioningTemplate result = new ProvisioningTemplate

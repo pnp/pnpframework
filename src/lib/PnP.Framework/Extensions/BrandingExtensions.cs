@@ -1527,7 +1527,7 @@ namespace Microsoft.SharePoint.Client
         /// Disables the Responsive UI on a Classic SharePoint Web
         /// </summary>
         /// <param name="web">The Web to disable the Responsive UI on</param>
-        [Obsolete]
+        [Obsolete("Responsive UI is not applicable anymore to SharePoint Online")]
         public static void DisableResponsiveUI(this Web web)
         {
             try
@@ -1544,7 +1544,7 @@ namespace Microsoft.SharePoint.Client
         /// Disables the Responsive UI on a Classic SharePoint Site
         /// </summary>
         /// <param name="site">The Site to disable the Responsive UI on</param>
-        [Obsolete]
+        [Obsolete("Responsive UI is not applicable anymore to SharePoint Online")]
         public static void DisableResponsiveUI(this Site site)
         {
             try

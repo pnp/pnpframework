@@ -25,7 +25,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// <param name="web"></param>
         /// <param name="creationInfo"></param>
         /// <returns></returns>
-        internal ProvisioningTemplate GetRemoteTemplate(Web web, ProvisioningTemplateCreationInformation creationInfo)
+        internal static ProvisioningTemplate GetRemoteTemplate(Web web, ProvisioningTemplateCreationInformation creationInfo)
         {
 
             using (var scope = new PnPMonitoredScope(CoreResources.Provisioning_ObjectHandlers_Extraction))
@@ -225,7 +225,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
         }
 
-        internal ProvisioningHierarchy GetTenantTemplate(Tenant tenant, ExtractConfiguration configuration = null)
+        internal static ProvisioningHierarchy GetTenantTemplate(Tenant tenant, ExtractConfiguration configuration = null)
         {
             if (configuration == null)
             {
@@ -484,7 +484,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
         }
 
-        private void CallWebHooks(ProvisioningTemplate template, TokenParser parser, ProvisioningTemplateWebhookKind kind, String objectHandler = null, Exception exception = null)
+        private static void CallWebHooks(ProvisioningTemplate template, TokenParser parser, ProvisioningTemplateWebhookKind kind, String objectHandler = null, Exception exception = null)
         {
             if (template != null)
             {

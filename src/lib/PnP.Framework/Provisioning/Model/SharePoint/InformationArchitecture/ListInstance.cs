@@ -587,7 +587,7 @@ namespace PnP.Framework.Provisioning.Model
             );
         }
 
-        private bool CheckImage(string image1, string image2)
+        private static bool CheckImage(string image1, string image2)
         {
             if (string.IsNullOrEmpty(image1) && string.IsNullOrEmpty(image2))
             {

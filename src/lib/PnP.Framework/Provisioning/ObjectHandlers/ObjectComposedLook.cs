@@ -291,7 +291,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
         }
 
-        private String FixFileName(string originalFileName)
+        private static string FixFileName(string originalFileName)
         {
             // if we've found the file use the provided writer to persist the downloaded file
             String regexStrip = @"(\\|/|:|\*|\?|""|>|<|\||=)*";
@@ -299,9 +299,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 originalFileName.IndexOf("?") > 0 ? originalFileName.IndexOf("?") : originalFileName.Length),
                 regexStrip, "", RegexOptions.IgnorePatternWhitespace);
 
-            return (result);
+            return result;
         }
-        private String FixFileUrl(string originalFileUrl)
+        private string FixFileUrl(string originalFileUrl)
         {
             if (string.IsNullOrEmpty(originalFileUrl))
             {
@@ -313,7 +313,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             String result = $"{fileUrl}/{fileName}";
 
-            return (result);
+            return result;
         }
 
         private Model.File GetComposedLookFile(string asset)
@@ -329,7 +329,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return file;
         }
 
-        private ProvisioningTemplate CleanupEntities(ProvisioningTemplate template, ProvisioningTemplate baseTemplate)
+        private static ProvisioningTemplate CleanupEntities(ProvisioningTemplate template, ProvisioningTemplate baseTemplate)
         {
             if (template.ComposedLook != null && baseTemplate.ComposedLook != null)
             {

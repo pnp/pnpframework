@@ -574,7 +574,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
         }
 
-        private void ProcessPropertyBagEntries(TokenParser parser, PnPMonitoredScope scope, ListInfo list)
+        private static void ProcessPropertyBagEntries(TokenParser parser, PnPMonitoredScope scope, ListInfo list)
         {
             if (list.TemplateList.PropertyBagEntries != null && list.TemplateList.PropertyBagEntries.Count > 0)
             {
@@ -1659,7 +1659,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
         }
 
-        private void AddContentTypeHiddenFieldsToList(ContentType tempCT, List list)
+        private static void AddContentTypeHiddenFieldsToList(ContentType tempCT, List list)
         {
             var ctx = (ClientContext)list.Context;
             var web = ctx.Web;
@@ -2003,7 +2003,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return Tuple.Create(createdList, parser);
         }
 
-        private void AddOrUpdateListWebHook(List list, Webhook webhook, PnPMonitoredScope scope, TokenParser parser, bool isListUpdate = false)
+        private static void AddOrUpdateListWebHook(List list, Webhook webhook, PnPMonitoredScope scope, TokenParser parser, bool isListUpdate = false)
         {
             var webhookServerNotificationUrl = parser.ParseString(webhook.ServerNotificationUrl);
             if (webhook.ExpiresInDays > 0)
@@ -2574,7 +2574,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return list;
         }
 
-        private List<string> SpecialFields => new List<string>() { "LikedBy", "RatedBy", "Ratings" };
+        private static List<string> SpecialFields => new List<string>() { "LikedBy", "RatedBy", "Ratings" };
 
         private ListInstance ExtractFields(Web web, List siteList, List<FieldRef> contentTypeFields, ListInstance list, List<List> lists, ProvisioningTemplateCreationInformation creationInfo, ProvisioningTemplate template)
         {
@@ -2910,7 +2910,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return list;
         }
 
-        private string ParseFieldSchema(string schemaXml, Web web, List<List> lists)
+        private static string ParseFieldSchema(string schemaXml, Web web, List<List> lists)
         {
             foreach (var list in lists)
             {

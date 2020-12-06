@@ -175,7 +175,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return template;
         }
 
-        private IEnumerable<T> SymmetricExcept<T>(IEnumerable<T> seq1, IEnumerable<T> seq2)
+        private static IEnumerable<T> SymmetricExcept<T>(IEnumerable<T> seq1, IEnumerable<T> seq2)
         {
             HashSet<T> hashSet = new HashSet<T>(seq1);
             hashSet.SymmetricExceptWith(seq2);

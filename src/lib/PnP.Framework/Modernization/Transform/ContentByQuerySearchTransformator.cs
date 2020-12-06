@@ -1053,7 +1053,7 @@ namespace PnP.Framework.Modernization.Transform
         }
         #endregion
 
-        private ContentLocation MapToContentLocation(string webUrl)
+        private static ContentLocation MapToContentLocation(string webUrl)
         {
             if (string.IsNullOrEmpty(webUrl) || webUrl.StartsWith("~sitecollection", StringComparison.InvariantCultureIgnoreCase))
             {
@@ -1118,7 +1118,7 @@ namespace PnP.Framework.Modernization.Transform
             }
         }
 
-        private string GetAcronym(string text)
+        private static string GetAcronym(string text)
         {
             // return something if no input
             if (string.IsNullOrEmpty(text))
@@ -1213,7 +1213,7 @@ namespace PnP.Framework.Modernization.Transform
             }
         }
 
-        private object ManagedPropertyValueFixup(string value)
+        private static object ManagedPropertyValueFixup(string value)
         {
             var valueToCheck = value.ToLower();
             switch(valueToCheck)
@@ -1226,7 +1226,7 @@ namespace PnP.Framework.Modernization.Transform
             }
         }
 
-        private FilterOperator KQLOperatorToFilterOperator(KQLPropertyOperator op)
+        private static FilterOperator KQLOperatorToFilterOperator(KQLPropertyOperator op)
         {
             switch (op)
             {
@@ -1240,7 +1240,7 @@ namespace PnP.Framework.Modernization.Transform
             }
         }
 
-        private SortType MapToSortTypeFromResourceSource(string resultSource)
+        private static SortType MapToSortTypeFromResourceSource(string resultSource)
         {
             if (!string.IsNullOrEmpty(resultSource))
             {
@@ -1261,7 +1261,7 @@ namespace PnP.Framework.Modernization.Transform
             return SortType.MostRecent;
         }
 
-        private List<ContentType> MapToContentTypesFromResourceSource(string resultSource, string contentTypeId)
+        private static List<ContentType> MapToContentTypesFromResourceSource(string resultSource, string contentTypeId)
         {
             List<ContentType> cts = new List<ContentType>();
 
@@ -1303,7 +1303,7 @@ namespace PnP.Framework.Modernization.Transform
             return cts;
         }
 
-        private List<ContentType> MapToContentTypesFromListTemplate(string listTemplate)
+        private static List<ContentType> MapToContentTypesFromListTemplate(string listTemplate)
         {
             List<ContentType> cts = new List<ContentType>();
 
@@ -1355,7 +1355,7 @@ namespace PnP.Framework.Modernization.Transform
             return cts;
         }
 
-        private List<ContentType> MapToContentTypesFromContentType(string contentTypeId)
+        private static List<ContentType> MapToContentTypesFromContentType(string contentTypeId)
         {
             List<ContentType> cts = new List<ContentType>();
 
@@ -1520,7 +1520,7 @@ namespace PnP.Framework.Modernization.Transform
             return null;
         }
 
-        private FilterOperator? MapQueryFilterOperator(FilterFieldQueryOperator filterOperator)
+        private static FilterOperator? MapQueryFilterOperator(FilterFieldQueryOperator filterOperator)
         {
             switch(filterOperator)
             {
@@ -1579,7 +1579,7 @@ namespace PnP.Framework.Modernization.Transform
             return json;
         }
 
-        private bool IsPropertyAvailable(JToken property)
+        private static bool IsPropertyAvailable(JToken property)
         {
             if (property != null && property.Value<string>() != null)
             {
@@ -1589,7 +1589,7 @@ namespace PnP.Framework.Modernization.Transform
             return false;
         }
 
-        private string ConvertHexToAscii(String hexString)
+        private static string ConvertHexToAscii(String hexString)
         {
             try
             {
@@ -1616,7 +1616,7 @@ namespace PnP.Framework.Modernization.Transform
             return string.Empty;
         }
 
-        private string GetPropertyAsString(JToken property)
+        private static string GetPropertyAsString(JToken property)
         {
             if (IsPropertyAvailable(property))
             {
@@ -1633,7 +1633,7 @@ namespace PnP.Framework.Modernization.Transform
             return null;
         }
 
-        private bool GetPropertyAsBoolean(JToken property)
+        private static bool GetPropertyAsBoolean(JToken property)
         {
             if (IsPropertyAvailable(property))
             {
@@ -1658,7 +1658,7 @@ namespace PnP.Framework.Modernization.Transform
             return false;
         }
 
-        private string ManagedPropertyCaseFixup(string property)
+        private static string ManagedPropertyCaseFixup(string property)
         {
             var propertyToCheck = property.ToLower();
 

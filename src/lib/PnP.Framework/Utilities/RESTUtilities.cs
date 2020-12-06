@@ -32,45 +32,47 @@ namespace PnP.Framework.Utilities
                 {
                     var requestUrl = $"{web.Url}{endpoint}";
 
-                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrl);
-                    request.Headers.Add("accept", "application/json;odata=nometadata");
-                    if (!string.IsNullOrEmpty(accessToken))
+                    using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrl))
                     {
-                        request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
-                    }
-                    else
-                    {
-                        if (web.Context.Credentials is NetworkCredential networkCredential)
+                        request.Headers.Add("accept", "application/json;odata=nometadata");
+                        if (!string.IsNullOrEmpty(accessToken))
                         {
-                            handler.Credentials = networkCredential;
+                            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
                         }
-                    }
-
-                    var requestDigest = await (web.Context as ClientContext).GetRequestDigestAsync().ConfigureAwait(false);
-                    request.Headers.Add("X-RequestDigest", requestDigest);
-
-                    // Perform actual post operation
-                    HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        // If value empty, URL is taken
-                        var responseString = await response.Content.ReadAsStringAsync();
-                        if (responseString != null)
+                        else
                         {
-                            try
+                            if (web.Context.Credentials is NetworkCredential networkCredential)
                             {
-
-                                returnObject = responseString;
-
+                                handler.Credentials = networkCredential;
                             }
-                            catch { }
                         }
-                    }
-                    else
-                    {
-                        // Something went wrong...
-                        throw new Exception(await response.Content.ReadAsStringAsync());
+
+                        var requestDigest = await (web.Context as ClientContext).GetRequestDigestAsync().ConfigureAwait(false);
+                        request.Headers.Add("X-RequestDigest", requestDigest);
+
+                        // Perform actual post operation
+                        HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            // If value empty, URL is taken
+                            var responseString = await response.Content.ReadAsStringAsync();
+                            if (responseString != null)
+                            {
+                                try
+                                {
+
+                                    returnObject = responseString;
+
+                                }
+                                catch { }
+                            }
+                        }
+                        else
+                        {
+                            // Something went wrong...
+                            throw new Exception(await response.Content.ReadAsStringAsync());
+                        }
                     }
                 }
             }
@@ -110,8 +112,7 @@ namespace PnP.Framework.Utilities
                     {
                         ////var jsonBody = JsonConvert.SerializeObject(postObject);
                         var requestBody = new StringContent(payload);
-                        MediaTypeHeaderValue sharePointJsonMediaType;
-                        MediaTypeHeaderValue.TryParse("application/json;odata=nometadata;charset=utf-8", out sharePointJsonMediaType);
+                        MediaTypeHeaderValue sharePointJsonMediaType = MediaTypeHeaderValue.Parse("application/json;odata=nometadata;charset=utf-8");
                         requestBody.Headers.ContentType = sharePointJsonMediaType;
                         request.Content = requestBody;
                     }

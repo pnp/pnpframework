@@ -63,7 +63,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// </summary>
         /// <param name="input">input string</param>
         /// <returns>Returns collections of left over tokens</returns>
-        public IEnumerable<string> GetLeftOverTokens(string input)
+        public static IEnumerable<string> GetLeftOverTokens(string input)
         {
             List<string> values = new List<string>();
             var matches = ReGuid.Matches(input).OfType<Match>().Select(m => m.Value);

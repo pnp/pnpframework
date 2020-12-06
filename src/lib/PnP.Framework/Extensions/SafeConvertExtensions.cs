@@ -17,7 +17,7 @@ namespace System
             {
                 return Convert.ToBoolean(input);
             }
-            catch
+            catch (FormatException)
             {
                 return defaultValue;
             }
@@ -44,7 +44,7 @@ namespace System
             {
                 return Convert.ToInt32(input);
             }
-            catch
+            catch (FormatException)
             {
                 return defaultValue;
             }
@@ -71,7 +71,7 @@ namespace System
             {
                 return Convert.ToInt64(input);
             }
-            catch
+            catch (FormatException)
             {
                 return defaultValue;
             }
@@ -98,7 +98,7 @@ namespace System
             {
                 return Convert.ToDouble(input);
             }
-            catch
+            catch (FormatException)
             {
                 return defaultValue;
             }
@@ -133,7 +133,7 @@ namespace System
             {
                 return new Guid(input);
             }
-            catch
+            catch (FormatException)
             {
                 return defaultValue;
             }

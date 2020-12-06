@@ -1284,7 +1284,7 @@ namespace Microsoft.SharePoint.Client
         internal static IEnumerable<SecurableObject> Preload(this SecurableObject obj, int leafBreadthLimit)
         {
             var context = obj.Context;
-            IEnumerable<SecurableObject> subObjects = new SecurableObject[] { };
+            IEnumerable<SecurableObject> subObjects = Array.Empty<SecurableObject>();
             if (obj is Web)
             {
                 var web = obj as Web;

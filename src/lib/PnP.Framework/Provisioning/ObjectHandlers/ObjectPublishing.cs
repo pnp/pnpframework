@@ -118,8 +118,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             {
                                 var fullUri = new Uri(UrlUtility.Combine(webApplicationUrl, file.ServerRelativeUrl));
 
-                                var folderPath = fullUri.Segments.Take(fullUri.Segments.Count() - 1).ToArray().Aggregate((i, x) => i + x).TrimEnd('/');
-                                var fileName = fullUri.Segments[fullUri.Segments.Count() - 1];
+                                var folderPath = fullUri.Segments.Take(fullUri.Segments.Length - 1).ToArray().Aggregate((i, x) => i + x).TrimEnd('/');
+                                var fileName = fullUri.Segments[fullUri.Segments.Length - 1];
 
                                 web.EnsureProperty(w => web.ServerRelativeUrl);
                                 file.EnsureProperty(f => f.Level);
@@ -239,7 +239,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// </summary>
         /// <param name="webUrl">The target web site URL</param>
         /// <returns>The Web Application URL</returns>
-        private String GetWebApplicationUrl(String webUrl)
+        private static string GetWebApplicationUrl(String webUrl)
         {
             Uri uri = null;
             String result = null;
@@ -248,10 +248,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 result = $"{uri.Scheme}://{uri.Authority}/";
             }
 
-            return (result);
+            return result;
         }
 
-        private IEnumerable<PageLayout> GetAvailablePageLayouts(Web web)
+        private static IEnumerable<PageLayout> GetAvailablePageLayouts(Web web)
         {
             var defaultLayoutXml = web.GetPropertyBagValueString(DEFAULTPAGELAYOUT, null);
 

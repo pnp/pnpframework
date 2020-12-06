@@ -22,7 +22,7 @@ namespace PnP.Framework.Pages
         {
             if (languageId == 0)
             {
-                throw new ArgumentException("culture");
+                throw new ArgumentException(nameof(languageId));
             }
 
             CultureInfo culture = new CultureInfo(languageId);

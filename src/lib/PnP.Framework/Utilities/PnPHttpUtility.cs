@@ -7,13 +7,7 @@ namespace PnP.Framework.Utilities
     public static class PnPHttpUtility
     {
         //Code copied from Microsoft.SharePoint.Utilities.SPHttpUtility 
-        internal static readonly string[] HTMLData;
-
-        static PnPHttpUtility()
-        {
-            //Code copied from Microsoft.SharePoint.Utilities.SPHttpUtility 
-            HTMLData = new string[] { "", "&quot;", "&amp;", "&#39;", "&lt;", "&gt;", " ", "<br />", "&#160;", "<b>", "<i>", "<u>", "</b>", "</i>", "</u>", "<wbr />" };
-        }
+        internal static readonly string[] HTMLData = new string[] { "", "&quot;", "&amp;", "&#39;", "&lt;", "&gt;", " ", "<br />", "&#160;", "<b>", "<i>", "<u>", "</b>", "</i>", "</u>", "<wbr />" };
 
         //Code copied from Microsoft.SharePoint.Utilities.SPHttpUtility 
         /// <summary>

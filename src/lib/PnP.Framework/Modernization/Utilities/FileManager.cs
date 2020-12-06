@@ -46,7 +46,7 @@ namespace PnP.Framework.Modernization.Utilities
             {
                 var lines = System.IO.File.ReadLines(mappingFile);
 
-                if (lines.Count() > 0)
+                if (lines.Any())
                 {
                     string delimiter = this.DetectDelimiter(lines);
 

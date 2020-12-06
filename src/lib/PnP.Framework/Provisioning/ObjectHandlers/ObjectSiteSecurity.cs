@@ -1014,7 +1014,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return template;
         }
 
-        private string ReplaceGroupTokens(Web web, string loginName)
+        private static string ReplaceGroupTokens(Web web, string loginName)
         {
             if (!web.AssociatedOwnerGroup.ServerObjectIsNull.Value)
             {
@@ -1035,7 +1035,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return loginName;
         }
 
-        private ProvisioningTemplate CleanupEntities(ProvisioningTemplate template, ProvisioningTemplate baseTemplate)
+        private static ProvisioningTemplate CleanupEntities(ProvisioningTemplate template, ProvisioningTemplate baseTemplate)
         {
             foreach (var user in baseTemplate.Security.AdditionalAdministrators)
             {

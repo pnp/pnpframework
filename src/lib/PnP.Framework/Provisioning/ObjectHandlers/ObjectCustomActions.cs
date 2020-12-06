@@ -44,7 +44,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return parser;
         }
 
-        private void ProvisionCustomActionImplementation(object parent, CustomActionCollection customActions, TokenParser parser, PnPMonitoredScope scope, bool isNoScriptSite = false)
+        private static void ProvisionCustomActionImplementation(object parent, CustomActionCollection customActions, TokenParser parser, PnPMonitoredScope scope, bool isNoScriptSite = false)
         {
             Web web = null;
             Site site = null;
@@ -366,7 +366,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return template;
         }
 
-        private ProvisioningTemplate CleanupEntities(ProvisioningTemplate template, ProvisioningTemplate baseTemplate, bool isSubSite, PnPMonitoredScope scope)
+        private static ProvisioningTemplate CleanupEntities(ProvisioningTemplate template, ProvisioningTemplate baseTemplate, bool isSubSite, PnPMonitoredScope scope)
         {
             if (!isSubSite)
             {
@@ -396,7 +396,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return template;
         }
 
-        private CustomAction CopyUserCustomAction(UserCustomAction userCustomAction, ProvisioningTemplateCreationInformation creationInfo, ProvisioningTemplate template)
+        private static CustomAction CopyUserCustomAction(UserCustomAction userCustomAction, ProvisioningTemplateCreationInformation creationInfo, ProvisioningTemplate template)
         {
             var customAction = new CustomAction
             {

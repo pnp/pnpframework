@@ -57,7 +57,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// <param name="user">The source User object</param>
         /// <param name="parser">The PnP Token Parser</param>
         /// <returns>The User object to serialize as JSON</returns>
-        private object PrepareUserRequestContent(Model.AzureActiveDirectory.User user, TokenParser parser)
+        private static object PrepareUserRequestContent(Model.AzureActiveDirectory.User user, TokenParser parser)
         {
             var content = new
             {
@@ -131,7 +131,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                   skuId = Guid.Parse(l.SkuId),
                                   disabledPlans = l.DisabledPlans != null ?
                                     (from d in l.DisabledPlans
-                                     select Guid.Parse(d)).ToArray() : new Guid[] { }
+                                     select Guid.Parse(d)).ToArray() : Array.Empty<Guid>()
                               },
                 removeLicenses = (from r in removeLicenses
                                   select r).ToArray()

@@ -313,7 +313,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return schemaElement.ToString();
         }
 
-        private string ParseFieldSchema(string schemaXml, Web web, ListCollection lists)
+        private static string ParseFieldSchema(string schemaXml, Web web, ListCollection lists)
         {
             foreach (var list in lists)
             {
@@ -638,7 +638,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return template;
         }
 
-        private ProvisioningTemplate CleanupEntities(ProvisioningTemplate template, ProvisioningTemplate baseTemplate)
+        private static ProvisioningTemplate CleanupEntities(ProvisioningTemplate template, ProvisioningTemplate baseTemplate)
         {
             foreach (var field in baseTemplate.SiteFields)
             {

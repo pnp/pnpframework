@@ -149,7 +149,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             string nextPageUrlValue = JObject.Parse(groupIds).Value<string>("@odata.nextLink");
 
-            if (groupIdCollection.Count() == 0)
+            if (groupIdCollection.Count == 0)
             {
                 groupIdCollection = value.Select(t => t.Value<string>("id")).ToList();
             }
@@ -244,8 +244,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 }
                 else
                 {
-                    desiredOwnerIds = new string[0];
-                    desiredMemberIds = new string[0];
+                    desiredOwnerIds = Array.Empty<string>();
+                    desiredMemberIds = Array.Empty<string>();
                 }
 
                 var groupCreationRequest = new

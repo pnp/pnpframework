@@ -126,15 +126,15 @@ namespace PnP.Framework.Entities
         {
             StringBuilder buffer = new StringBuilder();
             buffer.Append(Path);
-            buffer.Append("\t");
+            buffer.Append('\t');
             buffer.Append(User.Title);
-            buffer.Append("\t");
+            buffer.Append('\t');
             buffer.Append(string.IsNullOrWhiteSpace(User.Email) ? "(n/a)" : User.Email);
-            buffer.Append("\t");
+            buffer.Append('\t');
             buffer.Append(User.LoginName);
-            buffer.Append("\t");
+            buffer.Append('\t');
             buffer.Append(Role);
-            buffer.Append("\t");
+            buffer.Append('\t');
             buffer.Append(string.Join(";", RoleDefinitionBindings));
             return buffer.ToString();
         }

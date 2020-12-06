@@ -179,8 +179,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             var serverUrl = $"{serverUri.Scheme}://{serverUri.Authority}";
             var fullUri = new Uri(UrlUtility.Combine(serverUrl, serverRelativeUrl));
 
-            var folderPath = HttpUtility.UrlDecode(fullUri.Segments.Take(fullUri.Segments.Count() - 1).ToArray().Aggregate((i, x) => i + x).TrimEnd('/'));
-            var fileName = fullUri.Segments[fullUri.Segments.Count() - 1];
+            var folderPath = HttpUtility.UrlDecode(fullUri.Segments.Take(fullUri.Segments.Length - 1).ToArray().Aggregate((i, x) => i + x).TrimEnd('/'));
+            var fileName = fullUri.Segments[fullUri.Segments.Length - 1];
 
             // store as site relative path
             folderPath = folderPath.Replace(web.ServerRelativeUrl, "").Trim('/');
@@ -226,10 +226,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                         var baseUri = new Uri(web.Url);
                         var fullUri = new Uri(baseUri, file.ServerRelativePath.DecodedUrl);
-                        var folderPath = HttpUtility.UrlDecode(fullUri.Segments.Take(fullUri.Segments.Count() - 1).ToArray().Aggregate((i, x) => i + x).TrimEnd('/'));
+                        var folderPath = HttpUtility.UrlDecode(fullUri.Segments.Take(fullUri.Segments.Length - 1).ToArray().Aggregate((i, x) => i + x).TrimEnd('/'));
 
                         // Configure the filename to use 
-                        fileName = HttpUtility.UrlDecode(fullUri.Segments[fullUri.Segments.Count() - 1]);
+                        fileName = HttpUtility.UrlDecode(fullUri.Segments[fullUri.Segments.Length - 1]);
 
                         // Build up a site relative container URL...might end up empty as well
                         String container = HttpUtility.UrlDecode(folderPath.Replace(web.ServerRelativeUrl, "")).Trim('/').Replace("/", "\\");
@@ -275,7 +275,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return success;
         }
 
-        private string TokenizeHost(Web web, string json)
+        private static string TokenizeHost(Web web, string json)
         {
             // HostUrl token replacement
             var uri = new Uri(web.Url);
@@ -285,7 +285,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         }
 
 
-        private void CopyStream(Stream source, Stream destination)
+        private static void CopyStream(Stream source, Stream destination)
         {
             byte[] buffer = new byte[32768];
             int bytesRead;

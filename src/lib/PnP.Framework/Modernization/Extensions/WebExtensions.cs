@@ -206,7 +206,7 @@ namespace Microsoft.SharePoint.Client
             web.EnsureProperty(p => p.SiteUsers);
 
             var admins = web.SiteUsers.Where(p => p.IsSiteAdmin);
-            if (admins != null && admins.Count() > 0)
+            if (admins != null && admins.Any())
             {
                 foreach (var admin in admins)
                 {

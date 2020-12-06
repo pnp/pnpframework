@@ -9,7 +9,7 @@ namespace PnP.Framework.Utilities.WebParts
     /// <summary>
     /// Creates <see cref="IWebPartPostProcessor"/> by parsing web part schema xml
     /// </summary>
-    public class WebPartPostProcessorFactory
+    public static class WebPartPostProcessorFactory
     {
         /// <summary>
         /// Resolves webpart by parsing web part schema xml

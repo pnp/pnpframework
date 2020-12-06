@@ -626,7 +626,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             catch { }
         }
 
-        private List<StorageEntity> ParseStorageEntitiesString(string storageEntitiesIndex)
+        private static List<StorageEntity> ParseStorageEntitiesString(string storageEntitiesIndex)
         {
             var storageEntitiesDict = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(storageEntitiesIndex);
 
@@ -1133,7 +1133,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// <param name="web">The current Web</param>
         /// <param name="name">The title of the list in the current user's language</param>
         /// <returns>The title of the list in the main language of the site</returns>
-        private String GetListTitleForMainLanguage(Web web, String name)
+        private static string GetListTitleForMainLanguage(Web web, String name)
         {
             if (listsTitles.ContainsKey(name))
             {
@@ -1176,7 +1176,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
         }
 
-        private List<string> ParseTemplate(ProvisioningTemplate template)
+        private static List<string> ParseTemplate(ProvisioningTemplate template)
         {
             List<string> tokenIds = new List<string>();
 

@@ -51,7 +51,7 @@ namespace Microsoft.SharePoint.Client
         /// <returns></returns>
         public static ProvisioningHierarchy GetTenantTemplate(this Tenant tenant, ExtractConfiguration configuration)
         {
-            return new SiteToTemplateConversion().GetTenantTemplate(tenant, configuration);
+            return SiteToTemplateConversion.GetTenantTemplate(tenant, configuration);
         }
 
         /// <summary>
@@ -757,12 +757,12 @@ namespace Microsoft.SharePoint.Client
         {
             if (string.IsNullOrEmpty(siteUrl))
             {
-                throw new ArgumentException("Missing value for siteUrl", "siteUrl");
+                throw new ArgumentException("Missing value for siteUrl", nameof(siteUrl));
             }
 
             if (siteCollectionGroupifyInformation == null)
             {
-                throw new ArgumentException("Missing value for siteCollectionGroupifyInformation", "sitecollectionGroupifyInformation");
+                throw new ArgumentException("Missing value for siteCollectionGroupifyInformation", nameof(siteCollectionGroupifyInformation));
             }
 
             if (!string.IsNullOrEmpty(siteCollectionGroupifyInformation.Alias) && siteCollectionGroupifyInformation.Alias.Contains(" "))
@@ -1034,7 +1034,7 @@ namespace Microsoft.SharePoint.Client
             int siteNameIndex = url.AbsolutePath.IndexOf('/', 1) + 1;
             var managedPath = url.AbsolutePath.Substring(0, siteNameIndex);
             var siteRelativePath = url.AbsolutePath.Substring(siteNameIndex);
-            var isSiteCollection = siteRelativePath.IndexOf('/') == -1;
+            var isSiteCollection = siteRelativePath.Contains('/');
 
             //Judge whether this site collection is existing or not
             if (isSiteCollection)

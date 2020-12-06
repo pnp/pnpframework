@@ -1348,7 +1348,7 @@ namespace PnP.Framework.Modernization.Transform
             parent.ReplaceChild(newElement, element);
         }
 
-        private void ReplaceChildElementByText(INode parent, IElement child, IHtmlDocument document)
+        private static void ReplaceChildElementByText(INode parent, IElement child, IHtmlDocument document)
         {
             if (!string.IsNullOrEmpty(child.TextContent))
             {
@@ -1363,7 +1363,7 @@ namespace PnP.Framework.Modernization.Transform
             }
         }
 
-        private bool IsBlockElement(IElement element)
+        private static bool IsBlockElement(IElement element)
         {
             var tag = element.TagName.ToLower();
             if (tag == "article" ||
@@ -1410,7 +1410,7 @@ namespace PnP.Framework.Modernization.Transform
             return false;
         }
 
-        private List<int> GetDefaultCellTableCellWidths(int columns)
+        private static List<int> GetDefaultCellTableCellWidths(int columns)
         {
             List<int> widths = new List<int>(columns);
 
@@ -1432,7 +1432,7 @@ namespace PnP.Framework.Modernization.Transform
             return widths;
         }
 
-        private bool IsStrikeThrough(IElement element)
+        private static bool IsStrikeThrough(IElement element)
         {
             if (element.GetStyle() != null && (!string.IsNullOrEmpty(element.GetStyle().GetTextDecoration()) && element.GetStyle().GetTextDecoration().Equals("line-through", StringComparison.InvariantCultureIgnoreCase) ||
                                           !string.IsNullOrEmpty(element.GetStyle().GetPropertyValue("text-decoration-line")) && element.GetStyle().GetPropertyValue("text-decoration-line").Equals("line-through", StringComparison.InvariantCultureIgnoreCase)))
@@ -1445,7 +1445,7 @@ namespace PnP.Framework.Modernization.Transform
             }
         }
 
-        private bool IsUnderline(IElement element)
+        private static bool IsUnderline(IElement element)
         {
             if (element.GetStyle() != null && (!string.IsNullOrEmpty(element.GetStyle().GetTextDecoration()) && element.GetStyle().GetTextDecoration().Equals("underline", StringComparison.InvariantCultureIgnoreCase) ||
                                           !string.IsNullOrEmpty(element.GetStyle().GetPropertyValue("text-decoration-line")) && element.GetStyle().GetPropertyValue("text-decoration-line").Equals("underline", StringComparison.InvariantCultureIgnoreCase)))
@@ -1662,7 +1662,7 @@ namespace PnP.Framework.Modernization.Transform
         /// </summary>
         /// <param name="table">Table to investigate</param>
         /// <returns>Tuple containing the columns and rows</returns>
-        private Tuple<int, int> GetTableDimensions(IElement table)
+        private static (int columns, int rows) GetTableDimensions(IElement table)
         {
             int maxCols = 0;
             int maxRows = 0;
@@ -1670,7 +1670,7 @@ namespace PnP.Framework.Modernization.Transform
 
             var tableBodyElement = (table as IHtmlTableElement).Bodies[0];
             var rows = tableBodyElement.Children.Where(p => p.TagName.Equals("tr", StringComparison.InvariantCultureIgnoreCase));
-            if (rows != null && rows.Count() > 0)
+            if (rows != null && rows.Any())
             {
                 maxRows = rows.Count();
                 foreach (var row in rows)
@@ -1685,14 +1685,14 @@ namespace PnP.Framework.Modernization.Transform
                         tdCellsInHeader = tdInHeader.Count();
                     }
 
-                    if (tableHeaders != null && tableHeaders.Count() > 0 && tdCellsInHeader == 0)
+                    if (tableHeaders != null && tableHeaders.Any() && tdCellsInHeader == 0)
                     {
                         hasHeader = true;
                     }
 
                     // It's allowed to mix TH and TD in a table row
                     var tableCells = row.Children.Where(p => p.TagName.Equals("td", StringComparison.InvariantCultureIgnoreCase) || p.TagName.Equals("th", StringComparison.InvariantCultureIgnoreCase));
-                    if (tableCells != null && tableCells.Count() > 0)
+                    if (tableCells != null && tableCells.Any())
                     {
                         int colCount = 0;
                         foreach (var tableCell in tableCells)
@@ -1735,7 +1735,7 @@ namespace PnP.Framework.Modernization.Transform
                 maxCols = 1;
             }
 
-            return new Tuple<int, int>(maxCols, maxRows);
+            return (maxCols, maxRows);
         }
         #endregion
     }

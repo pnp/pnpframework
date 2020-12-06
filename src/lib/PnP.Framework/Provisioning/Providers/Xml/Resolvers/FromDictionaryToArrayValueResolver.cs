@@ -47,9 +47,9 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
 
             if (null == sourceDictionary && null != sourceValue)
             {
-                throw new ArgumentException("Invalid source object. Expected type implementing IEnumerable<KeyValuePair<TKey, TValue>>", "source");
+                throw new ArgumentException("Invalid source object. Expected type implementing IEnumerable<KeyValuePair<TKey, TValue>>", nameof(source));
             }
-            else if (null != sourceDictionary && sourceDictionary.Count() > 0)
+            else if (null != sourceDictionary && sourceDictionary.Any())
             {
                 var listType = typeof(List<>);
                 var resultType = this._targetArrayItemType.MakeArrayType();

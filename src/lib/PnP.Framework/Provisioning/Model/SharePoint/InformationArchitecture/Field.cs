@@ -70,7 +70,7 @@ namespace PnP.Framework.Provisioning.Model
             return (XNode.DeepEquals(currentXml, otherXml));
         }
 
-        private XElement PrepareFieldForCompare(string schemaXML)
+        private static XElement PrepareFieldForCompare(string schemaXML)
         {
             XElement element = XElement.Parse(schemaXML);
             if (element.Attribute("SourceID") != null)

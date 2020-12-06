@@ -1073,7 +1073,7 @@ namespace PnP.Framework.Modernization.Transform
             var currentNavNodes = currentNavNodesBefore.Where(n => n.Url.Equals(sourcePageUrl, StringComparison.InvariantCultureIgnoreCase));
             var globalNavNodes = globalNavNodesBefore.Where(n => n.Url.Equals(sourcePageUrl, StringComparison.InvariantCultureIgnoreCase));
 
-            if (currentNavNodes.Count() > 0 || globalNavNodes.Count() > 0)
+            if (currentNavNodes.Count() > 0 || globalNavNodes.Any())
             {
                 navNodesRequireFixing = true;
             }
@@ -1129,7 +1129,7 @@ namespace PnP.Framework.Modernization.Transform
                 currentNavNodes = currentNavNodesAfter.Where(n => n.Url.Equals(step1Path, StringComparison.InvariantCultureIgnoreCase));
                 globalNavNodes = globalNavNodesAfter.Where(n => n.Url.Equals(step1Path, StringComparison.InvariantCultureIgnoreCase));
 
-                if (currentNavNodes.Count() > 0 || globalNavNodes.Count() > 0)
+                if (currentNavNodes.Count() > 0 || globalNavNodes.Any())
                 {
                     foreach (var node in currentNavNodes)
                     {

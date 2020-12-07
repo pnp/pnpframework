@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -12,7 +13,34 @@ namespace PnP.Framework.Utilities
 {
     internal static class RESTUtilities
     {
-
+        public static void SetAuthenticationCookies(this HttpClientHandler handler, ClientContext context)
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                var cookieString = CookieReader.GetCookie(context.Web.Url)?.Replace("; ", ",")?.Replace(";", ",");
+                if (cookieString == null)
+                {
+                    return;
+                }
+                var authCookiesContainer = new System.Net.CookieContainer();
+                // Get FedAuth and rtFa cookies issued by ADFS when accessing claims aware applications.
+                // - or get the EdgeAccessCookie issued by the Web Application Proxy (WAP) when accessing non-claims aware applications (Kerberos).
+                IEnumerable<string> authCookies = null;
+                if (Regex.IsMatch(cookieString, "FedAuth", RegexOptions.IgnoreCase))
+                {
+                    authCookies = cookieString.Split(',').Where(c => c.StartsWith("FedAuth", StringComparison.InvariantCultureIgnoreCase) || c.StartsWith("rtFa", StringComparison.InvariantCultureIgnoreCase));
+                }
+                else if (Regex.IsMatch(cookieString, "EdgeAccessCookie", RegexOptions.IgnoreCase))
+                {
+                    authCookies = cookieString.Split(',').Where(c => c.StartsWith("EdgeAccessCookie", StringComparison.InvariantCultureIgnoreCase));
+                }
+                if (authCookies != null)
+                {
+                    authCookiesContainer.SetCookies(new Uri(context.Web.Url), string.Join(",", authCookies));
+                }
+                handler.CookieContainer = authCookiesContainer;
+            }
+        }
         /// <summary>
         /// Executes a REST Get request. 
         /// </summary>
@@ -27,6 +55,11 @@ namespace PnP.Framework.Utilities
             using (var handler = new HttpClientHandler())
             {
                 web.EnsureProperty(w => w.Url);
+
+                if (string.IsNullOrEmpty(accessToken))
+                {
+                    handler.SetAuthenticationCookies(web.Context as ClientContext);
+                }
 
                 using (var httpClient = new PnPHttpProvider(handler))
                 {

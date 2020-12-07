@@ -16,12 +16,25 @@
 		<PackageProjectUrl>https://aka.ms/pnp/framework</PackageProjectUrl>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<PackageIcon>nugeticon.png</PackageIcon>
+		<IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWindows>
+		<IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
+		<IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(IsWindows)'=='true'">
+		<DefineConstants>Windows</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(IsOSX)'=='true'">
+		<DefineConstants>OSX</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(IsLinux)'=='true'">
+		<DefineConstants>Linux</DefineConstants>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<DefineConstants>TRACE</DefineConstants>
 		<DocumentationFile>obj\Debug\netstandard2.0\PnP.Framework.xml</DocumentationFile>
-		<NoWarn>CA1724,CA1062,CA1305,CA2208,CA1801,CA1304,CA1054,CS1591,CA1310,CA1031,CA2007,CA1717</NoWarn>
+		<NoWarn>CA1724,CA1062,CA1305,CA2208,CA1801,CA1304,CA1054,CS1591,CA1310,CA1031,CA2007,CA1717,CA1707</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>

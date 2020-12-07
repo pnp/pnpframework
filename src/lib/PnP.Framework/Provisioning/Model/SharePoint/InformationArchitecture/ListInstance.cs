@@ -386,32 +386,32 @@ namespace PnP.Framework.Provisioning.Model
         /// <summary>
         /// Defines a value that specifies the URI for the icon of the list, optional attribute.
         /// </summary>
-        public String ImageUrl { get; set; }
+        public string ImageUrl { get; set; }
 
         /// <summary>
         /// Defines if IRM Expire property, optional attribute.
         /// </summary>
-        public Boolean IrmExpire { get; set; }
+        public bool IrmExpire { get; set; }
 
         /// <summary>
         /// Defines the IRM Reject property, optional attribute.
         /// </summary>
-        public Boolean IrmReject { get; set; }
+        public bool IrmReject { get; set; }
 
         /// <summary>
         /// Defines a value that specifies a flag that a client application can use to determine whether to display the list, optional attribute.
         /// </summary>
-        public Boolean IsApplicationList { get; set; }
+        public bool IsApplicationList { get; set; }
 
         /// <summary>
         /// Defines the Read Security property, optional attribute.
         /// </summary>
-        public Int32 ReadSecurity { get; set; }
+        public int ReadSecurity { get; set; }
 
         /// <summary>
         /// Defines the Write Security property, optional attribute.
         /// </summary>
-        public Int32 WriteSecurity { get; set; }
+        public int WriteSecurity { get; set; }
 
         /// <summary>
         /// Defines a value that specifies the data validation criteria for a list item, optional attribute.

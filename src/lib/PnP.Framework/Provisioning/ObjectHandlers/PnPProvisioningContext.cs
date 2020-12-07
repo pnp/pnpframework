@@ -85,12 +85,24 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// <returns>The Access Token for the requested resource, with the requested scope</returns>
         public String AcquireToken(String resource, string scope)
         {
-            return (this.AcquireTokenAsync(resource, scope).GetAwaiter().GetResult());
+            if (this.AcquireTokenAsync != null)
+            {
+                return (this.AcquireTokenAsync(resource, scope).GetAwaiter().GetResult());
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public string AcquireTokenWithMultipleScopes(string resource, params string[] scope)
         {
-            return this.AcquireTokenAsync(resource, string.Join(" ", scope)).GetAwaiter().GetResult();
+            if (this.AcquireTokenAsync != null)
+            {
+                return this.AcquireTokenAsync(resource, string.Join(" ", scope)).GetAwaiter().GetResult();
+            } else {
+                return null;
+            }
         }
 
         /// <summary>

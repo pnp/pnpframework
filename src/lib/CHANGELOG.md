@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Fix for issue where FooterLink in a sitetemplate get provisioned in reverse order
 - Removed obsolete Responsive UI methods
 - Fix for instantiation of extensibility handlers #5 [patrikhellgren - Patrik Hellgren]
 - Fix for token parsing when provisioning folders #6 [patrikhellgren - Patrik Hellgren]

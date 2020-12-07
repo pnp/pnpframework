@@ -344,23 +344,33 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                 Title = Constants.SITEFOOTER_MENUNODEKEY
                             });
                         }
-                        foreach (var footerLink in template.Footer.FooterLinks)
+                        
+                        if (template.Footer.FooterLinks != null && template.Footer.FooterLinks.Any())
                         {
-                            var newParentNode = menuNode.Children.Add(new NavigationNodeCreationInformation()
+                            for (var q = template.Footer.FooterLinks.Count - 1; q >= 0; q--)
                             {
-                                Url = parser.ParseString(footerLink.Url),
-                                Title = parser.ParseString(footerLink.DisplayName)
-                            });
-
-                            foreach (var childFooterLink in footerLink.FooterLinks)
-                            {
-                                newParentNode.Children.Add(new NavigationNodeCreationInformation()
+                                var footerLink = template.Footer.FooterLinks[q];
+                                var newParentNode = menuNode.Children.Add(new NavigationNodeCreationInformation()
                                 {
-                                    Url = parser.ParseString(childFooterLink.Url),
-                                    Title = parser.ParseString(childFooterLink.DisplayName)
+                                    Url = parser.ParseString(footerLink.Url),
+                                    Title = parser.ParseString(footerLink.DisplayName)
                                 });
+
+                                if (footerLink.FooterLinks != null && footerLink.FooterLinks.Any())
+                                {
+                                    for (var s = footerLink.FooterLinks.Count - 1; s >= 0; s--)
+                                    {
+                                        var childFooterLink = footerLink.FooterLinks[s];
+                                        newParentNode.Children.Add(new NavigationNodeCreationInformation()
+                                        {
+                                            Url = parser.ParseString(childFooterLink.Url),
+                                            Title = parser.ParseString(childFooterLink.DisplayName)
+                                        });
+                                    }
+                                }
                             }
                         }
+                       
                         if (web.Context.PendingRequestCount() > 0)
                         {
                             web.Context.ExecuteQueryRetry();

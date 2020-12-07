@@ -12,7 +12,7 @@ Pull down the latest version of PnP Framework here: [![PnP.Framework Nuget packa
 
 We've shipped our first PnP Framework preview version and preview 3 of the [PnP Core SDK](https://github.com/pnp/pnpcore).
 
-![PnP dotnet roadmap](PnP%20dotnet%20Roadmap%20-%20October%20status.png)
+![PnP dotnet roadmap](PnP%20dotnet%20Roadmap%20-%20December%20status.png)
 
 ## I've found a bug, where do I need to log an issue or create a PR
 

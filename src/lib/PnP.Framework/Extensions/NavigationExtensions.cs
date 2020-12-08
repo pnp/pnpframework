@@ -776,7 +776,10 @@ namespace Microsoft.SharePoint.Client
             var menuState = JsonSerializer.Deserialize<JsonElement>(structureString);
             //var menuState = JObject.Parse(structureString);
 
-            if (menuState.GetProperty("StartingNodeKey").ValueKind == JsonValueKind.Undefined)
+            menuState.TryGetProperty("StartingNodeKey", out JsonElement startingNodeKeyElement);
+            menuState.TryGetProperty("Title", out JsonElement titleElement);
+
+            if (startingNodeKeyElement.ValueKind == JsonValueKind.Undefined || titleElement.ValueKind != JsonValueKind.Undefined && titleElement.GetString() != Constants.SITEFOOTER_MENUNODEKEY)
             {
                 web.EnsureProperties(w => w.ServerRelativeUrl);
                 var now = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss:Z");

@@ -810,7 +810,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 foreach (var entry in entries)
                 {
                     CultureInfo ci = new CultureInfo((int)entry.LCID);
-                    resourceValues.Add(new Tuple<string, string>(ci.Name, entry.Value));
+                    resourceValues.Add(new Tuple<string, string>(ci.Name, ParseString(entry.Value)));
                 }
             }
             return resourceValues;

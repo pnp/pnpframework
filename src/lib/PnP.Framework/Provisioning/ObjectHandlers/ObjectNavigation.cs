@@ -272,7 +272,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         #region Utility methods
 
-        private static string ReplaceFileUniqueToken(Web web, string UrlValue)
+        internal static string ReplaceFileUniqueToken(Web web, string UrlValue)
         {
             if (!string.IsNullOrWhiteSpace(UrlValue))
             {

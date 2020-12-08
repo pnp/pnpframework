@@ -5,6 +5,7 @@ using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
 {
@@ -278,6 +279,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                      context.LoadQuery(list.Fields.Include(f => f.InternalName, f => f.Title,
                          f => f.TypeAsString));
             context.ExecuteQueryRetry();
+
+            Regex fileUniqueIdToken = new Regex("(?<token>[{]{1,2}(?:fileuniqueid:fileuniqueidencoded:)|[^}]*[}]{1,2})(?:[^{]*)", RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.Compiled);
+
             foreach (var key in valuesToSet.Keys)
             {
                 var field = fields.FirstOrDefault(f => f.InternalName == key || f.Title == key);
@@ -292,6 +296,53 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                     }
 
                     var value = parser.ParseString(valuesToSet[key]);
+
+                    if (!string.IsNullOrWhiteSpace(value) && fileUniqueIdToken.IsMatch(value))
+                    {
+                        //unresovled fileuniqueid or fileuniqueidencoded Token -try to reslove and add to parser..
+                        foreach (Match m in fileUniqueIdToken.Matches(value))
+                        {
+                            if (m.Groups["token"].Success && !string.IsNullOrWhiteSpace(m.Groups["token"].Value))
+                            {
+                                string replacementVal = m.Groups["token"].Value;
+                                var tokenParts = replacementVal.Trim(new char[] { '{', '}' }).Split(':');
+
+                                Guid UniqueId = Guid.Empty;
+                                try
+                                {
+                                    var file = web.GetFileByServerRelativeUrl(tokenParts[1]);
+                                    file.EnsureProperties(f => f.UniqueId);
+                                    UniqueId = file.UniqueId;
+                                }
+                                catch { }
+
+                                if (UniqueId == Guid.Empty)
+                                {
+                                    try
+                                    {
+                                        var folder = web.GetFolderByServerRelativeUrl(tokenParts[1]);
+                                        folder.EnsureProperties(f => f.UniqueId);
+                                        UniqueId = folder.UniqueId;
+                                    }
+                                    catch { }
+                                }
+
+                                if (UniqueId != Guid.Empty)
+                                {
+                                    if (tokenParts[0].Equals("fileuniqueidencoded", StringComparison.InvariantCultureIgnoreCase))
+                                    {
+                                        string replTest = UniqueId.ToString().Replace("-", "%2D");
+                                        value = Regex.Replace(value, $"{{{tokenParts[0]}:{tokenParts[1]}}}", replTest);
+                                    }
+                                    else
+                                    {
+                                        string replTest = UniqueId.ToString();
+                                        value = Regex.Replace(value, $"{{{tokenParts[0]}:{tokenParts[1]}}}", replTest);
+                                    }
+                                }
+                            }
+                        }
+                    }
 
                     switch (field.TypeAsString)
                     {
@@ -428,9 +479,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                         case "LookupMulti":
                             {
                                 if (value == null) goto default;
-                                
-                                var newVals = value.Split(',',';')
-                                    .Select(v => new FieldLookupValue { LookupId = int.Parse(v.Trim())})
+
+                                var newVals = value.Split(',', ';')
+                                    .Select(v => new FieldLookupValue { LookupId = int.Parse(v.Trim()) })
                                     .ToArray();
 
                                 var lookupField = context.CastTo<FieldLookup>(field);

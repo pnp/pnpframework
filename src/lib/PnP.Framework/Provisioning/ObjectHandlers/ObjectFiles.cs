@@ -90,6 +90,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                     var folder = web.EnsureFolderPath(folderName);
 
+                    folder.EnsureProperties(p => p.UniqueId, p => p.ServerRelativeUrl);
+                    parser.AddToken(new FileUniqueIdToken(web, folder.ServerRelativeUrl.Substring(web.ServerRelativeUrl.Length).TrimStart("/".ToCharArray()), folder.UniqueId));
+                    parser.AddToken(new FileUniqueIdEncodedToken(web, folder.ServerRelativeUrl.Substring(web.ServerRelativeUrl.Length).TrimStart("/".ToCharArray()), folder.UniqueId));
+                    
                     var checkedOut = false;
 
                     var targetFile = folder.GetFile(template.Connector.GetFilenamePart(targetFileName));

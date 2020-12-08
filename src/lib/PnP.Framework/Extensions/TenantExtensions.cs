@@ -918,9 +918,9 @@ namespace Microsoft.SharePoint.Client
             var web = clientContext.Web;
             var site = clientContext.Site;
             site.EnsureProperty(s => s.Url);
-            var baseTempalteId = web.GetBaseTemplateId();
+            var baseTemplateId = web.GetBaseTemplateId();
 
-            if (string.Equals(baseTempalteId, "TENANTADMIN#0", StringComparison.InvariantCultureIgnoreCase))
+            if (string.Equals(baseTemplateId, "TENANTADMIN#0", StringComparison.InvariantCultureIgnoreCase))
             {
                 result = true;
             }

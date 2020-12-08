@@ -42,10 +42,13 @@ namespace PnP.Framework.Entities
         /// </summary>
         public string Group { get; set; }
         /// <summary>
-        /// Specifies filds is required to enter vlaue or not.
+        /// Specifies fields is required to enter vlaue or not.
         /// </summary>
         public bool Required { get; set; }
-
+        /// <summary>
+        /// Specifies field options
+        /// </summary>
+        public AddFieldOptions FieldOptions { get; set; }
         /// <summary>
         /// Ignored currently for SP2016
         /// </summary>

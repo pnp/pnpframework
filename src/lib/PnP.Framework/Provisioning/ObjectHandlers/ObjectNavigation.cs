@@ -582,7 +582,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             if (!sourceNodes.ServerObjectIsNull.Value)
             {
                 result.NavigationNodes.AddRange(from n in sourceNodes.AsEnumerable()
-                                                select n.ToDomainModelNavigationNode(web, creationInfo.PersistMultiLanguageResources, defaultCulture));
+                                                select n.ToDomainModelNavigationNode(web, creationInfo.PersistMultiLanguageResources, defaultCulture, creationInfo));
 
                 if (creationInfo.PersistMultiLanguageResources)
                 {
@@ -601,7 +601,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         {
                             //we dont need to add to result - just extract Titles - to List as we need to 
                             var alternateLang = (from n in sourceNodes.AsEnumerable()
-                                                 select n.ToDomainModelNavigationNode(web, creationInfo.PersistMultiLanguageResources, currentCulture)).ToList();
+                                                 select n.ToDomainModelNavigationNode(web, creationInfo.PersistMultiLanguageResources, currentCulture, creationInfo)).ToList();
                         }
 
                         clientContext.PendingRequest.RequestExecutor.WebRequest.Headers["Accept-Language"] = acceptLanguage;
@@ -686,13 +686,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
     internal static class NavigationNodeExtensions
     {
-        internal static Model.NavigationNode ToDomainModelNavigationNode(this Microsoft.SharePoint.Client.NavigationNode node, Web web, bool PersistLanguage, CultureInfo currentCulture, int ParentNodeId = 0)
+        internal static Model.NavigationNode ToDomainModelNavigationNode(this Microsoft.SharePoint.Client.NavigationNode node, Web web, bool PersistLanguage, CultureInfo currentCulture, ProvisioningTemplateCreationInformation creationInfo, int ParentNodeId = 0)
         {
 
             string nodeTitle = node.Title;
             if (PersistLanguage && !string.IsNullOrWhiteSpace(nodeTitle))
             {
-                if (UserResourceExtensions.PersistResourceValue($"NavigationNode_{ParentNodeId}_{node.Id}_Title", currentCulture.LCID, nodeTitle))
+                if (UserResourceExtensions.PersistResourceValue($"NavigationNode_{ParentNodeId}_{node.Id}_Title", currentCulture.LCID, nodeTitle, creationInfo))
                 {
                     nodeTitle = $"{{res:NavigationNode_{ParentNodeId}_{node.Id}_Title}}";
                 }
@@ -713,7 +713,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             node.Context.ExecuteQueryRetry();
 
             result.NavigationNodes.AddRange(from n in node.Children.AsEnumerable()
-                                            select n.ToDomainModelNavigationNode(web, PersistLanguage, currentCulture, node.Id));
+                                            select n.ToDomainModelNavigationNode(web, PersistLanguage, currentCulture, creationInfo, node.Id));
 
             if (PersistLanguage)
             {

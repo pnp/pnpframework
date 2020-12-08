@@ -12,22 +12,20 @@ using System.Text.RegularExpressions;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers.Extensions
 {
-
-
     internal static class UserResourceExtensions
     {
-        private static readonly List<Tuple<string, int, string>> ResourceTokens = new List<Tuple<string, int, string>>();
+        private static readonly List<Tuple<string, int, string>> resourceTokens = new List<Tuple<string, int, string>>();
 
         public static ProvisioningTemplate SaveResourceValues(ProvisioningTemplate template, ProvisioningTemplateCreationInformation creationInfo)
         {
-            var tempFolder = System.IO.Path.GetTempPath();
+            var tempFolder = Path.GetTempPath();
 
-            var languages = new List<int>(ResourceTokens.Select(t => t.Item2).Distinct());
+            var languages = resourceTokens.Select(t => t.Item2).Distinct();
             foreach (int language in languages)
             {
                 var culture = new CultureInfo(language);
 
-                var resourceFileName = System.IO.Path.Combine(tempFolder, $"{creationInfo.ResourceFilePrefix}.{culture.Name}.resx");
+                var resourceFileName = Path.Combine(tempFolder, $"{creationInfo.ResourceFilePrefix}.{culture.Name}.resx");
                 if (System.IO.File.Exists(resourceFileName))
                 {
                     // Read existing entries, if any
@@ -37,10 +35,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Extensions
                         foreach (DictionaryEntry entry in resxReader)
                         {
                             // find if token is already there
-                            var existingToken = ResourceTokens.FirstOrDefault(t => t.Item1 == entry.Key.ToString() && t.Item2 == language);
+                            var existingToken = resourceTokens.FirstOrDefault(t => t.Item1 == entry.Key.ToString() && t.Item2 == language);
                             if (existingToken == null)
                             {
-                                ResourceTokens.Add(new Tuple<string, int, string>(entry.Key.ToString(), language, entry.Value as string));
+                                resourceTokens.Add(new Tuple<string, int, string>(entry.Key.ToString(), language, entry.Value as string));
                             }
                         }
                     }
@@ -50,7 +48,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Extensions
                 //using (ResourceWriter resx = new ResourceWriter(resourceFileName))
                 using (ResXResourceWriter resx = new ResXResourceWriter(resourceFileName))
                 {
-                    foreach (var token in ResourceTokens.Distinct().Where(t => t.Item2 == language))
+                    foreach (var token in resourceTokens.Where(t => t.Item2 == language))
                     {
 
                         resx.AddResource(token.Item1, token.Item3);
@@ -90,6 +88,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Extensions
         public static bool PersistResourceValue(UserResource userResource, string token, ProvisioningTemplate template, ProvisioningTemplateCreationInformation creationInfo)
         {
             bool returnValue = false;
+            List<Tuple<string, int, string>> resourceTokens = creationInfo.ResourceTokens;
             foreach (var language in template.SupportedUILanguages)
             {
                 var culture = new CultureInfo(language.LCID);
@@ -99,21 +98,22 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Extensions
                 if (!string.IsNullOrEmpty(value.Value))
                 {
                     returnValue = true;
-                    ResourceTokens.Add(new Tuple<string, int, string>(token, language.LCID, value.Value));
+                    resourceTokens.Add(new Tuple<string, int, string>(token, language.LCID, value.Value));
                 }
             }
 
             return returnValue;
         }
 
-        public static bool PersistResourceValue(string token, int LCID, string Title)
+        public static bool PersistResourceValue(string token, int lcid, string title, ProvisioningTemplateCreationInformation creationInfo)
         {
             bool returnValue = false;
 
-            if (!string.IsNullOrWhiteSpace(Title))
+            if (!string.IsNullOrWhiteSpace(title))
             {
                 returnValue = true;
-                ResourceTokens.Add(new Tuple<string, int, string>(token, LCID, Title));
+
+                creationInfo.ResourceTokens.Add(new Tuple<string, int, string>(token, lcid, title));
             }
 
             return returnValue;
@@ -123,7 +123,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Extensions
         {
             bool returnValue = false;
             var clientContext = siteList.Context;
-
+            List<Tuple<string, int, string>> resourceTokens = creationInfo.ResourceTokens;
             foreach (var language in template.SupportedUILanguages)
             {
                 var culture = new CultureInfo(language.LCID);
@@ -136,7 +136,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Extensions
                 if (!string.IsNullOrWhiteSpace(currentView.Title))
                 {
                     returnValue = true;
-                    ResourceTokens.Add(new Tuple<string, int, string>(token, language.LCID, currentView.Title));
+                    creationInfo.ResourceTokens.Add(new Tuple<string, int, string>(token, language.LCID, currentView.Title));
                 }
 
                 clientContext.PendingRequest.RequestExecutor.WebRequest.Headers["Accept-Language"] = acceptLanguage;

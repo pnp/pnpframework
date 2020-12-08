@@ -391,6 +391,24 @@ namespace PnP.Framework.Test.Framework.Functional.Validators
             // Validate item values
             foreach (var dataValue in dataRow.Values)
             {
+                if (item[dataValue.Key] is FieldLookupValue lookupValue)
+                {
+                    if (!lookupValue.LookupId.ToString().Equals(dataValue.Value, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        return false;
+                    }
+                    continue;
+                }
+                if (item[dataValue.Key] is FieldLookupValue[] lookupValues)
+                {
+                    var dataValues = dataValue.Value.Split(',', ';').OrderBy(v => v, StringComparer.InvariantCultureIgnoreCase);
+                    var itemValues = lookupValues.Select(v => v.LookupId.ToString()).OrderBy(v => v, StringComparer.InvariantCultureIgnoreCase);
+                    if (!itemValues.SequenceEqual(dataValues, StringComparer.InvariantCultureIgnoreCase))
+                    {
+                        return false;
+                    }
+                    continue;
+                }
                 if (!item[dataValue.Key].ToString().Equals(dataValue.Value, StringComparison.InvariantCultureIgnoreCase))
                 {
                     return false;

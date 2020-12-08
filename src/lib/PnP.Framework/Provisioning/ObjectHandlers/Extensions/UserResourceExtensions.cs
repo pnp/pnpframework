@@ -14,11 +14,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Extensions
 {
     internal static class UserResourceExtensions
     {
-        private static readonly List<Tuple<string, int, string>> resourceTokens = new List<Tuple<string, int, string>>();
 
         public static ProvisioningTemplate SaveResourceValues(ProvisioningTemplate template, ProvisioningTemplateCreationInformation creationInfo)
         {
             var tempFolder = Path.GetTempPath();
+            List<Tuple<string, int, string>> resourceTokens = creationInfo.ResourceTokens;
 
             var languages = resourceTokens.Select(t => t.Item2).Distinct();
             foreach (int language in languages)

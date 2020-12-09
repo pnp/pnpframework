@@ -87,7 +87,7 @@ namespace PnP.Framework.Provisioning.Providers.Markdown
             fieldWriter.WriteLine();
         }
 
-        protected string GetAttributeValue(string attributeName, XmlElement xmlField)
+        protected static string GetAttributeValue(string attributeName, XmlElement xmlField)
         {
             if (xmlField.Attributes[attributeName] != null) {
 

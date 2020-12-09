@@ -54,10 +54,12 @@ namespace PnP.Framework.Provisioning.Providers.Markdown
 
         public Model.ProvisioningTemplate ToProvisioningTemplate(System.IO.Stream template, string identifier)
         {
-            StreamReader sr = new StreamReader(template, Encoding.Unicode);
-            String jsonString = sr.ReadToEnd();
-            Model.ProvisioningTemplate result = JsonConvert.DeserializeObject<Model.ProvisioningTemplate>(jsonString, new BasePermissionsConverter());
-            return (result);
+            using (var sr = new StreamReader(template, Encoding.Unicode))
+            {
+                var jsonString = sr.ReadToEnd();
+                Model.ProvisioningTemplate result = JsonConvert.DeserializeObject<Model.ProvisioningTemplate>(jsonString, new BasePermissionsConverter());
+                return result;
+            }
         }
 
         private IOrderedEnumerable<Type> GetWritersForCurrentContext(WriterScope scope,
@@ -74,10 +76,14 @@ namespace PnP.Framework.Provisioning.Providers.Markdown
                 .OrderBy(s =>
                 {
                     var a = s.GetCustomAttributes<TemplateSchemaWriterAttribute>(false).FirstOrDefault();
-                    return a.WriterSequence;
+                    if (a != null)
+                    {
+                        return a.WriterSequence;
+                    }
+                    return 0;
                 }
                 );
-            
+
             return writers;
         }
 

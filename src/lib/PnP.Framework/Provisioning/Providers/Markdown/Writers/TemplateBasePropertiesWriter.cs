@@ -20,7 +20,7 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
         {
             writer.WriteLine($"# Template - {template.Id}");
             writer.WriteLine();
-            writer.WriteLine($"This is an export of the PnP Provisioning Template for this site.");
+            writer.WriteLine($"This is an export of the PnP Site Template for this site.");
             writer.WriteLine();
         }
     }

@@ -18,16 +18,20 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
     {
         public override void Writer(ProvisioningTemplate template, TextWriter writer)
         {
-            writer.WriteLine("# Navigation");
-            writer.WriteLine();
-            writer.WriteLine($"## Left navigation:");
-            writer.WriteLine();
-            writer.WriteLine($"Leave as default.");
-            writer.WriteLine();
-            writer.WriteLine($"## Top navigation:");
-            writer.WriteLine();
-            writer.WriteLine($"Leave as default.");
-            writer.WriteLine();
+            if (template.Navigation != null)
+            {
+                WriteHeader("Navigation", 1, writer);
+                WriteTextField(template.Navigation.AddNewPagesToNavigation.ToString(), "Add new pages to navigation", writer);
+                WriteTextField(template.Navigation.EnableTreeView.ToString(), "Treeview enabled", writer);
+                WriteTextField(template.Navigation.CreateFriendlyUrlsForNewPages.ToString(), "Create friendly urls for new pages", writer);
+
+
+                if (template.Navigation.GlobalNavigation != null)
+                {
+                    WriteHeader("Global Navigation", 2, writer);
+                    WriteTextField(template.Navigation.GlobalNavigation.NavigationType.ToString(), "Navigation Type", writer);
+                }
+            }
         }
     }
 }

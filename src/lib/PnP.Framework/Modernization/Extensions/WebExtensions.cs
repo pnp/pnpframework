@@ -310,7 +310,7 @@ namespace Microsoft.SharePoint.Client
             foreach (var group in web.SiteGroups)
             {
                 var everyoneClaimsInGroups = group.Users.Where(p => p.LoginName.Equals(claim1, StringComparison.InvariantCultureIgnoreCase) || p.LoginName.Equals(claim2, StringComparison.InvariantCultureIgnoreCase));
-                if (everyoneClaimsInGroups != null && everyoneClaimsInGroups.Count() > 0)
+                if (everyoneClaimsInGroups != null && everyoneClaimsInGroups.Any())
                 {
                     return true;
                 }
@@ -318,7 +318,7 @@ namespace Microsoft.SharePoint.Client
 
             // Check direct grants
             var everyoneClaims = web.SiteUsers.Where(p => p.LoginName.Equals(claim1, StringComparison.InvariantCultureIgnoreCase) || p.LoginName.Equals(claim2, StringComparison.InvariantCultureIgnoreCase));
-            if (everyoneClaims != null && everyoneClaims.Count() > 0)
+            if (everyoneClaims != null && everyoneClaims.Any())
             {
                 web.EnsureProperty(p => p.RoleAssignments);
 

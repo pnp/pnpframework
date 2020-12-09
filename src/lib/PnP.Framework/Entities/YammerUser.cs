@@ -29,7 +29,9 @@ namespace PnP.Framework.Entities
         /// <summary>
         /// Represents yammer user Guid
         /// </summary>
+#pragma warning disable CA1720
         public object guid { get; set; }
+#pragma warning restore CA1720
         /// <summary>
         /// Represents yammer user job title
         /// </summary>

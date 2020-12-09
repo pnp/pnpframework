@@ -64,36 +64,37 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
                         detailsWriter.WriteLine("| Display Name |  Default?  |   Name    |");
                         detailsWriter.WriteLine("| :------------- | :----------: | :----------: |");
 
-                        TextWriter viewDetailsWriter = new StringWriter();
-
-                        var xmlViewFields = from f in list.Views
-                                            select XElement.Parse(f.SchemaXml).ToXmlElement();
-
-                        foreach (var xmlField in xmlViewFields)
+                        using (TextWriter viewDetailsWriter = new StringWriter())
                         {
-                            var viewDisplayName = xmlField.Attributes["DisplayName"].Value;
-                            //var viewType = xmlField.Attributes["Type"].Value;
-                            var viewName = xmlField.Attributes["Name"].Value;
 
-                            detailsWriter.WriteLine($"| {viewDisplayName} | TBC | {viewName} |");
+                            var xmlViewFields = from f in list.Views
+                                                select XElement.Parse(f.SchemaXml).ToXmlElement();
 
-                            WriteHeader(viewDisplayName, 4, viewDetailsWriter);
+                            foreach (var xmlField in xmlViewFields)
+                            {
+                                var viewDisplayName = xmlField.Attributes["DisplayName"].Value;
+                                //var viewType = xmlField.Attributes["Type"].Value;
+                                var viewName = xmlField.Attributes["Name"].Value;
+
+                                detailsWriter.WriteLine($"| {viewDisplayName} | TBC | {viewName} |");
+
+                                WriteHeader(viewDisplayName, 4, viewDetailsWriter);
+                                WriteNewLine(viewDetailsWriter);
+
+                                WriteAttributeField("Url", "View Url", viewDetailsWriter, xmlField);
+                                WriteText("**Fields:**", viewDetailsWriter);
+
+                                foreach (XmlElement fieldNode in xmlField.SelectNodes("//ViewFields//FieldRef"))
+                                {
+                                    WriteText($"- {GetAttributeValue("Name", fieldNode)}", viewDetailsWriter);
+                                }
+                            }
+                            detailsWriter.WriteLine(viewDetailsWriter.ToString());
                             WriteNewLine(viewDetailsWriter);
 
-                            WriteAttributeField("Url", "View Url", viewDetailsWriter, xmlField);
-                            WriteText("**Fields:**", viewDetailsWriter);
-
-                            foreach (XmlElement fieldNode in xmlField.SelectNodes("//ViewFields//FieldRef"))
-                            {
-                                WriteText($"- {GetAttributeValue("Name", fieldNode)}", viewDetailsWriter);
-                            }
+                            WriteText("NB: Currently the documentation assumes you are using Content Types so it just shows the field refs", viewDetailsWriter);
                         }
-                        detailsWriter.WriteLine(viewDetailsWriter.ToString());
-                        WriteNewLine(viewDetailsWriter);
-
-                        WriteText("NB: Currently the documentation assumes you are using Content Types so it just shows the field refs", viewDetailsWriter);
-
-                        if (list.FieldRefs != null && list.FieldRefs.Count() > 0)
+                        if (list.FieldRefs != null && list.FieldRefs.Count > 0)
                         {
                             WriteText("**Fields:**", detailsWriter);
                         }

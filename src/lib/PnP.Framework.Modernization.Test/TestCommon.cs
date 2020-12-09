@@ -297,7 +297,7 @@ namespace PnP.Framework.Modernization.Tests
                     }
                 }
             }
-            catch (WebException ex)
+            catch (WebException)
             {
                 // Ignore
             }

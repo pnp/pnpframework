@@ -88,7 +88,7 @@ namespace PnP.Framework.Utilities
                         Log.Warning(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_SendAsyncRetry, $"{backoffInterval}");
 
                         //Add delay for retry
-                        Task.Delay(backoffInterval).Wait();
+                        Task.Delay(backoffInterval,cancellationToken).Wait(cancellationToken);
 
                         //Add to retry count and increase delay.
                         retryAttempts++;
@@ -118,7 +118,7 @@ namespace PnP.Framework.Utilities
                             Log.Warning(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_SendAsyncRetry, backoffInterval);
 
                             //Add delay for retry
-                            Task.Delay(backoffInterval).Wait();
+                            Task.Delay(backoffInterval,cancellationToken).Wait(cancellationToken);
 
                             //Add to retry count and increase delay.
                             retryAttempts++;
@@ -149,10 +149,12 @@ namespace PnP.Framework.Utilities
                 Content = request.Content.CloneRequest(),
                 Version = request.Version
             };
+#pragma warning disable CS0168
             foreach (KeyValuePair<string, object> prop in request.Properties)
             {
                 clone.Properties.Add(prop);
             }
+#pragma warning restore CS0168
             foreach (KeyValuePair<string, IEnumerable<string>> header in request.Headers)
             {
                 clone.Headers.TryAddWithoutValidation(header.Key, header.Value);

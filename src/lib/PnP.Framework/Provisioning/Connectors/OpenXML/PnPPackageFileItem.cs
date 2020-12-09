@@ -18,6 +18,8 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
         /// <summary>
         /// Content of the package file item
         /// </summary>
+#pragma warning disable CA1819
         public byte[] Content { get; set; }
+#pragma warning restore CA1819
     }
 }

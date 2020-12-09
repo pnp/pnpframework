@@ -258,7 +258,7 @@ namespace Microsoft.SharePoint.Client
             var info_ClientObject_ObjectData = typeof(ClientObject)
                 .GetProperty("ObjectData", BindingFlags.NonPublic | BindingFlags.Instance);
 
-            var objectData = (ClientObjectData)info_ClientObject_ObjectData.GetValue(clientObject, new object[0]);
+            var objectData = (ClientObjectData)info_ClientObject_ObjectData.GetValue(clientObject, Array.Empty<object>());
             objectData.MethodReturnObjects.Clear();
         }
     }

@@ -6,7 +6,7 @@ namespace PnP.Framework.Enums
     /// Supported Microsoft Graph Change Types on Subscriptions. Documentation at: https://docs.microsoft.com/graph/api/resources/subscription#properties
     /// </summary>
     [Flags]
-    public enum GraphSubscriptionChangeType : short
+    public enum GraphSubscriptionChangeType : int
     {
         /// <summary>
         /// Something got created

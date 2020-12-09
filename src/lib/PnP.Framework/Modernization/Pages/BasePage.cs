@@ -56,6 +56,7 @@ namespace PnP.Framework.Modernization.Pages
         /// <param name="page">page ListItem</param>
         /// <param name="pageFile">page File</param>
         /// <param name="pageTransformation">page transformation model to use for extraction or transformation</param>
+        /// <param name="logObservers"></param>
         public BasePage(ListItem page, File pageFile, PageTransformation pageTransformation, IList<ILogObserver> logObservers = null)
         {
             // Register observers
@@ -573,7 +574,7 @@ namespace PnP.Framework.Modernization.Pages
             IElement copy = element.Clone(true) as IElement;
             var doc = parser.ParseDocument(copy.OuterHtml);
             var nodes = doc.All.Where(p => p.LocalName == "div");
-            if (nodes.Count() > 0)
+            if (nodes.Any())
             {
                 foreach (var node in nodes.ToList())
                 {

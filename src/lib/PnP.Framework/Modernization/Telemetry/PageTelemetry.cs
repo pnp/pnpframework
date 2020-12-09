@@ -94,7 +94,7 @@ namespace PnP.Framework.Modernization.Telemetry
                 properties.Add(AADTenantId, this.aadTenantId.ToString());
 
                 // Populate metrics
-                if (duration != null)
+                if (duration != TimeSpan.Zero)
                 {
                     // How long did it take to transform this page
                     metrics.Add(Duration, duration.TotalSeconds);

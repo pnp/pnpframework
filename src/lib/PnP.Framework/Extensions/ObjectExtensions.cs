@@ -34,7 +34,7 @@ namespace PnP.Framework.Extensions
                 return false;
             }
 
-            if (!allowEmpty && (valueToSet is string) && (valueToSet == null || (valueToSet as string) == ""))
+            if (!allowEmpty && (valueToSet is string) && (valueToSet == null || string.IsNullOrEmpty(valueToSet as string)))
             {
                 return false;
             }

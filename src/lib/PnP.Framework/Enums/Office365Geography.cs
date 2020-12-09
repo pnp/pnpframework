@@ -3,7 +3,7 @@
     /// <summary>
     /// Defines the codes of geographies in which there is Office 365 presence. Used for multi-geo enabled tenants. List with available geographies is available at https://docs.microsoft.com/office365/enterprise/multi-geo-add-group-with-pdl#geo-location-codes.
     /// </summary>
-    public enum Office365Geography : short
+    public enum Office365Geography : int
     {
         /// <summary>
         /// Asia-Pacific

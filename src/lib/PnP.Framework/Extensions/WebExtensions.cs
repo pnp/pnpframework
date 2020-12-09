@@ -21,10 +21,10 @@ namespace Microsoft.SharePoint.Client
     /// </summary>
     public static partial class WebExtensions
     {
-        const string MSG_CONTEXT_CLOSED = "ClientContext gets closed after action is completed. Calling ExecuteQuery again returns an error. Verify that you have an open ClientContext object.";
-        const string SITE_STATUS_ACTIVE = "Active";
-        const string SITE_STATUS_CREATING = "Creating";
-        const string SITE_STATUS_RECYCLED = "Recycled";
+        //const string MSG_CONTEXT_CLOSED = "ClientContext gets closed after action is completed. Calling ExecuteQuery again returns an error. Verify that you have an open ClientContext object.";
+        //const string SITE_STATUS_ACTIVE = "Active";
+        //const string SITE_STATUS_CREATING = "Creating";
+        //const string SITE_STATUS_RECYCLED = "Recycled";
         const string INDEXED_PROPERTY_KEY = "vti_indexedpropertykeys";
 
         #region Web (site) query, creation and deletion

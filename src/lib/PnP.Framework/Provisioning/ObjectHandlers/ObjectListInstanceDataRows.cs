@@ -969,7 +969,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             catch (Exception ex)
             {
                 Log.Error(Constants.LOGGING_SOURCE, $"Attachment file {fileServerRelativeUrl} not found");
+#pragma warning disable CA2200
                 throw ex;
+#pragma warning restore CA2200
             }
             return null;
         }

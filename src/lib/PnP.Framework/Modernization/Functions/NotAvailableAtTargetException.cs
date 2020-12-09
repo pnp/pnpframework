@@ -2,6 +2,7 @@
 
 namespace PnP.Framework.Modernization.Functions
 {
+#pragma warning disable CA1032
     /// <summary>
     /// Exception class thrown when a SharePoint object (e.g. list) is not available at the target site
     /// </summary>
@@ -20,4 +21,5 @@ namespace PnP.Framework.Modernization.Functions
         /// <param name="innerException">Inner exception object</param>
         public NotAvailableAtTargetException(string message, Exception innerException) : base(message, innerException) { }
     }
+#pragma warning restore CA1032
 }

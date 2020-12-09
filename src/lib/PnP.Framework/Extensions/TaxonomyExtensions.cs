@@ -425,7 +425,7 @@ namespace Microsoft.SharePoint.Client
         /// <returns>Returns TermGroup object</returns>
         public static TermGroup GetTermGroupById(this Site site, Guid termGroupId)
         {
-            if (termGroupId == null || termGroupId.Equals(Guid.Empty))
+            if (termGroupId.Equals(Guid.Empty))
             {
                 throw new ArgumentNullException(nameof(termGroupId));
             }

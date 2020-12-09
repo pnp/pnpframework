@@ -141,7 +141,7 @@ namespace PnP.Framework.Modernization.Transform
                 CleanHtmlNodes(document);
 
                 // Return the transformed html
-                if (document.DocumentElement.Children.Count() > 1)
+                if (document.DocumentElement.Children.Length > 1)
                 {
                     string updatedText = document.DocumentElement.Children[1].InnerHtml;
                     return updatedText;
@@ -629,7 +629,9 @@ namespace PnP.Framework.Modernization.Transform
             }
         }
 
+#pragma warning disable CA1716
         protected virtual void TransformHeadings(IHtmlDocument document, int from, int to)
+#pragma warning restore CA1716
         {
             var fromNodes = document.QuerySelectorAll($"h{from}");
             foreach(var fromNode in fromNodes)
@@ -952,7 +954,7 @@ namespace PnP.Framework.Modernization.Transform
                                 element.RemoveAttribute("style");
                             }
                             // if the element has no classes anymore then let's drop the class attribute
-                            if (element.ClassList.Count() == 0 && element.HasAttribute("class"))
+                            if (element.ClassList.Length == 0 && element.HasAttribute("class"))
                             {
                                 element.RemoveAttribute("class");
                             }
@@ -1316,7 +1318,7 @@ namespace PnP.Framework.Modernization.Transform
                 //TransformElements(documentTemp.QuerySelectorAll("strong"), documentTemp);
                 //TransformElements(documentTemp.QuerySelectorAll("em"), documentTemp);
 
-                if (documentTemp.DocumentElement.Children.Count() > 1)
+                if (documentTemp.DocumentElement.Children.Length > 1)
                 {
                     innerHtml = documentTemp.DocumentElement.Children[1].InnerHtml;
                 }
@@ -1333,7 +1335,7 @@ namespace PnP.Framework.Modernization.Transform
             string innerHtml = TransformInnerHtml(element.InnerHtml);
 
             // If the element has a class defined then wrap inside a span
-            if (element.ClassList.Count() > 0)
+            if (element.ClassList.Length > 0)
             {
                 var newSpan = document.CreateElement("span");
                 newSpan.ClassList.Add(element.ClassList.ToArray());
@@ -1482,7 +1484,7 @@ namespace PnP.Framework.Modernization.Transform
 
             var tableBodyElement = (table as IHtmlTableElement).Bodies[0];
             var rows = tableBodyElement.Children.Where(p => p.TagName.Equals("tr", StringComparison.InvariantCultureIgnoreCase));
-            if (rows != null && rows.Count() > 0)
+            if (rows != null && rows.Any())
             {
                 int rowPos = 0;
                 foreach (var row in rows)
@@ -1490,7 +1492,7 @@ namespace PnP.Framework.Modernization.Transform
                     // We assume a table header only has TH cells
                     var tableHeaders = row.Children.Where(p => p.TagName.Equals("th", StringComparison.InvariantCultureIgnoreCase));
                     var cellsInTableHeader = row.Children.Where(p => p.TagName.Equals("td", StringComparison.InvariantCultureIgnoreCase));
-                    if (tableHeaders != null && tableHeaders.Count() > 0 && cellsInTableHeader.Count() == 0)
+                    if (tableHeaders != null && tableHeaders.Any() && !cellsInTableHeader.Any())
                     {
                         int colPos = 0;
                         foreach (var tableHeader in tableHeaders)
@@ -1521,7 +1523,7 @@ namespace PnP.Framework.Modernization.Transform
                     {
                         // Support model of TD cells mixed with TH
                         var tableCells = row.Children.Where(p => p.TagName.Equals("td", StringComparison.InvariantCultureIgnoreCase) || p.TagName.Equals("th", StringComparison.InvariantCultureIgnoreCase));
-                        if (tableCells != null && tableCells.Count() > 0)
+                        if (tableCells != null && tableCells.Any())
                         {
                             int colPos = 0;
                             foreach (var tableCell in tableCells)

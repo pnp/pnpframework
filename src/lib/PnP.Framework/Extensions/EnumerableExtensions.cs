@@ -18,7 +18,7 @@ namespace PnP.Framework.Extensions
         /// <returns>Wether the two enumerations are deep equal</returns>
         public static Boolean DeepEquals<T>(this IEnumerable<T> source, IEnumerable<T> target)
         {
-            return ((source.Except(target).Count() == 0) && (target.Except(source).Count() == 0));
+            return ((!source.Except(target).Any()) && (!target.Except(source).Any()));
         }
     }
 }

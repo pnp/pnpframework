@@ -1034,6 +1034,7 @@ namespace PnP.Framework.Modernization.Transform
         /// Performs the logic needed to swap a genered Migrated_Page.aspx to Page.aspx and then Page.aspx to Old_Page.aspx
         /// </summary>
         /// <param name="pageTransformationInformation">Information about the page to transform</param>
+        /// <param name="targetPageServerRelativeUrl"></param>
         internal string SwapPages(PageTransformationInformation pageTransformationInformation, string targetPageServerRelativeUrl)
         {
             LogInfo("Swapping pages", LogStrings.Heading_SwappingPages);

@@ -33,6 +33,7 @@ namespace PnP.Framework.Modernization.Functions
         /// <param name="pageClientContext">ClientContext object for the site holding the page being transformed</param>
         /// <param name="sourceClientContext">The ClientContext for the source </param>
         /// <param name="clientSidePage">Reference to the client side page</param>
+        /// <param name="logObservers"></param>
         public BuiltIn(BaseTransformationInformation baseTransformationInformation, ClientContext pageClientContext, ClientContext sourceClientContext = null, ClientSidePage clientSidePage = null, IList<ILogObserver> logObservers = null) : base(pageClientContext)
         {
             if (logObservers != null)
@@ -270,6 +271,7 @@ namespace PnP.Framework.Modernization.Functions
         /// Wiki html rewrite to work in RTE
         /// </summary>
         /// <param name="text">Wiki html to rewrite</param>
+        /// <param name="usePlaceHolders"></param>
         /// <returns>Html that's compatible with RTE</returns>
         [FunctionDocumentation(Description = "Rewrites wiki page html to be compliant with the html supported by the client side text part.",
                                Example = "{CleanedText} = TextCleanup({Text},{UsePlaceHolders})")]
@@ -320,7 +322,7 @@ namespace PnP.Framework.Modernization.Functions
                 var doc = parser.ParseDocument(content);
                 // Script information
                 var scriptTags = doc.All.Where(p => p.LocalName == "script");
-                if (scriptTags.Count() > 0)
+                if (scriptTags.Any())
                 {
                     return true;
                 }
@@ -336,6 +338,7 @@ namespace PnP.Framework.Modernization.Functions
         /// Selector that returns the base type of the list as input for selecting the correct mapping
         /// </summary>
         /// <param name="listId">Id of the list</param>
+        /// <param name="viewXml"></param>
         /// <returns>Mapping to be used for the given list</returns>
         [SelectorDocumentation(Description = "Analyzes a list and returns the list base type.",
                                Example = "ListSelectorListLibrary({ListId})")]
@@ -1345,6 +1348,7 @@ namespace PnP.Framework.Modernization.Functions
         /// Maps summarylinks web part data into a properties collection and supporting serverProcessedContent nodes for the quicklinks web part
         /// </summary>
         /// <param name="text">Original wiki html content</param>
+        /// <param name="quickLinksJsonProperties"></param>
         /// <returns>Properties collection for the quicklinks web part</returns>
         [FunctionDocumentation(Description = "Maps summarylinks web part data into a properties collection and supporting serverProcessedContent nodes for the quicklinks web part",
                                Example = "SummaryLinksToQuickLinksProperties({Text},{QuickLinksJsonProperties})")]

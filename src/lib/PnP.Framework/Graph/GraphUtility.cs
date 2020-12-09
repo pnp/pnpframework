@@ -2,6 +2,7 @@
 using PnP.Framework.Diagnostics;
 using System;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
 
 namespace PnP.Framework.Graph
 {
@@ -28,11 +29,14 @@ namespace PnP.Framework.Graph
             var result = new GraphServiceClient(new DelegateAuthenticationProvider(
                         async (requestMessage) =>
                         {
-                            if (!String.IsNullOrEmpty(accessToken))
+                            await Task.Run(() =>
                             {
-                                // Configure the HTTP bearer Authorization Header
-                                requestMessage.Headers.Authorization = new AuthenticationHeaderValue("bearer", accessToken);
-                            }
+                                if (!string.IsNullOrEmpty(accessToken))
+                                {
+                                    // Configure the HTTP bearer Authorization Header
+                                    requestMessage.Headers.Authorization = new AuthenticationHeaderValue("bearer", accessToken);
+                                }
+                            });
                         }), new PnPHttpProvider(retryCount, delay));
 
             return (result);

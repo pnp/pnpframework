@@ -251,8 +251,9 @@ namespace PnP.Framework.Diagnostics
         }
 
         #region IDisposable Support
+#pragma warning disable CA1805
         private bool disposedValue = false; // To detect redundant calls
-
+#pragma warning restore CA1805
         /// <summary>
         /// Implements Disposable pattern
         /// </summary>

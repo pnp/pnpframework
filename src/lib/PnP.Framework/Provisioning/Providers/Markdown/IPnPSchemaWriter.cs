@@ -19,6 +19,7 @@ namespace PnP.Framework.Provisioning.Providers.Markdown
         /// </summary>
         /// <param name="template">The PnP Provisioning Template object</param>
         /// <param name="persistence">The persistence layer object</param>
+        /// <param name="writer"></param>
         void Writer(ProvisioningTemplate template, TextWriter writer);
     }
 }

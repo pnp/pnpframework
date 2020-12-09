@@ -231,6 +231,7 @@ namespace PnP.Framework.Modernization.Transform
         /// <param name="sourceTermSetId"></param>
         /// <param name="targetTermSetId"></param>
         /// <param name="sourceSspId"></param>
+        /// <param name="isSP2010"></param>
         public void CacheTermsFromTermStore(Guid sourceTermSetId, Guid targetTermSetId, Guid sourceSspId, bool isSP2010)
         {
             // Collect source terms
@@ -576,6 +577,7 @@ namespace PnP.Framework.Modernization.Transform
         /// <param name="sspId"></param>
         /// <param name="termSetId"></param>
         /// <param name="termId"></param>
+        /// <param name="subTermPath"></param>
         /// <returns></returns>
         public static Dictionary<Guid, TermData> CallTaxonomyWebServiceFindChildTerms(ClientContext context, Guid sspId, Guid termSetId, Guid termId, string subTermPath)
         {

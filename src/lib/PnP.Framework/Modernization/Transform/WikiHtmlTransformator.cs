@@ -387,7 +387,7 @@ namespace PnP.Framework.Modernization.Transform
                         // Fix up WikiText parts
                         // Step 1: get the html now that we've replaced img/iframe tags with a span
                         string preppedWikiText = "";
-                        if (document.DocumentElement.Children.Count() > 1)
+                        if (document.DocumentElement.Children.Length > 1)
                         {
                             preppedWikiText = document.DocumentElement.Children[1].InnerHtml;
                         }
@@ -407,7 +407,7 @@ namespace PnP.Framework.Modernization.Transform
                                     {
                                         using (var docTemp = parser.ParseDocument(splitText[index]))
                                         {
-                                            if (docTemp.DocumentElement.Children.Count() > 1)
+                                            if (docTemp.DocumentElement.Children.Length > 1)
                                             {
                                                 // Remove empty DIV's as that's a net result of the splitting
                                                 StripEmptyDivAndPfromHtmlTree(docTemp.DocumentElement.Children[1]);

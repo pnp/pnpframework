@@ -1086,6 +1086,7 @@ namespace PnP.Framework.Modernization.Transform
         /// Loads the telemetry and properties for the client object
         /// </summary>
         /// <param name="clientContext"></param>
+        /// <param name="isTargetContext"></param>
         internal void LoadClientObject(ClientContext clientContext, bool isTargetContext)
         {
             if (clientContext != null)

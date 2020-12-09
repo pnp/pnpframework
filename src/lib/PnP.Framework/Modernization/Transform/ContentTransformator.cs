@@ -38,8 +38,11 @@ namespace PnP.Framework.Modernization.Transform
         /// <summary>
         /// Instantiates the content transformator
         /// </summary>
+        /// <param name="sourceClientContext"></param>
         /// <param name="page">Client side page that will be updates</param>
         /// <param name="pageTransformation">Transformation information</param>
+        /// <param name="transformationInformation"></param>
+        /// <param name="logObservers"></param>
         public ContentTransformator(ClientContext sourceClientContext, ClientSidePage page, PageTransformation pageTransformation, BaseTransformationInformation transformationInformation, IList<ILogObserver> logObservers = null) : base()
         {
             

@@ -130,7 +130,9 @@ namespace PnP.Framework.Enums
         /// <summary>
         /// Returns a GUID that is used to return the GUID of the specified Windows SharePoint Services object.
         /// </summary>
+        #pragma warning disable CA1720
         public static readonly Guid GUID = new Guid("{ae069f25-3ac2-4256-b9c3-15dbc15da0e0}");
+        #pragma warning restore CA1720
         /// <summary>
         /// Returns a GUID that represents the workflow instance identifier that is specified in a Windows SharePoint Services workflow task object.
         /// </summary>

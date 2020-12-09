@@ -76,27 +76,29 @@ namespace PnP.Framework.Utilities
 
                     string requestUrl = identifierUrl + "/" + SubscriptionsUrlPart;
 
-                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
-                    request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync());
-                    request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    if (!string.IsNullOrEmpty(accessToken))
+                    using (var request = new HttpRequestMessage(HttpMethod.Post, requestUrl))
                     {
-                        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                    }
+                        request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync());
+                        request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                        if (!string.IsNullOrEmpty(accessToken))
+                        {
+                            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                        }
 
-                    request.Content = new StringContent(JsonConvert.SerializeObject(subscription),
-                        Encoding.UTF8, "application/json");
+                        request.Content = new StringContent(JsonConvert.SerializeObject(subscription),
+                            Encoding.UTF8, "application/json");
 
-                    HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
+                        HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
 
-                    if (response.IsSuccessStatusCode)
-                    {
-                        responseString = await response.Content.ReadAsStringAsync();
-                    }
-                    else
-                    {
-                        // Something went wrong...
-                        throw new Exception(await response.Content.ReadAsStringAsync());
+                        if (response.IsSuccessStatusCode)
+                        {
+                            responseString = await response.Content.ReadAsStringAsync();
+                        }
+                        else
+                        {
+                            // Something went wrong...
+                            throw new Exception(await response.Content.ReadAsStringAsync());
+                        }
                     }
                 }
             }
@@ -171,45 +173,47 @@ namespace PnP.Framework.Utilities
                     }
 
                     string requestUrl = string.Format("{0}/{1}('{2}')", identifierUrl, SubscriptionsUrlPart, subscriptionId);
-                    HttpRequestMessage request = new HttpRequestMessage(new HttpMethod("PATCH"), requestUrl);
-                    request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync());
-                    request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    if (!string.IsNullOrEmpty(accessToken))
+                    using (var request = new HttpRequestMessage(new HttpMethod("PATCH"), requestUrl))
                     {
-                        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                    }
-
-                    WebhookSubscription webhookSubscription;
-
-                    if (string.IsNullOrEmpty(webHookEndPoint))
-                    {
-                        webhookSubscription = new WebhookSubscription()
+                        request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync());
+                        request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                        if (!string.IsNullOrEmpty(accessToken))
                         {
-                            ExpirationDateTime = expirationDateTime
-                        };
-                    }
-                    else
-                    {
-                        webhookSubscription = new WebhookSubscription()
+                            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                        }
+
+                        WebhookSubscription webhookSubscription;
+
+                        if (string.IsNullOrEmpty(webHookEndPoint))
                         {
-                            NotificationUrl = webHookEndPoint,
-                            ExpirationDateTime = expirationDateTime
-                        };
-                    }
+                            webhookSubscription = new WebhookSubscription()
+                            {
+                                ExpirationDateTime = expirationDateTime
+                            };
+                        }
+                        else
+                        {
+                            webhookSubscription = new WebhookSubscription()
+                            {
+                                NotificationUrl = webHookEndPoint,
+                                ExpirationDateTime = expirationDateTime
+                            };
+                        }
 
-                    request.Content = new StringContent(JsonConvert.SerializeObject(webhookSubscription),
-                        Encoding.UTF8, "application/json");
+                        request.Content = new StringContent(JsonConvert.SerializeObject(webhookSubscription),
+                            Encoding.UTF8, "application/json");
 
-                    HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
+                        HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
 
-                    if (response.StatusCode != System.Net.HttpStatusCode.NoContent)
-                    {
-                        // oops...something went wrong, maybe the web hook does not exist?
-                        throw new Exception(await response.Content.ReadAsStringAsync());
-                    }
-                    else
-                    {
-                        return true;
+                        if (response.StatusCode != System.Net.HttpStatusCode.NoContent)
+                        {
+                            // oops...something went wrong, maybe the web hook does not exist?
+                            throw new Exception(await response.Content.ReadAsStringAsync());
+                        }
+                        else
+                        {
+                            return true;
+                        }
                     }
                 }
             }
@@ -243,26 +247,28 @@ namespace PnP.Framework.Utilities
 
                     string requestUrl = string.Format("{0}/{1}('{2}')", identifierUrl, SubscriptionsUrlPart, subscriptionId);
 
-                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, requestUrl);
-                    request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync());
-                    request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-
-                    if (!string.IsNullOrEmpty(accessToken))
+                    using (var request = new HttpRequestMessage(HttpMethod.Delete, requestUrl))
                     {
-                        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                    }
+                        request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync());
+                        request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                    HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
 
-                    if (response.StatusCode != System.Net.HttpStatusCode.NoContent)
-                    {
-                        // oops...something went wrong, maybe the web hook does not exist?
-                        throw new Exception(await response.Content.ReadAsStringAsync());
-                    }
-                    else
-                    {
-                        return true;
+                        if (!string.IsNullOrEmpty(accessToken))
+                        {
+                            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                        }
+
+                        HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
+
+                        if (response.StatusCode != System.Net.HttpStatusCode.NoContent)
+                        {
+                            // oops...something went wrong, maybe the web hook does not exist?
+                            throw new Exception(await response.Content.ReadAsStringAsync());
+                        }
+                        else
+                        {
+                            return true;
+                        }
                     }
                 }
             }
@@ -297,23 +303,25 @@ namespace PnP.Framework.Utilities
 
                     string requestUrl = identifierUrl + "/" + SubscriptionsUrlPart;
 
-                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrl);
-                    request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    if (accessToken != null)
+                    using (var request = new HttpRequestMessage(HttpMethod.Get, requestUrl))
                     {
-                        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                    }
+                        request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                        if (accessToken != null)
+                        {
+                            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                        }
 
-                    HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
+                        HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
 
-                    if (response.IsSuccessStatusCode)
-                    {
-                        responseString = await response.Content.ReadAsStringAsync();
-                    }
-                    else
-                    {
-                        // oops...something went wrong
-                        throw new Exception(await response.Content.ReadAsStringAsync());
+                        if (response.IsSuccessStatusCode)
+                        {
+                            responseString = await response.Content.ReadAsStringAsync();
+                        }
+                        else
+                        {
+                            // oops...something went wrong
+                            throw new Exception(await response.Content.ReadAsStringAsync());
+                        }
                     }
                 }
             }

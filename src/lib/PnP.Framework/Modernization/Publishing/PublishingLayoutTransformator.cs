@@ -21,6 +21,8 @@ namespace PnP.Framework.Modernization.Publishing
         /// Creates a layout transformator instance
         /// </summary>
         /// <param name="page">Client side page that will be receive the created layout</param>
+        /// <param name="pageLayoutMappingModel"></param>
+        /// <param name="logObservers"></param>
         public PublishingLayoutTransformator(ClientSidePage page, PageLayout pageLayoutMappingModel, IList<ILogObserver> logObservers = null)
         {
             // Register observers
@@ -135,7 +137,7 @@ namespace PnP.Framework.Modernization.Publishing
                                 {
                                     // there was only one column with images
                                     var firstImageColumnOtherWebParts = webpartsInRow.Where(p => p.Column == firstImageColumn.Key && p.Type != WebParts.WikiImage);
-                                    if (firstImageColumnOtherWebParts.Count()==0)
+                                    if (!firstImageColumnOtherWebParts.Any())
                                     {
                                         // no other web parts in this column
                                         var orderedList = webpartsInRow.OrderBy(p => p.Column).First();
@@ -185,7 +187,7 @@ namespace PnP.Framework.Modernization.Publishing
                                         var firstImageColumnOtherWebParts = webpartsInRow.Where(p => p.Column == firstImageColumn.Key && p.Type != WebParts.WikiImage);
                                         var secondImageColumnOtherWebParts = webpartsInRow.Where(p => p.Column == secondImageColumn.Key && p.Type != WebParts.WikiImage);
 
-                                        if (firstImageColumnOtherWebParts.Count() == 0 && secondImageColumnOtherWebParts.Count() == 0)
+                                        if (!firstImageColumnOtherWebParts.Any() && !secondImageColumnOtherWebParts.Any())
                                         {
                                             // two columns with each only one image...
                                             if (includeVerticalColumn && rowIterator == firstRow)
@@ -197,7 +199,7 @@ namespace PnP.Framework.Modernization.Publishing
                                                 page.AddSection(CanvasSectionTemplate.TwoColumn, sectionOrder, GetBackgroundEmphasis(rowIterator));
                                             }
                                         }
-                                        else if (firstImageColumnOtherWebParts.Count() == 0 && secondImageColumnOtherWebParts.Count() > 0)
+                                        else if (!firstImageColumnOtherWebParts.Any() && secondImageColumnOtherWebParts.Any())
                                         {
                                             if (includeVerticalColumn && rowIterator == firstRow)
                                             {
@@ -208,7 +210,7 @@ namespace PnP.Framework.Modernization.Publishing
                                                 page.AddSection(CanvasSectionTemplate.TwoColumnRight, sectionOrder, GetBackgroundEmphasis(rowIterator));
                                             }
                                         }
-                                        else if (firstImageColumnOtherWebParts.Count() > 0 && secondImageColumnOtherWebParts.Count() == 0)
+                                        else if (firstImageColumnOtherWebParts.Any() && !secondImageColumnOtherWebParts.Any())
                                         {
                                             if (includeVerticalColumn && rowIterator == firstRow)
                                             {

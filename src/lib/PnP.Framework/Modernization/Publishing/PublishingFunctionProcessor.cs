@@ -14,11 +14,12 @@ namespace PnP.Framework.Modernization.Publishing
     /// <summary>
     /// Function processor for publishing page transformation
     /// </summary>
-    public class PublishingFunctionProcessor: BaseFunctionProcessor
+    public class PublishingFunctionProcessor : BaseFunctionProcessor
     {
         /// <summary>
         /// Field types
         /// </summary>
+#pragma warning disable CA1720
         public enum FieldType
         {
             String = 0,
@@ -28,6 +29,7 @@ namespace PnP.Framework.Modernization.Publishing
             DateTime = 4,
             User = 5,
         }
+#pragma warning restore CA1720
 
         /// <summary>
         /// Name token
@@ -55,7 +57,7 @@ namespace PnP.Framework.Modernization.Publishing
         /// <param name="publishingPageTransformation">Publishing page layout mapping</param>
         /// <param name="baseTransformationInformation">Page transformation information</param>
         /// <param name="logObservers">Connected loggers</param>
-        public PublishingFunctionProcessor(ListItem page, ClientContext sourceClientContext, ClientContext targetClientContext, PublishingPageTransformation publishingPageTransformation, BaseTransformationInformation baseTransformationInformation,  IList<ILogObserver> logObservers = null)
+        public PublishingFunctionProcessor(ListItem page, ClientContext sourceClientContext, ClientContext targetClientContext, PublishingPageTransformation publishingPageTransformation, BaseTransformationInformation baseTransformationInformation, IList<ILogObserver> logObservers = null)
         {
             //Register any existing observers
             if (logObservers != null)
@@ -109,7 +111,7 @@ namespace PnP.Framework.Modernization.Publishing
             {
                 // Updating parsing logic to allow use of {@Name} token value in the function definition
                 functions = ResolveFunctionToken(functions, propertyName);
-                
+
                 var functionDefinition = ParseFunctionDefinition(functions, propertyName, propertyType, this.page);
 
                 // Execute function
@@ -172,13 +174,13 @@ namespace PnP.Framework.Modernization.Publishing
             if (function.IndexOf("'") > 0)
             {
                 staticParameters = new Dictionary<string, string>();
-                
+
                 // Grab '' enclosed strings
                 var regex = new Regex(@"('(?:[^'\\]|(?:\\\\)|(?:\\\\)*\\.{1})*')");
                 var matches = regex.Matches(function);
 
                 int staticReplacement = 0;
-                foreach(var match in matches)
+                foreach (var match in matches)
                 {
                     staticParameters.Add($"'StaticParameter{staticReplacement}'", match.ToString());
                     function = function.Replace(match.ToString(), $"'StaticParameter{staticReplacement}'");

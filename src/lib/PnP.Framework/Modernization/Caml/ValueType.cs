@@ -18,8 +18,9 @@
         /// <summary>
         /// Indicates a Integer field type
         /// </summary>
+#pragma warning disable CA1720
         Integer,
-
+#pragma warning restore CA1720
         /// <summary>
         /// Indicates a Note field type
         /// </summary>
@@ -38,8 +39,9 @@
         /// <summary>
         /// Indicates a Guid field type
         /// </summary>
+#pragma warning disable CA1720
         Guid,
-
+#pragma warning restore CA1720
         /// <summary>
         /// Indicates a Boolean field type
         /// </summary>

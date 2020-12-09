@@ -31,34 +31,34 @@ namespace PnP.Framework.Modernization.Cache
         // Needs to be refactored together with the logging system
         private BasePageTransformator lastUsedTransformator;
 
-        private static readonly string Publishing = "publishing";
-        private static readonly string Blog = "blog";
+        private const string Publishing = "publishing";
+        private const string Blog = "blog";
 
         // Cache keys
-        private static readonly string keyAadTenantId = "aadTenantId";
-        private static readonly string keySharePointVersions = "sharepointVersions";
-        private static readonly string keyExactSharepointVersions = "exactSharepointVersions";
-        private static readonly string keyAssetsTransferred = "assetsTransferred";
-        private static readonly string keyClientSideComponents = "clientSideComponents";
-        private static readonly string keySiteToComponentMapping = "siteToComponentMapping";
-        private static readonly string keyFieldsToCopy = "fieldsToCopy";
-        private static readonly string keyPublishingPagesLibraryNames = "publishingPagesLibraryNames";
-        private static readonly string keyBlogListNames = "blogListNames";
-        private static readonly string keyWebType = "webType";
-        private static readonly string keyResourceStrings = "resourceStrings";
-        private static readonly string keyGeneratedPageLayoutMappings = "generatedPageLayoutMappings";
-        private static readonly string keyUserJsonStrings = "userJsonStrings";
-        private static readonly string keyUserJsonStringsViaUpn = "userJsonStringsViaUpn";
-        private static readonly string keyEnsuredUsers = "ensuredUsers";
-        private static readonly string keyContentTypes = "contentTypes";
-        private static readonly string keyPublishingContentTypeFields = "publishingContentTypeFields";
-        private static readonly string keyUrlMapping = "urlMapping";
-        private static readonly string keyUserMappings = "userMappings";
-        private static readonly string keyMappedUsers = "mappedUsers";
-        private static readonly string keyTermCache = "termCache";
-        private static readonly string keyTermMappings = "termMappings";
+        private const string keyAadTenantId = "aadTenantId";
+        private const string keySharePointVersions = "sharepointVersions";
+        private const string keyExactSharepointVersions = "exactSharepointVersions";
+        private const string keyAssetsTransferred = "assetsTransferred";
+        private const string keyClientSideComponents = "clientSideComponents";
+        private const string keySiteToComponentMapping = "siteToComponentMapping";
+        private const string keyFieldsToCopy = "fieldsToCopy";
+        private const string keyPublishingPagesLibraryNames = "publishingPagesLibraryNames";
+        private const string keyBlogListNames = "blogListNames";
+        private const string keyWebType = "webType";
+        private const string keyResourceStrings = "resourceStrings";
+        private const string keyGeneratedPageLayoutMappings = "generatedPageLayoutMappings";
+        private const string keyUserJsonStrings = "userJsonStrings";
+        private const string keyUserJsonStringsViaUpn = "userJsonStringsViaUpn";
+        private const string keyEnsuredUsers = "ensuredUsers";
+        private const string keyContentTypes = "contentTypes";
+        private const string keyPublishingContentTypeFields = "publishingContentTypeFields";
+        private const string keyUrlMapping = "urlMapping";
+        private const string keyUserMappings = "userMappings";
+        private const string keyMappedUsers = "mappedUsers";
+        private const string keyTermCache = "termCache";
+        private const string keyTermMappings = "termMappings";
 
-        private static readonly string keyTermTransformatorCache = "keyTermTransformatorCache";
+        private const string keyTermTransformatorCache = "keyTermTransformatorCache";
 
         /// <summary>
         /// Gets the single cachemanager instance, singleton pattern
@@ -1219,6 +1219,10 @@ namespace PnP.Framework.Modernization.Cache
         /// Get Term Path by ID
         /// </summary>
         /// <param name="context"></param>
+        /// <param name="termSetId"></param>
+        /// <param name="sourceSspId"></param>
+        /// <param name="isSP2010"></param>
+        /// <param name="isSourceTerm"></param>
         /// <returns></returns>
         public void StoreTermSetTerms(ClientContext context, Guid termSetId, Guid sourceSspId, bool isSP2010, bool isSourceTerm)
         {

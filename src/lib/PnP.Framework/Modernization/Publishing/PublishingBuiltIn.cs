@@ -27,6 +27,8 @@ namespace PnP.Framework.Modernization.Publishing
         /// </summary>
         /// <param name="baseTransformationInformation">Page transformation information</param>
         /// <param name="sourceClientContext">The ClientContext for the source </param>
+        /// <param name="targetClientContext"></param>
+        /// <param name="logObservers"></param>
         public PublishingBuiltIn(BaseTransformationInformation baseTransformationInformation, ClientContext sourceClientContext, ClientContext targetClientContext, IList<ILogObserver> logObservers = null) : base(sourceClientContext)
         {
             if (logObservers != null)

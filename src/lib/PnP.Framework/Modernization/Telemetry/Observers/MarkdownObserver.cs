@@ -176,8 +176,8 @@ namespace PnP.Framework.Modernization.Telemetry.Observers
                 string status = "";
                 var duration = modernizedFileLog.TransformationDuration;
                 var durationResult = string.Format("{0:D2}:{1:D2}:{2:D2}", duration.Hours, duration.Minutes, duration.Seconds); ;
-                var logErrorCount = modernizedFileLog.Errors.Count();
-                var logWarningsCount = modernizedFileLog.Warnings.Count();
+                var logErrorCount = modernizedFileLog.Errors.Count;
+                var logWarningsCount = modernizedFileLog.Warnings.Count;
 
                 if (modernizedFileLog.CriticalErrors.Any())
                 {

@@ -59,11 +59,11 @@ namespace PnP.Framework.Utilities
             }
         }
 
-        internal static async Task<string> GetRequestDigestWithCookieAuthAsync(this HttpClient httpClient, CookieContainer cookieContainer, ClientContext context)
+        internal static async Task<string> GetRequestDigestWithCookieAuthAsync(this HttpClient httpClient, CookieContainer cookieContainer, string webUrl)
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                var hostUrl = context.Url;
+                var hostUrl = webUrl;
                 if (requestDigestInfos.TryGetValue(hostUrl, out (string digestToken, DateTime expiresOn) requestDigestInfo))
                 {
                     // We only have to add a request digest when running in dotnet core
@@ -136,6 +136,7 @@ namespace PnP.Framework.Utilities
         /// </summary>
         /// <param name="web">The current web to execute the request against</param>
         /// <param name="endpoint">The full endpoint url, exluding the URL of the web, e.g. /_api/web/lists</param>
+        /// <param name="cultureLanguageName">If specified will be set as the Accept-Language header</param>
         /// <returns></returns>
         internal static async Task<string> ExecuteGetAsync(this Web web, string endpoint, string cultureLanguageName = null)
         {
@@ -169,7 +170,7 @@ namespace PnP.Framework.Utilities
                             {
                                 handler.Credentials = networkCredential;
                             }
-                            request.Headers.Add("X-RequestDigest", await httpClient.GetRequestDigestWithCookieAuthAsync(handler.CookieContainer, web.Context as ClientContext));
+                            request.Headers.Add("X-RequestDigest", await httpClient.GetRequestDigestWithCookieAuthAsync(handler.CookieContainer, web.Context.Url));
                         }
                         if (!string.IsNullOrWhiteSpace(cultureLanguageName))
                         {
@@ -236,7 +237,7 @@ namespace PnP.Framework.Utilities
                         {
                             handler.Credentials = networkCredential;
                         }
-                        request.Headers.Add("X-RequestDigest", await httpClient.GetRequestDigestWithCookieAuthAsync(handler.CookieContainer, web.Context as ClientContext).ConfigureAwait(false));
+                        request.Headers.Add("X-RequestDigest", await httpClient.GetRequestDigestWithCookieAuthAsync(handler.CookieContainer, (web.Context as ClientContext).Url).ConfigureAwait(false));
                     }
                     if(!string.IsNullOrWhiteSpace(cultureLanguageName))
                     {

@@ -26,11 +26,12 @@ namespace Microsoft.SharePoint.Client
     {
         private static readonly string userAgentFromConfig = null;
         private static string accessToken = null;
-        private static bool hasAuthCookies;
+        //private static bool hasAuthCookies;
 
         /// <summary>
         /// Static constructor, only executed once per class load
         /// </summary>
+#pragma warning disable CA1810
         static ClientContextExtensions()
         {
             try
@@ -46,7 +47,7 @@ namespace Microsoft.SharePoint.Client
                 ClientContextExtensions.userAgentFromConfig = Environment.GetEnvironmentVariable("SharePointPnPUserAgent", EnvironmentVariableTarget.Process);
             }
         }
-
+#pragma warning restore CA1810
         /// <summary>
         /// Clones a ClientContext object while "taking over" the security context of the existing ClientContext instance
         /// </summary>
@@ -538,6 +539,7 @@ namespace Microsoft.SharePoint.Client
             return accessToken;
         }
 
+#pragma warning disable CA1034,CA2229,CA1032
         /// <summary>
         /// Defines a Maximum Retry Attemped Exception
         /// </summary>
@@ -554,6 +556,7 @@ namespace Microsoft.SharePoint.Client
 
             }
         }
+#pragma warning restore CA1034,CA2229,CA1032
 
         /// <summary>
         /// Checks the server library version of the context for a minimally required version
@@ -646,42 +649,44 @@ namespace Microsoft.SharePoint.Client
                 using (var httpClient = new PnPHttpProvider(handler))
                 {
                     string requestUrl = String.Format("{0}/_api/contextinfo", context.Web.Url);
-                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
-                    request.Headers.Add("accept", "application/json;odata=verbose");
-                    if (!string.IsNullOrEmpty(accessToken))
+                    using (var request = new HttpRequestMessage(HttpMethod.Post, requestUrl))
                     {
-                        request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
-                    }
-                    else
-                    {
-                        if (context.Credentials is NetworkCredential networkCredential)
+                        request.Headers.Add("accept", "application/json;odata=verbose");
+                        if (!string.IsNullOrEmpty(accessToken))
                         {
-                            handler.Credentials = networkCredential;
+                            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
                         }
-                    }
-
-                    HttpResponseMessage response = await httpClient.SendAsync(request);
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        responseString = await response.Content.ReadAsStringAsync();
-                    }
-                    else
-                    {
-                        var errorSb = new System.Text.StringBuilder();
-
-                        errorSb.AppendLine(await response.Content.ReadAsStringAsync());
-                        if (response.Headers.Contains("SPRequestGuid"))
+                        else
                         {
-                            var values = response.Headers.GetValues("SPRequestGuid");
-                            if (values != null)
+                            if (context.Credentials is NetworkCredential networkCredential)
                             {
-                                var spRequestGuid = values.FirstOrDefault();
-                                errorSb.AppendLine($"ServerErrorTraceCorrelationId: {spRequestGuid}");
+                                handler.Credentials = networkCredential;
                             }
                         }
 
-                        throw new Exception(errorSb.ToString());
+                        HttpResponseMessage response = await httpClient.SendAsync(request);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            responseString = await response.Content.ReadAsStringAsync();
+                        }
+                        else
+                        {
+                            var errorSb = new System.Text.StringBuilder();
+
+                            errorSb.AppendLine(await response.Content.ReadAsStringAsync());
+                            if (response.Headers.Contains("SPRequestGuid"))
+                            {
+                                var values = response.Headers.GetValues("SPRequestGuid");
+                                if (values != null)
+                                {
+                                    var spRequestGuid = values.FirstOrDefault();
+                                    errorSb.AppendLine($"ServerErrorTraceCorrelationId: {spRequestGuid}");
+                                }
+                            }
+
+                            throw new Exception(errorSb.ToString());
+                        }
                     }
                 }
                 var contextInformation = JsonSerializer.Deserialize<JsonElement>(responseString);

@@ -26,7 +26,7 @@ namespace Microsoft.SharePoint.Client
         const string InheritCustomMaster = "__InheritsCustomMasterUrl";
         const string InheritTheme = "__InheritsThemedCssFolderUrl";
         const string Inherit = "__Inherit";
-        const string CurrentLookName = "Current";
+        //const string CurrentLookName = "Current";
         const string CAML_QUERY_FIND_BY_FILENAME = @"
                 <View>
                     <Query>                

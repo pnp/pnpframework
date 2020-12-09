@@ -89,7 +89,7 @@ namespace PnP.Framework.Modernization.Tests.Transform.Detection
 
                         pageTransformator.Transform(pti);
                     }
-                    catch(Exception ex)
+                    catch(Exception)
                     {
                         
                     }

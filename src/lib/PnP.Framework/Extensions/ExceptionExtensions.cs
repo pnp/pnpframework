@@ -206,6 +206,7 @@ namespace System
     /// <summary>
     /// Holds options for Exception
     /// </summary>
+#pragma warning disable CA1815
     public struct ExceptionOptions
     {
         public static readonly ExceptionOptions Default = new ExceptionOptions()
@@ -235,4 +236,5 @@ namespace System
         /// </summary>
         public bool OmitNullProperties { get; set; }
     }
+#pragma warning restore CA1815
 }

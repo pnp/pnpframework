@@ -351,7 +351,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml
                             XName xiFallback = XName.Get("{http://www.w3.org/2001/XInclude}fallback");
                             var fallback = xi.Elements(xiFallback).FirstOrDefault();
                             if ((fallback != null) &&
-                                ((fallback.Elements().Count() > 0) || !string.IsNullOrEmpty(fallback.Value)))
+                                ((fallback.Elements().Any()) || !string.IsNullOrEmpty(fallback.Value)))
                             {
                                 var innerXml = fallback.ToXmlElement().InnerXml;
                                 incStream = new MemoryStream(Encoding.UTF8.GetBytes(innerXml));

@@ -159,7 +159,7 @@ namespace PnP.Framework.Modernization.Transform
                 // When matching, do with and without the tokens   
                 var result = principalInput;
                 var firstCheck = this._userMapping.Where(o => o.SourceUser.Equals(principalInput, StringComparison.InvariantCultureIgnoreCase));
-                if(firstCheck.Count() == 0)
+                if(!firstCheck.Any())
                 {
                     //Second check
                     if (principalInput.Contains("|"))
@@ -167,7 +167,7 @@ namespace PnP.Framework.Modernization.Transform
                         var userNameToCheck = principalInput.GetUserName();
                         var secondCheck = this._userMapping.Where(o => o.SourceUser.Equals(userNameToCheck, StringComparison.InvariantCultureIgnoreCase));
 
-                        if(secondCheck.Count() > 0)
+                        if(secondCheck.Any())
                         {
                             result = secondCheck.First().TargetUser;
 

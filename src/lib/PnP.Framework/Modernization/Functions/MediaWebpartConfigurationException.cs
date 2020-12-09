@@ -5,7 +5,8 @@ namespace PnP.Framework.Modernization.Functions
     /// <summary>
     /// Exception class thrown when a SharePoint resource (e.g. file) is not available
     /// </summary>
-    public class MediaWebpartConfigurationException: Exception
+#pragma warning disable CA1032
+    public class MediaWebpartConfigurationException : Exception
     {
         /// <summary>
         /// Throws a ResourceNotFoundException message
@@ -20,4 +21,5 @@ namespace PnP.Framework.Modernization.Functions
         /// <param name="innerException">Inner exception object</param>
         public MediaWebpartConfigurationException(string message, Exception innerException) : base(message, innerException) { }
     }
+#pragma warning restore CA1032
 }

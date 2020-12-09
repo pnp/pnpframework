@@ -3,7 +3,7 @@
     /// <summary>
     /// Defines the TLS versions a Microsoft Graph subscription supports calling into when an event for which a subscription exists gets triggered
     /// </summary>
-    public enum GraphSubscriptionTlsVersion : short
+    public enum GraphSubscriptionTlsVersion : int
     {
         v1_0,
         v1_1,

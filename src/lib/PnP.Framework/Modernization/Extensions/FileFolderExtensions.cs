@@ -40,7 +40,7 @@ namespace PnP.Framework.Modernization.Extensions
                 //{
                 //    context.ExecuteQueryRetry();
                 //}
-                
+
                 //var fileBinary = File.OpenBinaryDirect((ClientContext)context, serverRelativeUrl);
                 //context.ExecuteQueryRetry();
                 //Stream tempSourceStream = fileBinary.Stream;
@@ -61,8 +61,10 @@ namespace PnP.Framework.Modernization.Extensions
                 CopyStream(sourceStream, memStream);
                 memStream.Position = 0;
 
-                StreamReader reader = new StreamReader(memStream);
-                returnString = reader.ReadToEnd();
+                using (var reader = new StreamReader(memStream))
+                {
+                    returnString = reader.ReadToEnd();
+                }
             }
 
             return returnString;

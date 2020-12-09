@@ -75,7 +75,7 @@ namespace PnP.Framework
         public const string CLIENTID_PNPMANAGEMENTSHELL = "31359c7f-bd7e-475c-86db-fdb8c937548e";
 
         private string appOnlyAccessToken;
-        private AutoResetEvent appOnlyACSAccessTokenResetEvent = null;
+        private AutoResetEvent appOnlyACSAccessTokenResetEvent;
         private readonly object tokenLock = new object();
         private bool disposedValue;
 
@@ -153,7 +153,7 @@ namespace PnP.Framework
             {
                 builder = builder.WithRedirectUri(redirectUrl);
             }
-            if(!string.IsNullOrEmpty(tenantId))
+            if (!string.IsNullOrEmpty(tenantId))
             {
                 builder = builder.WithTenantId(tenantId);
             }
@@ -206,17 +206,23 @@ namespace PnP.Framework
 
             if (System.IO.File.Exists(certificatePath))
             {
-                var certfile = System.IO.File.OpenRead(certificatePath);
-                var certificateBytes = new byte[certfile.Length];
-                certfile.Read(certificateBytes, 0, (int)certfile.Length);
-                var certificate = new X509Certificate2(
-                    certificateBytes,
-                    certificatePassword,
-                    X509KeyStorageFlags.Exportable |
-                    X509KeyStorageFlags.MachineKeySet |
-                    X509KeyStorageFlags.PersistKeySet);
+                ConfidentialClientApplicationBuilder builder = null;
 
-                var builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithAuthority($"{azureADEndPoint}/organizations/");
+                using (var certfile = System.IO.File.OpenRead(certificatePath))
+                {
+                    var certificateBytes = new byte[certfile.Length];
+                    certfile.Read(certificateBytes, 0, (int)certfile.Length);
+                    using (var certificate = new X509Certificate2(
+                        certificateBytes,
+                        certificatePassword,
+                        X509KeyStorageFlags.Exportable |
+                        X509KeyStorageFlags.MachineKeySet |
+                        X509KeyStorageFlags.PersistKeySet))
+                    {
+
+                        builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithAuthority($"{azureADEndPoint}/organizations/");
+                    }
+                }
                 if (!string.IsNullOrEmpty(redirectUrl))
                 {
                     builder = builder.WithRedirectUri(redirectUrl);
@@ -227,6 +233,7 @@ namespace PnP.Framework
                 tokenCacheCallback?.Invoke(confidentialClientApplication.AppTokenCache);
 
                 authenticationType = ClientContextType.AzureADCertificate;
+
             }
             else
             {
@@ -274,7 +281,7 @@ namespace PnP.Framework
         /// <param name="tokenCacheCallback"></param>
         public AuthenticationManager(string clientId, string clientSecret, UserAssertion userAssertion, string tenantId = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
-            
+
 
             var azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
 
@@ -473,7 +480,7 @@ namespace PnP.Framework
                 AuthenticationResult ar = null;
 
                 var accounts = application.GetAccountsAsync().GetAwaiter().GetResult();
-                if (accounts.Count() > 0)
+                if (accounts.Any())
                 {
                     ar = application.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync().GetAwaiter().GetResult();
                 }
@@ -741,7 +748,7 @@ namespace PnP.Framework
 
         internal class ACSAppOnlyAccessTokenWaitInfo
         {
-            public RegisteredWaitHandle Handle = null;
+            public RegisteredWaitHandle Handle;
         }
 
         internal void ACSAppOnlyAccessTokenWaitProc(object state, bool timedOut)

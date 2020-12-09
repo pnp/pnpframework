@@ -19,6 +19,7 @@ namespace PnP.Framework.Modernization.Pages
         /// </summary>
         /// <param name="page">ListItem holding the page to analyze</param>
         /// <param name="pageTransformation">Page transformation information</param>
+        /// <param name="logObservers"></param>
         public DelvePage(ListItem page, PageTransformation pageTransformation, IList<ILogObserver> logObservers = null) : base(page, null, pageTransformation, logObservers)
         {
         }

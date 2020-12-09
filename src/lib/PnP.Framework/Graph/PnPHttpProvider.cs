@@ -71,7 +71,7 @@ namespace PnP.Framework.Graph
                         Log.Warning(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_SendAsyncRetry, $"{backoffInterval}");
 
                         //Add delay for retry
-                        Task.Delay(backoffInterval).Wait();
+                        Task.Delay(backoffInterval,cancellationToken).Wait(cancellationToken);
 
                         //Add to retry count and increase delay.
                         retryAttempts++;
@@ -103,7 +103,7 @@ namespace PnP.Framework.Graph
                                 backoffInterval);
 
                             //Add delay for retry
-                            Task.Delay(backoffInterval).Wait();
+                            Task.Delay(backoffInterval,cancellationToken).Wait(cancellationToken);
 
                             //Add to retry count and increase delay.
                             retryAttempts++;

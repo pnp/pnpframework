@@ -26,6 +26,7 @@ namespace PnP.Framework.Modernization.Transform
         /// </summary>
         /// <param name="source">Source connection to SharePoint</param>
         /// <param name="target">Target connection to SharePoint</param>
+        /// <param name="logObservers"></param>
         public AssetTransfer(ClientContext source, ClientContext target, IList<ILogObserver> logObservers = null)
         {
             if (logObservers != null)
@@ -485,6 +486,7 @@ namespace PnP.Framework.Modernization.Transform
         /// Ensures that we have context of the source site collection
         /// </summary>
         /// <param name="context">Source site context</param>
+        /// <param name="sourceUrl"></param>
         internal void EnsureAssetContextIfRequired(ClientContext context, string sourceUrl)
         {
             // There is two scenarios to check

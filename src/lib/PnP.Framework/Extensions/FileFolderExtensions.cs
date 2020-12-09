@@ -1154,8 +1154,10 @@ namespace Microsoft.SharePoint.Client
             {
                 CopyStream(stream.Value, memStream);
                 memStream.Position = 0;
-                StreamReader reader = new StreamReader(memStream);
-                returnString = reader.ReadToEnd();
+                using (var reader = new StreamReader(memStream))
+                {
+                    returnString = reader.ReadToEnd();
+                }
             }
 
             return returnString;
@@ -1579,14 +1581,18 @@ namespace Microsoft.SharePoint.Client
             var streamResult = serverFile.OpenBinaryStream();
             await serverFile.Context.ExecuteQueryRetryAsync();
 
+            byte[] localHash = null;
             // Hash contents
-            HashAlgorithm ha = HashAlgorithm.Create("SHA");
-            using (var serverStream = streamResult.Value)
-                serverHash = ha.ComputeHash(serverStream);
+            using (HashAlgorithm ha = HashAlgorithm.Create("SHA"))
+            {
 
-            // Check hash (& rewind)
-            var localHash = ha.ComputeHash(localStream);
-            localStream.Position = 0;
+                using (var serverStream = streamResult.Value)
+                    serverHash = ha.ComputeHash(serverStream);
+
+                // Check hash (& rewind)
+                localHash = ha.ComputeHash(localStream);
+                localStream.Position = 0;
+            }
 
             // Compare hash
             var contentsMatch = true;

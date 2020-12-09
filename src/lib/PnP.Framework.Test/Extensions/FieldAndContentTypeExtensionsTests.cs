@@ -526,7 +526,7 @@ namespace Microsoft.SharePoint.Client.Tests
 
                 testList.AddContentTypeToList(ct);
 
-                testList.SetDefaultContentTypeToList(ct);
+                testList.SetDefaultContentType(ct.StringId);
                 clientContext.Load(testList.RootFolder, f => f.ContentTypeOrder);
                 clientContext.ExecuteQueryRetry();
 

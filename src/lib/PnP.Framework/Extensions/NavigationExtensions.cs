@@ -830,7 +830,7 @@ namespace Microsoft.SharePoint.Client
             var titleNode = menuState.GetProperty("Nodes").EnumerateArray().FirstOrDefault(n => n.GetProperty("Title").GetString() == Constants.SITEFOOTER_TITLENODEKEY);
 
             // Ensure the title node contains the expected child elements
-            if (titleNode.ValueKind == JsonValueKind.Undefined || titleNode.GetProperty("Nodes").ValueKind == JsonValueKind.Undefined || titleNode.GetProperty("Nodes").EnumerateArray().Count() == 0 || titleNode.GetProperty("Nodes").EnumerateArray().First().GetProperty("Title").ValueKind == JsonValueKind.Undefined)
+            if (titleNode.ValueKind == JsonValueKind.Undefined || titleNode.GetProperty("Nodes").ValueKind == JsonValueKind.Undefined || !titleNode.GetProperty("Nodes").EnumerateArray().Any() || titleNode.GetProperty("Nodes").EnumerateArray().First().GetProperty("Title").ValueKind == JsonValueKind.Undefined)
             {
                 // The expected child elements were not found
                 return null;

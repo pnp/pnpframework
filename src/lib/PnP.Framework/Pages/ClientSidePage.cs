@@ -1459,7 +1459,7 @@ namespace PnP.Framework.Pages
             };
             var clientSideComponents = ((System.Collections.Generic.IEnumerable<ClientSideComponent>)JsonConvert.DeserializeObject<AvailableClientSideComponents>(availableClientSideComponentsJson.Result, jsonSerializerSettings).value);
 
-            if (clientSideComponents.Count() == 0)
+            if (!clientSideComponents.Any())
             {
                 throw new ArgumentException("No client side components could be returned for this web...should not happen but it did...");
             }
@@ -1501,7 +1501,7 @@ namespace PnP.Framework.Pages
             };
             var clientSideComponents = ((System.Collections.Generic.IEnumerable<ClientSideComponent>)JsonConvert.DeserializeObject<AvailableClientSideComponents>(availableClientSideComponentsJson, jsonSerializerSettings).value);
 
-            if (clientSideComponents.Count() == 0)
+            if (!clientSideComponents.Any())
             {
                 throw new ArgumentException("No client side components could be returned for this web...should not happen but it did...");
             }

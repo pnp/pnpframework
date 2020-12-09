@@ -288,8 +288,10 @@ namespace PnP.Framework.Utilities
             using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
             {
                 Encoding encode = Encoding.GetEncoding("utf-8");
-                StreamReader reader = new StreamReader(response.GetResponseStream(), encode);
-                json = reader.ReadToEnd();
+                using (var reader = new StreamReader(response.GetResponseStream(), encode))
+                {
+                    json = reader.ReadToEnd();
+                }
             }
             return json;
         }

@@ -37,6 +37,7 @@ namespace PnP.Framework.Modernization.Pages
         /// <param name="page">ListItem holding the page to analyze</param>
         /// <param name="pageTransformation">Page transformation information</param>
         /// <param name="baseTransformationInformation">Page transformation information</param>
+        /// <param name="logObservers"></param>
         public PublishingPage(ListItem page, PageTransformation pageTransformation, BaseTransformationInformation baseTransformationInformation, IList<ILogObserver> logObservers = null) : base(page, null, pageTransformation, logObservers)
         {
             // no PublishingPageTransformation specified, fall back to default
@@ -50,7 +51,10 @@ namespace PnP.Framework.Modernization.Pages
         /// </summary>
         /// <param name="page">ListItem holding the page to analyze</param>
         /// <param name="pageTransformation">Page transformation information</param>
-        /// <param name="baseTransformationInformation">Page transformation information</param>
+        /// <param name="publishingPageTransformation"></param>
+        /// <param name="baseTransformationInformation"></param>
+        /// <param name="targetContext"></param>
+        /// <param name="logObservers"></param>
         public PublishingPage(ListItem page, PageTransformation pageTransformation, PublishingPageTransformation publishingPageTransformation, BaseTransformationInformation baseTransformationInformation, ClientContext targetContext = null, IList<ILogObserver> logObservers = null) : base(page, null, pageTransformation, logObservers)
         {
             this.publishingPageTransformation = publishingPageTransformation;
@@ -106,7 +110,7 @@ namespace PnP.Framework.Modernization.Pages
                 {
                     string pageContents = page.GetFieldValueAs<string>(wikiTextPart.Name); 
 
-                    if (wikiTextPart.Property.Count() > 0)
+                    if (wikiTextPart.Property.Length > 0)
                     {
                         foreach (var fieldWebPartProperty in wikiTextPart.Property)
                         {
@@ -273,7 +277,7 @@ namespace PnP.Framework.Modernization.Pages
             IEnumerable<WebPartDefinition> webPartsViaManager = cc.LoadQuery(limitedWPManager.WebParts.IncludeWithDefaultProperties(wp => wp.Id, wp => wp.ZoneId, wp => wp.WebPart.ExportMode, wp => wp.WebPart.Title, wp => wp.WebPart.ZoneIndex, wp => wp.WebPart.IsClosed, wp => wp.WebPart.Hidden, wp => wp.WebPart.Properties));
             cc.ExecuteQueryRetry();
             
-            if (webPartsViaManager.Count() > 0)
+            if (webPartsViaManager.Any())
             {
                 List<WebPartPlaceHolder> webPartsToRetrieve = new List<WebPartPlaceHolder>();
 
@@ -336,7 +340,7 @@ namespace PnP.Framework.Modernization.Pages
                         if (wpZoneFromTemplate != null)
                         {
                             // Was there a webpart zone layout specified? If so then use that information to correctly position the webparts on the target page
-                            if (wpZoneFromTemplate.WebPartZoneLayout != null && wpZoneFromTemplate.WebPartZoneLayout.Count() > 0)
+                            if (wpZoneFromTemplate.WebPartZoneLayout != null && wpZoneFromTemplate.WebPartZoneLayout.Length > 0)
                             {
                                 // Did we already map a web part of this type?
                                 var webPartZoneLayoutMapEntry = webPartZoneLayoutMap.Where(p => p.ZoneId.Equals(wpZoneFromTemplate.ZoneId, StringComparison.InvariantCultureIgnoreCase) &&
@@ -477,7 +481,7 @@ namespace PnP.Framework.Modernization.Pages
             IEnumerable<WebPartDefinition> webPartsViaManager = cc.LoadQuery(limitedWPManager.WebParts.IncludeWithDefaultProperties(wp => wp.Id, wp => wp.ZoneId, wp => wp.WebPart.ExportMode, wp => wp.WebPart.Title, wp => wp.WebPart.ZoneIndex, wp => wp.WebPart.IsClosed, wp => wp.WebPart.Hidden, wp => wp.WebPart.Properties));
             cc.ExecuteQueryRetry();
 
-            if (webPartsViaManager.Count() > 0)
+            if (webPartsViaManager.Any())
             {
                 List<WebPartPlaceHolder> webPartsToRetrieve = new List<WebPartPlaceHolder>();
 

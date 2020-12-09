@@ -154,6 +154,7 @@ namespace PnP.Framework.Modernization.Transform
         /// Log entries into the observers
         /// </summary>
         /// <param name="entry"></param>
+        /// <param name="level"></param>
         public void Log(LogEntry entry, LogLevel level)
         {
             foreach (ILogObserver observer in _logObservers)

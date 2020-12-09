@@ -17,10 +17,12 @@ namespace PnP.Framework.Graph
 {
     public class GroupExtended : Group
     {
+#pragma warning disable CA1819
         [JsonProperty("owners@odata.bind", NullValueHandling = NullValueHandling.Ignore)]
         public string[] OwnersODataBind { get; set; }
         [JsonProperty("members@odata.bind", NullValueHandling = NullValueHandling.Ignore)]
         public string[] MembersODataBind { get; set; }
+#pragma warning restore CA1819
     }
     /// <summary>
     /// Class that deals with Unified group CRUD operations.
@@ -45,11 +47,14 @@ namespace PnP.Framework.Graph
             var result = new GraphServiceClient(new DelegateAuthenticationProvider(
                         async (requestMessage) =>
                         {
-                            if (!String.IsNullOrEmpty(accessToken))
+                            await Task.Run(() =>
                             {
-                                // Configure the HTTP bearer Authorization Header
-                                requestMessage.Headers.Authorization = new AuthenticationHeaderValue("bearer", accessToken);
-                            }
+                                if (!String.IsNullOrEmpty(accessToken))
+                                {
+                                    // Configure the HTTP bearer Authorization Header
+                                    requestMessage.Headers.Authorization = new AuthenticationHeaderValue("bearer", accessToken);
+                                }
+                            });
                         }), new PnPHttpProvider(retryCount, delay));
 
             return (result);
@@ -320,7 +325,9 @@ namespace PnP.Framework.Graph
                         }
                         else
                         {
+#pragma warning disable CA2200
                             throw ex;
+#pragma warning restore CA2200
                         }
                     }
                 }
@@ -409,7 +416,9 @@ namespace PnP.Framework.Graph
                         }
                         else
                         {
+#pragma warning disable CA2200
                             throw ex;
+#pragma warning restore CA2200
                         }
                     }
                 }

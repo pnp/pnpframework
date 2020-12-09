@@ -49,6 +49,7 @@ namespace PnP.Framework.Modernization.Telemetry
         /// Use reflection to read the object properties and detail the values
         /// </summary>
         /// <param name="pti">PageTransformationInformation object</param>
+        /// <param name="version"></param>
         /// <returns>List of log records</returns>
         public static List<LogEntry> DetailSettingsAsLogEntries(this PageTransformationInformation pti, string version)
         {

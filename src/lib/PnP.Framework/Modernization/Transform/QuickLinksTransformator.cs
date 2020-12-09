@@ -470,6 +470,7 @@ namespace PnP.Framework.Modernization.Transform
         /// Instantiates the class
         /// </summary>
         /// <param name="cc">Client context for the web holding the source page</param>
+        /// <param name="logObservers"></param>
         public QuickLinksTransformator(ClientContext cc, IList<ILogObserver> logObservers = null): base()
         {
             if (logObservers != null)

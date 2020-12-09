@@ -33,7 +33,7 @@ namespace Microsoft.SharePoint.Client
         /// <param name="tenant">A tenant object pointing to the context of a Tenant Administration site</param>
         /// <param name="siteFullUrl">URL to the site collection</param>
         /// <returns>True if existing, false if not</returns>
-        [Obsolete()]
+        [Obsolete("Use SiteExistsAnywhere(Tenant, string) instead")]
         public static bool SiteExists(this Tenant tenant, string siteFullUrl)
         {
             var exists = SiteExistsAnywhere(tenant, siteFullUrl);

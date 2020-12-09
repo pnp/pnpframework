@@ -171,7 +171,7 @@ namespace PnP.Framework.Provisioning.Model
                 this.Items.RemoveAt(index);
             }
 
-            return (matches.Count());
+            return (matches.Count);
         }
     }
 }

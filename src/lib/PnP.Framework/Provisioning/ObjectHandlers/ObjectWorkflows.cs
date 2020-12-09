@@ -135,8 +135,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             var fullUri = new Uri(UrlUtility.Combine(web.Url, formUrl));
 
-            var folderPath = fullUri.Segments.Take(fullUri.Segments.Count() - 1).ToArray().Aggregate((i, x) => i + x).TrimEnd('/');
-            var fileName = fullUri.Segments[fullUri.Segments.Count() - 1];
+            var folderPath = fullUri.Segments.Take(fullUri.Segments.Length - 1).ToArray().Aggregate((i, x) => i + x).TrimEnd('/');
+            var fileName = fullUri.Segments[fullUri.Segments.Length - 1];
 
             var formFile = new Model.File()
             {

@@ -42,6 +42,7 @@ namespace PnP.Framework.Modernization.Transform
         /// Transforms the passed summarylinks html to be usable by the client side text part
         /// </summary>
         /// <param name="text">Summarylinks html to be transformed</param>
+        /// <param name="usePlaceHolder"></param>
         /// <returns>Html that can be used and edited via the client side text part</returns>
         public string Transform(string text, bool usePlaceHolder)
         {            
@@ -123,7 +124,7 @@ namespace PnP.Framework.Modernization.Transform
                     }
 
                     // Return the transformed html
-                    if (newDocument.DocumentElement.Children.Count() > 1)
+                    if (newDocument.DocumentElement.Children.Length > 1)
                     {
                         string htmlContent = newDocument.DocumentElement.Children[1].InnerHtml;
 

@@ -22,6 +22,7 @@ namespace PnP.Framework.Modernization.Pages
         /// <param name="page">ListItem holding the page to analyze</param>
         /// <param name="pageFile">File holding the page (for pages living outside of a library)</param>
         /// <param name="pageTransformation">Page transformation information</param>
+        /// <param name="logObservers"></param>
         public WebPartPageOnPremises(ListItem page, File pageFile, PageTransformation pageTransformation, IList<ILogObserver> logObservers = null) : base(page, pageFile, pageTransformation, logObservers)
         {
         }
@@ -84,7 +85,7 @@ namespace PnP.Framework.Modernization.Pages
             // Check page type
             var layout = GetLayoutFromWebServices(webPartPageUrl);
 
-            if (webParts.Count() > 0)
+            if (webParts.Any())
             {
                 List<WebPartPlaceHolder> webPartsToRetrieve = new List<WebPartPlaceHolder>();
 

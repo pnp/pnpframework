@@ -1162,7 +1162,7 @@ namespace Microsoft.SharePoint.Client
                 baseExpressions.AddRange(expressions);
             }
 
-            if (listId == null)
+            if (listId == Guid.Empty)
             {
                 throw new ArgumentNullException(nameof(listId));
             }

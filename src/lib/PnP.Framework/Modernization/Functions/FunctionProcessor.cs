@@ -26,9 +26,11 @@ namespace PnP.Framework.Modernization.Functions
         /// <summary>
         /// Instantiates the function processor. Also loads the defined add-ons
         /// </summary>
+        /// <param name="sourceClientContext"></param>
         /// <param name="page">Client side page for which we're executing the functions/selectors as part of the mapping</param>
         /// <param name="pageTransformation">Webpart mapping information</param>
         /// <param name="baseTransformationInformation">Page transformation information</param>
+        /// <param name="logObservers"></param>
         public FunctionProcessor(ClientContext sourceClientContext, ClientSidePage page, PageTransformation pageTransformation, BaseTransformationInformation baseTransformationInformation, IList<ILogObserver> logObservers = null)
         {
             this.page = page;
@@ -149,6 +151,7 @@ namespace PnP.Framework.Modernization.Functions
         /// </summary>
         /// <param name="webPartData">Web Part mapping data</param>
         /// <param name="webPart">Definition of the web part to be transformed</param>
+        /// <param name="webPartMapping"></param>
         /// <returns>The ouput of the mapping selector if there was one executed, null otherwise</returns>
         public void ProcessMappingFunctions(ref WebPart webPartData, WebPartEntity webPart, Mapping webPartMapping)
         {

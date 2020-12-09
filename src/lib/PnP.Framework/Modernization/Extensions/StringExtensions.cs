@@ -297,7 +297,9 @@ namespace PnP.Framework.Modernization.Extensions
                     default:
                         if (c < ' ')
                         {
+#pragma warning disable CA2241
                             t = "000" + string.Format("X", c);
+#pragma warning restore CA2241
                             sb.Append("\\u" + t.Substring(t.Length - 4));
                         }
                         else

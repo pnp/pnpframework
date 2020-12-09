@@ -267,20 +267,20 @@ namespace PnP.Framework.Modernization.Tests.Transform
         public void TransformPagesTest()
         {
             // Local functions
-            string titleOverride(string title)
-            {
-                return $"{title}_1";
-            }
+            // string titleOverride(string title)
+            // {
+            //     return $"{title}_1";
+            // }
 
-            ILayoutTransformator layoutOverride(ClientSidePage cp)
-            {
-                return new TestLayout();
-            }
+            // ILayoutTransformator layoutOverride(ClientSidePage cp)
+            // {
+            //     return new TestLayout();
+            // }
 
-            IContentTransformator contentOverride(ClientSidePage cp, PageTransformation pt)
-            {
-                return new TestTransformator();
-            }
+            // IContentTransformator contentOverride(ClientSidePage cp, PageTransformation pt)
+            // {
+            //     return new TestTransformator();
+            // }
 
             using (var cc = TestCommon.CreateClientContext())
             {

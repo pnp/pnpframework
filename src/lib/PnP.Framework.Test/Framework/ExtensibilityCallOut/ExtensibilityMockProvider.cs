@@ -5,6 +5,7 @@ using System;
 
 namespace PnP.Framework.Test.Framework.ExtensibilityCallOut
 {
+    #pragma warning disable CS0618
     public class ExtensibilityMockProvider : IProvisioningExtensibilityProvider
     {
         public void ProcessRequest(ClientContext ctx, ProvisioningTemplate template, string configurationData)
@@ -20,4 +21,5 @@ namespace PnP.Framework.Test.Framework.ExtensibilityCallOut
 
         }
     }
+    #pragma warning restore CS0618
 }

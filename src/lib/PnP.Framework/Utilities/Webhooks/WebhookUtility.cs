@@ -4,6 +4,7 @@ using PnP.Framework.Entities;
 using PnP.Framework.Utilities.Async;
 using PnP.Framework.Utilities.Webhooks;
 using System;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -66,6 +67,11 @@ namespace PnP.Framework.Utilities
             {
                 context.Web.EnsureProperty(p => p.Url);
 
+                if (string.IsNullOrEmpty(accessToken))
+                {
+                    handler.SetAuthenticationCookies(context);
+                }
+
                 using (var httpClient = new PnPHttpProvider(handler))
                 {
                     string identifierUrl = GetResourceIdentifier(resourceType, webUrl, subscription.Resource);
@@ -83,6 +89,14 @@ namespace PnP.Framework.Utilities
                         if (!string.IsNullOrEmpty(accessToken))
                         {
                             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                        }
+                        else
+                        {
+                            if (context.Credentials is NetworkCredential networkCredential)
+                            {
+                                handler.Credentials = networkCredential;
+                            }
+                            request.Headers.Add("X-RequestDigest", await httpClient.GetRequestDigestWithCookieAuthAsync(handler.CookieContainer, context.Url));
                         }
 
                         request.Content = new StringContent(JsonConvert.SerializeObject(subscription),
@@ -164,6 +178,11 @@ namespace PnP.Framework.Utilities
             {
                 context.Web.EnsureProperty(p => p.Url);
 
+                if (string.IsNullOrEmpty(accessToken))
+                {
+                    handler.SetAuthenticationCookies(context);
+                }
+
                 using (var httpClient = new PnPHttpProvider(handler))
                 {
                     string identifierUrl = GetResourceIdentifier(resourceType, webUrl, resourceId);
@@ -180,6 +199,14 @@ namespace PnP.Framework.Utilities
                         if (!string.IsNullOrEmpty(accessToken))
                         {
                             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                        }
+                        else
+                        {
+                            if (context.Credentials is NetworkCredential networkCredential)
+                            {
+                                handler.Credentials = networkCredential;
+                            }
+                            request.Headers.Add("X-RequestDigest", await httpClient.GetRequestDigestWithCookieAuthAsync(handler.CookieContainer, context.Url));
                         }
 
                         WebhookSubscription webhookSubscription;
@@ -237,6 +264,11 @@ namespace PnP.Framework.Utilities
             {
                 context.Web.EnsureProperty(p => p.Url);
 
+                if (string.IsNullOrEmpty(accessToken))
+                {
+                    handler.SetAuthenticationCookies(context);
+                }
+
                 using (var httpClient = new PnPHttpProvider(handler))
                 {
                     string identifierUrl = GetResourceIdentifier(resourceType, webUrl, resourceId);
@@ -256,6 +288,14 @@ namespace PnP.Framework.Utilities
                         if (!string.IsNullOrEmpty(accessToken))
                         {
                             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                        }
+                        else
+                        {
+                            if (context.Credentials is NetworkCredential networkCredential)
+                            {
+                                handler.Credentials = networkCredential;
+                            }
+                            request.Headers.Add("X-RequestDigest", await httpClient.GetRequestDigestWithCookieAuthAsync(handler.CookieContainer, context.Url));
                         }
 
                         HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
@@ -293,6 +333,11 @@ namespace PnP.Framework.Utilities
             {
                 context.Web.EnsureProperty(p => p.Url);
 
+                if (string.IsNullOrEmpty(accessToken))
+                {
+                    handler.SetAuthenticationCookies(context);
+                }
+
                 using (var httpClient = new PnPHttpProvider(handler))
                 {
                     string identifierUrl = GetResourceIdentifier(resourceType, webUrl, resourceId);
@@ -306,9 +351,17 @@ namespace PnP.Framework.Utilities
                     using (var request = new HttpRequestMessage(HttpMethod.Get, requestUrl))
                     {
                         request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                        if (accessToken != null)
+                        if (!string.IsNullOrEmpty(accessToken))
                         {
                             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                        }
+                        else
+                        {
+                            if (context.Credentials is NetworkCredential networkCredential)
+                            {
+                                handler.Credentials = networkCredential;
+                            }
+                            request.Headers.Add("X-RequestDigest", await httpClient.GetRequestDigestWithCookieAuthAsync(handler.CookieContainer, context.Url));
                         }
 
                         HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());

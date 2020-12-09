@@ -172,7 +172,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             {
                 if (neededSourceLanguage == 0)
                 {
-                    neededSourceLanguage = page.LCID;
+                    neededSourceLanguage = page.LCID > 0 ? page.LCID : (template.RegionalSettings != null ? template.RegionalSettings.LocaleId : 0);
                 }
                 else
                 {

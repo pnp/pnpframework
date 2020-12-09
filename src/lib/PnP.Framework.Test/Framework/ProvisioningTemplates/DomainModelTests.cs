@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Providers;
 using PnP.Framework.Provisioning.Providers.Json;
+using PnP.Framework.Provisioning.Providers.Markdown;
 using PnP.Framework.Provisioning.Providers.Xml;
 using System;
 using System.IO;
@@ -30,6 +31,8 @@ namespace PnP.Framework.Test.Framework.ProvisioningTemplates
         private string _provisioningTemplatePath7 = string.Empty;
         private string _provisioningTemplatePath8 = string.Empty;
         private readonly string _provisioningTemplatePath8NamespaceURI = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2015_12;
+        private string _provisioningTemplatePath9 = string.Empty;
+        private readonly string _provisioningTemplatePath9NamespaceURI = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2020_02;
 
         private const string TEST_CATEGORY = "Framework Provisioning Domain Model";
 
@@ -42,6 +45,7 @@ namespace PnP.Framework.Test.Framework.ProvisioningTemplates
             this._provisioningTemplatePath6 = string.Format(@"{0}\..\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "ProvisioningSchema-2015-05-ReferenceSample-01.xml");
             this._provisioningTemplatePath7 = string.Format(@"{0}\..\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "ProvisioningSchema-2015-05-ReferenceSample-01.json");
             this._provisioningTemplatePath8 = string.Format(@"{0}\..\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "ProvisioningSchema-2015-12-FullSample-02.xml");
+            this._provisioningTemplatePath9 = string.Format(@"{0}\..\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "InitiativesTemplate.xml");
         }
 
         #region Formatter Tests
@@ -116,6 +120,22 @@ namespace PnP.Framework.Test.Framework.ProvisioningTemplates
                 var _formattedTemplateBack = formatter.ToFormattedTemplate(_pt);
 
                 Assert.IsTrue(formatter.IsValid(_formattedTemplateBack));
+            }
+
+        }
+
+        [TestMethod]
+        [TestCategory(TEST_CATEGORY)]
+        public void CanSerializeDomainObjectToMarkdown()
+        {
+            using (Stream _formattedTemplate = new FileStream(this._provisioningTemplatePath9, FileMode.Open, FileAccess.Read, FileShare.Read))
+            {
+                ITemplateFormatter formatter = XMLPnPSchemaFormatter.GetSpecificFormatter(this._provisioningTemplatePath9NamespaceURI);
+                var _pt = formatter.ToProvisioningTemplate(_formattedTemplate);
+                ITemplateFormatter mdFormatter = new MarkdownPnPFormatter();
+                var outputStream = mdFormatter.ToFormattedTemplate(_pt);
+
+                Assert.IsTrue(mdFormatter.IsValid(outputStream));
             }
 
         }

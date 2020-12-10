@@ -19,24 +19,27 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
         {
             if (template.Features != null)
             {
-                WriteHeader("Features", 1, writer);
-                if (template.Features.SiteFeatures != null && template.Features.SiteFeatures.Count > 0)
+                if ((template.Features.SiteFeatures != null && template.Features.SiteFeatures.Count > 0) || (template.Features.WebFeatures != null && template.Features.WebFeatures.Count > 0))
                 {
-                    WriteHeader("Site Collection Features", 2, writer);
-                    foreach (var feature in template.Features.SiteFeatures)
+                    WriteHeader("Features", 1, writer);
+                    if (template.Features.SiteFeatures != null && template.Features.SiteFeatures.Count > 0)
                     {
-                        WriteTextField(feature.Deactivate ? "Deactivate" : "Activate", feature.Id.ToString(), writer);
+                        WriteHeader("Site Collection Features", 2, writer);
+                        foreach (var feature in template.Features.SiteFeatures)
+                        {
+                            WriteTextField(feature.Deactivate ? "Deactivate" : "Activate", feature.Id.ToString(), writer);
+                        }
                     }
-                }
-                if (template.Features.WebFeatures != null && template.Features.WebFeatures.Count > 0)
-                {
-                    WriteHeader("Site Features", 2, writer);
-                    foreach (var feature in template.Features.WebFeatures)
+                    if (template.Features.WebFeatures != null && template.Features.WebFeatures.Count > 0)
                     {
-                        WriteTextField(feature.Deactivate ? "Deactivate" : "Activate", feature.Id.ToString(), writer);
+                        WriteHeader("Site Features", 2, writer);
+                        foreach (var feature in template.Features.WebFeatures)
+                        {
+                            WriteTextField(feature.Deactivate ? "Deactivate" : "Activate", feature.Id.ToString(), writer);
+                        }
                     }
+                    writer.WriteLine();
                 }
-                writer.WriteLine();
             }
         }
     }

@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Linq.Expressions;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace PnP.Framework.Provisioning.Providers.Markdown
 {
@@ -38,10 +39,14 @@ namespace PnP.Framework.Provisioning.Providers.Markdown
                 ParameterExpression.Parameter(targetType, "i")));
         }
 
-        protected void WriteAttributeField(string attributeName, string fieldName, TextWriter fieldWriter, XmlElement xmlField)
+        protected void WriteAttributeField(string attributeName, string fieldName, TextWriter fieldWriter, XElement xmlField)
         {
-            fieldWriter.WriteLine($"**{fieldName}** - {GetAttributeValue(attributeName, xmlField)}");
-            fieldWriter.WriteLine();
+            var value = GetAttributeValue(attributeName, xmlField);
+            if (!string.IsNullOrEmpty(value))
+            {
+                fieldWriter.WriteLine($"**{fieldName}** - {value}");
+                fieldWriter.WriteLine();
+            }
         }
 
         protected void WriteTextField(string fieldValue, string fieldName, TextWriter fieldWriter)
@@ -56,7 +61,7 @@ namespace PnP.Framework.Provisioning.Providers.Markdown
             fieldWriter.WriteLine();
         }
 
-        protected void WriteYesNoAttributeField(string attributeName, string fieldName, TextWriter fieldWriter, XmlElement xmlField)
+        protected void WriteYesNoAttributeField(string attributeName, string fieldName, TextWriter fieldWriter, XElement xmlField)
         {
 
             var fieldText = GetAttributeValue("fieldName", xmlField);
@@ -82,16 +87,17 @@ namespace PnP.Framework.Provisioning.Providers.Markdown
 
         protected void WriteHeader(string headerText, int headerLevel, TextWriter fieldWriter)
         {
-            var headerPrefix =  "".PadLeft(headerLevel, '#');
+            var headerPrefix = "".PadLeft(headerLevel, '#');
             fieldWriter.WriteLine($"{headerPrefix} {headerText}");
             fieldWriter.WriteLine();
         }
 
-        protected static string GetAttributeValue(string attributeName, XmlElement xmlField)
+        protected static string GetAttributeValue(string attributeName, XElement xmlField)
         {
-            if (xmlField.Attributes[attributeName] != null) {
+            if (xmlField.Attribute(attributeName) != null)
+            {
 
-                return xmlField.Attributes[attributeName].Value;
+                return xmlField.Attribute(attributeName).Value;
             }
             return "";
         }
@@ -108,7 +114,7 @@ namespace PnP.Framework.Provisioning.Providers.Markdown
             }
         }
 
-            protected string GetSiteTemplateNameFromTemplateCode(string templateCode)
+        protected string GetSiteTemplateNameFromTemplateCode(string templateCode)
         {
             switch (templateCode)
             {

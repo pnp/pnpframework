@@ -68,13 +68,13 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
                         {
 
                             var xmlViewFields = from f in list.Views
-                                                select XElement.Parse(f.SchemaXml).ToXmlElement();
+                                                select XElement.Parse(f.SchemaXml);
 
                             foreach (var xmlField in xmlViewFields)
                             {
-                                var viewDisplayName = xmlField.Attributes["DisplayName"].Value;
+                                var viewDisplayName = xmlField.Attribute("DisplayName").Value;
                                 //var viewType = xmlField.Attributes["Type"].Value;
-                                var viewName = xmlField.Attributes["Name"].Value;
+                                var viewName = xmlField.Attribute("Name").Value;
 
                                 detailsWriter.WriteLine($"| {viewDisplayName} | TBC | {viewName} |");
 
@@ -84,10 +84,15 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
                                 WriteAttributeField("Url", "View Url", viewDetailsWriter, xmlField);
                                 WriteText("**Fields:**", viewDetailsWriter);
 
-                                foreach (XmlElement fieldNode in xmlField.SelectNodes("//ViewFields//FieldRef"))
+
+                                foreach (var fieldNode in xmlField.Descendants("ViewFields").Descendants("FieldRef"))
                                 {
                                     WriteText($"- {GetAttributeValue("Name", fieldNode)}", viewDetailsWriter);
                                 }
+                                // foreach (XmlElement fieldNode in xmlField.SelectNodes("//ViewFields//FieldRef"))
+                                // {
+                                //     WriteText($"- {GetAttributeValue("Name", fieldNode)}", viewDetailsWriter);
+                                // }
                             }
                             detailsWriter.WriteLine(viewDetailsWriter.ToString());
                             WriteNewLine(viewDetailsWriter);

@@ -56,7 +56,7 @@ namespace Microsoft.SharePoint.Client
             context.ExecuteQueryRetry();
 
             // Load reference Page Layout
-            var pageFromPageLayout = context.Site.RootWeb.GetFileByServerRelativeUrl($"{UrlUtility.EnsureTrailingSlash(site.ServerRelativeUrl)}_catalogs/masterpage/{pageTemplateName}.aspx");
+            var pageFromPageLayout = context.Site.RootWeb.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl($"{UrlUtility.EnsureTrailingSlash(site.ServerRelativeUrl)}_catalogs/masterpage/{pageTemplateName}.aspx"));
             var pageLayoutItem = pageFromPageLayout.ListItemAllFields;
             context.Load(pageLayoutItem);
             context.ExecuteQueryRetry();

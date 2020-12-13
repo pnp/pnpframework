@@ -895,7 +895,7 @@ namespace Microsoft.SharePoint.Client
                         containingList.Context.Load(newFolderItem);
                         await containingList.Context.ExecuteQueryRetryAsync();
 
-                        nextFolder = web.GetFolderByServerRelativeUrl(UrlUtility.Combine(listUrl, createPath, folderName));
+                        nextFolder = web.GetFolderByServerRelativePath(ResourcePath.FromDecodedUrl(UrlUtility.Combine(listUrl, createPath, folderName)));
                         containingList.Context.Load(nextFolder);
                         await containingList.Context.ExecuteQueryRetryAsync();
                     }

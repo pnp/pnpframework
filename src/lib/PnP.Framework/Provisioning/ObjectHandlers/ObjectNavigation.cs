@@ -302,7 +302,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             {
                                 web.EnsureProperties(w => w.ServerRelativeUrl);
                                 string folderUrl = $"{web.ServerRelativeUrl}/{ match.Groups["fileurl"].Value}";
-                                var spFolder = web.GetFolderByServerRelativeUrl(folderUrl);
+                                var spFolder = web.GetFolderByServerRelativePath(ResourcePath.FromDecodedUrl(folderUrl));
                                 web.Context.Load(spFolder, f => f.UniqueId);
                                 web.Context.ExecuteQueryRetry();
                                 string folderId = spFolder.UniqueId.ToString();

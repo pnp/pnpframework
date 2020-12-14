@@ -19,23 +19,25 @@ namespace PnP.Framework.Utilities
         public static X509Certificate2 LoadCertificate(StoreName storeName, StoreLocation storeLocation, string thumbprint)
         {
             // The following code gets the cert from the keystore
-            X509Store store = new X509Store(storeName, storeLocation);
-            store.Open(OpenFlags.ReadOnly);
-
-            X509Certificate2Collection certCollection =
-                    store.Certificates.Find(X509FindType.FindByThumbprint,
-                    thumbprint, false);
-
-            X509Certificate2Enumerator enumerator = certCollection.GetEnumerator();
-
-            X509Certificate2 cert = null;
-
-            while (enumerator.MoveNext())
+            using (X509Store store = new X509Store(storeName, storeLocation))
             {
-                cert = enumerator.Current;
-            }
+                store.Open(OpenFlags.ReadOnly);
 
-            return cert;
+                X509Certificate2Collection certCollection =
+                        store.Certificates.Find(X509FindType.FindByThumbprint,
+                        thumbprint, false);
+
+                X509Certificate2Enumerator enumerator = certCollection.GetEnumerator();
+
+                X509Certificate2 cert = null;
+
+                while (enumerator.MoveNext())
+                {
+                    cert = enumerator.Current;
+                }
+
+                return cert;
+            }
         }
 
         /// <summary>

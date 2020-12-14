@@ -652,7 +652,7 @@ namespace PnP.Framework.ALM
             {
                 if (string.IsNullOrEmpty(accessToken))
                 {
-                    handler.SetAuthenticationCookies(_context);
+                    _context.SetAuthenticationCookiesForHandler(handler);
                 }
 
                 _context.Web.EnsureProperty(w => w.Url);
@@ -672,6 +672,7 @@ namespace PnP.Framework.ALM
                         if (!string.IsNullOrEmpty(accessToken))
                         {
                             request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
+                            request.Headers.Add("X-RequestDigest", await _context.GetRequestDigestAsync().ConfigureAwait(false));
                         }
                         else
                         {
@@ -679,10 +680,9 @@ namespace PnP.Framework.ALM
                             {
                                 handler.Credentials = networkCredential;
                             }
-                            request.Headers.Add("X-RequestDigest", await httpClient.GetRequestDigestWithCookieAuthAsync(handler.CookieContainer, _context.Url));
+                            request.Headers.Add("X-RequestDigest", await _context.GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false));
 
                         }
-                        //request.Headers.Add("X-RequestDigest", await _context.GetRequestDigestAsync());
 
                         // Perform actual post operation
                         HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
@@ -751,7 +751,7 @@ namespace PnP.Framework.ALM
 
                 if (string.IsNullOrEmpty(accessToken))
                 {
-                    handler.SetAuthenticationCookies(context);
+                    context.SetAuthenticationCookiesForHandler(handler);
                 }
 
                 using (var httpClient = new PnPHttpProvider(handler))
@@ -767,6 +767,7 @@ namespace PnP.Framework.ALM
                         if (!string.IsNullOrEmpty(accessToken))
                         {
                             request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
+                            request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false));
                         }
                         else
                         {
@@ -774,7 +775,7 @@ namespace PnP.Framework.ALM
                             {
                                 handler.Credentials = networkCredential;
                             }
-                            request.Headers.Add("X-RequestDigest", await httpClient.GetRequestDigestWithCookieAuthAsync(handler.CookieContainer, _context.Url));
+                            request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false));
                         }
 
                         if (postObject != null)
@@ -832,7 +833,7 @@ namespace PnP.Framework.ALM
 
                 if (string.IsNullOrEmpty(accessToken))
                 {
-                    handler.SetAuthenticationCookies(context);
+                    context.SetAuthenticationCookiesForHandler(handler);
                 }
                 // find the app by id
 
@@ -857,6 +858,7 @@ namespace PnP.Framework.ALM
                             if (!string.IsNullOrEmpty(accessToken))
                             {
                                 request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
+                                request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync().ConfigureAwait(false));
                             }
                             else
                             {
@@ -864,7 +866,7 @@ namespace PnP.Framework.ALM
                                 {
                                     handler.Credentials = networkCredential;
                                 }
-                                request.Headers.Add("X-RequestDigest", await httpClient.GetRequestDigestWithCookieAuthAsync(handler.CookieContainer, _context.Url));
+                                request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false));
                             }
 
 
@@ -916,7 +918,7 @@ namespace PnP.Framework.ALM
 
                 if (string.IsNullOrEmpty(accessToken))
                 {
-                    handler.SetAuthenticationCookies(context);
+                    context.SetAuthenticationCookiesForHandler(handler);
                 }
 
                 using (var httpClient = new PnPHttpProvider(handler))
@@ -924,7 +926,15 @@ namespace PnP.Framework.ALM
 
                     string requestUrl = $"{context.Web.Url}/_api/web/{(scope == AppCatalogScope.Tenant ? "tenant" : "sitecollection")}appcatalog/Add(overwrite={(overwrite.ToString().ToLower())}, url='{filename}')";
 
-                    var requestDigest = await httpClient.GetRequestDigestWithCookieAuthAsync(handler.CookieContainer, _context.Url);
+                    var requestDigest = string.Empty;
+                    if (!string.IsNullOrEmpty(accessToken))
+                    {
+                        requestDigest = await context.GetRequestDigestAsync().ConfigureAwait(false);
+                    }
+                    else
+                    {
+                        requestDigest = await context.GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false);
+                    }
                     using (var request = new HttpRequestMessage(HttpMethod.Post, requestUrl))
                     {
                         request.Headers.Add("accept", "application/json;odata=nometadata");
@@ -938,10 +948,10 @@ namespace PnP.Framework.ALM
                             {
                                 handler.Credentials = networkCredential;
                             }
-                            if (!string.IsNullOrEmpty(requestDigest))
-                            {
-                                request.Headers.Add("X-RequestDigest", requestDigest);
-                            }
+                        }
+                        if (!string.IsNullOrEmpty(requestDigest))
+                        {
+                            request.Headers.Add("X-RequestDigest", requestDigest);
                         }
                         request.Headers.Add("binaryStringRequestBody", "true");
                         request.Content = new ByteArrayContent(file);

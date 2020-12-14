@@ -734,12 +734,14 @@ namespace PnP.Framework.ALM
 
         private async Task<bool> BaseRequest(Guid id, AppManagerAction action, bool switchToAppCatalogContext, Dictionary<string, object> postObject, AppCatalogScope scope, int timeoutSeconds = 200)
         {
+            var isCloned = false;
             var context = _context;
             if (switchToAppCatalogContext == true && scope == AppCatalogScope.Tenant)
             {
                 // switch context to appcatalog
                 var appcatalogUri = _context.Web.GetAppCatalog();
                 context = context.Clone(appcatalogUri);
+                isCloned = true;
             }
             var returnValue = false;
             var accessToken = context.GetAccessToken();
@@ -767,7 +769,7 @@ namespace PnP.Framework.ALM
                         if (!string.IsNullOrEmpty(accessToken))
                         {
                             request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
-                            request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false));
+                            request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync().ConfigureAwait(false));
                         }
                         else
                         {
@@ -813,101 +815,105 @@ namespace PnP.Framework.ALM
                     }
                 }
             }
+            if (isCloned)
+            {
+                context.Dispose();
+            }
             return await Task.Run(() => returnValue);
         }
 
         private async Task<bool> SyncToTeamsImplementation(Guid appId)
         {
-            var context = _context;
-
             // switch context to appcatalog
             var appcatalogUri = _context.Web.GetAppCatalog();
-            context = context.Clone(appcatalogUri);
-
-            var returnValue = false;
-            var accessToken = context.GetAccessToken();
-
-            using (var handler = new HttpClientHandler())
+            using (var context = _context.Clone(appcatalogUri))
             {
-                context.Web.EnsureProperty(w => w.Url);
+                var returnValue = false;
+                var accessToken = context.GetAccessToken();
 
-                if (string.IsNullOrEmpty(accessToken))
+                using (var handler = new HttpClientHandler())
                 {
-                    context.SetAuthenticationCookiesForHandler(handler);
-                }
-                // find the app by id
+                    context.Web.EnsureProperty(w => w.Url);
 
-                var list = context.Web.GetListByUrl("appcatalog");
-                var query = new CamlQuery
-                {
-                    ViewXml = $"<View><Query><Where><Contains><FieldRef Name='UniqueId'/><Value Type='Text'>{appId}</Value></Contains></Where></Query></View>"
-                };
-                var items = list.GetItems(query);
-                context.Load(items);
-                context.ExecuteQueryRetry();
-
-                if (items.Count > 0)
-                {
-                    using (var httpClient = new PnPHttpProvider(handler))
+                    if (string.IsNullOrEmpty(accessToken))
                     {
-                        var requestUrl = $"{context.Web.Url}/_api/web/tenantappcatalog/SyncSolutionToTeams(id={items[0].Id})";
+                        context.SetAuthenticationCookiesForHandler(handler);
+                    }
+                    // find the app by id
 
-                        using (var request = new HttpRequestMessage(HttpMethod.Post, requestUrl))
+                    var list = context.Web.GetListByUrl("appcatalog");
+                    var query = new CamlQuery
+                    {
+                        ViewXml = $"<View><Query><Where><Contains><FieldRef Name='UniqueId'/><Value Type='Text'>{appId}</Value></Contains></Where></Query></View>"
+                    };
+                    var items = list.GetItems(query);
+                    context.Load(items);
+                    context.ExecuteQueryRetry();
+
+                    if (items.Count > 0)
+                    {
+                        using (var httpClient = new PnPHttpProvider(handler))
                         {
-                            request.Headers.Add("accept", "application/json;odata=nometadata");
-                            if (!string.IsNullOrEmpty(accessToken))
+                            var requestUrl = $"{context.Web.Url}/_api/web/tenantappcatalog/SyncSolutionToTeams(id={items[0].Id})";
+
+                            using (var request = new HttpRequestMessage(HttpMethod.Post, requestUrl))
                             {
-                                request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
-                                request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync().ConfigureAwait(false));
-                            }
-                            else
-                            {
-                                if (context.Credentials is NetworkCredential networkCredential)
+                                request.Headers.Add("accept", "application/json;odata=nometadata");
+                                if (!string.IsNullOrEmpty(accessToken))
                                 {
-                                    handler.Credentials = networkCredential;
+                                    request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
+                                    request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync().ConfigureAwait(false));
                                 }
-                                request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false));
-                            }
-
-
-                            // Perform actual post operation
-                            HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
-
-                            if (response.IsSuccessStatusCode)
-                            {
-                                // If value empty, URL is taken
-                                var responseString = await response.Content.ReadAsStringAsync();
-                                if (responseString != null)
+                                else
                                 {
-                                    try
+                                    if (context.Credentials is NetworkCredential networkCredential)
                                     {
-                                        returnValue = true;
+                                        handler.Credentials = networkCredential;
                                     }
-                                    catch { }
+                                    request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false));
                                 }
-                            }
-                            else
-                            {
-                                // Something went wrong...
-                                throw new Exception(await response.Content.ReadAsStringAsync());
+
+
+                                // Perform actual post operation
+                                HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
+
+                                if (response.IsSuccessStatusCode)
+                                {
+                                    // If value empty, URL is taken
+                                    var responseString = await response.Content.ReadAsStringAsync();
+                                    if (responseString != null)
+                                    {
+                                        try
+                                        {
+                                            returnValue = true;
+                                        }
+                                        catch { }
+                                    }
+                                }
+                                else
+                                {
+                                    // Something went wrong...
+                                    throw new Exception(await response.Content.ReadAsStringAsync());
+                                }
                             }
                         }
                     }
                 }
+                return await Task.Run(() => returnValue);
             }
-            return await Task.Run(() => returnValue);
         }
 
         private async Task<AppMetadata> BaseAddRequest(byte[] file, string filename, bool overwrite, int timeoutSeconds, AppCatalogScope scope)
         {
             AppMetadata returnValue = null;
-
+            var isCloned = false;
             var context = _context;
             if (scope == AppCatalogScope.Tenant)
             {
                 // switch context to appcatalog
                 var appcatalogUri = _context.Web.GetAppCatalog();
                 context = context.Clone(appcatalogUri);
+                isCloned = true;
             }
 
             var accessToken = context.GetAccessToken();
@@ -982,6 +988,10 @@ namespace PnP.Framework.ALM
                         }
                     }
                 }
+            }
+            if(isCloned)
+            {
+                context.Dispose();
             }
             return await Task.Run(() => returnValue);
         }

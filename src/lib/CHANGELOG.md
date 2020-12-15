@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- When creating Team through a tenant template using a delegate token the owner of the group that is being created will be set ot the user identified by the token. If an app-only token is provided and no owners are specified in the template and exception will be thrown. [erwinvanhunen - Erwin van Hunen]
 - Fix for issue where FooterLink in a sitetemplate get provisioned in reverse order [erwinvanhunen - Erwin van Hunen]
 - Removed obsolete Responsive UI methods [erwinvanhunen - Erwin van Hunen]
 - Fix for instantiation of extensibility handlers #5 [patrikhellgren - Patrik Hellgren]

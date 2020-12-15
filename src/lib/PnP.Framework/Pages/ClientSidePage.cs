@@ -2283,33 +2283,35 @@ namespace PnP.Framework.Pages
                 using (var httpClient = new PnPHttpProvider(handler))
                 {
                     string requestUrl = $"{context.Web.Url}/_api/sitepages/pages({pageID.Value})/translations";
-                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrl);
-                    request.Headers.Add("accept", "application/json;odata.metadata=none");
-                    request.Headers.Add("odata-version", "4.0");
+                    using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrl))
+                    {
+                        request.Headers.Add("accept", "application/json;odata.metadata=none");
+                        request.Headers.Add("odata-version", "4.0");
 
-                    // We've an access token, so we're in app-only or user + app context
-                    if (!String.IsNullOrEmpty(accessToken))
-                    {
-                        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                    }
-                    else
-                    {
-                        if (context.Credentials is NetworkCredential networkCredential)
+                        // We've an access token, so we're in app-only or user + app context
+                        if (!String.IsNullOrEmpty(accessToken))
                         {
-                            handler.Credentials = networkCredential;
+                            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
                         }
-                    }
+                        else
+                        {
+                            if (context.Credentials is NetworkCredential networkCredential)
+                            {
+                                handler.Credentials = networkCredential;
+                            }
+                        }
 
-                    HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
+                        HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
 
-                    if (response.IsSuccessStatusCode)
-                    {
-                        responseString = await response.Content.ReadAsStringAsync();
-                    }
-                    else
-                    {
-                        // Something went wrong...
-                        throw new Exception(await response.Content.ReadAsStringAsync());
+                        if (response.IsSuccessStatusCode)
+                        {
+                            responseString = await response.Content.ReadAsStringAsync();
+                        }
+                        else
+                        {
+                            // Something went wrong...
+                            throw new Exception(await response.Content.ReadAsStringAsync());
+                        }
                     }
                 }
                 return responseString;
@@ -2334,47 +2336,49 @@ namespace PnP.Framework.Pages
                 using (var httpClient = new PnPHttpProvider(handler))
                 {
                     string requestUrl = $"{context.Web.Url}/_api/sitepages/pages({pageID.Value})/translations/create";
-                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
-                    request.Headers.Add("accept", "application/json;odata.metadata=none");
-                    request.Headers.Add("odata-version", "4.0");
+                    using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl))
+                    {
+                        request.Headers.Add("accept", "application/json;odata.metadata=none");
+                        request.Headers.Add("odata-version", "4.0");
 
-                    // We've an access token, so we're in app-only or user + app context
-                    if (!String.IsNullOrEmpty(accessToken))
-                    {
-                        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                    }
-                    else
-                    {
-                        if (context.Credentials is NetworkCredential networkCredential)
+                        // We've an access token, so we're in app-only or user + app context
+                        if (!String.IsNullOrEmpty(accessToken))
                         {
-                            handler.Credentials = networkCredential;
+                            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
                         }
-                    }
-
-                    request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync());
-
-                    if (translationStatusCreationRequest != null && translationStatusCreationRequest.LanguageCodes.Count > 0)
-                    {
-                        var body = new { request = translationStatusCreationRequest };
-                        var jsonBody = JsonConvert.SerializeObject(body);
-                        var requestBody = new StringContent(jsonBody);
-                        request.Content = requestBody;
-                        if (MediaTypeHeaderValue.TryParse("application/json;odata.metadata=none;charset=utf-8", out MediaTypeHeaderValue sharePointJsonMediaType))
+                        else
                         {
-                            requestBody.Headers.ContentType = sharePointJsonMediaType;
+                            if (context.Credentials is NetworkCredential networkCredential)
+                            {
+                                handler.Credentials = networkCredential;
+                            }
                         }
-                    }
 
-                    HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
+                        request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync());
 
-                    if (response.IsSuccessStatusCode)
-                    {
-                        responseString = await response.Content.ReadAsStringAsync();
-                    }
-                    else
-                    {
-                        // Something went wrong...
-                        throw new Exception(await response.Content.ReadAsStringAsync());
+                        if (translationStatusCreationRequest != null && translationStatusCreationRequest.LanguageCodes.Count > 0)
+                        {
+                            var body = new { request = translationStatusCreationRequest };
+                            var jsonBody = JsonConvert.SerializeObject(body);
+                            var requestBody = new StringContent(jsonBody);
+                            request.Content = requestBody;
+                            if (MediaTypeHeaderValue.TryParse("application/json;odata.metadata=none;charset=utf-8", out MediaTypeHeaderValue sharePointJsonMediaType))
+                            {
+                                requestBody.Headers.ContentType = sharePointJsonMediaType;
+                            }
+                        }
+
+                        HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            responseString = await response.Content.ReadAsStringAsync();
+                        }
+                        else
+                        {
+                            // Something went wrong...
+                            throw new Exception(await response.Content.ReadAsStringAsync());
+                        }
                     }
                 }
                 return responseString;
@@ -2397,33 +2401,35 @@ namespace PnP.Framework.Pages
                     //GET https://bertonline.sharepoint.com/sites/130023/_api/web/GetClientSideWebParts HTTP/1.1
 
                     string requestUrl = String.Format("{0}/_api/web/GetClientSideWebParts", context.Web.Url);
-                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrl);
-                    request.Headers.Add("accept", "application/json;odata.metadata=minimal");
-                    request.Headers.Add("odata-version", "4.0");
+                    using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrl))
+                    {
+                        request.Headers.Add("accept", "application/json;odata.metadata=minimal");
+                        request.Headers.Add("odata-version", "4.0");
 
-                    // We've an access token, so we're in app-only or user + app context
-                    if (!String.IsNullOrEmpty(accessToken))
-                    {
-                        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                    }
-                    else
-                    {
-                        if (context.Credentials is NetworkCredential networkCredential)
+                        // We've an access token, so we're in app-only or user + app context
+                        if (!String.IsNullOrEmpty(accessToken))
                         {
-                            handler.Credentials = networkCredential;
+                            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
                         }
-                    }
+                        else
+                        {
+                            if (context.Credentials is NetworkCredential networkCredential)
+                            {
+                                handler.Credentials = networkCredential;
+                            }
+                        }
 
-                    HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
+                        HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
 
-                    if (response.IsSuccessStatusCode)
-                    {
-                        responseString = await response.Content.ReadAsStringAsync();
-                    }
-                    else
-                    {
-                        // Something went wrong...
-                        throw new Exception(await response.Content.ReadAsStringAsync());
+                        if (response.IsSuccessStatusCode)
+                        {
+                            responseString = await response.Content.ReadAsStringAsync();
+                        }
+                        else
+                        {
+                            // Something went wrong...
+                            throw new Exception(await response.Content.ReadAsStringAsync());
+                        }
                     }
                 }
                 return responseString;

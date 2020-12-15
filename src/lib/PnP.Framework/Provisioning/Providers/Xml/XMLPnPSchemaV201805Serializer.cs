@@ -12,16 +12,12 @@
         {
         }
 
-        public override string NamespaceUri
-        {
-            get { return (XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2018_05); }
-        }
+#pragma warning disable CS0618
+        public override string NamespaceUri => XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2018_05;
+#pragma warning restore CS0618
 
-        public override string NamespacePrefix
-        {
-            get { return (XMLConstants.PROVISIONING_SCHEMA_PREFIX); }
-        }
-
+        public override string NamespacePrefix => XMLConstants.PROVISIONING_SCHEMA_PREFIX;
+        
         protected override void DeserializeTemplate(object persistenceTemplate, Model.ProvisioningTemplate template)
         {
             base.DeserializeTemplate(persistenceTemplate, template);

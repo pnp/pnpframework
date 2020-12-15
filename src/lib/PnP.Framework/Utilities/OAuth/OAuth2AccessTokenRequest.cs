@@ -200,7 +200,7 @@ namespace SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
         {
             if (writer == null)
             {
-                throw new System.ArgumentNullException("writer");
+                throw new System.ArgumentNullException(nameof(writer));
             }
             writer.Write(base.Encode());
         }

@@ -882,7 +882,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
             }
 
             // Connected Office 365 group tokenization
-            if (site.GroupId != null && !site.GroupId.Equals(Guid.Empty))
+            if (!site.GroupId.Equals(Guid.Empty))
             {
                 json = Regex.Replace(json, site.GroupId.ToString(), "{sitecollectionconnectedoffice365groupid}", RegexOptions.IgnoreCase);
             }

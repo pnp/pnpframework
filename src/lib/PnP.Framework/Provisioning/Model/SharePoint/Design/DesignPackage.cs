@@ -48,8 +48,8 @@ namespace PnP.Framework.Provisioning.Model
                 (this.DesignPackagePath != null ? this.DesignPackagePath.GetHashCode() : 0),
                 this.MajorVersion.GetHashCode(),
                 this.MinorVersion.GetHashCode(),
-                (this.PackageGuid != null ? this.PackageGuid.GetHashCode() : 0),
-                (this.PackageName != null ? this.PackageName.GetHashCode() : 0)
+                this.PackageGuid.GetHashCode(),
+                this.PackageName.GetHashCode()
             ).GetHashCode());
         }
 

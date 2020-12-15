@@ -16,7 +16,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 {
     internal class ObjectFiles : ObjectHandlerBase
     {
-        private readonly string[] WriteableReadOnlyFields = new string[] { "publishingpagelayout", "contenttypeid" };
+        // private readonly string[] WriteableReadOnlyFields = new string[] { "publishingpagelayout", "contenttypeid" };
 
         // See https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f?ui=en-US&rs=en-US&ad=US
         public static readonly string[] BlockedExtensionsInNoScript = new string[] { ".asmx", ".ascx", ".aspx", ".htc", ".jar", ".master", ".swf", ".xap", ".xsf" };

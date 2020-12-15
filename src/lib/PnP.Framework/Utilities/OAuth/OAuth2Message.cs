@@ -66,7 +66,7 @@
         {
             if (string.IsNullOrEmpty(key))
             {
-                throw new System.ArgumentException("The input string parameter is either null or empty.", "key");
+                throw new System.ArgumentException(nameof(key),"The input string parameter is either null or empty.");
             }
             string result = null;
             this._message.TryGetValue(key, out result);

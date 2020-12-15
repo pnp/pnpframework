@@ -41,15 +41,15 @@ namespace SharePointPnP.IdentityModel.Extensions.S2S
         {
             if (encodedDictionary == null)
             {
-                throw new System.ArgumentNullException("encodedDictionary");
+                throw new System.ArgumentNullException(nameof(encodedDictionary));
             }
             if (keyDecoder == null)
             {
-                throw new System.ArgumentNullException("keyDecoder");
+                throw new System.ArgumentNullException(nameof(keyDecoder));
             }
             if (valueDecoder == null)
             {
-                throw new System.ArgumentNullException("valueDecoder");
+                throw new System.ArgumentNullException(nameof(valueDecoder));
             }
             if (endsWithSeparator && encodedDictionary.LastIndexOf(separator) == encodedDictionary.Length - 1)
             {
@@ -68,11 +68,11 @@ namespace SharePointPnP.IdentityModel.Extensions.S2S
                 });
                 if ((array2.Length == 1 || array2.Length > 2) && !string.IsNullOrEmpty(array2[0]))
                 {
-                    throw new System.ArgumentException("The request is not properly formatted.", "encodedDictionary");
+                    throw new System.ArgumentException(nameof(encodedDictionary), "The request is not properly formatted.");
                 }
                 if (array2.Length != 2)
                 {
-                    throw new System.ArgumentException("The request is not properly formatted.", "encodedDictionary");
+                    throw new System.ArgumentException(nameof(encodedDictionary), "The request is not properly formatted.");
                 }
                 string text2 = keyDecoder(array2[0].Trim());
                 string value = valueDecoder(array2[1].Trim().Trim(new char[]
@@ -89,7 +89,7 @@ namespace SharePointPnP.IdentityModel.Extensions.S2S
                     {
                         text2
                     });
-                    throw new System.ArgumentException(message, "encodedDictionary");
+                    throw new System.ArgumentException(nameof(encodedDictionary), message);
                 }
             }
         }
@@ -113,11 +113,11 @@ namespace SharePointPnP.IdentityModel.Extensions.S2S
         {
             if (keyEncoder == null)
             {
-                throw new System.ArgumentNullException("keyEncoder");
+                throw new System.ArgumentNullException(nameof(keyEncoder));
             }
             if (valueEncoder == null)
             {
-                throw new System.ArgumentNullException("valueEncoder");
+                throw new System.ArgumentNullException(nameof(valueEncoder));
             }
             System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
             foreach (System.Collections.Generic.KeyValuePair<string, string> current in self)
@@ -146,7 +146,7 @@ namespace SharePointPnP.IdentityModel.Extensions.S2S
             //System.Collections.Generic.Dictionary<string, object> dictionary = JsonConvert.DeserializeObject(encodedDictionary) as System.Collections.Generic.Dictionary<string, object>;
             if (dictionary == null)
             {
-                throw new System.ArgumentException("Invalid request format.", "encodedDictionary");
+                throw new System.ArgumentException(nameof(encodedDictionary),"Invalid request format.");
             }
             foreach (System.Collections.Generic.KeyValuePair<string, object> current in dictionary)
             {

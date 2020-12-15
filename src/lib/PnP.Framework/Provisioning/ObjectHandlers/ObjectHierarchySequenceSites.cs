@@ -166,7 +166,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     }
                     var siteTemplate = siteContext.Web.GetProvisioningTemplate(siteTemplateCreationInfo);
                     siteTemplate.Id = $"TEMPLATE-{templateGuid}";
-                    if (siteProperties.HubSiteId != null && siteProperties.HubSiteId != Guid.Empty && siteProperties.HubSiteId != siteContext.Site.Id && siteTemplate.WebSettings != null)
+                    if (siteProperties.HubSiteId != Guid.Empty && siteProperties.HubSiteId != siteContext.Site.Id && siteTemplate.WebSettings != null)
                     {
                         siteTemplate.WebSettings.HubSiteUrl = $"{{parameter:SITECOLLECTION_{siteProperties.HubSiteId.ToString("N")}_URL}}";
                     }
@@ -301,7 +301,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                             }
                                         }
                                         WriteMessage($"Creating Team Site {siteInfo.Alias}", ProvisioningMessageType.Progress);
+#pragma warning disable CS0618
                                         siteContext = Sites.SiteCollection.Create(rootSiteContext, siteInfo, configuration.Tenant.DelayAfterModernSiteCreation, noWait: nowait, graphAccessToken: graphAccessToken);
+#pragma warning restore CS0618
                                     }
                                     else
                                     {
@@ -421,7 +423,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                     else
                                     {
                                         WriteMessage($"Creating Communications Site at {siteInfo.Url}", ProvisioningMessageType.Progress);
+#pragma warning disable CS0618
                                         siteContext = Sites.SiteCollection.Create(rootSiteContext, siteInfo, configuration.Tenant.DelayAfterModernSiteCreation, noWait: nowait);
+#pragma warning restore CS0618
                                     }
                                     if (c.IsHubSite)
                                     {
@@ -481,7 +485,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                     else
                                     {
                                         WriteMessage($"Creating Team Site with no Office 365 group at {siteUrl}", ProvisioningMessageType.Progress);
+#pragma warning disable CS0618
                                         siteContext = Sites.SiteCollection.Create(rootSiteContext, siteInfo, configuration.Tenant.DelayAfterModernSiteCreation, noWait: nowait);
+#pragma warning restore CS0618
                                     }
                                     if (t.Groupify)
                                     {

@@ -17,7 +17,7 @@ namespace PnP.Framework.Modernization.Functions
     /// </list>
     /// This type of comparison is useful when comparing the XML documents used as messages, configuration, etc. in various specifications.
     /// </summary>
-    public class XmlComparer
+    public static class XmlComparer
     {
         public static XmlEqualityResult AreEqual(string xmlA, string xmlB)
         {

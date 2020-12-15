@@ -124,7 +124,7 @@ namespace PnP.Framework.Provisioning.Model
             return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}|{11}|",
                 this.Properties.Aggregate(0, (acc, next) => acc += next.GetHashCode()),
                 (this.FormField != null ? this.FormField.GetHashCode() : 0),
-                (this.Id != null ? this.Id.GetHashCode() : 0),
+                this.Id.GetHashCode(),
                 (this.AssociationUrl != null ? this.AssociationUrl.GetHashCode() : 0),
                 (this.Description != null ? this.Description.GetHashCode() : 0),
                 (this.DisplayName != null ? this.DisplayName.GetHashCode() : 0),

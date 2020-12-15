@@ -98,7 +98,7 @@ namespace PnP.Framework.Provisioning.Model
                 + "{5}|{6}|"
 #endif
                 ,
-                (this.Id != null ? this.Id.GetHashCode() : 0),
+                this.Id.GetHashCode(),
                 this.Required.GetHashCode(),
                 this.Hidden.GetHashCode(),
                 this.Remove.GetHashCode(),

@@ -624,7 +624,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 }
                 else
                 {
-                    ownerIdsToRemove = new string[0];
+                    ownerIdsToRemove = Array.Empty<string>();
                 }
 
                 // Define the complete set of owners
@@ -686,7 +686,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 }
                 else
                 {
-                    memberIdsToRemove = new string[0];
+                    memberIdsToRemove = Array.Empty<string>();
                 }
             }
             catch (Exception ex)

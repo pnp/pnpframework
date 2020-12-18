@@ -37,7 +37,7 @@ namespace PnP.Framework.Provisioning.Model
         {
             return (String.Format("{0}|{1}",
                 this.Deactivate.GetHashCode(),
-                (this.Id != null ? this.Id.GetHashCode() : 0)
+                this.Id.GetHashCode()
             ).GetHashCode());
         }
 

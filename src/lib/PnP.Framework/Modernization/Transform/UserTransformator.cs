@@ -16,7 +16,7 @@ namespace PnP.Framework.Modernization.Transform
     /// <summary>
     /// Class that handles the transformation of users 
     /// </summary>
-    public class UserTransformator: BaseTransform
+    public class UserTransformator : BaseTransform
     {
 
         private ClientContext _sourceContext;
@@ -77,7 +77,7 @@ namespace PnP.Framework.Modernization.Transform
             {
                 targetContext = sourceContext;
             }
-                        
+
             this._sourceContext = sourceContext;
             this._targetContext = targetContext;
 
@@ -99,7 +99,7 @@ namespace PnP.Framework.Modernization.Transform
             {
                 _ldapSpecifiedByUser = default;
             }
-            
+
             _sourceVersion = baseTransformationInformation?.SourceVersion ?? SPVersion.SPO; // SPO Fall Back
             _skipUserMapping = baseTransformationInformation.SkipUserMapping;
         }
@@ -149,7 +149,7 @@ namespace PnP.Framework.Modernization.Transform
 
             // Mapping Provided
             // Allow all types of platforms
-            if(this.IsUserMappingSpecified)
+            if (this.IsUserMappingSpecified)
             {
                 LogInfo(string.Format(LogStrings.UserTransformDefaultMapping, principalInput.GetUserName()), LogStrings.Heading_UserTransform);
 
@@ -159,7 +159,7 @@ namespace PnP.Framework.Modernization.Transform
                 // When matching, do with and without the tokens   
                 var result = principalInput;
                 var firstCheck = this._userMapping.Where(o => o.SourceUser.Equals(principalInput, StringComparison.InvariantCultureIgnoreCase));
-                if(!firstCheck.Any())
+                if (!firstCheck.Any())
                 {
                     //Second check
                     if (principalInput.Contains("|"))
@@ -167,7 +167,7 @@ namespace PnP.Framework.Modernization.Transform
                         var userNameToCheck = principalInput.GetUserName();
                         var secondCheck = this._userMapping.Where(o => o.SourceUser.Equals(userNameToCheck, StringComparison.InvariantCultureIgnoreCase));
 
-                        if(secondCheck.Any())
+                        if (secondCheck.Any())
                         {
                             result = secondCheck.First().TargetUser;
 
@@ -187,7 +187,7 @@ namespace PnP.Framework.Modernization.Transform
                             else
                             {
                                 LogInfo(string.Format(LogStrings.UserTransformSuccess, userNameToCheck, result), LogStrings.Heading_UserTransform);
-                            }   
+                            }
                         }
                         else
                         {
@@ -225,7 +225,7 @@ namespace PnP.Framework.Modernization.Transform
             else
             {
                 // If not then default user transformation from on-premises only.
-                if(_sourceVersion != SPVersion.SPO && IsExecutingTransformOnDomain())
+                if (_sourceVersion != SPVersion.SPO && IsExecutingTransformOnDomain())
                 {
                     LogInfo(string.Format(LogStrings.UserTransformDefaultMapping, principalInput.GetUserName()), LogStrings.Heading_UserTransform);
 
@@ -328,7 +328,7 @@ namespace PnP.Framework.Modernization.Transform
                     else
                     {
                         return credential.UserName.ContainsIgnoringCasing(Environment.UserDomainName);
-                    }                    
+                    }
                 }
             }
             catch
@@ -424,7 +424,7 @@ namespace PnP.Framework.Modernization.Transform
                 }
 
                 return string.Empty;
-            }            
+            }
         }
 
         /// <summary>
@@ -434,6 +434,7 @@ namespace PnP.Framework.Modernization.Transform
         /// <param name="samAccountName"></param>
         internal string SearchSourceDomainForUPN(AccountType accountType, string samAccountName)
         {
+#pragma warning disable CA1416 // Only available for Windows
             try
             {
 
@@ -446,42 +447,45 @@ namespace PnP.Framework.Modernization.Transform
                 {
 
                     // Bind to the users container.
-                    DirectoryEntry entry = new DirectoryEntry(ldapQuery);
-
-                    // Create a DirectorySearcher object.
-                    DirectorySearcher mySearcher = new DirectorySearcher(entry);
-                    // Create a SearchResultCollection object to hold a collection of SearchResults
-                    // returned by the FindAll method.
-                    mySearcher.PageSize = 500;
-
-                    string strFilter = string.Empty;
-                    if (accountType == AccountType.User)
+                    using (DirectoryEntry entry = new DirectoryEntry(ldapQuery))
                     {
-                        strFilter = string.Format("(&(objectCategory=User)(| (SAMAccountName={0})(cn={0})))", samAccountName);
-                    }
-                    else if (accountType == AccountType.Group)
-                    {
-                        strFilter = string.Format("(&(objectCategory=Group)(objectClass=group)(| (objectsid={0})(name={0})))", samAccountName);
-                    }
-
-                    var propertiesToLoad = new[] { "SAMAccountName", "userprincipalname", "sid" };
-
-                    mySearcher.PropertiesToLoad.AddRange(propertiesToLoad);
-                    mySearcher.Filter = strFilter;
-                    mySearcher.CacheResults = false;
-
-                    SearchResultCollection result = mySearcher.FindAll(); //Consider FindOne
-
-                    if (result != null && result.Count > 0)
-                    {
-                        if (accountType == AccountType.User)
+                        // Create a DirectorySearcher object.
+                        using (DirectorySearcher mySearcher = new DirectorySearcher(entry))
                         {
-                            return GetProperty(result[0], "userprincipalname");
-                        }
+                            // Create a SearchResultCollection object to hold a collection of SearchResults
+                            // returned by the FindAll method.
+                            mySearcher.PageSize = 500;
 
-                        if (accountType == AccountType.Group)
-                        {
-                            return GetProperty(result[0], "samaccountname"); // This will only confirm existance
+                            string strFilter = string.Empty;
+                            if (accountType == AccountType.User)
+                            {
+                                strFilter = string.Format("(&(objectCategory=User)(| (SAMAccountName={0})(cn={0})))", samAccountName);
+                            }
+                            else if (accountType == AccountType.Group)
+                            {
+                                strFilter = string.Format("(&(objectCategory=Group)(objectClass=group)(| (objectsid={0})(name={0})))", samAccountName);
+                            }
+
+                            var propertiesToLoad = new[] { "SAMAccountName", "userprincipalname", "sid" };
+
+                            mySearcher.PropertiesToLoad.AddRange(propertiesToLoad);
+                            mySearcher.Filter = strFilter;
+                            mySearcher.CacheResults = false;
+
+                            SearchResultCollection result = mySearcher.FindAll(); //Consider FindOne
+
+                            if (result != null && result.Count > 0)
+                            {
+                                if (accountType == AccountType.User)
+                                {
+                                    return GetProperty(result[0], "userprincipalname");
+                                }
+
+                                if (accountType == AccountType.Group)
+                                {
+                                    return GetProperty(result[0], "samaccountname"); // This will only confirm existance
+                                }
+                            }
                         }
                     }
 
@@ -491,12 +495,12 @@ namespace PnP.Framework.Modernization.Transform
                     LogWarning(LogStrings.Warning_UserTransformCannotUseLDAPConnection, LogStrings.Heading_UserTransform);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 LogError(LogStrings.Error_ErrorSearchingDomain, LogStrings.Heading_UserTransform, ex);
             }
-
             return string.Empty;
+#pragma warning restore CA1416
         }
 
         /// <summary>
@@ -507,6 +511,7 @@ namespace PnP.Framework.Modernization.Transform
         /// <returns></returns>
         private static string GetProperty(SearchResult searchResult, string PropertyName)
         {
+#pragma warning disable CA1416
             if (searchResult.Properties.Contains(PropertyName))
             {
                 return searchResult.Properties[PropertyName][0].ToString();
@@ -515,8 +520,9 @@ namespace PnP.Framework.Modernization.Transform
             {
                 return string.Empty;
             }
+#pragma warning restore CA1416
         }
-        
+
         /// <summary>
         /// Resolves friendly domain name to Fully Qualified Domain Name
         /// </summary>
@@ -524,6 +530,7 @@ namespace PnP.Framework.Modernization.Transform
         /// <returns></returns>
         internal string ResolveFriendlyDomainToLdapDomain(string friendlyDomainName)
         {
+#pragma warning disable CA1416
             //Reference and credit: https://www.codeproject.com/Articles/18102/Howto-Almost-Everything-In-Active-Directory-via-C#13 
             try
             {
@@ -537,6 +544,7 @@ namespace PnP.Framework.Modernization.Transform
             }
 
             return string.Empty;
+#pragma warning restore CA1416
         }
 
         /// <summary>
@@ -553,7 +561,8 @@ namespace PnP.Framework.Modernization.Transform
                 cleanerString = principal.Split('|').Last();
             }
 
-            if (principal.Contains('\\')){
+            if (principal.Contains('\\'))
+            {
                 cleanerString = principal.Split('\\')[1];
             }
 

@@ -472,7 +472,7 @@ namespace PnP.Framework.Provisioning.Model
                 this.TemplateType.GetHashCode(),
                 (this.Title != null ? this.Title.GetHashCode() : 0),
                 (this.Url != null ? this.Url.GetHashCode() : 0),
-                (this.TemplateFeatureID != null ? this.TemplateFeatureID.GetHashCode() : 0),
+                this.TemplateFeatureID.GetHashCode(),
                 this.RemoveExistingViews.GetHashCode(),
                 this.EnableMinorVersions.GetHashCode(),
                 this.EnableModeration.GetHashCode(),

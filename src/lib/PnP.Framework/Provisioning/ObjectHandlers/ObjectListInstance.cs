@@ -1694,7 +1694,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             {
                 newUserCustomAction.DescriptionResource.SetUserResourceValue(userCustomAction.Description, parser);
             }
-            if (userCustomAction.ClientSideComponentId != null && userCustomAction.ClientSideComponentId != Guid.Empty)
+            if (userCustomAction.ClientSideComponentId != Guid.Empty)
             {
                 newUserCustomAction.ClientSideComponentId = userCustomAction.ClientSideComponentId;
             }

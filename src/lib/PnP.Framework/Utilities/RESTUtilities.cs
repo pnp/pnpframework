@@ -15,9 +15,9 @@ namespace PnP.Framework.Utilities
 {
     internal static class RESTUtilities
     {
-// #pragma warning disable CS0169
-//         private static ConcurrentDictionary<string, (string requestDigest, DateTime expiresOn)> requestDigestInfos = new ConcurrentDictionary<string, (string requestDigest, DateTime expiresOn)>();
-// #pragma warning restore CS0169
+        // #pragma warning disable CS0169
+        //         private static ConcurrentDictionary<string, (string requestDigest, DateTime expiresOn)> requestDigestInfos = new ConcurrentDictionary<string, (string requestDigest, DateTime expiresOn)>();
+        // #pragma warning restore CS0169
 
         // internal static void SetAuthenticationCookies(this HttpClientHandler handler, ClientContext context)
         // {
@@ -224,57 +224,60 @@ namespace PnP.Framework.Utilities
                 {
                     var requestUrl = $"{web.Url}{endpoint}";
 
-                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
-                    request.Headers.Add("accept", "application/json;odata=nometadata");
-                    if (!string.IsNullOrEmpty(accessToken))
+                    using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl))
                     {
-                        request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
-                        var requestDigest = await (web.Context as ClientContext).GetRequestDigestAsync().ConfigureAwait(false);
-                        request.Headers.Add("X-RequestDigest", requestDigest);
-                    }
-                    else
-                    {
-                        if (web.Context.Credentials is NetworkCredential networkCredential)
+                        request.Headers.Add("accept", "application/json;odata=nometadata");
+                        if (!string.IsNullOrEmpty(accessToken))
                         {
-                            handler.Credentials = networkCredential;
+                            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
+                            var requestDigest = await (web.Context as ClientContext).GetRequestDigestAsync().ConfigureAwait(false);
+                            request.Headers.Add("X-RequestDigest", requestDigest);
                         }
-                        request.Headers.Add("X-RequestDigest", await (web.Context as ClientContext).GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false));
-                    }
-                    if (!string.IsNullOrWhiteSpace(cultureLanguageName))
-                    {
-                        request.Headers.Add("Accept-Language", cultureLanguageName);
-                    }
-
-                    if (!string.IsNullOrEmpty(payload))
-                    {
-                        ////var jsonBody = JsonConvert.SerializeObject(postObject);
-                        var requestBody = new StringContent(payload);
-                        MediaTypeHeaderValue sharePointJsonMediaType = MediaTypeHeaderValue.Parse("application/json;odata=nometadata;charset=utf-8");
-                        requestBody.Headers.ContentType = sharePointJsonMediaType;
-                        request.Content = requestBody;
-                    }
-                    // Perform actual post operation
-                    HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        // If value empty, URL is taken
-                        var responseString = await response.Content.ReadAsStringAsync();
-                        if (responseString != null)
+                        else
                         {
-                            try
+                            if (web.Context.Credentials is NetworkCredential networkCredential)
                             {
-
-                                returnObject = responseString;
-
+                                handler.Credentials = networkCredential;
                             }
-                            catch { }
+                            request.Headers.Add("X-RequestDigest", await (web.Context as ClientContext).GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false));
                         }
-                    }
-                    else
-                    {
-                        // Something went wrong...
-                        throw new Exception(await response.Content.ReadAsStringAsync());
+                        if (!string.IsNullOrWhiteSpace(cultureLanguageName))
+                        {
+                            request.Headers.Add("Accept-Language", cultureLanguageName);
+                        }
+
+                        if (!string.IsNullOrEmpty(payload))
+                        {
+                            ////var jsonBody = JsonConvert.SerializeObject(postObject);
+                            var requestBody = new StringContent(payload);
+                            MediaTypeHeaderValue sharePointJsonMediaType = MediaTypeHeaderValue.Parse("application/json;odata=nometadata;charset=utf-8");
+                            requestBody.Headers.ContentType = sharePointJsonMediaType;
+                            request.Content = requestBody;
+                        }
+
+                        // Perform actual post operation
+                        HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            // If value empty, URL is taken
+                            var responseString = await response.Content.ReadAsStringAsync();
+                            if (responseString != null)
+                            {
+                                try
+                                {
+
+                                    returnObject = responseString;
+
+                                }
+                                catch { }
+                            }
+                        }
+                        else
+                        {
+                            // Something went wrong...
+                            throw new Exception(await response.Content.ReadAsStringAsync());
+                        }
                     }
                 }
             }

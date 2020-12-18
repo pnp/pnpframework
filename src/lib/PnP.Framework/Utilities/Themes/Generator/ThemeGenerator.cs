@@ -12,7 +12,7 @@ namespace PnP.Framework.Utilities.Themes.Generator
     /// overwriteCustomColor: a slot could have a generated color based on its inheritance rules(isCustomized is false), or a custom color
     /// based on user input(isCustomized is true), this bool tells us whether to override existing customized colors
     /// </summary>
-    public class ThemeGenerator
+    public static class ThemeGenerator
     {
         /// <summary>
         /// 

@@ -116,7 +116,7 @@ namespace PnP.Framework.Provisioning.Model
         public override int GetHashCode()
         {
             return (String.Format("{0}|{1}|{2}|{3}",
-                (this.Id != null ? this.Id.GetHashCode() : 0),
+                this.Id.GetHashCode(),
                 (this.Name != null ? this.Name.GetHashCode() : 0),
                 (this.Description != null ? this.Description.GetHashCode() : 0),
                 this.TermSets.Aggregate(0, (acc, next) => acc += (next != null ? next.GetHashCode() : 0))

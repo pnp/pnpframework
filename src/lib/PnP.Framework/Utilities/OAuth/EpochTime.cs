@@ -29,7 +29,7 @@
             long secondsSinceUnixEpoch;
             if (!long.TryParse(secondsSinceUnixEpochString, out secondsSinceUnixEpoch))
             {
-                throw new System.ArgumentException("Invalid date time string format.", "secondsSinceUnixEpochString");
+                throw new System.ArgumentException(nameof(secondsSinceUnixEpochString),"Invalid date time string format.");
             }
             this._secondsSinceUnixEpoch = secondsSinceUnixEpoch;
         }
@@ -38,7 +38,7 @@
         {
             if (secondsSinceUnixEpoch < 0L)
             {
-                throw new System.ArgumentException("secondsSinceUnixEpoch must be greater than or equal to zero.", "secondsSinceUnixEpoch");
+                throw new System.ArgumentException(nameof(secondsSinceUnixEpoch),"secondsSinceUnixEpoch must be greater than or equal to zero.");
             }
             this._secondsSinceUnixEpoch = secondsSinceUnixEpoch;
         }
@@ -51,7 +51,7 @@
                 {
                     EpochTime.UnixEpoch.ToString()
                 });
-                throw new System.ArgumentOutOfRangeException("dateTime", message);
+                throw new System.ArgumentOutOfRangeException(nameof(dateTime),message);
             }
             this._secondsSinceUnixEpoch = (long)(dateTime - EpochTime.UnixEpoch).TotalSeconds;
         }

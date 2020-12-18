@@ -131,8 +131,8 @@ namespace PnP.Framework.Provisioning.Model
             return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|",
                 this.AllowedContentTypes.Aggregate(0, (acc, next) => acc += (next != null ? next.GetHashCode() : 0)),
                 this.DefaultDocuments.Aggregate(0, (acc, next) => acc += (next != null ? next.GetHashCode() : 0)),
-                this.SharedFields.Aggregate(0, (acc, next) => acc += (next != null ? next.GetHashCode() : 0)),
-                this.WelcomePageFields.Aggregate(0, (acc, next) => acc += (next != null ? next.GetHashCode() : 0)),
+                this.SharedFields.Aggregate(0, (acc, next) => acc += next.GetHashCode()),
+                this.WelcomePageFields.Aggregate(0, (acc, next) => acc += next.GetHashCode()),
                 this.RemoveExistingContentTypes.GetHashCode(),
                 this.XmlDocuments?.GetHashCode() ?? 0
             ).GetHashCode());

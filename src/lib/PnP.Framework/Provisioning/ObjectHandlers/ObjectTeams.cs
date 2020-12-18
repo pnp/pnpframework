@@ -13,6 +13,7 @@ using PnP.Framework.Utilities;
 using PnP.Framework.Utilities.Graph;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
@@ -211,12 +212,19 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             // Check if the Group/Team already exists
             var alreadyExistingGroupId = GetGroupIdByMailNickname(scope, parsedMailNickname, accessToken);
 
+
             // If the Group already exists, we don't need to create it
             if (string.IsNullOrEmpty(alreadyExistingGroupId))
             {
                 // Otherwise we create the Group, first
 
                 // Prepare the IDs for owners and members
+
+                // check if we're in app-only context
+                var handler = new JwtSecurityTokenHandler();
+                var jsonToken = handler.ReadToken(accessToken) as JwtSecurityToken;
+                var isAppOnly = jsonToken.Claims.FirstOrDefault(c => c.Type == "unique_name") == null;
+
                 string[] desiredOwnerIds;
                 string[] desiredMemberIds;
                 if (team.Security != null)
@@ -244,8 +252,34 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 }
                 else
                 {
+
                     desiredOwnerIds = Array.Empty<string>();
                     desiredMemberIds = Array.Empty<string>();
+                }
+                if (!desiredOwnerIds.Any())
+                {
+                    if (isAppOnly)
+                    {
+                        throw new Exception("You are connecting using App-Only Authentication. In order to create the group for this team we need an owner. Please define at least one owner in the template.");
+                    }
+                    else
+                    {
+                        var uniquename_Claim = jsonToken.Claims.FirstOrDefault(c => c.Type == "unique_name");
+                        if (uniquename_Claim != null)
+                        {
+                            try
+                            {
+                                var jsonUser = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/users/{Uri.EscapeDataString(uniquename_Claim.Value.Replace("'", "''"))}?$select=id", accessToken);
+                                var id = JToken.Parse(jsonUser).Value<string>("id");
+                                desiredOwnerIds = new[] { id };
+                            }
+                            catch (Exception ex)
+                            {
+                                scope.LogError(CoreResources.Provisioning_ObjectHandlers_Teams_Team_FetchingUserError, ex.Message);
+                                return (null);
+                            }
+                        }
+                    }
                 }
 
                 var groupCreationRequest = new
@@ -458,13 +492,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             var content = new
             {
-                //template_odata_bind = $"{GraphHelper.MicrosoftGraphBaseURI}beta/teamsTemplates('standard')",
-                //DisplayName = parser.ParseString(team.DisplayName),
-                //Description = parser.ParseString(team.Description),
-                //Classification = parser.ParseString(team.Classification),
-                //Mailnickname = parser.ParseString(team.MailNickname),
-                //team.Specialization,
-                //team.Visibility,
+                // template_odata_bind = $"{GraphHelper.MicrosoftGraphBaseURI}beta/teamsTemplates('standard')",
+                // DisplayName = parser.ParseString(team.DisplayName),
+                // Description = parser.ParseString(team.Description),
+                // Classification = parser.ParseString(team.Classification),
+                // Mailnickname = parser.ParseString(team.MailNickname),
+                // team.Specialization,
+                // team.Visibility,
                 funSettings = new
                 {
                     team.FunSettings?.AllowGiphy,
@@ -590,7 +624,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 }
                 else
                 {
-                    ownerIdsToRemove = new string[0];
+                    ownerIdsToRemove = Array.Empty<string>();
                 }
 
                 // Define the complete set of owners
@@ -652,7 +686,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 }
                 else
                 {
-                    memberIdsToRemove = new string[0];
+                    memberIdsToRemove = Array.Empty<string>();
                 }
             }
             catch (Exception ex)

@@ -189,7 +189,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 }
             }
 
-            if (customAction.ClientSideComponentId != null && customAction.ClientSideComponentId != Guid.Empty)
+            if (customAction.ClientSideComponentId != Guid.Empty)
             {
                 if (existingCustomAction.ClientSideComponentId != customAction.ClientSideComponentId)
                 {

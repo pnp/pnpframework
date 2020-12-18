@@ -42,7 +42,7 @@ namespace PnP.Framework.Provisioning.Model
         /// <returns>Returns HashCode</returns>
         public override int GetHashCode()
         {
-            return (String.Format("{0}|{1}|{2}",
+            return (string.Format("{0}|{1}|{2}|{3}",
                 Name?.GetHashCode() ?? 0,
                 IsInverted.GetHashCode(),
                 Palette?.GetHashCode() ?? 0,

@@ -12,12 +12,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 {
     internal class SiteToTemplateConversion
     {
-        private static readonly HttpClient httpClient;
-
-        static SiteToTemplateConversion()
-        {
-            httpClient = new HttpClient();
-        }
+        private static readonly HttpClient httpClient = new HttpClient();
 
         /// <summary>
         /// Actual implementation of extracting configuration from existing site.

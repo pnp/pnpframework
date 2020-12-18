@@ -1,4 +1,4 @@
-﻿using PnP.Framework.Pages;
+﻿using Microsoft.SharePoint.Client;
 
 namespace PnP.Framework.Utilities.CanvasControl.Processors
 {
@@ -11,8 +11,8 @@ namespace PnP.Framework.Utilities.CanvasControl.Processors
         ///  Method for processing canvas control
         /// </summary>
         /// <param name="canvasControl">Canvas control object</param>
-        /// <param name="clientSidePage">ClientSidePage object</param>
-        public void Process(Framework.Provisioning.Model.CanvasControl canvasControl, ClientSidePage clientSidePage)
+        /// <param name="context">ClientContext to use</param>
+        public void Process(Framework.Provisioning.Model.CanvasControl canvasControl, ClientContext context)
         {
         }
     }

@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.SharePoint.Client;
 using Microsoft.SharePoint.Client.Taxonomy;
-using PnP.Framework.Pages;
 using PnP.Framework.Modernization.Entities;
 using PnP.Framework.Modernization.Extensions;
 using PnP.Framework.Modernization.Publishing;
@@ -9,13 +8,13 @@ using PnP.Framework.Modernization.Telemetry;
 using PnP.Framework.Modernization.Transform;
 using PnP.Framework.Modernization.Utilities;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Text.Json;
+using System.Text.RegularExpressions;
+using PnPCore = PnP.Core.Model.SharePoint;
 
 namespace PnP.Framework.Modernization.Cache
 {
@@ -211,9 +210,9 @@ namespace PnP.Framework.Modernization.Cache
         /// </summary>
         /// <param name="page">Page to grab the components for</param>
         /// <returns></returns>
-        public List<ClientSideComponent> GetClientSideComponents(ClientSidePage page)
+        public List<PnPCore.IPageComponent> GetClientSideComponents(ClientContext targetClientContext, PnPCore.IPage page)
         {
-            Guid webId = page.Context.Web.EnsureProperty(o => o.Id);
+            Guid webId = targetClientContext.Web.EnsureProperty(o => o.Id);
 
             var siteToComponentMapping = Store.GetAndInitialize<Dictionary<Guid, string>>(StoreOptions.GetKey(keySiteToComponentMapping));
 
@@ -225,13 +224,13 @@ namespace PnP.Framework.Modernization.Cache
                     var clientSideComponents2 = Store.GetAndInitialize<Dictionary<string, string>>(StoreOptions.GetKey(keyClientSideComponents));
                     if (clientSideComponents2.TryGetValue(componentKey, out string componentList))
                     {
-                        return JsonSerializer.Deserialize<List<ClientSideComponent>>(componentList);
+                        return JsonSerializer.Deserialize<List<PnPCore.IPageComponent>>(componentList);
                     }
                 }
             }
 
             // Ok, so nothing in cache so it seems, so let's get the components
-            var componentsToAdd = page.AvailableClientSideComponents().ToList();
+            var componentsToAdd = page.AvailablePageComponents().ToList();
 
             // calculate the componentkey
             string jsonComponentsToAdd = JsonSerializer.Serialize(componentsToAdd);

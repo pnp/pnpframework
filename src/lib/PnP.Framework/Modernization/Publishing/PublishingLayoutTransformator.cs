@@ -1,10 +1,10 @@
-﻿using PnP.Framework.Pages;
-using PnP.Framework.Modernization.Entities;
+﻿using PnP.Framework.Modernization.Entities;
 using PnP.Framework.Modernization.Telemetry;
 using PnP.Framework.Modernization.Transform;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PnPCore = PnP.Core.Model.SharePoint;
 
 namespace PnP.Framework.Modernization.Publishing
 {
@@ -13,7 +13,7 @@ namespace PnP.Framework.Modernization.Publishing
     /// </summary>
     public class PublishingLayoutTransformator : BaseTransform, ILayoutTransformator
     {
-        private ClientSidePage page;
+        private PnPCore.IPage page;
         private PageLayout pageLayoutMappingModel;
 
         #region Construction
@@ -23,7 +23,7 @@ namespace PnP.Framework.Modernization.Publishing
         /// <param name="page">Client side page that will be receive the created layout</param>
         /// <param name="pageLayoutMappingModel"></param>
         /// <param name="logObservers"></param>
-        public PublishingLayoutTransformator(ClientSidePage page, PageLayout pageLayoutMappingModel, IList<ILogObserver> logObservers = null)
+        public PublishingLayoutTransformator(PnPCore.IPage page, PageLayout pageLayoutMappingModel, IList<ILogObserver> logObservers = null)
         {
             // Register observers
             if (logObservers != null)
@@ -61,7 +61,7 @@ namespace PnP.Framework.Modernization.Publishing
             // Should not occur, but to be at the safe side...
             if (pageData.Item2.Count == 0)
             {
-                page.AddSection(CanvasSectionTemplate.OneColumn, 1, GetBackgroundEmphasis(1));
+                page.AddSection(PnPCore.CanvasSectionTemplate.OneColumn, 1, GetBackgroundEmphasis(1));
                 return;
             }
 
@@ -104,11 +104,11 @@ namespace PnP.Framework.Modernization.Publishing
                         {
                             if (includeVerticalColumn && rowIterator == firstRow)
                             {
-                                page.AddSection(CanvasSectionTemplate.OneColumnVerticalSection, sectionOrder, GetBackgroundEmphasis(rowIterator), verticalColumnEmphasis);
+                                page.AddSection(PnPCore.CanvasSectionTemplate.OneColumnVerticalSection, sectionOrder, GetBackgroundEmphasis(rowIterator), verticalColumnEmphasis);
                             }
                             else
                             {
-                                page.AddSection(CanvasSectionTemplate.OneColumn, sectionOrder, GetBackgroundEmphasis(rowIterator));
+                                page.AddSection(PnPCore.CanvasSectionTemplate.OneColumn, sectionOrder, GetBackgroundEmphasis(rowIterator));
                             }
                         }
                         else if (maxColumns == 2)
@@ -147,11 +147,11 @@ namespace PnP.Framework.Modernization.Publishing
                                             // image left
                                             if (includeVerticalColumn && rowIterator == firstRow)
                                             {
-                                                page.AddSection(CanvasSectionTemplate.TwoColumnRightVerticalSection, sectionOrder, GetBackgroundEmphasis(rowIterator), verticalColumnEmphasis);
+                                                page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumnRightVerticalSection, sectionOrder, GetBackgroundEmphasis(rowIterator), verticalColumnEmphasis);
                                             }
                                             else
                                             {
-                                                page.AddSection(CanvasSectionTemplate.TwoColumnRight, sectionOrder, GetBackgroundEmphasis(rowIterator));
+                                                page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumnRight, sectionOrder, GetBackgroundEmphasis(rowIterator));
                                             }
                                         }
                                         else
@@ -159,11 +159,11 @@ namespace PnP.Framework.Modernization.Publishing
                                             // image right
                                             if (includeVerticalColumn && rowIterator == firstRow)
                                             {
-                                                page.AddSection(CanvasSectionTemplate.TwoColumnLeftVerticalSection, sectionOrder, GetBackgroundEmphasis(rowIterator), verticalColumnEmphasis);
+                                                page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumnLeftVerticalSection, sectionOrder, GetBackgroundEmphasis(rowIterator), verticalColumnEmphasis);
                                             }
                                             else
                                             {
-                                                page.AddSection(CanvasSectionTemplate.TwoColumnLeft, sectionOrder, GetBackgroundEmphasis(rowIterator));
+                                                page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumnLeft, sectionOrder, GetBackgroundEmphasis(rowIterator));
                                             }
                                         }
                                     }
@@ -171,11 +171,11 @@ namespace PnP.Framework.Modernization.Publishing
                                     {
                                         if (includeVerticalColumn && rowIterator == firstRow)
                                         {
-                                            page.AddSection(CanvasSectionTemplate.TwoColumnVerticalSection, sectionOrder, GetBackgroundEmphasis(rowIterator), verticalColumnEmphasis);
+                                            page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumnVerticalSection, sectionOrder, GetBackgroundEmphasis(rowIterator), verticalColumnEmphasis);
                                         }
                                         else
                                         {
-                                            page.AddSection(CanvasSectionTemplate.TwoColumn, sectionOrder, GetBackgroundEmphasis(rowIterator));
+                                            page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumn, sectionOrder, GetBackgroundEmphasis(rowIterator));
                                         }
                                     }
                                 }
@@ -192,44 +192,44 @@ namespace PnP.Framework.Modernization.Publishing
                                             // two columns with each only one image...
                                             if (includeVerticalColumn && rowIterator == firstRow)
                                             {
-                                                page.AddSection(CanvasSectionTemplate.TwoColumnVerticalSection, sectionOrder, GetBackgroundEmphasis(rowIterator), verticalColumnEmphasis);
+                                                page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumnVerticalSection, sectionOrder, GetBackgroundEmphasis(rowIterator), verticalColumnEmphasis);
                                             }
                                             else
                                             {
-                                                page.AddSection(CanvasSectionTemplate.TwoColumn, sectionOrder, GetBackgroundEmphasis(rowIterator));
+                                                page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumn, sectionOrder, GetBackgroundEmphasis(rowIterator));
                                             }
                                         }
                                         else if (!firstImageColumnOtherWebParts.Any() && secondImageColumnOtherWebParts.Any())
                                         {
                                             if (includeVerticalColumn && rowIterator == firstRow)
                                             {
-                                                page.AddSection(CanvasSectionTemplate.TwoColumnRightVerticalSection, sectionOrder, GetBackgroundEmphasis(rowIterator), verticalColumnEmphasis);
+                                                page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumnRightVerticalSection, sectionOrder, GetBackgroundEmphasis(rowIterator), verticalColumnEmphasis);
                                             }
                                             else
                                             {
-                                                page.AddSection(CanvasSectionTemplate.TwoColumnRight, sectionOrder, GetBackgroundEmphasis(rowIterator));
+                                                page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumnRight, sectionOrder, GetBackgroundEmphasis(rowIterator));
                                             }
                                         }
                                         else if (firstImageColumnOtherWebParts.Any() && !secondImageColumnOtherWebParts.Any())
                                         {
                                             if (includeVerticalColumn && rowIterator == firstRow)
                                             {
-                                                page.AddSection(CanvasSectionTemplate.TwoColumnLeftVerticalSection, sectionOrder, GetBackgroundEmphasis(rowIterator), verticalColumnEmphasis);
+                                                page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumnLeftVerticalSection, sectionOrder, GetBackgroundEmphasis(rowIterator), verticalColumnEmphasis);
                                             }
                                             else
                                             {
-                                                page.AddSection(CanvasSectionTemplate.TwoColumnLeft, sectionOrder, GetBackgroundEmphasis(rowIterator));
+                                                page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumnLeft, sectionOrder, GetBackgroundEmphasis(rowIterator));
                                             }
                                         }
                                         else
                                         {
                                             if (includeVerticalColumn && rowIterator == firstRow)
                                             {
-                                                page.AddSection(CanvasSectionTemplate.TwoColumnVerticalSection, sectionOrder, GetBackgroundEmphasis(rowIterator), verticalColumnEmphasis);
+                                                page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumnVerticalSection, sectionOrder, GetBackgroundEmphasis(rowIterator), verticalColumnEmphasis);
                                             }
                                             else
                                             {
-                                                page.AddSection(CanvasSectionTemplate.TwoColumn, sectionOrder, GetBackgroundEmphasis(rowIterator));
+                                                page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumn, sectionOrder, GetBackgroundEmphasis(rowIterator));
                                             }
                                         }
                                     }
@@ -237,11 +237,11 @@ namespace PnP.Framework.Modernization.Publishing
                                     {
                                         if (includeVerticalColumn && rowIterator == firstRow)
                                         {
-                                            page.AddSection(CanvasSectionTemplate.TwoColumnVerticalSection, sectionOrder, GetBackgroundEmphasis(rowIterator), verticalColumnEmphasis);
+                                            page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumnVerticalSection, sectionOrder, GetBackgroundEmphasis(rowIterator), verticalColumnEmphasis);
                                         }
                                         else
                                         {
-                                            page.AddSection(CanvasSectionTemplate.TwoColumn, sectionOrder, GetBackgroundEmphasis(rowIterator));
+                                            page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumn, sectionOrder, GetBackgroundEmphasis(rowIterator));
                                         }
                                     }
                                 }
@@ -250,11 +250,11 @@ namespace PnP.Framework.Modernization.Publishing
                             {
                                 if (includeVerticalColumn && rowIterator == firstRow)
                                 {
-                                    page.AddSection(CanvasSectionTemplate.TwoColumnVerticalSection, sectionOrder, GetBackgroundEmphasis(rowIterator), verticalColumnEmphasis);
+                                    page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumnVerticalSection, sectionOrder, GetBackgroundEmphasis(rowIterator), verticalColumnEmphasis);
                                 }
                                 else
                                 {
-                                    page.AddSection(CanvasSectionTemplate.TwoColumn, sectionOrder, GetBackgroundEmphasis(rowIterator));
+                                    page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumn, sectionOrder, GetBackgroundEmphasis(rowIterator));
                                 }
                             }
                         }
@@ -262,11 +262,11 @@ namespace PnP.Framework.Modernization.Publishing
                         {
                             if (includeVerticalColumn && rowIterator == firstRow)
                             {
-                                page.AddSection(CanvasSectionTemplate.ThreeColumnVerticalSection, sectionOrder, GetBackgroundEmphasis(rowIterator), verticalColumnEmphasis);
+                                page.AddSection(PnPCore.CanvasSectionTemplate.ThreeColumnVerticalSection, sectionOrder, GetBackgroundEmphasis(rowIterator), verticalColumnEmphasis);
                             }
                             else
                             {
-                                page.AddSection(CanvasSectionTemplate.ThreeColumn, sectionOrder, GetBackgroundEmphasis(rowIterator));
+                                page.AddSection(PnPCore.CanvasSectionTemplate.ThreeColumn, sectionOrder, GetBackgroundEmphasis(rowIterator));
                             }
                         }
 

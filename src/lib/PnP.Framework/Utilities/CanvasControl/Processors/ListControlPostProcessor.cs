@@ -1,5 +1,4 @@
 ﻿using Microsoft.SharePoint.Client;
-using PnP.Framework.Pages;
 using System;
 using System.Collections.Generic;
 
@@ -26,10 +25,10 @@ namespace PnP.Framework.Utilities.CanvasControl.Processors
         /// Method for processing canvas control
         /// </summary>
         /// <param name="canvasControl">Canvas control object</param>
-        /// <param name="clientSidePage">ClientSidePage object</param>
-        public void Process(Framework.Provisioning.Model.CanvasControl canvasControl, ClientSidePage clientSidePage)
+        /// <param name="context">ClientContext to use</param>
+        public void Process(Framework.Provisioning.Model.CanvasControl canvasControl, ClientContext context)
         {
-            var web = GetWeb(clientSidePage);
+            var web = GetWeb(context);
             var list = GetList(web);
 
             if (list == null)
@@ -83,9 +82,9 @@ namespace PnP.Framework.Utilities.CanvasControl.Processors
             return null;
         }
 
-        private Web GetWeb(ClientSidePage clientSidePage)
+        private Web GetWeb(ClientContext context)
         {
-            return clientSidePage.Context.Web;
+            return context.Web;
         }
 
         private bool TryParseGuidProperty(string guid, out Guid id)

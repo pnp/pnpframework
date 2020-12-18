@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text.RegularExpressions;
-using Microsoft.SharePoint.Client;
-using PnP.Framework.Pages;
+﻿using Microsoft.SharePoint.Client;
 using PnP.Framework.Modernization.Entities;
 using PnP.Framework.Modernization.Extensions;
 using PnP.Framework.Modernization.Telemetry;
 using PnP.Framework.Modernization.Transform;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text.RegularExpressions;
+using PnPCore = PnP.Core.Model.SharePoint;
 
 namespace PnP.Framework.Modernization.Functions
 {
@@ -17,7 +17,7 @@ namespace PnP.Framework.Modernization.Functions
     /// </summary>
     public class FunctionProcessor : BaseFunctionProcessor
     {
-        private ClientSidePage page;
+        private PnPCore.IPage page;
         private PageTransformation pageTransformation;
         private List<AddOnType> addOnTypes;
         private object builtInFunctions;
@@ -31,7 +31,7 @@ namespace PnP.Framework.Modernization.Functions
         /// <param name="pageTransformation">Webpart mapping information</param>
         /// <param name="baseTransformationInformation">Page transformation information</param>
         /// <param name="logObservers"></param>
-        public FunctionProcessor(ClientContext sourceClientContext, ClientSidePage page, PageTransformation pageTransformation, BaseTransformationInformation baseTransformationInformation, IList<ILogObserver> logObservers = null)
+        public FunctionProcessor(ClientContext sourceClientContext, ClientContext targetClientContext, PnPCore.IPage page, PageTransformation pageTransformation, BaseTransformationInformation baseTransformationInformation, IList<ILogObserver> logObservers = null)
         {
             this.page = page;
             this.pageTransformation = pageTransformation;
@@ -47,7 +47,7 @@ namespace PnP.Framework.Modernization.Functions
 
             // instantiate default built in functions class
             this.addOnTypes = new List<AddOnType>();
-            this.builtInFunctions = Activator.CreateInstance(typeof(BuiltIn), baseTransformationInformation, this.page.Context, sourceClientContext, this.page, base.RegisteredLogObservers);
+            this.builtInFunctions = Activator.CreateInstance(typeof(BuiltIn), baseTransformationInformation, targetClientContext, sourceClientContext, this.page, base.RegisteredLogObservers);
 
             // instantiate the custom function classes (if there are)
             foreach (var addOn in this.pageTransformation.AddOns)
@@ -66,7 +66,7 @@ namespace PnP.Framework.Modernization.Functions
                     
                     var assembly = Assembly.LoadFile(path);
                     var customType = assembly.GetType(addOn.Type);
-                    var instance = Activator.CreateInstance(customType, baseTransformationInformation, this.page.Context, sourceClientContext, this.page, base.RegisteredLogObservers);
+                    var instance = Activator.CreateInstance(customType, baseTransformationInformation, targetClientContext, sourceClientContext, this.page, base.RegisteredLogObservers);
 
                     this.addOnTypes.Add(new AddOnType()
                     {

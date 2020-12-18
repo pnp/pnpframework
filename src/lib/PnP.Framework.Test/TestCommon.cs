@@ -18,7 +18,14 @@ namespace PnP.Framework.Test
         {
             try
             {
-                return configuration.AppSettings.Settings[key].Value;
+                if (configuration.AppSettings.Settings.AllKeys.Contains(key))
+                {
+                    return configuration.AppSettings.Settings[key].Value;
+                }
+                else
+                {
+                    return null;
+                }
             }
             catch
             {

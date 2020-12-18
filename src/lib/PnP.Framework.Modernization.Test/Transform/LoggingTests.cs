@@ -1,13 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.SharePoint.Client;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PnP.Framework.Modernization.Telemetry;
+using PnP.Framework.Modernization.Transform;
 using System;
 using System.Collections.Generic;
-using Microsoft.SharePoint.Client;
-using PnP.Framework.Modernization.Transform;
-using PnP.Framework.Pages;
-using PnP.Framework.Modernization.Pages;
-using PnP.Framework.Modernization.Entities;
 using System.Linq;
-using PnP.Framework.Modernization.Telemetry;
 
 namespace PnP.Framework.Modernization.Tests.Transform
 {

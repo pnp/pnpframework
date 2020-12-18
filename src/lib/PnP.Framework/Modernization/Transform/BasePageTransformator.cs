@@ -2,7 +2,6 @@
 using Microsoft.SharePoint.Client;
 using Microsoft.SharePoint.Client.Taxonomy;
 using Newtonsoft.Json;
-using PnP.Framework.Pages;
 using PnP.Framework.Modernization.Cache;
 using PnP.Framework.Modernization.Entities;
 using PnP.Framework.Modernization.Extensions;
@@ -13,6 +12,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Xml.Serialization;
+using PnPCore = PnP.Core.Model.SharePoint;
 
 namespace PnP.Framework.Modernization.Transform
 {
@@ -127,16 +127,16 @@ namespace PnP.Framework.Modernization.Transform
             return false;
         }
 
-        internal void RemoveEmptyTextParts(ClientSidePage targetPage)
+        internal void RemoveEmptyTextParts(PnPCore.IPage targetPage)
         {
-            var textParts = targetPage.Controls.Where(p => p.Type == typeof(PnP.Framework.Pages.ClientSideText));
+            var textParts = targetPage.Controls.Where(p => p.Type == typeof(PnPCore.IPageText));
             if (textParts != null && textParts.Any())
             {
                 HtmlParser parser = new HtmlParser(new HtmlParserOptions() { IsEmbedded = true });
 
                 foreach (var textPart in textParts.ToList())
                 {
-                    using (var document = parser.ParseDocument(((Framework.Pages.ClientSideText)textPart).Text))
+                    using (var document = parser.ParseDocument(((PnPCore.IPageText)textPart).Text))
                     {
                         if (document.FirstChild != null && string.IsNullOrEmpty(document.FirstChild.TextContent))
                         {
@@ -149,7 +149,7 @@ namespace PnP.Framework.Modernization.Transform
             }
         }
 
-        internal void RemoveEmptySectionsAndColumns(ClientSidePage targetPage)
+        internal void RemoveEmptySectionsAndColumns(PnPCore.IPage targetPage)
         {
             foreach (var section in targetPage.Sections.ToList())
             {
@@ -163,12 +163,12 @@ namespace PnP.Framework.Modernization.Transform
             // Remove empty columns
             foreach (var section in targetPage.Sections)
             {
-                if (section.Type == CanvasSectionTemplate.TwoColumn ||
-                    section.Type == CanvasSectionTemplate.TwoColumnLeft ||
-                    section.Type == CanvasSectionTemplate.TwoColumnRight ||
-                    section.Type == CanvasSectionTemplate.TwoColumnVerticalSection ||
-                    section.Type == CanvasSectionTemplate.TwoColumnLeftVerticalSection ||
-                    section.Type == CanvasSectionTemplate.TwoColumnRightVerticalSection)
+                if (section.Type == PnPCore.CanvasSectionTemplate.TwoColumn ||
+                    section.Type == PnPCore.CanvasSectionTemplate.TwoColumnLeft ||
+                    section.Type == PnPCore.CanvasSectionTemplate.TwoColumnRight ||
+                    section.Type == PnPCore.CanvasSectionTemplate.TwoColumnVerticalSection ||
+                    section.Type == PnPCore.CanvasSectionTemplate.TwoColumnLeftVerticalSection ||
+                    section.Type == PnPCore.CanvasSectionTemplate.TwoColumnRightVerticalSection)
                 {
                     var emptyColumn = section.Columns.Where(p => p.Controls.Count == 0 && !p.IsVerticalSectionColumn).FirstOrDefault();
                     if (emptyColumn != null)
@@ -176,22 +176,22 @@ namespace PnP.Framework.Modernization.Transform
                         // drop the empty column and change to single column section
                         section.Columns.Remove(emptyColumn);
 
-                        if (section.Type == CanvasSectionTemplate.TwoColumnVerticalSection ||
-                            section.Type == CanvasSectionTemplate.TwoColumnLeftVerticalSection ||
-                            section.Type == CanvasSectionTemplate.TwoColumnRightVerticalSection)
+                        if (section.Type == PnPCore.CanvasSectionTemplate.TwoColumnVerticalSection ||
+                            section.Type == PnPCore.CanvasSectionTemplate.TwoColumnLeftVerticalSection ||
+                            section.Type == PnPCore.CanvasSectionTemplate.TwoColumnRightVerticalSection)
                         {
-                            section.Type = CanvasSectionTemplate.OneColumnVerticalSection;
+                            section.Type = PnPCore.CanvasSectionTemplate.OneColumnVerticalSection;
                         }
                         else
                         {
-                            section.Type = CanvasSectionTemplate.OneColumn;
+                            section.Type = PnPCore.CanvasSectionTemplate.OneColumn;
                         }
 
-                        section.Columns.First().ResetColumn(0, 12);
+                        (section.Columns.First() as PnPCore.CanvasColumn).ResetColumn(0, 12);
                     }
                 }
-                else if (section.Type == CanvasSectionTemplate.ThreeColumn ||
-                         section.Type == CanvasSectionTemplate.ThreeColumnVerticalSection)
+                else if (section.Type == PnPCore.CanvasSectionTemplate.ThreeColumn ||
+                         section.Type == PnPCore.CanvasSectionTemplate.ThreeColumnVerticalSection)
                 {
                     var emptyColumns = section.Columns.Where(p => p.Controls.Count == 0 && !p.IsVerticalSectionColumn);
                     if (emptyColumns != null)
@@ -204,35 +204,35 @@ namespace PnP.Framework.Modernization.Transform
                                 section.Columns.Remove(emptyColumn);
                             }
 
-                            if (section.Type == CanvasSectionTemplate.ThreeColumnVerticalSection)
+                            if (section.Type == PnPCore.CanvasSectionTemplate.ThreeColumnVerticalSection)
                             {
-                                section.Type = CanvasSectionTemplate.OneColumnVerticalSection;
+                                section.Type = PnPCore.CanvasSectionTemplate.OneColumnVerticalSection;
                             }
                             else
                             {
-                                section.Type = CanvasSectionTemplate.OneColumn;
+                                section.Type = PnPCore.CanvasSectionTemplate.OneColumn;
                             }
 
-                            section.Columns.First().ResetColumn(0, 12);
+                            (section.Columns.First() as PnPCore.CanvasColumn).ResetColumn(0, 12);
                         }
                         else if (emptyColumns.Any() && emptyColumns.Count() == 1)
                         {
                             // Remove the empty column and change to two column section
                             section.Columns.Remove(emptyColumns.First());
 
-                            if (section.Type == CanvasSectionTemplate.ThreeColumnVerticalSection)
+                            if (section.Type == PnPCore.CanvasSectionTemplate.ThreeColumnVerticalSection)
                             {
-                                section.Type = CanvasSectionTemplate.TwoColumnVerticalSection;
+                                section.Type = PnPCore.CanvasSectionTemplate.TwoColumnVerticalSection;
                             }
                             else
                             {
-                                section.Type = CanvasSectionTemplate.TwoColumn;
+                                section.Type = PnPCore.CanvasSectionTemplate.TwoColumn;
                             }
 
                             int i = 0;
                             foreach (var column in section.Columns.Where(p => !p.IsVerticalSectionColumn))
                             {
-                                column.ResetColumn(i, 6);
+                                (column as PnPCore.CanvasColumn).ResetColumn(i, 6);
                                 i++;
                             }
                         }
@@ -472,14 +472,14 @@ namespace PnP.Framework.Modernization.Transform
             return principal;
         }
 
-        internal void CopyPageMetadata(PageTransformationInformation pageTransformationInformation, string pageType, ClientSidePage targetPage, List targetPagesLibrary)
+        internal void CopyPageMetadata(PageTransformationInformation pageTransformationInformation, string pageType, File targetPage, List targetPagesLibrary)
         {
             var fieldsToCopy = CacheManager.Instance.GetFieldsToCopy(this.sourceClientContext.Web, targetPagesLibrary, pageType);
             bool listItemWasReloaded = false;
             if (fieldsToCopy.Count > 0)
             {
                 // Load the target page list item
-                targetPage.Context.Load(targetPage.PageListItem);
+                targetPage.Context.Load(targetPage.ListItemAllFields);
                 targetPage.Context.ExecuteQueryRetry();
 
                 pageTransformationInformation.SourcePage.EnsureProperty(p => p.ContentType);
@@ -489,23 +489,23 @@ namespace PnP.Framework.Modernization.Transform
                 bool isSourceInitialized = false;
                 List sourceSitesPagesLibrary = default;
 
-                var sitePagesServerRelativeUrl = PnP.Framework.Utilities.UrlUtility.Combine(targetPage.Context.Web.ServerRelativeUrl.TrimEnd(new char[] { '/' }), "sitepages");
-                List targetSitePagesLibrary = targetPage.Context.Web.GetList(sitePagesServerRelativeUrl);
+                var sitePagesServerRelativeUrl = PnP.Framework.Utilities.UrlUtility.Combine((targetPage.Context as ClientContext).Web.ServerRelativeUrl.TrimEnd(new char[] { '/' }), "sitepages");
+                List targetSitePagesLibrary = (targetPage.Context as ClientContext).Web.GetList(sitePagesServerRelativeUrl);
                 targetPage.Context.Load(targetSitePagesLibrary, l => l.Fields.IncludeWithDefaultProperties(f => f.Id, f => f.Title, f => f.Hidden, f => f.InternalName, f => f.DefaultValue, f => f.Required, f => f.StaticName));
                 targetPage.Context.ExecuteQueryRetry();
 
                 
 
-                string contentTypeId = CacheManager.Instance.GetContentTypeId(targetPage.PageListItem.ParentList, pageTransformationInformation.SourcePage.ContentType.Name);
+                string contentTypeId = CacheManager.Instance.GetContentTypeId(targetPage.ListItemAllFields.ParentList, pageTransformationInformation.SourcePage.ContentType.Name);
                 if (!string.IsNullOrEmpty(contentTypeId))
                 {
                     // Load the target page list item, needs to be loaded as it was previously saved and we need to avoid version conflicts
-                    targetPage.Context.Load(targetPage.PageListItem);
+                    targetPage.Context.Load(targetPage.ListItemAllFields);
                     targetPage.Context.ExecuteQueryRetry();
                     listItemWasReloaded = true;
 
-                    targetPage.PageListItem[Constants.ContentTypeIdField] = contentTypeId;
-                    targetPage.PageListItem.UpdateOverwriteVersion();
+                    targetPage.ListItemAllFields[Constants.ContentTypeIdField] = contentTypeId;
+                    targetPage.ListItemAllFields.UpdateOverwriteVersion();
                     isDirty = true;
                 }
 
@@ -518,7 +518,7 @@ namespace PnP.Framework.Modernization.Transform
                         if (!listItemWasReloaded)
                         {
                             // Load the target page list item, needs to be loaded as it was previously saved and we need to avoid version conflicts
-                            targetPage.Context.Load(targetPage.PageListItem);
+                            targetPage.Context.Load(targetPage.ListItemAllFields);
                             targetPage.Context.ExecuteQueryRetry();
                             listItemWasReloaded = true;
                         }
@@ -605,11 +605,11 @@ namespace PnP.Framework.Modernization.Transform
                                                     //If not multi-valued exception is thrown
                                                     if (taxonomyFieldValueArray.Count() == 1)
                                                     {
-                                                        taxField.SetFieldValueByValue(targetPage.PageListItem, valueCollectionToCopy[0]);
+                                                        taxField.SetFieldValueByValue(targetPage.ListItemAllFields, valueCollectionToCopy[0]);
                                                     }
                                                     else
                                                     {
-                                                        taxField.SetFieldValueByLabelGuidPair(targetPage.PageListItem, string.Join(";", taxonomyFieldValueArray));
+                                                        taxField.SetFieldValueByLabelGuidPair(targetPage.ListItemAllFields, string.Join(";", taxonomyFieldValueArray));
                                                     }
 
                                                     isDirty = true;
@@ -627,7 +627,7 @@ namespace PnP.Framework.Modernization.Transform
                                                 {
                                                     var taxonomyFieldValueArray = valueCollectionToCopy.Select(taxonomyFieldValue => $"-1;#{taxonomyFieldValue.Label}|{taxonomyFieldValue.TermGuid}");
                                                     var valueCollection = new TaxonomyFieldValueCollection(targetPage.Context, string.Join(";#", taxonomyFieldValueArray), taxField);
-                                                    taxField.SetFieldValueByValueCollection(targetPage.PageListItem, valueCollection);
+                                                    taxField.SetFieldValueByValueCollection(targetPage.ListItemAllFields, valueCollection);
                                                     isDirty = true;
                                                     LogInfo($"{LogStrings.TransformCopyingMetaDataField} {fieldToCopy.FieldName}", LogStrings.Heading_CopyingPageMetadata);
                                                 }
@@ -667,7 +667,7 @@ namespace PnP.Framework.Modernization.Transform
                                                 if (valueCollectionToCopy.Length > 0)
                                                 {
                                                     var valueCollection = new TaxonomyFieldValueCollection(targetPage.Context, string.Join(";#", taxonomyFieldValueArray), taxField);
-                                                    taxField.SetFieldValueByValueCollection(targetPage.PageListItem, valueCollection);
+                                                    taxField.SetFieldValueByValueCollection(targetPage.ListItemAllFields, valueCollection);
                                                     isDirty = true;
                                                     LogInfo($"{LogStrings.TransformCopyingMetaDataField} {fieldToCopy.FieldName}", LogStrings.Heading_CopyingPageMetadata);
                                                 }
@@ -706,7 +706,7 @@ namespace PnP.Framework.Modernization.Transform
                                                 if (taxValueArray.Length > 0)
                                                 {
                                                     var valueCollection = new TaxonomyFieldValueCollection(targetPage.Context, string.Join(";#", taxonomyFieldValueArray), taxField);
-                                                    taxField.SetFieldValueByValueCollection(targetPage.PageListItem, valueCollection);
+                                                    taxField.SetFieldValueByValueCollection(targetPage.ListItemAllFields, valueCollection);
                                                     isDirty = true;
                                                     LogInfo($"{LogStrings.TransformCopyingMetaDataField} {fieldToCopy.FieldName}", LogStrings.Heading_CopyingPageMetadata);
                                                 }
@@ -790,7 +790,7 @@ namespace PnP.Framework.Modernization.Transform
                                                         taxValue.Label = termTranform.TermLabel;
                                                         taxValue.TermGuid = termTranform.TermGuid.ToString();
                                                         taxValue.WssId = -1;
-                                                        taxField.SetFieldValueByValue(targetPage.PageListItem, taxValue);
+                                                        taxField.SetFieldValueByValue(targetPage.ListItemAllFields, taxValue);
                                                         isDirty = true;
                                                         LogInfo($"{LogStrings.TransformCopyingMetaDataField} {fieldToCopy.FieldName}", LogStrings.Heading_CopyingPageMetadata);
                                                     }
@@ -804,7 +804,7 @@ namespace PnP.Framework.Modernization.Transform
                                                     taxValue.Label = labelToSet;
                                                     taxValue.TermGuid = termGuidToSet;
                                                     taxValue.WssId = -1;
-                                                    taxField.SetFieldValueByValue(targetPage.PageListItem, taxValue);
+                                                    taxField.SetFieldValueByValue(targetPage.ListItemAllFields, taxValue);
                                                     isDirty = true;
                                                     LogInfo($"{LogStrings.TransformCopyingMetaDataField} {fieldToCopy.FieldName}", LogStrings.Heading_CopyingPageMetadata);
                                                 }
@@ -824,7 +824,7 @@ namespace PnP.Framework.Modernization.Transform
                                                         taxValue.Label = transformTerm.TermLabel;
                                                         taxValue.TermGuid = transformTerm.TermGuid.ToString();
                                                         taxValue.WssId = -1;
-                                                        taxField.SetFieldValueByValue(targetPage.PageListItem, taxValue);
+                                                        taxField.SetFieldValueByValue(targetPage.ListItemAllFields, taxValue);
                                                         isDirty = true;
                                                         LogInfo($"{LogStrings.TransformCopyingMetaDataField} {fieldToCopy.FieldName}", LogStrings.Heading_CopyingPageMetadata);
                                                     }
@@ -838,7 +838,7 @@ namespace PnP.Framework.Modernization.Transform
                                                     taxValue.Label = label;
                                                     taxValue.TermGuid = termGuid;
                                                     taxValue.WssId = -1;
-                                                    taxField.SetFieldValueByValue(targetPage.PageListItem, taxValue);
+                                                    taxField.SetFieldValueByValue(targetPage.ListItemAllFields, taxValue);
                                                     isDirty = true;
                                                     LogInfo($"{LogStrings.TransformCopyingMetaDataField} {fieldToCopy.FieldName}", LogStrings.Heading_CopyingPageMetadata);
                                                 }
@@ -871,8 +871,8 @@ namespace PnP.Framework.Modernization.Transform
                     // Added handling here to prevent entire transform process from failing.
                     try
                     {
-                        targetPage.PageListItem.UpdateOverwriteVersion();
-                        targetPage.Context.Load(targetPage.PageListItem);
+                        targetPage.ListItemAllFields.UpdateOverwriteVersion();
+                        targetPage.Context.Load(targetPage.ListItemAllFields);
                         targetPage.Context.ExecuteQueryRetry();
                         isDirty = false;
                     }
@@ -913,7 +913,7 @@ namespace PnP.Framework.Modernization.Transform
                                     }
 
                                     // Ensure user exists on target site
-                                    var ensuredUserOnTarget = CacheManager.Instance.GetEnsuredUser(targetPage.Context, fieldUser);
+                                    var ensuredUserOnTarget = CacheManager.Instance.GetEnsuredUser((targetPage.Context as ClientContext), fieldUser);
                                     if (ensuredUserOnTarget != null)
                                     {
                                         // Prep a new FieldUserValue object instance and update the list item
@@ -921,12 +921,12 @@ namespace PnP.Framework.Modernization.Transform
                                         {
                                             LookupId = ensuredUserOnTarget.Id
                                         };
-                                        targetPage.PageListItem[fieldToCopy.FieldName] = newUser;
+                                        targetPage.ListItemAllFields[fieldToCopy.FieldName] = newUser;
                                     }
                                     else
                                     {
                                         // Clear target field - needed in overwrite scenarios
-                                        targetPage.PageListItem[fieldToCopy.FieldName] = null;
+                                        targetPage.ListItemAllFields[fieldToCopy.FieldName] = null;
                                         LogWarning(string.Format(LogStrings.Warning_UserIsNotMappedOrResolving, (fieldValueToSet as FieldUserValue).LookupValue, fieldToCopy.FieldName), LogStrings.Heading_CopyingPageMetadata);
                                     }
                                 }
@@ -951,7 +951,7 @@ namespace PnP.Framework.Modernization.Transform
                                         }
 
                                         // Ensure user exists on target site
-                                        var ensuredUserOnTarget = CacheManager.Instance.GetEnsuredUser(targetPage.Context, fieldUser);
+                                        var ensuredUserOnTarget = CacheManager.Instance.GetEnsuredUser((targetPage.Context as ClientContext), fieldUser);
                                         if (ensuredUserOnTarget != null)
                                         {
                                             // Prep a new FieldUserValue object instance
@@ -976,12 +976,12 @@ namespace PnP.Framework.Modernization.Transform
 
                                 if (userValues.Count > 0)
                                 {
-                                    targetPage.PageListItem[fieldToCopy.FieldName] = userValues.ToArray();
+                                    targetPage.ListItemAllFields[fieldToCopy.FieldName] = userValues.ToArray();
                                 }
                                 else
                                 {
                                     // Clear target field - needed in overwrite scenarios
-                                    targetPage.PageListItem[fieldToCopy.FieldName] = null;
+                                    targetPage.ListItemAllFields[fieldToCopy.FieldName] = null;
                                 }
                             }
                         }
@@ -1009,12 +1009,12 @@ namespace PnP.Framework.Modernization.Transform
                                     }
                                 }
 
-                                targetPage.PageListItem[fieldToCopy.FieldName] = postCategoryFieldValue;
+                                targetPage.ListItemAllFields[fieldToCopy.FieldName] = postCategoryFieldValue;
                             }
                             // Regular field handling
                             else
                             {
-                                targetPage.PageListItem[fieldToCopy.FieldName] = pageTransformationInformation.SourcePage[fieldToCopy.FieldName];
+                                targetPage.ListItemAllFields[fieldToCopy.FieldName] = pageTransformationInformation.SourcePage[fieldToCopy.FieldName];
                             }
                         }
 
@@ -1029,8 +1029,8 @@ namespace PnP.Framework.Modernization.Transform
 
                 if (isDirty)
                 {
-                    targetPage.PageListItem.UpdateOverwriteVersion();
-                    targetPage.Context.Load(targetPage.PageListItem);
+                    targetPage.ListItemAllFields.UpdateOverwriteVersion();
+                    targetPage.Context.Load(targetPage.ListItemAllFields);
                     targetPage.Context.ExecuteQueryRetry();
                     isDirty = false;
                 }
@@ -1326,16 +1326,16 @@ namespace PnP.Framework.Modernization.Transform
             this.termTransformator = new TermTransformator(baseTransformationInformation, sourceClientContext, targetClientContext, RegisteredLogObservers);
         }
 
-        internal void SetAuthorInPageHeader(ClientSidePage targetClientSidePage)
+        internal void SetAuthorInPageHeader(ClientContext targetContext, PnPCore.IPage targetClientSidePage)
         {
             try
             {
                 string userToResolve = this.userTransformator.RemapPrincipal(this.sourceClientContext, this.SourcePageAuthor);
 
-                var ensuredPageAuthorUser = CacheManager.Instance.GetEnsuredUser(targetClientSidePage.Context, userToResolve);
+                var ensuredPageAuthorUser = CacheManager.Instance.GetEnsuredUser(targetContext, userToResolve);
                 if (ensuredPageAuthorUser != null)
                 {
-                    var author = CacheManager.Instance.GetUserFromUserList(targetClientSidePage.Context, ensuredPageAuthorUser.Id);
+                    var author = CacheManager.Instance.GetUserFromUserList(targetContext, ensuredPageAuthorUser.Id);
 
                     if (author != null)
                     {

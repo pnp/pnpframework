@@ -1,6 +1,6 @@
 ﻿using Microsoft.SharePoint.Client;
-using PnP.Framework.Pages;
 using System.Collections.Generic;
+using PnPCore = PnP.Core.Model.SharePoint;
 
 namespace PnP.Framework.Modernization.Transform
 {
@@ -86,7 +86,7 @@ namespace PnP.Framework.Modernization.Transform
         /// <summary>
         /// Configuration of the page header to apply
         /// </summary>
-        public ClientSidePageHeader PageHeader { get; set; }
+        public PnPCore.IPageHeader PageHeader { get; set; }
 
         /// <summary>
         /// Sets the page author in the page header similar to the original page author

@@ -1,10 +1,10 @@
 ﻿using Microsoft.SharePoint.Client;
-using PnP.Framework.Pages;
 using PnP.Framework.Modernization.Telemetry;
 using PnP.Framework.Modernization.Transform;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PnPCore = PnP.Core.Model.SharePoint;
 
 namespace PnP.Framework.Modernization.Publishing
 {
@@ -44,7 +44,7 @@ namespace PnP.Framework.Modernization.Publishing
         /// Builds the header for the modern page
         /// </summary>
         /// <param name="targetPage">Modern page instance</param>
-        public void TransformHeader(ref ClientSidePage targetPage)
+        public void TransformHeader(ref PnPCore.IPage targetPage)
         {
             // Get the mapping model to use as it describes how the page header needs to be generated
             var publishingPageTransformationModel = new PageLayoutManager(this.RegisteredLogObservers).GetPageLayoutMappingModel(this.publishingPageTransformation, publishingPageTransformationInformation.SourcePage);
@@ -104,17 +104,17 @@ namespace PnP.Framework.Modernization.Publishing
                 // Header type handling
                 switch (publishingPageTransformationModel.Header.Type)
                 {
-                    case HeaderType.ColorBlock: targetPage.PageHeader.LayoutType = ClientSidePageHeaderLayoutType.ColorBlock; break;
-                    case HeaderType.CutInShape: targetPage.PageHeader.LayoutType = ClientSidePageHeaderLayoutType.CutInShape; break;
-                    case HeaderType.NoImage: targetPage.PageHeader.LayoutType = ClientSidePageHeaderLayoutType.NoImage; break;
-                    case HeaderType.FullWidthImage: targetPage.PageHeader.LayoutType = ClientSidePageHeaderLayoutType.FullWidthImage; break;
+                    case HeaderType.ColorBlock: targetPage.PageHeader.LayoutType = PnPCore.PageHeaderLayoutType.ColorBlock; break;
+                    case HeaderType.CutInShape: targetPage.PageHeader.LayoutType = PnPCore.PageHeaderLayoutType.CutInShape; break;
+                    case HeaderType.NoImage: targetPage.PageHeader.LayoutType = PnPCore.PageHeaderLayoutType.NoImage; break;
+                    case HeaderType.FullWidthImage: targetPage.PageHeader.LayoutType = PnPCore.PageHeaderLayoutType.FullWidthImage; break;
                 }
 
                 // Alignment handling
                 switch (publishingPageTransformationModel.Header.Alignment)
                 {
-                    case HeaderAlignment.Left: targetPage.PageHeader.TextAlignment = ClientSidePageHeaderTitleAlignment.Left; break;
-                    case HeaderAlignment.Center: targetPage.PageHeader.TextAlignment = ClientSidePageHeaderTitleAlignment.Center; break;
+                    case HeaderAlignment.Left: targetPage.PageHeader.TextAlignment = PnPCore.PageHeaderTitleAlignment.Left; break;
+                    case HeaderAlignment.Center: targetPage.PageHeader.TextAlignment = PnPCore.PageHeaderTitleAlignment.Center; break;
                 }
 
                 // Show published date

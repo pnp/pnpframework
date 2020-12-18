@@ -1,16 +1,15 @@
 ﻿using AngleSharp.Dom;
 using AngleSharp.Html.Dom;
-using AngleSharp.Css.Dom;
 using AngleSharp.Html.Parser;
 using Microsoft.SharePoint.Client;
 using PnP.Framework.Modernization.Entities;
+using PnP.Framework.Modernization.Extensions;
+using PnP.Framework.Modernization.Functions;
+using PnP.Framework.Modernization.Telemetry;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using PnP.Framework.Pages;
-using PnP.Framework.Modernization.Functions;
-using PnP.Framework.Modernization.Telemetry;
-using PnP.Framework.Modernization.Extensions;
+using PnPCore = PnP.Core.Model.SharePoint;
 
 namespace PnP.Framework.Modernization.Transform
 {
@@ -21,7 +20,7 @@ namespace PnP.Framework.Modernization.Transform
     {
         private HtmlParser parser;
         private ClientContext sourceContext;
-        private ClientSidePage page;
+        private PnPCore.IPage page;
         private Dictionary<string, string> mappingProperties;
         private BuiltIn builtInFunctions;
 
@@ -29,7 +28,7 @@ namespace PnP.Framework.Modernization.Transform
         /// <summary>
         /// Default constructor
         /// </summary>
-        public WikiHtmlTransformator(ClientContext sourceContext, ClientSidePage page, BaseTransformationInformation basePageTransformationInformation, IList<ILogObserver> logObservers = null)
+        public WikiHtmlTransformator(ClientContext sourceContext, ClientContext targetContext, PnPCore.IPage page, BaseTransformationInformation basePageTransformationInformation, IList<ILogObserver> logObservers = null)
         {
             //Register any existing observers
             if (logObservers != null)
@@ -45,7 +44,7 @@ namespace PnP.Framework.Modernization.Transform
             this.mappingProperties = basePageTransformationInformation.MappingProperties;
 
             // Instantiate BuiltIn functions class
-            this.builtInFunctions = new BuiltIn(basePageTransformationInformation, this.page.Context, this.sourceContext, this.page, base.RegisteredLogObservers);
+            this.builtInFunctions = new BuiltIn(basePageTransformationInformation, targetContext, this.sourceContext, this.page, base.RegisteredLogObservers);
 
             // Instantiate the AngleSharp Html parser
             parser = new HtmlParser(new HtmlParserOptions() { IsEmbedded = true });

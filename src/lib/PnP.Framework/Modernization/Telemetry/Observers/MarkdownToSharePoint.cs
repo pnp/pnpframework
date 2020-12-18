@@ -1,9 +1,9 @@
 ﻿using Microsoft.SharePoint.Client;
 using Newtonsoft.Json;
-using PnP.Framework.Pages;
 using PnP.Framework.Modernization.Cache;
 using System;
 using System.Linq;
+using PnPCore = PnP.Core.Model.SharePoint;
 
 namespace PnP.Framework.Modernization.Telemetry.Observers
 {
@@ -85,20 +85,23 @@ namespace PnP.Framework.Modernization.Telemetry.Observers
                 var reportPage = this._clientContext.Web.AddClientSidePage(pageName);
                 reportPage.PageTitle = base._includeVerbose ? LogStrings.Report_ModernisationReport : LogStrings.Report_ModernisationSummaryReport;
 
-                var componentsToAdd = CacheManager.Instance.GetClientSideComponents(reportPage);
+                var componentsToAdd = CacheManager.Instance.GetClientSideComponents(_clientContext, reportPage);
 
-                ClientSideComponent baseControl = null;
-                var webPartName = ClientSidePage.ClientSideWebPartEnumToName(DefaultClientSideWebParts.MarkDown);
+                PnPCore.IPageComponent baseControl = null;
+                var webPartName = reportPage.DefaultWebPartToWebPartId(PnPCore.DefaultWebPart.MarkDown);
+
                 baseControl = componentsToAdd.FirstOrDefault(p => p.Name.Equals(webPartName, StringComparison.InvariantCultureIgnoreCase));
 
                 var jsonRpt = JsonConvert.SerializeObject(report, new JsonSerializerSettings { StringEscapeHandling = StringEscapeHandling.EscapeHtml });
 
                 var jsonDecoded = GetMarkdownJsonProperties(jsonRpt);
 
-                PnP.Framework.Pages.ClientSideWebPart mdWebPart = new PnP.Framework.Pages.ClientSideWebPart(baseControl)
-                {
-                    PropertiesJson = jsonDecoded
-                };
+                //PnP.Framework.Pages.ClientSideWebPart mdWebPart = new PnP.Framework.Pages.ClientSideWebPart(baseControl)
+                //{
+                //    PropertiesJson = jsonDecoded
+                //};
+                var mdWebPart = reportPage.NewWebPart(baseControl);
+                mdWebPart.PropertiesJson = jsonDecoded;
 
                 // This should only have one web part on the page
                 reportPage.AddControl(mdWebPart);

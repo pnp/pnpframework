@@ -1,6 +1,7 @@
 ﻿using AngleSharp;
+using AngleSharp.Html.Parser;
+using AngleSharp.Io;
 using Microsoft.SharePoint.Client;
-using PnP.Framework.Pages;
 using PnP.Framework.Modernization.Telemetry;
 using PnP.Framework.Modernization.Transform;
 using System;
@@ -8,8 +9,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
-using AngleSharp.Html.Parser;
-using AngleSharp.Io;
+using PnPCore = PnP.Core.Model.SharePoint;
 
 namespace PnP.Framework.Modernization.Functions
 {
@@ -20,7 +20,7 @@ namespace PnP.Framework.Modernization.Functions
     {
         private ClientContext sourceClientContext;
         private ClientContext targetClientContext;
-        private ClientSidePage clientSidePage;
+        private PnPCore.IPage clientSidePage;
         private BaseTransformationInformation baseTransformationInformation;
         private UrlTransformator urlTransformator;
         private UserTransformator userTransformator;
@@ -34,7 +34,7 @@ namespace PnP.Framework.Modernization.Functions
         /// <param name="sourceClientContext">The ClientContext for the source </param>
         /// <param name="clientSidePage">Reference to the client side page</param>
         /// <param name="logObservers"></param>
-        public BuiltIn(BaseTransformationInformation baseTransformationInformation, ClientContext pageClientContext, ClientContext sourceClientContext = null, ClientSidePage clientSidePage = null, IList<ILogObserver> logObservers = null) : base(pageClientContext)
+        public BuiltIn(BaseTransformationInformation baseTransformationInformation, ClientContext pageClientContext, ClientContext sourceClientContext = null, PnPCore.IPage clientSidePage = null, IList<ILogObserver> logObservers = null) : base(pageClientContext)
         {
             if (logObservers != null)
             {
@@ -1577,7 +1577,7 @@ namespace PnP.Framework.Modernization.Functions
                 return false;
             }
 
-            if (this.sourceClientContext.Web.GetUrl().Equals(this.clientSidePage.Context.Web.GetUrl(), StringComparison.InvariantCultureIgnoreCase))
+            if (this.sourceClientContext.Web.GetUrl().Equals(this.targetClientContext.Web.GetUrl(), StringComparison.InvariantCultureIgnoreCase))
             {
                 return false;
             }

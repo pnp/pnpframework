@@ -10,6 +10,8 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
+using PnPCore = PnP.Core.Model.SharePoint;
+
 
 namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
 {
@@ -52,7 +54,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
             try
             {
                 List<string> errorneousOrNonImageFileGuids = new List<string>();
-                var pageToExtract = web.LoadClientSidePage(page.PageName);
+                //var pageToExtract = web.LoadClientSidePage(page.PageName);
+                var pageToExtract = web.LoadClientSidePage(page.PageName) as PnPCore.Page;
 
                 if (pageToExtract.Sections.Count == 0 && pageToExtract.Controls.Count == 0 && page.IsHomePage)
                 {
@@ -70,12 +73,15 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                     }
 
                     int promotedState = 0;
-                    if (pageToExtract.PageListItem[PnP.Framework.Pages.ClientSidePage.PromotedStateField] != null)
+                    //if (pageToExtract.PageListItem[PnP.Framework.Pages.ClientSidePage.PromotedStateField] != null)
+                    if (pageToExtract.PageListItem[PnPCore.PageConstants.PromotedStateField] != null)
                     {
-                        int.TryParse(pageToExtract.PageListItem[PnP.Framework.Pages.ClientSidePage.PromotedStateField].ToString(), out promotedState);
+                        //int.TryParse(pageToExtract.PageListItem[PnP.Framework.Pages.ClientSidePage.PromotedStateField].ToString(), out promotedState);
+                        int.TryParse(pageToExtract.PageListItem[PnPCore.PageConstants.PromotedStateField].ToString(), out promotedState);
                     }
 
-                    var isNews = pageToExtract.LayoutType != Pages.ClientSidePageLayoutType.Home && promotedState == (int)Pages.PromotedState.Promoted;
+                    //var isNews = pageToExtract.LayoutType != Pages.ClientSidePageLayoutType.Home && promotedState == (int)Pages.PromotedState.Promoted;
+                    var isNews = pageToExtract.LayoutType != PnPCore.PageLayoutType.Home && promotedState == (int)PnPCore.PromotedState.Promoted;
 
                     // Create the page;
                     BaseClientSidePage extractedPageInstance;
@@ -95,22 +101,25 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                     extractedPageInstance.Overwrite = true;
                     extractedPageInstance.Publish = true;
                     extractedPageInstance.Layout = pageToExtract.LayoutType.ToString();
-                    extractedPageInstance.EnableComments = !pageToExtract.CommentsDisabled;
+                    //extractedPageInstance.EnableComments = !pageToExtract.CommentsDisabled;
+                    extractedPageInstance.EnableComments = !pageToExtract.AreCommentsDisabled();
                     extractedPageInstance.Title = pageToExtract.PageTitle;
                     extractedPageInstance.ContentTypeID = !pageContentTypeId.Equals(BuiltInContentTypeId.ModernArticlePage, StringComparison.InvariantCultureIgnoreCase) ? pageContentTypeId : null;
                     extractedPageInstance.ThumbnailUrl = pageToExtract.ThumbnailUrl != null ? TokenizeJsonControlData(web, pageToExtract.ThumbnailUrl) : "";
 
-                    if (pageToExtract.PageHeader != null && pageToExtract.LayoutType != Pages.ClientSidePageLayoutType.Topic)
+                    //if (pageToExtract.PageHeader != null && pageToExtract.LayoutType != Pages.ClientSidePageLayoutType.Topic)
+                    if (pageToExtract.PageHeader != null && pageToExtract.LayoutType != PnPCore.PageLayoutType.Topic)
                     {
 
                         var extractedHeader = new ClientSidePageHeader()
                         {
-                            Type = (ClientSidePageHeaderType)Enum.Parse(typeof(Pages.ClientSidePageHeaderType), pageToExtract.PageHeader.Type.ToString()),
+                            //Type = (ClientSidePageHeaderType)Enum.Parse(typeof(Pages.ClientSidePageHeaderType), pageToExtract.PageHeader.Type.ToString()),
+                            Type = (ClientSidePageHeaderType)Enum.Parse(typeof(PnPCore.PageHeaderType), (pageToExtract.PageHeader as PnPCore.PageHeader).Type.ToString()),
                             ServerRelativeImageUrl = TokenizeJsonControlData(web, pageToExtract.PageHeader.ImageServerRelativeUrl),
                             TranslateX = pageToExtract.PageHeader.TranslateX,
                             TranslateY = pageToExtract.PageHeader.TranslateY,
-                            LayoutType = (ClientSidePageHeaderLayoutType)Enum.Parse(typeof(Pages.ClientSidePageHeaderLayoutType), pageToExtract.PageHeader.LayoutType.ToString()),
-                            TextAlignment = (ClientSidePageHeaderTextAlignment)Enum.Parse(typeof(Pages.ClientSidePageHeaderTitleAlignment), pageToExtract.PageHeader.TextAlignment.ToString()),
+                            LayoutType = (ClientSidePageHeaderLayoutType)Enum.Parse(typeof(PnPCore.PageHeaderLayoutType), pageToExtract.PageHeader.LayoutType.ToString()),
+                            TextAlignment = (ClientSidePageHeaderTextAlignment)Enum.Parse(typeof(PnPCore.PageHeaderTitleAlignment), pageToExtract.PageHeader.TextAlignment.ToString()),
                             ShowTopicHeader = pageToExtract.PageHeader.ShowTopicHeader,
                             ShowPublishDate = pageToExtract.PageHeader.ShowPublishDate,
                             TopicHeader = pageToExtract.PageHeader.TopicHeader,
@@ -183,37 +192,37 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                         // Set section type
                         switch (section.Type)
                         {
-                            case Pages.CanvasSectionTemplate.OneColumn:
+                            case PnPCore.CanvasSectionTemplate.OneColumn:
                                 sectionInstance.Type = CanvasSectionType.OneColumn;
                                 break;
-                            case Pages.CanvasSectionTemplate.TwoColumn:
+                            case PnPCore.CanvasSectionTemplate.TwoColumn:
                                 sectionInstance.Type = CanvasSectionType.TwoColumn;
                                 break;
-                            case Pages.CanvasSectionTemplate.TwoColumnLeft:
+                            case PnPCore.CanvasSectionTemplate.TwoColumnLeft:
                                 sectionInstance.Type = CanvasSectionType.TwoColumnLeft;
                                 break;
-                            case Pages.CanvasSectionTemplate.TwoColumnRight:
+                            case PnPCore.CanvasSectionTemplate.TwoColumnRight:
                                 sectionInstance.Type = CanvasSectionType.TwoColumnRight;
                                 break;
-                            case Pages.CanvasSectionTemplate.ThreeColumn:
+                            case PnPCore.CanvasSectionTemplate.ThreeColumn:
                                 sectionInstance.Type = CanvasSectionType.ThreeColumn;
                                 break;
-                            case Pages.CanvasSectionTemplate.OneColumnFullWidth:
+                            case PnPCore.CanvasSectionTemplate.OneColumnFullWidth:
                                 sectionInstance.Type = CanvasSectionType.OneColumnFullWidth;
                                 break;
-                            case Pages.CanvasSectionTemplate.OneColumnVerticalSection:
+                            case PnPCore.CanvasSectionTemplate.OneColumnVerticalSection:
                                 sectionInstance.Type = CanvasSectionType.OneColumnVerticalSection;
                                 break;
-                            case Pages.CanvasSectionTemplate.TwoColumnVerticalSection:
+                            case PnPCore.CanvasSectionTemplate.TwoColumnVerticalSection:
                                 sectionInstance.Type = CanvasSectionType.TwoColumnVerticalSection;
                                 break;
-                            case Pages.CanvasSectionTemplate.TwoColumnLeftVerticalSection:
+                            case PnPCore.CanvasSectionTemplate.TwoColumnLeftVerticalSection:
                                 sectionInstance.Type = CanvasSectionType.TwoColumnLeftVerticalSection;
                                 break;
-                            case Pages.CanvasSectionTemplate.TwoColumnRightVerticalSection:
+                            case PnPCore.CanvasSectionTemplate.TwoColumnRightVerticalSection:
                                 sectionInstance.Type = CanvasSectionType.TwoColumnRightVerticalSection;
                                 break;
-                            case Pages.CanvasSectionTemplate.ThreeColumnVerticalSection:
+                            case PnPCore.CanvasSectionTemplate.ThreeColumnVerticalSection:
                                 sectionInstance.Type = CanvasSectionType.ThreeColumnVerticalSection;
                                 break;
                             default:
@@ -235,114 +244,118 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                 };
 
                                 // Set control type
-                                if (control.Type == typeof(Pages.ClientSideText))
+                                //if (control.Type == typeof(Pages.ClientSideText))
+                                if (control.Type == typeof(PnPCore.IPageText))
                                 {
                                     controlInstance.Type = WebPartType.Text;
 
                                     // Set text content
                                     controlInstance.ControlProperties = new System.Collections.Generic.Dictionary<string, string>(1)
                                         {
-                                            { "Text", TokenizeJsonTextData(web, (control as Pages.ClientSideText).Text) }
+                                            //{ "Text", TokenizeJsonTextData(web, (control as Pages.ClientSideText).Text) }
+                                            { "Text", TokenizeJsonTextData(web, (control as PnPCore.IPageText).Text) }
                                         };
                                 }
                                 else
                                 {
                                     // set ControlId to webpart id
-                                    controlInstance.ControlId = Guid.Parse((control as Pages.ClientSideWebPart).WebPartId);
-                                    var webPartType = Pages.ClientSidePage.NameToClientSideWebPartEnum((control as Pages.ClientSideWebPart).WebPartId);
+                                    //controlInstance.ControlId = Guid.Parse((control as Pages.ClientSideWebPart).WebPartId);
+                                    controlInstance.ControlId = Guid.Parse((control as PnPCore.IPageWebPart).WebPartId);
+                                    //var webPartType = Pages.ClientSidePage.NameToClientSideWebPartEnum((control as Pages.ClientSideWebPart).WebPartId);
+                                    var webPartType = pageToExtract.WebPartIdToDefaultWebPart((control as PnPCore.IPageWebPart).WebPartId);
                                     switch (webPartType)
                                     {
-                                        case Pages.DefaultClientSideWebParts.ContentRollup:
+                                        case PnPCore.DefaultWebPart.ContentRollup:
                                             controlInstance.Type = WebPartType.ContentRollup;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.BingMap:
+                                        case PnPCore.DefaultWebPart.BingMap:
                                             controlInstance.Type = WebPartType.BingMap;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.Button:
+                                        case PnPCore.DefaultWebPart.Button:
                                             controlInstance.Type = WebPartType.Button;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.CallToAction:
+                                        case PnPCore.DefaultWebPart.CallToAction:
                                             controlInstance.Type = WebPartType.CallToAction;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.News:
+                                        case PnPCore.DefaultWebPart.News:
                                             controlInstance.Type = WebPartType.News;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.PowerBIReportEmbed:
+                                        case PnPCore.DefaultWebPart.PowerBIReportEmbed:
                                             controlInstance.Type = WebPartType.PowerBIReportEmbed;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.Sites:
+                                        case PnPCore.DefaultWebPart.Sites:
                                             controlInstance.Type = WebPartType.Sites;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.GroupCalendar:
+                                        case PnPCore.DefaultWebPart.GroupCalendar:
                                             controlInstance.Type = WebPartType.GroupCalendar;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.MicrosoftForms:
+                                        case PnPCore.DefaultWebPart.MicrosoftForms:
                                             controlInstance.Type = WebPartType.MicrosoftForms;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.ClientWebPart:
+                                        case PnPCore.DefaultWebPart.ClientWebPart:
                                             controlInstance.Type = WebPartType.ClientWebPart;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.ContentEmbed:
+                                        case PnPCore.DefaultWebPart.ContentEmbed:
                                             controlInstance.Type = WebPartType.ContentEmbed;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.DocumentEmbed:
+                                        case PnPCore.DefaultWebPart.DocumentEmbed:
                                             controlInstance.Type = WebPartType.DocumentEmbed;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.Image:
+                                        case PnPCore.DefaultWebPart.Image:
                                             controlInstance.Type = WebPartType.Image;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.ImageGallery:
+                                        case PnPCore.DefaultWebPart.ImageGallery:
                                             controlInstance.Type = WebPartType.ImageGallery;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.LinkPreview:
+                                        case PnPCore.DefaultWebPart.LinkPreview:
                                             controlInstance.Type = WebPartType.LinkPreview;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.NewsFeed:
+                                        case PnPCore.DefaultWebPart.NewsFeed:
                                             controlInstance.Type = WebPartType.NewsFeed;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.NewsReel:
+                                        case PnPCore.DefaultWebPart.NewsReel:
                                             controlInstance.Type = WebPartType.NewsReel;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.QuickChart:
+                                        case PnPCore.DefaultWebPart.QuickChart:
                                             controlInstance.Type = WebPartType.QuickChart;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.SiteActivity:
+                                        case PnPCore.DefaultWebPart.SiteActivity:
                                             controlInstance.Type = WebPartType.SiteActivity;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.VideoEmbed:
+                                        case PnPCore.DefaultWebPart.VideoEmbed:
                                             controlInstance.Type = WebPartType.VideoEmbed;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.YammerEmbed:
+                                        case PnPCore.DefaultWebPart.YammerEmbed:
                                             controlInstance.Type = WebPartType.YammerEmbed;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.Events:
+                                        case PnPCore.DefaultWebPart.Events:
                                             controlInstance.Type = WebPartType.Events;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.Hero:
+                                        case PnPCore.DefaultWebPart.Hero:
                                             controlInstance.Type = WebPartType.Hero;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.List:
+                                        case PnPCore.DefaultWebPart.List:
                                             controlInstance.Type = WebPartType.List;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.PageTitle:
+                                        case PnPCore.DefaultWebPart.PageTitle:
                                             controlInstance.Type = WebPartType.PageTitle;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.People:
+                                        case PnPCore.DefaultWebPart.People:
                                             controlInstance.Type = WebPartType.People;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.QuickLinks:
+                                        case PnPCore.DefaultWebPart.QuickLinks:
                                             controlInstance.Type = WebPartType.QuickLinks;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.CustomMessageRegion:
+                                        case PnPCore.DefaultWebPart.CustomMessageRegion:
                                             controlInstance.Type = WebPartType.CustomMessageRegion;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.Divider:
+                                        case PnPCore.DefaultWebPart.Divider:
                                             controlInstance.Type = WebPartType.Divider;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.Spacer:
+                                        case PnPCore.DefaultWebPart.Spacer:
                                             controlInstance.Type = WebPartType.Spacer;
                                             break;
-                                        case Pages.DefaultClientSideWebParts.ThirdParty:
+                                        case PnPCore.DefaultWebPart.ThirdParty:
                                             controlInstance.Type = WebPartType.Custom;
                                             break;
                                         default:
@@ -351,44 +364,45 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                     }
                                     if (excludeAuthorInformation)
                                     {
-                                        if (webPartType == Pages.DefaultClientSideWebParts.News)
-                                        {
-                                            var properties = (control as Pages.ClientSideWebPart).Properties;
-                                            var authorTokens = properties.SelectTokens("$..author").ToList();
-                                            foreach (var authorToken in authorTokens)
-                                            {
-                                                authorToken.Parent.Remove();
-                                            }
-                                            var authorAccountNameTokens = properties.SelectTokens("$..authorAccountName").ToList();
-                                            foreach (var authorAccountNameToken in authorAccountNameTokens)
-                                            {
-                                                authorAccountNameToken.Parent.Remove();
-                                            }
+                                        // CHECK:
+                                        //if (webPartType == PnPCore.DefaultWebPart.News)
+                                        //{
+                                        //    var properties = (control as PnPCore.IPageWebPart).Properties;
+                                        //    var authorTokens = properties.SelectTokens("$..author").ToList();
+                                        //    foreach (var authorToken in authorTokens)
+                                        //    {
+                                        //        authorToken.Parent.Remove();
+                                        //    }
+                                        //    var authorAccountNameTokens = properties.SelectTokens("$..authorAccountName").ToList();
+                                        //    foreach (var authorAccountNameToken in authorAccountNameTokens)
+                                        //    {
+                                        //        authorAccountNameToken.Parent.Remove();
+                                        //    }
 
-                                            (control as Pages.ClientSideWebPart).PropertiesJson = properties.ToString();
-                                        }
+                                        //    (control as PnPCore.IPageWebPart).PropertiesJson = properties.ToString();
+                                        //}
                                     }
-                                    string jsonControlData = "\"id\": \"" + (control as Pages.ClientSideWebPart).WebPartId + "\", \"instanceId\": \"" + (control as Pages.ClientSideWebPart).InstanceId + "\", \"title\": " + JsonConvert.ToString((control as Pages.ClientSideWebPart).Title) + ", \"description\": " + JsonConvert.ToString((control as Pages.ClientSideWebPart).Description) + ", \"dataVersion\": \"" + (control as Pages.ClientSideWebPart).DataVersion + "\", \"properties\": " + (control as Pages.ClientSideWebPart).PropertiesJson + "";
+                                    string jsonControlData = "\"id\": \"" + (control as PnPCore.IPageWebPart).WebPartId + "\", \"instanceId\": \"" + (control as PnPCore.IPageWebPart).InstanceId + "\", \"title\": " + JsonConvert.ToString((control as PnPCore.IPageWebPart).Title) + ", \"description\": " + JsonConvert.ToString((control as PnPCore.IPageWebPart).Description) + ", \"dataVersion\": \"" + (control as PnPCore.IPageWebPart).DataVersion + "\", \"properties\": " + (control as PnPCore.IPageWebPart).PropertiesJson + "";
 
                                     // set the control properties
-                                    if ((control as Pages.ClientSideWebPart).ServerProcessedContent != null)
+                                    if (!(control as PnPCore.IPageWebPart).ServerProcessedContent.Equals(default))
                                     {
                                         // If we have serverProcessedContent then also export that one, it's important as some controls depend on this information to be present
-                                        string serverProcessedContent = (control as Pages.ClientSideWebPart).ServerProcessedContent.ToString(Formatting.None);
+                                        string serverProcessedContent = (control as PnPCore.IPageWebPart).ServerProcessedContent.ToString();
                                         jsonControlData = jsonControlData + ", \"serverProcessedContent\": " + serverProcessedContent + "";
                                     }
 
-                                    if ((control as Pages.ClientSideWebPart).DynamicDataPaths != null)
+                                    if (!(control as PnPCore.IPageWebPart).DynamicDataPaths.Equals(default))
                                     {
                                         // If we have serverProcessedContent then also export that one, it's important as some controls depend on this information to be present
-                                        string dynamicDataPaths = (control as Pages.ClientSideWebPart).DynamicDataPaths.ToString(Formatting.None);
+                                        string dynamicDataPaths = (control as PnPCore.IPageWebPart).DynamicDataPaths.ToString();
                                         jsonControlData = jsonControlData + ", \"dynamicDataPaths\": " + dynamicDataPaths + "";
                                     }
 
-                                    if ((control as Pages.ClientSideWebPart).DynamicDataValues != null)
+                                    if (!(control as PnPCore.IPageWebPart).DynamicDataValues.Equals(default))
                                     {
                                         // If we have serverProcessedContent then also export that one, it's important as some controls depend on this information to be present
-                                        string dynamicDataValues = (control as Pages.ClientSideWebPart).DynamicDataValues.ToString(Formatting.None);
+                                        string dynamicDataValues = (control as PnPCore.IPageWebPart).DynamicDataValues.ToString();
                                         jsonControlData = jsonControlData + ", \"dynamicDataValues\": " + dynamicDataValues + "";
                                     }
 
@@ -416,13 +430,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                     }
 
                     // Spaces support
-                    if (pageToExtract.LayoutType == Pages.ClientSidePageLayoutType.Spaces && !string.IsNullOrEmpty(pageToExtract.SpaceContent))
+                    if (pageToExtract.LayoutType == PnPCore.PageLayoutType.Spaces && !string.IsNullOrEmpty(pageToExtract.SpaceContent))
                     {
-                        extractedPageInstance.FieldValues.Add(Pages.ClientSidePage.SpaceContentField, pageToExtract.SpaceContent);
+                        extractedPageInstance.FieldValues.Add(PnPCore.PageConstants.SpaceContentField, pageToExtract.SpaceContent);
                     }
 
 
-                    if (pageToExtract.LayoutType == Pages.ClientSidePageLayoutType.Topic)
+                    if (pageToExtract.LayoutType == PnPCore.PageLayoutType.Topic)
                     {
                         // Extract the topic page header controls (the controls which cannot be moved around on the page). 
                         // These controls will be stored in a one-column section with a order of 999999. 
@@ -445,16 +459,16 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                 Order = headerControl.Order,
                             };
 
-                            controlInstance.ControlId = Guid.Parse((headerControl as Pages.ClientSideWebPart).WebPartId);
+                            controlInstance.ControlId = Guid.Parse((headerControl as PnPCore.IPageWebPart).WebPartId);
                             controlInstance.Type = WebPartType.Custom;
 
-                            string jsonControlData = "\"id\": \"" + (headerControl as Pages.ClientSideWebPart).WebPartId + "\", \"instanceId\": \"" + (headerControl as Pages.ClientSideWebPart).InstanceId + "\", \"title\": " + JsonConvert.ToString((headerControl as Pages.ClientSideWebPart).Title) + ", \"description\": " + JsonConvert.ToString((headerControl as Pages.ClientSideWebPart).Description) + ", \"dataVersion\": \"" + (headerControl as Pages.ClientSideWebPart).DataVersion + "\", \"properties\": " + (headerControl as Pages.ClientSideWebPart).PropertiesJson + "";
+                            string jsonControlData = "\"id\": \"" + (headerControl as PnPCore.IPageWebPart).WebPartId + "\", \"instanceId\": \"" + (headerControl as PnPCore.IPageWebPart).InstanceId + "\", \"title\": " + JsonConvert.ToString((headerControl as PnPCore.IPageWebPart).Title) + ", \"description\": " + JsonConvert.ToString((headerControl as PnPCore.IPageWebPart).Description) + ", \"dataVersion\": \"" + (headerControl as PnPCore.IPageWebPart).DataVersion + "\", \"properties\": " + (headerControl as PnPCore.IPageWebPart).PropertiesJson + "";
 
                             // set the control properties
-                            if ((headerControl as Pages.ClientSideWebPart).ServerProcessedContent != null)
+                            if (!(headerControl as PnPCore.IPageWebPart).ServerProcessedContent.Equals(default))
                             {
                                 // If we have serverProcessedContent then also export that one, it's important as some controls depend on this information to be present
-                                string serverProcessedContent = (headerControl as Pages.ClientSideWebPart).ServerProcessedContent.ToString(Formatting.None);
+                                string serverProcessedContent = (headerControl as PnPCore.IPageWebPart).ServerProcessedContent.ToString();
                                 jsonControlData = jsonControlData + ", \"serverProcessedContent\": " + serverProcessedContent + "";
                             }
 
@@ -471,9 +485,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                         extractedPageInstance.Sections.Add(sectionInstance);
 
                         // Extract the topic pages fields                        
-                        extractedPageInstance.FieldValues.Add(Pages.ClientSidePage.TopicEntityId, pageToExtract.EntityId == null ? "" : pageToExtract.EntityId);
-                        extractedPageInstance.FieldValues.Add(Pages.ClientSidePage.TopicEntityType, pageToExtract.EntityType == null ? "" : pageToExtract.EntityType);
-                        extractedPageInstance.FieldValues.Add(Pages.ClientSidePage.TopicEntityRelations, pageToExtract.EntityRelations == null ? "" : pageToExtract.EntityRelations);
+                        extractedPageInstance.FieldValues.Add(PnPCore.PageConstants.TopicEntityId, pageToExtract.EntityId == null ? "" : pageToExtract.EntityId);
+                        extractedPageInstance.FieldValues.Add(PnPCore.PageConstants.TopicEntityType, pageToExtract.EntityType == null ? "" : pageToExtract.EntityType);
+                        extractedPageInstance.FieldValues.Add(PnPCore.PageConstants.TopicEntityRelations, pageToExtract.EntityRelations == null ? "" : pageToExtract.EntityRelations);
                     }
 
                     // Add the page to the template

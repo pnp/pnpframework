@@ -1,15 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.SharePoint.Client;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PnP.Framework.Modernization.Cache;
+using PnP.Framework.Modernization.Entities;
+using PnP.Framework.Modernization.Telemetry.Observers;
+using PnP.Framework.Modernization.Transform;
 using System;
 using System.Collections.Generic;
-using Microsoft.SharePoint.Client;
-using PnP.Framework.Modernization.Transform;
-using PnP.Framework.Pages;
-using PnP.Framework.Modernization.Pages;
-using PnP.Framework.Modernization.Entities;
-using System.Linq;
-using PnP.Framework.Modernization.Cache;
-using PnP.Framework.Modernization.Delve;
-using PnP.Framework.Modernization.Telemetry.Observers;
 
 namespace PnP.Framework.Modernization.Tests.Transform
 {
@@ -139,78 +135,6 @@ namespace PnP.Framework.Modernization.Tests.Transform
 
         }
 
-        [TestMethod]
-        public void CrossSiteDelveTransformTest()
-        {
-            using (var targetClientContext = TestCommon.CreateClientContext(TestCommon.AppSetting("SPOTargetSiteUrl")))
-            {
-                //https://capadevtest.sharepoint.com/portals/personal/transform
-                //https://bertonline.sharepoint.com/portals/personal/bertjansen
-                using (var sourceClientContext = TestCommon.CreateClientContext("https://bertonline.sharepoint.com/portals/personal/bertjansen"))
-                {
-                    var pageTransformator = new DelvePageTransformator(sourceClientContext, targetClientContext);
-                    pageTransformator.RegisterObserver(new MarkdownObserver(folder: "c:\\temp", includeVerbose: true));
-                    pageTransformator.RegisterObserver(new UnitTestLogObserver());
-
-                    var pages = sourceClientContext.Web.GetBlogsFromList("Pages");
-
-                    pages.FailTestIfZero();
-
-                    foreach (var page in pages)
-                    {
-                        DelvePageTransformationInformation pti = new DelvePageTransformationInformation(page)
-                        {
-                            // If target page exists, then overwrite it
-                            Overwrite = true,
-
-                            // Don't log test runs
-                            SkipTelemetry = true,
-
-                            KeepPageCreationModificationInformation = true,
-
-                            SetAuthorInPageHeader = true,
-
-                            PostAsNews = true,
-
-                            PublishCreatedPage = true,
-
-                            KeepSubTitle = true,
-
-                            //TargetPageFolder = "Blogs",
-
-                            //SkipUserMapping = true,
-
-                            //AddTableListImageAsImageWebPart = true,
-
-                            // Configure the page header, empty value means ClientSidePageHeaderType.None
-                            //PageHeader = new ClientSidePageHeader(cc, ClientSidePageHeaderType.None, null),
-
-                            // Replace embedded images and iframes with a placeholder and add respective images and video web parts at the bottom of the page
-                            // HandleWikiImagesAndVideos = false,
-
-                            // Callout to your custom code to allow for title overriding
-                            //PageTitleOverride = titleOverride,
-
-                            // Callout to your custom layout handler
-                            //LayoutTransformatorOverride = layoutOverride,
-
-                            // Callout to your custom content transformator...in case you fully want replace the model
-                            //ContentTransformatorOverride = contentOverride,
-                        };
-
-                        pti.MappingProperties["SummaryLinksToQuickLinks"] = "true";
-                        pti.MappingProperties["UseCommunityScriptEditor"] = "true";
-
-                        var result = pageTransformator.Transform(pti);
-                    }
-
-                    pageTransformator.FlushObservers();
-                }
-            }
-
-            //Assert.Inconclusive(TestCommon.InconclusiveNoAutomatedChecksMessage);
-
-        }
 
         [TestMethod]
         public void CrossSiteTransformTest()

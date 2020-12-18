@@ -1,5 +1,4 @@
 ﻿using Microsoft.SharePoint.Client;
-using PnP.Framework.Pages;
 using PnP.Framework.Utilities;
 using PnP.Framework.Modernization.Cache;
 using PnP.Framework.Modernization.Entities;
@@ -12,6 +11,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
+using PnPCore = PnP.Core.Model.SharePoint;
 
 namespace PnP.Framework.Modernization.Publishing
 {
@@ -300,7 +300,7 @@ namespace PnP.Framework.Modernization.Publishing
             Start();
 #endif
                 bool pageExists = false;
-                ClientSidePage targetPage = null;
+                PnPCore.IPage targetPage = null;
                 List pagesLibrary = null;
                 Microsoft.SharePoint.Client.File existingFile = null;
 
@@ -376,7 +376,7 @@ namespace PnP.Framework.Modernization.Publishing
 
                 // Wiki content can contain embedded images and videos, which is not supported by the target RTE...split wiki text blocks so the transformator can handle the images and videos as separate web parts
                 LogInfo(LogStrings.WikiTextContainsImagesVideosReferences, LogStrings.Heading_ArticlePageHandling);
-                pageData = new Tuple<Pages.PageLayout, List<WebPartEntity>>(pageData.Item1, new WikiHtmlTransformator(this.sourceClientContext, targetPage, publishingPageTransformationInformation as BaseTransformationInformation, base.RegisteredLogObservers).TransformPlusSplit(pageData.Item2, publishingPageTransformationInformation.HandleWikiImagesAndVideos, publishingPageTransformationInformation.AddTableListImageAsImageWebPart));
+                pageData = new Tuple<Pages.PageLayout, List<WebPartEntity>>(pageData.Item1, new WikiHtmlTransformator(this.sourceClientContext, this.targetClientContext, targetPage, publishingPageTransformationInformation as BaseTransformationInformation, base.RegisteredLogObservers).TransformPlusSplit(pageData.Item2, publishingPageTransformationInformation.HandleWikiImagesAndVideos, publishingPageTransformationInformation.AddTableListImageAsImageWebPart));
 
 #if DEBUG && MEASURE
                 Stop("Analyze page");
@@ -442,7 +442,7 @@ namespace PnP.Framework.Modernization.Publishing
                 Start();
 #endif
                 // Use the default content transformator
-                IContentTransformator contentTransformator = new ContentTransformator(sourceClientContext, targetPage, pageTransformation, publishingPageTransformationInformation as BaseTransformationInformation, base.RegisteredLogObservers);
+                IContentTransformator contentTransformator = new ContentTransformator(sourceClientContext, targetClientContext, targetPage, pageTransformation, publishingPageTransformationInformation as BaseTransformationInformation, base.RegisteredLogObservers);
 
                 // Do we have an override?
                 if (publishingPageTransformationInformation.ContentTransformatorOverride != null)
@@ -497,6 +497,11 @@ namespace PnP.Framework.Modernization.Publishing
                 targetPage.Save(pageName);
                 LogInfo($"{LogStrings.TransformSavedPageInCrossSiteCollection}: {pageName}", LogStrings.Heading_ArticlePageHandling);
 
+                // Load the page list item
+                var savedTargetPage = targetClientContext.Web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl($"{pagesLibrary.RootFolder.ServerRelativeUrl}/{publishingPageTransformationInformation.Folder}{publishingPageTransformationInformation.TargetPageName}"));
+                targetClientContext.Web.Context.Load(savedTargetPage, p => p.ListItemAllFields);
+                targetClientContext.Web.Context.ExecuteQueryRetry();
+
 #if DEBUG && MEASURE
             Stop("Persist page");
 #endif
@@ -504,7 +509,7 @@ namespace PnP.Framework.Modernization.Publishing
 
                 #region Page metadata handling
                 PublishingMetadataTransformator publishingMetadataTransformator = 
-                    new PublishingMetadataTransformator(publishingPageTransformationInformation, sourceClientContext, targetClientContext, targetPage, 
+                    new PublishingMetadataTransformator(publishingPageTransformationInformation, sourceClientContext, targetClientContext, savedTargetPage, targetPage, 
                         pageLayoutMappingModel, this.publishingPageTransformation, this.userTransformator, base.RegisteredLogObservers);
 
                 publishingMetadataTransformator.Transform();
@@ -518,10 +523,10 @@ namespace PnP.Framework.Modernization.Publishing
                 Start();
 #endif
                     // Check if we do have item level permissions we want to take over
-                    listItemPermissionsToKeep = GetItemLevelPermissions(true, pagesLibrary, publishingPageTransformationInformation.SourcePage, targetPage.PageListItem);
+                    listItemPermissionsToKeep = GetItemLevelPermissions(true, pagesLibrary, publishingPageTransformationInformation.SourcePage, savedTargetPage.ListItemAllFields);
 
                     // When creating the page in another site collection we'll always want to copy item level permissions if specified
-                    ApplyItemLevelPermissions(true, targetPage.PageListItem, listItemPermissionsToKeep);
+                    ApplyItemLevelPermissions(true, savedTargetPage.ListItemAllFields, listItemPermissionsToKeep);
 #if DEBUG && MEASURE
                 Stop("Permission handling");
 #endif
@@ -530,7 +535,7 @@ namespace PnP.Framework.Modernization.Publishing
 
                 #region Page Publishing
                 // Tag the file with a page modernization version stamp
-                string serverRelativePathForModernPage = targetPage.PageListItem[Constants.FileRefField].ToString();
+                string serverRelativePathForModernPage = savedTargetPage.ListItemAllFields[Constants.FileRefField].ToString();
                 bool pageListItemWasReloaded = false;
                 try
                 {
@@ -549,7 +554,7 @@ namespace PnP.Framework.Modernization.Publishing
                     }
 
                     // Ensure we've the most recent page list item loaded, must be last statement before calling ExecuteQuery
-                    context.Load(targetPage.PageListItem);
+                    context.Load(savedTargetPage.ListItemAllFields);
                     // Send both the property update and publish as a single operation to SharePoint
                     context.ExecuteQueryRetry();
                     pageListItemWasReloaded = true;
@@ -566,22 +571,22 @@ namespace PnP.Framework.Modernization.Publishing
                     // If for some reason the reload batched with the previous request did not finish then do it again
                     if (!pageListItemWasReloaded)
                     {
-                        context.Load(targetPage.PageListItem);
+                        context.Load(savedTargetPage.ListItemAllFields);
                         context.ExecuteQueryRetry();
                     }
 
                     // Only perform the update when the field was not yet set
                     bool skipSettingMigratedFromServerRendered = false;
-                    if (targetPage.PageListItem[Constants.SPSitePageFlagsField] != null)
+                    if (savedTargetPage.ListItemAllFields[Constants.SPSitePageFlagsField] != null)
                     {
-                        skipSettingMigratedFromServerRendered = (targetPage.PageListItem[Constants.SPSitePageFlagsField] as string[]).Contains("MigratedFromServerRendered");
+                        skipSettingMigratedFromServerRendered = (savedTargetPage.ListItemAllFields[Constants.SPSitePageFlagsField] as string[]).Contains("MigratedFromServerRendered");
                     }
 
                     if (!skipSettingMigratedFromServerRendered)
                     {
-                        targetPage.PageListItem[Constants.SPSitePageFlagsField] = ";#MigratedFromServerRendered;#";
-                        targetPage.PageListItem.UpdateOverwriteVersion();
-                        context.Load(targetPage.PageListItem);
+                        savedTargetPage.ListItemAllFields[Constants.SPSitePageFlagsField] = ";#MigratedFromServerRendered;#";
+                        savedTargetPage.ListItemAllFields.UpdateOverwriteVersion();
+                        context.Load(savedTargetPage.ListItemAllFields);
                         context.ExecuteQueryRetry();
                     }
                 }
@@ -602,7 +607,7 @@ namespace PnP.Framework.Modernization.Publishing
                 if ((publishingPageTransformationInformation.KeepPageCreationModificationInformation && this.SourcePageAuthor != null && this.SourcePageEditor != null) || 
                     publishingPageTransformationInformation.PostAsNews)
                 {
-                    UpdateTargetPageWithSourcePageInformation(targetPage.PageListItem, publishingPageTransformationInformation, serverRelativePathForModernPage, true);
+                    UpdateTargetPageWithSourcePageInformation(savedTargetPage.ListItemAllFields, publishingPageTransformationInformation, serverRelativePathForModernPage, true);
                 }
                 #endregion
 
@@ -650,7 +655,7 @@ namespace PnP.Framework.Modernization.Publishing
         }
 
         #region Helper methods
-        private void SetPageTitle(PublishingPageTransformationInformation publishingPageTransformationInformation, ClientSidePage targetPage)
+        private void SetPageTitle(PublishingPageTransformationInformation publishingPageTransformationInformation, PnPCore.IPage targetPage)
         {
             string titleValue = "";
             if (publishingPageTransformationInformation.SourcePage.FieldExistsAndUsed(Constants.TitleField))

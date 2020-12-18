@@ -77,7 +77,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 {
                     var baseUrl = $"{sitePagesLibrary.RootFolder.ServerRelativeUrl}/";
 
-                    var templateFolderName = PnP.Framework.Pages.ClientSidePage.DefaultTemplatesFolder;// string.Empty;
+                    //var templateFolderName = PnP.Framework.Pages.ClientSidePage.DefaultTemplatesFolder;// string.Empty;
+                    var templateFolderName = "Templates";
+
                     var templateFolderString = sitePagesLibrary.GetPropertyBagValueString(TemplatesFolderGuid, null);
                     Guid.TryParse(templateFolderString, out Guid templateFolderGuid);
                     if (templateFolderGuid != Guid.Empty)

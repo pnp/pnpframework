@@ -1,8 +1,8 @@
-﻿using PnP.Framework.Pages;
-using PnP.Framework.Modernization.Entities;
+﻿using PnP.Framework.Modernization.Entities;
 using PnP.Framework.Modernization.Pages;
 using System;
 using System.Collections.Generic;
+using PnPCore = PnP.Core.Model.SharePoint;
 
 namespace PnP.Framework.Modernization.Transform
 {
@@ -12,14 +12,14 @@ namespace PnP.Framework.Modernization.Transform
     /// </summary>
     public class LayoutTransformator: ILayoutTransformator
     {
-        private ClientSidePage page;
+        private PnPCore.IPage page;
 
         #region Construction
         /// <summary>
         /// Creates a layout transformator instance
         /// </summary>
         /// <param name="page">Client side page that will be receive the created layout</param>
-        public LayoutTransformator(ClientSidePage page)
+        public LayoutTransformator(PnPCore.IPage page)
         {
             this.page = page;
         }
@@ -39,54 +39,54 @@ namespace PnP.Framework.Modernization.Transform
                 case PageLayout.Wiki_Custom:
                 case PageLayout.WebPart_Custom:
                     {
-                        page.AddSection(CanvasSectionTemplate.OneColumn, 1);
+                        page.AddSection(PnPCore.CanvasSectionTemplate.OneColumn, 1);
                         return;
                     }
                 case PageLayout.Wiki_TwoColumns:
                     {
-                        page.AddSection(CanvasSectionTemplate.TwoColumn, 1);
+                        page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumn, 1);
                         return;
                     }
                 case PageLayout.Wiki_ThreeColumns:
                     {
-                        page.AddSection(CanvasSectionTemplate.ThreeColumn, 1);
+                        page.AddSection(PnPCore.CanvasSectionTemplate.ThreeColumn, 1);
                         return;
                     }
                 case PageLayout.Wiki_TwoColumnsWithSidebar:
                 case PageLayout.WebPart_2010_TwoColumnsLeft:
                     {
-                        page.AddSection(CanvasSectionTemplate.TwoColumnLeft, 1);
+                        page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumnLeft, 1);
                         return;
                     }
                 case PageLayout.WebPart_HeaderRightColumnBody:
                     {
-                        page.AddSection(CanvasSectionTemplate.OneColumn, 1);
-                        page.AddSection(CanvasSectionTemplate.TwoColumnLeft, 2);
+                        page.AddSection(PnPCore.CanvasSectionTemplate.OneColumn, 1);
+                        page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumnLeft, 2);
                         return;
                     }
                 case PageLayout.WebPart_HeaderLeftColumnBody:
                     {
-                        page.AddSection(CanvasSectionTemplate.OneColumn, 1);
-                        page.AddSection(CanvasSectionTemplate.TwoColumnRight, 2);
+                        page.AddSection(PnPCore.CanvasSectionTemplate.OneColumn, 1);
+                        page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumnRight, 2);
                         return;
                     }
                 case PageLayout.Wiki_TwoColumnsWithHeader:
                     {
-                        page.AddSection(CanvasSectionTemplate.OneColumn, 1);
-                        page.AddSection(CanvasSectionTemplate.TwoColumn, 2);
+                        page.AddSection(PnPCore.CanvasSectionTemplate.OneColumn, 1);
+                        page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumn, 2);
                         return;
                     }
                 case PageLayout.Wiki_TwoColumnsWithHeaderAndFooter:
                     {
-                        page.AddSection(CanvasSectionTemplate.OneColumn, 1);
-                        page.AddSection(CanvasSectionTemplate.TwoColumn, 2);
-                        page.AddSection(CanvasSectionTemplate.OneColumn, 3);
+                        page.AddSection(PnPCore.CanvasSectionTemplate.OneColumn, 1);
+                        page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumn, 2);
+                        page.AddSection(PnPCore.CanvasSectionTemplate.OneColumn, 3);
                         return;
                     }
                 case PageLayout.Wiki_ThreeColumnsWithHeader:
                     {
-                        page.AddSection(CanvasSectionTemplate.OneColumn, 1);
-                        page.AddSection(CanvasSectionTemplate.ThreeColumn, 2);
+                        page.AddSection(PnPCore.CanvasSectionTemplate.OneColumn, 1);
+                        page.AddSection(PnPCore.CanvasSectionTemplate.ThreeColumn, 2);
                         return;
                     }
                 case PageLayout.Wiki_ThreeColumnsWithHeaderAndFooter:
@@ -94,23 +94,23 @@ namespace PnP.Framework.Modernization.Transform
                 case PageLayout.WebPart_HeaderFooter4ColumnsTopRow:
                 case PageLayout.WebPart_HeaderFooter2Columns4Rows:
                     {
-                        page.AddSection(CanvasSectionTemplate.OneColumn, 1);
-                        page.AddSection(CanvasSectionTemplate.ThreeColumn, 2);
-                        page.AddSection(CanvasSectionTemplate.OneColumn, 3);
+                        page.AddSection(PnPCore.CanvasSectionTemplate.OneColumn, 1);
+                        page.AddSection(PnPCore.CanvasSectionTemplate.ThreeColumn, 2);
+                        page.AddSection(PnPCore.CanvasSectionTemplate.OneColumn, 3);
                         return;
                     }
                 case PageLayout.WebPart_LeftColumnHeaderFooterTopRow3Columns:
                 case PageLayout.WebPart_RightColumnHeaderFooterTopRow3Columns:
                     {
-                        page.AddSection(CanvasSectionTemplate.OneColumn, 1);
-                        page.AddSection(CanvasSectionTemplate.OneColumn, 2);
-                        page.AddSection(CanvasSectionTemplate.ThreeColumn, 3);
-                        page.AddSection(CanvasSectionTemplate.OneColumn, 4);
+                        page.AddSection(PnPCore.CanvasSectionTemplate.OneColumn, 1);
+                        page.AddSection(PnPCore.CanvasSectionTemplate.OneColumn, 2);
+                        page.AddSection(PnPCore.CanvasSectionTemplate.ThreeColumn, 3);
+                        page.AddSection(PnPCore.CanvasSectionTemplate.OneColumn, 4);
                         return;
                     }
                 default:
                     {
-                        page.AddSection(CanvasSectionTemplate.OneColumn, 1);
+                        page.AddSection(PnPCore.CanvasSectionTemplate.OneColumn, 1);
                         return;
                     }
             }

@@ -6,6 +6,7 @@ using PnP.Framework.Utilities;
 using System;
 using System.Linq;
 using WebPart = PnP.Framework.Provisioning.Model.WebPart;
+using PnPCore = PnP.Core.Model.SharePoint;
 
 namespace PnP.Framework.Test.Framework.ObjectHandlers
 {
@@ -228,10 +229,10 @@ alert(""Hello!"");
 
                 var pageName = $"{Guid.NewGuid().ToString()}.aspx";
                 var newPage = ctx.Web.AddClientSidePage();
-                newPage.LayoutType = Pages.ClientSidePageLayoutType.Article;
+                newPage.LayoutType = PnPCore.PageLayoutType.Article;
 #if !SP2019
                 newPage.PageHeader.TopicHeader = "HEY HEADER";
-                newPage.PageHeader.LayoutType = Pages.ClientSidePageHeaderLayoutType.NoImage;
+                newPage.PageHeader.LayoutType = PnPCore.PageHeaderLayoutType.NoImage;
                 newPage.PageHeader.ShowTopicHeader = true;
 #endif
                 newPage.PageHeader.ImageServerRelativeUrl = imgUrl;
@@ -242,11 +243,11 @@ alert(""Hello!"");
                 try
                 {
                     var readPage = ctx.Web.LoadClientSidePage(pageName);
-                    Assert.AreEqual(readPage.LayoutType, Pages.ClientSidePageLayoutType.Article);
+                    Assert.AreEqual(readPage.LayoutType, PnPCore.PageLayoutType.Article);
 #if !SP2019
                     Assert.AreEqual("HEY HEADER", readPage.PageHeader.TopicHeader);
                     Assert.IsTrue(readPage.PageHeader.ShowTopicHeader);
-                    Assert.AreEqual(Pages.ClientSidePageHeaderLayoutType.NoImage, readPage.PageHeader.LayoutType);
+                    Assert.AreEqual(PnPCore.PageHeaderLayoutType.NoImage, readPage.PageHeader.LayoutType);
 #endif
                     Assert.AreEqual(imgUrl, readPage.PageHeader.ImageServerRelativeUrl);
                     Assert.AreEqual(1.0, readPage.PageHeader.TranslateX);

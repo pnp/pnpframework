@@ -1,7 +1,7 @@
 ﻿using Microsoft.SharePoint.Client;
-using PnP.Framework.Pages;
 using System;
 using System.Collections.Generic;
+using PnPCore = PnP.Core.Model.SharePoint;
 
 namespace PnP.Framework.Modernization.Transform
 {
@@ -150,11 +150,11 @@ namespace PnP.Framework.Modernization.Transform
         /// <summary>
         /// Custom layout transformator to be used for this page
         /// </summary>
-        public Func<ClientSidePage, ILayoutTransformator> LayoutTransformatorOverride { get; set; }
+        public Func<PnPCore.IPage, ILayoutTransformator> LayoutTransformatorOverride { get; set; }
         /// <summary>
         /// Custom content transformator to be used for this page
         /// </summary>
-        public Func<ClientSidePage, PageTransformation, IContentTransformator> ContentTransformatorOverride { get; set; }
+        public Func<PnPCore.IPage, PageTransformation, IContentTransformator> ContentTransformatorOverride { get; set; }
         #endregion
 
         #region General properties

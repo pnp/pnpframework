@@ -113,6 +113,7 @@ namespace Microsoft.SharePoint.Client
                 clientTag = (clientContext as PnPClientContext).ClientTag;
             }
 
+
             int retryAttempts = 0;
             int backoffInterval = delay;
             int retryAfterInterval = 0;
@@ -175,7 +176,23 @@ namespace Microsoft.SharePoint.Client
                         retry = true;
                         retryAfterInterval = backoffInterval;
 
-                        //Add delay for retry, retry-after header is specified in seconds
+                        var clientContextSettings = clientContext.GetContextSettings();
+                        if (clientContextSettings != null && clientContextSettings.UseRetryAfterHeader)
+                        {
+                            //Add delay for retry, retry-after header is specified in seconds
+                            if (response.Headers["Retry-After"] != null)
+                            {
+                                if (int.TryParse(response.Headers["Retry-After"], out int retryAfterHeaderValue))
+                                {
+                                    retryAfterInterval = retryAfterHeaderValue * 1000;
+                                    Log.Warning(Constants.LOGGING_SOURCE, "CSOM request frequency exceeded usage limits. Retry-After header found. Sleeping for {0} seconds before retrying.", retryAfterInterval);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Log.Warning(Constants.LOGGING_SOURCE, CoreResources.ClientContextExtensions_ExecuteQueryRetry, backoffInterval);
+                        }
                         await Task.Delay(retryAfterInterval);
 
                         //Add to retry count and increase delay.

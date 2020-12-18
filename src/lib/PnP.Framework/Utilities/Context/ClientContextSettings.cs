@@ -24,6 +24,7 @@ namespace PnP.Framework.Utilities.Context
         internal string Tenant { get; set; }
         internal X509Certificate2 Certificate { get; set; }
         internal AzureEnvironment Environment { get; set; }
+        internal bool UseRetryAfterHeader { get; set; }
         #endregion
 
         #region methods

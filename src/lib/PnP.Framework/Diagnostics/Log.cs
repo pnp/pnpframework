@@ -236,6 +236,24 @@ namespace PnP.Framework.Diagnostics
                 });
             }
         }
+
+        /// <summary>
+        /// Log Warning
+        /// </summary>
+        /// <param name="source">Source of event</param>
+        /// <param name="message">Message to log</param>
+        public static void Warning(string source, string message)
+        {
+            InitializeLogger();
+            if(ShouldLog(LogLevel.Warning))
+            {
+                _logger.Warning(new LogEntry()
+                {
+                    Message = message,
+                    Source = source
+                });
+            }
+        }
         /// <summary>
         /// Warning Log
         /// </summary>

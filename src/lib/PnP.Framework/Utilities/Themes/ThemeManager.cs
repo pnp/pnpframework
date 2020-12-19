@@ -110,46 +110,48 @@ namespace PnP.Framework.Utilities.Themes
                     string requestUrl = $"{context.Web.Url}/_api/thememanager/{action.ToString()}";
 
                     // Always make a POST request
-                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
-                    request.Headers.Add("ACCEPT", "application/json; odata.metadata=minimal");
-                    if (!string.IsNullOrEmpty(accessToken))
+                    using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl))
                     {
-                        request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
-                    }
-                    request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync());
-                    request.Headers.Add("ODATA-VERSION", "4.0");
-
-                    if (postObject != null)
-                    {
-                        var jsonBody = JsonConvert.SerializeObject(postObject);
-                        var requestBody = new StringContent(jsonBody);
-                        MediaTypeHeaderValue sharePointJsonMediaType;
-                        MediaTypeHeaderValue.TryParse("application/json;charset=utf-8", out sharePointJsonMediaType);
-                        requestBody.Headers.ContentType = sharePointJsonMediaType;
-                        request.Content = requestBody;
-                    }
-
-                    // Perform actual post operation
-                    HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        // If value empty, URL is taken
-                        var responseString = await response.Content.ReadAsStringAsync();
-                        if (responseString != null)
+                        request.Headers.Add("ACCEPT", "application/json; odata.metadata=minimal");
+                        if (!string.IsNullOrEmpty(accessToken))
                         {
-                            try
-                            {
-                                var responseJson = JObject.Parse(responseString);
-                                result = true;
-                            }
-                            catch { }
+                            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
                         }
-                    }
-                    else
-                    {
-                        // Something went wrong...
-                        throw new Exception(await response.Content.ReadAsStringAsync());
+                        request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync());
+                        request.Headers.Add("ODATA-VERSION", "4.0");
+
+                        if (postObject != null)
+                        {
+                            var jsonBody = JsonConvert.SerializeObject(postObject);
+                            var requestBody = new StringContent(jsonBody);
+                            MediaTypeHeaderValue sharePointJsonMediaType;
+                            MediaTypeHeaderValue.TryParse("application/json;charset=utf-8", out sharePointJsonMediaType);
+                            requestBody.Headers.ContentType = sharePointJsonMediaType;
+                            request.Content = requestBody;
+                        }
+
+                        // Perform actual post operation
+                        HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            // If value empty, URL is taken
+                            var responseString = await response.Content.ReadAsStringAsync();
+                            if (responseString != null)
+                            {
+                                try
+                                {
+                                    var responseJson = JObject.Parse(responseString);
+                                    result = true;
+                                }
+                                catch { }
+                            }
+                        }
+                        else
+                        {
+                            // Something went wrong...
+                            throw new Exception(await response.Content.ReadAsStringAsync());
+                        }
                     }
                 }
             }
@@ -185,46 +187,48 @@ namespace PnP.Framework.Utilities.Themes
                     string requestUrl = $"{context.Web.Url}/_api/thememanager/{action.ToString()}";
 
                     // Always make a POST request
-                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
-                    request.Headers.Add("ACCEPT", "application/json; odata.metadata=minimal");
-                    if (!string.IsNullOrEmpty(accessToken))
+                    using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl))
                     {
-                        request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
-                    }
-                    request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync());
-                    request.Headers.Add("ODATA-VERSION", "4.0");
-
-                    if (!string.IsNullOrEmpty(postObject))
-                    {
-                        var jsonBody = JObject.Parse(postObject);
-                        var requestBody = new StringContent(postObject);
-                        MediaTypeHeaderValue sharePointJsonMediaType;
-                        MediaTypeHeaderValue.TryParse("application/json;charset=utf-8", out sharePointJsonMediaType);
-                        requestBody.Headers.ContentType = sharePointJsonMediaType;
-                        request.Content = requestBody;
-                    }
-
-                    // Perform actual post operation
-                    HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        // If value empty, URL is taken
-                        var responseString = await response.Content.ReadAsStringAsync();
-                        if (responseString != null)
+                        request.Headers.Add("ACCEPT", "application/json; odata.metadata=minimal");
+                        if (!string.IsNullOrEmpty(accessToken))
                         {
-                            try
-                            {
-                                var responseJson = JObject.Parse(responseString);
-                                result = true;
-                            }
-                            catch { }
+                            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
                         }
-                    }
-                    else
-                    {
-                        // Something went wrong...
-                        throw new Exception(await response.Content.ReadAsStringAsync());
+                        request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync());
+                        request.Headers.Add("ODATA-VERSION", "4.0");
+
+                        if (!string.IsNullOrEmpty(postObject))
+                        {
+                            var jsonBody = JObject.Parse(postObject);
+                            var requestBody = new StringContent(postObject);
+                            MediaTypeHeaderValue sharePointJsonMediaType;
+                            MediaTypeHeaderValue.TryParse("application/json;charset=utf-8", out sharePointJsonMediaType);
+                            requestBody.Headers.ContentType = sharePointJsonMediaType;
+                            request.Content = requestBody;
+                        }
+
+                        // Perform actual post operation
+                        HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            // If value empty, URL is taken
+                            var responseString = await response.Content.ReadAsStringAsync();
+                            if (responseString != null)
+                            {
+                                try
+                                {
+                                    var responseJson = JObject.Parse(responseString);
+                                    result = true;
+                                }
+                                catch { }
+                            }
+                        }
+                        else
+                        {
+                            // Something went wrong...
+                            throw new Exception(await response.Content.ReadAsStringAsync());
+                        }
                     }
                 }
             }

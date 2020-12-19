@@ -6,6 +6,7 @@ using PnP.Framework.Utilities;
 using PnP.Framework.Utilities.Async;
 using PnP.Framework.Utilities.Context;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
@@ -14,7 +15,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Microsoft.SharePoint.Client
@@ -26,6 +29,11 @@ namespace Microsoft.SharePoint.Client
     {
         private static readonly string userAgentFromConfig = null;
         private static string accessToken = null;
+
+#pragma warning disable CS0169
+        private static ConcurrentDictionary<string, (string requestDigest, DateTime expiresOn)> requestDigestInfos = new ConcurrentDictionary<string, (string requestDigest, DateTime expiresOn)>();
+#pragma warning restore CS0169
+
         //private static bool hasAuthCookies;
 
         /// <summary>
@@ -70,26 +78,25 @@ namespace Microsoft.SharePoint.Client
         /// </summary>
         /// <param name="clientContext">clientContext to operate on</param>
         /// <param name="retryCount">Number of times to retry the request</param>
-        /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
         /// <param name="userAgent">UserAgent string value to insert for this request. You can define this value in your app's config file using key="SharePointPnPUserAgent" value="PnPRocks"></param>
-        public static Task ExecuteQueryRetryAsync(this ClientRuntimeContext clientContext, int retryCount = 10, int delay = 500, string userAgent = null)
+        public static Task ExecuteQueryRetryAsync(this ClientRuntimeContext clientContext, int retryCount = 10, string userAgent = null)
         {
-            return ExecuteQueryImplementation(clientContext, retryCount, delay, userAgent);
+            return ExecuteQueryImplementation(clientContext, retryCount, userAgent);
         }
+
 
         /// <summary>
         /// Executes the current set of data retrieval queries and method invocations and retries it if needed.
         /// </summary>
         /// <param name="clientContext">clientContext to operate on</param>
         /// <param name="retryCount">Number of times to retry the request</param>
-        /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
         /// <param name="userAgent">UserAgent string value to insert for this request. You can define this value in your app's config file using key="SharePointPnPUserAgent" value="PnPRocks"></param>
-        public static void ExecuteQueryRetry(this ClientRuntimeContext clientContext, int retryCount = 10, int delay = 500, string userAgent = null)
+        public static void ExecuteQueryRetry(this ClientRuntimeContext clientContext, int retryCount = 10, string userAgent = null)
         {
-            Task.Run(() => ExecuteQueryImplementation(clientContext, retryCount, delay, userAgent)).GetAwaiter().GetResult();
+            Task.Run(() => ExecuteQueryImplementation(clientContext, retryCount, userAgent)).GetAwaiter().GetResult();
         }
 
-        private static async Task ExecuteQueryImplementation(ClientRuntimeContext clientContext, int retryCount = 10, int delay = 500, string userAgent = null)
+        private static async Task ExecuteQueryImplementation(ClientRuntimeContext clientContext, int retryCount = 10, string userAgent = null)
         {
 
             await new SynchronizationContextRemover();
@@ -101,21 +108,17 @@ namespace Microsoft.SharePoint.Client
             if (clientContext is PnPClientContext)
             {
                 retryCount = (clientContext as PnPClientContext).RetryCount;
-                delay = (clientContext as PnPClientContext).Delay;
                 clientTag = (clientContext as PnPClientContext).ClientTag;
             }
 
+            int backoffInterval = 500;
             int retryAttempts = 0;
-            int backoffInterval = delay;
             int retryAfterInterval = 0;
             bool retry = false;
             ClientRequestWrapper wrapper = null;
 
             if (retryCount <= 0)
                 throw new ArgumentException("Provide a retry count greater than zero.");
-
-            if (delay <= 0)
-                throw new ArgumentException("Provide a delay greater than zero.");
 
             // Do while retry attempt is less than retry count
             while (retryAttempts < retryCount)
@@ -161,18 +164,29 @@ namespace Microsoft.SharePoint.Client
                         // || response.StatusCode == (HttpStatusCode)500
                         ))
                     {
-                        Log.Warning(Constants.LOGGING_SOURCE, CoreResources.ClientContextExtensions_ExecuteQueryRetry, backoffInterval);
-
                         wrapper = (ClientRequestWrapper)wex.Data["ClientRequest"];
                         retry = true;
-                        retryAfterInterval = backoffInterval;
+                        retryAfterInterval = 0;
 
                         //Add delay for retry, retry-after header is specified in seconds
+                        if (response.Headers["Retry-After"] != null)
+                        {
+                            if (int.TryParse(response.Headers["Retry-After"], out int retryAfterHeaderValue))
+                            {
+                                retryAfterInterval = retryAfterHeaderValue * 1000;
+                            }
+                        }
+                        else
+                        {
+                            retryAfterInterval = backoffInterval;
+                            backoffInterval *= 2;
+                        }
+                        Log.Warning(Constants.LOGGING_SOURCE, $"CSOM request frequency exceeded usage limits. Retry attempt {retryAttempts + 1}. Sleeping for {retryAfterInterval} milliseconds before retrying.");
+
                         await Task.Delay(retryAfterInterval);
 
                         //Add to retry count and increase delay.
                         retryAttempts++;
-                        backoffInterval = backoffInterval * 2;
                     }
                     else
                     {
@@ -514,9 +528,10 @@ namespace Microsoft.SharePoint.Client
             }
             else
             {
-                if (clientContext.GetContextSettings()?.AuthenticationManager != null)
+                var contextSettings = clientContext.GetContextSettings();
+
+                if (contextSettings?.AuthenticationManager != null && contextSettings?.Type != ClientContextType.SharePointACSAppOnly)
                 {
-                    var contextSettings = clientContext.GetContextSettings();
                     accessToken = contextSettings.AuthenticationManager.GetAccessTokenAsync(clientContext.Url).GetAwaiter().GetResult();
                 }
                 else
@@ -627,13 +642,115 @@ namespace Microsoft.SharePoint.Client
             return pnpMethod;
         }
 
+        /// <summary>
+        /// Returns the request digest from the current session/site given cookie based auth
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="cookieContainer">A cookiecontainer containing FedAuth cookies</param>
+        /// <returns></returns>
+        public static async Task<string> GetRequestDigestAsync(this ClientContext context, CookieContainer cookieContainer)
+        {
+            if (cookieContainer != null)
+            {
+                var hostUrl = context.Url;
+                if (requestDigestInfos.TryGetValue(hostUrl, out (string digestToken, DateTime expiresOn) requestDigestInfo))
+                {
+                    // We only have to add a request digest when running in dotnet core
+                    if (DateTime.Now > requestDigestInfo.expiresOn)
+                    {
+                        requestDigestInfo = await GetRequestDigestInfoAsync(hostUrl, cookieContainer);
+                        requestDigestInfos.AddOrUpdate(hostUrl, requestDigestInfo, (key, oldValue) => requestDigestInfo);
+                    }
+                }
+                else
+                {
+                    // admin url maybe?
+                    requestDigestInfo = await GetRequestDigestInfoAsync(hostUrl, cookieContainer);
+                    requestDigestInfos.AddOrUpdate(hostUrl, requestDigestInfo, (key, oldValue) => requestDigestInfo);
+                }
+                return requestDigestInfo.digestToken;
+            }
+            else
+            {
+                return null;
+            }
+        }
 
+        private static async Task<(string digestToken, DateTime expiresOn)> GetRequestDigestInfoAsync(string siteUrl, CookieContainer cookieContainer)
+        {
+            await new SynchronizationContextRemover();
+
+            using (var handler = new HttpClientHandler())
+            {
+                handler.CookieContainer = cookieContainer;
+                using (var httpClient = new HttpClient(handler))
+                {
+                    string responseString = string.Empty;
+
+                    string requestUrl = string.Format("{0}/_api/contextinfo", siteUrl.TrimEnd('/'));
+                    using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl))
+                    {
+                        request.Headers.Add("accept", "application/json;odata=nometadata");
+                        HttpResponseMessage response = await httpClient.SendAsync(request);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            responseString = await response.Content.ReadAsStringAsync();
+                        }
+                        else
+                        {
+                            var errorSb = new System.Text.StringBuilder();
+
+                            errorSb.AppendLine(await response.Content.ReadAsStringAsync());
+                            if (response.Headers.Contains("SPRequestGuid"))
+                            {
+                                var values = response.Headers.GetValues("SPRequestGuid");
+                                if (values != null)
+                                {
+                                    var spRequestGuid = values.FirstOrDefault();
+                                    errorSb.AppendLine($"ServerErrorTraceCorrelationId: {spRequestGuid}");
+                                }
+                            }
+
+                            throw new Exception(errorSb.ToString());
+                        }
+
+                        var contextInformation = JsonSerializer.Deserialize<JsonElement>(responseString);
+
+                        string formDigestValue = contextInformation.GetProperty("FormDigestValue").GetString();
+                        int expiresIn = contextInformation.GetProperty("FormDigestTimeoutSeconds").GetInt32();
+                        return (formDigestValue, DateTime.Now.AddSeconds(expiresIn - 30));
+                    }
+                }
+            }
+        }
+
+        public static async Task<string> GetRequestDigestAsync(this ClientContext context)
+        {
+            var hostUrl = context.Url;
+            if (requestDigestInfos.TryGetValue(hostUrl, out (string digestToken, DateTime expiresOn) requestDigestInfo))
+            {
+                // We only have to add a request digest when running in dotnet core
+                if (DateTime.Now > requestDigestInfo.expiresOn)
+                {
+                    requestDigestInfo = await GetRequestDigestInfoAsync(context);
+                    requestDigestInfos.AddOrUpdate(hostUrl, requestDigestInfo, (key, oldValue) => requestDigestInfo);
+                }
+            }
+            else
+            {
+                // admin url maybe?
+                requestDigestInfo = await GetRequestDigestInfoAsync(context);
+                requestDigestInfos.AddOrUpdate(hostUrl, requestDigestInfo, (key, oldValue) => requestDigestInfo);
+            }
+            return requestDigestInfo.digestToken;
+        }
         /// <summary>
         /// Returns the request digest from the current session/site
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        public static async Task<string> GetRequestDigestAsync(this ClientContext context)
+        private static async Task<(string digestToken, DateTime expiresOn)> GetRequestDigestInfoAsync(ClientContext context)
         {
             await new SynchronizationContextRemover();
 
@@ -648,10 +765,10 @@ namespace Microsoft.SharePoint.Client
 
                 using (var httpClient = new PnPHttpProvider(handler))
                 {
-                    string requestUrl = String.Format("{0}/_api/contextinfo", context.Web.Url);
+                    string requestUrl = String.Format("{0}/_api/contextinfo", context.Url);
                     using (var request = new HttpRequestMessage(HttpMethod.Post, requestUrl))
                     {
-                        request.Headers.Add("accept", "application/json;odata=verbose");
+                        request.Headers.Add("accept", "application/json;odata=nometadata");
                         if (!string.IsNullOrEmpty(accessToken))
                         {
                             request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
@@ -691,8 +808,9 @@ namespace Microsoft.SharePoint.Client
                 }
                 var contextInformation = JsonSerializer.Deserialize<JsonElement>(responseString);
 
-                string formDigestValue = contextInformation.GetProperty("d").GetProperty("GetContextWebInformation").GetProperty("FormDigestValue").GetString();
-                return await Task.Run(() => formDigestValue).ConfigureAwait(false);
+                string formDigestValue = contextInformation.GetProperty("FormDigestValue").GetString();
+                int expiresIn = contextInformation.GetProperty("FormDigestTimeoutSeconds").GetInt32();
+                return (formDigestValue, DateTime.Now.AddSeconds(expiresIn - 30));
             }
         }
 
@@ -821,6 +939,46 @@ namespace Microsoft.SharePoint.Client
             await new SynchronizationContextRemover();
 
             return await SiteCollection.DeleteSiteAsync(clientContext);
+        }
+
+        internal static void SetAuthenticationCookiesForHandler(this ClientContext context, HttpClientHandler handler)
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                var cookieString = CookieReader.GetCookie(context.Url)?.Replace("; ", ",")?.Replace(";", ",");
+                if (cookieString == null)
+                {
+                    return;
+                }
+                var authCookiesContainer = new System.Net.CookieContainer();
+                // Get FedAuth and rtFa cookies issued by ADFS when accessing claims aware applications.
+                // - or get the EdgeAccessCookie issued by the Web Application Proxy (WAP) when accessing non-claims aware applications (Kerberos).
+                IEnumerable<string> authCookies = null;
+                if (Regex.IsMatch(cookieString, "FedAuth", RegexOptions.IgnoreCase))
+                {
+                    authCookies = cookieString.Split(',').Where(c => c.StartsWith("FedAuth", StringComparison.InvariantCultureIgnoreCase) || c.StartsWith("rtFa", StringComparison.InvariantCultureIgnoreCase));
+                }
+                else if (Regex.IsMatch(cookieString, "EdgeAccessCookie", RegexOptions.IgnoreCase))
+                {
+                    authCookies = cookieString.Split(',').Where(c => c.StartsWith("EdgeAccessCookie", StringComparison.InvariantCultureIgnoreCase));
+                }
+                if (authCookies != null)
+                {
+                    var siteUri = new Uri(context.Url);
+                    var extension = siteUri.Host.Substring(siteUri.Host.LastIndexOf('.') + 1);
+                    var cookieCollection = new CookieCollection();
+                    foreach (var cookie in authCookies)
+                    {
+                        var cookieName = cookie.Substring(0, cookie.IndexOf("=")); // cannot use split as there might '=' in the value
+                        var cookieValue = cookie.Substring(cookieName.Length + 1);
+                        cookieCollection.Add(new Cookie(cookieName, cookieValue));
+                    }
+                    authCookiesContainer.Add(new Uri($"{siteUri.Scheme}://{siteUri.Host}"), cookieCollection);
+                    var adminSiteUri = new Uri(siteUri.Scheme + "://" + siteUri.Authority.Replace($".sharepoint.{extension}", $"-admin.sharepoint.{extension}"));
+                    authCookiesContainer.Add(adminSiteUri, cookieCollection);
+                }
+                handler.CookieContainer = authCookiesContainer;
+            }
         }
     }
 }

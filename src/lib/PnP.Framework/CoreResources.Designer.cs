@@ -215,15 +215,6 @@ namespace PnP.Framework {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CSOM request frequency exceeded usage limits. Sleeping for {0} seconds before retrying..
-        /// </summary>
-        internal static string ClientContextExtensions_ExecuteQueryRetry {
-            get {
-                return ResourceManager.GetString("ClientContextExtensions_ExecuteQueryRetry", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to ExecuteQuery threw following exception: {0}..
         /// </summary>
         internal static string ClientContextExtensions_ExecuteQueryRetryException {

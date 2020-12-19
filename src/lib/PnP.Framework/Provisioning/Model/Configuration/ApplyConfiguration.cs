@@ -149,7 +149,9 @@ namespace PnP.Framework.Provisioning.Model.Configuration
                 AccessTokens = information.AccessTokens
             };
             config.Navigation.ClearNavigation = information.ClearNavigation;
+#pragma warning disable CS0618 // obsolete
             config.Tenant.DelayAfterModernSiteCreation = information.DelayAfterModernSiteCreation;
+#pragma warning restore CS0618
             config.Extensibility.Handlers = information.ExtensibilityHandlers;
             if (information.HandlersToProcess == Model.Handlers.All)
             {

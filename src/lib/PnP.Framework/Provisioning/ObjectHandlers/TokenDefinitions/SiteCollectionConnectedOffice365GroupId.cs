@@ -22,7 +22,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
             {
                 TokenContext.Load(TokenContext.Site, s => s.GroupId);
                 TokenContext.ExecuteQueryRetry();
-                if (TokenContext.Site.GroupId != null && !TokenContext.Site.GroupId.Equals(Guid.Empty))
+                if (!TokenContext.Site.GroupId.Equals(Guid.Empty))
                 {
                     CacheValue = TokenContext.Site.GroupId.ToString();
                 }

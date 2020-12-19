@@ -5,6 +5,7 @@ namespace PnP.Framework.Provisioning.CanProvisionRules
     /// <summary>
     /// Attribute to decorate a CanProvisionRule
     /// </summary>
+    [AttributeUsage(AttributeTargets.Class)]
     internal class CanProvisionRuleAttribute : Attribute
     {
         /// <summary>

@@ -235,12 +235,12 @@ namespace PnP.Framework.Modernization.Transform
         public void CacheTermsFromTermStore(Guid sourceTermSetId, Guid targetTermSetId, Guid sourceSspId, bool isSP2010)
         {
             // Collect source terms
-            if (sourceTermSetId != null && sourceTermSetId != Guid.Empty)
+            if (sourceTermSetId != Guid.Empty)
             {
                 Cache.CacheManager.Instance.StoreTermSetTerms(this._sourceContext, sourceTermSetId, sourceSspId, isSP2010, true);
             }
 
-            if (targetTermSetId != null && targetTermSetId != Guid.Empty)
+            if (targetTermSetId != Guid.Empty)
             {
                 Cache.CacheManager.Instance.StoreTermSetTerms(this._targetContext, targetTermSetId, sourceSspId, false, false);
             }

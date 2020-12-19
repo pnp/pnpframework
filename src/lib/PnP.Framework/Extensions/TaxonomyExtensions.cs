@@ -683,19 +683,21 @@ namespace Microsoft.SharePoint.Client
                 foreach (var termset in groupDictItem.Value)
                 {
                     using (var memoryStream = new MemoryStream())
-                    using (var streamWriter = new StreamWriter(memoryStream))
                     {
-                        // Header
-                        streamWriter.WriteLine(@"""Term Set Name"",""Term Set Description"",""LCID"",""Available for Tagging"",""Term Description"",""Level 1 Term"",""Level 2 Term"",""Level 3 Term"",""Level 4 Term"",""Level 5 Term"",""Level 6 Term"",""Level 7 Term""");
-
-                        // Items
-                        foreach (var termLine in termset.Value)
+                        using (var streamWriter = new StreamWriter(memoryStream))
                         {
-                            streamWriter.WriteLine(termLine);
+                            // Header
+                            streamWriter.WriteLine(@"""Term Set Name"",""Term Set Description"",""LCID"",""Available for Tagging"",""Term Description"",""Level 1 Term"",""Level 2 Term"",""Level 3 Term"",""Level 4 Term"",""Level 5 Term"",""Level 6 Term"",""Level 7 Term""");
+
+                            // Items
+                            foreach (var termLine in termset.Value)
+                            {
+                                streamWriter.WriteLine(termLine);
+                            }
+                            streamWriter.Flush();
+                            memoryStream.Position = 0;
+                            termGroup.ImportTermSet(memoryStream, synchroniseDeletions: synchronizeDeletions);
                         }
-                        streamWriter.Flush();
-                        memoryStream.Position = 0;
-                        termGroup.ImportTermSet(memoryStream, synchroniseDeletions: synchronizeDeletions);
                     }
                 }
             }

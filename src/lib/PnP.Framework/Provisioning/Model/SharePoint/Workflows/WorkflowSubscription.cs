@@ -116,7 +116,7 @@ namespace PnP.Framework.Provisioning.Model
         {
             return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|",
                 this.PropertyDefinitions.Aggregate(0, (acc, next) => acc += next.GetHashCode()),
-                (this.DefinitionId != null ? this.DefinitionId.GetHashCode() : 0),
+                this.DefinitionId.GetHashCode(),
                 (this.ListId != null ? this.ListId.GetHashCode() : 0),
                 this.Enabled.GetHashCode(),
                 (this.EventSourceId != null ? this.EventSourceId.GetHashCode() : 0),

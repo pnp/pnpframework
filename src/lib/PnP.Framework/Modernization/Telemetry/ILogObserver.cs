@@ -19,7 +19,9 @@
         /// Error Log
         /// </summary>
         /// <param name="entry">LogEntry object</param>
+#pragma warning disable CA1716
         void Error(LogEntry entry);
+#pragma warning restore CA1716
         /// <summary>
         /// Debug Log
         /// </summary>

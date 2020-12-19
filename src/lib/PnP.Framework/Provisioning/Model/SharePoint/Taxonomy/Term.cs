@@ -153,7 +153,7 @@ namespace PnP.Framework.Provisioning.Model
         public override int GetHashCode()
         {
             return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}|{11}|{12}|{13}|{14}",
-                (this.Id != null ? this.Id.GetHashCode() : 0),
+                this.Id.GetHashCode(),
                 (this.Name != null ? this.Name.GetHashCode() : 0),
                 (this.Description != null ? this.Description.GetHashCode() : 0),
                 (this.Language != null ? this.Language.GetHashCode() : 0),

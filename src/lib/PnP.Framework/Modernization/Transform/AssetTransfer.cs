@@ -552,7 +552,7 @@ namespace PnP.Framework.Modernization.Transform
                 }
 
                 // Check if the asset is on the root site collection
-                if (match == string.Empty)
+                if (string.IsNullOrEmpty(match))
                 {
                     // Does it contain a relative reference
                     if (sourceUrl.StartsWith("/") && !sourceUrl.ContainsIgnoringCasing(context.Web.GetUrl()))
@@ -561,7 +561,7 @@ namespace PnP.Framework.Modernization.Transform
                     }
                 }
 
-                if (match != string.Empty && !match.Equals(context.Web.GetUrl(), StringComparison.InvariantCultureIgnoreCase))
+                if (!string.IsNullOrEmpty(match) && !match.Equals(context.Web.GetUrl(), StringComparison.InvariantCultureIgnoreCase))
                 {
 
                     _sourceClientContext = context.Clone(match);

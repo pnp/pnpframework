@@ -12,7 +12,7 @@
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new System.ArgumentException("Error property cannot be null or empty.", "value");
+                    throw new System.ArgumentException(nameof(value),"Error property cannot be null or empty.");
                 }
                 base.Message["error"] = value;
             }
@@ -48,7 +48,7 @@
             oAuth2ErrorResponse.DecodeFromJson(responseString);
             if (string.IsNullOrEmpty(oAuth2ErrorResponse.Error))
             {
-                throw new System.ArgumentException("Error property is null or empty. This message is not a valid OAuth2 error response.", "responseString");
+                throw new System.ArgumentException(nameof(responseString),"Error property is null or empty. This message is not a valid OAuth2 error response.");
             }
             return oAuth2ErrorResponse;
         }

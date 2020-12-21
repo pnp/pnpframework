@@ -504,7 +504,12 @@ namespace PnP.Framework.Modernization.Publishing
                 LogInfo($"{LogStrings.TransformSavedPageInCrossSiteCollection}: {pageName}", LogStrings.Heading_ArticlePageHandling);
 
                 // Load the page list item
-                var savedTargetPage = targetClientContext.Web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl($"{targetPage.Folder}/{publishingPageTransformationInformation.TargetPageName}"));
+                string pageNameToLoad = pageName;
+                if (pageNameToLoad.StartsWith("/"))
+                {
+                    pageNameToLoad = pageNameToLoad.Substring(1);
+                }
+                var savedTargetPage = targetClientContext.Web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl($"{targetPage.PagesLibrary.RootFolder.ServerRelativeUrl}/{pageNameToLoad}"));
                 targetClientContext.Web.Context.Load(savedTargetPage, p => p.ListItemAllFields);
                 targetClientContext.Web.Context.ExecuteQueryRetry();
 

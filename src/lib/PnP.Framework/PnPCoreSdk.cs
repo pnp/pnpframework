@@ -31,7 +31,7 @@ namespace PnP.Framework
         {
         }
 
-        internal PnPContext GetPnPContext(ClientContext context)
+        public PnPContext GetPnPContext(ClientContext context)
         {
             var factory = BuildContextFactory();
             return factory.Create(new Uri(context.Url), new PnPCoreSdkAuthenticationProvider(context));

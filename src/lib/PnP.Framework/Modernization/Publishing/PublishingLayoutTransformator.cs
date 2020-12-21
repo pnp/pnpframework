@@ -56,7 +56,7 @@ namespace PnP.Framework.Modernization.Publishing
             }
 
             // First drop all sections...ensure the default section is gone
-            page.Sections.Clear();
+            page.ClearPage();
 
             // Should not occur, but to be at the safe side...
             if (pageData.Item2.Count == 0)

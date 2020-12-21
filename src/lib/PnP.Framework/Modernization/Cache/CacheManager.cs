@@ -210,7 +210,7 @@ namespace PnP.Framework.Modernization.Cache
         /// </summary>
         /// <param name="page">Page to grab the components for</param>
         /// <returns></returns>
-        public List<PnPCore.IPageComponent> GetClientSideComponents(ClientContext targetClientContext, PnPCore.IPage page)
+        internal List<PnPCore.PageComponent> GetClientSideComponents(ClientContext targetClientContext, PnPCore.IPage page)
         {
             Guid webId = targetClientContext.Web.EnsureProperty(o => o.Id);
 
@@ -224,13 +224,13 @@ namespace PnP.Framework.Modernization.Cache
                     var clientSideComponents2 = Store.GetAndInitialize<Dictionary<string, string>>(StoreOptions.GetKey(keyClientSideComponents));
                     if (clientSideComponents2.TryGetValue(componentKey, out string componentList))
                     {
-                        return JsonSerializer.Deserialize<List<PnPCore.IPageComponent>>(componentList);
+                        return JsonSerializer.Deserialize<List<PnPCore.PageComponent>>(componentList);
                     }
                 }
             }
 
             // Ok, so nothing in cache so it seems, so let's get the components
-            var componentsToAdd = page.AvailablePageComponents().ToList();
+            var componentsToAdd = page.AvailablePageComponents().Cast<PnPCore.PageComponent>().ToList();
 
             // calculate the componentkey
             string jsonComponentsToAdd = JsonSerializer.Serialize(componentsToAdd);

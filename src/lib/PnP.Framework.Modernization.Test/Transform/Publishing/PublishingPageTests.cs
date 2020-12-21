@@ -46,11 +46,11 @@ namespace PnP.Framework.Modernization.Tests.Transform.Publishing
                     //"C:\temp\mappingtest.xml"
                     //@"C:\github\sp-dev-modernization\Tools\SharePoint.Modernization\PnP.Framework.Modernization.Tests\Transform\Publishing\webpartmapping.xml"
                     //var pageTransformator = new PublishingPageTransformator(sourceClientContext, targetClientContext, @"C:\github\sp-dev-modernization\Tools\SharePoint.Modernization\PnP.Framework.Modernization.Tests\Transform\Publishing\webpartmapping.xml", @"C:\github\sp-dev-modernization\Tools\SharePoint.Modernization\PnP.Framework.Modernization.Tests\Transform\Publishing\custompagelayoutmapping.xml");
-                    var pageTransformator = new PublishingPageTransformator(sourceClientContext, targetClientContext , @"C:\github\sp-dev-modernization\Tools\SharePoint.Modernization\PnP.Framework.Modernization.Tests\Transform\Publishing\custompagelayoutmapping.xml");
-                    pageTransformator.RegisterObserver(new MarkdownObserver(folder: "c:\\temp", includeVerbose:true));
+                    var pageTransformator = new PublishingPageTransformator(sourceClientContext, targetClientContext , @"D:\github\pnpframework\src\lib\PnP.Framework.Modernization.Test\Transform\Publishing\custompagelayoutmapping.xml");
+                    pageTransformator.RegisterObserver(new MarkdownObserver(folder: "d:\\temp", includeVerbose:true));
                     //pageTransformator.RegisterObserver(new MarkdownToSharePointObserver(targetClientContext, includeVerbose: true));
 
-                    var pages = sourceClientContext.Web.GetPagesFromList("Pages", "kevin");
+                    var pages = sourceClientContext.Web.GetPagesFromList("Pages", "volvo");
                     //var pages = sourceClientContext.Web.GetPagesFromList("Pages", folder:"News");
 
                     foreach (var page in pages)
@@ -67,15 +67,15 @@ namespace PnP.Framework.Modernization.Tests.Transform.Publishing
                             
                             PostAsNews = true,
 
-                            //TermMappingFile = @"C:\github\sp-dev-modernization\Tools\SharePoint.Modernization\PnP.Framework.Modernization.Tests\Transform\Mapping\termmapping_sample2.csv",
+                            TermMappingFile = @"D:\github\pnpframework\src\lib\PnP.Framework.Modernization.Test\Transform\Mapping\termmapping_sample2.csv",
 
-                            //UrlMappingFile = @"C:\github\sp-dev-modernization\Tools\SharePoint.Modernization\PnP.Framework.Modernization.Tests\Transform\Mapping\urlmapping_sample.csv",
+                            UrlMappingFile = @"D:\github\pnpframework\src\lib\PnP.Framework.Modernization.Test\Transform\Mapping\urlmapping_sample.csv",
 
-                            //UserMappingFile = @"C:\github\sp-dev-modernization\Tools\SharePoint.Modernization\PnP.Framework.Modernization.Tests\Transform\Mapping\usermapping_sample2.csv",
+                            UserMappingFile = @"D:\github\pnpframework\src\lib\PnP.Framework.Modernization.Test\Transform\Mapping\usermapping_sample2.csv",
 
-                            //DisablePageComments = true,
+                            DisablePageComments = true,
 
-                            //PublishCreatedPage = true,
+                            PublishCreatedPage = true,
 
                             //RemoveEmptySectionsAndColumns = false,
 

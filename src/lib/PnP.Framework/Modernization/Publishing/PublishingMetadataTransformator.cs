@@ -78,7 +78,8 @@ namespace PnP.Framework.Modernization.Publishing
                         listItemWasReloaded = true;
 
                         this.savedTargetPage.ListItemAllFields[Constants.ContentTypeIdField] = contentTypeId;
-                        this.savedTargetPage.ListItemAllFields.UpdateOverwriteVersion();
+                        //this.savedTargetPage.ListItemAllFields.UpdateOverwriteVersion();
+                        this.savedTargetPage.ListItemAllFields.SystemUpdate();
                         isDirty = true;
                     }
                 }
@@ -643,7 +644,8 @@ namespace PnP.Framework.Modernization.Publishing
                     {
                         try
                         {
-                            this.savedTargetPage.ListItemAllFields.UpdateOverwriteVersion();
+                            //this.savedTargetPage.ListItemAllFields.UpdateOverwriteVersion();
+                            this.savedTargetPage.ListItemAllFields.SystemUpdate();
                             targetClientContext.Load(this.savedTargetPage.ListItemAllFields);
                             targetClientContext.ExecuteQueryRetry();
 
@@ -834,7 +836,8 @@ namespace PnP.Framework.Modernization.Publishing
                             this.savedTargetPage.ListItemAllFields[Constants.CanvasContentField] = SetIsDefaultThumbnail(this.savedTargetPage.ListItemAllFields[Constants.CanvasContentField].ToString());
                         }
 
-                        this.savedTargetPage.ListItemAllFields.UpdateOverwriteVersion();
+                        //this.savedTargetPage.ListItemAllFields.UpdateOverwriteVersion();
+                        this.savedTargetPage.ListItemAllFields.SystemUpdate();
                         targetClientContext.Load(this.savedTargetPage.ListItemAllFields);
                         targetClientContext.ExecuteQueryRetry();
 

@@ -582,7 +582,7 @@ namespace PnP.Framework.Modernization.Transform
                             targetPage.PageHeader.LayoutType = PnPCore.PageHeaderLayoutType.NoImage;
 
                             LogInfo(LogStrings.TransformArticleSetHeaderToNoneWithAuthor, LogStrings.Heading_ArticlePageHandling);
-                            SetAuthorInPageHeader(targetClientContext, targetPage);
+                            SetAuthorInPageHeader(context, targetPage);
                         }
                         else
                         {
@@ -642,7 +642,7 @@ namespace PnP.Framework.Modernization.Transform
                     }
 
                     // Analyze the "text" parts (wikitext parts and text in content editor web parts)
-                    pageData = new Tuple<PageLayout, List<WebPartEntity>>(pageData.Item1, new WikiHtmlTransformator(this.sourceClientContext, this.targetClientContext, targetPage, pageTransformationInformation as BaseTransformationInformation, base.RegisteredLogObservers).TransformPlusSplit(pageData.Item2, pageTransformationInformation.HandleWikiImagesAndVideos, pageTransformationInformation.AddTableListImageAsImageWebPart));
+                    pageData = new Tuple<PageLayout, List<WebPartEntity>>(pageData.Item1, new WikiHtmlTransformator(this.sourceClientContext, context, targetPage, pageTransformationInformation as BaseTransformationInformation, base.RegisteredLogObservers).TransformPlusSplit(pageData.Item2, pageTransformationInformation.HandleWikiImagesAndVideos, pageTransformationInformation.AddTableListImageAsImageWebPart));
 
 #if DEBUG && MEASURE
                 Stop("Analyze page");
@@ -788,7 +788,7 @@ namespace PnP.Framework.Modernization.Transform
                 Start();
 #endif
                     // Use the default content transformator
-                    IContentTransformator contentTransformator = new ContentTransformator(sourceClientContext, targetClientContext, targetPage, pageTransformation, pageTransformationInformation as BaseTransformationInformation, base.RegisteredLogObservers);
+                    IContentTransformator contentTransformator = new ContentTransformator(sourceClientContext, context, targetPage, pageTransformation, pageTransformationInformation as BaseTransformationInformation, base.RegisteredLogObservers);
 
                     // Do we have an override?
                     if (pageTransformationInformation.ContentTransformatorOverride != null)
@@ -848,9 +848,9 @@ namespace PnP.Framework.Modernization.Transform
 
 
                 // Load the page list item
-                var savedTargetPage = targetClientContext.Web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl($"{pagesLibrary.RootFolder.ServerRelativeUrl}/{pageTransformationInformation.Folder}{pageTransformationInformation.TargetPageName}"));
-                targetClientContext.Web.Context.Load(savedTargetPage, p => p.ListItemAllFields);
-                targetClientContext.Web.Context.ExecuteQueryRetry();
+                var savedTargetPage = context.Web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl($"{pagesLibrary.RootFolder.ServerRelativeUrl}/{pageTransformationInformation.Folder}{pageTransformationInformation.TargetPageName}"));
+                context.Web.Context.Load(savedTargetPage, p => p.ListItemAllFields);
+                context.Web.Context.ExecuteQueryRetry();
 
 
 #if DEBUG && MEASURE
@@ -940,13 +940,14 @@ namespace PnP.Framework.Modernization.Transform
                     if (!skipSettingMigratedFromServerRendered)
                     {
                         savedTargetPage.ListItemAllFields[Constants.SPSitePageFlagsField] = ";#MigratedFromServerRendered;#";
-                        //targetPage.PageListItem.Update();
-                        savedTargetPage.ListItemAllFields.UpdateOverwriteVersion();
+                        // Don't use UpdateOverWriteVersion as the listitem already exists 
+                        // resulting in an "Additions to this Web site have been blocked" error
+                        savedTargetPage.ListItemAllFields.SystemUpdate();
                         context.Load(savedTargetPage.ListItemAllFields);
                         context.ExecuteQueryRetry();
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     // Eat any exception
                 }

@@ -47,8 +47,14 @@ namespace PnP.Framework.Modernization.Publishing
             this.pageLayoutManager = new PageLayoutManager(base.RegisteredLogObservers);
 
             // Load xml mapping data
+            var fileToLoad = pageTransformationFile;
+            if (!System.IO.File.Exists(pageTransformationFile))
+            {
+                fileToLoad = "Modernization" + Path.AltDirectorySeparatorChar + pageTransformationFile;
+            }
+
             XmlSerializer xmlMapping = new XmlSerializer(typeof(PageTransformation));
-            using (var stream = new FileStream(pageTransformationFile, FileMode.Open))
+            using (var stream = new FileStream(fileToLoad, FileMode.Open))
             {
                 this.pageTransformation = (PageTransformation)xmlMapping.Deserialize(stream);
             }
@@ -498,7 +504,7 @@ namespace PnP.Framework.Modernization.Publishing
                 LogInfo($"{LogStrings.TransformSavedPageInCrossSiteCollection}: {pageName}", LogStrings.Heading_ArticlePageHandling);
 
                 // Load the page list item
-                var savedTargetPage = targetClientContext.Web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl($"{pagesLibrary.RootFolder.ServerRelativeUrl}/{publishingPageTransformationInformation.Folder}{publishingPageTransformationInformation.TargetPageName}"));
+                var savedTargetPage = targetClientContext.Web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl($"{targetPage.Folder}/{publishingPageTransformationInformation.TargetPageName}"));
                 targetClientContext.Web.Context.Load(savedTargetPage, p => p.ListItemAllFields);
                 targetClientContext.Web.Context.ExecuteQueryRetry();
 
@@ -585,12 +591,14 @@ namespace PnP.Framework.Modernization.Publishing
                     if (!skipSettingMigratedFromServerRendered)
                     {
                         savedTargetPage.ListItemAllFields[Constants.SPSitePageFlagsField] = ";#MigratedFromServerRendered;#";
-                        savedTargetPage.ListItemAllFields.UpdateOverwriteVersion();
+                        // Don't use UpdateOverWriteVersion as the listitem already exists 
+                        // resulting in an "Additions to this Web site have been blocked" error
+                        savedTargetPage.ListItemAllFields.SystemUpdate();
                         context.Load(savedTargetPage.ListItemAllFields);
                         context.ExecuteQueryRetry();
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     // Eat any exception
                 }

@@ -129,7 +129,7 @@ namespace PnP.Framework.Modernization.Transform
 
         internal void RemoveEmptyTextParts(PnPCore.IPage targetPage)
         {
-            var textParts = targetPage.Controls.Where(p => p.Type == typeof(PnPCore.IPageText));
+            var textParts = targetPage.Controls.Where(p => p.Type == typeof(PnPCore.PageText));
             if (textParts != null && textParts.Any())
             {
                 HtmlParser parser = new HtmlParser(new HtmlParserOptions() { IsEmbedded = true });

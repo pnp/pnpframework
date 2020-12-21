@@ -1,18 +1,12 @@
 ﻿/*
-using System;
 using Microsoft.SharePoint.Client;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
-using PnP.Framework.Entities;
-using System.Linq;
-using PnP.Framework.Provisioning.ObjectHandlers;
-using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Provisioning.Connectors;
-using PnP.Framework.Provisioning.Providers.Xml;
-using System.Threading.Tasks;
-using System.Globalization;
-using PnP.Framework.Pages;
 using Microsoft.SharePoint.Client.Taxonomy;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PnP.Framework.Provisioning.Connectors;
+using PnP.Framework.Provisioning.Model;
+using PnP.Framework.Provisioning.ObjectHandlers;
+using PnP.Framework.Provisioning.Providers.Xml;
+using System;
 
 namespace PnP.Framework.Test.Authentication
 {
@@ -37,59 +31,59 @@ namespace PnP.Framework.Test.Authentication
         }
         #endregion
 
-        //[TestMethod]
-        //public void ExportPagesTest()
-        //{
-        //    using (var clientContext = TestCommon.CreateClientContext("https://bertonline.sharepoint.com/sites/KnowledgeCenter"))
-        //    {
-        //        ProvisioningTemplateCreationInformation ptci = new ProvisioningTemplateCreationInformation(clientContext.Web)
-        //        {
-        //            // Limit the amount of handlers in this demo
-        //            HandlersToProcess = Handlers.PageContents,
-        //            // Create FileSystemConnector, so that we can store composed files temporarely somewhere 
-        //            FileConnector = new FileSystemConnector(@"d:\temp\topicpages", ""),
-        //            PersistBrandingFiles = true,
-        //            IncludeAllClientSidePages = true,
-        //            ProgressDelegate = delegate (String message, Int32 progress, Int32 total)
-        //            {
-        //                // Only to output progress for console UI
-        //                Console.WriteLine("{0:00}/{1:00} - {2}", progress, total, message);
-        //            }
-        //        };
+        [TestMethod]
+        public void ExportPagesTest()
+        {
+            using (var clientContext = TestCommon.CreateClientContext("https://bertonline.sharepoint.com/sites/TheLanding1"))
+            {
+                ProvisioningTemplateCreationInformation ptci = new ProvisioningTemplateCreationInformation(clientContext.Web)
+                {
+                    // Limit the amount of handlers in this demo
+                    HandlersToProcess = Handlers.PageContents,
+                    // Create FileSystemConnector, so that we can store composed files temporarely somewhere 
+                    FileConnector = new FileSystemConnector(@"d:\temp\modernpages", ""),
+                    PersistBrandingFiles = true,
+                    IncludeAllClientSidePages = true,
+                    ProgressDelegate = delegate (String message, Int32 progress, Int32 total)
+                    {
+                        // Only to output progress for console UI
+                        Console.WriteLine("{0:00}/{1:00} - {2}", progress, total, message);
+                    }
+                };
 
-        //        // Execute actual extraction of the tepmplate
-        //        ProvisioningTemplate template = clientContext.Web.GetProvisioningTemplate(ptci);
+                // Execute actual extraction of the tepmplate
+                ProvisioningTemplate template = clientContext.Web.GetProvisioningTemplate(ptci);
 
-        //        // Serialize to XML using the beta 201705 schema
-        //        XMLTemplateProvider provider = new XMLFileSystemTemplateProvider(@"d:\temp\topicpages", "");
-        //        var formatter = XMLPnPSchemaFormatter.GetSpecificFormatter(XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2020_02);
-        //        provider.SaveAs(template, "PnPProvisioningDemo202002.xml", formatter);
-        //    }
-        //}
+                // Serialize to XML using the beta 201705 schema
+                XMLTemplateProvider provider = new XMLFileSystemTemplateProvider(@"d:\temp\modernpages", "");
+                var formatter = XMLPnPSchemaFormatter.GetSpecificFormatter(XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2020_02);
+                provider.SaveAs(template, "TheLandingMultiLingual.xml", formatter);
+            }
+        }
 
-        //[TestMethod]
-        //public void ApplyPagesTest()
-        //{
-        //    using (var clientContext = TestCommon.CreateClientContext("https://bertonline.sharepoint.com/sites/KnowledgeCenter"))
-        //    {
-        //        ProvisioningTemplateApplyingInformation ptai = new ProvisioningTemplateApplyingInformation()
-        //        {
-        //            //HandlersToProcess = Handlers.PageContents,
-        //            ProgressDelegate = delegate (String message, Int32 progress, Int32 total)
-        //            {
-        //                // Only to output progress for console UI
-        //                Console.WriteLine("{0:00}/{1:00} - {2}", progress, total, message);
-        //            }
-        //        };
+        [TestMethod]
+        public void ApplyPagesTest()
+        {
+            using (var clientContext = TestCommon.CreateClientContext("https://bertonline.sharepoint.com/sites/TheLanding1"))
+            {
+                ProvisioningTemplateApplyingInformation ptai = new ProvisioningTemplateApplyingInformation()
+                {
+                    //HandlersToProcess = Handlers.PageContents,
+                    ProgressDelegate = delegate (String message, Int32 progress, Int32 total)
+                    {
+                        // Only to output progress for console UI
+                        Console.WriteLine("{0:00}/{1:00} - {2}", progress, total, message);
+                    }
+                };
 
-        //        XMLTemplateProvider provider = new XMLFileSystemTemplateProvider(@"d:\temp\topicpages", "");
-        //        ProvisioningTemplate sourceTemplate = provider.GetTemplate("PnPProvisioningDemo202002.xml");
-        //        sourceTemplate.Connector = new FileSystemConnector(@"d:\temp\topicpages", "");
+                XMLTemplateProvider provider = new XMLFileSystemTemplateProvider(@"d:\temp\modernpages", "");
+                ProvisioningTemplate sourceTemplate = provider.GetTemplate("TheLandingMultilingual.xml");
+                sourceTemplate.Connector = new FileSystemConnector(@"d:\temp\modernpages", "");
 
-        //        // Execute actual extraction of the tepmplate
-        //        clientContext.Web.ApplyProvisioningTemplate(sourceTemplate);
-        //    }
-        //}
+                // Execute actual extraction of the tepmplate
+                clientContext.Web.ApplyProvisioningTemplate(sourceTemplate);
+            }
+        }
 
         [TestMethod]
         public void MUITest()

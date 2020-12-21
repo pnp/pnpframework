@@ -245,7 +245,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
 
                                 // Set control type
                                 //if (control.Type == typeof(Pages.ClientSideText))
-                                if (control.Type == typeof(PnPCore.IPageText))
+                                if (control.Type == typeof(PnPCore.PageText))
                                 {
                                     controlInstance.Type = WebPartType.Text;
 

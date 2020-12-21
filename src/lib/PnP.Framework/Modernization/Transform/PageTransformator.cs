@@ -840,7 +840,6 @@ namespace PnP.Framework.Modernization.Transform
                 {
                     var pageName = $"{pageTransformationInformation.Folder}{pageTransformationInformation.TargetPageName}";
 
-                    //targetPage.Save(pageName, existingFile, pagesLibrary);
                     targetPage.Save(pageName);
 
                     LogInfo($"{LogStrings.TransformSavedPage}: {pageName}", LogStrings.Heading_ArticlePageHandling);
@@ -848,7 +847,14 @@ namespace PnP.Framework.Modernization.Transform
 
 
                 // Load the page list item
-                var savedTargetPage = context.Web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl($"{pagesLibrary.RootFolder.ServerRelativeUrl}/{pageTransformationInformation.Folder}{pageTransformationInformation.TargetPageName}"));
+                // Load the page list item
+                string pageNameToLoad = $"{pageTransformationInformation.Folder}{pageTransformationInformation.TargetPageName}";
+                if (pageNameToLoad.StartsWith("/"))
+                {
+                    pageNameToLoad = pageNameToLoad.Substring(1);
+                }
+
+                var savedTargetPage = context.Web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl($"{pagesLibrary.RootFolder.ServerRelativeUrl}/{pageNameToLoad}"));
                 context.Web.Context.Load(savedTargetPage, p => p.ListItemAllFields);
                 context.Web.Context.ExecuteQueryRetry();
 

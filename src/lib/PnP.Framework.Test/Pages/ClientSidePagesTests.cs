@@ -152,6 +152,27 @@ namespace PnP.Framework.Test.Authentication
             }
         }
 
+        [TestMethod]
+        public void CSOMTest()
+        {
+            //using (var cc = new AuthenticationManager().GetWebLoginClientContext("https://contoso.sharepoint.com/teams/TEST_Provisioning"))
+            using (var cc = TestCommon.CreateClientContext("https://bertonline.sharepoint.com/sites/prov-1"))
+            {
+                var savedTargetPage = cc.Web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl($"/sites/prov-1/sitepages/PNP_SDK_TEST_CreateAndUpdatePageViaPageFile.aspx"));
+                cc.Web.Context.Load(savedTargetPage, p => p.ListItemAllFields);
+                cc.Web.Context.ExecuteQueryRetry();
+
+                savedTargetPage.ListItemAllFields["ContentTypeId"] = "0x0101009D1CB255DA76424F860D91F20E6C4118002A50BFCFB7614729B56886FADA02339B";
+                //savedTargetPage.ListItemAllFields["_SPSitePageFlags"] = ";#MigratedFromServerRendered;#";
+                // Don't use UpdateOverWriteVersion as the listitem already exists 
+                // resulting in an "Additions to this Web site have been blocked" error
+                savedTargetPage.ListItemAllFields.SystemUpdate();
+                cc.Load(savedTargetPage.ListItemAllFields);
+                cc.ExecuteQueryRetry();
+            }
+        }
+
+
         //[TestMethod]
         //public void BertTest5()
         //{

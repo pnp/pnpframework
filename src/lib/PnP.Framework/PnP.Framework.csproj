@@ -164,6 +164,7 @@
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
 		<PackageReference Include="Microsoft.ApplicationInsights" Version="2.13.1" />
+		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.1.1" />
 		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.2.0" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="2.2.0" />
@@ -203,12 +204,11 @@
 		<PackageReference Include="Microsoft.Identity.Client" Version="4.21.0" />
 		<PackageReference Include="Microsoft.SharePointOnline.CSOM" Version="16.1.*" />
 		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+		<PackageReference Include="PnP.Core" Version="0.4.*-*" />
 		<PackageReference Include="Portable.Xaml" Version="0.26.0" />
 		<PackageReference Include="ResXResourceReader.NetStandard" Version="1.0.1" />
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
-		<PackageReference Include="PnP.Core" Version="0.4.12-beta1" />
 	</ItemGroup>
-
 
 	<ItemGroup>
 		<None Update="Modernization\Nuget\webpartmapping.xml">

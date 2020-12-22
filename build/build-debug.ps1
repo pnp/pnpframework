@@ -1,16 +1,16 @@
-$versionIncrement = Get-Content .\version.debug.increment -Raw
+$versionIncrement = Get-Content "$PSScriptRoot\version.debug.increment" -Raw
 $versionIncrement = $versionIncrement -as [int]
 $versionIncrement++
 
-$version = Get-Content .\version.debug -Raw
+$version = Get-Content "$PSScriptRoot\version.debug" -Raw
 
 $version = $version.Replace("{incremental}", $versionIncrement)
 
-Write-Host "Building PnP.Framework.Net Standard 2.0 version $version"
-dotnet build ..\src\lib\PnP.Framework\PnP.Framework.csproj --no-incremental /p:Version=$version
+Write-Host "Building PnP.Framework version $version"
+dotnet build $PSScriptRoot\..\src\lib\PnP.Framework\PnP.Framework.csproj --no-incremental /p:Version=$version
 
-Write-Host "Packinging PnP.Core .Net Standard 2.0 version $version"
-dotnet pack ..\src\lib\PnP.Framework\PnP.Framework.csproj --no-build /p:PackageVersion=$version
+Write-Host "Packinging PnP.Framework version $version"
+dotnet pack $PSScriptRoot\..\src\lib\PnP.Framework\PnP.Framework.csproj --no-build /p:PackageVersion=$version
 
 #Write-Host "Writing $version to git"
 #Set-Content -Path .\version.debug.increment -Value $versionIncrement

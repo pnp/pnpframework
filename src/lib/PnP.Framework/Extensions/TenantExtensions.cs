@@ -1307,7 +1307,7 @@ namespace Microsoft.SharePoint.Client
         public static Uri GetAppCatalog(this Tenant tenant)
         {
             // Assume there's only one appcatalog site
-            var results = ((tenant.Context) as ClientContext).Web.SiteSearch("contentclass:STS_Site AND SiteTemplate:APPCATALOG");
+            var results = ((tenant.Context) as ClientContext).Web.SiteSearch("contentclass:STS_Site AND SiteTemplate:APPCATALOG", sourceResultId: new Guid("8413cd39-2156-4e00-b54d-11efd9abdb89")); // Local SharePoint Results Source
             foreach (var site in results)
             {
                 return new Uri(site.Url);

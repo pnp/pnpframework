@@ -143,7 +143,7 @@ namespace PnP.Framework.Test.Utilities
 
                 var requestHeaders = new Dictionary<string, string>
                 {
-                    { "X-RequestDigest", (clientContext as ClientContext).GetRequestDigest().GetAwaiter().GetResult() }
+                    { "X-RequestDigest", (clientContext as ClientContext).GetRequestDigestAsync().GetAwaiter().GetResult() }
                 };
 
                 var result = HttpHelper.MakeGetRequestForString(
@@ -169,7 +169,7 @@ namespace PnP.Framework.Test.Utilities
 
                 var requestHeaders = new Dictionary<string, string>
                 {
-                    { "X-RequestDigest", (clientContext as ClientContext).GetRequestDigest().GetAwaiter().GetResult() }
+                    { "X-RequestDigest", (clientContext as ClientContext).GetRequestDigestAsync().GetAwaiter().GetResult() }
                 };
 
                 var result = HttpHelper.MakePostRequestForString(

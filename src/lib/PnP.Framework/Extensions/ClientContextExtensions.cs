@@ -78,26 +78,25 @@ namespace Microsoft.SharePoint.Client
         /// </summary>
         /// <param name="clientContext">clientContext to operate on</param>
         /// <param name="retryCount">Number of times to retry the request</param>
-        /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
         /// <param name="userAgent">UserAgent string value to insert for this request. You can define this value in your app's config file using key="SharePointPnPUserAgent" value="PnPRocks"></param>
-        public static Task ExecuteQueryRetryAsync(this ClientRuntimeContext clientContext, int retryCount = 10, int delay = 500, string userAgent = null)
+        public static Task ExecuteQueryRetryAsync(this ClientRuntimeContext clientContext, int retryCount = 10, string userAgent = null)
         {
-            return ExecuteQueryImplementation(clientContext, retryCount, delay, userAgent);
+            return ExecuteQueryImplementation(clientContext, retryCount, userAgent);
         }
+
 
         /// <summary>
         /// Executes the current set of data retrieval queries and method invocations and retries it if needed.
         /// </summary>
         /// <param name="clientContext">clientContext to operate on</param>
         /// <param name="retryCount">Number of times to retry the request</param>
-        /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
         /// <param name="userAgent">UserAgent string value to insert for this request. You can define this value in your app's config file using key="SharePointPnPUserAgent" value="PnPRocks"></param>
-        public static void ExecuteQueryRetry(this ClientRuntimeContext clientContext, int retryCount = 10, int delay = 500, string userAgent = null)
+        public static void ExecuteQueryRetry(this ClientRuntimeContext clientContext, int retryCount = 10, string userAgent = null)
         {
-            Task.Run(() => ExecuteQueryImplementation(clientContext, retryCount, delay, userAgent)).GetAwaiter().GetResult();
+            Task.Run(() => ExecuteQueryImplementation(clientContext, retryCount, userAgent)).GetAwaiter().GetResult();
         }
 
-        private static async Task ExecuteQueryImplementation(ClientRuntimeContext clientContext, int retryCount = 10, int delay = 500, string userAgent = null)
+        private static async Task ExecuteQueryImplementation(ClientRuntimeContext clientContext, int retryCount = 10, string userAgent = null)
         {
 
             await new SynchronizationContextRemover();
@@ -109,21 +108,17 @@ namespace Microsoft.SharePoint.Client
             if (clientContext is PnPClientContext)
             {
                 retryCount = (clientContext as PnPClientContext).RetryCount;
-                delay = (clientContext as PnPClientContext).Delay;
                 clientTag = (clientContext as PnPClientContext).ClientTag;
             }
 
+            int backoffInterval = 500;
             int retryAttempts = 0;
-            int backoffInterval = delay;
             int retryAfterInterval = 0;
             bool retry = false;
             ClientRequestWrapper wrapper = null;
 
             if (retryCount <= 0)
                 throw new ArgumentException("Provide a retry count greater than zero.");
-
-            if (delay <= 0)
-                throw new ArgumentException("Provide a delay greater than zero.");
 
             // Do while retry attempt is less than retry count
             while (retryAttempts < retryCount)
@@ -169,18 +164,29 @@ namespace Microsoft.SharePoint.Client
                         // || response.StatusCode == (HttpStatusCode)500
                         ))
                     {
-                        Log.Warning(Constants.LOGGING_SOURCE, CoreResources.ClientContextExtensions_ExecuteQueryRetry, backoffInterval);
-
                         wrapper = (ClientRequestWrapper)wex.Data["ClientRequest"];
                         retry = true;
-                        retryAfterInterval = backoffInterval;
+                        retryAfterInterval = 0;
 
                         //Add delay for retry, retry-after header is specified in seconds
+                        if (response.Headers["Retry-After"] != null)
+                        {
+                            if (int.TryParse(response.Headers["Retry-After"], out int retryAfterHeaderValue))
+                            {
+                                retryAfterInterval = retryAfterHeaderValue * 1000;
+                            }
+                        }
+                        else
+                        {
+                            retryAfterInterval = backoffInterval;
+                            backoffInterval *= 2;
+                        }
+                        Log.Warning(Constants.LOGGING_SOURCE, $"CSOM request frequency exceeded usage limits. Retry attempt {retryAttempts + 1}. Sleeping for {retryAfterInterval} milliseconds before retrying.");
+
                         await Task.Delay(retryAfterInterval);
 
                         //Add to retry count and increase delay.
                         retryAttempts++;
-                        backoffInterval = backoffInterval * 2;
                     }
                     else
                     {

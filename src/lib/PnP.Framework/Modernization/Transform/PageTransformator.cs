@@ -854,7 +854,7 @@ namespace PnP.Framework.Modernization.Transform
                     pageNameToLoad = pageNameToLoad.Substring(1);
                 }
 
-                var savedTargetPage = context.Web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl($"{pagesLibrary.RootFolder.ServerRelativeUrl}/{pageNameToLoad}"));
+                var savedTargetPage = context.Web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl($"{targetPage.PagesLibrary.RootFolder.ServerRelativeUrl}/{pageNameToLoad}"));
                 context.Web.Context.Load(savedTargetPage, p => p.ListItemAllFields);
                 context.Web.Context.ExecuteQueryRetry();
 

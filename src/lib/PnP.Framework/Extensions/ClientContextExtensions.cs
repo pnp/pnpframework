@@ -158,11 +158,13 @@ namespace Microsoft.SharePoint.Client
                     var response = wex.Response as HttpWebResponse;
                     // Check if request was throttled - http status code 429
                     // Check is request failed due to server unavailable - http status code 503
-                    if (response != null &&
+                    if ((response != null &&
                         (response.StatusCode == (HttpStatusCode)429
                         || response.StatusCode == (HttpStatusCode)503
                         // || response.StatusCode == (HttpStatusCode)500
                         ))
+                        || (wex.Status == WebExceptionStatus.UnknownError && wex.InnerException != null && wex.InnerException.Message.ToLower().Contains("forcibly closed by the remote host"))
+                        || wex.Status == WebExceptionStatus.Timeout)
                     {
                         wrapper = (ClientRequestWrapper)wex.Data["ClientRequest"];
                         retry = true;

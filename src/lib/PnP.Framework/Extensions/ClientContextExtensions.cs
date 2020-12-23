@@ -171,7 +171,7 @@ namespace Microsoft.SharePoint.Client
                         retryAfterInterval = 0;
 
                         //Add delay for retry, retry-after header is specified in seconds
-                        if (response.Headers["Retry-After"] != null)
+                        if (response!=null && response.Headers["Retry-After"] != null)
                         {
                             if (int.TryParse(response.Headers["Retry-After"], out int retryAfterHeaderValue))
                             {

@@ -177,7 +177,15 @@ namespace PnP.Framework
         public AuthenticationManager(string clientId, X509Certificate2 certificate, string tenantId, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
             azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
-            var builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId);
+            ConfidentialClientApplicationBuilder builder = null;
+            if (azureEnvironment != AzureEnvironment.Production)
+            {
+                builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId).WithAuthority(azureADEndPoint, tenantId, true);
+            }
+            else
+            {
+                builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId);
+            }
             //.WithAuthority($"{azureADEndPoint}/organizations/");
             if (!string.IsNullOrEmpty(redirectUrl))
             {
@@ -219,7 +227,6 @@ namespace PnP.Framework
                         X509KeyStorageFlags.MachineKeySet |
                         X509KeyStorageFlags.PersistKeySet))
                     {
-
                         builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithAuthority($"{azureADEndPoint}/organizations/");
                     }
                 }
@@ -285,12 +292,23 @@ namespace PnP.Framework
 
             var azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
 
-            var builder = ConfidentialClientApplicationBuilder.Create(clientId).WithClientSecret(clientSecret).WithAuthority($"{azureADEndPoint}/organizations/");
-            if (!string.IsNullOrEmpty(tenantId))
+            ConfidentialClientApplicationBuilder builder = null;
+            if (azureEnvironment != AzureEnvironment.Production)
             {
-                builder = builder.WithTenantId(tenantId);
+                if (tenantId == null)
+                {
+                    throw new ArgumentException("tenantId is required", nameof(tenantId));
+                }
+                builder = ConfidentialClientApplicationBuilder.Create(clientId).WithClientSecret(clientSecret).WithAuthority(azureADEndPoint, tenantId, true);
             }
-
+            else
+            {
+                builder = ConfidentialClientApplicationBuilder.Create(clientId).WithClientSecret(clientSecret).WithAuthority($"{azureADEndPoint}/organizations/");
+                if (!string.IsNullOrEmpty(tenantId))
+                {
+                    builder = builder.WithTenantId(tenantId);
+                }
+            }
             this.assertion = userAssertion;
             confidentialClientApplication = builder.Build();
 

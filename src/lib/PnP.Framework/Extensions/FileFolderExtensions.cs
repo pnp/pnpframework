@@ -1427,19 +1427,128 @@ namespace Microsoft.SharePoint.Client
             if (fileName.ContainsInvalidFileFolderChars())
                 throw new ArgumentException(string.Format(CoreResources.FileFolderExtensions_UploadFile_The_argument_must_be_a_single_file_name_and_cannot_contain_path_characters_, fileName), nameof(fileName));
 
-            // Create the file
-            var newFileInfo = new FileCreationInformation()
-            {
-                ContentStream = stream,
-                Url = fileName,
-                Overwrite = overwriteIfExists
-            };
+            // 10 MB
+            int blockSize = 10 * 1024 * 1024;
+            File uploadFile = null;
+            // Get the size of the file.
+            long fileSize = new FileInfo(fileName).Length;
 
-            Log.Debug(Constants.LOGGING_SOURCE, "Creating file info with Url '{0}'", newFileInfo.Url);
-            var file = folder.Files.Add(newFileInfo);
-            folder.Context.Load(file);
-            await folder.Context.ExecuteQueryRetryAsync();
-            return file;
+            if (fileSize <= blockSize)
+            {
+                // Create the file
+                var newFileInfo = new FileCreationInformation()
+                {
+                    ContentStream = stream,
+                    Url = fileName,
+                    Overwrite = overwriteIfExists
+                };
+
+                Log.Debug(Constants.LOGGING_SOURCE, "Creating file info with Url '{0}'", newFileInfo.Url);
+                uploadFile = folder.Files.Add(newFileInfo);
+                folder.Context.Load(uploadFile);
+                await folder.Context.ExecuteQueryRetryAsync();
+                return uploadFile;
+            }
+            else
+            {   
+                FileStream fs = null;
+                try
+                {
+                    // Each sliced upload requires a unique ID.
+                    Guid uploadId = Guid.NewGuid();
+                    // Use large file upload approach.
+                    ClientResult<long> bytesUploaded = null;
+                    fs = System.IO.File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                    using (BinaryReader br = new BinaryReader(fs))
+                    {
+                        byte[] buffer = new byte[blockSize];
+                        Byte[] lastBuffer = null;
+                        long fileoffset = 0;
+                        long totalBytesRead = 0;
+                        int bytesRead;
+                        bool first = true;
+                        bool last = false;
+
+                        // Read data from file system in blocks.
+                        while ((bytesRead = br.Read(buffer, 0, buffer.Length)) > 0)
+                        {
+                            totalBytesRead = totalBytesRead + bytesRead;
+
+                            // You've reached the end of the file.
+                            if (totalBytesRead == fileSize)
+                            {
+                                last = true;
+                                // Copy to a new buffer that has the correct size.
+                                lastBuffer = new byte[bytesRead];
+                                Array.Copy(buffer, 0, lastBuffer, 0, bytesRead);
+                            }
+
+                            if (first)
+                            {
+                                using (MemoryStream contentStream = new MemoryStream())
+                                {
+                                    // Add an empty file.
+                                    FileCreationInformation fileInfo = new FileCreationInformation();
+                                    fileInfo.ContentStream = contentStream;
+                                    fileInfo.Url = fileName;
+                                    fileInfo.Overwrite = overwriteIfExists;
+                                    uploadFile = folder.Files.Add(fileInfo);
+
+                                    // Start upload by uploading the first slice.
+                                    using (MemoryStream s = new MemoryStream(buffer))
+                                    {
+                                        Log.Debug(Constants.LOGGING_SOURCE, "Creating file info with Url '{0}'", fileInfo.Url);
+                                        // Call the start upload method on the first slice.
+                                        bytesUploaded = uploadFile.StartUpload(uploadId, s);
+                                        await folder.Context.ExecuteQueryRetryAsync();
+                                        // fileoffset is the pointer where the next slice will be added.
+                                        fileoffset = bytesUploaded.Value;
+                                    }
+
+                                    // You can only start the upload once.
+                                    first = false;
+                                }
+                            }
+                            else
+                            {
+                                if (last)
+                                {
+                                    // Is this the last slice of data?
+                                    using (MemoryStream s = new MemoryStream(lastBuffer))
+                                    {
+                                        // End sliced upload by calling FinishUpload.
+                                        uploadFile = uploadFile.FinishUpload(uploadId, fileoffset, s);                                        
+                                        await folder.Context.ExecuteQueryRetryAsync();
+                                        Log.Debug(Constants.LOGGING_SOURCE, "Created file with name '{0}'", fileName);
+                                        // Return the file object for the uploaded file.
+                                        return uploadFile;
+                                    }
+                                }
+                                else
+                                {
+                                    using (MemoryStream s = new MemoryStream(buffer))
+                                    {
+                                        // Continue sliced upload.
+                                        bytesUploaded = uploadFile.ContinueUpload(uploadId, fileoffset, s);
+                                        await folder.Context.ExecuteQueryRetryAsync();
+                                        // Update fileoffset for the next slice.
+                                        fileoffset = bytesUploaded.Value;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    if (fs != null)
+                    {
+                        fs.Dispose();
+                    }                    
+                }
+                return uploadFile;
+            }
+
         }
 
         /// <summary>

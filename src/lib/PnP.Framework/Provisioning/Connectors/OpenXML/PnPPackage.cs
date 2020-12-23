@@ -322,7 +322,19 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
             {
                 if (stream.Length == 0)
                     return null;
-                obj = (T)XamlServices.Load(stream);
+                using (TextReader tr = new StreamReader(stream))
+                {
+                    string txt = tr.ReadToEnd();
+                    if (txt.Contains("OfficeDevPnP.Core"))
+                    {
+                        //old PnP File
+                        obj = (T)XamlServices.Load(new StringReader(txt.Replace("OfficeDevPnP.Core.Framework.", "PnP.Framework.").Replace("OfficeDevPnP.Core", "PnP.Framework")));
+                    }
+                    else
+                    {
+                        obj = (T)XamlServices.Load(new StringReader(txt));
+                    }
+                }
             }
             return obj;
         }

@@ -3,7 +3,7 @@ name: Nightly nuget release
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 1 * * *'
+    - cron: '0 2 * * *'
 
 jobs:
   build:

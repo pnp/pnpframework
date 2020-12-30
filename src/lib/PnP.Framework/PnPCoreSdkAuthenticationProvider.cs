@@ -1,5 +1,6 @@
 ﻿using Microsoft.SharePoint.Client;
 using PnP.Core.Services;
+using PnP.Framework.Modernization.Utilities;
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PnP.Framework
 {
-    internal class PnPCoreSdkAuthenticationProvider : IAuthenticationProvider
+    internal class PnPCoreSdkAuthenticationProvider : ILegacyAuthenticationProvider
     {
         private readonly ClientContext clientContext;
 
@@ -64,5 +65,16 @@ namespace PnP.Framework
             return accessToken;
         }
 
+        public string GetCookieHeader(Uri targetUrl)
+        {
+            var cookieManager = new CookieManager();
+            var cookieContainer = cookieManager.GetCookies(clientContext);
+            if (cookieContainer == null)
+            {
+                throw new InvalidOperationException("Unable to access CookieManager for current ClientContext instance");
+            }    
+
+            return cookieContainer.GetCookieHeader(targetUrl);
+        }
     }
 }

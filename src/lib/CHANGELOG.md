@@ -56,4 +56,5 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Feature - Additional underlying changes to API #49 [gautamdsheth - Gautam Sheth]
 - Fix - sensitivity label + preferred data location missing changes #50 [gautamdsheth - Gautam Sheth]
 - Fix for unhandled null reference exception #58 [patrikhellgren - Patrik Hellgren]
+- Feature - update beta endpoints to v1.0 for UnifiedGroups methods #62 [gautamdsheth - Gautam Sheth]
 

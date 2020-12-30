@@ -953,7 +953,7 @@ namespace PnP.Framework.Modernization.Transform
                         context.ExecuteQueryRetry();
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     // Eat any exception
                 }

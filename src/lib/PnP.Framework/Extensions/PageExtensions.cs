@@ -4,6 +4,7 @@ using Microsoft.SharePoint.Client.WebParts;
 using PnP.Core.Model.SharePoint;
 using PnP.Framework;
 using PnP.Framework.Entities;
+using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Utilities;
 using PnP.Framework.Utilities.WebParts;
 using System;

@@ -24,12 +24,14 @@ namespace PnP.Framework
         /// <param name="retryCount">Maximum amount of retries before giving up</param>
         /// <param name="delay">Initial delay in milliseconds</param>
         /// <returns></returns>
+#pragma warning disable CA2000
         public static PnPClientContext ConvertFrom(ClientContext clientContext, int retryCount = 10, int delay = 500)
         {
             var pnpContext = new PnPClientContext(clientContext.Url, retryCount, delay);
             clientContext.Clone(pnpContext, new Uri(clientContext.Url));
             return pnpContext;
         }
+#pragma warning restore CA2000
 
         /// <summary>
         /// Creates a ClientContext allowing you to override the default retry and delay values of ExecuteQueryRetry

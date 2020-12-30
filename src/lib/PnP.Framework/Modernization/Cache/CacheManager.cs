@@ -208,6 +208,7 @@ namespace PnP.Framework.Modernization.Cache
         /// <summary>
         /// Gets the clientside components from cache or if needed retrieves and caches them
         /// </summary>
+        /// <param name="targetClientContext"></param>
         /// <param name="page">Page to grab the components for</param>
         /// <returns></returns>
         internal List<PnPCore.PageComponent> GetClientSideComponents(ClientContext targetClientContext, PnPCore.IPage page)

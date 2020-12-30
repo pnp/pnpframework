@@ -1103,10 +1103,12 @@ namespace Microsoft.SharePoint.Client
                 else
                 {
                     // Get the site context for the current user
-                    var siteContext = tenant.Context.Clone(siteFullUrl);
-                    var site = siteContext.Site;
-                    siteContext.Load(site);
-                    siteContext.ExecuteQueryRetry();
+                    using (var siteContext = tenant.Context.Clone(siteFullUrl))
+                    {
+                        var site = siteContext.Site;
+                        siteContext.Load(site);
+                        siteContext.ExecuteQueryRetry();
+                    }
                 }
 
                 // Will cause an exception if site URL is not there. Not optimal, but the way it works.

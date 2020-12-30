@@ -71,13 +71,14 @@ namespace PnP.Framework.Graph
                         Log.Warning(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_SendAsyncRetry, $"{backoffInterval}");
 
                         //Add delay for retry
-                        Task.Delay(backoffInterval,cancellationToken).Wait(cancellationToken);
+                        Task.Delay(backoffInterval, cancellationToken).Wait(cancellationToken);
 
                         //Add to retry count and increase delay.
                         retryAttempts++;
                         backoffInterval = backoffInterval * 2;
-
+#pragma warning disable CA2000
                         workrequest = workrequest.CloneRequest();
+#pragma warning restore CA2000
                     }
                     else
                     {
@@ -103,7 +104,7 @@ namespace PnP.Framework.Graph
                                 backoffInterval);
 
                             //Add delay for retry
-                            Task.Delay(backoffInterval,cancellationToken).Wait(cancellationToken);
+                            Task.Delay(backoffInterval, cancellationToken).Wait(cancellationToken);
 
                             //Add to retry count and increase delay.
                             retryAttempts++;

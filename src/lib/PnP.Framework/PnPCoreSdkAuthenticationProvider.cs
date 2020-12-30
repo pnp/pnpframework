@@ -77,6 +77,13 @@ namespace PnP.Framework
             return cookieContainer.GetCookieHeader(targetUrl);
         }
 
+        public string GetRequestDigest()
+        {
+            var cookieManager = new CookieManager();
+            var cookieContainer = cookieManager.GetCookies(clientContext);
+            return clientContext.GetRequestDigestAsync(cookieContainer).GetAwaiter().GetResult();
+        }
+
         public bool RequiresCookieAuthentication
         {
             get

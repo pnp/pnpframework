@@ -510,15 +510,22 @@ namespace Microsoft.SharePoint.Client
             }
             if (result == true)
             {
-                var cookieString = CookieReader.GetCookie(clientContext.Url)?.Replace("; ", ",")?.Replace(";", ",");
+                try
+                {
+                    var cookieString = CookieReader.GetCookie(clientContext.Url)?.Replace("; ", ",")?.Replace(";", ",");
 
-                if (Regex.IsMatch(cookieString, "FedAuth", RegexOptions.IgnoreCase))
-                {
-                    result = false;
+                    if (Regex.IsMatch(cookieString, "FedAuth", RegexOptions.IgnoreCase))
+                    {
+                        result = false;
+                    }
+                    else if (Regex.IsMatch(cookieString, "EdgeAccessCookie", RegexOptions.IgnoreCase))
+                    {
+                        result = false;
+                    }
                 }
-                else if (Regex.IsMatch(cookieString, "EdgeAccessCookie", RegexOptions.IgnoreCase))
+                catch (Exception)
                 {
-                    result = false;
+
                 }
             }
 

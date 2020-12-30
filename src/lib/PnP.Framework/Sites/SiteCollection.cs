@@ -146,7 +146,7 @@ namespace PnP.Framework.Sites
             // As per https://github.com/SharePoint/sp-dev-docs/issues/4810 the WebTemplateExtensionId property
             // is what currently drives the application of a custom site design during the creation of a modern site.
             payload.Add("WebTemplateExtensionId", siteCollectionCreationInformation.SiteDesignId);
-            
+
             bool sensitivityLabelExists = !string.IsNullOrEmpty(siteCollectionCreationInformation.SensitivityLabel);
             if (sensitivityLabelExists)
             {
@@ -234,6 +234,11 @@ namespace PnP.Framework.Sites
             {
                 clientContext.Web.EnsureProperty(w => w.Url);
 
+                if (string.IsNullOrEmpty(accessToken))
+                {
+                    clientContext.SetAuthenticationCookiesForHandler(handler);
+                }
+
                 bool sensitivityLabelExists = !string.IsNullOrEmpty(siteCollectionCreationInformation.SensitivityLabel);
 
                 var sensitivityLabelId = Guid.Empty;
@@ -267,7 +272,7 @@ namespace PnP.Framework.Sites
                     {
                         optionalParams.Add("Classification", siteCollectionCreationInformation.Classification ?? "");
                     }
-                    
+
                     if (siteCollectionCreationInformation.SiteDesignId.HasValue)
                     {
                         creationOptionsValues.Add($"implicit_formula_292aa8a00786498a87a5ca52d9f4214a_{siteCollectionCreationInformation.SiteDesignId.Value.ToString("D").ToLower()}");
@@ -310,19 +315,22 @@ namespace PnP.Framework.Sites
                     {
                         requestBody.Headers.ContentType = sharePointJsonMediaType;
                     }
+                    var requestDigest = string.Empty;
                     if (!string.IsNullOrEmpty(accessToken))
                     {
+                        requestDigest = await clientContext.GetRequestDigestAsync().ConfigureAwait(false);
                         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
                     }
                     else
                     {
+                        requestDigest = await clientContext.GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false);
                         if (clientContext.Credentials is System.Net.NetworkCredential networkCredential)
                         {
                             handler.Credentials = networkCredential;
                         }
                     }
 
-                    requestBody.Headers.Add("X-RequestDigest", await clientContext.GetRequestDigestAsync());
+                    requestBody.Headers.Add("X-RequestDigest", requestDigest);
 
                     // Perform actual post operation
                     HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
@@ -364,19 +372,22 @@ namespace PnP.Framework.Sites
                                         var siteStatusRequest = new HttpRequestMessage(HttpMethod.Get, siteStatusRequestUrl);
                                         siteStatusRequest.Headers.Add("accept", "application/json;odata=verbose");
 
+                                        var siteStatusRequestDigest = string.Empty;
                                         if (!string.IsNullOrEmpty(accessToken))
                                         {
+                                            siteStatusRequestDigest = await clientContext.GetRequestDigestAsync().ConfigureAwait(false);
                                             siteStatusRequest.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
                                         }
                                         else
                                         {
+                                            siteStatusRequestDigest = await clientContext.GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false);
                                             if (clientContext.Credentials is System.Net.NetworkCredential networkCredential)
                                             {
                                                 handler.Credentials = networkCredential;
                                             }
                                         }
 
-                                        siteStatusRequest.Headers.Add("X-RequestDigest", await clientContext.GetRequestDigestAsync());
+                                        siteStatusRequest.Headers.Add("X-RequestDigest", siteStatusRequestDigest);
 
                                         var siteStatusResponse = await httpClient.SendAsync(siteStatusRequest, new System.Threading.CancellationToken());
                                         var siteStatusResponseString = await siteStatusResponse.Content.ReadAsStringAsync();
@@ -568,6 +579,11 @@ namespace PnP.Framework.Sites
             {
                 clientContext.Web.EnsureProperty(w => w.Url);
 
+                if (string.IsNullOrEmpty(accessToken))
+                {
+                    clientContext.SetAuthenticationCookiesForHandler(handler);
+                }
+
                 using (var httpClient = new PnPHttpProvider(handler))
                 {
                     string requestUrl = $"{clientContext.Web.Url}/_api/SPSiteManager/Create";
@@ -589,19 +605,22 @@ namespace PnP.Framework.Sites
                     {
                         requestBody.Headers.ContentType = sharePointJsonMediaType;
                     }
+                    var requestDigest = string.Empty;
                     if (!string.IsNullOrEmpty(accessToken))
                     {
+                        requestDigest = await clientContext.GetRequestDigestAsync().ConfigureAwait(false);
                         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
                     }
                     else
                     {
+                        requestDigest = await clientContext.GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false);
                         if (clientContext.Credentials is System.Net.NetworkCredential networkCredential)
                         {
                             handler.Credentials = networkCredential;
                         }
                     }
 
-                    requestBody.Headers.Add("X-RequestDigest", await clientContext.GetRequestDigestAsync());
+                    requestBody.Headers.Add("X-RequestDigest", requestDigest);
 
                     // Perform actual post operation
                     HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
@@ -648,12 +667,18 @@ namespace PnP.Framework.Sites
                                                 var siteStatusRequest = new HttpRequestMessage(HttpMethod.Get, siteStatusRequestUrl);
                                                 siteStatusRequest.Headers.Add("accept", "application/json;odata=verbose");
 
+                                                string siteStatusRequestDigest = string.Empty;
                                                 if (!string.IsNullOrEmpty(accessToken))
                                                 {
+                                                    siteStatusRequestDigest = await clientContext.GetRequestDigestAsync().ConfigureAwait(false);
                                                     siteStatusRequest.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
                                                 }
+                                                else
+                                                {
+                                                    siteStatusRequestDigest = await clientContext.GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false);
+                                                }
 
-                                                siteStatusRequest.Headers.Add("X-RequestDigest", await clientContext.GetRequestDigestAsync());
+                                                siteStatusRequest.Headers.Add("X-RequestDigest", siteStatusRequestDigest);
 
                                                 var siteStatusResponse = await httpClient.SendAsync(siteStatusRequest, new System.Threading.CancellationToken());
                                                 var siteStatusResponseString = await siteStatusResponse.Content.ReadAsStringAsync();
@@ -880,6 +905,11 @@ namespace PnP.Framework.Sites
 
             using (var handler = new HttpClientHandler())
             {
+                if (string.IsNullOrEmpty(accessToken))
+                {
+                    clientContext.SetAuthenticationCookiesForHandler(handler);
+                }
+
                 clientContext.Web.EnsureProperty(w => w.Url);
 
                 using (var httpClient = new PnPHttpProvider(handler))
@@ -930,19 +960,22 @@ namespace PnP.Framework.Sites
                     {
                         requestBody.Headers.ContentType = sharePointJsonMediaType;
                     }
+                    var requestDigest = string.Empty;
                     if (!string.IsNullOrEmpty(accessToken))
                     {
+                        requestDigest = await clientContext.GetRequestDigestAsync().ConfigureAwait(false);
                         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
                     }
                     else
                     {
+                        requestDigest = await clientContext.GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false);
                         if (clientContext.Credentials is System.Net.NetworkCredential networkCredential)
                         {
                             handler.Credentials = networkCredential;
                         }
                     }
 
-                    requestBody.Headers.Add("X-RequestDigest", await clientContext.GetRequestDigestAsync());
+                    requestBody.Headers.Add("X-RequestDigest", requestDigest);
 
                     // Perform actual post operation
                     HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
@@ -1019,6 +1052,11 @@ namespace PnP.Framework.Sites
             {
                 context.Web.EnsureProperty(w => w.Url);
 
+                if (string.IsNullOrEmpty(accessToken))
+                {
+                    context.SetAuthenticationCookiesForHandler(handler);
+                }
+
                 using (var httpClient = new HttpClient(handler))
                 {
                     string requestUrl = string.Format("{0}/_api/SP.Directory.DirectorySession/Group(alias='{1}')", context.Web.Url, alias);
@@ -1091,6 +1129,11 @@ namespace PnP.Framework.Sites
             {
                 context.Web.EnsureProperty(w => w.Url);
 
+                if (string.IsNullOrEmpty(accessToken))
+                {
+                    context.SetAuthenticationCookiesForHandler(handler);
+                }
+
                 using (var httpClient = new HttpClient(handler))
                 {
                     string requestUrl = string.Format("{0}/_api/SP.Directory.DirectorySession/Group(alias='{1}')", context.Web.Url, alias);
@@ -1147,17 +1190,28 @@ namespace PnP.Framework.Sites
             {
                 context.Web.EnsureProperty(w => w.Url);
 
+                if (string.IsNullOrEmpty(accessToken))
+                {
+                    context.SetAuthenticationCookiesForHandler(handler);
+                }
+
                 using (var httpClient = new PnPHttpProvider(handler))
                 {
 
                     string requestUrl = $"{context.Web.Url}/_api/groupservice/setgroupimage";
 
-                    var requestDigest = await context.GetRequestDigestAsync();
                     HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
                     request.Headers.Add("accept", "application/json;odata=verbose");
+
+                    var requestDigest = string.Empty;
                     if (!string.IsNullOrEmpty(accessToken))
                     {
+                        requestDigest = await context.GetRequestDigestAsync().ConfigureAwait(false);
                         request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
+                    }
+                    else
+                    {
+                        requestDigest = await context.GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false);
                     }
                     request.Headers.Add("X-RequestDigest", requestDigest);
                     request.Headers.Add("binaryStringRequestBody", "true");
@@ -1200,6 +1254,11 @@ namespace PnP.Framework.Sites
             using (var handler = new HttpClientHandler())
             {
                 context.Web.EnsureProperty(w => w.Url);
+
+                if (string.IsNullOrEmpty(accessToken))
+                {
+                    context.SetAuthenticationCookiesForHandler(handler);
+                }
 
                 using (var httpClient = new HttpClient(handler))
                 {
@@ -1407,6 +1466,11 @@ namespace PnP.Framework.Sites
             {
                 context.Web.EnsureProperty(w => w.Url);
 
+                if (string.IsNullOrEmpty(accessToken))
+                {
+                    context.SetAuthenticationCookiesForHandler(handler);
+                }
+                
                 using (var httpClient = new HttpClient(handler))
                 {
                     string requestUrl = string.Format("{0}/_api/SP.Directory.DirectorySession/Group('{1}')?$select=PrincipalName,Id,DisplayName,Alias,Description,InboxUrl,CalendarUrl,DocumentsUrl,SiteUrl,EditGroupUrl,PictureUrl,PeopleUrl,NotebookUrl,Mail,IsPublic,CreationTime,Classification,teamsResources,yammerResources,allowToAddGuests,isDynamic,assignedLabels", context.Web.Url, groupId);

@@ -52,3 +52,5 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Ported https://github.com/pnp/PnP-Sites-Core/pull/2755 [erwinvanhunen - Erwin van Hunen]
 - Ported https://github.com/pnp/PnP-Sites-Core/pull/2745 [erwinvanhunen - Erwin van Hunen]
 - Fix ACS token generation #41 [sebastianmattar - Sebastian Mattar]
+- Fix some warnings #45 [jackpoz - Giacomo Pozzoni]
+

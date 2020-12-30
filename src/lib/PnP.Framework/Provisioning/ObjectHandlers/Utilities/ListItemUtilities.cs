@@ -310,7 +310,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                 Guid UniqueId = Guid.Empty;
                                 try
                                 {
-                                    var file = web.GetFileByServerRelativeUrl(tokenParts[1]);
+                                    var file = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(tokenParts[1]));
                                     file.EnsureProperties(f => f.UniqueId);
                                     UniqueId = file.UniqueId;
                                 }
@@ -320,7 +320,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                 {
                                     try
                                     {
-                                        var folder = web.GetFolderByServerRelativeUrl(tokenParts[1]);
+                                        var folder = web.GetFolderByServerRelativePath(ResourcePath.FromDecodedUrl(tokenParts[1]));
                                         folder.EnsureProperties(f => f.UniqueId);
                                         UniqueId = folder.UniqueId;
                                     }

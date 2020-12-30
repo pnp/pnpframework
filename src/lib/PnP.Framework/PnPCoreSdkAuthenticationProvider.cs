@@ -76,5 +76,15 @@ namespace PnP.Framework
 
             return cookieContainer.GetCookieHeader(targetUrl);
         }
+
+        public bool RequiresCookieAuthentication
+        {
+            get
+            {
+                // Somehow we look into ClientContext to see if we use cookies
+                var contextSettings = clientContext.GetContextSettings();
+                return contextSettings.Type == Utilities.Context.ClientContextType.Cookie;
+            }
+        }
     }
 }

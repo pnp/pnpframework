@@ -52,6 +52,18 @@ namespace PnP.Framework.Sites
     public class TeamNoGroupSiteCollectionCreationInformation : SiteCreationInformation
     {
         /// <summary>
+        /// The Guid of the site design to be used. If specified will override the SiteDesign property
+        /// </summary>
+        public Guid SiteDesignId { get; set; }
+        /// <summary>
+        /// The Guid of the hub site to be used. If specified will associate the communication site to the hub site
+        /// </summary>
+        public Guid HubSiteId { get; set; }
+        /// <summary>
+        /// The Sensitivity label to use. For instance 'Top Secret'. See https://www.youtube.com/watch?v=NxvUXBiPFcw for more information.
+        /// </summary>
+        public string SensitivityLabel { get; set; }
+        /// <summary>
         /// Default constructor
         /// </summary>
         public TeamNoGroupSiteCollectionCreationInformation() : this(string.Empty, string.Empty)

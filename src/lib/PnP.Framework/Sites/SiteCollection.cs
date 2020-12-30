@@ -119,6 +119,10 @@ namespace PnP.Framework.Sites
                 payload.Add("SensitivityLabel", sensitivityLabelId);
                 payload["Classification"] = siteCollectionCreationInformation.SensitivityLabel;
             }
+            if (siteCollectionCreationInformation.PreferredDataLocation.HasValue)
+            {
+                payload.Add("PreferredDataLocation", siteCollectionCreationInformation.PreferredDataLocation.Value.ToString());
+            }
 
             return await CreateAsync(clientContext, siteCollectionCreationInformation.Owner, payload, delayAfterCreation, noWait: noWait);
         }
@@ -236,7 +240,7 @@ namespace PnP.Framework.Sites
                         { "alias", siteCollectionCreationInformation.Alias },
                         { "isPublic", siteCollectionCreationInformation.IsPublic }
                     };
-
+                    var creationOptionsValues = new List<string>();
                     var optionalParams = new Dictionary<string, object>
                     {
                         { "Description", siteCollectionCreationInformation.Description ?? "" }
@@ -245,13 +249,13 @@ namespace PnP.Framework.Sites
                     if (sensitivityLabelExists && sensitivityLabelId != Guid.Empty)
                     {
                         optionalParams.Add("Classification", siteCollectionCreationInformation.SensitivityLabel ?? "");
+                        creationOptionsValues.Add($"SensitivityLabel:{sensitivityLabelId}");
                     }
                     else
                     {
                         optionalParams.Add("Classification", siteCollectionCreationInformation.Classification ?? "");
                     }
-
-                    var creationOptionsValues = new List<string>();
+                    
                     if (siteCollectionCreationInformation.SiteDesignId.HasValue)
                     {
                         creationOptionsValues.Add($"implicit_formula_292aa8a00786498a87a5ca52d9f4214a_{siteCollectionCreationInformation.SiteDesignId.Value.ToString("D").ToLower()}");
@@ -270,6 +274,10 @@ namespace PnP.Framework.Sites
                     if (siteCollectionCreationInformation.Owners != null && siteCollectionCreationInformation.Owners.Length > 0)
                     {
                         optionalParams.Add("Owners", siteCollectionCreationInformation.Owners);
+                    }
+                    if (siteCollectionCreationInformation.PreferredDataLocation.HasValue)
+                    {
+                        optionalParams.Add("PreferredDataLocation", siteCollectionCreationInformation.PreferredDataLocation.Value.ToString());
                     }
                     payload.Add("optionalParams", optionalParams);
 

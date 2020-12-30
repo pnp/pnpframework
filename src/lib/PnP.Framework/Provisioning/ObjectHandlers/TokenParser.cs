@@ -309,6 +309,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         private void AddResourceTokens(Web web, LocalizationCollection localizations, FileConnectorBase connector)
         {
+            if (connector == null)
+            {
+                throw new ArgumentNullException(nameof(connector), "Template or Hierarchy File Connector cannot be null");
+            }
+
             if (localizations != null && localizations.Any())
             {
                 //https://github.com/SharePoint/PnP-Provisioning-Schema/issues/301

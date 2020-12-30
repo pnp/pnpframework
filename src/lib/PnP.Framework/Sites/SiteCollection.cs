@@ -142,6 +142,18 @@ namespace PnP.Framework.Sites
             bool noWait = false)
         {
             Dictionary<string, object> payload = GetRequestPayload(siteCollectionCreationInformation);
+            payload.Add("HubSiteId", siteCollectionCreationInformation.HubSiteId);
+            // As per https://github.com/SharePoint/sp-dev-docs/issues/4810 the WebTemplateExtensionId property
+            // is what currently drives the application of a custom site design during the creation of a modern site.
+            payload.Add("WebTemplateExtensionId", siteCollectionCreationInformation.SiteDesignId);
+            
+            bool sensitivityLabelExists = !string.IsNullOrEmpty(siteCollectionCreationInformation.SensitivityLabel);
+            if (sensitivityLabelExists)
+            {
+                Guid sensitivityLabelId = await GetSensitivityLabelId(clientContext, siteCollectionCreationInformation.SensitivityLabel);
+                payload.Add("SensitivityLabel", sensitivityLabelId);
+                payload["Classification"] = siteCollectionCreationInformation.SensitivityLabel;
+            }
             return await CreateAsync(
                 clientContext,
                 siteCollectionCreationInformation.Owner,

@@ -55,4 +55,5 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Fix some warnings #45 [jackpoz - Giacomo Pozzoni]
 - Feature - Additional underlying changes to API #49 [gautamdsheth - Gautam Sheth]
 - Fix - sensitivity label + preferred data location missing changes #50 [gautamdsheth - Gautam Sheth]
+- Fix for unhandled null reference exception #58 [patrikhellgren - Patrik Hellgren]
 

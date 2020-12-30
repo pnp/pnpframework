@@ -48,7 +48,7 @@ namespace Microsoft.SharePoint.Client
                   : new ArgumentException(CoreResources.Exception_Message_EmptyString_Arg, nameof(serverRelativePageUrl));
             }
 
-            var file = web.GetFileByServerRelativeUrl(serverRelativePageUrl);
+            var file = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(serverRelativePageUrl));
 
             web.Context.Load(file, f => f.ListItemAllFields);
 
@@ -73,7 +73,7 @@ namespace Microsoft.SharePoint.Client
                   : new ArgumentException(CoreResources.Exception_Message_EmptyString_Arg, nameof(serverRelativePageUrl));
             }
 
-            var file = web.GetFileByServerRelativeUrl(serverRelativePageUrl);
+            var file = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(serverRelativePageUrl));
             var limitedWebPartManager = file.GetLimitedWebPartManager(PersonalizationScope.Shared);
 
             IEnumerable<WebPartDefinition> query = web.Context.LoadQuery(limitedWebPartManager.WebParts.IncludeWithDefaultProperties(wp => wp.Id, wp => wp.ZoneId, wp => wp.WebPart, wp => wp.WebPart.Title, wp => wp.WebPart.Properties, wp => wp.WebPart.Hidden));            
@@ -139,7 +139,7 @@ namespace Microsoft.SharePoint.Client
                 throw new ArgumentNullException(nameof(webPart));
             }
 
-            var webPartPage = web.GetFileByServerRelativeUrl(serverRelativePageUrl);
+            var webPartPage = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(serverRelativePageUrl));
 
             if (webPartPage == null)
             {
@@ -224,7 +224,7 @@ namespace Microsoft.SharePoint.Client
                 throw new ArgumentNullException(nameof(webPart));
             }
 
-            File webPartPage = web.GetFileByServerRelativeUrl(serverRelativePageUrl);
+            File webPartPage = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(serverRelativePageUrl));
 
             if (webPartPage == null)
             {
@@ -365,7 +365,7 @@ namespace Microsoft.SharePoint.Client
 
             if (webPartId != Guid.Empty)
             {
-                var webPartPage = web.GetFileByServerRelativeUrl(serverRelativePageUrl);
+                var webPartPage = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(serverRelativePageUrl));
 
                 bool forceCheckout = false;
                 webPartPage.EnsureProperty(wpg => wpg.ListId);
@@ -605,7 +605,7 @@ namespace Microsoft.SharePoint.Client
                   : new ArgumentException(CoreResources.Exception_Message_EmptyString_Arg, nameof(html));
             }
 
-            var file = web.GetFileByServerRelativeUrl(serverRelativePageUrl);
+            var file = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(serverRelativePageUrl));
 
             web.Context.Load(file, f => f.ListItemAllFields);
             web.Context.ExecuteQueryRetry();
@@ -701,7 +701,7 @@ namespace Microsoft.SharePoint.Client
                   : new ArgumentException(CoreResources.Exception_Message_EmptyString_Arg, nameof(html));
             }
 
-            var file = web.GetFileByServerRelativeUrl(serverRelativePageUrl);
+            var file = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(serverRelativePageUrl));
 
             web.Context.Load(file, f => f.ListItemAllFields);
             web.Context.ExecuteQueryRetry();
@@ -802,7 +802,7 @@ namespace Microsoft.SharePoint.Client
                   : new ArgumentException(CoreResources.Exception_Message_EmptyString_Arg, nameof(title));
             }
 
-            var webPartPage = web.GetFileByServerRelativeUrl(serverRelativePageUrl);
+            var webPartPage = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(serverRelativePageUrl));
 
             if (webPartPage == null)
             {
@@ -980,7 +980,7 @@ namespace Microsoft.SharePoint.Client
 
             var pageLibraryUrl = pageLibrary.RootFolder.ServerRelativeUrl;
             newWikiPageUrl = pageLibraryUrl + "/" + wikiPageName;
-            currentPageFile = web.GetFileByServerRelativeUrl(newWikiPageUrl);
+            currentPageFile = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(newWikiPageUrl));
             web.Context.Load(currentPageFile, f => f.Exists);
             web.Context.ExecuteQueryRetry();
 
@@ -1027,7 +1027,7 @@ namespace Microsoft.SharePoint.Client
                 }
                 var filename = serverRelativePageUrl.Substring(serverRelativePageUrl.LastIndexOf("/") + 1);
                 web.AddPublishingPage(filename, "EnterpriseWiki", null, folder: folder);
-                var file = web.GetFileByServerRelativeUrl(serverRelativePageUrl);
+                var file = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(serverRelativePageUrl));
                 file.ListItemAllFields["PublishingPageContent"] = html;
                 file.ListItemAllFields.Update();
                 file.ListItemAllFields.Context.ExecuteQueryRetry();
@@ -1140,7 +1140,7 @@ namespace Microsoft.SharePoint.Client
 
             var context = web.Context as ClientContext;
 
-            var file = web.GetFileByServerRelativeUrl(serverRelativePageUrl);
+            var file = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(serverRelativePageUrl));
 
             context.Load(file);
             context.ExecuteQueryRetry();
@@ -1200,7 +1200,7 @@ namespace Microsoft.SharePoint.Client
 
             var context = web.Context as ClientContext;
 
-            var file = web.GetFileByServerRelativeUrl(serverRelativePageUrl);
+            var file = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(serverRelativePageUrl));
 
             context.Load(file);
             context.ExecuteQueryRetry();

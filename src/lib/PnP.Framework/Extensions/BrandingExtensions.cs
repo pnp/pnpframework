@@ -1517,8 +1517,8 @@ namespace Microsoft.SharePoint.Client
                     file.CheckIn("", CheckinType.MajorCheckIn);
                     web.Context.ExecuteQueryRetry();
                 }
-                file.EnsureProperty(f => f.ServerRelativeUrl);
-                url = file.ServerRelativeUrl;
+                file.EnsureProperty(f => f.ServerRelativePath);
+                url = file.ServerRelativePath.DecodedUrl;
             }
             return url;
         }

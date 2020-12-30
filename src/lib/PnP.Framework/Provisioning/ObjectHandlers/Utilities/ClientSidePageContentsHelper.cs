@@ -162,7 +162,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                         if (thumbnailFileIds.Count == 1)
                         {
                             var file = web.GetFileById(thumbnailFileIds[0]);
-                            web.Context.Load(file, f => f.Level, f => f.ServerRelativeUrl, f => f.UniqueId);
+                            web.Context.Load(file, f => f.Level, f => f.ServerRelativePath, f => f.UniqueId);
                             web.Context.ExecuteQueryRetry();
 
                             // Item1 = was file added to the template
@@ -559,7 +559,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                         {
                             // Try to see if this is a file
                             var file = web.GetFileById(uniqueId);
-                            web.Context.Load(file, f => f.Level, f => f.ServerRelativeUrl);
+                            web.Context.Load(file, f => f.Level, f => f.ServerRelativePath);
                             web.Context.ExecuteQueryRetry();
 
                             // Item1 = was file added to the template
@@ -666,7 +666,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                 if (!imageServerRelativeUrl.StartsWith("/_LAYOUTS", StringComparison.OrdinalIgnoreCase))
                 {
                     var pageHeaderImage = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(imageServerRelativeUrl));
-                    web.Context.Load(pageHeaderImage, p => p.Level, p => p.ServerRelativeUrl);
+                    web.Context.Load(pageHeaderImage, p => p.Level, p => p.ServerRelativePath);
                     web.Context.ExecuteQueryRetry();
 
                     LoadAndAddPageImage(web, pageHeaderImage, template, creationInfo, scope);
@@ -681,7 +681,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
         private Tuple<bool, string> LoadAndAddPageImage(Web web, Microsoft.SharePoint.Client.File pageImage, ProvisioningTemplate template, ProvisioningTemplateCreationInformation creationInfo, PnPMonitoredScope scope)
         {
             var baseUri = new Uri(web.Url);
-            var fullUri = new Uri(baseUri, pageImage.ServerRelativeUrl);
+            var fullUri = new Uri(baseUri, pageImage.ServerRelativePath.DecodedUrl);
             var folderPath = HttpUtility.UrlDecode(fullUri.Segments.Take(fullUri.Segments.Length - 1).ToArray().Aggregate((i, x) => i + x).TrimEnd('/'));
             var fileName = HttpUtility.UrlDecode(fullUri.Segments[fullUri.Segments.Length - 1]);
 

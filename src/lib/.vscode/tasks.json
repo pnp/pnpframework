@@ -2,7 +2,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "Build with Nuget version of PnP Core SDK",
             "command": "dotnet",
             "type": "process",
             "args": [
@@ -13,6 +13,24 @@
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Build with local copy of PnP Core SDK",
+            "type": "process",
+            "command": "dotnet",
+            "problemMatcher": "$msCompile",
+            "args": [
+                "build",
+                "${workspaceFolder}/PnP.Framework/PnP.Framework.csproj",
+                "-f:netstandard2.0",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary",
+                "/property:PnPCoreSdkPath=\"${workspaceFolder}\\..\\..\\..\\PnPCore\\src\\sdk\\PnP.Core\\bin\\debug\\netstandard2.0\\PnP.Core.dll\""
+            ],
             "group": {
                 "kind": "build",
                 "isDefault": true

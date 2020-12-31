@@ -2,6 +2,7 @@
 using PnP.Core.Services;
 using PnP.Framework.Modernization.Utilities;
 using System;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -11,10 +12,15 @@ namespace PnP.Framework
     internal class PnPCoreSdkAuthenticationProvider : ILegacyAuthenticationProvider
     {
         private readonly ClientContext clientContext;
+        private CookieContainer cookieContainer;
 
         internal PnPCoreSdkAuthenticationProvider(ClientContext context)
         {
             clientContext = context ?? throw new ArgumentNullException(nameof(context));
+
+            // Get the CookieContainer, if any
+            var cookieManager = new CookieManager();
+            cookieContainer = cookieManager.GetCookies(clientContext);
         }
 
         public async Task AuthenticateRequestAsync(Uri resource, HttpRequestMessage request)
@@ -67,11 +73,9 @@ namespace PnP.Framework
 
         public string GetCookieHeader(Uri targetUrl)
         {
-            var cookieManager = new CookieManager();
-            var cookieContainer = cookieManager.GetCookies(clientContext);
             if (cookieContainer == null)
             {
-                throw new InvalidOperationException("Unable to access CookieManager for current ClientContext instance");
+                throw new InvalidOperationException("Unable to access CookieContainer for current ClientContext instance");
             }    
 
             return cookieContainer.GetCookieHeader(targetUrl);
@@ -79,8 +83,11 @@ namespace PnP.Framework
 
         public string GetRequestDigest()
         {
-            var cookieManager = new CookieManager();
-            var cookieContainer = cookieManager.GetCookies(clientContext);
+            if (cookieContainer == null)
+            {
+                throw new InvalidOperationException("Unable to access CookieContainer for current ClientContext instance");
+            }
+
             return clientContext.GetRequestDigestAsync(cookieContainer).GetAwaiter().GetResult();
         }
 

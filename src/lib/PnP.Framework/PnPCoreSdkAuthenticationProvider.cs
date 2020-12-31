@@ -17,10 +17,6 @@ namespace PnP.Framework
         internal PnPCoreSdkAuthenticationProvider(ClientContext context)
         {
             clientContext = context ?? throw new ArgumentNullException(nameof(context));
-
-            // Get the CookieContainer, if any
-            var cookieManager = new CookieManager();
-            cookieContainer = cookieManager.GetCookies(clientContext);
         }
 
         public async Task AuthenticateRequestAsync(Uri resource, HttpRequestMessage request)
@@ -76,7 +72,7 @@ namespace PnP.Framework
             if (cookieContainer == null)
             {
                 throw new InvalidOperationException("Unable to access CookieContainer for current ClientContext instance");
-            }    
+            }
 
             return cookieContainer.GetCookieHeader(targetUrl);
         }
@@ -95,9 +91,20 @@ namespace PnP.Framework
         {
             get
             {
-                // Somehow we look into ClientContext to see if we use cookies
                 var contextSettings = clientContext.GetContextSettings();
-                return contextSettings.Type == Utilities.Context.ClientContextType.Cookie;
+                if (contextSettings.Type == Utilities.Context.ClientContextType.Cookie)
+                {
+                    if (cookieContainer == null)
+                    {
+                        var cookieManager = new CookieManager();
+                        cookieContainer = cookieManager.GetCookies(clientContext);
+                    }
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
     }

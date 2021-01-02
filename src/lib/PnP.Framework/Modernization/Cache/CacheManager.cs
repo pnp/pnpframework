@@ -96,10 +96,10 @@ namespace PnP.Framework.Modernization.Cache
         /// <returns>Found SharePoint version or "Unknown" if not found in cache</returns>
         public SPVersion GetSharePointVersion(Uri site)
         {
-            var sharepointVersions = Store.GetAndInitialize<Dictionary<Uri, SPVersion>>(StoreOptions.GetKey(keySharePointVersions));
-            if (sharepointVersions.ContainsKey(site))
+            var sharepointVersions = Store.GetAndInitialize<Dictionary<string, SPVersion>>(StoreOptions.GetKey(keySharePointVersions));
+            if (sharepointVersions.ContainsKey(site.ToString()))
             {
-                return sharepointVersions[site];
+                return sharepointVersions[site.ToString()];
             }
 
             return SPVersion.Unknown;
@@ -112,11 +112,11 @@ namespace PnP.Framework.Modernization.Cache
         /// <param name="version">SharePoint version of the site</param>
         public void SetSharePointVersion(Uri site, SPVersion version)
         {
-            var sharepointVersions = Store.GetAndInitialize<Dictionary<Uri, SPVersion>>(StoreOptions.GetKey(keySharePointVersions));
-            if (!sharepointVersions.ContainsKey(site))
+            var sharepointVersions = Store.GetAndInitialize<Dictionary<string, SPVersion>>(StoreOptions.GetKey(keySharePointVersions));
+            if (!sharepointVersions.ContainsKey(site.ToString()))
             {
-                sharepointVersions.Add(site, version);
-                Store.Set<Dictionary<Uri, SPVersion>>(StoreOptions.GetKey(keySharePointVersions), sharepointVersions, StoreOptions.EntryOptions);
+                sharepointVersions.Add(site.ToString(), version);
+                Store.Set<Dictionary<string, SPVersion>>(StoreOptions.GetKey(keySharePointVersions), sharepointVersions, StoreOptions.EntryOptions);
             }
         }
 
@@ -127,10 +127,10 @@ namespace PnP.Framework.Modernization.Cache
         /// <returns>Exact version from cache</returns>
         public string GetExactSharePointVersion(Uri site)
         {
-            var exactSharepointVersions = Store.GetAndInitialize<Dictionary<Uri, string>>(StoreOptions.GetKey(keyExactSharepointVersions));
-            if (exactSharepointVersions.ContainsKey(site))
+            var exactSharepointVersions = Store.GetAndInitialize<Dictionary<string, string>>(StoreOptions.GetKey(keyExactSharepointVersions));
+            if (exactSharepointVersions.ContainsKey(site.ToString()))
             {
-                return exactSharepointVersions[site];
+                return exactSharepointVersions[site.ToString()];
             }
 
             return null;
@@ -143,11 +143,11 @@ namespace PnP.Framework.Modernization.Cache
         /// <param name="version">Version to add</param>
         public void SetExactSharePointVersion(Uri site, string version)
         {
-            var exactSharepointVersions = Store.GetAndInitialize<Dictionary<Uri, string>>(StoreOptions.GetKey(keyExactSharepointVersions));
-            if (!exactSharepointVersions.ContainsKey(site))
+            var exactSharepointVersions = Store.GetAndInitialize<Dictionary<string, string>>(StoreOptions.GetKey(keyExactSharepointVersions));
+            if (!exactSharepointVersions.ContainsKey(site.ToString()))
             {
-                exactSharepointVersions.Add(site, version);
-                Store.Set<Dictionary<Uri, string>>(StoreOptions.GetKey(keyExactSharepointVersions), exactSharepointVersions, StoreOptions.EntryOptions);
+                exactSharepointVersions.Add(site.ToString(), version);
+                Store.Set<Dictionary<string, string>>(StoreOptions.GetKey(keyExactSharepointVersions), exactSharepointVersions, StoreOptions.EntryOptions);
             }
         }
 
@@ -158,11 +158,11 @@ namespace PnP.Framework.Modernization.Cache
         /// <returns>Azure AD tenant id</returns>
         public Guid GetAADTenantId(Uri site)
         {
-            var aadTenantId = Store.GetAndInitialize<Dictionary<Uri, Guid>>(StoreOptions.GetKey(keyAadTenantId));
+            var aadTenantId = Store.GetAndInitialize<Dictionary<string, Guid>>(StoreOptions.GetKey(keyAadTenantId));
 
-            if (aadTenantId.ContainsKey(site))
+            if (aadTenantId.ContainsKey(site.ToString()))
             {
-                return aadTenantId[site];
+                return aadTenantId[site.ToString()];
             }
             else
             {
@@ -177,12 +177,12 @@ namespace PnP.Framework.Modernization.Cache
         /// <param name="site">Site url</param>
         public void SetAADTenantId(Guid tenantId, Uri site)
         {
-            var aadTenantId = Store.GetAndInitialize<Dictionary<Uri, Guid>>(StoreOptions.GetKey(keyAadTenantId));
+            var aadTenantId = Store.GetAndInitialize<Dictionary<string, Guid>>(StoreOptions.GetKey(keyAadTenantId));
             
-            if (!aadTenantId.ContainsKey(site))
+            if (!aadTenantId.ContainsKey(site.ToString()))
             {
-                aadTenantId.Add(site, tenantId);
-                Store.Set<Dictionary<Uri, Guid>>(StoreOptions.GetKey(keyAadTenantId), aadTenantId, StoreOptions.EntryOptions);
+                aadTenantId.Add(site.ToString(), tenantId);
+                Store.Set<Dictionary<string, Guid>>(StoreOptions.GetKey(keyAadTenantId), aadTenantId, StoreOptions.EntryOptions);
             }
         }
         #endregion

@@ -58,4 +58,5 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Fix for unhandled null reference exception #58 [patrikhellgren - Patrik Hellgren]
 - Feature - update beta endpoints to v1.0 for UnifiedGroups methods #62 [gautamdsheth - Gautam Sheth]
 - Feature - added additional props for Team Site No Group #63 [gautamdsheth - Gautam Sheth]
-
+- Fix - Parse tokens in the SearchCenterUrl #72 [YannickRe - Yannick Reekmans]
+- Cert loading improvements #68 [mbakhoff - Märt]

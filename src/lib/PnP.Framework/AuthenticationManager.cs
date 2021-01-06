@@ -177,7 +177,7 @@ namespace PnP.Framework
         public AuthenticationManager(string clientId, X509Certificate2 certificate, string tenantId, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
             azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
-            ConfidentialClientApplicationBuilder builder = null;
+            ConfidentialClientApplicationBuilder builder;
             if (azureEnvironment != AzureEnvironment.Production)
             {
                 builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId).WithAuthority(azureADEndPoint, tenantId, true);
@@ -186,11 +186,12 @@ namespace PnP.Framework
             {
                 builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId);
             }
-            //.WithAuthority($"{azureADEndPoint}/organizations/");
+
             if (!string.IsNullOrEmpty(redirectUrl))
             {
                 builder = builder.WithRedirectUri(redirectUrl);
             }
+
             confidentialClientApplication = builder.Build();
 
             // register tokencache if callback provided
@@ -205,10 +206,11 @@ namespace PnP.Framework
         /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
         /// <param name="certificatePath">A valid path to a certificate file</param>
         /// <param name="certificatePassword">The password for the certificate</param>
+        /// <param name="tenantId">The tenant id (guid) or name (e.g. contoso.onmicrosoft.com) </param>
         /// <param name="redirectUrl">Optional redirect URL to use for authentication as set up in the Azure AD Application</param>
         /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
         /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
-        public AuthenticationManager(string clientId, string certificatePath, string certificatePassword, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
+        public AuthenticationManager(string clientId, string certificatePath, string certificatePassword, string tenantId, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
             azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
 
@@ -220,20 +222,28 @@ namespace PnP.Framework
                 {
                     var certificateBytes = new byte[certfile.Length];
                     certfile.Read(certificateBytes, 0, (int)certfile.Length);
-                    using (var certificate = new X509Certificate2(
-                        certificateBytes,
-                        certificatePassword,
-                        X509KeyStorageFlags.Exportable |
-                        X509KeyStorageFlags.MachineKeySet |
-                        X509KeyStorageFlags.PersistKeySet))
-                    {
-                        builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithAuthority($"{azureADEndPoint}/organizations/");
-                    }
+                    // Don't dispose the cert as that will lead to "m_safeCertContext is an invalid handle" errors when the confidential client actually uses the cert
+#pragma warning disable CA2000 // Dispose objects before losing scope
+                    var certificate = new X509Certificate2(certificateBytes,
+                                                           certificatePassword,
+                                                           X509KeyStorageFlags.Exportable |
+                                                           X509KeyStorageFlags.MachineKeySet |
+                                                           X509KeyStorageFlags.PersistKeySet);
+#pragma warning restore CA2000 // Dispose objects before losing scope
+
+                    builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId);
                 }
+                    
+                if (azureEnvironment != AzureEnvironment.Production)
+                {
+                    builder.WithAuthority(azureADEndPoint, tenantId, true);
+                }                
+                
                 if (!string.IsNullOrEmpty(redirectUrl))
                 {
                     builder = builder.WithRedirectUri(redirectUrl);
                 }
+
                 confidentialClientApplication = builder.Build();
 
                 // register tokencache if callback provided. ApptokenCache as AcquireTokenForClient is beind called to acquire tokens.
@@ -255,20 +265,28 @@ namespace PnP.Framework
         /// <param name="storeName">The name of the certificate store to find the certificate in.</param>
         /// <param name="storeLocation">The location of the certificate store to find the certificate in.</param>
         /// <param name="thumbPrint">The thumbprint of the certificate to use.</param>
+        /// <param name="tenantId">The tenant id (guid) or name (e.g. contoso.onmicrosoft.com) </param>
         /// <param name="redirectUrl">Optional redirect URL to use for authentication as set up in the Azure AD Application</param>
         /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
         /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
-        public AuthenticationManager(string clientId, StoreName storeName, StoreLocation storeLocation, string thumbPrint, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
+        public AuthenticationManager(string clientId, StoreName storeName, StoreLocation storeLocation, string thumbPrint, string tenantId, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
             azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
 
-            var certificate = Utilities.X509CertificateUtility.LoadCertificate(storeName, storeLocation, thumbPrint); ;
+            var certificate = Utilities.X509CertificateUtility.LoadCertificate(storeName, storeLocation, thumbPrint);
 
-            var builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithAuthority($"{azureADEndPoint}/organizations/");
+            var builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId);
+
+            if (azureEnvironment != AzureEnvironment.Production)
+            {
+                builder.WithAuthority(azureADEndPoint, tenantId, true);
+            }
+
             if (!string.IsNullOrEmpty(redirectUrl))
             {
                 builder = builder.WithRedirectUri(redirectUrl);
             }
+
             confidentialClientApplication = builder.Build();
 
             // register tokencache if callback provided. ApptokenCache as AcquireTokenForClient is beind called to acquire tokens.
@@ -288,11 +306,9 @@ namespace PnP.Framework
         /// <param name="tokenCacheCallback"></param>
         public AuthenticationManager(string clientId, string clientSecret, UserAssertion userAssertion, string tenantId = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
-
-
             var azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
 
-            ConfidentialClientApplicationBuilder builder = null;
+            ConfidentialClientApplicationBuilder builder;
             if (azureEnvironment != AzureEnvironment.Production)
             {
                 if (tenantId == null)

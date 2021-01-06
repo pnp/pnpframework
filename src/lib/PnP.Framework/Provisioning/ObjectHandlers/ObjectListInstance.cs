@@ -2412,8 +2412,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                     list = ExtractUserCustomActions(web, siteList, list, creationInfo, template);
 
-                    list = ExtractWebhooks(siteList, list);
-
+                    if (!web.Context.IsAppOnly())
+                    {
+                        list = ExtractWebhooks(siteList, list);
+                    }
                     list.Security = siteList.GetSecurity();
 
                     list = ExtractInformationRightsManagement(web, siteList, list, creationInfo, template);

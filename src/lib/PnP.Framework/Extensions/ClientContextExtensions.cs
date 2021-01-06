@@ -485,8 +485,11 @@ namespace Microsoft.SharePoint.Client
         /// <returns>True if app-only, false otherwise</returns>
         public static bool IsAppOnly(this ClientRuntimeContext clientContext)
         {
+
             // Set initial result to false
             var result = false;
+            
+            // do we have cookies?
 
             // Try to get an access token from the current context
             var accessToken = clientContext.GetAccessToken();
@@ -512,16 +515,21 @@ namespace Microsoft.SharePoint.Client
             {
                 try
                 {
-                    var cookieString = CookieReader.GetCookie(clientContext.Url)?.Replace("; ", ",")?.Replace(";", ",");
+                    var contextSettings = (clientContext as ClientContext).GetContextSettings();
+                    if (contextSettings.Type == ClientContextType.Cookie)
+                    {
+                        result = false;
+                    }
+                    // var cookieString = CookieReader.GetCookie(clientContext.Url)?.Replace("; ", ",")?.Replace(";", ",");
 
-                    if (Regex.IsMatch(cookieString, "FedAuth", RegexOptions.IgnoreCase))
-                    {
-                        result = false;
-                    }
-                    else if (Regex.IsMatch(cookieString, "EdgeAccessCookie", RegexOptions.IgnoreCase))
-                    {
-                        result = false;
-                    }
+                    // if (Regex.IsMatch(cookieString, "FedAuth", RegexOptions.IgnoreCase))
+                    // {
+                    //     result = false;
+                    // }
+                    // else if (Regex.IsMatch(cookieString, "EdgeAccessCookie", RegexOptions.IgnoreCase))
+                    // {
+                    //     result = false;
+                    // }
                 }
                 catch (Exception)
                 {

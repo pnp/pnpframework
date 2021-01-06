@@ -216,19 +216,14 @@ namespace PnP.Framework
             {
                 ConfidentialClientApplicationBuilder builder = null;
 
-                using (var certfile = System.IO.File.OpenRead(certificatePath))
+                using (var certificate = new X509Certificate2(
+                    certificatePath,
+                    certificatePassword,
+                    X509KeyStorageFlags.Exportable |
+                    X509KeyStorageFlags.MachineKeySet |
+                    X509KeyStorageFlags.PersistKeySet))
                 {
-                    var certificateBytes = new byte[certfile.Length];
-                    certfile.Read(certificateBytes, 0, (int)certfile.Length);
-                    using (var certificate = new X509Certificate2(
-                        certificateBytes,
-                        certificatePassword,
-                        X509KeyStorageFlags.Exportable |
-                        X509KeyStorageFlags.MachineKeySet |
-                        X509KeyStorageFlags.PersistKeySet))
-                    {
-                        builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithAuthority($"{azureADEndPoint}/organizations/");
-                    }
+                    builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithAuthority($"{azureADEndPoint}/organizations/");
                 }
                 if (!string.IsNullOrEmpty(redirectUrl))
                 {

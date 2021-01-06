@@ -479,11 +479,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             {
                 _tokens.Add(new GroupIdToken(web, "associatedownergroup", web.AssociatedOwnerGroup.Id.ToString()));
             }
-
-            if (PnPProvisioningContext.Current != null)
+                        
+            if (PnPProvisioningContext.Current != null && TenantExtensions.IsCurrentUserTenantAdmin((ClientContext)web.Context))
             {
-                var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, "Group.Read.All");
-                if (accessToken != null)
+                var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, "Group.Read.All");
+                if (!string.IsNullOrEmpty(accessToken))
                 {
                     // Get Office 365 Groups
                     var officeGroups = UnifiedGroupsUtility.GetUnifiedGroups(accessToken, includeSite: false);
@@ -498,8 +498,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 }
             }
         }
-
-
 
         private void AddTermStoreTokens(Web web, List<string> tokenIds)
         {

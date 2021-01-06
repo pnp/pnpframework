@@ -83,7 +83,7 @@ namespace PnP.Framework.Graph
             try
             {
                 string requestUrl = $"{GraphHttpClient.MicrosoftGraphV1BaseUri}groups/{groupId}/sites/root?$select=webUrl";
-                var response = JToken.Parse(HttpHelper.MakeGetRequestForString(requestUrl, accessToken));
+                var response = JToken.Parse(HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay));
 
                 result = Convert.ToString(response["webUrl"]);
             }

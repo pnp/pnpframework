@@ -502,7 +502,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     }
                     catch (Microsoft.Graph.ServiceException ex)
                     {
-                        // If we don't have permission to access the TermGroup, just skip it
+                        // If we don't have permission to access the O365 groups, just skip it
                         Log.Warning(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
                     }
                 }

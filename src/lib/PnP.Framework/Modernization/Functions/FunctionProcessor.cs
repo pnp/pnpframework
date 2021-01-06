@@ -27,6 +27,7 @@ namespace PnP.Framework.Modernization.Functions
         /// Instantiates the function processor. Also loads the defined add-ons
         /// </summary>
         /// <param name="sourceClientContext"></param>
+        /// <param name="targetClientContext"></param>
         /// <param name="page">Client side page for which we're executing the functions/selectors as part of the mapping</param>
         /// <param name="pageTransformation">Webpart mapping information</param>
         /// <param name="baseTransformationInformation">Page transformation information</param>

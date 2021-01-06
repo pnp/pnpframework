@@ -22,12 +22,8 @@ namespace PnP.Framework.Modernization.Cache
             {
                 return null;
             }
-            BinaryFormatter binaryFormatter = new BinaryFormatter();
-            using (MemoryStream memoryStream = new MemoryStream())
-            {
-                binaryFormatter.Serialize(memoryStream, obj);
-                return memoryStream.ToArray();
-            }
+            var json = System.Text.Json.JsonSerializer.Serialize(obj);
+            return System.Text.Encoding.UTF8.GetBytes(json);
         }
 
         /// <summary>
@@ -42,11 +38,8 @@ namespace PnP.Framework.Modernization.Cache
             {
                 return default(T);
             }
-            BinaryFormatter binaryFormatter = new BinaryFormatter();
-            using (MemoryStream memoryStream = new MemoryStream(byteArray))
-            {
-                return binaryFormatter.Deserialize(memoryStream) as T;
-            }
+            var jsonString = System.Text.Encoding.UTF8.GetString(byteArray);
+            return System.Text.Json.JsonSerializer.Deserialize<T>(jsonString);
         }
 
         /// <summary>

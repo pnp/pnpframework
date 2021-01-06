@@ -886,11 +886,12 @@ namespace PnP.Framework.Utilities
                     return null;
                 }
 
-                ClientContext ctx = new ClientContext("http://tempuri.org");
-                Dictionary<string, object> dict = (Dictionary<string, object>)ctx.ParseObjectFromJsonString(appctx);
-                string cacheKey = (string)dict["CacheKey"];
-
-                return cacheKey;
+                using (ClientContext ctx = new ClientContext("http://tempuri.org"))
+                {
+                    Dictionary<string, object> dict = (Dictionary<string, object>)ctx.ParseObjectFromJsonString(appctx);
+                    string cacheKey = (string)dict["CacheKey"];
+                    return cacheKey;
+                }
             }
         }
 

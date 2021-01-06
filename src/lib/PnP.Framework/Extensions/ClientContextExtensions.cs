@@ -492,14 +492,14 @@ namespace Microsoft.SharePoint.Client
             var accessToken = clientContext.GetAccessToken();
 
             // If any
-            if (!String.IsNullOrEmpty(accessToken))
+            if (!string.IsNullOrEmpty(accessToken))
             {
                 // Try to decode the access token
                 var token = new JwtSecurityToken(accessToken);
 
                 // Search for the UPN claim, to see if we have user's delegation
                 var upn = token.Claims.FirstOrDefault(claim => claim.Type == "upn")?.Value;
-                if (String.IsNullOrEmpty(upn))
+                if (string.IsNullOrEmpty(upn))
                 {
                     result = true;
                 }
@@ -507,6 +507,26 @@ namespace Microsoft.SharePoint.Client
             else if (clientContext.Credentials == null)
             {
                 result = true;
+            }
+            if (result == true)
+            {
+                try
+                {
+                    var cookieString = CookieReader.GetCookie(clientContext.Url)?.Replace("; ", ",")?.Replace(";", ",");
+
+                    if (Regex.IsMatch(cookieString, "FedAuth", RegexOptions.IgnoreCase))
+                    {
+                        result = false;
+                    }
+                    else if (Regex.IsMatch(cookieString, "EdgeAccessCookie", RegexOptions.IgnoreCase))
+                    {
+                        result = false;
+                    }
+                }
+                catch (Exception)
+                {
+
+                }
             }
 
             return result;

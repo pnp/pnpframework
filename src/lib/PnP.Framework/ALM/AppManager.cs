@@ -732,6 +732,7 @@ namespace PnP.Framework.ALM
         }
 
 
+#pragma warning disable CA2000
         private async Task<bool> BaseRequest(Guid id, AppManagerAction action, bool switchToAppCatalogContext, Dictionary<string, object> postObject, AppCatalogScope scope, int timeoutSeconds = 200)
         {
             var isCloned = false;
@@ -821,6 +822,7 @@ namespace PnP.Framework.ALM
             }
             return await Task.Run(() => returnValue);
         }
+#pragma warning restore CA2000
 
         private async Task<bool> SyncToTeamsImplementation(Guid appId)
         {
@@ -903,6 +905,7 @@ namespace PnP.Framework.ALM
             }
         }
 
+#pragma warning disable CA2000
         private async Task<AppMetadata> BaseAddRequest(byte[] file, string filename, bool overwrite, int timeoutSeconds, AppCatalogScope scope)
         {
             AppMetadata returnValue = null;
@@ -989,12 +992,13 @@ namespace PnP.Framework.ALM
                     }
                 }
             }
-            if(isCloned)
+            if (isCloned)
             {
                 context.Dispose();
             }
             return await Task.Run(() => returnValue);
         }
+#pragma warning restore CA2000
 
         private static async Task<AppMetadata> GetAppMetaData(AppCatalogScope scope, ClientContext context, string accessToken, PnPHttpProvider httpClient, string requestDigest, string id)
         {

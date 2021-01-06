@@ -603,7 +603,7 @@ namespace PnP.Framework.Modernization.Publishing
                         context.ExecuteQueryRetry();
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     // Eat any exception
                 }

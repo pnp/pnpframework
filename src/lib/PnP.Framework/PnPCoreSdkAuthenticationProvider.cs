@@ -1,15 +1,18 @@
 ﻿using Microsoft.SharePoint.Client;
 using PnP.Core.Services;
+using PnP.Framework.Modernization.Utilities;
 using System;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace PnP.Framework
 {
-    internal class PnPCoreSdkAuthenticationProvider : IAuthenticationProvider
+    internal class PnPCoreSdkAuthenticationProvider : ILegacyAuthenticationProvider
     {
         private readonly ClientContext clientContext;
+        private CookieContainer cookieContainer;
 
         internal PnPCoreSdkAuthenticationProvider(ClientContext context)
         {
@@ -64,5 +67,45 @@ namespace PnP.Framework
             return accessToken;
         }
 
+        public string GetCookieHeader(Uri targetUrl)
+        {
+            if (cookieContainer == null)
+            {
+                throw new InvalidOperationException("Unable to access CookieContainer for current ClientContext instance");
+            }
+
+            return cookieContainer.GetCookieHeader(targetUrl);
+        }
+
+        public string GetRequestDigest()
+        {
+            if (cookieContainer == null)
+            {
+                throw new InvalidOperationException("Unable to access CookieContainer for current ClientContext instance");
+            }
+
+            return clientContext.GetRequestDigestAsync(cookieContainer).GetAwaiter().GetResult();
+        }
+
+        public bool RequiresCookieAuthentication
+        {
+            get
+            {
+                var contextSettings = clientContext.GetContextSettings();
+                if (contextSettings.Type == Utilities.Context.ClientContextType.Cookie)
+                {
+                    if (cookieContainer == null)
+                    {
+                        var cookieManager = new CookieManager();
+                        cookieContainer = cookieManager.GetCookies(clientContext);
+                    }
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
     }
 }

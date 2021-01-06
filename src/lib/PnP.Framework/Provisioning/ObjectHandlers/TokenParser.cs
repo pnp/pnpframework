@@ -309,8 +309,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         private void AddResourceTokens(Web web, LocalizationCollection localizations, FileConnectorBase connector)
         {
+
             if (localizations != null && localizations.Any())
             {
+                if (connector == null)
+                {
+                    throw new ArgumentNullException(nameof(connector), "Template or Hierarchy File Connector cannot be null");
+                }
+
                 //https://github.com/SharePoint/PnP-Provisioning-Schema/issues/301
                 //fixing issue to allow multiple resx files in the template. i.e:
                 //<pnp:Localization LCID="1033" Name="core" ResourceFile="core.en-us.resx" />

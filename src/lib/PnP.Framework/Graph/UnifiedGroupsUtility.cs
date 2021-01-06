@@ -1818,7 +1818,7 @@ namespace PnP.Framework.Graph
         {
             try
             {
-                var response = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}beta/directory/deleteditems/microsoft.graph.group/{groupId}", accessToken);
+                var response = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/directory/deleteditems/microsoft.graph.group/{groupId}", accessToken);
 
                 var group = JToken.Parse(response);
 
@@ -1899,7 +1899,7 @@ namespace PnP.Framework.Graph
         {
             try
             {
-                HttpHelper.MakePostRequest($"{GraphHelper.MicrosoftGraphBaseURI}beta/directory/deleteditems/{groupId}/restore", contentType: "application/json", accessToken: accessToken);
+                HttpHelper.MakePostRequest($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/directory/deleteditems/{groupId}/restore", contentType: "application/json", accessToken: accessToken);
             }
             catch (Exception e)
             {
@@ -1918,7 +1918,7 @@ namespace PnP.Framework.Graph
         {
             try
             {
-                HttpHelper.MakeDeleteRequest($"{GraphHelper.MicrosoftGraphBaseURI}beta/directory/deleteditems/{groupId}", accessToken);
+                HttpHelper.MakeDeleteRequest($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/directory/deleteditems/{groupId}", accessToken);
             }
             catch (Exception e)
             {

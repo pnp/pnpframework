@@ -336,7 +336,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                     {
                                         WriteMessage("Teamify and HideTeamify operation is not supported in App-only context", ProvisioningMessageType.Warning);
                                     }
-                                    else if (siteContext.IsAppOnly() && !string.IsNullOrEmpty(graphAccessToken))
+                                    else if (siteContext.IsAppOnly() && !string.IsNullOrEmpty(graphAccessToken) && (t.Teamify || t.HideTeamify))
                                     {
                                         try
                                         {

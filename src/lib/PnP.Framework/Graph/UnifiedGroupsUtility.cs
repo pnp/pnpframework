@@ -82,29 +82,10 @@ namespace PnP.Framework.Graph
             string result;
             try
             {
-                // Use a synchronous model to invoke the asynchronous process
-                result = Task.Run(async () =>
-                {
-                    string siteUrl = null;
+                string requestUrl = $"{GraphHttpClient.MicrosoftGraphV1BaseUri}groups/{groupId}/sites/root?$select=webUrl";
+                var response = JToken.Parse(HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay));
 
-                    var graphClient = CreateGraphClient(accessToken, retryCount, delay);
-
-                    var groupDrive = await graphClient.Groups[groupId].Drive.Request().GetAsync();
-                    if (groupDrive != null)
-                    {
-                        var rootFolder = await graphClient.Groups[groupId].Drive.Root.Request().GetAsync();
-                        if (rootFolder != null)
-                        {
-                            if (!string.IsNullOrEmpty(rootFolder.WebUrl))
-                            {
-                                var modernSiteUrl = rootFolder.WebUrl;
-                                siteUrl = modernSiteUrl.Substring(0, modernSiteUrl.LastIndexOf("/"));
-                            }
-                        }
-                    }
-                    return (siteUrl);
-
-                }).GetAwaiter().GetResult();
+                result = Convert.ToString(response["webUrl"]);
             }
             catch (ServiceException ex)
             {

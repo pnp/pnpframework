@@ -480,26 +480,34 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 _tokens.Add(new GroupIdToken(web, "associatedownergroup", web.AssociatedOwnerGroup.Id.ToString()));
             }
 
-            if (PnPProvisioningContext.Current != null)
+            string accessToken = null;
+
+            if (PnPProvisioningContext.Current?.AcquireTokenAsync != null)
             {
-                var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, "Group.Read.All");
-                if (accessToken != null)
+                accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, "Group.Read.All");
+                if (!string.IsNullOrEmpty(accessToken))
                 {
-                    // Get Office 365 Groups
-                    var officeGroups = UnifiedGroupsUtility.GetUnifiedGroups(accessToken, includeSite: false);
-                    foreach (var group in officeGroups)
+                    try
                     {
-                        _tokens.Add(new O365GroupIdToken(web, group.DisplayName, group.GroupId));
-                        if (!group.DisplayName.Equals(group.MailNickname))
+                        // Get Office 365 Groups
+                        var officeGroups = UnifiedGroupsUtility.GetUnifiedGroups(accessToken, includeSite: false);
+                        foreach (var group in officeGroups)
                         {
-                            _tokens.Add(new O365GroupIdToken(web, group.MailNickname, group.GroupId));
+                            _tokens.Add(new O365GroupIdToken(web, group.DisplayName, group.GroupId));
+                            if (!group.DisplayName.Equals(group.MailNickname))
+                            {
+                                _tokens.Add(new O365GroupIdToken(web, group.MailNickname, group.GroupId));
+                            }
                         }
+                    }
+                    catch (Microsoft.Graph.ServiceException ex)
+                    {
+                        // If we don't have permission to access the O365 groups, just skip it
+                        Log.Warning(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
                     }
                 }
             }
         }
-
-
 
         private void AddTermStoreTokens(Web web, List<string> tokenIds)
         {

@@ -92,7 +92,7 @@ namespace PnP.Framework
             get
             {
                 var contextSettings = clientContext.GetContextSettings();
-                if (contextSettings.Type == Utilities.Context.ClientContextType.Cookie)
+                if (contextSettings != null && contextSettings.Type == Utilities.Context.ClientContextType.Cookie)
                 {
                     if (cookieContainer == null)
                     {

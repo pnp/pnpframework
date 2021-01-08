@@ -285,10 +285,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                     }
 
                                     var groupSiteInfo = Sites.SiteCollection.GetGroupInfoAsync(rootSiteContext, siteInfo.Alias).GetAwaiter().GetResult();
+                                    string graphAccessToken = null;
                                     if (groupSiteInfo == null)
-                                    {
-                                        string graphAccessToken = null;
-
+                                    {                                        
                                         if (PnPProvisioningContext.Current != null)
                                         {
                                             try
@@ -332,28 +331,57 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                             WriteMessage($"Theme {parsedTheme} doesn't exist in the tenant, will not be applied", ProvisioningMessageType.Warning);
                                         }
                                     }
-                                    if (t.Teamify)
+
+                                    if (siteContext.IsAppOnly() && string.IsNullOrEmpty(graphAccessToken) && (t.Teamify || t.HideTeamify))
+                                    {
+                                        WriteMessage("Teamify and HideTeamify operation is not supported in App-only context", ProvisioningMessageType.Warning);
+                                    }
+                                    else if (siteContext.IsAppOnly() && !string.IsNullOrEmpty(graphAccessToken) && (t.Teamify || t.HideTeamify))
                                     {
                                         try
                                         {
-                                            WriteMessage($"Teamifying the O365 group connected site at URL - {siteContext.Url}", ProvisioningMessageType.Progress);
-                                            siteContext.TeamifyAsync().GetAwaiter().GetResult();
+                                            if (t.Teamify)
+                                            {
+                                                siteContext.Site.EnsureProperty(s => s.GroupId);
+                                                Graph.UnifiedGroupsUtility.CreateTeam(siteContext.Site.GroupId.ToString(), graphAccessToken).GetAwaiter().GetResult();
+                                                WriteMessage($"Teamifying the O365 group connected site at URL - {siteContext.Url}", ProvisioningMessageType.Progress);
+                                            }
                                         }
                                         catch (Exception ex)
                                         {
                                             WriteMessage($"Teamifying site at URL - {siteContext.Url} failed due to an exception:- {ex.Message}", ProvisioningMessageType.Warning);
                                         }
-                                    }
-                                    if (t.HideTeamify)
-                                    {
-                                        try
+
+                                        if (t.HideTeamify)
                                         {
-                                            WriteMessage($"Teamify prompt is now hidden for site at URL - {siteContext.Url}", ProvisioningMessageType.Progress);
-                                            siteContext.HideTeamifyPromptAsync().GetAwaiter().GetResult();
+                                            WriteMessage($"Teamifying prompt couldn't be hidden at site at URL - {siteContext.Url} in App-only context", ProvisioningMessageType.Warning);
                                         }
-                                        catch (Exception ex)
+                                    }
+                                    else
+                                    {
+                                        if (t.Teamify)
                                         {
-                                            WriteMessage($"Teamify prompt couldn't be hidden for site at URL - {siteContext.Url} due to an exception:- {ex.Message}", ProvisioningMessageType.Warning);
+                                            try
+                                            {
+                                                siteContext.TeamifyAsync().GetAwaiter().GetResult();
+                                                WriteMessage($"Teamifying the O365 group connected site at URL - {siteContext.Url}", ProvisioningMessageType.Progress);
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                WriteMessage($"Teamifying site at URL - {siteContext.Url} failed due to an exception:- {ex.Message}", ProvisioningMessageType.Warning);
+                                            }
+                                        }
+                                        if (t.HideTeamify)
+                                        {
+                                            try
+                                            {
+                                                siteContext.HideTeamifyPromptAsync().GetAwaiter().GetResult();
+                                                WriteMessage($"Teamify prompt is now hidden for site at URL - {siteContext.Url}", ProvisioningMessageType.Progress);
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                WriteMessage($"Teamify prompt couldn't be hidden for site at URL - {siteContext.Url} due to an exception:- {ex.Message}", ProvisioningMessageType.Warning);
+                                            }
                                         }
                                     }
                                     siteUrls.Add(t.Id, siteContext.Url);

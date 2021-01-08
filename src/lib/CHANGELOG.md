@@ -63,3 +63,4 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Fix - Keep the existing stack information on rethrowing the exception. #83 [YannickRe - Yannick Reekmans]
 - Fix a null reference exception in cases where ClientContextSettings are null. #82 [YannickRe - Yannick Reekmans]
 - Fix - app-only issue for teamifying group sites #78 [gautamdsheth - Gautam Sheth]
+- Feature - minor improvements related to Graph #77 [gautamdsheth - Gautam Sheth]

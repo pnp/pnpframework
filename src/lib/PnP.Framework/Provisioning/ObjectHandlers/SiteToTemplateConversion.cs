@@ -460,7 +460,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         {
                             CallWebHooks(template, tokenParser, ProvisioningTemplateWebhookKind.ExceptionOccurred,
                                 handler.InternalName, ex);
-                            throw ex;
+                            throw;
                         }
                         CallWebHooks(template, tokenParser,
                             ProvisioningTemplateWebhookKind.ObjectHandlerProvisioningCompleted,

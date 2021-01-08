@@ -60,3 +60,4 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Feature - added additional props for Team Site No Group #63 [gautamdsheth - Gautam Sheth]
 - Fix - Parse tokens in the SearchCenterUrl #72 [YannickRe - Yannick Reekmans]
 - Cert loading improvements #68 [mbakhoff - Märt]
+- Fix - Keep the existing stack information on rethrowing the exception. #83 [YannickRe - Yannick Reekmans]

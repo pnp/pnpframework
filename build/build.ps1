@@ -11,16 +11,18 @@ $version = Get-Content ./build/version.debug -Raw
 $version = $version.Replace("{incremental}", $versionIncrement)
 
 Write-Host "Building PnP.Framework .NET Standard 2.0 version $version"
-dotnet build ./src/lib/PnP.Framework/PnP.Framework.csproj --no-incremental /p:Version=$version
+dotnet build ./src/lib/PnP.Framework/PnP.Framework.csproj --no-incremental --force /p:Version=$version
 
 Write-Host "Packinging PnP.Framework .NET Standard 2.0 version $version"
-dotnet pack ./src/lib/PnP.Framework/PnP.Framework.csproj --no-build /p:PackageVersion=$version
+dotnet pack ./src/lib/PnP.Framework/PnP.Framework.csproj --no-build --include-source /p:PackageVersion=$version
 
 Write-Host "Publishing to nuget"
 $nupkg = $("./src/lib/PnP.Framework/bin/Debug/PnP.Framework.$version.nupkg")
+$nusymbolspkg = $("./src/lib/PnP.Framework/bin/Debug/PnP.Framework.$version.symbols.nupkg")
 $apiKey = $("$env:NUGET_API_KEY")
 
 dotnet nuget push $nupkg --api-key $apiKey --source https://api.nuget.org/v3/index.json
+dotnet nuget push $nusymbolspkg --api-key $apiKey --source https://api.nuget.org/v3/index.json
 
 Write-Host "Writing $version to git"
 Set-Content -Path ./build/version.debug.increment -Value $versionIncrement

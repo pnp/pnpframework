@@ -170,7 +170,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                             var imageAddedTuple = LoadAndAddPageImage(web, file, template, creationInfo, scope);
                             if (imageAddedTuple.Item1)
                             {
-                                extractedPageInstance.ThumbnailUrl = Regex.Replace(extractedPageInstance.ThumbnailUrl, file.UniqueId.ToString("N"), $"{{fileuniqueid:{file.ServerRelativeUrl.Substring(web.ServerRelativeUrl.Length).TrimStart("/".ToCharArray())}}}");
+                                extractedPageInstance.ThumbnailUrl = Regex.Replace(extractedPageInstance.ThumbnailUrl, file.UniqueId.ToString("N"), $"{{fileuniqueid:{file.ServerRelativePath.DecodedUrl.Substring(web.ServerRelativeUrl.Length).TrimStart("/".ToCharArray())}}}");
                             }
 
                         }

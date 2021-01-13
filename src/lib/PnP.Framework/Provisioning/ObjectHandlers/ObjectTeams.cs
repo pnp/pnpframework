@@ -1335,7 +1335,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             try
             {
                 var content = OverwriteJsonTemplateProperties(parser, teamTemplate);
-                responseHeaders = HttpHelper.MakePostRequestForHeaders($"{GraphHelper.MicrosoftGraphBaseURI}beta/teams", content, "application/json", accessToken);
+                responseHeaders = HttpHelper.MakePostRequestForHeaders($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams", content, "application/json", accessToken);
             }
             catch (Exception ex)
             {
@@ -1386,7 +1386,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             if (teamTemplate.DisplayName != null) team["displayName"] = teamTemplate.DisplayName;
             if (teamTemplate.Description != null) team["description"] = teamTemplate.Description;
             if (!string.IsNullOrEmpty(teamTemplate.Classification)) team["classification"] = teamTemplate.Classification;
-            team["visibility"] = teamTemplate.Visibility.ToString();
+            if (teamTemplate.Visibility != null) team["visibility"] = teamTemplate.Visibility.ToString();
 
             return team.ToString();
         }

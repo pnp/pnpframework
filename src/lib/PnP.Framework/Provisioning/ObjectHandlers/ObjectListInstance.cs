@@ -1447,9 +1447,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 // Process list webhooks
                 if (templateList.Webhooks.Any())
                 {
-                    foreach (var webhook in templateList.Webhooks)
+                    if (!web.Context.IsAppOnly())
                     {
-                        AddOrUpdateListWebHook(existingList, webhook, scope, parser, true);
+                        foreach (var webhook in templateList.Webhooks)
+                        {
+                            AddOrUpdateListWebHook(existingList, webhook, scope, parser, true);
+                        }
                     }
                 }
 

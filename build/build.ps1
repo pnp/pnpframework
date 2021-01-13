@@ -1,3 +1,4 @@
+# Script used in the github nightly release workflow
 $ErrorActionPreference = "Stop"
 Set-StrictMode -Version 2.0
 

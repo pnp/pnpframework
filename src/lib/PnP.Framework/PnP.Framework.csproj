@@ -14,11 +14,17 @@
 		<RepositoryUrl>https://github.com/pnp/pnpframework</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageProjectUrl>https://aka.ms/pnp/framework</PackageProjectUrl>
-		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-		<PackageIcon>nugeticon.png</PackageIcon>
-		<!-- Optional: Build symbol package (.snupkg) to distribute the PDB containing Source Link -->
+		<!-- Generate symbol packages (.snupkg) -->
+		<!-- You must publish both packages, the package that contains the dll (.nupkg) and the one that contains the symbols (.snupkg) -->
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<Deterministic>true</Deterministic>
+		<!-- Uncomment if you build using GitHub Actions -->
+		<!-- https://help.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables -->
+		<ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">True</ContinuousIntegrationBuild>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+		<PackageIcon>nugeticon.png</PackageIcon>
 		<IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWindows>
 		<IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
 		<IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
@@ -201,6 +207,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<!-- Required -->
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-*" PrivateAssets="All"/>
 		<PackageReference Include="AngleSharp" Version="0.14.0" />
 		<PackageReference Include="AngleSharp.Css" Version="0.14.2" />
 		<PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />

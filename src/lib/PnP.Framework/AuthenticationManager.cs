@@ -86,7 +86,7 @@ namespace PnP.Framework
         private readonly string username;
         private readonly SecureString password;
         private readonly UserAssertion assertion;
-
+        private readonly Func<DeviceCodeResult, Task> deviceCodeCallback;
         internal string RedirectUrl { get; set; }
 
         #region Construction
@@ -166,6 +166,28 @@ namespace PnP.Framework
         }
 
         /// <summary>
+        /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts through device code authentication
+        /// </summary>
+        /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
+        /// <param name="deviceCodeCallback">The callback that will be called with device code information.</param>
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
+        public AuthenticationManager(string clientId, Func<DeviceCodeResult, Task> deviceCodeCallback, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
+        {
+            azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
+            this.deviceCodeCallback = deviceCodeCallback;
+
+            var builder = PublicClientApplicationBuilder.Create(clientId).WithAuthority($"{azureADEndPoint}/organizations/");
+
+            publicClientApplication = builder.Build();
+
+            // register tokencache if callback provided
+            tokenCacheCallback?.Invoke(publicClientApplication.UserTokenCache);
+
+            authenticationType = ClientContextType.DeviceLogin;
+        }
+
+        /// <summary>
         /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts.
         /// </summary>
         /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
@@ -233,12 +255,12 @@ namespace PnP.Framework
 
                     builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId);
                 }
-                    
+
                 if (azureEnvironment != AzureEnvironment.Production)
                 {
                     builder.WithAuthority(azureADEndPoint, tenantId, true);
-                }                
-                
+                }
+
                 if (!string.IsNullOrEmpty(redirectUrl))
                 {
                     builder = builder.WithRedirectUri(redirectUrl);
@@ -343,9 +365,19 @@ namespace PnP.Framework
         {
             var uri = new Uri(siteUrl);
 
-            AuthenticationResult authResult = null;
-
             var scopes = new[] { $"{uri.Scheme}://{uri.Authority}/.default" };
+
+            return await GetAccessTokenAsync(scopes);
+        }
+
+        /// <summary>
+        /// Returns an access token for a given site.
+        /// </summary>
+        /// <param name="scopes">The scopes to retrieve the access token for</param>
+        /// <returns></returns>
+        public async Task<string> GetAccessTokenAsync(string[] scopes)
+        {
+            AuthenticationResult authResult = null;
 
             switch (authenticationType)
             {
@@ -387,6 +419,19 @@ namespace PnP.Framework
                         catch
                         {
                             authResult = await confidentialClientApplication.AcquireTokenForClient(scopes).ExecuteAsync();
+                        }
+                        break;
+                    }
+                case ClientContextType.DeviceLogin:
+                    {
+                        var accounts = await publicClientApplication.GetAccountsAsync();
+                        try
+                        {
+                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
+                        }
+                        catch
+                        {
+                            authResult = await publicClientApplication.AcquireTokenWithDeviceCode(scopes, deviceCodeCallback).ExecuteAsync();
                         }
                         break;
                     }
@@ -497,6 +542,24 @@ namespace PnP.Framework
                         }
                         break;
                     }
+                case ClientContextType.DeviceLogin:
+                    {
+                        var accounts = await publicClientApplication.GetAccountsAsync();
+
+                        try
+                        {
+                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
+                        }
+                        catch
+                        {
+                            authResult = await publicClientApplication.AcquireTokenWithDeviceCode(scopes, deviceCodeCallback).ExecuteAsync();
+                        }
+                        if (authResult.AccessToken != null)
+                        {
+                            return BuildClientContext(publicClientApplication, siteUrl, scopes, authenticationType);
+                        }
+                        break;
+                    }
             }
             return null;
         }
@@ -540,6 +603,11 @@ namespace PnP.Framework
                         case ClientContextType.AzureOnBehalfOf:
                             {
                                 ar = ((IConfidentialClientApplication)application).AcquireTokenOnBehalfOf(scopes, assertion).ExecuteAsync().GetAwaiter().GetResult();
+                                break;
+                            }
+                        case ClientContextType.DeviceLogin:
+                            {
+                                ar = ((IPublicClientApplication)application).AcquireTokenWithDeviceCode(scopes, deviceCodeCallback).ExecuteAsync().GetAwaiter().GetResult();
                                 break;
                             }
 

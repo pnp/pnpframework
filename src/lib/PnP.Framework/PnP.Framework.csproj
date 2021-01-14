@@ -10,9 +10,19 @@
 		<Copyright>PnP 2020</Copyright>
 		<Description>PnP Framework contains the PnP Provisioning engine, the PnP Pages API and a ton of extension methods that will make you more productive while developing for Microsoft 365.</Description>
 		<PackageIcon>nugeticon.png</PackageIcon>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<RepositoryUrl>https://github.com/pnp/pnpframework</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageProjectUrl>https://aka.ms/pnp/framework</PackageProjectUrl>
+		<!-- Generate symbol packages (.snupkg) -->
+		<!-- You must publish both packages, the package that contains the dll (.nupkg) and the one that contains the symbols (.snupkg) -->
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<Deterministic>true</Deterministic>
+		<!-- Uncomment if you build using GitHub Actions -->
+		<!-- https://help.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables -->
+		<ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">True</ContinuousIntegrationBuild>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<PackageIcon>nugeticon.png</PackageIcon>
 		<IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWindows>
@@ -31,6 +41,14 @@
 		<DefineConstants>Linux</DefineConstants>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+		<DefineConstants>NETSTANDARD2_0</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(TargetFramework)' == 'net5.0'">
+		<DefineConstants>NET5_0</DefineConstants>
+	</PropertyGroup>
+	
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<DefineConstants>TRACE</DefineConstants>
 		<DocumentationFile>obj\Debug\PnP.Framework.xml</DocumentationFile>
@@ -197,6 +215,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<!-- Required -->
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-*" PrivateAssets="All"/>
 		<PackageReference Include="AngleSharp" Version="0.14.0" />
 		<PackageReference Include="AngleSharp.Css" Version="0.14.2" />
 		<PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />

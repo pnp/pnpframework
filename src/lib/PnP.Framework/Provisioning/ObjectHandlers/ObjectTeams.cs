@@ -118,8 +118,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 try
                 {
-                    var jsonOwners = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/groups/{teamId}/owners?$select=id", accessToken);
-                    if (!string.IsNullOrEmpty(jsonOwners))
+                    var team = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams/{teamId}?$select=id", accessToken);
+                    if (!string.IsNullOrEmpty(team))
                     {
                         wait = false;
                     }
@@ -133,7 +133,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 // Don't wait more than 1 minute
                 if (iterations > 12)
                 {
-                    wait = false;
+                    //wait = false;
+                    throw new Exception($"Team with id {teamId} not created within timeout.");
                 }
             }
         }
@@ -915,7 +916,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             {
                 // Get the team owners, who will be set as members of the private channel
                 // if the channel is private
-                var teamOwnersString = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}beta/groups/{teamId}/owners", accessToken);
+                var teamOwnersString = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/groups/{teamId}/owners", accessToken);
                 channelMembers = new List<String>();
 
                 foreach (var user in JObject.Parse(teamOwnersString)["value"] as JArray)
@@ -934,14 +935,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                                                          select new
                                                                          {
                                                                              private_channel_member_odata_type = "#microsoft.graph.aadUserConversationMember",
-                                                                             private_channel_user_odata_bind = $"https://graph.microsoft.com/beta/users('{m}')",
+                                                                             private_channel_user_odata_bind = $"https://graph.microsoft.com/v1.0/users('{m}')",
                                                                              roles = new String[] { "owner" }
                                                                          }).ToArray() : null
             };
 
             var channelId = GraphHelper.CreateOrUpdateGraphObject(scope,
                 HttpMethodVerb.POST,
-                $"{GraphHelper.MicrosoftGraphBaseURI}beta/teams/{teamId}/channels",
+                $"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams/{teamId}/channels",
                 channelToCreate,
                 HttpHelper.JsonContentType,
                 accessToken,

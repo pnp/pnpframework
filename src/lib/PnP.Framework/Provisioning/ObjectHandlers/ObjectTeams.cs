@@ -431,7 +431,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 else
                 {
                     // Else, we will skip processing the team
-                    scope.LogWarning($"Team {team.DisplayName} is currently archived, so processing it will be skipped");
+                    scope.LogWarning($"Team {parser.ParseString(team.DisplayName)} is currently archived, so processing it will be skipped");
                     return null;
                 }
             }

@@ -435,6 +435,20 @@ namespace PnP.Framework
                         }
                         break;
                     }
+                case ClientContextType.AzureOnBehalfOf:
+                    {
+                        var accounts = await confidentialClientApplication.GetAccountsAsync();
+
+                        try
+                        {
+                            authResult = await confidentialClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
+                        }
+                        catch
+                        {
+                            authResult = await confidentialClientApplication.AcquireTokenOnBehalfOf(scopes, assertion).ExecuteAsync();
+                        }
+                        break;
+                    }
                 case ClientContextType.SharePointACSAppOnly:
                     {
                         return appOnlyAccessToken;

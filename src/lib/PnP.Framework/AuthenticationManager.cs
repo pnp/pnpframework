@@ -361,21 +361,63 @@ namespace PnP.Framework
         /// </summary>
         /// <param name="siteUrl"></param>
         /// <returns></returns>
+        public string GetAccessToken(string siteUrl)
+        {
+            return GetAccessTokenAsync(siteUrl, CancellationToken.None).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Returns an access token for a given site.
+        /// </summary>
+        /// <param name="siteUrl"></param>
+        /// <returns></returns>
         public async Task<string> GetAccessTokenAsync(string siteUrl)
+        {
+            return await GetAccessTokenAsync(siteUrl, CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Returns an access token for a given site.
+        /// </summary>
+        /// <param name="siteUrl"></param>
+        /// <param name="cancellationToken">Optional cancellation token to cancel the request</param>
+        /// <returns></returns>
+        public string GetAccessToken(string siteUrl, CancellationToken cancellationToken)
         {
             var uri = new Uri(siteUrl);
 
             var scopes = new[] { $"{uri.Scheme}://{uri.Authority}/.default" };
 
-            return await GetAccessTokenAsync(scopes);
+            return GetAccessTokenAsync(scopes, cancellationToken).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Returns an access token for a given site.
+        /// </summary>
+        /// <param name="siteUrl"></param>
+        /// <param name="cancellationToken">Optional cancellation token to cancel the request</param>
+        /// <returns></returns>
+        public async Task<string> GetAccessTokenAsync(string siteUrl, CancellationToken cancellationToken)
+        {
+            var uri = new Uri(siteUrl);
+
+            var scopes = new[] { $"{uri.Scheme}://{uri.Authority}/.default" };
+
+            return await GetAccessTokenAsync(scopes, cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<string> GetAccessTokenAsync(string[] scopes)
+        {
+            return await GetAccessTokenAsync(scopes, CancellationToken.None);
         }
 
         /// <summary>
         /// Returns an access token for a given site.
         /// </summary>
         /// <param name="scopes">The scopes to retrieve the access token for</param>
+        /// <param name="cancellationToken">Optional cancellation token to cancel the request</param>
         /// <returns></returns>
-        public async Task<string> GetAccessTokenAsync(string[] scopes)
+        public async Task<string> GetAccessTokenAsync(string[] scopes, CancellationToken cancellationToken)
         {
             AuthenticationResult authResult = null;
 
@@ -386,11 +428,11 @@ namespace PnP.Framework
                         var accounts = await publicClientApplication.GetAccountsAsync();
                         try
                         {
-                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
+                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
                         }
                         catch
                         {
-                            authResult = await publicClientApplication.AcquireTokenByUsernamePassword(scopes, username, password).ExecuteAsync();
+                            authResult = await publicClientApplication.AcquireTokenByUsernamePassword(scopes, username, password).ExecuteAsync(cancellationToken);
                         }
                         break;
                     }
@@ -400,11 +442,11 @@ namespace PnP.Framework
 
                         try
                         {
-                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
+                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
                         }
                         catch
                         {
-                            authResult = await publicClientApplication.AcquireTokenInteractive(scopes).ExecuteAsync();
+                            authResult = await publicClientApplication.AcquireTokenInteractive(scopes).ExecuteAsync(cancellationToken);
                         }
                         break;
                     }
@@ -414,11 +456,11 @@ namespace PnP.Framework
 
                         try
                         {
-                            authResult = await confidentialClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
+                            authResult = await confidentialClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
                         }
                         catch
                         {
-                            authResult = await confidentialClientApplication.AcquireTokenForClient(scopes).ExecuteAsync();
+                            authResult = await confidentialClientApplication.AcquireTokenForClient(scopes).ExecuteAsync(cancellationToken);
                         }
                         break;
                     }
@@ -427,11 +469,11 @@ namespace PnP.Framework
                         var accounts = await publicClientApplication.GetAccountsAsync();
                         try
                         {
-                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
+                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
                         }
                         catch
                         {
-                            authResult = await publicClientApplication.AcquireTokenWithDeviceCode(scopes, deviceCodeCallback).ExecuteAsync();
+                            authResult = await publicClientApplication.AcquireTokenWithDeviceCode(scopes, deviceCodeCallback).ExecuteAsync(cancellationToken);
                         }
                         break;
                     }
@@ -441,11 +483,11 @@ namespace PnP.Framework
 
                         try
                         {
-                            authResult = await confidentialClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
+                            authResult = await confidentialClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
                         }
                         catch
                         {
-                            authResult = await confidentialClientApplication.AcquireTokenOnBehalfOf(scopes, assertion).ExecuteAsync();
+                            authResult = await confidentialClientApplication.AcquireTokenOnBehalfOf(scopes, assertion).ExecuteAsync(cancellationToken);
                         }
                         break;
                     }
@@ -468,14 +510,37 @@ namespace PnP.Framework
         /// <returns></returns>
         public ClientContext GetContext(string siteUrl)
         {
-            return GetContextAsync(siteUrl).GetAwaiter().GetResult();
+            return GetContextAsync(siteUrl, CancellationToken.None).GetAwaiter().GetResult();
         }
+
+        /// <summary>
+        /// Returns a CSOM ClientContext which has been set up for Azure AD OAuth authentication
+        /// </summary>
+        /// <param name="siteUrl"></param>
+        /// <param name="cancellationToken">Optional cancellation token to cancel the request</param>
+        /// <returns></returns>
+        public ClientContext GetContext(string siteUrl, CancellationToken cancellationToken)
+        {
+            return GetContextAsync(siteUrl, cancellationToken).GetAwaiter().GetResult();
+        }
+
         /// <summary>
         /// Returns a CSOM ClientContext which has been set up for Azure AD OAuth authentication
         /// </summary>
         /// <param name="siteUrl"></param>
         /// <returns></returns>
         public async Task<ClientContext> GetContextAsync(string siteUrl)
+        {
+            return await GetContextAsync(siteUrl, CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Returns a CSOM ClientContext which has been set up for Azure AD OAuth authentication
+        /// </summary>
+        /// <param name="siteUrl"></param>
+        /// <param name="cancellationToken">Optional cancellation token to cancel the request</param>
+        /// <returns></returns>
+        public async Task<ClientContext> GetContextAsync(string siteUrl, CancellationToken cancellationToken)
         {
             var uri = new Uri(siteUrl);
 
@@ -490,11 +555,11 @@ namespace PnP.Framework
                         var accounts = await publicClientApplication.GetAccountsAsync();
                         try
                         {
-                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
+                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
                         }
                         catch
                         {
-                            authResult = await publicClientApplication.AcquireTokenByUsernamePassword(scopes, username, password).ExecuteAsync();
+                            authResult = await publicClientApplication.AcquireTokenByUsernamePassword(scopes, username, password).ExecuteAsync(cancellationToken);
                         }
                         if (authResult.AccessToken != null)
                         {
@@ -508,11 +573,11 @@ namespace PnP.Framework
 
                         try
                         {
-                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
+                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
                         }
                         catch
                         {
-                            authResult = await publicClientApplication.AcquireTokenInteractive(scopes).ExecuteAsync();
+                            authResult = await publicClientApplication.AcquireTokenInteractive(scopes).ExecuteAsync(cancellationToken);
                         }
                         if (authResult.AccessToken != null)
                         {
@@ -526,11 +591,11 @@ namespace PnP.Framework
 
                         try
                         {
-                            authResult = await confidentialClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
+                            authResult = await confidentialClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
                         }
                         catch
                         {
-                            authResult = await confidentialClientApplication.AcquireTokenForClient(scopes).ExecuteAsync();
+                            authResult = await confidentialClientApplication.AcquireTokenForClient(scopes).ExecuteAsync(cancellationToken);
                         }
                         if (authResult.AccessToken != null)
                         {
@@ -544,11 +609,11 @@ namespace PnP.Framework
 
                         try
                         {
-                            authResult = await confidentialClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
+                            authResult = await confidentialClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
                         }
                         catch
                         {
-                            authResult = await confidentialClientApplication.AcquireTokenOnBehalfOf(scopes, assertion).ExecuteAsync();
+                            authResult = await confidentialClientApplication.AcquireTokenOnBehalfOf(scopes, assertion).ExecuteAsync(cancellationToken);
                         }
                         if (authResult.AccessToken != null)
                         {
@@ -562,11 +627,11 @@ namespace PnP.Framework
 
                         try
                         {
-                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
+                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
                         }
                         catch
                         {
-                            authResult = await publicClientApplication.AcquireTokenWithDeviceCode(scopes, deviceCodeCallback).ExecuteAsync();
+                            authResult = await publicClientApplication.AcquireTokenWithDeviceCode(scopes, deviceCodeCallback).ExecuteAsync(cancellationToken);
                         }
                         if (authResult.AccessToken != null)
                         {

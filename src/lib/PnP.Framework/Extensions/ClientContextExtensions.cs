@@ -303,7 +303,7 @@ namespace Microsoft.SharePoint.Client
             ClientContext clonedClientContext = targetContext;
             clonedClientContext.ClientTag = clientContext.ClientTag;
             clonedClientContext.DisableReturnValueCache = clientContext.DisableReturnValueCache;
-
+            clonedClientContext.WebRequestExecutorFactory = clientContext.WebRequestExecutorFactory;
 
             // Check if we do have context settings
             var contextSettings = clientContext.GetContextSettings();

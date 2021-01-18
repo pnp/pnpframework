@@ -32,7 +32,6 @@ namespace PnP.Framework.Utilities.UnitTests.Web
                 {
                     IntegrationResponses.Add(new MockResponse()
                     {
-                        Url = e.CalledUrl,
                         Body = e.RequestBody,
                         Response = e.ResponseBody,
                         Verb = "POST"

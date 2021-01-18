@@ -18,7 +18,7 @@ namespace PnP.Framework.Utilities.UnitTests.Web
         }
         public string GetResponse(string url, string verb, string body)
         {
-            MockResponse response = Responses.FirstOrDefault(resp => resp.Url == url && resp.Verb == verb && resp.Body == body);
+            MockResponse response = Responses.FirstOrDefault(resp =>resp.Verb == verb && resp.Body == body);
             if (response != null)
                 return response.Response;
             return "{}";

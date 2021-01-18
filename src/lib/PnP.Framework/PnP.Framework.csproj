@@ -5,10 +5,10 @@
 		<LangVersion>8.0</LangVersion>
 		<RootNamespace>PnP.Framework</RootNamespace>
 		<AssemblyName>PnP.Framework</AssemblyName>
-		<Version>4.0.0</Version>
+		<Version>1.0.0</Version>
 		<Authors>PnP</Authors>
 		<Copyright>PnP 2020</Copyright>
-		<Description>PnP Framework contains the PnP Provisioning engine, the PnP Pages API and a ton of extension methods that will make you more productive while developing for Microsoft 365.</Description>
+		<Description>PnP Framework contains the PnP Provisioning engine and a ton of extension methods that will make you more productive while developing for Microsoft 365.</Description>
 		<PackageIcon>nugeticon.png</PackageIcon>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<RepositoryUrl>https://github.com/pnp/pnpframework</RepositoryUrl>

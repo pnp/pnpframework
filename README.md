@@ -6,7 +6,11 @@ Next to PnP Framework that will be replacing [PnP-Sites-Core](https://github.com
 
 ## Getting started
 
-Pull down the latest version of PnP Framework here: [![PnP.Framework Nuget package](https://img.shields.io/nuget/vpre/PnP.Framework.svg)](https://www.nuget.org/packages/PnP.Framework/).
+Pull down the latest version of PnP Framework here:
+
+Nuget package | Description | Latest release | Latest nightly development version
+--------------|-------------|----------------|------------------------------------
+PnP.Framework | The PnP Framework library | [![PnP.Framework Nuget package](https://img.shields.io/nuget/v/PnP.Framework.svg)](https://www.nuget.org/packages/PnP.Framework/) | [![PnP.Framework Nuget package](https://img.shields.io/nuget/vpre/PnP.Framework.svg)](https://www.nuget.org/packages/PnP.Framework/)
 
 ## PnP .NET roadmap status
 

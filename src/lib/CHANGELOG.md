@@ -67,3 +67,4 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Feature - added support for chunked uploading of files #59 [gautamdsheth - Gautam Sheth]
 - Feature - improved best match implementation of content type id #61 [jensotto - Jens Otto Hatlevold]
 - Added token parsing of team displayname in log message #96 [patrikhellgren - Patrik Hellgren]
+- Added check for existing team before checking archived status #95 [patrikhellgren - Patrik Hellgren]

@@ -48,25 +48,25 @@ namespace PnP.Framework.Modernization.Utilities
             {
                 if (authCookiesContainer == null || (authCookiesContainer != null && authCookiesContainer.Count == 0))
                 {
-                    this.authCookiesContainer = CopyContainer(e.WebRequestExecutor.WebRequest.CookieContainer);
+                    this.authCookiesContainer = CopyContainer(e.WebRequestExecutor.WebRequest.CookieContainer, e.WebRequestExecutor.WebRequest.RequestUri);
                 }
             };
         }
 
-        private CookieContainer CopyContainer(CookieContainer container)
+        private CookieContainer CopyContainer(CookieContainer container, Uri uri)
         {
             if (container == null)
             {
                 return null;
             }
 
-            using (MemoryStream stream = new MemoryStream())
-            {
-                BinaryFormatter formatter = new BinaryFormatter();
-                formatter.Serialize(stream, container);
-                stream.Seek(0, SeekOrigin.Begin);
-                return (CookieContainer)formatter.Deserialize(stream);
-            }
+            var newContainer = new CookieContainer();
+            newContainer.Add(container.GetCookies(uri));
+
+            var adminUri = new Uri($"{uri.Scheme}://{uri.Host.ToLower().Replace(".sharepoint.","-admin.sharepoint.")}");
+            newContainer.Add(container.GetCookies(adminUri));
+
+            return newContainer;
         }
 
     }

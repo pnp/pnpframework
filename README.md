@@ -1,24 +1,30 @@
 # PnP Framework
 
-**PnP Framework** is a .NET Standard 2.0 / .NET 5.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions. This library is the cross platform successor of the [PnP-Sites-Core](https://github.com/PnP/PnP-Sites-Core) library. The original [PnP-Sites-Core](https://github.com/PnP/PnP-Sites-Core) library only works on Windows (due to the dependency on .Net Framework) and supports SharePoint on-premises and SharePoint Online, while this library will work cross platform but only supports SharePoint Online. Going forward we'll only be **actively maintaining PnP Framework** and once PnP Framework is declared GA we'll retire the [PnP-Sites-Core](https://github.com/PnP/PnP-Sites-Core) library.
+**PnP Framework** is a .NET Standard 2.0 / .NET 5.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions. This library is the cross platform successor of the [PnP-Sites-Core](https://github.com/PnP/PnP-Sites-Core) library. The original [PnP-Sites-Core](https://github.com/PnP/PnP-Sites-Core) library only works on Windows (due to the dependency on .Net Framework) and supports SharePoint on-premises and SharePoint Online, while this library will work cross platform but only supports SharePoint Online. Going forward we'll only be **actively maintaining PnP Framework**, the [PnP-Sites-Core](https://github.com/PnP/PnP-Sites-Core) library is retired and archived.
 
-Next to PnP Framework that will be replacing [PnP-Sites-Core](https://github.com/PnP/PnP-Sites-Core) we're also building a brand new [PnP Core SDK](https://github.com/pnp/pnpcore) that targets modern .Net development and which will be working everywhere where .NET will run. This library is the long term evolution of PnP Framework, but we'll enable a phased transition from PnP Framework to [PnP Core SDK](https://github.com/pnp/pnpcore).
+Next to PnP Framework that will be replacing [PnP-Sites-Core](https://github.com/PnP/PnP-Sites-Core) we're also building a brand new [PnP Core SDK](https://github.com/pnp/pnpcore) that targets modern .NET development and which will work everywhere where .NET will run. This library is the long term evolution of PnP Framework, we'll enable a phased transition from PnP Framework to [PnP Core SDK](https://github.com/pnp/pnpcore) without impacting PnP Framework users.
 
 ## Getting started
 
-Pull down the latest version of PnP Framework here: [![PnP.Framework Nuget package](https://img.shields.io/nuget/vpre/PnP.Framework.svg)](https://www.nuget.org/packages/PnP.Framework/).
+Pull down the latest version of PnP Framework here:
 
-## PnP .Net roadmap status
+Nuget package | Description | Latest release | Latest nightly development version
+--------------|-------------|----------------|------------------------------------
+PnP.Framework | The PnP Framework library | [![PnP.Framework Nuget package](https://img.shields.io/nuget/v/PnP.Framework.svg)](https://www.nuget.org/packages/PnP.Framework/) | [![PnP.Framework Nuget package](https://img.shields.io/nuget/vpre/PnP.Framework.svg)](https://www.nuget.org/packages/PnP.Framework/)
 
-We've shipped our first PnP Framework preview version and preview 3 of the [PnP Core SDK](https://github.com/pnp/pnpcore).
+## Migrating from PnP Sites Core
 
-![PnP dotnet roadmap](PnP%20dotnet%20Roadmap%20-%20December%20status.png)
+This library is the cross platform successor of the [PnP-Sites-Core](https://github.com/PnP/PnP-Sites-Core), see the [Migrating from PnP Sites Core to PnP Framework guide](docs/MigratingFromPnPSitesCore.md) to learn how to switch over.
+
+## PnP .NET roadmap status
+
+We've shipped version 1.0.0 of PnP Framework (GA 🎉) and beta 2 of the [PnP Core SDK](https://github.com/pnp/pnpcore).
+
+![PnP dotnet roadmap](PnP%20dotnet%20Roadmap%20-%20January%20status2.png)
 
 ## I've found a bug, where do I need to log an issue or create a PR
 
-Between now and the end of 2020 both [PnP-Sites-Core](https://github.com/PnP/PnP-Sites-Core) and PnP Framework are actively maintained. Once PnP Framework GA's we'll stop maintaining [PnP-Sites-Core](https://github.com/PnP/PnP-Sites-Core).
-
-Given PnP Framework is our future going forward we would prefer issues and PR's being created in the PnP Framework repo. If you want your PR to apply to both then it's recommended to create the PR in both repositories for the time being.
+Issues and PR's need to be created in the PnP Framework repo, the PnP Sites Core repo has been archived.
 
 ## Building and contributing
 

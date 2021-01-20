@@ -1,21 +1,28 @@
+Param(
+	[Parameter(Mandatory = $false, ValueFromPipeline = $false)]
+	[switch]
+	$NoIncremental,
+	[Parameter(Mandatory = $false, ValueFromPipeline = $false)]
+	[switch]
+    $Force
+)
+
 $versionIncrement = Get-Content "$PSScriptRoot\version.debug.increment" -Raw
-$versionIncrement = $versionIncrement -as [int]
-$versionIncrement++
-
 $version = Get-Content "$PSScriptRoot\version.debug" -Raw
-
 $version = $version.Replace("{incremental}", $versionIncrement)
 
 Write-Host "Building PnP.Framework version $version"
-dotnet build $PSScriptRoot\..\src\lib\PnP.Framework\PnP.Framework.csproj --no-incremental /p:Version=$version
 
-Write-Host "Packinging PnP.Framework version $version"
-dotnet pack $PSScriptRoot\..\src\lib\PnP.Framework\PnP.Framework.csproj --no-build /p:PackageVersion=$version
+$buildCmd = "dotnet build `"$PSScriptRoot/../src/lib/PnP.Framework/PnP.Framework.csproj`"" + "--nologo --configuration Debug -p:VersionPrefix=$version -p:VersionSuffix=debug";
 
-#Write-Host "Writing $version to git"
-#Set-Content -Path .\version.debug.increment -Value $versionIncrement
+if ($NoIncremental) {
+	$buildCmd += " --no-incremental";
+}
+if ($Force) {
+	$buildCmd += " --force"
+}
 
-#Push to the repo
-# git add .\version.debug.increment
-# git commit -m "Build increment - debug version $versionIncrement"
-# git push
+Write-Host "Executing $buildCmd" -ForegroundColor Yellow
+
+Invoke-Expression $buildCmd
+

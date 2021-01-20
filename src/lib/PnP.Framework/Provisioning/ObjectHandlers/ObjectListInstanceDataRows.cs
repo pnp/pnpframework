@@ -560,7 +560,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 var file = web.GetFileById(fileUniqueId);
                 web.Context.Load(file,
                     f => f.Level,
-                    f => f.ServerRelativeUrl,
+                    f => f.ServerRelativePath,
                     f => f.Properties,
                     f => f.ListItemAllFields,
                     f => f.ListItemAllFields.RoleAssignments,

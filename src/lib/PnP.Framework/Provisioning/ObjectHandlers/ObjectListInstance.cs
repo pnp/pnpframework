@@ -1447,9 +1447,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 // Process list webhooks
                 if (templateList.Webhooks.Any())
                 {
-                    foreach (var webhook in templateList.Webhooks)
+                    if (!web.Context.IsAppOnly())
                     {
-                        AddOrUpdateListWebHook(existingList, webhook, scope, parser, true);
+                        foreach (var webhook in templateList.Webhooks)
+                        {
+                            AddOrUpdateListWebHook(existingList, webhook, scope, parser, true);
+                        }
                     }
                 }
 
@@ -2412,8 +2415,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                     list = ExtractUserCustomActions(web, siteList, list, creationInfo, template);
 
-                    list = ExtractWebhooks(siteList, list);
-
+                    if (!web.Context.IsAppOnly())
+                    {
+                        list = ExtractWebhooks(siteList, list);
+                    }
                     list.Security = siteList.GetSecurity();
 
                     list = ExtractInformationRightsManagement(web, siteList, list, creationInfo, template);

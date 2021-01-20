@@ -2434,6 +2434,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml
             }
         }
 
+#pragma warning disable CA2248
         public static V201605.AuditSettingsAudit[] FromTemplateToSchemaAuditsV201605(this Microsoft.SharePoint.Client.AuditMaskType audits)
         {
             List<V201605.AuditSettingsAudit> result = new List<AuditSettingsAudit>();
@@ -2504,7 +2505,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml
 
             return result.ToArray();
         }
-
+#pragma warning restore CA2248
         public static Model.ObjectSecurity FromSchemaToTemplateObjectSecurityV201605(this V201605.ObjectSecurity objectSecurity)
         {
             return ((objectSecurity != null && objectSecurity.BreakRoleInheritance != null) ?

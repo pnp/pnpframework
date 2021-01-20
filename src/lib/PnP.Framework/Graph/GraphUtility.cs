@@ -21,6 +21,7 @@ namespace PnP.Framework.Graph
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request.</param>
         /// <returns></returns>
+#pragma warning disable CA2000
         public static GraphServiceClient CreateGraphClient(String accessToken, int retryCount = defaultRetryCount, int delay = defaultDelay)
         {
             // Creates a new GraphServiceClient instance using a custom PnPHttpProvider
@@ -41,6 +42,7 @@ namespace PnP.Framework.Graph
 
             return (result);
         }
+#pragma warning restore CA2000
 
         /// <summary>
         /// This method sends an Azure guest user invitation to the provided email address.

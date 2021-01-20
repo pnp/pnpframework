@@ -10,6 +10,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+
+### Changed
+
+
+## [1.0.0]
+
+### Added
+
 - Added Azure OnBehalfOf token acquiring #17 [titns - TTs]
 - Added support to extract all teams #27 [gautamdsheth - Gautam Sheth]
 - Added SiteAlias to Site Collection creation #29 [patrikhellgren - Patrik Hellgren]
@@ -52,3 +60,19 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Ported https://github.com/pnp/PnP-Sites-Core/pull/2755 [erwinvanhunen - Erwin van Hunen]
 - Ported https://github.com/pnp/PnP-Sites-Core/pull/2745 [erwinvanhunen - Erwin van Hunen]
 - Fix ACS token generation #41 [sebastianmattar - Sebastian Mattar]
+- Fix some warnings #45 [jackpoz - Giacomo Pozzoni]
+- Feature - Additional underlying changes to API #49 [gautamdsheth - Gautam Sheth]
+- Fix - sensitivity label + preferred data location missing changes #50 [gautamdsheth - Gautam Sheth]
+- Fix for unhandled null reference exception #58 [patrikhellgren - Patrik Hellgren]
+- Feature - update beta endpoints to v1.0 for UnifiedGroups methods #62 [gautamdsheth - Gautam Sheth]
+- Feature - added additional props for Team Site No Group #63 [gautamdsheth - Gautam Sheth]
+- Fix - Parse tokens in the SearchCenterUrl #72 [YannickRe - Yannick Reekmans]
+- Cert loading improvements #68 [mbakhoff - Märt]
+- Fix - Keep the existing stack information on rethrowing the exception. #83 [YannickRe - Yannick Reekmans]
+- Fix a null reference exception in cases where ClientContextSettings are null. #82 [YannickRe - Yannick Reekmans]
+- Fix - app-only issue for teamifying group sites #78 [gautamdsheth - Gautam Sheth]
+- Feature - minor improvements related to Graph #77 [gautamdsheth - Gautam Sheth]
+- Feature - added support for chunked uploading of files #59 [gautamdsheth - Gautam Sheth]
+- Feature - improved best match implementation of content type id #61 [jensotto - Jens Otto Hatlevold]
+- Added token parsing of team displayname in log message #96 [patrikhellgren - Patrik Hellgren]
+- Added check for existing team before checking archived status #95 [patrikhellgren - Patrik Hellgren]

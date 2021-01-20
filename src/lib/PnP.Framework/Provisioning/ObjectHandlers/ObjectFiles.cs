@@ -136,16 +136,16 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     if (targetFile != null)
                     {
                         // Add the fileuniqueid tokens
-                        targetFile.EnsureProperties(p => p.UniqueId, p => p.ServerRelativeUrl);
-                        parser.AddToken(new FileUniqueIdToken(web, targetFile.ServerRelativeUrl.Substring(web.ServerRelativeUrl.Length).TrimStart("/".ToCharArray()), targetFile.UniqueId));
-                        parser.AddToken(new FileUniqueIdEncodedToken(web, targetFile.ServerRelativeUrl.Substring(web.ServerRelativeUrl.Length).TrimStart("/".ToCharArray()), targetFile.UniqueId));
+                        targetFile.EnsureProperties(p => p.UniqueId, p => p.ServerRelativePath);
+                        parser.AddToken(new FileUniqueIdToken(web, targetFile.ServerRelativePath.DecodedUrl.Substring(web.ServerRelativeUrl.Length).TrimStart("/".ToCharArray()), targetFile.UniqueId));
+                        parser.AddToken(new FileUniqueIdEncodedToken(web, targetFile.ServerRelativePath.DecodedUrl.Substring(web.ServerRelativeUrl.Length).TrimStart("/".ToCharArray()), targetFile.UniqueId));
 
                         bool webPartsNeedLocalization = false;
                         if (file.WebParts != null && file.WebParts.Any())
                         {
-                            targetFile.EnsureProperties(f => f.ServerRelativeUrl);
+                            targetFile.EnsureProperties(f => f.ServerRelativePath);
 
-                            var existingWebParts = web.GetWebParts(targetFile.ServerRelativeUrl).ToList();
+                            var existingWebParts = web.GetWebParts(targetFile.ServerRelativePath.DecodedUrl).ToList();
                             foreach (var webPart in file.WebParts)
                             {
                                 // check if the webpart is already set on the page
@@ -159,7 +159,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                         WebPartZone = webPart.Zone,
                                         WebPartIndex = (int)webPart.Order
                                     };
-                                    var wpd = web.AddWebPartToWebPartPage(targetFile.ServerRelativeUrl, wpEntity);
+                                    var wpd = web.AddWebPartToWebPartPage(targetFile.ServerRelativePath.DecodedUrl, wpEntity);
                                     if (webPart.Title.ContainsResourceToken())
                                     {
                                         // update data based on where it was added - needed in order to localize wp title

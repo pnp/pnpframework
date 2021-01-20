@@ -5,20 +5,29 @@
 		<LangVersion>8.0</LangVersion>
 		<RootNamespace>PnP.Framework</RootNamespace>
 		<AssemblyName>PnP.Framework</AssemblyName>
-		<InformationalVersion>Preview</InformationalVersion>
-		<Version>4.0.0</Version>
+		<Version>1.0.0</Version>
 		<Authors>PnP</Authors>
 		<Copyright>PnP 2020</Copyright>
-		<Description>PnP Framework contains the PnP Provisioning engine, the PnP Pages API and a ton of extension methods that will make you more productive while developing for Microsoft 365.</Description>
+		<Description>PnP Framework contains the PnP Provisioning engine and a ton of extension methods that will make you more productive while developing for Microsoft 365.</Description>
 		<PackageIcon>nugeticon.png</PackageIcon>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<RepositoryUrl>https://github.com/pnp/pnpframework</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageProjectUrl>https://aka.ms/pnp/framework</PackageProjectUrl>
+		<!-- Generate symbol packages (.snupkg) -->
+		<!-- You must publish both packages, the package that contains the dll (.nupkg) and the one that contains the symbols (.snupkg) -->
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<Deterministic>true</Deterministic>
+		<!-- Uncomment if you build using GitHub Actions -->
+		<!-- https://help.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables -->
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<PackageIcon>nugeticon.png</PackageIcon>
 		<IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWindows>
 		<IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
 		<IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
+		<PnPCoreSdkPath Condition="'$(PnPCoreSdkPath)' == ''"></PnPCoreSdkPath>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(IsWindows)'=='true'">
@@ -31,10 +40,26 @@
 		<DefineConstants>Linux</DefineConstants>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+		<DefineConstants>NETSTANDARD2_0</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(TargetFramework)' == 'net5.0'">
+		<DefineConstants>NET5_0</DefineConstants>
+	</PropertyGroup>
+	
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<DefineConstants>TRACE</DefineConstants>
-		<DocumentationFile>obj\Debug\netstandard2.0\PnP.Framework.xml</DocumentationFile>
+		<DocumentationFile>obj\Debug\PnP.Framework.xml</DocumentationFile>
 		<NoWarn>CA1724,CA1062,CA1305,CA2208,CA1801,CA1304,CA1054,CS1591,CA1310,CA1031,CA2007,CA1717,CA1707,CA1308,CA1506,CA1822,CA2234,CA1056,CA1805,CA1055,CA5364,CA1714,CA2227,CA1806,CA1303,CA2249,CA1716</NoWarn>
+		<InformationalVersion>Nightly</InformationalVersion>
+		<ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">True</ContinuousIntegrationBuild>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	    <DocumentationFile>obj\Debug\PnP.Framework.xml</DocumentationFile>
+        <NoWarn>CA1724,CA1062,CA1305,CA2208,CA1801,CA1304,CA1054,CS1591,CA1310,CA1031,CA2007,CA1717,CA1707,CA1308,CA1506,CA1822,CA2234,CA1056,CA1805,CA1055,CA5364,CA1714,CA2227,CA1806,CA1303,CA2249,CA1716</NoWarn>
+		<ContinuousIntegrationBuild>True</ContinuousIntegrationBuild>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -191,6 +216,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<!-- Required -->
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-*" PrivateAssets="All"/>
 		<PackageReference Include="AngleSharp" Version="0.14.0" />
 		<PackageReference Include="AngleSharp.Css" Version="0.14.2" />
 		<PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
@@ -204,10 +231,19 @@
 		<PackageReference Include="Microsoft.Identity.Client" Version="4.21.0" />
 		<PackageReference Include="Microsoft.SharePointOnline.CSOM" Version="16.1.*" />
 		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-		<PackageReference Include="PnP.Core" Version="0.4.*-*" />
+		<PackageReference Include="PnP.Core" Version="0.5.*-*" Condition="'$(PnPCoreSdkPath)' == ''" />
 		<PackageReference Include="Portable.Xaml" Version="0.26.0" />
 		<PackageReference Include="ResXResourceReader.NetStandard" Version="1.0.1" />
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(PnPCoreSdkPath)' != ''">
+		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.1.1" />
+		<Reference Include="PnP.Core">
+			<HintPath>$(PnPCoreSdkPath)</HintPath>
+			<Private>true</Private>
+			<SpecificVersion>false</SpecificVersion>
+		</Reference>
 	</ItemGroup>
 
 	<ItemGroup>

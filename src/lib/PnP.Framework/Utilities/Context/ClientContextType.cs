@@ -7,6 +7,7 @@
         AzureADCertificate = 2,
         Cookie = 3,
         AzureADInteractive = 4,
-        AzureOnBehalfOf = 5
+        AzureOnBehalfOf = 5,
+        DeviceLogin = 6
     }
 }

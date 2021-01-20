@@ -86,7 +86,7 @@ namespace PnP.Framework
         private readonly string username;
         private readonly SecureString password;
         private readonly UserAssertion assertion;
-
+        private readonly Func<DeviceCodeResult, Task> deviceCodeCallback;
         internal string RedirectUrl { get; set; }
 
         #region Construction
@@ -166,6 +166,28 @@ namespace PnP.Framework
         }
 
         /// <summary>
+        /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts through device code authentication
+        /// </summary>
+        /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
+        /// <param name="deviceCodeCallback">The callback that will be called with device code information.</param>
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
+        public AuthenticationManager(string clientId, Func<DeviceCodeResult, Task> deviceCodeCallback, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
+        {
+            azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
+            this.deviceCodeCallback = deviceCodeCallback;
+
+            var builder = PublicClientApplicationBuilder.Create(clientId).WithAuthority($"{azureADEndPoint}/organizations/");
+
+            publicClientApplication = builder.Build();
+
+            // register tokencache if callback provided
+            tokenCacheCallback?.Invoke(publicClientApplication.UserTokenCache);
+
+            authenticationType = ClientContextType.DeviceLogin;
+        }
+
+        /// <summary>
         /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts.
         /// </summary>
         /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
@@ -177,12 +199,21 @@ namespace PnP.Framework
         public AuthenticationManager(string clientId, X509Certificate2 certificate, string tenantId, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
             azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
-            var builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId);
-            //.WithAuthority($"{azureADEndPoint}/organizations/");
+            ConfidentialClientApplicationBuilder builder;
+            if (azureEnvironment != AzureEnvironment.Production)
+            {
+                builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId).WithAuthority(azureADEndPoint, tenantId, true);
+            }
+            else
+            {
+                builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId);
+            }
+
             if (!string.IsNullOrEmpty(redirectUrl))
             {
                 builder = builder.WithRedirectUri(redirectUrl);
             }
+
             confidentialClientApplication = builder.Build();
 
             // register tokencache if callback provided
@@ -197,10 +228,11 @@ namespace PnP.Framework
         /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
         /// <param name="certificatePath">A valid path to a certificate file</param>
         /// <param name="certificatePassword">The password for the certificate</param>
+        /// <param name="tenantId">The tenant id (guid) or name (e.g. contoso.onmicrosoft.com) </param>
         /// <param name="redirectUrl">Optional redirect URL to use for authentication as set up in the Azure AD Application</param>
         /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
         /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
-        public AuthenticationManager(string clientId, string certificatePath, string certificatePassword, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
+        public AuthenticationManager(string clientId, string certificatePath, string certificatePassword, string tenantId, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
             azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
 
@@ -212,21 +244,28 @@ namespace PnP.Framework
                 {
                     var certificateBytes = new byte[certfile.Length];
                     certfile.Read(certificateBytes, 0, (int)certfile.Length);
-                    using (var certificate = new X509Certificate2(
-                        certificateBytes,
-                        certificatePassword,
-                        X509KeyStorageFlags.Exportable |
-                        X509KeyStorageFlags.MachineKeySet |
-                        X509KeyStorageFlags.PersistKeySet))
-                    {
+                    // Don't dispose the cert as that will lead to "m_safeCertContext is an invalid handle" errors when the confidential client actually uses the cert
+#pragma warning disable CA2000 // Dispose objects before losing scope
+                    var certificate = new X509Certificate2(certificateBytes,
+                                                           certificatePassword,
+                                                           X509KeyStorageFlags.Exportable |
+                                                           X509KeyStorageFlags.MachineKeySet |
+                                                           X509KeyStorageFlags.PersistKeySet);
+#pragma warning restore CA2000 // Dispose objects before losing scope
 
-                        builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithAuthority($"{azureADEndPoint}/organizations/");
-                    }
+                    builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId);
                 }
+
+                if (azureEnvironment != AzureEnvironment.Production)
+                {
+                    builder.WithAuthority(azureADEndPoint, tenantId, true);
+                }
+
                 if (!string.IsNullOrEmpty(redirectUrl))
                 {
                     builder = builder.WithRedirectUri(redirectUrl);
                 }
+
                 confidentialClientApplication = builder.Build();
 
                 // register tokencache if callback provided. ApptokenCache as AcquireTokenForClient is beind called to acquire tokens.
@@ -248,20 +287,28 @@ namespace PnP.Framework
         /// <param name="storeName">The name of the certificate store to find the certificate in.</param>
         /// <param name="storeLocation">The location of the certificate store to find the certificate in.</param>
         /// <param name="thumbPrint">The thumbprint of the certificate to use.</param>
+        /// <param name="tenantId">The tenant id (guid) or name (e.g. contoso.onmicrosoft.com) </param>
         /// <param name="redirectUrl">Optional redirect URL to use for authentication as set up in the Azure AD Application</param>
         /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
         /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
-        public AuthenticationManager(string clientId, StoreName storeName, StoreLocation storeLocation, string thumbPrint, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
+        public AuthenticationManager(string clientId, StoreName storeName, StoreLocation storeLocation, string thumbPrint, string tenantId, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
             azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
 
-            var certificate = Utilities.X509CertificateUtility.LoadCertificate(storeName, storeLocation, thumbPrint); ;
+            var certificate = Utilities.X509CertificateUtility.LoadCertificate(storeName, storeLocation, thumbPrint);
 
-            var builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithAuthority($"{azureADEndPoint}/organizations/");
+            var builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId);
+
+            if (azureEnvironment != AzureEnvironment.Production)
+            {
+                builder.WithAuthority(azureADEndPoint, tenantId, true);
+            }
+
             if (!string.IsNullOrEmpty(redirectUrl))
             {
                 builder = builder.WithRedirectUri(redirectUrl);
             }
+
             confidentialClientApplication = builder.Build();
 
             // register tokencache if callback provided. ApptokenCache as AcquireTokenForClient is beind called to acquire tokens.
@@ -281,16 +328,25 @@ namespace PnP.Framework
         /// <param name="tokenCacheCallback"></param>
         public AuthenticationManager(string clientId, string clientSecret, UserAssertion userAssertion, string tenantId = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
-
-
             var azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
 
-            var builder = ConfidentialClientApplicationBuilder.Create(clientId).WithClientSecret(clientSecret).WithAuthority($"{azureADEndPoint}/organizations/");
-            if (!string.IsNullOrEmpty(tenantId))
+            ConfidentialClientApplicationBuilder builder;
+            if (azureEnvironment != AzureEnvironment.Production)
             {
-                builder = builder.WithTenantId(tenantId);
+                if (tenantId == null)
+                {
+                    throw new ArgumentException("tenantId is required", nameof(tenantId));
+                }
+                builder = ConfidentialClientApplicationBuilder.Create(clientId).WithClientSecret(clientSecret).WithAuthority(azureADEndPoint, tenantId, true);
             }
-
+            else
+            {
+                builder = ConfidentialClientApplicationBuilder.Create(clientId).WithClientSecret(clientSecret).WithAuthority($"{azureADEndPoint}/organizations/");
+                if (!string.IsNullOrEmpty(tenantId))
+                {
+                    builder = builder.WithTenantId(tenantId);
+                }
+            }
             this.assertion = userAssertion;
             confidentialClientApplication = builder.Build();
 
@@ -305,13 +361,65 @@ namespace PnP.Framework
         /// </summary>
         /// <param name="siteUrl"></param>
         /// <returns></returns>
+        public string GetAccessToken(string siteUrl)
+        {
+            return GetAccessTokenAsync(siteUrl, CancellationToken.None).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Returns an access token for a given site.
+        /// </summary>
+        /// <param name="siteUrl"></param>
+        /// <returns></returns>
         public async Task<string> GetAccessTokenAsync(string siteUrl)
+        {
+            return await GetAccessTokenAsync(siteUrl, CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Returns an access token for a given site.
+        /// </summary>
+        /// <param name="siteUrl"></param>
+        /// <param name="cancellationToken">Optional cancellation token to cancel the request</param>
+        /// <returns></returns>
+        public string GetAccessToken(string siteUrl, CancellationToken cancellationToken)
         {
             var uri = new Uri(siteUrl);
 
-            AuthenticationResult authResult = null;
+            var scopes = new[] { $"{uri.Scheme}://{uri.Authority}/.default" };
+
+            return GetAccessTokenAsync(scopes, cancellationToken).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Returns an access token for a given site.
+        /// </summary>
+        /// <param name="siteUrl"></param>
+        /// <param name="cancellationToken">Optional cancellation token to cancel the request</param>
+        /// <returns></returns>
+        public async Task<string> GetAccessTokenAsync(string siteUrl, CancellationToken cancellationToken)
+        {
+            var uri = new Uri(siteUrl);
 
             var scopes = new[] { $"{uri.Scheme}://{uri.Authority}/.default" };
+
+            return await GetAccessTokenAsync(scopes, cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<string> GetAccessTokenAsync(string[] scopes)
+        {
+            return await GetAccessTokenAsync(scopes, CancellationToken.None);
+        }
+
+        /// <summary>
+        /// Returns an access token for a given site.
+        /// </summary>
+        /// <param name="scopes">The scopes to retrieve the access token for</param>
+        /// <param name="cancellationToken">Optional cancellation token to cancel the request</param>
+        /// <returns></returns>
+        public async Task<string> GetAccessTokenAsync(string[] scopes, CancellationToken cancellationToken)
+        {
+            AuthenticationResult authResult = null;
 
             switch (authenticationType)
             {
@@ -320,11 +428,11 @@ namespace PnP.Framework
                         var accounts = await publicClientApplication.GetAccountsAsync();
                         try
                         {
-                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
+                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
                         }
                         catch
                         {
-                            authResult = await publicClientApplication.AcquireTokenByUsernamePassword(scopes, username, password).ExecuteAsync();
+                            authResult = await publicClientApplication.AcquireTokenByUsernamePassword(scopes, username, password).ExecuteAsync(cancellationToken);
                         }
                         break;
                     }
@@ -334,11 +442,11 @@ namespace PnP.Framework
 
                         try
                         {
-                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
+                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
                         }
                         catch
                         {
-                            authResult = await publicClientApplication.AcquireTokenInteractive(scopes).ExecuteAsync();
+                            authResult = await publicClientApplication.AcquireTokenInteractive(scopes).ExecuteAsync(cancellationToken);
                         }
                         break;
                     }
@@ -348,11 +456,38 @@ namespace PnP.Framework
 
                         try
                         {
-                            authResult = await confidentialClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
+                            authResult = await confidentialClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
                         }
                         catch
                         {
-                            authResult = await confidentialClientApplication.AcquireTokenForClient(scopes).ExecuteAsync();
+                            authResult = await confidentialClientApplication.AcquireTokenForClient(scopes).ExecuteAsync(cancellationToken);
+                        }
+                        break;
+                    }
+                case ClientContextType.DeviceLogin:
+                    {
+                        var accounts = await publicClientApplication.GetAccountsAsync();
+                        try
+                        {
+                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
+                        }
+                        catch
+                        {
+                            authResult = await publicClientApplication.AcquireTokenWithDeviceCode(scopes, deviceCodeCallback).ExecuteAsync(cancellationToken);
+                        }
+                        break;
+                    }
+                case ClientContextType.AzureOnBehalfOf:
+                    {
+                        var accounts = await confidentialClientApplication.GetAccountsAsync();
+
+                        try
+                        {
+                            authResult = await confidentialClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
+                        }
+                        catch
+                        {
+                            authResult = await confidentialClientApplication.AcquireTokenOnBehalfOf(scopes, assertion).ExecuteAsync(cancellationToken);
                         }
                         break;
                     }
@@ -375,14 +510,37 @@ namespace PnP.Framework
         /// <returns></returns>
         public ClientContext GetContext(string siteUrl)
         {
-            return GetContextAsync(siteUrl).GetAwaiter().GetResult();
+            return GetContextAsync(siteUrl, CancellationToken.None).GetAwaiter().GetResult();
         }
+
+        /// <summary>
+        /// Returns a CSOM ClientContext which has been set up for Azure AD OAuth authentication
+        /// </summary>
+        /// <param name="siteUrl"></param>
+        /// <param name="cancellationToken">Optional cancellation token to cancel the request</param>
+        /// <returns></returns>
+        public ClientContext GetContext(string siteUrl, CancellationToken cancellationToken)
+        {
+            return GetContextAsync(siteUrl, cancellationToken).GetAwaiter().GetResult();
+        }
+
         /// <summary>
         /// Returns a CSOM ClientContext which has been set up for Azure AD OAuth authentication
         /// </summary>
         /// <param name="siteUrl"></param>
         /// <returns></returns>
         public async Task<ClientContext> GetContextAsync(string siteUrl)
+        {
+            return await GetContextAsync(siteUrl, CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Returns a CSOM ClientContext which has been set up for Azure AD OAuth authentication
+        /// </summary>
+        /// <param name="siteUrl"></param>
+        /// <param name="cancellationToken">Optional cancellation token to cancel the request</param>
+        /// <returns></returns>
+        public async Task<ClientContext> GetContextAsync(string siteUrl, CancellationToken cancellationToken)
         {
             var uri = new Uri(siteUrl);
 
@@ -397,11 +555,11 @@ namespace PnP.Framework
                         var accounts = await publicClientApplication.GetAccountsAsync();
                         try
                         {
-                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
+                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
                         }
                         catch
                         {
-                            authResult = await publicClientApplication.AcquireTokenByUsernamePassword(scopes, username, password).ExecuteAsync();
+                            authResult = await publicClientApplication.AcquireTokenByUsernamePassword(scopes, username, password).ExecuteAsync(cancellationToken);
                         }
                         if (authResult.AccessToken != null)
                         {
@@ -415,11 +573,11 @@ namespace PnP.Framework
 
                         try
                         {
-                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
+                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
                         }
                         catch
                         {
-                            authResult = await publicClientApplication.AcquireTokenInteractive(scopes).ExecuteAsync();
+                            authResult = await publicClientApplication.AcquireTokenInteractive(scopes).ExecuteAsync(cancellationToken);
                         }
                         if (authResult.AccessToken != null)
                         {
@@ -433,11 +591,11 @@ namespace PnP.Framework
 
                         try
                         {
-                            authResult = await confidentialClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
+                            authResult = await confidentialClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
                         }
                         catch
                         {
-                            authResult = await confidentialClientApplication.AcquireTokenForClient(scopes).ExecuteAsync();
+                            authResult = await confidentialClientApplication.AcquireTokenForClient(scopes).ExecuteAsync(cancellationToken);
                         }
                         if (authResult.AccessToken != null)
                         {
@@ -451,15 +609,33 @@ namespace PnP.Framework
 
                         try
                         {
-                            authResult = await confidentialClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
+                            authResult = await confidentialClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
                         }
                         catch
                         {
-                            authResult = await confidentialClientApplication.AcquireTokenOnBehalfOf(scopes, assertion).ExecuteAsync();
+                            authResult = await confidentialClientApplication.AcquireTokenOnBehalfOf(scopes, assertion).ExecuteAsync(cancellationToken);
                         }
                         if (authResult.AccessToken != null)
                         {
                             return BuildClientContext(confidentialClientApplication, siteUrl, scopes, authenticationType);
+                        }
+                        break;
+                    }
+                case ClientContextType.DeviceLogin:
+                    {
+                        var accounts = await publicClientApplication.GetAccountsAsync();
+
+                        try
+                        {
+                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
+                        }
+                        catch
+                        {
+                            authResult = await publicClientApplication.AcquireTokenWithDeviceCode(scopes, deviceCodeCallback).ExecuteAsync(cancellationToken);
+                        }
+                        if (authResult.AccessToken != null)
+                        {
+                            return BuildClientContext(publicClientApplication, siteUrl, scopes, authenticationType);
                         }
                         break;
                     }
@@ -506,6 +682,11 @@ namespace PnP.Framework
                         case ClientContextType.AzureOnBehalfOf:
                             {
                                 ar = ((IConfidentialClientApplication)application).AcquireTokenOnBehalfOf(scopes, assertion).ExecuteAsync().GetAwaiter().GetResult();
+                                break;
+                            }
+                        case ClientContextType.DeviceLogin:
+                            {
+                                ar = ((IPublicClientApplication)application).AcquireTokenWithDeviceCode(scopes, deviceCodeCallback).ExecuteAsync().GetAwaiter().GetResult();
                                 break;
                             }
 

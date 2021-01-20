@@ -393,9 +393,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                     string searchCenterUrl = parser.ParseString(webSettings.SearchCenterUrl);
                     if (!string.IsNullOrEmpty(searchCenterUrl) &&
-                        web.GetWebSearchCenterUrl(true) != webSettings.SearchCenterUrl)
+                        web.GetWebSearchCenterUrl(true) != searchCenterUrl)
                     {
-                        web.SetWebSearchCenterUrl(webSettings.SearchCenterUrl);
+                        web.SetWebSearchCenterUrl(searchCenterUrl);
                     }
 
                     var masterUrl = parser.ParseString(webSettings.MasterPageUrl);

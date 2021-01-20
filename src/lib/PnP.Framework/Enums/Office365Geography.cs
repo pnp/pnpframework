@@ -68,6 +68,16 @@
         /// <summary>
         /// United Kingdom
         /// </summary>
-        GRB
+        GBR,
+
+        /// <summary>
+        /// Germany
+        /// </summary>
+        DEU,
+
+        /// <summary>
+        /// Norway
+        /// </summary>
+        NOR
     }
 }

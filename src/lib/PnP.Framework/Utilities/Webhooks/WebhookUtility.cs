@@ -357,7 +357,7 @@ namespace PnP.Framework.Utilities
                         if (!string.IsNullOrEmpty(accessToken))
                         {
                             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                            request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync().ConfigureAwait(false));
+                            //request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync().ConfigureAwait(false));
                         }
                         else
                         {

@@ -52,7 +52,7 @@ namespace PnP.Framework.Diagnostics
                         if (config.Logger.ElementInformation.IsPresent)
                         {
                             var loggerType = Type.GetType(config.Logger.Type, false);
-#if !NETSTANDARD2_0
+#if NET5_0
                             _logger = (ILogger)Activator.CreateInstance(loggerType.Assembly.FullName, loggerType.FullName).Unwrap();
 #else
                             _logger = (ILogger)Activator.CreateInstance(loggerType);

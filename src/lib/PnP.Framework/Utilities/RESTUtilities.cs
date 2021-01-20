@@ -150,7 +150,6 @@ namespace PnP.Framework.Utilities
                 if (string.IsNullOrEmpty(accessToken))
                 {
                     (web.Context as ClientContext).SetAuthenticationCookiesForHandler(handler);
-                    //handler.SetAuthenticationCookies(web.Context as ClientContext);
                 }
 
                 using (var httpClient = new PnPHttpProvider(handler))
@@ -159,11 +158,13 @@ namespace PnP.Framework.Utilities
                     using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrl))
                     {
                         request.Headers.Add("accept", "application/json;odata=nometadata");
+
+                        var requestDigest = string.Empty;
                         if (!string.IsNullOrEmpty(accessToken))
                         {
                             request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
-                            var requestDigest = await (web.Context as ClientContext).GetRequestDigestAsync().ConfigureAwait(false);
-                            request.Headers.Add("X-RequestDigest", requestDigest);
+                            requestDigest = await (web.Context as ClientContext).GetRequestDigestAsync().ConfigureAwait(false);
+                            
                         }
                         else
                         {
@@ -171,8 +172,11 @@ namespace PnP.Framework.Utilities
                             {
                                 handler.Credentials = networkCredential;
                             }
-                            request.Headers.Add("X-RequestDigest", await (web.Context as ClientContext).GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false));
+                            requestDigest = await (web.Context as ClientContext).GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false);
                         }
+
+                        request.Headers.Add("X-RequestDigest", requestDigest);
+
                         if (!string.IsNullOrWhiteSpace(cultureLanguageName))
                         {
                             request.Headers.Add("Accept-Language", cultureLanguageName);
@@ -226,12 +230,15 @@ namespace PnP.Framework.Utilities
 
                     using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl))
                     {
+
                         request.Headers.Add("accept", "application/json;odata=nometadata");
+
+                        var requestDigest = string.Empty;
                         if (!string.IsNullOrEmpty(accessToken))
                         {
                             request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
-                            var requestDigest = await (web.Context as ClientContext).GetRequestDigestAsync().ConfigureAwait(false);
-                            request.Headers.Add("X-RequestDigest", requestDigest);
+                            requestDigest = await (web.Context as ClientContext).GetRequestDigestAsync().ConfigureAwait(false);
+                            
                         }
                         else
                         {
@@ -239,8 +246,10 @@ namespace PnP.Framework.Utilities
                             {
                                 handler.Credentials = networkCredential;
                             }
-                            request.Headers.Add("X-RequestDigest", await (web.Context as ClientContext).GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false));
+                            requestDigest = await (web.Context as ClientContext).GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false);
                         }
+                        request.Headers.Add("X-RequestDigest", requestDigest);
+
                         if (!string.IsNullOrWhiteSpace(cultureLanguageName))
                         {
                             request.Headers.Add("Accept-Language", cultureLanguageName);

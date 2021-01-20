@@ -118,8 +118,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 try
                 {
-                    var jsonOwners = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/groups/{teamId}/owners?$select=id", accessToken);
-                    if (!string.IsNullOrEmpty(jsonOwners))
+                    var team = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams/{teamId}?$select=id", accessToken);
+                    if (!string.IsNullOrEmpty(team))
                     {
                         wait = false;
                     }
@@ -133,7 +133,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 // Don't wait more than 1 minute
                 if (iterations > 12)
                 {
-                    wait = false;
+                    //wait = false;
+                    throw new Exception($"Team with id {teamId} not created within timeout.");
                 }
             }
         }
@@ -404,17 +405,26 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         private static string CreateOrUpdateTeamFromGroup(PnPMonitoredScope scope, Team team, TokenParser parser, string groupId, string accessToken)
         {
             bool isCurrentlyArchived = false;
-            try
-            {
-                // Check the archival status of the team
-                string archiveStatusReq = HttpHelper.MakeGetRequestForString(
-                    $"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams/{groupId}?$select=isArchived", accessToken: accessToken);
 
-                isCurrentlyArchived = JToken.Parse(archiveStatusReq).Value<bool>("isArchived");
-            }
-            catch (Exception ex)
+            // Check if a group with groupId exists and has a team enabled
+            var doesGroupWithTeamExistReq = HttpHelper.MakeGetRequestForString(
+                $"{GraphHelper.MicrosoftGraphBaseURI}beta/groups?$select=id&$filter=id eq '{groupId}' and resourceProvisioningOptions/Any(x:x eq 'Team')", accessToken);
+            var returnedIds = GraphHelper.GetIdsFromList(doesGroupWithTeamExistReq);
+
+            if (returnedIds.Length > 0)
             {
-                scope.LogError("Error checking archive status", ex.Message);
+                try
+                {
+                    // Check the archival status of the team
+                    string archiveStatusReq = HttpHelper.MakeGetRequestForString(
+                        $"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams/{groupId}?$select=isArchived", accessToken: accessToken);
+
+                    isCurrentlyArchived = JToken.Parse(archiveStatusReq).Value<bool>("isArchived");
+                }
+                catch (Exception ex)
+                {
+                    scope.LogError("Error checking archive status", ex.Message);
+                } 
             }
 
             // If the Team is currently archived
@@ -430,7 +440,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 else
                 {
                     // Else, we will skip processing the team
-                    scope.LogWarning($"Team {team.DisplayName} is currently archived, so processing it will be skipped");
+                    scope.LogWarning($"Team {parser.ParseString(team.DisplayName)} is currently archived, so processing it will be skipped");
                     return null;
                 }
             }
@@ -915,7 +925,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             {
                 // Get the team owners, who will be set as members of the private channel
                 // if the channel is private
-                var teamOwnersString = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}beta/groups/{teamId}/owners", accessToken);
+                var teamOwnersString = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/groups/{teamId}/owners", accessToken);
                 channelMembers = new List<String>();
 
                 foreach (var user in JObject.Parse(teamOwnersString)["value"] as JArray)
@@ -934,14 +944,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                                                          select new
                                                                          {
                                                                              private_channel_member_odata_type = "#microsoft.graph.aadUserConversationMember",
-                                                                             private_channel_user_odata_bind = $"https://graph.microsoft.com/beta/users('{m}')",
+                                                                             private_channel_user_odata_bind = $"https://graph.microsoft.com/v1.0/users('{m}')",
                                                                              roles = new String[] { "owner" }
                                                                          }).ToArray() : null
             };
 
             var channelId = GraphHelper.CreateOrUpdateGraphObject(scope,
                 HttpMethodVerb.POST,
-                $"{GraphHelper.MicrosoftGraphBaseURI}beta/teams/{teamId}/channels",
+                $"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams/{teamId}/channels",
                 channelToCreate,
                 HttpHelper.JsonContentType,
                 accessToken,
@@ -1335,7 +1345,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             try
             {
                 var content = OverwriteJsonTemplateProperties(parser, teamTemplate);
-                responseHeaders = HttpHelper.MakePostRequestForHeaders($"{GraphHelper.MicrosoftGraphBaseURI}beta/teams", content, "application/json", accessToken);
+                responseHeaders = HttpHelper.MakePostRequestForHeaders($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams", content, "application/json", accessToken);
             }
             catch (Exception ex)
             {
@@ -1386,7 +1396,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             if (teamTemplate.DisplayName != null) team["displayName"] = teamTemplate.DisplayName;
             if (teamTemplate.Description != null) team["description"] = teamTemplate.Description;
             if (!string.IsNullOrEmpty(teamTemplate.Classification)) team["classification"] = teamTemplate.Classification;
-            team["visibility"] = teamTemplate.Visibility.ToString();
+            if (teamTemplate.Visibility != null) team["visibility"] = teamTemplate.Visibility.ToString();
 
             return team.ToString();
         }

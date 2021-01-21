@@ -31,7 +31,6 @@ if ($apiKey.Length -gt 0)
 {
     # Push the actual package and the symbol package
     nuget push d:\github\pnpframework\src\lib\PnP.Framework\bin\release\PnP.Framework.$version.nupkg -ApiKey $apiKey -source https://api.nuget.org/v3/index.json
-    nuget push d:\github\pnpframework\src\lib\PnP.Framework\bin\release\PnP.Framework.$version.snupkg -ApiKey $apiKey -source https://api.nuget.org/v3/index.json
 
     # Persist last used version
     Write-Host "Writing $version to git"

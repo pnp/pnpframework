@@ -1,4 +1,5 @@
 ﻿using Microsoft.Identity.Client;
+using Microsoft.Identity.Client.Extensibility;
 using Microsoft.SharePoint.Client;
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Utilities.Context;
@@ -87,6 +88,8 @@ namespace PnP.Framework
         private readonly SecureString password;
         private readonly UserAssertion assertion;
         private readonly Func<DeviceCodeResult, Task> deviceCodeCallback;
+        private readonly ICustomWebUi customWebUi;
+
         internal string RedirectUrl { get; set; }
 
         #region Construction
@@ -145,7 +148,8 @@ namespace PnP.Framework
         /// <param name="tenantId">Optional tenant id or tenant url</param>
         /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
         /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
-        public AuthenticationManager(string clientId, string redirectUrl = null, string tenantId = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
+        /// <param name="customWebUi">Optional custom web ui to render authentication flow and feedback</param>
+        public AuthenticationManager(string clientId, string redirectUrl = null, string tenantId = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null, ICustomWebUi customWebUi = null) : this()
         {
             azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
             var builder = PublicClientApplicationBuilder.Create(clientId).WithAuthority($"{azureADEndPoint}/organizations/");
@@ -158,7 +162,7 @@ namespace PnP.Framework
                 builder = builder.WithTenantId(tenantId);
             }
             publicClientApplication = builder.Build();
-
+            this.customWebUi = customWebUi;
             // register tokencache if callback provided
             tokenCacheCallback?.Invoke(publicClientApplication.UserTokenCache);
 
@@ -446,7 +450,12 @@ namespace PnP.Framework
                         }
                         catch
                         {
-                            authResult = await publicClientApplication.AcquireTokenInteractive(scopes).ExecuteAsync(cancellationToken);
+                            var builder = publicClientApplication.AcquireTokenInteractive(scopes);
+                            if (customWebUi != null)
+                            {
+                                builder = builder.WithCustomWebUi(customWebUi);
+                            }
+                            authResult = await builder.ExecuteAsync(cancellationToken);
                         }
                         break;
                     }
@@ -577,7 +586,12 @@ namespace PnP.Framework
                         }
                         catch
                         {
-                            authResult = await publicClientApplication.AcquireTokenInteractive(scopes).ExecuteAsync(cancellationToken);
+                            var builder = publicClientApplication.AcquireTokenInteractive(scopes);
+                            if (customWebUi != null)
+                            {
+                                builder = builder.WithCustomWebUi(customWebUi);
+                            }
+                            authResult = await builder.ExecuteAsync(cancellationToken);
                         }
                         if (authResult.AccessToken != null)
                         {
@@ -676,7 +690,12 @@ namespace PnP.Framework
                             }
                         case ClientContextType.AzureADInteractive:
                             {
-                                ar = ((IPublicClientApplication)application).AcquireTokenInteractive(scopes).ExecuteAsync().GetAwaiter().GetResult();
+                                var builder = ((IPublicClientApplication)application).AcquireTokenInteractive(scopes);
+                                if (customWebUi != null)
+                                {
+                                    builder = builder.WithCustomWebUi(customWebUi);
+                                }
+                                ar = builder.ExecuteAsync().GetAwaiter().GetResult();
                                 break;
                             }
                         case ClientContextType.AzureOnBehalfOf:

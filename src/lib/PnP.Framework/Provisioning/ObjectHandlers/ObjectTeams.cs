@@ -405,17 +405,26 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         private static string CreateOrUpdateTeamFromGroup(PnPMonitoredScope scope, Team team, TokenParser parser, string groupId, string accessToken)
         {
             bool isCurrentlyArchived = false;
-            try
-            {
-                // Check the archival status of the team
-                string archiveStatusReq = HttpHelper.MakeGetRequestForString(
-                    $"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams/{groupId}?$select=isArchived", accessToken: accessToken);
 
-                isCurrentlyArchived = JToken.Parse(archiveStatusReq).Value<bool>("isArchived");
-            }
-            catch (Exception ex)
+            // Check if a group with groupId exists and has a team enabled
+            var doesGroupWithTeamExistReq = HttpHelper.MakeGetRequestForString(
+                $"{GraphHelper.MicrosoftGraphBaseURI}beta/groups?$select=id&$filter=id eq '{groupId}' and resourceProvisioningOptions/Any(x:x eq 'Team')", accessToken);
+            var returnedIds = GraphHelper.GetIdsFromList(doesGroupWithTeamExistReq);
+
+            if (returnedIds.Length > 0)
             {
-                scope.LogError("Error checking archive status", ex.Message);
+                try
+                {
+                    // Check the archival status of the team
+                    string archiveStatusReq = HttpHelper.MakeGetRequestForString(
+                        $"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams/{groupId}?$select=isArchived", accessToken: accessToken);
+
+                    isCurrentlyArchived = JToken.Parse(archiveStatusReq).Value<bool>("isArchived");
+                }
+                catch (Exception ex)
+                {
+                    scope.LogError("Error checking archive status", ex.Message);
+                } 
             }
 
             // If the Team is currently archived

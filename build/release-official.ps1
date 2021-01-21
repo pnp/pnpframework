@@ -10,31 +10,36 @@ $version = Get-Content "$PSScriptRoot\version.release" -Raw
 $version = $version.Replace("{minorrelease}", $versionIncrement)
 
 # Build the release version
-Write-Host "Building PnP.Framework version $version"
+Write-Host "Building PnP.Framework version $version..."
 dotnet build $PSScriptRoot\..\src\lib\PnP.Framework\PnP.Framework.csproj --configuration Release --no-incremental --force --nologo /p:Version=$version
 
 # Sign the binaries
+Write-Host "Signing the binaries..."
 d:\github\SharePointPnP\CodeSigning\PnP\sign-pnpbinaries.ps1 -SignJson pnpframeworkassemblies
 
 # Package the release version
-Write-Host "Packinging PnP.Framework version $version"
+Write-Host "Packinging PnP.Framework version $version..."
 dotnet pack $PSScriptRoot\..\src\lib\PnP.Framework\PnP.Framework.csproj --configuration Release --no-build /p:PackageVersion=$version
 
-# Copy to the package name used in the json sign file
-copy-item d:\github\pnpframework\src\lib\PnP.Framework\bin\release\PnP.Framework.$version.nupkg d:\github\pnpframework\src\lib\PnP.Framework\bin\release\PnP.Framework.nupkg -Force
-
-# Sign the nuget package
-d:\github\SharePointPnP\CodeSigning\PnP\sign-pnpbinaries.ps1 -SignJson pnpframeworknuget
+# Sign the nuget package is not needed as Nuget signs the package automatically
 
 # Publish
-# manual
+Write-host "Verify the created NuGet package in folder d:\github\pnpframework\src\lib\PnP.Framework\bin\release. If OK enter the nuget API key to publish the package, press enter to cancel." -ForegroundColor Yellow 
+$apiKey = Read-Host "NuGet API key" 
 
-# Persist last used version
-Write-Host "Writing $version to git"
-# Set-Content -Path .\version.release.increment -Value $versionIncrement
+if ($apiKey.Length -gt 0)
+{
+    # Push the actual package and the symbol package
+    nuget push d:\github\pnpframework\src\lib\PnP.Framework\bin\release\PnP.Framework.$version.nupkg -ApiKey $apiKey -source https://api.nuget.org/v3/index.json
 
-# Push to the repo
-Write-Host "Pushing updated version file to git"
-# git add .\version.release.increment
-# git commit -m "Build increment - release version $versionIncrement"
-# git push
+    # Persist last used version
+    Write-Host "Writing $version to git"
+    Set-Content -Path .\version.release.increment -Value $versionIncrement
+
+    # Push change to the repo
+    Write-Host "Ensure you push in all changes!" -ForegroundColor Yellow 
+}
+else 
+{
+    Write-Host "Publishing of the NuGet package cancelled!"
+}

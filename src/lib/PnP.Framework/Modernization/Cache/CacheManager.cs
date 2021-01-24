@@ -543,11 +543,11 @@ namespace PnP.Framework.Modernization.Cache
                 return pagesLibraryName;
             }
 
-            uint lcid = context.Web.EnsureProperty(p => p.Language);
+            int lcid = (int)context.Web.EnsureProperty(p => p.Language);
 
             var propertyBagKey = Constants.WebPropertyKeyPagesListId;
             
-            var publishingPagesLibraryNames = Store.GetAndInitialize<Dictionary<uint, string>>(StoreOptions.GetKey(keyPublishingPagesLibraryNames));
+            var publishingPagesLibraryNames = Store.GetAndInitialize<Dictionary<int, string>>(StoreOptions.GetKey(keyPublishingPagesLibraryNames));
             if (publishingPagesLibraryNames.ContainsKey(lcid))
             {
                 if (publishingPagesLibraryNames.TryGetValue(lcid, out string name))
@@ -574,7 +574,7 @@ namespace PnP.Framework.Modernization.Cache
 
                         // add to cache
                         publishingPagesLibraryNames.Add(lcid, pagesLibraryName);
-                        Store.Set<Dictionary<uint, string>>(StoreOptions.GetKey(keyPublishingPagesLibraryNames), publishingPagesLibraryNames, StoreOptions.EntryOptions);
+                        Store.Set(StoreOptions.GetKey(keyPublishingPagesLibraryNames), publishingPagesLibraryNames, StoreOptions.EntryOptions);
 
                         return pagesLibraryName;
                     }
@@ -594,7 +594,7 @@ namespace PnP.Framework.Modernization.Cache
 
                     // add to cache
                     publishingPagesLibraryNames.Add(lcid, altPagesLibraryName.ToLower());
-                    Store.Set<Dictionary<uint, string>>(StoreOptions.GetKey(keyPublishingPagesLibraryNames), publishingPagesLibraryNames, StoreOptions.EntryOptions);
+                    Store.Set(StoreOptions.GetKey(keyPublishingPagesLibraryNames), publishingPagesLibraryNames, StoreOptions.EntryOptions);
 
                     return altPagesLibraryName.ToLower();
                 }
@@ -620,8 +620,8 @@ namespace PnP.Framework.Modernization.Cache
                 return blogListName;
             }
 
-            uint lcid = context.Web.EnsureProperty(p => p.Language);
-            var blogListNames = Store.GetAndInitialize<Dictionary<uint, string>>(StoreOptions.GetKey(keyBlogListNames));
+            int lcid = (int)context.Web.EnsureProperty(p => p.Language);
+            var blogListNames = Store.GetAndInitialize<Dictionary<int, string>>(StoreOptions.GetKey(keyBlogListNames));
 
             if (blogListNames.ContainsKey(lcid))
             {
@@ -657,7 +657,7 @@ namespace PnP.Framework.Modernization.Cache
 
                 // add to cache
                 blogListNames.Add(lcid, altBlogListName.ToLower());
-                Store.Set<Dictionary<uint, string>>(StoreOptions.GetKey(keyBlogListNames), blogListNames, StoreOptions.EntryOptions);
+                Store.Set(StoreOptions.GetKey(keyBlogListNames), blogListNames, StoreOptions.EntryOptions);
 
                 return altBlogListName.ToLower();
             }
@@ -673,13 +673,13 @@ namespace PnP.Framework.Modernization.Cache
         /// <returns>Translated string</returns>
         public string GetResourceString(ClientContext context, string resource)
         {
-            uint lcid = context.Web.EnsureProperty(p => p.Language);
+            int lcid = (int)context.Web.EnsureProperty(p => p.Language);
 
-            var resourceStrings = Store.GetAndInitialize<Dictionary<string, Dictionary<uint, string>>>(StoreOptions.GetKey(keyResourceStrings));
+            var resourceStrings = Store.GetAndInitialize<Dictionary<string, Dictionary<int, string>>>(StoreOptions.GetKey(keyResourceStrings));
 
             if (resourceStrings.ContainsKey(resource))
             {
-                if (resourceStrings.TryGetValue(resource, out Dictionary<uint, string> resourceValues))
+                if (resourceStrings.TryGetValue(resource, out Dictionary<int, string> resourceValues))
                 {
                     if (resourceValues.ContainsKey(lcid))
                     {
@@ -716,30 +716,30 @@ namespace PnP.Framework.Modernization.Cache
 
             if (resourceStrings.ContainsKey(resource))
             {
-                if (resourceStrings.TryGetValue(resource, out Dictionary<uint, string> resourceValues))
+                if (resourceStrings.TryGetValue(resource, out Dictionary<int, string> resourceValues))
                 {
                     if (!resourceValues.ContainsKey(lcid))
                     {
                         // Add translations in existing array
-                        Dictionary<uint, string> newResourceValues = new Dictionary<uint, string>(resourceValues)
+                        Dictionary<int, string> newResourceValues = new Dictionary<int, string>(resourceValues)
                         {
                             { lcid, result.Value }
                         };
                         resourceStrings[resource] = newResourceValues;
-                        Store.Set<Dictionary<string, Dictionary<uint, string>>>(StoreOptions.GetKey(keyResourceStrings), resourceStrings, StoreOptions.EntryOptions);
+                        Store.Set(StoreOptions.GetKey(keyResourceStrings), resourceStrings, StoreOptions.EntryOptions);
                     }
                 }
             }
             else
             {
                 // No translations were already retrieved in this language
-                Dictionary<uint, string> translations = new Dictionary<uint, string>
+                Dictionary<int, string> translations = new Dictionary<int, string>
                 {
                     { lcid, result.Value }
                 };
 
                 resourceStrings.Add(resource, translations);
-                Store.Set<Dictionary<string, Dictionary<uint, string>>>(StoreOptions.GetKey(keyResourceStrings), resourceStrings, StoreOptions.EntryOptions);
+                Store.Set(StoreOptions.GetKey(keyResourceStrings), resourceStrings, StoreOptions.EntryOptions);
             }
 
             return result.Value;
@@ -770,7 +770,7 @@ namespace PnP.Framework.Modernization.Cache
 
             // Add to cache for future reuse
             generatedPageLayoutMappings.Add(key, newPageLayoutMapping);
-            Store.Set<Dictionary<string, PageLayout>>(StoreOptions.GetKey(keyGeneratedPageLayoutMappings), generatedPageLayoutMappings, StoreOptions.EntryOptions);
+            Store.Set(StoreOptions.GetKey(keyGeneratedPageLayoutMappings), generatedPageLayoutMappings, StoreOptions.EntryOptions);
 
             // Return to requestor
             return newPageLayoutMapping;
@@ -839,7 +839,7 @@ namespace PnP.Framework.Modernization.Cache
             if (!mappedUsers.ContainsKey(principal))
             {
                 mappedUsers.Add(principal, user);
-                Store.Set<Dictionary<string, string>>(StoreOptions.GetKey(keyMappedUsers), mappedUsers, StoreOptions.EntryOptions);
+                Store.Set(StoreOptions.GetKey(keyMappedUsers), mappedUsers, StoreOptions.EntryOptions);
             }
         }
 
@@ -891,7 +891,7 @@ namespace PnP.Framework.Modernization.Cache
                             };
 
                         ensuredUsers[key] = newEnsuredUsersFromCache;
-                        Store.Set<Dictionary<string, Dictionary<string, ResolvedUser>>>(StoreOptions.GetKey(keyEnsuredUsers), ensuredUsers, StoreOptions.EntryOptions);
+                        Store.Set(StoreOptions.GetKey(keyEnsuredUsers), ensuredUsers, StoreOptions.EntryOptions);
                     }
                     else
                     {
@@ -902,7 +902,7 @@ namespace PnP.Framework.Modernization.Cache
                             };
 
                         ensuredUsers.Add(key, newEnsuredUsersFromCache);
-                        Store.Set<Dictionary<string, Dictionary<string, ResolvedUser>>>(StoreOptions.GetKey(keyEnsuredUsers), ensuredUsers, StoreOptions.EntryOptions);
+                        Store.Set(StoreOptions.GetKey(keyEnsuredUsers), ensuredUsers, StoreOptions.EntryOptions);
                     }
 
                     return resolvedUser;
@@ -1003,7 +1003,7 @@ namespace PnP.Framework.Modernization.Cache
                             };
 
                             userJsonStringsViaUpn[key] = newUserListToCache;
-                            Store.Set<Dictionary<string, Dictionary<string, UserEntity>>>(StoreOptions.GetKey(keyUserJsonStringsViaUpn), userJsonStringsViaUpn, StoreOptions.EntryOptions);
+                            Store.Set(StoreOptions.GetKey(keyUserJsonStringsViaUpn), userJsonStringsViaUpn, StoreOptions.EntryOptions);
                         }
                         else
                         {
@@ -1014,7 +1014,7 @@ namespace PnP.Framework.Modernization.Cache
                             };
 
                             userJsonStringsViaUpn.Add(key, newUserListToCache);
-                            Store.Set<Dictionary<string, Dictionary<string, UserEntity>>>(StoreOptions.GetKey(keyUserJsonStringsViaUpn), userJsonStringsViaUpn, StoreOptions.EntryOptions);
+                            Store.Set(StoreOptions.GetKey(keyUserJsonStringsViaUpn), userJsonStringsViaUpn, StoreOptions.EntryOptions);
                         }
 
                         // return 
@@ -1106,7 +1106,7 @@ namespace PnP.Framework.Modernization.Cache
                             };
 
                             userJsonStrings[key] = newUserListToCache;
-                            Store.Set<Dictionary<string, Dictionary<int, UserEntity>>>(StoreOptions.GetKey(keyUserJsonStrings), userJsonStrings, StoreOptions.EntryOptions);
+                            Store.Set(StoreOptions.GetKey(keyUserJsonStrings), userJsonStrings, StoreOptions.EntryOptions);
                         }
                         else
                         {
@@ -1117,7 +1117,7 @@ namespace PnP.Framework.Modernization.Cache
                             };
 
                             userJsonStrings.Add(key, newUserListToCache);
-                            Store.Set<Dictionary<string, Dictionary<int, UserEntity>>>(StoreOptions.GetKey(keyUserJsonStrings), userJsonStrings, StoreOptions.EntryOptions);
+                            Store.Set(StoreOptions.GetKey(keyUserJsonStrings), userJsonStrings, StoreOptions.EntryOptions);
                         }
 
                         // return 
@@ -1170,7 +1170,7 @@ namespace PnP.Framework.Modernization.Cache
 
                 // add to cache
                 contentTypes.Add(contentTypeName, contentTypeId);
-                Store.Set<Dictionary<string, string>>(StoreOptions.GetKey(keyContentTypes), contentTypes, StoreOptions.EntryOptions);
+                Store.Set(StoreOptions.GetKey(keyContentTypes), contentTypes, StoreOptions.EntryOptions);
             }
 
             return contentTypeId;
@@ -1207,7 +1207,7 @@ namespace PnP.Framework.Modernization.Cache
                 
                 // add to cache
                 termCache.Add(termId, termInfo);
-                Store.Set<Dictionary<Guid, string>>(StoreOptions.GetKey(keyTermCache), termCache, StoreOptions.EntryOptions);
+                Store.Set(StoreOptions.GetKey(keyTermCache), termCache, StoreOptions.EntryOptions);
             }
 
             return termInfo;
@@ -1239,7 +1239,7 @@ namespace PnP.Framework.Modernization.Cache
                     term.IsSourceTerm = isSourceTerm;
                     termCache.Add(termSetTerm.Key, term);
                 }
-                Store.Set<Dictionary<Guid, TermData>>(StoreOptions.GetKey(keyTermTransformatorCache), termCache, StoreOptions.EntryOptions);
+                Store.Set(StoreOptions.GetKey(keyTermTransformatorCache), termCache, StoreOptions.EntryOptions);
             }
         }
 
@@ -1278,7 +1278,7 @@ namespace PnP.Framework.Modernization.Cache
                 return candidateTerms.Select(o => o.Value).ToList();
             }
             
-            return default(List<TermData>);
+            return default;
         }
 
         /// <summary>
@@ -1297,7 +1297,7 @@ namespace PnP.Framework.Modernization.Cache
                 return candidateTerms.ToDictionary(o=>o.Key, o=>o.Value);
             }
 
-            return default(Dictionary<Guid, TermData>);
+            return default;
         }
 
         #endregion
@@ -1341,7 +1341,7 @@ namespace PnP.Framework.Modernization.Cache
 
             FileManager fileManager = new FileManager(logObservers);
             urlMapping = fileManager.LoadUrlMappingFile(urlMappingFile);
-            Store.Set<List<UrlMapping>>(StoreOptions.GetKey(keyUrlMapping), urlMapping, StoreOptions.EntryOptions);
+            Store.Set(StoreOptions.GetKey(keyUrlMapping), urlMapping, StoreOptions.EntryOptions);
 
             return urlMapping;
         }
@@ -1365,7 +1365,7 @@ namespace PnP.Framework.Modernization.Cache
             FileManager fileManager = new FileManager(logObservers);
             userMappings = fileManager.LoadUserMappingFile(userMappingFile);
 
-            Store.Set<List<UserMappingEntity>>(StoreOptions.GetKey(keyUserMappings), userMappings, StoreOptions.EntryOptions);
+            Store.Set(StoreOptions.GetKey(keyUserMappings), userMappings, StoreOptions.EntryOptions);
 
             return userMappings;
         }
@@ -1387,7 +1387,7 @@ namespace PnP.Framework.Modernization.Cache
 
             FileManager fileManager = new FileManager(logObservers);
             termMapping = fileManager.LoadTermMappingFile(mappingFile);
-            Store.Set<List<TermMapping>>(StoreOptions.GetKey(keyTermMappings), termMapping, StoreOptions.EntryOptions);
+            Store.Set(StoreOptions.GetKey(keyTermMappings), termMapping, StoreOptions.EntryOptions);
 
             return termMapping;
         }
@@ -1415,48 +1415,50 @@ namespace PnP.Framework.Modernization.Cache
             return Regex.IsMatch(loginName.ToUpper(), @"^S-\d-\d+-(\d+-){1,14}\d+$");
         }
 
-        private static string PostsTranslation(uint lcid)
+        private static string PostsTranslation(int lcid)
         {
             // See https://capacreative.co.uk/resources/reference-sharepoint-online-languages-ids/ for list of language id's
-            switch (lcid)
+            return lcid switch
             {
-                case 1033: return "Posts";
-                case 1027: return "Publicacions";
-                case 1029: return "Prispevky";
-                case 1030: return "Blogmeddelelser";
-                case 1031: return "Beitraege";
-                case 1035: return "Viestit";
-                case 1036: return "Billets";
-                case 1038: return "Bejegyzesek";
-                case 1040: return "Post";
-                case 1043: return "Berichten";
-                case 1044: return "Innlegg";
-                case 1046: return "Postagens";
-                case 1050: return "Clanci";
-                case 1053: return "Anslag";
-                case 1057: return "Pos";
-                case 1060: return "Obvestila";
-                case 1061: return "Postitused";
-                case 1069: return "Blog-sarrerak";
-                case 1086: return "Catatan";
-                case 1106: return "Postiadau";
-                case 1110: return "Mensaxes";
-                case 2070: return "Artigos";
-                case 2074: return "ObjavljenePoruke";
-                case 2108: return "Poist";
-                case 3082: return "EntradasDeBlog";
-                case 5146: return "Objave";
-                case 9424: return "ObjavljenePoruke";
-                default: return "Posts";
-            }
+                1033 => "Posts",
+                1027 => "Publicacions",
+                1029 => "Prispevky",
+                1030 => "Blogmeddelelser",
+                1031 => "Beitraege",
+                1035 => "Viestit",
+                1036 => "Billets",
+                1038 => "Bejegyzesek",
+                1040 => "Post",
+                1043 => "Berichten",
+                1044 => "Innlegg",
+                1046 => "Postagens",
+                1050 => "Clanci",
+                1053 => "Anslag",
+                1057 => "Pos",
+                1060 => "Obvestila",
+                1061 => "Postitused",
+                1069 => "Blog-sarrerak",
+                1086 => "Catatan",
+                1106 => "Postiadau",
+                1110 => "Mensaxes",
+                2070 => "Artigos",
+                2074 => "ObjavljenePoruke",
+                2108 => "Poist",
+                3082 => "EntradasDeBlog",
+                5146 => "Objave",
+                9424 => "ObjavljenePoruke",
+                _ => "Posts",
+            };
         }
 
         private static string Sha256(string randomString)
         {
-            SHA256CryptoServiceProvider provider = new SHA256CryptoServiceProvider();
-            byte[] hash = provider.ComputeHash(Encoding.Unicode.GetBytes(JsonSerializer.Serialize(randomString)));
-            string componentKeyToCache = BitConverter.ToString(hash).Replace("-", "");
-            return componentKeyToCache;
+            using (SHA256CryptoServiceProvider provider = new SHA256CryptoServiceProvider())
+            {
+                byte[] hash = provider.ComputeHash(Encoding.Unicode.GetBytes(JsonSerializer.Serialize(randomString)));
+                string componentKeyToCache = BitConverter.ToString(hash).Replace("-", "");
+                return componentKeyToCache;
+            }
         }
 
         private void AddFieldRef(Provisioning.Model.FieldRefCollection fieldRefs, Guid Id, string name)

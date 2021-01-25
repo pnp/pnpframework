@@ -219,7 +219,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         {
                             fileName = serverRelativeUrl;
                         }
-                        web.Context.Load(file);
+                        web.Context.Load(file, f => f.ServerRelativePath);
                         web.Context.ExecuteQueryRetry();
                         ClientResult<Stream> stream = file.OpenBinaryStream();
                         web.Context.ExecuteQueryRetry();

@@ -749,6 +749,71 @@ namespace PnP.Framework
             }
         }
 
+        internal ClientContext GetOnPremisesContext(string siteUrl, string userName, SecureString password)
+        {
+            ClientContext clientContext = new ClientContext(siteUrl)
+            {
+                DisableReturnValueCache = true,
+                Credentials = new NetworkCredential(userName, password)
+            };
+
+            ConfigureOnPremisesContext(siteUrl, clientContext);
+
+            return clientContext;
+        }
+
+        internal ClientContext GetOnPremisesContext(string siteUrl, ICredentials credentials)
+        {
+            ClientContext clientContext = new ClientContext(siteUrl)
+            {
+                DisableReturnValueCache = true,
+                Credentials = credentials
+            };
+
+            ConfigureOnPremisesContext(siteUrl, clientContext);
+
+            return clientContext;
+        }
+
+        internal ClientContext GetOnPremisesContext(string siteUrl)
+        {
+            ClientContext clientContext = new ClientContext(siteUrl)
+            {
+                DisableReturnValueCache = true,
+                Credentials = CredentialCache.DefaultCredentials
+            };
+
+            ConfigureOnPremisesContext(siteUrl, clientContext);
+
+            return clientContext;
+        }
+
+        private void ConfigureOnPremisesContext(string siteUrl, ClientContext clientContext)
+        {
+            clientContext.ExecutingWebRequest += (sender, webRequestEventArgs) =>
+            {
+                // CSOM for .NET Standard 2.0 is not sending along credentials for an on-premises request, so ensure 
+                // credentials and request digest are in place. This will make CSOM for .NET Standard work for 
+                // SharePoint 2013, 2016 and 2019. For SharePoint 2010 this does not work as the generated CSOM request
+                // contains references to version 15 while 2010 expects version 14.
+                //
+                // Note: the "onpremises" part of AuthenticationManager internal by design as it's only intended to be
+                //       used by transformation tech that needs to get data from on-premises. PnP Framework, nor PnP 
+                //       PowerShell do support SharePoint on-premises.
+                webRequestEventArgs.WebRequestExecutor.WebRequest.Credentials = (sender as ClientContext).Credentials;
+                webRequestEventArgs.WebRequestExecutor.WebRequest.Headers.Add("X-RequestDigest", (sender as ClientContext).GetOnPremisesRequestDigestAsync().GetAwaiter().GetResult());
+            };
+
+            ClientContextSettings clientContextSettings = new ClientContextSettings()
+            {
+                Type = ClientContextType.OnPremises,
+                SiteUrl = siteUrl,
+                AuthenticationManager = this
+            };
+
+            clientContext.AddContextSettings(clientContextSettings);
+        }
+
         /// <summary>
         /// Returns an app only ClientContext object
         /// </summary>

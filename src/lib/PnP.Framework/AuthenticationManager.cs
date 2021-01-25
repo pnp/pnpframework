@@ -794,7 +794,7 @@ namespace PnP.Framework
             ClientContext clientContext = new ClientContext(siteUrl)
             {
                 DisableReturnValueCache = true,
-                Credentials = CredentialCache.DefaultCredentials
+                Credentials = CredentialCache.DefaultNetworkCredentials
             };
 
             ConfigureOnPremisesContext(siteUrl, clientContext);
@@ -815,7 +815,10 @@ namespace PnP.Framework
                 //       used by transformation tech that needs to get data from on-premises. PnP Framework, nor PnP 
                 //       PowerShell do support SharePoint on-premises.
                 webRequestEventArgs.WebRequestExecutor.WebRequest.Credentials = (sender as ClientContext).Credentials;
+                // CSOM for .NET Standard does not handle request digest management, a POST to client.svc requires a digest, so ensuring that
                 webRequestEventArgs.WebRequestExecutor.WebRequest.Headers.Add("X-RequestDigest", (sender as ClientContext).GetOnPremisesRequestDigestAsync().GetAwaiter().GetResult());
+                // Add Request Header to force Windows Authentication which avoids an issue if multiple authentication providers are enabled on a webapplication
+                webRequestEventArgs.WebRequestExecutor.RequestHeaders["X-FORMS_BASED_AUTH_ACCEPTED"] = "f";
             };
 
             ClientContextSettings clientContextSettings = new ClientContextSettings()

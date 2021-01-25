@@ -163,7 +163,7 @@ namespace Microsoft.SharePoint.Client
                         || response.StatusCode == (HttpStatusCode)503
                         // || response.StatusCode == (HttpStatusCode)500
                         ))
-                        || (wex.Status == WebExceptionStatus.UnknownError && wex.InnerException != null && wex.InnerException.Message.ToLower().Contains("forcibly closed by the remote host"))
+                        || (wex.Status == WebExceptionStatus.UnknownError && (wex.Message.ToLower().Contains("forcibly closed by the remote host") || (wex.InnerException != null && wex.InnerException.Message.ToLower().Contains("forcibly closed by the remote host"))))
                         || wex.Status == WebExceptionStatus.Timeout)
                     {
                         wrapper = (ClientRequestWrapper)wex.Data["ClientRequest"];

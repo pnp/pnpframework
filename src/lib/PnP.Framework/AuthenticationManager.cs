@@ -802,7 +802,7 @@ namespace PnP.Framework
             return clientContext;
         }
 
-        private void ConfigureOnPremisesContext(string siteUrl, ClientContext clientContext)
+        internal void ConfigureOnPremisesContext(string siteUrl, ClientContext clientContext)
         {
             clientContext.ExecutingWebRequest += (sender, webRequestEventArgs) =>
             {

@@ -315,7 +315,7 @@ namespace Microsoft.SharePoint.Client
                 string newSiteUrl = siteUrl.ToString();
 
                 // A diffent host = different audience ==> new access token is needed
-                if (contextSettings.UsesDifferentAudience(newSiteUrl) || contextSettings.Type == ClientContextType.OnPremises)
+                if (contextSettings.UsesDifferentAudience(newSiteUrl))
                 {
 
                     var authManager = contextSettings.AuthenticationManager;
@@ -372,14 +372,23 @@ namespace Microsoft.SharePoint.Client
                     contextSettings.SiteUrl = newSiteUrl;
                     clonedClientContext.AddContextSettings(contextSettings);
 
-                    clonedClientContext.ExecutingWebRequest += delegate (object oSender, WebRequestEventArgs webRequestEventArgs)
+                    if (contextSettings.Type == ClientContextType.OnPremises)
                     {
+                        var authManager = contextSettings.AuthenticationManager;
+                        clonedClientContext.Credentials = clientContext.Credentials;
+                        authManager.ConfigureOnPremisesContext(newSiteUrl, clonedClientContext);
+                    }
+                    else
+                    {
+                        clonedClientContext.ExecutingWebRequest += delegate (object oSender, WebRequestEventArgs webRequestEventArgs)
+                        {
                         // Call the ExecutingWebRequest delegate method from the original ClientContext object, but pass along the webRequestEventArgs of 
                         // the new delegate method
                         MethodInfo methodInfo = clientContext.GetType().GetMethod("OnExecutingWebRequest", BindingFlags.Instance | BindingFlags.NonPublic);
-                        object[] parametersArray = new object[] { webRequestEventArgs };
-                        methodInfo.Invoke(clientContext, parametersArray);
-                    };
+                            object[] parametersArray = new object[] { webRequestEventArgs };
+                            methodInfo.Invoke(clientContext, parametersArray);
+                        };
+                    }
                 }
             }
             else // Fallback the default cloning logic if there were not context settings available

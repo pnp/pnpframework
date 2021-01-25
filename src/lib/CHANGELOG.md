@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Support for using the ICustomWebUi to enable interactive auth in PnP PowerShell [erwinvanhunen - Erwin van Hunen]
+- Support for offline CSOM testing! [mgwojciech - Marcin Wojciechowski]
 
 ### Changed
 

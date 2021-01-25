@@ -6,13 +6,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
-## [Unreleased]
+## [Nightly]
 
 ### Added
 
+- Support for using the ICustomWebUi to enable interactive auth in PnP PowerShell [erwinvanhunen - Erwin van Hunen]
 
 ### Changed
 
+- Fixed page transformation caching manager to handle dictionary serialization with non string value as keys. Fixes #110 [jansenbe - Bert Jansen]
+
+## [1.1.0]
+
+### Added
+
+### Changed
+
+- New release due to change in PnP Core SDK that should get included
 
 ## [1.0.0]
 

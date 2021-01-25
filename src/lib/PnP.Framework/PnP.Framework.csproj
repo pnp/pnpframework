@@ -5,7 +5,7 @@
 		<LangVersion>8.0</LangVersion>
 		<RootNamespace>PnP.Framework</RootNamespace>
 		<AssemblyName>PnP.Framework</AssemblyName>
-		<Version>1.0.0</Version>
+		<Version>1.1.0</Version>
 		<Authors>PnP</Authors>
 		<Copyright>PnP 2020</Copyright>
 		<Description>PnP Framework contains the PnP Provisioning engine and a ton of extension methods that will make you more productive while developing for Microsoft 365.</Description>
@@ -217,7 +217,8 @@
 
 	<ItemGroup>
 		<!-- Required -->
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-*" PrivateAssets="All"/>
+		<PackageReference Include="Microsoft.Identity.Client.Extensions.Msal" Version="2.16.2" />
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-*" PrivateAssets="All" />
 		<PackageReference Include="AngleSharp" Version="0.14.0" />
 		<PackageReference Include="AngleSharp.Css" Version="0.14.2" />
 		<PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />

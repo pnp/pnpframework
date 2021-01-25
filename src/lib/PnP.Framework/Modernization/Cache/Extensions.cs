@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Caching.Distributed;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -22,8 +23,19 @@ namespace PnP.Framework.Modernization.Cache
             {
                 return null;
             }
-            var json = System.Text.Json.JsonSerializer.Serialize(obj);
+
+            JsonSerializerOptions serializerOptions = GetSerializerOptions();
+
+            var json = JsonSerializer.Serialize(obj, serializerOptions);
             return System.Text.Encoding.UTF8.GetBytes(json);
+        }
+
+        private static JsonSerializerOptions GetSerializerOptions()
+        {
+            var serializerOptions = new JsonSerializerOptions();
+            serializerOptions.Converters.Add(new DictionaryIntConverter());
+            serializerOptions.Converters.Add(new DictionaryGuidConverter());
+            return serializerOptions;
         }
 
         /// <summary>
@@ -36,10 +48,13 @@ namespace PnP.Framework.Modernization.Cache
         {
             if (byteArray == null)
             {
-                return default(T);
+                return default;
             }
+
+            JsonSerializerOptions serializerOptions = GetSerializerOptions();
+
             var jsonString = System.Text.Encoding.UTF8.GetString(byteArray);
-            return System.Text.Json.JsonSerializer.Deserialize<T>(jsonString);
+            return JsonSerializer.Deserialize<T>(jsonString, serializerOptions);
         }
 
         /// <summary>

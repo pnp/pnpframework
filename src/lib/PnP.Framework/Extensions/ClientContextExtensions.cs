@@ -315,7 +315,7 @@ namespace Microsoft.SharePoint.Client
                 string newSiteUrl = siteUrl.ToString();
 
                 // A diffent host = different audience ==> new access token is needed
-                if (contextSettings.UsesDifferentAudience(newSiteUrl))
+                if (contextSettings.UsesDifferentAudience(newSiteUrl) || contextSettings.Type == ClientContextType.OnPremises)
                 {
 
                     var authManager = contextSettings.AuthenticationManager;

@@ -864,14 +864,14 @@ namespace Microsoft.SharePoint.Client
                 // We only have to add a request digest when running in dotnet core
                 if (DateTime.Now > requestDigestInfo.expiresOn)
                 {
-                    requestDigestInfo = await GetRequestDigestInfoAsync(context);
+                    requestDigestInfo = await GetOnPremisesRequestDigestInfoAsync(context);
                     requestDigestInfos.AddOrUpdate(hostUrl, requestDigestInfo, (key, oldValue) => requestDigestInfo);
                 }
             }
             else
             {
                 // admin url maybe?
-                requestDigestInfo = await GetRequestDigestInfoAsync(context);
+                requestDigestInfo = await GetOnPremisesRequestDigestInfoAsync(context);
                 requestDigestInfos.AddOrUpdate(hostUrl, requestDigestInfo, (key, oldValue) => requestDigestInfo);
             }
             return requestDigestInfo.digestToken;

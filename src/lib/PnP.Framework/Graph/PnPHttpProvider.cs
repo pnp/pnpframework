@@ -1,12 +1,9 @@
 ﻿using Microsoft.Graph;
-using PnP.Framework.Diagnostics;
 using PnP.Framework.Utilities;
 using System;
-using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using static Microsoft.SharePoint.Client.ClientContextExtensions;
 
 namespace PnP.Framework.Graph
 {
@@ -15,9 +12,8 @@ namespace PnP.Framework.Graph
     ///</summary>  
     public class PnPHttpProvider : HttpProvider, IHttpProvider
     {
-        private readonly int _retryCount;
-        private readonly int _delay;
         private readonly string _userAgent;
+        private readonly PnPHttpRetryHandler _retryHandler;
 
         /// <summary>
         /// Constructor for the PnPHttpProvider class
@@ -33,9 +29,8 @@ namespace PnP.Framework.Graph
             if (delay <= 0)
                 throw new ArgumentException("Provide a delay greater than zero.");
 
-            this._retryCount = retryCount;
-            this._delay = delay;
             this._userAgent = userAgent;
+            this._retryHandler = new PnPHttpRetryHandler(retryCount, delay);
         }
 
         /// <summary>
@@ -46,83 +41,12 @@ namespace PnP.Framework.Graph
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>The result of the asynchronous request</returns>
         /// <remarks>See here for further details: https://graph.microsoft.io/en-us/docs/overview/errors</remarks>
-        Task<HttpResponseMessage> IHttpProvider.SendAsync(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationToken cancellationToken)
+        async Task<HttpResponseMessage> IHttpProvider.SendAsync(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationToken cancellationToken)
         {
-            // Retry logic variables
-            int retryAttempts = 0;
-            int backoffInterval = this._delay;
+            // Add the PnP User Agent string
+            request.Headers.UserAgent.TryParseAdd(string.IsNullOrEmpty(_userAgent) ? $"{PnPCoreUtilities.PnPCoreUserAgent}" : _userAgent);
 
-            HttpRequestMessage workrequest = request;
-
-            // Loop until we need to retry
-            while (retryAttempts < this._retryCount)
-            {
-                try
-                {
-                    // Add the PnP User Agent string
-                    workrequest.Headers.UserAgent.TryParseAdd(string.IsNullOrEmpty(_userAgent) ? $"{PnPCoreUtilities.PnPCoreUserAgent}" : _userAgent);
-
-                    // Make the request
-                    Task<HttpResponseMessage> result = base.SendAsync(workrequest, completionOption, cancellationToken);
-
-                    if (result != null && result.Result != null && (result.Result.StatusCode == (HttpStatusCode)429 || result.Result.StatusCode == (HttpStatusCode)503))
-                    {
-                        // And return the response in case of success
-                        Log.Warning(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_SendAsyncRetry, $"{backoffInterval}");
-
-                        //Add delay for retry
-                        Task.Delay(backoffInterval, cancellationToken).Wait(cancellationToken);
-
-                        //Add to retry count and increase delay.
-                        retryAttempts++;
-                        backoffInterval = backoffInterval * 2;
-#pragma warning disable CA2000
-                        workrequest = workrequest.CloneRequest();
-#pragma warning restore CA2000
-                    }
-                    else
-                    {
-                        // And return the response in case of success
-                        return result;
-                    }
-                }
-                // Or handle any ServiceException
-                catch (ServiceException ex)
-                {
-                    // Check if the is an InnerException
-                    // And if it is a WebException
-                    var wex = ex.InnerException as WebException;
-                    if (wex != null)
-                    {
-                        var response = wex.Response as HttpWebResponse;
-                        // Check if request was throttled - http status code 429
-                        // Check is request failed due to server unavailable - http status code 503
-                        if (response != null &&
-                            (response.StatusCode == (HttpStatusCode)429 || response.StatusCode == (HttpStatusCode)503))
-                        {
-                            Log.Warning(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_SendAsyncRetry,
-                                backoffInterval);
-
-                            //Add delay for retry
-                            Task.Delay(backoffInterval, cancellationToken).Wait(cancellationToken);
-
-                            //Add to retry count and increase delay.
-                            retryAttempts++;
-                            backoffInterval = backoffInterval * 2;
-                            workrequest = workrequest.CloneRequest();
-                        }
-                        else
-                        {
-                            Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_SendAsyncRetryException,
-                                wex.ToString());
-                            throw;
-                        }
-                    }
-                    throw;
-                }
-            }
-
-            throw new MaximumRetryAttemptedException($"Maximum retry attempts {this._retryCount}, has be attempted.");
+            return await _retryHandler.SendRetryAsync(request, (r) => base.SendAsync(r, completionOption, cancellationToken), cancellationToken);
         }
     }
 }

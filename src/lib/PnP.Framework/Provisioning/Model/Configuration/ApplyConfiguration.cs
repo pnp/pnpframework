@@ -44,6 +44,7 @@ namespace PnP.Framework.Provisioning.Model.Configuration
 
 
         [JsonPropertyName("handlers")]
+        [JsonConverter(typeof(ListEnumConverter<ConfigurationHandler>))]
         public List<ConfigurationHandler> Handlers { get; set; } = new List<ConfigurationHandler>();
 
         [JsonPropertyName("parameters")]
@@ -182,24 +183,7 @@ namespace PnP.Framework.Provisioning.Model.Configuration
 
         public static ApplyConfiguration FromString(string input)
         {
-            //var assembly = Assembly.GetExecutingAssembly();
-            //var resourceName = "PnP.Framework.Provisioning.Model.Configuration.extract-configuration.schema.json";
-
-            //using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-            //using (StreamReader reader = new StreamReader(stream))
-            //{
-            //    string result = reader.ReadToEnd();
-
-            //    JsonSchema schema = JsonSchema.Parse(result);
-
-            //    var jobject = JObject.Parse(input);
-
-            //    if(!jobject.IsValid(schema))
-            //    {
-            //        throw new JsonSerializationException("Configuration is not valid according to schema");
-            //    }
-            //}
-
+          
             return JsonSerializer.Deserialize<ApplyConfiguration>(input);
         }
     }

@@ -824,16 +824,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 if (currentCT == null)
                 {
-                    fileAfterSave.ListItemAllFields[ContentTypeIdField] = clientSidePage.ContentTypeID;
-                    fileAfterSave.ListItemAllFields.UpdateOverwriteVersion();
-                    web.Context.Load(fileAfterSave.ListItemAllFields);
+                    fileAfterSave.ListItemAllFields[ContentTypeIdField] = bestMatchCT.StringValue;
                     isDirty = true;
                 }
                 else if (currentCT != null && !currentCT.IsChildOf(bestMatchCT))
                 {
-                    fileAfterSave.ListItemAllFields[ContentTypeIdField] = clientSidePage.ContentTypeID;
-                    fileAfterSave.ListItemAllFields.UpdateOverwriteVersion();
-                    web.Context.Load(fileAfterSave.ListItemAllFields);
+                    fileAfterSave.ListItemAllFields[ContentTypeIdField] = bestMatchCT.StringValue;
                     isDirty = true;
                 }
             }

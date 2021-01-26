@@ -42,7 +42,7 @@
     <!-- Priority 2: For app only testing provide an app id and app secret -->
     <add key="AppId" value="b5bdf20c-2917-5178-3309-5deb57ee6c89" />
     <add key="AppSecret" value="" />
-
+    
     <!-- Permission XML for app only test
   <AppPermissionRequests AllowAppOnlyPolicy="true" >
     <AppPermissionRequest Scope="http://sharepoint/content/tenant" Right="FullControl" />

@@ -23,4 +23,4 @@ $apiKey = $("$env:NUGET_API_KEY")
 dotnet nuget push $nupkg --api-key $apiKey --source https://api.nuget.org/v3/index.json
 
 Write-Host "Writing $version to git"
-Set-Content -Path ./build/version.debug.increment -Value $versionIncrement
+Set-Content -Path ./build/version.debug.increment -Value $versionIncrement -NoNewline

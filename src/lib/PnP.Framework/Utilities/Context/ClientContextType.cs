@@ -8,6 +8,7 @@
         Cookie = 3,
         AzureADInteractive = 4,
         AzureOnBehalfOf = 5,
-        DeviceLogin = 6
+        DeviceLogin = 6,
+        OnPremises = 7
     }
 }

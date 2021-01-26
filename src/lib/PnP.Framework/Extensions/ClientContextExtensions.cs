@@ -19,6 +19,7 @@ using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Microsoft.SharePoint.Client
 {
@@ -29,6 +30,7 @@ namespace Microsoft.SharePoint.Client
     {
         private static readonly string userAgentFromConfig = null;
         private static string accessToken = null;
+        private static HttpClient httpClient = new HttpClient();
 
 #pragma warning disable CS0169
         private static ConcurrentDictionary<string, (string requestDigest, DateTime expiresOn)> requestDigestInfos = new ConcurrentDictionary<string, (string requestDigest, DateTime expiresOn)>();
@@ -303,7 +305,7 @@ namespace Microsoft.SharePoint.Client
             ClientContext clonedClientContext = targetContext;
             clonedClientContext.ClientTag = clientContext.ClientTag;
             clonedClientContext.DisableReturnValueCache = clientContext.DisableReturnValueCache;
-
+            clonedClientContext.WebRequestExecutorFactory = clientContext.WebRequestExecutorFactory;
 
             // Check if we do have context settings
             var contextSettings = clientContext.GetContextSettings();
@@ -323,6 +325,10 @@ namespace Microsoft.SharePoint.Client
                         if (contextSettings.Type == ClientContextType.SharePointACSAppOnly)
                         {
                             newClientContext = authManager.GetACSAppOnlyContext(newSiteUrl, contextSettings.ClientId, contextSettings.ClientSecret, contextSettings.Environment);
+                        }
+                        else if (contextSettings.Type == ClientContextType.OnPremises)
+                        {
+                            newClientContext = authManager.GetOnPremisesContext(newSiteUrl, clientContext.Credentials);
                         }
                         else
                         {
@@ -366,14 +372,23 @@ namespace Microsoft.SharePoint.Client
                     contextSettings.SiteUrl = newSiteUrl;
                     clonedClientContext.AddContextSettings(contextSettings);
 
-                    clonedClientContext.ExecutingWebRequest += delegate (object oSender, WebRequestEventArgs webRequestEventArgs)
+                    if (contextSettings.Type == ClientContextType.OnPremises)
                     {
+                        var authManager = contextSettings.AuthenticationManager;
+                        clonedClientContext.Credentials = clientContext.Credentials;
+                        authManager.ConfigureOnPremisesContext(newSiteUrl, clonedClientContext);
+                    }
+                    else
+                    {
+                        clonedClientContext.ExecutingWebRequest += delegate (object oSender, WebRequestEventArgs webRequestEventArgs)
+                        {
                         // Call the ExecutingWebRequest delegate method from the original ClientContext object, but pass along the webRequestEventArgs of 
                         // the new delegate method
                         MethodInfo methodInfo = clientContext.GetType().GetMethod("OnExecutingWebRequest", BindingFlags.Instance | BindingFlags.NonPublic);
-                        object[] parametersArray = new object[] { webRequestEventArgs };
-                        methodInfo.Invoke(clientContext, parametersArray);
-                    };
+                            object[] parametersArray = new object[] { webRequestEventArgs };
+                            methodInfo.Invoke(clientContext, parametersArray);
+                        };
+                    }
                 }
             }
             else // Fallback the default cloning logic if there were not context settings available
@@ -558,7 +573,7 @@ namespace Microsoft.SharePoint.Client
             {
                 var contextSettings = clientContext.GetContextSettings();
 
-                if (contextSettings?.AuthenticationManager != null && contextSettings?.Type != ClientContextType.SharePointACSAppOnly)
+                if (contextSettings?.AuthenticationManager != null && contextSettings?.Type != ClientContextType.SharePointACSAppOnly && contextSettings?.Type != ClientContextType.OnPremises)
                 {
                     accessToken = contextSettings.AuthenticationManager.GetAccessTokenAsync(clientContext.Url).GetAwaiter().GetResult();
                 }
@@ -847,6 +862,102 @@ namespace Microsoft.SharePoint.Client
             if (!String.IsNullOrEmpty(e.WebRequestExecutor.RequestHeaders.Get("Authorization")))
             {
                 accessToken = e.WebRequestExecutor.RequestHeaders.Get("Authorization").Replace("Bearer ", "");
+            }
+        }
+
+        internal static async Task<string> GetOnPremisesRequestDigestAsync(this ClientContext context)
+        {
+            var hostUrl = context.Url;
+            if (requestDigestInfos.TryGetValue(hostUrl, out (string digestToken, DateTime expiresOn) requestDigestInfo))
+            {
+                // We only have to add a request digest when running in dotnet core
+                if (DateTime.Now > requestDigestInfo.expiresOn)
+                {
+                    requestDigestInfo = await GetOnPremisesRequestDigestInfoAsync(context);
+                    requestDigestInfos.AddOrUpdate(hostUrl, requestDigestInfo, (key, oldValue) => requestDigestInfo);
+                }
+            }
+            else
+            {
+                // admin url maybe?
+                requestDigestInfo = await GetOnPremisesRequestDigestInfoAsync(context);
+                requestDigestInfos.AddOrUpdate(hostUrl, requestDigestInfo, (key, oldValue) => requestDigestInfo);
+            }
+            return requestDigestInfo.digestToken;
+        }
+
+        private static async Task<(string digestToken, DateTime expiresOn)> GetOnPremisesRequestDigestInfoAsync(ClientContext context)
+        {
+            await new SynchronizationContextRemover();
+
+            using (var handler = new HttpClientHandler())
+            {
+                string responseString = string.Empty;
+
+                string requestUrl = $"{context.Url}/_vti_bin/sites.asmx";
+
+                StringContent content = new StringContent("<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetUpdatedFormDigestInformation xmlns=\"http://schemas.microsoft.com/sharepoint/soap/\" /></soap:Body></soap:Envelope>");
+                // Remove the default Content-Type content header
+                if (content.Headers.Contains("Content-Type"))
+                {
+                    content.Headers.Remove("Content-Type");
+                }
+                // Add the batch Content-Type header
+                content.Headers.Add($"Content-Type", "text/xml");
+                content.Headers.Add("SOAPAction", "http://schemas.microsoft.com/sharepoint/soap/GetUpdatedFormDigestInformation");
+                content.Headers.Add("X-RequestForceAuthentication", "true");
+
+                using (var request = new HttpRequestMessage(HttpMethod.Post, requestUrl))
+                {
+                    request.Content = content;
+
+                    if (context.Credentials is NetworkCredential networkCredential)
+                    {
+                        handler.Credentials = networkCredential;
+                    }
+
+                    httpClient = new HttpClient(handler);
+                    HttpResponseMessage response = await httpClient.SendAsync(request);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        responseString = await response.Content.ReadAsStringAsync();
+                    }
+                    else
+                    {
+                        var errorSb = new System.Text.StringBuilder();
+
+                        errorSb.AppendLine(await response.Content.ReadAsStringAsync());
+                        if (response.Headers.Contains("SPRequestGuid"))
+                        {
+                            var values = response.Headers.GetValues("SPRequestGuid");
+                            if (values != null)
+                            {
+                                var spRequestGuid = values.FirstOrDefault();
+                                errorSb.AppendLine($"ServerErrorTraceCorrelationId: {spRequestGuid}");
+                            }
+                        }
+
+                        throw new Exception(errorSb.ToString());
+                    }
+                }
+
+                XmlDocument xd = new XmlDocument();
+                xd.LoadXml(responseString);
+
+                XmlNamespaceManager nsmgr = new XmlNamespaceManager(xd.NameTable);
+                nsmgr.AddNamespace("soap", "http://schemas.microsoft.com/sharepoint/soap/");
+                XmlNode digestNode = xd.SelectSingleNode("//soap:DigestValue", nsmgr);
+                if (digestNode != null)
+                {
+                    XmlNode timeOutNode = xd.SelectSingleNode("//soap:TimeoutSeconds", nsmgr);
+                    int expiresIn = int.Parse(timeOutNode.InnerText);
+                    return (digestNode.InnerText, DateTime.Now.AddSeconds(expiresIn - 30));
+                }
+                else
+                {
+                    throw new Exception("No digest found!");
+                }
             }
         }
 

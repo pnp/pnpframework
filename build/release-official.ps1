@@ -34,7 +34,7 @@ if ($apiKey.Length -gt 0)
 
     # Persist last used version
     Write-Host "Writing $version to git"
-    Set-Content -Path .\version.release.increment -Value $versionIncrement
+    Set-Content -Path .\version.release.increment -Value $versionIncrement -NoNewline
 
     # Push change to the repo
     Write-Host "Ensure you push in all changes!" -ForegroundColor Yellow 

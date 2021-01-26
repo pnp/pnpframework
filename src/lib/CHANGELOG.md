@@ -11,10 +11,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Support for using the ICustomWebUi to enable interactive auth in PnP PowerShell [erwinvanhunen - Erwin van Hunen]
+- Support for offline CSOM testing! #100 [mgwojciech - Marcin Wojciechowski]
+- Support for on-premises context creation and cloning, internal only as it's needed to support page transformation from on-prem [jansenbe - Bert Jansen]
 
 ### Changed
 
 - Fixed page transformation caching manager to handle dictionary serialization with non string value as keys. Fixes #110 [jansenbe - Bert Jansen]
+- Fix http exception unwrapping, refactor http retry mechanism #107 [sebastianmattar - Sebastian Mattar]
 
 ## [1.1.0]
 

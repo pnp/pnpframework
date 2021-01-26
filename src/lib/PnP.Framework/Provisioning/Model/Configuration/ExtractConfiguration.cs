@@ -28,6 +28,7 @@ namespace PnP.Framework.Provisioning.Model.Configuration
         public bool PersistAssetFiles { get; set; }
 
         [JsonPropertyName("handlers")]
+        [JsonConverter(typeof(ListEnumConverter<ConfigurationHandler>))]
         public List<ConfigurationHandler> Handlers { get; set; } = new List<ConfigurationHandler>();
 
         [JsonPropertyName("lists")]

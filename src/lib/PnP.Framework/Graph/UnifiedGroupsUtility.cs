@@ -299,8 +299,8 @@ namespace PnP.Framework.Graph
                     }
                     catch (Exception ex)
                     {
-                        if (ex.InnerException.Message.Contains("Request_BadRequest") &&
-                            ex.InnerException.Message.Contains("added object references already exist"))
+                        if (ex.Message.Contains("Request_BadRequest") &&
+                            ex.Message.Contains("added object references already exist"))
                         {
                             // Skip any already existing member
                         }
@@ -390,8 +390,8 @@ namespace PnP.Framework.Graph
                     }
                     catch (Exception ex)
                     {
-                        if (ex.InnerException.Message.Contains("Request_BadRequest") &&
-                            ex.InnerException.Message.Contains("added object references already exist"))
+                        if (ex.Message.Contains("Request_BadRequest") &&
+                            ex.Message.Contains("added object references already exist"))
                         {
                             // Skip any already existing owner
                         }

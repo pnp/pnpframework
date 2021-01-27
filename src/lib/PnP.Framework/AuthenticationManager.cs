@@ -1,7 +1,7 @@
 ﻿using Microsoft.Identity.Client;
 using Microsoft.Identity.Client.Extensibility;
 using Microsoft.SharePoint.Client;
-using PnP.Framework.Diagnostics;
+using PnP.Framework.Utilities;
 using PnP.Framework.Utilities.Context;
 using System;
 using System.Linq;
@@ -65,7 +65,6 @@ namespace PnP.Framework
     /// </summary>
     public class AuthenticationManager : IDisposable
     {
-        private const string SHAREPOINT_PRINCIPAL = "00000003-0000-0ff1-ce00-000000000000";
         /// <summary>
         /// The client id of the Microsoft SharePoint Online Management Shell application
         /// </summary>
@@ -74,11 +73,6 @@ namespace PnP.Framework
         /// The client id of the Microsoft 365 Patters and Practices Management Shell application
         /// </summary>
         public const string CLIENTID_PNPMANAGEMENTSHELL = "31359c7f-bd7e-475c-86db-fdb8c937548e";
-
-        private string appOnlyAccessToken;
-        private AutoResetEvent appOnlyACSAccessTokenResetEvent;
-        private readonly object tokenLock = new object();
-        private bool disposedValue;
 
         private readonly IPublicClientApplication publicClientApplication;
         private readonly IConfidentialClientApplication confidentialClientApplication;
@@ -89,8 +83,7 @@ namespace PnP.Framework
         private readonly UserAssertion assertion;
         private readonly Func<DeviceCodeResult, Task> deviceCodeCallback;
         private readonly ICustomWebUi customWebUi;
-
-        internal string RedirectUrl { get; set; }
+        private readonly ACSTokenGenerator acsTokenGenerator;
 
         #region Construction
         /// <summary>
@@ -100,6 +93,12 @@ namespace PnP.Framework
         {
             // Set the TLS preference. Needed on some server os's to work when Office 365 removes support for TLS 1.0
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+        }
+
+        private AuthenticationManager(ACSTokenGenerator oAuthAuthenticationProvider) : this()
+        {
+            this.acsTokenGenerator = oAuthAuthenticationProvider;
+            authenticationType = ClientContextType.SharePointACSAppOnly;
         }
 
         /// <summary>
@@ -516,7 +515,7 @@ namespace PnP.Framework
                     }
                 case ClientContextType.SharePointACSAppOnly:
                     {
-                        return appOnlyAccessToken;
+                        return acsTokenGenerator.GetToken(null);
                     }
             }
             if (authResult?.AccessToken != null)
@@ -667,6 +666,15 @@ namespace PnP.Framework
                         }
                         break;
                     }
+
+                case ClientContextType.SharePointACSAppOnly:
+                    {
+                        return GetAccessTokenContext(siteUrl, (site) =>
+                        {
+                            return this.acsTokenGenerator.GetToken(new Uri(site));
+                        });
+                    }
+
             }
             return null;
         }
@@ -722,9 +730,7 @@ namespace PnP.Framework
                                 ar = ((IPublicClientApplication)application).AcquireTokenWithDeviceCode(scopes, deviceCodeCallback).ExecuteAsync().GetAwaiter().GetResult();
                                 break;
                             }
-
                     }
-
                 }
                 if (ar != null && ar.AccessToken != null)
                 {
@@ -840,7 +846,7 @@ namespace PnP.Framework
         /// <returns>ClientContext to be used by CSOM code</returns>
         public ClientContext GetACSAppOnlyContext(string siteUrl, string appId, string appSecret)
         {
-            return GetACSAppOnlyContext(siteUrl, Utilities.TokenHelper.GetRealmFromTargetUrl(new Uri(siteUrl)), appId, appSecret);
+            return this.GetACSAppOnlyContext(siteUrl, appId, appSecret, AzureEnvironment.Production);
         }
 
         /// <summary>
@@ -853,14 +859,14 @@ namespace PnP.Framework
         /// <returns>ClientContext to be used by CSOM code</returns>
         public ClientContext GetACSAppOnlyContext(string siteUrl, string appId, string appSecret, AzureEnvironment environment = AzureEnvironment.Production)
         {
-            return GetACSAppOnlyContext(siteUrl, Utilities.TokenHelper.GetRealmFromTargetUrl(new Uri(siteUrl)), appId, appSecret, GetACSEndPoint(environment), GetACSEndPointPrefix(environment));
+            return this.GetACSAppOnlyContext(siteUrl, null, appId, appSecret, GetACSEndPoint(environment), GetACSEndPointPrefix(environment));
         }
 
         /// <summary>
         /// Returns an app only ClientContext object
         /// </summary>
         /// <param name="siteUrl">Site for which the ClientContext object will be instantiated</param>
-        /// <param name="realm">Realm of the environment (tenant) that requests the ClientContext object</param>
+        /// <param name="realm">Realm of the environment (tenant) that requests the ClientContext object, may be null</param>
         /// <param name="appId">Application ID which is requesting the ClientContext object</param>
         /// <param name="appSecret">Application secret of the Application which is requesting the ClientContext object</param>
         /// <param name="acsHostUrl">Azure ACS host, defaults to accesscontrol.windows.net but internal pre-production environments use other hosts</param>
@@ -868,15 +874,15 @@ namespace PnP.Framework
         /// <returns>ClientContext to be used by CSOM code</returns>
         public ClientContext GetACSAppOnlyContext(string siteUrl, string realm, string appId, string appSecret, string acsHostUrl = "accesscontrol.windows.net", string globalEndPointPrefix = "accounts")
         {
-            ACSEnsureToken(siteUrl, realm, appId, appSecret, acsHostUrl, globalEndPointPrefix);
-            ClientContext clientContext = Utilities.TokenHelper.GetClientContextWithAccessToken(siteUrl, appOnlyAccessToken);
-            clientContext.DisableReturnValueCache = true;
+            var acsTokenProvider = ACSTokenGenerator.GetACSAuthenticationProvider(new Uri(siteUrl), realm, appId, appSecret, acsHostUrl, globalEndPointPrefix);
+            var am = new AuthenticationManager(acsTokenProvider);
+            ClientContext clientContext = am.GetContext(siteUrl);
 
             ClientContextSettings clientContextSettings = new ClientContextSettings()
             {
                 Type = ClientContextType.SharePointACSAppOnly,
                 SiteUrl = siteUrl,
-                AuthenticationManager = this,
+                AuthenticationManager = am,
                 Realm = realm,
                 ClientId = appId,
                 ClientSecret = appSecret,
@@ -896,33 +902,15 @@ namespace PnP.Framework
         /// <returns>Azure ASC login endpoint</returns>
         public static string GetACSEndPoint(AzureEnvironment environment)
         {
-            switch (environment)
+            return (environment) switch
             {
-                case AzureEnvironment.Production:
-                    {
-                        return "accesscontrol.windows.net";
-                    }
-                case AzureEnvironment.Germany:
-                    {
-                        return "microsoftonline.de";
-                    }
-                case AzureEnvironment.China:
-                    {
-                        return "accesscontrol.chinacloudapi.cn";
-                    }
-                case AzureEnvironment.USGovernment:
-                    {
-                        return "microsoftonline.us";
-                    }
-                case AzureEnvironment.PPE:
-                    {
-                        return "windows-ppe.net";
-                    }
-                default:
-                    {
-                        return "accesscontrol.windows.net";
-                    }
-            }
+                AzureEnvironment.Production => "accesscontrol.windows.net",
+                AzureEnvironment.Germany => "microsoftonline.de",
+                AzureEnvironment.China => "accesscontrol.chinacloudapi.cn",
+                AzureEnvironment.USGovernment => "microsoftonline.us",
+                AzureEnvironment.PPE => "windows-ppe.net",
+                _ => "accesscontrol.windows.net"
+            };
         }
 
         /// <summary>
@@ -932,135 +920,15 @@ namespace PnP.Framework
         /// <returns>Azure ACS login endpoint prefix</returns>
         public static string GetACSEndPointPrefix(AzureEnvironment environment)
         {
-            switch (environment)
+            return (environment) switch
             {
-                case AzureEnvironment.Production:
-                    {
-                        return "accounts";
-                    }
-                case AzureEnvironment.Germany:
-                    {
-                        return "login";
-                    }
-                case AzureEnvironment.China:
-                    {
-                        return "accounts";
-                    }
-                case AzureEnvironment.USGovernment:
-                    {
-                        return "login";
-                    }
-                case AzureEnvironment.PPE:
-                    {
-                        return "login";
-                    }
-                default:
-                    {
-                        return "accounts";
-                    }
-            }
-        }
-
-        /// <summary>
-        /// Ensure that AppAccessToken is filled with a valid string representation of the OAuth AccessToken. This method will launch handle with token cleanup after the token expires
-        /// </summary>
-        /// <param name="siteUrl">Site for which the ClientContext object will be instantiated</param>
-        /// <param name="realm">Realm of the environment (tenant) that requests the ClientContext object</param>
-        /// <param name="appId">Application ID which is requesting the ClientContext object</param>
-        /// <param name="appSecret">Application secret of the Application which is requesting the ClientContext object</param>
-        /// <param name="acsHostUrl">Azure ACS host, defaults to accesscontrol.windows.net but internal pre-production environments use other hosts</param>
-        /// <param name="globalEndPointPrefix">Azure ACS endpoint prefix, defaults to accounts but internal pre-production environments use other prefixes</param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1303:Do not pass literals as localized parameters", MessageId = "OfficeDevPnP.Core.Diagnostics.Log.Debug(System.String,System.String,System.Object[])")]
-        private void ACSEnsureToken(string siteUrl, string realm, string appId, string appSecret, string acsHostUrl, string globalEndPointPrefix)
-        {
-            if (appOnlyAccessToken == null)
-            {
-                lock (tokenLock)
-                {
-                    Log.Debug(Constants.LOGGING_SOURCE, "AuthenticationManager:EnsureToken(siteUrl:{0},realm:{1},appId:{2},appSecret:PRIVATE)", siteUrl, realm, appId);
-                    if (appOnlyAccessToken == null)
-                    {
-                        Utilities.TokenHelper.Realm = realm;
-                        Utilities.TokenHelper.ServiceNamespace = realm;
-                        Utilities.TokenHelper.ClientId = appId;
-                        Utilities.TokenHelper.ClientSecret = appSecret;
-
-                        if (!String.IsNullOrEmpty(acsHostUrl))
-                        {
-                            Utilities.TokenHelper.AcsHostUrl = acsHostUrl;
-                        }
-
-                        if (globalEndPointPrefix != null)
-                        {
-                            Utilities.TokenHelper.GlobalEndPointPrefix = globalEndPointPrefix;
-                        }
-
-                        var response = Utilities.TokenHelper.GetAppOnlyAccessToken(SHAREPOINT_PRINCIPAL, new Uri(siteUrl).Authority, realm);
-                        string token = response.AccessToken;
-
-                        try
-                        {
-                            Log.Debug(Constants.LOGGING_SOURCE, "Lease expiration date: {0}", response.ExpiresOn);
-                            var lease = GetAccessTokenLease(response.ExpiresOn);
-                            lease = TimeSpan.FromSeconds(lease.TotalSeconds - TimeSpan.FromMinutes(5).TotalSeconds > 0 ? lease.TotalSeconds - TimeSpan.FromMinutes(5).TotalSeconds : lease.TotalSeconds);
-
-
-
-                            appOnlyACSAccessTokenResetEvent = new AutoResetEvent(false);
-
-                            ACSAppOnlyAccessTokenWaitInfo wi = new ACSAppOnlyAccessTokenWaitInfo();
-
-                            wi.Handle = ThreadPool.RegisterWaitForSingleObject(appOnlyACSAccessTokenResetEvent,
-                                                                               new WaitOrTimerCallback(ACSAppOnlyAccessTokenWaitProc),
-                                                                               wi,
-                                                                               (uint)lease.TotalMilliseconds,
-                                                                               true);
-                        }
-                        catch (Exception ex)
-                        {
-                            Log.Warning(Constants.LOGGING_SOURCE, CoreResources.AuthenticationManger_ProblemDeterminingTokenLease, ex);
-                            appOnlyAccessToken = null;
-                        }
-
-                        appOnlyAccessToken = token;
-                    }
-                }
-            }
-        }
-
-        internal class ACSAppOnlyAccessTokenWaitInfo
-        {
-            public RegisteredWaitHandle Handle;
-        }
-
-        internal void ACSAppOnlyAccessTokenWaitProc(object state, bool timedOut)
-        {
-            if (!timedOut)
-            {
-                ACSAppOnlyAccessTokenWaitInfo wi = (ACSAppOnlyAccessTokenWaitInfo)state;
-                if (wi.Handle != null)
-                {
-                    wi.Handle.Unregister(null);
-                }
-            }
-            else
-            {
-                appOnlyAccessToken = null;
-            }
-        }
-
-        /// <summary>
-        /// Get the access token lease time span.
-        /// </summary>
-        /// <param name="expiresOn">The ExpiresOn time of the current access token</param>
-        /// <returns>Returns a TimeSpan represents the time interval within which the current access token is valid thru.</returns>
-        private TimeSpan GetAccessTokenLease(DateTime expiresOn)
-        {
-            DateTime now = DateTime.UtcNow;
-            DateTime expires = expiresOn.Kind == DateTimeKind.Utc ?
-                expiresOn : TimeZoneInfo.ConvertTimeToUtc(expiresOn);
-            TimeSpan lease = expires - now;
-            return lease;
+                AzureEnvironment.Production => "accounts",
+                AzureEnvironment.Germany => "login",
+                AzureEnvironment.China => "accounts",
+                AzureEnvironment.USGovernment => "login",
+                AzureEnvironment.PPE => "login",
+                _ => "accounts"
+            };
         }
 
         /// <summary>
@@ -1116,33 +984,15 @@ namespace PnP.Framework
         /// <returns>Azure AD login endpoint</returns>
         public string GetAzureADLoginEndPoint(AzureEnvironment environment)
         {
-            switch (environment)
+            return (environment) switch
             {
-                case AzureEnvironment.Production:
-                    {
-                        return "https://login.microsoftonline.com";
-                    }
-                case AzureEnvironment.Germany:
-                    {
-                        return "https://login.microsoftonline.de";
-                    }
-                case AzureEnvironment.China:
-                    {
-                        return "https://login.chinacloudapi.cn";
-                    }
-                case AzureEnvironment.USGovernment:
-                    {
-                        return "https://login.microsoftonline.us";
-                    }
-                case AzureEnvironment.PPE:
-                    {
-                        return "https://login.windows-ppe.net";
-                    }
-                default:
-                    {
-                        return "https://login.microsoftonline.com";
-                    }
-            }
+                AzureEnvironment.Production => "https://login.microsoftonline.com",
+                AzureEnvironment.Germany => "https://login.microsoftonline.de",
+                AzureEnvironment.China => "https://login.chinacloudapi.cn",
+                AzureEnvironment.USGovernment => "https://login.microsoftonline.us",
+                AzureEnvironment.PPE => "https://login.windows-ppe.net",
+                _ => "https://login.microsoftonline.com"
+            };
         }
 
         /// <summary>
@@ -1152,24 +1002,14 @@ namespace PnP.Framework
         /// <returns></returns>
         public static string GetSharePointDomainSuffix(AzureEnvironment environment)
         {
-            if (environment == AzureEnvironment.Production)
+            return (environment) switch
             {
-                return "com";
-            }
-            else if (environment == AzureEnvironment.USGovernment)
-            {
-                return "us";
-            }
-            else if (environment == AzureEnvironment.Germany)
-            {
-                return "de";
-            }
-            else if (environment == AzureEnvironment.China)
-            {
-                return "cn";
-            }
-
-            return "com";
+                AzureEnvironment.Production => "com",
+                AzureEnvironment.USGovernment => "us",
+                AzureEnvironment.Germany => "de",
+                AzureEnvironment.China => "cn",
+                _ => "com"
+            };
         }
 
         /// <summary>
@@ -1178,19 +1018,7 @@ namespace PnP.Framework
         /// <param name="disposing"></param>
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    if (appOnlyACSAccessTokenResetEvent != null)
-                    {
-                        appOnlyACSAccessTokenResetEvent.Set();
-                        appOnlyACSAccessTokenResetEvent?.Dispose();
-                    }
-                }
-
-                disposedValue = true;
-            }
+            // For backwards compatibility
         }
 
         /// <summary>

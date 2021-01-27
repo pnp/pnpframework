@@ -819,8 +819,19 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             bool isDirty = false;
             if (!string.IsNullOrEmpty(clientSidePage.ContentTypeID))
             {
-                fileAfterSave.ListItemAllFields[ContentTypeIdField] = clientSidePage.ContentTypeID;
-                isDirty = true;
+                ContentTypeId bestMatchCT = fileAfterSave.ListItemAllFields.ParentList.BestMatchContentTypeId(clientSidePage.ContentTypeID);
+                ContentTypeId currentCT = fileAfterSave.ListItemAllFields.FieldExistsAndUsed(ContentTypeIdField) ? ((ContentTypeId)fileAfterSave.ListItemAllFields[ContentTypeIdField]) : null;
+
+                if (currentCT == null)
+                {
+                    fileAfterSave.ListItemAllFields[ContentTypeIdField] = bestMatchCT.StringValue;
+                    isDirty = true;
+                }
+                else if (currentCT != null && !currentCT.IsChildOf(bestMatchCT))
+                {
+                    fileAfterSave.ListItemAllFields[ContentTypeIdField] = bestMatchCT.StringValue;
+                    isDirty = true;
+                }
             }
 
             if (clientSidePage.PromoteAsTemplate && page.LayoutType == PnPCore.PageLayoutType.Article)

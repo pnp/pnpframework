@@ -1210,11 +1210,11 @@ namespace Microsoft.SharePoint.Client
         /// <param name="showInDisplayForm">Optionally show this field in the display form.</param>
         /// <param name="readOnly">Optionally make this a read only field.</param>
         public static void AddFieldToContentType(this Web web, ContentType contentType, Field field,
-            bool required = false,
-            bool hidden = false,
-            bool updateChildren = true,
-            bool showInDisplayForm = true,
-            bool readOnly = false)
+            bool? required,
+            bool? hidden,
+            bool? updateChildren,
+            bool? showInDisplayForm,
+            bool? readOnly)
         {
             //// Forcibly include Ids of FieldLinks
             //web.Context.Load(contentType, c => c.FieldLinks.Include(fl => fl.Id, fl => fl.Required, fl => fl.Hidden));
@@ -1234,6 +1234,8 @@ namespace Microsoft.SharePoint.Client
             field.EnsureProperties(f => f.Id, f => f.SchemaXmlWithResourceTokens);
 
             Log.Info(Constants.LOGGING_SOURCE, CoreResources.FieldAndContentTypeExtensions_AddField0ToContentType1, field.Id, contentType.Id);
+            
+            if (!updateChildren.HasValue) { updateChildren = true; }
 
             // Get the field if already exists in content type, else add field to content type
             // This will help to customize (required or hidden) any pre-existing field, also to handle existing field of Parent Content type
@@ -1248,7 +1250,7 @@ namespace Microsoft.SharePoint.Client
                     Field = field
                 };
                 contentType.FieldLinks.Add(fldInfo);
-                contentType.Update(updateChildren);
+                contentType.Update(updateChildren.Value);
                 web.Context.ExecuteQueryRetry();
 
                 flink = contentType.FieldLinks.GetById(field.Id);
@@ -1261,18 +1263,33 @@ namespace Microsoft.SharePoint.Client
                 f => f.ShowInDisplayForm,
                 f => f.ReadOnly);
 
-            if (
-                (required != flink.Required)
-                || (hidden != flink.Hidden)
-                || (showInDisplayForm != flink.ShowInDisplayForm)
-                || (readOnly != flink.ReadOnly))
+            bool IsDirty = false;
+            if (required.HasValue && required.Value != flink.Required)
             {
-                // Update FieldLink
-                flink.Required = required;
-                flink.Hidden = hidden;
-                flink.ShowInDisplayForm = showInDisplayForm;
-                flink.ReadOnly = readOnly;
+                flink.Required = required.Value;
+                IsDirty = true;
+            }
 
+            if (hidden.HasValue && hidden.Value != flink.Hidden)
+            {
+                flink.Hidden = hidden.Value;
+                IsDirty = true;
+            }
+
+            if (showInDisplayForm.HasValue && showInDisplayForm.Value != flink.ShowInDisplayForm)
+            {
+                flink.ShowInDisplayForm = showInDisplayForm.Value;
+                IsDirty = true;
+            }
+
+            if (readOnly.HasValue && readOnly.Value != flink.ReadOnly)
+            {
+                flink.ReadOnly = readOnly.Value;
+                IsDirty = true;
+            }
+
+            if (IsDirty)
+            {
                 contentType.Update(true);
                 web.Context.ExecuteQueryRetry();
             }

@@ -295,8 +295,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         fieldRef.Required,
                         fieldRef.Hidden,
                         fieldRef.UpdateChildren,
-                        fieldRef.ShowInDisplayForm,
-                        fieldRef.ReadOnly);
+                        null,
+                        null);
                 }
             }
 
@@ -496,8 +496,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     fieldRef.Required,
                     fieldRef.Hidden,
                     fieldRef.UpdateChildren,
-                    fieldRef.ShowInDisplayForm,
-                    fieldRef.ReadOnly);
+                    null,
+                    null);
             }
 
             // Add new CTs

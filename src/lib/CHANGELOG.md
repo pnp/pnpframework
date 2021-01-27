@@ -18,6 +18,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 - Fixed page transformation caching manager to handle dictionary serialization with non string value as keys. Fixes #110 [jansenbe - Bert Jansen]
 - Fix http exception unwrapping, refactor http retry mechanism #107 [sebastianmattar - Sebastian Mattar]
+- Fixed page transformation caching manager to handle another dictionary serialization with non string value as keys issue. Fixes #136 [jansenbe - Bert Jansen] 
+- Refactor ACS token creation #119 [sebastianmattar - Sebastian Mattar]
+- Fix wrong ReadOnly setting on ContentType LinkedFields #128 [czullu - Christian Zuellig]
+- Fix for #117: failed to set content type on client side page #135 [czullu - Christian Zuellig]
 
 ## [1.1.0]
 

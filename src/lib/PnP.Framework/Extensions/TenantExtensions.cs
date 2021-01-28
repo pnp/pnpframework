@@ -846,23 +846,26 @@ namespace Microsoft.SharePoint.Client
 
         private static bool IsCurrentUserTenantAdminViaGraph()
         {
-            string globalTenantAdminRole = "Company Administrator";
+            string globalTenantAdminRoleTemplateId = "62e90394-69f5-4237-9190-012177145e10";
 
             try
             {
                 var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri("https://graph.microsoft.com/").Authority, null);
 
+                var customHeaders = new Dictionary<string, string>();
+                customHeaders.Add("ConsistencyLevel", "eventual");
+
                 // Retrieve (using the Microsoft Graph) the current user's roles
                 string jsonResponse = HttpHelper.MakeGetRequestForString(
-                    "https://graph.microsoft.com/v1.0/me/memberOf?$select=id,displayName",
-                    accessToken);
+                    "https://graph.microsoft.com/v1.0/me/memberOf?$count=true&$search=\"displayName: Company Administrator\" OR \"displayName: Global Administrator\"",
+                    accessToken, requestHeaders: customHeaders);
 
                 if (jsonResponse != null)
                 {
                     var resultsElement = JsonSerializer.Deserialize<JsonElement>(jsonResponse);
                     if (resultsElement.GetProperty("value").ValueKind != JsonValueKind.Undefined)
                     {
-                        return resultsElement.GetProperty("value").EnumerateArray().Any(r => r.GetProperty("displayName").GetString() == globalTenantAdminRole);
+                        return resultsElement.GetProperty("value").EnumerateArray().Any(r => r.GetProperty("roleTemplateId").GetString() == globalTenantAdminRoleTemplateId);
                     }
                 }
             }

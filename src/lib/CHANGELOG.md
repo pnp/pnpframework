@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Support for using the ICustomWebUi to enable interactive auth in PnP PowerShell [erwinvanhunen - Erwin van Hunen]
 - Support for offline CSOM testing! #100 [mgwojciech - Marcin Wojciechowski]
 - Support for on-premises context creation and cloning, internal only as it's needed to support page transformation from on-prem [jansenbe - Bert Jansen]
+- Allow use of tokens for TopicHeader and AlternativeText in Pages #137 [magarma - Miguel Angel García Martínez]
 
 ### Changed
 

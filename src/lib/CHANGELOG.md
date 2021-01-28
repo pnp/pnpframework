@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Refactor ACS token creation #119 [sebastianmattar - Sebastian Mattar]
 - Fix wrong ReadOnly setting on ContentType LinkedFields #128 [czullu - Christian Zuellig]
 - Fix for #117: failed to set content type on client side page #135 [czullu - Christian Zuellig]
+- Fix bug when trying to add existing member or owner to a unified group. #139 [magarma - Miguel Angel García Martínez]
 
 ## [1.1.0]
 

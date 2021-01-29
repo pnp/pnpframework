@@ -819,7 +819,7 @@ namespace Microsoft.SharePoint.Client
                 tenant.Context.ExecuteQueryRetry();
                 siteUrl = rootUrl.Value;
             }
-            tenant.EnableCommSite(siteUrl, COMMSITEDESIGNPACKAGEID);
+            tenant.EnableCommunicationSite(siteUrl, COMMSITEDESIGNPACKAGEID);
             tenant.Context.ExecuteQueryRetry();
         }
         #endregion

@@ -145,7 +145,8 @@ namespace PnP.Framework.Sites
             payload.Add("HubSiteId", siteCollectionCreationInformation.HubSiteId);
             // As per https://github.com/SharePoint/sp-dev-docs/issues/4810 the WebTemplateExtensionId property
             // is what currently drives the application of a custom site design during the creation of a modern site.
-            payload.Add("WebTemplateExtensionId", siteCollectionCreationInformation.SiteDesignId);
+            // Updating WebTemplateExtensionId, it's already defined in the method GetRequestPayload
+            payload["WebTemplateExtensionId"] = siteCollectionCreationInformation.SiteDesignId;
 
             bool sensitivityLabelExists = !string.IsNullOrEmpty(siteCollectionCreationInformation.SensitivityLabel);
             if (sensitivityLabelExists)

@@ -110,7 +110,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         // Set ReadOnly as the last thing because a ReadOnly content type cannot be updated
                         if (this._step == FieldAndListProvisioningStepHelper.Step.LookupFields && existingCT.ReadOnly == false && ct.ReadOnly == true)
                         {
-                            scope.LogPropertyUpdate("ReadOnly");
+                            scope.LogPropertyUpdate(nameof(existingCT.ReadOnly));
                             existingCT.ReadOnly = ct.ReadOnly;
 
                             existingCT.Update(false);
@@ -142,7 +142,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             if (existingContentType.Hidden != templateContentType.Hidden)
             {
-                scope.LogPropertyUpdate("Hidden");
+                scope.LogPropertyUpdate(nameof(existingContentType.Hidden));
                 existingContentType.Hidden = templateContentType.Hidden;
                 isDirty = true;
             }
@@ -150,32 +150,32 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             // If change is ReadOnly = True, it will be set later
             if (existingContentType.ReadOnly == true && templateContentType.ReadOnly == false)
             {
-                scope.LogPropertyUpdate("ReadOnly");
+                scope.LogPropertyUpdate(nameof(existingContentType.ReadOnly));
                 existingContentType.ReadOnly = templateContentType.ReadOnly;
                 isDirty = true;
             }
             if (existingContentType.Sealed != templateContentType.Sealed)
             {
-                scope.LogPropertyUpdate("Sealed");
+                scope.LogPropertyUpdate(nameof(existingContentType.Sealed));
                 existingContentType.Sealed = templateContentType.Sealed;
                 isDirty = true;
             }
             if (templateContentType.Description != null && existingContentType.Description != parser.ParseString(templateContentType.Description))
             {
-                scope.LogPropertyUpdate("Description");
+                scope.LogPropertyUpdate(nameof(existingContentType.Description));
                 existingContentType.Description = parser.ParseString(templateContentType.Description);
                 isDirty = true;
             }
             if (templateContentType.DocumentTemplate != null && existingContentType.DocumentTemplate != parser.ParseString(templateContentType.DocumentTemplate))
             {
-                scope.LogPropertyUpdate("DocumentTemplate");
+                scope.LogPropertyUpdate(nameof(existingContentType.DocumentTemplate));
                 existingContentType.DocumentTemplate = parser.ParseString(templateContentType.DocumentTemplate);
                 isDirty = true;
             }
             if (existingContentType.Name != parser.ParseString(templateContentType.Name))
             {
                 var oldName = existingContentType.Name;
-                scope.LogPropertyUpdate("Name");
+                scope.LogPropertyUpdate(nameof(existingContentType.Name));
                 existingContentType.Name = parser.ParseString(templateContentType.Name);
                 isDirty = true;
                 // CT is being renamed, add an extra token to the tokenparser
@@ -184,7 +184,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
             if (templateContentType.Group != null && existingContentType.Group != parser.ParseString(templateContentType.Group))
             {
-                scope.LogPropertyUpdate("Group");
+                scope.LogPropertyUpdate(nameof(existingContentType.Group));
                 existingContentType.Group = parser.ParseString(templateContentType.Group);
                 isDirty = true;
             }
@@ -193,19 +193,19 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             {
                 if (templateContentType.DisplayFormUrl != null && existingContentType.DisplayFormUrl != parser.ParseString(templateContentType.DisplayFormUrl))
                 {
-                    scope.LogPropertyUpdate("DisplayFormUrl");
+                    scope.LogPropertyUpdate(nameof(existingContentType.DisplayFormUrl));
                     existingContentType.DisplayFormUrl = parser.ParseString(templateContentType.DisplayFormUrl);
                     isDirty = true;
                 }
                 if (templateContentType.EditFormUrl != null && existingContentType.EditFormUrl != parser.ParseString(templateContentType.EditFormUrl))
                 {
-                    scope.LogPropertyUpdate("EditFormUrl");
+                    scope.LogPropertyUpdate(nameof(existingContentType.EditFormUrl));
                     existingContentType.EditFormUrl = parser.ParseString(templateContentType.EditFormUrl);
                     isDirty = true;
                 }
                 if (templateContentType.NewFormUrl != null && existingContentType.NewFormUrl != parser.ParseString(templateContentType.NewFormUrl))
                 {
-                    scope.LogPropertyUpdate("NewFormUrl");
+                    scope.LogPropertyUpdate(nameof(existingContentType.NewFormUrl));
                     existingContentType.NewFormUrl = parser.ParseString(templateContentType.NewFormUrl);
                     isDirty = true;
                 }
@@ -316,13 +316,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     scope.LogDebug(CoreResources.Provisioning_ObjectHandlers_ContentTypes_Field__0__exists_in_content_type, fieldId);
                     if (fieldLink.Required != fieldRef.Required)
                     {
-                        scope.LogPropertyUpdate("Required");
+                        scope.LogPropertyUpdate(nameof(fieldLink.Required));
                         fieldLink.Required = fieldRef.Required;
                         isDirty = true;
                     }
                     if (fieldLink.Hidden != fieldRef.Hidden)
                     {
-                        scope.LogPropertyUpdate("Hidden");
+                        scope.LogPropertyUpdate(nameof(fieldLink.Hidden));
                         fieldLink.Hidden = fieldRef.Hidden;
                         isDirty = true;
                     }

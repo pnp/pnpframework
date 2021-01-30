@@ -31,8 +31,8 @@ namespace PnP.Framework.Utilities.Themes.Palettes
         private static readonly float[] ColorShadeTable = new float[] { 0.1F, 0.24F, 0.44F }; // default strongen
 
         // If the given shade's luminance is below/above these values, we'll swap to using the White/Black tables above
-        private static readonly float LowLuminanceThreshold = 0.2F;
-        private static readonly float HighLuminanceThreshold = 0.8F;
+        private const float LowLuminanceThreshold = 0.2F;
+        private const float HighLuminanceThreshold = 0.8F;
 
         public static Boolean IsValidShade(Shade shade)
         {

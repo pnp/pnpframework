@@ -12,7 +12,7 @@ namespace PnP.Framework.Http
     /// <summary>
     /// Static class holding HttpClient references, needs to be static to avoid port exhaustion scenarios
     /// </summary>
-    internal class PnPHttpClient
+    public class PnPHttpClient
     {
         private const string PnPHttpClientName = "PnPHttpClient";
         private static readonly Lazy<PnPHttpClient> _lazyInstance = new Lazy<PnPHttpClient>(() => new PnPHttpClient(), true);
@@ -24,7 +24,7 @@ namespace PnP.Framework.Http
             BuildServiceFactory();
         }
 
-        internal static PnPHttpClient Instance
+        public static PnPHttpClient Instance
         {
             get
             {
@@ -32,7 +32,7 @@ namespace PnP.Framework.Http
             }
         }
 
-        internal HttpClient GetHttpClient(ClientContext context)
+        public HttpClient GetHttpClient(ClientContext context)
         {
             var factory = serviceProvider.GetRequiredService<IHttpClientFactory>();
 
@@ -75,13 +75,13 @@ namespace PnP.Framework.Http
             }
         }
 
-        internal HttpClient GetHttpClient()
+        public HttpClient GetHttpClient()
         {
             var factory = serviceProvider.GetRequiredService<IHttpClientFactory>();
             return factory.CreateClient(PnPHttpClientName);
         }
 
-        internal static async Task AuthenticateRequestAsync(HttpRequestMessage request, ClientContext context)
+        public static async Task AuthenticateRequestAsync(HttpRequestMessage request, ClientContext context)
         {
             var accessToken = context.GetAccessToken();
 
@@ -111,7 +111,7 @@ namespace PnP.Framework.Http
             }
         }
 
-        internal static void AuthenticateRequest(HttpRequestMessage request, string accessToken)
+        public static void AuthenticateRequest(HttpRequestMessage request, string accessToken)
         {
             if (!string.IsNullOrEmpty(accessToken))
             {

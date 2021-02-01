@@ -1125,7 +1125,7 @@ namespace PnP.Framework.Modernization.Cache
                     }
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 // Logging is not needed as an "empty" ensured user is handled by the callers of this method
             }

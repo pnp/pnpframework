@@ -17,15 +17,6 @@ namespace PnP.Framework.Utilities
     {
         public const string JsonContentType = "application/json";
 
-        ///// <summary>
-        ///// Static readonly instance of HttpClient to improve performances
-        ///// </summary>
-        ///// <remarks>
-        ///// See https://docs.microsoft.com/en-us/azure/architecture/antipatterns/improper-instantiation/
-        ///// </remarks>
-        //private static readonly HttpClient httpClient =
-        //    new HttpClient(new HttpClientHandler { AllowAutoRedirect = true }, true);
-
         /// <summary>
         /// This helper method makes an HTTP GET request and returns the result as a String
         /// </summary>

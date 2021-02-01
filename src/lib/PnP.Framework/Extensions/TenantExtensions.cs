@@ -1037,7 +1037,7 @@ namespace Microsoft.SharePoint.Client
             int siteNameIndex = url.AbsolutePath.IndexOf('/', 1) + 1;
             var managedPath = url.AbsolutePath.Substring(0, siteNameIndex);
             var siteRelativePath = url.AbsolutePath.Substring(siteNameIndex);
-            var isSiteCollection = siteRelativePath.Contains('/');
+            var isSiteCollection = !siteRelativePath.Contains('/');
 
             //Judge whether this site collection is existing or not
             if (isSiteCollection)

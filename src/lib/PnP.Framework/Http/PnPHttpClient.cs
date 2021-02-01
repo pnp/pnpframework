@@ -38,9 +38,13 @@ namespace PnP.Framework.Http
 
             if (context.Credentials is NetworkCredential networkCredential)
             {
-                // assume this request is using ICredentials
-                string cacheKey = $"{context.Url}|{networkCredential.UserName}";
-                
+                string cacheKey = networkCredential.UserName;
+
+                if (string.IsNullOrEmpty(cacheKey))
+                {
+                    cacheKey = CredentialCache.DefaultNetworkCredentials.UserName;
+                }
+
                 // The HttpClientHandler is the one managing the network connections and holds the resources and as
                 // such we're caching this one for on-prem usage scenarions (for page transformation)
                 if (credentialsHttpClients.TryGetValue(cacheKey, out HttpClientHandler cachedHttpHandler))

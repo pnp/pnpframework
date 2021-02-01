@@ -16,7 +16,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -30,8 +29,6 @@ namespace Microsoft.SharePoint.Client
     public static partial class ClientContextExtensions
     {
         private static readonly string userAgentFromConfig = null;
-        private static string accessToken = null;
-        private static HttpClient httpClient = new HttpClient();
 
 #pragma warning disable CS0169
         private static ConcurrentDictionary<string, (string requestDigest, DateTime expiresOn)> requestDigestInfos = new ConcurrentDictionary<string, (string requestDigest, DateTime expiresOn)>();
@@ -469,7 +466,7 @@ namespace Microsoft.SharePoint.Client
                     var propValue = result.GetValue(clientContext.PendingRequest);
                     if (propValue != null)
                     {
-                        count = (propValue as System.Collections.Generic.List<ClientAction>).Count;
+                        count = (propValue as List<ClientAction>).Count;
                     }
                 }
             }
@@ -723,6 +720,7 @@ namespace Microsoft.SharePoint.Client
         private static async Task<(string digestToken, DateTime expiresOn)> GetRequestDigestInfoAsync(string siteUrl, CookieContainer cookieContainer)
         {
             await new SynchronizationContextRemover();
+
             var httpClient = PnPHttpClient.Instance.GetHttpClient();
 
             string requestUrl = string.Format("{0}/_api/contextinfo", siteUrl.TrimEnd('/'));
@@ -842,14 +840,6 @@ namespace Microsoft.SharePoint.Client
             return (formDigestValue, DateTime.Now.AddSeconds(expiresIn - 30));
         }
 
-        private static void Context_ExecutingWebRequest(object sender, WebRequestEventArgs e)
-        {
-            if (!String.IsNullOrEmpty(e.WebRequestExecutor.RequestHeaders.Get("Authorization")))
-            {
-                accessToken = e.WebRequestExecutor.RequestHeaders.Get("Authorization").Replace("Bearer ", "");
-            }
-        }
-
         internal static async Task<string> GetOnPremisesRequestDigestAsync(this ClientContext context)
         {
             var hostUrl = context.Url;
@@ -894,7 +884,11 @@ namespace Microsoft.SharePoint.Client
             {
                 request.Content = content;
 
-                httpClient = PnPHttpClient.Instance.GetHttpClient(context);
+#pragma warning disable CA2000 // Dispose objects before losing scope
+                var httpClient = PnPHttpClient.Instance.GetHttpClient(context);
+#pragma warning restore CA2000 // Dispose objects before losing scope
+
+                //Note: no credentials are passed here because the returned http context uses an already correctly configured handler
 
                 HttpResponseMessage response = await httpClient.SendAsync(request);
 
@@ -1056,18 +1050,6 @@ namespace Microsoft.SharePoint.Client
             await new SynchronizationContextRemover();
 
             return await SiteCollection.DeleteSiteAsync(clientContext);
-        }
-
-        internal static void SetAuthenticationCookiesForHandler(this ClientContext context, HttpClientHandler handler)
-        {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                var authCookiesContainer = GetAuthenticationCookies(context);
-                if (authCookiesContainer != null)
-                {
-                    handler.CookieContainer = authCookiesContainer;
-                }
-            }
         }
 
         internal static CookieContainer GetAuthenticationCookies(this ClientContext context)

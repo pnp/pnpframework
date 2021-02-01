@@ -1,7 +1,6 @@
 ﻿using Microsoft.SharePoint.Client;
 using PnP.Framework.Enums;
 using PnP.Framework.Http;
-using PnP.Framework.Utilities;
 using PnP.Framework.Utilities.Async;
 using PnP.Framework.Utilities.REST;
 using System;

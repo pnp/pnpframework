@@ -111,6 +111,14 @@ namespace PnP.Framework.Http
             }
         }
 
+        internal static void AuthenticateRequest(HttpRequestMessage request, string accessToken)
+        {
+            if (!string.IsNullOrEmpty(accessToken))
+            {
+                request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
+            }
+        }
+
         private void BuildServiceFactory()
         {
             // Use TLS 1.2 as default connection

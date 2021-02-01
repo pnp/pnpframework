@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PnP.Framework.Diagnostics;
+using PnP.Framework.Http;
 using PnP.Framework.Utilities;
 using PnP.Framework.Utilities.Async;
 using System;
@@ -188,14 +189,13 @@ namespace PnP.Framework.Sites
             }
 
             await new SynchronizationContextRemover();
-
-            ClientContext responseContext = null;
-
             if (clientContext.IsAppOnly() && string.IsNullOrEmpty(graphAccessToken))
             {
                 throw new Exception("App-Only is currently not supported, unless you provide a Microsoft Graph Access Token.");
             }
 
+
+            ClientContext responseContext;
             // If we're in an app-only context and we have the access token, then we use Microsoft Graph
             if (clientContext.IsAppOnly() && !string.IsNullOrEmpty(graphAccessToken))
             {
@@ -229,166 +229,136 @@ namespace PnP.Framework.Sites
         {
             ClientContext responseContext = null;
 
-            var accessToken = clientContext.GetAccessToken();
+            clientContext.Web.EnsureProperty(w => w.Url);
 
-            using (var handler = new HttpClientHandler())
+            bool sensitivityLabelExists = !string.IsNullOrEmpty(siteCollectionCreationInformation.SensitivityLabel);
+
+            var sensitivityLabelId = Guid.Empty;
+            if (sensitivityLabelExists)
             {
-                clientContext.Web.EnsureProperty(w => w.Url);
+                sensitivityLabelId = await GetSensitivityLabelId(clientContext, siteCollectionCreationInformation.SensitivityLabel);
+            }
 
-                if (string.IsNullOrEmpty(accessToken))
+#pragma warning disable CA2000 // Dispose objects before losing scope
+            var httpClient = PnPHttpClient.Instance.GetHttpClient(clientContext);
+#pragma warning restore CA2000 // Dispose objects before losing scope
+
+            string requestUrl = string.Format("{0}/_api/GroupSiteManager/CreateGroupEx", clientContext.Web.Url);
+
+            Dictionary<string, object> payload = new Dictionary<string, object>
+            {
+                { "displayName", siteCollectionCreationInformation.DisplayName },
+                { "alias", siteCollectionCreationInformation.Alias },
+                { "isPublic", siteCollectionCreationInformation.IsPublic }
+            };
+            var creationOptionsValues = new List<string>();
+            var optionalParams = new Dictionary<string, object>
+            {
+                { "Description", siteCollectionCreationInformation.Description ?? "" }
+            };
+
+            if (sensitivityLabelExists && sensitivityLabelId != Guid.Empty)
+            {
+                optionalParams.Add("Classification", siteCollectionCreationInformation.SensitivityLabel ?? "");
+                creationOptionsValues.Add($"SensitivityLabel:{sensitivityLabelId}");
+            }
+            else
+            {
+                optionalParams.Add("Classification", siteCollectionCreationInformation.Classification ?? "");
+            }
+
+            if (siteCollectionCreationInformation.SiteDesignId.HasValue)
+            {
+                creationOptionsValues.Add($"implicit_formula_292aa8a00786498a87a5ca52d9f4214a_{siteCollectionCreationInformation.SiteDesignId.Value.ToString("D").ToLower()}");
+            }
+            if (siteCollectionCreationInformation.Lcid != 0)
+            {
+                creationOptionsValues.Add($"SPSiteLanguage:{siteCollectionCreationInformation.Lcid}");
+            }
+            if (!string.IsNullOrEmpty(siteCollectionCreationInformation.SiteAlias))
+            {
+                creationOptionsValues.Add($"SiteAlias:{siteCollectionCreationInformation.SiteAlias}");
+            }
+            creationOptionsValues.Add($"HubSiteId:{siteCollectionCreationInformation.HubSiteId}");
+            optionalParams.Add("CreationOptions", creationOptionsValues);
+
+            if (siteCollectionCreationInformation.Owners != null && siteCollectionCreationInformation.Owners.Length > 0)
+            {
+                optionalParams.Add("Owners", siteCollectionCreationInformation.Owners);
+            }
+            if (siteCollectionCreationInformation.PreferredDataLocation.HasValue)
+            {
+                optionalParams.Add("PreferredDataLocation", siteCollectionCreationInformation.PreferredDataLocation.Value.ToString());
+            }
+            payload.Add("optionalParams", optionalParams);
+
+            var body = payload;
+
+            // Serialize request object to JSON
+            var jsonBody = JsonConvert.SerializeObject(body);
+            var requestBody = new StringContent(jsonBody);
+
+            // Build Http request
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl)
+            {
+                Content = requestBody
+            };
+
+            try
+            {
+                request.Headers.Add("accept", "application/json;odata.metadata=none");
+                request.Headers.Add("odata-version", "4.0");
+                if (MediaTypeHeaderValue.TryParse("application/json;odata.metadata=none;charset=utf-8", out MediaTypeHeaderValue sharePointJsonMediaType))
                 {
-                    clientContext.SetAuthenticationCookiesForHandler(handler);
+                    requestBody.Headers.ContentType = sharePointJsonMediaType;
                 }
 
-                bool sensitivityLabelExists = !string.IsNullOrEmpty(siteCollectionCreationInformation.SensitivityLabel);
+                await PnPHttpClient.AuthenticateRequestAsync(request, clientContext).ConfigureAwait(false);
 
-                var sensitivityLabelId = Guid.Empty;
-                if (sensitivityLabelExists)
+                // Perform actual post operation
+                HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
+
+                if (response.IsSuccessStatusCode)
                 {
-                    sensitivityLabelId = await GetSensitivityLabelId(clientContext, siteCollectionCreationInformation.SensitivityLabel);
-                }
-
-                using (var httpClient = new PnPHttpProvider(handler))
-                {
-                    string requestUrl = string.Format("{0}/_api/GroupSiteManager/CreateGroupEx", clientContext.Web.Url);
-
-                    Dictionary<string, object> payload = new Dictionary<string, object>
+                    // If value empty, URL is taken
+                    var responseString = await response.Content.ReadAsStringAsync();
+                    var responseJson = JObject.Parse(responseString);
+                    if (responseJson["SiteStatus"].Value<int>() == 2)
                     {
-                        { "displayName", siteCollectionCreationInformation.DisplayName },
-                        { "alias", siteCollectionCreationInformation.Alias },
-                        { "isPublic", siteCollectionCreationInformation.IsPublic }
-                    };
-                    var creationOptionsValues = new List<string>();
-                    var optionalParams = new Dictionary<string, object>
-                    {
-                        { "Description", siteCollectionCreationInformation.Description ?? "" }
-                    };
-
-                    if (sensitivityLabelExists && sensitivityLabelId != Guid.Empty)
-                    {
-                        optionalParams.Add("Classification", siteCollectionCreationInformation.SensitivityLabel ?? "");
-                        creationOptionsValues.Add($"SensitivityLabel:{sensitivityLabelId}");
+#pragma warning disable CA2000 // Dispose objects before losing scope
+                        responseContext = clientContext.Clone(responseJson["SiteUrl"].ToString());
+#pragma warning restore CA2000 // Dispose objects before losing scope
                     }
                     else
                     {
-                        optionalParams.Add("Classification", siteCollectionCreationInformation.Classification ?? "");
-                    }
-
-                    if (siteCollectionCreationInformation.SiteDesignId.HasValue)
-                    {
-                        creationOptionsValues.Add($"implicit_formula_292aa8a00786498a87a5ca52d9f4214a_{siteCollectionCreationInformation.SiteDesignId.Value.ToString("D").ToLower()}");
-                    }
-                    if (siteCollectionCreationInformation.Lcid != 0)
-                    {
-                        creationOptionsValues.Add($"SPSiteLanguage:{siteCollectionCreationInformation.Lcid}");
-                    }
-                    if (!string.IsNullOrEmpty(siteCollectionCreationInformation.SiteAlias))
-                    {
-                        creationOptionsValues.Add($"SiteAlias:{siteCollectionCreationInformation.SiteAlias}");
-                    }
-                    creationOptionsValues.Add($"HubSiteId:{siteCollectionCreationInformation.HubSiteId}");
-                    optionalParams.Add("CreationOptions", creationOptionsValues);
-
-                    if (siteCollectionCreationInformation.Owners != null && siteCollectionCreationInformation.Owners.Length > 0)
-                    {
-                        optionalParams.Add("Owners", siteCollectionCreationInformation.Owners);
-                    }
-                    if (siteCollectionCreationInformation.PreferredDataLocation.HasValue)
-                    {
-                        optionalParams.Add("PreferredDataLocation", siteCollectionCreationInformation.PreferredDataLocation.Value.ToString());
-                    }
-                    payload.Add("optionalParams", optionalParams);
-
-                    var body = payload;
-
-                    // Serialize request object to JSON
-                    var jsonBody = JsonConvert.SerializeObject(body);
-                    var requestBody = new StringContent(jsonBody);
-
-                    // Build Http request
-                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl)
-                    {
-                        Content = requestBody
-                    };
-                    request.Headers.Add("accept", "application/json;odata.metadata=none");
-                    request.Headers.Add("odata-version", "4.0");
-                    if (MediaTypeHeaderValue.TryParse("application/json;odata.metadata=none;charset=utf-8", out MediaTypeHeaderValue sharePointJsonMediaType))
-                    {
-                        requestBody.Headers.ContentType = sharePointJsonMediaType;
-                    }
-                    var requestDigest = string.Empty;
-                    if (!string.IsNullOrEmpty(accessToken))
-                    {
-                        requestDigest = await clientContext.GetRequestDigestAsync().ConfigureAwait(false);
-                        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                    }
-                    else
-                    {
-                        requestDigest = await clientContext.GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false);
-                        if (clientContext.Credentials is System.Net.NetworkCredential networkCredential)
+                        /*
+                         * BEGIN : Changes to address the SiteStatus=Provisioning scenario
+                         */
+                        if (Convert.ToInt32(responseJson["SiteStatus"]) == 1 && string.IsNullOrWhiteSpace(Convert.ToString(responseJson["ErrorMessage"])))
                         {
-                            handler.Credentials = networkCredential;
-                        }
-                    }
+                            var spOperationsMaxRetryCount = maxRetryCount;
+                            var spOperationsRetryWait = retryDelay;
+                            var siteCreated = false;
+                            var siteUrl = string.Empty;
+                            var retryAttempt = 1;
 
-                    requestBody.Headers.Add("X-RequestDigest", requestDigest);
-
-                    // Perform actual post operation
-                    HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        // If value empty, URL is taken
-                        var responseString = await response.Content.ReadAsStringAsync();
-                        var responseJson = JObject.Parse(responseString);
-                        if (responseJson["SiteStatus"].Value<int>() == 2)
-                        {
-                            responseContext = clientContext.Clone(responseJson["SiteUrl"].ToString());
-                        }
-                        else
-                        {
-                            /*
-                             * BEGIN : Changes to address the SiteStatus=Provisioning scenario
-                             */
-                            if (Convert.ToInt32(responseJson["SiteStatus"]) == 1 && string.IsNullOrWhiteSpace(Convert.ToString(responseJson["ErrorMessage"])))
+                            do
                             {
-                                var spOperationsMaxRetryCount = maxRetryCount;
-                                var spOperationsRetryWait = retryDelay;
-                                var siteCreated = false;
-                                var siteUrl = string.Empty;
-                                var retryAttempt = 1;
-
-                                do
+                                if (retryAttempt > 1)
                                 {
-                                    if (retryAttempt > 1)
-                                    {
-                                        System.Threading.Thread.Sleep(retryAttempt * spOperationsRetryWait);
-                                    }
+                                    System.Threading.Thread.Sleep(retryAttempt * spOperationsRetryWait);
+                                }
 
-                                    try
-                                    {
-                                        var groupId = responseJson["GroupId"].ToString();
-                                        var siteStatusRequestUrl = $"{clientContext.Web.Url}/_api/groupsitemanager/GetSiteStatus('{groupId}')";
+                                try
+                                {
+                                    var groupId = responseJson["GroupId"].ToString();
+                                    var siteStatusRequestUrl = $"{clientContext.Web.Url}/_api/groupsitemanager/GetSiteStatus('{groupId}')";
 
-                                        var siteStatusRequest = new HttpRequestMessage(HttpMethod.Get, siteStatusRequestUrl);
+                                    using (var siteStatusRequest = new HttpRequestMessage(HttpMethod.Get, siteStatusRequestUrl))
+                                    {
                                         siteStatusRequest.Headers.Add("accept", "application/json;odata=verbose");
 
-                                        var siteStatusRequestDigest = string.Empty;
-                                        if (!string.IsNullOrEmpty(accessToken))
-                                        {
-                                            siteStatusRequestDigest = await clientContext.GetRequestDigestAsync().ConfigureAwait(false);
-                                            siteStatusRequest.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                                        }
-                                        else
-                                        {
-                                            siteStatusRequestDigest = await clientContext.GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false);
-                                            if (clientContext.Credentials is System.Net.NetworkCredential networkCredential)
-                                            {
-                                                handler.Credentials = networkCredential;
-                                            }
-                                        }
-
-                                        siteStatusRequest.Headers.Add("X-RequestDigest", siteStatusRequestDigest);
+                                        await PnPHttpClient.AuthenticateRequestAsync(siteStatusRequest, clientContext).ConfigureAwait(false);
 
                                         var siteStatusResponse = await httpClient.SendAsync(siteStatusRequest, new System.Threading.CancellationToken());
                                         var siteStatusResponseString = await siteStatusResponse.Content.ReadAsStringAsync();
@@ -405,55 +375,63 @@ namespace PnP.Framework.Sites
                                             }
                                         }
                                     }
-                                    catch (Exception)
-                                    {
-                                        // Just skip it and retry after a delay
-                                    }
-
-                                    retryAttempt++;
                                 }
-                                while (!siteCreated && retryAttempt <= spOperationsMaxRetryCount);
-
-                                if (siteCreated)
+                                catch (Exception)
                                 {
-                                    responseContext = clientContext.Clone(siteUrl);
+                                    // Just skip it and retry after a delay
                                 }
-                                else
-                                {
-                                    throw new Exception("PnP.Framework.Sites.SiteCollection.CreateAsync: Could not create team site.");
-                                }
+
+                                retryAttempt++;
+                            }
+                            while (!siteCreated && retryAttempt <= spOperationsMaxRetryCount);
+
+                            if (siteCreated)
+                            {
+#pragma warning disable CA2000 // Dispose objects before losing scope
+                                responseContext = clientContext.Clone(siteUrl);
+#pragma warning restore CA2000 // Dispose objects before losing scope
                             }
                             else
                             {
-                                throw new Exception(responseString);
+                                throw new Exception("PnP.Framework.Sites.SiteCollection.CreateAsync: Could not create team site.");
                             }
-                            /*
-                             * END : Changes to address the SiteStatus=Provisioning scenario
-                             */
-                        }
-
-                        // If there is a delay, let's wait
-                        if (delayAfterCreation > 0)
-                        {
-                            System.Threading.Thread.Sleep(TimeSpan.FromSeconds(delayAfterCreation));
                         }
                         else
                         {
-                            if (!noWait)
-                            {
-                                // Let's wait for the async provisioning of features, site scripts and content types to be done before we allow API's to further update the created site
-                                WaitForProvisioningIsComplete(responseContext.Web);
-                            }
+                            throw new Exception(responseString);
                         }
+                        /*
+                         * END : Changes to address the SiteStatus=Provisioning scenario
+                         */
+                    }
+
+                    // If there is a delay, let's wait
+                    if (delayAfterCreation > 0)
+                    {
+                        System.Threading.Thread.Sleep(TimeSpan.FromSeconds(delayAfterCreation));
                     }
                     else
                     {
-                        // Something went wrong...
-                        throw new Exception(await response.Content.ReadAsStringAsync());
+                        if (!noWait)
+                        {
+                            // Let's wait for the async provisioning of features, site scripts and content types to be done before we allow API's to further update the created site
+                            WaitForProvisioningIsComplete(responseContext.Web);
+                        }
                     }
                 }
-                return await Task.Run(() => responseContext);
+
+                else
+                {
+                    // Something went wrong...
+                    throw new Exception(await response.Content.ReadAsStringAsync());
+                }
             }
+            finally
+            {
+                request.Dispose();
+            }
+
+            return await Task.Run(() => responseContext);
         }
 
         /// <summary>
@@ -510,37 +488,31 @@ namespace PnP.Framework.Sites
         private static async Task SetTeamSiteClassification(string classification, string groupId, string graphAccessToken)
         {
             // Patch the created group
-            using (var handler = new HttpClientHandler())
+            var httpClient = PnPHttpClient.Instance.GetHttpClient();
+            string requestUrl = $"https://graph.microsoft.com/v1.0/groups/{groupId}";
+
+            // Serialize request object to JSON
+            var jsonBody = JsonConvert.SerializeObject(new { classification });
+            var requestBody = new StringContent(jsonBody);
+
+            // Build Http request
+            using (HttpRequestMessage request = new HttpRequestMessage(new HttpMethod("PATCH"), requestUrl))
             {
-                using (var httpClient = new PnPHttpProvider(handler))
+                request.Content = requestBody;
+
+                if (MediaTypeHeaderValue.TryParse("application/json", out MediaTypeHeaderValue jsonMediaType))
                 {
-                    string requestUrl = $"https://graph.microsoft.com/v1.0/groups/{groupId}";
+                    requestBody.Headers.ContentType = jsonMediaType;
+                }
 
-                    // Serialize request object to JSON
-                    var jsonBody = JsonConvert.SerializeObject(new { classification });
-                    var requestBody = new StringContent(jsonBody);
+                PnPHttpClient.AuthenticateRequest(request, graphAccessToken);
 
-                    // Build Http request
-                    HttpRequestMessage request = new HttpRequestMessage(new HttpMethod("PATCH"), requestUrl)
-                    {
-                        Content = requestBody
-                    };
-                    if (MediaTypeHeaderValue.TryParse("application/json", out MediaTypeHeaderValue jsonMediaType))
-                    {
-                        requestBody.Headers.ContentType = jsonMediaType;
-                    }
-                    if (!string.IsNullOrEmpty(graphAccessToken))
-                    {
-                        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", graphAccessToken);
-                    }
+                // Perform actual post operation
+                HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
 
-                    // Perform actual post operation
-                    HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
-
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        throw new Exception("Failed to set Classification for created group");
-                    }
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception("Failed to set Classification for created group");
                 }
             }
         }
@@ -576,110 +548,85 @@ namespace PnP.Framework.Sites
 
             var accessToken = clientContext.GetAccessToken();
 
-            using (var handler = new HttpClientHandler())
-            {
-                clientContext.Web.EnsureProperty(w => w.Url);
+            clientContext.Web.EnsureProperty(w => w.Url);
+#pragma warning disable CA2000 // Dispose objects before losing scope
+            var httpClient = PnPHttpClient.Instance.GetHttpClient(clientContext);
+#pragma warning restore CA2000 // Dispose objects before losing sc
+            string requestUrl = $"{clientContext.Web.Url}/_api/SPSiteManager/Create";
 
-                if (string.IsNullOrEmpty(accessToken))
+            var body = new { request = payload };
+
+            // Serialize request object to JSON
+            var jsonBody = JsonConvert.SerializeObject(body);
+            var requestBody = new StringContent(jsonBody);
+
+            // Build Http request
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl)
+            {
+                Content = requestBody
+            };
+
+            try
+            {
+
+                request.Headers.Add("accept", "application/json;odata.metadata=none");
+                request.Headers.Add("odata-version", "4.0");
+                if (MediaTypeHeaderValue.TryParse("application/json;odata.metadata=none;charset=utf-8", out MediaTypeHeaderValue sharePointJsonMediaType))
                 {
-                    clientContext.SetAuthenticationCookiesForHandler(handler);
+                    requestBody.Headers.ContentType = sharePointJsonMediaType;
                 }
 
-                using (var httpClient = new PnPHttpProvider(handler))
+                await PnPHttpClient.AuthenticateRequestAsync(request, clientContext).ConfigureAwait(false);
+
+                // Perform actual post operation
+                HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
+
+                if (response.IsSuccessStatusCode)
                 {
-                    string requestUrl = $"{clientContext.Web.Url}/_api/SPSiteManager/Create";
-
-                    var body = new { request = payload };
-
-                    // Serialize request object to JSON
-                    var jsonBody = JsonConvert.SerializeObject(body);
-                    var requestBody = new StringContent(jsonBody);
-
-                    // Build Http request
-                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl)
+                    // If value empty, URL is taken
+                    var responseString = await response.Content.ReadAsStringAsync();
+                    if (responseString != null)
                     {
-                        Content = requestBody
-                    };
-                    request.Headers.Add("accept", "application/json;odata.metadata=none");
-                    request.Headers.Add("odata-version", "4.0");
-                    if (MediaTypeHeaderValue.TryParse("application/json;odata.metadata=none;charset=utf-8", out MediaTypeHeaderValue sharePointJsonMediaType))
-                    {
-                        requestBody.Headers.ContentType = sharePointJsonMediaType;
-                    }
-                    var requestDigest = string.Empty;
-                    if (!string.IsNullOrEmpty(accessToken))
-                    {
-                        requestDigest = await clientContext.GetRequestDigestAsync().ConfigureAwait(false);
-                        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                    }
-                    else
-                    {
-                        requestDigest = await clientContext.GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false);
-                        if (clientContext.Credentials is System.Net.NetworkCredential networkCredential)
+                        try
                         {
-                            handler.Credentials = networkCredential;
-                        }
-                    }
-
-                    requestBody.Headers.Add("X-RequestDigest", requestDigest);
-
-                    // Perform actual post operation
-                    HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        // If value empty, URL is taken
-                        var responseString = await response.Content.ReadAsStringAsync();
-                        if (responseString != null)
-                        {
-                            try
+                            var responseJson = JObject.Parse(responseString);
+                            if (responseJson["SiteStatus"].Value<int>() == 2)
                             {
-                                var responseJson = JObject.Parse(responseString);
-                                if (responseJson["SiteStatus"].Value<int>() == 2)
+#pragma warning disable CA2000 // Dispose objects before losing scope
+                                responseContext = clientContext.Clone(responseJson["SiteUrl"].ToString());
+#pragma warning restore CA2000 // Dispose objects before losing scope
+                            }
+                            else
+                            {
+                                /*
+                                 * BEGIN : Changes to address the SiteStatus=Provisioning scenario
+                                 */
+                                if (Convert.ToInt32(responseJson["SiteStatus"]) == 1)
                                 {
-                                    responseContext = clientContext.Clone(responseJson["SiteUrl"].ToString());
-                                }
-                                else
-                                {
-                                    /*
-                                     * BEGIN : Changes to address the SiteStatus=Provisioning scenario
-                                     */
-                                    if (Convert.ToInt32(responseJson["SiteStatus"]) == 1)
+                                    var spOperationsMaxRetryCount = maxRetryCount;
+                                    var spOperationsRetryWait = retryDelay;
+                                    var siteCreated = false;
+                                    var siteUrl = string.Empty;
+                                    var retryAttempt = 1;
+
+                                    do
                                     {
-                                        var spOperationsMaxRetryCount = maxRetryCount;
-                                        var spOperationsRetryWait = retryDelay;
-                                        var siteCreated = false;
-                                        var siteUrl = string.Empty;
-                                        var retryAttempt = 1;
-
-                                        do
+                                        if (retryAttempt > 1)
                                         {
-                                            if (retryAttempt > 1)
+                                            System.Threading.Thread.Sleep(retryAttempt * spOperationsRetryWait);
+                                        }
+
+                                        try
+                                        {
+                                            var urlToCheck = HttpUtility.UrlEncode(payload["Url"].ToString());
+
+                                            var siteStatusRequestUrl = $"{clientContext.Web.Url}/_api/SPSiteManager/status?url='{urlToCheck}'";
+
+                                            using (var siteStatusRequest = new HttpRequestMessage(HttpMethod.Get, siteStatusRequestUrl))
                                             {
-                                                System.Threading.Thread.Sleep(retryAttempt * spOperationsRetryWait);
-                                            }
-
-                                            try
-                                            {
-                                                var urlToCheck = HttpUtility.UrlEncode(payload["Url"].ToString());
-
-                                                var siteStatusRequestUrl = $"{clientContext.Web.Url}/_api/SPSiteManager/status?url='{urlToCheck}'";
-
-                                                var siteStatusRequest = new HttpRequestMessage(HttpMethod.Get, siteStatusRequestUrl);
                                                 siteStatusRequest.Headers.Add("accept", "application/json;odata=verbose");
 
-                                                string siteStatusRequestDigest = string.Empty;
-                                                if (!string.IsNullOrEmpty(accessToken))
-                                                {
-                                                    siteStatusRequestDigest = await clientContext.GetRequestDigestAsync().ConfigureAwait(false);
-                                                    siteStatusRequest.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                                                }
-                                                else
-                                                {
-                                                    siteStatusRequestDigest = await clientContext.GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false);
-                                                }
-
-                                                siteStatusRequest.Headers.Add("X-RequestDigest", siteStatusRequestDigest);
+                                                await PnPHttpClient.AuthenticateRequestAsync(siteStatusRequest, clientContext).ConfigureAwait(false);
 
                                                 var siteStatusResponse = await httpClient.SendAsync(siteStatusRequest, new System.Threading.CancellationToken());
                                                 var siteStatusResponseString = await siteStatusResponse.Content.ReadAsStringAsync();
@@ -696,82 +643,89 @@ namespace PnP.Framework.Sites
                                                     }
                                                 }
                                             }
-                                            catch (Exception)
-                                            {
-                                                // Just skip it and retry after a delay
-                                            }
-
-                                            retryAttempt++;
                                         }
-                                        while (!siteCreated && retryAttempt <= spOperationsMaxRetryCount);
-
-                                        if (siteCreated)
+                                        catch (Exception)
                                         {
-                                            responseContext = clientContext.Clone(siteUrl);
+                                            // Just skip it and retry after a delay
                                         }
-                                        else
-                                        {
-                                            var errorSb = new System.Text.StringBuilder();
-                                            errorSb.AppendLine($"Result:{responseString}");
 
-                                            //var System.Net.Http.HttpResponseMessage
-                                            //if(response.Headers["SPRequestGuid"] != null)
-                                            //if (response.Headers.AllKeys.Any(k => string.Equals(k, "SPRequestGuid", StringComparison.InvariantCultureIgnoreCase)))
-                                            if (response.Headers.Contains("SPRequestGuid"))
-                                            {
-                                                var values = response.Headers.GetValues("SPRequestGuid");
-                                                if (values != null)
-                                                {
-                                                    var spRequestGuid = values.FirstOrDefault();
-                                                    errorSb.AppendLine($"ServerErrorTraceCorrelationId: {spRequestGuid}");
-                                                }
-                                            }
+                                        retryAttempt++;
+                                    }
+                                    while (!siteCreated && retryAttempt <= spOperationsMaxRetryCount);
 
-                                            clientContext.Web.EnsureProperty(w => w.CurrentUser);
-                                            clientContext.Web.CurrentUser.EnsureProperty(u => u.LoginName);
-                                            errorSb.AppendLine($"CurrentUser / Owner: {clientContext.Web.CurrentUser.LoginName}");
-                                            Log.Error(Constants.LOGGING_SOURCE, CoreResources.ClientContextExtensions_ExecuteQueryRetryException, errorSb.ToString());
-
-                                            throw new Exception($"PnP.Framework.Sites.SiteCollection.CreateAsync: Could not create {payload["WebTemplate"].ToString()} site.");
-                                        }
+                                    if (siteCreated)
+                                    {
+#pragma warning disable CA2000 // Dispose objects before losing scope
+                                        responseContext = clientContext.Clone(siteUrl);
+#pragma warning restore CA2000 // Dispose objects before losing scope
                                     }
                                     else
                                     {
-                                        throw new Exception(responseString);
-                                    }
-                                    /*
-                                     * END : Changes to address the SiteStatus=Provisioning scenario
-                                     */
-                                }
-                            }
-                            catch (Exception)
-                            {
-                                throw;
-                            }
-                        }
+                                        var errorSb = new System.Text.StringBuilder();
+                                        errorSb.AppendLine($"Result:{responseString}");
 
-                        // If there is a delay, let's wait
-                        if (delayAfterCreation > 0)
-                        {
-                            System.Threading.Thread.Sleep(TimeSpan.FromSeconds(delayAfterCreation));
-                        }
-                        else
-                        {
-                            if (!noWait)
-                            {
-                                // Let's wait for the async provisioning of features, site scripts and content types to be done before we allow API's to further update the created site
-                                WaitForProvisioningIsComplete(responseContext.Web);
+                                        //var System.Net.Http.HttpResponseMessage
+                                        //if(response.Headers["SPRequestGuid"] != null)
+                                        //if (response.Headers.AllKeys.Any(k => string.Equals(k, "SPRequestGuid", StringComparison.InvariantCultureIgnoreCase)))
+                                        if (response.Headers.Contains("SPRequestGuid"))
+                                        {
+                                            var values = response.Headers.GetValues("SPRequestGuid");
+                                            if (values != null)
+                                            {
+                                                var spRequestGuid = values.FirstOrDefault();
+                                                errorSb.AppendLine($"ServerErrorTraceCorrelationId: {spRequestGuid}");
+                                            }
+                                        }
+
+                                        clientContext.Web.EnsureProperty(w => w.CurrentUser);
+                                        clientContext.Web.CurrentUser.EnsureProperty(u => u.LoginName);
+                                        errorSb.AppendLine($"CurrentUser / Owner: {clientContext.Web.CurrentUser.LoginName}");
+                                        Log.Error(Constants.LOGGING_SOURCE, CoreResources.ClientContextExtensions_ExecuteQueryRetryException, errorSb.ToString());
+
+                                        throw new Exception($"PnP.Framework.Sites.SiteCollection.CreateAsync: Could not create {payload["WebTemplate"].ToString()} site.");
+                                    }
+                                }
+                                else
+                                {
+                                    throw new Exception(responseString);
+                                }
+                                /*
+                                 * END : Changes to address the SiteStatus=Provisioning scenario
+                                 */
                             }
                         }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                    }
+
+                    // If there is a delay, let's wait
+                    if (delayAfterCreation > 0)
+                    {
+                        System.Threading.Thread.Sleep(TimeSpan.FromSeconds(delayAfterCreation));
                     }
                     else
                     {
-                        // Something went wrong...
-                        throw new Exception(await response.Content.ReadAsStringAsync());
+                        if (!noWait)
+                        {
+                            // Let's wait for the async provisioning of features, site scripts and content types to be done before we allow API's to further update the created site
+                            WaitForProvisioningIsComplete(responseContext.Web);
+                        }
                     }
                 }
-                return await Task.Run(() => responseContext);
+                else
+                {
+                    // Something went wrong...
+                    throw new Exception(await response.Content.ReadAsStringAsync());
+                }
             }
+            finally
+            {
+                request.Dispose();
+            }
+
+            return await Task.Run(() => responseContext);
         }
 
         private static void WaitForProvisioningIsComplete(Web web, int maxRetryCount = 80, int retryDelay = 1000 * 15)
@@ -902,109 +856,85 @@ namespace PnP.Framework.Sites
                 throw new Exception("App-Only is currently not supported.");
             }
 
-            var accessToken = clientContext.GetAccessToken();
+            clientContext.Web.EnsureProperty(w => w.Url);
+#pragma warning disable CA2000 // Dispose objects before losing scope
+            var httpClient = PnPHttpClient.Instance.GetHttpClient(clientContext);
+#pragma warning restore CA2000 // Dispose objects before losing scope
 
-            using (var handler = new HttpClientHandler())
+            string requestUrl = string.Format("{0}/_api/GroupSiteManager/CreateGroupForSite", clientContext.Web.Url);
+
+            Dictionary<string, object> payload = new Dictionary<string, object>
             {
-                if (string.IsNullOrEmpty(accessToken))
-                {
-                    clientContext.SetAuthenticationCookiesForHandler(handler);
-                }
+                { "displayName", siteCollectionGroupifyInformation.DisplayName },
+                { "alias", siteCollectionGroupifyInformation.Alias },
+                { "isPublic", siteCollectionGroupifyInformation.IsPublic }
+            };
 
-                clientContext.Web.EnsureProperty(w => w.Url);
-
-                using (var httpClient = new PnPHttpProvider(handler))
-                {
-                    string requestUrl = string.Format("{0}/_api/GroupSiteManager/CreateGroupForSite", clientContext.Web.Url);
-
-                    Dictionary<string, object> payload = new Dictionary<string, object>
-                    {
-                        { "displayName", siteCollectionGroupifyInformation.DisplayName },
-                        { "alias", siteCollectionGroupifyInformation.Alias },
-                        { "isPublic", siteCollectionGroupifyInformation.IsPublic }
-                    };
-
-                    var optionalParams = new Dictionary<string, object>
-                    {
-                        { "Description", siteCollectionGroupifyInformation.Description ?? "" },
-                        { "Classification", siteCollectionGroupifyInformation.Classification ?? "" }
-                    };
-                    // Handle groupify options
-                    var creationOptionsValues = new List<string>();
-                    if (siteCollectionGroupifyInformation.KeepOldHomePage)
-                    {
-                        creationOptionsValues.Add("SharePointKeepOldHomepage");
-                    }
-                    creationOptionsValues.Add($"HubSiteId:{siteCollectionGroupifyInformation.HubSiteId}");
-                    optionalParams.Add("CreationOptions", creationOptionsValues);
-                    if (siteCollectionGroupifyInformation.Owners != null && siteCollectionGroupifyInformation.Owners.Length > 0)
-                    {
-                        optionalParams.Add("Owners", siteCollectionGroupifyInformation.Owners);
-                    }
-
-                    payload.Add("optionalParams", optionalParams);
-
-                    var body = payload;
-
-                    // Serialize request object to JSON
-                    var jsonBody = JsonConvert.SerializeObject(body);
-                    var requestBody = new StringContent(jsonBody);
-
-                    // Build Http request
-                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl)
-                    {
-                        Content = requestBody
-                    };
-                    request.Headers.Add("accept", "application/json;odata.metadata=none");
-                    request.Headers.Add("odata-version", "4.0");
-                    if (MediaTypeHeaderValue.TryParse("application/json;odata.metadata=none;charset=utf-8", out MediaTypeHeaderValue sharePointJsonMediaType))
-                    {
-                        requestBody.Headers.ContentType = sharePointJsonMediaType;
-                    }
-                    var requestDigest = string.Empty;
-                    if (!string.IsNullOrEmpty(accessToken))
-                    {
-                        requestDigest = await clientContext.GetRequestDigestAsync().ConfigureAwait(false);
-                        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                    }
-                    else
-                    {
-                        requestDigest = await clientContext.GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false);
-                        if (clientContext.Credentials is System.Net.NetworkCredential networkCredential)
-                        {
-                            handler.Credentials = networkCredential;
-                        }
-                    }
-
-                    requestBody.Headers.Add("X-RequestDigest", requestDigest);
-
-                    // Perform actual post operation
-                    HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        // If value empty, URL is taken
-                        var responseString = await response.Content.ReadAsStringAsync();
-                        var responseJson = JObject.Parse(responseString);
-
-                        // SiteStatus 1 = Provisioning, SiteStatus 2 = Ready
-                        if (responseJson["SiteStatus"].Value<int>() == 2 || responseJson["SiteStatus"].Value<int>() == 1)
-                        {
-                            responseContext = clientContext;
-                        }
-                        else
-                        {
-                            throw new Exception(responseString);
-                        }
-                    }
-                    else
-                    {
-                        // Something went wrong...
-                        throw new Exception(await response.Content.ReadAsStringAsync());
-                    }
-                }
-                return await Task.Run(() => responseContext);
+            var optionalParams = new Dictionary<string, object>
+            {
+                { "Description", siteCollectionGroupifyInformation.Description ?? "" },
+                { "Classification", siteCollectionGroupifyInformation.Classification ?? "" }
+            };
+            // Handle groupify options
+            var creationOptionsValues = new List<string>();
+            if (siteCollectionGroupifyInformation.KeepOldHomePage)
+            {
+                creationOptionsValues.Add("SharePointKeepOldHomepage");
             }
+            creationOptionsValues.Add($"HubSiteId:{siteCollectionGroupifyInformation.HubSiteId}");
+            optionalParams.Add("CreationOptions", creationOptionsValues);
+            if (siteCollectionGroupifyInformation.Owners != null && siteCollectionGroupifyInformation.Owners.Length > 0)
+            {
+                optionalParams.Add("Owners", siteCollectionGroupifyInformation.Owners);
+            }
+
+            payload.Add("optionalParams", optionalParams);
+
+            var body = payload;
+
+            // Serialize request object to JSON
+            var jsonBody = JsonConvert.SerializeObject(body);
+            var requestBody = new StringContent(jsonBody);
+
+            // Build Http request
+            using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl))
+            {
+                request.Content = requestBody;
+                request.Headers.Add("accept", "application/json;odata.metadata=none");
+                request.Headers.Add("odata-version", "4.0");
+                if (MediaTypeHeaderValue.TryParse("application/json;odata.metadata=none;charset=utf-8", out MediaTypeHeaderValue sharePointJsonMediaType))
+                {
+                    requestBody.Headers.ContentType = sharePointJsonMediaType;
+                }
+
+                await PnPHttpClient.AuthenticateRequestAsync(request, clientContext).ConfigureAwait(false);
+
+                // Perform actual post operation
+                HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
+
+                if (response.IsSuccessStatusCode)
+                {
+                    // If value empty, URL is taken
+                    var responseString = await response.Content.ReadAsStringAsync();
+                    var responseJson = JObject.Parse(responseString);
+
+                    // SiteStatus 1 = Provisioning, SiteStatus 2 = Ready
+                    if (responseJson["SiteStatus"].Value<int>() == 2 || responseJson["SiteStatus"].Value<int>() == 1)
+                    {
+                        responseContext = clientContext;
+                    }
+                    else
+                    {
+                        throw new Exception(responseString);
+                    }
+                }
+                else
+                {
+                    // Something went wrong...
+                    throw new Exception(await response.Content.ReadAsStringAsync());
+                }
+            }
+            return await Task.Run(() => responseContext);
         }
 
         private static Guid GetSiteDesignId(CommunicationSiteCollectionCreationInformation siteCollectionCreationInformation)
@@ -1047,57 +977,41 @@ namespace PnP.Framework.Sites
 
             bool aliasExists = true;
 
-            var accessToken = context.GetAccessToken();
+            context.Web.EnsureProperty(w => w.Url);
 
-            using (var handler = new HttpClientHandler())
+#pragma warning disable CA2000 // Dispose objects before losing scope
+            var httpClient = PnPHttpClient.Instance.GetHttpClient(context);
+#pragma warning restore CA2000 // Dispose objects before losing scope
+
+            string requestUrl = string.Format("{0}/_api/SP.Directory.DirectorySession/Group(alias='{1}')", context.Web.Url, alias);
+            using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrl))
             {
-                context.Web.EnsureProperty(w => w.Url);
+                request.Headers.Add("accept", "application/json;odata.metadata=none");
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                request.Headers.Add("odata-version", "4.0");
 
-                if (string.IsNullOrEmpty(accessToken))
+                await PnPHttpClient.AuthenticateRequestAsync(request, context).ConfigureAwait(false);
+
+                // Perform actual GET request
+                HttpResponseMessage response = await httpClient.SendAsync(request);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    context.SetAuthenticationCookiesForHandler(handler);
+                    aliasExists = false;
+                    // If value empty, URL is taken
                 }
-
-                using (var httpClient = new HttpClient(handler))
+                else if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    string requestUrl = string.Format("{0}/_api/SP.Directory.DirectorySession/Group(alias='{1}')", context.Web.Url, alias);
-                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrl);
-                    request.Headers.Add("accept", "application/json;odata.metadata=none");
-                    httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    request.Headers.Add("odata-version", "4.0");
-
-                    if (!string.IsNullOrEmpty(accessToken))
-                    {
-                        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                    }
-                    else
-                    {
-                        if (context.Credentials is System.Net.NetworkCredential networkCredential)
-                        {
-                            handler.Credentials = networkCredential;
-                        }
-                    }
-
-                    // Perform actual GET request
-                    HttpResponseMessage response = await httpClient.SendAsync(request);
-
-                    if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                    {
-                        aliasExists = false;
-                        // If value empty, URL is taken
-                    }
-                    else if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                    {
-                        aliasExists = true;
-                    }
-                    else
-                    {
-                        // Something went wrong...
-                        throw new Exception(await response.Content.ReadAsStringAsync());
-                    }
+                    aliasExists = true;
                 }
-                return await Task.Run(() => aliasExists);
+                else
+                {
+                    // Something went wrong...
+                    throw new Exception(await response.Content.ReadAsStringAsync());
+                }
             }
+
+            return await Task.Run(() => aliasExists);
         }
 
         /// <summary>
@@ -1124,50 +1038,41 @@ namespace PnP.Framework.Sites
 
             Dictionary<string, string> siteInfo = new Dictionary<string, string>();
 
-            var accessToken = context.GetAccessToken();
+            context.Web.EnsureProperty(w => w.Url);
 
-            using (var handler = new HttpClientHandler())
+#pragma warning disable CA2000 // Dispose objects before losing scope
+            var httpClient = PnPHttpClient.Instance.GetHttpClient(context);
+#pragma warning restore CA2000 // Dispose objects before losing scope
+
+            string requestUrl = string.Format("{0}/_api/SP.Directory.DirectorySession/Group(alias='{1}')", context.Web.Url, alias);
+            using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrl))
             {
-                context.Web.EnsureProperty(w => w.Url);
+                request.Headers.Add("accept", "application/json;odata.metadata=none");
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                request.Headers.Add("odata-version", "4.0");
 
-                if (string.IsNullOrEmpty(accessToken))
+                await PnPHttpClient.AuthenticateRequestAsync(request, context).ConfigureAwait(false);
+
+                // Perform actual GET request
+                HttpResponseMessage response = await httpClient.SendAsync(request);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    context.SetAuthenticationCookiesForHandler(handler);
+                    siteInfo = null;
                 }
-
-                using (var httpClient = new HttpClient(handler))
+                else if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    string requestUrl = string.Format("{0}/_api/SP.Directory.DirectorySession/Group(alias='{1}')", context.Web.Url, alias);
-                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrl);
-                    request.Headers.Add("accept", "application/json;odata.metadata=none");
-                    httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    request.Headers.Add("odata-version", "4.0");
-
-                    if (!string.IsNullOrEmpty(accessToken))
-                    {
-                        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                    }
-
-                    // Perform actual GET request
-                    HttpResponseMessage response = await httpClient.SendAsync(request);
-
-                    if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                    {
-                        siteInfo = null;
-                    }
-                    else if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                    {
-                        var responseString = await response.Content.ReadAsStringAsync();
-                        siteInfo = JsonConvert.DeserializeObject<Dictionary<string, string>>(responseString);
-                    }
-                    else
-                    {
-                        // Something went wrong...
-                        throw new Exception(await response.Content.ReadAsStringAsync());
-                    }
+                    var responseString = await response.Content.ReadAsStringAsync();
+                    siteInfo = JsonConvert.DeserializeObject<Dictionary<string, string>>(responseString);
                 }
-                return await Task.Run(() => siteInfo);
+                else
+                {
+                    // Something went wrong...
+                    throw new Exception(await response.Content.ReadAsStringAsync());
+                }
             }
+
+            return await Task.Run(() => siteInfo);
         }
 
         [Obsolete("Use SetGroupImageAsync instead of SetGroupImage")]
@@ -1185,46 +1090,31 @@ namespace PnP.Framework.Sites
         /// <returns>true if succeeded</returns>
         public static async Task<bool> SetGroupImageAsync(ClientContext context, byte[] file, string mimeType)
         {
-            var accessToken = context.GetAccessToken();
             var returnValue = false;
-            using (var handler = new HttpClientHandler())
+            context.Web.EnsureProperty(w => w.Url);
+
+#pragma warning disable CA2000 // Dispose objects before losing scope
+            var httpClient = PnPHttpClient.Instance.GetHttpClient(context);
+#pragma warning restore CA2000 // Dispose objects before losing scope
+            string requestUrl = $"{context.Web.Url}/_api/groupservice/setgroupimage";
+
+            using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl))
             {
-                context.Web.EnsureProperty(w => w.Url);
+                request.Headers.Add("accept", "application/json;odata=verbose");
 
-                if (string.IsNullOrEmpty(accessToken))
-                {
-                    context.SetAuthenticationCookiesForHandler(handler);
-                }
+                await PnPHttpClient.AuthenticateRequestAsync(request, context).ConfigureAwait(false);
 
-                using (var httpClient = new PnPHttpProvider(handler))
-                {
+                request.Headers.Add("binaryStringRequestBody", "true");
+                request.Content = new ByteArrayContent(file);
+                request.Content.Headers.ContentType = new MediaTypeHeaderValue(mimeType);
+                httpClient.Timeout = new TimeSpan(0, 0, 200);
 
-                    string requestUrl = $"{context.Web.Url}/_api/groupservice/setgroupimage";
+                // Perform actual post operation
+                HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
 
-                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
-                    request.Headers.Add("accept", "application/json;odata=verbose");
-
-                    var requestDigest = string.Empty;
-                    if (!string.IsNullOrEmpty(accessToken))
-                    {
-                        requestDigest = await context.GetRequestDigestAsync().ConfigureAwait(false);
-                        request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
-                    }
-                    else
-                    {
-                        requestDigest = await context.GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false);
-                    }
-                    request.Headers.Add("X-RequestDigest", requestDigest);
-                    request.Headers.Add("binaryStringRequestBody", "true");
-                    request.Content = new ByteArrayContent(file);
-                    request.Content.Headers.ContentType = new MediaTypeHeaderValue(mimeType);
-                    httpClient.Timeout = new TimeSpan(0, 0, 200);
-                    // Perform actual post operation
-                    HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
-
-                    returnValue = response.IsSuccessStatusCode;
-                }
+                returnValue = response.IsSuccessStatusCode;
             }
+
             return await Task.Run(() => returnValue);
         }
 
@@ -1250,48 +1140,39 @@ namespace PnP.Framework.Sites
         {
             string responseString = null;
 
-            var accessToken = context.GetAccessToken();
+            context.Web.EnsureProperty(w => w.Url);
 
-            using (var handler = new HttpClientHandler())
+#pragma warning disable CA2000 // Dispose objects before losing scope
+            var httpClient = PnPHttpClient.Instance.GetHttpClient(context);
+#pragma warning restore CA2000 // Dispose objects before losing scope
+
+            string requestUrl = string.Format("{0}/_api/GroupSiteManager/GetValidSiteUrlFromAlias?alias='{1}'", context.Web.Url, alias);
+            using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrl))
             {
-                context.Web.EnsureProperty(w => w.Url);
+                request.Headers.Add("accept", "application/json;odata.metadata=none");
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                request.Headers.Add("odata-version", "4.0");
 
-                if (string.IsNullOrEmpty(accessToken))
+                await PnPHttpClient.AuthenticateRequestAsync(request, context).ConfigureAwait(false);
+
+                // Perform actual GET request
+                HttpResponseMessage response = await httpClient.SendAsync(request);
+
+                if (response.IsSuccessStatusCode)
                 {
-                    context.SetAuthenticationCookiesForHandler(handler);
-                }
+                    var requestResponse = await response.Content.ReadAsStringAsync();
+                    var requestResponseJson = JObject.Parse(requestResponse);
 
-                using (var httpClient = new HttpClient(handler))
+                    responseString = requestResponseJson["value"].ToString();
+                }
+                else
                 {
-                    string requestUrl = string.Format("{0}/_api/GroupSiteManager/GetValidSiteUrlFromAlias?alias='{1}'", context.Web.Url, alias);
-                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrl);
-                    request.Headers.Add("accept", "application/json;odata.metadata=none");
-                    httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    request.Headers.Add("odata-version", "4.0");
-
-                    if (!string.IsNullOrEmpty(accessToken))
-                    {
-                        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                    }
-
-                    // Perform actual GET request
-                    HttpResponseMessage response = await httpClient.SendAsync(request);
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var requestResponse = await response.Content.ReadAsStringAsync();
-                        var requestResponseJson = JObject.Parse(requestResponse);
-
-                        responseString = requestResponseJson["value"].ToString();
-                    }
-                    else
-                    {
-                        // Something went wrong...
-                        throw new Exception(await response.Content.ReadAsStringAsync());
-                    }
+                    // Something went wrong...
+                    throw new Exception(await response.Content.ReadAsStringAsync());
                 }
-                return await Task.Run(() => responseString);
             }
+
+            return await Task.Run(() => responseString);
         }
 
         /// <summary>
@@ -1461,50 +1342,41 @@ namespace PnP.Framework.Sites
 
             Dictionary<string, object> siteInfo = new Dictionary<string, object>();
 
-            var accessToken = context.GetAccessToken();
+            context.Web.EnsureProperty(w => w.Url);
 
-            using (var handler = new HttpClientHandler())
+#pragma warning disable CA2000 // Dispose objects before losing scope
+            var httpClient = PnPHttpClient.Instance.GetHttpClient(context);
+#pragma warning restore CA2000 // Dispose objects before losing scope                
+
+            string requestUrl = string.Format("{0}/_api/SP.Directory.DirectorySession/Group('{1}')?$select=PrincipalName,Id,DisplayName,Alias,Description,InboxUrl,CalendarUrl,DocumentsUrl,SiteUrl,EditGroupUrl,PictureUrl,PeopleUrl,NotebookUrl,Mail,IsPublic,CreationTime,Classification,teamsResources,yammerResources,allowToAddGuests,isDynamic,assignedLabels", context.Web.Url, groupId);
+            using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrl))
             {
-                context.Web.EnsureProperty(w => w.Url);
+                request.Headers.Add("accept", "application/json;odata.metadata=none");
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                request.Headers.Add("odata-version", "4.0");
 
-                if (string.IsNullOrEmpty(accessToken))
+                await PnPHttpClient.AuthenticateRequestAsync(request, context).ConfigureAwait(false);
+
+                // Perform actual GET request
+                HttpResponseMessage response = await httpClient.SendAsync(request);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    context.SetAuthenticationCookiesForHandler(handler);
+                    siteInfo = null;
                 }
-                
-                using (var httpClient = new HttpClient(handler))
+                else if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    string requestUrl = string.Format("{0}/_api/SP.Directory.DirectorySession/Group('{1}')?$select=PrincipalName,Id,DisplayName,Alias,Description,InboxUrl,CalendarUrl,DocumentsUrl,SiteUrl,EditGroupUrl,PictureUrl,PeopleUrl,NotebookUrl,Mail,IsPublic,CreationTime,Classification,teamsResources,yammerResources,allowToAddGuests,isDynamic,assignedLabels", context.Web.Url, groupId);
-                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrl);
-                    request.Headers.Add("accept", "application/json;odata.metadata=none");
-                    httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    request.Headers.Add("odata-version", "4.0");
-
-                    if (!string.IsNullOrEmpty(accessToken))
-                    {
-                        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                    }
-
-                    // Perform actual GET request
-                    HttpResponseMessage response = await httpClient.SendAsync(request);
-
-                    if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                    {
-                        siteInfo = null;
-                    }
-                    else if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                    {
-                        var responseString = await response.Content.ReadAsStringAsync();
-                        siteInfo = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseString);
-                    }
-                    else
-                    {
-                        // Something went wrong...
-                        throw new Exception(await response.Content.ReadAsStringAsync());
-                    }
+                    var responseString = await response.Content.ReadAsStringAsync();
+                    siteInfo = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseString);
                 }
-                return await Task.Run(() => siteInfo);
+                else
+                {
+                    // Something went wrong...
+                    throw new Exception(await response.Content.ReadAsStringAsync());
+                }
             }
+
+            return await Task.Run(() => siteInfo);
         }
 
         /// <summary>

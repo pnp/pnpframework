@@ -2,6 +2,7 @@
 using Microsoft.SharePoint.Client;
 using Microsoft.SharePoint.Client.Taxonomy;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PnP.Framework.ALM;
 using PnP.Framework.Provisioning.Connectors;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
@@ -88,9 +89,11 @@ namespace PnP.Framework.Test.Authentication
         [TestMethod]
         public void MUITest()
         {
-            //using (var cc = new AuthenticationManager().GetWebLoginClientContext("https://contoso.sharepoint.com/teams/TEST_Provisioning"))
-            using (var cc = TestCommon.CreateClientContext("https://portal2013.pnp.com/sites/devportal"))
+            using (var cc = TestCommon.CreateClientContext("https://bertonline.sharepoint.com/sites/TheLanding1"))
             {
+                AppManager manager = new AppManager(cc);
+                var apps = manager.GetAvailable();
+
             }   
         }
 

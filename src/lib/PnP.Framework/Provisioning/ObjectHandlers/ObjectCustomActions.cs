@@ -173,7 +173,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             {
                 if (existingCustomAction.CommandUIExtension != parser.ParseString(customAction.CommandUIExtension.ToString()))
                 {
-                    scope.LogPropertyUpdate("CommandUIExtension");
+                    scope.LogPropertyUpdate(nameof(existingCustomAction.CommandUIExtension));
                     existingCustomAction.CommandUIExtension = parser.ParseString(customAction.CommandUIExtension.ToString());
                     isDirty = true;
                 }
@@ -183,7 +183,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 // Required to allow for a delta action to blank out the CommandUIExtension attribute
                 if (existingCustomAction.CommandUIExtension != null)
                 {
-                    scope.LogPropertyUpdate("CommandUIExtension");
+                    scope.LogPropertyUpdate(nameof(existingCustomAction.CommandUIExtension));
                     existingCustomAction.CommandUIExtension = null;
                     isDirty = true;
                 }
@@ -209,7 +209,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             if (existingCustomAction.Description != customAction.Description)
             {
-                scope.LogPropertyUpdate("Description");
+                scope.LogPropertyUpdate(nameof(existingCustomAction.Description));
                 existingCustomAction.Description = customAction.Description;
                 isDirty = true;
             }
@@ -224,55 +224,55 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             if (existingCustomAction.Group != customAction.Group)
             {
-                scope.LogPropertyUpdate("Group");
+                scope.LogPropertyUpdate(nameof(existingCustomAction.Group));
                 existingCustomAction.Group = customAction.Group;
                 isDirty = true;
             }
             if (existingCustomAction.ImageUrl != parser.ParseString(customAction.ImageUrl))
             {
-                scope.LogPropertyUpdate("ImageUrl");
+                scope.LogPropertyUpdate(nameof(existingCustomAction.ImageUrl));
                 existingCustomAction.ImageUrl = parser.ParseString(customAction.ImageUrl);
                 isDirty = true;
             }
             if (existingCustomAction.Location != customAction.Location)
             {
-                scope.LogPropertyUpdate("Location");
+                scope.LogPropertyUpdate(nameof(existingCustomAction.Location));
                 existingCustomAction.Location = customAction.Location;
                 isDirty = true;
             }
             if (existingCustomAction.RegistrationId != parser.ParseString(customAction.RegistrationId))
             {
-                scope.LogPropertyUpdate("RegistrationId");
+                scope.LogPropertyUpdate(nameof(existingCustomAction.RegistrationId));
                 existingCustomAction.RegistrationId = parser.ParseString(customAction.RegistrationId);
                 isDirty = true;
             }
             if (existingCustomAction.RegistrationType != customAction.RegistrationType)
             {
-                scope.LogPropertyUpdate("RegistrationType");
+                scope.LogPropertyUpdate(nameof(existingCustomAction.RegistrationType));
                 existingCustomAction.RegistrationType = customAction.RegistrationType;
                 isDirty = true;
             }
             if (existingCustomAction.ScriptBlock != parser.ParseString(customAction.ScriptBlock))
             {
-                scope.LogPropertyUpdate("ScriptBlock");
+                scope.LogPropertyUpdate(nameof(existingCustomAction.ScriptBlock));
                 existingCustomAction.ScriptBlock = parser.ParseString(customAction.ScriptBlock);
                 isDirty = true;
             }
             if (existingCustomAction.ScriptSrc != parser.ParseString(customAction.ScriptSrc))
             {
-                scope.LogPropertyUpdate("ScriptSrc");
+                scope.LogPropertyUpdate(nameof(existingCustomAction.ScriptSrc));
                 existingCustomAction.ScriptSrc = parser.ParseString(customAction.ScriptSrc);
                 isDirty = true;
             }
             if (existingCustomAction.Sequence != customAction.Sequence)
             {
-                scope.LogPropertyUpdate("Sequence");
+                scope.LogPropertyUpdate(nameof(existingCustomAction.Sequence));
                 existingCustomAction.Sequence = customAction.Sequence;
                 isDirty = true;
             }
             if (existingCustomAction.Title != parser.ParseString(customAction.Title))
             {
-                scope.LogPropertyUpdate("Title");
+                scope.LogPropertyUpdate(nameof(existingCustomAction.Title));
                 existingCustomAction.Title = parser.ParseString(customAction.Title);
                 isDirty = true;
             }
@@ -288,7 +288,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             if (existingCustomAction.Url != parser.ParseString(customAction.Url))
             {
-                scope.LogPropertyUpdate("Url");
+                scope.LogPropertyUpdate(nameof(existingCustomAction.Url));
                 existingCustomAction.Url = parser.ParseString(customAction.Url);
                 isDirty = true;
             }

@@ -1,19 +1,17 @@
 ﻿using Microsoft.Online.SharePoint.TenantAdministration;
 using Microsoft.SharePoint.Client;
 using PnP.Framework.Diagnostics;
+using PnP.Framework.Http;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Model.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
     internal class SiteToTemplateConversion
     {
-        private static readonly HttpClient httpClient = new HttpClient();
-
         /// <summary>
         /// Actual implementation of extracting configuration from existing site.
         /// </summary>
@@ -502,7 +500,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     {
                         foreach (var webhook in webhooks.Where(w => w.Kind == kind))
                         {
-                            WebhookSender.InvokeWebhook(webhook, httpClient, kind, parser, objectHandler, exception, scope);
+                            WebhookSender.InvokeWebhook(webhook, PnPHttpClient.Instance.GetHttpClient(), kind, parser, objectHandler, exception, scope);
                         }
                     }
                 }

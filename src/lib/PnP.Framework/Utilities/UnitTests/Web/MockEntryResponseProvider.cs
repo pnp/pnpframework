@@ -29,7 +29,7 @@ namespace PnP.Framework.Utilities.UnitTests.Web
                 .ToList();
 
             StringBuilder responseBuilder = new StringBuilder();
-            responseBuilder.Append("[");
+            responseBuilder.Append('[');
             responseBuilder.Append(JsonConvert.SerializeObject(ResponseHeader));
             CSOMRequest request = GetRequest(body);
             List<ActionObjectPath<T>> actionsInRequest = GetActionObjectPathsFromRequest<T>(request);
@@ -40,7 +40,7 @@ namespace PnP.Framework.Utilities.UnitTests.Web
                 responseBuilder.Append($",{id}, {action.GetResponse(CurrentUrlResponses, request)}");
             }
 
-            responseBuilder.Append("]");
+            responseBuilder.Append(']');
             return responseBuilder.ToString();
         }
 

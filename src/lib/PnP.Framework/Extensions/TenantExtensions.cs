@@ -811,7 +811,7 @@ namespace Microsoft.SharePoint.Client
         /// </summary>
         /// <param name="tenant">A tenant object pointing to the context of a Tenant Administration site</param>
         /// <param name="siteUrl">Root site url of your tenant</param>
-        public static void EnableCommSite(this Tenant tenant, string siteUrl = "")
+        public static void EnableCommunicationSite(this Tenant tenant, string siteUrl = "")
         {
             if (string.IsNullOrWhiteSpace(siteUrl))
             {

@@ -1,13 +1,12 @@
 ﻿using Microsoft.SharePoint.Client;
 using Newtonsoft.Json;
+using PnP.Framework.Http;
 using PnP.Framework.Provisioning.ObjectHandlers.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace PnP.Framework.Utilities
 {
@@ -17,15 +16,6 @@ namespace PnP.Framework.Utilities
     public static class HttpHelper
     {
         public const string JsonContentType = "application/json";
-
-        /// <summary>
-        /// Static readonly instance of HttpClient to improve performances
-        /// </summary>
-        /// <remarks>
-        /// See https://docs.microsoft.com/en-us/azure/architecture/antipatterns/improper-instantiation/
-        /// </remarks>
-        private static readonly HttpClient httpClient =
-            new HttpClient(new HttpClientHandler { AllowAutoRedirect = true }, true);
 
         /// <summary>
         /// This helper method makes an HTTP GET request and returns the result as a String
@@ -507,34 +497,24 @@ namespace PnP.Framework.Utilities
             string userAgent = null,
             ClientContext spContext = null)
         {
-            HttpClient client = HttpHelper.httpClient;
+            //HttpClient client = HttpHelper.httpClient;
+            HttpClient client;
 
             // Define whether to use the default HttpClient object
-            // or a custom one with retry logic and/or with custom request cookies
-            // or a SharePoint client context to rely on
-            if (retryCount >= 1 || (cookies != null && cookies.Count > 0) || spContext != null)
+            if (spContext != null)
             {
-                // Let's create a custom HttpHandler
-                var handler = new HttpClientHandler();
-
-                // And now create the customized HttpClient object
-                client = new PnPHttpProvider(handler, true, retryCount, delay, userAgent);
+#pragma warning disable CA2000 // Dispose objects before losing scope
+                client = PnPHttpClient.Instance.GetHttpClient(spContext);
+#pragma warning restore CA2000 // Dispose objects before losing scope
+            }
+            else
+            {
+                client = PnPHttpClient.Instance.GetHttpClient();
             }
 
             // Prepare the variable to hold the result, if any
-            TResult result = default(TResult);
+            TResult result = default;
             responseHeaders = null;
-
-            Uri requestUri = new Uri(requestUrl);
-
-            // If we have the token, then handle the HTTP request
-
-            // Set the Authorization Bearer token
-            if (!string.IsNullOrEmpty(accessToken))
-            {
-                client.DefaultRequestHeaders.Authorization =
-                    new AuthenticationHeaderValue("Bearer", accessToken);
-            }
 
             if (!string.IsNullOrEmpty(referer))
             {
@@ -580,35 +560,44 @@ namespace PnP.Framework.Utilities
             }
 
             // Prepare the HTTP request message with the proper HTTP method
-            HttpRequestMessage request = new HttpRequestMessage(
-                new HttpMethod(httpMethod), requestUrl);
-
-            // Set the request content, if any
-            if (requestContent != null)
+            using (HttpRequestMessage request = new HttpRequestMessage(new HttpMethod(httpMethod), requestUrl))
             {
-                request.Content = requestContent;
-            }
-
-            // Fire the HTTP request
-            HttpResponseMessage response = client.SendAsync(request).Result;
-
-            if (response.IsSuccessStatusCode)
-            {
-                // If the response is Success and there is a
-                // predicate to retrieve the result, invoke it
-                if (resultPredicate != null)
+                // Set the request content, if any
+                if (requestContent != null)
                 {
-                    result = resultPredicate(response);
+                    request.Content = requestContent;
                 }
 
-                // Get any response header and put it in the answer
-                responseHeaders = response.Headers;
-            }
-            else
-            {
-                throw new ApplicationException(
-                    string.Format("Exception while invoking endpoint {0}.", requestUrl),
-                    new Exception(response.Content.ReadAsStringAsync().Result));
+                if (spContext != null)
+                {
+                    PnPHttpClient.AuthenticateRequestAsync(request, spContext).GetAwaiter().GetResult();
+                }
+                else
+                {
+                    PnPHttpClient.AuthenticateRequest(request, accessToken);
+                }
+
+                // Fire the HTTP request
+                HttpResponseMessage response = client.SendAsync(request).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    // If the response is Success and there is a
+                    // predicate to retrieve the result, invoke it
+                    if (resultPredicate != null)
+                    {
+                        result = resultPredicate(response);
+                    }
+
+                    // Get any response header and put it in the answer
+                    responseHeaders = response.Headers;
+                }
+                else
+                {
+                    throw new ApplicationException(
+                        string.Format("Exception while invoking endpoint {0}.", requestUrl),
+                        new Exception(response.Content.ReadAsStringAsync().Result));
+                }
             }
 
             return (result);

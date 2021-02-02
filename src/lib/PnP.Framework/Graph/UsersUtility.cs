@@ -130,7 +130,9 @@ namespace PnP.Framework.Graph
                                     Surname = u.Surname,
                                     UserPrincipalName = u.UserPrincipalName,
                                     BusinessPhones = u.BusinessPhones,
-                                    AdditionalProperties = u.AdditionalData
+                                    AdditionalProperties = u.AdditionalData,
+                                    Mail = u.Mail,
+                                    AccountEnabled = u.AccountEnabled,
                                 };
 
                                 users.Add(user);

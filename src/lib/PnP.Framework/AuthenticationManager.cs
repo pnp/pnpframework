@@ -4,6 +4,7 @@ using Microsoft.SharePoint.Client;
 using PnP.Framework.Utilities;
 using PnP.Framework.Utilities.Context;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Runtime.CompilerServices;
@@ -84,6 +85,148 @@ namespace PnP.Framework
         private readonly Func<DeviceCodeResult, Task> deviceCodeCallback;
         private readonly ICustomWebUi customWebUi;
         private readonly ACSTokenGenerator acsTokenGenerator;
+        private IMsalHttpClientFactory httpClientFactory;
+
+        private IMsalHttpClientFactory HttpClientFactory
+        {
+            get
+            {
+                if (httpClientFactory == null)
+                {
+                    httpClientFactory = new Http.MsalHttpClientFactory();
+                }
+                return httpClientFactory;
+            }
+        }
+
+        #region Creation
+        /// <summary>
+        /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts through device code authentication
+        /// </summary>
+        /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
+        /// <param name="deviceCodeCallback">The callback that will be called with device code information.</param>
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
+        public static AuthenticationManager CreateWithDeviceLogin(string clientId, Func<DeviceCodeResult, Task> deviceCodeCallback, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null)
+        {
+            return new AuthenticationManager(clientId, deviceCodeCallback, azureEnvironment, tokenCacheCallback);
+        }
+
+        /// <summary>
+        /// Creates a new instance of the Authentication Manager to acquire access tokens and client contexts using the Azure AD Interactive flow.
+        /// </summary>
+        /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
+        /// <param name="openBrowserCallback">This callback will be called providing the URL and port to open during the authentication flow</param>
+        /// <param name="tenantId">Optional tenant id or tenant url</param>
+        /// <param name="successMessageHtml">Allows you to override the success message. Notice that a success header message will be added.</param>
+        /// <param name="failureMessageHtml">llows you to override the failure message. Notice that a failed header message will be added and the error message will be appended.</param>
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called to register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
+        public static AuthenticationManager CreateWithInteractiveLogin(string clientId, Action<string, int> openBrowserCallback, string tenantId = null, string successMessageHtml = null, string failureMessageHtml = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null)
+        {
+            return new AuthenticationManager(clientId, Utilities.OAuth.DefaultBrowserUi.FindFreeLocalhostRedirectUri(), tenantId, azureEnvironment, tokenCacheCallback, new Utilities.OAuth.DefaultBrowserUi(openBrowserCallback, successMessageHtml, failureMessageHtml));
+        }
+
+        /// <summary>
+        /// Creates a new instance of the Authentication Manager to acquire access tokens and client contexts using the Azure AD Interactive flow.
+        /// </summary>
+        /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
+        /// <param name="redirectUrl">Optional redirect URL to use for authentication as set up in the Azure AD Application</param>
+        /// <param name="tenantId">Optional tenant id or tenant url</param>
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
+        /// <param name="customWebUi">Optional ICustomWebUi object to fully customize the feedback behavior</param>
+        public static AuthenticationManager CreateWithInteractiveLogin(string clientId, string redirectUrl = null, string tenantId = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null, ICustomWebUi customWebUi = null)
+        {
+            return new AuthenticationManager(clientId, Utilities.OAuth.DefaultBrowserUi.FindFreeLocalhostRedirectUri(), tenantId, azureEnvironment, tokenCacheCallback, customWebUi);
+        }
+
+        /// <summary>
+        /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts. It uses the PnP Management Shell multi-tenant Azure AD application ID to authenticate. By default tokens will be cached in memory.
+        /// </summary>
+        /// <param name="username">The username to use for authentication</param>
+        /// <param name="password">The password to use for authentication</param>
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
+        public static AuthenticationManager CreateWithCredentials(string username, SecureString password, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null)
+        {
+            return new AuthenticationManager(username, password, azureEnvironment, tokenCacheCallback);
+        }
+
+        /// <summary>
+        /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts.
+        /// </summary>
+        /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
+        /// <param name="username">The username to use for authentication</param>
+        /// <param name="password">The password to use for authentication</param>
+        /// <param name="redirectUrl">Optional redirect URL to use for authentication as set up in the Azure AD Application</param>
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
+        public static AuthenticationManager CreateWithCredentials(string clientId, string username, SecureString password, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null)
+        {
+            return new AuthenticationManager(clientId, username, password, redirectUrl, azureEnvironment, tokenCacheCallback);
+        }
+
+        /// <summary>
+        /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts.
+        /// </summary>
+        /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
+        /// <param name="certificate">A valid certificate</param>
+        /// <param name="tenantId">Tenant id or tenant url</param>
+        /// <param name="redirectUrl">Optional redirect URL to use for authentication as set up in the Azure AD Application</param>
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
+        public static AuthenticationManager CreateWithCertificate(string clientId, X509Certificate2 certificate, string tenantId, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null)
+        {
+            return new AuthenticationManager(clientId, certificate, tenantId, redirectUrl, azureEnvironment, tokenCacheCallback);
+        }
+
+        /// <summary>
+        /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts.
+        /// </summary>
+        /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
+        /// <param name="certificatePath">A valid path to a certificate file</param>
+        /// <param name="certificatePassword">The password for the certificate</param>
+        /// <param name="tenantId">The tenant id (guid) or name (e.g. contoso.onmicrosoft.com) </param>
+        /// <param name="redirectUrl">Optional redirect URL to use for authentication as set up in the Azure AD Application</param>
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
+        public static AuthenticationManager CreateWithCertificate(string clientId, string certificatePath, string certificatePassword, string tenantId, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null)
+        {
+            return new AuthenticationManager(clientId, certificatePath, certificatePassword, tenantId, redirectUrl, azureEnvironment, tokenCacheCallback);
+        }
+
+        /// <summary>
+        /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts.
+        /// </summary>
+        /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
+        /// <param name="storeName">The name of the certificate store to find the certificate in.</param>
+        /// <param name="storeLocation">The location of the certificate store to find the certificate in.</param>
+        /// <param name="thumbPrint">The thumbprint of the certificate to use.</param>
+        /// <param name="tenantId">The tenant id (guid) or name (e.g. contoso.onmicrosoft.com) </param>
+        /// <param name="redirectUrl">Optional redirect URL to use for authentication as set up in the Azure AD Application</param>
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
+        public static AuthenticationManager CreateWithCertificate(string clientId, StoreName storeName, StoreLocation storeLocation, string thumbPrint, string tenantId, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null)
+        {
+            return new AuthenticationManager(clientId, storeName, storeLocation, thumbPrint, tenantId, redirectUrl, azureEnvironment, tokenCacheCallback);
+        }
+
+        /// <summary>
+        /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContext.
+        /// </summary>
+        /// <param name="clientId">The client id of the Azure AD application to use for authentication.</param>
+        /// <param name="clientSecret">The client secret of the Azure AD application to use for authentication.</param>
+        /// <param name="tenantId">Optional tenant id or tenant url</param>
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        /// <param name="userAssertion">The user assertion (token) of the user on whose behalf to acquire the context</param>
+        /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
+        public static AuthenticationManager CreateWithOnBehalfOf(string clientId, string clientSecret, UserAssertion userAssertion, string tenantId = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null)
+        {
+            return new AuthenticationManager(clientId, clientSecret, userAssertion, tenantId, azureEnvironment, tokenCacheCallback);
+        }
+
+        #endregion
 
         #region Construction
         /// <summary>
@@ -125,7 +268,7 @@ namespace PnP.Framework
         {
             azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
 
-            var builder = PublicClientApplicationBuilder.Create(clientId).WithAuthority($"{azureADEndPoint}/organizations/");
+            var builder = PublicClientApplicationBuilder.Create(clientId).WithAuthority($"{azureADEndPoint}/organizations/").WithHttpClientFactory(HttpClientFactory);
             if (!string.IsNullOrEmpty(redirectUrl))
             {
                 builder = builder.WithRedirectUri(redirectUrl);
@@ -139,6 +282,8 @@ namespace PnP.Framework
             authenticationType = ClientContextType.AzureADCredentials;
         }
 
+
+
         /// <summary>
         /// Creates a new instance of the Authentication Manager to acquire access tokens and client contexts using the Azure AD Interactive flow.
         /// </summary>
@@ -149,7 +294,7 @@ namespace PnP.Framework
         /// <param name="failureMessageHtml">llows you to override the failure message. Notice that a failed header message will be added and the error message will be appended.</param>
         /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
         /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called to register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
-        public AuthenticationManager(string clientId, Action<string, int> openBrowserCallback, string tenantId = null, string successMessageHtml = null, string failureMessageHtml = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this(clientId,Utilities.OAuth.DefaultBrowserUi.FindFreeLocalhostRedirectUri(),tenantId,azureEnvironment,tokenCacheCallback, new Utilities.OAuth.DefaultBrowserUi(openBrowserCallback, successMessageHtml, failureMessageHtml))
+        public AuthenticationManager(string clientId, Action<string, int> openBrowserCallback, string tenantId = null, string successMessageHtml = null, string failureMessageHtml = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this(clientId, Utilities.OAuth.DefaultBrowserUi.FindFreeLocalhostRedirectUri(), tenantId, azureEnvironment, tokenCacheCallback, new Utilities.OAuth.DefaultBrowserUi(openBrowserCallback, successMessageHtml, failureMessageHtml))
         {
         }
 
@@ -161,11 +306,11 @@ namespace PnP.Framework
         /// <param name="tenantId">Optional tenant id or tenant url</param>
         /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
         /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
-        /// <param name="customWebUi">Optional ICusomtWebUi object to fully customize the feedback behavior</param>
+        /// <param name="customWebUi">Optional ICustomWebUi object to fully customize the feedback behavior</param>
         public AuthenticationManager(string clientId, string redirectUrl = null, string tenantId = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null, ICustomWebUi customWebUi = null) : this()
         {
             azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
-            var builder = PublicClientApplicationBuilder.Create(clientId).WithAuthority($"{azureADEndPoint}/organizations/");
+            var builder = PublicClientApplicationBuilder.Create(clientId).WithAuthority($"{azureADEndPoint}/organizations/").WithHttpClientFactory(HttpClientFactory);
             if (!string.IsNullOrEmpty(redirectUrl))
             {
                 builder = builder.WithRedirectUri(redirectUrl);
@@ -174,8 +319,11 @@ namespace PnP.Framework
             {
                 builder = builder.WithTenantId(tenantId);
             }
+
             publicClientApplication = builder.Build();
+
             this.customWebUi = customWebUi;
+
             // register tokencache if callback provided
             tokenCacheCallback?.Invoke(publicClientApplication.UserTokenCache);
 
@@ -194,7 +342,7 @@ namespace PnP.Framework
             azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
             this.deviceCodeCallback = deviceCodeCallback;
 
-            var builder = PublicClientApplicationBuilder.Create(clientId).WithAuthority($"{azureADEndPoint}/organizations/");
+            var builder = PublicClientApplicationBuilder.Create(clientId).WithAuthority($"{azureADEndPoint}/organizations/").WithHttpClientFactory(HttpClientFactory);
 
             publicClientApplication = builder.Build();
 
@@ -219,11 +367,11 @@ namespace PnP.Framework
             ConfidentialClientApplicationBuilder builder;
             if (azureEnvironment != AzureEnvironment.Production)
             {
-                builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId).WithAuthority(azureADEndPoint, tenantId, true);
+                builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId).WithAuthority(azureADEndPoint, tenantId, true).WithHttpClientFactory(HttpClientFactory);
             }
             else
             {
-                builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId);
+                builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId).WithHttpClientFactory(HttpClientFactory);
             }
 
             if (!string.IsNullOrEmpty(redirectUrl))
@@ -270,7 +418,7 @@ namespace PnP.Framework
                                                            X509KeyStorageFlags.PersistKeySet);
 #pragma warning restore CA2000 // Dispose objects before losing scope
 
-                    builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId);
+                    builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId).WithHttpClientFactory(HttpClientFactory);
                 }
 
                 if (azureEnvironment != AzureEnvironment.Production)
@@ -314,7 +462,7 @@ namespace PnP.Framework
 
             var certificate = Utilities.X509CertificateUtility.LoadCertificate(storeName, storeLocation, thumbPrint);
 
-            var builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId);
+            var builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId).WithHttpClientFactory(HttpClientFactory);
 
             if (azureEnvironment != AzureEnvironment.Production)
             {
@@ -354,11 +502,11 @@ namespace PnP.Framework
                 {
                     throw new ArgumentException("tenantId is required", nameof(tenantId));
                 }
-                builder = ConfidentialClientApplicationBuilder.Create(clientId).WithClientSecret(clientSecret).WithAuthority(azureADEndPoint, tenantId, true);
+                builder = ConfidentialClientApplicationBuilder.Create(clientId).WithClientSecret(clientSecret).WithAuthority(azureADEndPoint, tenantId, true).WithHttpClientFactory(HttpClientFactory);
             }
             else
             {
-                builder = ConfidentialClientApplicationBuilder.Create(clientId).WithClientSecret(clientSecret).WithAuthority($"{azureADEndPoint}/organizations/");
+                builder = ConfidentialClientApplicationBuilder.Create(clientId).WithClientSecret(clientSecret).WithAuthority($"{azureADEndPoint}/organizations/").WithHttpClientFactory(HttpClientFactory);
                 if (!string.IsNullOrEmpty(tenantId))
                 {
                     builder = builder.WithTenantId(tenantId);
@@ -373,39 +521,27 @@ namespace PnP.Framework
         }
         #endregion
 
+        #region Access Token Acquisition
         /// <summary>
         /// Returns an access token for a given site.
         /// </summary>
         /// <param name="siteUrl"></param>
+        /// <param name="prompt">The prompt style to use. Notice that this only works with the Interactive Login flow, for all other flows this parameter is ignored.</param>
         /// <returns></returns>
-        public string GetAccessToken(string siteUrl)
+        public string GetAccessToken(string siteUrl, Prompt prompt = default)
         {
-            return GetAccessTokenAsync(siteUrl, CancellationToken.None).GetAwaiter().GetResult();
+            return GetAccessTokenAsync(siteUrl, CancellationToken.None, prompt).GetAwaiter().GetResult();
         }
 
         /// <summary>
         /// Returns an access token for a given site.
         /// </summary>
         /// <param name="siteUrl"></param>
+        /// <param name="prompt">The prompt style to use. Notice that this only works with the Interactive Login flow, for all other flows this parameter is ignored.</param>
         /// <returns></returns>
-        public async Task<string> GetAccessTokenAsync(string siteUrl)
+        public async Task<string> GetAccessTokenAsync(string siteUrl, Prompt prompt = default)
         {
-            return await GetAccessTokenAsync(siteUrl, CancellationToken.None).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Returns an access token for a given site.
-        /// </summary>
-        /// <param name="siteUrl"></param>
-        /// <param name="cancellationToken">Optional cancellation token to cancel the request</param>
-        /// <returns></returns>
-        public string GetAccessToken(string siteUrl, CancellationToken cancellationToken)
-        {
-            var uri = new Uri(siteUrl);
-
-            var scopes = new[] { $"{uri.Scheme}://{uri.Authority}/.default" };
-
-            return GetAccessTokenAsync(scopes, cancellationToken).GetAwaiter().GetResult();
+            return await GetAccessTokenAsync(siteUrl, CancellationToken.None, prompt).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -413,28 +549,53 @@ namespace PnP.Framework
         /// </summary>
         /// <param name="siteUrl"></param>
         /// <param name="cancellationToken">Optional cancellation token to cancel the request</param>
+        /// <param name="prompt">The prompt style to use. Notice that this only works with the Interactive Login flow, for all other flows this parameter is ignored.</param>
         /// <returns></returns>
-        public async Task<string> GetAccessTokenAsync(string siteUrl, CancellationToken cancellationToken)
+        public string GetAccessToken(string siteUrl, CancellationToken cancellationToken, Prompt prompt = default)
         {
             var uri = new Uri(siteUrl);
 
             var scopes = new[] { $"{uri.Scheme}://{uri.Authority}/.default" };
 
-            return await GetAccessTokenAsync(scopes, cancellationToken).ConfigureAwait(false);
-        }
-
-        public async Task<string> GetAccessTokenAsync(string[] scopes)
-        {
-            return await GetAccessTokenAsync(scopes, CancellationToken.None);
+            return GetAccessTokenAsync(scopes, cancellationToken, prompt).GetAwaiter().GetResult();
         }
 
         /// <summary>
         /// Returns an access token for a given site.
+        /// </summary>
+        /// <param name="siteUrl"></param>
+        /// <param name="cancellationToken">Optional cancellation token to cancel the request</param>
+        /// <param name="prompt">The prompt style to use. Notice that this only works with the Interactive Login flow, for all other flows this parameter is ignored.</param>
+        /// <returns></returns>
+        public async Task<string> GetAccessTokenAsync(string siteUrl, CancellationToken cancellationToken, Prompt prompt = default)
+        {
+            var uri = new Uri(siteUrl);
+
+            var scopes = new[] { $"{uri.Scheme}://{uri.Authority}/.default" };
+
+            return await GetAccessTokenAsync(scopes, cancellationToken, prompt).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Returns an access token for the given scopes.
+        /// </summary>
+        /// <param name="scopes">The scopes to retrieve the access token for</param>
+        /// <param name="prompt">The prompt style to use. Notice that this only works with the Interactive Login flow, for all other flows this parameter is ignored.</param>
+        /// <returns></returns>
+        public async Task<string> GetAccessTokenAsync(string[] scopes, Prompt prompt = default)
+        {
+            return await GetAccessTokenAsync(scopes, CancellationToken.None, prompt);
+        }
+
+
+        /// <summary>
+        /// Returns an access token for the given scopes.
         /// </summary>
         /// <param name="scopes">The scopes to retrieve the access token for</param>
         /// <param name="cancellationToken">Optional cancellation token to cancel the request</param>
+        /// <param name="prompt">The prompt style to use. Notice that this only works with the Interactive Login flow, for all other flows this parameter is ignored.</param>
         /// <returns></returns>
-        public async Task<string> GetAccessTokenAsync(string[] scopes, CancellationToken cancellationToken)
+        public async Task<string> GetAccessTokenAsync(string[] scopes, CancellationToken cancellationToken, Prompt prompt = default)
         {
             AuthenticationResult authResult = null;
 
@@ -468,6 +629,10 @@ namespace PnP.Framework
                             {
                                 builder = builder.WithCustomWebUi(customWebUi);
                             }
+                            if (prompt != default)
+                            {
+                                builder.WithPrompt(prompt);
+                            }
                             authResult = await builder.ExecuteAsync(cancellationToken);
                         }
                         break;
@@ -482,6 +647,8 @@ namespace PnP.Framework
                         }
                         catch
                         {
+                            var builder = confidentialClientApplication.AcquireTokenForClient(scopes);
+
                             authResult = await confidentialClientApplication.AcquireTokenForClient(scopes).ExecuteAsync(cancellationToken);
                         }
                         break;
@@ -524,7 +691,9 @@ namespace PnP.Framework
             }
             return null;
         }
+        #endregion
 
+        #region Context Acquisition
         /// <summary>
         /// Returns a CSOM ClientContext which has been set up for Azure AD OAuth authentication
         /// </summary>
@@ -678,8 +847,9 @@ namespace PnP.Framework
             }
             return null;
         }
+        #endregion
 
-
+        #region Internals
         private ClientContext BuildClientContext(IClientApplicationBase application, string siteUrl, string[] scopes, ClientContextType contextType)
         {
             var clientContext = new ClientContext(siteUrl)
@@ -1030,5 +1200,7 @@ namespace PnP.Framework
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
+
+        #endregion
     }
 }

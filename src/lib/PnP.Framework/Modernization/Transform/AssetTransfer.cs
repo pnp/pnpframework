@@ -1,13 +1,12 @@
 ﻿using Microsoft.SharePoint.Client;
-using PnP.Framework.Utilities;
 using PnP.Framework.Modernization.Entities;
 using PnP.Framework.Modernization.Extensions;
 using PnP.Framework.Modernization.Telemetry;
+using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using File = Microsoft.SharePoint.Client.File;
 
 namespace PnP.Framework.Modernization.Transform
 {
@@ -466,12 +465,18 @@ namespace PnP.Framework.Modernization.Transform
         /// <returns></returns>
         public string ConvertFileToFolderFriendlyName(string fileName)
         {
-            // This is going to need some heavy testing
+            // replace invalid path chars with an _
+            fileName = ReplaceInvalidPathChars(fileName);
+
             var justFileName = Path.GetFileNameWithoutExtension(fileName);
             var friendlyName = justFileName.Replace(" ", "-");
             return friendlyName;
         }
 
+        internal static string ReplaceInvalidPathChars(string filename)
+        {
+            return string.Join("_", filename.Split(Path.GetInvalidPathChars()));
+        }
 
         /// <summary>
         /// Ensures that we have context of the source site collection

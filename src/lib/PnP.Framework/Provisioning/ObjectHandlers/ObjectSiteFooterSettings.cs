@@ -233,7 +233,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         web.Context.ExecuteQueryRetry();
                         ClientResult<Stream> stream = file.OpenBinaryStream();
                         web.Context.ExecuteQueryRetry();
-
+                        
+                        file.EnsureProperty(f => f.ServerRelativePath);
                         var baseUri = new Uri(web.Url);
                         var fullUri = new Uri(baseUri, file.ServerRelativePath.DecodedUrl);
                         var folderPath = HttpUtility.UrlDecode(fullUri.Segments.Take(fullUri.Segments.Length - 1).ToArray().Aggregate((i, x) => i + x).TrimEnd('/'));

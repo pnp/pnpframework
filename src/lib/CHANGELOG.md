@@ -28,6 +28,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Fix bug when trying to add existing member or owner to a unified group. #139 [magarma - Miguel Angel García Martínez]
 - Fix: Updating WebTemplateExtensionId value in payload dictionary. #143 [magarma - Miguel Angel García Martínez]
 - Fix some warnings #147 [jackpoz - Giacomo Pozzoni]
+- Fix Escaped whiteSpace break JSON in NewDocumentTemplates #152 [czullu - Christian Zuellig]
 
 ## [1.1.0]
 

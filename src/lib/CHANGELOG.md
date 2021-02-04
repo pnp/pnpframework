@@ -29,6 +29,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Fix: Updating WebTemplateExtensionId value in payload dictionary. #143 [magarma - Miguel Angel García Martínez]
 - Fix some warnings #147 [jackpoz - Giacomo Pozzoni]
 - Fix Escaped whiteSpace break JSON in NewDocumentTemplates #152 [czullu - Christian Zuellig]
+- Fix because Modern List Creation creates CTType with 0x0100ParentOne00Id but ParentOne does not exist #153 [czullu - Christian Zuellig]
 
 ## [1.1.0]
 

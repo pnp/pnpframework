@@ -208,13 +208,43 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
             else
             {
+                //Fix since RegEx.Escape in ListContentTypeIdToken.CreateToken does escape whiteSpace with \ it breaks the JSON in NewDocumentTemplates
+                string NewDocumentTemplatesJson = null;
+                if (xml.Contains("NewDocumentTemplates"))
+                {
+                    var viewSchema = System.Xml.Linq.XDocument.Parse(xml);
+                    var templateElement = viewSchema.Root.Elements().FirstOrDefault(element => element.Name.LocalName == "NewDocumentTemplates");
+                    if (templateElement != null)
+                    {
+                        NewDocumentTemplatesJson = templateElement.Value;
+                    }
+                }
+
                 foreach (Microsoft.SharePoint.Client.ContentType contentType in list.ContentTypes)
                 {
                     string contentTypeReplacement = ListContentTypeIdToken.CreateToken(list.Title, contentType.Id);
+                    if (!string.IsNullOrWhiteSpace(NewDocumentTemplatesJson))
+                    {
+                        string contentTypeReplacementJson = contentTypeReplacement.Replace("\\ ", " ");
+                        contentTypeReplacementJson = contentTypeReplacementJson.Replace("\\", "\\\\");
+                        NewDocumentTemplatesJson = Regex.Replace(NewDocumentTemplatesJson, contentType.Id.StringValue, contentTypeReplacementJson, RegexOptions.IgnoreCase);
+                    }
                     xml = Regex.Replace(xml, contentType.Id.StringValue, contentTypeReplacement, RegexOptions.IgnoreCase);
                 }
 
-                return TokenizeXml(xml, web);
+                string tokenizedXML = TokenizeXml(xml, web);
+                if (!string.IsNullOrWhiteSpace(NewDocumentTemplatesJson))
+                {
+                    var viewSchema = System.Xml.Linq.XDocument.Parse(tokenizedXML);
+                    var templateElement = viewSchema.Root.Elements().FirstOrDefault(element => element.Name.LocalName == "NewDocumentTemplates");
+                    if (templateElement != null)
+                    {
+                        templateElement.Value = NewDocumentTemplatesJson;
+                        tokenizedXML = viewSchema.ToString();
+                    }
+                }
+
+                return tokenizedXML;
             }
         }
 

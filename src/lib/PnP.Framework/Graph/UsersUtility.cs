@@ -21,11 +21,11 @@ namespace PnP.Framework.Graph
         /// <param name="userId">The unique identifier of the user in Azure Active Directory to return</param>    
         /// <param name="selectProperties">Allows providing the names of properties to return regarding the users. If not provided, the standard properties will be returned.</param>
         /// <param name="startIndex">First item in the results returned by Microsoft Graph to return</param>
-        /// <param name="endIndex">Last item in the results returned by Microsoft Graph to return</param>
+        /// <param name="endIndex">Last item in the results returned by Microsoft Graph to return. Provide NULL to return all results that exist.</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry.</param>
         /// <returns>List with User objects</returns>
-        public static Model.User GetUser(string accessToken, Guid userId, string[] selectProperties = null, int startIndex = 0, int endIndex = 999, int retryCount = 10, int delay = 500)
+        public static Model.User GetUser(string accessToken, Guid userId, string[] selectProperties = null, int startIndex = 0, int? endIndex = 999, int retryCount = 10, int delay = 500)
         {
             return ListUsers(accessToken, $"id eq '{userId}'", null, selectProperties, startIndex, endIndex, retryCount, delay).FirstOrDefault();
         }
@@ -37,11 +37,11 @@ namespace PnP.Framework.Graph
         /// <param name="userPrincipalName">The User Principal Name of the user in Azure Active Directory to return</param>
         /// <param name="selectProperties">Allows providing the names of properties to return regarding the users. If not provided, the standard properties will be returned.</param>
         /// <param name="startIndex">First item in the results returned by Microsoft Graph to return</param>
-        /// <param name="endIndex">Last item in the results returned by Microsoft Graph to return</param>
+        /// <param name="endIndex">Last item in the results returned by Microsoft Graph to return. Provide NULL to return all results that exist.</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry.</param>
         /// <returns>User object</returns>
-        public static Model.User GetUser(string accessToken, string userPrincipalName, string[] selectProperties = null, int startIndex = 0, int endIndex = 999, int retryCount = 10, int delay = 500)
+        public static Model.User GetUser(string accessToken, string userPrincipalName, string[] selectProperties = null, int startIndex = 0, int? endIndex = 999, int retryCount = 10, int delay = 500)
         {
             return ListUsers(accessToken, $"userPrincipalName eq '{userPrincipalName}'", null, selectProperties, startIndex, endIndex, retryCount, delay).FirstOrDefault();
         }
@@ -52,11 +52,11 @@ namespace PnP.Framework.Graph
         /// <param name="accessToken">The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</param> 
         /// <param name="additionalProperties">Allows providing the names of additional properties to return regarding the users</param>
         /// <param name="startIndex">First item in the results returned by Microsoft Graph to return</param>
-        /// <param name="endIndex">Last item in the results returned by Microsoft Graph to return</param>
+        /// <param name="endIndex">Last item in the results returned by Microsoft Graph to return. Provide NULL to return all results that exist.</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry.</param>
         /// <returns>List with User objects</returns>
-        public static List<Model.User> ListUsers(string accessToken, string[] additionalProperties = null, int startIndex = 0, int endIndex = 999, int retryCount = 10, int delay = 500)
+        public static List<Model.User> ListUsers(string accessToken, string[] additionalProperties = null, int startIndex = 0, int? endIndex = 999, int retryCount = 10, int delay = 500)
         {
             return ListUsers(accessToken, null, null, additionalProperties, startIndex, endIndex, retryCount, delay);
         }
@@ -69,11 +69,11 @@ namespace PnP.Framework.Graph
         /// <param name="orderby">OData orderby instruction</param>
         /// <param name="selectProperties">Allows providing the names of properties to return regarding the users. If not provided, the standard properties will be returned.</param>
         /// <param name="startIndex">First item in the results returned by Microsoft Graph to return</param>
-        /// <param name="endIndex">Last item in the results returned by Microsoft Graph to return</param>
+        /// <param name="endIndex">Last item in the results returned by Microsoft Graph to return. Provide NULL to return all results that exist.</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry.</param>
         /// <returns>List with User objects</returns>
-        public static List<Model.User> ListUsers(string accessToken, string filter, string orderby, string[] selectProperties = null, int startIndex = 0, int endIndex = 999, int retryCount = 10, int delay = 500)
+        public static List<Model.User> ListUsers(string accessToken, string filter, string orderby, string[] selectProperties = null, int startIndex = 0, int? endIndex = 999, int retryCount = 10, int delay = 500)
         {
             if (String.IsNullOrEmpty(accessToken))
             {
@@ -116,6 +116,11 @@ namespace PnP.Framework.Graph
                         {
                             currentIndex++;
 
+                            if(endIndex.HasValue && endIndex.Value < currentIndex)
+                            {
+                                break;
+                            }
+
                             if (currentIndex >= startIndex)
                             {
                                 var user = new Model.User
@@ -139,7 +144,7 @@ namespace PnP.Framework.Graph
                             }
                         }
 
-                        if (pagedUsers.NextPageRequest != null && currentIndex < endIndex)
+                        if (pagedUsers.NextPageRequest != null && (!endIndex.HasValue || currentIndex < endIndex.Value))
                         {
                             pagedUsers = await pagedUsers.NextPageRequest.GetAsync();
                         }
@@ -169,11 +174,11 @@ namespace PnP.Framework.Graph
         /// <param name="orderby">OData orderby instruction</param>
         /// <param name="selectProperties">Allows providing the names of properties to return regarding the users. If not provided, the standard properties will be returned.</param>
         /// <param name="startIndex">First item in the results returned by Microsoft Graph to return</param>
-        /// <param name="endIndex">Last item in the results returned by Microsoft Graph to return</param>
+        /// <param name="endIndex">Last item in the results returned by Microsoft Graph to return. Provide NULL to return all results that exist.</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry.</param>
         /// <returns>List with User objects</returns>
-        public static Model.UserDelta ListUserDelta(string accessToken, string deltaToken, string filter, string orderby, string[] selectProperties = null, int startIndex = 0, int endIndex = 999, int retryCount = 10, int delay = 500)
+        public static Model.UserDelta ListUserDelta(string accessToken, string deltaToken, string filter, string orderby, string[] selectProperties = null, int startIndex = 0, int? endIndex = 999, int retryCount = 10, int delay = 500)
         {
             if (String.IsNullOrEmpty(accessToken))
             {
@@ -227,13 +232,18 @@ namespace PnP.Framework.Graph
                     {
                         currentIndex++;
 
-                        if (currentIndex >= startIndex && currentIndex <= endIndex)
+                        if(endIndex.HasValue && endIndex.Value < currentIndex)
+                        {
+                            break;
+                        }
+
+                        if (currentIndex >= startIndex && (!endIndex.HasValue || currentIndex <= endIndex.Value))
                         {
                             userDelta.Users.Add(user);
                         }
                     }
 
-                    if (userDeltaResponse.NextLink != null && currentIndex < endIndex)
+                    if (userDeltaResponse.NextLink != null && (!endIndex.HasValue || currentIndex < endIndex.Value))
                     {
                         getUserDeltaUrl = userDeltaResponse.NextLink;
                     }

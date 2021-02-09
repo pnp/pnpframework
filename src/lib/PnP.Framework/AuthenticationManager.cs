@@ -1226,11 +1226,17 @@ namespace PnP.Framework
             };
         }
 
+        /// <summary>
+        /// Clears the internal in-memory token cache used by MSAL
+        /// </summary>
         public void ClearTokenCache()
         {
             ClearTokenCacheAsync().GetAwaiter().GetResult();
         }
 
+        /// <summary>
+        /// Clears the internal in-memory token cache used by MSAL
+        /// </summary>
         public async Task ClearTokenCacheAsync()
         {
             if (publicClientApplication != null)

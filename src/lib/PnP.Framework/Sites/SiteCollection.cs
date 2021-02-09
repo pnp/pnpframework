@@ -346,7 +346,7 @@ namespace PnP.Framework.Sites
                             {
                                 if (retryAttempt > 1)
                                 {
-                                    System.Threading.Thread.Sleep(retryAttempt * spOperationsRetryWait);
+                                    await Task.Delay(retryAttempt * spOperationsRetryWait);
                                 }
 
                                 try
@@ -408,7 +408,7 @@ namespace PnP.Framework.Sites
                     // If there is a delay, let's wait
                     if (delayAfterCreation > 0)
                     {
-                        System.Threading.Thread.Sleep(TimeSpan.FromSeconds(delayAfterCreation));
+                        await Task.Delay(TimeSpan.FromSeconds(delayAfterCreation));
                     }
                     else
                     {
@@ -613,7 +613,7 @@ namespace PnP.Framework.Sites
                                     {
                                         if (retryAttempt > 1)
                                         {
-                                            System.Threading.Thread.Sleep(retryAttempt * spOperationsRetryWait);
+                                            await Task.Delay(retryAttempt * spOperationsRetryWait);
                                         }
 
                                         try
@@ -703,7 +703,7 @@ namespace PnP.Framework.Sites
                     // If there is a delay, let's wait
                     if (delayAfterCreation > 0)
                     {
-                        System.Threading.Thread.Sleep(TimeSpan.FromSeconds(delayAfterCreation));
+                        await Task.Delay(TimeSpan.FromSeconds(delayAfterCreation));
                     }
                     else
                     {

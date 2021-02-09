@@ -9,6 +9,7 @@
         AzureADInteractive = 4,
         AzureOnBehalfOf = 5,
         DeviceLogin = 6,
-        OnPremises = 7
+        OnPremises = 7,
+        AccessToken = 8
     }
 }

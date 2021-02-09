@@ -86,6 +86,7 @@ namespace PnP.Framework
         private readonly ICustomWebUi customWebUi;
         private readonly ACSTokenGenerator acsTokenGenerator;
         private IMsalHttpClientFactory httpClientFactory;
+        private readonly SecureString accessToken;
 
         private IMsalHttpClientFactory HttpClientFactory
         {
@@ -100,6 +101,11 @@ namespace PnP.Framework
         }
 
         #region Creation
+
+        public static AuthenticationManager CreateWithAccessToken(SecureString accessToken)
+        {
+            return new AuthenticationManager(accessToken);
+        }
         /// <summary>
         /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts through device code authentication
         /// </summary>
@@ -244,6 +250,12 @@ namespace PnP.Framework
             authenticationType = ClientContextType.SharePointACSAppOnly;
         }
 
+
+        public AuthenticationManager(SecureString accessToken)
+        {
+            this.accessToken = accessToken;
+            authenticationType = ClientContextType.AccessToken;
+        }
         /// <summary>
         /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts. It uses the PnP Management Shell multi-tenant Azure AD application ID to authenticate. By default tokens will be cached in memory.
         /// </summary>
@@ -684,6 +696,10 @@ namespace PnP.Framework
                     {
                         return acsTokenGenerator.GetToken(null);
                     }
+                case ClientContextType.AccessToken:
+                    {
+                        return new System.Net.NetworkCredential("",accessToken).Password;
+                    }
             }
             if (authResult?.AccessToken != null)
             {
@@ -838,12 +854,39 @@ namespace PnP.Framework
 
                 case ClientContextType.SharePointACSAppOnly:
                     {
-                        return GetAccessTokenContext(siteUrl, (site) =>
+                        var context = GetAccessTokenContext(siteUrl, (site) =>
                         {
                             return this.acsTokenGenerator.GetToken(new Uri(site));
                         });
+
+                        ClientContextSettings clientContextSettings = new ClientContextSettings()
+                        {
+                            Type = ClientContextType.SharePointACSAppOnly,
+                            SiteUrl = siteUrl,
+                            AuthenticationManager = this
+                        };
+                        context.AddContextSettings(clientContextSettings);
+
+                        return context;
+
                     }
 
+                case ClientContextType.AccessToken:
+                    {
+                        var context = GetAccessTokenContext(siteUrl, (site) =>
+                        {
+                            return EncryptionUtility.ToInsecureString(this.accessToken);
+                        });
+                        ClientContextSettings clientContextSettings = new ClientContextSettings()
+                        {
+                            Type = ClientContextType.AccessToken,
+                            SiteUrl = siteUrl,
+                            AuthenticationManager = this
+                        };
+                        context.AddContextSettings(clientContextSettings);
+
+                        return context;
+                    }
             }
             return null;
         }
@@ -1101,8 +1144,9 @@ namespace PnP.Framework
             };
         }
 
+
         /// <summary>
-        /// Returns a SharePoint ClientContext using Azure Active Directory authentication. This requires that you have a Azure AD Web Application registered. The user will not be prompted for authentication, the current user's authentication context will be used by leveraging ADAL.
+        /// Returns a SharePoint ClientContext using a custom access token function. The function will be called with the Resource Uri and expected to return an access token as a string.
         /// </summary>
         /// <param name="siteUrl">Site for which the ClientContext object will be instantiated</param>
         /// <param name="accessTokenGetter">The AccessToken getter method to use</param>
@@ -1127,7 +1171,7 @@ namespace PnP.Framework
         }
 
         /// <summary>
-        /// Returns a SharePoint ClientContext using Azure Active Directory authentication. This requires that you have a Azure AD Web Application registered. The user will not be prompted for authentication, the current user's authentication context will be used by leveraging an explicit OAuth 2.0 Access Token value.
+        /// Returns a SharePoint ClientContext using custom provided access token.
         /// </summary>
         /// <param name="siteUrl">Site for which the ClientContext object will be instantiated</param>
         /// <param name="accessToken">An explicit value for the AccessToken</param>

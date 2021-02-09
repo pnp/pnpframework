@@ -90,13 +90,7 @@ namespace PnP.Framework.Utilities
             if (string.IsNullOrEmpty(input))
                 throw new ArgumentException("Input string is empty and cannot be made into a SecureString", nameof(input));
 
-            SecureString secure = new SecureString();
-            foreach (char c in input)
-            {
-                secure.AppendChar(c);
-            }
-            secure.MakeReadOnly();
-            return secure;
+            return new System.Net.NetworkCredential("", input).SecurePassword;
         }
 
         /// <summary>
@@ -106,17 +100,7 @@ namespace PnP.Framework.Utilities
         /// <returns>A "regular" string representation of the passed SecureString</returns>
         public static string ToInsecureString(SecureString input)
         {
-            string returnValue = string.Empty;
-            IntPtr ptr = System.Runtime.InteropServices.Marshal.SecureStringToBSTR(input);
-            try
-            {
-                returnValue = System.Runtime.InteropServices.Marshal.PtrToStringBSTR(ptr);
-            }
-            finally
-            {
-                System.Runtime.InteropServices.Marshal.ZeroFreeBSTR(ptr);
-            }
-            return returnValue;
+            return new System.Net.NetworkCredential("", input).Password;
         }
 
 

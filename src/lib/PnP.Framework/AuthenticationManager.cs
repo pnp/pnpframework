@@ -698,7 +698,7 @@ namespace PnP.Framework
                     }
                 case ClientContextType.AccessToken:
                     {
-                        return new System.Net.NetworkCredential("",accessToken).Password;
+                        return new System.Net.NetworkCredential("", accessToken).Password;
                     }
             }
             if (authResult?.AccessToken != null)
@@ -1224,6 +1224,33 @@ namespace PnP.Framework
                 AzureEnvironment.China => "cn",
                 _ => "com"
             };
+        }
+
+        public void ClearTokenCache()
+        {
+            ClearTokenCacheAsync().GetAwaiter().GetResult();
+        }
+
+        public async Task ClearTokenCacheAsync()
+        {
+            if (publicClientApplication != null)
+            {
+                var accounts = (await publicClientApplication.GetAccountsAsync()).ToList();
+                while (accounts.Any())
+                {
+                    await publicClientApplication.RemoveAsync(accounts.First());
+                    accounts = (await publicClientApplication.GetAccountsAsync()).ToList();
+                }
+            }
+            if(confidentialClientApplication != null)
+            {
+                var accounts = (await confidentialClientApplication.GetAccountsAsync()).ToList();
+                while (accounts.Any())
+                {
+                    await confidentialClientApplication.RemoveAsync(accounts.First());
+                    accounts = (await confidentialClientApplication.GetAccountsAsync()).ToList();
+                }
+            }
         }
 
         /// <summary>

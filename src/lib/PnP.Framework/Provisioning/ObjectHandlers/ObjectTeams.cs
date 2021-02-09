@@ -130,8 +130,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     System.Threading.Thread.Sleep(TimeSpan.FromSeconds(5));
                 }
 
-                // Don't wait more than 1 minute
-                if (iterations > 12)
+                // Don't wait more than 2 minute
+                if (iterations > 24)
                 {
                     //wait = false;
                     throw new Exception($"Team with id {teamId} not created within timeout.");

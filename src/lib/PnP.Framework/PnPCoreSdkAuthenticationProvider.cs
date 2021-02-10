@@ -12,11 +12,18 @@ namespace PnP.Framework
     internal class PnPCoreSdkAuthenticationProvider : ILegacyAuthenticationProvider
     {
         private readonly ClientContext clientContext;
+        private readonly string userAgent;
         private CookieContainer cookieContainer;
 
         internal PnPCoreSdkAuthenticationProvider(ClientContext context)
         {
             clientContext = context ?? throw new ArgumentNullException(nameof(context));
+        }
+
+        internal PnPCoreSdkAuthenticationProvider(ClientContext context, string userAgent)
+        {
+            clientContext = context ?? throw new ArgumentNullException(nameof(context));
+            this.userAgent = userAgent ?? throw new ArgumentNullException(nameof(userAgent));
         }
 
         public async Task AuthenticateRequestAsync(Uri resource, HttpRequestMessage request)
@@ -30,10 +37,17 @@ namespace PnP.Framework
             {
                 throw new ArgumentNullException(nameof(request));
             }
+            if (!string.IsNullOrEmpty(userAgent))
+            {
+                request.Headers.Remove("User-Agent");
+                request.Headers.Add("User-Agent", userAgent);
+            }
 
             request.Headers.Authorization = new AuthenticationHeaderValue("bearer",
                 await GetAccessTokenAsync(resource).ConfigureAwait(false));
         }
+
+
 
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<string> GetAccessTokenAsync(Uri resource, string[] scopes)

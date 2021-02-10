@@ -130,8 +130,12 @@ namespace PnP.Framework.Provisioning.Model
         /// </summary>
         SiteSettings = 536870912,
         /// <summary>
+        /// Value 1073741824 represents Syntex models
+        /// </summary>
+        SyntexModels = 1073741824,
+        /// <summary>
         /// Takes all handlers
         /// </summary>
-        All = AuditSettings | ComposedLook | CustomActions | ExtensibilityProviders | Features | Fields | Files | Lists | Pages | Publishing | RegionalSettings | SearchSettings | SitePolicy | SupportedUILanguages | TermGroups | Workflows | SiteSecurity | ContentTypes | PropertyBagEntries | PageContents | WebSettings | Navigation | ImageRenditions | ApplicationLifecycleManagement | Tenant | WebApiPermissions | SiteHeader | SiteFooter | Theme | SiteSettings
+        All = AuditSettings | ComposedLook | CustomActions | ExtensibilityProviders | Features | Fields | Files | Lists | Pages | Publishing | RegionalSettings | SearchSettings | SitePolicy | SupportedUILanguages | TermGroups | Workflows | SiteSecurity | ContentTypes | PropertyBagEntries | PageContents | WebSettings | Navigation | ImageRenditions | ApplicationLifecycleManagement | Tenant | WebApiPermissions | SiteHeader | SiteFooter | Theme | SiteSettings | SyntexModels
     }
 }

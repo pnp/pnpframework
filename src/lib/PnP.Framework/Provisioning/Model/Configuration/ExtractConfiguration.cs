@@ -73,6 +73,9 @@ namespace PnP.Framework.Provisioning.Model.Configuration
         [JsonPropertyName("publishing")]
         public Publishing.ExtractPublishingConfiguration Publishing { get; set; } = new Publishing.ExtractPublishingConfiguration();
 
+        [JsonPropertyName("syntexModeld")]
+        public SyntexModels.ExtractSyntexModelsConfiguration SyntexModels { get; set; } = new SyntexModels.ExtractSyntexModelsConfiguration();
+
         public static ExtractConfiguration FromCreationInformation(ProvisioningTemplateCreationInformation information)
         {
             var config = new ExtractConfiguration

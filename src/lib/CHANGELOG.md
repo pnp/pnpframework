@@ -32,6 +32,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Fix because Modern List Creation creates CTType with 0x0100ParentOne00Id but ParentOne does not exist #153 [czullu - Christian Zuellig]
 - Updated UsersUtility to retrieve all users when requested #157 [koenzomers - Koen Zomers]
 - Replace Thread.Sleep() with Task.Delay() in async methods #165 [jackpoz - Giacomo Pozzoni]
+- Added additional Graph User properties #160 [koenzomers - Koen Zomers]
 
 ## [1.1.0]
 

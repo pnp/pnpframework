@@ -1783,7 +1783,7 @@ namespace PnP.Framework.Graph
                     {
                         // In case of exception wait for 30 secs
                         Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
-                        System.Threading.Thread.Sleep(TimeSpan.FromSeconds(30));
+                        await Task.Delay(TimeSpan.FromSeconds(30));
                     }
                 }
             }

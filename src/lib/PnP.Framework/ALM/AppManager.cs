@@ -948,7 +948,7 @@ namespace PnP.Framework.ALM
                     {
                         // try again
                         retryCount++;
-                        Thread.Sleep(waitTime * 1000); // wait 10 seconds
+                        await Task.Delay(waitTime * 1000); // wait 10 seconds
                     }
                 }
                 return returnValue;

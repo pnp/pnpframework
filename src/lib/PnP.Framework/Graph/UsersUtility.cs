@@ -79,6 +79,21 @@ namespace PnP.Framework.Graph
             {
                 throw new ArgumentNullException(nameof(accessToken));
             }
+            // Rewrite AdditionalProperties to Additional Data
+            var propertiesToSelect = new List<string> { "BusinessPhones", "DisplayName", "GivenName", "JobTitle", "Mail", "MobilePhone", "OfficeLocation", "PreferredLanguage", "Surname", "UserPrincipalName", "Id", "AccountEnabled" };
+            
+            selectProperties = selectProperties?.Select(p => p == "AdditionalProperties" ? "AdditionalData" : p).ToArray();
+            
+            if(selectProperties != null)
+            {
+                foreach(var property in selectProperties)
+                {
+                    if(!propertiesToSelect.Contains(property))
+                    {
+                        propertiesToSelect.Add(property);
+                    }
+                }
+            }
 
             List<Model.User> result = null;
             try
@@ -92,15 +107,9 @@ namespace PnP.Framework.Graph
 
                     IGraphServiceUsersCollectionPage pagedUsers;
 
-                    pagedUsers = selectProperties != null ?
-                        await graphClient.Users
+                    pagedUsers = await graphClient.Users
                             .Request()
-                            .Select(string.Join(",", selectProperties))
-                            .Filter(filter)
-                            .OrderBy(orderby)
-                            .GetAsync() :
-                        await graphClient.Users
-                            .Request()
+                            .Select(string.Join(",", propertiesToSelect))
                             .Filter(filter)
                             .OrderBy(orderby)
                             .GetAsync();

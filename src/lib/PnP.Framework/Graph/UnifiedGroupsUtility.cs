@@ -1119,8 +1119,16 @@ namespace PnP.Framework.Graph
                         {
                             UnifiedGroupUser groupUser = new UnifiedGroupUser
                             {
+                                Id = usr.Id,
                                 UserPrincipalName = usr.UserPrincipalName != null ? usr.UserPrincipalName : string.Empty,
-                                DisplayName = usr.DisplayName != null ? usr.DisplayName : string.Empty
+                                DisplayName = usr.DisplayName != null ? usr.DisplayName : string.Empty,
+                                GivenName = usr.GivenName != null ? usr.GivenName : string.Empty,
+                                Surname = usr.Surname != null ? usr.Surname : string.Empty,
+                                Email = usr.Mail != null ? usr.Mail : string.Empty,
+                                MobilePhone = usr.MobilePhone != null ? usr.DisplayName : string.Empty,
+                                PreferredLanguage = usr.PreferredLanguage != null ? usr.PreferredLanguage : string.Empty,
+                                JobTitle = usr.JobTitle != null ? usr.DisplayName : string.Empty,
+                                BusinessPhones = usr.BusinessPhones != null ? usr.BusinessPhones.ToArray() : null
                             };
                             unifiedGroupUsers.Add(groupUser);
                         }
@@ -1193,8 +1201,16 @@ namespace PnP.Framework.Graph
                         {
                             UnifiedGroupUser groupUser = new UnifiedGroupUser
                             {
+                                Id = usr.Id,
                                 UserPrincipalName = usr.UserPrincipalName != null ? usr.UserPrincipalName : string.Empty,
-                                DisplayName = usr.DisplayName != null ? usr.DisplayName : string.Empty
+                                DisplayName = usr.DisplayName != null ? usr.DisplayName : string.Empty,
+                                GivenName = usr.GivenName != null ? usr.GivenName : string.Empty,
+                                Surname = usr.Surname != null ? usr.Surname : string.Empty,
+                                Email = usr.Mail != null ? usr.Mail : string.Empty,
+                                MobilePhone = usr.MobilePhone != null ? usr.DisplayName : string.Empty,
+                                PreferredLanguage = usr.PreferredLanguage != null ? usr.PreferredLanguage : string.Empty,
+                                JobTitle = usr.JobTitle != null ? usr.DisplayName : string.Empty,
+                                BusinessPhones = usr.BusinessPhones != null ? usr.BusinessPhones.ToArray() : null                                
                             };
                             unifiedGroupUsers.Add(groupUser);
                         }
@@ -1502,8 +1518,16 @@ namespace PnP.Framework.Graph
                         {
                             UnifiedGroupUser groupUser = new UnifiedGroupUser
                             {
+                                Id = usr.Id,
                                 UserPrincipalName = usr.UserPrincipalName != null ? usr.UserPrincipalName : string.Empty,
-                                DisplayName = usr.DisplayName != null ? usr.DisplayName : string.Empty
+                                DisplayName = usr.DisplayName != null ? usr.DisplayName : string.Empty,
+                                GivenName = usr.GivenName != null ? usr.GivenName : string.Empty,
+                                Surname = usr.Surname != null ? usr.Surname : string.Empty,
+                                Email = usr.Mail != null ? usr.Mail : string.Empty,
+                                MobilePhone = usr.MobilePhone != null ? usr.DisplayName : string.Empty,
+                                PreferredLanguage = usr.PreferredLanguage != null ? usr.PreferredLanguage : string.Empty,
+                                JobTitle = usr.JobTitle != null ? usr.DisplayName : string.Empty,
+                                BusinessPhones = usr.BusinessPhones != null ? usr.BusinessPhones.ToArray() : null                                
                             };
                             unifiedGroupUsers.Add(groupUser);
                         }
@@ -1783,7 +1807,7 @@ namespace PnP.Framework.Graph
                     {
                         // In case of exception wait for 30 secs
                         Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
-                        System.Threading.Thread.Sleep(TimeSpan.FromSeconds(30));
+                        await Task.Delay(TimeSpan.FromSeconds(30));
                     }
                 }
             }

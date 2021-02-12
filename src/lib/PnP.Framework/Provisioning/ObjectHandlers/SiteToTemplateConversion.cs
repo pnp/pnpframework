@@ -103,6 +103,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 if (creationInfo.HandlersToProcess.HasFlag(Handlers.Theme)) objectHandlers.Add(new ObjectTheme());
                 if (creationInfo.HandlersToProcess.HasFlag(Handlers.Navigation)) objectHandlers.Add(new ObjectNavigation());
                 if (creationInfo.HandlersToProcess.HasFlag(Handlers.ImageRenditions)) objectHandlers.Add(new ObjectImageRenditions());
+                if (creationInfo.HandlersToProcess.HasFlag(Handlers.SyntexModels)) objectHandlers.Add(new ObjectSyntexModels());
                 objectHandlers.Add(new ObjectLocalization()); // Always add this one, check is done in the handler
                 if (creationInfo.HandlersToProcess.HasFlag(Handlers.Tenant)) objectHandlers.Add(new ObjectTenant());
                 if (creationInfo.HandlersToProcess.HasFlag(Handlers.ApplicationLifecycleManagement)) objectHandlers.Add(new ObjectApplicationLifecycleManagement());

@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ using Field = Microsoft.SharePoint.Client.Field;
 using Folder = Microsoft.SharePoint.Client.Folder;
 using View = PnP.Framework.Provisioning.Model.View;
 
+[assembly:InternalsVisibleTo("PnP.Framework.UnitTest")]
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
     internal class ObjectListInstance : ObjectHandlerBase
@@ -1587,6 +1589,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 {
                     ContentTypeId existingContentTypeId = list.ContentTypes.BestMatch(ctb.ContentTypeId);
                     bool contentTypeAlreadyExistsInList = existingContentTypeId != null && existingContentTypeId.GetParentIdValue().Equals(ctb.ContentTypeId, StringComparison.OrdinalIgnoreCase);
+                    if (!contentTypeAlreadyExistsInList && BuiltInContentTypeId.Contains(ctb.ContentTypeId))
+                    {
+                        //fix because Modern List Creation creates CTType with 0x01[Parent1][Parent2] but Parent1 does not exist so it's not resolved above and we try to create the builtin CT 0x01 found by export and fail to create
+                        contentTypeAlreadyExistsInList = existingContentTypeId != null && existingContentTypeId.GetParentIdValue().StartsWith($"{ctb.ContentTypeId}", StringComparison.OrdinalIgnoreCase);
+                    }
                     if (ctb.Remove)
                     {
                         if (contentTypeAlreadyExistsInList)

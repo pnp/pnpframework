@@ -276,7 +276,7 @@ namespace Microsoft.SharePoint.Client
                         // wait and keep checking if the feature is active
                         while (retryAttempts > retryCount)
                         {
-                            Thread.Sleep(TimeSpan.FromSeconds(pollingIntervalSeconds));
+                            await Task.Delay(TimeSpan.FromSeconds(pollingIntervalSeconds));
                             if (await IsFeatureActiveInternal(features, featureID, true))
                             {
                                 retryCount = retryAttempts;

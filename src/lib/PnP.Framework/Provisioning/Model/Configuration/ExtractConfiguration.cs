@@ -28,6 +28,7 @@ namespace PnP.Framework.Provisioning.Model.Configuration
         public bool PersistAssetFiles { get; set; }
 
         [JsonPropertyName("handlers")]
+        [JsonConverter(typeof(ListEnumConverter<ConfigurationHandler>))]
         public List<ConfigurationHandler> Handlers { get; set; } = new List<ConfigurationHandler>();
 
         [JsonPropertyName("lists")]
@@ -71,6 +72,9 @@ namespace PnP.Framework.Provisioning.Model.Configuration
 
         [JsonPropertyName("publishing")]
         public Publishing.ExtractPublishingConfiguration Publishing { get; set; } = new Publishing.ExtractPublishingConfiguration();
+
+        [JsonPropertyName("syntexModels")]
+        public SyntexModels.ExtractSyntexModelsConfiguration SyntexModels { get; set; } = new SyntexModels.ExtractSyntexModelsConfiguration();
 
         public static ExtractConfiguration FromCreationInformation(ProvisioningTemplateCreationInformation information)
         {

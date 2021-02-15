@@ -222,7 +222,7 @@ namespace PnP.Framework.Modernization.Transform
             //Do not replace this character - breaks HTML
             if (from != "/" && !IsRoot(from))
             {
-                var regex = new Regex($"{from}", RegexOptions.IgnoreCase);
+                var regex = new Regex($"{Regex.Escape(from)}", RegexOptions.IgnoreCase);
                 if (regex.IsMatch(input))
                 {
                     string before = input;

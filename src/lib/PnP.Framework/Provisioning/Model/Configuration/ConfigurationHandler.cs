@@ -30,6 +30,7 @@
         SiteHeader,
         SiteFooter,
         Theme,
-        SiteSettings
+        SiteSettings,
+        SyntexModels
     }
 }

@@ -1,6 +1,10 @@
 ﻿using Microsoft.SharePoint.Client;
 using Newtonsoft.Json.Linq;
+using PnP.Framework.Test.Utilities;
 using PnP.Framework.Utilities;
+using PnP.Framework.Utilities.UnitTests;
+using PnP.Framework.Utilities.UnitTests.Helpers;
+using PnP.Framework.Utilities.UnitTests.Web;
 using System;
 using System.Configuration;
 using System.IO;
@@ -77,6 +81,12 @@ namespace PnP.Framework.Test
 
                 UserName = tempCred.UserName;
                 Password = tempCred.SecurePassword;
+            }
+            else if (!String.IsNullOrEmpty(AppSetting("SPOUserName")) &&
+                         !String.IsNullOrEmpty(AppSetting("SPOPassword")))
+            {
+                UserName = AppSetting("SPOUserName");
+                Password = EncryptionUtility.ToSecureString(AppSetting("SPOPassword"));
             }
             else
             {
@@ -161,6 +171,28 @@ namespace PnP.Framework.Test
         {
             return CreateContext(DevSiteUrl);
         }
+        public static UnitTestClientContext CreateTestClientContext(
+            bool runInIntegrationMode = false,
+            [System.Runtime.CompilerServices.CallerFilePath] string mockFolderPath = null,
+            [System.Runtime.CompilerServices.CallerMemberName] string mockFileName = null)
+        {
+            string mockFilePath = mockFolderPath.Replace(".cs", $"\\{mockFileName}.json");
+            if (System.IO.File.Exists(mockFilePath))
+            {
+                UnitTestClientContext context;
+                if (runInIntegrationMode)
+                {
+                    context = UnitTestClientContext.GetUnitTestContext(CreateClientContext(DevSiteUrl), runInIntegrationMode, mockFilePath);
+                }
+                else
+                {
+                    context = new UnitTestClientContext(DevSiteUrl, runInIntegrationMode, mockFilePath);
+                }
+
+                return context;
+            }
+            throw new Exception("Mock file doesn't exist in: " + mockFilePath);
+        }
 
         public static ClientContext CreateClientContext(string url)
         {
@@ -228,7 +260,7 @@ namespace PnP.Framework.Test
 
         private static ClientContext CreateContext(string contextUrl)
         {
-            
+
             ClientContext context = null;
             if (!String.IsNullOrEmpty(AppId) && !String.IsNullOrEmpty(AppSecret))
             {

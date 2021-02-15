@@ -811,7 +811,7 @@ namespace Microsoft.SharePoint.Client
         /// </summary>
         /// <param name="tenant">A tenant object pointing to the context of a Tenant Administration site</param>
         /// <param name="siteUrl">Root site url of your tenant</param>
-        public static void EnableCommSite(this Tenant tenant, string siteUrl = "")
+        public static void EnableCommunicationSite(this Tenant tenant, string siteUrl = "")
         {
             if (string.IsNullOrWhiteSpace(siteUrl))
             {
@@ -819,7 +819,7 @@ namespace Microsoft.SharePoint.Client
                 tenant.Context.ExecuteQueryRetry();
                 siteUrl = rootUrl.Value;
             }
-            tenant.EnableCommSite(siteUrl, COMMSITEDESIGNPACKAGEID);
+            tenant.EnableCommunicationSite(siteUrl, COMMSITEDESIGNPACKAGEID);
             tenant.Context.ExecuteQueryRetry();
         }
         #endregion
@@ -846,23 +846,26 @@ namespace Microsoft.SharePoint.Client
 
         private static bool IsCurrentUserTenantAdminViaGraph()
         {
-            string globalTenantAdminRole = "Company Administrator";
+            string globalTenantAdminRoleTemplateId = "62e90394-69f5-4237-9190-012177145e10";
 
             try
             {
                 var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri("https://graph.microsoft.com/").Authority, null);
 
+                var customHeaders = new Dictionary<string, string>();
+                customHeaders.Add("ConsistencyLevel", "eventual");
+
                 // Retrieve (using the Microsoft Graph) the current user's roles
                 string jsonResponse = HttpHelper.MakeGetRequestForString(
-                    "https://graph.microsoft.com/v1.0/me/memberOf?$select=id,displayName",
-                    accessToken);
+                    "https://graph.microsoft.com/v1.0/me/memberOf?$count=true&$search=\"displayName: Company Administrator\" OR \"displayName: Global Administrator\"",
+                    accessToken, requestHeaders: customHeaders);
 
                 if (jsonResponse != null)
                 {
                     var resultsElement = JsonSerializer.Deserialize<JsonElement>(jsonResponse);
                     if (resultsElement.GetProperty("value").ValueKind != JsonValueKind.Undefined)
                     {
-                        return resultsElement.GetProperty("value").EnumerateArray().Any(r => r.GetProperty("displayName").GetString() == globalTenantAdminRole);
+                        return resultsElement.GetProperty("value").EnumerateArray().Any(r => r.GetProperty("roleTemplateId").GetString() == globalTenantAdminRoleTemplateId);
                     }
                 }
             }
@@ -1034,7 +1037,7 @@ namespace Microsoft.SharePoint.Client
             int siteNameIndex = url.AbsolutePath.IndexOf('/', 1) + 1;
             var managedPath = url.AbsolutePath.Substring(0, siteNameIndex);
             var siteRelativePath = url.AbsolutePath.Substring(siteNameIndex);
-            var isSiteCollection = siteRelativePath.Contains('/');
+            var isSiteCollection = !siteRelativePath.Contains('/');
 
             //Judge whether this site collection is existing or not
             if (isSiteCollection)

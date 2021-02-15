@@ -1,7 +1,8 @@
-﻿/*
+﻿
 using Microsoft.SharePoint.Client;
 using Microsoft.SharePoint.Client.Taxonomy;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PnP.Framework.ALM;
 using PnP.Framework.Provisioning.Connectors;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers;
@@ -88,90 +89,32 @@ namespace PnP.Framework.Test.Authentication
         [TestMethod]
         public void MUITest()
         {
-            //using (var cc = new AuthenticationManager().GetWebLoginClientContext("https://contoso.sharepoint.com/teams/TEST_Provisioning"))
-            using (var cc = TestCommon.CreateClientContext("https://bertonline.sharepoint.com/sites/prov-1"))
+            using (var cc = TestCommon.CreateClientContext("https://bertonline.sharepoint.com/sites/TheLanding1"))
             {
-                var list = cc.Web.GetListByTitle("FieldTypes");
-                var item = list.GetItemById(1);
-                cc.Load(item);
-                cc.ExecuteQueryRetry();
+                AppManager manager = new AppManager(cc);
+                var apps = manager.GetAvailable();
 
-                //item["Url"] = new FieldUrlValue() { Url = "", Description = "" }; 
-
-                //item["PersonSingle"] = new FieldUserValue() { LookupId = 0 };
-                item["PersonSingle"] = null;
-                //item["PersonMultiple"] = new List<FieldUserValue>().ToArray();
-
-                //item["Url"] = new FieldUrlValue() { Url = "https://bla1", Description = "fdmslkfqmsl" };
-
-                //item["PersonSingle"] = new FieldUserValue() { LookupId = 6};
-
-                //item["ChoiceSingle"] = "Choice 1";
-
-                //item["ChoiceMultiple"] = new List<string>() { "Choice 1", "Choice 4" }.ToArray();
-
-                //item["PersonSingle"] = new FieldUserValue() { LookupId = 15 };
-
-                //var personMultiple = new List<FieldUserValue>
-                //{
-                //    new FieldUserValue() { LookupId = 15 },
-                //    new FieldUserValue() { LookupId = 6 }
-                //};
-
-                //item["PersonMultiple"] = personMultiple.ToArray();
-
-                TaxonomyFieldValue mbiTermValue = new TaxonomyFieldValue
-                {
-                    Label = "MBI",
-                    TermGuid = "1824510b-00e1-40ac-8294-528b1c9421e0",
-                    WssId = 2
-                };
-
-                TaxonomyFieldValue lbiTermValue = new TaxonomyFieldValue
-                {
-                    Label = "LBI",
-                    TermGuid = "ed5449ec-4a4f-4102-8f07-5a207c438571",
-                    WssId = 1
-                };
-
-                //var field = list.Fields.GetByInternalNameOrTitle("MMMultiple");
-                //cc.Load(field);
-                //cc.ExecuteQueryRetry();
-
-
-                //item["MMSingle"] = mbiTermValue;
-
-                //TaxonomyFieldValueCollection termCollection = new TaxonomyFieldValueCollection(cc, null, field);
-                //termCollection.PopulateFromLabelGuidPairs("MBI|1824510b-00e1-40ac-8294-528b1c9421e0;LBI|ed5449ec-4a4f-4102-8f07-5a207c438571");
-
-                //item["MMMultiple"] = termCollection;
-
-
-                item.UpdateOverwriteVersion();
-                cc.ExecuteQueryRetry();
-            }
+            }   
         }
 
         [TestMethod]
         public void CSOMTest()
         {
             //using (var cc = new AuthenticationManager().GetWebLoginClientContext("https://contoso.sharepoint.com/teams/TEST_Provisioning"))
-            using (var cc = TestCommon.CreateClientContext("https://bertonline.sharepoint.com/sites/prov-1"))
+            AuthenticationManager authenticationManager = new AuthenticationManager();
+            using (var cc = authenticationManager.GetOnPremisesContext("https://portal2013.pnp.com/sites/devportal"))
             {
-                var savedTargetPage = cc.Web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl($"/sites/prov-1/sitepages/PNP_SDK_TEST_CreateAndUpdatePageViaPageFile.aspx"));
-                cc.Web.Context.Load(savedTargetPage, p => p.ListItemAllFields);
-                cc.Web.Context.ExecuteQueryRetry();
-
-                savedTargetPage.ListItemAllFields["ContentTypeId"] = "0x0101009D1CB255DA76424F860D91F20E6C4118002A50BFCFB7614729B56886FADA02339B";
-                //savedTargetPage.ListItemAllFields["_SPSitePageFlags"] = ";#MigratedFromServerRendered;#";
-                // Don't use UpdateOverWriteVersion as the listitem already exists 
-                // resulting in an "Additions to this Web site have been blocked" error
-                savedTargetPage.ListItemAllFields.SystemUpdate();
-                cc.Load(savedTargetPage.ListItemAllFields);
+                cc.Load(cc.Web, p => p.Title);
                 cc.ExecuteQueryRetry();
+
+                using (var cc2 = cc.Clone("https://portal2013.pnp.com"))
+                {
+                    cc2.Load(cc2.Web, p => p.Title);
+                    cc2.ExecuteQueryRetry();
+                }
+
             }
         }
-
 
         //[TestMethod]
         //public void BertTest5()
@@ -304,4 +247,3 @@ namespace PnP.Framework.Test.Authentication
         #endregion
     }
 }
-*/

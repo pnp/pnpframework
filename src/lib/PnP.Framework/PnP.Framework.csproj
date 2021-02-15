@@ -5,7 +5,7 @@
 		<LangVersion>8.0</LangVersion>
 		<RootNamespace>PnP.Framework</RootNamespace>
 		<AssemblyName>PnP.Framework</AssemblyName>
-		<Version>1.1.0</Version>
+		<Version>1.2.0</Version>
 		<Authors>PnP</Authors>
 		<Copyright>PnP 2020</Copyright>
 		<Description>PnP Framework contains the PnP Provisioning engine and a ton of extension methods that will make you more productive while developing for Microsoft 365.</Description>
@@ -81,6 +81,7 @@
 		<None Remove="Provisioning\BaseTemplates\SPO\CMSPUBLISHING0Template.xml" />
 		<None Remove="Provisioning\BaseTemplates\SPO\COMMUNITY0Template.xml" />
 		<None Remove="Provisioning\BaseTemplates\SPO\COMMUNITYPORTAL0Template.xml" />
+		<None Remove="Provisioning\BaseTemplates\SPO\CONTENTCTR0Template.xml" />
 		<None Remove="Provisioning\BaseTemplates\SPO\DEV0Template.xml" />
 		<None Remove="Provisioning\BaseTemplates\SPO\EHS1Template.xml" />
 		<None Remove="Provisioning\BaseTemplates\SPO\ENTERWIKI0Template.xml" />
@@ -128,6 +129,7 @@
 		<EmbeddedResource Include="Provisioning\BaseTemplates\SPO\CMSPUBLISHING0Template.xml" />
 		<EmbeddedResource Include="Provisioning\BaseTemplates\SPO\COMMUNITY0Template.xml" />
 		<EmbeddedResource Include="Provisioning\BaseTemplates\SPO\COMMUNITYPORTAL0Template.xml" />
+		<EmbeddedResource Include="Provisioning\BaseTemplates\SPO\CONTENTCTR0Template.xml" />
 		<EmbeddedResource Include="Provisioning\BaseTemplates\SPO\DEV0Template.xml" />
 		<EmbeddedResource Include="Provisioning\BaseTemplates\SPO\EHS1Template.xml" />
 		<EmbeddedResource Include="Provisioning\BaseTemplates\SPO\ENTERWIKI0Template.xml" />

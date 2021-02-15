@@ -12,7 +12,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PnP.Framework", "PnP.Framew
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PnP.Framework.Test", "PnP.Framework.Test\PnP.Framework.Test.csproj", "{567FBB1B-0E02-47C9-AD5B-657F18423D06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PnP.Framework.Modernization.Test", "PnP.Framework.Modernization.Test\PnP.Framework.Modernization.Test.csproj", "{2185B0F4-9423-4458-BFB6-7502D98A4259}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PnP.Framework.Modernization.Test", "PnP.Framework.Modernization.Test\PnP.Framework.Modernization.Test.csproj", "{2185B0F4-9423-4458-BFB6-7502D98A4259}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

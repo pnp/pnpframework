@@ -1,6 +1,7 @@
 ﻿using Microsoft.SharePoint.Client;
 using Newtonsoft.Json;
 using PnP.Framework.Entities;
+using PnP.Framework.Http;
 using PnP.Framework.Utilities.Async;
 using PnP.Framework.Utilities.Webhooks;
 using System;
@@ -63,60 +64,41 @@ namespace PnP.Framework.Utilities
             await new SynchronizationContextRemover();
 
             string responseString = null;
-            using (var handler = new HttpClientHandler())
+            context.Web.EnsureProperty(p => p.Url);
+
+#pragma warning disable CA2000 // Dispose objects before losing scope
+            var httpClient = PnPHttpClient.Instance.GetHttpClient(context);
+#pragma warning restore CA2000 // Dispose objects before losing scope
+
+            string identifierUrl = GetResourceIdentifier(resourceType, webUrl, subscription.Resource);
+            if (string.IsNullOrEmpty(identifierUrl))
             {
-                context.Web.EnsureProperty(p => p.Url);
+                throw new Exception("Identifier of the resource cannot be determined");
+            }
 
-                if (string.IsNullOrEmpty(accessToken))
+            string requestUrl = identifierUrl + "/" + SubscriptionsUrlPart;
+
+            using (var request = new HttpRequestMessage(HttpMethod.Post, requestUrl))
+            {
+                request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                await PnPHttpClient.AuthenticateRequestAsync(request, context).ConfigureAwait(false);
+
+                request.Content = new StringContent(JsonConvert.SerializeObject(subscription), Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
+
+                if (response.IsSuccessStatusCode)
                 {
-                    context.SetAuthenticationCookiesForHandler(handler);
+                    responseString = await response.Content.ReadAsStringAsync();
                 }
-
-                using (var httpClient = new PnPHttpProvider(handler))
+                else
                 {
-                    string identifierUrl = GetResourceIdentifier(resourceType, webUrl, subscription.Resource);
-                    if (string.IsNullOrEmpty(identifierUrl))
-                    {
-                        throw new Exception("Identifier of the resource cannot be determined");
-                    }
-
-                    string requestUrl = identifierUrl + "/" + SubscriptionsUrlPart;
-
-                    using (var request = new HttpRequestMessage(HttpMethod.Post, requestUrl))
-                    {
-                        request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync());
-                        request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                        if (!string.IsNullOrEmpty(accessToken))
-                        {
-                            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                            request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync().ConfigureAwait(false));
-                        }
-                        else
-                        {
-                            if (context.Credentials is NetworkCredential networkCredential)
-                            {
-                                handler.Credentials = networkCredential;
-                            }
-                            request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false));
-                        }
-
-                        request.Content = new StringContent(JsonConvert.SerializeObject(subscription),
-                            Encoding.UTF8, "application/json");
-
-                        HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
-
-                        if (response.IsSuccessStatusCode)
-                        {
-                            responseString = await response.Content.ReadAsStringAsync();
-                        }
-                        else
-                        {
-                            // Something went wrong...
-                            throw new Exception(await response.Content.ReadAsStringAsync());
-                        }
-                    }
+                    // Something went wrong...
+                    throw new Exception(await response.Content.ReadAsStringAsync());
                 }
             }
+
             return JsonConvert.DeserializeObject<WebhookSubscription>(responseString);
         }
 
@@ -175,75 +157,56 @@ namespace PnP.Framework.Utilities
 
             await new SynchronizationContextRemover();
 
-            using (var handler = new HttpClientHandler())
-            {
-                context.Web.EnsureProperty(p => p.Url);
+            context.Web.EnsureProperty(p => p.Url);
 
-                if (string.IsNullOrEmpty(accessToken))
+#pragma warning disable CA2000 // Dispose objects before losing scope
+            var httpClient = PnPHttpClient.Instance.GetHttpClient(context);
+#pragma warning restore CA2000 // Dispose objects before losing scope
+
+            string identifierUrl = GetResourceIdentifier(resourceType, webUrl, resourceId);
+            if (string.IsNullOrEmpty(identifierUrl))
+            {
+                throw new Exception("Identifier of the resource cannot be determined");
+            }
+
+            string requestUrl = string.Format("{0}/{1}('{2}')", identifierUrl, SubscriptionsUrlPart, subscriptionId);
+            using (var request = new HttpRequestMessage(new HttpMethod("PATCH"), requestUrl))
+            {
+                request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                await PnPHttpClient.AuthenticateRequestAsync(request, context).ConfigureAwait(false);
+
+                WebhookSubscription webhookSubscription;
+
+                if (string.IsNullOrEmpty(webHookEndPoint))
                 {
-                    context.SetAuthenticationCookiesForHandler(handler);
+                    webhookSubscription = new WebhookSubscription()
+                    {
+                        ExpirationDateTime = expirationDateTime
+                    };
+                }
+                else
+                {
+                    webhookSubscription = new WebhookSubscription()
+                    {
+                        NotificationUrl = webHookEndPoint,
+                        ExpirationDateTime = expirationDateTime
+                    };
                 }
 
-                using (var httpClient = new PnPHttpProvider(handler))
+                request.Content = new StringContent(JsonConvert.SerializeObject(webhookSubscription),
+                    Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
+
+                if (response.StatusCode != HttpStatusCode.NoContent)
                 {
-                    string identifierUrl = GetResourceIdentifier(resourceType, webUrl, resourceId);
-                    if (string.IsNullOrEmpty(identifierUrl))
-                    {
-                        throw new Exception("Identifier of the resource cannot be determined");
-                    }
-
-                    string requestUrl = string.Format("{0}/{1}('{2}')", identifierUrl, SubscriptionsUrlPart, subscriptionId);
-                    using (var request = new HttpRequestMessage(new HttpMethod("PATCH"), requestUrl))
-                    {
-                        request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync());
-                        request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                        if (!string.IsNullOrEmpty(accessToken))
-                        {
-                            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                            request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync().ConfigureAwait(false));
-                        }
-                        else
-                        {
-                            if (context.Credentials is NetworkCredential networkCredential)
-                            {
-                                handler.Credentials = networkCredential;
-                            }
-                            request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false));
-                        }
-
-                        WebhookSubscription webhookSubscription;
-
-                        if (string.IsNullOrEmpty(webHookEndPoint))
-                        {
-                            webhookSubscription = new WebhookSubscription()
-                            {
-                                ExpirationDateTime = expirationDateTime
-                            };
-                        }
-                        else
-                        {
-                            webhookSubscription = new WebhookSubscription()
-                            {
-                                NotificationUrl = webHookEndPoint,
-                                ExpirationDateTime = expirationDateTime
-                            };
-                        }
-
-                        request.Content = new StringContent(JsonConvert.SerializeObject(webhookSubscription),
-                            Encoding.UTF8, "application/json");
-
-                        HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
-
-                        if (response.StatusCode != System.Net.HttpStatusCode.NoContent)
-                        {
-                            // oops...something went wrong, maybe the web hook does not exist?
-                            throw new Exception(await response.Content.ReadAsStringAsync());
-                        }
-                        else
-                        {
-                            return true;
-                        }
-                    }
+                    // oops...something went wrong, maybe the web hook does not exist?
+                    throw new Exception(await response.Content.ReadAsStringAsync());
+                }
+                else
+                {
+                    return true;
                 }
             }
         }
@@ -262,57 +225,36 @@ namespace PnP.Framework.Utilities
         {
             await new SynchronizationContextRemover();
 
-            using (var handler = new HttpClientHandler())
+            context.Web.EnsureProperty(p => p.Url);
+
+#pragma warning disable CA2000 // Dispose objects before losing scope
+            var httpClient = PnPHttpClient.Instance.GetHttpClient(context);
+#pragma warning restore CA2000 // Dispose objects before losing scope
+
+            string identifierUrl = GetResourceIdentifier(resourceType, webUrl, resourceId);
+            if (string.IsNullOrEmpty(identifierUrl))
             {
-                context.Web.EnsureProperty(p => p.Url);
+                throw new Exception("Identifier of the resource cannot be determined");
+            }
 
-                if (string.IsNullOrEmpty(accessToken))
+            string requestUrl = string.Format("{0}/{1}('{2}')", identifierUrl, SubscriptionsUrlPart, subscriptionId);
+
+            using (var request = new HttpRequestMessage(HttpMethod.Delete, requestUrl))
+            {
+                request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                await PnPHttpClient.AuthenticateRequestAsync(request, context).ConfigureAwait(false);
+
+                HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
+
+                if (response.StatusCode != HttpStatusCode.NoContent)
                 {
-                    context.SetAuthenticationCookiesForHandler(handler);
+                    // oops...something went wrong, maybe the web hook does not exist?
+                    throw new Exception(await response.Content.ReadAsStringAsync());
                 }
-
-                using (var httpClient = new PnPHttpProvider(handler))
+                else
                 {
-                    string identifierUrl = GetResourceIdentifier(resourceType, webUrl, resourceId);
-                    if (string.IsNullOrEmpty(identifierUrl))
-                    {
-                        throw new Exception("Identifier of the resource cannot be determined");
-                    }
-
-                    string requestUrl = string.Format("{0}/{1}('{2}')", identifierUrl, SubscriptionsUrlPart, subscriptionId);
-
-                    using (var request = new HttpRequestMessage(HttpMethod.Delete, requestUrl))
-                    {
-                        request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync());
-                        request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-
-                        if (!string.IsNullOrEmpty(accessToken))
-                        {
-                            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                            request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync().ConfigureAwait(false));
-                        }
-                        else
-                        {
-                            if (context.Credentials is NetworkCredential networkCredential)
-                            {
-                                handler.Credentials = networkCredential;
-                            }
-                            request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false));
-                        }
-
-                        HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
-
-                        if (response.StatusCode != System.Net.HttpStatusCode.NoContent)
-                        {
-                            // oops...something went wrong, maybe the web hook does not exist?
-                            throw new Exception(await response.Content.ReadAsStringAsync());
-                        }
-                        else
-                        {
-                            return true;
-                        }
-                    }
+                    return true;
                 }
             }
         }
@@ -332,56 +274,37 @@ namespace PnP.Framework.Utilities
 
             string responseString = null;
 
-            using (var handler = new HttpClientHandler())
+            context.Web.EnsureProperty(p => p.Url);
+#pragma warning disable CA2000 // Dispose objects before losing scope
+            var httpClient = PnPHttpClient.Instance.GetHttpClient(context);
+#pragma warning restore CA2000 // Dispose objects before losing scope
+
+            string identifierUrl = GetResourceIdentifier(resourceType, webUrl, resourceId);
+            if (string.IsNullOrEmpty(identifierUrl))
             {
-                context.Web.EnsureProperty(p => p.Url);
+                throw new Exception("Identifier of the resource cannot be determined");
+            }
 
-                if (string.IsNullOrEmpty(accessToken))
+            string requestUrl = identifierUrl + "/" + SubscriptionsUrlPart;
+
+            using (var request = new HttpRequestMessage(HttpMethod.Get, requestUrl))
+            {
+                request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                await PnPHttpClient.AuthenticateRequestAsync(request, context).ConfigureAwait(false);
+
+                HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
+
+                if (response.IsSuccessStatusCode)
                 {
-                    context.SetAuthenticationCookiesForHandler(handler);
+                    responseString = await response.Content.ReadAsStringAsync();
                 }
-
-                using (var httpClient = new PnPHttpProvider(handler))
+                else
                 {
-                    string identifierUrl = GetResourceIdentifier(resourceType, webUrl, resourceId);
-                    if (string.IsNullOrEmpty(identifierUrl))
-                    {
-                        throw new Exception("Identifier of the resource cannot be determined");
-                    }
-
-                    string requestUrl = identifierUrl + "/" + SubscriptionsUrlPart;
-
-                    using (var request = new HttpRequestMessage(HttpMethod.Get, requestUrl))
-                    {
-                        request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                        if (!string.IsNullOrEmpty(accessToken))
-                        {
-                            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                            //request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync().ConfigureAwait(false));
-                        }
-                        else
-                        {
-                            if (context.Credentials is NetworkCredential networkCredential)
-                            {
-                                handler.Credentials = networkCredential;
-                            }
-                            request.Headers.Add("X-RequestDigest", await context.GetRequestDigestAsync(handler.CookieContainer).ConfigureAwait(false));
-                        }
-
-                        HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
-
-                        if (response.IsSuccessStatusCode)
-                        {
-                            responseString = await response.Content.ReadAsStringAsync();
-                        }
-                        else
-                        {
-                            // oops...something went wrong
-                            throw new Exception(await response.Content.ReadAsStringAsync());
-                        }
-                    }
+                    // oops...something went wrong
+                    throw new Exception(await response.Content.ReadAsStringAsync());
                 }
             }
+
             return JsonConvert.DeserializeObject<ResponseModel<WebhookSubscription>>(responseString);
         }
 

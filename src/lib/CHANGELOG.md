@@ -6,15 +6,33 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
-## [Nightly]
+## [1.2.0]
 
 ### Added
 
+- Added CreateWith* methods to AuthenticationManager to help creation of new AuthenticationManager objects
+- Refactored AuthenticationManager to use the library wide single instance of the HttpClient.
 - Support for using the ICustomWebUi to enable interactive auth in PnP PowerShell [erwinvanhunen - Erwin van Hunen]
+- Support for offline CSOM testing! #100 [mgwojciech - Marcin Wojciechowski]
+- Support for on-premises context creation and cloning, internal only as it's needed to support page transformation from on-prem [jansenbe - Bert Jansen]
+- Allow use of tokens for TopicHeader and AlternativeText in Pages #137 [magarma - Miguel Angel Garcï¿½a Martï¿½nez]
 
 ### Changed
 
 - Fixed page transformation caching manager to handle dictionary serialization with non string value as keys. Fixes #110 [jansenbe - Bert Jansen]
+- Fix http exception unwrapping, refactor http retry mechanism #107 [sebastianmattar - Sebastian Mattar]
+- Fixed page transformation caching manager to handle another dictionary serialization with non string value as keys issue. Fixes #136 [jansenbe - Bert Jansen] 
+- Refactor ACS token creation #119 [sebastianmattar - Sebastian Mattar]
+- Fix wrong ReadOnly setting on ContentType LinkedFields #128 [czullu - Christian Zuellig]
+- Fix for #117: failed to set content type on client side page #135 [czullu - Christian Zuellig]
+- Fix bug when trying to add existing member or owner to a unified group. #139 [magarma - Miguel Angel Garcï¿½a Martï¿½nez]
+- Fix: Updating WebTemplateExtensionId value in payload dictionary. #143 [magarma - Miguel Angel Garcï¿½a Martï¿½nez]
+- Fix some warnings #147 [jackpoz - Giacomo Pozzoni]
+- Fix Escaped whiteSpace break JSON in NewDocumentTemplates #152 [czullu - Christian Zuellig]
+- Fix because Modern List Creation creates CTType with 0x0100ParentOne00Id but ParentOne does not exist #153 [czullu - Christian Zuellig]
+- Updated UsersUtility to retrieve all users when requested #157 [koenzomers - Koen Zomers]
+- Replace Thread.Sleep() with Task.Delay() in async methods #165 [jackpoz - Giacomo Pozzoni]
+- Added additional Graph User properties #160 [koenzomers - Koen Zomers]
 
 ## [1.1.0]
 
@@ -77,7 +95,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Feature - update beta endpoints to v1.0 for UnifiedGroups methods #62 [gautamdsheth - Gautam Sheth]
 - Feature - added additional props for Team Site No Group #63 [gautamdsheth - Gautam Sheth]
 - Fix - Parse tokens in the SearchCenterUrl #72 [YannickRe - Yannick Reekmans]
-- Cert loading improvements #68 [mbakhoff - Märt]
+- Cert loading improvements #68 [mbakhoff - Mï¿½rt]
 - Fix - Keep the existing stack information on rethrowing the exception. #83 [YannickRe - Yannick Reekmans]
 - Fix a null reference exception in cases where ClientContextSettings are null. #82 [YannickRe - Yannick Reekmans]
 - Fix - app-only issue for teamifying group sites #78 [gautamdsheth - Gautam Sheth]

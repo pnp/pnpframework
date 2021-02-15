@@ -402,8 +402,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             page.PageHeader.TextAlignment = (PnPCore.PageHeaderTitleAlignment)Enum.Parse(typeof(PnPCore.PageHeaderTitleAlignment), clientSidePage.Header.TextAlignment.ToString());
                             page.PageHeader.ShowTopicHeader = clientSidePage.Header.ShowTopicHeader;
                             page.PageHeader.ShowPublishDate = clientSidePage.Header.ShowPublishDate;
-                            page.PageHeader.TopicHeader = clientSidePage.Header.TopicHeader;
-                            page.PageHeader.AlternativeText = clientSidePage.Header.AlternativeText;
+                            page.PageHeader.TopicHeader = parser.ParseString(clientSidePage.Header.TopicHeader);
+                            page.PageHeader.AlternativeText = parser.ParseString(clientSidePage.Header.AlternativeText);
                             page.PageHeader.Authors = clientSidePage.Header.Authors;
                             page.PageHeader.AuthorByLine = clientSidePage.Header.AuthorByLine;
                             page.PageHeader.AuthorByLineId = clientSidePage.Header.AuthorByLineId;
@@ -819,8 +819,19 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             bool isDirty = false;
             if (!string.IsNullOrEmpty(clientSidePage.ContentTypeID))
             {
-                fileAfterSave.ListItemAllFields[ContentTypeIdField] = clientSidePage.ContentTypeID;
-                isDirty = true;
+                ContentTypeId bestMatchCT = fileAfterSave.ListItemAllFields.ParentList.BestMatchContentTypeId(clientSidePage.ContentTypeID);
+                ContentTypeId currentCT = fileAfterSave.ListItemAllFields.FieldExistsAndUsed(ContentTypeIdField) ? ((ContentTypeId)fileAfterSave.ListItemAllFields[ContentTypeIdField]) : null;
+
+                if (currentCT == null)
+                {
+                    fileAfterSave.ListItemAllFields[ContentTypeIdField] = bestMatchCT.StringValue;
+                    isDirty = true;
+                }
+                else if (currentCT != null && !currentCT.IsChildOf(bestMatchCT))
+                {
+                    fileAfterSave.ListItemAllFields[ContentTypeIdField] = bestMatchCT.StringValue;
+                    isDirty = true;
+                }
             }
 
             if (clientSidePage.PromoteAsTemplate && page.LayoutType == PnPCore.PageLayoutType.Article)

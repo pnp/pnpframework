@@ -1040,10 +1040,10 @@ namespace PnP.Framework.Modernization.Cache
         {
             string key = context.Web.GetUrl();
 
-            var userJsonStrings = Store.GetAndInitialize<Dictionary<string, Dictionary<int, UserEntity>>>(StoreOptions.GetKey(keyUserJsonStrings));
-            if (userJsonStrings.TryGetValue(key, out Dictionary<int, UserEntity> userListFromCache))
+            var userJsonStrings = Store.GetAndInitialize<Dictionary<string, Dictionary<string, UserEntity>>>(StoreOptions.GetKey(keyUserJsonStrings));
+            if (userJsonStrings.TryGetValue(key, out Dictionary<string, UserEntity> userListFromCache))
             {
-                if (userListFromCache.TryGetValue(userListId, out UserEntity userJsonFromCache))
+                if (userListFromCache.TryGetValue(userListId.ToString(), out UserEntity userJsonFromCache))
                 {
                     return userJsonFromCache;
                 }
@@ -1100,9 +1100,9 @@ namespace PnP.Framework.Modernization.Cache
                         if (userListFromCache != null)
                         {
                             // We already has a user list, simply add this one
-                            Dictionary<int, UserEntity> newUserListToCache = new Dictionary<int, UserEntity>(userListFromCache)
+                            Dictionary<string, UserEntity> newUserListToCache = new Dictionary<string, UserEntity>(userListFromCache)
                             {
-                                { userListId, author }
+                                { userListId.ToString(), author }
                             };
 
                             userJsonStrings[key] = newUserListToCache;
@@ -1111,9 +1111,9 @@ namespace PnP.Framework.Modernization.Cache
                         else
                         {
                             // First user for this key (= web)
-                            Dictionary<int, UserEntity> newUserListToCache = new Dictionary<int, UserEntity>()
+                            Dictionary<string, UserEntity> newUserListToCache = new Dictionary<string, UserEntity>()
                             {
-                                { userListId, author }
+                                { userListId.ToString(), author }
                             };
 
                             userJsonStrings.Add(key, newUserListToCache);
@@ -1125,7 +1125,7 @@ namespace PnP.Framework.Modernization.Cache
                     }
                 }
             }
-            catch
+            catch(Exception)
             {
                 // Logging is not needed as an "empty" ensured user is handled by the callers of this method
             }

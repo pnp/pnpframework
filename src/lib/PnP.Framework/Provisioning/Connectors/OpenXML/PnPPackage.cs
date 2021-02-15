@@ -371,7 +371,7 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
         {
             if (value == null)
             {
-                value = new byte[] { };
+                value = Array.Empty<byte>();
             }
 
             using (Stream stream = part.GetStream(FileMode.OpenOrCreate))

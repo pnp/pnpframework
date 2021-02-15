@@ -183,8 +183,19 @@ namespace Microsoft.SharePoint.Client
                             retryAfterInterval = backoffInterval;
                             backoffInterval *= 2;
                         }
-                        Log.Warning(Constants.LOGGING_SOURCE, $"CSOM request frequency exceeded usage limits. Retry attempt {retryAttempts + 1}. Sleeping for {retryAfterInterval} milliseconds before retrying.");
 
+                        if (wex.Status == WebExceptionStatus.UnknownError && (wex.Message.ToLower().Contains("forcibly closed by the remote host") || (wex.InnerException != null && wex.InnerException.Message.ToLower().Contains("forcibly closed by the remote host"))))
+                        {
+                            Log.Warning(Constants.LOGGING_SOURCE, $"CSOM request forcibly closed by the remote host. Retry attempt {retryAttempts + 1}. Sleeping for {retryAfterInterval} milliseconds before retrying.");
+                        }
+                        else if(wex.Status == WebExceptionStatus.Timeout)
+                        {
+                            Log.Warning(Constants.LOGGING_SOURCE, $"CSOM request timeout. Retry attempt {retryAttempts + 1}. Sleeping for {retryAfterInterval} milliseconds before retrying.");
+                        }
+                        else
+                        {
+                            Log.Warning(Constants.LOGGING_SOURCE, $"CSOM request frequency exceeded usage limits. Retry attempt {retryAttempts + 1}. Sleeping for {retryAfterInterval} milliseconds before retrying.");
+                        }
                         await Task.Delay(retryAfterInterval);
 
                         //Add to retry count and increase delay.

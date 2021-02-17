@@ -42,7 +42,15 @@ namespace PnP.Framework
         /// <summary>
         /// 
         /// </summary>
-        USGovernment = 4
+        USGovernment = 4,
+        /// <summary>
+        /// 
+        /// </summary>
+        USGovernmentHigh = 5,
+        /// <summary>
+        /// 
+        /// </summary>
+        USGovernmentDoD = 6
     }
 
 
@@ -78,6 +86,7 @@ namespace PnP.Framework
         private readonly IPublicClientApplication publicClientApplication;
         private readonly IConfidentialClientApplication confidentialClientApplication;
         private readonly string azureADEndPoint;
+        private readonly AzureEnvironment azureEnvironment;
         private readonly ClientContextType authenticationType;
         private readonly string username;
         private readonly SecureString password;
@@ -278,6 +287,7 @@ namespace PnP.Framework
         /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
         public AuthenticationManager(string clientId, string username, SecureString password, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
+            this.azureEnvironment = azureEnvironment;
             azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
 
             var builder = PublicClientApplicationBuilder.Create(clientId).WithAuthority($"{azureADEndPoint}/organizations/").WithHttpClientFactory(HttpClientFactory);
@@ -321,6 +331,7 @@ namespace PnP.Framework
         /// <param name="customWebUi">Optional ICustomWebUi object to fully customize the feedback behavior</param>
         public AuthenticationManager(string clientId, string redirectUrl = null, string tenantId = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null, ICustomWebUi customWebUi = null) : this()
         {
+            this.azureEnvironment = azureEnvironment;
             azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
             var builder = PublicClientApplicationBuilder.Create(clientId).WithAuthority($"{azureADEndPoint}/organizations/").WithHttpClientFactory(HttpClientFactory);
             if (!string.IsNullOrEmpty(redirectUrl))
@@ -351,6 +362,7 @@ namespace PnP.Framework
         /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
         public AuthenticationManager(string clientId, Func<DeviceCodeResult, Task> deviceCodeCallback, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
+            this.azureEnvironment = azureEnvironment;
             azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
             this.deviceCodeCallback = deviceCodeCallback;
 
@@ -375,6 +387,7 @@ namespace PnP.Framework
         /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
         public AuthenticationManager(string clientId, X509Certificate2 certificate, string tenantId, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
+            this.azureEnvironment = azureEnvironment;
             azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
             ConfidentialClientApplicationBuilder builder;
             if (azureEnvironment != AzureEnvironment.Production)
@@ -411,6 +424,7 @@ namespace PnP.Framework
         /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
         public AuthenticationManager(string clientId, string certificatePath, string certificatePassword, string tenantId, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
+            this.azureEnvironment = azureEnvironment;
             azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
 
             if (System.IO.File.Exists(certificatePath))
@@ -470,6 +484,7 @@ namespace PnP.Framework
         /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
         public AuthenticationManager(string clientId, StoreName storeName, StoreLocation storeLocation, string thumbPrint, string tenantId, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
+            this.azureEnvironment = azureEnvironment;
             azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
 
             var certificate = Utilities.X509CertificateUtility.LoadCertificate(storeName, storeLocation, thumbPrint);
@@ -505,6 +520,7 @@ namespace PnP.Framework
         /// <param name="tokenCacheCallback"></param>
         public AuthenticationManager(string clientId, string clientSecret, UserAssertion userAssertion, string tenantId = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
+            this.azureEnvironment = azureEnvironment;
             var azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
 
             ConfidentialClientApplicationBuilder builder;
@@ -1139,6 +1155,8 @@ namespace PnP.Framework
                 AzureEnvironment.Germany => "login",
                 AzureEnvironment.China => "accounts",
                 AzureEnvironment.USGovernment => "login",
+                AzureEnvironment.USGovernmentHigh => "login",
+                AzureEnvironment.USGovernmentDoD => "login",
                 AzureEnvironment.PPE => "login",
                 _ => "accounts"
             };
@@ -1204,9 +1222,56 @@ namespace PnP.Framework
                 AzureEnvironment.Germany => "https://login.microsoftonline.de",
                 AzureEnvironment.China => "https://login.chinacloudapi.cn",
                 AzureEnvironment.USGovernment => "https://login.microsoftonline.us",
+                AzureEnvironment.USGovernmentHigh => "https://login.microsoftonline.us",
+                AzureEnvironment.USGovernmentDoD => "https://login.microsoftonline.us",
                 AzureEnvironment.PPE => "https://login.windows-ppe.net",
                 _ => "https://login.microsoftonline.com"
             };
+        }
+
+        /// <summary>
+        /// Returns the Graph End Point url without protocol based upon the Azure Environment selected during creation of the Authentication Manager
+        /// </summary>
+        /// <returns></returns>
+        public string GetGraphEndPoint()
+        {
+            return GetGraphEndPoint(this.azureEnvironment);
+        }
+
+        /// <summary>
+        /// Returns the Graph End Point url without protocol based upon the provided Azure Environment
+        /// </summary>
+        /// <returns></returns>
+        public static string GetGraphEndPoint(AzureEnvironment environment)
+        {
+            switch (environment)
+            {
+                case AzureEnvironment.Production:
+                    {
+                        return "graph.microsoft.com";
+                    }
+                case AzureEnvironment.Germany:
+                    {
+                        return "graph.microsoft.de";
+                    }
+                case AzureEnvironment.China:
+                    {
+                        return "microsoftgraph.chinacloudapi.cn";
+                    }
+                case AzureEnvironment.USGovernment:
+                case AzureEnvironment.USGovernmentHigh:
+                    {
+                        return "graph.microsoft.us";
+                    }
+                case AzureEnvironment.USGovernmentDoD:
+                    {
+                        return "dod-graph.microsoft.us";
+                    }
+                default:
+                    {
+                        return "graph.microsoft.com";
+                    }
+            }
         }
 
         /// <summary>
@@ -1220,6 +1285,8 @@ namespace PnP.Framework
             {
                 AzureEnvironment.Production => "com",
                 AzureEnvironment.USGovernment => "us",
+                AzureEnvironment.USGovernmentHigh => "us",
+                AzureEnvironment.USGovernmentDoD => "us",
                 AzureEnvironment.Germany => "de",
                 AzureEnvironment.China => "cn",
                 _ => "com"

@@ -1247,6 +1247,7 @@ namespace PnP.Framework
             switch (environment)
             {
                 case AzureEnvironment.Production:
+                case AzureEnvironment.USGovernment:
                     {
                         return "graph.microsoft.com";
                     }
@@ -1258,7 +1259,6 @@ namespace PnP.Framework
                     {
                         return "microsoftgraph.chinacloudapi.cn";
                     }
-                case AzureEnvironment.USGovernment:
                 case AzureEnvironment.USGovernmentHigh:
                     {
                         return "graph.microsoft.us";

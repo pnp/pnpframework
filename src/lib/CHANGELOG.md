@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - Adding functionality to deal with all types of Azure Active Directory groups #175 [koenzomers - Koen Zomers]
+- Adding VS Code build profile #176 [koenzomers - Koen Zomers]
 
 ## [1.2.0]
 

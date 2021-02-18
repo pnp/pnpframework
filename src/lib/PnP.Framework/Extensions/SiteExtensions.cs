@@ -1,4 +1,5 @@
-﻿using PnP.Framework.Graph;
+﻿using PnP.Framework;
+using PnP.Framework.Graph;
 using System;
 
 namespace Microsoft.SharePoint.Client
@@ -12,8 +13,9 @@ namespace Microsoft.SharePoint.Client
         /// <param name="site">The target site</param>
         /// <param name="classificationValue">The new value for the Site Classification</param>
         /// <param name="accessToken">The OAuth Access Token to consume Microsoft Graph, required only for GROUP#0 site collections</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns>The classification for the site</returns>
-        public static void SetSiteClassification(this Site site, string classificationValue, string accessToken = null)
+        public static void SetSiteClassification(this Site site, string classificationValue, string accessToken = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             // Determine the modern site template
             var baseTemplateValue = site.RootWeb.GetBaseTemplateId();
@@ -32,7 +34,7 @@ namespace Microsoft.SharePoint.Client
 
                     // Update the Classification of the Office 365 Group
                     // PATCH https://graph.microsoft.com/beta/groups/{groupId}
-                    string updateGroupUrl = $"{GraphHttpClient.MicrosoftGraphBetaBaseUri}groups/{site.GroupId}";
+                    string updateGroupUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment,true)}groups/{site.GroupId}";
                     var updateGroupResult = GraphHttpClient.MakePatchRequestForString(
                         updateGroupUrl,
                         content: new
@@ -111,8 +113,9 @@ namespace Microsoft.SharePoint.Client
         /// </summary>
         /// <param name="site">Site collection</param>
         /// <param name="accessToken">Graph access token (groups.read.all) </param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns>True if there's a team</returns>
-        public static bool HasTeamsTeam(this Site site, string accessToken)
+        public static bool HasTeamsTeam(this Site site, string accessToken, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             bool result = false;
 
@@ -125,7 +128,7 @@ namespace Microsoft.SharePoint.Client
             }
 
             // fall back to Graph untill we've a SharePoint approach that works
-            result = UnifiedGroupsUtility.HasTeamsTeam(site.GroupId.ToString(), accessToken);
+            result = UnifiedGroupsUtility.HasTeamsTeam(site.GroupId.ToString(), accessToken, azureEnvironment);
 
             // Problem is that this folder property is not always set
             /*

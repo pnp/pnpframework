@@ -789,12 +789,20 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                 // Tenant classification doesn't exist, just swallow the exception.
                             }
 
+                            var azureEnvironment = AzureEnvironment.Production;
+                            if (PnPProvisioningContext.Current != null)
+                            {
+                                azureEnvironment = PnPProvisioningContext.Current.AzureEnvironment;
+                            }
+
                             if (siteClassificationSettingsExists)
                             {
                                 // Tenant classification exists, update the necessary values for Group Settings.
                                 try
                                 {
-                                    string directorySettingTemplatesUrl = $"{GraphHttpClient.MicrosoftGraphV1BaseUri}groupSettings";
+                                   
+
+                                    string directorySettingTemplatesUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groupSettings";
                                     var directorySettingTemplatesJson = GraphHttpClient.MakeGetRequestForString(directorySettingTemplatesUrl, accessToken);
                                     var directorySettingTemplates = JsonConvert.DeserializeObject<DirectorySettingTemplates>(directorySettingTemplatesJson);
 
@@ -813,7 +821,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                             }
                                         }
 
-                                        string updateDirectorySettingUrl = $"{GraphHttpClient.MicrosoftGraphV1BaseUri}groupSettings/{unifiedGroupSetting.Id}";
+                                        string updateDirectorySettingUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groupSettings/{unifiedGroupSetting.Id}";
                                         var updateDirectorySettingResult = GraphHttpClient.MakePatchRequestForString(
                                             updateDirectorySettingUrl,
                                             content: new
@@ -841,7 +849,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
 
                                 try
                                 {
-                                    string directorySettingTemplatesUrl = $"{GraphHttpClient.MicrosoftGraphV1BaseUri}groupSettingTemplates";
+                                    string directorySettingTemplatesUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groupSettingTemplates";
                                     var directorySettingTemplatesJson = GraphHttpClient.MakeGetRequestForString(directorySettingTemplatesUrl, accessToken);
                                     var directorySettingTemplates = JsonConvert.DeserializeObject<DirectorySettingTemplates>(directorySettingTemplatesJson);
 
@@ -866,7 +874,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                             }
                                         }
 
-                                        string updateDirectorySettingUrl = $"{GraphHttpClient.MicrosoftGraphV1BaseUri}groupSettings";
+                                        string updateDirectorySettingUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groupSettings";
                                         var updateDirectorySettingResult = GraphHttpClient.MakePostRequestForString(
                                             updateDirectorySettingUrl,
                                             content: new

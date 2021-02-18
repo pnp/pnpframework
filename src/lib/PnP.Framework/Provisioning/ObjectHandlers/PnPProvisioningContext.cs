@@ -11,14 +11,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
     /// <param name="resource">The Resource to access</param>
     /// <param name="scope">The required Permission Scope</param>
     /// <returns>The Access Token to access the target resource</returns>
-    public delegate Task<String> AcquireTokenAsyncDelegate(String resource, string scope);
+    public delegate Task<string> AcquireTokenAsyncDelegate(string resource, string scope);
 
     /// <summary>
     /// Asynchronous delegate to get a cookie to access a target resource
     /// </summary>
     /// <param name="resource">The Resource to access</param>
     /// <returns>The Cookie to access the target resource</returns>
-    public delegate Task<String> AcquireCookieAsyncDelegate(String resource);
+    public delegate Task<string> AcquireCookieAsyncDelegate(string resource);
 
     /// <summary>
     /// Class to wrap any PnP Provisioning process in order to share the same security context across different Object Handlers
@@ -41,25 +41,32 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// <summary>
         /// Property Bag of properties for the current context
         /// </summary>
-        public Dictionary<String, Object> Properties { get; private set; } =
+        public Dictionary<string, object> Properties { get; private set; } =
             new Dictionary<string, object>();
 
+        /// <summary>
+        /// Defines the Cloud Deployment the current user is connected to.
+        /// </summary>
+        public AzureEnvironment AzureEnvironment { get; private set; } = AzureEnvironment.Production;
         /// <summary>
         /// Constructor for the content
         /// </summary>
         /// <param name="acquireTokenAsyncDelegate">Asynchronous delegate to acquire an access token for a specific resource and with a specific scope</param>
         /// <param name="acquireCookieAsyncDelegate">Asynchronous delegate to acquire a cookie for a specific resource</param>
         /// <param name="properties">Properties to add to the Property Bag of the current context</param>
+        /// <param name="azureEnvironment">The Azure Cloud Deployment to use. This is used to determine the Graph endpoint. Defaults to 'Production' / 'Global'</param>
         public PnPProvisioningContext(
             AcquireTokenAsyncDelegate acquireTokenAsyncDelegate = null,
             AcquireCookieAsyncDelegate acquireCookieAsyncDelegate = null,
-            Dictionary<String, Object> properties = null)
+            Dictionary<string, object> properties = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             // Save the delegate to acquire the access token
             this.AcquireTokenAsync = acquireTokenAsyncDelegate;
 
             // Save the delegate to acquire the cookie
             this.AcquireCookieAsync = acquireCookieAsyncDelegate;
+
+            this.AzureEnvironment = azureEnvironment;
 
             // Add the initial set of properties, if any
             if (properties != null)
@@ -83,7 +90,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// <param name="resource">The target resource</param>
         /// <param name="scope">The scope for the target resource</param>
         /// <returns>The Access Token for the requested resource, with the requested scope</returns>
-        public String AcquireToken(String resource, string scope)
+        public string AcquireToken(string resource, string scope)
         {
             if (this.AcquireTokenAsync != null)
             {
@@ -110,7 +117,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// </summary>
         /// <param name="resource">The target resource</param>
         /// <returns>The Cookie for the requested resource</returns>
-        public String AcquireCookie(String resource)
+        public string AcquireCookie(string resource)
         {
             return (this.AcquireCookieAsync(resource).GetAwaiter().GetResult());
         }

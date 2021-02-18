@@ -67,8 +67,9 @@ namespace PnP.Framework.Graph
         /// <param name="accessToken">The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns>The URL of the modern site backing the Office 365 Group</returns>
-        public static string GetUnifiedGroupSiteUrl(string groupId, string accessToken, int retryCount = 10, int delay = 500)
+        public static string GetUnifiedGroupSiteUrl(string groupId, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (string.IsNullOrEmpty(groupId))
             {
@@ -82,7 +83,7 @@ namespace PnP.Framework.Graph
             string result;
             try
             {
-                string requestUrl = $"{GraphHttpClient.MicrosoftGraphV1BaseUri}groups/{groupId}/sites/root?$select=webUrl";
+                string requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groups/{groupId}/sites/root?$select=webUrl";
                 var response = JToken.Parse(HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay));
 
                 result = Convert.ToString(response["webUrl"]);
@@ -460,7 +461,8 @@ namespace PnP.Framework.Graph
         /// <param name="accessToken">The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</param>
         /// <param name="hideFromAddressLists">True if the group should not be displayed in certain parts of the Outlook UI: the Address Book, address lists for selecting message recipients, and the Browse Groups dialog for searching groups; otherwise, false. Default value is false.</param>
         /// <param name="hideFromOutlookClients">True if the group should not be displayed in Outlook clients, such as Outlook for Windows and Outlook on the web; otherwise, false. Default value is false.</param>
-        public static void SetUnifiedGroupVisibility(string groupId, string accessToken, bool? hideFromAddressLists, bool? hideFromOutlookClients)
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
+        public static void SetUnifiedGroupVisibility(string groupId, string accessToken, bool? hideFromAddressLists, bool? hideFromOutlookClients, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (String.IsNullOrEmpty(groupId))
             {
@@ -480,7 +482,7 @@ namespace PnP.Framework.Graph
             try
             {
                 // PATCH https://graph.microsoft.com/v1.0/groups/{id}
-                string updateGroupUrl = $"{GraphHttpClient.MicrosoftGraphV1BaseUri}groups/{groupId}";
+                string updateGroupUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groups/{groupId}";
                 var groupRequest = new Model.Group
                 {
                     HideFromAddressLists = hideFromAddressLists,
@@ -765,7 +767,8 @@ namespace PnP.Framework.Graph
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
         /// <param name="includeClassification">Defines whether to return classification value of the unified group. Default is false.</param>
         /// <param name="includeHasTeam">Defines whether to check for each unified group if it has a Microsoft Team provisioned for it. Default is false.</param>
-        public static UnifiedGroupEntity GetUnifiedGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500, bool includeSite = true, bool includeClassification = false, bool includeHasTeam = false)
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
+        public static UnifiedGroupEntity GetUnifiedGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500, bool includeSite = true, bool includeClassification = false, bool includeHasTeam = false, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (string.IsNullOrEmpty(groupId))
             {
@@ -817,7 +820,7 @@ namespace PnP.Framework.Graph
 
                     if (includeHasTeam)
                     {
-                        group.HasTeam = HasTeamsTeam(group.GroupId, accessToken);
+                        group.HasTeam = HasTeamsTeam(group.GroupId, accessToken, azureEnvironment);
                     }
 
                     return (group);
@@ -962,11 +965,12 @@ namespace PnP.Framework.Graph
         /// <param name="includeClassification">Defines whether or not to return details about the Modern Site classification value.</param>
         /// <param name="includeHasTeam">Defines whether to check for each unified group if it has a Microsoft Team provisioned for it. Default is false.</param>
         /// <param name="pageSize">Page size used for the individual requests to Micrsoft Graph. Defaults to 999 which is currently the maximum value.</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns>An IList of SiteEntity objects</returns>
         public static List<UnifiedGroupEntity> GetUnifiedGroups(string accessToken,
             string displayName = null, string mailNickname = null,
             int startIndex = 0, int? endIndex = null, bool includeSite = true,
-            int retryCount = 10, int delay = 500, bool includeClassification = false, bool includeHasTeam = false, int pageSize = 999)
+            int retryCount = 10, int delay = 500, bool includeClassification = false, bool includeHasTeam = false, int pageSize = 999, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (string.IsNullOrEmpty(accessToken))
             {
@@ -1035,7 +1039,7 @@ namespace PnP.Framework.Graph
 
                                 if (includeHasTeam)
                                 {
-                                    group.HasTeam = HasTeamsTeam(group.GroupId, accessToken);
+                                    group.HasTeam = HasTeamsTeam(group.GroupId, accessToken, azureEnvironment);
                                 }
 
                                 groups.Add(group);
@@ -1673,8 +1677,9 @@ namespace PnP.Framework.Graph
         /// </summary>
         /// <param name="groupId">ID of the unified Group</param>
         /// <param name="accessToken">The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns>Classification value of a Unified group</returns>
-        public static string GetGroupClassification(string groupId, string accessToken)
+        public static string GetGroupClassification(string groupId, string accessToken, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (String.IsNullOrEmpty(groupId))
             {
@@ -1690,7 +1695,7 @@ namespace PnP.Framework.Graph
 
             try
             {
-                string getGroupUrl = $"{GraphHttpClient.MicrosoftGraphV1BaseUri}groups/{groupId}";
+                string getGroupUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groups/{groupId}";
 
                 var getGroupResult = GraphHttpClient.MakeGetRequestForString(
                     getGroupUrl,
@@ -1717,8 +1722,9 @@ namespace PnP.Framework.Graph
         /// </summary>
         /// <param name="groupId">Id of the group to check</param>
         /// <param name="accessToken">Access token with scope Group.Read.All</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns>True if there's a Teams linked to this group</returns>
-        public static bool HasTeamsTeam(string groupId, string accessToken)
+        public static bool HasTeamsTeam(string groupId, string accessToken, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (String.IsNullOrEmpty(groupId))
             {
@@ -1736,7 +1742,7 @@ namespace PnP.Framework.Graph
             {
                 groupId = groupId.ToLower();
 
-                string getGroupsInfo = $"{GraphHttpClient.MicrosoftGraphV1BaseUri}groups/{groupId}?$select=resourceProvisioningOptions";
+                string getGroupsInfo = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groups/{groupId}?$select=resourceProvisioningOptions";
 
                 var getGroupResult = GraphHttpClient.MakeGetRequestForString(
                     getGroupsInfo,
@@ -1766,8 +1772,9 @@ namespace PnP.Framework.Graph
         /// <param name="groupId">The ID of the Office 365 Group</param>
         /// <param name="accessToken">The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</param>
         /// <param name="timeoutSeconds">Time to wait till Team is created. Default is 300 seconds (5 mins)</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns></returns>
-        public static async Task CreateTeam(string groupId, string accessToken, int timeoutSeconds = 300)
+        public static async Task CreateTeam(string groupId, string accessToken, int timeoutSeconds = 300, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (string.IsNullOrEmpty(groupId))
             {
@@ -1778,7 +1785,7 @@ namespace PnP.Framework.Graph
                 throw new ArgumentNullException(nameof(accessToken));
             }
 
-            var createTeamEndPoint = GraphHttpClient.MicrosoftGraphV1BaseUri + $"groups/{groupId}/team";
+            var createTeamEndPoint = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groups/{groupId}/team";
             bool wait = true;
             int iterations = 0;
             while (wait)

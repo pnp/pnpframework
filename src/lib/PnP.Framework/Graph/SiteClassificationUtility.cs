@@ -15,14 +15,15 @@ namespace PnP.Framework.Graph
         /// Disables Site Classifications settings for the target tenant
         /// </summary>
         /// <param name="accessToken">The OAuth accessToken for Microsoft Graph with Azure AD</param>
-        public static void DisableSiteClassifications(string accessToken)
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
+        public static void DisableSiteClassifications(string accessToken, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (string.IsNullOrEmpty(accessToken))
             {
                 throw new ArgumentException("Specify a valid accesstoken", nameof(accessToken));
             }
             // GET https://graph.microsoft.com/beta/settings
-            string directorySettingsUrl = $"{GraphHttpClient.MicrosoftGraphBetaBaseUri}settings";
+            string directorySettingsUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment,true)}settings";
             var directorySettingsJson = GraphHttpClient.MakeGetRequestForString(directorySettingsUrl, accessToken);
             var directorySettings = JsonConvert.DeserializeObject<DirectorySettingTemplates>(directorySettingsJson);
 
@@ -32,7 +33,7 @@ namespace PnP.Framework.Graph
             if (unifiedGroupSetting != null)
             {
                 // DELETE https://graph.microsoft.com/beta/settings
-                string deleteDirectorySettingUrl = $"{GraphHttpClient.MicrosoftGraphBetaBaseUri}settings/{unifiedGroupSetting.Id}";
+                string deleteDirectorySettingUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment, true)}settings/{unifiedGroupSetting.Id}";
                 GraphHttpClient.MakeDeleteRequest(
                     deleteDirectorySettingUrl,
                     accessToken: accessToken);
@@ -68,7 +69,8 @@ namespace PnP.Framework.Graph
         /// <param name="classificationsList">The list of classification values</param>
         /// <param name="defaultClassification">The default classification</param>
         /// <param name="usageGuidelinesUrl">The URL of a guidance page</param>
-        public static void EnableSiteClassifications(string accessToken, IEnumerable<string> classificationsList, string defaultClassification = "", string usageGuidelinesUrl = "")
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
+        public static void EnableSiteClassifications(string accessToken, IEnumerable<string> classificationsList, string defaultClassification = "", string usageGuidelinesUrl = "", AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (string.IsNullOrEmpty(accessToken))
             {
@@ -88,7 +90,7 @@ namespace PnP.Framework.Graph
             }
 
             // GET https://graph.microsoft.com/beta/directorySettingTemplates
-            string directorySettingTemplatesUrl = $"{GraphHttpClient.MicrosoftGraphBetaBaseUri}directorySettingTemplates";
+            string directorySettingTemplatesUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment,true)}directorySettingTemplates";
             var directorySettingTemplatesJson = GraphHttpClient.MakeGetRequestForString(directorySettingTemplatesUrl, accessToken);
             var directorySettingTemplates = JsonConvert.DeserializeObject<DirectorySettingTemplates>(directorySettingTemplatesJson);
 
@@ -118,7 +120,7 @@ namespace PnP.Framework.Graph
                 }
 
                 // POST https://graph.microsoft.com/beta/settings
-                string newDirectorySettingUrl = $"{GraphHttpClient.MicrosoftGraphBetaBaseUri}settings";
+                string newDirectorySettingUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment,true)}settings";
                 var newDirectorySettingResult = GraphHttpClient.MakePostRequestForString(
                     newDirectorySettingUrl,
                     content: new
@@ -139,15 +141,16 @@ namespace PnP.Framework.Graph
         /// Enables Site Classifications for the target tenant 
         /// </summary>
         /// <param name="accessToken">The OAuth accessToken for Microsoft Graph with Azure AD</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns>The list of Site Classification values</returns>
-        public static SiteClassificationsSettings GetSiteClassificationsSettings(string accessToken)
+        public static SiteClassificationsSettings GetSiteClassificationsSettings(string accessToken, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (string.IsNullOrEmpty(accessToken))
             {
                 throw new ArgumentException("Specify a valid accesstoken", nameof(accessToken));
             }
             // GET https://graph.microsoft.com/beta/directorySettingTemplates
-            string directorySettingsUrl = $"{GraphHttpClient.MicrosoftGraphBetaBaseUri}settings";
+            string directorySettingsUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment,true)}settings";
             var directorySettingsJson = GraphHttpClient.MakeGetRequestForString(directorySettingsUrl, accessToken);
             var directorySettings = JsonConvert.DeserializeObject<DirectorySettingTemplates>(directorySettingsJson);
 
@@ -205,14 +208,15 @@ namespace PnP.Framework.Graph
         /// <param name="classificationsList">The list of classification values</param>
         /// <param name="defaultClassification">The default classification</param>
         /// <param name="usageGuidelinesUrl">The URL of a guidance page</param>
-        public static void UpdateSiteClassificationsSettings(string accessToken, IEnumerable<string> classificationsList = null, string defaultClassification = "", string usageGuidelinesUrl = "")
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
+        public static void UpdateSiteClassificationsSettings(string accessToken, IEnumerable<string> classificationsList = null, string defaultClassification = "", string usageGuidelinesUrl = "", AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (string.IsNullOrEmpty(accessToken))
             {
                 throw new ArgumentException("Specify a valid accesstoken", nameof(accessToken));
             }
             // GET https://graph.microsoft.com/beta/settings
-            string directorySettingsUrl = $"{GraphHttpClient.MicrosoftGraphBetaBaseUri}settings";
+            string directorySettingsUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment,true)}settings";
             var directorySettingsJson = GraphHttpClient.MakeGetRequestForString(directorySettingsUrl, accessToken);
             var directorySettings = JsonConvert.DeserializeObject<DirectorySettingTemplates>(directorySettingsJson);
 
@@ -249,7 +253,7 @@ namespace PnP.Framework.Graph
                 }
 
                 // PATCH https://graph.microsoft.com/beta/settings
-                string updateDirectorySettingUrl = $"{GraphHttpClient.MicrosoftGraphBetaBaseUri}settings/{unifiedGroupSetting.Id}";
+                string updateDirectorySettingUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment, true)}settings/{unifiedGroupSetting.Id}";
                 var updateDirectorySettingResult = GraphHttpClient.MakePatchRequestForString(
                     updateDirectorySettingUrl,
                     content: new

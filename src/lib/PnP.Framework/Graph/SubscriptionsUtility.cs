@@ -21,15 +21,16 @@ namespace PnP.Framework.Graph
         /// <param name="endIndex">Last item in the results returned by Microsoft Graph to return</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry.</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns>Subscription object</returns>
-        public static Model.Subscription GetSubscription(string accessToken, Guid subscriptionId, int startIndex = 0, int endIndex = 999, int retryCount = 10, int delay = 500)
+        public static Model.Subscription GetSubscription(string accessToken, Guid subscriptionId, int startIndex = 0, int endIndex = 999, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             try
             {
                 // Use a synchronous model to invoke the asynchronous process
                 var result = Task.Run(async () =>
                 {
-                    var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay);
+                    var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay, azureEnvironment: azureEnvironment);
 
                     var subscription = await graphClient.Subscriptions[subscriptionId.ToString()]
                         .Request()
@@ -56,8 +57,9 @@ namespace PnP.Framework.Graph
         /// <param name="endIndex">Last item in the results returned by Microsoft Graph to return</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry.</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns>List with Subscription objects</returns>
-        public static List<Model.Subscription> ListSubscriptions(string accessToken, int startIndex = 0, int endIndex = 999, int retryCount = 10, int delay = 500)
+        public static List<Model.Subscription> ListSubscriptions(string accessToken, int startIndex = 0, int endIndex = 999, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (String.IsNullOrEmpty(accessToken))
             {
@@ -72,7 +74,7 @@ namespace PnP.Framework.Graph
                 {
                     List<Model.Subscription> subscriptions = new List<Model.Subscription>();
 
-                    var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay);
+                    var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay, azureEnvironment: azureEnvironment);
 
                     var pagedSubscriptions = await graphClient.Subscriptions
                         .Request()
@@ -129,9 +131,10 @@ namespace PnP.Framework.Graph
         /// <param name="accessToken">The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns>The just created Microsoft Graph subscription</returns>
         public static Model.Subscription CreateSubscription(Enums.GraphSubscriptionChangeType changeType, string notificationUrl, string resource, DateTimeOffset expirationDateTime, string clientState,
-                                                            string accessToken, Enums.GraphSubscriptionTlsVersion latestSupportedTlsVersion = Enums.GraphSubscriptionTlsVersion.v1_2, int retryCount = 10, int delay = 500)
+                                                            string accessToken, Enums.GraphSubscriptionTlsVersion latestSupportedTlsVersion = Enums.GraphSubscriptionTlsVersion.v1_2, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (String.IsNullOrEmpty(notificationUrl))
             {
@@ -150,7 +153,7 @@ namespace PnP.Framework.Graph
                 // Use a synchronous model to invoke the asynchronous process
                 result = Task.Run(async () =>
                 {
-                    var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay);
+                    var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay, azureEnvironment: azureEnvironment);
 
                     // Prepare the subscription resource object
                     var newSubscription = new Subscription
@@ -192,9 +195,9 @@ namespace PnP.Framework.Graph
         /// <param name="accessToken">The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns>The just updated Microsoft Graph subscription</returns>
-        public static Model.Subscription UpdateSubscription(string subscriptionId, DateTimeOffset expirationDateTime,
-                                                            string accessToken, int retryCount = 10, int delay = 500)
+        public static Model.Subscription UpdateSubscription(string subscriptionId, DateTimeOffset expirationDateTime, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (String.IsNullOrEmpty(subscriptionId))
             {
@@ -208,7 +211,7 @@ namespace PnP.Framework.Graph
                 // Use a synchronous model to invoke the asynchronous process
                 result = Task.Run(async () =>
                 {
-                    var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay);
+                    var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay, azureEnvironment: azureEnvironment);
 
                     // Prepare the subscription resource object
                     var updatedSubscription = new Subscription

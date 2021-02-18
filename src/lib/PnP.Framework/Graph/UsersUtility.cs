@@ -186,8 +186,9 @@ namespace PnP.Framework.Graph
         /// <param name="endIndex">Last item in the results returned by Microsoft Graph to return. Provide NULL to return all results that exist.</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry.</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments.</param>
         /// <returns>List with User objects</returns>
-        public static Model.UserDelta ListUserDelta(string accessToken, string deltaToken, string filter, string orderby, string[] selectProperties = null, int startIndex = 0, int? endIndex = 999, int retryCount = 10, int delay = 500)
+        public static Model.UserDelta ListUserDelta(string accessToken, string deltaToken, string filter, string orderby, string[] selectProperties = null, int startIndex = 0, int? endIndex = 999, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (String.IsNullOrEmpty(accessToken))
             {
@@ -201,7 +202,7 @@ namespace PnP.Framework.Graph
             try
             {
                 // GET https://graph.microsoft.com/v1.0/users/delta
-                string getUserDeltaUrl = $"{GraphHttpClient.MicrosoftGraphV1BaseUri}users/delta?";
+                string getUserDeltaUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}users/delta?";
 
                 if (selectProperties != null)
                 {

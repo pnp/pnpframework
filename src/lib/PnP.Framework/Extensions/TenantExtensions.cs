@@ -838,26 +838,41 @@ namespace Microsoft.SharePoint.Client
             }
             if (PnPProvisioningContext.Current != null)
             {
-                return IsCurrentUserTenantAdminViaGraph();
+                return IsCurrentUserTenantAdminViaGraph(clientContext);
             }
 
             return false;
         }
 
-        private static bool IsCurrentUserTenantAdminViaGraph()
+        private static bool IsCurrentUserTenantAdminViaGraph(ClientContext clientContext)
         {
             string globalTenantAdminRoleTemplateId = "62e90394-69f5-4237-9190-012177145e10";
 
             try
             {
-                var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri("https://graph.microsoft.com/").Authority, null);
+                var graphEndPoint = string.Empty;
+                // determine the permissions scope to use
+                if (clientContext.GetContextSettings() != null)
+                {
+                    var endPoint = clientContext.GetContextSettings().AuthenticationManager?.GetGraphEndPoint();
+                    if (!string.IsNullOrEmpty(endPoint))
+                    {
+                        graphEndPoint = endPoint;
+                    }
+                }
+                else
+                {
+                    graphEndPoint = "graph.microsoft.com";
+                }
+                var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri($"https://{graphEndPoint}/").Authority, null);
 
                 var customHeaders = new Dictionary<string, string>();
                 customHeaders.Add("ConsistencyLevel", "eventual");
 
+                
                 // Retrieve (using the Microsoft Graph) the current user's roles
                 string jsonResponse = HttpHelper.MakeGetRequestForString(
-                    "https://graph.microsoft.com/v1.0/me/memberOf?$count=true&$search=\"displayName: Company Administrator\" OR \"displayName: Global Administrator\"",
+                    $"https://{graphEndPoint}/v1.0/me/memberOf?$count=true&$search=\"displayName: Company Administrator\" OR \"displayName: Global Administrator\"",
                     accessToken, requestHeaders: customHeaders);
 
                 if (jsonResponse != null)

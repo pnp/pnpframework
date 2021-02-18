@@ -338,7 +338,8 @@ namespace PnP.Framework.Graph
         /// <param name="accessToken">The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</param>
         /// <param name="hideFromAddressLists">True if the group should not be displayed in certain parts of the Outlook UI: the Address Book, address lists for selecting message recipients, and the Browse Groups dialog for searching groups; otherwise, false. Default value is false.</param>
         /// <param name="hideFromOutlookClients">True if the group should not be displayed in Outlook clients, such as Outlook for Windows and Outlook on the web; otherwise, false. Default value is false.</param>
-        public static void SetGroupVisibility(string groupId, string accessToken, bool? hideFromAddressLists, bool? hideFromOutlookClients)
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
+        public static void SetGroupVisibility(string groupId, string accessToken, bool? hideFromAddressLists, bool? hideFromOutlookClients, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (String.IsNullOrEmpty(groupId))
             {
@@ -358,7 +359,7 @@ namespace PnP.Framework.Graph
             try
             {
                 // PATCH https://graph.microsoft.com/v1.0/groups/{id}
-                string updateGroupUrl = $"{GraphHttpClient.MicrosoftGraphV1BaseUri}groups/{groupId}";
+                string updateGroupUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groups/{groupId}";
                 var groupRequest = new Model.Group
                 {
                     HideFromAddressLists = hideFromAddressLists,
@@ -461,7 +462,7 @@ namespace PnP.Framework.Graph
                     {
                         clonedGroup.SecurityEnabled = groupToUpdate.SecurityEnabled.Value;
                         updateGroup = true;
-                    }                      
+                    }
 
                     // If the Group has to be updated, just do it
                     if (updateGroup)
@@ -593,7 +594,7 @@ namespace PnP.Framework.Graph
         /// <returns>List of GroupEntity objects</returns>
         public static List<GroupEntity> GetGroups(string accessToken,
             string displayName = null, string mailNickname = null,
-            int startIndex = 0, int? endIndex = null, 
+            int startIndex = 0, int? endIndex = null,
             int retryCount = 10, int delay = 500, int pageSize = 999)
         {
             if (string.IsNullOrEmpty(accessToken))
@@ -962,8 +963,8 @@ namespace PnP.Framework.Graph
             try
             {
                 var currentMembers = GetGroupMembers(new GroupEntity { GroupId = groupId }, accessToken, retryCount, delay);
-                if(currentMembers == null) return;
-                
+                if (currentMembers == null) return;
+
                 RemoveGroupMembers(groupId, currentMembers.Select(o => o.UserPrincipalName).ToArray(), accessToken, retryCount, delay);
             }
             catch (ServiceException ex)
@@ -1165,7 +1166,7 @@ namespace PnP.Framework.Graph
             }).GetAwaiter().GetResult();
             return result;
         }
-      
+
         /// <summary>
         /// Gets one deleted Azure Active Directory group based on its ID
         /// </summary>
@@ -1189,7 +1190,7 @@ namespace PnP.Framework.Graph
                     MailNickname = group["mailNickname"].ToString(),
                     MailEnabled = group["mailEnabled"].ToString().Equals("true", StringComparison.InvariantCultureIgnoreCase),
                     SecurityEnabled = group["securityEnabled"].ToString().Equals("true", StringComparison.InvariantCultureIgnoreCase),
-                    GroupTypes = group["GroupTypes"] != null ? new [] { group["GroupTypes"].ToString() } : null
+                    GroupTypes = group["GroupTypes"] != null ? new[] { group["GroupTypes"].ToString() } : null
                 };
 
                 return deletedGroup;
@@ -1233,7 +1234,7 @@ namespace PnP.Framework.Graph
                         MailNickname = group["mailNickname"].ToString(),
                         MailEnabled = group["mailEnabled"].ToString().Equals("true", StringComparison.InvariantCultureIgnoreCase),
                         SecurityEnabled = group["securityEnabled"].ToString().Equals("true", StringComparison.InvariantCultureIgnoreCase),
-                        GroupTypes = group["GroupTypes"] != null ? new [] { group["GroupTypes"].ToString() } : null
+                        GroupTypes = group["GroupTypes"] != null ? new[] { group["GroupTypes"].ToString() } : null
                     };
 
                     deletedGroups.Add(deletedGroup);

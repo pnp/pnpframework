@@ -513,6 +513,7 @@ namespace PnP.Framework.Graph
         /// <param name="accessToken">The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry.</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         public static void RenewUnifiedGroup(string groupId,
                                              string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
@@ -550,6 +551,7 @@ namespace PnP.Framework.Graph
         /// <param name="accessToken">The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns>Declares whether the Office 365 Group has been updated or not</returns>
         public static bool UpdateUnifiedGroup(string groupId,
             string accessToken, int retryCount = 10, int delay = 500,
@@ -674,10 +676,11 @@ namespace PnP.Framework.Graph
         /// <param name="createTeam">Defines whether to create MS Teams team associated with the group</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns>The just created Office 365 Group</returns>
         public static UnifiedGroupEntity CreateUnifiedGroup(string displayName, string description, string mailNickname,
             string accessToken, string[] owners = null, string[] members = null, string groupLogoPath = null,
-            bool isPrivate = false, bool createTeam = false, int retryCount = 10, int delay = 500)
+            bool isPrivate = false, bool createTeam = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (!string.IsNullOrEmpty(groupLogoPath) && !System.IO.File.Exists(groupLogoPath))
             {
@@ -690,7 +693,7 @@ namespace PnP.Framework.Graph
                     return (CreateUnifiedGroup(displayName, description,
                         mailNickname, accessToken, owners, members,
                         groupLogo: groupLogoStream, isPrivate: isPrivate,
-                        createTeam: createTeam, retryCount: retryCount, delay: delay));
+                        createTeam: createTeam, retryCount: retryCount, delay: delay, azureEnvironment: azureEnvironment));
                 }
             }
             else
@@ -698,7 +701,7 @@ namespace PnP.Framework.Graph
                 return (CreateUnifiedGroup(displayName, description,
                     mailNickname, accessToken, owners, members,
                     groupLogo: null, isPrivate: isPrivate,
-                    createTeam: createTeam, retryCount: retryCount, delay: delay));
+                    createTeam: createTeam, retryCount: retryCount, delay: delay, azureEnvironment: azureEnvironment));
             }
         }
 
@@ -715,15 +718,16 @@ namespace PnP.Framework.Graph
         /// <param name="createTeam">Defines whether to create MS Teams team associated with the group</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns>The just created Office 365 Group</returns>
         public static UnifiedGroupEntity CreateUnifiedGroup(string displayName, string description, string mailNickname,
             string accessToken, string[] owners = null, string[] members = null,
-            bool isPrivate = false, bool createTeam = false, int retryCount = 10, int delay = 500)
+            bool isPrivate = false, bool createTeam = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             return (CreateUnifiedGroup(displayName, description,
                 mailNickname, accessToken, owners, members,
                 groupLogo: null, isPrivate: isPrivate,
-                createTeam: createTeam, retryCount: retryCount, delay: delay));
+                createTeam: createTeam, retryCount: retryCount, delay: delay, azureEnvironment: azureEnvironment));
         }
 
         /// <summary>
@@ -733,6 +737,7 @@ namespace PnP.Framework.Graph
         /// <param name="accessToken">The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         public static void DeleteUnifiedGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (string.IsNullOrEmpty(groupId))
@@ -1246,6 +1251,7 @@ namespace PnP.Framework.Graph
         /// <param name="removeExistingOwners">If true, all existing owners will be removed and only those provided will become owners. If false, existing owners will remain and the ones provided will be added to the list with existing owners.</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         public static void AddUnifiedGroupOwners(string groupId, string[] owners, string accessToken, bool removeExistingOwners = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (String.IsNullOrEmpty(accessToken))
@@ -1279,6 +1285,7 @@ namespace PnP.Framework.Graph
         /// <param name="removeExistingMembers">If true, all existing members will be removed and only those provided will become members. If false, existing members will remain and the ones provided will be added to the list with existing members.</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         public static void AddUnifiedGroupMembers(string groupId, string[] members, string accessToken, bool removeExistingMembers = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (String.IsNullOrEmpty(accessToken))
@@ -1311,6 +1318,7 @@ namespace PnP.Framework.Graph
         /// <param name="accessToken">The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         public static void RemoveUnifiedGroupMembers(string groupId, string[] members, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (String.IsNullOrEmpty(accessToken))
@@ -1372,6 +1380,7 @@ namespace PnP.Framework.Graph
         /// <param name="accessToken">The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         public static void RemoveUnifiedGroupOwners(string groupId, string[] owners, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (String.IsNullOrEmpty(accessToken))
@@ -1432,6 +1441,7 @@ namespace PnP.Framework.Graph
         /// <param name="accessToken">The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         public static void ClearUnifiedGroupOwners(string groupId, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (String.IsNullOrEmpty(accessToken))
@@ -1458,6 +1468,7 @@ namespace PnP.Framework.Graph
         /// <param name="accessToken">The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         public static void ClearUnifiedGroupMembers(string groupId, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (String.IsNullOrEmpty(accessToken))
@@ -1484,6 +1495,7 @@ namespace PnP.Framework.Graph
         /// <param name="accessToken">The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns>Owners of an Office 365 group as a list of UnifiedGroupUser entity</returns>
         public static List<UnifiedGroupUser> GetUnifiedGroupOwners(UnifiedGroupEntity group, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
@@ -1581,9 +1593,9 @@ namespace PnP.Framework.Graph
         /// <param name="unifiedGroupGraphUsers"></param>
         /// <param name="unifiedGroupUsers"></param>
         /// <param name="accessToken"></param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns></returns>
-
-        private static List<User> GenerateNestedGraphUserCollection(IList<DirectoryObject> page, List<User> unifiedGroupGraphUsers, List<UnifiedGroupUser> unifiedGroupUsers, string accessToken)
+        private static List<User> GenerateNestedGraphUserCollection(IList<DirectoryObject> page, List<User> unifiedGroupGraphUsers, List<UnifiedGroupUser> unifiedGroupUsers, string accessToken, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             // Create a collection of Microsoft.Graph.User type
             foreach (var usr in page)
@@ -1603,7 +1615,7 @@ namespace PnP.Framework.Graph
             GenerateGraphGroupCollection(page, unifiedGroupGraphGroups);
             foreach (Group unifiedGroupGraphGroup in unifiedGroupGraphGroups)
             {
-                var grp = GetUnifiedGroup(unifiedGroupGraphGroup.Id, accessToken);
+                var grp = GetUnifiedGroup(unifiedGroupGraphGroup.Id, accessToken, azureEnvironment: azureEnvironment);
                 unifiedGroupUsers.AddRange(GetUnifiedGroupMembers(grp, accessToken));
             }
 
@@ -1831,12 +1843,13 @@ namespace PnP.Framework.Graph
         /// </summary>
         /// <param name="groupId">The ID of the deleted group.</param>
         /// <param name="accessToken">Access token for accessing Microsoft Graph</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns>The unified group object of the deleted group that matches the provided ID.</returns>
-        public static UnifiedGroupEntity GetDeletedUnifiedGroup(string groupId, string accessToken)
+        public static UnifiedGroupEntity GetDeletedUnifiedGroup(string groupId, string accessToken, AzureEnvironment azureEnvironment)
         {
             try
             {
-                var response = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/directory/deleteditems/microsoft.graph.group/{groupId}", accessToken);
+                var response = HttpHelper.MakeGetRequestForString($"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}directory/deleteditems/microsoft.graph.group/{groupId}", accessToken);
 
                 var group = JToken.Parse(response);
 
@@ -1864,19 +1877,20 @@ namespace PnP.Framework.Graph
         ///  Lists deleted unified groups.
         /// </summary>
         /// <param name="accessToken">Access token for accessing Microsoft Graph</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns>A list of unified group objects for the deleted groups.</returns>
-        public static List<UnifiedGroupEntity> ListDeletedUnifiedGroups(string accessToken)
+        public static List<UnifiedGroupEntity> ListDeletedUnifiedGroups(string accessToken, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
-            return ListDeletedUnifiedGroups(accessToken, null, null);
+            return ListDeletedUnifiedGroups(accessToken, null, null, azureEnvironment);
         }
 
-        private static List<UnifiedGroupEntity> ListDeletedUnifiedGroups(string accessToken, List<UnifiedGroupEntity> deletedGroups, string nextPageUrl)
+        private static List<UnifiedGroupEntity> ListDeletedUnifiedGroups(string accessToken, List<UnifiedGroupEntity> deletedGroups, string nextPageUrl, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             try
             {
                 if (deletedGroups == null) deletedGroups = new List<UnifiedGroupEntity>();
 
-                var requestUrl = nextPageUrl ?? $"{GraphHelper.MicrosoftGraphBaseURI}beta/directory/deleteditems/microsoft.graph.group?filter=groupTypes/Any(x:x eq 'Unified')";
+                var requestUrl = nextPageUrl ?? $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment, true)}directory/deleteditems/microsoft.graph.group?filter=groupTypes/Any(x:x eq 'Unified')";
                 var response = JToken.Parse(HttpHelper.MakeGetRequestForString(requestUrl, accessToken));
 
                 var groups = response["value"];
@@ -1898,7 +1912,7 @@ namespace PnP.Framework.Graph
                 }
 
                 // has paging?
-                return response["@odata.nextLink"] != null ? ListDeletedUnifiedGroups(accessToken, deletedGroups, response["@odata.nextLink"].ToString()) : deletedGroups;
+                return response["@odata.nextLink"] != null ? ListDeletedUnifiedGroups(accessToken, deletedGroups, response["@odata.nextLink"].ToString(), azureEnvironment) : deletedGroups;
             }
             catch (Exception e)
             {
@@ -1912,12 +1926,13 @@ namespace PnP.Framework.Graph
         /// </summary>
         /// <param name="groupId">The ID of the deleted group.</param>
         /// <param name="accessToken">Access token for accessing Microsoft Graph</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns></returns>
-        public static void RestoreDeletedUnifiedGroup(string groupId, string accessToken)
+        public static void RestoreDeletedUnifiedGroup(string groupId, string accessToken, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             try
             {
-                HttpHelper.MakePostRequest($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/directory/deleteditems/{groupId}/restore", contentType: "application/json", accessToken: accessToken);
+                HttpHelper.MakePostRequest($"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}directory/deleteditems/{groupId}/restore", contentType: "application/json", accessToken: accessToken);
             }
             catch (Exception e)
             {
@@ -1931,12 +1946,13 @@ namespace PnP.Framework.Graph
         /// </summary>
         /// <param name="groupId">The ID of the deleted group.</param>
         /// <param name="accessToken">Access token for accessing Microsoft Graph</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns></returns>
-        public static void PermanentlyDeleteUnifiedGroup(string groupId, string accessToken)
+        public static void PermanentlyDeleteUnifiedGroup(string groupId, string accessToken, AzureEnvironment azureEnvironment)
         {
             try
             {
-                HttpHelper.MakeDeleteRequest($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/directory/deleteditems/{groupId}", accessToken);
+                HttpHelper.MakeDeleteRequest($"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}v1.0/directory/deleteditems/{groupId}", accessToken);
             }
             catch (Exception e)
             {

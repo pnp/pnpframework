@@ -1948,7 +1948,7 @@ namespace PnP.Framework.Graph
         /// <param name="accessToken">Access token for accessing Microsoft Graph</param>
         /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns></returns>
-        public static void PermanentlyDeleteUnifiedGroup(string groupId, string accessToken, AzureEnvironment azureEnvironment)
+        public static void PermanentlyDeleteUnifiedGroup(string groupId, string accessToken, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             try
             {

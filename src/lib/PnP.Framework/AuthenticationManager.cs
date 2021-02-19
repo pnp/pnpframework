@@ -85,7 +85,7 @@ namespace PnP.Framework
 
         private readonly IPublicClientApplication publicClientApplication;
         private readonly IConfidentialClientApplication confidentialClientApplication;
-        private readonly string azureADEndPoint;
+        //private readonly string azureADEndPoint;
         private readonly AzureEnvironment azureEnvironment;
         private readonly ClientContextType authenticationType;
         private readonly string username;
@@ -288,7 +288,7 @@ namespace PnP.Framework
         public AuthenticationManager(string clientId, string username, SecureString password, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
             this.azureEnvironment = azureEnvironment;
-            azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
+            var azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
 
             var builder = PublicClientApplicationBuilder.Create(clientId).WithAuthority($"{azureADEndPoint}/organizations/").WithHttpClientFactory(HttpClientFactory);
             if (!string.IsNullOrEmpty(redirectUrl))
@@ -332,8 +332,11 @@ namespace PnP.Framework
         public AuthenticationManager(string clientId, string redirectUrl = null, string tenantId = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null, ICustomWebUi customWebUi = null) : this()
         {
             this.azureEnvironment = azureEnvironment;
-            azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
-            var builder = PublicClientApplicationBuilder.Create(clientId).WithAuthority($"{azureADEndPoint}/organizations/").WithHttpClientFactory(HttpClientFactory);
+
+            var builder = PublicClientApplicationBuilder.Create(clientId).WithHttpClientFactory(HttpClientFactory);
+
+            builder = GetBuilderWithAuthority(builder, azureEnvironment);
+
             if (!string.IsNullOrEmpty(redirectUrl))
             {
                 builder = builder.WithRedirectUri(redirectUrl);
@@ -342,7 +345,6 @@ namespace PnP.Framework
             {
                 builder = builder.WithTenantId(tenantId);
             }
-
             publicClientApplication = builder.Build();
 
             this.customWebUi = customWebUi;
@@ -363,7 +365,7 @@ namespace PnP.Framework
         public AuthenticationManager(string clientId, Func<DeviceCodeResult, Task> deviceCodeCallback, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
             this.azureEnvironment = azureEnvironment;
-            azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
+            var azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
             this.deviceCodeCallback = deviceCodeCallback;
 
             var builder = PublicClientApplicationBuilder.Create(clientId).WithAuthority($"{azureADEndPoint}/organizations/").WithHttpClientFactory(HttpClientFactory);
@@ -388,7 +390,7 @@ namespace PnP.Framework
         public AuthenticationManager(string clientId, X509Certificate2 certificate, string tenantId, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
             this.azureEnvironment = azureEnvironment;
-            azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
+            var azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
             ConfidentialClientApplicationBuilder builder;
             if (azureEnvironment != AzureEnvironment.Production)
             {
@@ -425,7 +427,7 @@ namespace PnP.Framework
         public AuthenticationManager(string clientId, string certificatePath, string certificatePassword, string tenantId, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
             this.azureEnvironment = azureEnvironment;
-            azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
+            var azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
 
             if (System.IO.File.Exists(certificatePath))
             {
@@ -485,16 +487,13 @@ namespace PnP.Framework
         public AuthenticationManager(string clientId, StoreName storeName, StoreLocation storeLocation, string thumbPrint, string tenantId, string redirectUrl = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
             this.azureEnvironment = azureEnvironment;
-            azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
+            var azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
 
             var certificate = Utilities.X509CertificateUtility.LoadCertificate(storeName, storeLocation, thumbPrint);
 
             var builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId).WithHttpClientFactory(HttpClientFactory);
 
-            if (azureEnvironment != AzureEnvironment.Production)
-            {
-                builder.WithAuthority(azureADEndPoint, tenantId, true);
-            }
+            builder = GetBuilderWithAuthority(builder, azureEnvironment);
 
             if (!string.IsNullOrEmpty(redirectUrl))
             {
@@ -1315,7 +1314,7 @@ namespace PnP.Framework
                     accounts = (await publicClientApplication.GetAccountsAsync()).ToList();
                 }
             }
-            if(confidentialClientApplication != null)
+            if (confidentialClientApplication != null)
             {
                 var accounts = (await confidentialClientApplication.GetAccountsAsync()).ToList();
                 while (accounts.Any())
@@ -1343,6 +1342,72 @@ namespace PnP.Framework
             // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
+        }
+
+        public PublicClientApplicationBuilder GetBuilderWithAuthority(PublicClientApplicationBuilder builder, AzureEnvironment azureEnvironment)
+        {
+            if (azureEnvironment == AzureEnvironment.Production)
+            {
+                var azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
+                builder = builder.WithAuthority($"{azureADEndPoint}/organizations");
+            }
+            else
+            {
+                switch (azureEnvironment)
+                {
+                    case AzureEnvironment.USGovernment:
+                    case AzureEnvironment.USGovernmentDoD:
+                    case AzureEnvironment.USGovernmentHigh:
+                        {
+                            builder = builder.WithAuthority(AzureCloudInstance.AzureUsGovernment, AadAuthorityAudience.AzureAdMyOrg);
+                            break;
+                        }
+                    case AzureEnvironment.Germany:
+                        {
+                            builder = builder.WithAuthority(AzureCloudInstance.AzureGermany, AadAuthorityAudience.AzureAdMyOrg);
+                            break;
+                        }
+                    case AzureEnvironment.China:
+                        {
+                            builder = builder.WithAuthority(AzureCloudInstance.AzureChina, AadAuthorityAudience.AzureAdMyOrg);
+                            break;
+                        }
+                }
+            }
+            return builder;
+        }
+
+        public ConfidentialClientApplicationBuilder GetBuilderWithAuthority(ConfidentialClientApplicationBuilder builder, AzureEnvironment azureEnvironment)
+        {
+            if (azureEnvironment == AzureEnvironment.Production)
+            {
+                var azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
+                builder = builder.WithAuthority($"{azureADEndPoint}/organizations");
+            }
+            else
+            {
+                switch (azureEnvironment)
+                {
+                    case AzureEnvironment.USGovernment:
+                    case AzureEnvironment.USGovernmentDoD:
+                    case AzureEnvironment.USGovernmentHigh:
+                        {
+                            builder = builder.WithAuthority(AzureCloudInstance.AzureUsGovernment, AadAuthorityAudience.AzureAdMyOrg);
+                            break;
+                        }
+                    case AzureEnvironment.Germany:
+                        {
+                            builder = builder.WithAuthority(AzureCloudInstance.AzureGermany, AadAuthorityAudience.AzureAdMyOrg);
+                            break;
+                        }
+                    case AzureEnvironment.China:
+                        {
+                            builder = builder.WithAuthority(AzureCloudInstance.AzureChina, AadAuthorityAudience.AzureAdMyOrg);
+                            break;
+                        }
+                }
+            }
+            return builder;
         }
 
         #endregion

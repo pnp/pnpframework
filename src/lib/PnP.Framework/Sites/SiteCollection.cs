@@ -174,13 +174,15 @@ namespace PnP.Framework.Sites
         /// <param name="retryDelay">Delay between retries for a pending site provisioning. Default 10 seconds.</param>
         /// <param name="noWait">If specified the site will be created and the process will be finished asynchronously</param>
         /// <param name="graphAccessToken">An optional Access Token for Microsoft Graph to use for creeating the site within an App-Only context</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns>ClientContext object for the created site collection</returns>
         public static async Task<ClientContext> CreateAsync(ClientContext clientContext, TeamSiteCollectionCreationInformation siteCollectionCreationInformation,
             int delayAfterCreation = 0,
             int maxRetryCount = 12, // Maximum number of retries (12 x 10 sec = 120 sec = 2 mins)
             int retryDelay = 1000 * 10, // Wait time default to 10sec,
             bool noWait = false,
-            string graphAccessToken = null
+            string graphAccessToken = null,
+            AzureEnvironment azureEnvironment = AzureEnvironment.Production
             )
         {
             if (siteCollectionCreationInformation.Alias.Contains(" "))
@@ -200,7 +202,7 @@ namespace PnP.Framework.Sites
             if (clientContext.IsAppOnly() && !string.IsNullOrEmpty(graphAccessToken))
             {
                 // Use Microsoft Graph to create the Office 365 Group, and as such the related modern Team Site
-                responseContext = await CreateTeamSiteViaGraphAsync(clientContext, siteCollectionCreationInformation, delayAfterCreation, maxRetryCount, noWait: noWait, graphAccessToken: graphAccessToken);
+                responseContext = await CreateTeamSiteViaGraphAsync(clientContext, siteCollectionCreationInformation, delayAfterCreation, maxRetryCount, noWait: noWait, graphAccessToken: graphAccessToken, azureEnvironment: azureEnvironment);
             }
             else
             {
@@ -444,13 +446,15 @@ namespace PnP.Framework.Sites
         /// <param name="retryDelay">Delay between retries for a pending site provisioning. Default 10 seconds.</param>
         /// <param name="noWait">If specified the site will be created and the process will be finished asynchronously</param>
         /// <param name="graphAccessToken">An optional Access Token for Microsoft Graph to use for creeating the site within an App-Only context</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns>ClientContext object for the created site collection</returns>
         public static async Task<ClientContext> CreateTeamSiteViaGraphAsync(ClientContext clientContext, TeamSiteCollectionCreationInformation siteCollectionCreationInformation,
             int delayAfterCreation = 0,
             int maxRetryCount = 12, // Maximum number of retries (12 x 10 sec = 120 sec = 2 mins)
             int retryDelay = 1000 * 10, // Wait time default to 10sec,
             bool noWait = false,
-            string graphAccessToken = null
+            string graphAccessToken = null,
+            AzureEnvironment azureEnvironment = AzureEnvironment.Production
             )
         {
             ClientContext responseContext = null;
@@ -465,7 +469,7 @@ namespace PnP.Framework.Sites
                 isPrivate: !siteCollectionCreationInformation.IsPublic,
                 createTeam: false,
                 retryCount: maxRetryCount,
-                delay: retryDelay);
+                delay: retryDelay, azureEnvironment: azureEnvironment);
 
             if (group != null && !string.IsNullOrEmpty(group.SiteUrl))
             {

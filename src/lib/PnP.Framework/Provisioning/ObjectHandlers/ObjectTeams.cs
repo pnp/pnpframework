@@ -984,7 +984,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 // Avoid ActivityLimitReached 
                 System.Threading.Thread.Sleep(TimeSpan.FromSeconds(5));
 
-                var existingTab = existingTabs.FirstOrDefault(x => x["displayName"] != null && HttpUtility.UrlDecode(x["displayName"].ToString()) == tab.DisplayName && (string.IsNullOrEmpty(x["teamsAppId"]?.ToString()) || x["teamsAppId"].ToString() == tab.TeamsAppId));
+                var existingTab = existingTabs.FirstOrDefault(x => x["displayName"] != null && HttpUtility.UrlDecode(x["displayName"].ToString()) == tab.DisplayName && x["teamsApp"]?["id"]?.ToString() == tab.TeamsAppId);
 
                 var tabId = existingTab == null ? CreateTeamTab(scope, tab, parser, teamId, channelId, accessToken) : UpdateTeamTab(tab, parser, teamId, channelId, existingTab["id"].ToString(), accessToken);
 
@@ -993,7 +993,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             if (tabs.Any())
             {
                 // is there a wiki tab and not a newly created tab?
-                var wikiTab = existingTabs.FirstOrDefault(x => x["teamsAppId"].Value<string>() == "com.microsoft.teamspace.tab.wiki");
+                var wikiTab = existingTabs.FirstOrDefault(x => x["teamsApp"]?["id"]?.ToString() == "com.microsoft.teamspace.tab.wiki");
                 if (wikiTab != null && tabs.FirstOrDefault(t => t.TeamsAppId == "com.microsoft.teamspace.tab.wiki") == null)
                 {
                     RemoveTeamTab(wikiTab["id"].Value<string>(), channelId, teamId, accessToken);
@@ -1009,7 +1009,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         public static JToken GetExistingTeamChannelTabs(string teamId, string channelId, string accessToken)
         {
-            return JToken.Parse(HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}beta/teams/{teamId}/channels/{channelId}/tabs", accessToken))["value"];
+            return JToken.Parse(HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams/{teamId}/channels/{channelId}/tabs?$expand=teamsApp", accessToken))["value"];
         }
 
         private static string UpdateTeamTab(TeamTab tab, TokenParser parser, string teamId, string channelId, string tabId, string accessToken)

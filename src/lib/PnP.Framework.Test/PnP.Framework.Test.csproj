@@ -256,7 +256,7 @@
 		</PackageReference>
 		<PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
 		<PackageReference Include="System.Security.Cryptography.Xml" Version="5.0.0" />
-		<PackageReference Include="PnP.Core" Version="0.5.*-*" Condition="'$(PnPCoreSdkPath)' == ''" />
+		<PackageReference Include="PnP.Core" Version="0.6.*-*" Condition="'$(PnPCoreSdkPath)' == ''" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -162,7 +162,7 @@ namespace PnP.Framework.Graph
                         var users = GetUsers(graphClient, owners);
                         if (users != null && users.Count > 0)
                         {
-                            newGroup.OwnersODataBind = users.Select(u => string.Format("https://graph.microsoft.com/v1.0/users/{0}", u.Id)).ToArray();
+                            newGroup.OwnersODataBind = users.Select(u => $"https://{AuthenticationManager.GetGraphEndPoint(azureEnvironment)}/v1.0/users/{u.Id}").ToArray();
                         }
                     }
 
@@ -171,7 +171,7 @@ namespace PnP.Framework.Graph
                         var users = GetUsers(graphClient, members);
                         if (users != null && users.Count > 0)
                         {
-                            newGroup.MembersODataBind = users.Select(u => string.Format("https://graph.microsoft.com/v1.0/users/{0}", u.Id)).ToArray();
+                            newGroup.MembersODataBind = users.Select(u => $"https://{AuthenticationManager.GetGraphEndPoint(azureEnvironment)}/v1.0/users/{u.Id}").ToArray();
                         }
                     }
 

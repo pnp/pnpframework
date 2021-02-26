@@ -3,6 +3,7 @@ using Microsoft.SharePoint.Client;
 using PnP.Framework.Utilities;
 using System;
 using System.Collections.Concurrent;
+using System.Configuration;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -130,18 +131,36 @@ namespace PnP.Framework.Http
             // Add http handlers
             AddHttpHandlers(serviceCollection);
 
+            // get User Agent String
+            string userAgentFromConfig = null;
+            try
+            {
+                userAgentFromConfig = ConfigurationManager.AppSettings["SharePointPnPUserAgent"];
+            }
+            catch // throws exception if being called from a .NET Standard 2.0 application
+            {
+
+            }
+            if (string.IsNullOrWhiteSpace(userAgentFromConfig))
+            {
+                userAgentFromConfig = Environment.GetEnvironmentVariable("SharePointPnPUserAgent", EnvironmentVariableTarget.Process);
+            }
+
             // Add http clients
-            AddHttpClients(serviceCollection);
+            AddHttpClients(serviceCollection, userAgentFromConfig);
 
             // Build the container
             serviceProvider = serviceCollection.BuildServiceProvider();
         }
 
-        private static IServiceCollection AddHttpClients(IServiceCollection collection)
+        private static IServiceCollection AddHttpClients(IServiceCollection collection, string UserAgent=null)
         {
             collection.AddHttpClient(PnPHttpClientName, config =>
             {
-                config.DefaultRequestHeaders.UserAgent.TryParseAdd(PnPCoreUtilities.PnPCoreUserAgent);
+                if (string.IsNullOrWhiteSpace(UserAgent))
+                    config.DefaultRequestHeaders.UserAgent.TryParseAdd(PnPCoreUtilities.PnPCoreUserAgent);
+                else
+                    config.DefaultRequestHeaders.UserAgent.TryParseAdd(UserAgent);
 
             })
             .AddHttpMessageHandler<RetryHandler>()

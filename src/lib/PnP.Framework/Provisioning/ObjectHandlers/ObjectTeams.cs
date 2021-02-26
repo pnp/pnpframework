@@ -988,7 +988,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 var tabId = existingTab == null ? CreateTeamTab(scope, tab, parser, teamId, channelId, accessToken) : UpdateTeamTab(tab, parser, teamId, channelId, existingTab["id"].ToString(), accessToken);
 
-                if (tabId == null) return false;
+                if (tabId == null && !tab.Remove) return false;
             }
             if (tabs.Any())
             {

@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Enable applying of a theme at web level [jansenbe - Bert Jansen]
 - Fix: Changed the way we check the teams tab app id #189 [patrikhellgren - Patrik Hellgren]
 - Fix for updating team if a tab had Remove = True #190 [patrikhellgren - Patrik Hellgren]
+- Allow to have Custom UserAgent when use PnPHttpClient.Instance.GetHttpClient #195 [czullu - Christian Zuellig]
 
 ## [1.2.0]
 

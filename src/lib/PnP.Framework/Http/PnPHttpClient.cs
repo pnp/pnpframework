@@ -153,15 +153,18 @@ namespace PnP.Framework.Http
             serviceProvider = serviceCollection.BuildServiceProvider();
         }
 
-        private static IServiceCollection AddHttpClients(IServiceCollection collection, string UserAgent=null)
+        private static IServiceCollection AddHttpClients(IServiceCollection collection, string UserAgent = null)
         {
             collection.AddHttpClient(PnPHttpClientName, config =>
             {
                 if (string.IsNullOrWhiteSpace(UserAgent))
+                {
                     config.DefaultRequestHeaders.UserAgent.TryParseAdd(PnPCoreUtilities.PnPCoreUserAgent);
+                }
                 else
+                {
                     config.DefaultRequestHeaders.UserAgent.TryParseAdd(UserAgent);
-
+                }
             })
             .AddHttpMessageHandler<RetryHandler>()
             // We use cookies by adding them to the header which works great when used from Core framework,

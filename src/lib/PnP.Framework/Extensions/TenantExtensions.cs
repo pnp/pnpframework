@@ -1339,12 +1339,19 @@ namespace Microsoft.SharePoint.Client
 
         #region Utilities
 
-        public static string GetTenantIdByUrl(string tenantUrl)
+        public static string GetTenantIdByUrl(string tenantUrl, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             var tenantName = GetTenantNameFromUrl(tenantUrl);
             if (tenantName == null) return null;
 
-            var url = $"https://login.microsoftonline.com/{tenantName}.onmicrosoft.com/.well-known/openid-configuration";
+            using var authenticationManager = new PnP.Framework.AuthenticationManager();
+            var endpoint = authenticationManager.GetAzureADLoginEndPoint(azureEnvironment);
+
+            var url = $"{endpoint}/{tenantName}.onmicrosoft.com/.well-known/openid-configuration";
+            if (azureEnvironment != AzureEnvironment.Production)
+            {
+                url = $"{endpoint}/{tenantUrl}/.well-known/openid-configuration";
+            }
             var response = HttpHelper.MakeGetRequestForString(url);
             var json = JsonSerializer.Deserialize<JsonElement>(response);
 

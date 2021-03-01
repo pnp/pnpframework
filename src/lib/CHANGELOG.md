@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Fix: Changed the way we check the teams tab app id #189 [patrikhellgren - Patrik Hellgren]
 - Fix for updating team if a tab had Remove = True #190 [patrikhellgren - Patrik Hellgren]
 - Allow to have Custom UserAgent when use PnPHttpClient.Instance.GetHttpClient #195 [czullu - Christian Zuellig]
+- Hidden webparts can now be skipped during transformation #194 [jansenbe - Bert Jansen]
 
 ## [1.2.0]
 

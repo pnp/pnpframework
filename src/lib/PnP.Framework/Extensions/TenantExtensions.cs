@@ -80,22 +80,44 @@ namespace Microsoft.SharePoint.Client
             using (var tenantContext = tenant.Context.Clone((tenant.Context as ClientContext).Web.GetTenantAdministrationUrl()))
             {
                 var siteList = tenantContext.Web.Lists.GetByTitle("DO_NOT_DELETE_SPLIST_TENANTADMIN_AGGREGATED_SITECOLLECTIONS");
-                var query = new CamlQuery()
+                siteList.EnsureProperty(l => l.Id);
+                var payload = new
                 {
-                    ViewXml = $"<View><Query><Where><And><Eq><FieldRef Name='HubSiteId' /><Value Type='Guid'>{hubsiteId}</Value></Eq><And><Neq><FieldRef Name='SiteId' /><Value Type='Guid'>{hubsiteId}</Value></Neq><IsNull><FieldRef Name='TimeDeleted'/></IsNull></And></And></Where></Query><ViewFields><FieldRef Name='SiteUrl'/></ViewFields></View><RowLimit Paging='TRUE'>100</RowLimit>"
+                    parameters = new
+                    {
+                        RenderOptions = 2,
+                        ViewXml = $"<View><Query><Where><And><Eq><FieldRef Name='HubSiteId' /><Value Type='Guid'>{hubsiteId}</Value></Eq><And><Neq><FieldRef Name='SiteId' /><Value Type='Guid'>{hubsiteId}</Value></Neq><IsNull><FieldRef Name='TimeDeleted'/></IsNull></And></And></Where></Query><ViewFields><FieldRef Name='SiteUrl'/></ViewFields><RowLimit Paged='TRUE'>1</RowLimit></View>"
+                    }
                 };
 
-                do
+                var payloadString = JsonSerializer.Serialize(payload);
+                var response = RESTUtilities.ExecutePostAsync(((ClientContext)tenant.Context).Web, $"/_api/web/lists(guid'{siteList.Id}')/RenderListDataAsStream", payloadString).GetAwaiter().GetResult();
+                var responseElement = JsonSerializer.Deserialize<JsonElement>(response);
+                if (responseElement.TryGetProperty("Row", out JsonElement rowProperty))
                 {
-                    var items = siteList.GetItems(query);
-                    tenantContext.Load(items);
-                    tenantContext.ExecuteQueryRetry();
-                    foreach (var item in items)
+                    foreach (var row in rowProperty.EnumerateArray())
                     {
-                        urls.Add(item["SiteUrl"].ToString());
+                        if (row.TryGetProperty("SiteUrl", out JsonElement siteUrlProperty))
+                        {
+                            urls.Add(siteUrlProperty.GetString());
+                        }
                     }
-                    query.ListItemCollectionPosition = items.ListItemCollectionPosition;
-                } while (query.ListItemCollectionPosition != null);
+                    while (responseElement.TryGetProperty("NextHref", out JsonElement nextHrefElement))
+                    {
+                        response = RESTUtilities.ExecutePostAsync(((ClientContext)tenant.Context).Web, $"/_api/web/lists(guid'{siteList.Id}')/RenderListDataAsStream{nextHrefElement.GetString()}?PageFirstRow", payloadString).GetAwaiter().GetResult();
+                        responseElement = JsonSerializer.Deserialize<JsonElement>(response);
+                        if (responseElement.TryGetProperty("Row", out rowProperty))
+                        {
+                            foreach (var row in rowProperty.EnumerateArray())
+                            {
+                                if (row.TryGetProperty("SiteUrl", out JsonElement siteUrlProperty))
+                                {
+                                    urls.Add(siteUrlProperty.GetString());
+                                }
+                            }
+                        }
+                    }
+                }
             }
             return urls;
         }
@@ -869,7 +891,7 @@ namespace Microsoft.SharePoint.Client
                 var customHeaders = new Dictionary<string, string>();
                 customHeaders.Add("ConsistencyLevel", "eventual");
 
-                
+
                 // Retrieve (using the Microsoft Graph) the current user's roles
                 string jsonResponse = HttpHelper.MakeGetRequestForString(
                     $"https://{graphEndPoint}/v1.0/me/memberOf?$count=true&$search=\"displayName: Company Administrator\" OR \"displayName: Global Administrator\"",

@@ -17,6 +17,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Explicitely set UseCookies to false when creating a HttpClient since .NET Framework requires this (versus .NET Core/.NET 5 that work without this setting) [jansenbe - Bert Jansen]
 - Only assume missing levels in content type hiarchy when the list was created from an OOB list template [jansenbe - Bert Jansen]
 - Enable applying of a theme at web level [jansenbe - Bert Jansen]
+- Fix: Changed the way we check the teams tab app id #189 [patrikhellgren - Patrik Hellgren]
+- Fix for updating team if a tab had Remove = True #190 [patrikhellgren - Patrik Hellgren]
+- Allow to have Custom UserAgent when use PnPHttpClient.Instance.GetHttpClient #195 [czullu - Christian Zuellig]
+- Hidden webparts can now be skipped during transformation #194 [jansenbe - Bert Jansen]
+- Improved Tenant Id fetch method #198 [gautamdsheth - Gautam Sheth]
 
 ## [1.2.0]
 

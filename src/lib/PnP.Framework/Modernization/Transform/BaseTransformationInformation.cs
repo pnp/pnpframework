@@ -106,6 +106,10 @@ namespace PnP.Framework.Modernization.Transform
         /// </summary>
         public string UrlMappingFile { get; set; }
 
+        /// <summary>
+        /// Don't transform hidden web parts
+        /// </summary>
+        public bool SkipHiddenWebParts { get; set; }
         #endregion
 
         #region Term Mapping Properties

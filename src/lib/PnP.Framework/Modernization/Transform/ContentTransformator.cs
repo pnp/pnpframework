@@ -86,6 +86,11 @@ namespace PnP.Framework.Modernization.Transform
                 return;
             }
 
+            if (transformationInformation.SkipHiddenWebParts)
+            {
+                webParts = webParts.Where(c => !c.Hidden).ToList();
+            }
+
             // find the default mapping, will be used for webparts for which the model does not contain a mapping
             var defaultMapping = pageTransformation.BaseWebPart.Mappings.Mapping.Where(p => p.Default == true).FirstOrDefault();
             if (defaultMapping == null)

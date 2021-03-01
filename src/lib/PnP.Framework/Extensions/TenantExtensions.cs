@@ -86,7 +86,7 @@ namespace Microsoft.SharePoint.Client
                     parameters = new
                     {
                         RenderOptions = 2,
-                        ViewXml = $"<View><Query><Where><And><Eq><FieldRef Name='HubSiteId' /><Value Type='Guid'>{hubsiteId}</Value></Eq><And><Neq><FieldRef Name='SiteId' /><Value Type='Guid'>{hubsiteId}</Value></Neq><IsNull><FieldRef Name='TimeDeleted'/></IsNull></And></And></Where></Query><ViewFields><FieldRef Name='SiteUrl'/></ViewFields><RowLimit Paged='TRUE'>1</RowLimit></View>"
+                        ViewXml = $"<View><Query><Where><And><Eq><FieldRef Name='HubSiteId' /><Value Type='Guid'>{hubsiteId}</Value></Eq><And><Neq><FieldRef Name='SiteId' /><Value Type='Guid'>{hubsiteId}</Value></Neq><IsNull><FieldRef Name='TimeDeleted'/></IsNull></And></And></Where></Query><ViewFields><FieldRef Name='SiteUrl'/></ViewFields><RowLimit Paged='TRUE'>100</RowLimit></View>"
                     }
                 };
 
@@ -104,7 +104,7 @@ namespace Microsoft.SharePoint.Client
                     }
                     while (responseElement.TryGetProperty("NextHref", out JsonElement nextHrefElement))
                     {
-                        response = RESTUtilities.ExecutePostAsync(((ClientContext)tenant.Context).Web, $"/_api/web/lists(guid'{siteList.Id}')/RenderListDataAsStream{nextHrefElement.GetString()}?PageFirstRow", payloadString).GetAwaiter().GetResult();
+                        response = RESTUtilities.ExecutePostAsync(((ClientContext)tenant.Context).Web, $"/_api/web/lists(guid'{siteList.Id}')/RenderListDataAsStream{nextHrefElement.GetString()}", payloadString).GetAwaiter().GetResult();
                         responseElement = JsonSerializer.Deserialize<JsonElement>(response);
                         if (responseElement.TryGetProperty("Row", out rowProperty))
                         {

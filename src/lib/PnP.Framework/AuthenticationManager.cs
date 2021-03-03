@@ -96,6 +96,7 @@ namespace PnP.Framework
         private readonly ACSTokenGenerator acsTokenGenerator;
         private IMsalHttpClientFactory httpClientFactory;
         private readonly SecureString accessToken;
+        internal CookieContainer CookieContainer { get; set; }
 
         private IMsalHttpClientFactory HttpClientFactory
         {

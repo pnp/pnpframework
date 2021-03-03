@@ -91,7 +91,7 @@ namespace Microsoft.SharePoint.Client
                 };
 
                 var payloadString = JsonSerializer.Serialize(payload);
-                var response = RESTUtilities.ExecutePostAsync(((ClientContext)tenant.Context).Web, $"/_api/web/lists(guid'{siteList.Id}')/RenderListDataAsStream", payloadString).GetAwaiter().GetResult();
+                var response = RESTUtilities.ExecutePostAsync(tenantContext.Web, $"/_api/web/lists(guid'{siteList.Id}')/RenderListDataAsStream", payloadString).GetAwaiter().GetResult();
                 var responseElement = JsonSerializer.Deserialize<JsonElement>(response);
                 if (responseElement.TryGetProperty("Row", out JsonElement rowProperty))
                 {

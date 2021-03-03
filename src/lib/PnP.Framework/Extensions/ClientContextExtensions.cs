@@ -346,9 +346,14 @@ namespace Microsoft.SharePoint.Client
                         };
                         ClientContextSettings clientContextSettings = new ClientContextSettings()
                         {
+                            AuthenticationManager = authManager ?? new PnP.Framework.AuthenticationManager(),
                             Type = ClientContextType.Cookie,
                             SiteUrl = newSiteUrl
                         };
+                        if (authManager != null)
+                        {
+                            clientContextSettings.AuthenticationManager.CookieContainer = authManager.CookieContainer;
+                        }
 
                         newClientContext.AddContextSettings(clientContextSettings);
                     }
@@ -380,9 +385,9 @@ namespace Microsoft.SharePoint.Client
                     {
                         clonedClientContext.ExecutingWebRequest += delegate (object oSender, WebRequestEventArgs webRequestEventArgs)
                         {
-                        // Call the ExecutingWebRequest delegate method from the original ClientContext object, but pass along the webRequestEventArgs of 
-                        // the new delegate method
-                        MethodInfo methodInfo = clientContext.GetType().GetMethod("OnExecutingWebRequest", BindingFlags.Instance | BindingFlags.NonPublic);
+                            // Call the ExecutingWebRequest delegate method from the original ClientContext object, but pass along the webRequestEventArgs of 
+                            // the new delegate method
+                            MethodInfo methodInfo = clientContext.GetType().GetMethod("OnExecutingWebRequest", BindingFlags.Instance | BindingFlags.NonPublic);
                             object[] parametersArray = new object[] { webRequestEventArgs };
                             methodInfo.Invoke(clientContext, parametersArray);
                         };
@@ -501,7 +506,7 @@ namespace Microsoft.SharePoint.Client
 
             // Set initial result to false
             var result = false;
-            
+
             // do we have cookies?
 
             // Try to get an access token from the current context
@@ -571,7 +576,7 @@ namespace Microsoft.SharePoint.Client
             {
                 var contextSettings = clientContext.GetContextSettings();
 
-                if (contextSettings?.AuthenticationManager != null && contextSettings?.Type != ClientContextType.SharePointACSAppOnly && contextSettings?.Type != ClientContextType.OnPremises)
+                if (contextSettings?.AuthenticationManager != null && contextSettings?.Type != ClientContextType.SharePointACSAppOnly && contextSettings?.Type != ClientContextType.OnPremises && contextSettings?.Type != ClientContextType.Cookie)
                 {
                     accessToken = contextSettings.AuthenticationManager.GetAccessTokenAsync(clientContext.Url).GetAwaiter().GetResult();
                 }
@@ -1054,39 +1059,42 @@ namespace Microsoft.SharePoint.Client
 
         internal static CookieContainer GetAuthenticationCookies(this ClientContext context)
         {
-            var cookieString = CookieReader.GetCookie(context.Url)?.Replace("; ", ",")?.Replace(";", ",");
-            if (cookieString == null)
+            var authCookiesContainer = context.GetContextSettings()?.AuthenticationManager.CookieContainer;
+            if (authCookiesContainer == null)
             {
-                return null;
-            }
-            var authCookiesContainer = new CookieContainer();
-            // Get FedAuth and rtFa cookies issued by ADFS when accessing claims aware applications.
-            // - or get the EdgeAccessCookie issued by the Web Application Proxy (WAP) when accessing non-claims aware applications (Kerberos).
-            IEnumerable<string> authCookies = null;
-            if (Regex.IsMatch(cookieString, "FedAuth", RegexOptions.IgnoreCase))
-            {
-                authCookies = cookieString.Split(',').Where(c => c.StartsWith("FedAuth", StringComparison.InvariantCultureIgnoreCase) || c.StartsWith("rtFa", StringComparison.InvariantCultureIgnoreCase));
-            }
-            else if (Regex.IsMatch(cookieString, "EdgeAccessCookie", RegexOptions.IgnoreCase))
-            {
-                authCookies = cookieString.Split(',').Where(c => c.StartsWith("EdgeAccessCookie", StringComparison.InvariantCultureIgnoreCase));
-            }
-            if (authCookies != null)
-            {
-                var siteUri = new Uri(context.Url);
-                var extension = siteUri.Host.Substring(siteUri.Host.LastIndexOf('.') + 1);
-                var cookieCollection = new CookieCollection();
-                foreach (var cookie in authCookies)
+                var cookieString = CookieReader.GetCookie(context.Url)?.Replace("; ", ",")?.Replace(";", ",");
+                if (cookieString == null)
                 {
-                    var cookieName = cookie.Substring(0, cookie.IndexOf("=")); // cannot use split as there might '=' in the value
-                    var cookieValue = cookie.Substring(cookieName.Length + 1);
-                    cookieCollection.Add(new Cookie(cookieName, cookieValue));
+                    return null;
                 }
-                authCookiesContainer.Add(new Uri($"{siteUri.Scheme}://{siteUri.Host}"), cookieCollection);
-                var adminSiteUri = new Uri(siteUri.Scheme + "://" + siteUri.Authority.Replace($".sharepoint.{extension}", $"-admin.sharepoint.{extension}"));
-                authCookiesContainer.Add(adminSiteUri, cookieCollection);
+                authCookiesContainer = new CookieContainer();
+                // Get FedAuth and rtFa cookies issued by ADFS when accessing claims aware applications.
+                // - or get the EdgeAccessCookie issued by the Web Application Proxy (WAP) when accessing non-claims aware applications (Kerberos).
+                IEnumerable<string> authCookies = null;
+                if (Regex.IsMatch(cookieString, "FedAuth", RegexOptions.IgnoreCase))
+                {
+                    authCookies = cookieString.Split(',').Where(c => c.StartsWith("FedAuth", StringComparison.InvariantCultureIgnoreCase) || c.StartsWith("rtFa", StringComparison.InvariantCultureIgnoreCase));
+                }
+                else if (Regex.IsMatch(cookieString, "EdgeAccessCookie", RegexOptions.IgnoreCase))
+                {
+                    authCookies = cookieString.Split(',').Where(c => c.StartsWith("EdgeAccessCookie", StringComparison.InvariantCultureIgnoreCase));
+                }
+                if (authCookies != null)
+                {
+                    var siteUri = new Uri(context.Url);
+                    var extension = siteUri.Host.Substring(siteUri.Host.LastIndexOf('.') + 1);
+                    var cookieCollection = new CookieCollection();
+                    foreach (var cookie in authCookies)
+                    {
+                        var cookieName = cookie.Substring(0, cookie.IndexOf("=")); // cannot use split as there might '=' in the value
+                        var cookieValue = cookie.Substring(cookieName.Length + 1);
+                        cookieCollection.Add(new Cookie(cookieName, cookieValue));
+                    }
+                    authCookiesContainer.Add(new Uri($"{siteUri.Scheme}://{siteUri.Host}"), cookieCollection);
+                    var adminSiteUri = new Uri(siteUri.Scheme + "://" + siteUri.Authority.Replace($".sharepoint.{extension}", $"-admin.sharepoint.{extension}"));
+                    authCookiesContainer.Add(adminSiteUri, cookieCollection);
+                }
             }
-
             return authCookiesContainer;
         }
     }

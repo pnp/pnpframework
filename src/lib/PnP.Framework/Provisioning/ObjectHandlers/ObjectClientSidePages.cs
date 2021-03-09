@@ -998,14 +998,22 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     page.LayoutType = (PnPCore.PageLayoutType)Enum.Parse(typeof(PnPCore.PageLayoutType), clientSidePage.Layout);
                 }
 
+                string createdPageName;
                 if (clientSidePage.Layout == "Article" && clientSidePage.PromoteAsTemplate)
                 {
-                    page.SaveAsTemplate(pageName);
+                    createdPageName = page.SaveAsTemplate(pageName);
                 }
                 else
                 {
-                    page.Save(pageName);
+                    createdPageName = page.Save(pageName);
                 }
+
+                url = $"{pagesLibrary}/{createdPageName}";
+                if (clientSidePage.Layout == "Article" && clientSidePage.PromoteAsTemplate)
+                {
+                    url = $"{pagesLibrary}/{dummyPage.GetTemplatesFolder()}/{pageName}";
+                }
+                url = UrlUtility.Combine(web.ServerRelativeUrl, url);
 
                 var file = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(url));
                 web.Context.Load(file, f => f.UniqueId, f => f.ServerRelativePath);

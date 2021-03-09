@@ -143,7 +143,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         {
                             web.Context.Load(targetFile, p => p.ListItemAllFields.Id);
                             web.Context.ExecuteQueryRetry();
-                            parser.AddToken(new FileListItemIdToken(web, targetFile.ServerRelativePath.DecodedUrl.Substring(web.ServerRelativeUrl.Length).TrimStart("/".ToCharArray()), targetFile.ListItemAllFields.Id));
+                            if (targetFile.ListItemAllFields.ServerObjectIsNull.HasValue
+                                && !targetFile.ListItemAllFields.ServerObjectIsNull.Value)
+                            {
+                                parser.AddToken(new FileListItemIdToken(web, targetFile.ServerRelativePath.DecodedUrl.Substring(web.ServerRelativeUrl.Length).TrimStart("/".ToCharArray()), targetFile.ListItemAllFields.Id));
+                            }
                         }
                         catch (ServerException ex)
                         {

@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Allow to have Custom UserAgent when use PnPHttpClient.Instance.GetHttpClient #195 [czullu - Christian Zuellig]
 - Hidden webparts can now be skipped during transformation #194 [jansenbe - Bert Jansen]
 - Improved Tenant Id fetch method #198 [gautamdsheth - Gautam Sheth]
+- Fix if file is template in /libname/Forms folder and therefore has no ListItemId #206 [czullu - Christian Zuellig]
 
 ## [1.2.0]
 

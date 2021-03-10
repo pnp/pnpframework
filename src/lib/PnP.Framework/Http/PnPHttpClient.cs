@@ -4,8 +4,10 @@ using PnP.Framework.Utilities;
 using System;
 using System.Collections.Concurrent;
 using System.Configuration;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace PnP.Framework.Http
@@ -15,13 +17,14 @@ namespace PnP.Framework.Http
     /// </summary>
     public class PnPHttpClient
     {
+        //private static Configuration configuration;
         private const string PnPHttpClientName = "PnPHttpClient";
         private static readonly Lazy<PnPHttpClient> _lazyInstance = new Lazy<PnPHttpClient>(() => new PnPHttpClient(), true);
         private ServiceProvider serviceProvider;
         private static readonly ConcurrentDictionary<string, HttpClientHandler> credentialsHttpClients = new ConcurrentDictionary<string, HttpClientHandler>();
 
         private PnPHttpClient()
-        {
+        {            
             BuildServiceFactory();
         }
 
@@ -153,10 +156,45 @@ namespace PnP.Framework.Http
             serviceProvider = serviceCollection.BuildServiceProvider();
         }
 
+        private static TimeSpan GetHttpTimeout()
+        {
+            // get User Agent String
+            string httpTimeOutValue = null;
+            try
+            {
+                httpTimeOutValue = ConfigurationManager.AppSettings["SharePointPnPHttpTimeout"];
+            }
+            catch // throws exception if being called from a .NET Standard 2.0 application
+            {
+
+            }
+            if (string.IsNullOrWhiteSpace(httpTimeOutValue))
+            {
+                httpTimeOutValue = Environment.GetEnvironmentVariable("SharePointPnPHttpTimeout", EnvironmentVariableTarget.Process);
+            }
+
+            if (int.TryParse(httpTimeOutValue, out int httpTimeout))
+            {
+                if (httpTimeout == -1)
+                {
+                    return Timeout.InfiniteTimeSpan;
+                }
+                else
+                {
+                    return new TimeSpan(0, 0, httpTimeout);
+                }
+            }
+
+            // Return default value of 100 seconds
+            return new TimeSpan(0, 0, 100);
+        }
+
         private static IServiceCollection AddHttpClients(IServiceCollection collection, string UserAgent = null)
         {
             collection.AddHttpClient(PnPHttpClientName, config =>
             {
+                config.Timeout = GetHttpTimeout();
+
                 if (string.IsNullOrWhiteSpace(UserAgent))
                 {
                     config.DefaultRequestHeaders.UserAgent.TryParseAdd(PnPCoreUtilities.PnPCoreUserAgent);

@@ -26,7 +26,7 @@ namespace PnP.Framework.Test
             {
                 using (PnPContext context = PnPCoreSdk.Instance.GetPnPContext(cc))
                 {
-                    var web = context.Web.Get();
+                    var web = context.Web.GetAsync().GetAwaiter().GetResult();                                    
                     Assert.IsTrue(web.Title != null);
                 }
             }

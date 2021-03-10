@@ -18,9 +18,9 @@ This library is the cross platform successor of the [PnP-Sites-Core](https://git
 
 ## PnP .NET roadmap status
 
-We've shipped version 1.0.0 of PnP Framework (GA 🎉) and beta 2 of the [PnP Core SDK](https://github.com/pnp/pnpcore).
+We've shipped version 1.2.0 of PnP Framework and version 1.0.0 (GA 🎉) of the [PnP Core SDK](https://github.com/pnp/pnpcore).
 
-![PnP dotnet roadmap](PnP%20dotnet%20Roadmap%20-%20January%20status2.png)
+![PnP dotnet roadmap](PnP%20dotnet%20Roadmap%20-%20March%20status.png)
 
 ## I've found a bug, where do I need to log an issue or create a PR
 

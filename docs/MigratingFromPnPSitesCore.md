@@ -58,7 +58,7 @@ In this section you can learn how to register an application in Azure Active Dir
 
 #### Configuring the application in Azure AD
 
-The easiest way to register an application in Azure Active Directory for app-only is to use the [PnP PowerShell](https://docs.microsoft.com/en-us/powershell/sharepoint/sharepoint-pnp/sharepoint-pnp-cmdlets?view=sharepoint-ps) command lets. Specifically you can use the [`Register-PnPAzureADApp` command](https://github.com/pnp/powershell/blob/dev/documentation/Register-PnPAzureADApp.md) with the following syntax:
+The easiest way to register an application in Azure Active Directory for app-only is to use the [PnP PowerShell](https://pnp.github.io/powershell) cmdlets. Specifically you can use the [`Register-PnPAzureADApp` command](https://github.com/pnp/powershell/blob/dev/documentation/Register-PnPAzureADApp.md) with the following syntax:
 
 ```powershell
 $app = Register-PnPAzureADApp -ApplicationName "PnP.Framework.Consumer" -Tenant contoso.onmicrosoft.com -OutPath c:\temp -CertificatePassword (ConvertTo-SecureString -String "password" -AsPlainText -Force)  -GraphApplicationPermissions "Group.ReadWrite.All", "User.ReadWrite.All" -SharePointApplicationPermissions "Sites.FullControl.All", "TermStore.ReadWrite.All", "User.ReadWrite.All"  -Store CurrentUser -DeviceLogin

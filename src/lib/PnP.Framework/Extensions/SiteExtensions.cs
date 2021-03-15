@@ -1,6 +1,8 @@
 ﻿using PnP.Framework;
 using PnP.Framework.Graph;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.SharePoint.Client
 {
@@ -165,5 +167,123 @@ namespace Microsoft.SharePoint.Client
 
             return result;
         }
+        #region Events
+
+
+        /// <summary>
+        /// Registers a remote event receiver
+        /// </summary>
+        /// <param name="site">The site collection to process</param>
+        /// <param name="name">The name of the event receiver (needs to be unique among the event receivers registered on this site)</param>
+        /// <param name="url">The URL of the remote WCF service that handles the event</param>
+        /// <param name="eventReceiverType"></param>
+        /// <param name="synchronization"></param>
+        /// <param name="force">If True any event already registered with the same name will be removed first.</param>
+        /// <returns>Returns an EventReceiverDefinition if succeeded. Returns null if failed.</returns>
+        public static EventReceiverDefinition AddRemoteEventReceiver(this Site site, string name, string url, EventReceiverType eventReceiverType, EventReceiverSynchronization synchronization, bool force)
+        {
+            return site.AddRemoteEventReceiver(name, url, eventReceiverType, synchronization, 1000, force);
+        }
+
+        /// <summary>
+        /// Registers a remote event receiver
+        /// </summary>
+        /// <param name="site">The site colletion to process</param>
+        /// <param name="name">The name of the event receiver (needs to be unique among the event receivers registered on this site)</param>
+        /// <param name="url">The URL of the remote WCF service that handles the event</param>
+        /// <param name="eventReceiverType">The type of event for the event receiver.</param>
+        /// <param name="synchronization">An enumeration that specifies the synchronization state for the event receiver.</param>
+        /// <param name="sequenceNumber">An integer that represents the relative sequence of the event.</param>
+        /// <param name="force">If True any event already registered with the same name will be removed first.</param>
+        /// <returns>Returns an EventReceiverDefinition if succeeded. Returns null if failed.</returns>
+        public static EventReceiverDefinition AddRemoteEventReceiver(this Site site, string name, string url, EventReceiverType eventReceiverType, EventReceiverSynchronization synchronization, int sequenceNumber, bool force)
+        {
+            var query = from receiver
+                   in site.EventReceivers
+                        where receiver.ReceiverName == name
+                        select receiver;
+            var receivers = site.Context.LoadQuery(query);
+            site.Context.ExecuteQueryRetry();
+
+            var receiverExists = receivers.Any();
+            if (receiverExists && force)
+            {
+                var receiver = receivers.FirstOrDefault();
+                receiver.DeleteObject();
+                site.Context.ExecuteQueryRetry();
+                receiverExists = false;
+            }
+            EventReceiverDefinition def = null;
+
+            if (!receiverExists)
+            {
+                EventReceiverDefinitionCreationInformation receiver = new EventReceiverDefinitionCreationInformation
+                {
+                    EventType = eventReceiverType,
+                    ReceiverUrl = url,
+                    ReceiverName = name,
+                    SequenceNumber = sequenceNumber,
+                    Synchronization = synchronization
+                };
+                def = site.EventReceivers.Add(receiver);
+                site.Context.Load(def);
+                site.Context.ExecuteQueryRetry();
+            }
+            return def;
+        }
+
+        /// <summary>
+        /// Returns an event receiver definition
+        /// </summary>
+        /// <param name="site">site collection to process</param>
+        /// <param name="id">The id of event receiver</param>
+        /// <returns>Returns an EventReceiverDefinition if succeeded. Returns null if failed.</returns>
+        public static EventReceiverDefinition GetEventReceiverById(this Site site, Guid id)
+        {
+            IEnumerable<EventReceiverDefinition> receivers = null;
+            var query = from receiver
+                        in site.EventReceivers
+                        where receiver.ReceiverId == id
+                        select receiver;
+
+            receivers = site.Context.LoadQuery(query);
+            site.Context.ExecuteQueryRetry();
+            if (receivers.Any())
+            {
+                return receivers.FirstOrDefault();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Returns an event receiver definition
+        /// </summary>
+        /// <param name="site">site collection to process</param>
+        /// <param name="name">The name of the receiver</param>
+        /// <returns>Returns an EventReceiverDefinition if succeeded. Returns null if failed.</returns>
+        public static EventReceiverDefinition GetEventReceiverByName(this Site site, string name)
+        {
+            IEnumerable<EventReceiverDefinition> receivers = null;
+            var query = from receiver
+                        in site.EventReceivers
+                        where receiver.ReceiverName == name
+                        select receiver;
+
+            receivers = site.Context.LoadQuery(query);
+            site.Context.ExecuteQueryRetry();
+            if (receivers.Any())
+            {
+                return receivers.FirstOrDefault();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        #endregion
     }
 }

@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Added Get/Add EventReceiver method to SiteExtensions #166 [bhishma - Bhishma Bhandari]
+
 ### Changed
 
 - Documentation updates #215 [LeonArmston - Leon Armston]

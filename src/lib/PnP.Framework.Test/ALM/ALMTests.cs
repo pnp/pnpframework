@@ -15,7 +15,7 @@ namespace PnP.Framework.Test.Sites
         [TestInitialize]
         public void Initialize()
         {
-            appGuid = Guid.NewGuid();
+            appGuid = Guid.Parse("f11fc8ba-e64b-4354-b227-fded0bb31cfc");
 
         }
 
@@ -28,7 +28,8 @@ namespace PnP.Framework.Test.Sites
         [TestMethod]
         public async Task AddCheckRemoveAppTestAsync()
         {
-            using (var clientContext = TestCommon.CreateClientContext())
+            TestCommon.RegisterPnPHttpClientMock();
+            using (var clientContext = TestCommon.CreateTestClientContext())
             {
                 AppManager manager = new AppManager(clientContext);
                 var appBytes = Resources.alm;
@@ -58,7 +59,8 @@ namespace PnP.Framework.Test.Sites
         [TestMethod]
         public void AddCheckRemoveAppTest()
         {
-            using (var clientContext = TestCommon.CreateClientContext())
+            TestCommon.RegisterPnPHttpClientMock();
+            using (var clientContext = TestCommon.CreateTestClientContext())
             {
                 AppManager manager = new AppManager(clientContext);
                 var appBytes = Resources.alm;
@@ -87,7 +89,8 @@ namespace PnP.Framework.Test.Sites
         [TestMethod]
         public void DeployRetractAppTest()
         {
-            using (var clientContext = TestCommon.CreateClientContext())
+            TestCommon.RegisterPnPHttpClientMock();
+            using (var clientContext = TestCommon.CreateTestClientContext())
             {
                 AppManager manager = new AppManager(clientContext);
                 var appBytes = Resources.almskip;
@@ -113,7 +116,8 @@ namespace PnP.Framework.Test.Sites
         [TestMethod]
         public async Task DeployRetractAppAsyncTest()
         {
-            using (var clientContext = TestCommon.CreateClientContext())
+            TestCommon.RegisterPnPHttpClientMock();
+            using (var clientContext = TestCommon.CreateTestClientContext())
             {
                 AppManager manager = new AppManager(clientContext);
                 var appBytes = Resources.almskip;

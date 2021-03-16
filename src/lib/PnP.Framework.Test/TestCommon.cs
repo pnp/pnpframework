@@ -1,14 +1,18 @@
-﻿using Microsoft.SharePoint.Client;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.SharePoint.Client;
 using Newtonsoft.Json.Linq;
+using PnP.Framework.Http;
 using PnP.Framework.Test.Utilities;
 using PnP.Framework.Utilities;
 using PnP.Framework.Utilities.UnitTests;
 using PnP.Framework.Utilities.UnitTests.Helpers;
+using PnP.Framework.Utilities.UnitTests.Model;
 using PnP.Framework.Utilities.UnitTests.Web;
 using System;
 using System.Configuration;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Reflection;
 using System.Security;
 
@@ -171,13 +175,18 @@ namespace PnP.Framework.Test
         {
             return CreateContext(DevSiteUrl);
         }
+        /// <summary>
+        /// If You don't want to set up integration true for each test, You can overwrite it with this flag. Also it might be good to force a integration test before release
+        /// </summary>
+        private static bool RunInIntegrationAll { get; set; } = false;
         public static UnitTestClientContext CreateTestClientContext(
             bool runInIntegrationMode = false,
             [System.Runtime.CompilerServices.CallerFilePath] string mockFolderPath = null,
             [System.Runtime.CompilerServices.CallerMemberName] string mockFileName = null)
         {
             string mockFilePath = mockFolderPath.Replace(".cs", $"\\{mockFileName}.json");
-            if (System.IO.File.Exists(mockFilePath))
+            runInIntegrationMode = runInIntegrationMode || RunInIntegrationAll;
+            if (System.IO.File.Exists(mockFilePath) || runInIntegrationMode)
             {
                 UnitTestClientContext context;
                 if (runInIntegrationMode)
@@ -364,6 +373,41 @@ namespace PnP.Framework.Test
                 file.DeleteObject();
                 ctx.ExecuteQueryRetry();
             }
+        }
+        public static void RegisterPnPHttpClientMock(bool runAsIntegration = false,
+            [System.Runtime.CompilerServices.CallerFilePath] string mockFolderPath = null,
+            [System.Runtime.CompilerServices.CallerMemberName] string mockFileName = null)
+        {
+            string mockFilePath = mockFolderPath.Replace(".cs", $"\\{mockFileName}-http.json");
+            PnPHttpClient client = PnPHttpClient.Instance;
+            var serviceCollection = new ServiceCollection();
+            serviceCollection.AddTransient<MockHttpHandler>((IServiceProvider provider) =>
+            {
+                return new MockHttpHandler(mockFilePath);
+            });
+            serviceCollection.AddTransient<StoreResponseToAFile>((IServiceProvider provider) =>
+            {
+                return new StoreResponseToAFile(mockFilePath);
+            });
+
+
+            if (runAsIntegration || RunInIntegrationAll)
+            {
+                serviceCollection.AddHttpClient("PnPHttpClient", config =>
+                {
+                }).AddHttpMessageHandler<StoreResponseToAFile>()
+                .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler()
+                {
+                    UseCookies = false
+                });
+            }
+            else
+            {
+                serviceCollection.AddHttpClient("PnPHttpClient", config =>
+                {
+                }).AddHttpMessageHandler<MockHttpHandler>();
+            }
+            client.SetPrivate("serviceProvider", serviceCollection.BuildServiceProvider());
         }
     }
 }

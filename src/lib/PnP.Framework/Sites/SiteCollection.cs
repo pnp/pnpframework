@@ -113,10 +113,20 @@ namespace PnP.Framework.Sites
             }
             payload.Add("HubSiteId", siteCollectionCreationInformation.HubSiteId);
 
-            bool sensitivityLabelExists = !string.IsNullOrEmpty(siteCollectionCreationInformation.SensitivityLabel);
-            if (sensitivityLabelExists)
+            Guid sensitivityLabelId = Guid.Empty;
+
+            // Use the sensitivity label id passed as input if specified or retrieve the id from the display name if specified
+            if (siteCollectionCreationInformation.SensitivityLabelId != Guid.Empty)
             {
-                Guid sensitivityLabelId = await GetSensitivityLabelId(clientContext, siteCollectionCreationInformation.SensitivityLabel);
+                sensitivityLabelId = siteCollectionCreationInformation.SensitivityLabelId;
+            }
+            else if (!string.IsNullOrEmpty(siteCollectionCreationInformation.SensitivityLabel))
+            {
+                sensitivityLabelId = await GetSensitivityLabelId(clientContext, siteCollectionCreationInformation.SensitivityLabel);
+            }
+
+            if (sensitivityLabelId != Guid.Empty)
+            {                
                 payload.Add("SensitivityLabel", sensitivityLabelId);
                 payload["Classification"] = siteCollectionCreationInformation.SensitivityLabel;
             }
@@ -149,10 +159,20 @@ namespace PnP.Framework.Sites
             // Updating WebTemplateExtensionId, it's already defined in the method GetRequestPayload
             payload["WebTemplateExtensionId"] = siteCollectionCreationInformation.SiteDesignId;
 
-            bool sensitivityLabelExists = !string.IsNullOrEmpty(siteCollectionCreationInformation.SensitivityLabel);
-            if (sensitivityLabelExists)
+            Guid sensitivityLabelId = Guid.Empty;
+
+            // Use the sensitivity label id passed as input if specified or retrieve the id from the display name if specified
+            if (siteCollectionCreationInformation.SensitivityLabelId != Guid.Empty)
             {
-                Guid sensitivityLabelId = await GetSensitivityLabelId(clientContext, siteCollectionCreationInformation.SensitivityLabel);
+                sensitivityLabelId = siteCollectionCreationInformation.SensitivityLabelId;
+            }
+            else if (!string.IsNullOrEmpty(siteCollectionCreationInformation.SensitivityLabel))
+            {
+                sensitivityLabelId = await GetSensitivityLabelId(clientContext, siteCollectionCreationInformation.SensitivityLabel);
+            }
+
+            if (sensitivityLabelId != Guid.Empty)
+            {
                 payload.Add("SensitivityLabel", sensitivityLabelId);
                 payload["Classification"] = siteCollectionCreationInformation.SensitivityLabel;
             }
@@ -233,10 +253,14 @@ namespace PnP.Framework.Sites
 
             clientContext.Web.EnsureProperty(w => w.Url);
 
-            bool sensitivityLabelExists = !string.IsNullOrEmpty(siteCollectionCreationInformation.SensitivityLabel);
+            Guid sensitivityLabelId = Guid.Empty;
 
-            var sensitivityLabelId = Guid.Empty;
-            if (sensitivityLabelExists)
+            // Use the sensitivity label id passed as input if specified or retrieve the id from the display name if specified
+            if (siteCollectionCreationInformation.SensitivityLabelId != Guid.Empty)
+            {
+                sensitivityLabelId = siteCollectionCreationInformation.SensitivityLabelId;
+            }
+            else if (!string.IsNullOrEmpty(siteCollectionCreationInformation.SensitivityLabel))
             {
                 sensitivityLabelId = await GetSensitivityLabelId(clientContext, siteCollectionCreationInformation.SensitivityLabel);
             }
@@ -259,7 +283,7 @@ namespace PnP.Framework.Sites
                 { "Description", siteCollectionCreationInformation.Description ?? "" }
             };
 
-            if (sensitivityLabelExists && sensitivityLabelId != Guid.Empty)
+            if (sensitivityLabelId != Guid.Empty)
             {
                 optionalParams.Add("Classification", siteCollectionCreationInformation.SensitivityLabel ?? "");
                 creationOptionsValues.Add($"SensitivityLabel:{sensitivityLabelId}");

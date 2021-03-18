@@ -728,7 +728,7 @@ namespace PnP.Framework.ALM
 
             context.Web.EnsureProperty(w => w.Url);
 #pragma warning disable CA2000 // Dispose objects before losing scope
-            var httpClient = PnPHttpClient.Instance.GetHttpClient(_context);
+            var httpClient = PnPHttpClient.Instance.GetHttpClient(context);
 #pragma warning restore CA2000 // Dispose objects before losing scope
 
             httpClient.Timeout = new TimeSpan(0, 0, timeoutSeconds);
@@ -739,7 +739,7 @@ namespace PnP.Framework.ALM
             using (var request = new HttpRequestMessage(HttpMethod.Post, requestUrl))
             {
                 request.Headers.Add("accept", "application/json;odata=nometadata");
-                await PnPHttpClient.AuthenticateRequestAsync(request, _context).ConfigureAwait(false);
+                await PnPHttpClient.AuthenticateRequestAsync(request, context).ConfigureAwait(false);
 
                 if (postObject != null)
                 {
@@ -803,7 +803,7 @@ namespace PnP.Framework.ALM
                 if (items.Count > 0)
                 {
 #pragma warning disable CA2000 // Dispose objects before losing scope
-                    var httpClient = PnPHttpClient.Instance.GetHttpClient(_context);
+                    var httpClient = PnPHttpClient.Instance.GetHttpClient(context);
 #pragma warning restore CA2000 // Dispose objects before losing scope
                     var requestUrl = $"{context.Web.Url}/_api/web/tenantappcatalog/SyncSolutionToTeams(id={items[0].Id})";
 
@@ -811,7 +811,7 @@ namespace PnP.Framework.ALM
                     {
                         request.Headers.Add("accept", "application/json;odata=nometadata");
 
-                        await PnPHttpClient.AuthenticateRequestAsync(request, _context).ConfigureAwait(false);
+                        await PnPHttpClient.AuthenticateRequestAsync(request, context).ConfigureAwait(false);
 
                         // Perform actual post operation
                         HttpResponseMessage response = await httpClient.SendAsync(request, new CancellationToken());
@@ -858,7 +858,7 @@ namespace PnP.Framework.ALM
             context.Web.EnsureProperty(w => w.Url);
 
 #pragma warning disable CA2000 // Dispose objects before losing scope
-            var httpClient = PnPHttpClient.Instance.GetHttpClient(_context);
+            var httpClient = PnPHttpClient.Instance.GetHttpClient(context);
 #pragma warning restore CA2000 // Dispose objects before losing scope
 
             string requestUrl = $"{context.Web.Url}/_api/web/{(scope == AppCatalogScope.Tenant ? "tenant" : "sitecollection")}appcatalog/Add(overwrite={(overwrite.ToString().ToLower())}, url='{filename}')";
@@ -869,7 +869,7 @@ namespace PnP.Framework.ALM
             {
                 request.Headers.Add("accept", "application/json;odata=nometadata");
                 
-                await PnPHttpClient.AuthenticateRequestAsync(request, _context).ConfigureAwait(false);
+                await PnPHttpClient.AuthenticateRequestAsync(request, context).ConfigureAwait(false);
 
                 request.Headers.Add("binaryStringRequestBody", "true");
                 request.Content = new ByteArrayContent(file);

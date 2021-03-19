@@ -333,20 +333,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                             PreviewImageUrl = parsedPreviewImageUrl,
                             PreviewImageAltText = parsedPreviewImageAltText,
                             IsDefault = siteDesign.IsDefault,
+                            WebTemplate = ((int)siteDesign.WebTemplate).ToString()
                         };
-                        switch ((int)siteDesign.WebTemplate)
-                        {
-                            case 0:
-                                {
-                                    siteDesignCreationInfo.WebTemplate = "64";
-                                    break;
-                                }
-                            case 1:
-                                {
-                                    siteDesignCreationInfo.WebTemplate = "68";
-                                    break;
-                                }
-                        }
+
                         if (siteDesign.SiteScripts != null && siteDesign.SiteScripts.Any())
                         {
                             List<Guid> ids = new List<Guid>();
@@ -384,19 +373,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                             existingSiteDesign.PreviewImageUrl = parsedPreviewImageUrl;
                             existingSiteDesign.PreviewImageAltText = parsedPreviewImageAltText;
                             existingSiteDesign.IsDefault = siteDesign.IsDefault;
-                            switch ((int)siteDesign.WebTemplate)
-                            {
-                                case 0:
-                                    {
-                                        existingSiteDesign.WebTemplate = "64";
-                                        break;
-                                    }
-                                case 1:
-                                    {
-                                        existingSiteDesign.WebTemplate = "68";
-                                        break;
-                                    }
-                            }
+                            existingSiteDesign.WebTemplate = ((int)siteDesign.WebTemplate).ToString();
 
                             tenant.UpdateSiteDesign(existingSiteDesign);
                             tenant.Context.ExecuteQueryRetry();

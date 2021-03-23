@@ -1135,7 +1135,7 @@ namespace PnP.Framework.Sites
         }
 
         /// <summary>
-        /// Checks if the provided <paramref name="alias"/> is valid to be used to create a new site collection and will return an alternative available proposal if it is not. Use <see cref="GetIsAliasAvailableAsync"/> instead if you are just intered in knowing whether or not a certain alias is still available to be used.
+        /// Checks if the provided <paramref name="alias"/> is valid to be used to create a new site collection and will return an alternative available proposal if it is not. Use <see cref="GetIsAliasAvailableAsync"/> instead if you are just interested in knowing whether or not a certain alias is still available to be used.
         /// </summary>
         /// <param name="context">SharePoint ClientContext to use to communicate with SharePoint</param>
         /// <param name="alias">The alias to check for availability</param>

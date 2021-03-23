@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Fix for ListItem.GetFieldValueAs not working for other types than string #223 [patrikhellgren - Patrik Hellgren]
 - Documentation updates #215 [LeonArmston - Leon Armston]
 
 ## [1.3.0]

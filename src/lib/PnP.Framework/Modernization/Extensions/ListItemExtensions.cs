@@ -229,19 +229,19 @@ namespace Microsoft.SharePoint.Client
         /// <summary>
         /// Gets the field value (if the field exists and a value is set) in the given type
         /// </summary>
-        /// <typeparam name="T">Type the get the fieldValue in</typeparam>
+        /// <typeparam name="T">Type to get the fieldValue in</typeparam>
         /// <param name="item">List item to get the field from</param>
         /// <param name="fieldName">Name of the field to get the value from</param>
-        /// <returns>Value of the field in the requested type</returns>
+        /// <returns>Value of the field in the requested type or null if unable to cast</returns>
         public static T GetFieldValueAs<T>(this ListItem item, string fieldName)
         {
             if (item.FieldExistsAndUsed(fieldName))
             {
-                var fieldValue = item[fieldName].ToString();
+                var fieldValue = item[fieldName];
 
-                if (fieldValue is T)
+                if (fieldValue is T returnValue)
                 {
-                    return (T)(object)fieldValue;
+                    return returnValue;
                 }
                 try
                 {
@@ -249,13 +249,11 @@ namespace Microsoft.SharePoint.Client
                 }
                 catch (InvalidCastException)
                 {
-                    return default(T);
+                    return default;
                 }
             }
-            else
-            {
-                return default(T);
-            }
+
+            return default;
         }
         #endregion
 

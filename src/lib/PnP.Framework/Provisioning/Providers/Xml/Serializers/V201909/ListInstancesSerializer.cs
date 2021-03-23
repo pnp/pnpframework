@@ -66,6 +66,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201909
                 expressions.Add(l => l.UserCustomActions[0].CommandUIExtension, new XmlAnyFromSchemaToModelValueResolver("CommandUIExtension"));
                 expressions.Add(l => l.UserCustomActions[0].RegistrationType, new FromStringToEnumValueResolver(typeof(UserCustomActionRegistrationType)));
                 expressions.Add(l => l.UserCustomActions[0].Rights, new FromStringToBasePermissionsValueResolver());
+                expressions.Add(l => l.UserCustomActions[0].ClientSideComponentId, new FromStringToGuidValueResolver());
 
                 // Define custom resolver for Views (XML Any + RemoveExistingViews)
                 expressions.Add(l => l.Views,

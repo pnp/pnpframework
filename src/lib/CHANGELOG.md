@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Added REST mocking scenario + isolation for two test suites #221 [mgwojciech - Marcin Wojciechowski]
 - Added Get/Add EventReceiver method to SiteExtensions #166 [bhishma - Bhishma Bhandari]
 
 ### Changed

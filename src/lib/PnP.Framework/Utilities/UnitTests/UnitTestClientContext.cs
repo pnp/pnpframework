@@ -1,4 +1,5 @@
 ﻿using Microsoft.SharePoint.Client;
+using PnP.Framework.Http;
 using PnP.Framework.Utilities.UnitTests.Helpers;
 using PnP.Framework.Utilities.UnitTests.Web;
 using System;
@@ -15,7 +16,7 @@ namespace PnP.Framework.Utilities.UnitTests
         {
             RunInIntegration = runInIntegration;
             MockFilePath = mockFilePath;
-            WebRequestExecutorFactory = BuildExecutorFactory(runInIntegration, mockFilePath); ;
+            WebRequestExecutorFactory = BuildExecutorFactory(runInIntegration, mockFilePath);
         }
 
         public static MockExecutorFactory BuildExecutorFactory(bool runInIntegration, string mockFilePath)

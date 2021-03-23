@@ -53,7 +53,15 @@ namespace PnP.Framework.Utilities.UnitTests.Web
                 return _responseHeaders;
             }
         }
-        private WebHeaderCollection _requestHeaders { get; set; } = new WebHeaderCollection();
+        private WebHeaderCollection _requestHeaders { get; set; } = GetRequestHeaders();
+
+        private static WebHeaderCollection GetRequestHeaders()
+        {
+            WebHeaderCollection collection = new WebHeaderCollection();
+            collection.Add("Authorization", "Bearer test_token");
+
+            return collection;
+        }
 
         public override WebHeaderCollection RequestHeaders
         {

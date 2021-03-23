@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Fix Site Design creation/update via provisioning engine - WebTemplate not being set #229 [michael-jensen Mike Jensen]
 - Fix AudienceUriValidationFailedException exceptions when using AppCatalogScope.Tenant #228 [jackpoz - Giacomo Pozzoni]
 - Allow to specify the Sensitivity Label Id when creating a new site collection #226 [jackpoz - Giacomo Pozzoni]
 - Fix for ListItem.GetFieldValueAs not working for other types than string #223 [patrikhellgren - Patrik Hellgren]

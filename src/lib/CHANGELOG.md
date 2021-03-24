@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Added NeutralResourcesLanguage assembly attribute [jansenbe - Bert Jansen]
 - Deserialze of Template XML does not load ClientSideComponentId on List-UserCustomAction #230 [czullu - Christian Zuellig]
 - Fix Site Design creation/update via provisioning engine - WebTemplate not being set #229 [michael-jensen Mike Jensen]
 - Fix AudienceUriValidationFailedException exceptions when using AppCatalogScope.Tenant #228 [jackpoz - Giacomo Pozzoni]

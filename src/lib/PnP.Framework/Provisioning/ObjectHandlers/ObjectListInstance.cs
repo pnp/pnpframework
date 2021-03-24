@@ -13,7 +13,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -23,7 +22,6 @@ using Field = Microsoft.SharePoint.Client.Field;
 using Folder = Microsoft.SharePoint.Client.Folder;
 using View = PnP.Framework.Provisioning.Model.View;
 
-[assembly:InternalsVisibleTo("PnP.Framework.UnitTest")]
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
     internal class ObjectListInstance : ObjectHandlerBase

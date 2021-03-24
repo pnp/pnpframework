@@ -4,18 +4,13 @@ using Microsoft.SharePoint.Client;
 using PnP.Framework.Utilities;
 using PnP.Framework.Utilities.Context;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Runtime.CompilerServices;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
 
-#if DEBUG
-[assembly: InternalsVisibleTo("PnP.Framework.Test")]
-#endif
 namespace PnP.Framework
 {
     /// <summary>

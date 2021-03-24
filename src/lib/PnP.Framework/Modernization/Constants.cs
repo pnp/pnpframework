@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 
-#if DEBUG
-[assembly: InternalsVisibleTo("PnP.Framework.Modernization.Test")]
-#endif
 namespace PnP.Framework.Modernization
 {
     /// <summary>

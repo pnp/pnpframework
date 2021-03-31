@@ -565,7 +565,7 @@ namespace Microsoft.SharePoint.Client
         /// <param name="clientContext"><see cref="ClientContext"/> instance to obtain an access token for</param>
         /// <returns>Access token for the given <see cref="ClientContext"/> instance</returns>
         public static string GetAccessToken(this ClientRuntimeContext clientContext)
-        {
+        {                        
             string accessToken = null;
 
             if (PnPProvisioningContext.Current?.AcquireTokenAsync != null)
@@ -575,6 +575,9 @@ namespace Microsoft.SharePoint.Client
             else
             {
                 var contextSettings = clientContext.GetContextSettings();
+
+                // For SharePoint ACS App Only, we cannot get an access token, thus we return NULL or else we'll hit a 403 Access Denied
+                if(contextSettings?.Type == ClientContextType.SharePointACSAppOnly) return null;
 
                 if (contextSettings?.AuthenticationManager != null && contextSettings?.Type != ClientContextType.SharePointACSAppOnly && contextSettings?.Type != ClientContextType.OnPremises && contextSettings?.Type != ClientContextType.Cookie)
                 {

@@ -193,7 +193,7 @@ namespace PnP.Framework.Sites
         /// <param name="maxRetryCount">Maximum number of retries for a pending site provisioning. Default 12 retries.</param>
         /// <param name="retryDelay">Delay between retries for a pending site provisioning. Default 10 seconds.</param>
         /// <param name="noWait">If specified the site will be created and the process will be finished asynchronously</param>
-        /// <param name="graphAccessToken">An optional Access Token for Microsoft Graph to use for creeating the site within an App-Only context</param>
+        /// <param name="graphAccessToken">An optional Access Token for Microsoft Graph to use for creating the site within an App-Only context</param>
         /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns>ClientContext object for the created site collection</returns>
         public static async Task<ClientContext> CreateAsync(ClientContext clientContext, TeamSiteCollectionCreationInformation siteCollectionCreationInformation,

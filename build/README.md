@@ -9,6 +9,7 @@ Releasing a new major PnP Framework version takes these steps:
 - Update the `Version` tag in PnP.Framework.csproj to match the new version
 - Update the nightly version number in the `version.debug` file to match the major and minor versions of the new release (e.g. `1.3.{incremental}-nightly` will become `2.0.{incremental}-nightly`)
 - Reset the nightly release version counter by setting it to 0 in the `version.debug.increment` file
+- Verify the version reference to PnP.Core, if needed update in PnP.Framework and PnP.Framework.Test projects
 - Run the `release-official.ps1` script and follow the steps
 - Update readme.md if needed
 - Update the changelog to reflect the released version
@@ -22,6 +23,7 @@ Releasing a new minor PnP Framework version takes these steps:
 - Update the nightly version number in the `version.debug` file to match the minor version of the new minor release (e.g. `1.0.{incremental}-nightly` will become `1.1.{incremental}-nightly`)
 - Reset the nightly release version counter by setting it to 0 in the `version.debug.increment` file
 - Update the `Version` tag in PnP.Framework.csproj to match the new version
+- Verify the version reference to PnP.Core, if needed update in PnP.Framework and PnP.Framework.Test projects
 - Run the `release-official.ps1` script and follow the steps
 - Update readme.md if needed
 - Update the changelog to reflect the released version

@@ -362,6 +362,7 @@ namespace Microsoft.SharePoint.Client
                         //Take over the form digest handling setting
                         newClientContext.ClientTag = clientContext.ClientTag;
                         newClientContext.DisableReturnValueCache = clientContext.DisableReturnValueCache;
+                        newClientContext.WebRequestExecutorFactory = clientContext.WebRequestExecutorFactory;
                         return newClientContext;
                     }
                     else

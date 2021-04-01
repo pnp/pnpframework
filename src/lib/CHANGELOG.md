@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Fix to always copy WebRequestExecutorFactory when cloning #255 [patrikhellgren - Patrik Hellgren]
 - Align search navigation node deletion with other structural navigation node deletion [jansenbe - Bert Jansen]
 - Added NeutralResourcesLanguage assembly attribute [jansenbe - Bert Jansen]
 - Deserialze of Template XML does not load ClientSideComponentId on List-UserCustomAction #230 [czullu - Christian Zuellig]

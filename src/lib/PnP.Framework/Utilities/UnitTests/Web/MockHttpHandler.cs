@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -44,12 +45,18 @@ namespace PnP.Framework.Utilities.UnitTests.Web
             {
                 CallToTheAPIIndex[url]++;
             }
+            var batchIdParameter = request.Content?.Headers?.ContentType?.Parameters.FirstOrDefault(param=>param.Name == "boundary");
+            Regex batchGuidRegex = new Regex("batchresponse_([0-9A-Fa-f]{8}[-][0-9A-Fa-f]{4}[-][0-9A-Fa-f]{4}[-][0-9A-Fa-f]{4}[-][0-9A-Fa-f]{12})");
             MockHttpResponse response = Responses.Where(resp => resp.Url == url).ToList()[CallToTheAPIIndex[url]];
             if (response != null)
             {
 #pragma warning disable CA2000 // Dispose objects before losing scope
                 HttpResponseMessage result = new HttpResponseMessage(System.Net.HttpStatusCode.OK);
 #pragma warning restore CA2000 // Dispose objects before losing scope
+                if(batchIdParameter != null)
+                {
+                    response.Content = batchGuidRegex.Replace(response.Content, batchIdParameter.Value.Replace("batch", "batchresponse"));
+                }
                 result.Content = new StringContent(response.Content);
                 return Task.FromResult(result);
             }

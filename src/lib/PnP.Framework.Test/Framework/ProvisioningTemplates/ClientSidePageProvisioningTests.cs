@@ -15,7 +15,7 @@ namespace PnP.Framework.Test.Framework.ProvisioningTemplates
         [TestCleanup]
         public void Cleanup()
         {
-            using (var ctx = TestCommon.CreateClientContext())
+            using (var ctx = TestCommon.CreateTestClientContext())
             {
                 ctx.Load(ctx.Web, w => w.ServerRelativeUrl);
                 ctx.ExecuteQueryRetry();
@@ -34,7 +34,7 @@ namespace PnP.Framework.Test.Framework.ProvisioningTemplates
             XMLTemplateProvider provider = new XMLFileSystemTemplateProvider(resourceFolder, "");
 
             var existingTemplate = provider.GetTemplate("ClientSidePagesWithHeader.xml");
-            using (var ctx = TestCommon.CreateClientContext())
+            using (var ctx = TestCommon.CreateTestClientContext())
             {
                 ctx.Web.ApplyProvisioningTemplate(existingTemplate, new ProvisioningTemplateApplyingInformation()
                 {

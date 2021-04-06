@@ -58,7 +58,7 @@ namespace PnP.Framework.Utilities.UnitTests.Web
         private static WebHeaderCollection GetRequestHeaders()
         {
             WebHeaderCollection collection = new WebHeaderCollection();
-            collection.Add("Authorization", "Bearer test_token");
+            collection.Add("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwidXBuIjoiam9obi5kb2UiLCJpYXQiOjE1MTYyMzkwMjJ9.TDq3q59XyXqTt3rBszehNEsqZusbMs4OvS25ZwGoUUY");
 
             return collection;
         }

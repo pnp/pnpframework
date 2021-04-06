@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace PnP.Framework.Test.Sites
 {
+    //For those tests I had to manually update the generate mock files
+    //I had to add two more requests after first and before second generate
+    //I just debugged the third MockResponseProvider.GetResponse and send the body argument to the actual endpoint.
     [TestClass]
     public class SiteCollectionTests
     {
@@ -21,7 +24,7 @@ namespace PnP.Framework.Test.Sites
                 Assert.Inconclusive("Test that require modern site collection creation are not supported in app-only.");
             }
 
-            using (var clientContext = TestCommon.CreateClientContext())
+            using (var clientContext = TestCommon.CreateTestClientContext())
             {
                 communicationSiteGuid = Guid.NewGuid().ToString("N");
                 teamSiteGuid = Guid.NewGuid().ToString("N");
@@ -33,6 +36,11 @@ namespace PnP.Framework.Test.Sites
         [TestCleanup]
         public void CleanUp()
         {
+            if (!TestCommon.CurrentTestInIntegration)
+            {
+                //No need for cleanup
+                return;
+            }
             if (!TestCommon.AppOnlyTesting())
             {
                 using (var clientContext = TestCommon.CreateTenantClientContext())
@@ -70,7 +78,7 @@ namespace PnP.Framework.Test.Sites
         public async Task CreateCommunicationSiteTestAsync()
         {
 
-            using (var clientContext = TestCommon.CreateClientContext())
+            using (var clientContext = TestCommon.CreateTestClientContext())
             {
 
                 var commResults = await clientContext.CreateSiteAsync(new PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation()
@@ -88,7 +96,7 @@ namespace PnP.Framework.Test.Sites
         [TestMethod]
         public async Task CreateTeamNoGroupSiteTestAsync()
         {
-            using (var clientContext = TestCommon.CreateClientContext())
+            using (var clientContext = TestCommon.CreateTestClientContext())
             {
 
                 var teamNoGroupSiteResult = await clientContext.CreateSiteAsync(new PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation()
@@ -107,7 +115,7 @@ namespace PnP.Framework.Test.Sites
         //[TestMethod]
         //public async Task CreateTeamSiteTestAsync()
         //{
-        //    using (var clientContext = TestCommon.CreateClientContext())
+        //    using (var clientContext = TestCommon.CreateTestClientContext())
         //    {
         //        var teamResults = await clientContext.CreateSiteAsync(new Core.Sites.TeamSiteCollectionCreationInformation()
         //        {
@@ -121,7 +129,7 @@ namespace PnP.Framework.Test.Sites
         //[TestMethod]
         //public async Task GroupifyTeamSiteTestAsync()
         //{
-        //    using (var clientContext = TestCommon.CreateClientContext("https://contoso.sharepoint.com/sites/groupify_me_2"))
+        //    using (var clientContext = TestCommon.CreateTestClientContext("https://contoso.sharepoint.com/sites/groupify_me_2"))
         //    {
 
         //        clientContext.Load(clientContext.Web, p => p.Title, p => p.Description);

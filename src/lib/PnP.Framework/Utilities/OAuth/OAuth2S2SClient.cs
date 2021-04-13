@@ -1,17 +1,23 @@
-﻿namespace SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+﻿using System.Threading.Tasks;
+
+namespace SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
 {
     //using Microsoft.IdentityModel.SecurityTokenService;
 
     public class OAuth2S2SClient
     {
         public OAuth2Message Issue(string securityTokenServiceUrl, OAuth2AccessTokenRequest oauth2Request)
+            => IssueAsync(securityTokenServiceUrl, oauth2Request).GetAwaiter().GetResult();
+
+        public async Task<OAuth2Message> IssueAsync(string securityTokenServiceUrl, OAuth2AccessTokenRequest oauth2Request)
         {
             OAuth2WebRequest oAuth2WebRequest = new OAuth2WebRequest(securityTokenServiceUrl, oauth2Request);
             OAuth2Message result;
             try
             {
-                System.Net.WebResponse response = oAuth2WebRequest.GetResponse();
-                result = OAuth2MessageFactory.CreateFromEncodedResponse(new System.IO.StreamReader(response.GetResponseStream()));
+                System.Net.WebResponse response = await oAuth2WebRequest.GetResponseAsync();
+                using var streamReader = new System.IO.StreamReader(response.GetResponseStream());
+                result = await OAuth2MessageFactory.CreateFromEncodedResponseAsync(streamReader);
             }
             catch (System.Exception innerException)
             {

@@ -1,8 +1,10 @@
 ﻿using Microsoft.Identity.Client;
 using Microsoft.Identity.Client.Extensibility;
 using Microsoft.SharePoint.Client;
+
 using PnP.Framework.Utilities;
 using PnP.Framework.Utilities.Context;
+
 using System;
 using System.Linq;
 using System.Net;
@@ -705,7 +707,7 @@ namespace PnP.Framework
                     }
                 case ClientContextType.SharePointACSAppOnly:
                     {
-                        return acsTokenGenerator.GetToken(null);
+                        return await acsTokenGenerator.GetTokenAsync(null);
                     }
                 case ClientContextType.AccessToken:
                     {
@@ -867,7 +869,8 @@ namespace PnP.Framework
                     {
                         var context = GetAccessTokenContext(siteUrl, (site) =>
                         {
-                            return this.acsTokenGenerator.GetToken(new Uri(site));
+                            // HACK: sync over async
+                            return this.acsTokenGenerator.GetTokenAsync(new Uri(site)).GetAwaiter().GetResult();
                         });
 
                         ClientContextSettings clientContextSettings = new ClientContextSettings()
@@ -1079,6 +1082,31 @@ namespace PnP.Framework
         /// <param name="siteUrl">Site for which the ClientContext object will be instantiated</param>
         /// <param name="appId">Application ID which is requesting the ClientContext object</param>
         /// <param name="appSecret">Application secret of the Application which is requesting the ClientContext object</param>
+        /// <returns>ClientContext to be used by CSOM code</returns>
+        public Task<ClientContext> GetACSAppOnlyContextAsync(string siteUrl, string appId, string appSecret)
+        {
+            return this.GetACSAppOnlyContextAsync(siteUrl, appId, appSecret, AzureEnvironment.Production);
+        }
+
+        /// <summary>
+        /// Returns an app only ClientContext object
+        /// </summary>
+        /// <param name="siteUrl">Site for which the ClientContext object will be instantiated</param>
+        /// <param name="appId">Application ID which is requesting the ClientContext object</param>
+        /// <param name="appSecret">Application secret of the Application which is requesting the ClientContext object</param>
+        /// <param name="environment">SharePoint environment being used</param>
+        /// <returns>ClientContext to be used by CSOM code</returns>
+        public Task<ClientContext> GetACSAppOnlyContextAsync(string siteUrl, string appId, string appSecret, AzureEnvironment environment = AzureEnvironment.Production)
+        {
+            return this.GetACSAppOnlyContextAsync(siteUrl, null, appId, appSecret, GetACSEndPoint(environment), GetACSEndPointPrefix(environment));
+        }
+
+        /// <summary>
+        /// Returns an app only ClientContext object
+        /// </summary>
+        /// <param name="siteUrl">Site for which the ClientContext object will be instantiated</param>
+        /// <param name="appId">Application ID which is requesting the ClientContext object</param>
+        /// <param name="appSecret">Application secret of the Application which is requesting the ClientContext object</param>
         /// <param name="environment">SharePoint environment being used</param>
         /// <returns>ClientContext to be used by CSOM code</returns>
         public ClientContext GetACSAppOnlyContext(string siteUrl, string appId, string appSecret, AzureEnvironment environment = AzureEnvironment.Production)
@@ -1098,9 +1126,24 @@ namespace PnP.Framework
         /// <returns>ClientContext to be used by CSOM code</returns>
         public ClientContext GetACSAppOnlyContext(string siteUrl, string realm, string appId, string appSecret, string acsHostUrl = "accesscontrol.windows.net", string globalEndPointPrefix = "accounts")
         {
-            var acsTokenProvider = ACSTokenGenerator.GetACSAuthenticationProvider(new Uri(siteUrl), realm, appId, appSecret, acsHostUrl, globalEndPointPrefix);
+            return this.GetACSAppOnlyContext(siteUrl, realm, appId, appSecret, acsHostUrl, globalEndPointPrefix);
+        }
+
+        /// <summary>
+        /// Returns an app only ClientContext object
+        /// </summary>
+        /// <param name="siteUrl">Site for which the ClientContext object will be instantiated</param>
+        /// <param name="realm">Realm of the environment (tenant) that requests the ClientContext object, may be null</param>
+        /// <param name="appId">Application ID which is requesting the ClientContext object</param>
+        /// <param name="appSecret">Application secret of the Application which is requesting the ClientContext object</param>
+        /// <param name="acsHostUrl">Azure ACS host, defaults to accesscontrol.windows.net but internal pre-production environments use other hosts</param>
+        /// <param name="globalEndPointPrefix">Azure ACS endpoint prefix, defaults to accounts but internal pre-production environments use other prefixes</param>
+        /// <returns>ClientContext to be used by CSOM code</returns>
+        public async Task<ClientContext> GetACSAppOnlyContextAsync(string siteUrl, string realm, string appId, string appSecret, string acsHostUrl = "accesscontrol.windows.net", string globalEndPointPrefix = "accounts")
+        {
+            var acsTokenProvider = await ACSTokenGenerator.GetACSAuthenticationProviderAsync(new Uri(siteUrl), realm, appId, appSecret, acsHostUrl, globalEndPointPrefix);
             var am = new AuthenticationManager(acsTokenProvider);
-            ClientContext clientContext = am.GetContext(siteUrl);
+            ClientContext clientContext = await am.GetContextAsync(siteUrl);
 
             ClientContextSettings clientContextSettings = new ClientContextSettings()
             {

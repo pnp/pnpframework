@@ -1,5 +1,6 @@
 using SharePointPnP.IdentityModel.Extensions.S2S;
 using SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2;
+
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace PnP.Framework.Utilities
 {
@@ -39,14 +41,14 @@ namespace PnP.Framework.Utilities
 
         #endregion
 
-        public static string GetRealmFromTargetUrl(Uri targetApplicationUri)
+        public static async Task<string> GetRealmFromTargetUrlAsync(Uri targetApplicationUri)
         {
             WebRequest request = WebRequest.Create(targetApplicationUri.ToString().TrimEnd(new[] { '/' }) + "/_vti_bin/client.svc");
             request.Headers.Add("Authorization: Bearer ");
 
             try
             {
-                using (request.GetResponse())
+                using (await request.GetResponseAsync())
                 {
                 }
             }
@@ -96,7 +98,7 @@ namespace PnP.Framework.Utilities
         /// <param name="targetHost">Url authority of the target principal</param>
         /// <param name="targetRealm">Realm to use for the access token's nameid and audience</param>
         /// <returns>An access token with an audience of the target principal</returns>
-        public OAuth2AccessTokenResponse GetAppOnlyAccessToken(
+        public async Task<OAuth2AccessTokenResponse> GetAppOnlyAccessTokenAsync(
             string targetPrincipalName,
             string targetHost,
             string targetRealm = null)
@@ -113,15 +115,13 @@ namespace PnP.Framework.Utilities
             {
                 // Get token
                 var client = new OAuth2S2SClient();
-                return client.Issue(GetStsUrl(targetRealm), oauth2Request) as OAuth2AccessTokenResponse;
+                return await client.IssueAsync(GetStsUrl(targetRealm), oauth2Request) as OAuth2AccessTokenResponse;
             }
             catch (WebException wex) when (wex.Response != null)
             {
-                using (var sr = new StreamReader(wex.Response.GetResponseStream()))
-                {
-                    string responseText = sr.ReadToEnd();
-                    throw new WebException(wex.Message + " - " + responseText, wex);
-                }
+                using var sr = new StreamReader(wex.Response.GetResponseStream());
+                string responseText = await sr.ReadToEndAsync();
+                throw new WebException(wex.Message + " - " + responseText, wex);
             }
         }
 

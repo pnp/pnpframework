@@ -1,4 +1,6 @@
-﻿namespace SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+﻿using System.Threading.Tasks;
+
+namespace SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
 {
     public class OAuth2WebRequest : System.Net.WebRequest
     {
@@ -15,6 +17,9 @@
         }
 
         public override System.Net.WebResponse GetResponse()
+            => GetResponseAsync().GetAwaiter().GetResult();
+
+        public override async Task<System.Net.WebResponse> GetResponseAsync()
         {
             string text = this._request.ToString();
             this._innerRequest.AuthenticationLevel = System.Net.Security.AuthenticationLevel.None;
@@ -22,10 +27,10 @@
             this._innerRequest.ContentType = "application/x-www-form-urlencoded";
             this._innerRequest.Method = "POST";
             this._innerRequest.Timeout = (int)OAuth2WebRequest.DefaultTimeout.TotalMilliseconds;
-            System.IO.StreamWriter streamWriter = new System.IO.StreamWriter(this._innerRequest.GetRequestStream(), System.Text.Encoding.ASCII);
-            streamWriter.Write(text);
-            streamWriter.Close();
-            return this._innerRequest.GetResponse();
+            using (var streamWriter = new System.IO.StreamWriter(await this._innerRequest.GetRequestStreamAsync(), System.Text.Encoding.ASCII))
+                await streamWriter.WriteAsync(text);
+
+            return await this._innerRequest.GetResponseAsync();
         }
     }
 }

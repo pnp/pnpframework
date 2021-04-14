@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Added implementation of SPWebRequestExecutor that utilizes HttpClient #261 [patrikhellgren - Patrik Hellgren]
+
 ### Changed
 
 - Fix: Always create private channels with isFavoriteByDefault false #260 [patrikhellgren - Patrik Hellgren]

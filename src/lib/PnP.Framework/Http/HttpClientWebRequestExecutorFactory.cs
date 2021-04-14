@@ -9,10 +9,17 @@ using Microsoft.SharePoint.Client;
 
 namespace PnP.Framework.Http
 {
-    /// <summary>
-    /// Implementation of SharePoint WebRequestExecutorFactory that utilizes HttpClient
-    /// </summary>
-    public class HttpClientWebRequestExecutorFactory : WebRequestExecutorFactory
+	/// <summary>
+	/// Implementation of SharePoint WebRequestExecutorFactory that utilizes HttpClient
+	/// </summary>
+	/// <example>
+	/// var authManager = new PnP.Framework.AuthenticationManager(clientId, certificate, tenantId);
+	/// var clientContext = authManager.GetContext(siteUrl);
+	/// clientContext.WebRequestExecutorFactory = new HttpClientWebRequestExecutorFactory(PnPHttpClient.Instance.GetHttpClient());
+	/// clientContext.Load(clientContext.Web, w => w.Title);
+	/// await clientContext.ExecuteQueryRetryAsync();
+	/// </example>
+	public class HttpClientWebRequestExecutorFactory : WebRequestExecutorFactory
     {
         private readonly HttpClient _httpClient;
 

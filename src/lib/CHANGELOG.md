@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Fix url token root site #256 [czullu - Christian Zuellig]
+
 ## [1.4.0]
 
 ### Added

@@ -938,7 +938,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             {
                 channel.Description,
                 channel.DisplayName,
-                channel.IsFavoriteByDefault,
+                isFavoriteByDefault = channel.Private ? false : channel.IsFavoriteByDefault,
                 membershipType = channel.Private ? "private" : "standard",
                 members = (channel.Private && channelMembers != null) ? (from m in channelMembers
                                                                          select new

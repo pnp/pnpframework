@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Fix issue if SP Group has description with more then 512 char #270 [czullu - Christian Zuellig]
 - Fix: Always create private channels with isFavoriteByDefault false #260 [patrikhellgren - Patrik Hellgren]
 - Fix: Implemented retry logic for getting and creating teams tabs #259 [patrikhellgren - Patrik Hellgren]
 - Fix to add groups as owners of site collections #258 [gautamdsheth - Gautam Sheth

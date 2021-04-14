@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Minimal support for TEAMCHANNEL Template #268 [czullu - Christian Zuellig]
 - PnPSDK Mocking + few more cases isolated #262 [mgwojciech - Marcin Wojciechowski]
 - Added implementation of SPWebRequestExecutor that utilizes HttpClient #261 [patrikhellgren - Patrik Hellgren]
 

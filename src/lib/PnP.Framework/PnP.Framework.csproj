@@ -93,6 +93,7 @@
 		<None Remove="Provisioning\BaseTemplates\SPO\SRCHCENTERLITE0Template.xml" />
 		<None Remove="Provisioning\BaseTemplates\SPO\STS0Template.xml" />
 		<None Remove="Provisioning\BaseTemplates\SPO\STS3Template.xml" />
+		<None Remove="Provisioning\BaseTemplates\SPO\TEAMCHANNEL0Template.xml" />
 		<None Remove="Provisioning\BaseTemplates\SPO\VISPRUS0Template.xml" />
 		<None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2015-03.xsd" />
 		<None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2015-05.xsd" />
@@ -141,6 +142,7 @@
 		<EmbeddedResource Include="Provisioning\BaseTemplates\SPO\SRCHCENTERLITE0Template.xml" />
 		<EmbeddedResource Include="Provisioning\BaseTemplates\SPO\STS0Template.xml" />
 		<EmbeddedResource Include="Provisioning\BaseTemplates\SPO\STS3Template.xml" />
+		<EmbeddedResource Include="Provisioning\BaseTemplates\SPO\TEAMCHANNEL0Template.xml" />
 		<EmbeddedResource Include="Provisioning\BaseTemplates\SPO\VISPRUS0Template.xml" />
 		<EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2015-03.xsd" />
 		<EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2015-05.xsd" />

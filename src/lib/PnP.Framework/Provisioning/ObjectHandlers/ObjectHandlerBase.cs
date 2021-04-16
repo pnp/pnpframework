@@ -232,6 +232,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     xml = Regex.Replace(xml, contentType.Id.StringValue, contentTypeReplacement, RegexOptions.IgnoreCase);
                 }
 
+                if(!string.IsNullOrWhiteSpace(NewDocumentTemplatesJson))
+                {
+                    web.EnsureProperties(w => w.ServerRelativeUrl);
+                    NewDocumentTemplatesJson=Regex.Replace(NewDocumentTemplatesJson,web.ServerRelativeUrl.TrimEnd('/'),"{site}", RegexOptions.IgnoreCase);
+                }
+
                 string tokenizedXML = TokenizeXml(xml, web);
                 if (!string.IsNullOrWhiteSpace(NewDocumentTemplatesJson))
                 {

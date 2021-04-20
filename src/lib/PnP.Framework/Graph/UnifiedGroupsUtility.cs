@@ -114,24 +114,25 @@ namespace PnP.Framework.Graph
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
         /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
+        /// <param name="preferredDataLocation">Defines the codes of geographies in which there is Office 365 presence. Used for multi-geo enabled tenants. List with available geographies is available at https://docs.microsoft.com/office365/enterprise/multi-geo-add-group-with-pdl#geo-location-codes.</param>
         /// <returns>The just created Office 365 Group</returns>
         public static UnifiedGroupEntity CreateUnifiedGroup(string displayName, string description, string mailNickname,
             string accessToken, string[] owners = null, string[] members = null, Stream groupLogo = null,
-            bool isPrivate = false, bool createTeam = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+            bool isPrivate = false, bool createTeam = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Enums.Office365Geography? preferredDataLocation = null)
         {
             UnifiedGroupEntity result = null;
 
-            if (String.IsNullOrEmpty(displayName))
+            if (string.IsNullOrEmpty(displayName))
             {
                 throw new ArgumentNullException(nameof(displayName));
             }
 
-            if (String.IsNullOrEmpty(mailNickname))
+            if (string.IsNullOrEmpty(mailNickname))
             {
                 throw new ArgumentNullException(nameof(mailNickname));
             }
 
-            if (String.IsNullOrEmpty(accessToken))
+            if (string.IsNullOrEmpty(accessToken))
             {
                 throw new ArgumentNullException(nameof(accessToken));
             }
@@ -156,6 +157,11 @@ namespace PnP.Framework.Graph
                         Visibility = isPrivate == true ? "Private" : "Public",
                         GroupTypes = new List<string> { "Unified" },
                     };
+
+                    if (preferredDataLocation.HasValue)
+                    {
+                        newGroup.PreferredDataLocation = preferredDataLocation.Value.ToString();
+                    }
 
                     if (owners != null && owners.Length > 0)
                     {
@@ -677,10 +683,11 @@ namespace PnP.Framework.Graph
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
         /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
+        /// <param name="preferredDataLocation">Defines the codes of geographies in which there is Office 365 presence. Used for multi-geo enabled tenants. List with available geographies is available at https://docs.microsoft.com/office365/enterprise/multi-geo-add-group-with-pdl#geo-location-codes.</param>
         /// <returns>The just created Office 365 Group</returns>
         public static UnifiedGroupEntity CreateUnifiedGroup(string displayName, string description, string mailNickname,
             string accessToken, string[] owners = null, string[] members = null, string groupLogoPath = null,
-            bool isPrivate = false, bool createTeam = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+            bool isPrivate = false, bool createTeam = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Enums.Office365Geography? preferredDataLocation = null)
         {
             if (!string.IsNullOrEmpty(groupLogoPath) && !System.IO.File.Exists(groupLogoPath))
             {
@@ -693,7 +700,7 @@ namespace PnP.Framework.Graph
                     return (CreateUnifiedGroup(displayName, description,
                         mailNickname, accessToken, owners, members,
                         groupLogo: groupLogoStream, isPrivate: isPrivate,
-                        createTeam: createTeam, retryCount: retryCount, delay: delay, azureEnvironment: azureEnvironment));
+                        createTeam: createTeam, retryCount: retryCount, delay: delay, azureEnvironment: azureEnvironment, preferredDataLocation: preferredDataLocation));
                 }
             }
             else
@@ -701,7 +708,7 @@ namespace PnP.Framework.Graph
                 return (CreateUnifiedGroup(displayName, description,
                     mailNickname, accessToken, owners, members,
                     groupLogo: null, isPrivate: isPrivate,
-                    createTeam: createTeam, retryCount: retryCount, delay: delay, azureEnvironment: azureEnvironment));
+                    createTeam: createTeam, retryCount: retryCount, delay: delay, azureEnvironment: azureEnvironment, preferredDataLocation: preferredDataLocation));
             }
         }
 
@@ -719,15 +726,16 @@ namespace PnP.Framework.Graph
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
         /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
+        /// <param name="preferredDataLocation">Defines the codes of geographies in which there is Office 365 presence. Used for multi-geo enabled tenants. List with available geographies is available at https://docs.microsoft.com/office365/enterprise/multi-geo-add-group-with-pdl#geo-location-codes.</param>
         /// <returns>The just created Office 365 Group</returns>
         public static UnifiedGroupEntity CreateUnifiedGroup(string displayName, string description, string mailNickname,
             string accessToken, string[] owners = null, string[] members = null,
-            bool isPrivate = false, bool createTeam = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+            bool isPrivate = false, bool createTeam = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Enums.Office365Geography? preferredDataLocation = null)
         {
             return (CreateUnifiedGroup(displayName, description,
                 mailNickname, accessToken, owners, members,
                 groupLogo: null, isPrivate: isPrivate,
-                createTeam: createTeam, retryCount: retryCount, delay: delay, azureEnvironment: azureEnvironment));
+                createTeam: createTeam, retryCount: retryCount, delay: delay, azureEnvironment: azureEnvironment, preferredDataLocation: preferredDataLocation));
         }
 
         /// <summary>

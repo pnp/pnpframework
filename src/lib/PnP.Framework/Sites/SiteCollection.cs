@@ -482,8 +482,8 @@ namespace PnP.Framework.Sites
             )
         {
             ClientContext responseContext = null;
-
-            var group = PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup(
+            
+            var group = Graph.UnifiedGroupsUtility.CreateUnifiedGroup(
                 siteCollectionCreationInformation.DisplayName,
                 siteCollectionCreationInformation.Description,
                 siteCollectionCreationInformation.Alias,
@@ -493,7 +493,8 @@ namespace PnP.Framework.Sites
                 isPrivate: !siteCollectionCreationInformation.IsPublic,
                 createTeam: false,
                 retryCount: maxRetryCount,
-                delay: retryDelay, azureEnvironment: azureEnvironment);
+                delay: retryDelay, azureEnvironment: azureEnvironment,
+                preferredDataLocation: siteCollectionCreationInformation.PreferredDataLocation);
 
             if (group != null && !string.IsNullOrEmpty(group.SiteUrl))
             {

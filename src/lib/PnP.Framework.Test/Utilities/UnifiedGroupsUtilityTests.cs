@@ -23,7 +23,7 @@ namespace PnP.Framework.Test.Utilities
                 TestCommon.FixAssemblyResolving("Newtonsoft.Json");
 
                 var random = new Random();
-                _groupId = UnifiedGroupsUtility.CreateUnifiedGroup("PnPDeletedUnifiedGroup test", "PnPDeletedUnifiedGroup test", $"pnp-unit-test-{random.Next(1, 1000)}", _accessToken, groupLogo: null).GroupId;
+                _groupId = UnifiedGroupsUtility.CreateUnifiedGroup("PnPDeletedUnifiedGroup test", "PnPDeletedUnifiedGroup test", $"pnp-unit-test-{random.Next(1, 1000)}", _accessToken, groupLogo: null, office365Geo: null).GroupId;
 
                 UnifiedGroupsUtility.DeleteUnifiedGroup(_groupId, _accessToken);
             }

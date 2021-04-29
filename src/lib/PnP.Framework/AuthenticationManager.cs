@@ -1102,33 +1102,6 @@ namespace PnP.Framework
         /// <param name="siteUrl">Site for which the ClientContext object will be instantiated</param>
         /// <param name="appId">Application ID which is requesting the ClientContext object</param>
         /// <param name="appSecret">Application secret of the Application which is requesting the ClientContext object</param>
-        /// <returns>ClientContext to be used by CSOM code</returns>
-        [Obsolete(GetACSAppOnlyContext_ObsoletionMessage)]
-        public Task<ClientContext> GetACSAppOnlyContextAsync(string siteUrl, string appId, string appSecret)
-        {
-            return this.GetACSAppOnlyContextAsync(siteUrl, appId, appSecret, AzureEnvironment.Production);
-        }
-
-        /// <summary>
-        /// Returns an app only ClientContext object
-        /// </summary>
-        /// <param name="siteUrl">Site for which the ClientContext object will be instantiated</param>
-        /// <param name="appId">Application ID which is requesting the ClientContext object</param>
-        /// <param name="appSecret">Application secret of the Application which is requesting the ClientContext object</param>
-        /// <param name="environment">SharePoint environment being used</param>
-        /// <returns>ClientContext to be used by CSOM code</returns>
-        [Obsolete(GetACSAppOnlyContext_ObsoletionMessage)]
-        public Task<ClientContext> GetACSAppOnlyContextAsync(string siteUrl, string appId, string appSecret, AzureEnvironment environment = AzureEnvironment.Production)
-        {
-            return this.GetACSAppOnlyContextAsync(siteUrl, null, appId, appSecret, GetACSEndPoint(environment), GetACSEndPointPrefix(environment));
-        }
-
-        /// <summary>
-        /// Returns an app only ClientContext object
-        /// </summary>
-        /// <param name="siteUrl">Site for which the ClientContext object will be instantiated</param>
-        /// <param name="appId">Application ID which is requesting the ClientContext object</param>
-        /// <param name="appSecret">Application secret of the Application which is requesting the ClientContext object</param>
         /// <param name="environment">SharePoint environment being used</param>
         /// <returns>ClientContext to be used by CSOM code</returns>
         [Obsolete(GetACSAppOnlyContext_ObsoletionMessage)]
@@ -1169,7 +1142,7 @@ namespace PnP.Framework
             if (this.acsTokenGenerator is object)
                 throw new InvalidOperationException(GetACSAppOnlyContext_ObsoletionMessage);
 
-            var am = await CreateACSAppOnlyAsync(siteUrl, realm, appId, appSecret, acsHostUrl, globalEndPointPrefix);
+            var am = await AuthenticationManager.CreateACSAppOnlyAsync(siteUrl, realm, appId, appSecret, acsHostUrl, globalEndPointPrefix);
 
             ClientContext clientContext = await am.GetContextAsync(siteUrl);
 

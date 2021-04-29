@@ -10,20 +10,6 @@ namespace PnP.Framework.Utilities.Context
         internal ClientContextType Type { get; set; }
         internal string SiteUrl { get; set; }
         internal AuthenticationManager AuthenticationManager { get; set; }
-
-        // User name + password flows
-        internal string UserName { get; set; }
-        internal string Password { get; set; }
-
-        // App Only flows
-        internal string ClientId { get; set; }
-        internal string ClientSecret { get; set; }
-        internal string Realm { get; set; }
-        internal string AcsHostUrl { get; set; }
-        internal string GlobalEndPointPrefix { get; set; }
-        internal string Tenant { get; set; }
-        internal X509Certificate2 Certificate { get; set; }
-        internal AzureEnvironment Environment { get; set; }
         #endregion
 
         #region methods

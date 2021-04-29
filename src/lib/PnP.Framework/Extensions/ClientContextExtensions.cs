@@ -322,7 +322,7 @@ namespace Microsoft.SharePoint.Client
                     {
                         if (contextSettings.Type == ClientContextType.SharePointACSAppOnly)
                         {
-                            newClientContext = authManager.GetACSAppOnlyContext(newSiteUrl, contextSettings.ClientId, contextSettings.ClientSecret, contextSettings.Environment);
+                            newClientContext = authManager.GetContext(newSiteUrl);
                         }
                         else if (contextSettings.Type == ClientContextType.OnPremises)
                         {

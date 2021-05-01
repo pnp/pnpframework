@@ -203,7 +203,15 @@ namespace Microsoft.SharePoint.Client
                         var errorSb = new System.Text.StringBuilder();
 
                         errorSb.AppendLine(wex.ToString());
-
+                        if (wex.InnerException != null)
+                        {
+                            var socketEx = wex.InnerException as System.Net.Sockets.SocketException;
+                            if (socketEx != null)
+                            {
+                                errorSb.AppendLine($"TraceCorrelationId: {clientContext.TraceCorrelationId}");
+                                errorSb.AppendLine($"SocketErrorCode: {socketEx.SocketErrorCode}");
+                            }
+                        }
                         if (response != null)
                         {
                             //if(response.Headers["SPRequestGuid"] != null) 

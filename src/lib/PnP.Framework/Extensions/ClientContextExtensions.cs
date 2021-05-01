@@ -203,15 +203,20 @@ namespace Microsoft.SharePoint.Client
                         var errorSb = new System.Text.StringBuilder();
 
                         errorSb.AppendLine(wex.ToString());
-                        if (wex.InnerException != null)
+                        errorSb.AppendLine($"TraceCorrelationId: {clientContext.TraceCorrelationId}");
+                        errorSb.AppendLine($"Url: {clientContext.Url}");
+
+                        //find innermost Error and check if it is a SocketException
+                        Exception innermostEx = wex;
+                        while (innermostEx.InnerException != null) innermostEx = innermostEx.InnerException;
+                        var socketEx = innermostEx as System.Net.Sockets.SocketException;
+                        if (socketEx != null)
                         {
-                            var socketEx = wex.InnerException as System.Net.Sockets.SocketException;
-                            if (socketEx != null)
-                            {
-                                errorSb.AppendLine($"TraceCorrelationId: {clientContext.TraceCorrelationId}");
-                                errorSb.AppendLine($"SocketErrorCode: {socketEx.SocketErrorCode}");
-                            }
+                            errorSb.AppendLine($"ErrorCode: {socketEx.ErrorCode}"); //10054
+                            errorSb.AppendLine($"SocketErrorCode: {socketEx.SocketErrorCode}"); //ConnectionReset
+                            errorSb.AppendLine($"Message: {socketEx.Message}"); //An existing connection was forcibly closed by the remote host
                         }
+
                         if (response != null)
                         {
                             //if(response.Headers["SPRequestGuid"] != null) 
@@ -225,16 +230,6 @@ namespace Microsoft.SharePoint.Client
                         Log.Error(Constants.LOGGING_SOURCE, CoreResources.ClientContextExtensions_ExecuteQueryRetryException, errorSb.ToString());
                         throw;
                     }
-                }
-                catch (IOException ioEx)
-                {
-                    var errorSb = new System.Text.StringBuilder();
-                    errorSb.AppendLine(ioEx.ToString());
-                    errorSb.AppendLine($"TraceCorrelationId: {clientContext.TraceCorrelationId}");
-                    errorSb.AppendLine($"Url: {clientContext.Url}");
-                    Log.Error(Constants.LOGGING_SOURCE, CoreResources.ClientContextExtensions_ExecuteQueryRetryException, errorSb.ToString());
-
-                    throw;
                 }
                 catch (ServerException serverEx)
                 {

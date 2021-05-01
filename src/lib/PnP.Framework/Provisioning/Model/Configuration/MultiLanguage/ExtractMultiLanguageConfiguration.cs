@@ -4,7 +4,7 @@ namespace PnP.Framework.Provisioning.Model.Configuration.MultiLanguage
 {
     public class ExtractMultiLanguageConfiguration
     {
-        [JsonPropertyName("persistMultilanguageResources")]
+        [JsonPropertyName("persistMultiLanguageResources")]
         public bool PersistResources { get; set; }
 
         [JsonPropertyName("resourceFilePrefix")]

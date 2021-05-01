@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -158,18 +159,19 @@ namespace Microsoft.SharePoint.Client
                     var response = wex.Response as HttpWebResponse;
                     // Check if request was throttled - http status code 429
                     // Check is request failed due to server unavailable - http status code 503
-                    if (response != null &&
+                    if ((response != null &&
                         (response.StatusCode == (HttpStatusCode)429
                         || response.StatusCode == (HttpStatusCode)503
                         // || response.StatusCode == (HttpStatusCode)500
                         ))
+                        || wex.Status == WebExceptionStatus.Timeout)
                     {
                         wrapper = (ClientRequestWrapper)wex.Data["ClientRequest"];
                         retry = true;
                         retryAfterInterval = 0;
 
                         //Add delay for retry, retry-after header is specified in seconds
-                        if (response.Headers["Retry-After"] != null)
+                        if (response != null && response.Headers["Retry-After"] != null)
                         {
                             if (int.TryParse(response.Headers["Retry-After"], out int retryAfterHeaderValue))
                             {
@@ -181,7 +183,15 @@ namespace Microsoft.SharePoint.Client
                             retryAfterInterval = backoffInterval;
                             backoffInterval *= 2;
                         }
-                        Log.Warning(Constants.LOGGING_SOURCE, $"CSOM request frequency exceeded usage limits. Retry attempt {retryAttempts + 1}. Sleeping for {retryAfterInterval} milliseconds before retrying.");
+
+                        if (wex.Status == WebExceptionStatus.Timeout)
+                        {
+                            Log.Warning(Constants.LOGGING_SOURCE, $"CSOM request timeout. Retry attempt {retryAttempts + 1}. Sleeping for {retryAfterInterval} milliseconds before retrying.");
+                        }
+                        else
+                        {
+                            Log.Warning(Constants.LOGGING_SOURCE, $"CSOM request frequency exceeded usage limits. Retry attempt {retryAttempts + 1}. Sleeping for {retryAfterInterval} milliseconds before retrying.");
+                        }
 
                         await Task.Delay(retryAfterInterval);
 
@@ -207,6 +217,16 @@ namespace Microsoft.SharePoint.Client
                         Log.Error(Constants.LOGGING_SOURCE, CoreResources.ClientContextExtensions_ExecuteQueryRetryException, errorSb.ToString());
                         throw;
                     }
+                }
+                catch (IOException ioEx)
+                {
+                    var errorSb = new System.Text.StringBuilder();
+                    errorSb.AppendLine(ioEx.ToString());
+                    errorSb.AppendLine($"TraceCorrelationId: {clientContext.TraceCorrelationId}");
+                    errorSb.AppendLine($"Url: {clientContext.Url}");
+                    Log.Error(Constants.LOGGING_SOURCE, CoreResources.ClientContextExtensions_ExecuteQueryRetryException, errorSb.ToString());
+
+                    throw;
                 }
                 catch (ServerException serverEx)
                 {

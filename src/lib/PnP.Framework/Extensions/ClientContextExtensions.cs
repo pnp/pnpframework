@@ -215,20 +215,46 @@ namespace Microsoft.SharePoint.Client
                             errorSb.AppendLine($"ErrorCode: {socketEx.ErrorCode}"); //10054
                             errorSb.AppendLine($"SocketErrorCode: {socketEx.SocketErrorCode}"); //ConnectionReset
                             errorSb.AppendLine($"Message: {socketEx.Message}"); //An existing connection was forcibly closed by the remote host
-                        }
+                            Log.Error(Constants.LOGGING_SOURCE, CoreResources.ClientContextExtensions_ExecuteQueryRetryException, errorSb.ToString());
+                            
+                            //retry
+                            wrapper = (ClientRequestWrapper)wex.Data["ClientRequest"];
+                            retry = true;
+                            retryAfterInterval = 0;
 
-                        if (response != null)
-                        {
-                            //if(response.Headers["SPRequestGuid"] != null) 
-                            if (response.Headers.AllKeys.Any(k => string.Equals(k, "SPRequestGuid", StringComparison.InvariantCultureIgnoreCase)))
+                            //Add delay for retry, retry-after header is specified in seconds
+                            if (response != null && response.Headers["Retry-After"] != null)
                             {
-                                var spRequestGuid = response.Headers["SPRequestGuid"];
-                                errorSb.AppendLine($"ServerErrorTraceCorrelationId: {spRequestGuid}");
+                                if (int.TryParse(response.Headers["Retry-After"], out int retryAfterHeaderValue))
+                                {
+                                    retryAfterInterval = retryAfterHeaderValue * 1000;
+                                }
                             }
-                        }
+                            else
+                            {
+                                retryAfterInterval = backoffInterval;
+                                backoffInterval *= 2;
+                            }
+                            await Task.Delay(retryAfterInterval);
 
-                        Log.Error(Constants.LOGGING_SOURCE, CoreResources.ClientContextExtensions_ExecuteQueryRetryException, errorSb.ToString());
-                        throw;
+                            //Add to retry count and increase delay.
+                            retryAttempts++;
+                        }
+                        else
+                        {
+                            if (response != null)
+                            {
+                                //if(response.Headers["SPRequestGuid"] != null) 
+                                if (response.Headers.AllKeys.Any(k => string.Equals(k, "SPRequestGuid", StringComparison.InvariantCultureIgnoreCase)))
+                                {
+                                    var spRequestGuid = response.Headers["SPRequestGuid"];
+                                    errorSb.AppendLine($"ServerErrorTraceCorrelationId: {spRequestGuid}");
+                                }
+                            }
+
+                            Log.Error(Constants.LOGGING_SOURCE, CoreResources.ClientContextExtensions_ExecuteQueryRetryException, errorSb.ToString());
+                            throw;
+                        }
                     }
                 }
                 catch (ServerException serverEx)

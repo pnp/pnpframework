@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Improve exception messages when acsTokenGenerator is null in AuthenticationManager #295 [jackpoz - Giacomo Pozzoni]
 - Fix hanging request and big list issue with CreateDocumentSet #290 [YannickRe - Yannick Reekmans]
 - Fix #271: Added PDL support for creating sites via PnP PowerShell #278 [gautamdsheth - Gautam Sheth]
 - Fix issue if SP Group has description with more then 512 char #270 [czullu - Christian Zuellig]

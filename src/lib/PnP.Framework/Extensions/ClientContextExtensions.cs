@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -158,18 +159,19 @@ namespace Microsoft.SharePoint.Client
                     var response = wex.Response as HttpWebResponse;
                     // Check if request was throttled - http status code 429
                     // Check is request failed due to server unavailable - http status code 503
-                    if (response != null &&
+                    if ((response != null &&
                         (response.StatusCode == (HttpStatusCode)429
                         || response.StatusCode == (HttpStatusCode)503
                         // || response.StatusCode == (HttpStatusCode)500
                         ))
+                        || wex.Status == WebExceptionStatus.Timeout)
                     {
                         wrapper = (ClientRequestWrapper)wex.Data["ClientRequest"];
                         retry = true;
                         retryAfterInterval = 0;
 
                         //Add delay for retry, retry-after header is specified in seconds
-                        if (response.Headers["Retry-After"] != null)
+                        if (response != null && response.Headers["Retry-After"] != null)
                         {
                             if (int.TryParse(response.Headers["Retry-After"], out int retryAfterHeaderValue))
                             {
@@ -181,7 +183,15 @@ namespace Microsoft.SharePoint.Client
                             retryAfterInterval = backoffInterval;
                             backoffInterval *= 2;
                         }
-                        Log.Warning(Constants.LOGGING_SOURCE, $"CSOM request frequency exceeded usage limits. Retry attempt {retryAttempts + 1}. Sleeping for {retryAfterInterval} milliseconds before retrying.");
+
+                        if (wex.Status == WebExceptionStatus.Timeout)
+                        {
+                            Log.Warning(Constants.LOGGING_SOURCE, $"CSOM request timeout. Retry attempt {retryAttempts + 1}. Sleeping for {retryAfterInterval} milliseconds before retrying.");
+                        }
+                        else
+                        {
+                            Log.Warning(Constants.LOGGING_SOURCE, $"CSOM request frequency exceeded usage limits. Retry attempt {retryAttempts + 1}. Sleeping for {retryAfterInterval} milliseconds before retrying.");
+                        }
 
                         await Task.Delay(retryAfterInterval);
 
@@ -193,19 +203,58 @@ namespace Microsoft.SharePoint.Client
                         var errorSb = new System.Text.StringBuilder();
 
                         errorSb.AppendLine(wex.ToString());
+                        errorSb.AppendLine($"TraceCorrelationId: {clientContext.TraceCorrelationId}");
+                        errorSb.AppendLine($"Url: {clientContext.Url}");
 
-                        if (response != null)
+                        //find innermost Error and check if it is a SocketException
+                        Exception innermostEx = wex;
+                        while (innermostEx.InnerException != null) innermostEx = innermostEx.InnerException;
+                        var socketEx = innermostEx as System.Net.Sockets.SocketException;
+                        if (socketEx != null)
                         {
-                            //if(response.Headers["SPRequestGuid"] != null) 
-                            if (response.Headers.AllKeys.Any(k => string.Equals(k, "SPRequestGuid", StringComparison.InvariantCultureIgnoreCase)))
-                            {
-                                var spRequestGuid = response.Headers["SPRequestGuid"];
-                                errorSb.AppendLine($"ServerErrorTraceCorrelationId: {spRequestGuid}");
-                            }
-                        }
+                            errorSb.AppendLine($"ErrorCode: {socketEx.ErrorCode}"); //10054
+                            errorSb.AppendLine($"SocketErrorCode: {socketEx.SocketErrorCode}"); //ConnectionReset
+                            errorSb.AppendLine($"Message: {socketEx.Message}"); //An existing connection was forcibly closed by the remote host
+                            Log.Error(Constants.LOGGING_SOURCE, CoreResources.ClientContextExtensions_ExecuteQueryRetryException, errorSb.ToString());
+                            
+                            //retry
+                            wrapper = (ClientRequestWrapper)wex.Data["ClientRequest"];
+                            retry = true;
+                            retryAfterInterval = 0;
 
-                        Log.Error(Constants.LOGGING_SOURCE, CoreResources.ClientContextExtensions_ExecuteQueryRetryException, errorSb.ToString());
-                        throw;
+                            //Add delay for retry, retry-after header is specified in seconds
+                            if (response != null && response.Headers["Retry-After"] != null)
+                            {
+                                if (int.TryParse(response.Headers["Retry-After"], out int retryAfterHeaderValue))
+                                {
+                                    retryAfterInterval = retryAfterHeaderValue * 1000;
+                                }
+                            }
+                            else
+                            {
+                                retryAfterInterval = backoffInterval;
+                                backoffInterval *= 2;
+                            }
+                            await Task.Delay(retryAfterInterval);
+
+                            //Add to retry count and increase delay.
+                            retryAttempts++;
+                        }
+                        else
+                        {
+                            if (response != null)
+                            {
+                                //if(response.Headers["SPRequestGuid"] != null) 
+                                if (response.Headers.AllKeys.Any(k => string.Equals(k, "SPRequestGuid", StringComparison.InvariantCultureIgnoreCase)))
+                                {
+                                    var spRequestGuid = response.Headers["SPRequestGuid"];
+                                    errorSb.AppendLine($"ServerErrorTraceCorrelationId: {spRequestGuid}");
+                                }
+                            }
+
+                            Log.Error(Constants.LOGGING_SOURCE, CoreResources.ClientContextExtensions_ExecuteQueryRetryException, errorSb.ToString());
+                            throw;
+                        }
                     }
                 }
                 catch (ServerException serverEx)

@@ -42,12 +42,6 @@ namespace PnP.Framework
             return factory.Create(new Uri(context.Url), AuthenticationProviderFactory.GetAuthenticationProvider(context));
         }
 
-        public PnPContext GetPnPContext(ClientContext context, string userAgent)
-        {
-            var factory = BuildContextFactory();
-            return factory.Create(new Uri(context.Url), AuthenticationProviderFactory.GetAuthenticationProvider(context));
-        }
-
         private IPnPContextFactory BuildContextFactory()
         {
             try

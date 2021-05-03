@@ -705,6 +705,8 @@ namespace PnP.Framework
                     }
                 case ClientContextType.SharePointACSAppOnly:
                     {
+                        if (acsTokenGenerator == null)
+                            throw new ArgumentException($"{nameof(GetAccessTokenAsync)}() called without an ACS token generator. Specify in {nameof(AuthenticationManager)} constructor the authentication parameters");
                         return acsTokenGenerator.GetToken(null);
                     }
                 case ClientContextType.AccessToken:
@@ -865,6 +867,9 @@ namespace PnP.Framework
 
                 case ClientContextType.SharePointACSAppOnly:
                     {
+                        if (this.acsTokenGenerator == null)
+                            throw new ArgumentException($"{nameof(GetContextAsync)}() called without an ACS token generator. Use {nameof(GetACSAppOnlyContext)}() or {nameof(GetAccessTokenContext)}() instead or specify in {nameof(AuthenticationManager)} constructor the authentication parameters");
+
                         var context = GetAccessTokenContext(siteUrl, (site) =>
                         {
                             return this.acsTokenGenerator.GetToken(new Uri(site));

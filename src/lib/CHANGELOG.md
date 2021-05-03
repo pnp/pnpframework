@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Fix tokenize url in new document template #299 [czullu - Christian Zuellig]
 - Fix list id token issue when title null #298 [czullu - Christian Zuellig]
 - Fix conversion between PnPCore enum values and PnP.Framework enums #297 [jackpoz - Giacomo Pozzoni]
 - Fix IEnumerable.Union() result being discarded in ContentByQuerySearchTransformator #296 [jackpoz - Giacomo Pozzoni]

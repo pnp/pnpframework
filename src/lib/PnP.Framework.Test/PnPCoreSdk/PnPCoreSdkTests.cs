@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.SharePoint.Client;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Core.Model;
 using PnP.Core.Services;
 
@@ -28,6 +29,23 @@ namespace PnP.Framework.Test
                 {
                     var web = context.Web.GetAsync().GetAwaiter().GetResult();                                    
                     Assert.IsTrue(web.Title != null);
+                }
+            }
+        }
+
+        [TestMethod]
+        public void GetWebReverseTest()
+        {
+            using (var cc = TestCommon.CreateClientContext())
+            {
+                using (PnPContext context = PnPCoreSdk.Instance.GetPnPContext(cc))
+                {                    
+                    using (ClientContext ccAgain = PnPCoreSdk.Instance.GetClientContext(context))
+                    {
+                        ccAgain.Load(ccAgain.Web, p => p.Title);
+                        ccAgain.ExecuteQueryRetry();
+                        Assert.IsTrue(ccAgain.Web.Title != null);
+                    }
                 }
             }
         }

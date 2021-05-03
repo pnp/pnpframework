@@ -9,6 +9,9 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("PnPFramework.Test")]
 namespace PnP.Framework
 {
+    /// <summary>
+    /// Class that implements interop between PnP Framework and PnP Core SDK
+    /// </summary>
     public class PnPCoreSdk
     {
 
@@ -36,6 +39,11 @@ namespace PnP.Framework
         {
         }
 
+        /// <summary>
+        /// Get's a PnPContext from a CSOM ClientContext
+        /// </summary>
+        /// <param name="context">CSOM ClientContext</param>
+        /// <returns>The equivalent PnPContext</returns>
         public PnPContext GetPnPContext(ClientContext context)
         {
             var factory = BuildContextFactory();
@@ -86,6 +94,19 @@ namespace PnP.Framework
 
         }
 
+        /// <summary>
+        /// Returns a CSOM ClientContext for a given PnP Core SDK context
+        /// </summary>
+        /// <param name="pnpContext">The PnP Core SDK context</param>
+        /// <returns>The equivalent CSOM ClientContext</returns>
+        public ClientContext GetClientContext(PnPContext pnpContext)
+        {
+#pragma warning disable CA2000 // Dispose objects before losing scope
+            AuthenticationManager authManager = AuthenticationManager.CreateWithPnPCoreSdk(pnpContext.AuthenticationProvider);
+#pragma warning restore CA2000 // Dispose objects before losing scope
+
+            return authManager.GetContext(pnpContext.Uri.ToString());
+        }
 
     }
 }

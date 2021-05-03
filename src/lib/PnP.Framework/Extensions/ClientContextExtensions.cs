@@ -235,6 +235,9 @@ namespace Microsoft.SharePoint.Client
                                 retryAfterInterval = backoffInterval;
                                 backoffInterval *= 2;
                             }
+
+                            Log.Warning(Constants.LOGGING_SOURCE, $"CSOM request socket exception. Retry attempt {retryAttempts + 1}. Sleeping for {retryAfterInterval} milliseconds before retrying.");
+
                             await Task.Delay(retryAfterInterval);
 
                             //Add to retry count and increase delay.

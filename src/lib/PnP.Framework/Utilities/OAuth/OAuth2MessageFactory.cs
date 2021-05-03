@@ -1,10 +1,17 @@
-﻿namespace SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+﻿using System.Threading.Tasks;
+
+namespace SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
 {
     public static class OAuth2MessageFactory
     {
         public static OAuth2Message CreateFromEncodedResponse(System.IO.StreamReader reader)
         {
             return OAuth2MessageFactory.CreateFromEncodedResponse(reader.ReadToEnd());
+        }
+
+        public static async Task<OAuth2Message> CreateFromEncodedResponseAsync(System.IO.StreamReader reader)
+        {
+            return OAuth2MessageFactory.CreateFromEncodedResponse(await reader.ReadToEndAsync());
         }
 
         public static OAuth2Message CreateFromEncodedResponse(string responseString)

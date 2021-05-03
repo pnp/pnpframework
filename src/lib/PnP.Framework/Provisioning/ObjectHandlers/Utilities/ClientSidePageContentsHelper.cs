@@ -114,12 +114,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                         var extractedHeader = new ClientSidePageHeader()
                         {
                             //Type = (ClientSidePageHeaderType)Enum.Parse(typeof(Pages.ClientSidePageHeaderType), pageToExtract.PageHeader.Type.ToString()),
-                            Type = (ClientSidePageHeaderType)Enum.Parse(typeof(PnPCore.PageHeaderType), (pageToExtract.PageHeader as PnPCore.PageHeader).Type.ToString()),
+                            Type = (ClientSidePageHeaderType)Enum.Parse(typeof(ClientSidePageHeaderType), (pageToExtract.PageHeader as PnPCore.PageHeader).Type.ToString()),
                             ServerRelativeImageUrl = TokenizeJsonControlData(web, pageToExtract.PageHeader.ImageServerRelativeUrl),
                             TranslateX = pageToExtract.PageHeader.TranslateX,
                             TranslateY = pageToExtract.PageHeader.TranslateY,
-                            LayoutType = (ClientSidePageHeaderLayoutType)Enum.Parse(typeof(PnPCore.PageHeaderLayoutType), pageToExtract.PageHeader.LayoutType.ToString()),
-                            TextAlignment = (ClientSidePageHeaderTextAlignment)Enum.Parse(typeof(PnPCore.PageHeaderTitleAlignment), pageToExtract.PageHeader.TextAlignment.ToString()),
+                            LayoutType = (ClientSidePageHeaderLayoutType)Enum.Parse(typeof(ClientSidePageHeaderLayoutType), pageToExtract.PageHeader.LayoutType.ToString()),
+                            TextAlignment = (ClientSidePageHeaderTextAlignment)Enum.Parse(typeof(ClientSidePageHeaderTextAlignment), pageToExtract.PageHeader.TextAlignment.ToString()),
                             ShowTopicHeader = pageToExtract.PageHeader.ShowTopicHeader,
                             ShowPublishDate = pageToExtract.PageHeader.ShowPublishDate,
                             TopicHeader = pageToExtract.PageHeader.TopicHeader,

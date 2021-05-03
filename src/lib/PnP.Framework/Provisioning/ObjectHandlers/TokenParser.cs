@@ -766,7 +766,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 _tokens.Add(new ListIdToken(web, list.Title, list.Id));
                 // _tokens.Add(new ListIdToken(web, list.Title, Guid.Empty));
                 var mainLanguageName = GetListTitleForMainLanguage(web, list.Title);
-                if (mainLanguageName != list.Title)
+                if (!string.IsNullOrWhiteSpace(mainLanguageName) && mainLanguageName != list.Title)
                 {
                     _tokens.Add(new ListIdToken(web, mainLanguageName, list.Id));
                 }

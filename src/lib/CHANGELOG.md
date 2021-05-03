@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Fix conversion between PnPCore enum values and PnP.Framework enums #297 [jackpoz - Giacomo Pozzoni]
 - Fix IEnumerable.Union() result being discarded in ContentByQuerySearchTransformator #296 [jackpoz - Giacomo Pozzoni]
 - Improve exception messages when acsTokenGenerator is null in AuthenticationManager #295 [jackpoz - Giacomo Pozzoni]
 - Fix hanging request and big list issue with CreateDocumentSet #290 [YannickRe - Yannick Reekmans]

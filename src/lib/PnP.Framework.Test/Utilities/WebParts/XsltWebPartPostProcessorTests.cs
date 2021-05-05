@@ -63,7 +63,8 @@ namespace PnP.Framework.Test.Utilities.WebParts
         [ClassInitialize]
         public static void BeforeAll(TestContext testContext)
         {
-            using (var ctx = TestCommon.CreateClientContext())
+            TestCommon.RegisterPnPHttpClientMock();
+            using (var ctx = TestCommon.CreateTestClientContext())
             {
                 var docsList = ctx.Web.GetListByUrl(TestListUrl);
                 docsList.EnsureProperties(d => d.Id);
@@ -83,7 +84,8 @@ namespace PnP.Framework.Test.Utilities.WebParts
         [ClassCleanup]
         public static void AfterAll()
         {
-            using (var ctx = TestCommon.CreateClientContext())
+            TestCommon.RegisterPnPHttpClientMock();
+            using (var ctx = TestCommon.CreateTestClientContext())
             {
                 var docsList = ctx.Web.GetListByUrl(TestListUrl);
                 var view = docsList.Views.GetByTitle(ViewName);
@@ -96,7 +98,8 @@ namespace PnP.Framework.Test.Utilities.WebParts
         [TestInitialize]
         public void Initialize()
         {
-            using (var ctx = TestCommon.CreateClientContext())
+            TestCommon.RegisterPnPHttpClientMock();
+            using (var ctx = TestCommon.CreateTestClientContext())
             {
                 var resourceFolder = $@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources";
                 var template = new ProvisioningTemplate();
@@ -111,7 +114,8 @@ namespace PnP.Framework.Test.Utilities.WebParts
         [TestCleanup]
         public void CleanUp()
         {
-            using (var ctx = TestCommon.CreateClientContext())
+            TestCommon.RegisterPnPHttpClientMock();
+            using (var ctx = TestCommon.CreateTestClientContext())
             {
                 ctx.Web.EnsureProperties(w => w.ServerRelativeUrl);
 
@@ -142,8 +146,11 @@ namespace PnP.Framework.Test.Utilities.WebParts
                         </data>
                       </webPart>
                     </webParts>";
-
-            CoreTest(wpXml);
+            TestCommon.RegisterPnPHttpClientMock();
+            using (var clientContext = TestCommon.CreateTestClientContext())
+            {
+                CoreTest(wpXml, clientContext);
+            }
         }
 
         [TestMethod]
@@ -165,7 +172,11 @@ namespace PnP.Framework.Test.Utilities.WebParts
                       </webPart>
                     </webParts>";
 
-            CoreTest(wpXml);
+            TestCommon.RegisterPnPHttpClientMock();
+            using (var clientContext = TestCommon.CreateTestClientContext())
+            {
+                CoreTest(wpXml, clientContext);
+            }
         }
 
         [TestMethod]
@@ -187,7 +198,11 @@ namespace PnP.Framework.Test.Utilities.WebParts
                       </webPart>
                     </webParts>";
 
-            CoreTest(wpXml);
+            TestCommon.RegisterPnPHttpClientMock();
+            using (var clientContext = TestCommon.CreateTestClientContext())
+            {
+                CoreTest(wpXml, clientContext);
+            }
         }
 
         [TestMethod]
@@ -209,7 +224,11 @@ namespace PnP.Framework.Test.Utilities.WebParts
                       </webPart>
                     </webParts>";
 
-            CoreTest(wpXml);
+            TestCommon.RegisterPnPHttpClientMock();
+            using (var clientContext = TestCommon.CreateTestClientContext())
+            {
+                CoreTest(wpXml, clientContext);
+            }
         }
 
         [TestMethod]
@@ -231,7 +250,11 @@ namespace PnP.Framework.Test.Utilities.WebParts
                       </webPart>
                     </webParts>";
 
-            CoreTest(wpXml);
+            TestCommon.RegisterPnPHttpClientMock();
+            using (var clientContext = TestCommon.CreateTestClientContext())
+            {
+                CoreTest(wpXml, clientContext);
+            }
         }
 
         [TestMethod]
@@ -253,7 +276,11 @@ namespace PnP.Framework.Test.Utilities.WebParts
                       </webPart>
                     </webParts>";
 
-            CoreTest(wpXml);
+            TestCommon.RegisterPnPHttpClientMock();
+            using (var clientContext = TestCommon.CreateTestClientContext())
+            {
+                CoreTest(wpXml, clientContext);
+            }
         }
 
         [TestMethod]
@@ -275,7 +302,11 @@ namespace PnP.Framework.Test.Utilities.WebParts
                       </webPart>
                     </webParts>";
 
-            CoreTest(wpXml);
+            TestCommon.RegisterPnPHttpClientMock();
+            using (var clientContext = TestCommon.CreateTestClientContext())
+            {
+                CoreTest(wpXml, clientContext);
+            }
         }
 
         [TestMethod]
@@ -300,7 +331,11 @@ namespace PnP.Framework.Test.Utilities.WebParts
                       </webPart>
                     </webParts>";
 
-            CoreTest(wpXml);
+            TestCommon.RegisterPnPHttpClientMock();
+            using (var clientContext = TestCommon.CreateTestClientContext())
+            {
+                CoreTest(wpXml, clientContext);
+            }
         }
 
         [TestMethod]
@@ -325,7 +360,11 @@ namespace PnP.Framework.Test.Utilities.WebParts
                       </webPart>
                     </webParts>";
 
-            CoreTest(wpXml);
+            TestCommon.RegisterPnPHttpClientMock();
+            using (var clientContext = TestCommon.CreateTestClientContext())
+            {
+                CoreTest(wpXml, clientContext);
+            }
         }
 
         [TestMethod]
@@ -350,7 +389,11 @@ namespace PnP.Framework.Test.Utilities.WebParts
                       </webPart>
                     </webParts>";
 
-            CoreTest(wpXml);
+            TestCommon.RegisterPnPHttpClientMock();
+            using (var clientContext = TestCommon.CreateTestClientContext())
+            {
+                CoreTest(wpXml, clientContext);
+            }
         }
 
         [TestMethod]
@@ -375,7 +418,11 @@ namespace PnP.Framework.Test.Utilities.WebParts
                       </webPart>
                     </webParts>";
 
-            CoreTest(wpXml);
+            TestCommon.RegisterPnPHttpClientMock();
+            using (var clientContext = TestCommon.CreateTestClientContext())
+            {
+                CoreTest(wpXml, clientContext);
+            }
         }
 
         [TestMethod]
@@ -400,7 +447,11 @@ namespace PnP.Framework.Test.Utilities.WebParts
 
             try
             {
-                CoreTest(wpXml);
+                TestCommon.RegisterPnPHttpClientMock();
+                using (var clientContext = TestCommon.CreateTestClientContext())
+                {
+                    CoreTest(wpXml, clientContext);
+                }
             }
             catch (Exception ex)
             {
@@ -412,7 +463,8 @@ namespace PnP.Framework.Test.Utilities.WebParts
         public void UpdatesViewFromChildWebListView()
         {
             Web childWeb = null;
-            using (var ctx = TestCommon.CreateClientContext())
+            TestCommon.RegisterPnPHttpClientMock();
+            using (var ctx = TestCommon.CreateTestClientContext())
             {
                 try
                 {
@@ -464,22 +516,19 @@ namespace PnP.Framework.Test.Utilities.WebParts
             }
         }
 
-        private void CoreTest(string wpXml)
+        private void CoreTest(string wpXml, ClientContext ctx)
         {
             var webParts = CreateBasicWebPart(wpXml);
 
-            using (var ctx = TestCommon.CreateClientContext())
-            {
-                var file = GetFile(ctx);
-                var wpDefinition = AddWebPart(file, wpXml);
+            var file = GetFile(ctx);
+            var wpDefinition = AddWebPart(file, wpXml);
 
-                var xsltPostProcessor = new XsltWebPartPostProcessor(webParts.WebPart);
-                xsltPostProcessor.Process(wpDefinition, file);
+            var xsltPostProcessor = new XsltWebPartPostProcessor(webParts.WebPart);
+            xsltPostProcessor.Process(wpDefinition, file);
 
-                var view = ctx.Web.GetListByUrl(TestListUrl).GetViewById(wpDefinition.Id);
+            var view = ctx.Web.GetListByUrl(TestListUrl).GetViewById(wpDefinition.Id);
 
-                AssertViewIsValid(view);
-            }
+            AssertViewIsValid(view);
         }
 
         private void AssertViewIsValid(View view)
@@ -500,8 +549,7 @@ namespace PnP.Framework.Test.Utilities.WebParts
         private File GetFile(ClientContext ctx)
         {
             ctx.Web.EnsureProperties(w => w.ServerRelativeUrl);
-
-            var serverRelativeUrl = UrlUtility.Combine(ctx.Web.ServerRelativeUrl, $"{folder}/{testPage}");
+            string serverRelativeUrl = UrlUtility.Combine(ctx.Web.ServerRelativeUrl, $"{folder}/{testPage}");
             var webPartPage = ctx.Web.GetFileByServerRelativeUrl(serverRelativeUrl);
             ctx.Web.Context.Load(webPartPage);
             ctx.Web.Context.ExecuteQueryRetry();

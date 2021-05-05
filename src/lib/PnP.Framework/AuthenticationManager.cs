@@ -1,21 +1,17 @@
 ﻿using Microsoft.Identity.Client;
 using Microsoft.Identity.Client.Extensibility;
 using Microsoft.SharePoint.Client;
+using PnP.Core.Services;
 using PnP.Framework.Utilities;
 using PnP.Framework.Utilities.Context;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Runtime.CompilerServices;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
 
-#if DEBUG
-[assembly: InternalsVisibleTo("PnP.Framework.Test")]
-#endif
 namespace PnP.Framework
 {
     /// <summary>
@@ -96,6 +92,7 @@ namespace PnP.Framework
         private readonly ACSTokenGenerator acsTokenGenerator;
         private IMsalHttpClientFactory httpClientFactory;
         private readonly SecureString accessToken;
+        private readonly IAuthenticationProvider authenticationProvider;
         internal CookieContainer CookieContainer { get; set; }
 
         private IMsalHttpClientFactory HttpClientFactory
@@ -256,6 +253,15 @@ namespace PnP.Framework
             return new AuthenticationManager(clientId, clientSecret, userAssertion, tenantId, azureEnvironment, tokenCacheCallback);
         }
 
+        /// <summary>
+        /// Creates a new instance of the Authentication Manager to acquire an authenticated ClientContext.
+        /// </summary>
+        /// <param name="authenticationProvider">PnP Core SDK authentication provider that will deliver the access token</param>
+        /// <returns></returns>
+        public static AuthenticationManager CreateWithPnPCoreSdk(IAuthenticationProvider authenticationProvider)
+        {
+            return new AuthenticationManager(authenticationProvider);
+        }
         #endregion
 
         #region Construction
@@ -573,6 +579,16 @@ namespace PnP.Framework
             tokenCacheCallback?.Invoke(confidentialClientApplication.UserTokenCache);
             authenticationType = ClientContextType.AzureOnBehalfOf;
         }
+
+        /// <summary>
+        /// Creates an AuthenticationManager for the given PnP Core SDK <see cref="IAuthenticationProvider"/>.
+        /// </summary>
+        /// <param name="authenticationProvider">PnP Core SDK <see cref="IAuthenticationProvider"/></param>
+        public AuthenticationManager(IAuthenticationProvider authenticationProvider)
+        {
+            this.authenticationProvider = authenticationProvider;
+            authenticationType = ClientContextType.PnPCoreSdk;
+        }
         #endregion
 
         #region Access Token Acquisition
@@ -736,11 +752,15 @@ namespace PnP.Framework
                     }
                 case ClientContextType.SharePointACSAppOnly:
                     {
+                        if (acsTokenGenerator == null)
+                        {
+                            throw new ArgumentException($"{nameof(GetAccessTokenAsync)}() called without an ACS token generator. Specify in {nameof(AuthenticationManager)} constructor the authentication parameters");
+                        }
                         return acsTokenGenerator.GetToken(null);
                     }
                 case ClientContextType.AccessToken:
                     {
-                        return new System.Net.NetworkCredential("", accessToken).Password;
+                        return new NetworkCredential("", accessToken).Password;
                     }
             }
             if (authResult?.AccessToken != null)
@@ -896,9 +916,14 @@ namespace PnP.Framework
 
                 case ClientContextType.SharePointACSAppOnly:
                     {
+                        if (acsTokenGenerator == null)
+                        {
+                            throw new ArgumentException($"{nameof(GetContextAsync)}() called without an ACS token generator. Use {nameof(GetACSAppOnlyContext)}() or {nameof(GetAccessTokenContext)}() instead or specify in {nameof(AuthenticationManager)} constructor the authentication parameters");
+                        }
+
                         var context = GetAccessTokenContext(siteUrl, (site) =>
                         {
-                            return this.acsTokenGenerator.GetToken(new Uri(site));
+                            return acsTokenGenerator.GetToken(new Uri(site));
                         });
 
                         ClientContextSettings clientContextSettings = new ClientContextSettings()
@@ -922,6 +947,28 @@ namespace PnP.Framework
                         ClientContextSettings clientContextSettings = new ClientContextSettings()
                         {
                             Type = ClientContextType.AccessToken,
+                            SiteUrl = siteUrl,
+                            AuthenticationManager = this
+                        };
+                        context.AddContextSettings(clientContextSettings);
+
+                        return context;
+                    }
+                case ClientContextType.PnPCoreSdk:
+                    {
+                        if (authenticationProvider == null)
+                        {
+                            throw new ArgumentException($"{nameof(GetContextAsync)}() called without an IAuthenticationProvider.");
+                        }
+
+                        var context = GetAccessTokenContext(siteUrl, (site) =>
+                        {
+                            return authenticationProvider.GetAccessTokenAsync(new Uri(site)).GetAwaiter().GetResult();
+                        });
+
+                        ClientContextSettings clientContextSettings = new ClientContextSettings()
+                        {
+                            Type = ClientContextType.PnPCoreSdk,
                             SiteUrl = siteUrl,
                             AuthenticationManager = this
                         };

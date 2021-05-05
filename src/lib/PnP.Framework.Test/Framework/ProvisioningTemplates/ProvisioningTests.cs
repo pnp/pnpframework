@@ -15,7 +15,7 @@ namespace PnP.Framework.Test.Framework.ProvisioningTemplates
         [TestMethod]
         public void GetGroupInfoTest()
         {
-            using (var context = TestCommon.CreateClientContext())
+            using (var context = TestCommon.CreateTestClientContext())
             {
                 PnP.Framework.Sites.SiteCollection.GetGroupInfoAsync(context, "demo1").GetAwaiter().GetResult();
             }

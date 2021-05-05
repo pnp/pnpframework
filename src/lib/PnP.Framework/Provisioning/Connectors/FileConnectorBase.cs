@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.CompilerServices;
 
-#if DEBUG
-[assembly: InternalsVisibleTo("PnP.Framework.Test")]
-#endif
 namespace PnP.Framework.Provisioning.Connectors
 {
     /// <summary>

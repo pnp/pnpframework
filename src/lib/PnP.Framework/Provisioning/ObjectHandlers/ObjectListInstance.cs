@@ -13,7 +13,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -23,7 +22,6 @@ using Field = Microsoft.SharePoint.Client.Field;
 using Folder = Microsoft.SharePoint.Client.Folder;
 using View = PnP.Framework.Provisioning.Model.View;
 
-[assembly:InternalsVisibleTo("PnP.Framework.UnitTest")]
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
     internal class ObjectListInstance : ObjectHandlerBase
@@ -112,8 +110,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                     }
                                 }
 
-                                listParser.AddToken(new ListUrlToken(web, createdList.Title, createdList.RootFolder.ServerRelativeUrl.Substring(web.ServerRelativeUrl.Length + 1)));
-                                parser.AddToken(new ListUrlToken(web, createdList.Title, createdList.RootFolder.ServerRelativeUrl.Substring(web.ServerRelativeUrl.Length + 1)));
+                                listParser.AddToken(new ListUrlToken(web, createdList.Title, createdList.RootFolder.ServerRelativeUrl.Substring(web.ServerRelativeUrl.TrimEnd(new char[] { '/' }).Length + 1)));
+                                parser.AddToken(new ListUrlToken(web, createdList.Title, createdList.RootFolder.ServerRelativeUrl.Substring(web.ServerRelativeUrl.TrimEnd(new char[] { '/' }).Length + 1)));
 
                                 // Add this new list to the list with existingLists. If in the same definition this list would be referenced again, it will threat it as an update to this created list. Useful in i.e. scenarios where you want to set the list validation to a list field you create in your first list instance declaration.
                                 existingLists.Add(createdList);
@@ -1288,10 +1286,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     if (!oldTitle.Equals(existingList.Title, StringComparison.OrdinalIgnoreCase))
                     {
                         parser.RemoveToken(new ListIdToken(web, oldTitle, existingList.Id));
-                        parser.RemoveToken(new ListUrlToken(web, oldTitle, existingList.RootFolder.ServerRelativeUrl.Substring(web.ServerRelativeUrl.Length + 1)));
+                        parser.RemoveToken(new ListUrlToken(web, oldTitle, existingList.RootFolder.ServerRelativeUrl.Substring(web.ServerRelativeUrl.TrimEnd(new char[] { '/' }).Length + 1)));
 
                         parser.AddToken(new ListIdToken(web, existingList.Title, existingList.Id));
-                        parser.AddToken(new ListUrlToken(web, existingList.Title, existingList.RootFolder.ServerRelativeUrl.Substring(web.ServerRelativeUrl.Length + 1)));
+                        parser.AddToken(new ListUrlToken(web, existingList.Title, existingList.RootFolder.ServerRelativeUrl.Substring(web.ServerRelativeUrl.TrimEnd(new char[] { '/' }).Length + 1)));
                     }
                     isDirty = true;
                 }

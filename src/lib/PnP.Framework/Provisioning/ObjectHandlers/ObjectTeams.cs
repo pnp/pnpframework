@@ -938,7 +938,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             {
                 channel.Description,
                 channel.DisplayName,
-                channel.IsFavoriteByDefault,
+                isFavoriteByDefault = channel.Private ? false : channel.IsFavoriteByDefault,
                 membershipType = channel.Private ? "private" : "standard",
                 members = (channel.Private && channelMembers != null) ? (from m in channelMembers
                                                                          select new
@@ -1009,7 +1009,37 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         public static JToken GetExistingTeamChannelTabs(string teamId, string channelId, string accessToken)
         {
-            return JToken.Parse(HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams/{teamId}/channels/{channelId}/tabs?$expand=teamsApp", accessToken))["value"];
+            const int maxRetryCount = 60;
+            const int retryDelay = 1000;
+            var retryAttempt = 0;
+
+            JToken response = null;
+
+            do
+            {
+                try
+                {
+                    response = JToken.Parse(HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams/{teamId}/channels/{channelId}/tabs?$expand=teamsApp", accessToken))["value"];
+                }
+                catch (Exception ex)
+                {
+                    if (ex.InnerException != null && ex.InnerException.Message.Contains("No active channel found with channel id:"))
+                    {
+                        Thread.Sleep(retryDelay);
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+
+                if (response == null)
+                {
+                    retryAttempt++;
+                }
+            } while (response == null && retryAttempt <= maxRetryCount);
+
+            return response;
         }
 
         private static string UpdateTeamTab(TeamTab tab, TokenParser parser, string teamId, string channelId, string tabId, string accessToken)
@@ -1179,18 +1209,34 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 { "teamsApp@odata.bind", "https://graph.microsoft.com/v1.0/appCatalogs/teamsApps/" + teamsAppId }
             };
 
-            var tabId = GraphHelper.CreateOrUpdateGraphObject(scope,
-                HttpMethodVerb.POST,
-                $"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams/{teamId}/channels/{channelId}/tabs",
-                JsonConvert.SerializeObject(tabToCreate),
-                HttpHelper.JsonContentType,
-                accessToken,
-                "NameAlreadyExists",
-                CoreResources.Provisioning_ObjectHandlers_Teams_Team_TabAlreadyExists,
-                "displayName",
-                displayname,
-                CoreResources.Provisioning_ObjectHandlers_Teams_Team_ProvisioningError,
-                false);
+            const int maxRetryCount = 60;
+            const int retryDelay = 1000;
+            var retryAttempt = 0;
+
+            string tabId;
+
+            do
+            {
+                if (retryAttempt > 1)
+                {
+                    Thread.Sleep(retryDelay);
+                }
+
+                tabId = GraphHelper.CreateOrUpdateGraphObject(scope,
+                    HttpMethodVerb.POST,
+                    $"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams/{teamId}/channels/{channelId}/tabs",
+                    JsonConvert.SerializeObject(tabToCreate),
+                    HttpHelper.JsonContentType,
+                    accessToken,
+                    "NameAlreadyExists",
+                    CoreResources.Provisioning_ObjectHandlers_Teams_Team_TabAlreadyExists,
+                    "displayName",
+                    displayname,
+                    CoreResources.Provisioning_ObjectHandlers_Teams_Team_ProvisioningError,
+                    false);
+
+                retryAttempt++;
+            } while (tabId == null && retryAttempt <= maxRetryCount);
 
             return tabId;
         }

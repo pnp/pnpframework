@@ -10,7 +10,7 @@ namespace PnP.Framework.Utilities.Graph
 {
     internal static class GraphHelper
     {
-        public const String MicrosoftGraphBaseURI = "https://graph.microsoft.com/";
+        public const string MicrosoftGraphBaseURI = "https://graph.microsoft.com/";
 
         /// <summary>
         /// Helper method to create or update an object through the Microsoft Graph
@@ -31,22 +31,22 @@ namespace PnP.Framework.Utilities.Graph
         public static String CreateOrUpdateGraphObject(
             PnPMonitoredScope scope,
             HttpMethodVerb method,
-            String uri,
-            Object content,
-            String contentType,
-            String accessToken,
-            String alreadyExistsErrorMessage,
-            String warningMessage,
-            String matchingFieldName,
-            String matchingFieldValue,
-            String errorMessage,
-            Boolean canPatch
+            string uri,
+            object content,
+            string contentType,
+            string accessToken,
+            string alreadyExistsErrorMessage,
+            string warningMessage,
+            string matchingFieldName,
+            string matchingFieldValue,
+            string errorMessage,
+            bool canPatch
             )
         {
             try
             {
-                String itemId = null;
-                String json = null;
+                string itemId = null;
+                string json = null;
                 HttpResponseHeaders responseHeaders;
 
                 // Try to create the Graph object
@@ -78,20 +78,20 @@ namespace PnP.Framework.Utilities.Graph
             catch (Exception ex)
             {
                 // In case of exception, let's see if the target item already exists
-                if (!String.IsNullOrEmpty(alreadyExistsErrorMessage) &&
-                    !String.IsNullOrEmpty(matchingFieldName) &&
-                    !String.IsNullOrEmpty(matchingFieldValue) &&
+                if (!string.IsNullOrEmpty(alreadyExistsErrorMessage) &&
+                    !string.IsNullOrEmpty(matchingFieldName) &&
+                    !string.IsNullOrEmpty(matchingFieldValue) &&
                     ex.InnerException.Message.Contains(alreadyExistsErrorMessage))
                 {
                     try
                     {
-                        if (!String.IsNullOrEmpty(warningMessage))
+                        if (!string.IsNullOrEmpty(warningMessage))
                         {
                             scope.LogWarning(warningMessage);
                         }
 
                         // If it's a POST we need to look for any existing item
-                        String id = null;
+                        string id = null;
 
                         // In case of PUT we already have the id
                         if (method == HttpMethodVerb.POST || method == HttpMethodVerb.POST_WITH_RESPONSE_HEADERS)
@@ -115,7 +115,7 @@ namespace PnP.Framework.Utilities.Graph
                     }
                     catch (Exception exUpdate)
                     {
-                        if (!String.IsNullOrEmpty(errorMessage))
+                        if (!string.IsNullOrEmpty(errorMessage))
                         {
                             scope.LogError(errorMessage, exUpdate.Message);
                         }
@@ -132,7 +132,7 @@ namespace PnP.Framework.Utilities.Graph
         public static string ItemAlreadyExists(string uri, string matchingFieldName, string matchingFieldValue, string accessToken)
         {
             string id;
-            String json = HttpHelper.MakeGetRequestForString($"{uri}?$select=id&$filter={matchingFieldName}%20eq%20'{WebUtility.UrlEncode(matchingFieldValue)}'", accessToken);
+            string json = HttpHelper.MakeGetRequestForString($"{uri}?$select=id&$filter={matchingFieldName}%20eq%20'{WebUtility.UrlEncode(matchingFieldValue)}'", accessToken);
             // Get the id of existing item
             var ids = GetIdsFromList(json);
             id = ids.Length > 0 ? ids[0] : null;

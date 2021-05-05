@@ -53,7 +53,15 @@ namespace PnP.Framework.Utilities.UnitTests.Web
                 return _responseHeaders;
             }
         }
-        private WebHeaderCollection _requestHeaders { get; set; } = new WebHeaderCollection();
+        private WebHeaderCollection _requestHeaders { get; set; } = GetRequestHeaders();
+
+        private static WebHeaderCollection GetRequestHeaders()
+        {
+            WebHeaderCollection collection = new WebHeaderCollection();
+            collection.Add("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwidXBuIjoiam9obi5kb2UiLCJpYXQiOjE1MTYyMzkwMjJ9.TDq3q59XyXqTt3rBszehNEsqZusbMs4OvS25ZwGoUUY");
+
+            return collection;
+        }
 
         public override WebHeaderCollection RequestHeaders
         {

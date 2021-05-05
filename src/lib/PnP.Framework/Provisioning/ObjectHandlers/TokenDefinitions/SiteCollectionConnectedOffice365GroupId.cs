@@ -20,11 +20,15 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
         {
             if (CacheValue == null)
             {
-                TokenContext.Load(TokenContext.Site, s => s.GroupId);
+                TokenContext.Load(TokenContext.Site, s => s.GroupId, s => s.RelatedGroupId);
                 TokenContext.ExecuteQueryRetry();
                 if (!TokenContext.Site.GroupId.Equals(Guid.Empty))
                 {
                     CacheValue = TokenContext.Site.GroupId.ToString();
+                }
+                else if(!TokenContext.Site.RelatedGroupId.Equals(Guid.Empty))
+                {
+                    CacheValue = TokenContext.Site.RelatedGroupId.ToString();
                 }
                 else
                 {

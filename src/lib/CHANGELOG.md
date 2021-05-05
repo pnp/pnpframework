@@ -10,10 +10,45 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Support for creating a CSOM ClientContext from a PnP Core SDK context [jansenbe - Bert Jansen]
+- Minimal support for TEAMCHANNEL Template #268 [czullu - Christian Zuellig]
+- PnPSDK Mocking + few more cases isolated #262 [mgwojciech - Marcin Wojciechowski]
+- Added implementation of SPWebRequestExecutor that utilizes HttpClient #261 [patrikhellgren - Patrik Hellgren]
+
+### Changed
+
+- Improved handling of socket exceptions in the ExecuteQueryRetryImplementation #301 [czullu - Christian Zuellig]
+- Match JsonPropertyName values in ExtractConfiguration with https://aka.ms/sppnp-extract-configuration-schema #300 [jackpoz - Giacomo Pozzoni]
+- Fix tokenize url in new document template #299 [czullu - Christian Zuellig]
+- Fix list id token issue when title null #298 [czullu - Christian Zuellig]
+- Fix conversion between PnPCore enum values and PnP.Framework enums #297 [jackpoz - Giacomo Pozzoni]
+- Fix IEnumerable.Union() result being discarded in ContentByQuerySearchTransformator #296 [jackpoz - Giacomo Pozzoni]
+- Improve exception messages when acsTokenGenerator is null in AuthenticationManager #295 [jackpoz - Giacomo Pozzoni]
+- Fix hanging request and big list issue with CreateDocumentSet #290 [YannickRe - Yannick Reekmans]
+- Fix #271: Added PDL support for creating sites via PnP PowerShell #278 [gautamdsheth - Gautam Sheth]
+- Fix issue if SP Group has description with more then 512 char #270 [czullu - Christian Zuellig]
+- Fix: Always create private channels with isFavoriteByDefault false #260 [patrikhellgren - Patrik Hellgren]
+- Fix: Implemented retry logic for getting and creating teams tabs #259 [patrikhellgren - Patrik Hellgren]
+- Fix to add groups as owners of site collections #258 [gautamdsheth - Gautam Sheth]
+- Fix url token root site #256 [czullu - Christian Zuellig]
+
+## [1.4.0]
+
+### Added
+
+- Added REST mocking scenario + isolation for two test suites #221 [mgwojciech - Marcin Wojciechowski]
 - Added Get/Add EventReceiver method to SiteExtensions #166 [bhishma - Bhishma Bhandari]
 
 ### Changed
 
+- Fix to always copy WebRequestExecutorFactory when cloning #255 [patrikhellgren - Patrik Hellgren]
+- Align search navigation node deletion with other structural navigation node deletion [jansenbe - Bert Jansen]
+- Added NeutralResourcesLanguage assembly attribute [jansenbe - Bert Jansen]
+- Deserialze of Template XML does not load ClientSideComponentId on List-UserCustomAction #230 [czullu - Christian Zuellig]
+- Fix Site Design creation/update via provisioning engine - WebTemplate not being set #229 [michael-jensen Mike Jensen]
+- Fix AudienceUriValidationFailedException exceptions when using AppCatalogScope.Tenant #228 [jackpoz - Giacomo Pozzoni]
+- Allow to specify the Sensitivity Label Id when creating a new site collection #226 [jackpoz - Giacomo Pozzoni]
+- Fix for ListItem.GetFieldValueAs not working for other types than string #223 [patrikhellgren - Patrik Hellgren]
 - Documentation updates #215 [LeonArmston - Leon Armston]
 
 ## [1.3.0]

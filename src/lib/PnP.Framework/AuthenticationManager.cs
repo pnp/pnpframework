@@ -380,6 +380,18 @@ namespace PnP.Framework
         /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts through device code authentication
         /// </summary>
         /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
+        /// <param name="deviceCodeCallback">The callback that will be called with device code information.</param>
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
+        public AuthenticationManager(string clientId, Func<DeviceCodeResult, Task> deviceCodeCallback, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : 
+            this(clientId, null, deviceCodeCallback, azureEnvironment, tokenCacheCallback)
+        { 
+        }
+
+        /// <summary>
+        /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts through device code authentication
+        /// </summary>
+        /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
         /// <param name="tenantId">Optional tenant id or tenant url</param>
         /// <param name="deviceCodeCallback">The callback that will be called with device code information.</param>
         /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>

@@ -16,7 +16,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                 if (!Guid.TryParse(listAttr, out Guid g))
                 {
                     var targetList = web.GetListByUrl($"/{listAttr}");
-                    if (targetList != null)
+                    if (targetList != null && targetList.ServerObjectIsNull == false)
                     {
                         fieldElement.SetAttributeValue("List", targetList.Id.ToString("B"));
                         return fieldElement.ToString();

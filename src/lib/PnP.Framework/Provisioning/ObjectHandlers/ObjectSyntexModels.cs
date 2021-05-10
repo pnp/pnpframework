@@ -218,6 +218,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             sampleMarkupJson = sampleMarkupJson.Replace($"\"{modelId}\": {{", $"\"{tokenValue}\": {{");
             sampleMarkupJson = sampleMarkupJson.Replace($"\"modelItemId\": \"{modelId}\"", $"\"modelItemId\": \"{tokenValue}\"");
+            sampleMarkupJson = sampleMarkupJson.Replace($"\"modelItemId\": {modelId}", $"\"modelItemId\": {tokenValue}");
             return sampleMarkupJson;
         }
 

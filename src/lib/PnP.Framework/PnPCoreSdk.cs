@@ -17,6 +17,7 @@ namespace PnP.Framework
 
         private static readonly Lazy<PnPCoreSdk> _lazyInstance = new Lazy<PnPCoreSdk>(() => new PnPCoreSdk(), true);
         private IPnPContextFactory pnpContextFactoryCache;
+        private PnPContext pnpContextCached = null;
         private static readonly SemaphoreSlim semaphoreSlimFactory = new SemaphoreSlim(1);
         internal static ILegacyAuthenticationProviderFactory AuthenticationProviderFactory { get; set; } = new PnPCoreSdkAuthenticationProviderFactory();
         internal static event EventHandler<IServiceCollection> OnDIContainerBuilding;
@@ -43,15 +44,28 @@ namespace PnP.Framework
         /// Get's a PnPContext from a CSOM ClientContext
         /// </summary>
         /// <param name="context">CSOM ClientContext</param>
-        /// <param name="UseGraphFirst"></param>
         /// <returns>The equivalent PnPContext</returns>
-        public PnPContext GetPnPContext(ClientContext context, bool UseGraphFirst = false)
+        public PnPContext GetPnPContext(ClientContext context)
         {
-            var factory = BuildContextFactory(UseGraphFirst);
-            return factory.Create(new Uri(context.Url), AuthenticationProviderFactory.GetAuthenticationProvider(context));
+            if (pnpContextCached != null)
+            {
+                if (pnpContextCached.Uri == new Uri(context.Url))
+                {
+                    return pnpContextCached;
+                }
+                else
+                {
+                    return pnpContextCached.Clone(new Uri(context.Url));
+                }
+            }
+            else
+            { 
+                var factory = BuildContextFactory();
+                return factory.Create(new Uri(context.Url), AuthenticationProviderFactory.GetAuthenticationProvider(context));
+            }
         }
 
-        private IPnPContextFactory BuildContextFactory(bool UseGraphFirst = false)
+        private IPnPContextFactory BuildContextFactory()
         {
             try
             {
@@ -69,7 +83,7 @@ namespace PnP.Framework
                 //TODO: Can someone check if this is actually needed or can we just use fluent api? I'm not sure and it may have quite an impact
                 services = services.AddPnPCore(options =>
                 {
-                    options.PnPContext.GraphFirst = UseGraphFirst;
+                    options.PnPContext.GraphFirst = false;
                 }).Services;
                 if(OnDIContainerBuilding != null)
                 {
@@ -102,6 +116,10 @@ namespace PnP.Framework
         /// <returns>The equivalent CSOM ClientContext</returns>
         public ClientContext GetClientContext(PnPContext pnpContext)
         {
+            if (pnpContextCached == null)
+            {
+                pnpContextCached = pnpContext;
+            }
 #pragma warning disable CA2000 // Dispose objects before losing scope
             AuthenticationManager authManager = AuthenticationManager.CreateWithPnPCoreSdk(pnpContext.AuthenticationProvider);
 #pragma warning restore CA2000 // Dispose objects before losing scope

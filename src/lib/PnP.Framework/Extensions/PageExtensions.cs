@@ -841,7 +841,7 @@ namespace Microsoft.SharePoint.Client
         /// <returns>A <see cref="ClientSidePage"/> instance</returns>
         public static IPage AddClientSidePage(this Web web, string pageName = "", bool alreadyPersist = false)
         {
-            using (var pnpContext = PnPCoreSdk.Instance.GetPnPContext(web.Context as ClientContext))
+            using (var pnpContext = PnPCoreSdk.Instance.GetPnPContext(web.Context as ClientContext,true))
             {
                 var page = pnpContext.Web.NewPage();
                 if (alreadyPersist)
@@ -860,7 +860,7 @@ namespace Microsoft.SharePoint.Client
         /// <returns>A <see cref="ClientSidePage"/> instance</returns>
         public static IPage LoadClientSidePage(this Web web, string pageName)
         {
-            using (var pnpContext = PnPCoreSdk.Instance.GetPnPContext(web.Context as ClientContext))
+            using (var pnpContext = PnPCoreSdk.Instance.GetPnPContext(web.Context as ClientContext,true))
             {
                 return pnpContext.Web.GetPages(pageName).FirstOrDefault();
             }

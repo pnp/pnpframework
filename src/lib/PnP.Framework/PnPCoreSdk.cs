@@ -43,14 +43,15 @@ namespace PnP.Framework
         /// Get's a PnPContext from a CSOM ClientContext
         /// </summary>
         /// <param name="context">CSOM ClientContext</param>
+        /// <param name="UseGraphFirst"></param>
         /// <returns>The equivalent PnPContext</returns>
-        public PnPContext GetPnPContext(ClientContext context)
+        public PnPContext GetPnPContext(ClientContext context, bool UseGraphFirst = false)
         {
-            var factory = BuildContextFactory();
+            var factory = BuildContextFactory(UseGraphFirst);
             return factory.Create(new Uri(context.Url), AuthenticationProviderFactory.GetAuthenticationProvider(context));
         }
 
-        private IPnPContextFactory BuildContextFactory()
+        private IPnPContextFactory BuildContextFactory(bool UseGraphFirst = false)
         {
             try
             {
@@ -68,7 +69,7 @@ namespace PnP.Framework
                 //TODO: Can someone check if this is actually needed or can we just use fluent api? I'm not sure and it may have quite an impact
                 services = services.AddPnPCore(options =>
                 {
-                    options.PnPContext.GraphFirst = false;
+                    options.PnPContext.GraphFirst = UseGraphFirst;
                 }).Services;
                 if(OnDIContainerBuilding != null)
                 {

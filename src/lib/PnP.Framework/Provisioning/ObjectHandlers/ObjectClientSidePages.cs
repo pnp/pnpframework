@@ -38,7 +38,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             using (var scope = new PnPMonitoredScope(this.Name))
             {
-                pnpContext = PnPCoreSdk.Instance.GetPnPContext(web.Context as ClientContext);
+                pnpContext = PnPCoreSdk.Instance.GetPnPContext(web.Context as ClientContext, true);
                 dummyPage = pnpContext.Web.NewPage();
 
                 web.EnsureProperties(w => w.ServerRelativeUrl);

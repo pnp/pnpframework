@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Fixes tokenization of SharePoint Syntex models when being exported [jansenbe - Bert Jansen]
 - Fixed DeviceLogin in AuthenticationManager for single tenant scenario #308 [PaoloPia - Paolo Pialorsi]
 - Improved handling of socket exceptions in the ExecuteQueryRetryImplementation #301 [czullu - Christian Zuellig]
 - Match JsonPropertyName values in ExtractConfiguration with https://aka.ms/sppnp-extract-configuration-schema #300 [jackpoz - Giacomo Pozzoni]

@@ -44,21 +44,20 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V202002
                     {
                         t => t.Themes[0].Palette,
                         new ExpressionValueResolver((s, v) =>
-{
+                        {
+                            String result = null;
 
- String result = null;
+                            if (s != null)
+                            {
+                                String[] text = s.GetPublicInstancePropertyValue("Text") as String[];
+                                if (text != null && text.Length > 0)
+                                {
+                                    result = text.Aggregate(String.Empty, (acc, next) => acc += (next != null ? next : String.Empty));
+                                }
+                            }
 
- if (s != null)
- {
-     String[] text = s.GetPublicInstancePropertyValue("Text") as String[];
-     if (text != null && text.Length > 0)
-     {
-         result = text.Aggregate(String.Empty, (acc, next) => acc += (next != null ? next : String.Empty));
-     }
- }
-
- return (result.Trim());
-})
+                            return (result.Trim());
+                        })
                     }
                 };
 

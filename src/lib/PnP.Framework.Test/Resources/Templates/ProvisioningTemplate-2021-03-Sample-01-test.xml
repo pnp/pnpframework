@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
+  <pnp:Localizations DefaultLCID="1040">
+    <pnp:Localization LCID="1040" Name="core" ResourceFile="resources-core.it-it.resx" />
+  </pnp:Localizations>
+  <pnp:Templates ID="CONTAINER-ProvisioningTemplate-2021-03-Sample-01-test">
+    <pnp:ProvisioningTemplate ID="ProvisioningTemplate-2021-03-Sample-01-test" Version="0" Scope="Undefined" />
+  </pnp:Templates>
+  <pnp:Preferences Generator="PnP.Framework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null" />
+</pnp:Provisioning>

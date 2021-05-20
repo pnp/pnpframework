@@ -64,12 +64,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     foreach (var ct in template.ContentTypes.OrderBy(ct => ct.Id)) // ordering to handle references to parent content types that can be in the same template
                     {
                         currentCtIndex++;
+                        var name = parser.ParseString(ct.Name);
 
-                        WriteSubProgress("Content Type", ct.Name, currentCtIndex, template.ContentTypes.Count);
+                        WriteSubProgress("Content Type", name, currentCtIndex, template.ContentTypes.Count);
                         var existingCT = existingCTs.FirstOrDefault(c => c.StringId.Equals(ct.Id, StringComparison.OrdinalIgnoreCase));
                         if (existingCT == null)
                         {
-                            scope.LogDebug(CoreResources.Provisioning_ObjectHandlers_ContentTypes_Creating_new_Content_Type___0_____1_, ct.Id, ct.Name);
+                            scope.LogDebug(CoreResources.Provisioning_ObjectHandlers_ContentTypes_Creating_new_Content_Type___0_____1_, ct.Id, name);
                             var newCT = CreateContentType(web, template, ct, parser, template.Connector, scope, existingCTs, existingFields, isNoScriptSite);
                             if (newCT != null)
                             {
@@ -81,7 +82,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         {
                             if (ct.Overwrite && this._step == FieldAndListProvisioningStepHelper.Step.ListAndStandardFields)
                             {
-                                scope.LogDebug(CoreResources.Provisioning_ObjectHandlers_ContentTypes_Recreating_existing_Content_Type___0_____1_, ct.Id, ct.Name);
+                                scope.LogDebug(CoreResources.Provisioning_ObjectHandlers_ContentTypes_Recreating_existing_Content_Type___0_____1_, ct.Id, name);
 
                                 existingCT.DeleteObject();
                                 web.Context.ExecuteQueryRetry();
@@ -97,12 +98,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                 // We can't update a sealed or read only content type unless we change the value to false
                                 if ((!existingCT.Sealed || !ct.Sealed) && (!existingCT.ReadOnly || !ct.ReadOnly))
                                 {
-                                    scope.LogDebug(CoreResources.Provisioning_ObjectHandlers_ContentTypes_Updating_existing_Content_Type___0_____1_, ct.Id, ct.Name);
+                                    scope.LogDebug(CoreResources.Provisioning_ObjectHandlers_ContentTypes_Updating_existing_Content_Type___0_____1_, ct.Id, name);
                                     UpdateContentType(web, template, existingCT, ct, parser, template.Connector, scope, existingCTs, existingFields, isNoScriptSite);
                                 }
                                 else
                                 {
-                                    scope.LogWarning(CoreResources.Provisioning_ObjectHandlers_ContentTypes_Updating_existing_Content_Type_SealedOrReadOnly, ct.Id, ct.Name);
+                                    scope.LogWarning(CoreResources.Provisioning_ObjectHandlers_ContentTypes_Updating_existing_Content_Type_SealedOrReadOnly, ct.Id, name);
                                 }
                             }
                         }

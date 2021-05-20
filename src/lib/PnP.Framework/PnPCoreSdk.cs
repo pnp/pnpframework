@@ -80,15 +80,19 @@ namespace PnP.Framework
 
                 // Build the service collection and load PnP Core SDK
                 IServiceCollection services = new ServiceCollection();
-                //TODO: Can someone check if this is actually needed or can we just use fluent api? I'm not sure and it may have quite an impact
+
+                // To increase coverage of solutions providing tokens without graph scopes we turn of graphfirst for PnPContext created from PnP Framework                
                 services = services.AddPnPCore(options =>
                 {
                     options.PnPContext.GraphFirst = false;
                 }).Services;
+
+                // Enables to plug in additional services into this service container
                 if(OnDIContainerBuilding != null)
                 {
                     OnDIContainerBuilding.Invoke(this, services);
                 }
+
                 var serviceProvider = services.BuildServiceProvider();
                 
                 // Get a PnP context factory

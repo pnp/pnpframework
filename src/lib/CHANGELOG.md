@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Enhance pnpcoresdk - preseve PnPContext when init with GetClientContext for GetContext #321 [czullu - Christian Zuellig]
 - Fixed a bug that updateChildren value was ignored in AddContentTypeToList #318 [antonsmislevics - Antons Mislevics]
 - Fix for token parsing content type names in console and logs #316 [patrikhellgren - Patrik Hellgren]
 - Fix an issue with possible access of null serverobject in FieldUtilities.FixLookupField #310 [NickSevens - Nick Sevens]

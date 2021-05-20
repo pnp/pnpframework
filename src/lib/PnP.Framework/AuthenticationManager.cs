@@ -538,7 +538,7 @@ namespace PnP.Framework
 
             var builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId).WithHttpClientFactory(HttpClientFactory);
 
-            builder = GetBuilderWithAuthority(builder, azureEnvironment);
+            builder = GetBuilderWithAuthority(builder, azureEnvironment, tenantId);
 
             if (!string.IsNullOrEmpty(redirectUrl))
             {
@@ -1463,12 +1463,16 @@ namespace PnP.Framework
             return builder;
         }
 
-        public ConfidentialClientApplicationBuilder GetBuilderWithAuthority(ConfidentialClientApplicationBuilder builder, AzureEnvironment azureEnvironment)
+        public ConfidentialClientApplicationBuilder GetBuilderWithAuthority(ConfidentialClientApplicationBuilder builder, AzureEnvironment azureEnvironment, string tenantId = "")
         {
             if (azureEnvironment == AzureEnvironment.Production)
             {
                 var azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
                 builder = builder.WithAuthority($"{azureADEndPoint}/organizations");
+                if (!string.IsNullOrEmpty(tenantId))
+                {
+                    builder = builder.WithAuthority($"{azureADEndPoint}/organizations", tenantId);
+                }
             }
             else
             {

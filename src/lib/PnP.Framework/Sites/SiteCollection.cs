@@ -102,6 +102,12 @@ namespace PnP.Framework.Sites
         {
             Dictionary<string, object> payload = GetRequestPayload(siteCollectionCreationInformation);
 
+            if (siteCollectionCreationInformation.Lcid != 0 && !Constants.SupportedLCIDs.Contains(siteCollectionCreationInformation.Lcid))
+            {
+                string supportedValues = string.Join(" , ", Constants.SupportedLCIDs);
+                throw new Exception($"LCID value is not supported, supported values are: {supportedValues}");
+            }
+
             var siteDesignId = GetSiteDesignId(siteCollectionCreationInformation);
             if (siteDesignId != Guid.Empty)
             {
@@ -153,6 +159,13 @@ namespace PnP.Framework.Sites
             bool noWait = false)
         {
             Dictionary<string, object> payload = GetRequestPayload(siteCollectionCreationInformation);
+
+            if (siteCollectionCreationInformation.Lcid != 0 && !Constants.SupportedLCIDs.Contains(siteCollectionCreationInformation.Lcid))
+            {
+                string supportedValues = string.Join(" , ", Constants.SupportedLCIDs);
+                throw new Exception($"LCID value is not supported, supported values are: {supportedValues}");                
+            }
+
             payload.Add("HubSiteId", siteCollectionCreationInformation.HubSiteId);
             // As per https://github.com/SharePoint/sp-dev-docs/issues/4810 the WebTemplateExtensionId property
             // is what currently drives the application of a custom site design during the creation of a modern site.
@@ -251,6 +264,12 @@ namespace PnP.Framework.Sites
         {
             ClientContext responseContext = null;
 
+            if (siteCollectionCreationInformation.Lcid != 0 && !Constants.SupportedLCIDs.Contains(siteCollectionCreationInformation.Lcid))
+            {
+                string supportedValues = string.Join(" , ", Constants.SupportedLCIDs);
+                throw new Exception($"LCID value is not supported, supported values are: {supportedValues}");
+            }
+
             clientContext.Web.EnsureProperty(w => w.Url);
 
             Guid sensitivityLabelId = Guid.Empty;
@@ -296,11 +315,8 @@ namespace PnP.Framework.Sites
             if (siteCollectionCreationInformation.SiteDesignId.HasValue)
             {
                 creationOptionsValues.Add($"implicit_formula_292aa8a00786498a87a5ca52d9f4214a_{siteCollectionCreationInformation.SiteDesignId.Value.ToString("D").ToLower()}");
-            }
-            if (siteCollectionCreationInformation.Lcid != 0)
-            {
-                creationOptionsValues.Add($"SPSiteLanguage:{siteCollectionCreationInformation.Lcid}");
-            }
+            }                            
+            creationOptionsValues.Add($"SPSiteLanguage:{siteCollectionCreationInformation.Lcid}");            
             if (!string.IsNullOrEmpty(siteCollectionCreationInformation.SiteAlias))
             {
                 creationOptionsValues.Add($"SiteAlias:{siteCollectionCreationInformation.SiteAlias}");

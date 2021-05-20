@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -223,12 +224,17 @@ namespace PnP.Framework.Sites
                 throw new ArgumentException("Alias cannot contain spaces", "Alias");
             }
 
+            string siteCollectionValidAlias = siteCollectionCreationInformation.Alias.ToLower();
+            siteCollectionValidAlias = UrlUtility.RemoveUnallowedCharacters(siteCollectionValidAlias);
+            siteCollectionValidAlias = UrlUtility.ReplaceAccentedCharactersWithLatin(siteCollectionValidAlias);
+
+            siteCollectionCreationInformation.Alias = siteCollectionValidAlias;
+
             await new SynchronizationContextRemover();
             if (clientContext.IsAppOnly() && string.IsNullOrEmpty(graphAccessToken))
             {
                 throw new Exception("App-Only is currently not supported, unless you provide a Microsoft Graph Access Token.");
             }
-
 
             ClientContext responseContext;
             // If we're in an app-only context and we have the access token, then we use Microsoft Graph
@@ -886,6 +892,12 @@ namespace PnP.Framework.Sites
             {
                 throw new ArgumentException("Alias cannot contain spaces", "Alias");
             }
+
+            string siteCollectionValidAlias = siteCollectionGroupifyInformation.Alias.ToLower();
+            siteCollectionValidAlias = UrlUtility.RemoveUnallowedCharacters(siteCollectionValidAlias);
+            siteCollectionValidAlias = UrlUtility.ReplaceAccentedCharactersWithLatin(siteCollectionValidAlias);
+            
+            siteCollectionGroupifyInformation.Alias = siteCollectionValidAlias;
 
             if (string.IsNullOrEmpty(siteCollectionGroupifyInformation.DisplayName))
             {

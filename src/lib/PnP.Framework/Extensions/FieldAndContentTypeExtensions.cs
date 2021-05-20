@@ -1290,7 +1290,7 @@ namespace Microsoft.SharePoint.Client
 
             if (IsDirty)
             {
-                contentType.Update(true);
+                contentType.Update(updateChildren.Value);
                 web.Context.ExecuteQueryRetry();
             }
         }

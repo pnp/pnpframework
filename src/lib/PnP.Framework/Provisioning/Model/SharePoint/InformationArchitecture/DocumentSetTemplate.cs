@@ -133,13 +133,14 @@ namespace PnP.Framework.Provisioning.Model
         /// <returns>Returns HashCode</returns>
         public override int GetHashCode()
         {
-            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|",
+            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|",
                 this.AllowedContentTypes.Aggregate(0, (acc, next) => acc += (next != null ? next.GetHashCode() : 0)),
                 this.DefaultDocuments.Aggregate(0, (acc, next) => acc += (next != null ? next.GetHashCode() : 0)),
                 this.SharedFields.Aggregate(0, (acc, next) => acc += next.GetHashCode()),
                 this.WelcomePageFields.Aggregate(0, (acc, next) => acc += next.GetHashCode()),
                 this.RemoveExistingContentTypes.GetHashCode(),
-                this.XmlDocuments?.GetHashCode() ?? 0
+                this.XmlDocuments?.GetHashCode() ?? 0,
+                this.UpdateChildren.GetHashCode()
             ).GetHashCode());
         }
 
@@ -158,7 +159,7 @@ namespace PnP.Framework.Provisioning.Model
         }
 
         /// <summary>
-        /// Compares DocumentSetTemplate object based on AllowedContentTypes, DefaultDocuments, SharedFields, WelcomePageFields, RemoveExistingContentTypes, and XmlDocuments properties.
+        /// Compares DocumentSetTemplate object based on AllowedContentTypes, DefaultDocuments, SharedFields, WelcomePageFields, RemoveExistingContentTypes, XmlDocuments, and UpdateChildren properties.
         /// </summary>
         /// <param name="other">DocumentSetTemplate object</param>
         /// <returns>true if the DocumentSetTemplate object is equal to the current object; otherwise, false.</returns>
@@ -174,7 +175,8 @@ namespace PnP.Framework.Provisioning.Model
                     this.SharedFields.DeepEquals(other.SharedFields) &&
                     this.WelcomePageFields.DeepEquals(other.WelcomePageFields) &&
                     this.RemoveExistingContentTypes == other.RemoveExistingContentTypes &&
-                    this.XmlDocuments == other.XmlDocuments
+                    this.XmlDocuments == other.XmlDocuments &&
+                    this.UpdateChildren == other.UpdateChildren
                 );
         }
 

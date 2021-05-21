@@ -113,7 +113,7 @@ namespace PnP.Framework.Provisioning.Model
         /// <returns>Returns HashCode</returns>
         public override int GetHashCode()
         {
-            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}|{11}|{12}|{13}|{14}|{15}",
+            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}|{11}|{12}|{13}|{14}|{15}|{16}|{17}|{18}|",
                 (this.CommandUIExtension != null ? this.CommandUIExtension.GetHashCode() : 0),
                 (this.Description != null ? this.Description.GetHashCode() : 0),
                 this.Enabled.GetHashCode(),
@@ -129,7 +129,10 @@ namespace PnP.Framework.Provisioning.Model
                 (this.ScriptSrc != null ? this.ScriptSrc.GetHashCode() : 0),
                 this.Sequence.GetHashCode(),
                 (this.Title != null ? this.Title.GetHashCode() : 0),
-                (this.Url != null ? this.Url.GetHashCode() : 0)
+                (this.Url != null ? this.Url.GetHashCode() : 0),
+                this.ClientSideComponentId.GetHashCode(),
+                this.ClientSideComponentProperties.GetHashCode(),
+                this.ClientSideHostProperties.GetHashCode()
             ).GetHashCode());
         }
 
@@ -148,7 +151,8 @@ namespace PnP.Framework.Provisioning.Model
         }
 
         /// <summary>
-        /// Compares CustomAction object based on CommandUIExtension, Description, Enabled, Group, ImageUrl, Location, Name, RegistrationId, RegistrationType, Remove, Rights, ScriptBlock, ScriptSrc, Sequence, Title and Url properties.
+        /// Compares CustomAction object based on CommandUIExtension, Description, Enabled, Group, ImageUrl, Location, Name, RegistrationId, RegistrationType, Remove, Rights, 
+        /// ScriptBlock, ScriptSrc, Sequence, Title, Url, ClientSideComponentId, ClientSideComponentProperties, and ClientSideHostProperties properties.
         /// </summary>
         /// <param name="other">CustomAction object</param>
         /// <returns>true if the CustomAction object is equal to the current object; otherwise, false.</returns>
@@ -177,7 +181,11 @@ namespace PnP.Framework.Provisioning.Model
                 this.ScriptSrc == other.ScriptSrc &&
                 this.Sequence == other.Sequence &&
                 this.Title == other.Title &&
-                this.Url == other.Url);
+                this.Url == other.Url &&
+                this.ClientSideComponentId == other.ClientSideComponentId &&
+                this.ClientSideComponentProperties == other.ClientSideComponentProperties &&
+                this.ClientSideHostProperties == other.ClientSideHostProperties
+            );
         }
 
         #endregion

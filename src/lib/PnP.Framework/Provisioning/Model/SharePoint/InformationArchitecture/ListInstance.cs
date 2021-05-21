@@ -466,7 +466,7 @@ namespace PnP.Framework.Provisioning.Model
         /// <returns>Returns HashCode</returns>
         public override int GetHashCode()
         {
-            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}|{11}|{12}|{13}|{14}|{15}|{16}|{17}|{18}|{19}|{20}|{21}|{22}|{23}|{24}|{25}|{26}|{27}|{28}|{29}|{30}|{31}|{32}|{33}|{34}|{35}|{36}|{37}|{38}|{39}|{40}|{41}|{42}|{43}|{44}|{45}|",
+            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}|{11}|{12}|{13}|{14}|{15}|{16}|{17}|{18}|{19}|{20}|{21}|{22}|{23}|{24}|{25}|{26}|{27}|{28}|{29}|{30}|{31}|{32}|{33}|{34}|{35}|{36}|{37}|{38}|{39}|{40}|{41}|{42}|{43}|{44}|{45}|{46}|",
                 this.ContentTypesEnabled.GetHashCode(),
                 (this.Description != null ? this.Description.GetHashCode() : 0),
                 (this.DocumentTemplate != null ? this.DocumentTemplate.GetHashCode() : 0),
@@ -512,7 +512,8 @@ namespace PnP.Framework.Provisioning.Model
                 this.DataSource.Aggregate(0, (acc, next) => acc += next.GetHashCode()),
                 this.WriteSecurity.GetHashCode(),
                 this.PropertyBagEntries.Aggregate(0, (acc, next) => acc += (next != null ? next.GetHashCode() : 0)),
-                this.TemplateInternalName?.GetHashCode() ?? 0
+                this.TemplateInternalName?.GetHashCode() ?? 0,
+                this.DefaultColumnValues.Aggregate(0, (acc, next) => acc += next.GetHashCode())
             ).GetHashCode());
         }
 
@@ -535,7 +536,7 @@ namespace PnP.Framework.Provisioning.Model
         /// MaxVersionLimit, MinorVersionLimit, OnQuickLaunch, EnableAttachments, EnableFolderCreation, ForceCheckOut, RemoveExistingContentTypes, TemplateType,
         /// Title, Url, TemplateFeatureID, RemoveExistingViews, ContentTypeBindings, View, Fields, FieldRefs, FieldDefaults, Security, Folders, UserCustomActions, 
         /// Webhooks, IRMSettings, DefaultDisplayFormUrl, DefaultEditFormUrl, DefaultNewFormUrl, Direction, ImageUrl, IrmExpire, IrmReject, IsApplicationList,
-        /// ReadSecurity, ValidationFormula, ValidationMessage, DataSource, WriteSecurity, and TemplateInternalName properties.
+        /// ReadSecurity, ValidationFormula, ValidationMessage, DataSource, WriteSecurity, TemplateInternalName, and DefaultColumnValues properties.
         /// </summary>
         /// <param name="other">ListInstance object</param>
         /// <returns>true if the ListInstance object is equal to the current object; otherwise, false.</returns>
@@ -593,7 +594,8 @@ namespace PnP.Framework.Provisioning.Model
                 this.DataSource.DeepEquals(other.DataSource) &&
                 this.WriteSecurity == other.WriteSecurity &&
                 this.PropertyBagEntries.DeepEquals(other.PropertyBagEntries) &&
-                this.TemplateInternalName == other.TemplateInternalName
+                this.TemplateInternalName == other.TemplateInternalName &&
+                this.DefaultColumnValues.DeepEquals(other.DefaultColumnValues)
             );
         }
 

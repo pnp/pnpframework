@@ -378,6 +378,11 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual("solution\\spfx-discuss-now.sppkg", template.ApplicationLifecycleManagement.AppCatalog.Packages[0].Src);
             Assert.AreEqual("9672a07b-c111-4a12-bb5b-8d43c2ddd256", template.ApplicationLifecycleManagement.AppCatalog.Packages[2].PackageId);
 
+            Assert.AreEqual(3, template.ApplicationLifecycleManagement.Apps.Count);
+            Assert.AreEqual("d0816f0a-fda4-4a98-8e61-1bbe1f2b5b27", template.ApplicationLifecycleManagement.Apps[0].AppId);
+            Assert.AreEqual(AppAction.InstallOrUpdate, template.ApplicationLifecycleManagement.Apps[0].Action);
+            Assert.AreEqual(SyncMode.Synchronously, template.ApplicationLifecycleManagement.Apps[0].SyncMode);
+
             Assert.AreEqual(3, template.Tenant.AppCatalog.Packages.Count);
             Assert.AreEqual(true, template.Tenant.AppCatalog.Packages[0].Overwrite);
             Assert.AreEqual(true, template.Tenant.AppCatalog.Packages[0].SkipFeatureDeployment);
@@ -414,9 +419,31 @@ namespace PnP.Framework.Test.Framework.Providers
                 }
             };
 
+            var apps = new AppCollection(result)
+            {
+                new App
+                {
+                    AppId = "d0816f0a-fda4-4a98-8e61-1bbe1f2b5b27",
+                    Action = AppAction.InstallOrUpdate,
+                    SyncMode = SyncMode.Synchronously
+                },
+                new App
+                {
+                    AppId = "{AppPackageId:spfx-discuss-now}",
+                    Action = AppAction.Update,
+                    SyncMode = SyncMode.Asynchronously
+                },
+                new App
+                {
+                    AppId = "9672a07b-c111-4a12-bb5b-8d43c2ddd256",
+                    Action = AppAction.Uninstall
+                },
+            };
+
             result.ApplicationLifecycleManagement = new PnP.Framework.Provisioning.Model.ApplicationLifecycleManagement();
 
             result.ApplicationLifecycleManagement.AppCatalog.Packages.AddRange(packages);
+            result.ApplicationLifecycleManagement.Apps.AddRange(apps);
             result.Tenant = new ProvisioningTenant(result.ApplicationLifecycleManagement.AppCatalog, new PnP.Framework.Provisioning.Model.ContentDeliveryNetwork());
 
             var serializer = new XMLPnPSchemaV202103Serializer();
@@ -434,6 +461,11 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(true, template.ApplicationLifecycleManagement.AppCatalog[0].Overwrite);
             Assert.AreEqual("testpackage.sppkg", template.ApplicationLifecycleManagement.AppCatalog[0].Src); Assert.AreEqual("60006518-60b3-46d1-8aa7-60a89ce35f03", template.ApplicationLifecycleManagement.AppCatalog[1].PackageId);
             Assert.AreEqual(AppCatalogPackageAction.Publish, template.ApplicationLifecycleManagement.AppCatalog[1].Action);
+
+            Assert.AreEqual(3, template.ApplicationLifecycleManagement.Apps.Count());
+            Assert.AreEqual("d0816f0a-fda4-4a98-8e61-1bbe1f2b5b27", template.ApplicationLifecycleManagement.Apps[0].AppId);
+            Assert.AreEqual(ApplicationLifecycleManagementAppAction.InstallOrUpdate, template.ApplicationLifecycleManagement.Apps[0].Action);
+            Assert.AreEqual(ApplicationLifecycleManagementAppSyncMode.Synchronously, template.ApplicationLifecycleManagement.Apps[0].SyncMode);
 
             Assert.AreEqual(2, wrappedResult.Tenant.AppCatalog.Count());
             Assert.AreEqual(true, wrappedResult.Tenant.AppCatalog[0].SkipFeatureDeployment);

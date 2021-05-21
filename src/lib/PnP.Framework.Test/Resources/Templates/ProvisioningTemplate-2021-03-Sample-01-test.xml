@@ -1,16 +1,25 @@
 <?xml version="1.0"?>
 <pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
+  <pnp:Tenant>
+    <pnp:AppCatalog>
+      <pnp:Package PackageId="60006518-60b3-46d1-8aa7-60a89ce35f03" Src="testpackage.sppkg" Action="Upload" SkipFeatureDeployment="true" Overwrite="true" />
+      <pnp:Package PackageId="60006518-60b3-46d1-8aa7-60a89ce35f03" Action="Publish" SkipFeatureDeployment="true" Overwrite="true" />
+    </pnp:AppCatalog>
+    <pnp:ContentDeliveryNetwork />
+  </pnp:Tenant>
   <pnp:Templates ID="CONTAINER-ProvisioningTemplate-2021-03-Sample-01-test">
     <pnp:ProvisioningTemplate ID="ProvisioningTemplate-2021-03-Sample-01-test" Version="0" Scope="Undefined">
-      <pnp:Footer Enabled="true" Logo="logo.png" Name="MyFooter" Layout="Extended" DisplayName="MyFooter">
-        <pnp:FooterLinks>
-          <pnp:FooterLink DisplayName="Link 01" Url="www.link01.com" />
-          <pnp:FooterLink DisplayName="Link 02">
-            <pnp:FooterLink DisplayName="Child Link 01" Url="www.link02-01.com" />
-            <pnp:FooterLink DisplayName="Child Link 02" Url="www.link02-02.com" />
-          </pnp:FooterLink>
-        </pnp:FooterLinks>
-      </pnp:Footer>
+      <pnp:ApplicationLifecycleManagement>
+        <pnp:AppCatalog>
+          <pnp:Package PackageId="60006518-60b3-46d1-8aa7-60a89ce35f03" Src="testpackage.sppkg" Action="Upload" SkipFeatureDeployment="true" Overwrite="true" />
+          <pnp:Package PackageId="60006518-60b3-46d1-8aa7-60a89ce35f03" Action="Publish" SkipFeatureDeployment="true" Overwrite="true" />
+        </pnp:AppCatalog>
+        <pnp:Apps>
+          <pnp:App AppId="d0816f0a-fda4-4a98-8e61-1bbe1f2b5b27" Action="InstallOrUpdate" />
+          <pnp:App AppId="{AppPackageId:spfx-discuss-now}" Action="Update" SyncMode="Asynchronously" />
+          <pnp:App AppId="9672a07b-c111-4a12-bb5b-8d43c2ddd256" Action="Uninstall" />
+        </pnp:Apps>
+      </pnp:ApplicationLifecycleManagement>
     </pnp:ProvisioningTemplate>
   </pnp:Templates>
   <pnp:Preferences Generator="PnP.Framework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null" />

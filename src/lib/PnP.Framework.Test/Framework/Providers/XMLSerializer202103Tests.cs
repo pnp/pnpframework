@@ -4237,6 +4237,9 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.IsTrue(ca.Rights.Has(PermissionKind.ManageWeb));
             Assert.AreEqual("https://spmanaged.azurewebsites.net/pages/index.aspx?SPHostUrl={0}", ca.Url);
             Assert.AreEqual(UserCustomActionRegistrationType.None, ca.RegistrationType);
+            Assert.AreEqual(new Guid("70056b07-3a88-4882-989f-eb2f1a74ff5f"), ca.ClientSideComponentId);
+            Assert.AreEqual("{}", ca.ClientSideComponentProperties);
+            Assert.AreEqual("{}", ca.ClientSideHostProperties);
 
             ca = template.CustomActions.WebCustomActions.FirstOrDefault(c => c.Name == "CA_SUBSITE_OVERRIDE");
             Assert.IsNotNull(ca);
@@ -4281,7 +4284,7 @@ namespace PnP.Framework.Test.Framework.Providers
               <CommandUIHandlers>
                 <CommandUIHandler Command = ""OfficeDevPnP.Cmd.DownloadAll"" EnabledScript = ""javascript:PnP.Framework.RibbonManager.isListViewButtonEnabled('DownloadAll');"" CommandAction = ""javascript:PnP.Framework.RibbonManager.invokeCommand('DownloadAll');"" />
                 <CommandUIHandler Command = ""OfficeDevPnP.Cmd.DownloadAllAsZip"" EnabledScript = ""javascript:PnP.Framework.RibbonManager.isListViewButtonEnabled('DownloadAllAsZip');"" CommandAction = ""javascript:PnP.Framework.RibbonManager.invokeCommand('DownloadAllAsZip');"" />
-              </CommandUIHandlers></CommandUIExtension>")
+              </CommandUIHandlers></CommandUIExtension>"),
             };
             can.Rights.Set(PermissionKind.ManageWeb);
             result.CustomActions.SiteCustomActions.Add(can);
@@ -4294,7 +4297,10 @@ namespace PnP.Framework.Test.Framework.Providers
                 Title = "SubSiteOveride",
                 Sequence = 100,
                 ScriptSrc = "~site/PnP_Provisioning_JS/PnP_EmbeddedJS.js",
-                RegistrationType = UserCustomActionRegistrationType.ContentType
+                RegistrationType = UserCustomActionRegistrationType.ContentType,
+                ClientSideComponentId = new Guid("70056b07-3a88-4882-989f-eb2f1a74ff5f"),
+                ClientSideComponentProperties = "{}",
+                ClientSideHostProperties = "{}"
             };
             result.CustomActions.SiteCustomActions.Add(can);
 
@@ -4350,6 +4356,9 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(100, ca.Sequence);
             Assert.AreEqual("~site/PnP_Provisioning_JS/PnP_EmbeddedJS.js", ca.ScriptSrc);
             Assert.AreEqual(RegistrationType.ContentType, ca.RegistrationType);
+            Assert.AreEqual("70056b07-3a88-4882-989f-eb2f1a74ff5f", ca.ClientSideComponentId);
+            Assert.AreEqual("{}", ca.ClientSideComponentProperties);
+            Assert.AreEqual("{}", ca.ClientSideHostProperties);
             Assert.IsNull(ca.CommandUIExtension);
 
             ca = template.CustomActions.WebCustomActions.FirstOrDefault(c => c.Name == "CA_WEB_DOCLIB_MENU_SAMPLE");

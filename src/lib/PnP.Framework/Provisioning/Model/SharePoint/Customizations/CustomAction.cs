@@ -99,6 +99,11 @@ namespace PnP.Framework.Provisioning.Model
         /// </summary>
         public String ClientSideComponentProperties { get; set; }
 
+        /// <summary>
+        /// The Client Side Host Properties of a customizer, if any
+        /// </summary>
+        public String ClientSideHostProperties { get; set; }
+
         #endregion
 
         #region Comparison code

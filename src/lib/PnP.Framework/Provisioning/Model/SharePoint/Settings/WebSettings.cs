@@ -184,7 +184,7 @@ namespace PnP.Framework.Provisioning.Model
         /// <returns>Returns hash code in integer</returns>
         public override int GetHashCode()
         {
-            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}|{11}|{12}|{13}|{14}|{15}|{16}|{17}|{18}|{19}|{20}",
+            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}|{11}|{12}|{13}|{14}|{15}|{16}|{17}|{18}|{19}|{20}|{21}",
                 (this.NoCrawl.GetHashCode()),
                 (this.RequestAccessEmail != null ? this.RequestAccessEmail.GetHashCode() : 0),
                 (this.WelcomePage != null ? this.WelcomePage.GetHashCode() : 0),
@@ -205,7 +205,8 @@ namespace PnP.Framework.Provisioning.Model
                 this.HorizontalQuickLaunch.GetHashCode(),
                 this.SearchScope.GetHashCode(),
                 this.SearchBoxInNavBar.GetHashCode(),
-                this.SearchCenterUrl.GetHashCode()
+                this.SearchCenterUrl.GetHashCode(),
+                this.SiteLogoThumbnail.GetHashCode()
             ).GetHashCode());
         }
 
@@ -255,7 +256,8 @@ namespace PnP.Framework.Provisioning.Model
                     this.HorizontalQuickLaunch == other.HorizontalQuickLaunch &&
                     this.SearchScope == other.SearchScope &&
                     this.SearchBoxInNavBar == other.SearchBoxInNavBar &&
-                    this.SearchCenterUrl == other.SearchCenterUrl
+                    this.SearchCenterUrl == other.SearchCenterUrl &&
+                    this.SiteLogoThumbnail == other.SiteLogoThumbnail
                 );
         }
 

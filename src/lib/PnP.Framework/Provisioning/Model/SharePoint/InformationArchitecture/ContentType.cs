@@ -94,6 +94,11 @@ namespace PnP.Framework.Provisioning.Model
         /// </summary>
         public String NewFormUrl { get; set; }
 
+        /// <summary>
+        /// Declares whether changes to the content type will be udpated on inherited content types, optional attribute
+        /// </summary>
+        public bool UpdateChildren { get; set; }
+
         #endregion
 
         #region Constructors

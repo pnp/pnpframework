@@ -9530,8 +9530,6 @@ namespace PnP.Framework.Provisioning.Providers.Xml.V202103 {
         
         private bool updateChildrenField;
         
-        private bool updateChildrenFieldSpecified;
-        
         private System.Xml.XmlAttribute[] anyAttrField;
         
         public ContentType() {
@@ -9539,6 +9537,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.V202103 {
             this.sealedField = false;
             this.readOnlyField = false;
             this.overwriteField = false;
+            this.updateChildrenField = false;
         }
         
         /// <remarks/>
@@ -9699,23 +9698,13 @@ namespace PnP.Framework.Provisioning.Providers.Xml.V202103 {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public bool UpdateChildren {
             get {
                 return this.updateChildrenField;
             }
             set {
                 this.updateChildrenField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool UpdateChildrenSpecified {
-            get {
-                return this.updateChildrenFieldSpecified;
-            }
-            set {
-                this.updateChildrenFieldSpecified = value;
             }
         }
         

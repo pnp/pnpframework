@@ -3136,6 +3136,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.IsFalse(ct.Overwrite);
             Assert.IsFalse(ct.ReadOnly);
             Assert.IsFalse(ct.Sealed);
+            Assert.IsFalse(ct.UpdateChildren);
 
             ct = template.ContentTypes.FirstOrDefault(c => c.Id == "0x0120D5200039D83CD2C9BA4A4499AEE6BE3562E023");
             Assert.IsNotNull(ct.DocumentSetTemplate);
@@ -3180,7 +3181,8 @@ namespace PnP.Framework.Test.Framework.Providers
                 Hidden = true,
                 Overwrite = true,
                 ReadOnly = true,
-                Sealed = true
+                Sealed = true,
+                UpdateChildren = true,
             };
 
             var documentSetTemplate = new DocumentSetTemplate { RemoveExistingContentTypes = true };
@@ -3236,6 +3238,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.IsTrue(ct.Overwrite);
             Assert.IsTrue(ct.ReadOnly);
             Assert.IsTrue(ct.Sealed);
+            Assert.IsTrue(ct.UpdateChildren);
 
             Assert.IsNotNull(ct.DocumentSetTemplate);
             Assert.IsNotNull(ct.DocumentSetTemplate.AllowedContentTypes);

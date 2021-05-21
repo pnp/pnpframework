@@ -4117,7 +4117,7 @@
       </xsd:annotation>
     </xsd:attribute>
 
-    <xsd:attribute name="UpdateChildren" type="xsd:boolean" use="optional">
+    <xsd:attribute name="UpdateChildren" type="xsd:boolean" use="optional" default="false">
       <xsd:annotation>
         <xsd:appinfo>Added with schema version 202103</xsd:appinfo>
         <xsd:documentation xml:lang="en">

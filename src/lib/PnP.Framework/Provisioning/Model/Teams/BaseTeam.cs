@@ -34,6 +34,11 @@ namespace PnP.Framework.Provisioning.Model.Teams
         /// </summary>
         public String Photo { get; set; }
 
+        /// <summary>
+        /// Specifies whether to hide the members of the Microsoft 365 Group from users who aren't members of the group, optional attribute
+        /// </summary>
+        public bool HiddenGroupMembershipEnabled { get; set; }
+
         #endregion
 
         #region Comparison code
@@ -44,11 +49,13 @@ namespace PnP.Framework.Provisioning.Model.Teams
         /// <returns>Returns HashCode</returns>
         public override int GetHashCode()
         {
-            return (String.Format("{0}|{1}|{2}|{3}|",
+            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|",
                 DisplayName.GetHashCode(),
                 Description.GetHashCode(),
                 Classification?.GetHashCode() ?? 0,
-                Visibility.GetHashCode()
+                Visibility.GetHashCode(),
+                Photo.GetHashCode(),
+                HiddenGroupMembershipEnabled.GetHashCode()
             ).GetHashCode());
         }
 
@@ -67,7 +74,7 @@ namespace PnP.Framework.Provisioning.Model.Teams
         }
 
         /// <summary>
-        /// Compares BaseTeam object based on DisplayName, Description, Classification, and Visibility
+        /// Compares BaseTeam object based on DisplayName, Description, Classification, Visibility, Photo, and HiddenGroupMembershipEnabled
         /// </summary>
         /// <param name="other">BaseTeam Class object</param>
         /// <returns>true if the BaseTeam object is equal to the current object; otherwise, false.</returns>
@@ -81,7 +88,9 @@ namespace PnP.Framework.Provisioning.Model.Teams
             return (this.DisplayName == other.DisplayName &&
                 this.Description == other.Description &&
                 this.Classification == other.Classification &&
-                this.Visibility == other.Visibility
+                this.Visibility == other.Visibility &&
+                this.Photo == other.Photo &&
+                this.HiddenGroupMembershipEnabled == other.HiddenGroupMembershipEnabled
                 );
         }
 

@@ -1,26 +1,47 @@
 <?xml version="1.0"?>
 <pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
-  <pnp:Tenant>
-    <pnp:AppCatalog>
-      <pnp:Package PackageId="60006518-60b3-46d1-8aa7-60a89ce35f03" Src="testpackage.sppkg" Action="Upload" SkipFeatureDeployment="true" Overwrite="true" />
-      <pnp:Package PackageId="60006518-60b3-46d1-8aa7-60a89ce35f03" Action="Publish" SkipFeatureDeployment="true" Overwrite="true" />
-    </pnp:AppCatalog>
-    <pnp:ContentDeliveryNetwork />
-  </pnp:Tenant>
+  <pnp:Teams>
+    <pnp:Team DisplayName="Sample Team 01" Description="This is just a sample Team 01" Classification="Private" Visibility="Private" HiddenGroupMembershipEnabled="true" GroupId="12345" Specialization="EducationClass" CloneFrom="{TeamId:GroupMailNickname}" MailNickname="sample.group">
+      <pnp:FunSettings />
+      <pnp:GuestSettings AllowDeleteChannels="true" />
+      <pnp:MembersSettings />
+      <pnp:MessagingSettings />
+      <pnp:Security AllowToAddGuests="true">
+        <pnp:Owners ClearExistingItems="true">
+          <pnp:User UserPrincipalName="owner01@domain.onmicrosoft.com" />
+          <pnp:User UserPrincipalName="owner02@domain.onmicrosoft.com" />
+        </pnp:Owners>
+        <pnp:Members ClearExistingItems="true">
+          <pnp:User UserPrincipalName="user01@domain.onmicrosoft.com" />
+          <pnp:User UserPrincipalName="user02@domain.onmicrosoft.com" />
+        </pnp:Members>
+      </pnp:Security>
+      <pnp:DiscoverySettings ShowInTeamsSearchAndSuggestions="false" />
+      <pnp:Channels>
+        <pnp:Channel DisplayName="Sample Channel 01" Description="This is just a Sample Channel" IsFavoriteByDefault="true" ID="12345" Private="true">
+          <pnp:Tabs>
+            <pnp:Tab DisplayName="Wiki" TeamsAppId="com.microsoft.teamspace.tab.wiki" ID="{TeamsTabId:Wiki}" Remove="true" />
+            <pnp:Tab DisplayName="My Tab 01" TeamsAppId="12345" ID="67890" Remove="false">
+              <pnp:Configuration EntityId="2DCA2E6C7A10415CAF6B8AB6661B3154" ContentUrl="https://www.contoso.com/Orders/2DCA2E6C7A10415CAF6B8AB6661B3154/tabView" RemoveUrl="https://www.contoso.com/Orders/2DCA2E6C7A10415CAF6B8AB6661B3154/uninstallTab" WebsiteUrl="https://www.contoso.com/Orders/2DCA2E6C7A10415CAF6B8AB6661B3154" />
+            </pnp:Tab>
+          </pnp:Tabs>
+          <pnp:TabResources>
+            <pnp:TabResource Type="Planner" TargetTabId="{TeamsTabId:TabDisplayName}">
+              <pnp:TabResourceSettings>{"displayName": "Notebook name"}</pnp:TabResourceSettings>
+            </pnp:TabResource>
+          </pnp:TabResources>
+          <pnp:Messages>
+            <pnp:Message>{&amp;quot;body&amp;quot;: &amp;quot;message&amp;quot;}</pnp:Message>
+          </pnp:Messages>
+        </pnp:Channel>
+      </pnp:Channels>
+      <pnp:Apps>
+        <pnp:App AppId="12345678-9abc-def0-123456789a" />
+      </pnp:Apps>
+    </pnp:Team>
+  </pnp:Teams>
   <pnp:Templates ID="CONTAINER-ProvisioningTemplate-2021-03-Sample-01-test">
-    <pnp:ProvisioningTemplate ID="ProvisioningTemplate-2021-03-Sample-01-test" Version="0" Scope="Undefined">
-      <pnp:ApplicationLifecycleManagement>
-        <pnp:AppCatalog>
-          <pnp:Package PackageId="60006518-60b3-46d1-8aa7-60a89ce35f03" Src="testpackage.sppkg" Action="Upload" SkipFeatureDeployment="true" Overwrite="true" />
-          <pnp:Package PackageId="60006518-60b3-46d1-8aa7-60a89ce35f03" Action="Publish" SkipFeatureDeployment="true" Overwrite="true" />
-        </pnp:AppCatalog>
-        <pnp:Apps>
-          <pnp:App AppId="d0816f0a-fda4-4a98-8e61-1bbe1f2b5b27" Action="InstallOrUpdate" />
-          <pnp:App AppId="{AppPackageId:spfx-discuss-now}" Action="Update" SyncMode="Asynchronously" />
-          <pnp:App AppId="9672a07b-c111-4a12-bb5b-8d43c2ddd256" Action="Uninstall" />
-        </pnp:Apps>
-      </pnp:ApplicationLifecycleManagement>
-    </pnp:ProvisioningTemplate>
+    <pnp:ProvisioningTemplate ID="ProvisioningTemplate-2021-03-Sample-01-test" Version="0" Scope="Undefined" />
   </pnp:Templates>
   <pnp:Preferences Generator="PnP.Framework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null" />
 </pnp:Provisioning>

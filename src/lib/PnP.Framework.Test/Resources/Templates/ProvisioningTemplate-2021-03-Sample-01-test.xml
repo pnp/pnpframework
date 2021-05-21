@@ -2,7 +2,15 @@
 <pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <pnp:Templates ID="CONTAINER-ProvisioningTemplate-2021-03-Sample-01-test">
     <pnp:ProvisioningTemplate ID="ProvisioningTemplate-2021-03-Sample-01-test" Version="0" Scope="Undefined">
-      <pnp:Header Layout="Compact" BackgroundEmphasis="Strong" />
+      <pnp:Footer Enabled="true" Logo="logo.png" Name="MyFooter" Layout="Extended" DisplayName="MyFooter">
+        <pnp:FooterLinks>
+          <pnp:FooterLink DisplayName="Link 01" Url="www.link01.com" />
+          <pnp:FooterLink DisplayName="Link 02">
+            <pnp:FooterLink DisplayName="Child Link 01" Url="www.link02-01.com" />
+            <pnp:FooterLink DisplayName="Child Link 02" Url="www.link02-02.com" />
+          </pnp:FooterLink>
+        </pnp:FooterLinks>
+      </pnp:Footer>
     </pnp:ProvisioningTemplate>
   </pnp:Templates>
   <pnp:Preferences Generator="PnP.Framework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null" />

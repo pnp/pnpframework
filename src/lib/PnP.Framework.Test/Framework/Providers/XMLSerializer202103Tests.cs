@@ -281,6 +281,8 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual("logo.png", template.Footer.Logo);
             Assert.AreEqual("FooterName", template.Footer.Name);
             Assert.AreEqual(true, template.Footer.RemoveExistingNodes);
+            Assert.AreEqual(SiteFooterLayout.Simple, template.Footer.Layout);
+            Assert.AreEqual("Custom footer", template.Footer.DisplayName);
             Assert.AreEqual(6, template.Footer.FooterLinks.Count);
             Assert.AreEqual("www.link01.com", template.Footer.FooterLinks[0].Url);
             Assert.AreEqual("Link 01", template.Footer.FooterLinks[0].DisplayName);
@@ -305,6 +307,8 @@ namespace PnP.Framework.Test.Framework.Providers
                     Logo = "logo.png",
                     Name = "MyFooter",
                     RemoveExistingNodes = true,
+                    DisplayName = "MyFooter",
+                    Layout = SiteFooterLayout.Extended,
                     FooterLinks = {
                         new SiteFooterLink
                         {
@@ -348,6 +352,8 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual("logo.png", template.Footer.Logo);
             Assert.AreEqual("MyFooter", template.Footer.Name);
             Assert.AreEqual(true, template.Footer.RemoveExistingNodes);
+            Assert.AreEqual("MyFooter", template.Footer.DisplayName);
+            Assert.AreEqual(FooterLayout.Extended, template.Footer.Layout);
             Assert.AreEqual("www.link01.com", template.Footer.FooterLinks[0].Url);
             Assert.AreEqual("Link 01", template.Footer.FooterLinks[0].DisplayName);
             Assert.AreEqual(2, template.Footer.FooterLinks[1].FooterLink1.Count());

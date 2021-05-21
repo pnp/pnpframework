@@ -710,6 +710,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(false, teams[1].Archived);
             Assert.AreEqual("sample-team-02", teams[1].MailNickname);
             Assert.AreEqual("photo.jpg", teams[1].Photo);
+            Assert.IsTrue(teams[0].HiddenGroupMembershipEnabled);
 
             // team security
             var security = teams[0].Security;
@@ -796,6 +797,7 @@ namespace PnP.Framework.Test.Framework.Providers
                 Classification = "Private",
                 Specialization = TeamSpecialization.EducationClass,
                 Visibility = TeamVisibility.Private,
+                HiddenGroupMembershipEnabled = true,
                 FunSettings = new TeamFunSettings
                 {
                     AllowCustomMemes = true,
@@ -939,6 +941,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(BaseTeamVisibility.Private, team.Visibility);
             Assert.AreEqual(false, team.Archived);
             Assert.AreEqual("sample.group", team.MailNickname);
+            Assert.AreEqual(true, team.HiddenGroupMembershipEnabled);
 
             // team security
             var security = team.Security;

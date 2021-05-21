@@ -2133,6 +2133,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual("Site Title", webSettings.Title);
             Assert.AreEqual("Site Description", webSettings.Description);
             Assert.AreEqual("{sitecollection}/SiteAssets/Logo.png", webSettings.SiteLogo);
+            Assert.AreEqual("{sitecollection}/SiteAssets/Logo.png", webSettings.SiteLogoThumbnail);
             Assert.AreEqual("{sitecollection}/Resources/Themes/Contoso/Contoso.css", webSettings.AlternateCSS);
             Assert.AreEqual("{sitecollection}/_catalogs/MasterPage/oslo.master", webSettings.MasterPageUrl);
             Assert.AreEqual("{sitecollection}/_catalogs/MasterPage/CustomMaster.master", webSettings.CustomMasterPageUrl);
@@ -2172,6 +2173,7 @@ namespace PnP.Framework.Test.Framework.Providers
                     Title = "Site Title",
                     Description = "Site Description",
                     SiteLogo = "{sitecollection}/SiteAssets/Logo.png",
+                    SiteLogoThumbnail = "{sitecollection}/SiteAssets/Logo.png",
                     AlternateCSS = "{sitecollection}/Resources/Themes/Contoso/Contoso.css",
                     MasterPageUrl = "{sitecollection}/_catalogs/MasterPage/oslo.master",
                     CustomMasterPageUrl = "{sitecollection}/_catalogs/MasterPage/CustomMaster.master",
@@ -2217,6 +2219,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual("Site Title", webSettings.Title);
             Assert.AreEqual("Site Description", webSettings.Description);
             Assert.AreEqual("{sitecollection}/SiteAssets/Logo.png", webSettings.SiteLogo);
+            Assert.AreEqual("{sitecollection}/SiteAssets/Logo.png", webSettings.SiteLogoThumbnail);
             Assert.AreEqual("{sitecollection}/Resources/Themes/Contoso/Contoso.css", webSettings.AlternateCSS);
             Assert.AreEqual("{sitecollection}/_catalogs/MasterPage/oslo.master", webSettings.MasterPageUrl);
             Assert.AreEqual("{sitecollection}/_catalogs/MasterPage/CustomMaster.master", webSettings.CustomMasterPageUrl);

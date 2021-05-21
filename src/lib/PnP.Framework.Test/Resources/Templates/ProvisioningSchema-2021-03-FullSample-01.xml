@@ -217,7 +217,7 @@
         AlternateCSS="{sitecollection}/Resources/Themes/Contoso/Contoso.css"
         MasterPageUrl="{sitecollection}/_catalogs/MasterPage/oslo.master"
         CustomMasterPageUrl="{sitecollection}/_catalogs/MasterPage/CustomMaster.master"
-        HubSiteUrl="https://contoso.sharepoint.com/sites/hubsite"
+        HubSiteUrl="/sites/hubsite"
         CommentsOnSitePagesDisabled="false"
         QuickLaunchEnabled="true"
         MembersCanShare="true"

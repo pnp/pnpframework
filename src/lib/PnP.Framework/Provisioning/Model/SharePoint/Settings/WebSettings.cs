@@ -42,6 +42,11 @@ namespace PnP.Framework.Provisioning.Model
         public String SiteLogo { get; set; }
 
         /// <summary>
+        /// The SiteLogoThumbnail of the Site, optional attribute.
+        /// </summary>
+        public String SiteLogoThumbnail { get; set; }
+
+        /// <summary>
         /// The AlternateCSS of the Site, optional attribute.
         /// </summary>
         public String AlternateCSS { get; set; }

@@ -148,7 +148,7 @@ namespace PnP.Framework.Provisioning.Model
         /// <returns>Returns HashCode</returns>
         public override int GetHashCode()
         {
-            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}|",
+            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}|{11}|",
                 (this.Id != null ? this.Id.GetHashCode() : 0),
                 (this.Name != null ? this.Name.GetHashCode() : 0),
                 (this.Description != null ? this.Description.GetHashCode() : 0),
@@ -159,7 +159,8 @@ namespace PnP.Framework.Provisioning.Model
                 this.Sealed.GetHashCode(),
                 (this.DocumentTemplate != null ? this.DocumentTemplate.GetHashCode() : 0),
                 (this.DocumentSetTemplate != null ? this.DocumentSetTemplate.GetHashCode() : 0),
-                this.FieldRefs.Aggregate(0, (acc, next) => acc += (next != null ? next.GetHashCode() : 0))
+                this.FieldRefs.Aggregate(0, (acc, next) => acc += (next != null ? next.GetHashCode() : 0)),
+                this.UpdateChildren.GetHashCode()
             ).GetHashCode());
         }
 
@@ -178,7 +179,7 @@ namespace PnP.Framework.Provisioning.Model
         }
 
         /// <summary>
-        /// Compares ContentType object based on Id, Name, Description, Group, Hidden, RedOnly, Overwrite, Sealed, DocumentTemplate, DocumentSetTemplate and FieldRefs properties.
+        /// Compares ContentType object based on Id, Name, Description, Group, Hidden, RedOnly, Overwrite, Sealed, DocumentTemplate, DocumentSetTemplate, FieldRefs, and UpdateChildren properties.
         /// </summary>
         /// <param name="other">ContentType object</param>
         /// <returns>true if the ContentType object is equal to the current object; otherwise, false.</returns>
@@ -199,7 +200,8 @@ namespace PnP.Framework.Provisioning.Model
                     this.Sealed == other.Sealed &&
                     this.DocumentTemplate == other.DocumentTemplate &&
                     this.DocumentSetTemplate == other.DocumentSetTemplate &&
-                    this.FieldRefs.DeepEquals(other.FieldRefs)
+                    this.FieldRefs.DeepEquals(other.FieldRefs) &&
+                    this.UpdateChildren == other.UpdateChildren
                 );
 
         }

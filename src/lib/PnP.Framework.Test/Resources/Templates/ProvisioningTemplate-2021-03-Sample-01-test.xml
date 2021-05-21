@@ -1,28 +1,139 @@
 <?xml version="1.0"?>
 <pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
+  <pnp:Preferences Generator="PnP.Framework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null" />
   <pnp:Templates ID="CONTAINER-ProvisioningTemplate-2021-03-Sample-01-test">
     <pnp:ProvisioningTemplate ID="ProvisioningTemplate-2021-03-Sample-01-test" Version="0" Scope="Undefined">
-      <pnp:Navigation EnableTreeView="true" AddNewPagesToNavigation="true" CreateFriendlyUrlsForNewPages="true">
-        <pnp:GlobalNavigation NavigationType="Managed">
-          <pnp:ManagedNavigation TermStoreId="c1175ad1-c710-4131-a6c9-aa854a5cc4c4" TermSetId="415185a1-ee1c-4ce9-9e38-cea3f854e802" />
-        </pnp:GlobalNavigation>
-        <pnp:CurrentNavigation NavigationType="Structural">
-          <pnp:StructuralNavigation RemoveExistingNodes="true">
-            <pnp:NavigationNode Title="Node 1" Url="/Node1.aspx">
-              <pnp:NavigationNode Title="Node 1.1" Url="http://aka.ms/SharePointPnP" IsExternal="true">
-                <pnp:NavigationNode Title="Node 1.1.1" Url="http://aka.ms/OfficeDevPnP" IsExternal="true" />
-              </pnp:NavigationNode>
-              <pnp:NavigationNode Title="Node 1.2" Url="/Node1-2.aspx" IsExternal="true" />
-            </pnp:NavigationNode>
-            <pnp:NavigationNode Title="Node 2" Url="/Node1.aspx" />
-          </pnp:StructuralNavigation>
-        </pnp:CurrentNavigation>
-        <pnp:SearchNavigation RemoveExistingNodes="false">
-          <pnp:NavigationNode Title="Sample Search Node 01" Url="{sitecollection}/pages/search01.aspx" IsExternal="true" />
-          <pnp:NavigationNode Title="Sample Search Node 02" Url="{sitecollection}/pages/search02.aspx" />
-        </pnp:SearchNavigation>
-      </pnp:Navigation>
+      <pnp:Lists>
+        <pnp:ListInstance Title="Project Documents" Description="Project Documents are stored here" DocumentTemplate="document.dotx" OnQuickLaunch="true" TemplateType="101" Url="/Lists/ProjectDocuments" ForceCheckout="true" EnableVersioning="true" EnableMinorVersions="true" EnableModeration="true" MinorVersionLimit="2" MaxVersionLimit="10" DraftVersionVisibility="1" RemoveExistingContentTypes="true" TemplateFeatureID="30fb193e-016e-45a6-b6fd-c6c2b31aa150" ContentTypesEnabled="true" Hidden="true" IrmExpire="false" IrmReject="false" IsApplicationList="false" ReadSecurity="0" WriteSecurity="0">
+          <pnp:DefaultColumnValues>
+            <pnp:DefaultColumnValue Key="Field1" Value="Custom Value 1" />
+            <pnp:DefaultColumnValue Key="Field2" Value="Custom Value 2" />
+          </pnp:DefaultColumnValues>
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x01005D4F34E4BE7F4B6892AEBE088EDD215E" Default="true" />
+            <pnp:ContentTypeBinding ContentTypeID="0x0101" Remove="true" />
+            <pnp:ContentTypeBinding ContentTypeID="0x0102" />
+          </pnp:ContentTypeBindings>
+          <pnp:Views RemoveExistingViews="true">
+            <View DisplayName="View One">
+              <ViewFields>
+                <FieldRef Name="ID" />
+                <FieldRef Name="Title" />
+                <FieldRef Name="ProjectID" />
+                <FieldRef Name="ProjectName" />
+                <FieldRef Name="ProjectManager" />
+                <FieldRef Name="DocumentDescription" />
+              </ViewFields>
+              <Query>
+                <Where>
+                  <Eq>
+                    <FieldRef Name="ProjectManager" />
+                    <Value Type="Text">[Me]</Value>
+                  </Eq>
+                </Where>
+              </Query>
+            </View>
+            <View DisplayName="View Two">
+              <ViewFields>
+                <FieldRef Name="ID" />
+                <FieldRef Name="Title" />
+                <FieldRef Name="ProjectID" />
+                <FieldRef Name="ProjectName" />
+              </ViewFields>
+            </View>
+          </pnp:Views>
+          <pnp:Fields>
+            <Field ID="{23203E97-3BFE-40CB-AFB4-07AA2B86BF45}" Type="Text" Name="ProjectID" DisplayName="Project ID" Group="My Columns" MaxLength="255" AllowDeletion="TRUE" Required="TRUE" />
+            <Field ID="{B01B3DBC-4630-4ED1-B5BA-321BC7841E3D}" Type="Text" Name="ProjectName" DisplayName="Project Name" Group="My Columns" MaxLength="255" AllowDeletion="TRUE" />
+          </pnp:Fields>
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="23203e97-3bfe-40cb-afb4-07aa2b86bf45" Name="ProjectID" Required="true" DisplayName="Project ID" />
+            <pnp:FieldRef ID="b01b3dbc-4630-4ed1-b5ba-321bc7841e3d" Name="ProjectName" Hidden="true" DisplayName="Project Name" />
+            <pnp:FieldRef ID="a5de9600-b7a6-42dd-a05e-10d4f1500208" Name="ProjectManager" Required="true" DisplayName="Project Manager" />
+          </pnp:FieldRefs>
+          <pnp:DataRows UpdateBehavior="Overwrite">
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Field01">Value01-01</pnp:DataValue>
+              <pnp:DataValue FieldName="Field02">Value01-02</pnp:DataValue>
+              <pnp:DataValue FieldName="Field03">Value01-03</pnp:DataValue>
+              <pnp:DataValue FieldName="Field04">Value01-04</pnp:DataValue>
+              <pnp:Security>
+                <pnp:BreakRoleInheritance CopyRoleAssignments="true" ClearSubscopes="true">
+                  <pnp:RoleAssignment Principal="Principal01" RoleDefinition="Read" />
+                  <pnp:RoleAssignment Principal="Principal02" RoleDefinition="Contribute" />
+                  <pnp:RoleAssignment Principal="Principal03" RoleDefinition="FullControl" />
+                </pnp:BreakRoleInheritance>
+              </pnp:Security>
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Field01">Value02-01</pnp:DataValue>
+              <pnp:DataValue FieldName="Field02">Value02-02</pnp:DataValue>
+              <pnp:DataValue FieldName="Field03">Value02-03</pnp:DataValue>
+              <pnp:DataValue FieldName="Field04">Value02-04</pnp:DataValue>
+              <pnp:Security>
+                <pnp:BreakRoleInheritance CopyRoleAssignments="false" ClearSubscopes="false">
+                  <pnp:RoleAssignment Principal="Principal01" RoleDefinition="Read" />
+                  <pnp:RoleAssignment Principal="Principal02" RoleDefinition="Contribute" />
+                  <pnp:RoleAssignment Principal="Principal03" RoleDefinition="FullControl" />
+                </pnp:BreakRoleInheritance>
+              </pnp:Security>
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Field01">Value03-01</pnp:DataValue>
+              <pnp:DataValue FieldName="Field02">Value03-02</pnp:DataValue>
+              <pnp:DataValue FieldName="Field03">Value03-03</pnp:DataValue>
+              <pnp:DataValue FieldName="Field04">Value03-04</pnp:DataValue>
+            </pnp:DataRow>
+          </pnp:DataRows>
+          <pnp:Folders>
+            <pnp:Folder Name="Folder01">
+              <pnp:Folder Name="Folder01.01">
+                <pnp:Security>
+                  <pnp:BreakRoleInheritance CopyRoleAssignments="true" ClearSubscopes="true">
+                    <pnp:RoleAssignment Principal="Principal01" RoleDefinition="Read" />
+                    <pnp:RoleAssignment Principal="Principal02" RoleDefinition="Contribute" />
+                    <pnp:RoleAssignment Principal="Principal03" RoleDefinition="FullControl" />
+                  </pnp:BreakRoleInheritance>
+                </pnp:Security>
+              </pnp:Folder>
+              <pnp:Folder Name="Folder01.02" />
+            </pnp:Folder>
+            <pnp:Folder Name="Folder02" />
+            <pnp:Folder Name="Folder03" ContentTypeID="0x0120001234567890">
+              <pnp:Properties>
+                <pnp:Property Key="CustomProperty01" Value="CustomValue01" />
+                <pnp:Property Key="CustomProperty02" Value="CustomValue02" />
+              </pnp:Properties>
+            </pnp:Folder>
+          </pnp:Folders>
+          <pnp:FieldDefaults>
+            <pnp:FieldDefault FieldName="Field01">DefaultValue01</pnp:FieldDefault>
+            <pnp:FieldDefault FieldName="Field02">DefaultValue02</pnp:FieldDefault>
+            <pnp:FieldDefault FieldName="Field03">DefaultValue03</pnp:FieldDefault>
+            <pnp:FieldDefault FieldName="Field04">DefaultValue04</pnp:FieldDefault>
+          </pnp:FieldDefaults>
+          <pnp:Security>
+            <pnp:BreakRoleInheritance CopyRoleAssignments="true" ClearSubscopes="true">
+              <pnp:RoleAssignment Principal="Principal01" RoleDefinition="Read" />
+              <pnp:RoleAssignment Principal="Principal02" RoleDefinition="Contribute" />
+              <pnp:RoleAssignment Principal="Principal03" RoleDefinition="FullControl" />
+            </pnp:BreakRoleInheritance>
+          </pnp:Security>
+          <pnp:UserCustomActions>
+            <pnp:CustomAction Name="SampleCustomAction" Description="Just a sample custom action" Group="Samples" Location="Any" Title="Sample Action" Sequence="100" Rights="AddListItems" Url="http://somewhere.com/" Remove="true" ScriptBlock="scriptblock" ImageUrl="OneImage.png" ScriptSrc="script.js" RegistrationId="0x0101" RegistrationType="ContentType" ClientSideComponentId="00000000-0000-0000-0000-000000000000">
+              <pnp:CommandUIExtension>
+                <customElement>
+                  <!--Whateveryoulikehere-->
+                </customElement>
+              </pnp:CommandUIExtension>
+            </pnp:CustomAction>
+          </pnp:UserCustomActions>
+          <pnp:Webhooks>
+            <pnp:Webhook ServerNotificationUrl="http://myapp.azurewebsites.net/WebHookListener" ExpiresInDays="120" />
+          </pnp:Webhooks>
+          <pnp:IRMSettings Enabled="true" AllowWriteCopy="false" DocumentAccessExpireDays="30" DocumentLibraryProtectionExpiresInDays="90" EnableDocumentAccessExpire="true" EnableGroupProtection="false" GroupName="Custom IRM Group" LicenseCacheExpireDays="60" PolicyDescription="Sample IRM Policy" PolicyTitle="Sample IRM Policy" />
+        </pnp:ListInstance>
+      </pnp:Lists>
     </pnp:ProvisioningTemplate>
   </pnp:Templates>
-  <pnp:Preferences Generator="PnP.Framework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null" />
 </pnp:Provisioning>

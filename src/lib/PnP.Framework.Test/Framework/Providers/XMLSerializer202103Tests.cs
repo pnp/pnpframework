@@ -3349,6 +3349,11 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.IsNotNull(fd);
             Assert.AreEqual("Default Project Description", fd.Value);
 
+            // Default Column Values
+            Assert.IsNotNull(list.DefaultColumnValues);
+            Assert.AreEqual(2, list.DefaultColumnValues.Count);
+            Assert.AreEqual("Custom Value 1", list.DefaultColumnValues["Field1"]);
+            Assert.AreEqual("Custom Value 2", list.DefaultColumnValues["Field2"]);
 
             Assert.IsNotNull(list.DataRows);
             Assert.AreEqual(2, list.DataRows.Count);
@@ -3578,6 +3583,9 @@ namespace PnP.Framework.Test.Framework.Providers
             {
                 ContentTypeId = "0x0102"
             });
+
+            list.DefaultColumnValues.Add("Field1", "Custom Value 1");
+            list.DefaultColumnValues.Add("Field2", "Custom Value 2");
 
             list.FieldDefaults.Add("Field01", "DefaultValue01");
             list.FieldDefaults.Add("Field02", "DefaultValue02");
@@ -3874,6 +3882,11 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.IsNotNull(ct);
             Assert.IsFalse(ct.Default);
             Assert.IsFalse(ct.Remove);
+
+            Assert.IsNotNull(list.DefaultColumnValues);
+            Assert.AreEqual(2, list.DefaultColumnValues.Count);
+            Assert.AreEqual("Custom Value 1", list.DefaultColumnValues["Field1"]);
+            Assert.AreEqual("Custom Value 2", list.DefaultColumnValues["Field2"]);
 
             Assert.IsNotNull(l.FieldDefaults);
             Assert.AreEqual(4, l.FieldDefaults.Length);

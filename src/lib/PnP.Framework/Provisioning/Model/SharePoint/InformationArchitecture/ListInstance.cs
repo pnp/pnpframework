@@ -125,6 +125,7 @@ namespace PnP.Framework.Provisioning.Model
         private IRMSettings _IRMSettings;
         private Dictionary<String, String> _dataSource = new Dictionary<String, String>();
         private PropertyBagEntryCollection _propertyBags;
+        private Dictionary<String, String> _defaultColumnValues = new Dictionary<String, String>();
         #endregion
 
         #region Properties
@@ -445,6 +446,15 @@ namespace PnP.Framework.Provisioning.Model
         /// Defines the alternate template internal name for a list based on a .STP file/list definition
         /// </summary>
         public String TemplateInternalName { get; set; }
+
+        /// <summary>
+        /// The Default Columne Values entries of the Folder, optional collection of elements.
+        /// </summary>
+        public Dictionary<String, String> DefaultColumnValues
+        {
+            get { return this._defaultColumnValues; }
+            private set { this._defaultColumnValues = value; }
+        }
 
         #endregion
 

@@ -2,30 +2,7 @@
 <pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <pnp:Templates ID="CONTAINER-ProvisioningTemplate-2021-03-Sample-01-test">
     <pnp:ProvisioningTemplate ID="ProvisioningTemplate-2021-03-Sample-01-test" Version="0" Scope="Undefined">
-      <pnp:CustomActions>
-        <pnp:SiteCustomActions>
-          <pnp:CustomAction Name="CA_SITE_SETTINGS_SITECLASSIFICATION" Description="Site Classification Application" Location="Microsoft.SharePoint.SiteSettings" Title="Site Classification" Sequence="1000" Rights="ManageWeb" Url="https://spmanaged.azurewebsites.net/pages/index.aspx?SPHostUrl={0}" ScriptBlock="alert('boo')" ImageUrl="http://sharepoint.com" RegistrationId="101" RegistrationType="None" ClientSideComponentId="00000000-0000-0000-0000-000000000000">
-            <pnp:CommandUIExtension>
-              <CommandUIDefinitions>
-                <CommandUIDefinition Location="Ribbon.Documents.Copies.Controls._children">
-                  <Button Sequence="15" TemplateAlias="o1" ToolTipDescription="Download all files separately" ToolTipTitle="Download All" Description="Download all files separately" LabelText="Download All" Image32by32="~sitecollection/SiteAssets/DownloadAll32x32.png" Image16by16="~sitecollection/SiteAssets/DownloadAll16x16.png" Command="OfficeDevPnP.Cmd.DownloadAll" Id="Ribbon.Documents.Copies.OfficeDevPnPDownloadAll" />
-                </CommandUIDefinition>
-                <CommandUIDefinition Location="Ribbon.Documents.Copies.Controls._children">
-                  <Button Sequence="20" TemplateAlias="o1" ToolTipDescription="Download all files as single Zip archive" ToolTipTitle="Download All as Zip" Description="Download all files as single Zip" LabelText="Download All as Zip" Image32by32="~sitecollection/SiteAssets/DownloadAllAsZip32x32.png" Image16by16="~sitecollection/SiteAssets/DownloadAllAsZip16x16.png" Command="OfficeDevPnP.Cmd.DownloadAllAsZip" Id="Ribbon.Documents.Copies.OfficeDevPnPDownloadAllAsZip" />
-                </CommandUIDefinition>
-              </CommandUIDefinitions>
-              <CommandUIHandlers>
-                <CommandUIHandler Command="OfficeDevPnP.Cmd.DownloadAll" EnabledScript="javascript:PnP.Framework.RibbonManager.isListViewButtonEnabled('DownloadAll');" CommandAction="javascript:PnP.Framework.RibbonManager.invokeCommand('DownloadAll');" />
-                <CommandUIHandler Command="OfficeDevPnP.Cmd.DownloadAllAsZip" EnabledScript="javascript:PnP.Framework.RibbonManager.isListViewButtonEnabled('DownloadAllAsZip');" CommandAction="javascript:PnP.Framework.RibbonManager.invokeCommand('DownloadAllAsZip');" />
-              </CommandUIHandlers>
-            </pnp:CommandUIExtension>
-          </pnp:CustomAction>
-          <pnp:CustomAction Name="CA_SUBSITE_OVERRIDE" Description="Override new sub-site link" Location="ScriptLink" Title="SubSiteOveride" Sequence="100" ScriptSrc="~site/PnP_Provisioning_JS/PnP_EmbeddedJS.js" RegistrationType="ContentType" ClientSideComponentId="70056b07-3a88-4882-989f-eb2f1a74ff5f" ClientSideComponentProperties="{}" ClientSideHostProperties="{}" />
-        </pnp:SiteCustomActions>
-        <pnp:WebCustomActions>
-          <pnp:CustomAction Name="CA_WEB_DOCLIB_MENU_SAMPLE" Description="Document Library Custom Menu" Group="ActionsMenu" Location="Microsoft.SharePoint.StandardMenu" Title="DocLib Custom Menu" Sequence="100" Url="/_layouts/CustomActionsHello.aspx?ActionsMenu" RegistrationType="None" ClientSideComponentId="00000000-0000-0000-0000-000000000000" />
-        </pnp:WebCustomActions>
-      </pnp:CustomActions>
+      <pnp:Header Layout="Compact" BackgroundEmphasis="Strong" />
     </pnp:ProvisioningTemplate>
   </pnp:Templates>
   <pnp:Preferences Generator="PnP.Framework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null" />

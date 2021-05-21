@@ -178,6 +178,8 @@ namespace PnP.Framework.Test.Framework.Providers
 
             Assert.AreEqual(SiteHeaderLayout.Standard, template.Header.Layout);
             Assert.AreEqual(SiteHeaderMenuStyle.MegaMenu, template.Header.MenuStyle);
+            Assert.IsTrue(template.Header.ShowSiteTitle);
+            Assert.IsTrue(template.Header.ShowSiteNavigation);
             Assert.AreEqual(PnP.Framework.Provisioning.Model.Emphasis.Soft, template.Header.BackgroundEmphasis);
         }
 
@@ -193,7 +195,9 @@ namespace PnP.Framework.Test.Framework.Providers
                 {
                     MenuStyle = SiteHeaderMenuStyle.Cascading,
                     Layout = SiteHeaderLayout.Compact,
-                    BackgroundEmphasis = PnP.Framework.Provisioning.Model.Emphasis.Strong
+                    BackgroundEmphasis = PnP.Framework.Provisioning.Model.Emphasis.Strong,
+                    ShowSiteTitle = true,
+                    ShowSiteNavigation = true,
                 }
             };
 
@@ -210,6 +214,8 @@ namespace PnP.Framework.Test.Framework.Providers
 
             Assert.AreEqual(HeaderLayout.Compact, template.Header.Layout);
             Assert.AreEqual(HeaderMenuStyle.Cascading, template.Header.MenuStyle);
+            Assert.IsTrue(template.Header.ShowSiteTitle);
+            Assert.IsTrue(template.Header.ShowSiteNavigation);
             Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V202103.Emphasis.Strong, template.Header.BackgroundEmphasis);
         }
 

@@ -2849,6 +2849,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(true, template.Navigation.EnableTreeView);
             Assert.AreEqual(true, template.Navigation.AddNewPagesToNavigation);
             Assert.AreEqual(true, template.Navigation.CreateFriendlyUrlsForNewPages);
+            Assert.AreEqual(false, template.Navigation.EnableAudienceTargeting);
 
             // global navigation
             Assert.IsNotNull(template.Navigation.GlobalNavigation);
@@ -2933,7 +2934,8 @@ namespace PnP.Framework.Test.Framework.Providers
             {
                 EnableTreeView = true,
                 AddNewPagesToNavigation = true,
-                CreateFriendlyUrlsForNewPages = true
+                CreateFriendlyUrlsForNewPages = true,
+                EnableAudienceTargeting = false
             };
 
             result.Navigation.GlobalNavigation.ManagedNavigation.TermSetId = "415185a1-ee1c-4ce9-9e38-cea3f854e802";
@@ -2988,6 +2990,11 @@ namespace PnP.Framework.Test.Framework.Providers
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
 
             Assert.IsNotNull(template.Navigation);
+            Assert.AreEqual(true, template.Navigation.EnableTreeView);
+            Assert.AreEqual(true, template.Navigation.AddNewPagesToNavigation);
+            Assert.AreEqual(true, template.Navigation.CreateFriendlyUrlsForNewPages);
+            Assert.AreEqual(false, template.Navigation.EnableAudienceTargeting);
+
             Assert.IsNotNull(template.Navigation.GlobalNavigation);
             Assert.AreEqual(NavigationGlobalNavigationNavigationType.Managed, template.Navigation.GlobalNavigation.NavigationType);
             Assert.IsNull(template.Navigation.GlobalNavigation.StructuralNavigation);

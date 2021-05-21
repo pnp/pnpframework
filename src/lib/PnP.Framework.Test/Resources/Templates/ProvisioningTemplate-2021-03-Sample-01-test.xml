@@ -2,13 +2,26 @@
 <pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <pnp:Templates ID="CONTAINER-ProvisioningTemplate-2021-03-Sample-01-test">
     <pnp:ProvisioningTemplate ID="ProvisioningTemplate-2021-03-Sample-01-test" Version="0" Scope="Undefined">
-      <pnp:WebSettings RequestAccessEmail="someone@company.com" NoCrawl="false" WelcomePage="/Pages/Home.aspx" Title="Site Title" Description="Site Description" SiteLogo="{sitecollection}/SiteAssets/Logo.png" SiteLogoThumbnail="{sitecollection}/SiteAssets/Logo.png" AlternateCSS="{sitecollection}/Resources/Themes/Contoso/Contoso.css" MasterPageUrl="{sitecollection}/_catalogs/MasterPage/oslo.master" CustomMasterPageUrl="{sitecollection}/_catalogs/MasterPage/CustomMaster.master" HubSiteUrl="/sites/hubsite" CommentsOnSitePagesDisabled="false" QuickLaunchEnabled="true" ExcludeFromOfflineClient="true" MembersCanShare="true" HorizontalQuickLaunch="true" SearchScope="Hub" IsMultilingual="true" OverwriteTranslationsOnChange="true" SearchBoxInNavBar="AllPages" SearchCenterUrl="https://contoso.sharepoint.com/sites/SearchCenter">
-        <pnp:AlternateUICultures>
-          <pnp:AlternateUICulture LCID="1033" />
-          <pnp:AlternateUICulture LCID="1040" />
-          <pnp:AlternateUICulture LCID="1035" />
-        </pnp:AlternateUICultures>
-      </pnp:WebSettings>
+      <pnp:Navigation EnableTreeView="true" AddNewPagesToNavigation="true" CreateFriendlyUrlsForNewPages="true">
+        <pnp:GlobalNavigation NavigationType="Managed">
+          <pnp:ManagedNavigation TermStoreId="c1175ad1-c710-4131-a6c9-aa854a5cc4c4" TermSetId="415185a1-ee1c-4ce9-9e38-cea3f854e802" />
+        </pnp:GlobalNavigation>
+        <pnp:CurrentNavigation NavigationType="Structural">
+          <pnp:StructuralNavigation RemoveExistingNodes="true">
+            <pnp:NavigationNode Title="Node 1" Url="/Node1.aspx">
+              <pnp:NavigationNode Title="Node 1.1" Url="http://aka.ms/SharePointPnP" IsExternal="true">
+                <pnp:NavigationNode Title="Node 1.1.1" Url="http://aka.ms/OfficeDevPnP" IsExternal="true" />
+              </pnp:NavigationNode>
+              <pnp:NavigationNode Title="Node 1.2" Url="/Node1-2.aspx" IsExternal="true" />
+            </pnp:NavigationNode>
+            <pnp:NavigationNode Title="Node 2" Url="/Node1.aspx" />
+          </pnp:StructuralNavigation>
+        </pnp:CurrentNavigation>
+        <pnp:SearchNavigation RemoveExistingNodes="false">
+          <pnp:NavigationNode Title="Sample Search Node 01" Url="{sitecollection}/pages/search01.aspx" IsExternal="true" />
+          <pnp:NavigationNode Title="Sample Search Node 02" Url="{sitecollection}/pages/search02.aspx" />
+        </pnp:SearchNavigation>
+      </pnp:Navigation>
     </pnp:ProvisioningTemplate>
   </pnp:Templates>
   <pnp:Preferences Generator="PnP.Framework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null" />

@@ -91,6 +91,11 @@ namespace PnP.Framework.Provisioning.Model
         /// </summary>
         public Boolean CreateFriendlyUrlsForNewPages { get; set; }
 
+        /// <summary>
+        /// Declares whether to enable site navigation audience targeting or not, optional attribute.
+        /// </summary>
+        public Boolean EnableAudienceTargeting { get; set; }
+
         #endregion
 
         #region Constructors

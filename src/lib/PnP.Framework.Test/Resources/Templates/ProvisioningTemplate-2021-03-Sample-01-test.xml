@@ -11,7 +11,7 @@
             <pnp:FieldRef ID="00000000-0000-0000-0000-000000000000" Name="TestField3" UpdateChildren="true" />
           </pnp:FieldRefs>
           <pnp:DocumentTemplate TargetName="DocumentTemplate.dotx" />
-          <pnp:DocumentSetTemplate WelcomePage="home.aspx">
+          <pnp:DocumentSetTemplate WelcomePage="home.aspx" UpdateChildren="true">
             <pnp:AllowedContentTypes RemoveExistingContentTypes="true">
               <pnp:AllowedContentType ContentTypeID="0x01005D4F34E4BE7F4B6892AEBE088EDD215E002" />
             </pnp:AllowedContentTypes>

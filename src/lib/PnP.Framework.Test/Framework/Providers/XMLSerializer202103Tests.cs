@@ -3143,6 +3143,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.IsNotNull(ct.DocumentSetTemplate.AllowedContentTypes);
             Assert.AreEqual("{sitecollection}/_cts/ProjectDocumentSet/ProjectHomePage.aspx", ct.DocumentSetTemplate.WelcomePage);
             Assert.IsTrue(ct.DocumentSetTemplate.RemoveExistingContentTypes);
+            Assert.IsFalse(ct.DocumentSetTemplate.UpdateChildren);
             Assert.IsNotNull(ct.DocumentSetTemplate.AllowedContentTypes.FirstOrDefault(c => c == "0x01005D4F34E4BE7F4B6892AEBE088EDD215E"));
 
             Assert.AreNotEqual(Guid.Empty, ct.DocumentSetTemplate.SharedFields.FirstOrDefault(c => c == new Guid("B01B3DBC-4630-4ED1-B5BA-321BC7841E3D")));
@@ -3185,7 +3186,7 @@ namespace PnP.Framework.Test.Framework.Providers
                 UpdateChildren = true,
             };
 
-            var documentSetTemplate = new DocumentSetTemplate { RemoveExistingContentTypes = true };
+            var documentSetTemplate = new DocumentSetTemplate { RemoveExistingContentTypes = true, UpdateChildren = true };
             documentSetTemplate.AllowedContentTypes.Add("0x01005D4F34E4BE7F4B6892AEBE088EDD215E002");
             documentSetTemplate.SharedFields.Add(new Guid("f6e7bdd5-bdcb-4c72-9f18-2bd8c27003d3"));
             documentSetTemplate.SharedFields.Add(new Guid("a8df65ec-0d06-4df1-8edf-55d48b3936dc"));
@@ -3241,6 +3242,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.IsTrue(ct.UpdateChildren);
 
             Assert.IsNotNull(ct.DocumentSetTemplate);
+            Assert.IsTrue(ct.DocumentSetTemplate.UpdateChildren);
             Assert.IsNotNull(ct.DocumentSetTemplate.AllowedContentTypes);
             Assert.IsNotNull(ct.DocumentSetTemplate.AllowedContentTypes.AllowedContentType.FirstOrDefault(c => c.ContentTypeID == "0x01005D4F34E4BE7F4B6892AEBE088EDD215E002"));
             Assert.AreEqual(true, ct.DocumentSetTemplate.AllowedContentTypes.RemoveExistingContentTypes);

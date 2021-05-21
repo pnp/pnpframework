@@ -111,6 +111,11 @@ namespace PnP.Framework.Provisioning.Model
         public Boolean RemoveExistingContentTypes { get; set; }
 
         /// <summary>
+        /// Declares whether changes to the content type will be udpated on inherited content types, optional attribute.
+        /// </summary>
+        public Boolean UpdateChildren { get; set; }
+
+        /// <summary>
         /// Gets a value that specifies the XML Documents settings for the Document Set.
         /// <seealso>
         ///     <cref>https://msdn.microsoft.com/en-us/library/office/aa543904.aspx</cref>

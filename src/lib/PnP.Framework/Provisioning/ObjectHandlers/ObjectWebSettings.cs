@@ -87,7 +87,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                 var hubsiteProperties = tenant.GetHubSitePropertiesById(site.HubSiteId);
                                 tenantContext.Load(hubsiteProperties);
                                 tenantContext.ExecuteQueryRetry();
-                                webSettings.HubSiteUrl = hubsiteProperties.SiteUrl;
+                                webSettings.HubSiteUrl = TokenizeHost(web,hubsiteProperties.SiteUrl);
                             }
                         }
                         else

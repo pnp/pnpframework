@@ -224,7 +224,7 @@ namespace PnP.Framework.Sites
                 throw new ArgumentException("Alias cannot contain spaces", "Alias");
             }
 
-            string siteCollectionValidAlias = siteCollectionCreationInformation.Alias.ToLower();
+            string siteCollectionValidAlias = siteCollectionCreationInformation.Alias;
             siteCollectionValidAlias = UrlUtility.RemoveUnallowedCharacters(siteCollectionValidAlias);
             siteCollectionValidAlias = UrlUtility.ReplaceAccentedCharactersWithLatin(siteCollectionValidAlias);
 
@@ -893,7 +893,7 @@ namespace PnP.Framework.Sites
                 throw new ArgumentException("Alias cannot contain spaces", "Alias");
             }
 
-            string siteCollectionValidAlias = siteCollectionGroupifyInformation.Alias.ToLower();
+            string siteCollectionValidAlias = siteCollectionGroupifyInformation.Alias;
             siteCollectionValidAlias = UrlUtility.RemoveUnallowedCharacters(siteCollectionValidAlias);
             siteCollectionValidAlias = UrlUtility.ReplaceAccentedCharactersWithLatin(siteCollectionValidAlias);
             

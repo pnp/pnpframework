@@ -1743,7 +1743,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         private static string CreateMailNicknameFromDisplayName(string displayName)
         {
-            var mailNickname = displayName.ToLower();
+            var mailNickname = displayName;
             mailNickname = UrlUtility.RemoveUnallowedCharacters(mailNickname);
             mailNickname = UrlUtility.ReplaceAccentedCharactersWithLatin(mailNickname);
             return mailNickname;

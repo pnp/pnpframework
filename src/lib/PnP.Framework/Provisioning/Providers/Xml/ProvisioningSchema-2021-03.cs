@@ -9529,7 +9529,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.V202103 {
             this.sealedField = false;
             this.readOnlyField = false;
             this.overwriteField = false;
-            this.updateChildrenField = false;
+            this.updateChildrenField = true;
         }
         
         /// <remarks/>
@@ -9690,7 +9690,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.V202103 {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        [System.ComponentModel.DefaultValueAttribute(false)]
+        [System.ComponentModel.DefaultValueAttribute(true)]
         public bool UpdateChildren {
             get {
                 return this.updateChildrenField;

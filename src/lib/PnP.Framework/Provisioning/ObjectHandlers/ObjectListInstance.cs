@@ -2064,6 +2064,30 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             String targetFolderName = parser.ParseString(folder.Name);
             list.SiteList.ParentWeb.EnsureProperties(w => w.ServerRelativeUrl);
 
+            if (targetFolderName == "/" )
+            {
+                // Handle any child-folder
+                if (folder.Folders != null && folder.Folders.Count > 0)
+                {
+                    foreach (var childFolder in folder.Folders)
+                    {
+                        CreateFolderInList(list, parentFolder, childFolder, parser, scope);
+                    }
+                }
+
+                // Handle root folder property bag
+                if (folder.PropertyBagEntries != null && folder.PropertyBagEntries.Count > 0)
+                {
+                    foreach (var p in folder.PropertyBagEntries)
+                    {
+                        parentFolder.Properties[parser.ParseString(p.Key)] = parser.ParseString(p.Value);
+                    }
+                    parentFolder.Update();
+                }
+
+                return;
+            }
+
             // Check if the folder already exists
             if (parentFolder.FolderExists(targetFolderName))
             {

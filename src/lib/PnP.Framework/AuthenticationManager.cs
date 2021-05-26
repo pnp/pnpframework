@@ -538,11 +538,15 @@ namespace PnP.Framework
 
             var builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId).WithHttpClientFactory(HttpClientFactory);
 
-            builder = GetBuilderWithAuthority(builder, azureEnvironment, tenantId);
+            builder = GetBuilderWithAuthority(builder, azureEnvironment);
 
             if (!string.IsNullOrEmpty(redirectUrl))
             {
                 builder = builder.WithRedirectUri(redirectUrl);
+            }
+            if (!string.IsNullOrEmpty(tenantId))
+            {
+                builder = builder.WithTenantId(tenantId);
             }
 
             confidentialClientApplication = builder.Build();
@@ -1463,19 +1467,12 @@ namespace PnP.Framework
             return builder;
         }
 
-        public ConfidentialClientApplicationBuilder GetBuilderWithAuthority(ConfidentialClientApplicationBuilder builder, AzureEnvironment azureEnvironment, string tenantId = "")
+        public ConfidentialClientApplicationBuilder GetBuilderWithAuthority(ConfidentialClientApplicationBuilder builder, AzureEnvironment azureEnvironment)
         {
             if (azureEnvironment == AzureEnvironment.Production)
             {
-                var azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
-                if (!string.IsNullOrEmpty(tenantId))
-                {
-                    builder = builder.WithAuthority($"{azureADEndPoint}/organizations", tenantId);
-                }
-                else
-                {
-                    builder = builder.WithAuthority($"{azureADEndPoint}/organizations");
-                }
+                var azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);                
+                builder = builder.WithAuthority($"{azureADEndPoint}/organizations");                
             }
             else
             {

@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Fix for valid characters and lower case in site alias #345. Improves #326. [patrikhellgren - Patrik Hellgren]
 - Added HostUrl token for Hubsite url property (fixes #338) #343 [gautamdsheth - Gautam Sheth]
 - Fix for issue with provisioning default values for root folder #342 [patrikhellgren - Patrik Hellgren]
 - Fix #275 - for tenantId missing issue #328/#350 [gautamdsheth - Gautam Sheth]

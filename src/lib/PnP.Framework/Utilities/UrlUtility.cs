@@ -221,7 +221,7 @@ namespace PnP.Framework.Utilities
 
         public static string RemoveUnallowedCharacters(string str)
         {
-            const string unallowedCharacters = "[&_,!@;:#¤`´~¨='%<>/\\\\\"\\.\\$\\*\\^\\+\\|\\{\\}\\[\\]\\-\\(\\)\\?\\s]";
+            const string unallowedCharacters = "[&,!@;:#¤`´~¨='%<>/\\\\\"\\.\\$\\*\\^\\+\\|\\{\\}\\[\\]\\(\\)\\?\\s]";
             var regex = new Regex(unallowedCharacters);
             return regex.Replace(str, "");
         }

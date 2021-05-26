@@ -256,11 +256,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             foreach (KeyValuePair<string, string> columnValue in templateListFolder.DefaultColumnValues)
             {
-                string fieldName = parser.ParseString(columnValue.Key);
-                var field = listInfo.SiteList.Fields.GetByInternalNameOrTitle(fieldName);
-                var defaultValue =
-                    field.GetDefaultColumnValueFromField((ClientContext)web.Context, folderName, new[] { parser.ParseString(columnValue.Value) });
-                defaultFolderValues.Add(defaultValue);
+                var fieldName = parser.ParseString(columnValue.Key);
+                var fieldValue = parser.ParseString(columnValue.Value);
+                if (!string.IsNullOrEmpty(fieldValue))
+                {
+                    var field = listInfo.SiteList.Fields.GetByInternalNameOrTitle(fieldName);
+                    var defaultValue = field.GetDefaultColumnValueFromField((ClientContext)web.Context, folderName, new[] { fieldValue });
+                    defaultFolderValues.Add(defaultValue);
+                }
             }
             foreach (var folder in templateListFolder.Folders)
             {

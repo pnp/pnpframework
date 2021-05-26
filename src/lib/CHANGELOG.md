@@ -17,7 +17,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
-- Fix #275 - for tenantId missing issue #328 [gautamdsheth - Gautam Sheth]
+- Fix #275 - for tenantId missing issue #328/#350 [gautamdsheth - Gautam Sheth]
 - Improve alias naming for modern sites. #326 [gautamdsheth - Gautam Sheth]
 - LCID validation while creating site collections #325 [gautamdsheth - Gautam Sheth]
 - Enhance pnpcoresdk - preseve PnPContext when init with GetClientContext for GetContext #321 [czullu - Christian Zuellig]

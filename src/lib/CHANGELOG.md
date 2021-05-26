@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Fix for issue with provisioning default values for root folder #342 [patrikhellgren - Patrik Hellgren]
 - Fix #275 - for tenantId missing issue #328/#350 [gautamdsheth - Gautam Sheth]
 - Improve alias naming for modern sites. #326 [gautamdsheth - Gautam Sheth]
 - LCID validation while creating site collections #325 [gautamdsheth - Gautam Sheth]

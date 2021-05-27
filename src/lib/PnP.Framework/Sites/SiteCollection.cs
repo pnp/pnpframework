@@ -321,8 +321,11 @@ namespace PnP.Framework.Sites
             if (siteCollectionCreationInformation.SiteDesignId.HasValue)
             {
                 creationOptionsValues.Add($"implicit_formula_292aa8a00786498a87a5ca52d9f4214a_{siteCollectionCreationInformation.SiteDesignId.Value.ToString("D").ToLower()}");
-            }                            
-            creationOptionsValues.Add($"SPSiteLanguage:{siteCollectionCreationInformation.Lcid}");            
+            }
+            if (siteCollectionCreationInformation.Lcid != 0)
+            {
+                creationOptionsValues.Add($"SPSiteLanguage:{siteCollectionCreationInformation.Lcid}");
+            }
             if (!string.IsNullOrEmpty(siteCollectionCreationInformation.SiteAlias))
             {
                 creationOptionsValues.Add($"SiteAlias:{siteCollectionCreationInformation.SiteAlias}");

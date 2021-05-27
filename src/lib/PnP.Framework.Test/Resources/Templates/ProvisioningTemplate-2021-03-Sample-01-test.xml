@@ -1,47 +1,15 @@
 <?xml version="1.0"?>
 <pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
-  <pnp:Teams>
-    <pnp:Team DisplayName="Sample Team 01" Description="This is just a sample Team 01" Classification="Private" Visibility="Private" HiddenGroupMembershipEnabled="true" GroupId="12345" Specialization="EducationClass" CloneFrom="{TeamId:GroupMailNickname}" MailNickname="sample.group">
-      <pnp:FunSettings />
-      <pnp:GuestSettings AllowDeleteChannels="true" />
-      <pnp:MembersSettings />
-      <pnp:MessagingSettings />
-      <pnp:Security AllowToAddGuests="true">
-        <pnp:Owners ClearExistingItems="true">
-          <pnp:User UserPrincipalName="owner01@domain.onmicrosoft.com" />
-          <pnp:User UserPrincipalName="owner02@domain.onmicrosoft.com" />
-        </pnp:Owners>
-        <pnp:Members ClearExistingItems="true">
-          <pnp:User UserPrincipalName="user01@domain.onmicrosoft.com" />
-          <pnp:User UserPrincipalName="user02@domain.onmicrosoft.com" />
-        </pnp:Members>
-      </pnp:Security>
-      <pnp:DiscoverySettings ShowInTeamsSearchAndSuggestions="false" />
-      <pnp:Channels>
-        <pnp:Channel DisplayName="Sample Channel 01" Description="This is just a Sample Channel" IsFavoriteByDefault="true" ID="12345" Private="true">
-          <pnp:Tabs>
-            <pnp:Tab DisplayName="Wiki" TeamsAppId="com.microsoft.teamspace.tab.wiki" ID="{TeamsTabId:Wiki}" Remove="true" />
-            <pnp:Tab DisplayName="My Tab 01" TeamsAppId="12345" ID="67890" Remove="false">
-              <pnp:Configuration EntityId="2DCA2E6C7A10415CAF6B8AB6661B3154" ContentUrl="https://www.contoso.com/Orders/2DCA2E6C7A10415CAF6B8AB6661B3154/tabView" RemoveUrl="https://www.contoso.com/Orders/2DCA2E6C7A10415CAF6B8AB6661B3154/uninstallTab" WebsiteUrl="https://www.contoso.com/Orders/2DCA2E6C7A10415CAF6B8AB6661B3154" />
-            </pnp:Tab>
-          </pnp:Tabs>
-          <pnp:TabResources>
-            <pnp:TabResource Type="Planner" TargetTabId="{TeamsTabId:TabDisplayName}">
-              <pnp:TabResourceSettings>{"displayName": "Notebook name"}</pnp:TabResourceSettings>
-            </pnp:TabResource>
-          </pnp:TabResources>
-          <pnp:Messages>
-            <pnp:Message>{&amp;quot;body&amp;quot;: &amp;quot;message&amp;quot;}</pnp:Message>
-          </pnp:Messages>
-        </pnp:Channel>
-      </pnp:Channels>
-      <pnp:Apps>
-        <pnp:App AppId="12345678-9abc-def0-123456789a" />
-      </pnp:Apps>
-    </pnp:Team>
-  </pnp:Teams>
-  <pnp:Templates ID="CONTAINER-ProvisioningTemplate-2021-03-Sample-01-test">
-    <pnp:ProvisioningTemplate ID="ProvisioningTemplate-2021-03-Sample-01-test" Version="0" Scope="Undefined" />
-  </pnp:Templates>
   <pnp:Preferences Generator="PnP.Framework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null" />
+  <pnp:Templates ID="CONTAINER-ProvisioningTemplate-2021-03-Sample-01-test">
+    <pnp:ProvisioningTemplate ID="ProvisioningTemplate-2021-03-Sample-01-test" Version="0" Scope="Undefined">
+      <pnp:WebSettings RequestAccessEmail="someone@company.com" NoCrawl="false" WelcomePage="/Pages/Home.aspx" Title="Site Title" Description="Site Description" SiteLogo="{sitecollection}/SiteAssets/Logo.png" SiteLogoThumbnail="{sitecollection}/SiteAssets/Logo.png" AlternateCSS="{sitecollection}/Resources/Themes/Contoso/Contoso.css" MasterPageUrl="{sitecollection}/_catalogs/MasterPage/oslo.master" CustomMasterPageUrl="{sitecollection}/_catalogs/MasterPage/CustomMaster.master" HubSiteUrl="/sites/hubsite" CommentsOnSitePagesDisabled="false" QuickLaunchEnabled="true" ExcludeFromOfflineClient="true" MembersCanShare="true" HorizontalQuickLaunch="true" SearchScope="Hub" IsMultilingual="true" OverwriteTranslationsOnChange="true" SearchBoxInNavBar="AllPages" SearchCenterUrl="https://contoso.sharepoint.com/sites/SearchCenter">
+        <pnp:AlternateUICultures>
+          <pnp:AlternateUICulture LCID="1033" />
+          <pnp:AlternateUICulture LCID="1040" />
+          <pnp:AlternateUICulture LCID="1035" />
+        </pnp:AlternateUICultures>
+      </pnp:WebSettings>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
 </pnp:Provisioning>

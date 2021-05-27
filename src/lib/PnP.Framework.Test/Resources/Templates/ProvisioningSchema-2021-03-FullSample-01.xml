@@ -59,13 +59,14 @@
       <pnp:WebApiPermission Resource="MyCustomEnterpriseAPI" Scope="Invoke.Custom.Action"/>
     </pnp:WebApiPermissions>
     <pnp:ContentDeliveryNetwork>
-      <pnp:Public Enabled="true" NoDefaultOrigins="false">
+      <pnp:Public Enabled="true" NoDefaultOrigins="true">
         <pnp:Origins>
           <pnp:Origin Url="sites/CDN/CDNFiles" Action="Add"/>
           <pnp:Origin Url="sites/CDN/CDNFiles-Wrong" Action="Remove"/>
         </pnp:Origins>
         <pnp:IncludeFileExtensions>PDF,XML,JPG,JS,PNG</pnp:IncludeFileExtensions>
         <pnp:ExcludeRestrictedSiteClassifications>HBI,GDPR</pnp:ExcludeRestrictedSiteClassifications>
+        <pnp:ExcludeIfNoScriptDisabled>JS,CSS</pnp:ExcludeIfNoScriptDisabled>
       </pnp:Public>
       <pnp:Private Enabled="true" NoDefaultOrigins="false">
         <pnp:Origins>
@@ -275,8 +276,35 @@
         "bodyText": "#020202"
         }
       </pnp:Theme>-->
-      
-      <pnp:Theme Name="Orange" IsInverted="false"></pnp:Theme>
+
+      <pnp:Theme Name="CustomOrange" IsInverted="false">
+        {
+        "themePrimary": "#ecb534",
+        "themeLighterAlt": "#fefcf6",
+        "themeLighter": "#fcf3dd",
+        "themeLight": "#fae8bf",
+        "themeTertiary": "#f4d282",
+        "themeSecondary": "#efbe4b",
+        "themeDarkAlt": "#d5a32f",
+        "themeDark": "#b48a28",
+        "themeDarker": "#85661d",
+        "neutralLighterAlt": "#f8f8f8",
+        "neutralLighter": "#f4f4f4",
+        "neutralLight": "#eaeaea",
+        "neutralQuaternaryAlt": "#dadada",
+        "neutralQuaternary": "#d0d0d0",
+        "neutralTertiaryAlt": "#c8c8c8",
+        "neutralTertiary": "#a9a9a9",
+        "neutralSecondary": "#8d8d8d",
+        "neutralPrimaryAlt": "#727272",
+        "neutralPrimary": "#020202",
+        "neutralDark": "#3a3a3a",
+        "black": "#1e1e1e",
+        "white": "#ffffff",
+        "bodyBackground": "#ffffff",
+        "bodyText": "#020202"
+        }
+      </pnp:Theme>
 
       <pnp:RegionalSettings
         AdjustHijriDays="1"
@@ -308,8 +336,8 @@
       </pnp:AuditSettings>
 
       <pnp:PropertyBagEntries>
-        <pnp:PropertyBagEntry Key="KEY1" Value ="value1" Overwrite="true" />
-        <pnp:PropertyBagEntry Key="KEY2" Value ="value2" />
+        <pnp:PropertyBagEntry Key="KEY1" Value="value1" Overwrite="true" />
+        <pnp:PropertyBagEntry Key="KEY2" Value="value2" Indexed="true" />
       </pnp:PropertyBagEntries>
 
       <pnp:Security BreakRoleInheritance="true"
@@ -346,6 +374,20 @@
               <pnp:User Name="user1@contoso.com" />
               <pnp:User Name="user2@contoso.com" />
               <pnp:User Name="user3@contoso.com" />
+            </pnp:Members>
+          </pnp:SiteGroup>
+          <pnp:SiteGroup
+            AllowMembersEditMembership="true"
+            AllowRequestToJoinLeave="true"
+            AutoAcceptRequestToJoinLeave="true"
+            Description="Test Group 1"
+            OnlyAllowMembersViewMembership="true"
+            Owner="user1@contoso.com"
+            RequestToJoinLeaveEmailSetting="group1@contoso.com"
+            Title="TestGroup1">
+            <pnp:Members>
+              <pnp:User Name="user1@contoso.com"/>
+              <pnp:User Name="user2@contoso.com"/>
             </pnp:Members>
           </pnp:SiteGroup>
         </pnp:SiteGroups>
@@ -1443,11 +1485,11 @@
       <pnp:User AccountEnabled="true"
                 DisplayName="John White"
                 PasswordPolicies="DisablePasswordExpiration,DisableStrongPassword"
-                ProfilePhoto="JohnWhite.png"
+                ProfilePhoto="photo.jpg"
                 GivenName="John"
                 Surname="White"
                 JobTitle="Senior Partner"
-                OfficeLocation="Seattle, WS"
+                OfficeLocation="Seattle, WA"
                 PreferredLanguage="en-US"
                 MobilePhone="+1-601-123456"
                 MailNickname="john.white"
@@ -1456,15 +1498,21 @@
         <pnp:PasswordProfile ForceChangePasswordNextSignIn="true" ForceChangePasswordNextSignInWithMfa="false"
                              Password="Pass@w0rd"/>
         <pnp:Licenses>
-          <pnp:License SkuId="6fd2c87f-b296-42f0-b197-1e91e994b900"> <!-- Office 365 E3 -->
+          <pnp:License SkuId="6fd2c87f-b296-42f0-b197-1e91e994b900">
+            <!-- Office 365 E3 -->
             <pnp:DisabledPlans>
-              <pnp:DisabledPlan>5136a095-5cf0-4aff-bec3-e84448b38ea5</pnp:DisabledPlan> <!-- Information Protection for Office 365 - Standard -->
-              <pnp:DisabledPlan>c87f142c-d1e9-4363-8630-aaea9c4d9ae5</pnp:DisabledPlan> <!-- To-Do (Plan 3) -->
-              <pnp:DisabledPlan>2789c901-c14e-48ab-a76a-be334d9d793a</pnp:DisabledPlan> <!-- Microsoft Forms (Plan E5) -->
-              <pnp:DisabledPlan>a23b959c-7ce8-4e57-9140-b90eb88a9e97</pnp:DisabledPlan> <!-- Sway -->
+              <pnp:DisabledPlan>5136a095-5cf0-4aff-bec3-e84448b38ea5</pnp:DisabledPlan>
+              <!-- Information Protection for Office 365 - Standard -->
+              <pnp:DisabledPlan>c87f142c-d1e9-4363-8630-aaea9c4d9ae5</pnp:DisabledPlan>
+              <!-- To-Do (Plan 3) -->
+              <pnp:DisabledPlan>2789c901-c14e-48ab-a76a-be334d9d793a</pnp:DisabledPlan>
+              <!-- Microsoft Forms (Plan E5) -->
+              <pnp:DisabledPlan>a23b959c-7ce8-4e57-9140-b90eb88a9e97</pnp:DisabledPlan>
+              <!-- Sway -->
             </pnp:DisabledPlans>
           </pnp:License>
-          <pnp:License SkuId="1f2f344a-700d-42c9-9427-5cea1d5d7ba6"> <!-- Microsoft Stream Trial -->
+          <pnp:License SkuId="1f2f344a-700d-42c9-9427-5cea1d5d7ba6">
+            <!-- Microsoft Stream Trial -->
           </pnp:License>
         </pnp:Licenses>
       </pnp:User>
@@ -1485,30 +1533,35 @@
         <pnp:DriveFolder Name="Projects" Src="OneDrive/Jim.Black/Projects" />
         <pnp:DriveFolder Name="ExpenseReports">
           <pnp:DriveFolder Name="FY2018">
-            <pnp:DriveFile Name="Expense-Report-01-2018.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2018/Expense-Report-01-2018.xlsx"/>
-            <pnp:DriveFile Name="Expense-Report-02-2018.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2018/Expense-Report-02-2018.xlsx"/>
-            <pnp:DriveFile Name="Expense-Report-03-2018.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2018/Expense-Report-03-2018.xlsx"/>
-            <pnp:DriveFile Name="Expense-Report-04-2018.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2018/Expense-Report-04-2018.xlsx"/>
-            <pnp:DriveFile Name="Expense-Report-05-2018.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2018/Expense-Report-05-2018.xlsx"/>
-            <pnp:DriveFile Name="Expense-Report-06-2018.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2018/Expense-Report-06-2018.xlsx"/>
-            <pnp:DriveFile Name="Expense-Report-07-2018.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2018/Expense-Report-07-2018.xlsx"/>
-            <pnp:DriveFile Name="Expense-Report-08-2018.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2018/Expense-Report-08-2018.xlsx"/>
-            <pnp:DriveFile Name="Expense-Report-09-2018.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2018/Expense-Report-09-2018.xlsx"/>
-            <pnp:DriveFile Name="Expense-Report-10-2018.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2018/Expense-Report-10-2018.xlsx"/>
-            <pnp:DriveFile Name="Expense-Report-11-2018.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2018/Expense-Report-11-2018.xlsx"/>
-            <pnp:DriveFile Name="Expense-Report-12-2018.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2018/Expense-Report-12-2018.xlsx"/>
+            <pnp:DriveFolder Name="FY2018-01" />
+            <pnp:DriveFolder Name="FY2018-02">
+              <pnp:DriveFolder Name="FY2018-02-01" />
+              <pnp:DriveFolder Name="FY2018-02-02" />
+            </pnp:DriveFolder>
+            <pnp:DriveFile Name="Expense-Report-Jan2018.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2018/Expense-Report-Jan2018.xlsx"/>
+            <pnp:DriveFile Name="Expense-Report-Feb2018.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2018/Expense-Report-Feb2018.xlsx"/>
+            <pnp:DriveFile Name="Expense-Report-Mar2018.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2018/Expense-Report-Mar2018.xlsx"/>
+            <pnp:DriveFile Name="Expense-Report-Apr2018.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2018/Expense-Report-Apr2018.xlsx"/>
+            <pnp:DriveFile Name="Expense-Report-May2018.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2018/Expense-Report-May2018.xlsx"/>
+            <pnp:DriveFile Name="Expense-Report-Jun2018.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2018/Expense-Report-Jun2018.xlsx"/>
+            <pnp:DriveFile Name="Expense-Report-Jul2018.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2018/Expense-Report-Jul2018.xlsx"/>
+            <pnp:DriveFile Name="Expense-Report-Aug2018.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2018/Expense-Report-Aug2018.xlsx"/>
+            <pnp:DriveFile Name="Expense-Report-Sep2018.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2018/Expense-Report-Sep2018.xlsx"/>
+            <pnp:DriveFile Name="Expense-Report-Oct2018.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2018/Expense-Report-Oct2018.xlsx"/>
+            <pnp:DriveFile Name="Expense-Report-Nov2018.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2018/Expense-Report-Nov2018.xlsx"/>
+            <pnp:DriveFile Name="Expense-Report-Dec2018.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2018/Expense-Report-Dec2018.xlsx"/>
           </pnp:DriveFolder>
           <pnp:DriveFolder Name="FY2019">
-            <pnp:DriveFile Name="Expense-Report-01-2019.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2019/Expense-Report-01-2019.xlsx"/>
-            <pnp:DriveFile Name="Expense-Report-02-2019.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2019/Expense-Report-02-2019.xlsx"/>
-            <pnp:DriveFile Name="Expense-Report-03-2019.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2019/Expense-Report-03-2019.xlsx"/>
-            <pnp:DriveFile Name="Expense-Report-04-2019.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2019/Expense-Report-04-2019.xlsx"/>
-            <pnp:DriveFile Name="Expense-Report-05-2019.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2019/Expense-Report-05-2019.xlsx"/>
-            <pnp:DriveFile Name="Expense-Report-06-2019.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2019/Expense-Report-06-2019.xlsx"/>
-            <pnp:DriveFile Name="Expense-Report-07-2019.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2019/Expense-Report-07-2019.xlsx"/>
-            <pnp:DriveFile Name="Expense-Report-08-2019.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2019/Expense-Report-08-2019.xlsx"/>
-            <pnp:DriveFile Name="Expense-Report-09-2019.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2019/Expense-Report-09-2019.xlsx"/>
-          </pnp:DriveFolder>            
+            <pnp:DriveFile Name="Expense-Report-Jan2019.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2019/Expense-Report-Jan2019.xlsx"/>
+            <pnp:DriveFile Name="Expense-Report-Feb2019.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2019/Expense-Report-Feb2019.xlsx"/>
+            <pnp:DriveFile Name="Expense-Report-Mar2019.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2019/Expense-Report-Mar2019.xlsx"/>
+            <pnp:DriveFile Name="Expense-Report-Apr2019.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2019/Expense-Report-Apr2019.xlsx"/>
+            <pnp:DriveFile Name="Expense-Report-May2019.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2019/Expense-Report-May2019.xlsx"/>
+            <pnp:DriveFile Name="Expense-Report-Jun2019.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2019/Expense-Report-Jun2019.xlsx"/>
+            <pnp:DriveFile Name="Expense-Report-Jul2019.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2019/Expense-Report-Jul2019.xlsx"/>
+            <pnp:DriveFile Name="Expense-Report-Aug2019.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2019/Expense-Report-Aug2019.xlsx"/>
+            <pnp:DriveFile Name="Expense-Report-Sep2019.xlsx" Src="OneDrive/Jim.Black/ExpenseReports/FY2019/Expense-Report-Sep2019.xlsx"/>
+          </pnp:DriveFolder>
         </pnp:DriveFolder>
         <pnp:DriveFile Name="MyFavoriteSlides.pptx" Src="OneDrive/Jim.Black/MyFavoriteSlides.pptx"/>
         <pnp:DriveFile Name="Jim-Black-Resume.docx" Src="OneDrive/Jim.Black/Jim-Black-Resume.docx"/>
@@ -1516,7 +1569,7 @@
     </pnp:DriveRoot>
     <pnp:DriveRoot DriveUrl="/users/john.white@{parameter:O365TenantName}.onmicrosoft.com/drive">
       <pnp:DriveItems>
-        <pnp:DriveFolder Name="Documents" Src="OneDrive/John.White/Documents" 
+        <pnp:DriveFolder Name="Documents" Src="OneDrive/John.White/Documents"
             Recursive="true" IncludedExtensions="*.pdf,*.docx" ExcludedExtensions="*.xlsx,*.pptx"/>
         <pnp:DriveFile Name="John-White-Resume.docx" Src="OneDrive/John.White/JWResume.docx"/>
       </pnp:DriveItems>
@@ -1525,7 +1578,7 @@
 
   <pnp:ProvisioningWebhooks>
     <pnp:ProvisioningWebhook Url="https://mywebhook.azurefunctions.net/function01"
-                                     Method="POST" Kind="ProvisioningStarted" BodyFormat="Json" Async="true">
+                                     Method="GET" Kind="ProvisioningStarted" BodyFormat="Json" Async="true">
       <pnp:Parameters>
         <pnp:Parameter Key="Param01" Value="Value01"/>
         <pnp:Parameter Key="Site" Value="{sitecollection}"/>

@@ -359,12 +359,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                     // AllowedContentTypes
                     // Add additional content types to the set of allowed content types
-                    foreach (string ctId in templateContentType.DocumentSetTemplate.AllowedContentTypes)
+                    foreach (var ctItem in templateContentType.DocumentSetTemplate.AllowedContentTypes)
                     {
                         // Validate if the content type is not part of the document set content types yet
-                        if (documentSetTemplate.AllowedContentTypes.All(d => d.StringValue != ctId))
+                        if (documentSetTemplate.AllowedContentTypes.All(d => d.StringValue != ctItem.ContentTypeId))
                         {
-                            Microsoft.SharePoint.Client.ContentType ct = existingCTs.FirstOrDefault(c => c.StringId == ctId);
+                            Microsoft.SharePoint.Client.ContentType ct = existingCTs.FirstOrDefault(c => c.StringId == ctItem.ContentTypeId);
                             if (ct != null)
                             {
                                 documentSetTemplate.AllowedContentTypes.Add(ct.Id);
@@ -405,9 +405,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     foreach (var sharedField in templateContentType.DocumentSetTemplate.SharedFields)
                     {
                         // Ensure the shared field is not part of the document set yet
-                        if (documentSetTemplate.SharedFields.All(f => f.Id != sharedField))
+                        if (documentSetTemplate.SharedFields.All(f => f.Id != sharedField.Id))
                         {
-                            Microsoft.SharePoint.Client.Field field = existingFields.FirstOrDefault(f => f.Id == sharedField);
+                            Microsoft.SharePoint.Client.Field field = existingFields.FirstOrDefault(f => f.Id == sharedField.Id);
                             if (field != null)
                             {
                                 documentSetTemplate.SharedFields.Add(field);
@@ -420,9 +420,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     foreach (var welcomePageField in templateContentType.DocumentSetTemplate.WelcomePageFields)
                     {
                         // Ensure the welcomepage field is not part of the document set yet
-                        if (documentSetTemplate.WelcomePageFields.All(w => w.Id != welcomePageField))
+                        if (documentSetTemplate.WelcomePageFields.All(w => w.Id != welcomePageField.Id))
                         {
-                            Microsoft.SharePoint.Client.Field field = existingFields.FirstOrDefault(f => f.Id == welcomePageField);
+                            Microsoft.SharePoint.Client.Field field = existingFields.FirstOrDefault(f => f.Id == welcomePageField.Id);
                             if (field != null)
                             {
                                 documentSetTemplate.WelcomePageFields.Add(field);
@@ -633,9 +633,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 // Add additional content types to the set of allowed content types
                 bool hasDefaultDocumentContentTypeInTemplate = false;
-                foreach (String ctId in templateContentType.DocumentSetTemplate.AllowedContentTypes)
+                foreach (var ctItem in templateContentType.DocumentSetTemplate.AllowedContentTypes)
                 {
-                    Microsoft.SharePoint.Client.ContentType ct = existingCTs.FirstOrDefault(c => c.StringId == ctId);
+                    Microsoft.SharePoint.Client.ContentType ct = existingCTs.FirstOrDefault(c => c.StringId == ctItem.ContentTypeId);
                     if (ct != null)
                     {
                         if (ct.Id.StringValue.Equals("0x0101", StringComparison.InvariantCultureIgnoreCase))
@@ -680,7 +680,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 foreach (var sharedField in templateContentType.DocumentSetTemplate.SharedFields)
                 {
-                    Microsoft.SharePoint.Client.Field field = existingFields.FirstOrDefault(f => f.Id == sharedField);
+                    Microsoft.SharePoint.Client.Field field = existingFields.FirstOrDefault(f => f.Id == sharedField.Id);
                     if (field != null)
                     {
                         documentSetTemplate.SharedFields.Add(field);
@@ -689,7 +689,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 foreach (var welcomePageField in templateContentType.DocumentSetTemplate.WelcomePageFields)
                 {
-                    Microsoft.SharePoint.Client.Field field = existingFields.FirstOrDefault(f => f.Id == welcomePageField);
+                    Microsoft.SharePoint.Client.Field field = existingFields.FirstOrDefault(f => f.Id == welcomePageField.Id);
                     if (field != null)
                     {
                         documentSetTemplate.WelcomePageFields.Add(field);

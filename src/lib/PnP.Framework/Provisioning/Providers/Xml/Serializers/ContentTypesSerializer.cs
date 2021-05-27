@@ -30,12 +30,19 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
                     { c => c.DocumentTemplate, new ExpressionValueResolver((s, v) => v.GetPublicInstancePropertyValue("TargetName")) },
                     //document set template
                     { c => c.DocumentSetTemplate, new PropertyObjectTypeResolver<ContentType>(ct => ct.DocumentSetTemplate) },
+
+                    // TODO: AllowedContentTypes is not a collection but a single
+
                     //document set template - allowed content types
-                    { c => c.DocumentSetTemplate.AllowedContentTypes, new ExpressionCollectionValueResolver<string>((s) => s.GetPublicInstancePropertyValue("ContentTypeID").ToString()) },
-                    //document set template - shared fields
-                    { c => c.DocumentSetTemplate.SharedFields, new ExpressionCollectionValueResolver<Guid>((s) => Guid.Parse(s.GetPublicInstancePropertyValue("ID").ToString())) },
-                    //document set template - welcome page fields
-                    { c => c.DocumentSetTemplate.WelcomePageFields, new ExpressionCollectionValueResolver<Guid>((s) => Guid.Parse(s.GetPublicInstancePropertyValue("ID").ToString())) }
+                    { c => c.DocumentSetTemplate.AllowedContentTypes, new ExpressionCollectionValueResolver<ContentTypeReference>(
+                        (s) => new ContentTypeReference {
+                            ContentTypeId = s.GetPublicInstancePropertyValue("ContentTypeID").ToString(),
+                            Name = s.GetPublicInstancePropertyValue("Name") != null ? s.GetPublicInstancePropertyValue("Name").ToString() : null,
+                            Remove = s.GetPublicInstancePropertyValue("Remove") != null ? bool.Parse(s.GetPublicInstancePropertyValue("Remove").ToString()) : false
+                        }) },
+
+                    //document set template - shared fields + welcome page fields
+                    { c => c.DocumentSetTemplate.SharedFields[0].Id, new FromStringToGuidValueResolver() },
                 };
 
                 template.ContentTypes.AddRange(
@@ -65,9 +72,9 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers
                     //document set template
                     { $"{contentTypeType.FullName}.DocumentSetTemplate", new PropertyObjectTypeResolver(documentSetTemplateType, "DocumentSetTemplate") },
                     //document set template - allowed content types
-                    { $"{contentTypeType.Namespace}.DocumentSetTemplateAllowedContentType.ContentTypeID", new ExpressionValueResolver((s, v) => s) },
+                    //{ $"{contentTypeType.Namespace}.DocumentSetTemplateAllowedContentType.ContentTypeID", new ExpressionValueResolver((s, v) => s) },
                     //document set template - shared fields and welcome page fields (this expression also used to resolve fieldref collection ids because of same type name)
-                    { $"{contentTypeType.Namespace}.FieldRefBase.ID", new ExpressionValueResolver((s, v) => v != null ? v.ToString() : s?.ToString()) },
+                    // { $"{contentTypeType.Namespace}.FieldRefBase.ID", new ExpressionValueResolver((s, v) => v != null ? v.ToString() : s?.ToString()) },
                     //document template
                     { $"{contentTypeType.FullName}.DocumentTemplate", new DocumentTemplateFromModelToSchemaTypeResolver(documentTemplateType) }
                 };

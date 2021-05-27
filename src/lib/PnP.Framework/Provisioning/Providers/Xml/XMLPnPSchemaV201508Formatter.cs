@@ -414,7 +414,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml
                                      (from act in ct.DocumentSetTemplate.AllowedContentTypes
                                       select new DocumentSetTemplateAllowedContentType
                                       {
-                                          ContentTypeID = act
+                                          ContentTypeID = act.ContentTypeId
                                       }).ToArray() : null,
                                  DefaultDocuments = ct.DocumentSetTemplate.DefaultDocuments.Count > 0 ?
                                      (from dd in ct.DocumentSetTemplate.DefaultDocuments

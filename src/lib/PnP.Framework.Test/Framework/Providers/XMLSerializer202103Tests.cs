@@ -112,7 +112,7 @@ namespace PnP.Framework.Test.Framework.Providers
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
 
             Assert.AreEqual(3, template.ApplicationLifecycleManagement.Apps.Count);
-            Assert.AreEqual(AppAction.Install, template.ApplicationLifecycleManagement.Apps.First().Action);
+            Assert.AreEqual(AppAction.InstallOrUpdate, template.ApplicationLifecycleManagement.Apps.First().Action);
             Assert.AreEqual("d0816f0a-fda4-4a98-8e61-1bbe1f2b5b27", template.ApplicationLifecycleManagement.Apps.First().AppId);
             Assert.AreEqual(SyncMode.Synchronously, template.ApplicationLifecycleManagement.Apps.First().SyncMode);
             Assert.AreEqual(AppAction.Update, template.ApplicationLifecycleManagement.Apps[1].Action);
@@ -3183,7 +3183,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.IsFalse(ct.Overwrite);
             Assert.IsFalse(ct.ReadOnly);
             Assert.IsFalse(ct.Sealed);
-            Assert.IsFalse(ct.UpdateChildren);
+            Assert.IsTrue(ct.UpdateChildren);
 
             ct = template.ContentTypes.FirstOrDefault(c => c.Id == "0x0120D5200039D83CD2C9BA4A4499AEE6BE3562E023");
             Assert.IsNotNull(ct.DocumentSetTemplate);
@@ -3191,10 +3191,24 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual("{sitecollection}/_cts/ProjectDocumentSet/ProjectHomePage.aspx", ct.DocumentSetTemplate.WelcomePage);
             Assert.IsTrue(ct.DocumentSetTemplate.RemoveExistingContentTypes);
             Assert.IsFalse(ct.DocumentSetTemplate.UpdateChildren);
-            Assert.IsNotNull(ct.DocumentSetTemplate.AllowedContentTypes.FirstOrDefault(c => c == "0x01005D4F34E4BE7F4B6892AEBE088EDD215E"));
 
-            Assert.AreNotEqual(Guid.Empty, ct.DocumentSetTemplate.SharedFields.FirstOrDefault(c => c == new Guid("B01B3DBC-4630-4ED1-B5BA-321BC7841E3D")));
-            Assert.AreNotEqual(Guid.Empty, ct.DocumentSetTemplate.WelcomePageFields.FirstOrDefault(c => c == new Guid("23203E97-3BFE-40CB-AFB4-07AA2B86BF45")));
+            var act = ct.DocumentSetTemplate.AllowedContentTypes.FirstOrDefault(c => c.ContentTypeId == "0x01005D4F34E4BE7F4B6892AEBE088EDD215E");
+            Assert.IsNotNull(act);
+            Assert.AreEqual(act.ContentTypeId, "0x01005D4F34E4BE7F4B6892AEBE088EDD215E");
+            Assert.AreEqual(act.Name, "General Project Document");
+            Assert.IsFalse(act.Remove);
+
+            var sf = ct.DocumentSetTemplate.SharedFields.FirstOrDefault(c => c.Id == new Guid("23203E97-3BFE-40CB-AFB4-07AA2B86BF45"));
+            Assert.IsNotNull(sf);
+            Assert.AreEqual(sf.Id, new Guid("23203E97-3BFE-40CB-AFB4-07AA2B86BF45"));
+            Assert.AreEqual(sf.Name, "ProjectID");
+            Assert.IsFalse(sf.Remove);
+
+            var wpf = ct.DocumentSetTemplate.WelcomePageFields.FirstOrDefault(c => c.Id == new Guid("23203E97-3BFE-40CB-AFB4-07AA2B86BF45"));
+            Assert.IsNotNull(wpf);
+            Assert.AreEqual(wpf.Id, new Guid("23203E97-3BFE-40CB-AFB4-07AA2B86BF45"));
+            Assert.AreEqual(wpf.Name, "ProjectID");
+            Assert.IsFalse(wpf.Remove);
 
             Assert.IsNotNull(ct.DocumentSetTemplate.DefaultDocuments);
 
@@ -3234,11 +3248,11 @@ namespace PnP.Framework.Test.Framework.Providers
             };
 
             var documentSetTemplate = new DocumentSetTemplate { RemoveExistingContentTypes = true, UpdateChildren = true };
-            documentSetTemplate.AllowedContentTypes.Add("0x01005D4F34E4BE7F4B6892AEBE088EDD215E002");
-            documentSetTemplate.SharedFields.Add(new Guid("f6e7bdd5-bdcb-4c72-9f18-2bd8c27003d3"));
-            documentSetTemplate.SharedFields.Add(new Guid("a8df65ec-0d06-4df1-8edf-55d48b3936dc"));
-            documentSetTemplate.WelcomePageFields.Add(new Guid("c69d2ffc-0c86-474a-9cc7-dcd7774da531"));
-            documentSetTemplate.WelcomePageFields.Add(new Guid("b9132b30-2b9e-47d4-b0fc-1ac34a61506f"));
+            documentSetTemplate.AllowedContentTypes.Add(new ContentTypeReference { ContentTypeId = "0x01005D4F34E4BE7F4B6892AEBE088EDD215E002", Name = "TestCT", Remove = true });
+            documentSetTemplate.SharedFields.Add(new FieldReference { Id = new Guid("f6e7bdd5-bdcb-4c72-9f18-2bd8c27003d3"), Name = "Field1", Remove = false });
+            documentSetTemplate.SharedFields.Add(new FieldReference { Id = new Guid("a8df65ec-0d06-4df1-8edf-55d48b3936dc"), Name = "Field2", Remove = true });
+            documentSetTemplate.WelcomePageFields.Add(new FieldReference { Id = new Guid("f6e7bdd5-bdcb-4c72-9f18-2bd8c27003d3"), Name = "Field1", Remove = false });
+            documentSetTemplate.WelcomePageFields.Add(new FieldReference { Id = new Guid("a8df65ec-0d06-4df1-8edf-55d48b3936dc"), Name = "Field2", Remove = true });
             documentSetTemplate.WelcomePage = "home.aspx";
             documentSetTemplate.DefaultDocuments.Add(new DefaultDocument()
             {
@@ -3291,13 +3305,39 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.IsNotNull(ct.DocumentSetTemplate);
             Assert.IsTrue(ct.DocumentSetTemplate.UpdateChildren);
             Assert.IsNotNull(ct.DocumentSetTemplate.AllowedContentTypes);
-            Assert.IsNotNull(ct.DocumentSetTemplate.AllowedContentTypes.AllowedContentType.FirstOrDefault(c => c.ContentTypeID == "0x01005D4F34E4BE7F4B6892AEBE088EDD215E002"));
+
+            var act = ct.DocumentSetTemplate.AllowedContentTypes.AllowedContentType.FirstOrDefault();
+            Assert.IsNotNull(act);
+            Assert.AreEqual(act.ContentTypeID, "0x01005D4F34E4BE7F4B6892AEBE088EDD215E002");
+            Assert.AreEqual(act.Name, "TestCT");
+            Assert.IsTrue(act.Remove);
             Assert.AreEqual(true, ct.DocumentSetTemplate.AllowedContentTypes.RemoveExistingContentTypes);
             Assert.IsNotNull(ct.DocumentSetTemplate.SharedFields);
-            Assert.IsNotNull(ct.DocumentSetTemplate.SharedFields.FirstOrDefault(c => c.ID == "f6e7bdd5-bdcb-4c72-9f18-2bd8c27003d3"));
-            Assert.IsNotNull(ct.DocumentSetTemplate.SharedFields.FirstOrDefault(c => c.ID == "a8df65ec-0d06-4df1-8edf-55d48b3936dc"));
-            Assert.IsNotNull(ct.DocumentSetTemplate.WelcomePageFields.FirstOrDefault(c => c.ID == "c69d2ffc-0c86-474a-9cc7-dcd7774da531"));
-            Assert.IsNotNull(ct.DocumentSetTemplate.WelcomePageFields.FirstOrDefault(c => c.ID == "b9132b30-2b9e-47d4-b0fc-1ac34a61506f"));
+
+            var sf1 = ct.DocumentSetTemplate.SharedFields.FirstOrDefault(c => c.ID == "f6e7bdd5-bdcb-4c72-9f18-2bd8c27003d3");
+            Assert.IsNotNull(sf1);
+            Assert.AreEqual(sf1.ID, "f6e7bdd5-bdcb-4c72-9f18-2bd8c27003d3");
+            Assert.AreEqual(sf1.Name, "Field1");
+            Assert.IsFalse(sf1.Remove);
+
+            var sf2 = ct.DocumentSetTemplate.SharedFields.FirstOrDefault(c => c.ID == "a8df65ec-0d06-4df1-8edf-55d48b3936dc");
+            Assert.IsNotNull(sf2);
+            Assert.AreEqual(sf2.ID, "a8df65ec-0d06-4df1-8edf-55d48b3936dc");
+            Assert.AreEqual(sf2.Name, "Field2");
+            Assert.IsTrue(sf2.Remove);
+
+            var wpf1 = ct.DocumentSetTemplate.SharedFields.FirstOrDefault(c => c.ID == "f6e7bdd5-bdcb-4c72-9f18-2bd8c27003d3");
+            Assert.IsNotNull(wpf1);
+            Assert.AreEqual(wpf1.ID, "f6e7bdd5-bdcb-4c72-9f18-2bd8c27003d3");
+            Assert.AreEqual(wpf1.Name, "Field1");
+            Assert.IsFalse(wpf1.Remove);
+
+            var wpf2 = ct.DocumentSetTemplate.SharedFields.FirstOrDefault(c => c.ID == "a8df65ec-0d06-4df1-8edf-55d48b3936dc");
+            Assert.IsNotNull(wpf2);
+            Assert.AreEqual(wpf2.ID, "a8df65ec-0d06-4df1-8edf-55d48b3936dc");
+            Assert.AreEqual(wpf2.Name, "Field2");
+            Assert.IsTrue(wpf2.Remove);
+
             Assert.AreEqual("home.aspx", ct.DocumentSetTemplate.WelcomePage);
             Assert.IsNotNull(ct.DocumentSetTemplate.DefaultDocuments);
 

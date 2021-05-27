@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Fix: Only specify LCID when needed during team site creation #354 [gautamdsheth - Gautam Sheth]
 - Fix for handling folder default values that are empty in provisioning template #346 [patrikhellgren - Patrik Hellgren]
 - Fix for valid characters and lower case in site alias #345. Improves #326. [patrikhellgren - Patrik Hellgren]
 - Added HostUrl token for Hubsite url property (fixes #338) #343 [gautamdsheth - Gautam Sheth]

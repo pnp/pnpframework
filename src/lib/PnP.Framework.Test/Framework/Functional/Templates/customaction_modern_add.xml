@@ -22,7 +22,7 @@ Base template: Goal is to verify that all custom action properties work as expec
 
 -->
 
-<pnp:ProvisioningTemplate ID="customaction_modern_base" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2015/12/ProvisioningSchema">
+<pnp:ProvisioningTemplate ID="customaction_modern_base" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <pnp:Features>
     <pnp:SiteFeatures>
       <pnp:Feature ID="E3540C7D-6BEA-403C-A224-1A12EAFEE4C4" Deactivate="true" Description="Disable modern list experience"/>

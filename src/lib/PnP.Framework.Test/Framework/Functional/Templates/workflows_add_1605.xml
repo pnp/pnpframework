@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<pnp:ProvisioningTemplate ID="workflow_add_1605" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema">
+<pnp:ProvisioningTemplate ID="workflow_add_1605" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <pnp:Lists>
     <pnp:ListInstance Title="Documents" Description="" DocumentTemplate="{site}/Shared Documents/Forms/template.dotx" OnQuickLaunch="true" TemplateType="101" Url="Shared Documents" EnableVersioning="true" MinorVersionLimit="0" MaxVersionLimit="500" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-e717-4e80-aa17-d0c71b360101" EnableAttachments="false">
       <pnp:ContentTypeBindings>

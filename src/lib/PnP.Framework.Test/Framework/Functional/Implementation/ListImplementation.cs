@@ -59,7 +59,7 @@ namespace PnP.Framework.Test.Framework.Functional.Implementation
 
                 ListInstanceValidator lv = new ListInstanceValidator(cc)
                 {
-                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03
                 };
                 Assert.IsTrue(lv.Validate(result.SourceTemplate.Lists, result.TargetTemplate.Lists, result.TargetTokenParser));
 
@@ -71,7 +71,7 @@ namespace PnP.Framework.Test.Framework.Functional.Implementation
 
                 ListInstanceValidator lv2 = new ListInstanceValidator(cc)
                 {
-                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03
                 };
                 Assert.IsTrue(lv2.Validate(result2.SourceTemplate.Lists, result2.TargetTemplate.Lists, result2.TargetTokenParser));
             }
@@ -89,7 +89,7 @@ namespace PnP.Framework.Test.Framework.Functional.Implementation
                 var result = TestProvisioningTemplate(cc, "list_add_1705.xml", Handlers.Lists);
                 ListInstanceValidator lv = new ListInstanceValidator(cc)
                 {
-                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2017_05
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03
                 };
                 Assert.IsTrue(lv.Validate(result.SourceTemplate.Lists, result.TargetTemplate.Lists, result.TargetTokenParser));
 
@@ -101,7 +101,7 @@ namespace PnP.Framework.Test.Framework.Functional.Implementation
 
                 ListInstanceValidator lv2 = new ListInstanceValidator(cc)
                 {
-                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2017_05
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03
                 };
                 Assert.IsTrue(lv2.Validate(result2.SourceTemplate.Lists, result2.TargetTemplate.Lists, result2.TargetTokenParser));
             }
@@ -159,7 +159,7 @@ namespace PnP.Framework.Test.Framework.Functional.Implementation
 
                 ListInstanceValidator lv = new ListInstanceValidator(cc)
                 {
-                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03
                 };
                 Assert.IsTrue(lv.Validate(result.SourceTemplate.Lists, result.TargetTemplate.Lists, result.TargetTokenParser));
 
@@ -171,7 +171,7 @@ namespace PnP.Framework.Test.Framework.Functional.Implementation
 
                 ListInstanceValidator lv2 = new ListInstanceValidator(cc)
                 {
-                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03
                 };
                 Assert.IsTrue(lv2.Validate(result2.SourceTemplate.Lists, result2.TargetTemplate.Lists, result2.TargetTokenParser));
             }
@@ -188,7 +188,7 @@ namespace PnP.Framework.Test.Framework.Functional.Implementation
                 var result = TestProvisioningTemplate(cc, "list_add_1705.xml", Handlers.Lists);
                 ListInstanceValidator lv = new ListInstanceValidator(cc)
                 {
-                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2017_05
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03
                 };
                 Assert.IsTrue(lv.Validate(result.SourceTemplate.Lists, result.TargetTemplate.Lists, result.TargetTokenParser));
 
@@ -199,7 +199,7 @@ namespace PnP.Framework.Test.Framework.Functional.Implementation
 
                 ListInstanceValidator lv2 = new ListInstanceValidator(cc)
                 {
-                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2017_05
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03
                 };
                 Assert.IsTrue(lv2.Validate(result2.SourceTemplate.Lists, result2.TargetTemplate.Lists, result2.TargetTokenParser));
             }

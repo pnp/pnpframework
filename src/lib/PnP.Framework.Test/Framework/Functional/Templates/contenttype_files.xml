@@ -4,7 +4,7 @@
 supporting template: add files needed in content type tests                
 -->
 
-<pnp:ProvisioningTemplate ID="contenttype_files" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2015/12/ProvisioningSchema">
+<pnp:ProvisioningTemplate ID="contenttype_files" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
 	<pnp:Features>
 		<pnp:SiteFeatures>
 			<pnp:Feature ID="3bae86a2-776d-499d-9db8-fa4cdc7884f8" Description="Document set" />

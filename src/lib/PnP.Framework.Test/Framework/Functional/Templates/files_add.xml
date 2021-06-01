@@ -11,7 +11,7 @@ Base template: goal is to verify that all files properties and elements work as 
                
 
 -->
-<pnp:ProvisioningTemplate ID="files_add" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2015/12/ProvisioningSchema">
+<pnp:ProvisioningTemplate ID="files_add" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <!-- Add supporting list to test upload -->
   <pnp:Lists>
     <pnp:ListInstance Title="LI_1" TemplateType="101" Url="LI_1" />

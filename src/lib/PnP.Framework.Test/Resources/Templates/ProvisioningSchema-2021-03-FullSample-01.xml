@@ -186,7 +186,7 @@
 
   <pnp:Templates ID="SAMPLE-TEMPLATES">
 
-    <pnp:ProvisioningTemplateFile ID="WORKFLOWSITE" File="ProvisioningSchema-2015-05-ReferenceSample-01.xml" />
+    <pnp:ProvisioningTemplateFile ID="WORKFLOWSITE" File="ProvisioningSchema-2021-03-ReferenceSample-01.xml" />
 
     <pnp:ProvisioningTemplateFile ID="ProjectsTemplate" File="ProjectsTemplate.xml" />
 

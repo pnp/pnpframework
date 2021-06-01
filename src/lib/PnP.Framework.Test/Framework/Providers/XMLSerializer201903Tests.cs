@@ -1698,8 +1698,8 @@ namespace PnP.Framework.Test.Framework.Providers
                     ShowWeeks = true,
                     Time24 = true,
                     TimeZone = 4,
-                    WorkDayEndHour = WorkHour.PM0500,
                     WorkDayStartHour = WorkHour.AM0900,
+                    WorkDayEndHour = WorkHour.PM0500,
                     WorkDays = 62
                 }
             };
@@ -1730,8 +1730,8 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(true, regionalSettings.ShowWeeks);
             Assert.AreEqual(true, regionalSettings.Time24);
             Assert.AreEqual("4", regionalSettings.TimeZone);
-            Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V201903.WorkHour.Item500PM, regionalSettings.WorkDayEndHour);
             Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V201903.WorkHour.Item900AM, regionalSettings.WorkDayStartHour);
+            Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V201903.WorkHour.Item500PM, regionalSettings.WorkDayEndHour);
             Assert.AreEqual(62, regionalSettings.WorkDays);
         }
 

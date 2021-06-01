@@ -1,4 +1,4 @@
-<pnp:ProvisioningTemplate ID="SPECIALTEAM" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2015/05/ProvisioningSchema">
+<pnp:ProvisioningTemplate ID="SPECIALTEAM" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <pnp:SitePolicy>HBI</pnp:SitePolicy>
   <pnp:PropertyBagEntries>
     <pnp:PropertyBagEntry Key="KEY1" Value="value1" />
@@ -84,7 +84,6 @@
       <pnp:WebParts>
         <pnp:WebPart Column="1" Row="1" Title="Script Editor">
           <pnp:Contents>
-            <![CDATA[
             <webParts><webPart xmlns="http://schemas.microsoft.com/WebPart/v3"><metaData><type name="Microsoft.SharePoint.WebPartPages.ScriptEditorWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" /><importErrorMessage>Cannot import this Web Part.</importErrorMessage>
     </metaData>
     <data>
@@ -116,13 +115,11 @@ function showAlert(){alert("Hello!")};
     </data>
   </webPart>
 </webParts>
-            ]]>
           </pnp:Contents>
         </pnp:WebPart>
       </pnp:WebParts>
     </pnp:Page>
   </pnp:Pages>
-  <pnp:ComposedLook Name="Custom Look" ColorFile="_catalogs/Theme/15/Custom.spcolor" FontFile="_catalogs/Theme/15/Custom.spfont" BackgroundFile="Resources/Themes/Contoso/contosobg.jpg" MasterPage="_catalogs/MasterPage/CustomMaster.master" SiteLogo="SiteAssets/Logo.png" AlternateCSS="Resources/Themes/Contoso/Contoso.css" Version="1" />
   <pnp:Providers>
     <pnp:Provider Enabled="false" HandlerType="OfficeDev.PnP.Provisioning.Providers.FakeProvider, OfficeDev.PnP.Provisioning.Providers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <pnp:Configuration>

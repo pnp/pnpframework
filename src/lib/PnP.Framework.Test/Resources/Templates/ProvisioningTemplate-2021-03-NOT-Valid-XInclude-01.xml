@@ -1,10 +1,14 @@
 ﻿<?xml version="1.0"?>
-<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2015/05/ProvisioningSchema">
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <pnp:Preferences Generator="OfficeDevPnP.Core, Version=1.4.815.0, Culture=neutral, PublicKeyToken=null" />
   <pnp:Templates ID="CONTAINER-SPECIALTEAM">
     <pnp:ProvisioningTemplate ID="SPECIALTEAM" Version="1">
       <pnp:SitePolicy>HBI</pnp:SitePolicy>
-      <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ProvisioningTemplate-2015-05-XInclude-PropertyBags.xml" />
+      <pnp:WebSettings NoCrawl="false" SiteLogo="Resources/Themes/Contoso/contosologo.png" AlternateCSS="Resources/Themes/Contoso/Contoso.css" MasterPageUrl="seattle.master" />
+
+      <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ProvisioningTemplate-2021-03-XInclude-NOT-Valid-PropertyBags.xml" />
+      <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="" />
+      
       <pnp:Security>
         <pnp:AdditionalAdministrators>
           <pnp:User Name="user@contoso.com" />
@@ -97,7 +101,6 @@
       <pnp:Files>
         <pnp:File Src="/Resources/Files/SAMPLE.js" Folder="SAMPLE" />
       </pnp:Files>
-      <pnp:ComposedLook Name="Contoso" ColorFile="Resources/Themes/Contoso/contoso.spcolor" FontFile="Resources/Themes/Contoso/contoso.spfont" BackgroundFile="Resources/Themes/Contoso/contosobg.jpg" MasterPage="seattle.master" SiteLogo="Resources/Themes/Contoso/contosologo.png" AlternateCSS="Resources/Themes/Contoso/Contoso.css" Version="1" />
       <pnp:Providers>
         <pnp:Provider HandlerType="MyType, Sample">
           <pnp:Configuration><![CDATA[Some custom text that is not XML and that can contain symbols like >, or <, or &, or whatever else.]]></pnp:Configuration>

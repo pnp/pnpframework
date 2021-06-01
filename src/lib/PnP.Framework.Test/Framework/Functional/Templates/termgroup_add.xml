@@ -4,7 +4,7 @@
 Base template: goal is to verify that all the term properties work as expected. 
 -->
 
-<pnp:ProvisioningTemplate ID="termgroup_add" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2015/12/ProvisioningSchema">  
+<pnp:ProvisioningTemplate ID="termgroup_add" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">  
   <pnp:TermGroups>    
     <!-- tenant/farm term group -->
     <pnp:TermGroup Name="TG_2">

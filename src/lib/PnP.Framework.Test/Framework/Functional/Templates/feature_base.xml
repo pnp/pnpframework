@@ -4,7 +4,7 @@
 Base template: goal is to verify that all feature properties work as expected. please keep this XML up to date if additional properties are added.
 -->
 
-<pnp:ProvisioningTemplate ID="feature_base" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2015/12/ProvisioningSchema">
+<pnp:ProvisioningTemplate ID="feature_base" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <pnp:Features>
     <pnp:SiteFeatures>
       <!--<pnp:Feature ID="b50e3104-6812-424f-a011-cc90e6327318" Description="Document ID Service (DocID) site collection feature" />-->

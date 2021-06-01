@@ -23,7 +23,7 @@ namespace PnP.Framework.Test.Framework.Functional.Validators
         public ListInstanceValidator(Web web) : base()
         {
             // optionally override schema version
-            SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2015_12;
+            SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03;
             XPathQuery = "/pnp:Templates/pnp:ProvisioningTemplate/pnp:Lists/pnp:ListInstance";
 
             // Check if this is not a noscript site as we're not allowed to update some properties

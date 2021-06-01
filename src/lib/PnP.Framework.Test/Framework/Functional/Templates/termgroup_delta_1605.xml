@@ -6,7 +6,7 @@ Base template: goal is to verify the delta behavior + 201605 added functionality
                -Option to deprecate terms + reuse them
 -->
 
-<pnp:ProvisioningTemplate ID="termgroup_delta_1605" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema">
+<pnp:ProvisioningTemplate ID="termgroup_delta_1605" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <pnp:TermGroups>
     <!-- tenant/farm term group -->
     <pnp:TermGroup Name="TG_2">

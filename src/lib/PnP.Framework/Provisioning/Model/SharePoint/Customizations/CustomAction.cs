@@ -131,8 +131,8 @@ namespace PnP.Framework.Provisioning.Model
                 (this.Title != null ? this.Title.GetHashCode() : 0),
                 (this.Url != null ? this.Url.GetHashCode() : 0),
                 this.ClientSideComponentId.GetHashCode(),
-                this.ClientSideComponentProperties.GetHashCode(),
-                this.ClientSideHostProperties.GetHashCode()
+                (this.ClientSideComponentProperties != null ? this.ClientSideComponentProperties.GetHashCode() : 0),
+                (this.ClientSideHostProperties != null ? this.ClientSideHostProperties.GetHashCode() : 0)
             ).GetHashCode());
         }
 

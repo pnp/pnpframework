@@ -4,7 +4,7 @@
 Base template: goal is to verify that all property bag properties work as expected. please keep this XML up to date if additional properties are added.
 -->
 
-<pnp:ProvisioningTemplate ID="propertybag_add" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2015/12/ProvisioningSchema">
+<pnp:ProvisioningTemplate ID="propertybag_add" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <pnp:PropertyBagEntries>
     
     <!--

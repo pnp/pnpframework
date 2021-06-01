@@ -137,7 +137,7 @@ namespace PnP.Framework.Test.Framework.ProvisioningTemplates
                 DisplayName = "prov-1",
                 IsHubSite = false,
                 IsPublic = false,
-                Title = "prov-2",
+                Title = "prov-1",
             };
             teamSite1.Templates.Add("TestTemplate");
 

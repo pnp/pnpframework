@@ -60,8 +60,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     var site = (web.Context as ClientContext)?.Site;
                     if (site != null)
                     {
-                        bool isDirty = false;
-
                         // Apply the following properties if and only if the target site is a classic one
                         if (!(site.IsCommunicationSite() || site.IsModernTeamSite()))
                         {
@@ -69,7 +67,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             site.AllowCreateDeclarativeWorkflow = template.SiteSettings.AllowCreateDeclarativeWorkflow;
                             site.AllowSaveDeclarativeWorkflowAsTemplate = template.SiteSettings.AllowSaveDeclarativeWorkflowAsTemplate;
                             site.AllowSavePublishDeclarativeWorkflow = template.SiteSettings.AllowSavePublishDeclarativeWorkflow;
-                            isDirty = true;
+                            // Call ExecuteQuery right away to ensure it's called with the correct Context as later site.Is*() calls might still trigger ExecuteQuery but on at wrong context
+                            web.Context.ExecuteQueryRetryAsync();
                         }
 
                         // Right now this works in Communication Sites only
@@ -77,26 +76,22 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         if (site.IsCommunicationSite())
                         {
                             site.SocialBarOnSitePagesDisabled = template.SiteSettings.SocialBarOnSitePagesDisabled;
-                            isDirty = true;
+                            // Call ExecuteQuery right away to ensure it's called with the correct Context as later site.Is*() calls might still trigger ExecuteQuery but on at wrong context
+                            web.Context.ExecuteQueryRetryAsync();
                         }
 
                         site.EnsureProperty(s => s.SearchBoxInNavBar);
                         if (site.SearchBoxInNavBar.ToString() != template.SiteSettings.SearchBoxInNavBar.ToString())
                         {
                             site.SearchBoxInNavBar = (SearchBoxInNavBarType)Enum.Parse(typeof(SearchBoxInNavBarType), template.SiteSettings.SearchBoxInNavBar.ToString(), true);
-                            isDirty = true;
+                            // Call ExecuteQuery right away to ensure it's called with the correct Context as later site.Is*() calls might still trigger ExecuteQuery but on at wrong context
+                            web.Context.ExecuteQueryRetryAsync();
                         }
 
                         if (!string.IsNullOrEmpty(template.SiteSettings.SearchCenterUrl) &&
                             site.RootWeb.GetSiteCollectionSearchCenterUrl() != template.SiteSettings.SearchCenterUrl)
                         {
                             site.RootWeb.SetSiteCollectionSearchCenterUrl(template.SiteSettings.SearchCenterUrl);
-                        }
-
-                        // And save on SharePoint, if really needed
-                        if (isDirty)
-                        {
-                            web.Context.ExecuteQueryRetryAsync();
                         }
                     }
                 }

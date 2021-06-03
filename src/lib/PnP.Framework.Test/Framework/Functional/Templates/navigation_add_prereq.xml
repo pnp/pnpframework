@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0"?>
-<pnp:ProvisioningTemplate ID="navigation_add_prereq" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema">
+<pnp:ProvisioningTemplate ID="navigation_add_prereq" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <pnp:Features>
     <pnp:SiteFeatures>
       <pnp:Feature ID="f6924d36-2fa8-4f0b-b16d-06b7250180fa" Description="Publishing site feature" />

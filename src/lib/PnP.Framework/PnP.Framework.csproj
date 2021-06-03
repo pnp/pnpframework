@@ -95,18 +95,10 @@
 		<None Remove="Provisioning\BaseTemplates\SPO\STS3Template.xml" />
 		<None Remove="Provisioning\BaseTemplates\SPO\TEAMCHANNEL0Template.xml" />
 		<None Remove="Provisioning\BaseTemplates\SPO\VISPRUS0Template.xml" />
-		<None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2015-03.xsd" />
-		<None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2015-05.xsd" />
-		<None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2015-08.xsd" />
-		<None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2015-12.xsd" />
-		<None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2016-05.xsd" />
-		<None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2017-05.xsd" />
-		<None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2018-01.xsd" />
-		<None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2018-05.xsd" />
-		<None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2018-07.xsd" />
 		<None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2019-03.xsd" />
 		<None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2019-09.xsd" />
 		<None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2020-02.xsd" />
+		<None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2021-03.xsd" />
 		<None Include="nugeticon.png">
 			<Pack>True</Pack>
 			<PackagePath></PackagePath>
@@ -144,18 +136,10 @@
 		<EmbeddedResource Include="Provisioning\BaseTemplates\SPO\STS3Template.xml" />
 		<EmbeddedResource Include="Provisioning\BaseTemplates\SPO\TEAMCHANNEL0Template.xml" />
 		<EmbeddedResource Include="Provisioning\BaseTemplates\SPO\VISPRUS0Template.xml" />
-		<EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2015-03.xsd" />
-		<EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2015-05.xsd" />
-		<EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2015-08.xsd" />
-		<EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2015-12.xsd" />
-		<EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2016-05.xsd" />
-		<EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2017-05.xsd" />
-		<EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2018-01.xsd" />
-		<EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2018-05.xsd" />
-		<EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2018-07.xsd" />
 		<EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2019-03.xsd" />
 		<EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2019-09.xsd" />
 		<EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2020-02.xsd" />
+		<EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2021-03.xsd" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -255,6 +239,10 @@
 		<None Update="Modernization\Nuget\webpartmapping.xml">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Provisioning\Providers\Xml\Resolvers\V202103\" />
 	</ItemGroup>
 
 </Project>

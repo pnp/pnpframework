@@ -28,7 +28,7 @@ Base template: goal is to verify the delta behavior on content types. Note that 
                For DocumentSet features (DocumentSetTemplate element) there's currently no delta handling implemented!                             
 -->
 
-<pnp:ProvisioningTemplate ID="contenttype_delta_1" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2015/12/ProvisioningSchema">
+<pnp:ProvisioningTemplate ID="contenttype_delta_1" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <!-- Test content types for delta handling -->
   <pnp:ContentTypes>
     <!-- Document content types 0x0101 -->

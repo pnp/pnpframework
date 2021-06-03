@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<pnp:ProvisioningTemplate ID="pages_add" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2015/12/ProvisioningSchema">
+<pnp:ProvisioningTemplate ID="pages_add" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <pnp:Pages>
     <pnp:Page Layout="TwoColumns" Overwrite="true" Url="{site}/SitePages/DemoWikiPage.aspx"></pnp:Page>
     <pnp:Page Layout="OneColumn" Overwrite="true" Url="{site}/SitePages/OneColumnPage.aspx">

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<pnp:ProvisioningTemplate ID="clientsidepages_add_1705" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2017/05/ProvisioningSchema">
+<pnp:ProvisioningTemplate ID="clientsidepages_add_1705" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <pnp:ClientSidePages>
     <!-- Basic page, showing how to add a text control in a single column section with page overwrite -->
     <pnp:ClientSidePage PageName="simple.aspx" Overwrite="true">

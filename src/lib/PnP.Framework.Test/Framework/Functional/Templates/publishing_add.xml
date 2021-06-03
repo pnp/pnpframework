@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<pnp:ProvisioningTemplate ID="publishing_add" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2015/12/ProvisioningSchema">
+<pnp:ProvisioningTemplate ID="publishing_add" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <pnp:Publishing AutoCheckRequirements="MakeCompliant">
     <pnp:DesignPackage DesignPackagePath="PnPDesignPackagev1.4-1.4.wsp"
     MajorVersion="1"

@@ -39,7 +39,7 @@ namespace PnP.Framework.Test.Framework.Functional.Validators
         #region construction
         public ValidatorBase()
         {
-            SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2015_12;
+            SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03;
         }
         #endregion
 

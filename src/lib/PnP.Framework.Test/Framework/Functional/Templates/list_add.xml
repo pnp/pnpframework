@@ -53,7 +53,7 @@ Base template: goal is to verify that all list properties and elements work as e
                Node value is default value to be set
 -->
 
-<pnp:ProvisioningTemplate ID="list_add" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2015/12/ProvisioningSchema">
+<pnp:ProvisioningTemplate ID="list_add" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <pnp:Lists>
     <!-- Document Libraries-->
     <!-- Minimal attributes: Title, TemplateType, Url -->

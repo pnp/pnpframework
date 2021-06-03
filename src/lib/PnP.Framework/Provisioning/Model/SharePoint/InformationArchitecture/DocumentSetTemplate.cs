@@ -13,10 +13,10 @@ namespace PnP.Framework.Provisioning.Model
     {
         #region Private Members
 
-        private List<String> _allowedContentTypes = new List<String>();
+        private ContentTypeReferenceCollection _allowedContentTypes;
         private DefaultDocumentCollection _defaultDocuments;
-        private List<Guid> _sharedFields = new List<Guid>();
-        private List<Guid> _welcomePageFields = new List<Guid>();
+        private FieldReferenceCollection _sharedFields;
+        private FieldReferenceCollection _welcomePageFields;
 
         #endregion
 
@@ -28,6 +28,9 @@ namespace PnP.Framework.Provisioning.Model
         public DocumentSetTemplate()
         {
             _defaultDocuments = new DefaultDocumentCollection(this.ParentTemplate);
+            _allowedContentTypes = new ContentTypeReferenceCollection(this.ParentTemplate);
+            _sharedFields = new FieldReferenceCollection(this.ParentTemplate);
+            _welcomePageFields = new FieldReferenceCollection(this.ParentTemplate);
         }
 
         /// <summary>
@@ -39,6 +42,21 @@ namespace PnP.Framework.Provisioning.Model
         /// <param name="sharedFields">Shared Fields for the DocumentSet</param>
         /// <param name="welcomePageFields">Welcome Page Fields for the DocumentSet</param>
         public DocumentSetTemplate(String welcomePage, IEnumerable<String> allowedContentTypes = null, IEnumerable<DefaultDocument> defaultDocuments = null, IEnumerable<Guid> sharedFields = null, IEnumerable<Guid> welcomePageFields = null) :
+            this(welcomePage, allowedContentTypes?.Select(ac => new ContentTypeReference { ContentTypeId = ac, Remove = false }).ToArray(),
+                defaultDocuments, sharedFields?.Select(sf => new FieldReference { Id = sf, Remove = false}).ToArray(), 
+                welcomePageFields?.Select(sf => new FieldReference { Id = sf, Remove = false }).ToArray())                
+        {
+        }
+
+        /// <summary>
+        /// Constructor for DocumentSetTemplate class
+        /// </summary>
+        /// <param name="welcomePage">Welcome Page of the DocumentSet</param>
+        /// <param name="allowedContentTypes">Content Types allowed for the DocumentSet</param>
+        /// <param name="defaultDocuments">Default documents for the DocumentSet</param>
+        /// <param name="sharedFields">Shared Fields for the DocumentSet</param>
+        /// <param name="welcomePageFields">Welcome Page Fields for the DocumentSet</param>
+        public DocumentSetTemplate(String welcomePage, IEnumerable<ContentTypeReference> allowedContentTypes = null, IEnumerable<DefaultDocument> defaultDocuments = null, IEnumerable<FieldReference> sharedFields = null, IEnumerable<FieldReference> welcomePageFields = null) :
             this()
         {
             if (!String.IsNullOrEmpty(welcomePage))
@@ -67,7 +85,7 @@ namespace PnP.Framework.Provisioning.Model
         /// <summary>
         /// The list of allowed Content Types for the Document Set
         /// </summary>
-        public List<String> AllowedContentTypes
+        public ContentTypeReferenceCollection AllowedContentTypes
         {
             get { return this._allowedContentTypes; }
             private set { this._allowedContentTypes = value; }
@@ -85,7 +103,7 @@ namespace PnP.Framework.Provisioning.Model
         /// <summary>
         /// The list of Shared Fields for the Document Set
         /// </summary>
-        public List<Guid> SharedFields
+        public FieldReferenceCollection SharedFields
         {
             get { return this._sharedFields; }
             private set { this._sharedFields = value; }
@@ -94,7 +112,7 @@ namespace PnP.Framework.Provisioning.Model
         /// <summary>
         /// The list of Welcome Page Fields for the Document Set
         /// </summary>
-        public List<Guid> WelcomePageFields
+        public FieldReferenceCollection WelcomePageFields
         {
             get { return this._welcomePageFields; }
             private set { this._welcomePageFields = value; }
@@ -109,6 +127,11 @@ namespace PnP.Framework.Provisioning.Model
         /// The RemoveExistingContentTypes flag for the Allowed Content Types of the current Document Set, optional attribute.
         /// </summary>
         public Boolean RemoveExistingContentTypes { get; set; }
+
+        /// <summary>
+        /// Declares whether changes to the content type will be udpated on inherited content types, optional attribute.
+        /// </summary>
+        public Boolean UpdateChildren { get; set; }
 
         /// <summary>
         /// Gets a value that specifies the XML Documents settings for the Document Set.
@@ -128,13 +151,14 @@ namespace PnP.Framework.Provisioning.Model
         /// <returns>Returns HashCode</returns>
         public override int GetHashCode()
         {
-            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|",
+            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|",
                 this.AllowedContentTypes.Aggregate(0, (acc, next) => acc += (next != null ? next.GetHashCode() : 0)),
                 this.DefaultDocuments.Aggregate(0, (acc, next) => acc += (next != null ? next.GetHashCode() : 0)),
                 this.SharedFields.Aggregate(0, (acc, next) => acc += next.GetHashCode()),
                 this.WelcomePageFields.Aggregate(0, (acc, next) => acc += next.GetHashCode()),
                 this.RemoveExistingContentTypes.GetHashCode(),
-                this.XmlDocuments?.GetHashCode() ?? 0
+                this.XmlDocuments?.GetHashCode() ?? 0,
+                this.UpdateChildren.GetHashCode()
             ).GetHashCode());
         }
 
@@ -153,7 +177,7 @@ namespace PnP.Framework.Provisioning.Model
         }
 
         /// <summary>
-        /// Compares DocumentSetTemplate object based on AllowedContentTypes, DefaultDocuments, SharedFields, WelcomePageFields, RemoveExistingContentTypes, and XmlDocuments properties.
+        /// Compares DocumentSetTemplate object based on AllowedContentTypes, DefaultDocuments, SharedFields, WelcomePageFields, RemoveExistingContentTypes, XmlDocuments, and UpdateChildren properties.
         /// </summary>
         /// <param name="other">DocumentSetTemplate object</param>
         /// <returns>true if the DocumentSetTemplate object is equal to the current object; otherwise, false.</returns>
@@ -169,7 +193,8 @@ namespace PnP.Framework.Provisioning.Model
                     this.SharedFields.DeepEquals(other.SharedFields) &&
                     this.WelcomePageFields.DeepEquals(other.WelcomePageFields) &&
                     this.RemoveExistingContentTypes == other.RemoveExistingContentTypes &&
-                    this.XmlDocuments == other.XmlDocuments
+                    this.XmlDocuments == other.XmlDocuments &&
+                    this.UpdateChildren == other.UpdateChildren
                 );
         }
 

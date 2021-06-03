@@ -81,57 +81,9 @@ namespace PnP.Framework.Test.Framework.Connectors
                     "Templates");
 
             var openXMLConnector = new OpenXMLConnector(packageFileNameBackwardsCompatibility, fileSystemConnector);
-            var templateFile = openXMLConnector.GetFileStream("ProvisioningSchema-2015-12-FullSample-02.xml");
+            var templateFile = openXMLConnector.GetFileStream("ProvisioningSchema-2019-03-FullSample-01.xml");
 
-            XMLPnPSchemaV201512Formatter formatter = new XMLPnPSchemaV201512Formatter();
-            var checkTemplate = formatter.IsValid(templateFile);
-
-            Assert.IsTrue(checkTemplate);
-
-            var image1 = openXMLConnector.GetFileStream("garagelogo.png", "Images");
-            Assert.IsNotNull(image1);
-
-            var image2 = openXMLConnector.GetFileStream("garagebg.jpg", "Images");
-            Assert.IsNotNull(image2);
-        }
-
-
-        [TestMethod]
-        public void OpenXMLLoadTemplateOriginal2()
-        {
-            var fileSystemConnector = new FileSystemConnector(
-                    String.Format(@"{0}\..\..\..\Resources",
-                    AppDomain.CurrentDomain.BaseDirectory),
-                    "Templates");
-
-            var openXMLConnector = new OpenXMLConnector(packageFileNameBackwardsCompatibility2, fileSystemConnector);
-            var templateFile = openXMLConnector.GetFileStream("ProvisioningSchema-2015-12-FullSample-02.xml");
-
-            XMLPnPSchemaV201512Formatter formatter = new XMLPnPSchemaV201512Formatter();
-            var checkTemplate = formatter.IsValid(templateFile);
-
-            Assert.IsTrue(checkTemplate);
-
-            var image1 = openXMLConnector.GetFileStream("garagelogo.png", "Images");
-            Assert.IsNotNull(image1);
-
-            var image2 = openXMLConnector.GetFileStream("garagebg.jpg.jpg", "Images");
-            Assert.IsNotNull(image2);
-        }
-
-
-        [TestMethod]
-        public void OpenXMLLoadTemplate()
-        {
-            var fileSystemConnector = new FileSystemConnector(
-                    String.Format(@"{0}\..\..\..\Resources",
-                    AppDomain.CurrentDomain.BaseDirectory),
-                    "Templates");
-
-            var openXMLConnector = new OpenXMLConnector(packageFileName, fileSystemConnector);
-            var templateFile = openXMLConnector.GetFileStream("ProvisioningSchema-2015-12-FullSample-02.xml");
-
-            XMLPnPSchemaV201512Formatter formatter = new XMLPnPSchemaV201512Formatter();
+            XMLPnPSchemaV201903Serializer formatter = new XMLPnPSchemaV201903Serializer();
             var checkTemplate = formatter.IsValid(templateFile);
 
             Assert.IsTrue(checkTemplate);

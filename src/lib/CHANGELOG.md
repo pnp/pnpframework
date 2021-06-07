@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Fix Access Denied error when processing <pnp:SiteSettings> object #360 [jackpoz - Giacomo Pozzoni]
 - Fix: Restore List.EnableFolderCreation value after creating folders #358 [jackpoz - Giacomo Pozzoni]
 - Fix: Only specify LCID when needed during team site creation #354 [gautamdsheth - Gautam Sheth]
 - Fix for handling folder default values that are empty in provisioning template #346 [patrikhellgren - Patrik Hellgren]

@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Upgrade Microsoft.Identity.Client.Extensions.Msal, Microsoft.Graph, Microsoft.Identity.Client and System.IdentityModel.Tokens.Jwt references #367 [gautamdsheth - Gautam Sheth]
 - Fix Access Denied error when processing <pnp:SiteSettings> object #360 [jackpoz - Giacomo Pozzoni]
 - Fix: Restore List.EnableFolderCreation value after creating folders #358 [jackpoz - Giacomo Pozzoni]
 - Fix: Only specify LCID when needed during team site creation #354 [gautamdsheth - Gautam Sheth]

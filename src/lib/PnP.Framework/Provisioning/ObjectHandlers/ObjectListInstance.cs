@@ -310,6 +310,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 || list.SiteList.BaseType == BaseType.GenericList)
                 && list.TemplateList.Folders != null && list.TemplateList.Folders.Count > 0)
             {
+                // Store the current value of EnableFolderCreation as it has to be set to true to be able to create folders
+                bool enableFolderCreationPreviousValue = list.SiteList.EnableFolderCreation;
                 list.SiteList.EnableFolderCreation = true;
                 list.SiteList.Update();
                 web.Context.ExecuteQueryRetry();
@@ -318,6 +320,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 foreach (var folder in list.TemplateList.Folders)
                 {
                     CreateFolderInList(list, rootFolder, folder, parser, scope);
+                }
+
+                // Restore the value of EnableFolderCreation to what it was before if the value is different
+                if (list.SiteList.EnableFolderCreation != enableFolderCreationPreviousValue)
+                {
+                    list.SiteList.EnableFolderCreation = enableFolderCreationPreviousValue;
+                    list.SiteList.Update();
+                    web.Context.ExecuteQueryRetry();
                 }
             }
         }

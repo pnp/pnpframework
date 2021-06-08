@@ -5,9 +5,9 @@
 		<LangVersion>8.0</LangVersion>
 		<RootNamespace>PnP.Framework</RootNamespace>
 		<AssemblyName>PnP.Framework</AssemblyName>
-		<Version>1.4.0</Version>
+		<Version>1.5.0</Version>
 		<Authors>PnP</Authors>
-		<Copyright>PnP 2020</Copyright>
+		<Copyright>PnP 2021</Copyright>
 		<Description>PnP Framework contains the PnP Provisioning engine and a ton of extension methods that will make you more productive while developing for Microsoft 365.</Description>
 		<PackageIcon>nugeticon.png</PackageIcon>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -205,7 +205,7 @@
 
 	<ItemGroup>
 		<!-- Required -->
-		<PackageReference Include="Microsoft.Identity.Client.Extensions.Msal" Version="2.16.2" />
+		<PackageReference Include="Microsoft.Identity.Client.Extensions.Msal" Version="2.18.4" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-*" PrivateAssets="All" />
 		<PackageReference Include="AngleSharp" Version="0.14.0" />
 		<PackageReference Include="AngleSharp.Css" Version="0.14.2" />
@@ -215,15 +215,15 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.Data.OData" Version="5.8.4" />
-		<PackageReference Include="Microsoft.Graph" Version="3.19.0" />
-		<PackageReference Include="Microsoft.Graph.Core" Version="1.22.0" />
-		<PackageReference Include="Microsoft.Identity.Client" Version="4.21.0" />
+		<PackageReference Include="Microsoft.Graph" Version="3.33.0" />
+		<PackageReference Include="Microsoft.Graph.Core" Version="1.25.1" />
+		<PackageReference Include="Microsoft.Identity.Client" Version="4.30.1" />
 		<PackageReference Include="Microsoft.SharePointOnline.CSOM" Version="16.1.*" />
 		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-		<PackageReference Include="PnP.Core" Version="1.1.*-*" Condition="'$(PnPCoreSdkPath)' == ''" />
+		<PackageReference Include="PnP.Core" Version="1.2.*-*" Condition="'$(PnPCoreSdkPath)' == ''" />
 		<PackageReference Include="Portable.Xaml" Version="0.26.0" />
 		<PackageReference Include="ResXResourceReader.NetStandard" Version="1.0.1" />
-		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.11.1" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(PnPCoreSdkPath)' != ''">

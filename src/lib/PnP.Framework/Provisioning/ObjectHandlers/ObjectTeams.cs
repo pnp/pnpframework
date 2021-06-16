@@ -84,8 +84,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 {
                     if (!SetGroupSecurity(scope, parser, team, teamId, accessToken)) return null;
                 }
-                if (!SetTeamChannels(scope, parser, team, teamId, accessToken)) return null;
                 if (!SetTeamApps(scope, parser, team, teamId, accessToken)) return null;
+                if (!SetTeamChannels(scope, parser, team, teamId, accessToken)) return null;
 
                 // So far the Team's photo cannot be set if we don't have an already existing mailbox
                 if (!SetTeamPhoto(scope, parser, connector, team, teamId, accessToken)) return null;

@@ -255,6 +255,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             // Should child content types be updated.
             bool UpdateChildren()
             {
+                if (!templateContentType.UpdateChildren)
+                {
+                    return false;
+                }
                 if (fieldsNotPresentInTarget.Any())
                 {
                     return !templateContentType.FieldRefs.All(f => f.UpdateChildren == false);

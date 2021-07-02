@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Added configuration settings for SharePoint tab entity inside Teams #385 [roberAlb]
 - Added new provisioning token for using sequence site tokens in global template context #384 [patrikhellgren - Patrik Hellgren]
 
 ### Changed

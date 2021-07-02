@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Added new provisioning token for using sequence site tokens in global template context #384 [patrikhellgren - Patrik Hellgren]
+
 ### Changed
 
 - Fix so that teams apps are added before channels #382 [patrikhellgren - Patrik Hellgren]

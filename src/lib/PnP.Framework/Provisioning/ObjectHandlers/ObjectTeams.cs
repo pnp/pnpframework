@@ -475,7 +475,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     CoreResources.Provisioning_ObjectHandlers_Teams_Team_ProvisioningError,
                     canPatch: true);
 
-                    wait = false;
+                    if (!string.IsNullOrEmpty(teamId))
+                    {
+                        wait = false;
+                    }
                 }
                 catch (Exception)
                 {

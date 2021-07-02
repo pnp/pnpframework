@@ -674,6 +674,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                     RESTUtilities.ExecuteGetAsync(web, "/_api/web/hubsitedata(true)").GetAwaiter().GetResult();
                                 }
 
+                                foreach (var token in siteTokenParser.Tokens)
+                                {
+                                    foreach (var t in token.GetTokens())
+                                    {
+                                        tokenParser.AddToken(new SequenceSiteTokenToken(null, sitecollection.ProvisioningId, t, token.GetReplaceValue()));
+                                    }
+                                }
                             }
 
                         }

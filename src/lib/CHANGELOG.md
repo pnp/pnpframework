@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Added JsonConvertor decorator to UpdateBehavior #380 [thechriskent - Chris Kent]
 - Fix pnpcoresdk instance GetClientContext init ContextSettings #370 [czullu - Christian Zuellig]
 
 ## [1.5.0]

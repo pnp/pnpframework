@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Fix for content type UpdateChildren not being used #387 [patrikhellgren - Patrik Hellgren]
 - Fix so that teams apps are added before channels #382 [patrikhellgren - Patrik Hellgren]
 - Added JsonConvertor decorator to UpdateBehavior #380 [thechriskent - Chris Kent]
 - Fix pnpcoresdk instance GetClientContext init ContextSettings #370 [czullu - Christian Zuellig]

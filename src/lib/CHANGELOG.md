@@ -6,6 +6,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
+## [Unreleased]
+
+### Added
+
+### Changed
+
+- Fix pnpcoresdk instance GetClientContext init ContextSettings #370 [czullu - Christian Zuellig]
+
 ## [1.5.0]
 
 ### Added

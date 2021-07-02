@@ -1176,7 +1176,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         }
                     case "2a527703-1f6f-4559-a332-d8a7d288cd88": // SharePoint page and lists
                         {
-                            tab.Configuration = null;
+                            tab.Configuration.EntityId = parser.ParseString(tab.Configuration.EntityId);
+                            tab.Configuration.ContentUrl = parser.ParseString(tab.Configuration.ContentUrl);
+                            tab.Configuration.RemoveUrl = parser.ParseString(tab.Configuration.RemoveUrl);
+                            tab.Configuration.WebsiteUrl = parser.ParseString(tab.Configuration.WebsiteUrl);
                             break;
                         }
                     default:

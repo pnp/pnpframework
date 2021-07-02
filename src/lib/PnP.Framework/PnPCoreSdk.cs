@@ -128,7 +128,11 @@ namespace PnP.Framework
             AuthenticationManager authManager = AuthenticationManager.CreateWithPnPCoreSdk(pnpContext.AuthenticationProvider);
 #pragma warning restore CA2000 // Dispose objects before losing scope
 
-            return authManager.GetContext(pnpContext.Uri.ToString());
+            var ctx = authManager.GetContext(pnpContext.Uri.ToString());
+            var ctxSettings = ctx.GetContextSettings();
+            ctxSettings.AuthenticationManager = authManager; //otherwise GetAccessToken would not work for example
+            ctx.AddContextSettings(ctxSettings);
+            return ctx;
         }
 
     }

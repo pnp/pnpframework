@@ -643,7 +643,7 @@ namespace PnP.Framework
 
             var scopes = new[] { $"{uri.Scheme}://{uri.Authority}/.default" };
 
-            return GetAccessTokenAsync(scopes, cancellationToken, prompt).GetAwaiter().GetResult();
+            return GetAccessTokenAsync(scopes, cancellationToken, prompt, uri).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -659,7 +659,7 @@ namespace PnP.Framework
 
             var scopes = new[] { $"{uri.Scheme}://{uri.Authority}/.default" };
 
-            return await GetAccessTokenAsync(scopes, cancellationToken, prompt).ConfigureAwait(false);
+            return await GetAccessTokenAsync(scopes, cancellationToken, prompt, uri).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -680,8 +680,9 @@ namespace PnP.Framework
         /// <param name="scopes">The scopes to retrieve the access token for</param>
         /// <param name="cancellationToken">Optional cancellation token to cancel the request</param>
         /// <param name="prompt">The prompt style to use. Notice that this only works with the Interactive Login flow, for all other flows this parameter is ignored.</param>
+        /// <param name="uri">for ClientContextType.PnPCoreSdk case as by interface definition needed for GetAccessTokenAsync</param>
         /// <returns></returns>
-        public async Task<string> GetAccessTokenAsync(string[] scopes, CancellationToken cancellationToken, Prompt prompt = default)
+        public async Task<string> GetAccessTokenAsync(string[] scopes, CancellationToken cancellationToken, Prompt prompt = default, Uri uri=null)
         {
             AuthenticationResult authResult = null;
 
@@ -777,6 +778,10 @@ namespace PnP.Framework
                 case ClientContextType.AccessToken:
                     {
                         return new NetworkCredential("", accessToken).Password;
+                    }
+                case ClientContextType.PnPCoreSdk:
+                    {
+                        return await this.authenticationProvider.GetAccessTokenAsync(uri, scopes);
                     }
             }
             if (authResult?.AccessToken != null)

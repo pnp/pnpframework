@@ -117,14 +117,22 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                     switch (webhook.BodyFormat)
                                     {
                                         case ProvisioningTemplateWebhookBodyFormat.Json:
-                                            await httpClient.PostAsync(url, new StringContent(JsonConvert.SerializeObject(requestParameters), Encoding.UTF8, "application/json"));
+                                            using (var stringContent = new StringContent(JsonConvert.SerializeObject(requestParameters), Encoding.UTF8, "application/json"))
+                                            {
+                                                await httpClient.PostAsync(url, stringContent);
+                                            }
                                             break;
                                         case ProvisioningTemplateWebhookBodyFormat.Xml:
-                                            await httpClient.PostAsync(url, new StringContent(SerializeXml(requestParameters), Encoding.UTF8, "application/xml"));
+                                            using (var stringContent = new StringContent(SerializeXml(requestParameters), Encoding.UTF8, "application/xml"))
+                                            {
+                                                await httpClient.PostAsync(url, stringContent);
+                                            }
                                             break;
                                         case ProvisioningTemplateWebhookBodyFormat.FormUrlEncoded:
-                                            var content = new FormUrlEncodedContent(requestParameters);
-                                            await httpClient.PostAsync(url, content);
+                                            using (var content = new FormUrlEncodedContent(requestParameters))
+                                            {
+                                                await httpClient.PostAsync(url, content);
+                                            }
                                             break;
                                     }
                                 });
@@ -134,14 +142,22 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                 switch (webhook.BodyFormat)
                                 {
                                     case ProvisioningTemplateWebhookBodyFormat.Json:
-                                        httpClient.PostAsync(url, new StringContent(JsonConvert.SerializeObject(requestParameters), Encoding.UTF8, "application/json")).GetAwaiter().GetResult();
+                                        using (var stringContent = new StringContent(JsonConvert.SerializeObject(requestParameters), Encoding.UTF8, "application/json"))
+                                        {
+                                            httpClient.PostAsync(url, stringContent).GetAwaiter().GetResult();
+                                        }
                                         break;
                                     case ProvisioningTemplateWebhookBodyFormat.Xml:
-                                        httpClient.PostAsync(url, new StringContent(SerializeXml(requestParameters), Encoding.UTF8, "application/xml"));
+                                        using (var stringContent = new StringContent(SerializeXml(requestParameters), Encoding.UTF8, "application/xml"))
+                                        {
+                                            httpClient.PostAsync(url, stringContent);
+                                        }
                                         break;
                                     case ProvisioningTemplateWebhookBodyFormat.FormUrlEncoded:
-                                        var content = new FormUrlEncodedContent(requestParameters);
-                                        httpClient.PostAsync(url, content).GetAwaiter().GetResult();
+                                        using (var content = new FormUrlEncodedContent(requestParameters))
+                                        {
+                                            httpClient.PostAsync(url, content).GetAwaiter().GetResult();
+                                        }
                                         break;
                                 }
                             }
@@ -159,10 +175,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             try
             {
-                var stringwriter = new System.IO.StringWriter();
-                var serializer = new XmlSerializer(typeof(T));
-                serializer.Serialize(stringwriter, dataToSerialize);
-                return stringwriter.ToString();
+                using (var stringwriter = new System.IO.StringWriter())
+                {
+                    var serializer = new XmlSerializer(typeof(T));
+                    serializer.Serialize(stringwriter, dataToSerialize);
+                    return stringwriter.ToString();
+                }
             }
             catch
             {

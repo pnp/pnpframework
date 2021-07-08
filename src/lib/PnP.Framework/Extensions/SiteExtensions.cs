@@ -1,5 +1,8 @@
-﻿using PnP.Framework.Graph;
+﻿using PnP.Framework;
+using PnP.Framework.Graph;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.SharePoint.Client
 {
@@ -12,8 +15,9 @@ namespace Microsoft.SharePoint.Client
         /// <param name="site">The target site</param>
         /// <param name="classificationValue">The new value for the Site Classification</param>
         /// <param name="accessToken">The OAuth Access Token to consume Microsoft Graph, required only for GROUP#0 site collections</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns>The classification for the site</returns>
-        public static void SetSiteClassification(this Site site, string classificationValue, string accessToken = null)
+        public static void SetSiteClassification(this Site site, string classificationValue, string accessToken = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             // Determine the modern site template
             var baseTemplateValue = site.RootWeb.GetBaseTemplateId();
@@ -32,7 +36,7 @@ namespace Microsoft.SharePoint.Client
 
                     // Update the Classification of the Office 365 Group
                     // PATCH https://graph.microsoft.com/beta/groups/{groupId}
-                    string updateGroupUrl = $"{GraphHttpClient.MicrosoftGraphBetaBaseUri}groups/{site.GroupId}";
+                    string updateGroupUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment,true)}groups/{site.GroupId}";
                     var updateGroupResult = GraphHttpClient.MakePatchRequestForString(
                         updateGroupUrl,
                         content: new
@@ -111,8 +115,9 @@ namespace Microsoft.SharePoint.Client
         /// </summary>
         /// <param name="site">Site collection</param>
         /// <param name="accessToken">Graph access token (groups.read.all) </param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns>True if there's a team</returns>
-        public static bool HasTeamsTeam(this Site site, string accessToken)
+        public static bool HasTeamsTeam(this Site site, string accessToken, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             bool result = false;
 
@@ -125,7 +130,7 @@ namespace Microsoft.SharePoint.Client
             }
 
             // fall back to Graph untill we've a SharePoint approach that works
-            result = UnifiedGroupsUtility.HasTeamsTeam(site.GroupId.ToString(), accessToken);
+            result = UnifiedGroupsUtility.HasTeamsTeam(site.GroupId.ToString(), accessToken, azureEnvironment);
 
             // Problem is that this folder property is not always set
             /*
@@ -162,5 +167,123 @@ namespace Microsoft.SharePoint.Client
 
             return result;
         }
+        #region Events
+
+
+        /// <summary>
+        /// Registers a remote event receiver
+        /// </summary>
+        /// <param name="site">The site collection to process</param>
+        /// <param name="name">The name of the event receiver (needs to be unique among the event receivers registered on this site)</param>
+        /// <param name="url">The URL of the remote WCF service that handles the event</param>
+        /// <param name="eventReceiverType"></param>
+        /// <param name="synchronization"></param>
+        /// <param name="force">If True any event already registered with the same name will be removed first.</param>
+        /// <returns>Returns an EventReceiverDefinition if succeeded. Returns null if failed.</returns>
+        public static EventReceiverDefinition AddRemoteEventReceiver(this Site site, string name, string url, EventReceiverType eventReceiverType, EventReceiverSynchronization synchronization, bool force)
+        {
+            return site.AddRemoteEventReceiver(name, url, eventReceiverType, synchronization, 1000, force);
+        }
+
+        /// <summary>
+        /// Registers a remote event receiver
+        /// </summary>
+        /// <param name="site">The site colletion to process</param>
+        /// <param name="name">The name of the event receiver (needs to be unique among the event receivers registered on this site)</param>
+        /// <param name="url">The URL of the remote WCF service that handles the event</param>
+        /// <param name="eventReceiverType">The type of event for the event receiver.</param>
+        /// <param name="synchronization">An enumeration that specifies the synchronization state for the event receiver.</param>
+        /// <param name="sequenceNumber">An integer that represents the relative sequence of the event.</param>
+        /// <param name="force">If True any event already registered with the same name will be removed first.</param>
+        /// <returns>Returns an EventReceiverDefinition if succeeded. Returns null if failed.</returns>
+        public static EventReceiverDefinition AddRemoteEventReceiver(this Site site, string name, string url, EventReceiverType eventReceiverType, EventReceiverSynchronization synchronization, int sequenceNumber, bool force)
+        {
+            var query = from receiver
+                   in site.EventReceivers
+                        where receiver.ReceiverName == name
+                        select receiver;
+            var receivers = site.Context.LoadQuery(query);
+            site.Context.ExecuteQueryRetry();
+
+            var receiverExists = receivers.Any();
+            if (receiverExists && force)
+            {
+                var receiver = receivers.FirstOrDefault();
+                receiver.DeleteObject();
+                site.Context.ExecuteQueryRetry();
+                receiverExists = false;
+            }
+            EventReceiverDefinition def = null;
+
+            if (!receiverExists)
+            {
+                EventReceiverDefinitionCreationInformation receiver = new EventReceiverDefinitionCreationInformation
+                {
+                    EventType = eventReceiverType,
+                    ReceiverUrl = url,
+                    ReceiverName = name,
+                    SequenceNumber = sequenceNumber,
+                    Synchronization = synchronization
+                };
+                def = site.EventReceivers.Add(receiver);
+                site.Context.Load(def);
+                site.Context.ExecuteQueryRetry();
+            }
+            return def;
+        }
+
+        /// <summary>
+        /// Returns an event receiver definition
+        /// </summary>
+        /// <param name="site">site collection to process</param>
+        /// <param name="id">The id of event receiver</param>
+        /// <returns>Returns an EventReceiverDefinition if succeeded. Returns null if failed.</returns>
+        public static EventReceiverDefinition GetEventReceiverById(this Site site, Guid id)
+        {
+            IEnumerable<EventReceiverDefinition> receivers = null;
+            var query = from receiver
+                        in site.EventReceivers
+                        where receiver.ReceiverId == id
+                        select receiver;
+
+            receivers = site.Context.LoadQuery(query);
+            site.Context.ExecuteQueryRetry();
+            if (receivers.Any())
+            {
+                return receivers.FirstOrDefault();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Returns an event receiver definition
+        /// </summary>
+        /// <param name="site">site collection to process</param>
+        /// <param name="name">The name of the receiver</param>
+        /// <returns>Returns an EventReceiverDefinition if succeeded. Returns null if failed.</returns>
+        public static EventReceiverDefinition GetEventReceiverByName(this Site site, string name)
+        {
+            IEnumerable<EventReceiverDefinition> receivers = null;
+            var query = from receiver
+                        in site.EventReceivers
+                        where receiver.ReceiverName == name
+                        select receiver;
+
+            receivers = site.Context.LoadQuery(query);
+            site.Context.ExecuteQueryRetry();
+            if (receivers.Any())
+            {
+                return receivers.FirstOrDefault();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        #endregion
     }
 }

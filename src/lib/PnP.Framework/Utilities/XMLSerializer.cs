@@ -131,7 +131,7 @@ namespace PnP.Framework.Utilities
         /// <returns>An object instance of T</returns>
         public static T Deserialize<T>(string xmlString) where T : new()
         {
-            if (!String.IsNullOrEmpty(xmlString))
+            if (!string.IsNullOrEmpty(xmlString))
             {
                 using (StringReader _sr = new StringReader(xmlString))
                 {

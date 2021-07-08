@@ -333,20 +333,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                             PreviewImageUrl = parsedPreviewImageUrl,
                             PreviewImageAltText = parsedPreviewImageAltText,
                             IsDefault = siteDesign.IsDefault,
+                            WebTemplate = ((int)siteDesign.WebTemplate).ToString()
                         };
-                        switch ((int)siteDesign.WebTemplate)
-                        {
-                            case 0:
-                                {
-                                    siteDesignCreationInfo.WebTemplate = "64";
-                                    break;
-                                }
-                            case 1:
-                                {
-                                    siteDesignCreationInfo.WebTemplate = "68";
-                                    break;
-                                }
-                        }
+
                         if (siteDesign.SiteScripts != null && siteDesign.SiteScripts.Any())
                         {
                             List<Guid> ids = new List<Guid>();
@@ -384,19 +373,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                             existingSiteDesign.PreviewImageUrl = parsedPreviewImageUrl;
                             existingSiteDesign.PreviewImageAltText = parsedPreviewImageAltText;
                             existingSiteDesign.IsDefault = siteDesign.IsDefault;
-                            switch ((int)siteDesign.WebTemplate)
-                            {
-                                case 0:
-                                    {
-                                        existingSiteDesign.WebTemplate = "64";
-                                        break;
-                                    }
-                                case 1:
-                                    {
-                                        existingSiteDesign.WebTemplate = "68";
-                                        break;
-                                    }
-                            }
+                            existingSiteDesign.WebTemplate = ((int)siteDesign.WebTemplate).ToString();
 
                             tenant.UpdateSiteDesign(existingSiteDesign);
                             tenant.Context.ExecuteQueryRetry();
@@ -789,12 +766,20 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                 // Tenant classification doesn't exist, just swallow the exception.
                             }
 
+                            var azureEnvironment = AzureEnvironment.Production;
+                            if (PnPProvisioningContext.Current != null)
+                            {
+                                azureEnvironment = PnPProvisioningContext.Current.AzureEnvironment;
+                            }
+
                             if (siteClassificationSettingsExists)
                             {
                                 // Tenant classification exists, update the necessary values for Group Settings.
                                 try
                                 {
-                                    string directorySettingTemplatesUrl = $"{GraphHttpClient.MicrosoftGraphV1BaseUri}groupSettings";
+                                   
+
+                                    string directorySettingTemplatesUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groupSettings";
                                     var directorySettingTemplatesJson = GraphHttpClient.MakeGetRequestForString(directorySettingTemplatesUrl, accessToken);
                                     var directorySettingTemplates = JsonConvert.DeserializeObject<DirectorySettingTemplates>(directorySettingTemplatesJson);
 
@@ -813,7 +798,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                             }
                                         }
 
-                                        string updateDirectorySettingUrl = $"{GraphHttpClient.MicrosoftGraphV1BaseUri}groupSettings/{unifiedGroupSetting.Id}";
+                                        string updateDirectorySettingUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groupSettings/{unifiedGroupSetting.Id}";
                                         var updateDirectorySettingResult = GraphHttpClient.MakePatchRequestForString(
                                             updateDirectorySettingUrl,
                                             content: new
@@ -841,7 +826,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
 
                                 try
                                 {
-                                    string directorySettingTemplatesUrl = $"{GraphHttpClient.MicrosoftGraphV1BaseUri}groupSettingTemplates";
+                                    string directorySettingTemplatesUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groupSettingTemplates";
                                     var directorySettingTemplatesJson = GraphHttpClient.MakeGetRequestForString(directorySettingTemplatesUrl, accessToken);
                                     var directorySettingTemplates = JsonConvert.DeserializeObject<DirectorySettingTemplates>(directorySettingTemplatesJson);
 
@@ -866,7 +851,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                             }
                                         }
 
-                                        string updateDirectorySettingUrl = $"{GraphHttpClient.MicrosoftGraphV1BaseUri}groupSettings";
+                                        string updateDirectorySettingUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groupSettings";
                                         var updateDirectorySettingResult = GraphHttpClient.MakePostRequestForString(
                                             updateDirectorySettingUrl,
                                             content: new

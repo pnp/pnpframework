@@ -64,12 +64,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     foreach (var ct in template.ContentTypes.OrderBy(ct => ct.Id)) // ordering to handle references to parent content types that can be in the same template
                     {
                         currentCtIndex++;
+                        var name = parser.ParseString(ct.Name);
 
-                        WriteSubProgress("Content Type", ct.Name, currentCtIndex, template.ContentTypes.Count);
+                        WriteSubProgress("Content Type", name, currentCtIndex, template.ContentTypes.Count);
                         var existingCT = existingCTs.FirstOrDefault(c => c.StringId.Equals(ct.Id, StringComparison.OrdinalIgnoreCase));
                         if (existingCT == null)
                         {
-                            scope.LogDebug(CoreResources.Provisioning_ObjectHandlers_ContentTypes_Creating_new_Content_Type___0_____1_, ct.Id, ct.Name);
+                            scope.LogDebug(CoreResources.Provisioning_ObjectHandlers_ContentTypes_Creating_new_Content_Type___0_____1_, ct.Id, name);
                             var newCT = CreateContentType(web, template, ct, parser, template.Connector, scope, existingCTs, existingFields, isNoScriptSite);
                             if (newCT != null)
                             {
@@ -81,7 +82,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         {
                             if (ct.Overwrite && this._step == FieldAndListProvisioningStepHelper.Step.ListAndStandardFields)
                             {
-                                scope.LogDebug(CoreResources.Provisioning_ObjectHandlers_ContentTypes_Recreating_existing_Content_Type___0_____1_, ct.Id, ct.Name);
+                                scope.LogDebug(CoreResources.Provisioning_ObjectHandlers_ContentTypes_Recreating_existing_Content_Type___0_____1_, ct.Id, name);
 
                                 existingCT.DeleteObject();
                                 web.Context.ExecuteQueryRetry();
@@ -97,12 +98,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                 // We can't update a sealed or read only content type unless we change the value to false
                                 if ((!existingCT.Sealed || !ct.Sealed) && (!existingCT.ReadOnly || !ct.ReadOnly))
                                 {
-                                    scope.LogDebug(CoreResources.Provisioning_ObjectHandlers_ContentTypes_Updating_existing_Content_Type___0_____1_, ct.Id, ct.Name);
+                                    scope.LogDebug(CoreResources.Provisioning_ObjectHandlers_ContentTypes_Updating_existing_Content_Type___0_____1_, ct.Id, name);
                                     UpdateContentType(web, template, existingCT, ct, parser, template.Connector, scope, existingCTs, existingFields, isNoScriptSite);
                                 }
                                 else
                                 {
-                                    scope.LogWarning(CoreResources.Provisioning_ObjectHandlers_ContentTypes_Updating_existing_Content_Type_SealedOrReadOnly, ct.Id, ct.Name);
+                                    scope.LogWarning(CoreResources.Provisioning_ObjectHandlers_ContentTypes_Updating_existing_Content_Type_SealedOrReadOnly, ct.Id, name);
                                 }
                             }
                         }
@@ -110,7 +111,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         // Set ReadOnly as the last thing because a ReadOnly content type cannot be updated
                         if (this._step == FieldAndListProvisioningStepHelper.Step.LookupFields && existingCT.ReadOnly == false && ct.ReadOnly == true)
                         {
-                            scope.LogPropertyUpdate("ReadOnly");
+                            scope.LogPropertyUpdate(nameof(existingCT.ReadOnly));
                             existingCT.ReadOnly = ct.ReadOnly;
 
                             existingCT.Update(false);
@@ -142,7 +143,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             if (existingContentType.Hidden != templateContentType.Hidden)
             {
-                scope.LogPropertyUpdate("Hidden");
+                scope.LogPropertyUpdate(nameof(existingContentType.Hidden));
                 existingContentType.Hidden = templateContentType.Hidden;
                 isDirty = true;
             }
@@ -150,32 +151,32 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             // If change is ReadOnly = True, it will be set later
             if (existingContentType.ReadOnly == true && templateContentType.ReadOnly == false)
             {
-                scope.LogPropertyUpdate("ReadOnly");
+                scope.LogPropertyUpdate(nameof(existingContentType.ReadOnly));
                 existingContentType.ReadOnly = templateContentType.ReadOnly;
                 isDirty = true;
             }
             if (existingContentType.Sealed != templateContentType.Sealed)
             {
-                scope.LogPropertyUpdate("Sealed");
+                scope.LogPropertyUpdate(nameof(existingContentType.Sealed));
                 existingContentType.Sealed = templateContentType.Sealed;
                 isDirty = true;
             }
             if (templateContentType.Description != null && existingContentType.Description != parser.ParseString(templateContentType.Description))
             {
-                scope.LogPropertyUpdate("Description");
+                scope.LogPropertyUpdate(nameof(existingContentType.Description));
                 existingContentType.Description = parser.ParseString(templateContentType.Description);
                 isDirty = true;
             }
             if (templateContentType.DocumentTemplate != null && existingContentType.DocumentTemplate != parser.ParseString(templateContentType.DocumentTemplate))
             {
-                scope.LogPropertyUpdate("DocumentTemplate");
+                scope.LogPropertyUpdate(nameof(existingContentType.DocumentTemplate));
                 existingContentType.DocumentTemplate = parser.ParseString(templateContentType.DocumentTemplate);
                 isDirty = true;
             }
             if (existingContentType.Name != parser.ParseString(templateContentType.Name))
             {
                 var oldName = existingContentType.Name;
-                scope.LogPropertyUpdate("Name");
+                scope.LogPropertyUpdate(nameof(existingContentType.Name));
                 existingContentType.Name = parser.ParseString(templateContentType.Name);
                 isDirty = true;
                 // CT is being renamed, add an extra token to the tokenparser
@@ -184,7 +185,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
             if (templateContentType.Group != null && existingContentType.Group != parser.ParseString(templateContentType.Group))
             {
-                scope.LogPropertyUpdate("Group");
+                scope.LogPropertyUpdate(nameof(existingContentType.Group));
                 existingContentType.Group = parser.ParseString(templateContentType.Group);
                 isDirty = true;
             }
@@ -193,19 +194,19 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             {
                 if (templateContentType.DisplayFormUrl != null && existingContentType.DisplayFormUrl != parser.ParseString(templateContentType.DisplayFormUrl))
                 {
-                    scope.LogPropertyUpdate("DisplayFormUrl");
+                    scope.LogPropertyUpdate(nameof(existingContentType.DisplayFormUrl));
                     existingContentType.DisplayFormUrl = parser.ParseString(templateContentType.DisplayFormUrl);
                     isDirty = true;
                 }
                 if (templateContentType.EditFormUrl != null && existingContentType.EditFormUrl != parser.ParseString(templateContentType.EditFormUrl))
                 {
-                    scope.LogPropertyUpdate("EditFormUrl");
+                    scope.LogPropertyUpdate(nameof(existingContentType.EditFormUrl));
                     existingContentType.EditFormUrl = parser.ParseString(templateContentType.EditFormUrl);
                     isDirty = true;
                 }
                 if (templateContentType.NewFormUrl != null && existingContentType.NewFormUrl != parser.ParseString(templateContentType.NewFormUrl))
                 {
-                    scope.LogPropertyUpdate("NewFormUrl");
+                    scope.LogPropertyUpdate(nameof(existingContentType.NewFormUrl));
                     existingContentType.NewFormUrl = parser.ParseString(templateContentType.NewFormUrl);
                     isDirty = true;
                 }
@@ -254,6 +255,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             // Should child content types be updated.
             bool UpdateChildren()
             {
+                if (!templateContentType.UpdateChildren)
+                {
+                    return false;
+                }
                 if (fieldsNotPresentInTarget.Any())
                 {
                     return !templateContentType.FieldRefs.All(f => f.UpdateChildren == false);
@@ -316,13 +321,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     scope.LogDebug(CoreResources.Provisioning_ObjectHandlers_ContentTypes_Field__0__exists_in_content_type, fieldId);
                     if (fieldLink.Required != fieldRef.Required)
                     {
-                        scope.LogPropertyUpdate("Required");
+                        scope.LogPropertyUpdate(nameof(fieldLink.Required));
                         fieldLink.Required = fieldRef.Required;
                         isDirty = true;
                     }
                     if (fieldLink.Hidden != fieldRef.Hidden)
                     {
-                        scope.LogPropertyUpdate("Hidden");
+                        scope.LogPropertyUpdate(nameof(fieldLink.Hidden));
                         fieldLink.Hidden = fieldRef.Hidden;
                         isDirty = true;
                     }
@@ -359,12 +364,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                     // AllowedContentTypes
                     // Add additional content types to the set of allowed content types
-                    foreach (string ctId in templateContentType.DocumentSetTemplate.AllowedContentTypes)
+                    foreach (var ctItem in templateContentType.DocumentSetTemplate.AllowedContentTypes)
                     {
                         // Validate if the content type is not part of the document set content types yet
-                        if (documentSetTemplate.AllowedContentTypes.All(d => d.StringValue != ctId))
+                        if (documentSetTemplate.AllowedContentTypes.All(d => d.StringValue != ctItem.ContentTypeId))
                         {
-                            Microsoft.SharePoint.Client.ContentType ct = existingCTs.FirstOrDefault(c => c.StringId == ctId);
+                            Microsoft.SharePoint.Client.ContentType ct = existingCTs.FirstOrDefault(c => c.StringId == ctItem.ContentTypeId);
                             if (ct != null)
                             {
                                 documentSetTemplate.AllowedContentTypes.Add(ct.Id);
@@ -405,9 +410,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     foreach (var sharedField in templateContentType.DocumentSetTemplate.SharedFields)
                     {
                         // Ensure the shared field is not part of the document set yet
-                        if (documentSetTemplate.SharedFields.All(f => f.Id != sharedField))
+                        if (documentSetTemplate.SharedFields.All(f => f.Id != sharedField.Id))
                         {
-                            Microsoft.SharePoint.Client.Field field = existingFields.FirstOrDefault(f => f.Id == sharedField);
+                            Microsoft.SharePoint.Client.Field field = existingFields.FirstOrDefault(f => f.Id == sharedField.Id);
                             if (field != null)
                             {
                                 documentSetTemplate.SharedFields.Add(field);
@@ -420,9 +425,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     foreach (var welcomePageField in templateContentType.DocumentSetTemplate.WelcomePageFields)
                     {
                         // Ensure the welcomepage field is not part of the document set yet
-                        if (documentSetTemplate.WelcomePageFields.All(w => w.Id != welcomePageField))
+                        if (documentSetTemplate.WelcomePageFields.All(w => w.Id != welcomePageField.Id))
                         {
-                            Microsoft.SharePoint.Client.Field field = existingFields.FirstOrDefault(f => f.Id == welcomePageField);
+                            Microsoft.SharePoint.Client.Field field = existingFields.FirstOrDefault(f => f.Id == welcomePageField.Id);
                             if (field != null)
                             {
                                 documentSetTemplate.WelcomePageFields.Add(field);
@@ -633,9 +638,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 // Add additional content types to the set of allowed content types
                 bool hasDefaultDocumentContentTypeInTemplate = false;
-                foreach (String ctId in templateContentType.DocumentSetTemplate.AllowedContentTypes)
+                foreach (var ctItem in templateContentType.DocumentSetTemplate.AllowedContentTypes)
                 {
-                    Microsoft.SharePoint.Client.ContentType ct = existingCTs.FirstOrDefault(c => c.StringId == ctId);
+                    Microsoft.SharePoint.Client.ContentType ct = existingCTs.FirstOrDefault(c => c.StringId == ctItem.ContentTypeId);
                     if (ct != null)
                     {
                         if (ct.Id.StringValue.Equals("0x0101", StringComparison.InvariantCultureIgnoreCase))
@@ -680,7 +685,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 foreach (var sharedField in templateContentType.DocumentSetTemplate.SharedFields)
                 {
-                    Microsoft.SharePoint.Client.Field field = existingFields.FirstOrDefault(f => f.Id == sharedField);
+                    Microsoft.SharePoint.Client.Field field = existingFields.FirstOrDefault(f => f.Id == sharedField.Id);
                     if (field != null)
                     {
                         documentSetTemplate.SharedFields.Add(field);
@@ -689,7 +694,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 foreach (var welcomePageField in templateContentType.DocumentSetTemplate.WelcomePageFields)
                 {
-                    Microsoft.SharePoint.Client.Field field = existingFields.FirstOrDefault(f => f.Id == welcomePageField);
+                    Microsoft.SharePoint.Client.Field field = existingFields.FirstOrDefault(f => f.Id == welcomePageField.Id);
                     if (field != null)
                     {
                         documentSetTemplate.WelcomePageFields.Add(field);

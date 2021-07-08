@@ -29,7 +29,7 @@ namespace PnP.Framework.Provisioning.Providers.Markdown
         public MarkdownPnPSchemaBaseWriter(Stream referenceSchema)
         {
             this._referenceSchema = referenceSchema ??
-                throw new ArgumentNullException("referenceSchema");
+                throw new ArgumentNullException(nameof(referenceSchema));
         }
 
         public abstract string NamespacePrefix { get; }

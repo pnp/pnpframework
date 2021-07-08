@@ -97,6 +97,10 @@ namespace PnP.Framework.Provisioning.Model
         /// Instructs the engine to uninstall the package from the site collection.
         /// </summary>
         Uninstall,
+        /// <summary>
+        /// Instructs the engine to install or update the package in the site collection.
+        /// </summary>
+        InstallOrUpdate,
     }
 
     /// <summary>

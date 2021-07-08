@@ -12,7 +12,7 @@ Base template: goal is to verify that all field properties work as expected. Fie
                The complete field XML is parsed, parser will not replace the ~sitecollection and ~site tokens               
 -->
 
-<pnp:ProvisioningTemplate ID="field_add" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2015/12/ProvisioningSchema">
+<pnp:ProvisioningTemplate ID="field_add" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <pnp:SiteFields>
     <!-- Regular fields -->
     <Field ID="{23203E97-3BFE-40CB-AFB4-07AA2B86BF45}" Type="Text" Name="FLD_1" DisplayName="Fld 1" Group="PnP Demo" MaxLength="255" AllowDeletion="TRUE" />

@@ -29,10 +29,11 @@ namespace PnP.Framework.Utilities.UnitTests.Helpers
         public void SaveMockData(List<MockResponse> mockedData)
         {
             string serializedData = JsonConvert.SerializeObject(mockedData, MockResponseEntry.SerializerSettings);
-            using (StreamWriter outputFile = new StreamWriter(FilePath))
+            if(!Directory.Exists(FilePath))
             {
-                outputFile.Write(serializedData);
+                Directory.CreateDirectory(Path.GetDirectoryName(FilePath));
             }
+            File.WriteAllText(FilePath, serializedData);
         }
     }
 }

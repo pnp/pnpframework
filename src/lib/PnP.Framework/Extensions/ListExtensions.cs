@@ -14,6 +14,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
@@ -662,6 +663,41 @@ namespace Microsoft.SharePoint.Client
 
 
         #endregion
+
+        public static bool IsCreatedFromTemplate(this List list)
+        {
+            var uxProperties = list.EnsureProperty(p => p.AdditionalUXProperties);
+            if (!string.IsNullOrEmpty(uxProperties))
+            {
+                var additionalUXProperties = JsonSerializer.Deserialize<JsonElement>(list.AdditionalUXProperties);
+
+                if (additionalUXProperties.TryGetProperty("TypeId", out JsonElement typeId))
+                {
+                    string typeIdString = typeId.GetString().ToLower();
+                    if (!string.IsNullOrEmpty(typeIdString))
+                    {
+                        if (typeIdString == "c147e310-ffb3-0cdf-b9a3-f427ee0ff1ce" || typeIdString == "c3a96423-13f5-4201-a83e-fbbbca5bd4e7" || // IssueTracker
+                            typeIdString == "d4c4daa7-1a90-00c6-8d20-242acb0ff1ce" || typeIdString == "0fd4a5a2-5de1-4af6-8f47-9ff8eb18c9e6" || // EmployeeOnboarding
+                            typeIdString == "3465a758-99e6-048b-ab94-7e24ca0ff1ce" || typeIdString == "48d07734-944b-4d5b-b18d-f8d7eccdcd19" || // EventItinerary
+                            typeIdString == "d2eda86e-6f3c-0700-be3b-a408f10ff1ce" || typeIdString == "e2bfcc94-7966-4d20-a633-2639f8ddd482" || // AssetManager
+                            typeIdString == "3a7c53be-a128-0ff9-9f97-7b6f700ff1ce" || typeIdString == "92946f48-bed9-4299-825d-dc3768f59d54" || // RecruitmentTracker
+                            typeIdString == "c51cf376-87cf-0e8f-97ff-546bc60ff1ce" || typeIdString == "6f66598b-ddda-4715-a80e-ef0054563e4f" || // TravelRequests
+                            typeIdString == "b117a022-9f8b-002d-bda8-fa266f0ff1ce" || typeIdString == "a5126f70-467d-4257-954b-95fba9bb008c" || // WorkProgressTracker
+                            typeIdString == "9a429811-2ab5-07bc-b5a0-2de9590ff1ce" || typeIdString == "bd8bdab7-5730-4f57-9050-0bd66c988b15" || // ContentScheduler
+                            typeIdString == "e3beef0b-b3b5-0698-abb2-6a8e910ff1ce" || typeIdString == "c6f24381-5776-4f90-89aa-6c8e469607c5" || // IncidentResponse
+                            typeIdString == "0134c13d-e537-065b-97d1-6bc46d0ff1ce" || typeIdString == "696abd77-46ee-48cd-b0ae-7a463f4d5244" || // Patient
+                            typeIdString == "7c920b56-2d7a-02da-94b2-57b46e0ff1ce" || typeIdString == "16269b04-6b3f-4742-baed-9d2402078290" || // Loans
+                            typeIdString == "96d6dbe5-d7c3-430a-867a-0b72eb4065ab"  // ExpenseTracker
+                            )
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return false;
+        }
 
         /// <summary>
         /// Removes a content type from a list/library by name

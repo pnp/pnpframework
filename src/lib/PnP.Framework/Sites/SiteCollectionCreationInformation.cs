@@ -28,6 +28,11 @@ namespace PnP.Framework.Sites
         public string SensitivityLabel { get; set; }
 
         /// <summary>
+        /// The Sensitivity label id to use. See https://www.youtube.com/watch?v=NxvUXBiPFcw for more information.
+        /// </summary>
+        public Guid SensitivityLabelId { get; set; }
+
+        /// <summary>
         /// Default constructor
         /// </summary>
         public CommunicationSiteCollectionCreationInformation() : this(string.Empty, string.Empty)
@@ -63,6 +68,10 @@ namespace PnP.Framework.Sites
         /// The Sensitivity label to use. For instance 'Top Secret'. See https://www.youtube.com/watch?v=NxvUXBiPFcw for more information.
         /// </summary>
         public string SensitivityLabel { get; set; }
+        /// <summary>
+        /// The Sensitivity label to use. See https://www.youtube.com/watch?v=NxvUXBiPFcw for more information.
+        /// </summary>
+        public Guid SensitivityLabelId { get; set; }
         /// <summary>
         /// Default constructor
         /// </summary>
@@ -270,6 +279,11 @@ namespace PnP.Framework.Sites
         /// The Sensitivity label to use. For instance 'Top Secret'. See https://www.youtube.com/watch?v=NxvUXBiPFcw for more information.
         /// </summary>
         public string SensitivityLabel { get; set; }
+
+        /// <summary>
+        /// The Sensitivity label to use. See https://www.youtube.com/watch?v=NxvUXBiPFcw for more information.
+        /// </summary>
+        public Guid SensitivityLabelId { get; set; }
 
         /// <summary>
         /// The geography in which to create the site collection. Only applicable to multi-geo enabled tenants.

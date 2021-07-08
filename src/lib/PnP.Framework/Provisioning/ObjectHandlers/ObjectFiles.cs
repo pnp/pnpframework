@@ -137,6 +137,28 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     {
                         // Add the fileuniqueid tokens
                         targetFile.EnsureProperties(p => p.UniqueId, p => p.ServerRelativePath);
+
+                        // Add ListItemId token, given that a file can live outside of a library ensure this does not break provisioning
+                        try
+                        {
+                            web.Context.Load(targetFile, p => p.ListItemAllFields.Id);
+                            web.Context.ExecuteQueryRetry();
+                            if (targetFile.ListItemAllFields.ServerObjectIsNull.HasValue
+                                && !targetFile.ListItemAllFields.ServerObjectIsNull.Value)
+                            {
+                                parser.AddToken(new FileListItemIdToken(web, targetFile.ServerRelativePath.DecodedUrl.Substring(web.ServerRelativeUrl.Length).TrimStart("/".ToCharArray()), targetFile.ListItemAllFields.Id));
+                            }
+                        }
+                        catch (ServerException ex)
+                        {
+                            // If this throws ServerException (does not belong to list), then shouldn't be trying to set properties)
+                            // Handling the exception stating the "The object specified does not belong to a list."
+                            if (ex.ServerErrorCode != -2113929210)
+                            {
+                                throw;
+                            }
+                        }
+
                         parser.AddToken(new FileUniqueIdToken(web, targetFile.ServerRelativePath.DecodedUrl.Substring(web.ServerRelativeUrl.Length).TrimStart("/".ToCharArray()), targetFile.UniqueId));
                         parser.AddToken(new FileUniqueIdEncodedToken(web, targetFile.ServerRelativePath.DecodedUrl.Substring(web.ServerRelativeUrl.Length).TrimStart("/".ToCharArray()), targetFile.UniqueId));
 

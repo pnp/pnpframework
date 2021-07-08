@@ -24,6 +24,16 @@ namespace PnP.Framework.Provisioning.Model
         /// </summary>
         public Emphasis BackgroundEmphasis { get; set; }
 
+        /// <summary>
+        /// Defines whether the site title is visible or not, optional attribute
+        /// </summary>
+        public bool ShowSiteTitle { get; set; }
+
+        /// <summary>
+        /// Defines whether the site navigation is visible or not, optional attribute
+        /// </summary>
+        public bool ShowSiteNavigation { get; set; }
+
         #endregion
 
         #region Comparison code
@@ -34,10 +44,12 @@ namespace PnP.Framework.Provisioning.Model
         /// <returns>Returns HashCode</returns>
         public override int GetHashCode()
         {
-            return (String.Format("{0}|{1}|{2}|",
+            return (String.Format("{0}|{1}|{2}|{3}|{4}|",
                 Layout.GetHashCode(),
                 MenuStyle.GetHashCode(),
-                BackgroundEmphasis.GetHashCode()
+                BackgroundEmphasis.GetHashCode(),
+                ShowSiteTitle.GetHashCode(),
+                ShowSiteNavigation.GetHashCode()
             ).GetHashCode());
         }
 
@@ -56,7 +68,7 @@ namespace PnP.Framework.Provisioning.Model
         }
 
         /// <summary>
-        /// Compares SiteHeader object based on Layout, MenuStyle, and BackgroundEmphasis
+        /// Compares SiteHeader object based on Layout, MenuStyle, BackgroundEmphasis, ShowSiteTitle, and ShowSiteNavigation
         /// </summary>
         /// <param name="other">SiteHeader Class object</param>
         /// <returns>true if the SiteHeader object is equal to the current object; otherwise, false.</returns>
@@ -69,7 +81,9 @@ namespace PnP.Framework.Provisioning.Model
 
             return (this.Layout == other.Layout &&
                 this.MenuStyle == other.MenuStyle &&
-                this.BackgroundEmphasis == other.BackgroundEmphasis
+                this.BackgroundEmphasis == other.BackgroundEmphasis &&
+                this.ShowSiteTitle == other.ShowSiteTitle &&
+                this.ShowSiteNavigation == other.ShowSiteNavigation
                 );
         }
 
@@ -89,6 +103,14 @@ namespace PnP.Framework.Provisioning.Model
         /// Defines the Compact Layout for the Site Header
         /// </summary>
         Compact,
+        /// <summary>
+        /// Defines the Extended Layout for the Site Header
+        /// </summary>
+        Extended,
+        /// <summary>
+        /// Defines the Minimal Layout for the Site Header
+        /// </summary>
+        Minimal,
     }
 
     /// <summary>

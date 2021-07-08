@@ -58,10 +58,10 @@ In this section you can learn how to register an application in Azure Active Dir
 
 #### Configuring the application in Azure AD
 
-The easiest way to register an application in Azure Active Directory for app-only is to use the [PnP PowerShell](https://docs.microsoft.com/en-us/powershell/sharepoint/sharepoint-pnp/sharepoint-pnp-cmdlets?view=sharepoint-ps) command lets. Specifically you can use the [`Initialize-PnPPowerShellAuthentication` command](https://docs.microsoft.com/en-us/powershell/module/sharepoint-pnp/initialize-pnppowershellauthentication?view=sharepoint-ps) with the following syntax:
+The easiest way to register an application in Azure Active Directory for app-only is to use the [PnP PowerShell](https://pnp.github.io/powershell) cmdlets. Specifically you can use the [`Register-PnPAzureADApp` command](https://github.com/pnp/powershell/blob/dev/documentation/Register-PnPAzureADApp.md) with the following syntax:
 
 ```powershell
-$app = Initialize-PnPPowerShellAuthentication -ApplicationName "PnP.Framework.Consumer" -Tenant contoso.onmicrosoft.com -OutPath c:\temp -CertificatePassword (ConvertTo-SecureString -String "password" -AsPlainText -Force) -Scopes "MSGraph.Group.ReadWrite.All","MSGraph.User.ReadWrite.All","SPO.Sites.FullControl.All","SPO.TermStore.ReadWrite.All","SPO.User.ReadWrite.All" -Store CurrentUser
+$app = Register-PnPAzureADApp -ApplicationName "PnP.Framework.Consumer" -Tenant contoso.onmicrosoft.com -OutPath c:\temp -CertificatePassword (ConvertTo-SecureString -String "password" -AsPlainText -Force)  -GraphApplicationPermissions "Group.ReadWrite.All", "User.ReadWrite.All" -SharePointApplicationPermissions "Sites.FullControl.All", "TermStore.ReadWrite.All", "User.ReadWrite.All"  -Store CurrentUser -DeviceLogin
 ```
 
 The above command will register for you in Azure Active Directory an app with name `PnP.Framework.Consumer`, with a self-signed certificate that will be also saved on your filesystem under the `c:\temp` folder (remember to create the folder or to provide the path of an already existing folder), with a certificate password value of `password` (you should provide your own strong password, indeed). Remember to replace `contoso.onmicrosoft.com` with your Azure AD tenant name, which typically is `company.onmicrosoft.com`. The permissions granted to the app will be:

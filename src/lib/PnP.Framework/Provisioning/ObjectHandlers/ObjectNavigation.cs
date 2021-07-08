@@ -393,6 +393,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             if (structuralNavigation != null)
             {
+                if (structuralNavigation.RemoveExistingNodes || clearNavigation)
                 {
                     if (!structuralNavigation.RemoveExistingNodes && !ClearWarningShown)
                     {

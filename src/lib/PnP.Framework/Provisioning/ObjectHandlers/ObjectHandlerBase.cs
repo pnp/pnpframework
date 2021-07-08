@@ -1,5 +1,6 @@
 ﻿using Microsoft.SharePoint.Client;
 using Microsoft.SharePoint.Client.Taxonomy;
+using Newtonsoft.Json.Linq;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions;
 using System;
@@ -208,13 +209,71 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
             else
             {
+                //Fix since RegEx.Escape in ListContentTypeIdToken.CreateToken does escape whiteSpace with \ it breaks the JSON in NewDocumentTemplates
+                string NewDocumentTemplatesJson = null;
+                if (xml.Contains("NewDocumentTemplates"))
+                {
+                    var viewSchema = System.Xml.Linq.XDocument.Parse(xml);
+                    var templateElement = viewSchema.Root.Elements().FirstOrDefault(element => element.Name.LocalName == "NewDocumentTemplates");
+                    if (templateElement != null)
+                    {
+                        NewDocumentTemplatesJson = templateElement.Value;
+                    }
+                }
+
                 foreach (Microsoft.SharePoint.Client.ContentType contentType in list.ContentTypes)
                 {
                     string contentTypeReplacement = ListContentTypeIdToken.CreateToken(list.Title, contentType.Id);
+                    if (!string.IsNullOrWhiteSpace(NewDocumentTemplatesJson))
+                    {
+                        string contentTypeReplacementJson = contentTypeReplacement.Replace("\\ ", " ");
+                        contentTypeReplacementJson = contentTypeReplacementJson.Replace("\\", "\\\\");
+                        NewDocumentTemplatesJson = Regex.Replace(NewDocumentTemplatesJson, contentType.Id.StringValue, contentTypeReplacementJson, RegexOptions.IgnoreCase);
+                    }
                     xml = Regex.Replace(xml, contentType.Id.StringValue, contentTypeReplacement, RegexOptions.IgnoreCase);
                 }
 
-                return TokenizeXml(xml, web);
+                if(!string.IsNullOrWhiteSpace(NewDocumentTemplatesJson))
+                {
+                    web.EnsureProperties(w => w.ServerRelativeUrl);
+                    try
+                    {
+                        var JObjNewDocTemplate = JArray.Parse(NewDocumentTemplatesJson);
+                        var fileUrls = JObjNewDocTemplate.SelectTokens("..url");
+                        foreach (var templateFile in fileUrls)
+                        {
+                            var templateObj = templateFile.Parent.Parent as JObject;
+                            string orgValue = (string)templateObj["url"];
+                            if (!string.IsNullOrWhiteSpace(orgValue))
+                            {
+                                if (web.ServerRelativeUrl == "/")
+                                {
+                                    templateObj["url"] = $"{{site}}/{orgValue.TrimStart('/')}";
+                                }
+                                else
+                                {
+                                    templateObj["url"] = Regex.Replace(orgValue, web.ServerRelativeUrl.TrimEnd('/'), "{site}", RegexOptions.IgnoreCase); ;
+                                }
+                            }
+                        }
+                        NewDocumentTemplatesJson = JObjNewDocTemplate.ToString(Newtonsoft.Json.Formatting.None);
+                    }
+                    catch { }
+                }
+
+                string tokenizedXML = TokenizeXml(xml, web);
+                if (!string.IsNullOrWhiteSpace(NewDocumentTemplatesJson))
+                {
+                    var viewSchema = System.Xml.Linq.XDocument.Parse(tokenizedXML);
+                    var templateElement = viewSchema.Root.Elements().FirstOrDefault(element => element.Name.LocalName == "NewDocumentTemplates");
+                    if (templateElement != null)
+                    {
+                        templateElement.Value = NewDocumentTemplatesJson;
+                        tokenizedXML = viewSchema.ToString();
+                    }
+                }
+
+                return tokenizedXML;
             }
         }
 

@@ -55,7 +55,7 @@ namespace PnP.Framework.Entities
         /// <summary>
         /// IndexDocId for Search Paging
         /// </summary>
-        public double IndexDocId
+        public long IndexDocId
         {
             get;
             set;

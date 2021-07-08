@@ -39,5 +39,16 @@ namespace Microsoft.SharePoint.Client
             var exists = SiteExistsAnywhere(tenant, siteFullUrl);
             return (exists == SiteExistence.Yes || exists == SiteExistence.Recycled);
         }
+
+        /// <summary>
+        /// Enable communication site on the root site of a tenant
+        /// </summary>
+        /// <param name="tenant">A tenant object pointing to the context of a Tenant Administration site</param>
+        /// <param name="siteUrl">Root site url of your tenant</param>
+        [Obsolete("Use EnableCommunicationSite")]
+        public static void EnableCommSite(this Tenant tenant, string siteUrl = "")
+        {
+            tenant.EnableCommunicationSite(siteUrl);
+        }
     }
 }

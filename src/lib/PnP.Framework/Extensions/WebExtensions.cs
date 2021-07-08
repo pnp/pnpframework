@@ -697,7 +697,7 @@ namespace Microsoft.SharePoint.Client
                             Url = row["SPSiteUrl"] != null ? row["SPSiteUrl"].ToString() : "",
                             Description = row["Description"] != null ? row["Description"].ToString() : "",
                             Template = row["WebTemplate"] != null ? row["WebTemplate"].ToString() : "",
-                            IndexDocId = row["DocId"] != null ? double.Parse(row["DocId"].ToString()) : 0, // Change : Include IndexDocId in the sites List
+                            IndexDocId = row["DocId"] != null ? long.Parse(row["DocId"].ToString()) : 0, // Change : Include IndexDocId in the sites List
                         });
                     }
                 }

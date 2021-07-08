@@ -84,8 +84,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 {
                     if (!SetGroupSecurity(scope, parser, team, teamId, accessToken)) return null;
                 }
-                if (!SetTeamChannels(scope, parser, team, teamId, accessToken)) return null;
                 if (!SetTeamApps(scope, parser, team, teamId, accessToken)) return null;
+                if (!SetTeamChannels(scope, parser, team, teamId, accessToken)) return null;
 
                 // So far the Team's photo cannot be set if we don't have an already existing mailbox
                 if (!SetTeamPhoto(scope, parser, connector, team, teamId, accessToken)) return null;
@@ -130,8 +130,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     System.Threading.Thread.Sleep(TimeSpan.FromSeconds(5));
                 }
 
-                // Don't wait more than 1 minute
-                if (iterations > 12)
+                // Don't wait more than 2 minute
+                if (iterations > 24)
                 {
                     //wait = false;
                     throw new Exception($"Team with id {teamId} not created within timeout.");
@@ -475,7 +475,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     CoreResources.Provisioning_ObjectHandlers_Teams_Team_ProvisioningError,
                     canPatch: true);
 
-                    wait = false;
+                    if (!string.IsNullOrEmpty(teamId))
+                    {
+                        wait = false;
+                    }
                 }
                 catch (Exception)
                 {
@@ -938,7 +941,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             {
                 channel.Description,
                 channel.DisplayName,
-                channel.IsFavoriteByDefault,
+                isFavoriteByDefault = channel.Private ? false : channel.IsFavoriteByDefault,
                 membershipType = channel.Private ? "private" : "standard",
                 members = (channel.Private && channelMembers != null) ? (from m in channelMembers
                                                                          select new
@@ -984,16 +987,16 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 // Avoid ActivityLimitReached 
                 System.Threading.Thread.Sleep(TimeSpan.FromSeconds(5));
 
-                var existingTab = existingTabs.FirstOrDefault(x => x["displayName"] != null && HttpUtility.UrlDecode(x["displayName"].ToString()) == tab.DisplayName && (string.IsNullOrEmpty(x["teamsAppId"]?.ToString()) || x["teamsAppId"].ToString() == tab.TeamsAppId));
+                var existingTab = existingTabs.FirstOrDefault(x => x["displayName"] != null && HttpUtility.UrlDecode(x["displayName"].ToString()) == tab.DisplayName && x["teamsApp"]?["id"]?.ToString() == tab.TeamsAppId);
 
                 var tabId = existingTab == null ? CreateTeamTab(scope, tab, parser, teamId, channelId, accessToken) : UpdateTeamTab(tab, parser, teamId, channelId, existingTab["id"].ToString(), accessToken);
 
-                if (tabId == null) return false;
+                if (tabId == null && !tab.Remove) return false;
             }
             if (tabs.Any())
             {
                 // is there a wiki tab and not a newly created tab?
-                var wikiTab = existingTabs.FirstOrDefault(x => x["teamsAppId"].Value<string>() == "com.microsoft.teamspace.tab.wiki");
+                var wikiTab = existingTabs.FirstOrDefault(x => x["teamsApp"]?["id"]?.ToString() == "com.microsoft.teamspace.tab.wiki");
                 if (wikiTab != null && tabs.FirstOrDefault(t => t.TeamsAppId == "com.microsoft.teamspace.tab.wiki") == null)
                 {
                     RemoveTeamTab(wikiTab["id"].Value<string>(), channelId, teamId, accessToken);
@@ -1009,7 +1012,37 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         public static JToken GetExistingTeamChannelTabs(string teamId, string channelId, string accessToken)
         {
-            return JToken.Parse(HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}beta/teams/{teamId}/channels/{channelId}/tabs", accessToken))["value"];
+            const int maxRetryCount = 60;
+            const int retryDelay = 1000;
+            var retryAttempt = 0;
+
+            JToken response = null;
+
+            do
+            {
+                try
+                {
+                    response = JToken.Parse(HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams/{teamId}/channels/{channelId}/tabs?$expand=teamsApp", accessToken))["value"];
+                }
+                catch (Exception ex)
+                {
+                    if (ex.InnerException != null && ex.InnerException.Message.Contains("No active channel found with channel id:"))
+                    {
+                        Thread.Sleep(retryDelay);
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+
+                if (response == null)
+                {
+                    retryAttempt++;
+                }
+            } while (response == null && retryAttempt <= maxRetryCount);
+
+            return response;
         }
 
         private static string UpdateTeamTab(TeamTab tab, TokenParser parser, string teamId, string channelId, string tabId, string accessToken)
@@ -1146,7 +1179,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         }
                     case "2a527703-1f6f-4559-a332-d8a7d288cd88": // SharePoint page and lists
                         {
-                            tab.Configuration = null;
+                            tab.Configuration.EntityId = parser.ParseString(tab.Configuration.EntityId);
+                            tab.Configuration.ContentUrl = parser.ParseString(tab.Configuration.ContentUrl);
+                            tab.Configuration.RemoveUrl = parser.ParseString(tab.Configuration.RemoveUrl);
+                            tab.Configuration.WebsiteUrl = parser.ParseString(tab.Configuration.WebsiteUrl);
                             break;
                         }
                     default:
@@ -1179,18 +1215,34 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 { "teamsApp@odata.bind", "https://graph.microsoft.com/v1.0/appCatalogs/teamsApps/" + teamsAppId }
             };
 
-            var tabId = GraphHelper.CreateOrUpdateGraphObject(scope,
-                HttpMethodVerb.POST,
-                $"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams/{teamId}/channels/{channelId}/tabs",
-                JsonConvert.SerializeObject(tabToCreate),
-                HttpHelper.JsonContentType,
-                accessToken,
-                "NameAlreadyExists",
-                CoreResources.Provisioning_ObjectHandlers_Teams_Team_TabAlreadyExists,
-                "displayName",
-                displayname,
-                CoreResources.Provisioning_ObjectHandlers_Teams_Team_ProvisioningError,
-                false);
+            const int maxRetryCount = 60;
+            const int retryDelay = 1000;
+            var retryAttempt = 0;
+
+            string tabId;
+
+            do
+            {
+                if (retryAttempt > 1)
+                {
+                    Thread.Sleep(retryDelay);
+                }
+
+                tabId = GraphHelper.CreateOrUpdateGraphObject(scope,
+                    HttpMethodVerb.POST,
+                    $"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams/{teamId}/channels/{channelId}/tabs",
+                    JsonConvert.SerializeObject(tabToCreate),
+                    HttpHelper.JsonContentType,
+                    accessToken,
+                    "NameAlreadyExists",
+                    CoreResources.Provisioning_ObjectHandlers_Teams_Team_TabAlreadyExists,
+                    "displayName",
+                    displayname,
+                    CoreResources.Provisioning_ObjectHandlers_Teams_Team_ProvisioningError,
+                    false);
+
+                retryAttempt++;
+            } while (tabId == null && retryAttempt <= maxRetryCount);
 
             return tabId;
         }
@@ -1697,50 +1749,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         private static string CreateMailNicknameFromDisplayName(string displayName)
         {
-            var mailNickname = displayName.ToLower();
-            mailNickname = RemoveUnallowedCharacters(mailNickname);
-            mailNickname = ReplaceAccentedCharactersWithLatin(mailNickname);
+            var mailNickname = displayName;
+            mailNickname = UrlUtility.RemoveUnallowedCharacters(mailNickname);
+            mailNickname = UrlUtility.ReplaceAccentedCharactersWithLatin(mailNickname);
             return mailNickname;
         }
-
-        private static string RemoveUnallowedCharacters(string str)
-        {
-            const string unallowedCharacters = "[&_,!@;:#¤`´~¨='%<>/\\\\\"\\.\\$\\*\\^\\+\\|\\{\\}\\[\\]\\-\\(\\)\\?\\s]";
-            var regex = new Regex(unallowedCharacters);
-            return regex.Replace(str, "");
-        }
-
-        private static string ReplaceAccentedCharactersWithLatin(string str)
-        {
-            const string a = "[äåàáâãæ]";
-            var regex = new Regex(a, RegexOptions.IgnoreCase);
-            str = regex.Replace(str, "a");
-
-            const string e = "[èéêëēĕėęě]";
-            regex = new Regex(e, RegexOptions.IgnoreCase);
-            str = regex.Replace(str, "e");
-
-            const string i = "[ìíîïĩīĭįı]";
-            regex = new Regex(i, RegexOptions.IgnoreCase);
-            str = regex.Replace(str, "i");
-
-            const string o = "[öòóôõø]";
-            regex = new Regex(o, RegexOptions.IgnoreCase);
-            str = regex.Replace(str, "o");
-
-            const string u = "[üùúû]";
-            regex = new Regex(u, RegexOptions.IgnoreCase);
-            str = regex.Replace(str, "u");
-
-            const string c = "[çċčćĉ]";
-            regex = new Regex(c, RegexOptions.IgnoreCase);
-            str = regex.Replace(str, "c");
-
-            const string d = "[ðďđđ]";
-            regex = new Regex(d, RegexOptions.IgnoreCase);
-            str = regex.Replace(str, "d");
-
-            return str;
-        }
+        
     }
 }

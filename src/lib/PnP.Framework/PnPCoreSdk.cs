@@ -1,17 +1,26 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.SharePoint.Client;
 using PnP.Core.Services;
+using PnP.Framework.Utilities.PnPSdk;
 using System;
 using System.Threading;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("PnPFramework.Test")]
 namespace PnP.Framework
 {
+    /// <summary>
+    /// Class that implements interop between PnP Framework and PnP Core SDK
+    /// </summary>
     public class PnPCoreSdk
     {
 
         private static readonly Lazy<PnPCoreSdk> _lazyInstance = new Lazy<PnPCoreSdk>(() => new PnPCoreSdk(), true);
         private IPnPContextFactory pnpContextFactoryCache;
+        private PnPContext pnpContextCached = null;
         private static readonly SemaphoreSlim semaphoreSlimFactory = new SemaphoreSlim(1);
+        internal static ILegacyAuthenticationProviderFactory AuthenticationProviderFactory { get; set; } = new PnPCoreSdkAuthenticationProviderFactory();
+        internal static event EventHandler<IServiceCollection> OnDIContainerBuilding;
 
         /// <summary>
         /// Provides the singleton instance of th entity manager
@@ -31,10 +40,29 @@ namespace PnP.Framework
         {
         }
 
+        /// <summary>
+        /// Get's a PnPContext from a CSOM ClientContext
+        /// </summary>
+        /// <param name="context">CSOM ClientContext</param>
+        /// <returns>The equivalent PnPContext</returns>
         public PnPContext GetPnPContext(ClientContext context)
         {
-            var factory = BuildContextFactory();
-            return factory.Create(new Uri(context.Url), new PnPCoreSdkAuthenticationProvider(context));
+            if (pnpContextCached != null)
+            {
+                if (pnpContextCached.Uri == new Uri(context.Url))
+                {
+                    return pnpContextCached;
+                }
+                else
+                {
+                    return pnpContextCached.Clone(new Uri(context.Url));
+                }
+            }
+            else
+            { 
+                var factory = BuildContextFactory();
+                return factory.Create(new Uri(context.Url), AuthenticationProviderFactory.GetAuthenticationProvider(context));
+            }
         }
 
         private IPnPContextFactory BuildContextFactory()
@@ -51,13 +79,21 @@ namespace PnP.Framework
                 }
 
                 // Build the service collection and load PnP Core SDK
-                var serviceProvider = new ServiceCollection()
-                    .AddPnPCore(options =>
-                    {
-                        options.PnPContext.GraphFirst = false;
-                    })
-                    .Services
-                .BuildServiceProvider();
+                IServiceCollection services = new ServiceCollection();
+
+                // To increase coverage of solutions providing tokens without graph scopes we turn of graphfirst for PnPContext created from PnP Framework                
+                services = services.AddPnPCore(options =>
+                {
+                    options.PnPContext.GraphFirst = false;
+                }).Services;
+
+                // Enables to plug in additional services into this service container
+                if(OnDIContainerBuilding != null)
+                {
+                    OnDIContainerBuilding.Invoke(this, services);
+                }
+
+                var serviceProvider = services.BuildServiceProvider();
                 
                 // Get a PnP context factory
                 var pnpContextFactory = serviceProvider.GetRequiredService<IPnPContextFactory>();
@@ -77,6 +113,27 @@ namespace PnP.Framework
 
         }
 
+        /// <summary>
+        /// Returns a CSOM ClientContext for a given PnP Core SDK context
+        /// </summary>
+        /// <param name="pnpContext">The PnP Core SDK context</param>
+        /// <returns>The equivalent CSOM ClientContext</returns>
+        public ClientContext GetClientContext(PnPContext pnpContext)
+        {
+            if (pnpContextCached == null)
+            {
+                pnpContextCached = pnpContext;
+            }
+#pragma warning disable CA2000 // Dispose objects before losing scope
+            AuthenticationManager authManager = AuthenticationManager.CreateWithPnPCoreSdk(pnpContext.AuthenticationProvider);
+#pragma warning restore CA2000 // Dispose objects before losing scope
+
+            var ctx = authManager.GetContext(pnpContext.Uri.ToString());
+            var ctxSettings = ctx.GetContextSettings();
+            ctxSettings.AuthenticationManager = authManager; //otherwise GetAccessToken would not work for example
+            ctx.AddContextSettings(ctxSettings);
+            return ctx;
+        }
 
     }
 }

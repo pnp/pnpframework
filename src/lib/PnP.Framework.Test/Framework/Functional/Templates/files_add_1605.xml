@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pnp:ProvisioningTemplate ID="files_add_recursive" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema">
+<pnp:ProvisioningTemplate ID="files_add_recursive" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <pnp:Lists>
     <pnp:ListInstance Title="LI_2" TemplateType="101" Url="LI_2" EnableFolderCreation="true">
       <pnp:Fields>

@@ -24,7 +24,7 @@
         {
             if (timeSpan < System.TimeSpan.Zero)
             {
-                throw new System.ArgumentException("TimeSpan must be greater than or equal to TimeSpan.Zero.", "timeSpan");
+                throw new System.ArgumentException("TimeSpan must be greater than or equal to TimeSpan.Zero.", nameof(timeSpan));
             }
             return DateTimeUtil.Add(time, timeSpan);
         }

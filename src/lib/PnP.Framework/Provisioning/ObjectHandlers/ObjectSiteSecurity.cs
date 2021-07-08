@@ -322,7 +322,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         group = web.AddGroup(
                             parsedGroupTitle,
                             //If the description is more than 512 characters long a server exception will be thrown.
-                            PnPHttpUtility.ConvertSimpleHtmlToText(parsedGroupDescription, int.MaxValue),
+                            PnPHttpUtility.ConvertSimpleHtmlToText(parsedGroupDescription, 511),
                             parsedGroupTitle == parsedGroupOwner);
                         group.AllowMembersEditMembership = siteGroup.AllowMembersEditMembership;
                         group.AllowRequestToJoinLeave = siteGroup.AllowRequestToJoinLeave;
@@ -373,6 +373,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             g => g.RequestToJoinLeaveEmailSetting,
                             g => g.Owner.LoginName);
                         web.Context.ExecuteQueryRetry();
+
+                        if (siteGroup.ClearExistingMembers)
+                        {
+                            ClearExistingUsers(group);
+                        }
+
                         parser.AddToken(new GroupIdToken(web, group.Title, group.Id.ToString()));
 
                         var groupNeedsUpdate = false;
@@ -392,7 +398,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                 executeQuery = true;
                             }
 
-                            var plainTextDescription = PnPHttpUtility.ConvertSimpleHtmlToText(parsedGroupDescription, int.MaxValue);
+                            var plainTextDescription = PnPHttpUtility.ConvertSimpleHtmlToText(parsedGroupDescription, 511);
                             if (group.Description != plainTextDescription)
                             {
                                 //If the description is more than 512 characters long a server exception will be thrown.

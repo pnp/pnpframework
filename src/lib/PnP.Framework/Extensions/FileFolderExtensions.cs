@@ -237,7 +237,10 @@ namespace Microsoft.SharePoint.Client
             await folder.Context.ExecuteQueryAsync();
             var fullUri = new Uri(result.Value);
             var serverRelativeUrl = fullUri.AbsolutePath;
-            var documentSetFolder = folder.Folders.GetByUrl(serverRelativeUrl);
+
+            var ctx = folder.Context as ClientContext;
+            var resourcePath = ResourcePath.FromDecodedUrl(serverRelativeUrl);
+            var documentSetFolder = ctx.Web.GetFolderByServerRelativePath(resourcePath);
 
             return documentSetFolder;
         }

@@ -13,7 +13,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -23,7 +22,6 @@ using Field = Microsoft.SharePoint.Client.Field;
 using Folder = Microsoft.SharePoint.Client.Folder;
 using View = PnP.Framework.Provisioning.Model.View;
 
-[assembly:InternalsVisibleTo("PnP.Framework.UnitTest")]
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
     internal class ObjectListInstance : ObjectHandlerBase
@@ -112,8 +110,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                     }
                                 }
 
-                                listParser.AddToken(new ListUrlToken(web, createdList.Title, createdList.RootFolder.ServerRelativeUrl.Substring(web.ServerRelativeUrl.Length + 1)));
-                                parser.AddToken(new ListUrlToken(web, createdList.Title, createdList.RootFolder.ServerRelativeUrl.Substring(web.ServerRelativeUrl.Length + 1)));
+                                listParser.AddToken(new ListUrlToken(web, createdList.Title, createdList.RootFolder.ServerRelativeUrl.Substring(web.ServerRelativeUrl.TrimEnd(new char[] { '/' }).Length + 1)));
+                                parser.AddToken(new ListUrlToken(web, createdList.Title, createdList.RootFolder.ServerRelativeUrl.Substring(web.ServerRelativeUrl.TrimEnd(new char[] { '/' }).Length + 1)));
 
                                 // Add this new list to the list with existingLists. If in the same definition this list would be referenced again, it will threat it as an update to this created list. Useful in i.e. scenarios where you want to set the list validation to a list field you create in your first list instance declaration.
                                 existingLists.Add(createdList);
@@ -258,11 +256,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             foreach (KeyValuePair<string, string> columnValue in templateListFolder.DefaultColumnValues)
             {
-                string fieldName = parser.ParseString(columnValue.Key);
-                var field = listInfo.SiteList.Fields.GetByInternalNameOrTitle(fieldName);
-                var defaultValue =
-                    field.GetDefaultColumnValueFromField((ClientContext)web.Context, folderName, new[] { parser.ParseString(columnValue.Value) });
-                defaultFolderValues.Add(defaultValue);
+                var fieldName = parser.ParseString(columnValue.Key);
+                var fieldValue = parser.ParseString(columnValue.Value);
+                if (!string.IsNullOrEmpty(fieldValue))
+                {
+                    var field = listInfo.SiteList.Fields.GetByInternalNameOrTitle(fieldName);
+                    var defaultValue = field.GetDefaultColumnValueFromField((ClientContext)web.Context, folderName, new[] { fieldValue });
+                    defaultFolderValues.Add(defaultValue);
+                }
             }
             foreach (var folder in templateListFolder.Folders)
             {
@@ -309,6 +310,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 || list.SiteList.BaseType == BaseType.GenericList)
                 && list.TemplateList.Folders != null && list.TemplateList.Folders.Count > 0)
             {
+                // Store the current value of EnableFolderCreation as it has to be set to true to be able to create folders
+                bool enableFolderCreationPreviousValue = list.SiteList.EnableFolderCreation;
                 list.SiteList.EnableFolderCreation = true;
                 list.SiteList.Update();
                 web.Context.ExecuteQueryRetry();
@@ -317,6 +320,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 foreach (var folder in list.TemplateList.Folders)
                 {
                     CreateFolderInList(list, rootFolder, folder, parser, scope);
+                }
+
+                // Restore the value of EnableFolderCreation to what it was before if the value is different
+                if (list.SiteList.EnableFolderCreation != enableFolderCreationPreviousValue)
+                {
+                    list.SiteList.EnableFolderCreation = enableFolderCreationPreviousValue;
+                    list.SiteList.Update();
+                    web.Context.ExecuteQueryRetry();
                 }
             }
         }
@@ -1256,7 +1267,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 l => l.Fields.Include(field => field.Title, field => field.InternalName, field => field.Id),
                 l => l.ListExperienceOptions,
                 l => l.ReadSecurity,
-                l => l.WriteSecurity);
+                l => l.WriteSecurity,
+                l => l.AdditionalUXProperties);
 
             web.Context.ExecuteQueryRetry();
 
@@ -1287,10 +1299,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     if (!oldTitle.Equals(existingList.Title, StringComparison.OrdinalIgnoreCase))
                     {
                         parser.RemoveToken(new ListIdToken(web, oldTitle, existingList.Id));
-                        parser.RemoveToken(new ListUrlToken(web, oldTitle, existingList.RootFolder.ServerRelativeUrl.Substring(web.ServerRelativeUrl.Length + 1)));
+                        parser.RemoveToken(new ListUrlToken(web, oldTitle, existingList.RootFolder.ServerRelativeUrl.Substring(web.ServerRelativeUrl.TrimEnd(new char[] { '/' }).Length + 1)));
 
                         parser.AddToken(new ListIdToken(web, existingList.Title, existingList.Id));
-                        parser.AddToken(new ListUrlToken(web, existingList.Title, existingList.RootFolder.ServerRelativeUrl.Substring(web.ServerRelativeUrl.Length + 1)));
+                        parser.AddToken(new ListUrlToken(web, existingList.Title, existingList.RootFolder.ServerRelativeUrl.Substring(web.ServerRelativeUrl.TrimEnd(new char[] { '/' }).Length + 1)));
                     }
                     isDirty = true;
                 }
@@ -1589,6 +1601,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 {
                     ContentTypeId existingContentTypeId = list.ContentTypes.BestMatch(ctb.ContentTypeId);
                     bool contentTypeAlreadyExistsInList = existingContentTypeId != null && existingContentTypeId.GetParentIdValue().Equals(ctb.ContentTypeId, StringComparison.OrdinalIgnoreCase);
+                    if (!contentTypeAlreadyExistsInList && BuiltInContentTypeId.Contains(ctb.ContentTypeId) && list.IsCreatedFromTemplate())
+                    {
+                        //fix because Modern List Creation creates CTType with 0x01[Parent1][Parent2] but Parent1 does not exist so it's not resolved above and we try to create the builtin CT 0x01 found by export and fail to create
+                        contentTypeAlreadyExistsInList = existingContentTypeId != null && existingContentTypeId.GetParentIdValue().StartsWith($"{ctb.ContentTypeId}", StringComparison.OrdinalIgnoreCase);
+                    }
                     if (ctb.Remove)
                     {
                         if (contentTypeAlreadyExistsInList)
@@ -2059,6 +2076,30 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             // Determine the folder name, parsing any token
             String targetFolderName = parser.ParseString(folder.Name);
             list.SiteList.ParentWeb.EnsureProperties(w => w.ServerRelativeUrl);
+
+            if (targetFolderName == "/" )
+            {
+                // Handle any child-folder
+                if (folder.Folders != null && folder.Folders.Count > 0)
+                {
+                    foreach (var childFolder in folder.Folders)
+                    {
+                        CreateFolderInList(list, parentFolder, childFolder, parser, scope);
+                    }
+                }
+
+                // Handle root folder property bag
+                if (folder.PropertyBagEntries != null && folder.PropertyBagEntries.Count > 0)
+                {
+                    foreach (var p in folder.PropertyBagEntries)
+                    {
+                        parentFolder.Properties[parser.ParseString(p.Key)] = parser.ParseString(p.Value);
+                    }
+                    parentFolder.Update();
+                }
+
+                return;
+            }
 
             // Check if the folder already exists
             if (parentFolder.FolderExists(targetFolderName))

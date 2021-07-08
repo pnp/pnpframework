@@ -14,6 +14,7 @@ namespace PnP.Framework.Provisioning.Model.Configuration.Lists.Lists
         public string KeyColumn { get; set; }
 
         [JsonPropertyName("updateBehavior")]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public UpdateBehavior UpdateBehavior { get; set; }
 
         [JsonPropertyName("skipEmptyFields")]

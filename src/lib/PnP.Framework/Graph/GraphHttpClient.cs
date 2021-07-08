@@ -7,8 +7,23 @@ namespace PnP.Framework.Graph
     public static class GraphHttpClient
     {
         public const string GraphBaseUrl = "https://graph.microsoft.com";
+        [Obsolete("Use GraphHttpClient.GetGraphEndPointUrl(AzureEnvironment) instead.")]
         public const string MicrosoftGraphV1BaseUri = GraphBaseUrl + "/v1.0/";
+        [Obsolete("Use GraphHttpClient.GetGraphEndPointUrl(AzureEnvironment, true) instead.")]
         public const string MicrosoftGraphBetaBaseUri = GraphBaseUrl + "/beta/";
+
+        /// <summary>
+        /// Returns the graph endpoint URL based upon the Azure Environment
+        /// </summary>
+        /// <param name="azureEnvironment"></param>
+        /// <param name="beta"></param>
+        /// <returns></returns>
+        public static string GetGraphEndPointUrl(AzureEnvironment azureEnvironment = AzureEnvironment.Production, bool beta = false)
+        {
+            var endPoint = AuthenticationManager.GetGraphEndPoint(azureEnvironment);
+            return $"https://{endPoint}/{(beta ? "beta/" : "v1.0/")}";
+        }
+
 
         /// <summary>
         /// This helper method makes an HTTP GET request and returns the result as a String

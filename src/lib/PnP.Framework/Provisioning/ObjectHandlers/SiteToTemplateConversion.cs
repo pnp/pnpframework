@@ -1,19 +1,17 @@
 ﻿using Microsoft.Online.SharePoint.TenantAdministration;
 using Microsoft.SharePoint.Client;
 using PnP.Framework.Diagnostics;
+using PnP.Framework.Http;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Model.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
     internal class SiteToTemplateConversion
     {
-        private static readonly HttpClient httpClient = new HttpClient();
-
         /// <summary>
         /// Actual implementation of extracting configuration from existing site.
         /// </summary>
@@ -105,6 +103,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 if (creationInfo.HandlersToProcess.HasFlag(Handlers.Theme)) objectHandlers.Add(new ObjectTheme());
                 if (creationInfo.HandlersToProcess.HasFlag(Handlers.Navigation)) objectHandlers.Add(new ObjectNavigation());
                 if (creationInfo.HandlersToProcess.HasFlag(Handlers.ImageRenditions)) objectHandlers.Add(new ObjectImageRenditions());
+                if (creationInfo.HandlersToProcess.HasFlag(Handlers.SyntexModels)) objectHandlers.Add(new ObjectSyntexModels());
                 objectHandlers.Add(new ObjectLocalization()); // Always add this one, check is done in the handler
                 if (creationInfo.HandlersToProcess.HasFlag(Handlers.Tenant)) objectHandlers.Add(new ObjectTenant());
                 if (creationInfo.HandlersToProcess.HasFlag(Handlers.ApplicationLifecycleManagement)) objectHandlers.Add(new ObjectApplicationLifecycleManagement());
@@ -502,7 +501,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     {
                         foreach (var webhook in webhooks.Where(w => w.Kind == kind))
                         {
-                            WebhookSender.InvokeWebhook(webhook, httpClient, kind, parser, objectHandler, exception, scope);
+                            WebhookSender.InvokeWebhook(webhook, PnPHttpClient.Instance.GetHttpClient(), kind, parser, objectHandler, exception, scope);
                         }
                     }
                 }

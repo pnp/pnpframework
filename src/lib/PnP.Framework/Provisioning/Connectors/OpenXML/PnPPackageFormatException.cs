@@ -8,6 +8,14 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
     public class PnPPackageFormatException : ApplicationException
     {
         /// <summary>
+        /// Constructor for PnPPackageFormatException class
+        /// </summary>
+        public PnPPackageFormatException()
+            : base()
+        {
+        }
+
+        /// <summary>
         /// Constructor for PnPPackageFormatException class with the specified error message.
         /// </summary>
         /// <param name="message">A string that describes the exception</param>

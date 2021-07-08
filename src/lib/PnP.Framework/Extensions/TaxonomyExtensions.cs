@@ -1459,7 +1459,7 @@ namespace Microsoft.SharePoint.Client
         public static string NormalizeName(string name)
         {
             if (name == null) return null;
-            var hasGuid = name.IndexOf("|") > -1;
+            var hasGuid = name.IndexOf("|") == -1;
 
             var nameToNormalize = hasGuid ? name.Split('|')[0] : name;
 

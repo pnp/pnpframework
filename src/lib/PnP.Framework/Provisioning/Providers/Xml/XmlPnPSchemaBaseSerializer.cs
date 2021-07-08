@@ -68,6 +68,27 @@ namespace PnP.Framework.Provisioning.Providers.Xml
             // Load the template into an XDocument
             XDocument xml = XDocument.Load(template);
 
+            List<XElement> orderedElements = new List<XElement>();
+            var Preferences = xml.Root.Elements().FirstOrDefault(e => e.Name.LocalName == "Preferences");
+            if (Preferences != null) orderedElements.Add(Preferences);
+            var Localizations = xml.Root.Elements().FirstOrDefault(e => e.Name.LocalName == "Localizations");
+            if (Localizations != null) orderedElements.Add(Localizations);
+            var Tenant = xml.Root.Elements().FirstOrDefault(e => e.Name.LocalName == "Tenant");
+            if (Tenant != null) orderedElements.Add(Tenant);
+            var Templates = xml.Root.Elements().FirstOrDefault(e => e.Name.LocalName == "Templates");
+            if (Templates != null) orderedElements.Add(Templates);
+            var Sequence = xml.Root.Elements().FirstOrDefault(e => e.Name.LocalName == "Sequence");
+            if (Sequence != null) orderedElements.Add(Sequence);
+            var Teams = xml.Root.Elements().FirstOrDefault(e => e.Name.LocalName == "Teams");
+            if (Teams != null) orderedElements.Add(Teams);
+            var AzureActiveDirectory = xml.Root.Elements().FirstOrDefault(e => e.Name.LocalName == "AzureActiveDirectory");
+            if (AzureActiveDirectory != null) orderedElements.Add(AzureActiveDirectory);
+            var Drive = xml.Root.Elements().FirstOrDefault(e => e.Name.LocalName == "Drive");
+            if (Drive != null) orderedElements.Add(Drive);
+            var ProvisioningWebhooks = xml.Root.Elements().FirstOrDefault(e => e.Name.LocalName == "ProvisioningWebhooks");
+            if (ProvisioningWebhooks != null) orderedElements.Add(ProvisioningWebhooks);
+            if (orderedElements.Any()) xml.Root.ReplaceNodes(orderedElements);
+
             // Prepare the XML Schema Set
             XmlSchemaSet schemas = new XmlSchemaSet();
             this._referenceSchema.Seek(0, SeekOrigin.Begin);

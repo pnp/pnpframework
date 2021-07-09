@@ -402,7 +402,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     .Select(fld => new
                     {
                         Field = fld,
-                        FieldRef = (string)XElement.Parse(parser.ParseString(fld.SchemaXml)).Attribute("FieldRef"), // FieldRef means this is a dependent lookup
+                        FieldRef = XElement.Parse(parser.ParseXmlString(fld.SchemaXml))?.Attribute("FieldRef")?.Value, // FieldRef means this is a dependent lookup
                         Step = fld.GetFieldProvisioningStep(parser)
                     })
                     .Where(fldData => fldData.Step == step) // Only include fields related to the current step

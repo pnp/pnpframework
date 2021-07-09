@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Security;
+using PnP.Framework.Extensions;
 
 namespace PnP.Framework.Provisioning.Model.AzureActiveDirectory
 {
+
     /// <summary>
     /// Defines the Password Profile for a User in AAD
     /// </summary>
@@ -70,7 +72,7 @@ namespace PnP.Framework.Provisioning.Model.AzureActiveDirectory
 
             return (this.ForceChangePasswordNextSignIn == other.ForceChangePasswordNextSignIn &&
                 this.ForceChangePasswordNextSignInWithMfa == other.ForceChangePasswordNextSignInWithMfa &&
-                this.Password == other.Password
+                this.Password.IsEqualTo(other.Password)
                 );
         }
 

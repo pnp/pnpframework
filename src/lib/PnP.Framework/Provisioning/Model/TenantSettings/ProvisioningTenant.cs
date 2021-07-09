@@ -330,8 +330,8 @@ namespace PnP.Framework.Provisioning.Model
                 return (false);
             }
 
-            return (this.AppCatalog == other.AppCatalog &&
-                this.ContentDeliveryNetwork == other.ContentDeliveryNetwork &&
+            return (this.AppCatalog.Equals(other.AppCatalog) &&
+                this.ContentDeliveryNetwork.Equals(other.ContentDeliveryNetwork) &&
                 this.SiteDesigns.DeepEquals(other.SiteDesigns) &&
                 this.SiteScripts.DeepEquals(other.SiteScripts) &&
                 this.StorageEntities.DeepEquals(other.StorageEntities) &&

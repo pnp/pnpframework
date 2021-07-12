@@ -298,7 +298,7 @@ namespace PnP.Framework.Provisioning.Model
                 this.Office365GroupsSettings.GetHashCode(),
                 this.Office365GroupLifecyclePolicies.Aggregate(0, (acc, next) => acc += (next != null ? next.GetHashCode() : 0)),
                 this.SPUsersProfiles.Aggregate(0, (acc, next) => acc += (next != null ? next.GetHashCode() : 0)),
-                this.SharingSettings.GetHashCode()
+                this.SharingSettings?.GetHashCode() ?? 0
             ).GetHashCode());
         }
 

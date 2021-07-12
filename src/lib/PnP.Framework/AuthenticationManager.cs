@@ -383,9 +383,9 @@ namespace PnP.Framework
         /// <param name="deviceCodeCallback">The callback that will be called with device code information.</param>
         /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
         /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
-        public AuthenticationManager(string clientId, Func<DeviceCodeResult, Task> deviceCodeCallback, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : 
+        public AuthenticationManager(string clientId, Func<DeviceCodeResult, Task> deviceCodeCallback, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) :
             this(clientId, null, deviceCodeCallback, azureEnvironment, tokenCacheCallback)
-        { 
+        {
         }
 
         /// <summary>
@@ -403,7 +403,7 @@ namespace PnP.Framework
             this.deviceCodeCallback = deviceCodeCallback;
 
             var builder = PublicClientApplicationBuilder.Create(clientId);
-            
+
             if (!string.IsNullOrEmpty(tenantId))
             {
                 builder = builder.WithAuthority($"{azureADEndPoint}/{tenantId}/");
@@ -538,7 +538,7 @@ namespace PnP.Framework
 
             var builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId).WithHttpClientFactory(HttpClientFactory);
 
-            builder = GetBuilderWithAuthority(builder, azureEnvironment);
+            builder = GetBuilderWithAuthority(builder, azureEnvironment, tenantId);
 
             if (!string.IsNullOrEmpty(redirectUrl))
             {
@@ -682,7 +682,7 @@ namespace PnP.Framework
         /// <param name="prompt">The prompt style to use. Notice that this only works with the Interactive Login flow, for all other flows this parameter is ignored.</param>
         /// <param name="uri">for ClientContextType.PnPCoreSdk case as by interface definition needed for GetAccessTokenAsync</param>
         /// <returns></returns>
-        public async Task<string> GetAccessTokenAsync(string[] scopes, CancellationToken cancellationToken, Prompt prompt = default, Uri uri=null)
+        public async Task<string> GetAccessTokenAsync(string[] scopes, CancellationToken cancellationToken, Prompt prompt = default, Uri uri = null)
         {
             AuthenticationResult authResult = null;
 
@@ -1472,12 +1472,19 @@ namespace PnP.Framework
             return builder;
         }
 
-        public ConfidentialClientApplicationBuilder GetBuilderWithAuthority(ConfidentialClientApplicationBuilder builder, AzureEnvironment azureEnvironment)
+        public ConfidentialClientApplicationBuilder GetBuilderWithAuthority(ConfidentialClientApplicationBuilder builder, AzureEnvironment azureEnvironment, string tenantId = "")
         {
             if (azureEnvironment == AzureEnvironment.Production)
             {
-                var azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);                
-                builder = builder.WithAuthority($"{azureADEndPoint}/organizations");                
+                var azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
+                if (!string.IsNullOrEmpty(tenantId))
+                {
+                    builder = builder.WithAuthority($"{azureADEndPoint}/organizations", tenantId);
+                }
+                else
+                {
+                    builder = builder.WithAuthority($"{azureADEndPoint}/organizations");
+                }
             }
             else
             {

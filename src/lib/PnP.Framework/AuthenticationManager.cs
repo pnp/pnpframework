@@ -93,6 +93,8 @@ namespace PnP.Framework
         private IMsalHttpClientFactory httpClientFactory;
         private readonly SecureString accessToken;
         private readonly IAuthenticationProvider authenticationProvider;
+        private readonly PnPContext pnpContext;
+
         internal CookieContainer CookieContainer { get; set; }
 
         private IMsalHttpClientFactory HttpClientFactory
@@ -261,6 +263,16 @@ namespace PnP.Framework
         public static AuthenticationManager CreateWithPnPCoreSdk(IAuthenticationProvider authenticationProvider)
         {
             return new AuthenticationManager(authenticationProvider);
+        }
+
+        /// <summary>
+        /// Creates a new instance of the Authentication Manager to acquire an authenticated ClientContext.
+        /// </summary>
+        /// <param name="pnpContext">PnP Core SDK authentication provider that will deliver the access token</param>
+        /// <returns></returns>
+        public static AuthenticationManager CreateWithPnPCoreSdk(PnPContext pnpContext)
+        {
+            return new AuthenticationManager(pnpContext);
         }
         #endregion
 
@@ -603,6 +615,18 @@ namespace PnP.Framework
         public AuthenticationManager(IAuthenticationProvider authenticationProvider)
         {
             this.authenticationProvider = authenticationProvider;
+            this.pnpContext = null;
+            authenticationType = ClientContextType.PnPCoreSdk;
+        }
+
+        /// <summary>
+        /// Creates an AuthenticationManager for the given PnP Core SDK
+        /// </summary>
+        /// <param name="pnPContext">PnP Core SDK<see cref="PnPContext"/></param>
+        public AuthenticationManager(PnPContext pnPContext)
+        {
+            this.authenticationProvider = pnPContext.AuthenticationProvider;
+            this.pnpContext = pnPContext;
             authenticationType = ClientContextType.PnPCoreSdk;
         }
         #endregion
@@ -1000,14 +1024,15 @@ namespace PnP.Framework
             }
             return null;
         }
-        #endregion
 
-
+        /// <summary>
+        /// Return same IAuthenticationProvider then the AuthenticationManager was initialized with
+        /// </summary>
         internal IAuthenticationProvider PnPCoreAuthenticationProvider { 
             get {
-                if (authenticationType == ClientContextType.PnPCoreSdk)
+                if (authenticationType == ClientContextType.PnPCoreSdk && authenticationProvider != null)
                 {
-                    return this.authenticationProvider;
+                    return authenticationProvider;
                 }
                 else
                 {
@@ -1015,6 +1040,25 @@ namespace PnP.Framework
                 }
             } 
         }
+
+        /// <summary>
+        /// Return same PnPContext then the AuthenticationManager was initialized with
+        /// </summary>
+        internal PnPContext PnPCoreContext
+        {
+            get
+            {
+                if (authenticationType == ClientContextType.PnPCoreSdk && pnpContext!=null)
+                {
+                    return pnpContext;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+        #endregion
 
         #region Internals
         private ClientContext BuildClientContext(IClientApplicationBase application, string siteUrl, string[] scopes, ClientContextType contextType)

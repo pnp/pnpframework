@@ -47,16 +47,27 @@ namespace PnP.Framework
         public PnPContext GetPnPContext(ClientContext context)
         {
             Uri ctxUri = new Uri(context.Url);
-            var factory = BuildContextFactory();
+           
             var ctxSettings = context.GetContextSettings();
-            if(ctxSettings!=null && ctxSettings.AuthenticationManager!=null)
+            
+            if (ctxSettings!=null && ctxSettings.Type == Utilities.Context.ClientContextType.PnPCoreSdk && ctxSettings.AuthenticationManager!=null)
             {
-                var iAuthProvider = ctxSettings.AuthenticationManager.PnPCoreAuthenticationProvider;
-                if(iAuthProvider!=null)
+                var pnpContext = ctxSettings.AuthenticationManager.PnPCoreContext;
+                if (pnpContext != null)
                 {
-                    return factory.Create(ctxUri, iAuthProvider);
+                    return pnpContext;
+                }
+                else
+                {
+                    var iAuthProvider = ctxSettings.AuthenticationManager.PnPCoreAuthenticationProvider;
+                    if (iAuthProvider != null)
+                    {
+                        var factory0 = BuildContextFactory();
+                        return factory0.Create(ctxUri, iAuthProvider);
+                    }
                 }
             }
+            var factory = BuildContextFactory();
             return factory.Create(ctxUri, AuthenticationProviderFactory.GetAuthenticationProvider(context));
         }
 
@@ -116,7 +127,7 @@ namespace PnP.Framework
         public ClientContext GetClientContext(PnPContext pnpContext)
         {
 #pragma warning disable CA2000 // Dispose objects before losing scope
-            AuthenticationManager authManager = AuthenticationManager.CreateWithPnPCoreSdk(pnpContext.AuthenticationProvider);
+            AuthenticationManager authManager = AuthenticationManager.CreateWithPnPCoreSdk(pnpContext);
 #pragma warning restore CA2000 // Dispose objects before losing scope
 
             var ctx = authManager.GetContext(pnpContext.Uri.ToString());

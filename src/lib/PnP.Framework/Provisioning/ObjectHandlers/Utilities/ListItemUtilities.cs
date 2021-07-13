@@ -445,14 +445,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
 
                                     var taxSession = clonedContext.Site.GetTaxonomySession();
                                     TaxonomyItem taxonomyItem = null;
-                                    if (value != null && !Guid.TryParse(value.Trim(), out termGuid))
+                                    if (!string.IsNullOrEmpty(value) && !Guid.TryParse(value.Trim(), out termGuid))
                                     {
                                         // Assume it's a TermPath
                                         taxonomyItem = clonedContext.Site.GetTaxonomyItemByPath(value.Trim());
                                     }
                                     else
                                     {
-                                        if (value != null)
+                                        if (!string.IsNullOrEmpty(value))
                                         {
                                             taxonomyItem = taxSession.GetTerm(termGuid);
                                             clonedContext.Load(taxonomyItem);

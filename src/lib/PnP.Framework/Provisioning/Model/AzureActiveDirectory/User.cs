@@ -144,7 +144,7 @@ namespace PnP.Framework.Provisioning.Model.AzureActiveDirectory
                 return (false);
             }
 
-            return (this.PasswordProfile == other.PasswordProfile &&
+            return (this.PasswordProfile.Equals(other.PasswordProfile) &&
                 this.AccountEnabled == other.AccountEnabled &&
                 this.DisplayName == other.DisplayName &&
                 this.MailNickname == other.MailNickname &&

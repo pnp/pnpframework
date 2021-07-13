@@ -872,15 +872,15 @@ namespace PnP.Framework.Provisioning.Model
                 ((this.Workflows != null && other.Workflows != null) ? this.Workflows.WorkflowDefinitions.DeepEquals(other.Workflows.WorkflowDefinitions) : this.Workflows == other.Workflows) &&
                 ((this.Workflows != null && other.Workflows != null) ? this.Workflows.WorkflowSubscriptions.DeepEquals(other.Workflows.WorkflowSubscriptions) : this.Workflows == other.Workflows) &&
                 this.AddIns.DeepEquals(other.AddIns) &&
-                this.Publishing == other.Publishing &&
+                this.Publishing.Equals(other.Publishing) &&
                 ((this.Localizations != null && other.Localizations != null) ? this.Localizations.DeepEquals(other.Localizations) : this.Localizations == other.Localizations) &&
                 ((this.WebSettings != null && other.WebSettings != null) ? this.WebSettings.Equals(other.WebSettings) : this.WebSettings == other.WebSettings) &&
                 ((this.SiteWebhooks != null && other.SiteWebhooks != null) ? this.SiteWebhooks.DeepEquals(other.SiteWebhooks) : this.SiteWebhooks == other.SiteWebhooks) &&
                 ((this.ClientSidePages != null && other.ClientSidePages != null) ? this.ClientSidePages.DeepEquals(other.ClientSidePages) : this.ClientSidePages == other.ClientSidePages) &&
                 this.TemplateCultureInfo == other.TemplateCultureInfo &&
                 this.Scope == other.Scope &&
-                this.Tenant == other.Tenant &&
-                this.SiteSettings == other.SiteSettings
+                this.Tenant.Equals(other.Tenant) &&
+                this.SiteSettings.Equals(other.SiteSettings)
             );
         }
 

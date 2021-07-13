@@ -136,11 +136,11 @@ namespace PnP.Framework.Provisioning.Model.Teams
                 return (false);
             }
 
-            return (this.FunSettings == other.FunSettings &&
-                this.GuestSettings == other.GuestSettings &&
-                this.MemberSettings == other.MemberSettings &&
-                this.MessagingSettings == other.MessagingSettings &&
-                this.Security == other.Security &&
+            return (this.FunSettings.Equals(other.FunSettings) &&
+                this.GuestSettings.Equals(other.GuestSettings) &&
+                this.MemberSettings.Equals(other.MemberSettings) &&
+                this.MessagingSettings.Equals(other.MessagingSettings) &&
+                this.Security.Equals(other.Security) &&
                 this.Channels.DeepEquals(other.Channels) &&
                 this.Apps.DeepEquals(other.Apps) &&
                 this.Specialization == other.Specialization &&

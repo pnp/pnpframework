@@ -94,7 +94,7 @@ namespace PnP.Framework.Provisioning.Model
             }
 
             return (this.ID == other.ID &&
-                this.TermStore == other.TermStore &&
+                this.TermStore.Equals(other.TermStore) &&
                 this.SiteCollections.DeepEquals(other.SiteCollections)
                 );
         }

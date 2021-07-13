@@ -5,6 +5,7 @@ using PnP.Framework.Utilities.PnPSdk;
 using System;
 using System.Threading;
 using System.Runtime.CompilerServices;
+using System.Collections.Concurrent;
 
 [assembly: InternalsVisibleTo("PnPFramework.Test")]
 namespace PnP.Framework
@@ -17,7 +18,7 @@ namespace PnP.Framework
 
         private static readonly Lazy<PnPCoreSdk> _lazyInstance = new Lazy<PnPCoreSdk>(() => new PnPCoreSdk(), true);
         private IPnPContextFactory pnpContextFactoryCache;
-        private PnPContext pnpContextCached = null;
+        private ConcurrentDictionary<string,PnPContext> pnpContextCached = new ConcurrentDictionary<string, PnPContext>();
         private static readonly SemaphoreSlim semaphoreSlimFactory = new SemaphoreSlim(1);
         internal static ILegacyAuthenticationProviderFactory AuthenticationProviderFactory { get; set; } = new PnPCoreSdkAuthenticationProviderFactory();
         internal static event EventHandler<IServiceCollection> OnDIContainerBuilding;
@@ -47,21 +48,25 @@ namespace PnP.Framework
         /// <returns>The equivalent PnPContext</returns>
         public PnPContext GetPnPContext(ClientContext context)
         {
-            if (pnpContextCached != null)
+            Uri ctxUri = new Uri(context.Url);
+            var ctxSettings = context.GetContextSettings();
+
+            PnPContext cachedContext;
+            if (pnpContextCached.TryGetValue(ctxUri.Authority.ToLower(), out cachedContext))
             {
-                if (pnpContextCached.Uri == new Uri(context.Url))
+                if (cachedContext.Uri == ctxUri)
                 {
-                    return pnpContextCached;
+                    return cachedContext;
                 }
                 else
                 {
-                    return pnpContextCached.Clone(new Uri(context.Url));
+                    return cachedContext.Clone(ctxUri);
                 }
             }
             else
-            { 
+            {
                 var factory = BuildContextFactory();
-                return factory.Create(new Uri(context.Url), AuthenticationProviderFactory.GetAuthenticationProvider(context));
+                return factory.Create(ctxUri, AuthenticationProviderFactory.GetAuthenticationProvider(context));
             }
         }
 
@@ -120,9 +125,10 @@ namespace PnP.Framework
         /// <returns>The equivalent CSOM ClientContext</returns>
         public ClientContext GetClientContext(PnPContext pnpContext)
         {
-            if (pnpContextCached == null)
+            //shloud do only for AppOnly Context
+            if (!pnpContextCached.ContainsKey(pnpContext.Uri.Authority.ToLower()))
             {
-                pnpContextCached = pnpContext;
+                pnpContextCached.TryAdd(pnpContext.Uri.Authority.ToLower(),pnpContext);
             }
 #pragma warning disable CA2000 // Dispose objects before losing scope
             AuthenticationManager authManager = AuthenticationManager.CreateWithPnPCoreSdk(pnpContext.AuthenticationProvider);

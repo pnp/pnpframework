@@ -1002,6 +1002,20 @@ namespace PnP.Framework
         }
         #endregion
 
+
+        internal IAuthenticationProvider PnPCoreAuthenticationProvider { 
+            get {
+                if (authenticationType == ClientContextType.PnPCoreSdk)
+                {
+                    return this.authenticationProvider;
+                }
+                else
+                {
+                    return null;
+                }
+            } 
+        }
+
         #region Internals
         private ClientContext BuildClientContext(IClientApplicationBase application, string siteUrl, string[] scopes, ClientContextType contextType)
         {

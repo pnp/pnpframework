@@ -475,7 +475,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     CoreResources.Provisioning_ObjectHandlers_Teams_Team_ProvisioningError,
                     canPatch: true);
 
-                    if (!string.IsNullOrEmpty(teamId))
+                    if (string.IsNullOrEmpty(teamId)) // Currently GraphHelper.CreateOrUpdateGraphObject is not throwing Exceptions, but returning TeamId null
+                    {
+                        System.Threading.Thread.Sleep(TimeSpan.FromSeconds(5));
+                    }
+                    else
                     {
                         wait = false;
                     }

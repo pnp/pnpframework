@@ -26,6 +26,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
             : base(web, $"{{associated{groupType.ToString().TrimEnd('s')}group}}")
         {
             _groupType = groupType;
+            IsCacheable = false; //since TokenParser does not Update TokenDictionary in BuildTokenCache if IsCacheable=true and therefore not get the new group names after ObjectSiteSecurity renamed groups
         }
 
         internal AssociatedGroupType GroupType { get => _groupType; set => _groupType = value; }

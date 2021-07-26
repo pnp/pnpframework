@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Fix pnpcontext cache did not work for multitenant #417 [czullu - Christian Zuellig]
 - Fix for issue setting ClientSidePage taxonomy field values from parameters empty #407 [magarma - Miguel Angel García Martínez]
 - ProcessFields was using wrong Token-Parser #403 [czullu - Christian Zuellig]
 - Issue 390 fixed in CreateOrUpdateTeamFromGroupInternal. #391 [luismanez - Luis Manez]

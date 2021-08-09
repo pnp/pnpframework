@@ -47,7 +47,7 @@ namespace PnP.Framework.Utilities
             () =>
             {
                 Assembly coreAssembly = Assembly.GetExecutingAssembly();
-                String result = $"NONISV|SharePointPnP|PnPCore/{((AssemblyFileVersionAttribute)coreAssembly.GetCustomAttribute(typeof(AssemblyFileVersionAttribute))).Version}";
+                String result = $"NONISV|SharePointPnP|PnPCore/{((AssemblyFileVersionAttribute)coreAssembly.GetCustomAttribute(typeof(AssemblyFileVersionAttribute))).Version} ({Environment.OSVersion})";
                 return (result);
             },
             true);

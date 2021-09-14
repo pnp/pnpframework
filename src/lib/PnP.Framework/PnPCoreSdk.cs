@@ -4,9 +4,7 @@ using PnP.Core.Services;
 using PnP.Framework.Utilities.PnPSdk;
 using System;
 using System.Threading;
-using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("PnPFramework.Test")]
 namespace PnP.Framework
 {
     /// <summary>

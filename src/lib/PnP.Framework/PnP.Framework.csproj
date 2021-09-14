@@ -27,7 +27,9 @@
 		<IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWindows>
 		<IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
 		<IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
+		<!-- Set the PnPCoreSdkPath and PnPCoreSdkPathNet5 to non published PnP Core SDK binaries to load them instead of the nuget ones -->
 		<PnPCoreSdkPath Condition="'$(PnPCoreSdkPath)' == ''"></PnPCoreSdkPath>
+		<PnPCoreSdkPathNet5 Condition="'$(PnPCoreSdkPathNet5)' == ''"></PnPCoreSdkPathNet5>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(IsWindows)'=='true'">
@@ -62,11 +64,7 @@
 		<ContinuousIntegrationBuild>True</ContinuousIntegrationBuild>
 	</PropertyGroup>
 
-	<ItemGroup>
-		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-			<_Parameter1>PnP.PowerShell</_Parameter1>
-		</AssemblyAttribute>
-	</ItemGroup>
+
 
 	<ItemGroup>
 		<None Remove="Modernization\Publishing\pagelayoutmapping.xml" />
@@ -226,10 +224,18 @@
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.11.1" />
 	</ItemGroup>
 
-	<ItemGroup Condition="'$(PnPCoreSdkPath)' != ''">
-		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.1.1" />
-		<Reference Include="PnP.Core">
+	<ItemGroup Condition="'$(PnPCoreSdkPath)' != ''">		
+		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.1.1" Condition="'$(TargetFramework)' == 'netstandard2.0'"/>
+		<Reference Include="PnP.Core" Condition="'$(TargetFramework)' == 'netstandard2.0'">
 			<HintPath>$(PnPCoreSdkPath)</HintPath>
+			<Private>true</Private>
+			<SpecificVersion>false</SpecificVersion>
+		</Reference>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(PnPCoreSdkPathNet5)' != ''">
+		<Reference Include="PnP.Core" Condition="'$(TargetFramework)' == 'net5.0'">
+			<HintPath>$(PnPCoreSdkPathNet5)</HintPath>
 			<Private>true</Private>
 			<SpecificVersion>false</SpecificVersion>
 		</Reference>

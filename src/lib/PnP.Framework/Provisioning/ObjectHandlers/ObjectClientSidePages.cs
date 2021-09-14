@@ -662,7 +662,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                         {
                                             if (Guid.TryParse(json["instanceId"].Value<string>(), out Guid instanceId))
                                             {
-                                                (myWebPart as PnPCore.PageWebPart).instanceId = instanceId;
+                                                myWebPart.InstanceId = instanceId;
                                             }
                                         }
                                     }
@@ -736,7 +736,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     }
 
                     // Clear existing header controls as they'll be overwritten
-                    (page as PnPCore.Page).HeaderControls.Clear();                    
+                    page.HeaderControls.Clear();                    
 
                     // Load existing available controls
                     var componentsToAdd = page.AvailablePageComponents();
@@ -762,7 +762,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             {
                                 PnPCore.IPageWebPart myWebPart = page.NewWebPart(baseControl);
 
-                                (myWebPart as PnPCore.PageWebPart).IsHeaderControl = true;
+                                myWebPart.IsHeaderControl = true;
 
                                 if (!string.IsNullOrEmpty(headerControl.JsonControlData))
                                 {
@@ -771,13 +771,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                     {
                                         if (Guid.TryParse(json["instanceId"].Value<string>(), out Guid instanceId))
                                         {
-                                            (myWebPart as PnPCore.PageWebPart).instanceId = instanceId;
+                                            myWebPart.InstanceId = instanceId;
                                         }
                                     }
 
                                     if (json["dataVersion"] != null && json["dataVersion"].Type != JTokenType.Null)
                                     {
-                                        (myWebPart as PnPCore.PageWebPart).dataVersion = json["dataVersion"].Value<string>();
+                                        myWebPart.DataVersion = json["dataVersion"].Value<string>();
                                     }
                                 }
 
@@ -787,7 +787,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                     myWebPart.PropertiesJson = headerControl.JsonControlData;
                                 }
 
-                                (page as PnPCore.Page).AddHeaderControl(myWebPart, order);
+                                page.AddHeaderControl(myWebPart, order);
                                 order++;
                             }
                             else

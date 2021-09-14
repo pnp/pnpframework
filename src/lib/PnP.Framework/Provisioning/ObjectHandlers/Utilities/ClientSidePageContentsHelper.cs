@@ -20,6 +20,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
     /// </summary>
     public class ClientSidePageContentsHelper
     {
+
+        internal const string PromotedStateField = "PromotedState";
+        internal const string SpaceContentField = "SpaceContent";
+        internal const string TopicEntityId = "_EntityId";
+        internal const string TopicEntityRelations = "_EntityRelations";
+        internal const string TopicEntityType = "_EntityType";
+        
         private const string ContentTypeIdField = "ContentTypeId";
 
         public void ExtractClientSidePage(Web web, ProvisioningTemplate template, ProvisioningTemplateCreationInformation creationInfo, PnPMonitoredScope scope, string pageUrl, string pageName, bool isHomePage, bool isTemplate = false)
@@ -55,7 +62,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
             {
                 List<string> errorneousOrNonImageFileGuids = new List<string>();
                 //var pageToExtract = web.LoadClientSidePage(page.PageName);
-                var pageToExtract = web.LoadClientSidePage(page.PageName) as PnPCore.Page;
+                var pageToExtract = web.LoadClientSidePage(page.PageName) as PnPCore.IPage;
 
                 if (pageToExtract.Sections.Count == 0 && pageToExtract.Controls.Count == 0 && page.IsHomePage)
                 {
@@ -74,10 +81,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
 
                     int promotedState = 0;
                     //if (pageToExtract.PageListItem[PnP.Framework.Pages.ClientSidePage.PromotedStateField] != null)
-                    if (pageToExtract.PageListItem[PnPCore.PageConstants.PromotedStateField] != null)
+                    if (pageToExtract.PageListItem[PromotedStateField] != null)
                     {
                         //int.TryParse(pageToExtract.PageListItem[PnP.Framework.Pages.ClientSidePage.PromotedStateField].ToString(), out promotedState);
-                        int.TryParse(pageToExtract.PageListItem[PnPCore.PageConstants.PromotedStateField].ToString(), out promotedState);
+                        int.TryParse(pageToExtract.PageListItem[PromotedStateField].ToString(), out promotedState);
                     }
 
                     //var isNews = pageToExtract.LayoutType != Pages.ClientSidePageLayoutType.Home && promotedState == (int)Pages.PromotedState.Promoted;
@@ -114,7 +121,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                         var extractedHeader = new ClientSidePageHeader()
                         {
                             //Type = (ClientSidePageHeaderType)Enum.Parse(typeof(Pages.ClientSidePageHeaderType), pageToExtract.PageHeader.Type.ToString()),
-                            Type = (ClientSidePageHeaderType)Enum.Parse(typeof(ClientSidePageHeaderType), (pageToExtract.PageHeader as PnPCore.PageHeader).Type.ToString()),
+                            Type = (ClientSidePageHeaderType)Enum.Parse(typeof(ClientSidePageHeaderType), pageToExtract.PageHeader.Type.ToString()),
                             ServerRelativeImageUrl = TokenizeJsonControlData(web, pageToExtract.PageHeader.ImageServerRelativeUrl),
                             TranslateX = pageToExtract.PageHeader.TranslateX,
                             TranslateY = pageToExtract.PageHeader.TranslateY,
@@ -245,7 +252,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
 
                                 // Set control type
                                 //if (control.Type == typeof(Pages.ClientSideText))
-                                if (control.Type == typeof(PnPCore.PageText))
+                                if (control is PnPCore.IPageText)
                                 {
                                     controlInstance.Type = WebPartType.Text;
 
@@ -432,7 +439,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                     // Spaces support
                     if (pageToExtract.LayoutType == PnPCore.PageLayoutType.Spaces && !string.IsNullOrEmpty(pageToExtract.SpaceContent))
                     {
-                        extractedPageInstance.FieldValues.Add(PnPCore.PageConstants.SpaceContentField, pageToExtract.SpaceContent);
+                        extractedPageInstance.FieldValues.Add(SpaceContentField, pageToExtract.SpaceContent);
                     }
 
 
@@ -485,9 +492,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                         extractedPageInstance.Sections.Add(sectionInstance);
 
                         // Extract the topic pages fields                        
-                        extractedPageInstance.FieldValues.Add(PnPCore.PageConstants.TopicEntityId, pageToExtract.EntityId == null ? "" : pageToExtract.EntityId);
-                        extractedPageInstance.FieldValues.Add(PnPCore.PageConstants.TopicEntityType, pageToExtract.EntityType == null ? "" : pageToExtract.EntityType);
-                        extractedPageInstance.FieldValues.Add(PnPCore.PageConstants.TopicEntityRelations, pageToExtract.EntityRelations == null ? "" : pageToExtract.EntityRelations);
+                        extractedPageInstance.FieldValues.Add(TopicEntityId, pageToExtract.EntityId == null ? "" : pageToExtract.EntityId);
+                        extractedPageInstance.FieldValues.Add(TopicEntityType, pageToExtract.EntityType == null ? "" : pageToExtract.EntityType);
+                        extractedPageInstance.FieldValues.Add(TopicEntityRelations, pageToExtract.EntityRelations == null ? "" : pageToExtract.EntityRelations);
                     }
 
                     // Add the page to the template

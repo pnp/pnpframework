@@ -14,6 +14,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - Adding operating system in order to fix issue #737 #440 [koenzomers - Koen Zomers]
+- Fixed issue preventing term store data being cached during page transformation [jansenbe - Bert Jansen]
+- Updates done to make PnP Framework work without having a dependency on the PnP Core SDK internals [jansenbe - Bert Jansen]
+- Updated build-debug script and project file that enables building and testing PnP Framework with a locally build PnP Core SDK assembly [jansenbe - Bert Jansen]
 
 ## [1.6.0]
 

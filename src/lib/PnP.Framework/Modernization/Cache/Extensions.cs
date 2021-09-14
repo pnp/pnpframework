@@ -35,6 +35,7 @@ namespace PnP.Framework.Modernization.Cache
             var serializerOptions = new JsonSerializerOptions();
             serializerOptions.Converters.Add(new DictionaryIntConverter());
             serializerOptions.Converters.Add(new DictionaryGuidConverter());
+            serializerOptions.Converters.Add(new DictionaryGuidTermDataConverter());
             return serializerOptions;
         }
 

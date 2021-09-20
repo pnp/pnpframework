@@ -3,7 +3,6 @@
 	<PropertyGroup>
 		<TargetFramework>netcoreapp3.1</TargetFramework>
 		<IsPackable>false</IsPackable>
-		<PnPCoreSdkPath Condition="'$(PnPCoreSdkPath)' == ''"></PnPCoreSdkPath>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -458,15 +457,6 @@
 		<None Update="Resources\Templates\ProvisioningTemplate-2020-02-Sample-01-test.xml">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
-	</ItemGroup>
-
-	<ItemGroup Condition="'$(PnPCoreSdkPath)' != ''">
-		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.1.1" />
-		<Reference Include="PnP.Core">
-			<HintPath>$(PnPCoreSdkPath)</HintPath>
-			<Private>true</Private>
-			<SpecificVersion>false</SpecificVersion>
-		</Reference>
 	</ItemGroup>
 
 </Project>

@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Updates done to make PnP Framework work without having a dependency on the PnP Core SDK internals [jansenbe - Bert Jansen]
 - Updated build-debug script and project file that enables building and testing PnP Framework with a locally build PnP Core SDK assembly [jansenbe - Bert Jansen]
 - GetWebSearchCenterUrl makes us loose the pending changes in CSOM Context #454 [czullu - Christian Zuellig]
+- Update base templates for the provisioning engine [jansenbe - Bert Jansen]
 
 ## [1.6.0]
 

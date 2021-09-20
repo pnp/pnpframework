@@ -1,122 +1,8 @@
 <?xml version="1.0"?>
-<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2020/02/ProvisioningSchema">
-  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=3.19.2003.0, Culture=neutral, PublicKeyToken=null" />
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
+  <pnp:Preferences Generator="PnP.Framework, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null" />
   <pnp:Templates ID="CONTAINER-GROUP0template">
     <pnp:ProvisioningTemplate ID="GROUP0template" Version="1" BaseSiteTemplate="GROUP#0" Scope="RootSite">
-      <pnp:WebSettings RequestAccessEmail="" NoCrawl="false" WelcomePage="SitePages/Home.aspx" SiteLogo="{site}/_api/GroupService/GetGroupImage?id='2495d9a1-5d20-4621-9eab-30e99a53d6f3'&amp;hash=636941427121257317" AlternateCSS="" MasterPageUrl="{masterpagecatalog}/seattle.master" CustomMasterPageUrl="{masterpagecatalog}/seattle.master" CommentsOnSitePagesDisabled="false" QuickLaunchEnabled="true" MembersCanShare="true" SearchScope="DefaultScope" SearchBoxInNavBar="Inherit" />
-      <pnp:SiteSettings AllowDesigner="true" AllowCreateDeclarativeWorkflow="true" AllowSaveDeclarativeWorkflowAsTemplate="true" AllowSavePublishDeclarativeWorkflow="true" SearchBoxInNavBar="Inherit" SearchCenterUrl="" />
-      <pnp:RegionalSettings AdjustHijriDays="0" AlternateCalendarType="None" CalendarType="Gregorian" Collation="25" FirstDayOfWeek="Sunday" FirstWeekOfYear="0" LocaleId="1033" ShowWeeks="false" Time24="false" TimeZone="13" WorkDayEndHour="5:00PM" WorkDays="62" WorkDayStartHour="8:00AM" />
-      <pnp:SupportedUILanguages>
-        <pnp:SupportedUILanguage LCID="1033" />
-        <pnp:SupportedUILanguage LCID="1031" />
-        <pnp:SupportedUILanguage LCID="1036" />
-        <pnp:SupportedUILanguage LCID="2108" />
-        <pnp:SupportedUILanguage LCID="1057" />
-        <pnp:SupportedUILanguage LCID="1044" />
-        <pnp:SupportedUILanguage LCID="1049" />
-        <pnp:SupportedUILanguage LCID="2052" />
-        <pnp:SupportedUILanguage LCID="1028" />
-        <pnp:SupportedUILanguage LCID="1081" />
-        <pnp:SupportedUILanguage LCID="1086" />
-        <pnp:SupportedUILanguage LCID="1060" />
-        <pnp:SupportedUILanguage LCID="1030" />
-        <pnp:SupportedUILanguage LCID="1069" />
-        <pnp:SupportedUILanguage LCID="1035" />
-        <pnp:SupportedUILanguage LCID="1043" />
-        <pnp:SupportedUILanguage LCID="1051" />
-        <pnp:SupportedUILanguage LCID="1068" />
-        <pnp:SupportedUILanguage LCID="1026" />
-        <pnp:SupportedUILanguage LCID="1110" />
-        <pnp:SupportedUILanguage LCID="1055" />
-        <pnp:SupportedUILanguage LCID="1106" />
-        <pnp:SupportedUILanguage LCID="1050" />
-        <pnp:SupportedUILanguage LCID="1038" />
-        <pnp:SupportedUILanguage LCID="1042" />
-        <pnp:SupportedUILanguage LCID="1063" />
-        <pnp:SupportedUILanguage LCID="1071" />
-        <pnp:SupportedUILanguage LCID="1025" />
-        <pnp:SupportedUILanguage LCID="1041" />
-        <pnp:SupportedUILanguage LCID="1062" />
-        <pnp:SupportedUILanguage LCID="1164" />
-        <pnp:SupportedUILanguage LCID="1046" />
-        <pnp:SupportedUILanguage LCID="2070" />
-        <pnp:SupportedUILanguage LCID="9242" />
-        <pnp:SupportedUILanguage LCID="1054" />
-        <pnp:SupportedUILanguage LCID="5146" />
-        <pnp:SupportedUILanguage LCID="1029" />
-        <pnp:SupportedUILanguage LCID="3082" />
-        <pnp:SupportedUILanguage LCID="1037" />
-        <pnp:SupportedUILanguage LCID="1045" />
-        <pnp:SupportedUILanguage LCID="10266" />
-        <pnp:SupportedUILanguage LCID="2074" />
-        <pnp:SupportedUILanguage LCID="1058" />
-        <pnp:SupportedUILanguage LCID="1032" />
-        <pnp:SupportedUILanguage LCID="1061" />
-        <pnp:SupportedUILanguage LCID="1040" />
-        <pnp:SupportedUILanguage LCID="1087" />
-        <pnp:SupportedUILanguage LCID="1053" />
-        <pnp:SupportedUILanguage LCID="1066" />
-        <pnp:SupportedUILanguage LCID="1027" />
-        <pnp:SupportedUILanguage LCID="1048" />
-      </pnp:SupportedUILanguages>
-      <pnp:AuditSettings AuditLogTrimmingRetention="90" TrimAuditLog="true" />
-      <pnp:PropertyBagEntries>
-        <pnp:PropertyBagEntry Key="vti_indexedpropertykeys" Value="" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="FollowLinkEnabled" Value="TRUE" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="vti_approvallevels" Value="Approved Rejected Pending\ Review" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="disabledhelpcollections" Value="" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="vti_defaultlanguage" Value="en-us" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="GroupDocumentsListId" Value="6b41044d-ec51-4792-892d-54afcb603ba4" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="GroupDocumentsUrl" Value="Shared Documents" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="taxonomyhiddenlist" Value="1c0297aa-5e61-41d9-9e4b-5c1da732d30a" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="vti_associategroups" Value="5;4;3" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="vti_categories" Value="Travel Expense\ Report Business Competition Goals/Objectives Ideas Miscellaneous Waiting VIP In\ Process Planning Schedule" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="enabledhelpcollections" Value="VGSEndUser" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="GroupType" Value="Private" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="vti_sitemasterid" Value="a762e65c-452b-414d-8eee-80fc6a85fb05" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="profileschemaversion" Value="5" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="GroupId" Value="073975c1-c20f-44f3-ba6e-487ca29b2bba" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="ProvCorrelationId" Value="ff2bdf9e-a05d-0000-b281-855b47fc6f55" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="dlc_expirationlastruncorrelation" Value="start:04/07/2020 06:08:52; end:04/07/2020 06:08:52;correlationId:4c56469f-60b1-2000-3a10-c4e6b116d18c" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="dlc_policyupdatelastruncorrelation" Value="start:04/05/2020 22:48:36; end:04/05/2020 22:48:36;correlationId:b9ea459f-9031-2000-3a10-c04f666a0b5b" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="LastGroupSitePrivacyUpdated" Value="636941427024857709" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="vti_createdassociategroups" Value="3;4;5" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="GroupAlias" Value="templateGROUP0" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="vti_extenderversion" Value="16.0.0.8908" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="dlc_expirationlastrun" Value="4/7/2020 6:08:52 AM" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="dlc_policyupdatelastrun" Value="4/5/2020 10:48:36 PM" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="RelatedGroupId" Value="073975c1-c20f-44f3-ba6e-487ca29b2bba" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="vti_associatevisitorgroup" Value="4" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="vti_associateownergroup" Value="3" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="metadatatimestamp" Value="437b86fc125845a985ea87a29156ce3c|2015-03-27T08:10:01.077Z" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="HomepageProvisioned" Value="1" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="vti_associatemembergroup" Value="5" Overwrite="false" />
-      </pnp:PropertyBagEntries>
-      <pnp:Security AssociatedOwnerGroup="{sitetitle} Owners" AssociatedMemberGroup="{sitetitle} Members" AssociatedVisitorGroup="{sitetitle} Visitors">
-        <pnp:AdditionalOwners>
-          <pnp:User Name="SHAREPOINT\system" />
-          <pnp:User Name="c:0o.c|federateddirectoryclaimprovider|073975c1-c20f-44f3-ba6e-487ca29b2bba_o" />
-        </pnp:AdditionalOwners>
-        <pnp:AdditionalMembers>
-          <pnp:User Name="c:0o.c|federateddirectoryclaimprovider|073975c1-c20f-44f3-ba6e-487ca29b2bba" />
-        </pnp:AdditionalMembers>
-        <pnp:Permissions />
-      </pnp:Security>
-      <pnp:Navigation AddNewPagesToNavigation="true" CreateFriendlyUrlsForNewPages="true">
-        <pnp:GlobalNavigation NavigationType="Structural">
-          <pnp:StructuralNavigation RemoveExistingNodes="false" />
-        </pnp:GlobalNavigation>
-        <pnp:CurrentNavigation NavigationType="StructuralLocal">
-          <pnp:StructuralNavigation RemoveExistingNodes="false">
-            <pnp:NavigationNode Title="Home" Url="{site}" />
-            <pnp:NavigationNode Title="Conversations" Url="{site}/_layouts/15/groupstatus.aspx?Target=CONVERSATIONS&amp;Source=QuickLaunch" IsExternal="true" />
-            <pnp:NavigationNode Title="Documents" Url="{site}/Shared Documents/Forms/AllItems.aspx" />
-            <pnp:NavigationNode Title="Notebook" Url="{site}/_layouts/15/groupstatus.aspx?Target=NOTEBOOK" IsExternal="true" />
-            <pnp:NavigationNode Title="Pages" Url="{site}/SitePages/Forms/ByAuthor.aspx" />
-            <pnp:NavigationNode Title="Site contents" Url="{site}/_layouts/15/viewlsts.aspx" IsExternal="true" />
-          </pnp:StructuralNavigation>
-        </pnp:CurrentNavigation>
-      </pnp:Navigation>
       <pnp:SiteFields>
         <Field Type="Note" DisplayName="TaxKeywordTaxHTField" StaticName="TaxKeywordTaxHTField" Name="TaxKeywordTaxHTField" ID="{1390a86a-23da-45f0-8efe-ef36edadfb39}" ShowInViewForms="FALSE" Required="FALSE" Hidden="TRUE" CanToggleHidden="TRUE" SourceID="{e57bccd3-9d54-4b2c-b025-247c918fe72e}" />
         <Field ID="{1F30D200-0D4E-4C8A-A7EB-2E49815BF2BE}" DisplayName="Instance Id" Name="WF4InstanceId" Type="Text" Group="_Hidden" Hidden="TRUE" Sealed="TRUE" Indexed="TRUE" />
@@ -339,6 +225,7 @@
             <CHOICE>Template</CHOICE>
             <CHOICE>MigratedFromServerRendered</CHOICE>
             <CHOICE>TopicPage</CHOICE>
+            <CHOICE>PrivateAuthoring</CHOICE>
           </CHOICES>
         </Field>
         <Field ID="{B4BA57C8-AB73-49fa-B6AF-A4F824D84C14}" DisplayName="WSEventType" Name="WSEventType" Type="Text" Sealed="TRUE" Group="_Hidden" />
@@ -359,7 +246,7 @@
         <Field ID="{D60D65FF-FF42-4044-A684-AC3F7A5E598C}" Name="_TopicHeader" StaticName="_TopicHeader" DisplayName="Topic header" Type="Text" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="_Hidden" Description="" ShowInNewForm="FALSE" ShowInEditForm="FALSE" ShowInDisplayForm="FALSE" ShowInViewForms="FALSE" ShowInListSettings="FALSE" AllowDeletion="FALSE" />
       </pnp:SiteFields>
       <pnp:ContentTypes>
-        <pnp:ContentType ID="0x01002A2479FF33DD4BC3B1533A012B653717" Name="WorkflowServiceDefinition" Description="WorkflowServiceDefinition" Group="_Hidden" NewFormUrl="" EditFormUrl="" DisplayFormUrl="">
+        <pnp:ContentType ID="0x01002A2479FF33DD4BC3B1533A012B653717" Name="WorkflowServiceDefinition" Description="WorkflowServiceDefinition" Group="_Hidden" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" Required="true" UpdateChildren="true" />
@@ -371,7 +258,7 @@
             <pnp:FieldRef ID="78eae64a-f5f2-49af-b416-3247b76f46a1" Name="FormData" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
-        <pnp:ContentType ID="0x0100AA27A923036E459D9EF0D18BBD0B9587" Name="WorkflowServiceSubscription" Description="WorkflowServiceSubscription" Group="_Hidden" NewFormUrl="" EditFormUrl="" DisplayFormUrl="">
+        <pnp:ContentType ID="0x0100AA27A923036E459D9EF0D18BBD0B9587" Name="WorkflowServiceSubscription" Description="WorkflowServiceSubscription" Group="_Hidden" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" Required="true" UpdateChildren="true" />
@@ -388,7 +275,7 @@
             <pnp:FieldRef ID="78eae64a-f5f2-49af-b416-3247b76f46a1" Name="FormData" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
-        <pnp:ContentType ID="0x0101002039C03B61C64EC4A04F5361F3851066" Name="Display Template" Description="Base Content Type containing common Display Template columns. Use one of Control, Group, Item or Filter Display Template content types to create a display type. " Group="_Hidden" NewFormUrl="" EditFormUrl="" DisplayFormUrl="">
+        <pnp:ContentType ID="0x0101002039C03B61C64EC4A04F5361F3851066" Name="Display Template" Description="Base Content Type containing common Display Template columns. Use one of Control, Group, Item or Filter Display Template content types to create a display type. " Group="_Hidden" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="5f47e085-2150-41dc-b661-442f3027f552" Name="SelectFilename" UpdateChildren="true" />
@@ -404,7 +291,7 @@
             <pnp:FieldRef ID="3c318a40-0d51-408d-ba71-16fa845b9fe5" Name="CrawlerXSLFile" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
-        <pnp:ContentType ID="0x0101002039C03B61C64EC4A04F5361F385106605" Name="Display Template Code" Description="Display Template Code javascript that registers and executes Display Template rendering logic." Group="_Hidden" NewFormUrl="" EditFormUrl="" DisplayFormUrl="">
+        <pnp:ContentType ID="0x0101002039C03B61C64EC4A04F5361F385106605" Name="Display Template Code" Description="Display Template Code javascript that registers and executes Display Template rendering logic." Group="_Hidden" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="5f47e085-2150-41dc-b661-442f3027f552" Name="SelectFilename" UpdateChildren="true" />
@@ -424,7 +311,7 @@
             <pnp:FieldRef ID="bab0a619-d1ec-40d7-847b-3e4408080c17" Name="CompatibleManagedProperties" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
-        <pnp:ContentType ID="0x0101009D1CB255DA76424F860D91F20E6C4118002A50BFCFB7614729B56886FADA02339B" Name="Repost Page" Description="Create a new repost page." Group="Document Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="">
+        <pnp:ContentType ID="0x0101009D1CB255DA76424F860D91F20E6C4118002A50BFCFB7614729B56886FADA02339B" Name="Repost Page" Description="Used to create a News link post. If deleted, the News link option will be disabled for users." Group="Document Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="5f47e085-2150-41dc-b661-442f3027f552" Name="SelectFilename" UpdateChildren="true" />
@@ -455,7 +342,7 @@
           </pnp:FieldRefs>
           <pnp:DocumentTemplate TargetName="/_layouts/15/CreateSitePage.aspx" />
         </pnp:ContentType>
-        <pnp:ContentType ID="0x010100C5033D6CFB8447359FB795C8A73A2B19" Name="Design File" Description="HTML, JavaScript, CSS, images, and other supporting files in the Master Page Gallery used by HTML Master Pages, HTML Page Layouts, and Display Templates." Group="_Hidden" Sealed="true" NewFormUrl="" EditFormUrl="" DisplayFormUrl="">
+        <pnp:ContentType ID="0x010100C5033D6CFB8447359FB795C8A73A2B19" Name="Design File" Description="HTML, JavaScript, CSS, images, and other supporting files in the Master Page Gallery used by HTML Master Pages, HTML Page Layouts, and Display Templates." Group="_Hidden" Sealed="true" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="5f47e085-2150-41dc-b661-442f3027f552" Name="SelectFilename" UpdateChildren="true" />
@@ -467,7 +354,7 @@
             <pnp:FieldRef ID="4dd7e525-8d6b-4cb4-9d3e-44ee25f973eb" Name="Created_x0020_By" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
-        <pnp:ContentType ID="0x010100F8EF98760CBA4A94994F13BA881038FA" Name="InfoPath Form Template" Description="A Microsoft InfoPath Form Template." Group="_Hidden" Hidden="true" NewFormUrl="" EditFormUrl="" DisplayFormUrl="">
+        <pnp:ContentType ID="0x010100F8EF98760CBA4A94994F13BA881038FA" Name="InfoPath Form Template" Description="A Microsoft InfoPath Form Template." Group="_Hidden" Hidden="true" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="5f47e085-2150-41dc-b661-442f3027f552" Name="SelectFilename" UpdateChildren="true" />
@@ -488,7 +375,7 @@
             <pnp:FieldRef ID="1a03fa74-8c63-40cc-bd06-73b580bd8743" Name="LinkTemplateName" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
-        <pnp:ContentType ID="0x010106" Name="Master Page Preview" Description="Create a new master page preview." Group="Document Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="">
+        <pnp:ContentType ID="0x010106" Name="Master Page Preview" Description="Create a new master page preview." Group="Document Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="5f47e085-2150-41dc-b661-442f3027f552" Name="SelectFilename" UpdateChildren="true" />
@@ -502,7 +389,7 @@
           </pnp:FieldRefs>
           <pnp:DocumentTemplate TargetName="/_layouts/15/upload.aspx" />
         </pnp:ContentType>
-        <pnp:ContentType ID="0x0108003365C4474CAE8C42BCE396314E88E51F" Name="Workflow Task (SharePoint 2013)" Description="Create a SharePoint 2013 Workflow Task" Group="List Content Types" Hidden="true" NewFormUrl="" EditFormUrl="" DisplayFormUrl="">
+        <pnp:ContentType ID="0x0108003365C4474CAE8C42BCE396314E88E51F" Name="Workflow Task (SharePoint 2013)" Description="Create a SharePoint 2013 Workflow Task" Group="List Content Types" Hidden="true" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" UpdateChildren="true" />
@@ -519,7 +406,7 @@
             <pnp:FieldRef ID="1f30d200-0d4e-4c8a-a7eb-2e49815bf2be" Name="WorkflowInstanceId" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
-        <pnp:ContentType ID="0x0110" Name="Post" Description="Create a new blog post." Group="List Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="Lists/Posts/Post.aspx">
+        <pnp:ContentType ID="0x0110" Name="Post" Description="Create a new blog post." Group="List Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="Lists/Posts/Post.aspx" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" Required="true" UpdateChildren="true" />
@@ -528,7 +415,7 @@
             <pnp:FieldRef ID="b1b53d80-23d6-e31b-b235-3a286b9f10ea" Name="PublishedDate" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
-        <pnp:ContentType ID="0x0120D5" Name="Document Collection Folder" Description="Create a new Document Collection Folder" Group="_Hidden" Sealed="true" NewFormUrl="" EditFormUrl="" DisplayFormUrl="">
+        <pnp:ContentType ID="0x0120D5" Name="Document Collection Folder" Description="Create a new Document Collection Folder" Group="_Hidden" Sealed="true" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="b824e17e-a1b3-426e-aecf-f0184d900485" Name="ItemChildCount" UpdateChildren="true" />
@@ -562,7 +449,7 @@
             </View>
           </pnp:Views>
           <pnp:Fields>
-            <Field ID="{3a8ee3f8-166b-4394-b3e2-e98dcf86a847}" Name="A2ODMountCount" DisplaceOnUpgrade="TRUE" ReadOnly="TRUE" ShowInFileDlg="FALSE" Type="Lookup" DisplayName="A2OD Mount Count" List="Docs" FieldRef="ID" ShowField="A2ODMountCount" JoinColName="DoclibRowId" JoinRowOrdinal="0" JoinType="INNER" SchemaVersion="16.0.211.0" RecreateIfMissing="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="A2ODMountCount" FromBaseType="TRUE" />
+            <Field ID="{cb19284a-cde7-4570-a980-1dab8bd74470}" Type="Note" Name="_ExtendedDescription" DisplayName="Description" DisplaceOnUpgrade="TRUE" ShowInEditForm="FALSE" Indexed="FALSE" RichText="TRUE" RichTextMode="Compatible" CanToggleHidden="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="_ExtendedDescription" ColName="ntext2" RowOrdinal="0" />
           </pnp:Fields>
           <pnp:FieldRefs>
             <pnp:FieldRef ID="d307dff3-340f-44a2-9f4b-fbfe1ba07459" Name="_CommentCount" DisplayName="Comment count" />
@@ -615,7 +502,7 @@
             </View>
           </pnp:Views>
           <pnp:Fields>
-            <Field ID="{3a8ee3f8-166b-4394-b3e2-e98dcf86a847}" Name="A2ODMountCount" DisplaceOnUpgrade="TRUE" ReadOnly="TRUE" ShowInFileDlg="FALSE" Type="Lookup" DisplayName="A2OD Mount Count" List="Docs" FieldRef="ID" ShowField="A2ODMountCount" JoinColName="DoclibRowId" JoinRowOrdinal="0" JoinType="INNER" SchemaVersion="16.0.211.0" RecreateIfMissing="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="A2ODMountCount" FromBaseType="TRUE" />
+            <Field ID="{cb19284a-cde7-4570-a980-1dab8bd74470}" Type="Note" Name="_ExtendedDescription" DisplayName="Description" DisplaceOnUpgrade="TRUE" ShowInEditForm="FALSE" Indexed="FALSE" RichText="TRUE" RichTextMode="Compatible" CanToggleHidden="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="_ExtendedDescription" ColName="ntext2" RowOrdinal="0" />
           </pnp:Fields>
           <pnp:FieldRefs>
             <pnp:FieldRef ID="66b691cf-07a3-4ca6-ac6d-27fa969c8569" Name="FormName" DisplayName="Form Name" />
@@ -656,7 +543,7 @@
             </View>
           </pnp:Views>
           <pnp:Fields>
-            <Field ID="{3a8ee3f8-166b-4394-b3e2-e98dcf86a847}" Name="A2ODMountCount" DisplaceOnUpgrade="TRUE" ReadOnly="TRUE" ShowInFileDlg="FALSE" Type="Lookup" DisplayName="A2OD Mount Count" List="Docs" FieldRef="ID" ShowField="A2ODMountCount" JoinColName="DoclibRowId" JoinRowOrdinal="0" JoinType="INNER" SchemaVersion="16.0.211.0" RecreateIfMissing="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="A2ODMountCount" FromBaseType="TRUE" />
+            <Field ID="{cb19284a-cde7-4570-a980-1dab8bd74470}" Type="Note" Name="_ExtendedDescription" DisplayName="Description" DisplaceOnUpgrade="TRUE" ShowInEditForm="FALSE" Indexed="FALSE" RichText="TRUE" RichTextMode="Compatible" CanToggleHidden="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="_ExtendedDescription" ColName="ntext4" RowOrdinal="0" />
           </pnp:Fields>
           <pnp:FieldRefs>
             <pnp:FieldRef ID="d307dff3-340f-44a2-9f4b-fbfe1ba07459" Name="_CommentCount" DisplayName="Comment count" />
@@ -771,9 +658,6 @@
               <JSLink>clienttemplates.js</JSLink>
             </View>
           </pnp:Views>
-          <pnp:Fields>
-            <Field ID="{3a8ee3f8-166b-4394-b3e2-e98dcf86a847}" Name="A2ODMountCount" DisplaceOnUpgrade="TRUE" ReadOnly="TRUE" ShowInFileDlg="FALSE" Type="Lookup" DisplayName="A2OD Mount Count" List="Docs" FieldRef="ID" ShowField="A2ODMountCount" JoinColName="DoclibRowId" JoinRowOrdinal="0" JoinType="INNER" SchemaVersion="16.0.211.0" RecreateIfMissing="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="A2ODMountCount" FromBaseType="TRUE" />
-          </pnp:Fields>
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c33527b4-d920-4587-b791-45024d00068a" Name="WikiField" DisplayName="Wiki Content" />
             <pnp:FieldRef ID="4966388e-6e12-4bc6-8990-5b5b66153eae" Name="CanvasContent1" DisplayName="Authoring Canvas Content" />
@@ -815,7 +699,7 @@
             </View>
           </pnp:Views>
           <pnp:Fields>
-            <Field ID="{3a8ee3f8-166b-4394-b3e2-e98dcf86a847}" Name="A2ODMountCount" DisplaceOnUpgrade="TRUE" ReadOnly="TRUE" ShowInFileDlg="FALSE" Type="Lookup" DisplayName="A2OD Mount Count" List="Docs" FieldRef="ID" ShowField="A2ODMountCount" JoinColName="DoclibRowId" JoinRowOrdinal="0" JoinType="INNER" SchemaVersion="16.0.211.0" RecreateIfMissing="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="A2ODMountCount" FromBaseType="TRUE" />
+            <Field ID="{cb19284a-cde7-4570-a980-1dab8bd74470}" Type="Note" Name="_ExtendedDescription" DisplayName="Description" DisplaceOnUpgrade="TRUE" ShowInEditForm="FALSE" Indexed="FALSE" RichText="TRUE" RichTextMode="Compatible" CanToggleHidden="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="_ExtendedDescription" ColName="ntext2" RowOrdinal="0" />
           </pnp:Fields>
           <pnp:FieldRefs>
             <pnp:FieldRef ID="d307dff3-340f-44a2-9f4b-fbfe1ba07459" Name="_CommentCount" DisplayName="Comment count" />
@@ -878,7 +762,126 @@
           <pnp:Feature ID="a0e5a010-1329-49d4-9e09-f280cdbed37d" />
         </pnp:WebFeatures>
       </pnp:Features>
-      <pnp:Header Layout="Standard" />
+      <pnp:WebSettings RequestAccessEmail="" NoCrawl="false" WelcomePage="SitePages/Home.aspx" SiteLogo="{site}/_api/GroupService/GetGroupImage?id='2495d9a1-5d20-4621-9eab-30e99a53d6f3'&amp;hash=636941427121257317" AlternateCSS="" MasterPageUrl="{masterpagecatalog}/seattle.master" CustomMasterPageUrl="{masterpagecatalog}/seattle.master" CommentsOnSitePagesDisabled="false" QuickLaunchEnabled="true" MembersCanShare="true" SearchScope="DefaultScope" SearchBoxInNavBar="Inherit" />
+      <pnp:SiteSettings AllowDesigner="true" AllowCreateDeclarativeWorkflow="true" AllowSaveDeclarativeWorkflowAsTemplate="true" AllowSavePublishDeclarativeWorkflow="true" SearchBoxInNavBar="Inherit" SearchCenterUrl="" />
+      <pnp:RegionalSettings AdjustHijriDays="0" AlternateCalendarType="None" CalendarType="Gregorian" Collation="25" FirstDayOfWeek="Sunday" FirstWeekOfYear="0" LocaleId="1033" ShowWeeks="false" Time24="false" TimeZone="13" WorkDayEndHour="5:00PM" WorkDays="62" WorkDayStartHour="8:00AM" />
+      <pnp:SupportedUILanguages>
+        <pnp:SupportedUILanguage LCID="1033" />
+        <pnp:SupportedUILanguage LCID="1031" />
+        <pnp:SupportedUILanguage LCID="1036" />
+        <pnp:SupportedUILanguage LCID="2108" />
+        <pnp:SupportedUILanguage LCID="1057" />
+        <pnp:SupportedUILanguage LCID="1044" />
+        <pnp:SupportedUILanguage LCID="1049" />
+        <pnp:SupportedUILanguage LCID="2052" />
+        <pnp:SupportedUILanguage LCID="1028" />
+        <pnp:SupportedUILanguage LCID="1081" />
+        <pnp:SupportedUILanguage LCID="1086" />
+        <pnp:SupportedUILanguage LCID="1060" />
+        <pnp:SupportedUILanguage LCID="1030" />
+        <pnp:SupportedUILanguage LCID="1069" />
+        <pnp:SupportedUILanguage LCID="1035" />
+        <pnp:SupportedUILanguage LCID="1043" />
+        <pnp:SupportedUILanguage LCID="1051" />
+        <pnp:SupportedUILanguage LCID="1068" />
+        <pnp:SupportedUILanguage LCID="1026" />
+        <pnp:SupportedUILanguage LCID="1110" />
+        <pnp:SupportedUILanguage LCID="1055" />
+        <pnp:SupportedUILanguage LCID="1106" />
+        <pnp:SupportedUILanguage LCID="1050" />
+        <pnp:SupportedUILanguage LCID="1038" />
+        <pnp:SupportedUILanguage LCID="1042" />
+        <pnp:SupportedUILanguage LCID="1063" />
+        <pnp:SupportedUILanguage LCID="1071" />
+        <pnp:SupportedUILanguage LCID="1025" />
+        <pnp:SupportedUILanguage LCID="1041" />
+        <pnp:SupportedUILanguage LCID="1062" />
+        <pnp:SupportedUILanguage LCID="1164" />
+        <pnp:SupportedUILanguage LCID="1046" />
+        <pnp:SupportedUILanguage LCID="2070" />
+        <pnp:SupportedUILanguage LCID="9242" />
+        <pnp:SupportedUILanguage LCID="1054" />
+        <pnp:SupportedUILanguage LCID="5146" />
+        <pnp:SupportedUILanguage LCID="1029" />
+        <pnp:SupportedUILanguage LCID="3082" />
+        <pnp:SupportedUILanguage LCID="1037" />
+        <pnp:SupportedUILanguage LCID="1045" />
+        <pnp:SupportedUILanguage LCID="10266" />
+        <pnp:SupportedUILanguage LCID="2074" />
+        <pnp:SupportedUILanguage LCID="1058" />
+        <pnp:SupportedUILanguage LCID="1032" />
+        <pnp:SupportedUILanguage LCID="1061" />
+        <pnp:SupportedUILanguage LCID="1040" />
+        <pnp:SupportedUILanguage LCID="1087" />
+        <pnp:SupportedUILanguage LCID="1053" />
+        <pnp:SupportedUILanguage LCID="1066" />
+        <pnp:SupportedUILanguage LCID="1027" />
+        <pnp:SupportedUILanguage LCID="1048" />
+      </pnp:SupportedUILanguages>
+      <pnp:AuditSettings AuditLogTrimmingRetention="90" TrimAuditLog="true" />
+      <pnp:PropertyBagEntries>
+        <pnp:PropertyBagEntry Key="FollowLinkEnabled" Value="TRUE" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="vti_approvallevels" Value="Approved Rejected Pending\ Review" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="dlc_expirationlastruncorrelationv2" Value="start:02/03/2021 16:47:38; end:02/03/2021 16:47:38;correlationId:c0aca79f-00fb-2000-9566-0b8b15f4a3c3" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="disabledhelpcollections" Value="" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="vti_defaultlanguage" Value="en-us" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="vti_createdassociategroups" Value="3;4;5" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="GroupDocumentsListId" Value="6b41044d-ec51-4792-892d-54afcb603ba4" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="GroupDocumentsUrl" Value="Shared Documents" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="taxonomyhiddenlist" Value="1c0297aa-5e61-41d9-9e4b-5c1da732d30a" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="vti_associategroups" Value="5;4;3" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="vti_categories" Value="Travel Expense\ Report Business Competition Goals/Objectives Ideas Miscellaneous Waiting VIP In\ Process Planning Schedule" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="enabledhelpcollections" Value="VGSEndUser" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="GroupType" Value="Private" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="vti_sitemasterid" Value="a762e65c-452b-414d-8eee-80fc6a85fb05" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="profileschemaversion" Value="5" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="GroupId" Value="073975c1-c20f-44f3-ba6e-487ca29b2bba" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="ProvCorrelationId" Value="ff2bdf9e-a05d-0000-b281-855b47fc6f55" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="dlc_expirationlastruncorrelation" Value="start:06/15/2020 23:15:58; end:06/15/2020 23:15:58;correlationId:ddc65c9f-502c-2000-3a10-c32ba6ff9f9f" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="dlc_policyupdatelastruncorrelation" Value="start:02/22/2021 23:22:39; end:02/22/2021 23:22:39;correlationId:91e3ad9f-906c-2000-9566-0a46cc193b85" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="contenttypessynctimestampversion" Value="1" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="dlc_policyupdatelastrun" Value="2/22/2021 11:22:39 PM" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="contenttypesusagebackfillversion" Value="2" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="GroupAlias" Value="templateGROUP0" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="dlc_failedexecutioncount" Value="0" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="vti_extenderversion" Value="16.0.0.8908" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="dlc_expirationlastrun" Value="6/15/2020 11:15:58 PM" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="RelatedGroupId" Value="073975c1-c20f-44f3-ba6e-487ca29b2bba" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="vti_associatevisitorgroup" Value="4" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="HomepageProvisioned" Value="1" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="vti_associateownergroup" Value="3" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="vti_indexedpropertykeys" Value="" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="metadatatimestamp" Value="437b86fc125845a985ea87a29156ce3c|2015-03-27T08:10:01.077Z" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="vti_associatemembergroup" Value="5" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="LastGroupSitePrivacyUpdated" Value="636941427024857709" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="dlc_expirationlastrunv2" Value="2/3/2021 4:47:38 PM" Overwrite="false" />
+      </pnp:PropertyBagEntries>
+      <pnp:Security AssociatedOwnerGroup="{groupsitetitle} Owners" AssociatedMemberGroup="{groupsitetitle} Members" AssociatedVisitorGroup="{groupsitetitle} Visitors">
+        <pnp:AdditionalOwners>
+          <pnp:User Name="SHAREPOINT\system" />
+          <pnp:User Name="c:0o.c|federateddirectoryclaimprovider|073975c1-c20f-44f3-ba6e-487ca29b2bba_o" />
+        </pnp:AdditionalOwners>
+        <pnp:AdditionalMembers>
+          <pnp:User Name="c:0o.c|federateddirectoryclaimprovider|073975c1-c20f-44f3-ba6e-487ca29b2bba" />
+        </pnp:AdditionalMembers>
+        <pnp:Permissions />
+      </pnp:Security>
+      <pnp:Navigation AddNewPagesToNavigation="true" CreateFriendlyUrlsForNewPages="true">
+        <pnp:GlobalNavigation NavigationType="Structural">
+          <pnp:StructuralNavigation RemoveExistingNodes="false" />
+        </pnp:GlobalNavigation>
+        <pnp:CurrentNavigation NavigationType="StructuralLocal">
+          <pnp:StructuralNavigation RemoveExistingNodes="false">
+            <pnp:NavigationNode Title="Home" Url="{site}" />
+            <pnp:NavigationNode Title="Conversations" Url="{site}/_layouts/15/groupstatus.aspx?Target=CONVERSATIONS&amp;Source=QuickLaunch" IsExternal="true" />
+            <pnp:NavigationNode Title="Documents" Url="{site}/Shared Documents/Forms/AllItems.aspx" />
+            <pnp:NavigationNode Title="Notebook" Url="{site}/_layouts/15/groupstatus.aspx?Target=NOTEBOOK" IsExternal="true" />
+            <pnp:NavigationNode Title="Pages" Url="{site}/SitePages/Forms/ByAuthor.aspx" />
+            <pnp:NavigationNode Title="Site contents" Url="{site}/_layouts/15/viewlsts.aspx" IsExternal="true" />
+          </pnp:StructuralNavigation>
+        </pnp:CurrentNavigation>
+      </pnp:Navigation>
+      <pnp:Header Layout="Standard" ShowSiteTitle="false" ShowSiteNavigation="false" />
     </pnp:ProvisioningTemplate>
   </pnp:Templates>
 </pnp:Provisioning>

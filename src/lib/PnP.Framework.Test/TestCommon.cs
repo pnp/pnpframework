@@ -114,7 +114,7 @@ namespace PnP.Framework.Test
         #region Properties
         public static string TenantUrl { get; set; }
         public static string DevSiteUrl { get; set; }
-        static string UserName { get; set; }
+        public static string UserName { get; set; }
         static SecureString Password { get; set; }
         public static string AppId { get; set; }
         static string AppSecret { get; set; }

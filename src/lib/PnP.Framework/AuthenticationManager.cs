@@ -95,7 +95,7 @@ namespace PnP.Framework
         private readonly IAuthenticationProvider authenticationProvider;
         private readonly PnPContext pnpContext;
 
-        internal CookieContainer CookieContainer { get; set; }
+        public CookieContainer CookieContainer { get; set; }
 
         private IMsalHttpClientFactory HttpClientFactory
         {
@@ -1150,7 +1150,7 @@ namespace PnP.Framework
             }
         }
 
-        internal ClientContext GetOnPremisesContext(string siteUrl, string userName, SecureString password)
+        public ClientContext GetOnPremisesContext(string siteUrl, string userName, SecureString password)
         {
             ClientContext clientContext = new ClientContext(siteUrl)
             {
@@ -1163,7 +1163,7 @@ namespace PnP.Framework
             return clientContext;
         }
 
-        internal ClientContext GetOnPremisesContext(string siteUrl, ICredentials credentials)
+        public ClientContext GetOnPremisesContext(string siteUrl, ICredentials credentials)
         {
             ClientContext clientContext = new ClientContext(siteUrl)
             {
@@ -1176,7 +1176,7 @@ namespace PnP.Framework
             return clientContext;
         }
 
-        internal ClientContext GetOnPremisesContext(string siteUrl)
+        public ClientContext GetOnPremisesContext(string siteUrl)
         {
             ClientContext clientContext = new ClientContext(siteUrl)
             {

@@ -3,6 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>netcoreapp3.1</TargetFramework>
 		<IsPackable>false</IsPackable>
+		<SignAssembly>true</SignAssembly>
+		<AssemblyOriginatorKeyFile>..\pnp.core.snk</AssemblyOriginatorKeyFile>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

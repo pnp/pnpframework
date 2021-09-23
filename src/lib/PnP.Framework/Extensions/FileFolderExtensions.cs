@@ -472,7 +472,14 @@ namespace Microsoft.SharePoint.Client
             if (parentList == null)
             {
                 // Create folder for library or common URL path
-                var newFolder = folderCollection.Add(folderName);
+                FolderCollectionAddParameters folderAddParameters = new FolderCollectionAddParameters
+                {
+                    Overwrite = true
+                };
+                
+                ResourcePath resourcePath = ResourcePath.FromDecodedUrl(folderName);
+
+                var newFolder = folderCollection.AddUsingPath(resourcePath, folderAddParameters);
                 if (expressions != null && expressions.Any())
                 {
                     folderCollection.Context.Load(newFolder, expressions);

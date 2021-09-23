@@ -149,6 +149,21 @@ namespace PnP.Framework.Graph
                                     AccountEnabled = u.AccountEnabled,
                                 };
 
+                                // If additional properties have been provided, ensure their output gets added to the AdditionalProperties dictonary of the output
+                                if (selectProperties != null)
+                                {
+                                    foreach (var selectProperty in selectProperties)
+                                    {
+                                        // Ensure the requested property has been returned in the response
+                                        var property = u.GetType().GetProperty(selectProperty);
+                                        if (property != null)
+                                        {
+                                            // Add the property to the AdditionalProperties dictionary
+                                            user.AdditionalProperties.Add(selectProperty, property.GetValue(u));
+                                        }
+                                    }
+                                }
+
                                 users.Add(user);
                             }
                         }

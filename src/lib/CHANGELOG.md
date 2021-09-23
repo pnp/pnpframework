@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Update base templates for the provisioning engine [jansenbe - Bert Jansen]
 - Including the requested SelectProperties in the output of ListUsers #460 [koenzomers - Koen Zomers]
 - Fix PnPPS #1024 - issue with folder name having special chars #461 [gautamdsheth - Gautam Sheth]
+- Fix regression - adding users/groups as site collection admins #462 [gautamdsheth - Gautam Sheth]
 
 ## [1.6.0]
 

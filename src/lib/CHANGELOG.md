@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Updated build-debug script and project file that enables building and testing PnP Framework with a locally build PnP Core SDK assembly [jansenbe - Bert Jansen]
 - GetWebSearchCenterUrl makes us loose the pending changes in CSOM Context #454 [czullu - Christian Zuellig]
 - Update base templates for the provisioning engine [jansenbe - Bert Jansen]
+- Including the requested SelectProperties in the output of ListUsers #460 [koenzomers - Koen Zomers]
 
 ## [1.6.0]
 

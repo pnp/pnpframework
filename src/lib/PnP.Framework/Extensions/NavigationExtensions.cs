@@ -820,7 +820,7 @@ namespace Microsoft.SharePoint.Client
             var structureString = web.ExecuteGetAsync($"/_api/navigation/MenuState?menuNodeKey='{Constants.SITEFOOTER_NODEKEY}'").GetAwaiter().GetResult();
             var menuState = JsonSerializer.Deserialize<JsonElement>(structureString);
 
-            if (menuState.GetProperty("Nodes").ValueKind == JsonValueKind.Null)
+            if (!menuState.TryGetProperty("Nodes", out JsonElement nodesElement) || nodesElement.ValueKind == JsonValueKind.Null)
             {
                 // No information is returned which helps us to identity the title node
                 return null;
@@ -866,9 +866,8 @@ namespace Microsoft.SharePoint.Client
         {
             var structureString = web.ExecuteGetAsync($"/_api/navigation/MenuState?menuNodeKey='{Constants.SITEFOOTER_NODEKEY}'").GetAwaiter().GetResult();
             var menuState = JsonSerializer.Deserialize<JsonElement>(structureString);
-            //var menuState = JObject.Parse(structureString);
 
-            if (menuState.GetProperty("Nodes").ValueKind == JsonValueKind.Null)
+            if (!menuState.TryGetProperty("Nodes", out JsonElement nodesElement) || nodesElement.ValueKind == JsonValueKind.Null)
             {
                 // No information is returned which helps us to identity the logo node
                 return null;

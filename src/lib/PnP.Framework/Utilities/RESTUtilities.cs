@@ -4,6 +4,8 @@ using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Net;
 
 namespace PnP.Framework.Utilities
 {
@@ -41,6 +43,15 @@ namespace PnP.Framework.Utilities
                 // Perform actual post operation
                 HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
 
+                // Check for throttling occurring
+                while (response.StatusCode == (HttpStatusCode)429)
+                {
+                    // Throttled
+                    var retryAfter = response.Headers.RetryAfter;
+                    await Task.Delay(retryAfter.Delta.Value.Seconds * 1000);
+                    response = await httpClient.SendAsync(CloneMessage(request), new System.Threading.CancellationToken());
+                }
+
                 if (response.IsSuccessStatusCode)
                 {
                     // If value empty, URL is taken
@@ -49,9 +60,7 @@ namespace PnP.Framework.Utilities
                     {
                         try
                         {
-
                             returnObject = responseString;
-
                         }
                         catch { }
                     }
@@ -124,5 +133,25 @@ namespace PnP.Framework.Utilities
 
             return await Task.Run(() => returnObject);
         }
+
+        private static HttpRequestMessage CloneMessage(HttpRequestMessage req)
+        {
+            HttpRequestMessage clone = new HttpRequestMessage(req.Method, req.RequestUri);
+
+            clone.Content = req.Content;
+            clone.Version = req.Version;
+
+            foreach (KeyValuePair<string, object> prop in req.Properties)
+            {
+                clone.Properties.Add(prop);
+            }
+
+            foreach (KeyValuePair<string, IEnumerable<string>> header in req.Headers)
+            {
+                clone.Headers.TryAddWithoutValidation(header.Key, header.Value);
+            }
+
+            return clone;
+        }        
     }
 }

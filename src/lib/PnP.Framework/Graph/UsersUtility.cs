@@ -152,14 +152,30 @@ namespace PnP.Framework.Graph
                                 // If additional properties have been provided, ensure their output gets added to the AdditionalProperties dictonary of the output
                                 if (selectProperties != null)
                                 {
+                                    // Ensure we have the AdditionalProperties dictionary available to fill, if necessary
+                                    if(user.AdditionalProperties == null)
+                                    {
+                                        user.AdditionalProperties = new Dictionary<string, object>();
+                                    }
+
                                     foreach (var selectProperty in selectProperties)
                                     {
                                         // Ensure the requested property has been returned in the response
                                         var property = u.GetType().GetProperty(selectProperty);
                                         if (property != null)
                                         {
-                                            // Add the property to the AdditionalProperties dictionary
-                                            user.AdditionalProperties.Add(selectProperty, property.GetValue(u));
+                                            // First check if we have the property natively on the User model
+                                            var userProperty = user.GetType().GetProperty(selectProperty);
+                                            if(userProperty != null)
+                                            {
+                                                // Set the property on the User model
+                                                userProperty.SetValue(user, property.GetValue(u), null);
+                                            }
+                                            else
+                                            {
+                                                // Property does not exist on the User model, add the property to the AdditionalProperties dictionary
+                                                user.AdditionalProperties.Add(selectProperty, property.GetValue(u));
+                                            }
                                         }
                                     }
                                 }

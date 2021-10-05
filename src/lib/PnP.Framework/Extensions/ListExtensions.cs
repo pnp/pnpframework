@@ -1681,7 +1681,9 @@ namespace Microsoft.SharePoint.Client
                         path = path.Equals("/") ? list.RootFolder.ServerRelativeUrl : UrlUtility.Combine(list.RootFolder.ServerRelativeUrl, path);
                         // Find all in the same path:
                         var defaultColumnValuesInSamePath = columnValues.Where(x => x.FolderRelativePath == defaultColumnValue.FolderRelativePath);
-                        path = path.UrlPathEncode();
+                        
+                        // Only URL encode the spaces. Other special characters should stay as they are or it will not work.
+                        path = path.Replace(" ", "%20");
 
                         var xATag = new XElement("a", new XAttribute("href", path));
 

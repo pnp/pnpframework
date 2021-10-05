@@ -25,7 +25,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - PnP Framework assembly is now strong named #458 #468 [jansenbe - Bert Jansen]
 - Fixing issue with SetDefaultColumnValuesImplementation not working for folders with special characters in them #471 [koenzomers - Koen Zomers]
 - Feature - additional changes for files/folders with special chars #476 [gautamdsheth - Gautam Sheth]
-- Added additional check to avoid exception when footer not enabled on a site #479 [koenzomers - Koen Zomers]
+- Fix: Added additional check to avoid exception when footer not enabled on a site #479 [koenzomers - Koen Zomers]
+- Fix: UsersUtility selectProperties bugfix #480 [koenzomers - Koen Zomers]
 
 ## [1.6.0]
 

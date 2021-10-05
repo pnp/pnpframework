@@ -476,7 +476,7 @@ namespace Microsoft.SharePoint.Client
                 {
                     Overwrite = true
                 };
-                
+
                 ResourcePath resourcePath = ResourcePath.FromDecodedUrl(folderName);
 
                 var newFolder = folderCollection.AddUsingPath(resourcePath, folderAddParameters);
@@ -493,21 +493,23 @@ namespace Microsoft.SharePoint.Client
             }
             else
             {
-                // Create folder for generic list
-                var newFolderInfo = new ListItemCreationInformation
+                // Create folder for generic list                
+                parentFolder.EnsureProperty(f => f.ServerRelativePath);
+
+                ListItemCreationInformationUsingPath newFolderInfo = new ListItemCreationInformationUsingPath
                 {
+                    LeafName = ResourcePath.FromDecodedUrl(folderName),
                     UnderlyingObjectType = FileSystemObjectType.Folder,
-                    LeafName = folderName
+                    FolderPath = ResourcePath.FromDecodedUrl(parentFolder.ServerRelativePath.DecodedUrl)
                 };
-                parentFolder.EnsureProperty(f => f.ServerRelativeUrl);
-                newFolderInfo.FolderUrl = parentFolder.ServerRelativeUrl;
-                ListItem newFolderItem = parentList.AddItem(newFolderInfo);
+
+                ListItem newFolderItem = parentList.AddItemUsingPath(newFolderInfo);
                 newFolderItem["Title"] = folderName;
                 newFolderItem.Update();
                 await context.ExecuteQueryRetryAsync();
 
                 // Get the newly created folder
-                var newFolder = parentFolder.Folders.GetByUrl(folderName);
+                var newFolder = parentFolder.Folders.GetByPath(ResourcePath.FromDecodedUrl(folderName));
                 // Ensure all properties are loaded (to be compatible with the previous implementation)
                 if (expressions != null && expressions.Any())
                 {
@@ -1441,14 +1443,15 @@ namespace Microsoft.SharePoint.Client
             int blockSize = 10 * 1024 * 1024;
 
             File uploadFile = null;
-
+            folder.EnsureProperty(f => f.ServerRelativePath);
             if (stream.Length <= blockSize)
             {
-                FileCreationInformation fileInfo = new FileCreationInformation();
-                fileInfo.ContentStream = stream;
-                fileInfo.Url = fileName;
-                fileInfo.Overwrite = overwriteIfExists;
-                uploadFile = folder.Files.Add(fileInfo);
+                FileCollectionAddParameters fileCollectionAddParameters = new FileCollectionAddParameters
+                {
+                    Overwrite = overwriteIfExists
+                };
+                ResourcePath decodedfileName = ResourcePath.FromDecodedUrl(fileName);
+                uploadFile = folder.Files.AddUsingPath(decodedfileName, fileCollectionAddParameters, stream);
                 folder.Context.Load(uploadFile);
                 await folder.Context.ExecuteQueryRetryAsync();
                 // Return the file object for the uploaded file.
@@ -1460,6 +1463,7 @@ namespace Microsoft.SharePoint.Client
                 {
                     // Each sliced upload requires a unique ID.
                     Guid uploadId = Guid.NewGuid();
+                    ResourcePath decodedfileName = ResourcePath.FromDecodedUrl(fileName);
 
                     byte[] buffer = new byte[blockSize];
                     byte[] lastBuffer = null;
@@ -1490,16 +1494,17 @@ namespace Microsoft.SharePoint.Client
                             using (MemoryStream contentStream = new MemoryStream())
                             {
                                 // Add an empty file.
-                                FileCreationInformation fileInfo = new FileCreationInformation();
-                                fileInfo.ContentStream = contentStream;
-                                fileInfo.Url = fileName;
-                                fileInfo.Overwrite = overwriteIfExists;
-                                uploadFile = folder.Files.Add(fileInfo);
+                                FileCollectionAddParameters fileCollectionAddParameters = new FileCollectionAddParameters
+                                {
+                                    Overwrite = overwriteIfExists
+                                };                                
+
+                                uploadFile = folder.Files.AddUsingPath(decodedfileName, fileCollectionAddParameters, contentStream);
 
                                 // Start upload by uploading the first slice.
                                 using (MemoryStream s = new MemoryStream(buffer))
                                 {
-                                    Log.Debug(Constants.LOGGING_SOURCE, "Creating file info with Url '{0}'", fileInfo.Url);
+                                    Log.Debug(Constants.LOGGING_SOURCE, "Creating file with name '{0}'", decodedfileName);
                                     // Call the start upload method on the first slice.
                                     bytesUploaded = uploadFile.StartUpload(uploadId, s);
                                     await folder.Context.ExecuteQueryRetryAsync();
@@ -1513,7 +1518,8 @@ namespace Microsoft.SharePoint.Client
                         }
                         else
                         {
-
+                            ResourcePath fileServerRelativePath = ResourcePath.FromDecodedUrl(folder.ServerRelativePath.DecodedUrl + Path.AltDirectorySeparatorChar + decodedfileName.DecodedUrl);
+                            uploadFile = (folder.Context as ClientContext).Web.GetFileByServerRelativePath(fileServerRelativePath);                            
                             if (last)
                             {
                                 // Is this the last slice of data?
@@ -1525,7 +1531,7 @@ namespace Microsoft.SharePoint.Client
                                 }
                             }
                             else
-                            {
+                            {                                
                                 using (MemoryStream s = new MemoryStream(buffer))
                                 {
                                     // Continue sliced upload.
@@ -1547,7 +1553,7 @@ namespace Microsoft.SharePoint.Client
 
             Log.Debug(Constants.LOGGING_SOURCE, "Created file with name '{0}'", fileName);
 
-            folder.EnsureProperty(f => f.ServerRelativePath);
+            
             var fileUrl = folder.ServerRelativePath.DecodedUrl + Path.AltDirectorySeparatorChar + fileName;
             var finishedUploadedFile = (folder.Context as ClientContext).Web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(fileUrl));
             folder.Context.Load(finishedUploadedFile);

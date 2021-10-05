@@ -12,7 +12,7 @@ namespace PnP.Framework.Utilities
         const char PATH_DELIMITER = '/';
 
         const string INVALID_CHARS_REGEX = @"[\\#%*/:<>?+|\""]";
-        const string REGEX_INVALID_FILEFOLDER_NAME_CHARS = @"[""#%*:<>?/\|\t\r\n]";
+        const string REGEX_INVALID_FILEFOLDER_NAME_CHARS = @"[""*:<>?/\|\t\r\n]";
         const string IIS_MAPPED_PATHS_REGEX = @"/(_layouts|_admin|_app_bin|_controltemplates|_login|_vti_bin|_vti_pvt|_windows|_wpresources)/";
 
         #region [ Combine ]

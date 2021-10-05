@@ -23,6 +23,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Fix PnPPS #1024 - issue with folder name having special chars #461 [gautamdsheth - Gautam Sheth]
 - Fix regression - adding users/groups as site collection admins #462 [gautamdsheth - Gautam Sheth]
 - PnP Framework assembly is now strong named #458 #468 [jansenbe - Bert Jansen]
+- Fixing issue with SetDefaultColumnValuesImplementation not working for folders with special characters in them #471 [koenzomers - Koen Zomers]
+- Feature - additional changes for files/folders with special chars #476 [gautamdsheth - Gautam Sheth]
 
 ## [1.6.0]
 

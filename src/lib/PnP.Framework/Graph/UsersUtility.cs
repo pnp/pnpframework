@@ -4,6 +4,7 @@ using PnP.Framework.Diagnostics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -155,17 +156,18 @@ namespace PnP.Framework.Graph
                                     // Ensure we have the AdditionalProperties dictionary available to fill, if necessary
                                     if(user.AdditionalProperties == null)
                                     {
-                                        user.AdditionalProperties = new Dictionary<string, object>();
+                                        user.AdditionalProperties = new Dictionary<
+                                        string, object>();
                                     }
 
                                     foreach (var selectProperty in selectProperties)
                                     {
                                         // Ensure the requested property has been returned in the response
-                                        var property = u.GetType().GetProperty(selectProperty);
+                                        var property = u.GetType().GetProperty(selectProperty, BindingFlags.IgnoreCase |  BindingFlags.Public | BindingFlags.Instance);
                                         if (property != null)
                                         {
                                             // First check if we have the property natively on the User model
-                                            var userProperty = user.GetType().GetProperty(selectProperty);
+                                            var userProperty = user.GetType().GetProperty(selectProperty, BindingFlags.IgnoreCase |  BindingFlags.Public | BindingFlags.Instance);
                                             if(userProperty != null)
                                             {
                                                 // Set the property on the User model

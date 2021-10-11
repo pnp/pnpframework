@@ -683,7 +683,7 @@ namespace PnP.Framework.Graph
         public static List<GroupUser> GetGroupMembers(GroupEntity group, string accessToken, int retryCount = 10, int delay = 500)
         {
             List<GroupUser> groupUsers = null;
-            List<User> groupGraphUsers = null;
+            List<DirectoryObject> groupGraphUsers = null;
             IGroupMembersCollectionWithReferencesPage groupUsersCollection = null;
 
             if (String.IsNullOrEmpty(accessToken))
@@ -705,9 +705,9 @@ namespace PnP.Framework.Graph
                     groupUsersCollection = await graphClient.Groups[group.GroupId].Members.Request().GetAsync();
                     if (groupUsersCollection.CurrentPage != null && groupUsersCollection.CurrentPage.Count > 0)
                     {
-                        groupGraphUsers = new List<User>();
-
-                        GenerateGraphUserCollection(groupUsersCollection.CurrentPage, groupGraphUsers);
+                        groupGraphUsers = new List<DirectoryObject>();
+                        groupGraphUsers.AddRange(groupUsersCollection.CurrentPage);
+                        //GenerateGraphUserCollection(groupUsersCollection.CurrentPage, groupGraphUsers);
                     }
 
                     // Retrieve users when the results are paged.
@@ -716,7 +716,8 @@ namespace PnP.Framework.Graph
                         groupUsersCollection = groupUsersCollection.NextPageRequest.GetAsync().GetAwaiter().GetResult();
                         if (groupUsersCollection.CurrentPage != null && groupUsersCollection.CurrentPage.Count > 0)
                         {
-                            GenerateGraphUserCollection(groupUsersCollection.CurrentPage, groupGraphUsers);
+                            groupGraphUsers.AddRange(groupUsersCollection.CurrentPage);
+                            //GenerateGraphUserCollection(groupUsersCollection.CurrentPage, groupGraphUsers);
                         }
                     }
 
@@ -724,14 +725,29 @@ namespace PnP.Framework.Graph
                     if (groupGraphUsers != null && groupGraphUsers.Count > 0)
                     {
                         groupUsers = new List<GroupUser>();
-                        foreach (User usr in groupGraphUsers)
+                        foreach (DirectoryObject usr in groupGraphUsers)
                         {
-                            GroupUser groupUser = new GroupUser
+                            switch(usr)
                             {
-                                UserPrincipalName = usr.UserPrincipalName != null ? usr.UserPrincipalName : string.Empty,
-                                DisplayName = usr.DisplayName != null ? usr.DisplayName : string.Empty
-                            };
-                            groupUsers.Add(groupUser);
+                                case Microsoft.Graph.User userType:
+                                    groupUsers.Add(new GroupUser
+                                    {
+                                        UserPrincipalName = userType.UserPrincipalName != null ? userType.UserPrincipalName : string.Empty,
+                                        DisplayName = userType.DisplayName != null ? userType.DisplayName : string.Empty,
+                                        Type = Enums.GroupUserType.User
+                                    });
+                                break;
+
+                                case Microsoft.Graph.Group groupType:
+                                    groupUsers.Add(new GroupUser
+                                    {
+                                        UserPrincipalName = groupType.Id != null ? groupType.Id : string.Empty,
+                                        DisplayName = groupType.DisplayName != null ? groupType.DisplayName : string.Empty,
+                                        Type = Enums.GroupUserType.Group
+                                    });
+                                    break;
+                            }
+
                         }
                     }
                     return groupUsers;
@@ -1021,14 +1037,29 @@ namespace PnP.Framework.Graph
                     if (groupGraphUsers != null && groupGraphUsers.Count > 0)
                     {
                         groupUsers = new List<GroupUser>();
-                        foreach (User usr in groupGraphUsers)
+                        foreach (DirectoryObject usr in groupGraphUsers)
                         {
-                            GroupUser groupUser = new GroupUser
+                            switch(usr)
                             {
-                                UserPrincipalName = usr.UserPrincipalName != null ? usr.UserPrincipalName : string.Empty,
-                                DisplayName = usr.DisplayName != null ? usr.DisplayName : string.Empty
-                            };
-                            groupUsers.Add(groupUser);
+                                case Microsoft.Graph.User userType:
+                                    groupUsers.Add(new GroupUser
+                                    {
+                                        UserPrincipalName = userType.UserPrincipalName != null ? userType.UserPrincipalName : string.Empty,
+                                        DisplayName = userType.DisplayName != null ? userType.DisplayName : string.Empty,
+                                        Type = Enums.GroupUserType.User
+                                    });
+                                break;
+
+                                case Microsoft.Graph.Group groupType:
+                                    groupUsers.Add(new GroupUser
+                                    {
+                                        UserPrincipalName = groupType.Id != null ? groupType.Id : string.Empty,
+                                        DisplayName = groupType.DisplayName != null ? groupType.DisplayName : string.Empty,
+                                        Type = Enums.GroupUserType.Group
+                                    });
+                                    break;
+                            }
+
                         }
                     }
                     return groupUsers;

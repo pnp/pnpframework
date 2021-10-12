@@ -1522,22 +1522,26 @@ namespace Microsoft.SharePoint.Client
                 }
 
                 RoleAssignment assignment;
-                try
+                var scope = new ExceptionHandlingScope(web.Context);
+
+                using (scope.StartScope())
                 {
-                    assignment = obj.RoleAssignments.GetByPrincipal(principal);
-                    web.Context.ExecuteQueryRetry();
+                    using (scope.StartTry())
+                    {
+
+                        assignment = obj.RoleAssignments.GetByPrincipal(principal);
+                    }
+
+                    using (scope.StartCatch())
+                    {
+                    }
                 }
-                catch (ServerException ex)
+
+                web.Context.ExecuteQueryRetry();
+
+                if (scope.HasException)
                 {
-                    if (ex.HResult == -2146233088)
-                    {
-                        // Can not find the principal so suppress the exception
-                        assignment = null;
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    assignment = null;
                 }
 
                 if (assignment != null)

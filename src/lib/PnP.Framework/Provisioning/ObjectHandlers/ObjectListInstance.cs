@@ -1485,7 +1485,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 if (existingList.ContentTypesEnabled)
                 {
-                    ConfigureContentTypes(web, existingList, templateList, false, scope);
+                    ConfigureContentTypes(web, existingList, templateList, false, scope, parser);
                 }
                 if (templateList.Security != null)
                 {
@@ -1556,7 +1556,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return isDirty;
         }
 
-        private void ConfigureContentTypes(Web web, List list, ListInstance templateList, bool isNewList, PnPMonitoredScope scope)
+        private void ConfigureContentTypes(Web web, List list, ListInstance templateList, bool isNewList, PnPMonitoredScope scope, TokenParser parser)
         {
             var contentTypesToRemove = new List<ContentType>();
 
@@ -1631,8 +1631,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             // Add the content type
                             listContentType = list.ContentTypes.AddExistingContentType(tempCT);
                         }
+                        web.Context.Load(listContentType, ct => ct.Id, ct => ct.Name);
                         web.Context.ExecuteQueryRetry();
-
+                        parser.AddToken(new ListContentTypeIdToken(web, list.Title, listContentType));
+                        
                         if (ctb.Default && defaultContentType == null)
                         {
                             defaultContentType = listContentType;
@@ -1988,7 +1990,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             if (createdList.BaseTemplate != (int)ListTemplateType.Survey)
             {
-                ConfigureContentTypes(web, createdList, templateList, true, scope);
+                ConfigureContentTypes(web, createdList, templateList, true, scope, parser);
             }
 
             // Add any custom action

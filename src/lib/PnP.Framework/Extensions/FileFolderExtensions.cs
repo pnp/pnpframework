@@ -887,13 +887,15 @@ namespace Microsoft.SharePoint.Client
                         createPath = createPath.Substring(0, createPath.Length - folderName.Length).TrimEnd('/');
                         var listUrl =
                             containingList.EnsureProperty(f => f.RootFolder).EnsureProperty(r => r.ServerRelativeUrl);
-                        var newFolderInfo = new ListItemCreationInformation
+
+                        var newFolderInfo = new ListItemCreationInformationUsingPath
                         {
                             UnderlyingObjectType = FileSystemObjectType.Folder,
-                            LeafName = folderName,
-                            FolderUrl = UrlUtility.Combine(listUrl, createPath)
+                            FolderPath = ResourcePath.FromDecodedUrl(UrlUtility.Combine(listUrl, createPath)),
+                            LeafName = ResourcePath.FromDecodedUrl(folderName)
                         };
-                        ListItem newFolderItem = containingList.AddItem(newFolderInfo);
+
+                        ListItem newFolderItem = containingList.AddItemUsingPath(newFolderInfo);
 
                         var titleField = web.Context.LoadQuery(containingList.Fields.Where(f => f.Id == BuiltInFieldId.Title));
                         await web.Context.ExecuteQueryRetryAsync();

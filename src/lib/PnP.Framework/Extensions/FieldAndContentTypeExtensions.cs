@@ -827,7 +827,7 @@ namespace Microsoft.SharePoint.Client
                     Text = values
                 };
             }
-            else if (field.TypeAsString == "UserMulti")
+            else if (field.TypeAsString == "UserMulti" || field.TypeAsString == "Lookup")
             {
                 var values = string.Join(";#", value);
                 defaultColumnValue = new DefaultColumnTextValue()

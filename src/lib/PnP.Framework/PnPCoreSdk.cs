@@ -4,9 +4,7 @@ using PnP.Core.Services;
 using PnP.Framework.Utilities.PnPSdk;
 using System;
 using System.Threading;
-using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("PnPFramework.Test")]
 namespace PnP.Framework
 {
     /// <summary>
@@ -46,8 +44,29 @@ namespace PnP.Framework
         /// <returns>The equivalent PnPContext</returns>
         public PnPContext GetPnPContext(ClientContext context)
         {
+            Uri ctxUri = new Uri(context.Url);
+           
+            var ctxSettings = context.GetContextSettings();
+            
+            if (ctxSettings!=null && ctxSettings.Type == Utilities.Context.ClientContextType.PnPCoreSdk && ctxSettings.AuthenticationManager!=null)
+            {
+                var pnpContext = ctxSettings.AuthenticationManager.PnPCoreContext;
+                if (pnpContext != null)
+                {
+                    return pnpContext;
+                }
+                else
+                {
+                    var iAuthProvider = ctxSettings.AuthenticationManager.PnPCoreAuthenticationProvider;
+                    if (iAuthProvider != null)
+                    {
+                        var factory0 = BuildContextFactory();
+                        return factory0.Create(ctxUri, iAuthProvider);
+                    }
+                }
+            }
             var factory = BuildContextFactory();
-            return factory.Create(new Uri(context.Url), AuthenticationProviderFactory.GetAuthenticationProvider(context));
+            return factory.Create(ctxUri, AuthenticationProviderFactory.GetAuthenticationProvider(context));
         }
 
         private IPnPContextFactory BuildContextFactory()
@@ -65,15 +84,19 @@ namespace PnP.Framework
 
                 // Build the service collection and load PnP Core SDK
                 IServiceCollection services = new ServiceCollection();
-                //TODO: Can someone check if this is actually needed or can we just use fluent api? I'm not sure and it may have quite an impact
+
+                // To increase coverage of solutions providing tokens without graph scopes we turn of graphfirst for PnPContext created from PnP Framework                
                 services = services.AddPnPCore(options =>
                 {
                     options.PnPContext.GraphFirst = false;
                 }).Services;
+
+                // Enables to plug in additional services into this service container
                 if(OnDIContainerBuilding != null)
                 {
                     OnDIContainerBuilding.Invoke(this, services);
                 }
+
                 var serviceProvider = services.BuildServiceProvider();
                 
                 // Get a PnP context factory
@@ -102,10 +125,14 @@ namespace PnP.Framework
         public ClientContext GetClientContext(PnPContext pnpContext)
         {
 #pragma warning disable CA2000 // Dispose objects before losing scope
-            AuthenticationManager authManager = AuthenticationManager.CreateWithPnPCoreSdk(pnpContext.AuthenticationProvider);
+            AuthenticationManager authManager = AuthenticationManager.CreateWithPnPCoreSdk(pnpContext);
 #pragma warning restore CA2000 // Dispose objects before losing scope
 
-            return authManager.GetContext(pnpContext.Uri.ToString());
+            var ctx = authManager.GetContext(pnpContext.Uri.ToString());
+            var ctxSettings = ctx.GetContextSettings();
+            ctxSettings.AuthenticationManager = authManager; //otherwise GetAccessToken would not work for example
+            ctx.AddContextSettings(ctxSettings);
+            return ctx;
         }
 
     }

@@ -10,7 +10,7 @@ namespace PnP.Framework.Test.Framework.Functional.Validators
         public ClientSidePagesValidator() : base()
         {
             // optionally override schema version
-            SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2017_05;
+            SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03;
         }
 
         public bool Validate(ClientSidePageCollection sourcePages, Microsoft.SharePoint.Client.ClientContext ctx)

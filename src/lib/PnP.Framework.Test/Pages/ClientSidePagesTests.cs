@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.Online.SharePoint.TenantAdministration;
 using Microsoft.SharePoint.Client;
 using Microsoft.SharePoint.Client.Taxonomy;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -32,6 +33,18 @@ namespace PnP.Framework.Test.Authentication
         }
         #endregion
 
+        //[TestMethod]
+        //public void Bert()
+        //{
+        //    using (var cc = TestCommon.CreateTenantClientContext())
+        //    {
+        //        Tenant tenant = new Tenant(cc);
+        //        var tenantInstances = tenant.GetTenantInstances();
+        //        cc.Load(tenantInstances);
+        //        cc.ExecuteQuery();
+        //    }
+        //}
+
         [TestMethod]
         public void ExportPagesTest()
         {
@@ -57,7 +70,7 @@ namespace PnP.Framework.Test.Authentication
 
                 // Serialize to XML using the beta 201705 schema
                 XMLTemplateProvider provider = new XMLFileSystemTemplateProvider(@"d:\temp\modernpages", "");
-                var formatter = XMLPnPSchemaFormatter.GetSpecificFormatter(XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2020_02);
+                var formatter = XMLPnPSchemaFormatter.GetSpecificFormatter(XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03);
                 provider.SaveAs(template, "TheLandingMultiLingual.xml", formatter);
             }
         }

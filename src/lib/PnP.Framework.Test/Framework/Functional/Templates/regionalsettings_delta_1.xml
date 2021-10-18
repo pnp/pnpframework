@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <!-- Do not specify the CalendarType property (= equal to setting it to None), set AlternateCalendarType to none -->
-<pnp:ProvisioningTemplate ID="regionalsettings_add" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2015/12/ProvisioningSchema">
+<pnp:ProvisioningTemplate ID="regionalsettings_add" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <pnp:RegionalSettings
     AdjustHijriDays="1"
     AlternateCalendarType="None"

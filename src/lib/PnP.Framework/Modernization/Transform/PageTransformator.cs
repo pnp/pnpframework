@@ -572,7 +572,7 @@ namespace PnP.Framework.Modernization.Transform
 #if DEBUG && MEASURE
                 Start();
 #endif
-                    if (pageTransformationInformation.PageHeader == null || (pageTransformationInformation.PageHeader as PnPCore.PageHeader).Type == PnPCore.PageHeaderType.None)
+                    if (pageTransformationInformation.PageHeader == null || (pageTransformationInformation.PageHeader as PnPCore.IPageHeader).Type == PnPCore.PageHeaderType.None)
                     {
                         LogInfo(LogStrings.TransformArticleSetHeaderToNone, LogStrings.Heading_ArticlePageHandling);
 
@@ -589,13 +589,13 @@ namespace PnP.Framework.Modernization.Transform
                             targetPage.RemovePageHeader();
                         }
                     }
-                    else if ((pageTransformationInformation.PageHeader as PnPCore.PageHeader).Type == PnPCore.PageHeaderType.Default)
+                    else if ((pageTransformationInformation.PageHeader as PnPCore.IPageHeader).Type == PnPCore.PageHeaderType.Default)
                     {
                         LogInfo(LogStrings.TransformArticleSetHeaderToDefault, LogStrings.Heading_ArticlePageHandling);
 
                         targetPage.SetDefaultPageHeader();
                     }
-                    else if ((pageTransformationInformation.PageHeader as PnPCore.PageHeader).Type == PnPCore.PageHeaderType.Custom)
+                    else if ((pageTransformationInformation.PageHeader as PnPCore.IPageHeader).Type == PnPCore.PageHeaderType.Custom)
                     {
                         LogInfo($"{LogStrings.TransformArticleSetHeaderToCustom} " +
                                 $"{LogStrings.TransformArticleHeaderImageUrl} {pageTransformationInformation.PageHeader.ImageServerRelativeUrl} ", LogStrings.Heading_ArticlePageHandling);
@@ -722,62 +722,63 @@ namespace PnP.Framework.Modernization.Transform
                     #endregion
 
                     #region Page Banner creation
-                    if (!pageTransformationInformation.TargetPageTakesSourcePageName)
-                    {
+//                    if (!pageTransformationInformation.TargetPageTakesSourcePageName)
+//                    {
 
-                        if (pageTransformationInformation.ModernizationCenterInformation != null && pageTransformationInformation.ModernizationCenterInformation.AddPageAcceptBanner)
-                        {
+//                        if (pageTransformationInformation.ModernizationCenterInformation != null && pageTransformationInformation.ModernizationCenterInformation.AddPageAcceptBanner)
+//                        {
 
-#if DEBUG && MEASURE
-                        Start();
-#endif
+//#if DEBUG && MEASURE
+//                        Start();
+//#endif
 
-                            // Bump the row values for the existing web parts as we've inserted a new section
-                            foreach (var section in targetPage.Sections)
-                            {
-                                section.Order = section.Order + 1;
-                            }
+//                            // Bump the row values for the existing web parts as we've inserted a new section
+//                            foreach (var section in targetPage.Sections)
+//                            {
+//                                section.Order = section.Order + 1;
+//                            }
 
-                            // Add new section for banner part
-                            targetPage.Sections.Insert(0, new PnPCore.CanvasSection(targetPage, PnPCore.CanvasSectionTemplate.OneColumn, 0));
+//                            // Add new section for banner part
+//                            //BERT: find alternative approach for this
+//                            //targetPage.Sections.Insert(0, new PnPCore.CanvasSection(targetPage, PnPCore.CanvasSectionTemplate.OneColumn, 0));
 
-                            // Bump the row values for the existing web parts as we've inserted a new section
-                            foreach (var webpart in pageData.Item2.Where(c => !c.IsClosed))
-                            {
-                                webpart.Row = webpart.Row + 1;
-                            }
+//                            // Bump the row values for the existing web parts as we've inserted a new section
+//                            foreach (var webpart in pageData.Item2.Where(c => !c.IsClosed))
+//                            {
+//                                webpart.Row = webpart.Row + 1;
+//                            }
 
 
-                            var sourcePageUrl = GetFieldValue(pageTransformationInformation, Constants.FileRefField);
-                            var orginalSourcePageName = GetFieldValue(pageTransformationInformation, Constants.FileLeafRefField);
-                            Uri host = new Uri(sourceClientContext.Web.GetUrl());
+//                            var sourcePageUrl = GetFieldValue(pageTransformationInformation, Constants.FileRefField);
+//                            var orginalSourcePageName = GetFieldValue(pageTransformationInformation, Constants.FileLeafRefField);
+//                            Uri host = new Uri(sourceClientContext.Web.GetUrl());
 
-                            string path = $"{host.Scheme}://{host.DnsSafeHost}{sourcePageUrl.Replace(GetFieldValue(pageTransformationInformation, Constants.FileLeafRefField), "")}";
+//                            string path = $"{host.Scheme}://{host.DnsSafeHost}{sourcePageUrl.Replace(GetFieldValue(pageTransformationInformation, Constants.FileLeafRefField), "")}";
 
-                            // Add "fake" banner web part that then will be transformed onto the page
-                            Dictionary<string, string> props = new Dictionary<string, string>(2)
-                        {
-                            { "SourcePage", $"{path}{orginalSourcePageName}" },
-                            { "TargetPage", $"{path}{pageTransformationInformation.TargetPageName}" }
-                        };
+//                            // Add "fake" banner web part that then will be transformed onto the page
+//                            Dictionary<string, string> props = new Dictionary<string, string>(2)
+//                        {
+//                            { "SourcePage", $"{path}{orginalSourcePageName}" },
+//                            { "TargetPage", $"{path}{pageTransformationInformation.TargetPageName}" }
+//                        };
 
-                            WebPartEntity bannerWebPart = new WebPartEntity()
-                            {
-                                Type = WebParts.PageAcceptanceBanner,
-                                Column = 1,
-                                Row = 1,
-                                Title = "",
-                                Order = 0,
-                                Properties = props,
-                            };
-                            pageData.Item2.Insert(0, bannerWebPart);
-                            LogInfo(LogStrings.TransformAddedPageAcceptBanner, LogStrings.Heading_ArticlePageHandling);
+//                            WebPartEntity bannerWebPart = new WebPartEntity()
+//                            {
+//                                Type = WebParts.PageAcceptanceBanner,
+//                                Column = 1,
+//                                Row = 1,
+//                                Title = "",
+//                                Order = 0,
+//                                Properties = props,
+//                            };
+//                            pageData.Item2.Insert(0, bannerWebPart);
+//                            LogInfo(LogStrings.TransformAddedPageAcceptBanner, LogStrings.Heading_ArticlePageHandling);
 
-#if DEBUG && MEASURE
-                        Stop("Page Banner");
-#endif
-                        }
-                    }
+//#if DEBUG && MEASURE
+//                        Stop("Page Banner");
+//#endif
+//                        }
+//                    }
                     #endregion
 
                     #region Content transformation

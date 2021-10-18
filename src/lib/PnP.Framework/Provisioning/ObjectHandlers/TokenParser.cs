@@ -1214,16 +1214,27 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     {
                         if (!ReGuid.IsMatch(match.Groups[i].Value))
                         {
-                            string tokenString = match.Groups[i].Value.Replace("{", "").Replace("}", "").ToLower();
+                            var originalTokenString = match.Groups[i].Value.Replace("{", "").Replace("}", "").ToLower();
 
-                            var colonIndex = tokenString.IndexOf(":");
+                            var tokenStringToAdd = originalTokenString;
+                            var colonIndex = tokenStringToAdd.IndexOf(":");
                             if (colonIndex > -1)
                             {
-                                tokenString = tokenString.Substring(0, colonIndex);
+                                tokenStringToAdd = tokenStringToAdd.Substring(0, colonIndex);
                             }
-                            if (!tokenIds.Contains(tokenString) && !string.IsNullOrEmpty(tokenString))
+                            if (!tokenIds.Contains(tokenStringToAdd) && !string.IsNullOrEmpty(tokenStringToAdd))
                             {
-                                tokenIds.Add(tokenString);
+                                tokenIds.Add(tokenStringToAdd);
+                            }
+
+                            // If sequencesitetoken is used we need to make sure that the corresponding site token is also loaded
+                            if (tokenStringToAdd == "sequencesitetoken")
+                            {
+                                var sequenceSiteTokenArray = originalTokenString.Split(':');
+                                if (sequenceSiteTokenArray.Length > 2 && !string.IsNullOrWhiteSpace(sequenceSiteTokenArray[2]) && !tokenIds.Contains(sequenceSiteTokenArray[2]))
+                                {
+                                    tokenIds.Add(sequenceSiteTokenArray[2]);
+                                }
                             }
                         }
                     }

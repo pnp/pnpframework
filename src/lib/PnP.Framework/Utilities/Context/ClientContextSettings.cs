@@ -3,13 +3,13 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace PnP.Framework.Utilities.Context
 {
-    internal class ClientContextSettings
+    public class ClientContextSettings
     {
         #region properties
         // Generic
-        internal ClientContextType Type { get; set; }
-        internal string SiteUrl { get; set; }
-        internal AuthenticationManager AuthenticationManager { get; set; }
+        public ClientContextType Type { get; set; }
+        public string SiteUrl { get; set; }
+        public AuthenticationManager AuthenticationManager { get; set; }
 
         // User name + password flows
         internal string UserName { get; set; }

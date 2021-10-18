@@ -16,12 +16,6 @@ PnP.Framework | The PnP Framework library | [![PnP.Framework Nuget package](http
 
 This library is the cross platform successor of the [PnP-Sites-Core](https://github.com/PnP/PnP-Sites-Core), see the [Migrating from PnP Sites Core to PnP Framework guide](docs/MigratingFromPnPSitesCore.md) to learn how to switch over.
 
-## PnP .NET roadmap status
-
-We've shipped version 1.2.0 of PnP Framework and version 1.0.0 (GA 🎉) of the [PnP Core SDK](https://github.com/pnp/pnpcore).
-
-![PnP dotnet roadmap](PnP%20dotnet%20Roadmap%20-%20March%20status.png)
-
 ## I've found a bug, where do I need to log an issue or create a PR
 
 Issues and PR's need to be created in the PnP Framework repo, the PnP Sites Core repo has been archived.

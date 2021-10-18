@@ -16,7 +16,7 @@ namespace PnP.Framework.Test.Framework.Functional.Validators
         public AuditSettingsValidator() : base()
         {
             // optionally override schema version
-            SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2015_12;
+            SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03;
             XPathQuery = "/pnp:Templates/pnp:ProvisioningTemplate/pnp:AuditSettings";
         }
 

@@ -12,7 +12,7 @@ Base template: goal is to verify delta handling for list properties and elements
                
 -->
 
-<pnp:ProvisioningTemplate ID="list_add_2017_05" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2017/05/ProvisioningSchema">
+<pnp:ProvisioningTemplate ID="list_add_2017_05" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <pnp:Lists>
     <!-- Document Libraries-->
     <!-- Element Webhook: increase the expiration time of an existing list webhook -->

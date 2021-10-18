@@ -15,22 +15,15 @@ namespace PnP.Framework.Test.Framework.ProvisioningTemplates
     public class DomainModelTests
     {
         private string _provisioningTemplatePath1 = string.Empty;
-#pragma warning disable CS0618 // Type or member is obsolete
-        private readonly string _provisioningTemplatePath1NamespaceURI = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2015_03;
-#pragma warning restore CS0618 // Type or member is obsolete
+        private readonly string _provisioningTemplatePath1NamespaceURI = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03;
         private string _provisioningTemplatePath2 = string.Empty;
-#pragma warning restore CS0618 // Type or member is obsolete
         private string _provisioningTemplatePath5 = string.Empty;
-#pragma warning disable CS0618 // Type or member is obsolete
-        private readonly string _provisioningTemplatePath5NamespaceURI = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2015_05;
-#pragma warning restore CS0618 // Type or member is obsolete
+        private readonly string _provisioningTemplatePath5NamespaceURI = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03;
         private string _provisioningTemplatePath6 = string.Empty;
-#pragma warning disable CS0618 // Type or member is obsolete
-        private readonly string _provisioningTemplatePath6NamespaceURI = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2015_05;
-#pragma warning restore CS0618 // Type or member is obsolete
+        private readonly string _provisioningTemplatePath6NamespaceURI = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03;
         private string _provisioningTemplatePath7 = string.Empty;
         private string _provisioningTemplatePath8 = string.Empty;
-        private readonly string _provisioningTemplatePath8NamespaceURI = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2015_12;
+        private readonly string _provisioningTemplatePath8NamespaceURI = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03;
         private string _provisioningTemplatePath9 = string.Empty;
         private readonly string _provisioningTemplatePath9NamespaceURI = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2020_02;
 
@@ -39,12 +32,12 @@ namespace PnP.Framework.Test.Framework.ProvisioningTemplates
         [TestInitialize()]
         public void Initialize()
         {
-            this._provisioningTemplatePath1 = string.Format(@"{0}\..\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "ProvisioningTemplate-2015-03-Sample-01.xml");
-            this._provisioningTemplatePath2 = string.Format(@"{0}\..\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "ProvisioningTemplate-2015-03-Sample-02.xml");
-            this._provisioningTemplatePath5 = string.Format(@"{0}\..\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "ProvisioningSchema-2015-05-FullSample-01.xml");
-            this._provisioningTemplatePath6 = string.Format(@"{0}\..\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "ProvisioningSchema-2015-05-ReferenceSample-01.xml");
-            this._provisioningTemplatePath7 = string.Format(@"{0}\..\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "ProvisioningSchema-2015-05-ReferenceSample-01.json");
-            this._provisioningTemplatePath8 = string.Format(@"{0}\..\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "ProvisioningSchema-2015-12-FullSample-02.xml");
+            this._provisioningTemplatePath1 = string.Format(@"{0}\..\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "ProvisioningTemplate-2021-03-Sample-01.xml");
+            this._provisioningTemplatePath2 = string.Format(@"{0}\..\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "ProvisioningTemplate-2021-03-Sample-02.xml");
+            this._provisioningTemplatePath5 = string.Format(@"{0}\..\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "ProvisioningSchema-2021-03-FullSample-01.xml");
+            this._provisioningTemplatePath6 = string.Format(@"{0}\..\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "ProvisioningSchema-2021-03-ReferenceSample-01.xml");
+            this._provisioningTemplatePath7 = string.Format(@"{0}\..\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "ProvisioningSchema-2021-03-ReferenceSample-01.json");
+            this._provisioningTemplatePath8 = string.Format(@"{0}\..\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "ProvisioningSchema-2021-03-FullSample-01.xml");
             this._provisioningTemplatePath9 = string.Format(@"{0}\..\..\..\Resources\Templates\{1}", AppDomain.CurrentDomain.BaseDirectory, "InitiativesTemplate.xml");
         }
 

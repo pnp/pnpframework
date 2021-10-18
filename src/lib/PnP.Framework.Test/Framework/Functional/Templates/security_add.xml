@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<pnp:ProvisioningTemplate ID="security_add" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema">
+<pnp:ProvisioningTemplate ID="security_add" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <pnp:Security ClearSubscopes="false" >
     <pnp:AdditionalAdministrators>
       <pnp:User Name="c:0(.s|true" />

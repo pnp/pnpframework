@@ -593,22 +593,39 @@ namespace Microsoft.SharePoint.Client
             // Create a separate context to the web
             using (var clientContext = tenant.Context.Clone(siteUrl))
             {
+                var siteUrlString = siteUrl.ToString();
                 foreach (UserEntity admin in adminLogins)
                 {
-                    var spAdmin = clientContext.Web.EnsureUser(admin.LoginName);
-                    clientContext.Load(spAdmin);
-                    clientContext.ExecuteQueryRetry();
-
-                    if (addToOwnersGroup)
+                    try
                     {
-                        clientContext.Web.AssociatedOwnerGroup.Users.AddUser(spAdmin);
-                        clientContext.Web.AssociatedOwnerGroup.Update();
-                        clientContext.ExecuteQueryRetry();
-                    }
-                    var siteUrlString = siteUrl.ToString();
-                    tenant.SetSiteAdmin(siteUrlString, spAdmin.LoginName, true);
-                    tenant.Context.ExecuteQueryRetry();
+                        tenant.SetSiteAdmin(siteUrlString, admin.LoginName, true);
+                        tenant.Context.ExecuteQueryRetry();
 
+                        if (addToOwnersGroup)
+                        {
+                            // Create a separate context to the web                            
+                            var spAdmin = clientContext.Web.EnsureUser(admin.LoginName);
+                            clientContext.Load(spAdmin);
+                            clientContext.ExecuteQueryRetry();
+
+                            clientContext.Web.AssociatedOwnerGroup.Users.AddUser(spAdmin);
+                            clientContext.Web.AssociatedOwnerGroup.Update();
+                            clientContext.ExecuteQueryRetry();
+                        }
+                    }
+                    catch
+                    {
+                        var spAdmin = clientContext.Web.EnsureUser(admin.LoginName);
+                        clientContext.Load(spAdmin);
+                        clientContext.ExecuteQueryRetry();
+
+                        if (addToOwnersGroup)
+                        {
+                            clientContext.Web.AssociatedOwnerGroup.Users.AddUser(spAdmin);
+                            clientContext.Web.AssociatedOwnerGroup.Update();
+                            clientContext.ExecuteQueryRetry();
+                        }
+                    }
                 }
             }
         }

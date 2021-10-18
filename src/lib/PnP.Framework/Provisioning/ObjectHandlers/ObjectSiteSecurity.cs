@@ -373,6 +373,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             g => g.RequestToJoinLeaveEmailSetting,
                             g => g.Owner.LoginName);
                         web.Context.ExecuteQueryRetry();
+
+                        if (siteGroup.ClearExistingMembers)
+                        {
+                            ClearExistingUsers(group);
+                        }
+
                         parser.AddToken(new GroupIdToken(web, group.Title, group.Id.ToString()));
 
                         var groupNeedsUpdate = false;

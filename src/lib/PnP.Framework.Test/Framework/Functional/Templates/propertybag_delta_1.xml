@@ -4,7 +4,7 @@
 Delta template: goal is to verify that all properties that can be updated are updated. Please keep this XML up to date if additional properties are added.
 -->
 
-<pnp:ProvisioningTemplate ID="propertybag_delta_1" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2015/12/ProvisioningSchema">
+<pnp:ProvisioningTemplate ID="propertybag_delta_1" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <pnp:PropertyBagEntries>
 
     <!-- PropertyBag properties that can be updated via delta handling:

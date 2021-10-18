@@ -279,6 +279,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                         IsPublic = t.IsPublic,
                                         Lcid = (uint)t.Language
                                     };
+
+                                    siteInfo.Alias = UrlUtility.RemoveUnallowedCharacters(siteInfo.Alias);
+                                    siteInfo.Alias = UrlUtility.ReplaceAccentedCharactersWithLatin(siteInfo.Alias);
+
                                     if (Guid.TryParse(t.SiteDesign, out Guid siteDesignId))
                                     {
                                         siteInfo.SiteDesignId = siteDesignId;
@@ -522,8 +526,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                         if (string.IsNullOrEmpty(t.Alias))
                                         {
                                             // We generate the alias, if it is missing
-                                            t.Alias = t.Title.Replace(" ", string.Empty).ToLower();
+                                            t.Alias = t.Title.Replace(" ", string.Empty).ToLower();                                            
                                         }
+
+                                        t.Alias = UrlUtility.RemoveUnallowedCharacters(t.Alias);
+                                        t.Alias = UrlUtility.ReplaceAccentedCharactersWithLatin(t.Alias);
 
                                         // In case we need to groupify the just created site
                                         var groupifyInformation = new TeamSiteCollectionGroupifyInformation
@@ -667,6 +674,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                     RESTUtilities.ExecuteGetAsync(web, "/_api/web/hubsitedata(true)").GetAwaiter().GetResult();
                                 }
 
+                                foreach (var token in siteTokenParser.Tokens)
+                                {
+                                    foreach (var t in token.GetTokens())
+                                    {
+                                        tokenParser.AddToken(new SequenceSiteTokenToken(null, sitecollection.ProvisioningId, t, token.GetReplaceValue()));
+                                    }
+                                }
                             }
 
                         }

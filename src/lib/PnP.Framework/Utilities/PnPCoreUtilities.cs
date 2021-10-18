@@ -43,11 +43,11 @@ namespace PnP.Framework.Utilities
             }
         }
 
-        private static readonly Lazy<String> PnPCoreUserAgentLazy = new Lazy<String>(
+        private static readonly Lazy<string> PnPCoreUserAgentLazy = new Lazy<string>(
             () =>
             {
                 Assembly coreAssembly = Assembly.GetExecutingAssembly();
-                String result = $"NONISV|SharePointPnP|PnPCore/{((AssemblyFileVersionAttribute)coreAssembly.GetCustomAttribute(typeof(AssemblyFileVersionAttribute))).Version}";
+                string result = $"NONISV|SharePointPnP|PnPCore/{((AssemblyFileVersionAttribute)coreAssembly.GetCustomAttribute(typeof(AssemblyFileVersionAttribute))).Version} ({Environment.OSVersion})";
                 return (result);
             },
             true);

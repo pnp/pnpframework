@@ -45,7 +45,7 @@ Base template: goal is to verify that delta handling of all list properties and 
                Folders can be added, not removed
 -->
 
-<pnp:ProvisioningTemplate ID="list_delta_1" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2015/12/ProvisioningSchema">
+<pnp:ProvisioningTemplate ID="list_delta_1" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <pnp:Lists>
     <!-- Document Libraries-->
     <!-- Delta attributes: Description, DocumentTemplate, OnQuickLaunch-->

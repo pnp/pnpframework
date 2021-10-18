@@ -34,7 +34,7 @@ namespace PnP.Framework.Test.Framework.Functional.Implementation
                 var result = TestProvisioningTemplate(cc, "navigation_add_1605.xml", Handlers.Navigation, null, ptci);
                 NavigationValidator nv = new NavigationValidator
                 {
-                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03
                 };
                 Assert.IsTrue(nv.Validate(result.SourceTemplate.Navigation, result.TargetTemplate.Navigation, result.SourceTokenParser));
                 #endregion
@@ -45,7 +45,7 @@ namespace PnP.Framework.Test.Framework.Functional.Implementation
                 var result2 = TestProvisioningTemplate(cc, "navigation_add2_1605.xml", Handlers.Navigation, null, ptci);
                 NavigationValidator nv2 = new NavigationValidator
                 {
-                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03
                 };
                 Assert.IsTrue(nv2.Validate(result2.SourceTemplate.Navigation, result2.TargetTemplate.Navigation, result2.SourceTokenParser));
                 #endregion
@@ -73,7 +73,7 @@ namespace PnP.Framework.Test.Framework.Functional.Implementation
                 var result = TestProvisioningTemplate(cc, "navigation_add_1605.xml", Handlers.Navigation, null, ptci);
                 NavigationValidator nv = new NavigationValidator
                 {
-                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03
                 };
                 Assert.IsTrue(nv.Validate(result.SourceTemplate.Navigation, result.TargetTemplate.Navigation, result.SourceTokenParser));
                 #endregion
@@ -84,7 +84,7 @@ namespace PnP.Framework.Test.Framework.Functional.Implementation
                 var result2 = TestProvisioningTemplate(cc, "navigation_add2_1605.xml", Handlers.Navigation, null, ptci);
                 NavigationValidator nv2 = new NavigationValidator
                 {
-                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03
                 };
                 Assert.IsTrue(nv2.Validate(result2.SourceTemplate.Navigation, result2.TargetTemplate.Navigation, result2.SourceTokenParser));
                 #endregion
@@ -95,7 +95,7 @@ namespace PnP.Framework.Test.Framework.Functional.Implementation
                 var result3 = TestProvisioningTemplate(cc, "navigation_add3_1605.xml", Handlers.Navigation, null, ptci);
                 NavigationValidator nv3 = new NavigationValidator
                 {
-                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03
                 };
                 Assert.IsTrue(nv3.Validate(result3.SourceTemplate.Navigation, result3.TargetTemplate.Navigation, result3.SourceTokenParser));
                 #endregion

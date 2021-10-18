@@ -20,7 +20,7 @@ namespace PnP.Framework.Test.Framework.Functional.Validators
         public SecurityValidator() : base()
         {
             // optionally override schema version
-            SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05;
+            SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03;
         }
 
         public bool Validate(SiteSecurity source, SiteSecurity target, TokenParser parser, Microsoft.SharePoint.Client.ClientContext context)

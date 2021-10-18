@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.SharePoint.Client;
+﻿using Microsoft.SharePoint.Client;
 using PnP.Core.Services;
 using PnP.Framework.Utilities.PnPSdk;
-using System.Runtime.CompilerServices;
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 
-[assembly: InternalsVisibleTo("PnPFramework.Test")]
 namespace PnP.Framework.Utilities.UnitTests
 {
     public class MockLegacyAuthenticationProvider : ILegacyAuthenticationProvider

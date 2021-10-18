@@ -129,7 +129,7 @@ namespace PnP.Framework.Modernization.Transform
 
         internal void RemoveEmptyTextParts(PnPCore.IPage targetPage)
         {
-            var textParts = targetPage.Controls.Where(p => p.Type == typeof(PnPCore.PageText));
+            var textParts = targetPage.Controls.Where(p => p is PnPCore.IPageText);
             if (textParts != null && textParts.Any())
             {
                 HtmlParser parser = new HtmlParser(new HtmlParserOptions() { IsEmbedded = true });
@@ -187,7 +187,7 @@ namespace PnP.Framework.Modernization.Transform
                             section.Type = PnPCore.CanvasSectionTemplate.OneColumn;
                         }
 
-                        (section.Columns.First() as PnPCore.CanvasColumn).ResetColumn(0, 12);
+                        section.Columns.First().ResetColumn(0, 12);
                     }
                 }
                 else if (section.Type == PnPCore.CanvasSectionTemplate.ThreeColumn ||
@@ -213,7 +213,7 @@ namespace PnP.Framework.Modernization.Transform
                                 section.Type = PnPCore.CanvasSectionTemplate.OneColumn;
                             }
 
-                            (section.Columns.First() as PnPCore.CanvasColumn).ResetColumn(0, 12);
+                            section.Columns.First().ResetColumn(0, 12);
                         }
                         else if (emptyColumns.Any() && emptyColumns.Count() == 1)
                         {
@@ -232,7 +232,7 @@ namespace PnP.Framework.Modernization.Transform
                             int i = 0;
                             foreach (var column in section.Columns.Where(p => !p.IsVerticalSectionColumn))
                             {
-                                (column as PnPCore.CanvasColumn).ResetColumn(i, 6);
+                                column.ResetColumn(i, 6);
                                 i++;
                             }
                         }

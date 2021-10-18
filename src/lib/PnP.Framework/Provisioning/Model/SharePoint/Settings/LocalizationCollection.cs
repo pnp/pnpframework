@@ -5,6 +5,15 @@
     /// </summary>
     public partial class LocalizationCollection : BaseProvisioningTemplateObjectCollection<Localization>
     {
+        #region Properties
+
+        /// <summary>
+        /// The Default Locale ID for localization settings
+        /// </summary>
+        public int DefaultLCID { get; set; }        
+
+        #endregion
+
         /// <summary>
         /// Constructor for LocalizationCollection class
         /// </summary>

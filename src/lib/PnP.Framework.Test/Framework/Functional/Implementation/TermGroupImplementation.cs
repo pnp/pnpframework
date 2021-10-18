@@ -34,14 +34,14 @@ namespace PnP.Framework.Test.Framework.Functional.Implementation
                 var result2 = TestProvisioningTemplate(cc, "termgroup_delta_1605.xml", Handlers.TermGroups, null, ptci);
                 TermGroupValidator tv2 = new TermGroupValidator
                 {
-                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03
                 };
                 Assert.IsTrue(tv2.Validate(result2.SourceTemplate.TermGroups, result2.TargetTemplate.TermGroups, result2.TargetTokenParser));
 
                 var result3 = TestProvisioningTemplate(cc, "termgroup_delta_1605_1.xml", Handlers.TermGroups, null, ptci);
                 TermGroupValidator tv3 = new TermGroupValidator
                 {
-                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03
                 };
                 Assert.IsTrue(tv3.Validate(result3.SourceTemplate.TermGroups, result3.TargetTemplate.TermGroups, result3.TargetTokenParser));
             }
@@ -70,14 +70,14 @@ namespace PnP.Framework.Test.Framework.Functional.Implementation
                 var result2 = TestProvisioningTemplate(cc, "termgroup_delta_1605.xml", Handlers.TermGroups, null, ptci);
                 TermGroupValidator tv2 = new TermGroupValidator
                 {
-                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03
                 };
                 Assert.IsTrue(tv2.Validate(result2.SourceTemplate.TermGroups, result2.TargetTemplate.TermGroups, result2.TargetTokenParser));
 
                 var result3 = TestProvisioningTemplate(cc, "termgroup_delta_1605_1.xml", Handlers.TermGroups, null, ptci);
                 TermGroupValidator tv3 = new TermGroupValidator
                 {
-                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                    SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03
                 };
                 Assert.IsTrue(tv3.Validate(result3.SourceTemplate.TermGroups, result3.TargetTemplate.TermGroups, result3.TargetTokenParser));
             }

@@ -271,8 +271,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             syntexFile.EnsureProperty(p => p.ServerRelativePath);
 
             var fullUri = new Uri(baseUri, syntexFile.ServerRelativePath.DecodedUrl);
-            var folderPath = HttpUtility.UrlDecode(fullUri.Segments.Take(fullUri.Segments.Length - 1).ToArray().Aggregate((i, x) => i + x).TrimEnd('/'));
-            var fileName = HttpUtility.UrlDecode(fullUri.Segments[fullUri.Segments.Length - 1]);
+            var folderPath = Uri.UnescapeDataString(fullUri.Segments.Take(fullUri.Segments.Length - 1).ToArray().Aggregate((i, x) => i + x).TrimEnd('/'));
+            var fileName = Uri.UnescapeDataString(fullUri.Segments[fullUri.Segments.Length - 1]);
 
             var templateFolderPath = folderPath.Substring(web.ServerRelativeUrl.Length).TrimStart("/".ToCharArray());
 
@@ -315,9 +315,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     }
                 }
 
-                folderPath = HttpUtility.UrlDecode(folderPath);
-                string container = HttpUtility.UrlDecode(folderPath).Trim('/').Replace("/", "\\");
-                string persistenceFileName = HttpUtility.UrlDecode(fileName);
+                folderPath = Uri.UnescapeDataString(folderPath);
+                string container = Uri.UnescapeDataString(folderPath).Trim('/').Replace("/", "\\");
+                string persistenceFileName = Uri.UnescapeDataString(fileName);
 
                 if (fileConnector.Parameters.ContainsKey(FileConnectorBase.CONTAINER))
                 {

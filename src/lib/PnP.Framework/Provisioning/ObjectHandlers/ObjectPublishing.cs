@@ -125,12 +125,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                 file.EnsureProperty(f => f.Level);
 
                                 var containerPath = folderPath.StartsWith(web.ServerRelativeUrl) && web.ServerRelativeUrl != "/" ? folderPath.Substring(web.ServerRelativeUrl.Length) : folderPath;
-                                var container = HttpUtility.UrlDecode(containerPath).Trim('/').Replace("/", "\\");
+                                var container = Uri.UnescapeDataString(containerPath).Trim('/').Replace("/", "\\");
 
                                 var publishingFile = new Model.File()
                                 {
                                     Folder = Tokenize(folderPath, web.Url),
-                                    Src = !string.IsNullOrEmpty(container) ? $"{container}\\{HttpUtility.UrlDecode(fileName)}" : HttpUtility.UrlDecode(fileName),
+                                    Src = !string.IsNullOrEmpty(container) ? $"{container}\\{Uri.UnescapeDataString(fileName)}" : Uri.UnescapeDataString(fileName),
                                     Overwrite = true,
                                     Level = (Model.FileLevel)Enum.Parse(typeof(Model.FileLevel), file.Level.ToString())
                                 };

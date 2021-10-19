@@ -1831,7 +1831,7 @@ namespace Microsoft.SharePoint.Client
                         foreach (var value in values)
                         {
                             var href = value.Attribute("href").Value;
-                            href = System.Web.HttpUtility.UrlDecode(href);
+                            href = Uri.UnescapeDataString(href);
                             href = href.Replace(list.RootFolder.ServerRelativeUrl, "/").Replace("//", "/");
                             var defaultValues = from d in value.Descendants("DefaultValue") select d;
                             foreach (var defaultValue in defaultValues)
@@ -2052,7 +2052,7 @@ namespace Microsoft.SharePoint.Client
                         foreach (var value in values)
                         {
                             var href = value.Attribute("href").Value;
-                            href = System.Web.HttpUtility.UrlDecode(href);
+                            href = Uri.UnescapeDataString(href);
 
                             href = href.Replace(list.RootFolder.ServerRelativeUrl, "/").Replace("//", "/");
                             var defaultValues = from d in value.Descendants("DefaultValue") select d;
@@ -2184,7 +2184,7 @@ namespace Microsoft.SharePoint.Client
                         foreach (var value in values)
                         {
                             var href = value.Attribute("href").Value;
-                            href = System.Web.HttpUtility.UrlDecode(href);
+                            href = Uri.UnescapeDataString(href);
                             href = href.Replace(list.RootFolder.ServerRelativeUrl, "/").Replace("//", "/");
 
                             var defaultValues = from d in value.Descendants("DefaultValue") select d;

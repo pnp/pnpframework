@@ -991,7 +991,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 // Avoid ActivityLimitReached 
                 System.Threading.Thread.Sleep(TimeSpan.FromSeconds(5));
 
-                var existingTab = existingTabs.FirstOrDefault(x => x["displayName"] != null && HttpUtility.UrlDecode(x["displayName"].ToString()) == tab.DisplayName && x["teamsApp"]?["id"]?.ToString() == tab.TeamsAppId);
+                var existingTab = existingTabs.FirstOrDefault(x => x["displayName"] != null && Uri.UnescapeDataString(x["displayName"].ToString()) == tab.DisplayName && x["teamsApp"]?["id"]?.ToString() == tab.TeamsAppId);
 
                 var tabId = existingTab == null ? CreateTeamTab(scope, tab, parser, teamId, channelId, accessToken) : UpdateTeamTab(tab, parser, teamId, channelId, existingTab["id"].ToString(), accessToken);
 

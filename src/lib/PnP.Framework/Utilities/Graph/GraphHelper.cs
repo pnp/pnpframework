@@ -132,7 +132,7 @@ namespace PnP.Framework.Utilities.Graph
         public static string ItemAlreadyExists(string uri, string matchingFieldName, string matchingFieldValue, string accessToken)
         {
             string id;
-            string json = HttpHelper.MakeGetRequestForString($"{uri}?$select=id&$filter={matchingFieldName}%20eq%20'{WebUtility.UrlEncode(matchingFieldValue)}'", accessToken);
+            string json = HttpHelper.MakeGetRequestForString($"{uri}?$select=id&$filter={matchingFieldName}%20eq%20'{Uri.EscapeDataString(matchingFieldValue)}'", accessToken);
             // Get the id of existing item
             var ids = GetIdsFromList(json);
             id = ids.Length > 0 ? ids[0] : null;

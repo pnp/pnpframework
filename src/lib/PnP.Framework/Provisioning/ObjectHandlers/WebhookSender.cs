@@ -69,14 +69,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                         foreach (var k in requestParameters.Keys)
                         {
-                            url += $"&{HttpUtility.UrlEncode(k)}={HttpUtility.UrlEncode(requestParameters[k])}";
+                            url += $"&{Uri.EscapeDataString(k)}={Uri.EscapeDataString(requestParameters[k])}";
                         }
 
                         if ((kind == ProvisioningTemplateWebhookKind.ObjectHandlerProvisioningStarted
                             || kind == ProvisioningTemplateWebhookKind.ObjectHandlerProvisioningCompleted
                             || kind == ProvisioningTemplateWebhookKind.ExceptionOccurred) && objectHandler != null)
                         {
-                            url += $"&__handler={HttpUtility.UrlEncode(objectHandler)}"; // add the handler name to the REST request URL
+                            url += $"&__handler={Uri.EscapeDataString(objectHandler)}"; // add the handler name to the REST request URL
                         }
                         try
                         {

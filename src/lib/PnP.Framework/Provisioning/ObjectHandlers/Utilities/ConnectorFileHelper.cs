@@ -39,7 +39,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
             if (stream == null)
             {
                 //Decode the URL and try again
-                fileName = WebUtility.UrlDecode(fileName);
+                fileName = Uri.UnescapeDataString(fileName);
                 stream = connector.GetFileStream(fileName, container);
             }
 

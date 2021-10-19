@@ -183,7 +183,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 }
 
                 String container = folderPath.Trim('/').Replace("%20", " ").Replace("/", "\\");
-                String persistenceFileName = (decodeFileName ? HttpUtility.UrlDecode(fileName) : fileName).Replace("%20", " ");
+                String persistenceFileName = (decodeFileName ? Uri.UnescapeDataString(fileName) : fileName).Replace("%20", " ");
 
                 if (fileConnector.Parameters.ContainsKey(FileConnectorBase.CONTAINER))
                 {

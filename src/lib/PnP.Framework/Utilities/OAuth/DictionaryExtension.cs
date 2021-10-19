@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System.Web;
+using System;
 
 namespace SharePointPnP.IdentityModel.Extensions.S2S
 {
@@ -11,9 +11,9 @@ namespace SharePointPnP.IdentityModel.Extensions.S2S
 
         public const char DefaultKeyValueSeparator = '=';
 
-        public static DictionaryExtension.Encoder DefaultDecoder = new DictionaryExtension.Encoder(HttpUtility.UrlDecode);
+        public static DictionaryExtension.Encoder DefaultDecoder = new DictionaryExtension.Encoder(Uri.UnescapeDataString);
 
-        public static DictionaryExtension.Encoder DefaultEncoder = new DictionaryExtension.Encoder(HttpUtility.UrlEncode);
+        public static DictionaryExtension.Encoder DefaultEncoder = new DictionaryExtension.Encoder(Uri.EscapeDataString);
 
         public static DictionaryExtension.Encoder NullEncoder = new DictionaryExtension.Encoder(DictionaryExtension.NullEncode);
 

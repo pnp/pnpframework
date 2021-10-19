@@ -332,6 +332,15 @@ namespace PnP.Framework {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to check if Feature {0} is active..
+        /// </summary>
+        internal static string FeatureExtensions_ProcessFeatureInternal_IsFeatureActiveInternalException {
+            get {
+                return ResourceManager.GetString("FeatureExtensions_ProcessFeatureInternal_IsFeatureActiveInternalException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adding field ({0}) to content type ({1})..
         /// </summary>
         internal static string FieldAndContentTypeExtensions_AddField0ToContentType1 {

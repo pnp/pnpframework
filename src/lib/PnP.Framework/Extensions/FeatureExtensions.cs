@@ -3,7 +3,6 @@ using PnP.Framework.Diagnostics;
 using PnP.Framework.Utilities;
 using PnP.Framework.Utilities.Async;
 using System;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Microsoft.SharePoint.Client
@@ -204,9 +203,9 @@ namespace Microsoft.SharePoint.Client
                     featureIsActive = true;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex) 
             {
-                string err = ex.Message;
+                Log.Error(ex, Constants.LOGGING_SOURCE, CoreResources.FeatureExtensions_ProcessFeatureInternal_IsFeatureActiveInternalException, featureID);
             }
 
             return featureIsActive;

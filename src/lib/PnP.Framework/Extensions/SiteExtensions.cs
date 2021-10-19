@@ -123,7 +123,7 @@ namespace Microsoft.SharePoint.Client
             //
             var templateId = site.RootWeb.GetBaseTemplateId();
 
-            var result = (templateId == "TEAMCHANNEL#0");
+            var result = (templateId.StartsWith("TEAMCHANNEL#", StringComparison.InvariantCultureIgnoreCase));
 
             return (result);
         }

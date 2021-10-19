@@ -168,10 +168,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Extensions
                         var translationculture = new CultureInfo(resourceValue.Item1);
                         if (web.SupportedUILanguageIds.Contains(translationculture.LCID))
                         {
-                            // Save property with correct locale on the request to make it stick
-                            // http://sadomovalex.blogspot.no/2015/09/localize-web-part-titles-via-client.html
-                            context.PendingRequest.RequestExecutor.WebRequest.Headers["Accept-Language"] = resourceValue.Item1;
-                            navigationNode.Title = resourceValue.Item2;
+                            navigationNode.TitleResource.SetValueForUICulture(resourceValue.Item1, resourceValue.Item2);
                             navigationNode.Update();
                             context.ExecuteQueryRetry();
                         }

@@ -91,6 +91,11 @@ namespace PnP.Framework.Provisioning.Model
         /// </summary>
         public Boolean CreateFriendlyUrlsForNewPages { get; set; }
 
+        /// <summary>
+        /// Declares whether to enable site navigation audience targeting or not, optional attribute.
+        /// </summary>
+        public Boolean EnableAudienceTargeting { get; set; }
+
         #endregion
 
         #region Constructors
@@ -124,13 +129,14 @@ namespace PnP.Framework.Provisioning.Model
         /// <returns>Returns HashCode</returns>
         public override int GetHashCode()
         {
-            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|",
+            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|",
                 (this.GlobalNavigation != null ? this.GlobalNavigation.GetHashCode() : 0),
                 (this.CurrentNavigation != null ? this.CurrentNavigation.GetHashCode() : 0),
                 (this.SearchNavigation != null ? this.SearchNavigation.GetHashCode() : 0),
                 this.EnableTreeView.GetHashCode(),
                 this.AddNewPagesToNavigation.GetHashCode(),
-                this.CreateFriendlyUrlsForNewPages.GetHashCode()
+                this.CreateFriendlyUrlsForNewPages.GetHashCode(),
+                this.EnableAudienceTargeting.GetHashCode()
             ).GetHashCode());
         }
 
@@ -165,7 +171,8 @@ namespace PnP.Framework.Provisioning.Model
                     (this.SearchNavigation != null && other.SearchNavigation != null ? this.SearchNavigation.Equals(other.SearchNavigation) : this.SearchNavigation == null && other.SearchNavigation == null ? true : false) &&
                     this.EnableTreeView == other.EnableTreeView &&
                     this.AddNewPagesToNavigation == other.AddNewPagesToNavigation &&
-                    this.CreateFriendlyUrlsForNewPages == other.CreateFriendlyUrlsForNewPages
+                    this.CreateFriendlyUrlsForNewPages == other.CreateFriendlyUrlsForNewPages && 
+                    this.EnableAudienceTargeting == other.EnableAudienceTargeting
                     );
         }
 

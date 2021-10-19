@@ -31,7 +31,7 @@ namespace PnP.Framework.Test.Framework.Functional.Implementation
                 var result = TestProvisioningTemplate(cc, "files_add_1605.xml", Handlers.Files | Handlers.Lists);
                 FilesValidator fv = new FilesValidator
                 {
-                    SchemaVersion = PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                    SchemaVersion = PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03
                 };
                 Assert.IsTrue(fv.Validate1605(result.SourceTemplate, cc));
             }
@@ -60,7 +60,7 @@ namespace PnP.Framework.Test.Framework.Functional.Implementation
                 var result = TestProvisioningTemplate(cc, "files_add_1605.xml", Handlers.Files | Handlers.Lists);
                 FilesValidator fv = new FilesValidator
                 {
-                    SchemaVersion = PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05
+                    SchemaVersion = PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03
                 };
                 Assert.IsTrue(fv.Validate1605(result.SourceTemplate, cc));
             }

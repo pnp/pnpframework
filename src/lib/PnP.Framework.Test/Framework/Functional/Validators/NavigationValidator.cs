@@ -23,7 +23,7 @@ namespace PnP.Framework.Test.Framework.Functional.Validators
         public NavigationValidator() : base()
         {
             // optionally override schema version
-            SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2016_05;
+            SchemaVersion = XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03;
             XPathQuery = "/pnp:Templates/pnp:ProvisioningTemplate/pnp:Navigation";
 
         }

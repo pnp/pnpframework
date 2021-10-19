@@ -1291,7 +1291,7 @@ namespace PnP.Framework.Modernization.Transform
                     case "items matching a content type":
                     case "items related to a current user":
                         {
-                            cts.Union(MapToContentTypesFromContentType(contentTypeId));
+                            cts = MapToContentTypesFromContentType(contentTypeId);
                             break;
                         }
                     default:

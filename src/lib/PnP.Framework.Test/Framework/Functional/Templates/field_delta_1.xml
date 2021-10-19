@@ -15,7 +15,7 @@ Base template: Goal is to verify that delta handling of fields works. Field prop
                The complete field XML is parsed, parser will not replace the ~sitecollection and ~site tokens               
 -->
 
-<pnp:ProvisioningTemplate ID="field_delta_1" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2015/12/ProvisioningSchema">
+<pnp:ProvisioningTemplate ID="field_delta_1" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <pnp:SiteFields>
     <!-- Regular fields -->
     <!-- Updated attributes: Group  -->

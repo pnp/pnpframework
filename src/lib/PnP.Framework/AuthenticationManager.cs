@@ -1,6 +1,7 @@
 ﻿using Microsoft.Identity.Client;
 using Microsoft.Identity.Client.Extensibility;
 using Microsoft.SharePoint.Client;
+using PnP.Core.Services;
 using PnP.Framework.Utilities;
 using PnP.Framework.Utilities.Context;
 using System;
@@ -91,7 +92,10 @@ namespace PnP.Framework
         private readonly ACSTokenGenerator acsTokenGenerator;
         private IMsalHttpClientFactory httpClientFactory;
         private readonly SecureString accessToken;
-        internal CookieContainer CookieContainer { get; set; }
+        private readonly IAuthenticationProvider authenticationProvider;
+        private readonly PnPContext pnpContext;
+
+        public CookieContainer CookieContainer { get; set; }
 
         private IMsalHttpClientFactory HttpClientFactory
         {
@@ -111,6 +115,7 @@ namespace PnP.Framework
         {
             return new AuthenticationManager(accessToken);
         }
+
         /// <summary>
         /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts through device code authentication
         /// </summary>
@@ -120,7 +125,20 @@ namespace PnP.Framework
         /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
         public static AuthenticationManager CreateWithDeviceLogin(string clientId, Func<DeviceCodeResult, Task> deviceCodeCallback, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null)
         {
-            return new AuthenticationManager(clientId, deviceCodeCallback, azureEnvironment, tokenCacheCallback);
+            return new AuthenticationManager(clientId, null, deviceCodeCallback, azureEnvironment, tokenCacheCallback);
+        }
+
+        /// <summary>
+        /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts through device code authentication
+        /// </summary>
+        /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
+        /// <param name="tenantId">Optional tenant id or tenant url</param>
+        /// <param name="deviceCodeCallback">The callback that will be called with device code information.</param>
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
+        public static AuthenticationManager CreateWithDeviceLogin(string clientId, string tenantId, Func<DeviceCodeResult, Task> deviceCodeCallback, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null)
+        {
+            return new AuthenticationManager(clientId, tenantId, deviceCodeCallback, azureEnvironment, tokenCacheCallback);
         }
 
         /// <summary>
@@ -237,6 +255,25 @@ namespace PnP.Framework
             return new AuthenticationManager(clientId, clientSecret, userAssertion, tenantId, azureEnvironment, tokenCacheCallback);
         }
 
+        /// <summary>
+        /// Creates a new instance of the Authentication Manager to acquire an authenticated ClientContext.
+        /// </summary>
+        /// <param name="authenticationProvider">PnP Core SDK authentication provider that will deliver the access token</param>
+        /// <returns></returns>
+        public static AuthenticationManager CreateWithPnPCoreSdk(IAuthenticationProvider authenticationProvider)
+        {
+            return new AuthenticationManager(authenticationProvider);
+        }
+
+        /// <summary>
+        /// Creates a new instance of the Authentication Manager to acquire an authenticated ClientContext.
+        /// </summary>
+        /// <param name="pnpContext">PnP Core SDK authentication provider that will deliver the access token</param>
+        /// <returns></returns>
+        public static AuthenticationManager CreateWithPnPCoreSdk(PnPContext pnpContext)
+        {
+            return new AuthenticationManager(pnpContext);
+        }
         #endregion
 
         #region Construction
@@ -358,13 +395,37 @@ namespace PnP.Framework
         /// <param name="deviceCodeCallback">The callback that will be called with device code information.</param>
         /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
         /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
-        public AuthenticationManager(string clientId, Func<DeviceCodeResult, Task> deviceCodeCallback, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
+        public AuthenticationManager(string clientId, Func<DeviceCodeResult, Task> deviceCodeCallback, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) :
+            this(clientId, null, deviceCodeCallback, azureEnvironment, tokenCacheCallback)
+        {
+        }
+
+        /// <summary>
+        /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts through device code authentication
+        /// </summary>
+        /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
+        /// <param name="tenantId">Optional tenant id or tenant url</param>
+        /// <param name="deviceCodeCallback">The callback that will be called with device code information.</param>
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
+        public AuthenticationManager(string clientId, string tenantId, Func<DeviceCodeResult, Task> deviceCodeCallback, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
         {
             this.azureEnvironment = azureEnvironment;
             var azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
             this.deviceCodeCallback = deviceCodeCallback;
 
-            var builder = PublicClientApplicationBuilder.Create(clientId).WithAuthority($"{azureADEndPoint}/organizations/").WithHttpClientFactory(HttpClientFactory);
+            var builder = PublicClientApplicationBuilder.Create(clientId);
+
+            if (!string.IsNullOrEmpty(tenantId))
+            {
+                builder = builder.WithAuthority($"{azureADEndPoint}/{tenantId}/");
+            }
+            else
+            {
+                builder = builder.WithAuthority($"{azureADEndPoint}/organizations/");
+            }
+
+            builder = builder.WithHttpClientFactory(HttpClientFactory);
 
             publicClientApplication = builder.Build();
 
@@ -489,11 +550,15 @@ namespace PnP.Framework
 
             var builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId).WithHttpClientFactory(HttpClientFactory);
 
-            builder = GetBuilderWithAuthority(builder, azureEnvironment);
+            builder = GetBuilderWithAuthority(builder, azureEnvironment, tenantId);
 
             if (!string.IsNullOrEmpty(redirectUrl))
             {
                 builder = builder.WithRedirectUri(redirectUrl);
+            }
+            if (!string.IsNullOrEmpty(tenantId))
+            {
+                builder = builder.WithTenantId(tenantId);
             }
 
             confidentialClientApplication = builder.Build();
@@ -542,6 +607,28 @@ namespace PnP.Framework
             tokenCacheCallback?.Invoke(confidentialClientApplication.UserTokenCache);
             authenticationType = ClientContextType.AzureOnBehalfOf;
         }
+
+        /// <summary>
+        /// Creates an AuthenticationManager for the given PnP Core SDK <see cref="IAuthenticationProvider"/>.
+        /// </summary>
+        /// <param name="authenticationProvider">PnP Core SDK <see cref="IAuthenticationProvider"/></param>
+        public AuthenticationManager(IAuthenticationProvider authenticationProvider)
+        {
+            this.authenticationProvider = authenticationProvider;
+            this.pnpContext = null;
+            authenticationType = ClientContextType.PnPCoreSdk;
+        }
+
+        /// <summary>
+        /// Creates an AuthenticationManager for the given PnP Core SDK
+        /// </summary>
+        /// <param name="pnPContext">PnP Core SDK<see cref="PnPContext"/></param>
+        public AuthenticationManager(PnPContext pnPContext)
+        {
+            this.authenticationProvider = pnPContext.AuthenticationProvider;
+            this.pnpContext = pnPContext;
+            authenticationType = ClientContextType.PnPCoreSdk;
+        }
         #endregion
 
         #region Access Token Acquisition
@@ -580,7 +667,7 @@ namespace PnP.Framework
 
             var scopes = new[] { $"{uri.Scheme}://{uri.Authority}/.default" };
 
-            return GetAccessTokenAsync(scopes, cancellationToken, prompt).GetAwaiter().GetResult();
+            return GetAccessTokenAsync(scopes, cancellationToken, prompt, uri).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -596,7 +683,7 @@ namespace PnP.Framework
 
             var scopes = new[] { $"{uri.Scheme}://{uri.Authority}/.default" };
 
-            return await GetAccessTokenAsync(scopes, cancellationToken, prompt).ConfigureAwait(false);
+            return await GetAccessTokenAsync(scopes, cancellationToken, prompt, uri).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -617,8 +704,9 @@ namespace PnP.Framework
         /// <param name="scopes">The scopes to retrieve the access token for</param>
         /// <param name="cancellationToken">Optional cancellation token to cancel the request</param>
         /// <param name="prompt">The prompt style to use. Notice that this only works with the Interactive Login flow, for all other flows this parameter is ignored.</param>
+        /// <param name="uri">for ClientContextType.PnPCoreSdk case as by interface definition needed for GetAccessTokenAsync</param>
         /// <returns></returns>
-        public async Task<string> GetAccessTokenAsync(string[] scopes, CancellationToken cancellationToken, Prompt prompt = default)
+        public async Task<string> GetAccessTokenAsync(string[] scopes, CancellationToken cancellationToken, Prompt prompt = default, Uri uri = null)
         {
             AuthenticationResult authResult = null;
 
@@ -705,11 +793,19 @@ namespace PnP.Framework
                     }
                 case ClientContextType.SharePointACSAppOnly:
                     {
+                        if (acsTokenGenerator == null)
+                        {
+                            throw new ArgumentException($"{nameof(GetAccessTokenAsync)}() called without an ACS token generator. Specify in {nameof(AuthenticationManager)} constructor the authentication parameters");
+                        }
                         return acsTokenGenerator.GetToken(null);
                     }
                 case ClientContextType.AccessToken:
                     {
-                        return new System.Net.NetworkCredential("", accessToken).Password;
+                        return new NetworkCredential("", accessToken).Password;
+                    }
+                case ClientContextType.PnPCoreSdk:
+                    {
+                        return await this.authenticationProvider.GetAccessTokenAsync(uri, scopes);
                     }
             }
             if (authResult?.AccessToken != null)
@@ -865,9 +961,14 @@ namespace PnP.Framework
 
                 case ClientContextType.SharePointACSAppOnly:
                     {
+                        if (acsTokenGenerator == null)
+                        {
+                            throw new ArgumentException($"{nameof(GetContextAsync)}() called without an ACS token generator. Use {nameof(GetACSAppOnlyContext)}() or {nameof(GetAccessTokenContext)}() instead or specify in {nameof(AuthenticationManager)} constructor the authentication parameters");
+                        }
+
                         var context = GetAccessTokenContext(siteUrl, (site) =>
                         {
-                            return this.acsTokenGenerator.GetToken(new Uri(site));
+                            return acsTokenGenerator.GetToken(new Uri(site));
                         });
 
                         ClientContextSettings clientContextSettings = new ClientContextSettings()
@@ -898,8 +999,64 @@ namespace PnP.Framework
 
                         return context;
                     }
+                case ClientContextType.PnPCoreSdk:
+                    {
+                        if (authenticationProvider == null)
+                        {
+                            throw new ArgumentException($"{nameof(GetContextAsync)}() called without an IAuthenticationProvider.");
+                        }
+
+                        var context = GetAccessTokenContext(siteUrl, (site) =>
+                        {
+                            return authenticationProvider.GetAccessTokenAsync(new Uri(site)).GetAwaiter().GetResult();
+                        });
+
+                        ClientContextSettings clientContextSettings = new ClientContextSettings()
+                        {
+                            Type = ClientContextType.PnPCoreSdk,
+                            SiteUrl = siteUrl,
+                            AuthenticationManager = this
+                        };
+                        context.AddContextSettings(clientContextSettings);
+
+                        return context;
+                    }
             }
             return null;
+        }
+
+        /// <summary>
+        /// Return same IAuthenticationProvider then the AuthenticationManager was initialized with
+        /// </summary>
+        internal IAuthenticationProvider PnPCoreAuthenticationProvider { 
+            get {
+                if (authenticationType == ClientContextType.PnPCoreSdk && authenticationProvider != null)
+                {
+                    return authenticationProvider;
+                }
+                else
+                {
+                    return null;
+                }
+            } 
+        }
+
+        /// <summary>
+        /// Return same PnPContext then the AuthenticationManager was initialized with
+        /// </summary>
+        internal PnPContext PnPCoreContext
+        {
+            get
+            {
+                if (authenticationType == ClientContextType.PnPCoreSdk && pnpContext!=null)
+                {
+                    return pnpContext;
+                }
+                else
+                {
+                    return null;
+                }
+            }
         }
         #endregion
 
@@ -993,7 +1150,7 @@ namespace PnP.Framework
             }
         }
 
-        internal ClientContext GetOnPremisesContext(string siteUrl, string userName, SecureString password)
+        public ClientContext GetOnPremisesContext(string siteUrl, string userName, SecureString password)
         {
             ClientContext clientContext = new ClientContext(siteUrl)
             {
@@ -1006,7 +1163,7 @@ namespace PnP.Framework
             return clientContext;
         }
 
-        internal ClientContext GetOnPremisesContext(string siteUrl, ICredentials credentials)
+        public ClientContext GetOnPremisesContext(string siteUrl, ICredentials credentials)
         {
             ClientContext clientContext = new ClientContext(siteUrl)
             {
@@ -1019,7 +1176,7 @@ namespace PnP.Framework
             return clientContext;
         }
 
-        internal ClientContext GetOnPremisesContext(string siteUrl)
+        public ClientContext GetOnPremisesContext(string siteUrl)
         {
             ClientContext clientContext = new ClientContext(siteUrl)
             {
@@ -1373,12 +1530,19 @@ namespace PnP.Framework
             return builder;
         }
 
-        public ConfidentialClientApplicationBuilder GetBuilderWithAuthority(ConfidentialClientApplicationBuilder builder, AzureEnvironment azureEnvironment)
+        public ConfidentialClientApplicationBuilder GetBuilderWithAuthority(ConfidentialClientApplicationBuilder builder, AzureEnvironment azureEnvironment, string tenantId = "")
         {
             if (azureEnvironment == AzureEnvironment.Production)
             {
                 var azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
-                builder = builder.WithAuthority($"{azureADEndPoint}/organizations");
+                if (!string.IsNullOrEmpty(tenantId))
+                {
+                    builder = builder.WithAuthority($"{azureADEndPoint}/organizations", tenantId);
+                }
+                else
+                {
+                    builder = builder.WithAuthority($"{azureADEndPoint}/organizations");
+                }
             }
             else
             {

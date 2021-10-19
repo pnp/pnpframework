@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -102,6 +103,12 @@ namespace PnP.Framework.Sites
         {
             Dictionary<string, object> payload = GetRequestPayload(siteCollectionCreationInformation);
 
+            if (siteCollectionCreationInformation.Lcid != 0 && !Constants.SupportedLCIDs.Contains(siteCollectionCreationInformation.Lcid))
+            {
+                string supportedValues = string.Join(" , ", Constants.SupportedLCIDs);
+                throw new Exception($"LCID value is not supported, supported values are: {supportedValues}");
+            }
+
             var siteDesignId = GetSiteDesignId(siteCollectionCreationInformation);
             if (siteDesignId != Guid.Empty)
             {
@@ -153,6 +160,13 @@ namespace PnP.Framework.Sites
             bool noWait = false)
         {
             Dictionary<string, object> payload = GetRequestPayload(siteCollectionCreationInformation);
+
+            if (siteCollectionCreationInformation.Lcid != 0 && !Constants.SupportedLCIDs.Contains(siteCollectionCreationInformation.Lcid))
+            {
+                string supportedValues = string.Join(" , ", Constants.SupportedLCIDs);
+                throw new Exception($"LCID value is not supported, supported values are: {supportedValues}");                
+            }
+
             payload.Add("HubSiteId", siteCollectionCreationInformation.HubSiteId);
             // As per https://github.com/SharePoint/sp-dev-docs/issues/4810 the WebTemplateExtensionId property
             // is what currently drives the application of a custom site design during the creation of a modern site.
@@ -210,12 +224,17 @@ namespace PnP.Framework.Sites
                 throw new ArgumentException("Alias cannot contain spaces", "Alias");
             }
 
+            string siteCollectionValidAlias = siteCollectionCreationInformation.Alias;
+            siteCollectionValidAlias = UrlUtility.RemoveUnallowedCharacters(siteCollectionValidAlias);
+            siteCollectionValidAlias = UrlUtility.ReplaceAccentedCharactersWithLatin(siteCollectionValidAlias);
+
+            siteCollectionCreationInformation.Alias = siteCollectionValidAlias;
+
             await new SynchronizationContextRemover();
             if (clientContext.IsAppOnly() && string.IsNullOrEmpty(graphAccessToken))
             {
                 throw new Exception("App-Only is currently not supported, unless you provide a Microsoft Graph Access Token.");
             }
-
 
             ClientContext responseContext;
             // If we're in an app-only context and we have the access token, then we use Microsoft Graph
@@ -250,6 +269,12 @@ namespace PnP.Framework.Sites
             bool noWait = false)
         {
             ClientContext responseContext = null;
+
+            if (siteCollectionCreationInformation.Lcid != 0 && !Constants.SupportedLCIDs.Contains(siteCollectionCreationInformation.Lcid))
+            {
+                string supportedValues = string.Join(" , ", Constants.SupportedLCIDs);
+                throw new Exception($"LCID value is not supported, supported values are: {supportedValues}");
+            }
 
             clientContext.Web.EnsureProperty(w => w.Url);
 
@@ -482,8 +507,8 @@ namespace PnP.Framework.Sites
             )
         {
             ClientContext responseContext = null;
-
-            var group = PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup(
+            
+            var group = Graph.UnifiedGroupsUtility.CreateUnifiedGroup(
                 siteCollectionCreationInformation.DisplayName,
                 siteCollectionCreationInformation.Description,
                 siteCollectionCreationInformation.Alias,
@@ -493,7 +518,8 @@ namespace PnP.Framework.Sites
                 isPrivate: !siteCollectionCreationInformation.IsPublic,
                 createTeam: false,
                 retryCount: maxRetryCount,
-                delay: retryDelay, azureEnvironment: azureEnvironment);
+                delay: retryDelay, azureEnvironment: azureEnvironment,
+                preferredDataLocation: siteCollectionCreationInformation.PreferredDataLocation);
 
             if (group != null && !string.IsNullOrEmpty(group.SiteUrl))
             {
@@ -869,6 +895,12 @@ namespace PnP.Framework.Sites
             {
                 throw new ArgumentException("Alias cannot contain spaces", "Alias");
             }
+
+            string siteCollectionValidAlias = siteCollectionGroupifyInformation.Alias;
+            siteCollectionValidAlias = UrlUtility.RemoveUnallowedCharacters(siteCollectionValidAlias);
+            siteCollectionValidAlias = UrlUtility.ReplaceAccentedCharactersWithLatin(siteCollectionValidAlias);
+            
+            siteCollectionGroupifyInformation.Alias = siteCollectionValidAlias;
 
             if (string.IsNullOrEmpty(siteCollectionGroupifyInformation.DisplayName))
             {

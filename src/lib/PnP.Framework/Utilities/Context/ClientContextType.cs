@@ -1,6 +1,6 @@
 ﻿namespace PnP.Framework.Utilities.Context
 {
-    internal enum ClientContextType
+    public enum ClientContextType
     {
         SharePointACSAppOnly = 0,
         AzureADCredentials = 1,
@@ -10,6 +10,7 @@
         AzureOnBehalfOf = 5,
         DeviceLogin = 6,
         OnPremises = 7,
-        AccessToken = 8
+        AccessToken = 8,
+        PnPCoreSdk = 9
     }
 }

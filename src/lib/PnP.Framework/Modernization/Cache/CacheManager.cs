@@ -231,7 +231,20 @@ namespace PnP.Framework.Modernization.Cache
             }
 
             // Ok, so nothing in cache so it seems, so let's get the components
-            var componentsToAdd = page.AvailablePageComponents().Cast<PnPCore.PageComponent>().ToList();
+            //var componentsToAdd = page.AvailablePageComponents().Cast<PnPCore.IPageComponent>().ToList();
+            List<PnPCore.PageComponent> componentsToAdd = new List<PnPCore.PageComponent>();
+            foreach (var component in page.AvailablePageComponents())
+            {
+                componentsToAdd.Add(new PnPCore.PageComponent()
+                {
+                    ComponentType = component.ComponentType,
+                    Id = component.Id,
+                    Manifest = component.Manifest,
+                    ManifestType = component.ManifestType,
+                    Name = component.Name,
+                    Status = component.Status
+                });
+            }
 
             // calculate the componentkey
             string jsonComponentsToAdd = JsonSerializer.Serialize(componentsToAdd);

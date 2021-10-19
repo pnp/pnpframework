@@ -1,4 +1,4 @@
-﻿/*
+﻿
 using Microsoft.Online.SharePoint.TenantAdministration;
 using Microsoft.SharePoint.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -220,7 +220,7 @@ namespace PnP.Framework.Test.Framework.Providers
                                     {
                                         Lcid = 1033,
                                         TimeZoneId = 4,
-                                        SiteOwnerLogin = (TestCommon.Credentials as SharePointOnlineCredentials).UserName,
+                                        SiteOwnerLogin = TestCommon.UserName,
                                         Title = "Template Site",
                                         Template = template.Template,
                                         Url = siteUrl,
@@ -466,7 +466,7 @@ namespace PnP.Framework.Test.Framework.Providers
                 {
                     Lcid = 1033,
                     TimeZoneId = 4,
-                    SiteOwnerLogin = (TestCommon.Credentials as SharePointOnlineCredentials).UserName,
+                    SiteOwnerLogin = TestCommon.UserName,
                     Title = "Template Site",
                     Template = template,
                     Url = siteUrl,
@@ -491,4 +491,3 @@ namespace PnP.Framework.Test.Framework.Providers
 
     }
 }
-*/

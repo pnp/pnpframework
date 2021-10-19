@@ -1,6 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.SharePoint.Client;
 using Newtonsoft.Json.Linq;
+using PnP.Core.Services;
 using PnP.Framework.Http;
 using PnP.Framework.Test.Utilities;
 using PnP.Framework.Utilities;
@@ -111,7 +114,7 @@ namespace PnP.Framework.Test
         #region Properties
         public static string TenantUrl { get; set; }
         public static string DevSiteUrl { get; set; }
-        static string UserName { get; set; }
+        public static string UserName { get; set; }
         static SecureString Password { get; set; }
         public static string AppId { get; set; }
         static string AppSecret { get; set; }
@@ -179,28 +182,72 @@ namespace PnP.Framework.Test
         /// If You don't want to set up integration true for each test, You can overwrite it with this flag. Also it might be good to force a integration test before release
         /// </summary>
         private static bool RunInIntegrationAll { get; set; } = false;
+        public static bool CurrentTestInIntegration { get; private set; } = false;
         public static UnitTestClientContext CreateTestClientContext(
             bool runInIntegrationMode = false,
             [System.Runtime.CompilerServices.CallerFilePath] string mockFolderPath = null,
             [System.Runtime.CompilerServices.CallerMemberName] string mockFileName = null)
         {
+            RegisterPnPHttpClientMock(runInIntegrationMode, mockFolderPath, mockFileName);
             string mockFilePath = mockFolderPath.Replace(".cs", $"\\{mockFileName}.json");
-            runInIntegrationMode = runInIntegrationMode || RunInIntegrationAll;
-            if (System.IO.File.Exists(mockFilePath) || runInIntegrationMode)
+            string sdkFilePath = mockFolderPath.Replace(".cs", $"\\{mockFileName}-sdk.json");
+            CurrentTestInIntegration = runInIntegrationMode || RunInIntegrationAll;
+            PnPCoreSdk.OnDIContainerBuilding += delegate(object sender, IServiceCollection serviceCollection)
+            {
+                PnPCoreSdk_OnDIContainerBuilding(sender, serviceCollection, sdkFilePath, CurrentTestInIntegration);
+            };
+
+            if (System.IO.File.Exists(mockFilePath) || CurrentTestInIntegration)
             {
                 UnitTestClientContext context;
-                if (runInIntegrationMode)
+                if (CurrentTestInIntegration)
                 {
-                    context = UnitTestClientContext.GetUnitTestContext(CreateClientContext(DevSiteUrl), runInIntegrationMode, mockFilePath);
+                    context = UnitTestClientContext.GetUnitTestContext(CreateClientContext(DevSiteUrl), CurrentTestInIntegration, mockFilePath);
                 }
                 else
                 {
-                    context = new UnitTestClientContext(DevSiteUrl, runInIntegrationMode, mockFilePath);
+                    PnPCoreSdk.AuthenticationProviderFactory = new MockLegacyAuthenticationProviderFactory();
+                    context = new UnitTestClientContext(DevSiteUrl, CurrentTestInIntegration, mockFilePath);
                 }
 
                 return context;
             }
             throw new Exception("Mock file doesn't exist in: " + mockFilePath);
+        }
+
+        private static void PnPCoreSdk_OnDIContainerBuilding(object sender, IServiceCollection serviceCollection, string mockFilePath, bool runInIntegrationMode)
+        {
+            serviceCollection.AddTransient<MockHttpHandler>((IServiceProvider provider) =>
+            {
+                return new MockHttpHandler(mockFilePath);
+            });
+            serviceCollection.AddTransient<StoreResponseToAFile>((IServiceProvider provider) =>
+            {
+                return new StoreResponseToAFile(mockFilePath);
+            });
+
+
+            if (runInIntegrationMode)
+            {
+                serviceCollection.AddHttpClient("SharePointRestClient", config =>
+                {
+                }).AddHttpMessageHandler<StoreResponseToAFile>()
+                .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler()
+                {
+                    UseCookies = false
+                });
+            }
+            else
+            {
+                serviceCollection.AddHttpClient("SharePointRestClient", config =>
+                {
+                }).AddHttpMessageHandler<MockHttpHandler>();
+            }
+            serviceCollection.AddTransient<SharePointRestClient>((IServiceProvider provider) =>
+            {
+                var client = provider.GetRequiredService<IHttpClientFactory>().CreateClient("SharePointRestClient");
+                return new SharePointRestClient(client, provider.GetRequiredService<ILogger<SharePointRestClient>>(), provider.GetRequiredService<IOptions<PnPGlobalSettingsOptions>>());
+            });
         }
 
         public static ClientContext CreateClientContext(string url)

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<pnp:ProvisioningTemplate ID="searchsettings_site_1605_add" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema">
+<pnp:ProvisioningTemplate ID="searchsettings_site_1605_add" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <pnp:SearchSettings>
     <pnp:SiteSearchSettings>
       <SearchConfigurationSettings xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Microsoft.Office.Server.Search.Portability">

@@ -5,10 +5,10 @@ namespace PnP.Framework.Provisioning.Model.Configuration.ContentTypes
 {
     public class ExtractContentTypeConfiguration
     {
-        [JsonPropertyName("Groups")]
+        [JsonPropertyName("groups")]
         public List<string> Groups { get; set; } = new List<string>();
 
-        [JsonPropertyName("IncludeFromSyndication")]
+        [JsonPropertyName("excludeFromSyndication")]
         public bool ExcludeFromSyndication { get; set; }
     }
 }

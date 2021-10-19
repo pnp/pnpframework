@@ -1,5 +1,6 @@
 ﻿using Microsoft.SharePoint.Client;
 using Microsoft.SharePoint.Client.Taxonomy;
+using Newtonsoft.Json.Linq;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions;
 using System;
@@ -230,6 +231,34 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         NewDocumentTemplatesJson = Regex.Replace(NewDocumentTemplatesJson, contentType.Id.StringValue, contentTypeReplacementJson, RegexOptions.IgnoreCase);
                     }
                     xml = Regex.Replace(xml, contentType.Id.StringValue, contentTypeReplacement, RegexOptions.IgnoreCase);
+                }
+
+                if(!string.IsNullOrWhiteSpace(NewDocumentTemplatesJson))
+                {
+                    web.EnsureProperties(w => w.ServerRelativeUrl);
+                    try
+                    {
+                        var JObjNewDocTemplate = JArray.Parse(NewDocumentTemplatesJson);
+                        var fileUrls = JObjNewDocTemplate.SelectTokens("..url");
+                        foreach (var templateFile in fileUrls)
+                        {
+                            var templateObj = templateFile.Parent.Parent as JObject;
+                            string orgValue = (string)templateObj["url"];
+                            if (!string.IsNullOrWhiteSpace(orgValue))
+                            {
+                                if (web.ServerRelativeUrl == "/")
+                                {
+                                    templateObj["url"] = $"{{site}}/{orgValue.TrimStart('/')}";
+                                }
+                                else
+                                {
+                                    templateObj["url"] = Regex.Replace(orgValue, web.ServerRelativeUrl.TrimEnd('/'), "{site}", RegexOptions.IgnoreCase); ;
+                                }
+                            }
+                        }
+                        NewDocumentTemplatesJson = JObjNewDocTemplate.ToString(Newtonsoft.Json.Formatting.None);
+                    }
+                    catch { }
                 }
 
                 string tokenizedXML = TokenizeXml(xml, web);

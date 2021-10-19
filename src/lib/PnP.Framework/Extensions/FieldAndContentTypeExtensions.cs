@@ -1290,7 +1290,14 @@ namespace Microsoft.SharePoint.Client
 
             if (IsDirty)
             {
-                contentType.Update(true);
+                bool updateChildContentTypes = true;
+
+                if (updateChildren.HasValue)
+                {
+                    updateChildContentTypes = updateChildren.Value;
+                }
+
+                contentType.Update(updateChildContentTypes);
                 web.Context.ExecuteQueryRetry();
             }
         }

@@ -6,7 +6,93 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
-## [Unreleased]
+## [1.7.0]
+
+### Added
+
+
+### Changed
+
+- Adding operating system in order to fix issue #737 #440 [koenzomers - Koen Zomers]
+- Fixed issue preventing term store data being cached during page transformation [jansenbe - Bert Jansen]
+- Updates done to make PnP Framework work without having a dependency on the PnP Core SDK internals [jansenbe - Bert Jansen]
+- Updated build-debug script and project file that enables building and testing PnP Framework with a locally build PnP Core SDK assembly [jansenbe - Bert Jansen]
+- GetWebSearchCenterUrl makes us loose the pending changes in CSOM Context #454 [czullu - Christian Zuellig]
+- Update base templates for the provisioning engine [jansenbe - Bert Jansen]
+- Including the requested SelectProperties in the output of ListUsers #460 [koenzomers - Koen Zomers]
+- Fix PnPPS #1024 - issue with folder name having special chars #461 [gautamdsheth - Gautam Sheth]
+- Fix regression - adding users/groups as site collection admins #462 [gautamdsheth - Gautam Sheth]
+- PnP Framework assembly is now strong named #458 #468 [jansenbe - Bert Jansen]
+- Fixing issue with SetDefaultColumnValuesImplementation not working for folders with special characters in them #471 [koenzomers - Koen Zomers]
+- Feature - additional changes for files/folders with special chars #476 [gautamdsheth - Gautam Sheth]
+- Fix: Added additional check to avoid exception when footer not enabled on a site #479 [koenzomers - Koen Zomers]
+- Fix: UsersUtility selectProperties bugfix #480 [koenzomers - Koen Zomers]
+
+## [1.6.0]
+
+### Added
+
+- Add support to ClearExistingItems attribute of <pnp:Members> for custom groups #386 [jackpoz - Giacomo Pozzoni]
+- Added configuration settings for SharePoint tab entity inside Teams #385 [roberAlb]
+- Added new provisioning token for using sequence site tokens in global template context #384 [patrikhellgren - Patrik Hellgren]
+
+### Changed
+
+- Fix TokenParser always returns original associated-group-names #422 [czullu - Christian Zuellig]
+- Better fix for issue 390. Now it waits 5 secs between each retry. #418 [luismanez - Luis Manez]
+- Fix pnpcontext cache did not work for multitenant #417 [czullu - Christian Zuellig]
+- Fix for issue setting ClientSidePage taxonomy field values from parameters empty #407 [magarma - Miguel Angel García Martínez]
+- ProcessFields was using wrong Token-Parser #403 [czullu - Christian Zuellig]
+- Issue 390 fixed in CreateOrUpdateTeamFromGroupInternal. #391 [luismanez - Luis Manez]
+- Fix for content type UpdateChildren not being used #387 [patrikhellgren - Patrik Hellgren]
+- Fix so that teams apps are added before channels #382 [patrikhellgren - Patrik Hellgren]
+- Added JsonConvertor decorator to UpdateBehavior #380 [thechriskent - Chris Kent]
+- Fix pnpcoresdk instance GetClientContext init ContextSettings #370 [czullu - Christian Zuellig]
+
+## [1.5.0]
+
+### Added
+
+- Support for creating a CSOM ClientContext from a PnP Core SDK context [jansenbe - Bert Jansen]
+- Minimal support for TEAMCHANNEL Template #268 [czullu - Christian Zuellig]
+- PnPSDK Mocking + few more cases isolated #262 [mgwojciech - Marcin Wojciechowski]
+- Added implementation of SPWebRequestExecutor that utilizes HttpClient #261 [patrikhellgren - Patrik Hellgren]
+
+### Changed
+
+- Upgrade Microsoft.Identity.Client.Extensions.Msal, Microsoft.Graph, Microsoft.Identity.Client and System.IdentityModel.Tokens.Jwt references #367 [gautamdsheth - Gautam Sheth]
+- Fix Access Denied error when processing <pnp:SiteSettings> object #360 [jackpoz - Giacomo Pozzoni]
+- Fix: Restore List.EnableFolderCreation value after creating folders #358 [jackpoz - Giacomo Pozzoni]
+- Fix: Only specify LCID when needed during team site creation #354 [gautamdsheth - Gautam Sheth]
+- Fix for handling folder default values that are empty in provisioning template #346 [patrikhellgren - Patrik Hellgren]
+- Fix for valid characters and lower case in site alias #345. Improves #326. [patrikhellgren - Patrik Hellgren]
+- Added HostUrl token for Hubsite url property (fixes #338) #343 [gautamdsheth - Gautam Sheth]
+- Fix for issue with provisioning default values for root folder #342 [patrikhellgren - Patrik Hellgren]
+- Fix #275 - for tenantId missing issue #328/#350 [gautamdsheth - Gautam Sheth]
+- Improve alias naming for modern sites. #326 [gautamdsheth - Gautam Sheth]
+- LCID validation while creating site collections #325 [gautamdsheth - Gautam Sheth]
+- Enhance pnpcoresdk - preseve PnPContext when init with GetClientContext for GetContext #321 [czullu - Christian Zuellig]
+- Fixed a bug that updateChildren value was ignored in AddContentTypeToList #318 [antonsmislevics - Antons Mislevics]
+- Fix for token parsing content type names in console and logs #316 [patrikhellgren - Patrik Hellgren]
+- Fix an issue with possible access of null serverobject in FieldUtilities.FixLookupField #310 [NickSevens - Nick Sevens]
+- Fixes tokenization of SharePoint Syntex models when being exported [jansenbe - Bert Jansen]
+- Fixed DeviceLogin in AuthenticationManager for single tenant scenario #308 [PaoloPia - Paolo Pialorsi]
+- Improved handling of socket exceptions in the ExecuteQueryRetryImplementation #301 [czullu - Christian Zuellig]
+- Match JsonPropertyName values in ExtractConfiguration with https://aka.ms/sppnp-extract-configuration-schema #300 [jackpoz - Giacomo Pozzoni]
+- Fix tokenize url in new document template #299 [czullu - Christian Zuellig]
+- Fix list id token issue when title null #298 [czullu - Christian Zuellig]
+- Fix conversion between PnPCore enum values and PnP.Framework enums #297 [jackpoz - Giacomo Pozzoni]
+- Fix IEnumerable.Union() result being discarded in ContentByQuerySearchTransformator #296 [jackpoz - Giacomo Pozzoni]
+- Improve exception messages when acsTokenGenerator is null in AuthenticationManager #295 [jackpoz - Giacomo Pozzoni]
+- Fix hanging request and big list issue with CreateDocumentSet #290 [YannickRe - Yannick Reekmans]
+- Fix #271: Added PDL support for creating sites via PnP PowerShell #278 [gautamdsheth - Gautam Sheth]
+- Fix issue if SP Group has description with more then 512 char #270 [czullu - Christian Zuellig]
+- Fix: Always create private channels with isFavoriteByDefault false #260 [patrikhellgren - Patrik Hellgren]
+- Fix: Implemented retry logic for getting and creating teams tabs #259 [patrikhellgren - Patrik Hellgren]
+- Fix to add groups as owners of site collections #258 [gautamdsheth - Gautam Sheth]
+- Fix url token root site #256 [czullu - Christian Zuellig]
+
+## [1.4.0]
 
 ### Added
 
@@ -15,6 +101,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Fix to always copy WebRequestExecutorFactory when cloning #255 [patrikhellgren - Patrik Hellgren]
 - Align search navigation node deletion with other structural navigation node deletion [jansenbe - Bert Jansen]
 - Added NeutralResourcesLanguage assembly attribute [jansenbe - Bert Jansen]
 - Deserialze of Template XML does not load ClientSideComponentId on List-UserCustomAction #230 [czullu - Christian Zuellig]

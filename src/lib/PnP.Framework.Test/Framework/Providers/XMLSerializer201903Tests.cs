@@ -1698,8 +1698,8 @@ namespace PnP.Framework.Test.Framework.Providers
                     ShowWeeks = true,
                     Time24 = true,
                     TimeZone = 4,
-                    WorkDayEndHour = WorkHour.PM0500,
                     WorkDayStartHour = WorkHour.AM0900,
+                    WorkDayEndHour = WorkHour.PM0500,
                     WorkDays = 62
                 }
             };
@@ -1730,8 +1730,8 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(true, regionalSettings.ShowWeeks);
             Assert.AreEqual(true, regionalSettings.Time24);
             Assert.AreEqual("4", regionalSettings.TimeZone);
-            Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V201903.WorkHour.Item500PM, regionalSettings.WorkDayEndHour);
             Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V201903.WorkHour.Item900AM, regionalSettings.WorkDayStartHour);
+            Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V201903.WorkHour.Item500PM, regionalSettings.WorkDayEndHour);
             Assert.AreEqual(62, regionalSettings.WorkDays);
         }
 
@@ -2513,10 +2513,10 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.IsNotNull(ct.DocumentSetTemplate.AllowedContentTypes);
             Assert.AreEqual("{sitecollection}/_cts/ProjectDocumentSet/ProjectHomePage.aspx", ct.DocumentSetTemplate.WelcomePage);
             Assert.IsTrue(ct.DocumentSetTemplate.RemoveExistingContentTypes);
-            Assert.IsNotNull(ct.DocumentSetTemplate.AllowedContentTypes.FirstOrDefault(c => c == "0x01005D4F34E4BE7F4B6892AEBE088EDD215E"));
+            Assert.IsNotNull(ct.DocumentSetTemplate.AllowedContentTypes.FirstOrDefault(c => c.ContentTypeId == "0x01005D4F34E4BE7F4B6892AEBE088EDD215E"));
 
-            Assert.AreNotEqual(Guid.Empty, ct.DocumentSetTemplate.SharedFields.FirstOrDefault(c => c == new Guid("B01B3DBC-4630-4ED1-B5BA-321BC7841E3D")));
-            Assert.AreNotEqual(Guid.Empty, ct.DocumentSetTemplate.WelcomePageFields.FirstOrDefault(c => c == new Guid("23203E97-3BFE-40CB-AFB4-07AA2B86BF45")));
+            Assert.AreNotEqual(Guid.Empty, ct.DocumentSetTemplate.SharedFields.FirstOrDefault(c => c.Id == new Guid("B01B3DBC-4630-4ED1-B5BA-321BC7841E3D")));
+            Assert.AreNotEqual(Guid.Empty, ct.DocumentSetTemplate.WelcomePageFields.FirstOrDefault(c => c.Id == new Guid("23203E97-3BFE-40CB-AFB4-07AA2B86BF45")));
 
             Assert.IsNotNull(ct.DocumentSetTemplate.DefaultDocuments);
 
@@ -2555,11 +2555,11 @@ namespace PnP.Framework.Test.Framework.Providers
             };
 
             var documentSetTemplate = new DocumentSetTemplate { RemoveExistingContentTypes = true };
-            documentSetTemplate.AllowedContentTypes.Add("0x01005D4F34E4BE7F4B6892AEBE088EDD215E002");
-            documentSetTemplate.SharedFields.Add(new Guid("f6e7bdd5-bdcb-4c72-9f18-2bd8c27003d3"));
-            documentSetTemplate.SharedFields.Add(new Guid("a8df65ec-0d06-4df1-8edf-55d48b3936dc"));
-            documentSetTemplate.WelcomePageFields.Add(new Guid("c69d2ffc-0c86-474a-9cc7-dcd7774da531"));
-            documentSetTemplate.WelcomePageFields.Add(new Guid("b9132b30-2b9e-47d4-b0fc-1ac34a61506f"));
+            documentSetTemplate.AllowedContentTypes.Add(new ContentTypeReference { ContentTypeId = "0x01005D4F34E4BE7F4B6892AEBE088EDD215E002" });
+            documentSetTemplate.SharedFields.Add(new FieldReference { Id = new Guid("f6e7bdd5-bdcb-4c72-9f18-2bd8c27003d3") });
+            documentSetTemplate.SharedFields.Add(new FieldReference { Id = new Guid("a8df65ec-0d06-4df1-8edf-55d48b3936dc") });
+            documentSetTemplate.WelcomePageFields.Add(new FieldReference { Id = new Guid("c69d2ffc-0c86-474a-9cc7-dcd7774da531") });
+            documentSetTemplate.WelcomePageFields.Add(new FieldReference { Id = new Guid("b9132b30-2b9e-47d4-b0fc-1ac34a61506f") });
             documentSetTemplate.WelcomePage = "home.aspx";
             documentSetTemplate.DefaultDocuments.Add(new DefaultDocument()
             {

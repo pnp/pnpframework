@@ -8,7 +8,7 @@ Base template: goal is to verify that all list properties and elements work as e
                UserCustomActions (e)
 -->
 
-<pnp:ProvisioningTemplate ID="list_add" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema">
+<pnp:ProvisioningTemplate ID="list_add" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <pnp:Lists>
     <!-- Attributes: ForceCheckout -->
     <pnp:ListInstance Title="LI_40" TemplateType="101" Url="LI_40" ForceCheckout="false" />

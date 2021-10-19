@@ -87,7 +87,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                 var hubsiteProperties = tenant.GetHubSitePropertiesById(site.HubSiteId);
                                 tenantContext.Load(hubsiteProperties);
                                 tenantContext.ExecuteQueryRetry();
-                                webSettings.HubSiteUrl = hubsiteProperties.SiteUrl;
+                                webSettings.HubSiteUrl = TokenizeHost(web,hubsiteProperties.SiteUrl);
                             }
                         }
                         else
@@ -391,13 +391,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         web.SearchBoxInNavBar = (SearchBoxInNavBarType)Enum.Parse(typeof(SearchBoxInNavBarType), webSettings.SearchBoxInNavBar.ToString(), true);
                     }
 
-                    string searchCenterUrl = parser.ParseString(webSettings.SearchCenterUrl);
-                    if (!string.IsNullOrEmpty(searchCenterUrl) &&
-                        web.GetWebSearchCenterUrl(true) != searchCenterUrl)
-                    {
-                        web.SetWebSearchCenterUrl(searchCenterUrl);
-                    }
-
                     var masterUrl = parser.ParseString(webSettings.MasterPageUrl);
                     if (!string.IsNullOrEmpty(masterUrl))
                     {
@@ -509,6 +502,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                     web.Update();
                     web.Context.ExecuteQueryRetry();
+
+                    //GetWebSearchCenterUrl makes us loose the pending changes in CSOM Context
+                    string searchCenterUrl = parser.ParseString(webSettings.SearchCenterUrl);
+                    if (!string.IsNullOrEmpty(searchCenterUrl) &&
+                        web.GetWebSearchCenterUrl(true) != searchCenterUrl)
+                    {
+                        web.SetWebSearchCenterUrl(searchCenterUrl);
+                    }
 
                     if (webSettings.HubSiteUrl != null)
                     {

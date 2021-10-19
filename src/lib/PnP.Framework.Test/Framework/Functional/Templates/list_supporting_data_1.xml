@@ -4,7 +4,7 @@
 supporting template: add elements needed in lists tests
 -->
 
-<pnp:ProvisioningTemplate ID="list_supporting_data" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2015/12/ProvisioningSchema">
+<pnp:ProvisioningTemplate ID="list_supporting_data" Version="1" xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
   <!-- Supporting fields to test content types -->
   <pnp:SiteFields>
     <Field ID="{92BC6A41-D501-4FE2-938E-17FBF574A7CB}" Type="Text" Name="FLD_CT_1" DisplayName="Fld CT 1" Group="PnP Demo" MaxLength="255" AllowDeletion="TRUE" />

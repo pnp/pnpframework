@@ -26,6 +26,10 @@ namespace PnP.Framework
             this.userAgent = userAgent ?? throw new ArgumentNullException(nameof(userAgent));
         }
 
+        public PnPCoreSdkAuthenticationProvider()
+        {
+        }
+
         public async Task AuthenticateRequestAsync(Uri resource, HttpRequestMessage request)
         {
             if (resource == null)

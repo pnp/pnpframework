@@ -217,7 +217,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         private string TokenizeSampleMarkups(string sampleMarkupJson, int modelId, string tokenValue)
         {
             sampleMarkupJson = sampleMarkupJson.Replace($"\"{modelId}\": {{", $"\"{tokenValue}\": {{");
+            sampleMarkupJson = sampleMarkupJson.Replace($"\"{modelId}\":{{", $"\"{tokenValue}\": {{");
             sampleMarkupJson = sampleMarkupJson.Replace($"\"modelItemId\": \"{modelId}\"", $"\"modelItemId\": \"{tokenValue}\"");
+            sampleMarkupJson = sampleMarkupJson.Replace($"\"modelItemId\":{modelId}", $"\"modelItemId\": {tokenValue}");
             return sampleMarkupJson;
         }
 

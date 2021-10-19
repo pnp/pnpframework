@@ -10,14 +10,14 @@ $version = Get-Content ./build/version.debug -Raw
 
 $version = $version.Replace("{incremental}", $versionIncrement)
 
-Write-Host "Building PnP.Framework .NET Standard 2.0 version $version"
-dotnet build ./src/lib/PnP.Framework/PnP.Framework.csproj --no-incremental --force /p:Version=$version
+Write-Host "Building PnP.Framework version $version"
+dotnet build ./src/lib/PnP.Framework/PnP.Framework.csproj --configuration Release --no-incremental --force /p:Version=$version
 
-Write-Host "Packinging PnP.Framework .NET Standard 2.0 version $version"
-dotnet pack ./src/lib/PnP.Framework/PnP.Framework.csproj --no-build /p:PackageVersion=$version
+Write-Host "Packinging PnP.Framework version $version"
+dotnet pack ./src/lib/PnP.Framework/PnP.Framework.csproj --configuration Release --no-build /p:PackageVersion=$version
 
 Write-Host "Publishing to nuget"
-$nupkg = $("./src/lib/PnP.Framework/bin/Debug/PnP.Framework.$version.nupkg")
+$nupkg = $("./src/lib/PnP.Framework/bin/Release/PnP.Framework.$version.nupkg")
 $apiKey = $("$env:NUGET_API_KEY")
 
 dotnet nuget push $nupkg --api-key $apiKey --source https://api.nuget.org/v3/index.json

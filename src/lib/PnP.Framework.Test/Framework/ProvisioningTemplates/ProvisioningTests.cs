@@ -15,7 +15,7 @@ namespace PnP.Framework.Test.Framework.ProvisioningTemplates
         [TestMethod]
         public void GetGroupInfoTest()
         {
-            using (var context = TestCommon.CreateClientContext())
+            using (var context = TestCommon.CreateTestClientContext())
             {
                 PnP.Framework.Sites.SiteCollection.GetGroupInfoAsync(context, "demo1").GetAwaiter().GetResult();
             }
@@ -78,7 +78,7 @@ namespace PnP.Framework.Test.Framework.ProvisioningTemplates
             var resourceFolder = string.Format(@"{0}\..\..\..\Resources\Templates", AppDomain.CurrentDomain.BaseDirectory);
             XMLTemplateProvider provider = new XMLFileSystemTemplateProvider(resourceFolder, "");
 
-            var existingTemplate = provider.GetTemplate("ProvisioningSchema-2018-07-FullSample-01.xml");
+            var existingTemplate = provider.GetTemplate("ProvisioningSchema-2021-03-FullSample-01.xml");
 
             Guid siteGuid = Guid.NewGuid();
             int siteId = siteGuid.GetHashCode();
@@ -132,8 +132,7 @@ namespace PnP.Framework.Test.Framework.ProvisioningTemplates
 
             var teamSite1 = new TeamSiteCollection()
             {
-                //  Alias = $"prov-1-{siteId}",
-                Alias = "prov-1",
+                Alias = $"prov-1-{siteId}",
                 Description = "prov-1",
                 DisplayName = "prov-1",
                 IsHubSite = false,

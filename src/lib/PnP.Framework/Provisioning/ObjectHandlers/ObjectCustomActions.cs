@@ -431,7 +431,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     customAction.Title = customActionTitle;
 
                 }
-                if (UserResourceExtensions.PersistResourceValue(userCustomAction.DescriptionResource, $"CustomAction_{resourceKey}_Description", template, creationInfo))
+                if (!string.IsNullOrWhiteSpace(userCustomAction.Description) && UserResourceExtensions.PersistResourceValue(userCustomAction.DescriptionResource, $"CustomAction_{resourceKey}_Description", template, creationInfo))
                 {
                     var customActionDescription = $"{{res:CustomAction_{resourceKey}_Description}}";
                     customAction.Description = customActionDescription;

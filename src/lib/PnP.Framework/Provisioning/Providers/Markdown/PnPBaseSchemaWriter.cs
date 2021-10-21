@@ -208,6 +208,7 @@ namespace PnP.Framework.Provisioning.Providers.Markdown
   <pnp:WebTemplate LanguageCode="1033" TemplateName="POINTPUBLISHINGTOPIC#0" />
   <pnp:WebTemplate LanguageCode="1033" TemplateName="SITEPAGEPUBLISHING#0" />
   <pnp:WebTemplate LanguageCode="1033" TemplateName="TEAMCHANNEL#0" />
+  <pnp:WebTemplate LanguageCode="1033" TemplateName="TEAMCHANNEL#1" />
   <pnp:WebTemplate LanguageCode="1033" TemplateName="SRCHCENTERLITE#0" />
   <pnp:WebTemplate LanguageCode="1033" TemplateName="SRCHCENTERLITE#1" />
   <pnp:WebTemplate LanguageCode="1033" TemplateName="TenantAdminSpo#0" />

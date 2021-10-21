@@ -243,10 +243,10 @@ namespace Microsoft.SharePoint.Client
             }
 
             //URL decode retrieved URL's
-            paletteUrl = Uri.UnescapeDataString(paletteUrl);
-            fontUrl = Uri.UnescapeDataString(fontUrl);
-            backgroundUrl = Uri.UnescapeDataString(backgroundUrl);
-            masterUrl = Uri.UnescapeDataString(masterUrl);
+            paletteUrl = !string.IsNullOrWhiteSpace(paletteUrl)?Uri.UnescapeDataString(paletteUrl):default(string);
+            fontUrl = !string.IsNullOrWhiteSpace(fontUrl)?Uri.UnescapeDataString(fontUrl):default(string);
+            backgroundUrl = !string.IsNullOrWhiteSpace(backgroundUrl)?Uri.UnescapeDataString(backgroundUrl):default(string);
+            masterUrl = !string.IsNullOrWhiteSpace(masterUrl)?Uri.UnescapeDataString(masterUrl):default(string);
 
             if (!string.IsNullOrEmpty(masterUrl))
             {

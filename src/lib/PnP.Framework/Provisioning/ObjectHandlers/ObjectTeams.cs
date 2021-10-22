@@ -871,9 +871,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             foreach (var channel in team.Channels)
             {
-                var existingChannel = existingChannels.FirstOrDefault(x => x["displayName"].ToString() == channel.DisplayName);
+                var existingChannel = existingChannels.FirstOrDefault(x => x["displayName"].ToString() == parser.ParseString(channel.DisplayName));
 
-                var channelId = existingChannel == null ? CreateTeamChannel(scope, channel, teamId, accessToken) : UpdateTeamChannel(channel, teamId, existingChannel, accessToken);
+                var channelId = existingChannel == null ? CreateTeamChannel(scope, channel, teamId, accessToken, parser) : UpdateTeamChannel(channel, teamId, existingChannel, accessToken, parser);
 
                 if (channelId == null) return false;
 
@@ -899,7 +899,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return JToken.Parse(HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams/{teamId}/channels", accessToken))["value"];
         }
 
-        private static string UpdateTeamChannel(Model.Teams.TeamChannel channel, string teamId, JToken existingChannel, string accessToken)
+        private static string UpdateTeamChannel(Model.Teams.TeamChannel channel, string teamId, JToken existingChannel, string accessToken, TokenParser parser)
         {
             // Not supported to update 'General' Channel
             if (channel.DisplayName.Equals("General", StringComparison.InvariantCultureIgnoreCase))
@@ -907,14 +907,15 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             var channelId = existingChannel["id"].ToString();
             var channelDisplayName = existingChannel["displayName"].ToString();
-            var identicalChannelName = channel.DisplayName == channelDisplayName;
+            var newChannelName = parser.ParseString(channel.DisplayName);
+            var identicalChannelName =  newChannelName == channelDisplayName;
 
             // Prepare the request body for the Channel update
             var channelToUpdate = new
             {
-                description = channel.Description,
+                description = parser.ParseString(channel.Description),
                 // You can't update a channel if its displayName is exactly the same, so remove it temporarily.
-                displayName = identicalChannelName ? null : channel.DisplayName,
+                displayName = identicalChannelName ? null : newChannelName,
             };
 
             // Updating isFavouriteByDefault is currently not supported on either endpoint. Using the beta endpoint results in an error.
@@ -923,7 +924,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return channelId;
         }
 
-        private static string CreateTeamChannel(PnPMonitoredScope scope, Model.Teams.TeamChannel channel, string teamId, string accessToken)
+        private static string CreateTeamChannel(PnPMonitoredScope scope, Model.Teams.TeamChannel channel, string teamId, string accessToken, TokenParser parser)
         {
             // Temporary variable, just in case
             List<String> channelMembers = null;
@@ -943,8 +944,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             var channelToCreate = new
             {
-                channel.Description,
-                channel.DisplayName,
+                description = parser.ParseString(channel.Description),
+                displayName = parser.ParseString(channel.DisplayName),
                 isFavoriteByDefault = channel.Private ? false : channel.IsFavoriteByDefault,
                 membershipType = channel.Private ? "private" : "standard",
                 members = (channel.Private && channelMembers != null) ? (from m in channelMembers

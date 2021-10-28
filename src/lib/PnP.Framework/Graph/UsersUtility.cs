@@ -108,12 +108,13 @@ namespace PnP.Framework.Graph
 
                     IGraphServiceUsersCollectionPage pagedUsers;
 
-                    pagedUsers = await graphClient.Users
-                            .Request()
-                            .Select(string.Join(",", propertiesToSelect))
-                            .Filter(filter)
-                            .OrderBy(orderby)
-                            .GetAsync();
+                    // Retrieve the first batch of users. 999 is the maximum amount of users that Graph allows to be trieved in 1 go. Use maximum size batches to lessen the chance of throttling when retrieving larger amounts of users.
+                    pagedUsers = await graphClient.Users.Request()
+                                                        .Select(string.Join(",", propertiesToSelect))
+                                                        .Filter(filter)
+                                                        .OrderBy(orderby)
+                                                        .Top(!endIndex.HasValue ? 999 : endIndex.Value >= 999 ? 999 : endIndex.Value)
+                                                        .GetAsync();
 
                     int pageCount = 0;
                     int currentIndex = 0;
@@ -188,6 +189,7 @@ namespace PnP.Framework.Graph
 
                         if (pagedUsers.NextPageRequest != null && (!endIndex.HasValue || currentIndex < endIndex.Value))
                         {
+                            // Retrieve the next batch of users. The possible oData instructions such as select and filter are already incorporated in the nextLink provided by Graph and thus do not need to be specified again.
                             pagedUsers = await pagedUsers.NextPageRequest.GetAsync();
                         }
                         else

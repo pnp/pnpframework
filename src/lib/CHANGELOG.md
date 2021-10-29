@@ -13,7 +13,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - Fixing GetGroupMembers and GetGroupOwners #490 [koenzomers - Koen Zomers]
-- Fix for false positive exception logging in GetPrincipalUniqueRoleAssignments #495 [patrikhellgren - Patrik Hellgren
+- Fix for false positive exception logging in GetPrincipalUniqueRoleAssignments #495 [patrikhellgren - Patrik Hellgren]
+- Fix for missing token for newly created list content type #496 [patrikhellgren - Patrik Hellgren]
 
 ## [1.7.0]
 

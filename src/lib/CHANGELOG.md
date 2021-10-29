@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Fix UrlEncode/Decode Issues with special char #506 [czullu - Christian Zuellig]
 - Fix for IsFeatureActiveInternal when Feature does not exist for the Template #507 [czullu - Christian Zuellig]
 - Add TEAMCHANNEL#1 to BaseTemplates #508 [czullu - Christian Zuellig]
+- Implemented token parsing of team channel name and description #510 [patrikhellgren - Patrik Hellgren]
 
 ## [1.7.0]
 

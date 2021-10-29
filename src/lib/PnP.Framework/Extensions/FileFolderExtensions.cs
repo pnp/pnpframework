@@ -1,6 +1,7 @@
 ﻿using PnP.Framework;
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Enums;
+using PnP.Framework.Provisioning.ObjectHandlers.Utilities;
 using PnP.Framework.Utilities;
 using PnP.Framework.Utilities.Async;
 using System;
@@ -869,8 +870,8 @@ namespace Microsoft.SharePoint.Client
                 Folder nextFolder = null;
                 foreach (Folder existingFolder in folderCollection)
                 {
-                    //System.Net.WebUtility.UrlDecode removes + from folderName which leads to invalid compare if folderName was not UrlEncoded 
-                    if (string.Equals(existingFolder.Name, System.Net.WebUtility.UrlDecode(folderName), StringComparison.InvariantCultureIgnoreCase) || string.Equals(existingFolder.Name, folderName, StringComparison.InvariantCultureIgnoreCase))
+                    //WebUtility.UrlDecode removes + from folderName which leads to invalid compare if folderName was not UrlEncoded --> replaced with Uri.UnescapeDatastring
+                    if (string.Equals(existingFolder.Name, Uri.UnescapeDataString(folderName), StringComparison.InvariantCultureIgnoreCase) || string.Equals(existingFolder.Name, folderName, StringComparison.InvariantCultureIgnoreCase))
                     {
                         nextFolder = existingFolder;
                         break;

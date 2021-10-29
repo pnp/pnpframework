@@ -672,7 +672,7 @@ namespace PnP.Framework.Sites
 
                                         try
                                         {
-                                            var urlToCheck = HttpUtility.UrlEncode(payload["Url"].ToString());
+                                            var urlToCheck = Uri.EscapeDataString(payload["Url"].ToString());
 
                                             var siteStatusRequestUrl = $"{clientContext.Web.Url}/_api/SPSiteManager/status?url='{urlToCheck}'";
 

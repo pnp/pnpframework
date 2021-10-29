@@ -689,8 +689,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
         {
             var baseUri = new Uri(web.Url);
             var fullUri = new Uri(baseUri, pageImage.ServerRelativePath.DecodedUrl);
-            var folderPath = HttpUtility.UrlDecode(fullUri.Segments.Take(fullUri.Segments.Length - 1).ToArray().Aggregate((i, x) => i + x).TrimEnd('/'));
-            var fileName = HttpUtility.UrlDecode(fullUri.Segments[fullUri.Segments.Length - 1]);
+            var folderPath = Uri.UnescapeDataString(fullUri.Segments.Take(fullUri.Segments.Length - 1).ToArray().Aggregate((i, x) => i + x).TrimEnd('/'));
+            var fileName = Uri.UnescapeDataString(fullUri.Segments[fullUri.Segments.Length - 1]);
 
             if (!fileName.EndsWith(".aspx", StringComparison.InvariantCultureIgnoreCase))
             {
@@ -809,9 +809,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                     }
                 }
 
-                folderPath = HttpUtility.UrlDecode(folderPath);
-                String container = HttpUtility.UrlDecode(folderPath).Trim('/').Replace("/", "\\");
-                String persistenceFileName = HttpUtility.UrlDecode(fileName);
+                folderPath = Uri.UnescapeDataString(folderPath);
+                String container = Uri.UnescapeDataString(folderPath).Trim('/').Replace("/", "\\");
+                String persistenceFileName = Uri.UnescapeDataString(fileName);
 
                 if (fileConnector.Parameters.ContainsKey(FileConnectorBase.CONTAINER))
                 {

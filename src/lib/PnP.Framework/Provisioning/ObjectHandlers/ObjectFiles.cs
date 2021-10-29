@@ -380,7 +380,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 if (ex.ServerErrorCode != -2130575306) //Error code: -2130575306 = The file is already checked out.
                 {
                     //The file name might contain encoded characters that prevent upload. Decode it and try again.
-                    fileName = WebUtility.UrlDecode(fileName);
+                    fileName = Uri.UnescapeDataString(fileName);
                     try
                     {
                         targetFile = folder.UploadFile(fileName, stream, overwrite);

@@ -243,10 +243,10 @@ namespace Microsoft.SharePoint.Client
             }
 
             //URL decode retrieved URL's
-            paletteUrl = System.Net.WebUtility.UrlDecode(paletteUrl);
-            fontUrl = System.Net.WebUtility.UrlDecode(fontUrl);
-            backgroundUrl = System.Net.WebUtility.UrlDecode(backgroundUrl);
-            masterUrl = System.Net.WebUtility.UrlDecode(masterUrl);
+            paletteUrl = !string.IsNullOrWhiteSpace(paletteUrl)?Uri.UnescapeDataString(paletteUrl):default(string);
+            fontUrl = !string.IsNullOrWhiteSpace(fontUrl)?Uri.UnescapeDataString(fontUrl):default(string);
+            backgroundUrl = !string.IsNullOrWhiteSpace(backgroundUrl)?Uri.UnescapeDataString(backgroundUrl):default(string);
+            masterUrl = !string.IsNullOrWhiteSpace(masterUrl)?Uri.UnescapeDataString(masterUrl):default(string);
 
             if (!string.IsNullOrEmpty(masterUrl))
             {
@@ -910,19 +910,19 @@ namespace Microsoft.SharePoint.Client
 
                             if (themeItem["MasterPageUrl"] != null && themeItem["MasterPageUrl"].ToString().Length > 0)
                             {
-                                masterPageUrl = System.Net.WebUtility.UrlDecode((themeItem["MasterPageUrl"] as FieldUrlValue).Url);
+                                masterPageUrl = Uri.UnescapeDataString((themeItem["MasterPageUrl"] as FieldUrlValue).Url);
                             }
                             if (themeItem["ImageUrl"] != null && themeItem["ImageUrl"].ToString().Length > 0)
                             {
-                                imageUrl = System.Net.WebUtility.UrlDecode((themeItem["ImageUrl"] as FieldUrlValue).Url);
+                                imageUrl = Uri.UnescapeDataString((themeItem["ImageUrl"] as FieldUrlValue).Url);
                             }
                             if (themeItem["FontSchemeUrl"] != null && themeItem["FontSchemeUrl"].ToString().Length > 0)
                             {
-                                fontUrl = System.Net.WebUtility.UrlDecode((themeItem["FontSchemeUrl"] as FieldUrlValue).Url);
+                                fontUrl = Uri.UnescapeDataString((themeItem["FontSchemeUrl"] as FieldUrlValue).Url);
                             }
                             if (themeItem["ThemeUrl"] != null && themeItem["ThemeUrl"].ToString().Length > 0)
                             {
-                                themeUrl = System.Net.WebUtility.UrlDecode((themeItem["ThemeUrl"] as FieldUrlValue).Url);
+                                themeUrl = Uri.UnescapeDataString((themeItem["ThemeUrl"] as FieldUrlValue).Url);
                             }
                             if (themeItem["Name"] != null && themeItem["Name"].ToString().Length > 0)
                             {

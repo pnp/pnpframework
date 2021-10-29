@@ -384,7 +384,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 Uri uri;
                 if (Uri.TryCreate(webUrl, UriKind.Absolute, out uri))
                 {
-                    string webUrlPathAndQuery = System.Web.HttpUtility.UrlDecode(uri.PathAndQuery);
+                    string webUrlPathAndQuery = Uri.UnescapeDataString(uri.PathAndQuery);
                     // Don't do additional replacement when masterpagecatalog and themecatalog (see #675)
                     if (url.IndexOf(webUrlPathAndQuery, StringComparison.InvariantCultureIgnoreCase) > -1 && (url.IndexOf("{masterpagecatalog}") == -1) && (url.IndexOf("{themecatalog}") == -1))
                     {

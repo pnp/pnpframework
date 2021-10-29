@@ -25,7 +25,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
             object result = null;
             if (null != source)
             {
-                var sourceList = (IList)source;
+                var sourceList = (IList)source; // This throws an exception if source is empty
 
                 if (sourceList.Count > 0)
                 {

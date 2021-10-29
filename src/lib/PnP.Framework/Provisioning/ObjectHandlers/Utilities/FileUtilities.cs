@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text.Json;
+using System.Web;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
 {
@@ -49,8 +50,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
             if (stream == null)
             {
                 //Decode the URL and try again
-                fileName = WebUtility.UrlDecode(fileName);
-                container = WebUtility.UrlDecode(container);
+                fileName = Uri.UnescapeDataString(fileName);
+                container = Uri.UnescapeDataString(container);
                 stream = template.Connector.GetFileStream(fileName, container);
             }
 

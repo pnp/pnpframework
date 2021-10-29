@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Fix for missing token for newly created list content type #496 [patrikhellgren - Patrik Hellgren]
 - Fix for issue #500, unable to ensure folder with path characters #501 [jimmywim - Jim Love]
 - Use redirectUrl if specified #503 [wobba - Mikael Svenson]
+- Support default column lookup #504 [wobba - Mikael Svenson]
 
 ## [1.7.0]
 

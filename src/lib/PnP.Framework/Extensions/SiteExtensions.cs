@@ -87,9 +87,12 @@ namespace Microsoft.SharePoint.Client
 
             if (!result)
             {
-                // Otherwise check if the Communication Site feature is enabled
-                var commSiteFeatureId = new Guid("f39dad74-ea79-46ef-9ef7-fe2370754f6f");
-                result = site.RootWeb.IsFeatureActive(commSiteFeatureId);
+                if (!IsTeamChannelSite(site))
+                {
+                    // Otherwise check if the Communication Site feature is enabled
+                    var commSiteFeatureId = new Guid("f39dad74-ea79-46ef-9ef7-fe2370754f6f");
+                    result = site.RootWeb.IsFeatureActive(commSiteFeatureId);
+                }
             }
 
             return (result);
@@ -109,6 +112,22 @@ namespace Microsoft.SharePoint.Client
 
             return (result);
         }
+
+        /// <summary>
+        /// Checks if the current Site Collection is a "Teamchannel" Team Site
+        /// </summary>
+        /// <param name="site"></param>
+        /// <returns></returns>
+        public static Boolean IsTeamChannelSite(this Site site)
+        {
+            //
+            var templateId = site.RootWeb.GetBaseTemplateId();
+
+            var result = (templateId.StartsWith("TEAMCHANNEL#", StringComparison.InvariantCultureIgnoreCase));
+
+            return (result);
+        }
+
 
         /// <summary>
         /// Checks if this site collection has a Teams team linked

@@ -3,7 +3,6 @@ using PnP.Framework.Diagnostics;
 using PnP.Framework.Utilities;
 using PnP.Framework.Utilities.Async;
 using System;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Microsoft.SharePoint.Client
@@ -174,32 +173,39 @@ namespace Microsoft.SharePoint.Client
         {
             var featureIsActive = false;
 
-            features.ClearObjectData();
-
-            features.Context.Load(features);
-            if (noRetry)
+            try
             {
-                string clientTag = $"{PnPCoreUtilities.PnPCoreVersionTag}:ProcessFeatureInternal";
-                if (clientTag.Length > 32)
+                features.ClearObjectData();
+
+                features.Context.Load(features);
+                if (noRetry)
                 {
-                    clientTag = clientTag.Substring(0, 32);
+                    string clientTag = $"{PnPCoreUtilities.PnPCoreVersionTag}:ProcessFeatureInternal";
+                    if (clientTag.Length > 32)
+                    {
+                        clientTag = clientTag.Substring(0, 32);
+                    }
+                    features.Context.ClientTag = clientTag;
+
+                    // Don't update this to ExecuteQueryRetry
+                    await features.Context.ExecuteQueryAsync();
                 }
-                features.Context.ClientTag = clientTag;
+                else
+                {
+                    await features.Context.ExecuteQueryRetryAsync();
+                }
 
-                // Don't update this to ExecuteQueryRetry
-                await features.Context.ExecuteQueryAsync();
+                var iprFeature = features.GetById(featureID);
+                iprFeature.EnsureProperties(f => f.DefinitionId);
+
+                if (iprFeature != null && iprFeature.ServerObjectIsNull.HasValue && iprFeature.IsPropertyAvailable("DefinitionId") && !iprFeature.ServerObjectIsNull.Value && iprFeature.DefinitionId.Equals(featureID))
+                {
+                    featureIsActive = true;
+                }
             }
-            else
+            catch (Exception ex) 
             {
-                await features.Context.ExecuteQueryRetryAsync();
-            }
-
-            var iprFeature = features.GetById(featureID);
-            iprFeature.EnsureProperties(f => f.DefinitionId);
-
-            if (iprFeature != null && iprFeature.IsPropertyAvailable("DefinitionId") && !iprFeature.ServerObjectIsNull.Value && iprFeature.DefinitionId.Equals(featureID))
-            {
-                featureIsActive = true;
+                Log.Error(ex, Constants.LOGGING_SOURCE, CoreResources.FeatureExtensions_ProcessFeatureInternal_IsFeatureActiveInternalException, featureID);
             }
 
             return featureIsActive;

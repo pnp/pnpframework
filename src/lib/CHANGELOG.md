@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Support default column lookup #504 [wobba - Mikael Svenson]
 - Fix for issue with empty description in UserCustomActions #505 [czullu - Christian Zuellig]
 - Fix UrlEncode/Decode Issues with special char #506 [czullu - Christian Zuellig]
+- Fix for IsFeatureActiveInternal when Feature does not exist for the Template #507 [czullu - Christian Zuellig]
 
 ## [1.7.0]
 

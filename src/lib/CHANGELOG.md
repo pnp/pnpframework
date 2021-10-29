@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Fix for issue #500, unable to ensure folder with path characters #501 [jimmywim - Jim Love]
 - Use redirectUrl if specified #503 [wobba - Mikael Svenson]
 - Support default column lookup #504 [wobba - Mikael Svenson]
+- Fix for issue with empty description in UserCustomActions #505 [czullu - Christian Zuellig]
 
 ## [1.7.0]
 

@@ -2134,37 +2134,65 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 //Handle ContentType
                 if (!string.IsNullOrWhiteSpace(folder.ContentTypeID))
                 {
-                    list.SiteList.Context.Load(list.SiteList, p => p.ContentTypes.Include(c => c.StringId));
-                    list.SiteList.Context.ExecuteQueryRetry();
-                    var ct = list.SiteList.ContentTypes.OrderByDescending(p => p.StringId.Length).FirstOrDefault(c => c.StringId.StartsWith(folder.ContentTypeID));
-
-                    var currentFolderItem = currentFolder.ListItemAllFields;
-                    currentFolderItem["ContentTypeId"] = ct.StringId;
-
-                    if (folder.ContentTypeID.StartsWith(BuiltInContentTypeId.DocumentSet, StringComparison.InvariantCultureIgnoreCase))
+                    try
                     {
-                        currentFolderItem["HTML_x0020_File_x0020_Type"] = "Sharepoint.DocumentSet";
-                        currentFolder.Properties["docset_LastRefresh"] = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss");
-                        currentFolder.Properties["vti_contenttypeorder"] = string.Join(",", list.SiteList.ContentTypes.ToList().Where(c => c.StringId.StartsWith(BuiltInContentTypeId.Document + "00"))?.Select(c => c.StringId));
+                        list.SiteList.Context.Load(list.SiteList, p => p.ContentTypes.Include(c => c.StringId));
+                        list.SiteList.Context.ExecuteQueryRetry();
+                        var ct = list.SiteList.ContentTypes.OrderByDescending(p => p.StringId.Length).FirstOrDefault(c => c.StringId.StartsWith(folder.ContentTypeID));
+
+                        var currentFolderItem = currentFolder.ListItemAllFields;
+                        currentFolderItem["ContentTypeId"] = ct.StringId;
+
+                        if (folder.ContentTypeID.StartsWith(BuiltInContentTypeId.DocumentSet, StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            currentFolderItem["HTML_x0020_File_x0020_Type"] = "Sharepoint.DocumentSet";
+                            currentFolder.Properties["docset_LastRefresh"] = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss");
+                            currentFolder.Properties["vti_contenttypeorder"] = string.Join(",", list.SiteList.ContentTypes.ToList().Where(c => c.StringId.StartsWith(BuiltInContentTypeId.Document + "00"))?.Select(c => c.StringId));
+                        }
+                        currentFolderItem.UpdateOverwriteVersion();
+                        currentFolder.Update();
+                        parentFolder.Context.ExecuteQueryRetry();
                     }
-                    currentFolderItem.UpdateOverwriteVersion();
-                    currentFolder.Update();
-                    parentFolder.Context.ExecuteQueryRetry();
+                    catch (ServerException srex)
+                    {
+                        //Handle Error To update this folder, go to the channel in Microsoft Teams
+                        if (srex.ServerErrorCode == -2130575223)
+                        {
+                            scope.LogWarning($"ContentType on folder '{targetFolderName}' can not be changed '{srex.Message}'");
+                            WriteMessage($"ContentType on folder '{targetFolderName}' can not be changed '{srex.Message}'", ProvisioningMessageType.Warning);
+                        }
+                        else
+                            throw;
+                    }
                 }
 
                 //Set Property Fields of Folder in order to handle for example OneNote Folders
                 if (folder.Properties != null && folder.Properties.Any(p => !p.Key.Equals("ContentTypeId")))
                 {
-                    var currentFolderItem = currentFolder.ListItemAllFields;
-                    parentFolder.Context.Load(currentFolderItem);
-                    parentFolder.Context.ExecuteQueryRetry();
-                    foreach (var p in folder.Properties.Where(p => !p.Key.Equals("ContentTypeId")))
+                    try
                     {
-                        currentFolderItem[parser.ParseString(p.Key)] = parser.ParseString(p.Value);
+                        var currentFolderItem = currentFolder.ListItemAllFields;
+                        parentFolder.Context.Load(currentFolderItem);
+                        parentFolder.Context.ExecuteQueryRetry();
+                        foreach (var p in folder.Properties.Where(p => !p.Key.Equals("ContentTypeId")))
+                        {
+                            currentFolderItem[parser.ParseString(p.Key)] = parser.ParseString(p.Value);
+                        }
+                        currentFolderItem.UpdateOverwriteVersion();
+                        currentFolder.Update();
+                        parentFolder.Context.ExecuteQueryRetry();
                     }
-                    currentFolderItem.UpdateOverwriteVersion();
-                    currentFolder.Update();
-                    parentFolder.Context.ExecuteQueryRetry();
+                    catch (ServerException srex)
+                    {
+                        //Handle Error To update this folder, go to the channel in Microsoft Teams
+                        if (srex.ServerErrorCode == -2130575223)
+                        {
+                            scope.LogWarning($"Properties on folder '{targetFolderName}' can not be changed '{srex.Message}'");
+                            WriteMessage($"Properties on folder '{targetFolderName}' can not be changed '{srex.Message}'", ProvisioningMessageType.Warning);
+                        }
+                        else
+                            throw;
+                    }
                 }
 
                 // Handle current folder security
@@ -2179,11 +2207,27 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 // Handle current folder property bags
                 if (folder.PropertyBagEntries != null && folder.PropertyBagEntries.Count > 0)
                 {
-                    foreach (var p in folder.PropertyBagEntries)
+                    try
                     {
-                        currentFolder.Properties[parser.ParseString(p.Key)] = parser.ParseString(p.Value);
+                        foreach (var p in folder.PropertyBagEntries)
+                        {
+                            currentFolder.Properties[parser.ParseString(p.Key)] = parser.ParseString(p.Value);
+                        }
+                        currentFolder.Update();
+                        parentFolder.Context.Load(currentFolder);
+                        parentFolder.Context.ExecuteQueryRetry();
                     }
-                    currentFolder.Update();
+                    catch (ServerException srex)
+                    {
+                        //Handle Error To update this folder, go to the channel in Microsoft Teams
+                        if (srex.ServerErrorCode == -2130575223)
+                        {
+                            scope.LogWarning($"PropertyBagEntries on folder '{targetFolderName}' can not be changed '{srex.Message}'");
+                            WriteMessage($"PropertyBagEntries on folder '{targetFolderName}' can not be changed '{srex.Message}'", ProvisioningMessageType.Warning);
+                        }
+                        else
+                            throw;
+                    }
                 }
             }
         }

@@ -94,6 +94,7 @@
 		<None Remove="Provisioning\BaseTemplates\SPO\STS0Template.xml" />
 		<None Remove="Provisioning\BaseTemplates\SPO\STS3Template.xml" />
 		<None Remove="Provisioning\BaseTemplates\SPO\TEAMCHANNEL0Template.xml" />
+		<None Remove="Provisioning\BaseTemplates\SPO\TEAMCHANNEL1Template.xml" />
 		<None Remove="Provisioning\BaseTemplates\SPO\VISPRUS0Template.xml" />
 		<None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2019-03.xsd" />
 		<None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2019-09.xsd" />
@@ -135,6 +136,7 @@
 		<EmbeddedResource Include="Provisioning\BaseTemplates\SPO\STS0Template.xml" />
 		<EmbeddedResource Include="Provisioning\BaseTemplates\SPO\STS3Template.xml" />
 		<EmbeddedResource Include="Provisioning\BaseTemplates\SPO\TEAMCHANNEL0Template.xml" />
+		<EmbeddedResource Include="Provisioning\BaseTemplates\SPO\TEAMCHANNEL1Template.xml" />
 		<EmbeddedResource Include="Provisioning\BaseTemplates\SPO\VISPRUS0Template.xml" />
 		<EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2019-03.xsd" />
 		<EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2019-09.xsd" />

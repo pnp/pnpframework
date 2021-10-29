@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Add TEAMCHANNEL#1 to BaseTemplates #508 [czullu - Christian Zuellig]
 - Implemented token parsing of team channel name and description #510 [patrikhellgren - Patrik Hellgren]
 - Adding top instruction for ListUsers to avoid throttling #513 [koenzomers - Koen Zomers]
+- CreateFolderInList Handle Error "To update this folder, go to the channel in Microsoft Teams" #470 [czullu - Christian Zuellig]
 
 ## [1.7.0]
 

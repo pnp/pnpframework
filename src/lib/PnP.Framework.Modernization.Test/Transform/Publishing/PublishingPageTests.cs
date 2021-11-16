@@ -203,6 +203,52 @@ namespace PnP.Framework.Modernization.Tests.Transform.Publishing
             }
         }
 
+        [TestMethod]
+        public void PageTransformationDemoTest()
+        {
+            using (var targetClientContext = TestCommon.CreateClientContext("https://bertonline.sharepoint.com/sites/pagetransformationdemotarget"))
+            {
+                //https://bertonline.sharepoint.com/sites/modernizationtestportal
+                using (var sourceClientContext = TestCommon.CreateClientContext("https://bertonline.sharepoint.com/sites/pagetransformationdemoportal"))
+                {
+                    //"C:\github\sp-dev-modernization\Tools\SharePoint.Modernization\PnP.Framework.Modernization.Tests\Transform\Publishing\custompagelayoutmapping.xml"
+                    //"C:\temp\mappingtest.xml"
+                    //@"C:\github\sp-dev-modernization\Tools\SharePoint.Modernization\PnP.Framework.Modernization.Tests\Transform\Publishing\webpartmapping.xml"
+                    //var pageTransformator = new PublishingPageTransformator(sourceClientContext, targetClientContext, @"C:\github\sp-dev-modernization\Tools\SharePoint.Modernization\PnP.Framework.Modernization.Tests\Transform\Publishing\webpartmapping.xml", @"C:\github\sp-dev-modernization\Tools\SharePoint.Modernization\PnP.Framework.Modernization.Tests\Transform\Publishing\custompagelayoutmapping.xml");
+                    var pageTransformator = new PublishingPageTransformator(sourceClientContext, targetClientContext, @"E:\CAB2021\contosomapping.xml");
+                    pageTransformator.RegisterObserver(new MarkdownObserver(folder: "E:\\CAB2021", includeVerbose: true));
+                    //pageTransformator.RegisterObserver(new MarkdownToSharePointObserver(targetClientContext, includeVerbose: true));
+
+                    var pages = sourceClientContext.Web.GetPagesFromList("Pages", "D88_specs");
+                    //var pages = sourceClientContext.Web.GetPagesFromList("Pages", folder:"News");
+
+                    foreach (var page in pages)
+                    {
+                        PublishingPageTransformationInformation pti = new PublishingPageTransformationInformation(page)
+                        {
+                            // If target page exists, then overwrite it
+                            Overwrite = true,
+
+                            // Don't log test runs
+                            SkipTelemetry = true,
+
+                            KeepPageCreationModificationInformation = true,
+
+                            PostAsNews = true,
+
+                            PublishCreatedPage = true,
+                        };
+
+                        pti.MappingProperties["SummaryLinksToQuickLinks"] = "true";
+                        pti.MappingProperties["UseCommunityScriptEditor"] = "true";
+
+                        var result = pageTransformator.Transform(pti);
+                    }
+
+                    pageTransformator.FlushObservers();
+                }
+            }
+        }
 
     }
 }

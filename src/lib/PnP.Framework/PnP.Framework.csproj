@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.0;net5.0</TargetFrameworks>
+		<TargetFrameworks>netstandard2.0;net5.0;net6.0</TargetFrameworks>
 		<LangVersion>8.0</LangVersion>
 		<RootNamespace>PnP.Framework</RootNamespace>
 		<AssemblyName>PnP.Framework</AssemblyName>
@@ -30,6 +30,7 @@
 		<!-- Set the PnPCoreSdkPath and PnPCoreSdkPathNet5 to non published PnP Core SDK binaries to load them instead of the nuget ones -->
 		<PnPCoreSdkPath Condition="'$(PnPCoreSdkPath)' == ''"></PnPCoreSdkPath>
 		<PnPCoreSdkPathNet5 Condition="'$(PnPCoreSdkPathNet5)' == ''"></PnPCoreSdkPathNet5>
+		<PnPCoreSdkPathNet6 Condition="'$(PnPCoreSdkPathNet6)' == ''"></PnPCoreSdkPathNet6>
 		<SignAssembly>true</SignAssembly>
 		<AssemblyOriginatorKeyFile>..\pnp.core.snk</AssemblyOriginatorKeyFile>
 	</PropertyGroup>
@@ -44,14 +45,6 @@
 		<DefineConstants>Linux</DefineConstants>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-		<DefineConstants>NETSTANDARD2_0</DefineConstants>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(TargetFramework)' == 'net5.0'">
-		<DefineConstants>NET5_0</DefineConstants>
-	</PropertyGroup>
-	
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<DefineConstants>TRACE</DefineConstants>
 		<DocumentationFile>obj\Debug\PnP.Framework.xml</DocumentationFile>
@@ -65,8 +58,6 @@
         <NoWarn>CA1724,CA1062,CA1305,CA2208,CA1801,CA1304,CA1054,CS1591,CA1310,CA1031,CA2007,CA1717,CA1707,CA1308,CA1506,CA1822,CA2234,CA1056,CA1805,CA1055,CA5364,CA1714,CA2227,CA1806,CA1303,CA2249,CA1716</NoWarn>
 		<ContinuousIntegrationBuild>True</ContinuousIntegrationBuild>
 	</PropertyGroup>
-
-
 
 	<ItemGroup>
 		<None Remove="Modernization\Publishing\pagelayoutmapping.xml" />
@@ -221,6 +212,19 @@
 		<PackageReference Include="System.IO.Packaging" Version="5.0.0" />
 	</ItemGroup>
 
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
+		<PackageReference Include="Microsoft.ApplicationInsights" Version="2.16.0" />
+		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
+		<PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
+		<PackageReference Include="System.DirectoryServices" Version="6.0.0" />
+		<PackageReference Include="System.IO.Packaging" Version="6.0.0" />
+	</ItemGroup>
+
 	<ItemGroup>
 		<!-- Required -->
 		<PackageReference Include="Microsoft.Identity.Client.Extensions.Msal" Version="2.18.4" />
@@ -255,6 +259,14 @@
 	<ItemGroup Condition="'$(PnPCoreSdkPathNet5)' != ''">
 		<Reference Include="PnP.Core" Condition="'$(TargetFramework)' == 'net5.0'">
 			<HintPath>$(PnPCoreSdkPathNet5)</HintPath>
+			<Private>true</Private>
+			<SpecificVersion>false</SpecificVersion>
+		</Reference>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(PnPCoreSdkPathNet6)' != ''">
+		<Reference Include="PnP.Core" Condition="'$(TargetFramework)' == 'net6.0'">
+			<HintPath>$(PnPCoreSdkPathNet6)</HintPath>
 			<Private>true</Private>
 			<SpecificVersion>false</SpecificVersion>
 		</Reference>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
+using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -30,38 +30,63 @@ namespace PnP.Framework.Http
         internal int DelayInSeconds { get; set; } = 1;
         internal bool IncrementalDelay { get; set; } = true;
 
-        protected async override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-        {
-            var response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
-
-            if (ShouldRetry(response.StatusCode))
-            {
-                // Handle retry handling
-                response = await SendRetryAsync(response, cancellationToken).ConfigureAwait(false);
-            }
-
-            return response;
-        }
-
-
-        /// <summary>
-        /// Retry sending the HTTP request 
-        /// </summary>
-        /// <param name="response">The <see cref="HttpResponseMessage"/> which is returned and includes the HTTP request needs to be retried.</param>
-        /// <param name="cancellationToken">The <see cref="CancellationToken"/> for the retry.</param>
-        /// <returns></returns>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Reliability", "CA2000:Dispose objects before losing scope", Justification = "Disposing will prevent cloning of the request needed for the retry")]
-        private async Task<HttpResponseMessage> SendRetryAsync(HttpResponseMessage response, CancellationToken cancellationToken)
+        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             int retryCount = 0;
 
-            while (retryCount < MaxRetries)
+            while (true)
             {
-                // Drain response content to free responses.
-                if (response.Content != null)
+                HttpResponseMessage response = null;
+
+                try
+                {
+                    response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+
+                    if (!ShouldRetry(response.StatusCode))
+                    {
+                        return response;
+                    }
+
+                    if (retryCount >= MaxRetries)
+                    {
+                        // Drain response content to free connections. Need to perform this
+                        // before retry attempt and before the TooManyRetries ServiceException.
+                        if (response.Content != null)
+                        {
+#if NET5_0_OR_GREATER
+                            await response.Content.ReadAsByteArrayAsync(cancellationToken).ConfigureAwait(false);
+#else
+                            await response.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
+#endif
+                        }
+
+                        throw new Exception($"Too many http request retries: {retryCount}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Find innermost exception and check if it is a SocketException
+                    Exception innermostEx = ex;
+                    
+                    while (innermostEx.InnerException != null) innermostEx = innermostEx.InnerException;
+                    if (!(innermostEx is SocketException))
+                    {
+                        throw;
+                    }
+
+                    if (retryCount >= MaxRetries)
+                    {
+                        throw;
+                    }
+                }
+
+                // Drain response content to free connections. Need to perform this
+                // before retry attempt and before the TooManyRetries ServiceException.
+                if (response?.Content != null)
                 {
 #if NET5_0_OR_GREATER
-                    await response.Content.ReadAsByteArrayAsync(cancellationToken).ConfigureAwait(false);                    
+                    await response.Content.ReadAsByteArrayAsync(cancellationToken).ConfigureAwait(false);
 #else
                     await response.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
 #endif
@@ -72,26 +97,14 @@ namespace PnP.Framework.Http
 
                 // general clone request with internal CloneAsync (see CloneAsync for details) extension method 
                 // do not dispose this request as that breaks the request cloning
-                var request = await response.RequestMessage.CloneAsync().ConfigureAwait(false);
-
+                request = await request.CloneAsync().ConfigureAwait(false);
                 // Increase retryCount and then update Retry-Attempt in request header if needed
                 retryCount++;
                 AddOrUpdateRetryAttempt(request, retryCount);
 
                 // Delay time
                 await delay.ConfigureAwait(false);
-
-                // Call base.SendAsync to send the request
-                response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
-
-                if (!ShouldRetry(response.StatusCode))
-                {
-                    return response;
-                }
-
             }
-
-            throw new Exception(string.Format("Too many http request retries: {0}", retryCount));
         }
 
         /// <summary>
@@ -113,10 +126,9 @@ namespace PnP.Framework.Http
 
         private Task Delay(HttpResponseMessage response, int retryCount, int delay, CancellationToken cancellationToken)
         {
-            HttpHeaders headers = response.Headers;
             double delayInSeconds = delay;
 
-            if (UseRetryAfterHeader && headers.TryGetValues(RETRY_AFTER, out IEnumerable<string> values))
+            if (UseRetryAfterHeader && response != null && response.Headers.TryGetValues(RETRY_AFTER, out IEnumerable<string> values))
             {
                 // Can we use the provided retry-after header?
                 string retryAfter = values.First();

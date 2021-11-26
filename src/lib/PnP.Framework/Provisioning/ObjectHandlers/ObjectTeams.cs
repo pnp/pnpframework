@@ -1700,10 +1700,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         private static Team GetTeamApps(string accessToken, string groupId, Team team, PnPMonitoredScope scope)
         {
-            var teamsAppsString = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams/{groupId}/installedApps", accessToken);
+            var teamsAppsString = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams/{groupId}/installedApps?$expand=teamsAppDefinition", accessToken);
             foreach (var app in JObject.Parse(teamsAppsString)["value"] as JArray)
             {
-                team.Apps.Add(new TeamAppInstance() { AppId = app["id"].Value<string>() });
+                team.Apps.Add(new TeamAppInstance() { AppId = app["teamsAppDefinition"]?["teamsAppId"]?.Value<string>() });
             }
             return team;
         }

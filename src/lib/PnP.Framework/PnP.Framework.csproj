@@ -91,6 +91,7 @@
 		<None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2019-09.xsd" />
 		<None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2020-02.xsd" />
 		<None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2021-03.xsd" />
+		<None Remove="Provisioning\Providers\Xml\ProvisioningSchema-2021-11.xsd" />
 		<None Include="nugeticon.png">
 			<Pack>True</Pack>
 			<PackagePath></PackagePath>
@@ -132,6 +133,7 @@
 		<EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2019-03.xsd" />
 		<EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2019-09.xsd" />
 		<EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2020-02.xsd" />
+		<EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2021-11.xsd" />
 		<EmbeddedResource Include="Provisioning\Providers\Xml\ProvisioningSchema-2021-03.xsd" />
 	</ItemGroup>
 

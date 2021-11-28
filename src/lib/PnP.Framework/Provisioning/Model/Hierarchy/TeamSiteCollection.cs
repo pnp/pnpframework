@@ -28,6 +28,11 @@ namespace PnP.Framework.Provisioning.Model
         public string Classification { get; set; }
 
         /// <summary>
+        /// Owners of the target Site and backing group
+        /// </summary>
+        public string Owners { get; set; }
+
+        /// <summary>
         /// Defines whether to create a Microsoft Team backing the modern Team Site
         /// </summary>
         public bool Teamify { get; set; }
@@ -67,13 +72,14 @@ namespace PnP.Framework.Provisioning.Model
                 this.HideTeamify == otherTyped.HideTeamify &&
                 this.GroupLifecyclePolicyId == otherTyped.GroupLifecyclePolicyId &&
                 this.Language == otherTyped.Language &&
-                this.SiteDesign == otherTyped.SiteDesign
+                this.SiteDesign == otherTyped.SiteDesign &&
+                this.Owners == otherTyped.Owners
                 );
         }
 
         protected override int GetInheritedHashCode()
         {
-            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|",
+            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|",
                 this.Alias?.GetHashCode() ?? 0,
                 this.DisplayName?.GetHashCode() ?? 0,
                 this.IsPublic.GetHashCode(),
@@ -82,7 +88,8 @@ namespace PnP.Framework.Provisioning.Model
                 this.HideTeamify.GetHashCode(),
                 this.GroupLifecyclePolicyId?.GetHashCode() ?? 0,
                 this.Language.GetHashCode(),
-                this.SiteDesign.GetHashCode()
+                this.SiteDesign.GetHashCode(),
+                this.Owners.GetHashCode()
             ).GetHashCode());
         }
     }

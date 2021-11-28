@@ -277,6 +277,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                         Description = tokenParser.ParseString(t.Description),
                                         Classification = tokenParser.ParseString(t.Classification),
                                         IsPublic = t.IsPublic,
+                                        Owners = t.Owners.Split(';'),
                                         Lcid = (uint)t.Language
                                     };
 

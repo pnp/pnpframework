@@ -420,8 +420,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                             clonedContext.Load(taxonomyItem);
                                             clonedContext.ExecuteQueryRetry();
                                         }
-                                        if (taxonomyItem!=null)
+                                        if (taxonomyItem != null)
+                                        {
                                             terms.Add(new KeyValuePair<Guid, string>(taxonomyItem.Id, taxonomyItem.Name));
+                                        }
                                     }
 
                                     TaxonomyField taxField = context.CastTo<TaxonomyField>(field);

@@ -27,6 +27,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - CreateFolderInList Handle Error "To update this folder, go to the channel in Microsoft Teams" #470 [czullu - Christian Zuellig]
 - Switched to using version 1.9 of image webpart, needed to ensure images are correctly sized on target pages [jansenbe - Bert Jansen]
 - Retry on SocketExcetion in SendAsync #528 [patrikhellgren - Patrik Hellgren]
+- Fixing issue when trying to export datarow for list instances #531 [magarma - Miguel Angel García Martínez]
 
 ## [1.7.0]
 

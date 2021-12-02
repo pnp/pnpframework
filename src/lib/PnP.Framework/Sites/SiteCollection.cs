@@ -507,7 +507,18 @@ namespace PnP.Framework.Sites
             )
         {
             ClientContext responseContext = null;
-            
+
+
+            Guid sensitivityLabelId = Guid.Empty;
+            if (siteCollectionCreationInformation.SensitivityLabelId != Guid.Empty)
+            {
+                sensitivityLabelId = siteCollectionCreationInformation.SensitivityLabelId;
+            }
+            else if (!string.IsNullOrEmpty(siteCollectionCreationInformation.SensitivityLabel))
+            {
+                sensitivityLabelId = await GetSensitivityLabelId(clientContext, siteCollectionCreationInformation.SensitivityLabel);
+            }
+
             var group = Graph.UnifiedGroupsUtility.CreateUnifiedGroup(
                 siteCollectionCreationInformation.DisplayName,
                 siteCollectionCreationInformation.Description,
@@ -518,8 +529,10 @@ namespace PnP.Framework.Sites
                 isPrivate: !siteCollectionCreationInformation.IsPublic,
                 createTeam: false,
                 retryCount: maxRetryCount,
-                delay: retryDelay, azureEnvironment: azureEnvironment,
-                preferredDataLocation: siteCollectionCreationInformation.PreferredDataLocation);
+                delay: retryDelay,
+                azureEnvironment: azureEnvironment,
+                preferredDataLocation: siteCollectionCreationInformation.PreferredDataLocation,
+                assignedLabels: new Guid[] { sensitivityLabelId });
 
             if (group != null && !string.IsNullOrEmpty(group.SiteUrl))
             {

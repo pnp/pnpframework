@@ -610,7 +610,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             // We process real values only
                             if (value != null && !String.IsNullOrEmpty(value) && value != "[]")
                             {
-                                pnpFile.Properties.Add(fieldValue.Key, value);
+                                pnpFile.Properties[fieldValue.Key] = value;
                             }
                         }
                     }

@@ -157,7 +157,7 @@ namespace PnP.Framework.Provisioning.Model
 
             return (this.Name == other.Name &&
                     this.Folders.DeepEquals(other.Folders) &&
-                    (this.Security != null ? this.Security.Equals(other.Security) : true) &&
+                    (this.Security != null ? this.Security.Equals(other.Security) : this.Security == null && other.Security == null ? true : false) &&
                     this.PropertyBagEntries.DeepEquals(other.PropertyBagEntries) &&
                     this.DefaultColumnValues.DeepEquals(other.DefaultColumnValues) &&
                     this.Properties.DeepEquals(other.Properties) &&

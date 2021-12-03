@@ -176,7 +176,7 @@ namespace PnP.Framework.Provisioning.Model
                 this.RegistrationId == other.RegistrationId &&
                 this.RegistrationType == other.RegistrationType &&
                 this.Remove == other.Remove &&
-                this.Rights.Equals(other.Rights) &&
+                (this.Rights != null ? this.Rights.Equals(other.Rights) : this.Rights == null && other.Rights == null ? true : false) &&
                 this.ScriptBlock == other.ScriptBlock &&
                 this.ScriptSrc == other.ScriptSrc &&
                 this.Sequence == other.Sequence &&

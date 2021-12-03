@@ -157,8 +157,8 @@ namespace PnP.Framework.Provisioning.Model
             }
 
             return (this.Values.DeepEquals(other.Values) &&
-                    (this.Security != null ? this.Security.Equals(other.Security) : true) &&
-                    (this.Key != null ? this.Key.Equals(other.Key) : true) &&
+                    (this.Security != null ? this.Security.Equals(other.Security) : this.Security == null && other.Security == null ? true : false) &&
+                    (this.Key != null ? this.Key.Equals(other.Key) : this.Key == null && other.Key == null ? true : false) &&
                     this.Attachments.DeepEquals(other.Attachments)
                 );
         }

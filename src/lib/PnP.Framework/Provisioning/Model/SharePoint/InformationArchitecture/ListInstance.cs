@@ -573,11 +573,11 @@ namespace PnP.Framework.Provisioning.Model
                 (this.IsApplicationList == false ? this.Fields.DeepEquals(other.Fields) : true) &&
                 this.FieldRefs.DeepEquals(other.FieldRefs) &&
                 this.FieldDefaults.DeepEquals(other.FieldDefaults) &&
-                ((this.Security != null && other.Security != null) ? this.Security.Equals(other.Security) : true) &&
+                (this.Security != null ? this.Security.Equals(other.Security) : this.Security == null && other.Security == null ? true : false) &&
                 this.Folders.DeepEquals(other.Folders) &&
                 this.UserCustomActions.DeepEquals(other.UserCustomActions) &&
                 this.Webhooks.DeepEquals(other.Webhooks) &&
-                (this.IRMSettings != null ? this.IRMSettings.Equals(other.IRMSettings) : true) &&
+                (this.IRMSettings != null ? this.IRMSettings.Equals(other.IRMSettings) : this.IRMSettings == null && other.IRMSettings == null ? true : false) &&
                 this.NoCrawl == other.NoCrawl &&
                 this.ListExperience == other.ListExperience &&
                 this.DefaultDisplayFormUrl == other.DefaultDisplayFormUrl &&

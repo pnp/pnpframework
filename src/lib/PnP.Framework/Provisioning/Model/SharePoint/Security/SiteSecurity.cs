@@ -229,8 +229,8 @@ namespace PnP.Framework.Provisioning.Model
                 this.AdditionalMembers.DeepEquals(other.AdditionalMembers) &&
                 this.AdditionalVisitors.DeepEquals(other.AdditionalVisitors) &&
                 this.SiteGroups.DeepEquals(other.SiteGroups) &&
-                (this.SiteSecurityPermissions != null ? this.SiteSecurityPermissions.RoleAssignments.DeepEquals(other.SiteSecurityPermissions.RoleAssignments) : true) &&
-                (this.SiteSecurityPermissions != null ? this.SiteSecurityPermissions.RoleDefinitions.DeepEquals(other.SiteSecurityPermissions.RoleDefinitions) : true) &&
+                (this.SiteSecurityPermissions != null ? this.SiteSecurityPermissions.RoleAssignments.DeepEquals(other.SiteSecurityPermissions.RoleAssignments) : this.SiteSecurityPermissions == null && other.SiteSecurityPermissions == null ? true : false) &&
+                (this.SiteSecurityPermissions != null ? this.SiteSecurityPermissions.RoleDefinitions.DeepEquals(other.SiteSecurityPermissions.RoleDefinitions) : this.SiteSecurityPermissions == null && other.SiteSecurityPermissions == null ? true : false) &&
                 this.BreakRoleInheritance == other.BreakRoleInheritance &&
                 this.CopyRoleAssignments == other.CopyRoleAssignments &&
                 this.ClearSubscopes == other.ClearSubscopes &&

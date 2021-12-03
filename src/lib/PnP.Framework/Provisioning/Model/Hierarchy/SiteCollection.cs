@@ -137,7 +137,7 @@ namespace PnP.Framework.Provisioning.Model
             return (this.IsHubSite == other.IsHubSite &&
                 this.Title == other.Title &&
                 this.Description == other.Description &&
-                !this.Templates.Intersect(other.Templates).Any() &&
+                !this.Templates.Except(other.Templates).Any() &&
                 this.Sites.DeepEquals(other.Sites) &&
                 this.Theme == other.Theme &&
                 this.ProvisioningId == other.ProvisioningId &&

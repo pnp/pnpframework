@@ -298,7 +298,7 @@ namespace PnP.Framework.Provisioning.Model
                 this.Office365GroupsSettings.GetHashCode(),
                 this.Office365GroupLifecyclePolicies.Aggregate(0, (acc, next) => acc += (next != null ? next.GetHashCode() : 0)),
                 this.SPUsersProfiles.Aggregate(0, (acc, next) => acc += (next != null ? next.GetHashCode() : 0)),
-                this.SharingSettings.GetHashCode()
+                this.SharingSettings?.GetHashCode() ?? 0
             ).GetHashCode());
         }
 
@@ -330,8 +330,8 @@ namespace PnP.Framework.Provisioning.Model
                 return (false);
             }
 
-            return (this.AppCatalog == other.AppCatalog &&
-                this.ContentDeliveryNetwork == other.ContentDeliveryNetwork &&
+            return (this.AppCatalog.Equals(other.AppCatalog) &&
+                this.ContentDeliveryNetwork.Equals(other.ContentDeliveryNetwork) &&
                 this.SiteDesigns.DeepEquals(other.SiteDesigns) &&
                 this.SiteScripts.DeepEquals(other.SiteScripts) &&
                 this.StorageEntities.DeepEquals(other.StorageEntities) &&

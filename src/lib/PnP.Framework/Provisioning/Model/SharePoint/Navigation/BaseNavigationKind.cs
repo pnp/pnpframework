@@ -121,9 +121,12 @@ namespace PnP.Framework.Provisioning.Model
                 return (false);
             }
 
-            return (((this.StructuralNavigation != null && other.StructuralNavigation != null) ? this.StructuralNavigation.Equals(other.StructuralNavigation) : (this.StructuralNavigation == null && other.StructuralNavigation == null)) &&
-                    ((this.ManagedNavigation != null && other.ManagedNavigation != null) ? this.ManagedNavigation == other.ManagedNavigation : (this.ManagedNavigation == null && other.ManagedNavigation == null))
-                );
+            return (((this.StructuralNavigation != null && other.StructuralNavigation != null)
+                         ? this.StructuralNavigation.Equals(other.StructuralNavigation)
+                         : (this.StructuralNavigation == null && other.StructuralNavigation == null))
+                    && ((this.ManagedNavigation != null && other.ManagedNavigation != null)
+                            ? this.ManagedNavigation.Equals(other.ManagedNavigation)
+                            : (this.ManagedNavigation == null && other.ManagedNavigation == null)));
         }
 
         #endregion

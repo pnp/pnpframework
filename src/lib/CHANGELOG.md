@@ -34,6 +34,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Changed the property we get when exporting Teams apps #533 [magarma - Miguel Angel García Martínez]
 - Fix for Null Exception when trying to set a term value in a file, listItem, and the term label contains a comma #541 [magarma - Miguel Angel García Martínez]
 - Missing HeaderLayoutType implemented #498 [jansenbe - Bert Jansen]
+- Fix equality comparisons in Provisioning model objects #410 [orty - Serge ARADJ]
 
 ## [1.7.0]
 

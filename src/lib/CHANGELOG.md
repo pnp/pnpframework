@@ -35,6 +35,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Fix for Null Exception when trying to set a term value in a file, listItem, and the term label contains a comma #541 [magarma - Miguel Angel García Martínez]
 - Missing HeaderLayoutType implemented #498 [jansenbe - Bert Jansen]
 - Fix equality comparisons in Provisioning model objects #410 [orty - Serge ARADJ]
+- When provisioning pages allow creation of web parts which are not returned as possible web part to add [jansenbe - Bert Jansen]
 
 ## [1.7.0]
 

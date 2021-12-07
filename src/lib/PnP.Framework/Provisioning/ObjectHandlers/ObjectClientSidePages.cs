@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using PnPCore = PnP.Core.Model.SharePoint;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
@@ -715,7 +716,44 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                 }
                                 else
                                 {
-                                    scope.LogWarning(CoreResources.Provisioning_ObjectHandlers_ClientSidePages_BaseControlNotFound, control.ControlId, control.CustomWebPartName);
+
+                                    PnPCore.IPageWebPart myWebPart = page.NewWebPart();
+                                    myWebPart.Order = control.Order;
+                                    
+
+                                    if (!string.IsNullOrEmpty(control.JsonControlData))
+                                    {
+                                        var json = JsonConvert.DeserializeObject<JObject>(control.JsonControlData);
+                                        if (json["instanceId"] != null && json["instanceId"].Type != JTokenType.Null)
+                                        {
+                                            if (Guid.TryParse(json["instanceId"].Value<string>(), out Guid instanceId))
+                                            {
+                                                myWebPart.InstanceId = instanceId;
+                                            }
+                                        }
+                                        if (json["id"] != null && json["id"].Type != JTokenType.Null)
+                                        {
+                                            if (Guid.TryParse(json["id"].Value<string>(), out Guid webPartId))
+                                            {
+                                                var pageWebPartType = typeof(PnPCore.IPageWebPart).Assembly.GetType("PnP.Core.Model.SharePoint.PageWebPart");
+
+                                                PropertyInfo propertyInfo = pageWebPartType.GetProperty("WebPartId");
+                                                if (propertyInfo != null)
+                                                {
+                                                    propertyInfo.SetValue(myWebPart, json["id"].Value<string>());
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    // Reduce column number by 1 due 0 start indexing
+                                    page.AddControl(myWebPart, page.Sections[sectionCount].Columns[control.Column - 1], control.Order);
+
+                                    // set properties using json string
+                                    if (!string.IsNullOrEmpty(control.JsonControlData))
+                                    {
+                                        myWebPart.PropertiesJson = control.JsonControlData;
+                                    }
                                 }
                             }
                         }

@@ -2316,6 +2316,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.V202103 {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ClassicSite))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TeamSiteNoGroup))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TeamSite))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(CommunicationSite))]
@@ -2453,6 +2454,93 @@ namespace PnP.Framework.Provisioning.Providers.Xml.V202103 {
             }
             set {
                 this.hubSiteTitleField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema")]
+    public partial class ClassicSite : SiteCollection {
+        
+        private string urlField;
+        
+        private string ownerField;
+        
+        private string timeZoneIdField;
+        
+        private string languageField;
+        
+        private string webTemplateField;
+        
+        private string classificationField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Url {
+            get {
+                return this.urlField;
+            }
+            set {
+                this.urlField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Owner {
+            get {
+                return this.ownerField;
+            }
+            set {
+                this.ownerField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string TimeZoneId {
+            get {
+                return this.timeZoneIdField;
+            }
+            set {
+                this.timeZoneIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Language {
+            get {
+                return this.languageField;
+            }
+            set {
+                this.languageField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string WebTemplate {
+            get {
+                return this.webTemplateField;
+            }
+            set {
+                this.webTemplateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Classification {
+            get {
+                return this.classificationField;
+            }
+            set {
+                this.classificationField = value;
             }
         }
     }

@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Added Sensitivity Labels to Unified Group Creation #536 [NikoMix - Niko]
+- Added support to provisioning site collections using the classic site collection creation APIs from within a tenant template [jansenbe - Bert Jansen]
 
 ### Changed
 

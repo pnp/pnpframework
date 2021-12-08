@@ -578,6 +578,72 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                     }
                                     break;
                                 }
+                            case ClassicSiteCollection cl:
+                                {
+                                    var siteUrl = tokenParser.ParseString(cl.Url);
+                                    if (!siteUrl.StartsWith("https://", StringComparison.InvariantCultureIgnoreCase))
+                                    {
+                                        // CHANGED: Modified to support low privilege users
+                                        siteUrl = UrlUtility.Combine(rootSiteUrl, siteUrl);
+                                    }
+                                    // check if site exists
+                                    var siteExistence = tenant.SiteExistsAnywhere(siteUrl);
+                                    if (siteExistence == SiteExistence.Yes)
+                                    {
+                                        WriteMessage($"Using existing Classic Site at {siteUrl}", ProvisioningMessageType.Progress);
+                                        siteContext = (tenant.Context as ClientContext).Clone(siteUrl, configuration.AccessTokens);
+                                    }
+                                    else if (siteExistence == SiteExistence.Recycled)
+                                    {
+                                        var errorMessage = $"The requested classic Site at {siteUrl} is in the Recycle Bin and cannot be created";
+                                        WriteMessage(errorMessage, ProvisioningMessageType.Error);
+                                        throw new RecycledSiteException(errorMessage);
+                                    }
+                                    else
+                                    {
+                                        WriteMessage($"Creating classic site at {siteUrl}", ProvisioningMessageType.Progress);
+
+                                        var owner = tokenParser.ParseString(cl.Owner);
+                                        var splitOwner = owner.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
+                                        if (splitOwner.Length == 3)
+                                        {
+                                            owner = splitOwner[2];
+                                        }
+
+                                        tenant.CreateSiteCollection(siteUrl, 
+                                            tokenParser.ParseString(cl.Title), 
+                                            owner, 
+                                            tokenParser.ParseString(cl.WebTemplate), 
+                                            int.MaxValue, int.MaxValue, cl.TimeZoneId, 0, 0, 
+                                            (uint)cl.Language, 
+                                            wait: true);
+                                        siteContext = (tenant.Context as ClientContext).Clone(siteUrl, configuration.AccessTokens);
+                                    }
+                                    if (!string.IsNullOrEmpty(cl.Theme) && tenantThemes != null)
+                                    {
+                                        var parsedTheme = tokenParser.ParseString(cl.Theme);
+                                        if (tenantThemes.FirstOrDefault(th => th.Name == parsedTheme) != null)
+                                        {
+                                            tenant.SetWebTheme(parsedTheme, siteContext.Url);
+                                            tenant.Context.ExecuteQueryRetry();
+                                        }
+                                        else
+                                        {
+                                            WriteMessage($"Theme {parsedTheme} doesn't exist in the tenant, will not be applied", ProvisioningMessageType.Warning);
+                                        }
+                                    }
+                                    siteUrls.Add(cl.Id, siteContext.Url);
+                                    if (!string.IsNullOrEmpty(cl.ProvisioningId))
+                                    {
+                                        _additionalTokens.Add(new SequenceSiteUrlUrlToken(null, cl.ProvisioningId, siteContext.Url));
+                                        siteContext.Web.EnsureProperty(w => w.Id);
+                                        _additionalTokens.Add(new SequenceSiteIdToken(null, cl.ProvisioningId, siteContext.Web.Id));
+                                        siteContext.Site.EnsureProperties(s => s.Id, s => s.GroupId);
+                                        _additionalTokens.Add(new SequenceSiteCollectionIdToken(null, cl.ProvisioningId, siteContext.Site.Id));
+                                        _additionalTokens.Add(new SequenceSiteGroupIdToken(null, cl.ProvisioningId, siteContext.Site.GroupId));
+                                    }
+                                    break;
+                                }
                         }
 
                         var web = siteContext.Web;

@@ -7883,7 +7883,62 @@
     </xsd:complexContent>
   </xsd:complexType>
 
-  <xsd:complexType abstract="true" name="Site">
+  <xsd:complexType name="ClassicSite">
+		<xsd:complexContent>
+			<xsd:extension base="pnp:SiteCollection">
+				<xsd:attribute name="Url" type="pnp:ReplaceableString" use="required">
+					<xsd:annotation>
+						<xsd:appinfo>Added with schema version 202103</xsd:appinfo>
+						<xsd:documentation xml:lang="en">
+							The URL of the target Site, required attribute.
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="Owner" type="pnp:ReplaceableString" use="required">
+					<xsd:annotation>
+						<xsd:appinfo>Added with schema version 202103</xsd:appinfo>
+						<xsd:documentation xml:lang="en">
+							Primary Owner of the target Site, required attribute.
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="TimeZoneId" type="pnp:ReplaceableString" use="optional">
+					<xsd:annotation>
+						<xsd:appinfo>Added with schema version 202103</xsd:appinfo>
+						<xsd:documentation xml:lang="en">
+							TimeZone of the target Site, optional attribute.
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="Language" type="pnp:ReplaceableString" use="optional">
+					<xsd:annotation>
+						<xsd:appinfo>Added with schema version 202103</xsd:appinfo>
+						<xsd:documentation xml:lang="en">
+							Language of the target Site, optional attribute.
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="WebTemplate" type="pnp:ReplaceableString" use="required">
+					<xsd:annotation>
+						<xsd:appinfo>Added with schema version 202103</xsd:appinfo>
+						<xsd:documentation xml:lang="en">
+							The WebTemplate to be used to provision this site collection.
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="Classification" type="pnp:ReplaceableString" use="optional">
+					<xsd:annotation>
+						<xsd:appinfo>Added with schema version 202103</xsd:appinfo>
+						<xsd:documentation xml:lang="en">
+							The Classification of the target groupified Site, if any, optional attribute. It is used if and only if the Groupify attribute has a value of True.
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType abstract="true" name="Site">
     <xsd:annotation>
       <xsd:appinfo>Added with schema version 201807</xsd:appinfo>
       <xsd:documentation xml:lang="en">

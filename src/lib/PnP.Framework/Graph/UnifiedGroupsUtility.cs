@@ -167,9 +167,13 @@ namespace PnP.Framework.Graph
                         MailEnabled = true,
                         SecurityEnabled = false,
                         Visibility = isPrivate == true ? "Private" : "Public",
-                        GroupTypes = new List<string> { "Unified" },
-                        AssignedLabels = labels
+                        GroupTypes = new List<string> { "Unified" }
                     };
+
+                    if (assignedLabels.Any())
+                    {
+                        newGroup.AssignedLabels = labels;
+                    }
 
                     if (preferredDataLocation.HasValue)
                     {

@@ -115,6 +115,7 @@ namespace PnP.Framework.Graph
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
         /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <param name="preferredDataLocation">Defines the codes of geographies in which there is Office 365 presence. Used for multi-geo enabled tenants. List with available geographies is available at https://docs.microsoft.com/office365/enterprise/multi-geo-add-group-with-pdl#geo-location-codes.</param>
+        /// <param name="assignedLabels">AIP Labels which should be applied to the group (does not work for App-Only)</param>
         /// <returns>The just created Office 365 Group</returns>
         public static UnifiedGroupEntity CreateUnifiedGroup(string displayName, string description, string mailNickname,
             string accessToken, string[] owners = null, string[] members = null, Stream groupLogo = null,
@@ -138,16 +139,20 @@ namespace PnP.Framework.Graph
             }
 
             var labels = new List<AssignedLabel>();
-            foreach (var label in assignedLabels)
+            if(assignedLabels != null)
             {
-                if(label != Guid.Empty)
+                foreach (var label in assignedLabels)
                 {
-                    labels.Add(new AssignedLabel
+                    if (label != Guid.Empty)
                     {
-                        LabelId = label.ToString()
-                    });
+                        labels.Add(new AssignedLabel
+                        {
+                            LabelId = label.ToString()
+                        });
+                    }
                 }
             }
+            
 
             try
             {
@@ -170,7 +175,7 @@ namespace PnP.Framework.Graph
                         GroupTypes = new List<string> { "Unified" }
                     };
 
-                    if (assignedLabels.Any())
+                    if (assignedLabels != null && assignedLabels.Length > 0)
                     {
                         newGroup.AssignedLabels = labels;
                     }
@@ -717,7 +722,7 @@ namespace PnP.Framework.Graph
                     return (CreateUnifiedGroup(displayName, description,
                         mailNickname, accessToken, owners, members,
                         groupLogo: groupLogoStream, isPrivate: isPrivate,
-                        createTeam: createTeam, retryCount: retryCount, delay: delay, azureEnvironment: azureEnvironment, preferredDataLocation: preferredDataLocation));
+                        createTeam: createTeam, retryCount: retryCount, delay: delay, azureEnvironment: azureEnvironment, preferredDataLocation: preferredDataLocation, null));
                 }
             }
             else
@@ -725,7 +730,7 @@ namespace PnP.Framework.Graph
                 return (CreateUnifiedGroup(displayName, description,
                     mailNickname, accessToken, owners, members,
                     groupLogo: null, isPrivate: isPrivate,
-                    createTeam: createTeam, retryCount: retryCount, delay: delay, azureEnvironment: azureEnvironment, preferredDataLocation: preferredDataLocation));
+                    createTeam: createTeam, retryCount: retryCount, delay: delay, azureEnvironment: azureEnvironment, preferredDataLocation: preferredDataLocation, null));
             }
         }
 

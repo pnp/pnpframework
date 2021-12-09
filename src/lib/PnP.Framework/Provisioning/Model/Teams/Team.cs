@@ -136,18 +136,18 @@ namespace PnP.Framework.Provisioning.Model.Teams
                 return (false);
             }
 
-            return (this.FunSettings == other.FunSettings &&
-                this.GuestSettings == other.GuestSettings &&
-                this.MemberSettings == other.MemberSettings &&
-                this.MessagingSettings == other.MessagingSettings &&
-                this.Security == other.Security &&
+            return 
+                (this.FunSettings != null ? this.FunSettings.Equals(other.FunSettings) : this.FunSettings == null && other.FunSettings == null ? true : false) &&
+                (this.GuestSettings != null ? this.GuestSettings.Equals(other.GuestSettings) : this.GuestSettings == null && other.GuestSettings == null ? true : false) &&
+                (this.MemberSettings != null ? this.MemberSettings.Equals(other.MemberSettings) : this.MemberSettings == null && other.MemberSettings == null ? true : false) &&
+                (this.MessagingSettings != null ? this.MessagingSettings.Equals(other.MessagingSettings) : this.MessagingSettings == null && other.MessagingSettings == null ? true : false) &&
+                (this.Security != null ? this.Security.Equals(other.Security) : this.Security == null && other.Security == null ? true : false) &&
                 this.Channels.DeepEquals(other.Channels) &&
                 this.Apps.DeepEquals(other.Apps) &&
                 this.Specialization == other.Specialization &&
                 this.CloneFrom == other.CloneFrom &&
                 this.Archived == other.Archived &&
-                this.GroupId == other.GroupId
-                );
+                this.GroupId == other.GroupId;
         }
 
         #endregion

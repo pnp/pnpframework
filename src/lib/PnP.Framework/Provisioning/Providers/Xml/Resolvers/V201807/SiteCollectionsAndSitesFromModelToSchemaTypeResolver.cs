@@ -31,6 +31,8 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201807
             var teamSiteType = Type.GetType(teamSiteTypeName, true);
             var teamSiteNoGroupTypeName = $"{PnPSerializationScope.Current?.BaseSchemaNamespace}.TeamSiteNoGroup, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}";
             var teamSiteNoGroupType = Type.GetType(teamSiteNoGroupTypeName, true);
+            var classicSiteTypeName = $"{PnPSerializationScope.Current?.BaseSchemaNamespace}.ClassicSite, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}";
+            var classicSiteType = Type.GetType(classicSiteTypeName, true);
             var teamSubSiteNoGroupTypeName = $"{PnPSerializationScope.Current?.BaseSchemaNamespace}.TeamSubSiteNoGroup, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}";
             var teamSubSiteNoGroupType = Type.GetType(teamSubSiteNoGroupTypeName, true);
 
@@ -63,6 +65,9 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201807
                             break;
                         case TeamNoGroupSiteCollection tngs:
                             targetItem = Activator.CreateInstance(teamSiteNoGroupType);
+                            break;
+                        case ClassicSiteCollection classics:
+                            targetItem = Activator.CreateInstance(classicSiteType);
                             break;
                         case TeamNoGroupSubSite tngss:
                             targetItem = Activator.CreateInstance(teamSubSiteNoGroupType);

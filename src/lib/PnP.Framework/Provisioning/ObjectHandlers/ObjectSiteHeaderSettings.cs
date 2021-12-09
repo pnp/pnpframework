@@ -31,6 +31,16 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             header.Layout = SiteHeaderLayout.Compact;
                             break;
                         }
+                    case HeaderLayoutType.Minimal:
+                        {
+                            header.Layout = SiteHeaderLayout.Minimal;
+                            break;
+                        }
+                    case HeaderLayoutType.Extended:
+                        {
+                            header.Layout = SiteHeaderLayout.Extended;
+                            break;
+                        }
                     case HeaderLayoutType.Standard:
                     default:
                         {

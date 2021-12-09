@@ -150,7 +150,7 @@ namespace PnP.Framework.Provisioning.Model
             return (
                 this.AutoCheckRequirements == other.AutoCheckRequirements &&
                 this.AvailableWebTemplates.DeepEquals(other.AvailableWebTemplates) &&
-                this.DesignPackage == other.DesignPackage &&
+                (this.DesignPackage != null ? this.DesignPackage.Equals(other.DesignPackage) : this.DesignPackage == null && other.DesignPackage == null ? true : false) &&
                 this.PageLayouts.DeepEquals(other.PageLayouts) &&
                 this.ImageRenditions.DeepEquals(other.ImageRenditions)
                 );

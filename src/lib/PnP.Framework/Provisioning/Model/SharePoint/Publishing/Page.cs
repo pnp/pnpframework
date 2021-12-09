@@ -176,7 +176,7 @@ namespace PnP.Framework.Provisioning.Model
                 this.WelcomePage == other.WelcomePage &&
 #pragma warning restore 618
                 this.WebParts.DeepEquals(other.WebParts) &&
-                (this.Security != null ? this.Security.Equals(other.Security) : true) &&
+                (this.Security != null ? this.Security.Equals(other.Security) : this.Security == null && other.Security == null ? true : false) &&
                 this.Fields.DeepEquals(other.Fields)
                 );
         }

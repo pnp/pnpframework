@@ -166,14 +166,13 @@ namespace PnP.Framework.Provisioning.Model
                 return (false);
             }
 
-            return (this.GlobalNavigation.Equals(other.GlobalNavigation) &&
-                    this.CurrentNavigation.Equals(other.CurrentNavigation) &&
+            return  (this.GlobalNavigation != null && other.GlobalNavigation  != null ? this.GlobalNavigation.Equals(other.GlobalNavigation) : this.GlobalNavigation == null && other.GlobalNavigation == null ? true : false) &&
+                    (this.CurrentNavigation != null && other.CurrentNavigation != null ? this.CurrentNavigation.Equals(other.CurrentNavigation) : this.CurrentNavigation == null && other.CurrentNavigation == null ? true : false) &&
                     (this.SearchNavigation != null && other.SearchNavigation != null ? this.SearchNavigation.Equals(other.SearchNavigation) : this.SearchNavigation == null && other.SearchNavigation == null ? true : false) &&
                     this.EnableTreeView == other.EnableTreeView &&
                     this.AddNewPagesToNavigation == other.AddNewPagesToNavigation &&
                     this.CreateFriendlyUrlsForNewPages == other.CreateFriendlyUrlsForNewPages && 
-                    this.EnableAudienceTargeting == other.EnableAudienceTargeting
-                    );
+                    this.EnableAudienceTargeting == other.EnableAudienceTargeting;
         }
 
         #endregion

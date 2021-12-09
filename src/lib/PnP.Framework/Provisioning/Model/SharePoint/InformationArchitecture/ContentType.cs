@@ -199,7 +199,7 @@ namespace PnP.Framework.Provisioning.Model
                     this.Overwrite == other.Overwrite &&
                     this.Sealed == other.Sealed &&
                     this.DocumentTemplate == other.DocumentTemplate &&
-                    this.DocumentSetTemplate == other.DocumentSetTemplate &&
+                    (this.DocumentSetTemplate != null ? this.DocumentSetTemplate.Equals(other.DocumentSetTemplate) : this.DocumentSetTemplate == null && other.DocumentSetTemplate == null ? true : false) &&
                     this.FieldRefs.DeepEquals(other.FieldRefs) &&
                     this.UpdateChildren == other.UpdateChildren
                 );

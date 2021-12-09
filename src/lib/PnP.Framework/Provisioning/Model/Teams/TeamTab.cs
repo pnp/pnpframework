@@ -80,7 +80,7 @@ namespace PnP.Framework.Provisioning.Model.Teams
 
             return (this.DisplayName == other.DisplayName &&
                 this.TeamsAppId == other.TeamsAppId &&
-                this.Configuration == other.Configuration &&
+                (this.Configuration != null ? this.Configuration.Equals(other.Configuration) : this.Configuration == null && other.Configuration == null ? true : false) &&
                 this.ID == other.ID
                 );
         }

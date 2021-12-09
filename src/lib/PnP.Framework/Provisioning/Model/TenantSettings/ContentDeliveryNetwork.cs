@@ -117,9 +117,9 @@ namespace PnP.Framework.Provisioning.Model
                 return (false);
             }
 
-            return (this.PublicCdn == other.PublicCdn &&
-                this.PrivateCdn == other.PrivateCdn
-                );
+            return 
+                (this.PublicCdn != null ? this.PublicCdn.Equals(other.PublicCdn) : this.PublicCdn == null && other.PublicCdn == null ? true : false) &&
+                (this.PrivateCdn != null ? this.PrivateCdn.Equals(other.PrivateCdn) : this.PrivateCdn == null && other.PrivateCdn == null ? true : false);
         }
 
         #endregion

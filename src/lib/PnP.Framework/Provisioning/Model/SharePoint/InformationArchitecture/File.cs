@@ -177,7 +177,7 @@ namespace PnP.Framework.Provisioning.Model
                 this.Src == other.Src &&
                 this.WebParts.DeepEquals(other.WebParts) &&
                 this.Properties.DeepEquals(other.Properties) &&
-                (this.Security != null ? this.Security.Equals(other.Security) : true) &&
+                (this.Security != null ? this.Security.Equals(other.Security) : this.Security == null && other.Security == null ? true : false) &&
                 this.TargetFileName == other.TargetFileName
             );
         }

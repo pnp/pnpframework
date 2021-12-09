@@ -118,7 +118,7 @@ namespace PnP.Framework.Graph
         /// <returns>The just created Office 365 Group</returns>
         public static UnifiedGroupEntity CreateUnifiedGroup(string displayName, string description, string mailNickname,
             string accessToken, string[] owners = null, string[] members = null, Stream groupLogo = null,
-            bool isPrivate = false, bool createTeam = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Enums.Office365Geography? preferredDataLocation = null)
+            bool isPrivate = false, bool createTeam = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Enums.Office365Geography? preferredDataLocation = null, Guid[] assignedLabels = null)
         {
             UnifiedGroupEntity result = null;
 
@@ -135,6 +135,18 @@ namespace PnP.Framework.Graph
             if (string.IsNullOrEmpty(accessToken))
             {
                 throw new ArgumentNullException(nameof(accessToken));
+            }
+
+            var labels = new List<AssignedLabel>();
+            foreach (var label in assignedLabels)
+            {
+                if(label != Guid.Empty)
+                {
+                    labels.Add(new AssignedLabel
+                    {
+                        LabelId = label.ToString()
+                    });
+                }
             }
 
             try
@@ -156,6 +168,7 @@ namespace PnP.Framework.Graph
                         SecurityEnabled = false,
                         Visibility = isPrivate == true ? "Private" : "Public",
                         GroupTypes = new List<string> { "Unified" },
+                        AssignedLabels = labels
                     };
 
                     if (preferredDataLocation.HasValue)

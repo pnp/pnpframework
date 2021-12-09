@@ -298,7 +298,7 @@ namespace PnP.Framework.Provisioning.Model
                 this.Office365GroupsSettings.GetHashCode(),
                 this.Office365GroupLifecyclePolicies.Aggregate(0, (acc, next) => acc += (next != null ? next.GetHashCode() : 0)),
                 this.SPUsersProfiles.Aggregate(0, (acc, next) => acc += (next != null ? next.GetHashCode() : 0)),
-                this.SharingSettings.GetHashCode()
+                this.SharingSettings?.GetHashCode() ?? 0
             ).GetHashCode());
         }
 
@@ -330,18 +330,18 @@ namespace PnP.Framework.Provisioning.Model
                 return (false);
             }
 
-            return (this.AppCatalog == other.AppCatalog &&
-                this.ContentDeliveryNetwork == other.ContentDeliveryNetwork &&
+            return 
+                (this.AppCatalog != null ? this.AppCatalog.Equals(other.AppCatalog) : this.AppCatalog == null && other.AppCatalog == null ? true : false) &&
+                (this.ContentDeliveryNetwork != null ? this.ContentDeliveryNetwork.Equals(other.ContentDeliveryNetwork) : this.ContentDeliveryNetwork == null && other.ContentDeliveryNetwork == null ? true : false) &&
                 this.SiteDesigns.DeepEquals(other.SiteDesigns) &&
                 this.SiteScripts.DeepEquals(other.SiteScripts) &&
                 this.StorageEntities.DeepEquals(other.StorageEntities) &&
                 this.WebApiPermissions.DeepEquals(other.WebApiPermissions) &&
                 this.Themes.DeepEquals(other.Themes) &&
-                this.Office365GroupsSettings.Equals(other.Office365GroupsSettings) &&
+                (this.Office365GroupsSettings != null ? this.Office365GroupsSettings.Equals(other.Office365GroupsSettings) : this.Office365GroupsSettings == null && other.Office365GroupsSettings == null ? true : false) &&
                 this.Office365GroupLifecyclePolicies.DeepEquals(other.Office365GroupLifecyclePolicies) &&
                 this.SPUsersProfiles.DeepEquals(other.SPUsersProfiles) &&
-                this.SharingSettings.Equals(other.SharingSettings)
-                );
+                (this.SharingSettings != null ? this.SharingSettings.Equals(other.SharingSettings) : this.SharingSettings == null && other.SharingSettings == null ? true : false);
         }
 
         #endregion

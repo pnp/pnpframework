@@ -176,7 +176,7 @@ namespace PnP.Framework.Provisioning.Model
                 this.Overwrite == other.Overwrite &&
                 this.Recursive == other.Recursive &&
                 this.Src == other.Src &&
-                (this.Security != null ? this.Security.Equals(other.Security) : true)
+                (this.Security != null ? this.Security.Equals(other.Security) : this.Security == null && other.Security == null ? true : false)
             );
         }
 

@@ -1700,10 +1700,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         private static Team GetTeamApps(string accessToken, string groupId, Team team, PnPMonitoredScope scope)
         {
-            var teamsAppsString = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams/{groupId}/installedApps", accessToken);
+            var teamsAppsString = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams/{groupId}/installedApps?$expand=teamsAppDefinition", accessToken);
             foreach (var app in JObject.Parse(teamsAppsString)["value"] as JArray)
             {
-                team.Apps.Add(new TeamAppInstance() { AppId = app["id"].Value<string>() });
+                team.Apps.Add(new TeamAppInstance() { AppId = app["teamsAppDefinition"]?["teamsAppId"]?.Value<string>() });
             }
             return team;
         }
@@ -1715,6 +1715,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             foreach (var channel in team.Channels)
             {
+                //If channel description is null, set empty string, description is mandatory in the schema
+                channel.Description ??= "";
                 channel.Tabs.AddRange(GetTeamChannelTabs(configuration, accessToken, groupId, channel.ID));
                 if (configuration.Tenant.Teams.IncludeMessages)
                 {
@@ -1733,8 +1735,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         private static List<TeamTab> GetTeamChannelTabs(ExtractConfiguration configuration, string accessToken, string groupId, string channelId)
         {
             List<TeamTab> tabs = new List<TeamTab>();
-            var teamTabsString = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams/{groupId}/channels/{channelId}/tabs", accessToken);
-            foreach (var tab in JsonConvert.DeserializeObject<List<TeamTab>>(JObject.Parse(teamTabsString)["value"].ToString()))
+            var teamTabsJObject = GetExistingTeamChannelTabs(groupId, channelId, accessToken);
+            var teamTabs = teamTabsJObject.ToObject<TeamTab[]>();
+            foreach (var tab in teamTabs)
             {
                 if (tab.Configuration != null && string.IsNullOrEmpty(tab.Configuration.ContentUrl))
                 {
@@ -1745,6 +1748,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     tab.Configuration.EntityId = tab.Configuration.EntityId ?? "";
                     tab.Configuration.WebsiteUrl = tab.Configuration.WebsiteUrl ?? "";
                     tab.Configuration.RemoveUrl = tab.Configuration.RemoveUrl ?? "";
+                }
+                //For backwards compatibility, if is null or empty, checks the TeamsApp node
+                if (string.IsNullOrEmpty(tab.TeamsAppId))
+                {
+                    var tabJObject = teamTabsJObject.FirstOrDefault(x => x["id"].ToString() == tab.ID);
+                    if (tabJObject!=default)
+                        tab.TeamsAppId = tabJObject["teamsApp"]?["id"]?.ToString();
                 }
                 tabs.Add(tab);
             }

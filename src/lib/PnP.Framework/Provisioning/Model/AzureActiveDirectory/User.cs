@@ -144,15 +144,15 @@ namespace PnP.Framework.Provisioning.Model.AzureActiveDirectory
                 return (false);
             }
 
-            return (this.PasswordProfile == other.PasswordProfile &&
+            return 
+                (this.PasswordProfile != null ? this.PasswordProfile.Equals(other.PasswordProfile) : this.PasswordProfile == null && other.PasswordProfile == null ? true : false) &&
                 this.AccountEnabled == other.AccountEnabled &&
                 this.DisplayName == other.DisplayName &&
                 this.MailNickname == other.MailNickname &&
                 this.PasswordPolicies == other.PasswordPolicies &&
                 this.UserPrincipalName == other.UserPrincipalName &&
                 this.ProfilePhoto == other.ProfilePhoto &&
-                this.Licenses.DeepEquals(other.Licenses)
-                );
+                this.Licenses.DeepEquals(other.Licenses);
         }
 
         #endregion

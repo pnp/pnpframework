@@ -93,10 +93,10 @@ namespace PnP.Framework.Provisioning.Model
                 return (false);
             }
 
-            return (this.ID == other.ID &&
-                this.TermStore == other.TermStore &&
-                this.SiteCollections.DeepEquals(other.SiteCollections)
-                );
+            return 
+                this.ID == other.ID &&
+                (this.TermStore != null ? this.TermStore.Equals(other.TermStore) : this.TermStore == null && other.TermStore == null ? true : false) &&
+                this.SiteCollections.DeepEquals(other.SiteCollections);
         }
 
         #endregion

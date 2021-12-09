@@ -98,9 +98,9 @@ namespace PnP.Framework.Provisioning.Model
                 return (false);
             }
 
-            return (this.AppCatalog == other.AppCatalog &&
-                this.Apps.DeepEquals(other.Apps)
-                );
+            return 
+                (this.AppCatalog != null ? this.AppCatalog.Equals(other.AppCatalog) : this.AppCatalog == null && other.AppCatalog == null ? true : false) &&
+                this.Apps.DeepEquals(other.Apps);
         }
 
         #endregion

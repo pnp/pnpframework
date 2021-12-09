@@ -69,9 +69,9 @@ namespace PnP.Framework.Provisioning.Model.Drive
                 return (false);
             }
 
-            return (this.DriveUrl == other.DriveUrl &&
-                this.RootFolder.Equals(other.RootFolder)
-                );
+            return 
+                this.DriveUrl == other.DriveUrl &&
+                (this.RootFolder != null ? this.RootFolder.Equals(other.RootFolder) : this.RootFolder == null && other.RootFolder == null ? true : false);
         }
 
         #endregion

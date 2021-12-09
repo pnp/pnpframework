@@ -119,7 +119,7 @@ namespace PnP.Framework.Provisioning.Model
                 this.UseSamePermissionsAsParentSite == other.UseSamePermissionsAsParentSite &&
                 this.Title == other.Title &&
                 this.Description == other.Description &&
-                !this.Templates.Intersect(other.Templates).Any() &&
+                !this.Templates.Except(other.Templates).Any() &&
                 this.Theme == other.Theme &&
                 this.ProvisioningId == other.ProvisioningId &&
                 this.EqualsInherited(other)

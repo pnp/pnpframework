@@ -10,6 +10,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Added Sensitivity Labels to Unified Group Creation #536 [NikoMix - Niko]
+- Added support to provisioning site collections using the classic site collection creation APIs from within a tenant template [jansenbe - Bert Jansen]
+
 ### Changed
 
 - Fixing GetGroupMembers and GetGroupOwners #490 [koenzomers - Koen Zomers]
@@ -27,6 +30,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - CreateFolderInList Handle Error "To update this folder, go to the channel in Microsoft Teams" #470 [czullu - Christian Zuellig]
 - Switched to using version 1.9 of image webpart, needed to ensure images are correctly sized on target pages [jansenbe - Bert Jansen]
 - Retry on SocketExcetion in SendAsync #528 [patrikhellgren - Patrik Hellgren]
+- Fixing issue when trying to export datarow for list instances #531 [magarma - Miguel Angel García Martínez]
+- Fix issues exporting channels and tabs with TeamsAppId and Description #532 [magarma - Miguel Angel García Martínez]
+- Changed the property we get when exporting Teams apps #533 [magarma - Miguel Angel García Martínez]
+- Fix for Null Exception when trying to set a term value in a file, listItem, and the term label contains a comma #541 [magarma - Miguel Angel García Martínez]
+- Missing HeaderLayoutType implemented #498 [jansenbe - Bert Jansen]
+- Fix equality comparisons in Provisioning model objects #410 [orty - Serge ARADJ]
+- When provisioning pages allow creation of web parts which are not returned as possible web part to add [jansenbe - Bert Jansen]
 
 ## [1.7.0]
 

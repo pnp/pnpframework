@@ -844,7 +844,7 @@ namespace PnP.Framework.Provisioning.Model
             }
 
             return (
-                this.ComposedLook.Equals(other.ComposedLook) &&
+                (this.ComposedLook != null ? this.ComposedLook.Equals(other.ComposedLook) : this.ComposedLook == null && other.ComposedLook == null ? true : false) &&
                 this.ContentTypes.DeepEquals(other.ContentTypes) &&
                 this.CustomActions.SiteCustomActions.DeepEquals(other.CustomActions.SiteCustomActions) &&
                 this.CustomActions.WebCustomActions.DeepEquals(other.CustomActions.WebCustomActions) &&
@@ -872,15 +872,15 @@ namespace PnP.Framework.Provisioning.Model
                 ((this.Workflows != null && other.Workflows != null) ? this.Workflows.WorkflowDefinitions.DeepEquals(other.Workflows.WorkflowDefinitions) : this.Workflows == other.Workflows) &&
                 ((this.Workflows != null && other.Workflows != null) ? this.Workflows.WorkflowSubscriptions.DeepEquals(other.Workflows.WorkflowSubscriptions) : this.Workflows == other.Workflows) &&
                 this.AddIns.DeepEquals(other.AddIns) &&
-                this.Publishing == other.Publishing &&
+                (this.Publishing != null ? this.Publishing.Equals(other.Publishing) : this.Publishing == null && other.Publishing == null ? true : false) &&
                 ((this.Localizations != null && other.Localizations != null) ? this.Localizations.DeepEquals(other.Localizations) : this.Localizations == other.Localizations) &&
-                ((this.WebSettings != null && other.WebSettings != null) ? this.WebSettings.Equals(other.WebSettings) : this.WebSettings == other.WebSettings) &&
+                (this.WebSettings != null ? this.WebSettings.Equals(other.WebSettings) : this.WebSettings == null && other.WebSettings == null ? true : false) &&
                 ((this.SiteWebhooks != null && other.SiteWebhooks != null) ? this.SiteWebhooks.DeepEquals(other.SiteWebhooks) : this.SiteWebhooks == other.SiteWebhooks) &&
                 ((this.ClientSidePages != null && other.ClientSidePages != null) ? this.ClientSidePages.DeepEquals(other.ClientSidePages) : this.ClientSidePages == other.ClientSidePages) &&
                 this.TemplateCultureInfo == other.TemplateCultureInfo &&
                 this.Scope == other.Scope &&
-                this.Tenant == other.Tenant &&
-                this.SiteSettings == other.SiteSettings
+                (this.Tenant != null ? this.Tenant.Equals(other.Tenant) : this.Tenant == null && other.Tenant == null ? true : false) &&
+                (this.SiteSettings != null ? this.SiteSettings.Equals(other.SiteSettings) : this.SiteSettings == null && other.SiteSettings == null ? true : false)
             );
         }
 

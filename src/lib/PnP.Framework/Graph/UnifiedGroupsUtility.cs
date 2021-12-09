@@ -143,7 +143,7 @@ namespace PnP.Framework.Graph
             {
                 foreach (var label in assignedLabels)
                 {
-                    if (label != Guid.Empty)
+                    if (!Guid.Empty.Equals(label))
                     {
                         labels.Add(new AssignedLabel
                         {
@@ -175,7 +175,7 @@ namespace PnP.Framework.Graph
                         GroupTypes = new List<string> { "Unified" }
                     };
 
-                    if (assignedLabels != null && assignedLabels.Length > 0)
+                    if (labels.Any())
                     {
                         newGroup.AssignedLabels = labels;
                     }
@@ -722,7 +722,7 @@ namespace PnP.Framework.Graph
                     return (CreateUnifiedGroup(displayName, description,
                         mailNickname, accessToken, owners, members,
                         groupLogo: groupLogoStream, isPrivate: isPrivate,
-                        createTeam: createTeam, retryCount: retryCount, delay: delay, azureEnvironment: azureEnvironment, preferredDataLocation: preferredDataLocation, null));
+                        createTeam: createTeam, retryCount: retryCount, delay: delay, azureEnvironment: azureEnvironment, preferredDataLocation: preferredDataLocation));
                 }
             }
             else
@@ -730,7 +730,7 @@ namespace PnP.Framework.Graph
                 return (CreateUnifiedGroup(displayName, description,
                     mailNickname, accessToken, owners, members,
                     groupLogo: null, isPrivate: isPrivate,
-                    createTeam: createTeam, retryCount: retryCount, delay: delay, azureEnvironment: azureEnvironment, preferredDataLocation: preferredDataLocation, null));
+                    createTeam: createTeam, retryCount: retryCount, delay: delay, azureEnvironment: azureEnvironment, preferredDataLocation: preferredDataLocation));
             }
         }
 

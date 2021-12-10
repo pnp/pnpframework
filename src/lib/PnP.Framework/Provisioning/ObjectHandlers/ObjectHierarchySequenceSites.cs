@@ -610,11 +610,16 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                             owner = splitOwner[2];
                                         }
 
-                                        tenant.CreateSiteCollection(siteUrl, 
-                                            tokenParser.ParseString(cl.Title), 
+                                        tenant.CreateSiteCollection(
+                                            siteUrl, 
+                                            tokenParser.ParseString(cl.Title),
                                             owner, 
                                             tokenParser.ParseString(cl.WebTemplate), 
-                                            int.MaxValue, int.MaxValue, cl.TimeZoneId, 0, 0, 
+                                            int.MaxValue, 
+                                            int.MaxValue, 
+                                            cl.TimeZoneId, 
+                                            0, 
+                                            0, 
                                             (uint)cl.Language, 
                                             wait: true);
                                         siteContext = (tenant.Context as ClientContext).Clone(siteUrl, configuration.AccessTokens);

@@ -278,8 +278,4 @@
 		</None>
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Provisioning\Providers\Xml\Resolvers\V202103\" />
-	</ItemGroup>
-
 </Project>

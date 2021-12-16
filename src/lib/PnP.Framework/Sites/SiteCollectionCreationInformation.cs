@@ -300,11 +300,12 @@ namespace PnP.Framework.Sites
 
         }
 
-        public SiteCreationGroupInformation(string alias, string displayName, string description = null)
+        public SiteCreationGroupInformation(string alias, string displayName, string description = null, string sitealias)
         {
             this.Alias = alias;
             this.DisplayName = displayName;
             this.Description = description;
+            this.SiteAlias = sitealias;
         }
     }
 

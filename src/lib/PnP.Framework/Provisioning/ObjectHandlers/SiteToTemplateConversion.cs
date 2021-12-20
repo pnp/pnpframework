@@ -322,11 +322,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         throw new Exception(CoreResources.SiteToTemplateConversion_ScopeOfTemplateDoesNotMatchTarget);
                     }
                 }
-                var currentCultureInfoValue = System.Threading.Thread.CurrentThread.CurrentCulture.LCID;
+                var currentCultureInfoValue = System.Threading.Thread.CurrentThread.CurrentCulture;
                 if (!string.IsNullOrEmpty(template.TemplateCultureInfo))
                 {
-                    int cultureInfoValue = System.Threading.Thread.CurrentThread.CurrentCulture.LCID;
-                    if (int.TryParse(template.TemplateCultureInfo, out cultureInfoValue))
+                    if (int.TryParse(template.TemplateCultureInfo, out var cultureInfoValue))
                     {
                         System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(cultureInfoValue);
                     }
@@ -473,7 +472,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 CallWebHooks(template, tokenParser, ProvisioningTemplateWebhookKind.ProvisioningTemplateCompleted);
 
-                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(currentCultureInfoValue);
+                System.Threading.Thread.CurrentThread.CurrentCulture = currentCultureInfoValue;
 
             }
         }

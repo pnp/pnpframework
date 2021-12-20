@@ -67,31 +67,40 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             using (var scope = new PnPMonitoredScope(this.Name))
             {
-                var context = web.Context as ClientContext;
-                foreach (var handler in template.ExtensibilityHandlers
+                var extensibilityHandlersToProcess = template.ExtensibilityHandlers
 #pragma warning disable 618
                     .Union(template.Providers)
 #pragma warning restore 618
-                    .Union(applyingInformation.ExtensibilityHandlers))
+                    .Union(applyingInformation.ExtensibilityHandlers).ToList();
+
+                if (extensibilityHandlersToProcess.Any())
                 {
-                    if (handler.Enabled)
+                    var context = web.Context as ClientContext;
+                    var currentCount = 0;
+                    foreach (var handler in extensibilityHandlersToProcess)
                     {
-                        try
+                        if (handler.Enabled)
                         {
-                            if (!string.IsNullOrEmpty(handler.Configuration))
+                            try
                             {
-                                //replace tokens in configuration data
-                                handler.Configuration = parser.ParseString(handler.Configuration);
+                                currentCount++;
+                                if (!string.IsNullOrEmpty(handler.Configuration))
+                                {
+                                    //replace tokens in configuration data
+                                    handler.Configuration = parser.ParseString(handler.Configuration);
+                                }
+                                scope.LogDebug(CoreResources.Provisioning_ObjectHandlers_ExtensibilityProviders_Calling_extensibility_callout__0_, handler.Assembly);
+                                WriteSubProgress("Extensibility handler", handler.Type, currentCount, extensibilityHandlersToProcess.Count);
+                                _extManager.ExecuteExtensibilityProvisionCallOut(context, handler, template, applyingInformation, parser, scope);
                             }
-                            scope.LogDebug(CoreResources.Provisioning_ObjectHandlers_ExtensibilityProviders_Calling_extensibility_callout__0_, handler.Assembly);
-                            _extManager.ExecuteExtensibilityProvisionCallOut(context, handler, template, applyingInformation, parser, scope);
-                        }
-                        catch (Exception ex)
-                        {
-                            scope.LogError(CoreResources.Provisioning_ObjectHandlers_ExtensibilityProviders_callout_failed___0_____1_, ex.Message, ex.StackTrace);
-                            throw;
+                            catch (Exception ex)
+                            {
+                                scope.LogError(CoreResources.Provisioning_ObjectHandlers_ExtensibilityProviders_callout_failed___0_____1_, ex.Message, ex.StackTrace);
+                                throw;
+                            }
                         }
                     }
+                    WriteMessage("Done processing extensibility handlers", ProvisioningMessageType.Completed);
                 }
             }
             return parser;

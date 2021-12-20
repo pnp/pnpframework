@@ -37,6 +37,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Missing HeaderLayoutType implemented #498 [jansenbe - Bert Jansen]
 - Fix equality comparisons in Provisioning model objects #410 [orty - Serge ARADJ]
 - When provisioning pages allow creation of web parts which are not returned as possible web part to add [jansenbe - Bert Jansen]
+- Fix #547 - issue with trace log #548 [gautamdsheth - Gautam Sheth]
 
 ## [1.7.0]
 

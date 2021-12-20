@@ -815,7 +815,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
 
                 if (fileConnector.Parameters.ContainsKey(FileConnectorBase.CONTAINER))
                 {
-                    container = string.Concat(fileConnector.GetContainer(), container);
+                    container = Path.Combine(fileConnector.GetContainer(), container);
                 }
 
                 using (Stream s = connector.GetFileStream(persistenceFileName, folderPath))

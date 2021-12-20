@@ -40,6 +40,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Fix #547 - issue with trace log #548 [gautamdsheth - Gautam Sheth]
 - Fix issue when folderpath doesn't start by '/' #542 [magarma - Miguel Angel García Martínez]
 - Added missing field Type "Geolocation" case in UpdateListItem() #546 [PedroMordeP - Pedro Monte]
+- Setting Teams channel as private according to membershipType #549 [magarma - Miguel Angel García Martínez]
 
 ## [1.7.0]
 

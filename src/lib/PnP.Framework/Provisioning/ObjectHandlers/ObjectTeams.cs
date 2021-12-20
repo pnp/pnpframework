@@ -1720,9 +1720,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 channel.Description ??= "";
                 //Gets channel membership type, private or standard
                 var channelJObject = teamChannelsJObject["value"].FirstOrDefault(x => x["id"].ToString() == channel.ID);
-                if (channelJObject != default && channelJObject["membershipType"]!=null)
+                if (channelJObject != default && channelJObject["membershipType"] != null)
+                {
                     channel.Private = channelJObject["membershipType"].ToString().Equals("private", StringComparison.InvariantCultureIgnoreCase);
-                
+                }
+
                 channel.Tabs.AddRange(GetTeamChannelTabs(configuration, accessToken, groupId, channel.ID));
                 if (configuration.Tenant.Teams.IncludeMessages)
                 {

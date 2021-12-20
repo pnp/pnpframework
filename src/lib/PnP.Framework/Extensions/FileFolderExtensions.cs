@@ -819,9 +819,9 @@ namespace Microsoft.SharePoint.Client
 
             var folderServerRelativeUrl = UrlUtility.Combine(web.ServerRelativeUrl, webRelativeUrl, "/");
 
-            // Check if folder is inside a list
-            var listCollection = web.Lists;
-            web.Context.Load(listCollection, lc => lc.Include(l => l.RootFolder));
+            // Check if folder is inside a list. We need to exclude Solution Catalog since users that are not site owners will not have access to the root folder and we cannot anyhow create folders there.
+            var listCollection = web.Context.LoadQuery(web.Lists.Where(l => l.BaseTemplate != (int)ListTemplateType.SolutionCatalog).Include(l => l.RootFolder));
+
             await web.Context.ExecuteQueryRetryAsync();
 
             List containingList = null;

@@ -1711,12 +1711,18 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         private static Team GetTeamChannels(ExtractConfiguration configuration, string accessToken, string groupId, Team team, PnPMonitoredScope scope)
         {
             var teamChannelsString = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}beta/teams/{groupId}/channels", accessToken);
-            team.Channels.AddRange(JsonConvert.DeserializeObject<List<Model.Teams.TeamChannel>>(JObject.Parse(teamChannelsString)["value"].ToString()));
+            var teamChannelsJObject = JObject.Parse(teamChannelsString);
+            team.Channels.AddRange(JsonConvert.DeserializeObject<List<Model.Teams.TeamChannel>>(teamChannelsJObject["value"].ToString()));
 
             foreach (var channel in team.Channels)
             {
                 //If channel description is null, set empty string, description is mandatory in the schema
                 channel.Description ??= "";
+                //Gets channel membership type, private or standard
+                var channelJObject = teamChannelsJObject["value"].FirstOrDefault(x => x["id"].ToString() == channel.ID);
+                if (channelJObject != default && channelJObject["membershipType"]!=null)
+                    channel.Private = channelJObject["membershipType"].ToString().Equals("private", StringComparison.InvariantCultureIgnoreCase);
+                
                 channel.Tabs.AddRange(GetTeamChannelTabs(configuration, accessToken, groupId, channel.ID));
                 if (configuration.Tenant.Teams.IncludeMessages)
                 {

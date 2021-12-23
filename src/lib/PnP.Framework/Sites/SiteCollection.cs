@@ -328,7 +328,11 @@ namespace PnP.Framework.Sites
             }
             if (!string.IsNullOrEmpty(siteCollectionCreationInformation.SiteAlias))
             {
-                creationOptionsValues.Add($"SiteAlias:{siteCollectionCreationInformation.SiteAlias}");
+                string siteAlias = siteCollectionCreationInformation.SiteAlias;
+                siteAlias = UrlUtility.RemoveUnallowedCharacters(siteAlias);
+                siteAlias = UrlUtility.ReplaceAccentedCharactersWithLatin(siteAlias);
+                
+                creationOptionsValues.Add($"SiteAlias:{siteAlias}");
             }
             creationOptionsValues.Add($"HubSiteId:{siteCollectionCreationInformation.HubSiteId}");
             optionalParams.Add("CreationOptions", creationOptionsValues);

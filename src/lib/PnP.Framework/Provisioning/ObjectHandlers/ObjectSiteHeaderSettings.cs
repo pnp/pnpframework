@@ -64,10 +64,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             using (var scope = new PnPMonitoredScope(this.Name))
             {
-                web.EnsureProperties(w => w.Url);
-
                 if (template.Header != null)
                 {
+                    web.EnsureProperties(w => w.Url);
+
                     switch (template.Header.Layout)
                     {
                         case SiteHeaderLayout.Compact:
@@ -86,6 +86,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                 break;
                             }
                         case SiteHeaderLayout.Standard:
+                        default:
                             {
                                 web.HeaderLayout = HeaderLayoutType.Standard;
                                 break;

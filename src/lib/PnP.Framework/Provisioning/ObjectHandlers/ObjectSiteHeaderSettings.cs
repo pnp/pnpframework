@@ -19,10 +19,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             using (var scope = new PnPMonitoredScope(this.Name))
             {
-                web.EnsureProperties(w => w.HeaderEmphasis, w => w.HeaderLayout, w => w.MegaMenuEnabled);
+                web.EnsureProperties(w => w.HeaderEmphasis, w => w.HeaderLayout, w => w.HideTitleInHeader, w => w.MegaMenuEnabled);
                 var header = new SiteHeader
                 {
-                    MenuStyle = web.MegaMenuEnabled ? SiteHeaderMenuStyle.MegaMenu : SiteHeaderMenuStyle.Cascading
+                    MenuStyle = web.MegaMenuEnabled ? SiteHeaderMenuStyle.MegaMenu : SiteHeaderMenuStyle.Cascading,
+                    ShowSiteTitle = !web.HideTitleInHeader
                 };
                 switch (web.HeaderLayout)
                 {
@@ -74,6 +75,16 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                 web.HeaderLayout = HeaderLayoutType.Compact;
                                 break;
                             }
+                        case SiteHeaderLayout.Minimal:
+                            {
+                                web.HeaderLayout = HeaderLayoutType.Minimal;
+                                break;
+                            }
+                        case SiteHeaderLayout.Extended:
+                            {
+                                web.HeaderLayout = HeaderLayoutType.Extended;
+                                break;
+                            }
                         case SiteHeaderLayout.Standard:
                             {
                                 web.HeaderLayout = HeaderLayoutType.Standard;
@@ -82,12 +93,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     }
                     web.HeaderEmphasis = (SPVariantThemeType)Enum.Parse(typeof(SPVariantThemeType), template.Header.BackgroundEmphasis.ToString());
                     web.MegaMenuEnabled = template.Header.MenuStyle == SiteHeaderMenuStyle.MegaMenu;
-
+                    web.HideTitleInHeader = !template.Header.ShowSiteTitle;
                     var jsonRequest = new
                     {
                         headerLayout = web.HeaderLayout,
                         headerEmphasis = web.HeaderEmphasis,
                         megaMenuEnabled = web.MegaMenuEnabled,
+                        hideTitleInHeader = web.HideTitleInHeader
                     };
 
                     web.ExecutePostAsync("/_api/web/SetChromeOptions", System.Text.Json.JsonSerializer.Serialize(jsonRequest)).GetAwaiter().GetResult();

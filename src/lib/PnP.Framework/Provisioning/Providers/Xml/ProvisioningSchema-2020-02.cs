@@ -3898,6 +3898,12 @@ namespace PnP.Framework.Provisioning.Providers.Xml.V202002 {
         
         /// <remarks/>
         Compact,
+        
+        /// <remarks/>
+        Extended,
+
+        /// <remarks/>
+        Minimal,
     }
     
     /// <remarks/>

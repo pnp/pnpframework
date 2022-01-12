@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Feature : remove special chars from the SiteAlias #558 [gautamdsheth - Gautam Sheth]
 - Fix: set ContextSettings Type to ClientContextType.PnPCoreSdk #566 [czullu - Christian Zuellig]
 - Fix: for adding folders in large list #559 [gautamdsheth - Gautam Sheth]
+- Added localization support for child nodes in footer #560 [b00johst - John Frankolin]
 
 ## [1.8.0]
 

@@ -492,12 +492,18 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                     for (var s = footerLink.FooterLinks.Count - 1; s >= 0; s--)
                                     {
                                         var childFooterLink = footerLink.FooterLinks[s];
-                                        newParentNode.Children.Add(new NavigationNodeCreationInformation()
+                                        var newChildNode = newParentNode.Children.Add(new NavigationNodeCreationInformation()
                                         {
                                             Url = parser.ParseString(childFooterLink.Url),
                                             Title = parser.ParseString(childFooterLink.DisplayName)
                                         });
-                                    }
+
+                                        if (childFooterLink.DisplayName.ContainsResourceToken())
+                                        {
+                                            web.Context.ExecuteQueryRetry();
+                                            newChildNode.LocalizeNavigationNode(web, childFooterLink.DisplayName, parser, scope);
+                                        }
+                                    }                                    
                                 }
                             }
                         }

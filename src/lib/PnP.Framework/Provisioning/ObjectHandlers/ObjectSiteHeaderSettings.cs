@@ -18,7 +18,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         public override ProvisioningTemplate ExtractObjects(Web web, ProvisioningTemplate template, ProvisioningTemplateCreationInformation creationInfo)
         {
-            using (var scope = new PnPMonitoredScope(this.Name))
+            using (new PnPMonitoredScope(this.Name))
             {
                 pnpContext = PnPCoreSdk.Instance.GetPnPContext(web.Context as ClientContext);
 

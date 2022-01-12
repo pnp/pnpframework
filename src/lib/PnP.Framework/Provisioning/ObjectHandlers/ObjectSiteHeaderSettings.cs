@@ -1,7 +1,7 @@
 ﻿using Microsoft.SharePoint.Client;
+using PnP.Core.Services;
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Provisioning.Model;
-using PnP.Framework.Utilities;
 using System;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
@@ -14,35 +14,39 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         }
 
         public override string InternalName => "SiteHeader";
+        private PnPContext pnpContext;
 
         public override ProvisioningTemplate ExtractObjects(Web web, ProvisioningTemplate template, ProvisioningTemplateCreationInformation creationInfo)
         {
             using (var scope = new PnPMonitoredScope(this.Name))
             {
-                web.EnsureProperties(w => w.HeaderEmphasis, w => w.HeaderLayout, w => w.HideTitleInHeader, w => w.MegaMenuEnabled);
+                pnpContext = PnPCoreSdk.Instance.GetPnPContext(web.Context as ClientContext);
+
+                pnpContext.Web.EnsureProperties(w => w.HeaderEmphasis, w => w.HeaderLayout, w => w.HideTitleInHeader, w => w.MegaMenuEnabled);
+
                 var header = new SiteHeader
                 {
-                    MenuStyle = web.MegaMenuEnabled ? SiteHeaderMenuStyle.MegaMenu : SiteHeaderMenuStyle.Cascading,
-                    ShowSiteTitle = !web.HideTitleInHeader
+                    MenuStyle = pnpContext.Web.MegaMenuEnabled ? SiteHeaderMenuStyle.MegaMenu : SiteHeaderMenuStyle.Cascading,
+                    ShowSiteTitle = !pnpContext.Web.HideTitleInHeader
                 };
-                switch (web.HeaderLayout)
+                switch (pnpContext.Web.HeaderLayout)
                 {
-                    case HeaderLayoutType.Compact:
+                    case Core.Model.SharePoint.HeaderLayoutType.Compact:
                         {
                             header.Layout = SiteHeaderLayout.Compact;
                             break;
                         }
-                    case HeaderLayoutType.Minimal:
+                    case Core.Model.SharePoint.HeaderLayoutType.Minimal:
                         {
                             header.Layout = SiteHeaderLayout.Minimal;
                             break;
                         }
-                    case HeaderLayoutType.Extended:
+                    case Core.Model.SharePoint.HeaderLayoutType.Extended:
                         {
                             header.Layout = SiteHeaderLayout.Extended;
                             break;
                         }
-                    case HeaderLayoutType.Standard:
+                    case Core.Model.SharePoint.HeaderLayoutType.Standard:
                     default:
                         {
                             header.Layout = SiteHeaderLayout.Standard;
@@ -50,7 +54,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         }
                 }
 
-                if (Enum.TryParse<Emphasis>(web.HeaderEmphasis.ToString(), out Emphasis backgroundEmphasis))
+                if (Enum.TryParse<Emphasis>(pnpContext.Web.HeaderEmphasis.ToString(), out Emphasis backgroundEmphasis))
                 {
                     header.BackgroundEmphasis = backgroundEmphasis;
                 }
@@ -66,45 +70,37 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             {
                 if (template.Header != null)
                 {
-                    web.EnsureProperties(w => w.Url);
+                    pnpContext = PnPCoreSdk.Instance.GetPnPContext(web.Context as ClientContext);
+                    pnpContext.Web.EnsureProperties(w => w.Url);
 
                     switch (template.Header.Layout)
                     {
                         case SiteHeaderLayout.Compact:
                             {
-                                web.HeaderLayout = HeaderLayoutType.Compact;
+                                pnpContext.Web.HeaderLayout = Core.Model.SharePoint.HeaderLayoutType.Compact;
                                 break;
                             }
                         case SiteHeaderLayout.Minimal:
                             {
-                                web.HeaderLayout = HeaderLayoutType.Minimal;
+                                pnpContext.Web.HeaderLayout = Core.Model.SharePoint.HeaderLayoutType.Minimal;
                                 break;
                             }
                         case SiteHeaderLayout.Extended:
                             {
-                                web.HeaderLayout = HeaderLayoutType.Extended;
+                                pnpContext.Web.HeaderLayout = Core.Model.SharePoint.HeaderLayoutType.Extended;
                                 break;
                             }
                         case SiteHeaderLayout.Standard:
                         default:
                             {
-                                web.HeaderLayout = HeaderLayoutType.Standard;
+                                pnpContext.Web.HeaderLayout = Core.Model.SharePoint.HeaderLayoutType.Standard;
                                 break;
                             }
                     }
-                    web.HeaderEmphasis = (SPVariantThemeType)Enum.Parse(typeof(SPVariantThemeType), template.Header.BackgroundEmphasis.ToString());
-                    web.MegaMenuEnabled = template.Header.MenuStyle == SiteHeaderMenuStyle.MegaMenu;
-                    web.HideTitleInHeader = !template.Header.ShowSiteTitle;
-                    var jsonRequest = new
-                    {
-                        headerLayout = web.HeaderLayout,
-                        headerEmphasis = web.HeaderEmphasis,
-                        megaMenuEnabled = web.MegaMenuEnabled,
-                        hideTitleInHeader = web.HideTitleInHeader
-                    };
-
-                    web.ExecutePostAsync("/_api/web/SetChromeOptions", System.Text.Json.JsonSerializer.Serialize(jsonRequest)).GetAwaiter().GetResult();
-
+                    pnpContext.Web.HeaderEmphasis = (Core.Model.SharePoint.VariantThemeType)Enum.Parse(typeof(Core.Model.SharePoint.VariantThemeType), template.Header.BackgroundEmphasis.ToString());
+                    pnpContext.Web.MegaMenuEnabled = template.Header.MenuStyle == SiteHeaderMenuStyle.MegaMenu;
+                    pnpContext.Web.HideTitleInHeader = !template.Header.ShowSiteTitle;
+                    pnpContext.Web.Update();
                 }
             }
             return parser;

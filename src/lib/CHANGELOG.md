@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - Feature : remove special chars from the SiteAlias #558 [gautamdsheth - Gautam Sheth]
+- Fix: set ContextSettings Type to ClientContextType.PnPCoreSdk #566 [czullu - Christian Zuellig]
 
 ## [1.8.0]
 

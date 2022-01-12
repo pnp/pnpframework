@@ -73,7 +73,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     return parser;
                 }
 
-                web.EnsureProperties(w => w.Url);
+                web.EnsureProperties(w => w.HeaderLayout);
 
                 switch (template.Header.Layout)
                 {

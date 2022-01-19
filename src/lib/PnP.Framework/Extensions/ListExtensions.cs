@@ -1993,23 +1993,26 @@ namespace Microsoft.SharePoint.Client
 
                 // Check if default values file is present
                 var formsFolder = list.RootFolder.Folders.FirstOrDefault(x => x.Name == "Forms");
-                var configFile = formsFolder.Files.GetByUrl(defaultValuesFileName);
-                clientContext.Load(configFile, c => c.Exists);
-                bool fileExists = false;
-                try
+                if (formsFolder != null)
                 {
-                    clientContext.ExecuteQueryRetry();
-                    fileExists = true;
-                }
-                catch
-                {
-                    // Do nothing here
-                }
+                    var configFile = formsFolder.Files.GetByUrl(defaultValuesFileName);
+                    clientContext.Load(configFile, c => c.Exists);
+                    bool fileExists = false;
+                    try
+                    {
+                        clientContext.ExecuteQueryRetry();
+                        fileExists = true;
+                    }
+                    catch
+                    {
+                        // Do nothing here
+                    }
 
-                if (fileExists)
-                {
-                    configFile.DeleteObject();
-                    clientContext.ExecuteQueryRetry();
+                    if (fileExists)
+                    {
+                        configFile.DeleteObject();
+                        clientContext.ExecuteQueryRetry();
+                    }
                 }
             }
         }

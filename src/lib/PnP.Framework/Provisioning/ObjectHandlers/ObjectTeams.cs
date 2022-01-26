@@ -4,6 +4,7 @@ using Microsoft.SharePoint.Client;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PnP.Framework.Diagnostics;
+using PnP.Framework.Graph;
 using PnP.Framework.Provisioning.Connectors;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Model.Configuration;
@@ -17,9 +18,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
-using System.Text.RegularExpressions;
 using System.Threading;
-using System.Web;
+using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -201,7 +201,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// <param name="parser">The PnP Token Parser</param>
         /// <param name="accessToken">The OAuth 2.0 Access Token</param>
         /// <returns>The ID of the created or update Team</returns>
-        private static string CreateOrUpdateTeam(PnPMonitoredScope scope, Team team, TokenParser parser, string accessToken)
+        private static string CreateOrUpdateTeam(PnPMonitoredScope scope, Model.Teams.Team team, TokenParser parser, string accessToken)
         {
             var parsedMailNickname = !string.IsNullOrEmpty(team.MailNickname) ? parser.ParseString(team.MailNickname).ToLower() : null;
 
@@ -424,7 +424,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 catch (Exception ex)
                 {
                     scope.LogError("Error checking archive status", ex.Message);
-                } 
+                }
             }
 
             // If the Team is currently archived
@@ -496,6 +496,15 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     wait = false;
                 }
             }
+
+            // Ensure that Files tab is available right after Teams creation
+            Task.Run(async () =>
+            {
+                var graphClient = GraphUtility.CreateGraphClient(accessToken);
+
+                await InitTeamDrive(groupId, graphClient);
+            }).GetAwaiter().GetResult();
+
             return (teamId);
         }
 
@@ -908,7 +917,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             var channelId = existingChannel["id"].ToString();
             var channelDisplayName = existingChannel["displayName"].ToString();
             var newChannelName = parser.ParseString(channel.DisplayName);
-            var identicalChannelName =  newChannelName == channelDisplayName;
+            var identicalChannelName = newChannelName == channelDisplayName;
 
             // Prepare the request body for the Channel update
             var channelToUpdate = new
@@ -1761,7 +1770,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 if (string.IsNullOrEmpty(tab.TeamsAppId))
                 {
                     var tabJObject = teamTabsJObject.FirstOrDefault(x => x["id"].ToString() == tab.ID);
-                    if (tabJObject!=default)
+                    if (tabJObject != default)
                         tab.TeamsAppId = tabJObject["teamsApp"]?["id"]?.ToString();
                 }
                 tabs.Add(tab);
@@ -1777,6 +1786,18 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             mailNickname = UrlUtility.ReplaceAccentedCharactersWithLatin(mailNickname);
             return mailNickname;
         }
-        
+
+        public static async Task InitTeamDrive(string GroupId, Microsoft.Graph.GraphServiceClient graphClient = null)
+        {
+            var channels = await graphClient.Teams[GroupId].Channels.Request().GetAsync();
+
+            foreach (var channel in channels)
+            {
+                if (channel.DisplayName == "General")
+                {
+                    await graphClient.Teams[GroupId].Channels[channel.Id].FilesFolder.Request().GetAsync();
+                }
+            }
+        }
     }
 }

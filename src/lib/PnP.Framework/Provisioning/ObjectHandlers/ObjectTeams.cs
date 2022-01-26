@@ -201,7 +201,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// <param name="parser">The PnP Token Parser</param>
         /// <param name="accessToken">The OAuth 2.0 Access Token</param>
         /// <returns>The ID of the created or update Team</returns>
-        private static string CreateOrUpdateTeam(PnPMonitoredScope scope, Model.Teams.Team team, TokenParser parser, string accessToken)
+        private static string CreateOrUpdateTeam(PnPMonitoredScope scope, Team team, TokenParser parser, string accessToken)
         {
             var parsedMailNickname = !string.IsNullOrEmpty(team.MailNickname) ? parser.ParseString(team.MailNickname).ToLower() : null;
 

@@ -130,6 +130,7 @@ namespace PnP.Framework
 
             var ctx = authManager.GetContext(pnpContext.Uri.ToString());
             var ctxSettings = ctx.GetContextSettings();
+            ctxSettings.Type = Utilities.Context.ClientContextType.PnPCoreSdk;
             ctxSettings.AuthenticationManager = authManager; //otherwise GetAccessToken would not work for example
             ctx.AddContextSettings(ctxSettings);
             return ctx;

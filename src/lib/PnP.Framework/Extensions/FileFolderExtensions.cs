@@ -510,7 +510,8 @@ namespace Microsoft.SharePoint.Client
                 await context.ExecuteQueryRetryAsync();
 
                 // Get the newly created folder
-                var newFolder = parentFolder.Folders.GetByPath(ResourcePath.FromDecodedUrl(folderName));
+                var folderPath = parentFolder.ServerRelativePath.DecodedUrl.TrimEnd(new char[] { '/' }) + "/" + folderName;
+                var newFolder = context.Web.GetFolderByServerRelativePath(ResourcePath.FromDecodedUrl(folderPath));
                 // Ensure all properties are loaded (to be compatible with the previous implementation)
                 if (expressions != null && expressions.Any())
                 {

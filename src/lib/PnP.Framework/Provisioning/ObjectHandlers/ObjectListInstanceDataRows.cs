@@ -399,6 +399,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             string defaultContentTypeId)
         {
             var itemCount = 1;
+            var listDefaultColumnValues = siteList.GetDefaultColumnValues();
+
             foreach (var item in items)
             {
                 switch (item.FileSystemObjectType)
@@ -412,7 +414,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     case FileSystemObjectType.Folder:
                         {
                             //PnP:Folder
-                            ProcessFolderRow(web, item, siteList, listInstance, queryConfig, template, scope);
+                            ProcessFolderRow(web, item, siteList, listInstance, queryConfig, listDefaultColumnValues, template, scope);
                             break;
                         }
                     default:
@@ -705,7 +707,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return value;
         }
 
-        public Model.Folder ExtractFolderSettings(Web web, List siteList, string serverRelativePathToFolder, PnPMonitoredScope scope, Model.Configuration.Lists.Lists.ExtractListsQueryConfiguration queryConfig)
+        public Model.Folder ExtractFolderSettings(Web web, List siteList, List<Dictionary<string, string>> listDefaultValues, string serverRelativePathToFolder, PnPMonitoredScope scope, Model.Configuration.Lists.Lists.ExtractListsQueryConfiguration queryConfig)
         {
             Model.Folder pnpFolder = null;
             try
@@ -806,6 +808,19 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         }
                     }
                 }
+
+                //export PnPFolder default values
+                if (listDefaultValues != null)
+                {
+                    var href = Uri.UnescapeDataString(spFolder.ServerRelativeUrl);
+                    href = href.Replace(siteList.RootFolder.ServerRelativeUrl, "/").Replace("//", "/");
+
+                    var defaultValues = listDefaultValues.Where(dv => dv["Path"] == href);
+                    foreach (var defaultValue in defaultValues)
+                    {
+                        pnpFolder.DefaultColumnValues.Add(defaultValue["Field"], defaultValue["Value"]);
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -814,7 +829,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return pnpFolder;
         }
 
-        private void ProcessFolderRow(Web web, ListItem listItem, List siteList, ListInstance listInstance, Model.Configuration.Lists.Lists.ExtractListsQueryConfiguration queryConfig, ProvisioningTemplate template, PnPMonitoredScope scope)
+        private void ProcessFolderRow(Web web, ListItem listItem, List siteList, ListInstance listInstance, Model.Configuration.Lists.Lists.ExtractListsQueryConfiguration queryConfig, List<Dictionary<string, string>> listDefaultValues, ProvisioningTemplate template, PnPMonitoredScope scope)
         {
             listItem.EnsureProperties(it => it.ParentList.RootFolder.ServerRelativeUrl);
             string serverRelativeListUrl = listItem.ParentList.RootFolder.ServerRelativeUrl;
@@ -833,7 +848,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         if (pnpFolder == null)
                         {
                             string pathToCurrentFolder = string.Format("{0}/{1}", serverRelativeListUrl, string.Join("/", folderSegments.Take(i + 1)));
-                            pnpFolder = ExtractFolderSettings(web, siteList, pathToCurrentFolder, scope, queryConfig);
+                            pnpFolder = ExtractFolderSettings(web, siteList, listDefaultValues, pathToCurrentFolder, scope, queryConfig);
                             listInstance.Folders.Add(pnpFolder);
                         }
                     }
@@ -843,7 +858,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         if (childFolder == null)
                         {
                             string pathToCurrentFolder = string.Format("{0}/{1}", serverRelativeListUrl, string.Join("/", folderSegments.Take(i + 1)));
-                            childFolder = ExtractFolderSettings(web, siteList, pathToCurrentFolder, scope, queryConfig);
+                            childFolder = ExtractFolderSettings(web, siteList, listDefaultValues, pathToCurrentFolder, scope, queryConfig);
                             pnpFolder.Folders.Add(childFolder);
                         }
                         pnpFolder = childFolder;

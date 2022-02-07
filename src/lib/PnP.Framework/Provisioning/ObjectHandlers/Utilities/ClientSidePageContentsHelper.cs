@@ -182,13 +182,19 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                     extractedPageInstance.ThumbnailUrl = Regex.Replace(extractedPageInstance.ThumbnailUrl, file.UniqueId.ToString("N"), $"{{fileuniqueid:{file.ServerRelativePath.DecodedUrl.Substring(web.ServerRelativeUrl.Length).TrimStart("/".ToCharArray())}}}");
                                 }
                                 
-                            }catch(ServerException){
+                            }
+                            catch(ServerException ex)
+                            {
                                 //Catch File Not found exception if Guid does not match with a file
                                 //There can be a thumbnail image url containing a Guid without having to be an image in the SharePoint site
                                 if (ex.ServerErrorTypeName == "System.IO.FileNotFoundException")
+                                {
                                     scope.LogDebug($"File with id {thumbnailFileIds[0]} not loaded.");
+                                }
                                 else
+                                {
                                     throw ex;
+                                }
                             }
 
                         }

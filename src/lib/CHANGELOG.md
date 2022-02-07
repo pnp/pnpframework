@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Fix: for adding folders in large list #559 [gautamdsheth - Gautam Sheth]
 - Added localization support for child nodes in footer #560 [b00johst - John Frankolin]
 - Additional changes for fix #498, improving header provisioning scenario #562 [fzbm - Florian Zink]
+- Catching File.NotFound exception to prevent error during export #573 [magarma - Miguel Angel García Martínez]
 
 ## [1.8.0]
 

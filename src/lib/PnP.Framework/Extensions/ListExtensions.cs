@@ -1657,7 +1657,9 @@ namespace Microsoft.SharePoint.Client
         private static void SetDefaultColumnValuesImplementation(this List list, IEnumerable<IDefaultColumnValue> columnValues)
         {
             if (columnValues == null || !columnValues.Any())
+            {
                 list.ClearDefaultColumnValues();
+            }
 
             using (var clientContext = list.Context as ClientContext)
             {

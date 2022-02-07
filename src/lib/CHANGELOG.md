@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Additional changes for fix #498, improving header provisioning scenario #562 [fzbm - Florian Zink]
 - Catching File.NotFound exception to prevent error during export #573 [magarma - Miguel Angel García Martínez]
 - Check for null before foreach to avoid nullExceptionIssue #574 [magarma - Miguel Angel García Martínez]
+- Fix Clear-PnPDefaultColumnValues not working with taxonomy fields #576 [jackpoz - Giacomo Pozzoni]
 
 ## [1.8.0]
 

@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Support export folder default values #583 [magarma - Miguel Angel García Martínez]
+
 ### Changed
 
 - Feature : remove special chars from the SiteAlias #558 [gautamdsheth - Gautam Sheth]

@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Catching File.NotFound exception to prevent error during export #573 [magarma - Miguel Angel García Martínez]
 - Check for null before foreach to avoid nullExceptionIssue #574 [magarma - Miguel Angel García Martínez]
 - Fix Clear-PnPDefaultColumnValues not working with taxonomy fields #576 [jackpoz - Giacomo Pozzoni]
+- Files tab teams first load after creation #588 [roberAlb - Roberto Ramon]
 
 ## [1.8.0]
 

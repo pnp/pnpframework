@@ -30,7 +30,7 @@ namespace PnP.Framework.Graph
         /// <returns>List with User objects</returns>
         public static Model.User GetUser(string accessToken, Guid userId, string[] selectProperties = null, int startIndex = 0, int? endIndex = 999, int retryCount = 10, int delay = 500, bool useBetaEndPoint = false, bool ignoreDefaultProperties = false)
         {
-            return ListUsers(accessToken, $"id eq '{userId}'", null, selectProperties, startIndex, endIndex, retryCount, delay, useBetaEndPoint: useBetaEndPoint).FirstOrDefault();
+            return ListUsers(accessToken, $"id eq '{userId}'", null, selectProperties, startIndex, endIndex, retryCount, delay, ignoreDefaultProperties: ignoreDefaultProperties, useBetaEndPoint: useBetaEndPoint).FirstOrDefault();
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace PnP.Framework.Graph
         /// <returns>User object</returns>
         public static Model.User GetUser(string accessToken, string userPrincipalName, string[] selectProperties = null, int startIndex = 0, int? endIndex = 999, int retryCount = 10, int delay = 500, bool useBetaEndPoint = false, bool ignoreDefaultProperties = false)
         {
-            return ListUsers(accessToken, $"userPrincipalName eq '{userPrincipalName}'", null, selectProperties, startIndex, endIndex, retryCount, delay, useBetaEndPoint: useBetaEndPoint).FirstOrDefault();
+            return ListUsers(accessToken, $"userPrincipalName eq '{userPrincipalName}'", null, selectProperties, startIndex, endIndex, retryCount, delay, ignoreDefaultProperties: ignoreDefaultProperties, useBetaEndPoint: useBetaEndPoint).FirstOrDefault();
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace PnP.Framework.Graph
         /// <returns>List with User objects</returns>
         public static List<Model.User> ListUsers(string accessToken, string[] additionalProperties = null, int startIndex = 0, int? endIndex = 999, int retryCount = 10, int delay = 500, bool useBetaEndPoint = false, bool ignoreDefaultProperties = false)
         {
-            return ListUsers(accessToken, null, null, additionalProperties, startIndex, endIndex, retryCount, delay, useBetaEndPoint: useBetaEndPoint);
+            return ListUsers(accessToken, null, null, additionalProperties, startIndex, endIndex, retryCount, delay, ignoreDefaultProperties: ignoreDefaultProperties, useBetaEndPoint: useBetaEndPoint);
         }
 
         /// <summary>

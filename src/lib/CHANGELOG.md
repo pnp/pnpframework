@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Support export folder default values #583 [magarma - Miguel Angel García Martínez]
+
 ### Changed
 
 - Feature : remove special chars from the SiteAlias #558 [gautamdsheth - Gautam Sheth]
@@ -17,6 +19,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Fix: for adding folders in large list #559 [gautamdsheth - Gautam Sheth]
 - Added localization support for child nodes in footer #560 [b00johst - John Frankolin]
 - Additional changes for fix #498, improving header provisioning scenario #562 [fzbm - Florian Zink]
+- Catching File.NotFound exception to prevent error during export #573 [magarma - Miguel Angel García Martínez]
+- Check for null before foreach to avoid nullExceptionIssue #574 [magarma - Miguel Angel García Martínez]
+- Fix Clear-PnPDefaultColumnValues not working with taxonomy fields #576 [jackpoz - Giacomo Pozzoni]
+- Files tab teams first load after creation #588 [roberAlb - Roberto Ramon]
+- Adding beta option to MS Graph Users functions #586 [koenzomers - Koen Zomers]
 
 ## [1.8.0]
 

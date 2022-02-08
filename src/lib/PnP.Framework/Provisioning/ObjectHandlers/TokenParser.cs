@@ -645,18 +645,20 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             var storageEntitiesDict = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(storageEntitiesIndex);
 
             var storageEntities = new List<StorageEntity>();
-            foreach (var key in storageEntitiesDict.Keys)
+            if (storageEntitiesDict != null)
             {
-                var storageEntity = new StorageEntity
+                foreach (var key in storageEntitiesDict.Keys)
                 {
-                    Key = key,
-                    Value = storageEntitiesDict[key]["Value"],
-                    Comment = storageEntitiesDict[key]["Comment"],
-                    Description = storageEntitiesDict[key]["Description"]
-                };
-                storageEntities.Add(storageEntity);
+                    var storageEntity = new StorageEntity
+                    {
+                        Key = key,
+                        Value = storageEntitiesDict[key]["Value"],
+                        Comment = storageEntitiesDict[key]["Comment"],
+                        Description = storageEntitiesDict[key]["Description"]
+                    };
+                    storageEntities.Add(storageEntity);
+                }
             }
-
             return storageEntities;
         }
 

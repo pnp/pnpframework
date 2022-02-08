@@ -168,16 +168,33 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                         CollectImageFilesFromGenericGuids(regexGuidPatternNoDashes, null, regexGuidPatternOptionalBrackets, extractedPageInstance.ThumbnailUrl, thumbnailFileIds);
                         if (thumbnailFileIds.Count == 1)
                         {
-                            var file = web.GetFileById(thumbnailFileIds[0]);
-                            web.Context.Load(file, f => f.Level, f => f.ServerRelativePath, f => f.UniqueId);
-                            web.Context.ExecuteQueryRetry();
+                            try{
+                                
+                                var file = web.GetFileById(thumbnailFileIds[0]);
+                                web.Context.Load(file, f => f.Level, f => f.ServerRelativePath, f => f.UniqueId);
+                                web.Context.ExecuteQueryRetry();
 
-                            // Item1 = was file added to the template
-                            // Item2 = file name (if file found)
-                            var imageAddedTuple = LoadAndAddPageImage(web, file, template, creationInfo, scope);
-                            if (imageAddedTuple.Item1)
+                                // Item1 = was file added to the template
+                                // Item2 = file name (if file found)
+                                var imageAddedTuple = LoadAndAddPageImage(web, file, template, creationInfo, scope);
+                                if (imageAddedTuple.Item1)
+                                {
+                                    extractedPageInstance.ThumbnailUrl = Regex.Replace(extractedPageInstance.ThumbnailUrl, file.UniqueId.ToString("N"), $"{{fileuniqueid:{file.ServerRelativePath.DecodedUrl.Substring(web.ServerRelativeUrl.Length).TrimStart("/".ToCharArray())}}}");
+                                }
+                                
+                            }
+                            catch(ServerException ex)
                             {
-                                extractedPageInstance.ThumbnailUrl = Regex.Replace(extractedPageInstance.ThumbnailUrl, file.UniqueId.ToString("N"), $"{{fileuniqueid:{file.ServerRelativePath.DecodedUrl.Substring(web.ServerRelativeUrl.Length).TrimStart("/".ToCharArray())}}}");
+                                //Catch File Not found exception if Guid does not match with a file
+                                //There can be a thumbnail image url containing a Guid without having to be an image in the SharePoint site
+                                if (ex.ServerErrorTypeName == "System.IO.FileNotFoundException")
+                                {
+                                    scope.LogDebug($"File with id {thumbnailFileIds[0]} not loaded.");
+                                }
+                                else
+                                {
+                                    throw ex;
+                                }
                             }
 
                         }

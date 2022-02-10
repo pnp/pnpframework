@@ -20,6 +20,10 @@ This library is the cross platform successor of the [PnP-Sites-Core](https://git
 
 Issues and PR's need to be created in the PnP Framework repo, the PnP Sites Core repo has been archived.
 
+## Supportability and SLA
+
+This library is open-source and community provided library with active community providing support for it. There is no SLA or direct support for this open-source component from Microsoft. Please report any issues using the [issues list](https://github.com/pnp/pnpcore/issues).
+
 ## Building and contributing
 
 To build PnP Framework you need the following minimal components installed:

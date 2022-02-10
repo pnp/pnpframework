@@ -22,7 +22,7 @@ Issues and PR's need to be created in the PnP Framework repo, the PnP Sites Core
 
 ## Supportability and SLA
 
-This library is open-source and community provided library with active community providing support for it. There is no SLA or direct support for this open-source component from Microsoft. Please report any issues using the [issues list](https://github.com/pnp/pnpcore/issues).
+This library is open-source and community provided component with active community providing support for it. This is not Microsoft provided component so there's no SLA or direct support for this open-source component from Microsoft. Please report any issues using the [issues list](https://github.com/pnp/pnpframework/issues).
 
 ## Building and contributing
 

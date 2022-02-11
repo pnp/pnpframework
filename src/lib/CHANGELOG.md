@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Fix Clear-PnPDefaultColumnValues not working with taxonomy fields #576 [jackpoz - Giacomo Pozzoni]
 - Files tab teams first load after creation #588 [roberAlb - Roberto Ramon]
 - Adding beta option to MS Graph Users functions #586 [koenzomers - Koen Zomers]
+- Added ignoreDefaultProperties to UsersUtility #590 [koenzomers - Koen Zomers]
 
 ## [1.8.0]
 

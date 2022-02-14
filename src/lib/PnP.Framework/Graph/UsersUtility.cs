@@ -131,7 +131,7 @@ namespace PnP.Framework.Graph
                     {
                         pageCount++;
 
-                        foreach (var u in pagedUsers)
+                        foreach (var pagedUser in pagedUsers)
                         {
                             currentIndex++;
 
@@ -142,56 +142,7 @@ namespace PnP.Framework.Graph
 
                             if (currentIndex >= startIndex)
                             {
-                                var user = new Model.User
-                                {
-                                    Id = Guid.TryParse(u.Id, out Guid idGuid) ? (Guid?)idGuid : null,
-                                    DisplayName = u.DisplayName,
-                                    GivenName = u.GivenName,
-                                    JobTitle = u.JobTitle,
-                                    MobilePhone = u.MobilePhone,
-                                    OfficeLocation = u.OfficeLocation,
-                                    PreferredLanguage = u.PreferredLanguage,
-                                    Surname = u.Surname,
-                                    UserPrincipalName = u.UserPrincipalName,
-                                    BusinessPhones = u.BusinessPhones,
-                                    AdditionalProperties = u.AdditionalData,
-                                    Mail = u.Mail,
-                                    AccountEnabled = u.AccountEnabled,
-                                };
-
-                                // If additional properties have been provided, ensure their output gets added to the AdditionalProperties dictonary of the output
-                                if (selectProperties != null)
-                                {
-                                    // Ensure we have the AdditionalProperties dictionary available to fill, if necessary
-                                    if(user.AdditionalProperties == null)
-                                    {
-                                        user.AdditionalProperties = new Dictionary<
-                                        string, object>();
-                                    }
-
-                                    foreach (var selectProperty in selectProperties)
-                                    {
-                                        // Ensure the requested property has been returned in the response
-                                        var property = u.GetType().GetProperty(selectProperty, BindingFlags.IgnoreCase |  BindingFlags.Public | BindingFlags.Instance);
-                                        if (property != null)
-                                        {
-                                            // First check if we have the property natively on the User model
-                                            var userProperty = user.GetType().GetProperty(selectProperty, BindingFlags.IgnoreCase |  BindingFlags.Public | BindingFlags.Instance);
-                                            if(userProperty != null)
-                                            {
-                                                // Set the property on the User model
-                                                userProperty.SetValue(user, property.GetValue(u), null);
-                                            }
-                                            else
-                                            {
-                                                // Property does not exist on the User model, add the property to the AdditionalProperties dictionary
-                                                user.AdditionalProperties.Add(selectProperty, property.GetValue(u));
-                                            }
-                                        }
-                                    }
-                                }
-
-                                users.Add(user);
+                                users.Add(MapUserEntity(pagedUser, selectProperties));
                             }
                         }
 
@@ -290,7 +241,7 @@ namespace PnP.Framework.Graph
                     {
                         pageCount++;
 
-                        foreach (var u in pagedUsers)
+                        foreach (var pagedUser in pagedUsers)
                         {
                             currentIndex++;
 
@@ -301,56 +252,7 @@ namespace PnP.Framework.Graph
 
                             if (currentIndex >= startIndex)
                             {
-                                var user = new Model.User
-                                {
-                                    Id = Guid.TryParse(u.Id, out Guid idGuid) ? (Guid?)idGuid : null,
-                                    DisplayName = u.DisplayName,
-                                    GivenName = u.GivenName,
-                                    JobTitle = u.JobTitle,
-                                    MobilePhone = u.MobilePhone,
-                                    OfficeLocation = u.OfficeLocation,
-                                    PreferredLanguage = u.PreferredLanguage,
-                                    Surname = u.Surname,
-                                    UserPrincipalName = u.UserPrincipalName,
-                                    BusinessPhones = u.BusinessPhones,
-                                    AdditionalProperties = u.AdditionalData,
-                                    Mail = u.Mail,
-                                    AccountEnabled = u.AccountEnabled,
-                                };
-
-                                // If additional properties have been provided, ensure their output gets added to the AdditionalProperties dictonary of the output
-                                if (selectProperties != null)
-                                {
-                                    // Ensure we have the AdditionalProperties dictionary available to fill, if necessary
-                                    if(user.AdditionalProperties == null)
-                                    {
-                                        user.AdditionalProperties = new Dictionary<
-                                        string, object>();
-                                    }
-
-                                    foreach (var selectProperty in selectProperties)
-                                    {
-                                        // Ensure the requested property has been returned in the response
-                                        var property = u.GetType().GetProperty(selectProperty, BindingFlags.IgnoreCase |  BindingFlags.Public | BindingFlags.Instance);
-                                        if (property != null)
-                                        {
-                                            // First check if we have the property natively on the User model
-                                            var userProperty = user.GetType().GetProperty(selectProperty, BindingFlags.IgnoreCase |  BindingFlags.Public | BindingFlags.Instance);
-                                            if(userProperty != null)
-                                            {
-                                                // Set the property on the User model
-                                                userProperty.SetValue(user, property.GetValue(u), null);
-                                            }
-                                            else
-                                            {
-                                                // Property does not exist on the User model, add the property to the AdditionalProperties dictionary
-                                                user.AdditionalProperties.Add(selectProperty, property.GetValue(u));
-                                            }
-                                        }
-                                    }
-                                }
-
-                                usersDelta.Users.Add(user);
+                                usersDelta.Users.Add(MapUserEntity(pagedUser, selectProperties));
                             }
                         }
 
@@ -387,5 +289,65 @@ namespace PnP.Framework.Graph
             }
             return result;
         }
+
+        /// <summary>
+        /// Maps a Graph User result to a local User model
+        /// </summary>
+        /// <param name="graphUser">Graph User entity</param>
+        /// <param name="selectProperties">Properties to copy over from the Graph model to the local User model</param>
+        /// <returns>Local User model filled with the information Graph User entity</returns>
+        private static Model.User MapUserEntity(User graphUser, string[] selectProperties)
+        {
+            var user = new Model.User
+            {
+                Id = Guid.TryParse(graphUser.Id, out Guid idGuid) ? (Guid?)idGuid : null,
+                DisplayName = graphUser.DisplayName,
+                GivenName = graphUser.GivenName,
+                JobTitle = graphUser.JobTitle,
+                MobilePhone = graphUser.MobilePhone,
+                OfficeLocation = graphUser.OfficeLocation,
+                PreferredLanguage = graphUser.PreferredLanguage,
+                Surname = graphUser.Surname,
+                UserPrincipalName = graphUser.UserPrincipalName,
+                BusinessPhones = graphUser.BusinessPhones,
+                AdditionalProperties = graphUser.AdditionalData,
+                Mail = graphUser.Mail,
+                AccountEnabled = graphUser.AccountEnabled,
+            };
+
+            // If additional properties have been provided, ensure their output gets added to the AdditionalProperties dictonary of the output
+            if (selectProperties != null)
+            {
+                // Ensure we have the AdditionalProperties dictionary available to fill, if necessary
+                if(user.AdditionalProperties == null)
+                {
+                    user.AdditionalProperties = new Dictionary<
+                    string, object>();
+                }
+
+                foreach (var selectProperty in selectProperties)
+                {
+                    // Ensure the requested property has been returned in the response
+                    var property = graphUser.GetType().GetProperty(selectProperty, BindingFlags.IgnoreCase |  BindingFlags.Public | BindingFlags.Instance);
+                    if (property != null)
+                    {
+                        // First check if we have the property natively on the User model
+                        var userProperty = user.GetType().GetProperty(selectProperty, BindingFlags.IgnoreCase |  BindingFlags.Public | BindingFlags.Instance);
+                        if(userProperty != null)
+                        {
+                            // Set the property on the User model
+                            userProperty.SetValue(user, property.GetValue(graphUser), null);
+                        }
+                        else
+                        {
+                            // Property does not exist on the User model, add the property to the AdditionalProperties dictionary
+                            user.AdditionalProperties.Add(selectProperty, property.GetValue(graphUser));
+                        }
+                    }
+                }
+            }
+
+            return user;
+        } 
     }
 }

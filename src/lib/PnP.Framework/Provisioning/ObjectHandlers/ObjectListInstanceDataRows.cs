@@ -910,11 +910,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
             foreach (var fieldValue in filteredFieldValues)
             {
-                var value = item.FieldValuesAsText[fieldValue.Key];
-                var skip = extractionConfig.SkipEmptyFields && string.IsNullOrEmpty(value);
+                var value = item.FieldValuesAsText[fieldValue.Key];//FieldValuesAsText strips of html and returns empty string in case all info is in attributes like for canvascontrol in HostedAppsConfig
+                var skip = extractionConfig.SkipEmptyFields && item[fieldValue.Key]==null;
                 if (!skip)
                 {
-                    dataRow.Values.Add(fieldValue.Key, TokenizeValue(web, siteList.Fields.FirstOrDefault(f => f.InternalName == fieldValue.Key).TypeAsString, fieldValue, value));
+                    string parsedValue = TokenizeValue(web, siteList.Fields.FirstOrDefault(f => f.InternalName == fieldValue.Key).TypeAsString, fieldValue, value);
+                    if(!(extractionConfig.SkipEmptyFields && string.IsNullOrEmpty(parsedValue)))
+                        dataRow.Values.Add(fieldValue.Key, parsedValue);
                 }
             }
             if (queryConfig != null && queryConfig.IncludeAttachments && siteList.EnableAttachments && (bool)item["Attachments"])

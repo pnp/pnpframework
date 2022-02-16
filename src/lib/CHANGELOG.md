@@ -26,6 +26,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Adding beta option to MS Graph Users functions #586 [koenzomers - Koen Zomers]
 - Added ignoreDefaultProperties to UsersUtility #590 [koenzomers - Koen Zomers]
 - Rewrite of the get user delta #602 [koenzomers - Koen Zomers]
+- Fix ProcessDataRow ignore html fields as empty even they are not #604 [czullu - Christian Zuellig]
 
 ## [1.8.0]
 

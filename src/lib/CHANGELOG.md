@@ -25,6 +25,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Files tab teams first load after creation #588 [roberAlb - Roberto Ramon]
 - Adding beta option to MS Graph Users functions #586 [koenzomers - Koen Zomers]
 - Added ignoreDefaultProperties to UsersUtility #590 [koenzomers - Koen Zomers]
+- Rewrite of the get user delta #602 [koenzomers - Koen Zomers]
 
 ## [1.8.0]
 

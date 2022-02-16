@@ -131,7 +131,7 @@ namespace PnP.Framework.Graph
                     {
                         pageCount++;
 
-                        foreach (var u in pagedUsers)
+                        foreach (var pagedUser in pagedUsers)
                         {
                             currentIndex++;
 
@@ -142,56 +142,7 @@ namespace PnP.Framework.Graph
 
                             if (currentIndex >= startIndex)
                             {
-                                var user = new Model.User
-                                {
-                                    Id = Guid.TryParse(u.Id, out Guid idGuid) ? (Guid?)idGuid : null,
-                                    DisplayName = u.DisplayName,
-                                    GivenName = u.GivenName,
-                                    JobTitle = u.JobTitle,
-                                    MobilePhone = u.MobilePhone,
-                                    OfficeLocation = u.OfficeLocation,
-                                    PreferredLanguage = u.PreferredLanguage,
-                                    Surname = u.Surname,
-                                    UserPrincipalName = u.UserPrincipalName,
-                                    BusinessPhones = u.BusinessPhones,
-                                    AdditionalProperties = u.AdditionalData,
-                                    Mail = u.Mail,
-                                    AccountEnabled = u.AccountEnabled,
-                                };
-
-                                // If additional properties have been provided, ensure their output gets added to the AdditionalProperties dictonary of the output
-                                if (selectProperties != null)
-                                {
-                                    // Ensure we have the AdditionalProperties dictionary available to fill, if necessary
-                                    if(user.AdditionalProperties == null)
-                                    {
-                                        user.AdditionalProperties = new Dictionary<
-                                        string, object>();
-                                    }
-
-                                    foreach (var selectProperty in selectProperties)
-                                    {
-                                        // Ensure the requested property has been returned in the response
-                                        var property = u.GetType().GetProperty(selectProperty, BindingFlags.IgnoreCase |  BindingFlags.Public | BindingFlags.Instance);
-                                        if (property != null)
-                                        {
-                                            // First check if we have the property natively on the User model
-                                            var userProperty = user.GetType().GetProperty(selectProperty, BindingFlags.IgnoreCase |  BindingFlags.Public | BindingFlags.Instance);
-                                            if(userProperty != null)
-                                            {
-                                                // Set the property on the User model
-                                                userProperty.SetValue(user, property.GetValue(u), null);
-                                            }
-                                            else
-                                            {
-                                                // Property does not exist on the User model, add the property to the AdditionalProperties dictionary
-                                                user.AdditionalProperties.Add(selectProperty, property.GetValue(u));
-                                            }
-                                        }
-                                    }
-                                }
-
-                                users.Add(user);
+                                users.Add(MapUserEntity(pagedUser, selectProperties));
                             }
                         }
 
@@ -229,90 +180,174 @@ namespace PnP.Framework.Graph
         /// <param name="endIndex">Last item in the results returned by Microsoft Graph to return. Provide NULL to return all results that exist.</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry.</param>
-        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments.</param>
         /// <param name="useBetaEndPoint">Indicates if the v1.0 (false) or beta (true) endpoint should be used at Microsoft Graph to query for the data</param>
+        /// <param name="ignoreDefaultProperties">If set to true, only the properties provided through selectProperties will be loaded. The default properties will not be. Optional. Default is that the default properties will always be retrieved.</param>
         /// <returns>List with User objects</returns>
-        public static Model.UserDelta ListUserDelta(string accessToken, string deltaToken, string filter, string orderby, string[] selectProperties = null, int startIndex = 0, int? endIndex = 999, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production, bool useBetaEndPoint = false)
+        public static Model.UserDelta ListUserDelta(string accessToken, string deltaToken, string filter, string orderby, string[] selectProperties = null, int startIndex = 0, int? endIndex = 999, int retryCount = 10, int delay = 500, bool useBetaEndPoint = false, bool ignoreDefaultProperties = false)
         {
             if (String.IsNullOrEmpty(accessToken))
             {
                 throw new ArgumentNullException(nameof(accessToken));
             }
-
-            Model.UserDelta userDelta = new Model.UserDelta
+            // Rewrite AdditionalProperties to Additional Data
+            var propertiesToSelect = ignoreDefaultProperties ? new List<string>() : new List<string> { "BusinessPhones", "DisplayName", "GivenName", "JobTitle", "Mail", "MobilePhone", "OfficeLocation", "PreferredLanguage", "Surname", "UserPrincipalName", "Id", "AccountEnabled" };
+            
+            selectProperties = selectProperties?.Select(p => p == "AdditionalProperties" ? "AdditionalData" : p).ToArray();
+            
+            if(selectProperties != null)
             {
-                Users = new List<Model.User>()
-            };
+                foreach(var property in selectProperties)
+                {
+                    if(!propertiesToSelect.Contains(property))
+                    {
+                        propertiesToSelect.Add(property);
+                    }
+                }
+            }
+
+            var queryOptions = new List<QueryOption>();
+
+            if(!string.IsNullOrWhiteSpace(deltaToken))
+            {
+                queryOptions.Add(new QueryOption("$skiptoken", deltaToken));
+            }
+
+            Model.UserDelta result = null;
             try
             {
-                // GET https://graph.microsoft.com/v1.0/users/delta
-                string getUserDeltaUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment, useBetaEndPoint)}users/delta?";
-
-                if (selectProperties != null)
+                // Use a synchronous model to invoke the asynchronous process
+                result = Task.Run(async () =>
                 {
-                    getUserDeltaUrl += $"$select={string.Join(",", selectProperties)}&";
-                }
-                if (!string.IsNullOrEmpty(filter))
-                {
-                    getUserDeltaUrl += $"$filter={filter}&";
-                }
-                if (!string.IsNullOrEmpty(deltaToken))
-                {
-                    getUserDeltaUrl += $"$deltatoken={deltaToken}&";
-                }
-                if (!string.IsNullOrEmpty(orderby))
-                {
-                    getUserDeltaUrl += $"$orderby={orderby}&";
-                }
+                    var usersDelta = new Model.UserDelta();
+                    usersDelta.Users = new List<Model.User>();
 
-                getUserDeltaUrl = getUserDeltaUrl.TrimEnd('&').TrimEnd('?');
+                    var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay, useBetaEndPoint: useBetaEndPoint);
 
-                int currentIndex = 0;
+                    IUserDeltaCollectionPage pagedUsers;
 
-                while (true)
-                {
-                    var response = GraphHttpClient.MakeGetRequestForString(
-                        requestUrl: getUserDeltaUrl,
-                        accessToken: accessToken);
+                    // Retrieve the first batch of users. 999 is the maximum amount of users that Graph allows to be trieved in 1 go. Use maximum size batches to lessen the chance of throttling when retrieving larger amounts of users.
+                    pagedUsers = await graphClient.Users.Delta()
+                                                        .Request(queryOptions)                    
+                                                        .Select(string.Join(",", propertiesToSelect))
+                                                        .Filter(filter)
+                                                        .OrderBy(orderby)
+                                                        .Top(!endIndex.HasValue ? 999 : endIndex.Value >= 999 ? 999 : endIndex.Value)
+                                                        .GetAsync();
 
-                    var userDeltaResponse = JsonConvert.DeserializeObject<Model.UserDelta>(response);
+                    int pageCount = 0;
+                    int currentIndex = 0;
 
-                    if (!string.IsNullOrEmpty(userDeltaResponse.DeltaToken))
+                    while (true)
                     {
-                        userDelta.DeltaToken = HttpUtility.ParseQueryString(new Uri(userDeltaResponse.DeltaToken).Query).Get("$deltatoken");
-                    }
+                        pageCount++;
 
-                    foreach (var user in userDeltaResponse.Users)
-                    {
-                        currentIndex++;
-
-                        if(endIndex.HasValue && endIndex.Value < currentIndex)
+                        foreach (var pagedUser in pagedUsers)
                         {
+                            currentIndex++;
+
+                            if(endIndex.HasValue && endIndex.Value < currentIndex)
+                            {
+                                break;
+                            }
+
+                            if (currentIndex >= startIndex)
+                            {
+                                usersDelta.Users.Add(MapUserEntity(pagedUser, selectProperties));
+                            }
+                        }
+
+                        if (pagedUsers.NextPageRequest != null && (!endIndex.HasValue || currentIndex < endIndex.Value))
+                        {
+                            // Retrieve the next batch of users. The possible oData instructions such as select and filter are already incorporated in the nextLink provided by Graph and thus do not need to be specified again.
+                            pagedUsers = await pagedUsers.NextPageRequest.GetAsync();
+                        }
+                        else
+                        {
+                            // Check if the deltaLink is provided in the response
+                            if(pagedUsers.AdditionalData.TryGetValue("@odata.deltaLink", out object deltaLinkObject))
+                            {
+                                // Use a regular expression to fetch just the deltatoken part from the deltalink. The base of the URL will thereby be cut off. This is the only part we need to use it in a subsequent run.
+                                var deltaLinkMatch = System.Text.RegularExpressions.Regex.Match(deltaLinkObject.ToString(), @"(?<=\$deltatoken=)(.*?)(?=$|&)", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+
+                                if(deltaLinkMatch.Success && !string.IsNullOrWhiteSpace(deltaLinkMatch.Value))
+                                {
+                                    // Successfully extracted the deltatoken part from the link, assign it to the return variable
+                                    usersDelta.DeltaToken = deltaLinkMatch.Value;
+                                }
+                            }
                             break;
                         }
-
-                        if (currentIndex >= startIndex && (!endIndex.HasValue || currentIndex <= endIndex.Value))
-                        {
-                            userDelta.Users.Add(user);
-                        }
                     }
 
-                    if (userDeltaResponse.NextLink != null && (!endIndex.HasValue || currentIndex < endIndex.Value))
-                    {
-                        getUserDeltaUrl = userDeltaResponse.NextLink;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
+                    return usersDelta;
+                }).GetAwaiter().GetResult();
             }
             catch (ServiceException ex)
             {
                 Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
                 throw;
             }
-            return userDelta;
+            return result;
         }
+
+        /// <summary>
+        /// Maps a Graph User result to a local User model
+        /// </summary>
+        /// <param name="graphUser">Graph User entity</param>
+        /// <param name="selectProperties">Properties to copy over from the Graph model to the local User model</param>
+        /// <returns>Local User model filled with the information Graph User entity</returns>
+        private static Model.User MapUserEntity(User graphUser, string[] selectProperties)
+        {
+            var user = new Model.User
+            {
+                Id = Guid.TryParse(graphUser.Id, out Guid idGuid) ? (Guid?)idGuid : null,
+                DisplayName = graphUser.DisplayName,
+                GivenName = graphUser.GivenName,
+                JobTitle = graphUser.JobTitle,
+                MobilePhone = graphUser.MobilePhone,
+                OfficeLocation = graphUser.OfficeLocation,
+                PreferredLanguage = graphUser.PreferredLanguage,
+                Surname = graphUser.Surname,
+                UserPrincipalName = graphUser.UserPrincipalName,
+                BusinessPhones = graphUser.BusinessPhones,
+                AdditionalProperties = graphUser.AdditionalData,
+                Mail = graphUser.Mail,
+                AccountEnabled = graphUser.AccountEnabled,
+            };
+
+            // If additional properties have been provided, ensure their output gets added to the AdditionalProperties dictonary of the output
+            if (selectProperties != null)
+            {
+                // Ensure we have the AdditionalProperties dictionary available to fill, if necessary
+                if(user.AdditionalProperties == null)
+                {
+                    user.AdditionalProperties = new Dictionary<
+                    string, object>();
+                }
+
+                foreach (var selectProperty in selectProperties)
+                {
+                    // Ensure the requested property has been returned in the response
+                    var property = graphUser.GetType().GetProperty(selectProperty, BindingFlags.IgnoreCase |  BindingFlags.Public | BindingFlags.Instance);
+                    if (property != null)
+                    {
+                        // First check if we have the property natively on the User model
+                        var userProperty = user.GetType().GetProperty(selectProperty, BindingFlags.IgnoreCase |  BindingFlags.Public | BindingFlags.Instance);
+                        if(userProperty != null)
+                        {
+                            // Set the property on the User model
+                            userProperty.SetValue(user, property.GetValue(graphUser), null);
+                        }
+                        else
+                        {
+                            // Property does not exist on the User model, add the property to the AdditionalProperties dictionary
+                            user.AdditionalProperties.Add(selectProperty, property.GetValue(graphUser));
+                        }
+                    }
+                }
+            }
+
+            return user;
+        } 
     }
 }

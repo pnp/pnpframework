@@ -263,31 +263,34 @@ namespace PnP.Framework.Modernization.Transform
 
             try
             {
-                TaxonomySession session = TaxonomySession.GetTaxonomySession(context);
-                TermStore termStore = session.GetDefaultSiteCollectionTermStore();
-                var termSet = termStore.GetTermSet(termSetId);
-                var termGroup = termSet.Group;
-                context.Load(termSet, t => t.Terms, t => t.Name);
-                context.Load(termGroup, g => g.Name);
-                context.ExecuteQueryRetry();
-
-                var termGroupName = termGroup.Name;
-                var setName = termSet.Name;
-                var termSetPath = $"{termGroupName}{TermTransformator.TermNodeDelimiter}{setName}";
-                foreach (var term in termSet.Terms)
+                using (var clonedContext = context.Clone(context.Web.GetUrl()))
                 {
-                    var termName = term.Name;
-                    var termPath = $"{termSetPath}{TermNodeDelimiter}{termName}";
-                    termsCache.Add(term.Id,
-                        new TermData() { TermGuid = term.Id, TermLabel = termName, TermPath = termPath, TermSetId = termSetId });
+                    TaxonomySession session = TaxonomySession.GetTaxonomySession(clonedContext);
+                    TermStore termStore = session.GetDefaultSiteCollectionTermStore();
+                    var termSet = termStore.GetTermSet(termSetId);
+                    var termGroup = termSet.Group;
+                    clonedContext.Load(termSet, t => t.Terms, t => t.Name);
+                    clonedContext.Load(termGroup, g => g.Name);
+                    clonedContext.ExecuteQueryRetry();
 
-                    if (term.TermsCount > 0)
+                    var termGroupName = termGroup.Name;
+                    var setName = termSet.Name;
+                    var termSetPath = $"{termGroupName}{TermTransformator.TermNodeDelimiter}{setName}";
+                    foreach (var term in termSet.Terms)
                     {
-                        var subTerms = ParseSubTerms(termPath, term, termSetId, context);
-                        //termsCache
-                        foreach (var foundTerm in subTerms)
+                        var termName = term.Name;
+                        var termPath = $"{termSetPath}{TermNodeDelimiter}{termName}";
+                        termsCache.Add(term.Id,
+                            new TermData() { TermGuid = term.Id, TermLabel = termName, TermPath = termPath, TermSetId = termSetId });
+
+                        if (term.TermsCount > 0)
                         {
-                            termsCache.Add(foundTerm.Key, foundTerm.Value);
+                            var subTerms = ParseSubTerms(termPath, term, termSetId, clonedContext);
+                            //termsCache
+                            foreach (var foundTerm in subTerms)
+                            {
+                                termsCache.Add(foundTerm.Key, foundTerm.Value);
+                            }
                         }
                     }
                 }

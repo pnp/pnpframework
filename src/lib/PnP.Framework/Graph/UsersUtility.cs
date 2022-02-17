@@ -348,6 +348,58 @@ namespace PnP.Framework.Graph
             }
 
             return user;
-        } 
+        }
+
+        /// <summary>
+        /// Retrieves a temporary access pass for the provided user
+        /// </summary>
+        /// <param name="accessToken">The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</param>
+        /// <param name="userId">Id or user principal name of the user to request the access pass for</param>
+        /// <param name="startDateTime">Date and time at which this access pass should become valid. Optional. If not provided, it immediately become valid.</param>
+        /// <param name="lifeTimeInMinutes">Durationin minutes during which this access pass will be valid. Optional. If not provided, the default configured in Azure Active Directory will be used.</param>
+        /// <param name="isUsableOnce">Boolean indicating if the access pass can be used to only log in once or repetitively during the lifetime of the access pass. Optional. If not provided, the default configured in Azure Active Directory will be used.</param>
+        /// <param name="retryCount">Number of times to retry the request in case of throttling. Optional.</param>
+        /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry. Optional.</param>
+        /// <param name="azureEnvironment">The type of environment to connect to</param>
+        /// <returns>A temporary access pass for the provided user or NULL if unable to create a temporary access pass</returns>
+        public static Model.TemporaryAccessPassResponse RequestTemporaryAccessPass(string accessToken, string userId, DateTime? startDateTime = null, int? lifeTimeInMinutes = null, bool? isUsableOnce = null, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+        {
+            if (String.IsNullOrEmpty(accessToken))
+            {
+                throw new ArgumentNullException(nameof(accessToken));
+            }
+            if (String.IsNullOrEmpty(userId))
+            {
+                throw new ArgumentNullException(nameof(userId));
+            }            
+
+            // Build the request body for the access pass
+            var temporaryAccessPassAuthenticationMethod = new Model.TemporaryAccessPassRequest
+            {
+                StartDateTime = startDateTime?.ToUniversalTime(),
+                LifetimeInMinutes = lifeTimeInMinutes,
+                IsUsableOnce = isUsableOnce
+            };
+
+            try
+            {
+                // Request the access pass
+                var response = GraphHttpClient.MakePostRequestForString(
+                    requestUrl: $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment, beta: true)}users/{userId}/authentication/temporaryAccessPassMethods",
+                    content: temporaryAccessPassAuthenticationMethod,
+                    contentType: "application/json",
+                    accessToken: accessToken);
+
+                // Parse and return the response
+                var accessPassResponse = JsonConvert.DeserializeObject<Model.TemporaryAccessPassResponse>(response);
+                return accessPassResponse;
+
+            }
+            catch (ServiceException ex)
+            {
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                throw;
+            }
+        }        
     }
 }

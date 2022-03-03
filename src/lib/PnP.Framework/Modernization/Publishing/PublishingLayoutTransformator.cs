@@ -49,7 +49,7 @@ namespace PnP.Framework.Modernization.Publishing
             bool includeVerticalColumn = false;
             int verticalColumnEmphasis = 0;
 
-            if (pageData.Item1 == Pages.PageLayout.PublishingPage_AutoDetectWithVerticalColumn || pageData.Item1 == Pages.PageLayout.PublishingPage_TwoColumnRightVerticalSection)
+            if (pageData.Item1 == Pages.PageLayout.PublishingPage_AutoDetectWithVerticalColumn || pageData.Item1 == Pages.PageLayout.PublishingPage_TwoColumnRightVerticalSection || pageData.Item1 == Pages.PageLayout.PublishingPage_TwoColumnLeftVerticalSection)
             {
                 includeVerticalColumn = true;
                 verticalColumnEmphasis = GetVerticalColumnBackgroundEmphasis();

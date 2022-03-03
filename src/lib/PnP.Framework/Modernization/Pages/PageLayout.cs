@@ -25,7 +25,8 @@
         WebPart_Custom = 28,
         WebPart_2010_TwoColumnsLeft = 29,
         PublishingPage_AutoDetect = 40,
-        PublishingPage_AutoDetectWithVerticalColumn = 41
-
+        PublishingPage_AutoDetectWithVerticalColumn = 41,
+        PublishingPage_TwoColumnRightVerticalSection = 42,
+        PublishingPage_TwoColumnLeftVerticalSection = 43,
     }
 }

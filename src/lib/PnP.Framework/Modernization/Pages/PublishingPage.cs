@@ -108,7 +108,7 @@ namespace PnP.Framework.Modernization.Pages
                 List<WebPartPlaceHolder> webPartsToRetrieve = new List<WebPartPlaceHolder>();
                 foreach (var wikiTextPart in wikiTextWebParts)
                 {
-                    string pageContents = page.GetFieldValueAs<string>(wikiTextPart.Name); 
+                    string pageContents = page.GetFieldValueAs<string>(wikiTextPart.Name);
 
                     if (wikiTextPart.Property.Length > 0)
                     {
@@ -124,7 +124,7 @@ namespace PnP.Framework.Modernization.Pages
                                 }
                             }
                         }
-                    }                    
+                    }
 
                     if (pageContents != null && !string.IsNullOrEmpty(pageContents))
                     {
@@ -276,7 +276,7 @@ namespace PnP.Framework.Modernization.Pages
 
             IEnumerable<WebPartDefinition> webPartsViaManager = cc.LoadQuery(limitedWPManager.WebParts.IncludeWithDefaultProperties(wp => wp.Id, wp => wp.ZoneId, wp => wp.WebPart.ExportMode, wp => wp.WebPart.Title, wp => wp.WebPart.ZoneIndex, wp => wp.WebPart.IsClosed, wp => wp.WebPart.Hidden, wp => wp.WebPart.Properties));
             cc.ExecuteQueryRetry();
-            
+
             if (webPartsViaManager.Any())
             {
                 List<WebPartPlaceHolder> webPartsToRetrieve = new List<WebPartPlaceHolder>();
@@ -312,7 +312,7 @@ namespace PnP.Framework.Modernization.Pages
                 }
 
                 List<WebPartZoneLayoutMap> webPartZoneLayoutMap = new List<WebPartZoneLayoutMap>();
-                foreach (var foundWebPart in webPartsToRetrieve.OrderBy(p=> p.WebPartDefinition.WebPart.ZoneIndex))
+                foreach (var foundWebPart in webPartsToRetrieve.OrderBy(p => p.WebPartDefinition.WebPart.ZoneIndex))
                 {
                     Dictionary<string, object> webPartProperties = foundWebPart.WebPartDefinition.WebPart.Properties.FieldValues; ;
 
@@ -327,7 +327,7 @@ namespace PnP.Framework.Modernization.Pages
                     }
 
                     string zoneId = foundWebPart.WebPartDefinition.ZoneId;
-                                      
+
 
                     int wpInZoneRow = 1;
                     int wpInZoneCol = 1;
@@ -356,7 +356,7 @@ namespace PnP.Framework.Modernization.Pages
                                 // Get the webpart from the webpart zone layout mapping
                                 int occuranceCounter = 0;
                                 bool occuranceFound = false;
-                                foreach(var wpInWebPartZoneLayout in wpZoneFromTemplate.WebPartZoneLayout.Where(p=>p.Type.Equals(foundWebPart.WebPartType, StringComparison.InvariantCultureIgnoreCase)))
+                                foreach (var wpInWebPartZoneLayout in wpZoneFromTemplate.WebPartZoneLayout.Where(p => p.Type.Equals(foundWebPart.WebPartType, StringComparison.InvariantCultureIgnoreCase)))
                                 {
                                     occuranceCounter++;
 
@@ -403,7 +403,7 @@ namespace PnP.Framework.Modernization.Pages
                     int wpInZoneOrderUsed = GetNextOrder(wpInZoneRow, wpInZoneCol, wpStartOrder, webparts);
 
                     string webPartXmlForPropertiesMethod = foundWebPart.WebPartXml == null ? "" : foundWebPart.WebPartXml.Value;
-                    
+
                     webparts.Add(new WebPartEntity()
                     {
                         Title = foundWebPart.WebPartDefinition.WebPart.Title,
@@ -426,7 +426,7 @@ namespace PnP.Framework.Modernization.Pages
             #region Fixed webparts mapping
             if (publishingPageTransformationModel.FixedWebParts != null)
             {
-                foreach(var fixedWebpart in publishingPageTransformationModel.FixedWebParts)
+                foreach (var fixedWebpart in publishingPageTransformationModel.FixedWebParts)
                 {
                     int wpFixedOrderUsed = GetNextOrder(fixedWebpart.Row, fixedWebpart.Column, fixedWebpart.Order, webparts);
 
@@ -573,14 +573,14 @@ namespace PnP.Framework.Modernization.Pages
         {
             Dictionary<string, string> props = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
 
-            foreach(var prop in webPart.Property)
+            foreach (var prop in webPart.Property)
             {
                 props.Add(prop.Name, prop.Value);
             }
 
             return props;
         }
-               
+
         internal int GetNextOrder(int row, int col, int order, List<WebPartEntity> webparts)
         {
             // do we already have web parts in the same row and column
@@ -611,8 +611,28 @@ namespace PnP.Framework.Modernization.Pages
             {
                 case PageLayoutPageLayoutTemplate.OneColumn: return PageLayout.Wiki_OneColumn;
                 case PageLayoutPageLayoutTemplate.TwoColumns: return PageLayout.Wiki_TwoColumns;
-                case PageLayoutPageLayoutTemplate.TwoColumnsWithSidebarLeft: return PageLayout.Wiki_TwoColumnsWithSidebar;
-                case PageLayoutPageLayoutTemplate.TwoColumnsWithSidebarRight: return PageLayout.Wiki_TwoColumnsWithSidebar;
+                case PageLayoutPageLayoutTemplate.TwoColumnsWithSidebarLeft:
+                    {
+                        if (includeVerticalColumn)
+                        {
+                            return PageLayout.PublishingPage_TwoColumnLeftVerticalSection;
+                        }
+                        else
+                        {
+                            return PageLayout.Wiki_TwoColumnsWithSidebar;
+                        }
+                    }
+                case PageLayoutPageLayoutTemplate.TwoColumnsWithSidebarRight:
+                    {
+                        if (includeVerticalColumn)
+                        {
+                            return PageLayout.PublishingPage_TwoColumnRightVerticalSection;
+                        }
+                        else
+                        {
+                            return PageLayout.Wiki_TwoColumnsWithSidebar;
+                        }
+                    }
                 case PageLayoutPageLayoutTemplate.TwoColumnsWithHeader: return PageLayout.Wiki_TwoColumnsWithHeader;
                 case PageLayoutPageLayoutTemplate.TwoColumnsWithHeaderAndFooter: return PageLayout.Wiki_TwoColumnsWithHeaderAndFooter;
                 case PageLayoutPageLayoutTemplate.ThreeColumns: return PageLayout.Wiki_ThreeColumns;
@@ -628,7 +648,7 @@ namespace PnP.Framework.Modernization.Pages
                         {
                             return PageLayout.PublishingPage_AutoDetect;
                         }
-                    }                
+                    }
                 default: return PageLayout.Wiki_OneColumn;
             }
         }
@@ -639,7 +659,7 @@ namespace PnP.Framework.Modernization.Pages
             {
                 case WebPartProperyType.@string: return PublishingFunctionProcessor.FieldType.String;
                 case WebPartProperyType.@bool: return PublishingFunctionProcessor.FieldType.Bool;
-                case WebPartProperyType.guid:return PublishingFunctionProcessor.FieldType.Guid;
+                case WebPartProperyType.guid: return PublishingFunctionProcessor.FieldType.Guid;
                 case WebPartProperyType.integer: return PublishingFunctionProcessor.FieldType.Integer;
                 case WebPartProperyType.datetime: return PublishingFunctionProcessor.FieldType.DateTime;
             }

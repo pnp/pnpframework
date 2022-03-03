@@ -303,7 +303,11 @@ namespace PnP.Framework.Modernization.Transform
                 return userField.LookupValue;
             }
 
-            var resolvedUser = CacheManager.Instance.GetEnsuredUser(context, userField.LookupValue);
+            var resolvedUser = CacheManager.Instance.GetEnsuredUser(context, userField.LookupValue.Replace("i:05.t|adfs|",string.Empty));
+            if(resolvedUser is null)
+            {
+                return null;
+            }
 
             return this.RemapPrincipal(resolvedUser.LoginName);
         }

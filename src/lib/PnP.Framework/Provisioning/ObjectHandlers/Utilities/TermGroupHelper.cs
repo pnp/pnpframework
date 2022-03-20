@@ -305,7 +305,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
             }
             if (!string.IsNullOrEmpty(modelTerm.Owner))
             {
-                term.Owner = modelTerm.Owner;
+                if (CheckUser(context, modelTerm.Owner))
+                {
+                    term.Owner = modelTerm.Owner;
+                }
+                else
+                {
+                    scope.LogWarning($"Cannot find principal '{modelTerm.Owner}', cannot set the Owner for term '{modelTerm.Name}'");
+                }
             }
 
             term.IsAvailableForTagging = modelTerm.IsAvailableForTagging;
@@ -606,6 +613,30 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
             }
 
             return parser;
+        }
+
+        private static bool CheckUser(ClientContext context, string loginName)
+        {
+            try
+            {
+                using (var clonedContext = context.Clone(context.Web.Url))
+                {
+                    var user = clonedContext.Web.EnsureUser(loginName);
+                    clonedContext.ExecuteQueryRetry();
+                    return true;
+                }
+            }
+            catch(ServerException ex)
+            {
+                if (ex.ServerErrorCode == -2146232832 && ex.ServerErrorTypeName.Equals("Microsoft.SharePoint.SPException", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
         }
 
         internal class TryReuseTermResult

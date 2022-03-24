@@ -49,7 +49,7 @@ namespace PnP.Framework.Modernization.Publishing
             bool includeVerticalColumn = false;
             int verticalColumnEmphasis = 0;
 
-            if (pageData.Item1 == Pages.PageLayout.PublishingPage_AutoDetectWithVerticalColumn)
+            if (pageData.Item1 == Pages.PageLayout.PublishingPage_AutoDetectWithVerticalColumn || pageData.Item1 == Pages.PageLayout.PublishingPage_TwoColumnRightVerticalSection || pageData.Item1 == Pages.PageLayout.PublishingPage_TwoColumnLeftVerticalSection)
             {
                 includeVerticalColumn = true;
                 verticalColumnEmphasis = GetVerticalColumnBackgroundEmphasis();
@@ -93,6 +93,11 @@ namespace PnP.Framework.Modernization.Publishing
                         maxColumns--;
                     }
 
+                    if (maxColumns == 0)
+                    {
+                        maxColumns = 1;
+                    }
+
                     if (maxColumns > 3)
                     {
                         LogError(LogStrings.Error_Maximum3ColumnsAllowed, LogStrings.Heading_PublishingLayoutTransformator);
@@ -118,7 +123,7 @@ namespace PnP.Framework.Modernization.Publishing
                             if (imageWebPartsInRow.Any())
                             {
                                 Dictionary<int, int> imageWebPartsPerColumn = new Dictionary<int, int>();
-                                foreach(var imageWebPart in imageWebPartsInRow.OrderBy(p=>p.Column))
+                                foreach (var imageWebPart in imageWebPartsInRow.OrderBy(p => p.Column))
                                 {
                                     if (imageWebPartsPerColumn.TryGetValue(imageWebPart.Column, out int wpCount))
                                     {
@@ -250,7 +255,18 @@ namespace PnP.Framework.Modernization.Publishing
                             {
                                 if (includeVerticalColumn && rowIterator == firstRow)
                                 {
-                                    page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumnVerticalSection, sectionOrder, GetBackgroundEmphasis(rowIterator), verticalColumnEmphasis);
+                                    if (pageData.Item1 == Pages.PageLayout.PublishingPage_TwoColumnRightVerticalSection)
+                                    {
+                                        page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumnRightVerticalSection, sectionOrder, GetBackgroundEmphasis(rowIterator), verticalColumnEmphasis);
+                                    }
+                                    else if (pageData.Item1 == Pages.PageLayout.PublishingPage_TwoColumnLeftVerticalSection)
+                                    {
+                                        page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumnLeftVerticalSection, sectionOrder, GetBackgroundEmphasis(rowIterator), verticalColumnEmphasis);
+                                    }
+                                    else
+                                    {
+                                        page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumnVerticalSection, sectionOrder, GetBackgroundEmphasis(rowIterator), verticalColumnEmphasis);
+                                    }
                                 }
                                 else
                                 {

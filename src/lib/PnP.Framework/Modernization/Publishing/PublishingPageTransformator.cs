@@ -428,7 +428,7 @@ namespace PnP.Framework.Modernization.Publishing
                 layoutTransformator.Transform(pageData);
 
                 // If needed call the specific publishing page layout transformator
-                if ((pageData.Item1 == Pages.PageLayout.PublishingPage_AutoDetect || pageData.Item1 == Pages.PageLayout.PublishingPage_AutoDetectWithVerticalColumn) && !useCustomLayoutTransformator)
+                if ((pageData.Item1 == Pages.PageLayout.PublishingPage_AutoDetect || pageData.Item1 == Pages.PageLayout.PublishingPage_AutoDetectWithVerticalColumn || pageData.Item1 == Pages.PageLayout.PublishingPage_TwoColumnRightVerticalSection || pageData.Item1 == Pages.PageLayout.PublishingPage_TwoColumnLeftVerticalSection) && !useCustomLayoutTransformator)
                 {
                     // Call out the specific publishing layout transformator implementation
                     PublishingLayoutTransformator publishingLayoutTransformator = new PublishingLayoutTransformator(targetPage, pageLayoutMappingModel, base.RegisteredLogObservers);

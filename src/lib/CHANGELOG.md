@@ -30,6 +30,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Fix ProcessDataRow ignore html fields as empty even they are not #604 [czullu - Christian Zuellig]
 - Fix caching issues with retrieving taxonomy fields on modernization caching #603 [erosu-hab - Elena Rosu]
 - Retrieve the target list by url for handler ObjectListInstanceDataRows #607 [BollietMZK]
+- Fix exception thrown when a Taxonomy Term owner was not found #628 [jackpoz - Giacomo Pozzoni]
 
 ## [1.8.0]
 

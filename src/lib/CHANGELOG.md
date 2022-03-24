@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 - Support export folder default values #583 [magarma - Miguel Angel García Martínez]
 - Added RequestTemporaryAccessPass method to UsersUtility #605 [koenzomers - Koen Zomers]
+- Transformation: added specific page layout transformation #614 [robi26 - Stephan Steiger]
 
 ### Changed
 

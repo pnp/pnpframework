@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Xml;
 using PersonalizationScope = Microsoft.SharePoint.Client.WebParts.PersonalizationScope;
 
@@ -839,16 +840,42 @@ namespace Microsoft.SharePoint.Client
         /// <param name="pageName">Name (e.g. demo.aspx) of the page to be added</param>
         /// <param name="alreadyPersist">Already persist the created, empty, page before returning the instantiated <see cref="ClientSidePage"/> instance</param>
         /// <returns>A <see cref="ClientSidePage"/> instance</returns>
-        public static IPage AddClientSidePage(this Web web, string pageName = "", bool alreadyPersist = false)
+        public async static Task<IPage> AddClientSidePageAsync(this Web web, string pageName = "", bool alreadyPersist = false)
         {
-            using (var pnpContext = PnPCoreSdk.Instance.GetPnPContext(web.Context as ClientContext))
+            using (var pnpContext = await PnPCoreSdk.Instance.GetPnPContextAsync(web.Context as ClientContext).ConfigureAwait(false))
             {
-                var page = pnpContext.Web.NewPage();
+                var page = await pnpContext.Web.NewPageAsync().ConfigureAwait(false);
                 if (alreadyPersist)
                 {
-                    page.Save(pageName);
+                    await page.SaveAsync(pageName).ConfigureAwait(false);
                 }
                 return page;
+            }
+        }
+
+        /// <summary>
+        /// Adds a client side "modern" page to a "classic" or "modern" site
+        /// </summary>
+        /// <param name="web">Web to add the page to</param>
+        /// <param name="pageName">Name (e.g. demo.aspx) of the page to be added</param>
+        /// <param name="alreadyPersist">Already persist the created, empty, page before returning the instantiated <see cref="ClientSidePage"/> instance</param>
+        /// <returns>A <see cref="ClientSidePage"/> instance</returns>
+        public static IPage AddClientSidePage(this Web web, string pageName = "", bool alreadyPersist = false)
+        {
+            return web.AddClientSidePageAsync(pageName, alreadyPersist).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Loads a client side "modern" page
+        /// </summary>
+        /// <param name="web">Web to load the page from</param>
+        /// <param name="pageName">Name (e.g. demo.aspx) of the page to be loaded</param>
+        /// <returns>A <see cref="ClientSidePage"/> instance</returns>
+        public async static Task<IPage> LoadClientSidePageAsync(this Web web, string pageName)
+        {
+            using (var pnpContext = await PnPCoreSdk.Instance.GetPnPContextAsync(web.Context as ClientContext).ConfigureAwait(false))
+            {
+                return (await pnpContext.Web.GetPagesAsync(pageName).ConfigureAwait(false)).FirstOrDefault();
             }
         }
 
@@ -860,10 +887,7 @@ namespace Microsoft.SharePoint.Client
         /// <returns>A <see cref="ClientSidePage"/> instance</returns>
         public static IPage LoadClientSidePage(this Web web, string pageName)
         {
-            using (var pnpContext = PnPCoreSdk.Instance.GetPnPContext(web.Context as ClientContext))
-            {
-                return pnpContext.Web.GetPages(pageName).FirstOrDefault();
-            }
+            return web.LoadClientSidePageAsync(pageName).GetAwaiter().GetResult();
         }
 
         ///// <summary>

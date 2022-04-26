@@ -4,6 +4,7 @@ using PnP.Core.Services;
 using PnP.Framework.Utilities.PnPSdk;
 using System;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace PnP.Framework
 {
@@ -42,7 +43,7 @@ namespace PnP.Framework
         /// </summary>
         /// <param name="context">CSOM ClientContext</param>
         /// <returns>The equivalent PnPContext</returns>
-        public PnPContext GetPnPContext(ClientContext context)
+        public async Task<PnPContext> GetPnPContextAsync(ClientContext context)
         {
             Uri ctxUri = new Uri(context.Url);
            
@@ -61,12 +62,22 @@ namespace PnP.Framework
                     if (iAuthProvider != null)
                     {
                         var factory0 = BuildContextFactory();
-                        return factory0.Create(ctxUri, iAuthProvider);
+                        return await factory0.CreateAsync(ctxUri, iAuthProvider).ConfigureAwait(false);
                     }
                 }
             }
             var factory = BuildContextFactory();
-            return factory.Create(ctxUri, AuthenticationProviderFactory.GetAuthenticationProvider(context));
+            return await factory.CreateAsync(ctxUri, AuthenticationProviderFactory.GetAuthenticationProvider(context)).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get's a PnPContext from a CSOM ClientContext
+        /// </summary>
+        /// <param name="context">CSOM ClientContext</param>
+        /// <returns>The equivalent PnPContext</returns>
+        public PnPContext GetPnPContext(ClientContext context)
+        {
+            return GetPnPContextAsync(context).GetAwaiter().GetResult();
         }
 
         private IPnPContextFactory BuildContextFactory()
@@ -122,18 +133,28 @@ namespace PnP.Framework
         /// </summary>
         /// <param name="pnpContext">The PnP Core SDK context</param>
         /// <returns>The equivalent CSOM ClientContext</returns>
-        public ClientContext GetClientContext(PnPContext pnpContext)
+        public async Task<ClientContext> GetClientContextAsync(PnPContext pnpContext)
         {
 #pragma warning disable CA2000 // Dispose objects before losing scope
             AuthenticationManager authManager = AuthenticationManager.CreateWithPnPCoreSdk(pnpContext);
 #pragma warning restore CA2000 // Dispose objects before losing scope
 
-            var ctx = authManager.GetContext(pnpContext.Uri.ToString());
+            var ctx = await authManager.GetContextAsync(pnpContext.Uri.ToString()).ConfigureAwait(false);
             var ctxSettings = ctx.GetContextSettings();
             ctxSettings.Type = Utilities.Context.ClientContextType.PnPCoreSdk;
             ctxSettings.AuthenticationManager = authManager; //otherwise GetAccessToken would not work for example
             ctx.AddContextSettings(ctxSettings);
             return ctx;
+        }
+
+        /// <summary>
+        /// Returns a CSOM ClientContext for a given PnP Core SDK context
+        /// </summary>
+        /// <param name="pnpContext">The PnP Core SDK context</param>
+        /// <returns>The equivalent CSOM ClientContext</returns>
+        public ClientContext GetClientContext(PnPContext pnpContext)
+        {
+            return GetClientContextAsync(pnpContext).GetAwaiter().GetResult();
         }
 
     }

@@ -28,6 +28,11 @@ namespace Microsoft.SharePoint.Client
     {
         const string SITE_STATUS_RECYCLED = "Recycled";
 
+        /// <summary>
+        /// Title of the list in the SharePoint Online Admin Center containing all site collections
+        /// </summary>
+        const string SPO_ADMIN_SITECOL_LIST_TITLE = "DO_NOT_DELETE_SPLIST_TENANTADMIN_AGGREGATED_SITECOLLECTIONS";
+
         #region Provisioning
 
         /// <summary>
@@ -79,7 +84,7 @@ namespace Microsoft.SharePoint.Client
             List<string> urls = new List<string>();
             using (var tenantContext = tenant.Context.Clone((tenant.Context as ClientContext).Web.GetTenantAdministrationUrl()))
             {
-                var siteList = tenantContext.Web.Lists.GetByTitle("DO_NOT_DELETE_SPLIST_TENANTADMIN_AGGREGATED_SITECOLLECTIONS");
+                var siteList = tenantContext.Web.Lists.GetByTitle(SPO_ADMIN_SITECOL_LIST_TITLE);
                 siteList.EnsureProperty(l => l.Id);
                 var payload = new
                 {
@@ -120,6 +125,77 @@ namespace Microsoft.SharePoint.Client
                 }
             }
             return urls;
+        }
+
+        /// <summary>
+        /// Returns details of a site collection by its site collection Id
+        /// </summary>
+        /// <param name="tenant">A tenant object pointing to the context of a Tenant Administration site</param>
+        /// <param name="siteId">The id of the site collection</param>
+        /// <param name="detailed">Boolean indicating if detailed information should be returned of the site (true - default) or only the basics (false)
+        /// <returns>SiteProperties of the site collection or NULL of no site collection found with the provided Id</returns>
+        public static SiteProperties GetSitePropertiesById(this Tenant tenant, Guid siteId, bool detailed = true)
+        {
+            // Create a context to the SharePoint Online Admin site
+            using (var tenantContext = tenant.Context.Clone((tenant.Context as ClientContext).Web.GetTenantAdministrationUrl()))
+            {
+                // Utilize the hidden list in the SharePoint Online Admin site to search for a site collection with matching Id using a CAML Query
+                var siteList = tenantContext.Web.Lists.GetByTitle(SPO_ADMIN_SITECOL_LIST_TITLE);
+                siteList.EnsureProperty(l => l.Id);
+                var payload = new
+                {
+                    parameters = new
+                    {
+                        RenderOptions = 2,
+                        ViewXml = $"<View><Query><Where><Eq><FieldRef Name='SiteId' /><Value Type='Guid'>{siteId}</Value></Eq></Where></Query><ViewFields><FieldRef Name='SiteUrl'/></ViewFields><RowLimit Paged='TRUE'>1</RowLimit></View>"
+                    }
+                };
+
+                // Loop through the results of the CAML Query
+                string url = null;
+                var payloadString = JsonSerializer.Serialize(payload);
+                var response = RESTUtilities.ExecutePostAsync(tenantContext.Web, $"/_api/web/lists(guid'{siteList.Id}')/RenderListDataAsStream", payloadString).GetAwaiter().GetResult();
+                var responseElement = JsonSerializer.Deserialize<JsonElement>(response);
+                if (responseElement.TryGetProperty("Row", out JsonElement rowProperty))
+                {
+                    foreach (var row in rowProperty.EnumerateArray())
+                    {
+                        if (row.TryGetProperty("SiteUrl", out JsonElement siteUrlProperty))
+                        {
+                            url = siteUrlProperty.GetString();
+                            break;
+                        }
+                    }
+                    while (url == null && responseElement.TryGetProperty("NextHref", out JsonElement nextHrefElement))
+                    {
+                        response = RESTUtilities.ExecutePostAsync(((ClientContext)tenant.Context).Web, $"/_api/web/lists(guid'{siteList.Id}')/RenderListDataAsStream{nextHrefElement.GetString()}", payloadString).GetAwaiter().GetResult();
+                        responseElement = JsonSerializer.Deserialize<JsonElement>(response);
+                        if (responseElement.TryGetProperty("Row", out rowProperty))
+                        {
+                            foreach (var row in rowProperty.EnumerateArray())
+                            {
+                                if (row.TryGetProperty("SiteUrl", out JsonElement siteUrlProperty))
+                                {
+                                    url = siteUrlProperty.GetString();
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    // Check if a URL has been found for the provided site collection Id
+                    if(!string.IsNullOrEmpty(url))
+                    {
+                        var siteProperties = tenant.GetSitePropertiesByUrl(url, detailed);
+                        tenant.Context.Load(siteProperties);
+                        tenant.Context.ExecuteQueryRetry();
+
+                        return siteProperties;
+                    }
+                }
+            }
+
+            return null;
         }
 
         #endregion

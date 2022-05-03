@@ -11,6 +11,7 @@
         DeviceLogin = 6,
         OnPremises = 7,
         AccessToken = 8,
-        PnPCoreSdk = 9
+        PnPCoreSdk = 9,
+        AzureLongRunningOnBehalfOf = 10
     }
 }

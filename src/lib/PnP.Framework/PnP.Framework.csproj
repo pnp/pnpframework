@@ -228,7 +228,7 @@
 
 	<ItemGroup>
 		<!-- Required -->
-		<PackageReference Include="Microsoft.Identity.Client.Extensions.Msal" Version="2.18.4" />
+		<PackageReference Include="Microsoft.Identity.Client.Extensions.Msal" Version="2.20.1" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-*" PrivateAssets="All" />
 		<PackageReference Include="AngleSharp" Version="0.14.0" />
 		<PackageReference Include="AngleSharp.Css" Version="0.14.2" />
@@ -240,7 +240,7 @@
 		<PackageReference Include="Microsoft.Data.OData" Version="5.8.4" />
 		<PackageReference Include="Microsoft.Graph" Version="3.33.0" />
 		<PackageReference Include="Microsoft.Graph.Core" Version="1.25.1" />
-		<PackageReference Include="Microsoft.Identity.Client" Version="4.36.1" />
+		<PackageReference Include="Microsoft.Identity.Client" Version="4.43.2" />
 		<PackageReference Include="Microsoft.SharePointOnline.CSOM" Version="16.1.*" />
 		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
 		<PackageReference Include="PnP.Core" Version="1.6.*-*" Condition="'$(PnPCoreSdkPath)' == ''" />

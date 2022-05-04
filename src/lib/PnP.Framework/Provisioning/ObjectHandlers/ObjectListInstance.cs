@@ -2181,17 +2181,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         currentFolderItem.UpdateOverwriteVersion();
                         currentFolder.Update();
                         parentFolder.Context.ExecuteQueryRetry();
-                                                
-                        //Set moderation status, doing it in a different request, because SharePoint doesn't allow to update properties at the same time that other properties
-                        if ((list.SiteList.EnableModeration) && (folder.Properties.Any(p => p.Key.Equals("_ModerationStatus"))))
-                        {
-                            var propertyValue = folder.Properties["_ModerationStatus"];
-                            currentFolderItem["_ModerationStatus"] = parser.ParseString(propertyValue);
-
-                            currentFolderItem.UpdateOverwriteVersion();
-                            currentFolder.Update();
-                            parentFolder.Context.ExecuteQueryRetry();
-                        }
+                                 
                     }
                     catch (ServerException srex)
                     {
@@ -2239,6 +2229,38 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         else
                             throw;
                     }
+                }
+                
+                //Set Moderation status of Folder
+                //Doing it in a different request, because SharePoint doesn't allow to update properties at the same time that other properties
+                if (list.SiteList.EnableModeration && folder.Properties != null && folder.Properties.Any(p => p.Key.Equals("_ModerationStatus")))
+                {
+                    try
+                    {
+                        var currentFolderItem = currentFolder.ListItemAllFields;
+                        parentFolder.Context.Load(currentFolderItem);
+                        parentFolder.Context.ExecuteQueryRetry();
+
+                        var propertyValue = folder.Properties["_ModerationStatus"];
+                        currentFolderItem["_ModerationStatus"] = parser.ParseString(propertyValue);
+
+                        currentFolderItem.UpdateOverwriteVersion();
+                        currentFolder.Update();
+                        parentFolder.Context.ExecuteQueryRetry();
+
+                    }
+                    catch (ServerException srex)
+                    {
+                        //Handle Error To update this folder, go to the channel in Microsoft Teams
+                        if (srex.ServerErrorCode == -2130575223)
+                        {
+                            scope.LogWarning($"Moderation status on folder '{targetFolderName}' can not be changed '{srex.Message}'");
+                            WriteMessage($"Moderation status on folder '{targetFolderName}' can not be changed '{srex.Message}'", ProvisioningMessageType.Warning);
+                        }
+                        else
+                            throw;
+                    }
+                    
                 }
             }
         }

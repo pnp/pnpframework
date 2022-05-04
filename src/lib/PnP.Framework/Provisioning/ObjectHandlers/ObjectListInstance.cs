@@ -2182,7 +2182,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         currentFolder.Update();
                         parentFolder.Context.ExecuteQueryRetry();
                                                 
-                        //Set moderation status, doing in a diferent request, because SharePoint doesn't allow to update properties at the same time that other properties
+                        //Set moderation status, doing it in a different request, because SharePoint doesn't allow to update properties at the same time that other properties
                         if ((list.SiteList.EnableModeration) && (folder.Properties.Any(p => p.Key.Equals("_ModerationStatus"))))
                         {
                             var propertyValue = folder.Properties["_ModerationStatus"];

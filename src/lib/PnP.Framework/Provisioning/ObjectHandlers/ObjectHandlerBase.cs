@@ -109,8 +109,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             var termSetIdElement = element.XPathSelectElement("./Customization/ArrayOfProperty/Property[Name = 'TermSetId']/Value");
             if (termSetIdElement != null)
             {
-                Guid termSetId = Guid.Parse(termSetIdElement.Value);
-                if (termSetId != Guid.Empty)
+                Guid termSetId;
+                if (Guid.TryParse(termSetIdElement.Value, out termSetId) && termSetId != Guid.Empty)
                 {
                     Microsoft.SharePoint.Client.Taxonomy.TermSet termSet = store.GetTermSet(termSetId);
                     store.Context.ExecuteQueryRetry();

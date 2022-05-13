@@ -498,12 +498,16 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
 
             // Ensure that Files tab is available right after Teams creation
-            Task.Run(async () =>
+            try
             {
                 var graphClient = GraphUtility.CreateGraphClient(accessToken);
 
-                await InitTeamDrive(groupId, graphClient);
-            }).GetAwaiter().GetResult();
+                InitTeamDrive(groupId, graphClient).GetAwaiter();
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine(ex);
+            }
 
             return (teamId);
         }
@@ -1521,7 +1525,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         currentProgress++;
                     }
                 }
-
                 // - Teams based on XML templates
                 var teams = hierarchy.Teams?.Teams;
                 if (teams != null && teams.Any())
@@ -1789,14 +1792,23 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         public static async Task InitTeamDrive(string GroupId, Microsoft.Graph.GraphServiceClient graphClient = null)
         {
-            var channels = await graphClient.Teams[GroupId].Channels.Request().GetAsync();
-
-            foreach (var channel in channels)
+            try
             {
-                if (channel.DisplayName == "General")
+                var primaryChannel = await graphClient.Teams[GroupId].PrimaryChannel.Request().GetAsync();
+                var channels = await graphClient.Teams[GroupId].Channels.Request().GetAsync();
+                foreach (var channel in channels)
                 {
-                    await graphClient.Teams[GroupId].Channels[channel.Id].FilesFolder.Request().GetAsync();
+                    if (channel.DisplayName == primaryChannel.DisplayName)
+                    {
+                        var getChannel = await graphClient.Teams[GroupId].Channels[channel.Id].Request().GetAsync();
+                        if (getChannel != null)
+                            await graphClient.Teams[GroupId].Channels[channel.Id].FilesFolder.Request().GetAsync();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
     }

@@ -506,7 +506,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
             catch (Exception ex)
             {
-                //Console.WriteLine(ex);
+                // Swallow if we can't make sure the file tab exists
             }
 
             return (teamId);
@@ -1668,7 +1668,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 var groupPhotoString = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/groups/{groupId}/photos/{teamPhotoId}", accessToken);
                 mediaType = JObject.Parse(groupPhotoString)["@odata.mediaContentType"].Value<string>();
                 photoStreamUrl = $"{GraphHelper.MicrosoftGraphBaseURI}v1.0/groups/{groupId}/photos/{teamPhotoId}/$value";
-            } catch
+            }
+            catch
             {
                 // can't access, swallow
             }
@@ -1681,7 +1682,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 teamPhotoId = JObject.Parse(groupPhotoIdString)["id"].Value<string>();
                 photoStreamUrl = $"{GraphHelper.MicrosoftGraphBaseURI}beta/groups/{groupId}/photo/$value";
             }
-            
+
             using (var teamPhotoStream = HttpHelper.MakeGetRequestForStream(photoStreamUrl, null, accessToken))
             {
                 var extension = string.Empty;
@@ -1813,23 +1814,42 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         public static async Task InitTeamDrive(string GroupId, Microsoft.Graph.GraphServiceClient graphClient = null)
         {
-            try
+            bool wait = true;
+            int iterations = 0;
+            while (wait)
             {
-                var primaryChannel = await graphClient.Teams[GroupId].PrimaryChannel.Request().GetAsync();
-                var channels = await graphClient.Teams[GroupId].Channels.Request().GetAsync();
-                foreach (var channel in channels)
+                iterations++;
+
+                try
                 {
-                    if (channel.DisplayName == primaryChannel.DisplayName)
+                    var primaryChannel = await graphClient.Teams[GroupId].PrimaryChannel.Request().GetAsync();
+                    var channels = await graphClient.Teams[GroupId].Channels.Request().GetAsync();
+                    foreach (var channel in channels)
                     {
-                        var getChannel = await graphClient.Teams[GroupId].Channels[channel.Id].Request().GetAsync();
-                        if (getChannel != null)
-                            await graphClient.Teams[GroupId].Channels[channel.Id].FilesFolder.Request().GetAsync();
+                        if (channel.DisplayName == primaryChannel.DisplayName)
+                        {
+                            var getChannel = await graphClient.Teams[GroupId].Channels[channel.Id].Request().GetAsync();
+                            if (getChannel != null)
+                            {
+                                Microsoft.Graph.DriveItem filesFolder = await graphClient.Teams[GroupId].Channels[channel.Id].FilesFolder.Request().GetAsync();
+
+                                if (filesFolder != null)
+                                    wait = false;
+                            }
+                        }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                catch (Exception)
+                {
+                    // In case of exception wait for 5 secs
+                    System.Threading.Thread.Sleep(TimeSpan.FromSeconds(5));
+                }
+
+                // Don't wait more than 60 seconds
+                if (iterations > 12)
+                {
+                    wait = false;
+                }
             }
         }
     }

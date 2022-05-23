@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Exporting/Provisioning _ModerationStatus for folders #654 [magarma - Miguel Angel García Martínez]
 
 ## [1.9.0]
 

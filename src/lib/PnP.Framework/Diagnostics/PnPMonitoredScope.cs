@@ -11,8 +11,7 @@ namespace PnP.Framework.Diagnostics
     /// </summary>
     public sealed class PnPMonitoredScope : TreeNode<PnPMonitoredScope>, IDisposable
     {
-        [ThreadStatic]
-        internal static PnPMonitoredScope TopScope;
+        internal static AsyncLocal<PnPMonitoredScope> TopScope = new AsyncLocal<PnPMonitoredScope>();
 
         private Stopwatch _stopWatch;
         private string _name;
@@ -71,14 +70,14 @@ namespace PnP.Framework.Diagnostics
             _stopWatch.Start();
             _correlationId = Guid.NewGuid();
 
-            if (PnPMonitoredScope.TopScope == null)
+            if (PnPMonitoredScope.TopScope.Value == null)
             {
-                PnPMonitoredScope.TopScope = this;
+                PnPMonitoredScope.TopScope.Value = this;
             }
-            if (TopScope != this)
+            if (TopScope.Value != this)
             {
-                var lastnode = TopScope.Descendants.Any() ? TopScope.Descendants.LastOrDefault() : TopScope;
-                ((PnPMonitoredScope)lastnode).Children.Add(this);
+                var lastnode = TopScope.Value.Descendants.Any() ? TopScope.Value.Descendants.LastOrDefault() : TopScope.Value;
+                ((PnPMonitoredScope)lastnode)?.Children.Add(this);
             }
             LogDebug(CoreResources.PnPMonitoredScope_Code_execution_started);
         }
@@ -87,11 +86,10 @@ namespace PnP.Framework.Diagnostics
         {
             _stopWatch.Stop();
             LogDebug(CoreResources.PnPMonitoredScope_Code_execution_ended, _stopWatch.ElapsedMilliseconds);
-
             Trace.Flush();
-            if (TopScope == this)
+            if (TopScope.Value == this)
             {
-                TopScope = null;
+                TopScope.Value = null;
             }
             Parent = null;
         }
@@ -113,7 +111,7 @@ namespace PnP.Framework.Diagnostics
         {
             Log.Error(new LogEntry()
             {
-                CorrelationId = TopScope.CorrelationId,
+                CorrelationId = TopScope.Value.CorrelationId,
                 EllapsedMilliseconds = _stopWatch.ElapsedMilliseconds,
                 Message = string.Format(message, args),
                 Source = Name,
@@ -131,7 +129,7 @@ namespace PnP.Framework.Diagnostics
         {
             Log.Error(new LogEntry()
             {
-                CorrelationId = TopScope.CorrelationId,
+                CorrelationId = TopScope.Value.CorrelationId,
                 EllapsedMilliseconds = _stopWatch.ElapsedMilliseconds,
                 Message = string.Format(message, args),
                 Source = Name,
@@ -149,7 +147,7 @@ namespace PnP.Framework.Diagnostics
         {
             Log.Info(new LogEntry()
             {
-                CorrelationId = TopScope.CorrelationId,
+                CorrelationId = TopScope.Value.CorrelationId,
                 EllapsedMilliseconds = _stopWatch.ElapsedMilliseconds,
                 Message = string.Format(message, args),
                 Source = Name,
@@ -166,7 +164,7 @@ namespace PnP.Framework.Diagnostics
         {
             Log.Info(new LogEntry()
             {
-                CorrelationId = TopScope.CorrelationId,
+                CorrelationId = TopScope.Value.CorrelationId,
                 EllapsedMilliseconds = _stopWatch.ElapsedMilliseconds,
                 Message = string.Format(message, args),
                 Source = Name,
@@ -185,7 +183,7 @@ namespace PnP.Framework.Diagnostics
         {
             Log.Warning(new LogEntry()
             {
-                CorrelationId = TopScope.CorrelationId,
+                CorrelationId = TopScope.Value.CorrelationId,
                 EllapsedMilliseconds = _stopWatch.ElapsedMilliseconds,
                 Message = string.Format(message, args),
                 Source = Name,
@@ -204,7 +202,7 @@ namespace PnP.Framework.Diagnostics
         {
             Log.Warning(new LogEntry()
             {
-                CorrelationId = TopScope.CorrelationId,
+                CorrelationId = TopScope.Value.CorrelationId,
                 EllapsedMilliseconds = _stopWatch.ElapsedMilliseconds,
                 Message = string.Format(message, args),
                 Source = Name,
@@ -223,7 +221,7 @@ namespace PnP.Framework.Diagnostics
         {
             Log.Debug(new LogEntry()
             {
-                CorrelationId = TopScope.CorrelationId,
+                CorrelationId = TopScope.Value.CorrelationId,
                 EllapsedMilliseconds = _stopWatch.ElapsedMilliseconds,
                 Message = string.Format(message, args),
                 Source = Name,
@@ -241,7 +239,7 @@ namespace PnP.Framework.Diagnostics
         {
             Log.Debug(new LogEntry()
             {
-                CorrelationId = TopScope.CorrelationId,
+                CorrelationId = TopScope.Value.CorrelationId,
                 EllapsedMilliseconds = _stopWatch.ElapsedMilliseconds,
                 Message = string.Format(message, args),
                 Source = Name,

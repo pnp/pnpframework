@@ -786,6 +786,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             {
                                 value = TokenizeValue(web, field.TypeAsString, fieldValue, fieldValuesAsText[field.InternalName]);
                             }
+                            
+                            //We process moderation status, ideally this shoud be managed with a new attribute in Folder, but it requires a new schema version
+                            if (fieldValue.Key.Equals("_ModerationStatus", StringComparison.InvariantCultureIgnoreCase))
+                            {
+                                value = TokenizeValue(web, field.TypeAsString, fieldValue, fieldValuesAsText[field.InternalName]);
+                            }
 
                             if (fieldValue.Key.Equals("ContentTypeId", StringComparison.InvariantCultureIgnoreCase) || fieldValue.Key.Equals("Attachments", StringComparison.InvariantCultureIgnoreCase))
                             {

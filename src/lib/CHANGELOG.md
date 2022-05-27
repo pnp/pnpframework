@@ -15,6 +15,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Exporting/Provisioning _ModerationStatus for folders #654 [magarma - Miguel Angel García Martínez]
+- Do not try to tokenize non Guid termsetids as they already are tokenized #659 [czullu - Christian Zuellig]
 
 ## [1.9.0]
 

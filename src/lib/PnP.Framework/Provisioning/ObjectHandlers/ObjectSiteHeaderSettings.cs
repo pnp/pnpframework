@@ -104,14 +104,16 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 web.HeaderEmphasis = (SPVariantThemeType)Enum.Parse(typeof(SPVariantThemeType), template.Header.BackgroundEmphasis.ToString());
                 web.MegaMenuEnabled = template.Header.MenuStyle == SiteHeaderMenuStyle.MegaMenu;
+                web.HideTitleInHeader = !template.Header.ShowSiteTitle;
 
                 var jsonRequest = new
                 {
                     headerLayout = web.HeaderLayout,
                     headerEmphasis = web.HeaderEmphasis,
                     megaMenuEnabled = web.MegaMenuEnabled,
+                    hideTitleInHeader = web.HideTitleInHeader
                 };
-
+				
                 web.ExecutePostAsync("/_api/web/SetChromeOptions", System.Text.Json.JsonSerializer.Serialize(jsonRequest)).GetAwaiter().GetResult();
             }
 

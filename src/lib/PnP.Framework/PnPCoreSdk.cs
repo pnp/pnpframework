@@ -52,7 +52,7 @@ namespace PnP.Framework
             if (ctxSettings!=null && ctxSettings.Type == Utilities.Context.ClientContextType.PnPCoreSdk && ctxSettings.AuthenticationManager!=null)
             {
                 var pnpContext = ctxSettings.AuthenticationManager.PnPCoreContext;
-                if (pnpContext != null)
+                if (pnpContext != null && pnpContext.Uri == ctxUri)
                 {
                     return pnpContext;
                 }

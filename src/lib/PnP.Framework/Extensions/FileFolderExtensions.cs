@@ -836,6 +836,7 @@ namespace Microsoft.SharePoint.Client
             string locationType = null;
             string listUrl = string.Empty;
             IEnumerable<Field> titleField = null;
+            string rootUrl = null;
 
             Folder currentFolder = null;
             if (containingList == null)
@@ -851,7 +852,8 @@ namespace Microsoft.SharePoint.Client
 
                 titleField = web.Context.LoadQuery(containingList.Fields.Where(f => f.Id == BuiltInFieldId.Title));
                 await web.Context.ExecuteQueryRetryAsync();
-            }            
+            }
+            rootUrl = currentFolder.ServerRelativeUrl;
 
             // Get remaining parts of the path and split
             var folderRootRelativeUrl = folderServerRelativeUrl.Substring(currentFolder.ServerRelativeUrl.Length);
@@ -882,7 +884,7 @@ namespace Microsoft.SharePoint.Client
                 if (nextFolder == null)
                 {
                     var createPath = string.Join("/", childFolderNames, 0, currentCount);
-                    Log.Info(Constants.LOGGING_SOURCE, CoreResources.FileFolderExtensions_CreateFolder0Under12, createPath, locationType, currentFolder.ServerRelativeUrl);
+                    Log.Info(Constants.LOGGING_SOURCE, CoreResources.FileFolderExtensions_CreateFolder0Under12, createPath, locationType, rootUrl);
                     if (locationType == "List")
                     {
                         createPath = createPath.Substring(0, createPath.Length - folderName.Length).TrimEnd('/');

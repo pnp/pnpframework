@@ -1625,9 +1625,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             listContentType = list.ContentTypes.GetById(existingContentTypeId.StringValue);
                         }
                         else
-                        {
-                            // To avoid error [Exception setting "Hidden": "Cannot change Hidden attribute for this field], add fields to list before adding the content type. #2407
-                            AddContentTypeHiddenFieldsToList(tempCT, list);
+                        {                            
                             // Add the content type
                             listContentType = list.ContentTypes.AddExistingContentType(tempCT);
                         }
@@ -1680,26 +1678,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             {
                 defaultContentType.EnsureProperty(ct => ct.Id);
                 list.SetDefaultContentType(defaultContentType.Id);
-            }
-        }
-
-        private static void AddContentTypeHiddenFieldsToList(ContentType tempCT, List list)
-        {
-            var ctx = (ClientContext)list.Context;
-            var web = ctx.Web;
-            web.EnsureProperty(w => w.AvailableFields);
-            foreach (var fieldLink in tempCT.FieldLinks)
-            {
-                if (fieldLink.Hidden && !list.FieldExistsById(fieldLink.Id))
-                {
-                    var siteField = web.AvailableFields.First(f => f.Id == fieldLink.Id);
-
-                    list.Fields.Add(siteField);
-                }
-            }
-            if (ctx.HasPendingRequest)
-            {
-                ctx.ExecuteQueryRetry();
             }
         }
 

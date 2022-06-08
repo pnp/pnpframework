@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Add ConfigureAwait(false) to AuthenticationManager #665 [RiccardoGDev]
 - Fix for using passed PnPMonitoredScope in async method #666 [patrikhellgren - Patrik Hellgren]
 - Change to not re-throw caught exception during provisioning #668 [patrikhellgren - Patrik Hellgren]
+- Extend timeouts and add retries to teams provisioning #669 [patrikhellgren - Patrik Hellgren]
 
 ## [1.9.0]
 

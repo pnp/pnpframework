@@ -15,6 +15,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Exporting/Provisioning _ModerationStatus for folders #654 [magarma - Miguel Angel García Martínez]
+- Do not try to tokenize non Guid termsetids as they already are tokenized #659 [czullu - Christian Zuellig]
+- Adding token parsing of folder name before setting default field values #664 [eduardpaul - Eduard Paul]
+- Add ConfigureAwait(false) to AuthenticationManager #665 [RiccardoGDev]
+- Fix for using passed PnPMonitoredScope in async method #666 [patrikhellgren - Patrik Hellgren]
+- Change to not re-throw caught exception during provisioning #668 [patrikhellgren - Patrik Hellgren]
+- Extend timeouts and add retries to teams provisioning #669 [patrikhellgren - Patrik Hellgren]
+- Implement show / hide of site title in header using SetChromeOptions #670 [eduardpaul - Eduard Paul]
+- Improve folder creation in EnsureFolderPath method #673 [gautamdsheth - Gautam Sheth]
+- Add UserAgent to CSOM based access token retrieval in GetAccessToken #642 [andregouveia8 - André Gouveia]
 
 ## [1.9.0]
 

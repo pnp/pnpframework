@@ -199,7 +199,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             var defaultFolderValues = new List<Entities.IDefaultColumnValue>();
                             foreach (var templateListFolder in listInfo.TemplateList.Folders)
                             {
-                                var folderName = templateListFolder.Name;
+                                var folderName = parser.ParseString(templateListFolder.Name);
                                 ProcessDefaultFolders(web, listInfo, templateListFolder, folderName, defaultFolderValues, parser);
                             }
                             listInfo.SiteList.SetDefaultColumnValues(defaultFolderValues, true);
@@ -2152,13 +2152,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         var currentFolderItem = currentFolder.ListItemAllFields;
                         parentFolder.Context.Load(currentFolderItem);
                         parentFolder.Context.ExecuteQueryRetry();
-                        foreach (var p in folder.Properties.Where(p => !p.Key.Equals("ContentTypeId")))
+                        foreach (var p in folder.Properties.Where(p => !p.Key.Equals("ContentTypeId") && !p.Key.Equals("_ModerationStatus")))
                         {
                             currentFolderItem[parser.ParseString(p.Key)] = parser.ParseString(p.Value);
                         }
                         currentFolderItem.UpdateOverwriteVersion();
                         currentFolder.Update();
                         parentFolder.Context.ExecuteQueryRetry();
+                                 
                     }
                     catch (ServerException srex)
                     {
@@ -2206,6 +2207,38 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         else
                             throw;
                     }
+                }
+                
+                //Set Moderation status of Folder
+                //Doing it in a different request, because SharePoint doesn't allow to update properties at the same time that other properties
+                if (list.SiteList.EnableModeration && folder.Properties != null && folder.Properties.Any(p => p.Key.Equals("_ModerationStatus")))
+                {
+                    try
+                    {
+                        var currentFolderItem = currentFolder.ListItemAllFields;
+                        parentFolder.Context.Load(currentFolderItem);
+                        parentFolder.Context.ExecuteQueryRetry();
+
+                        var propertyValue = folder.Properties["_ModerationStatus"];
+                        currentFolderItem["_ModerationStatus"] = parser.ParseString(propertyValue);
+
+                        currentFolderItem.UpdateOverwriteVersion();
+                        currentFolder.Update();
+                        parentFolder.Context.ExecuteQueryRetry();
+
+                    }
+                    catch (ServerException srex)
+                    {
+                        //Handle Error To update this folder, go to the channel in Microsoft Teams
+                        if (srex.ServerErrorCode == -2130575223)
+                        {
+                            scope.LogWarning($"Moderation status on folder '{targetFolderName}' can not be changed '{srex.Message}'");
+                            WriteMessage($"Moderation status on folder '{targetFolderName}' can not be changed '{srex.Message}'", ProvisioningMessageType.Warning);
+                        }
+                        else
+                            throw;
+                    }
+                    
                 }
             }
         }

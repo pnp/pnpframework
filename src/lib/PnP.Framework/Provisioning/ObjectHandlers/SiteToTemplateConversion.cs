@@ -208,7 +208,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         {
                             CallWebHooks(hierarchy.Templates.FirstOrDefault(), sequenceTokenParser,
                                 ProvisioningTemplateWebhookKind.ProvisioningExceptionOccurred, handler.Name, ex);
-                            throw ex;
+                            throw;
                         }
                     }
                 }

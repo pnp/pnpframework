@@ -199,7 +199,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             var defaultFolderValues = new List<Entities.IDefaultColumnValue>();
                             foreach (var templateListFolder in listInfo.TemplateList.Folders)
                             {
-                                var folderName = templateListFolder.Name;
+                                var folderName = parser.ParseString(templateListFolder.Name);
                                 ProcessDefaultFolders(web, listInfo, templateListFolder, folderName, defaultFolderValues, parser);
                             }
                             listInfo.SiteList.SetDefaultColumnValues(defaultFolderValues, true);

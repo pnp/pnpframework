@@ -914,7 +914,7 @@ namespace PnP.Framework
                         }
                         catch
                         {
-                            authResult = await confidentialClientApplication.AcquireTokenForClient(scopes).ExecuteAsync(cancellationToken);
+                            authResult = await confidentialClientApplication.AcquireTokenForClient(scopes).ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
                         if (authResult.AccessToken != null)
                         {

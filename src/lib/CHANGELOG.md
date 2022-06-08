@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Extend timeouts and add retries to teams provisioning #669 [patrikhellgren - Patrik Hellgren]
 - Implement show / hide of site title in header using SetChromeOptions #670 [eduardpaul - Eduard Paul]
 - Improve folder creation in EnsureFolderPath method #673 [gautamdsheth - Gautam Sheth]
+- Add UserAgent to CSOM based access token retrieval in GetAccessToken #642 [andregouveia8 - André Gouveia]
 
 ## [1.9.0]
 

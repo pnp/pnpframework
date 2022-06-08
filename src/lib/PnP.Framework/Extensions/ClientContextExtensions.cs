@@ -666,10 +666,7 @@ namespace Microsoft.SharePoint.Client
                             accessToken = authorization.Replace("Bearer ", string.Empty);
                         }
 
-                        if (!string.IsNullOrWhiteSpace(userAgentFromConfig))
-                        {
-                            e.WebRequestExecutor.WebRequest.Headers.Add("User-Agent", userAgentFromConfig);
-                        }
+                        e.WebRequestExecutor.WebRequest.UserAgent = string.IsNullOrEmpty(userAgentFromConfig) ? $"{PnPCoreUtilities.PnPCoreUserAgent}" : userAgentFromConfig;
                     };
                     // Issue a dummy request to get it from the Authorization header
                     clientContext.ExecutingWebRequest += handler;

@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Do not try to tokenize non Guid termsetids as they already are tokenized #659 [czullu - Christian Zuellig]
 - Adding token parsing of folder name before setting default field values #664 [eduardpaul - Eduard Paul]
 - Add ConfigureAwait(false) to AuthenticationManager #665 [RiccardoGDev]
+- Fix for using passed PnPMonitoredScope in async method #666 [patrikhellgren - Patrik Hellgren]
 
 ## [1.9.0]
 

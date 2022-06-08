@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Change to not re-throw caught exception during provisioning #668 [patrikhellgren - Patrik Hellgren]
 - Extend timeouts and add retries to teams provisioning #669 [patrikhellgren - Patrik Hellgren]
 - Implement show / hide of site title in header using SetChromeOptions #670 [eduardpaul - Eduard Paul]
+- Improve folder creation in EnsureFolderPath method #673 [gautamdsheth - Gautam Sheth]
 
 ## [1.9.0]
 

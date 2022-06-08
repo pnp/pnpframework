@@ -31,13 +31,39 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             using (var scope = new PnPMonitoredScope(this.Name))
             {
-                web.EnsureProperties(w => w.FooterEnabled, w => w.ServerRelativeUrl, w => w.Url, w => w.Language);
+                web.EnsureProperties(w => w.FooterEnabled, w => w.FooterLayout, w => w.FooterEmphasis, w => w.ServerRelativeUrl, w => w.Url, w => w.Language);
                 var defaultCulture = new CultureInfo((int)web.Language);
 
                 var footer = new SiteFooter
                 {
-                    Enabled = web.FooterEnabled
+                    Enabled = web.FooterEnabled,
                 };
+
+                switch(web.FooterLayout)
+                {
+                    case FooterLayoutType.Simple:
+                        {
+                            footer.Layout = SiteFooterLayout.Simple;
+                            break;
+                        }
+                    case FooterLayoutType.Extended:
+                        {
+                            footer.Layout = SiteFooterLayout.Extended;
+                            break;
+                        }
+                    case FooterLayoutType.Stacked: //while UI provides just above 2 - CSOM specifies this one as well
+                        {
+                            footer.Layout = SiteFooterLayout.Stacked;
+                            break;
+                        }
+                }
+
+                //not yet available in PNPSchema
+                //if (Enum.TryParse<Emphasis>(web.FooterEmphasis.ToString(), out Emphasis backgroundEmphasis))
+                //{
+                //    footer.BackgroundEmphasis = backgroundEmphasis;
+                //}
+
                 var structureString = web.ExecuteGetAsync($"/_api/navigation/MenuState?menuNodeKey='{Constants.SITEFOOTER_NODEKEY}'", defaultCulture.Name).GetAwaiter().GetResult();
                 var menuState = JsonConvert.DeserializeObject<MenuState>(structureString);
 
@@ -338,8 +364,29 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         w => w.FooterEmphasis,
                         w => w.Language);
                     web.FooterEnabled = template.Footer.Enabled;
+
+                    switch(template.Footer.Layout)
+                    {
+                        case SiteFooterLayout.Simple:
+                            {
+                                web.FooterLayout = FooterLayoutType.Simple;
+                                break;
+                            }
+                        case SiteFooterLayout.Extended:
+                            {
+                                web.FooterLayout = FooterLayoutType.Extended;
+                                break;
+                            }
+                        case SiteFooterLayout.Stacked:
+                            {
+                                web.FooterLayout = FooterLayoutType.Stacked;
+                                break;
+                            }
+                    }
+
                     var defaultCulture = new CultureInfo((int)web.Language);
 
+                    //todo: Once PNPSchema supports FooterEmphasis we should take from template
                     var jsonRequest = new
                     {
                         footerEnabled = web.FooterEnabled,

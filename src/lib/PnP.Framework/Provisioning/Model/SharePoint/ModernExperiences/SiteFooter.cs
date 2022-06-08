@@ -131,5 +131,9 @@ namespace PnP.Framework.Provisioning.Model
         /// Defines the Extended Layout for the Site Footer
         /// </summary>
         Extended,
+        /// <summary>
+        /// Defines the Stacked Layout for the Site Footer
+        /// </summary>
+        Stacked
     }
 }

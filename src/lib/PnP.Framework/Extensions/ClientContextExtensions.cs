@@ -635,12 +635,40 @@ namespace Microsoft.SharePoint.Client
                 }
                 else
                 {
+                    // Get User Agent String
+                    string userAgentFromConfig = null;
+                    try
+                    {
+                        userAgentFromConfig = ConfigurationManager.AppSettings["SharePointPnPUserAgent"];
+                    }
+                    catch // throws exception if being called from a .NET Standard 2.0 application
+                    {
+
+                    }
+
+                    // Get user Agent String if being called from a .NET Standard 2.0 application or is missing
+                    if (string.IsNullOrWhiteSpace(userAgentFromConfig))
+                    {
+                        userAgentFromConfig = Environment.GetEnvironmentVariable("SharePointPnPUserAgent", EnvironmentVariableTarget.Process);
+                    }
+
+                    // Use Default User Agent String
+                    if (string.IsNullOrWhiteSpace(userAgentFromConfig))
+                    {
+                        userAgentFromConfig = PnPCoreUtilities.PnPCoreUserAgent;
+                    }
+
                     EventHandler<WebRequestEventArgs> handler = (s, e) =>
                     {
                         string authorization = e.WebRequestExecutor.RequestHeaders["Authorization"];
                         if (!string.IsNullOrEmpty(authorization))
                         {
                             accessToken = authorization.Replace("Bearer ", string.Empty);
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(userAgentFromConfig))
+                        {
+                            e.WebRequestExecutor.WebRequest.Headers.Add("User-Agent", userAgentFromConfig);
                         }
                     };
                     // Issue a dummy request to get it from the Authorization header

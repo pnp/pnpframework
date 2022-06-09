@@ -26,6 +26,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Improve folder creation in EnsureFolderPath method #673 [gautamdsheth - Gautam Sheth]
 - Add UserAgent to CSOM based access token retrieval in GetAccessToken #642 [andregouveia8 - André Gouveia]
 - Remove AddContentTypeHiddenFieldsToList #679 [magarma - Miguel Angel García Martínez]
+- Add owners as members too when creating group connected team site using application permissions #680 [gautamdsheth - Gautam Sheth]
 
 ## [1.9.0]
 

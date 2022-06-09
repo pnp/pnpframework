@@ -27,6 +27,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Add UserAgent to CSOM based access token retrieval in GetAccessToken #642 [andregouveia8 - André Gouveia]
 - Remove AddContentTypeHiddenFieldsToList #679 [magarma - Miguel Angel García Martínez]
 - Add owners as members too when creating group connected team site using application permissions #680 [gautamdsheth - Gautam Sheth]
+- Fix for empty PnP:Templates in the xml #677 [danielpastoor - Daniel Pastoor]
 
 ## [1.9.0]
 

@@ -515,7 +515,9 @@ namespace PnP.Framework.Provisioning.Providers.Xml
                 templates.SetValue(templatesItem, 0);
 
                 if (provisioningTemplates.Length > 0)
+                {
                     wrapper.SetPublicInstancePropertyValue("Templates", templates);
+                }
 
                 // Serialize the XML-based object into a Stream
                 XmlSerializerNamespaces ns =

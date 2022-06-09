@@ -1753,32 +1753,29 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         private static void GetTeamPhoto(ExtractConfiguration configuration, string accessToken, string groupId, Team team, PnPMonitoredScope scope)
         {
-            // get the photo stream
-            string teamPhotoId = null;
-            string mediaType = null;
-            string photoStreamUrl = null;
 
-            try
+            // get the photo stream
+            string teamPhotoId;
+            string mediaType;
+            string photoStreamUrl;
+
+            // When app-only extraction use the group photo as the Team photo is not available
+            if (!IsAppOnly(accessToken))
             {
                 var teamPhotoIdString = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}beta/teams/{groupId}/photo", accessToken);
                 teamPhotoId = JObject.Parse(teamPhotoIdString)["id"].Value<string>();
                 var groupPhotoString = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/groups/{groupId}/photos/{teamPhotoId}", accessToken);
                 mediaType = JObject.Parse(groupPhotoString)["@odata.mediaContentType"].Value<string>();
                 photoStreamUrl = $"{GraphHelper.MicrosoftGraphBaseURI}v1.0/groups/{groupId}/photos/{teamPhotoId}/$value";
-            } catch
-            {
-                // can't access, swallow
             }
-
-            // If we can't access the team photo then use the group photo
-            if (string.IsNullOrEmpty(photoStreamUrl))
+            else
             {
                 var groupPhotoIdString = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}beta/groups/{groupId}/photo", accessToken);
                 mediaType = JObject.Parse(groupPhotoIdString)["@odata.mediaContentType"].Value<string>();
                 teamPhotoId = JObject.Parse(groupPhotoIdString)["id"].Value<string>();
-                photoStreamUrl = $"{GraphHelper.MicrosoftGraphBaseURI}beta/groups/{groupId}/photo/$value";
+                photoStreamUrl = $"{GraphHelper.MicrosoftGraphBaseURI}v1.0/groups/{groupId}/photo/$value";
             }
-            
+
             using (var teamPhotoStream = HttpHelper.MakeGetRequestForStream(photoStreamUrl, null, accessToken))
             {
                 var extension = string.Empty;
@@ -1969,6 +1966,21 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     throw new Exception($"Could not get drive item of General channel in team with id {teamId} within timeout.");
                 }
             }
+        }
+
+        private static bool IsAppOnly(string accessToken)
+        {
+            // Try to decode the access token
+            var token = new JwtSecurityToken(accessToken);
+
+            // Search for the UPN claim, to see if we have user's delegation
+            var upn = token.Claims.FirstOrDefault(claim => claim.Type == "upn")?.Value;
+            if (string.IsNullOrEmpty(upn))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

@@ -46,10 +46,10 @@ namespace PnP.Framework
         public async Task<PnPContext> GetPnPContextAsync(ClientContext context)
         {
             Uri ctxUri = new Uri(context.Url);
-           
+
             var ctxSettings = context.GetContextSettings();
-            
-            if (ctxSettings!=null && ctxSettings.Type == Utilities.Context.ClientContextType.PnPCoreSdk && ctxSettings.AuthenticationManager!=null)
+
+            if (ctxSettings != null && ctxSettings.Type == Utilities.Context.ClientContextType.PnPCoreSdk && ctxSettings.AuthenticationManager != null)
             {
                 var pnpContext = ctxSettings.AuthenticationManager.PnPCoreContext;
                 if (pnpContext != null && pnpContext.Uri == ctxUri)
@@ -103,13 +103,13 @@ namespace PnP.Framework
                 }).Services;
 
                 // Enables to plug in additional services into this service container
-                if(OnDIContainerBuilding != null)
+                if (OnDIContainerBuilding != null)
                 {
                     OnDIContainerBuilding.Invoke(this, services);
                 }
 
                 var serviceProvider = services.BuildServiceProvider();
-                
+
                 // Get a PnP context factory
                 var pnpContextFactory = serviceProvider.GetRequiredService<IPnPContextFactory>();
 

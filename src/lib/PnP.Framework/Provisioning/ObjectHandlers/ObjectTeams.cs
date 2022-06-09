@@ -1754,11 +1754,32 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         private static void GetTeamPhoto(ExtractConfiguration configuration, string accessToken, string groupId, Team team, PnPMonitoredScope scope)
         {
             // get the photo stream
-            var teamPhotoIdString = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams/{groupId}/photo", accessToken);
-            var teamPhotoId = JObject.Parse(teamPhotoIdString)["id"].Value<string>();
-            var groupPhotoString = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/groups/{groupId}/photos/{teamPhotoId}");
-            var mediaType = JObject.Parse(groupPhotoString)["@odata.mediaContentType"].Value<string>();
-            using (var teamPhotoStream = HttpHelper.MakeGetRequestForStream($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/groups/{groupId}/photos/{teamPhotoId}/$value", null, accessToken))
+            string teamPhotoId = null;
+            string mediaType = null;
+            string photoStreamUrl = null;
+
+            try
+            {
+                var teamPhotoIdString = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}beta/teams/{groupId}/photo", accessToken);
+                teamPhotoId = JObject.Parse(teamPhotoIdString)["id"].Value<string>();
+                var groupPhotoString = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/groups/{groupId}/photos/{teamPhotoId}", accessToken);
+                mediaType = JObject.Parse(groupPhotoString)["@odata.mediaContentType"].Value<string>();
+                photoStreamUrl = $"{GraphHelper.MicrosoftGraphBaseURI}v1.0/groups/{groupId}/photos/{teamPhotoId}/$value";
+            } catch
+            {
+                // can't access, swallow
+            }
+
+            // If we can't access the team photo then use the group photo
+            if (string.IsNullOrEmpty(photoStreamUrl))
+            {
+                var groupPhotoIdString = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}beta/groups/{groupId}/photo", accessToken);
+                mediaType = JObject.Parse(groupPhotoIdString)["@odata.mediaContentType"].Value<string>();
+                teamPhotoId = JObject.Parse(groupPhotoIdString)["id"].Value<string>();
+                photoStreamUrl = $"{GraphHelper.MicrosoftGraphBaseURI}beta/groups/{groupId}/photo/$value";
+            }
+            
+            using (var teamPhotoStream = HttpHelper.MakeGetRequestForStream(photoStreamUrl, null, accessToken))
             {
                 var extension = string.Empty;
                 switch (mediaType)

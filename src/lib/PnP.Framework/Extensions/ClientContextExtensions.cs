@@ -1085,12 +1085,13 @@ namespace Microsoft.SharePoint.Client
         /// Enable MS Teams team on a group connected team site
         /// </summary>
         /// <param name="clientContext"></param>
+        /// <param name="graphAccessToken"></param>
         /// <returns></returns>
-        public static async Task<string> TeamifyAsync(this ClientContext clientContext)
+        public static async Task<string> TeamifyAsync(this ClientContext clientContext, string graphAccessToken = null)
         {
             await new SynchronizationContextRemover();
 
-            return await SiteCollection.TeamifySiteAsync(clientContext);
+            return await SiteCollection.TeamifySiteAsync(clientContext, graphAccessToken);
         }
 
 

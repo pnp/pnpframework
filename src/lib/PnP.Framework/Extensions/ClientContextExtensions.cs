@@ -216,7 +216,13 @@ namespace Microsoft.SharePoint.Client
                             errorSb.AppendLine($"SocketErrorCode: {socketEx.SocketErrorCode}"); //ConnectionReset
                             errorSb.AppendLine($"Message: {socketEx.Message}"); //An existing connection was forcibly closed by the remote host
                             Log.Error(Constants.LOGGING_SOURCE, CoreResources.ClientContextExtensions_ExecuteQueryRetryException, errorSb.ToString());
-                            
+
+                            // Hostname unknown error code 11001 should not be retried
+                            if(socketEx.ErrorCode == 11001)
+                            {
+                                throw;
+                            }
+
                             //retry
                             wrapper = (ClientRequestWrapper)wex.Data["ClientRequest"];
                             retry = true;

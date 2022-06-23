@@ -31,6 +31,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Fix for getting the teams photo when using application permissions #678 [danielpastoor - Daniel Pastoor]
 - Ensure correct PnPContext is returned from the passed ClientContext #676 [danielpastoor - Daniel Pastoor]
 - Fix #1696 - issue with team creation , use graph token if possible #681 [gautamdsheth - Gautam Sheth]
+- Avoid retrying when the hostname cannot be found #686 [koenzomers - Koen Zomers]
 
 ## [1.9.0]
 

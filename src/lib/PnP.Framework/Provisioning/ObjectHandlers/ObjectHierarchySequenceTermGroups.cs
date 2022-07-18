@@ -8,6 +8,7 @@ using PnP.Framework.Provisioning.ObjectHandlers.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Term = Microsoft.SharePoint.Client.Taxonomy.Term;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
@@ -18,7 +19,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         public override string Name => "Term Groups";
 
-        public override TokenParser ProvisionObjects(Tenant tenant, Model.ProvisioningHierarchy hierarchy, string sequenceId, TokenParser parser,
+        public override async Task<TokenParser> ProvisionObjects(Tenant tenant, Model.ProvisioningHierarchy hierarchy, string sequenceId, TokenParser parser,
             ApplyConfiguration configuration)
         {
             using (var scope = new PnPMonitoredScope(this.Name))
@@ -74,7 +75,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             public TokenParser UpdatedParser { get; set; }
         }
 
-        public override ProvisioningHierarchy ExtractObjects(Tenant tenant, ProvisioningHierarchy hierarchy, ExtractConfiguration configuration)
+        public override async Task<ProvisioningHierarchy> ExtractObjects(Tenant tenant, ProvisioningHierarchy hierarchy, ExtractConfiguration configuration)
         {
             throw new NotImplementedException();
         }

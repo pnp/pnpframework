@@ -18,6 +18,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -1588,7 +1589,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return _willExtract.Value;
         }
 
-        public override TokenParser ProvisionObjects(Tenant tenant, ProvisioningHierarchy hierarchy, string sequenceId, TokenParser parser, ApplyConfiguration configuration)
+        public override async Task<TokenParser> ProvisionObjects(Tenant tenant, ProvisioningHierarchy hierarchy, string sequenceId, TokenParser parser, ApplyConfiguration configuration)
         {
             using (var scope = new PnPMonitoredScope(Name))
             {
@@ -1651,7 +1652,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return parser;
         }
 
-        public override ProvisioningHierarchy ExtractObjects(Tenant tenant, ProvisioningHierarchy hierarchy, ExtractConfiguration configuration)
+        public override async Task<ProvisioningHierarchy> ExtractObjects(Tenant tenant, ProvisioningHierarchy hierarchy, ExtractConfiguration configuration)
         {
             using (var scope = new PnPMonitoredScope(Name))
             {

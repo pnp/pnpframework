@@ -4,6 +4,7 @@ using PnP.Framework.Diagnostics;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Model.Configuration;
 using PnP.Framework.Provisioning.ObjectHandlers.Utilities;
+using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -14,12 +15,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             get { return "Tenant Settings"; }
         }
 
-        public override ProvisioningHierarchy ExtractObjects(Tenant tenant, ProvisioningHierarchy hierarchy, ExtractConfiguration configuration)
+        public override async Task<ProvisioningHierarchy> ExtractObjects(Tenant tenant, ProvisioningHierarchy hierarchy, ExtractConfiguration configuration)
         {
             return hierarchy;
         }
 
-        public override TokenParser ProvisionObjects(Tenant tenant, ProvisioningHierarchy hierarchy, string sequenceId, TokenParser parser, ApplyConfiguration configuration)
+        public override async Task<TokenParser> ProvisionObjects(Tenant tenant, ProvisioningHierarchy hierarchy, string sequenceId, TokenParser parser, ApplyConfiguration configuration)
         {
             using (var scope = new PnPMonitoredScope(this.Name))
             {

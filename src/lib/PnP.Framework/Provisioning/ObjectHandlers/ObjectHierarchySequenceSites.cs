@@ -9,6 +9,7 @@ using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -17,7 +18,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         private readonly List<TokenDefinition> _additionalTokens = new List<TokenDefinition>();
         public override string Name => "Sequences";
 
-        public override ProvisioningHierarchy ExtractObjects(Tenant tenant, ProvisioningHierarchy hierarchy, ExtractConfiguration configuration)
+        public override async Task<ProvisioningHierarchy> ExtractObjects(Tenant tenant, ProvisioningHierarchy hierarchy, ExtractConfiguration configuration)
         {
             ProvisioningHierarchy tenantTemplate = new ProvisioningHierarchy();
             List<string> siteCollectionUrls = configuration.Tenant.Sequence.SiteUrls;
@@ -104,7 +105,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                 }
                                 siteCollection.Description = siteProperties.Description;
 
-                                var groupInfo = Sites.SiteCollection.GetGroupInfoByGroupIdAsync(siteContext, siteContext.Site.GroupId.ToString()).GetAwaiter().GetResult();
+                                var groupInfo = await Sites.SiteCollection.GetGroupInfoByGroupIdAsync(siteContext, siteContext.Site.GroupId.ToString());
 
                                 if (groupInfo != null)
                                 {
@@ -119,7 +120,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                                 ((TeamSiteCollection)siteCollection).DisplayName = siteProperties.Title;
                                 ((TeamSiteCollection)siteCollection).Language = (int)siteProperties.Lcid;
-                                ((TeamSiteCollection)siteCollection).HideTeamify = Sites.SiteCollection.IsTeamifyPromptHiddenAsync(siteContext).GetAwaiter().GetResult();
+                                ((TeamSiteCollection)siteCollection).HideTeamify = await Sites.SiteCollection.IsTeamifyPromptHiddenAsync(siteContext);
 
                                 tenantTemplate.Parameters.Add($"SITECOLLECTION_{siteContext.Site.Id.ToString("N")}_TITLE", siteProperties.Title);
                                 siteCollection.Title = $"{{parameter:SITECOLLECTION_{siteContext.Site.Id.ToString("N")}_TITLE}}";
@@ -235,7 +236,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return subSiteCollection;
         }
 
-        public override TokenParser ProvisionObjects(Tenant tenant, Model.ProvisioningHierarchy hierarchy, string sequenceId, TokenParser tokenParser, ApplyConfiguration configuration)
+        public override async Task<TokenParser> ProvisionObjects(Tenant tenant, Model.ProvisioningHierarchy hierarchy, string sequenceId, TokenParser tokenParser, ApplyConfiguration configuration)
         {
             using (var scope = new PnPMonitoredScope(CoreResources.Provisioning_ObjectHandlers_Provisioning))
             {
@@ -288,7 +289,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                         siteInfo.SiteDesignId = siteDesignId;
                                     }
 
-                                    var groupSiteInfo = Sites.SiteCollection.GetGroupInfoAsync(rootSiteContext, siteInfo.Alias).GetAwaiter().GetResult();
+                                    var groupSiteInfo = await Sites.SiteCollection.GetGroupInfoAsync(rootSiteContext, siteInfo.Alias);
                                     string graphAccessToken = null;
                                     if (groupSiteInfo == null)
                                     {                                        
@@ -305,7 +306,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                         }
                                         WriteMessage($"Creating Team Site {siteInfo.Alias}", ProvisioningMessageType.Progress);
 #pragma warning disable CS0618
-                                        siteContext = Sites.SiteCollection.Create(rootSiteContext, siteInfo, configuration.Tenant.DelayAfterModernSiteCreation, noWait: nowait, graphAccessToken: graphAccessToken);
+                                        siteContext = await Sites.SiteCollection.Create(rootSiteContext, siteInfo, configuration.Tenant.DelayAfterModernSiteCreation, noWait: nowait, graphAccessToken: graphAccessToken);
 #pragma warning restore CS0618
                                     }
                                     else
@@ -347,7 +348,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                             if (t.Teamify)
                                             {
                                                 siteContext.Site.EnsureProperty(s => s.GroupId);
-                                                Graph.UnifiedGroupsUtility.CreateTeam(siteContext.Site.GroupId.ToString(), graphAccessToken).GetAwaiter().GetResult();
+                                                await Graph.UnifiedGroupsUtility.CreateTeam(siteContext.Site.GroupId.ToString(), graphAccessToken);
                                                 WriteMessage($"Teamifying the O365 group connected site at URL - {siteContext.Url}", ProvisioningMessageType.Progress);
                                             }
                                         }
@@ -367,7 +368,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                         {
                                             try
                                             {
-                                                siteContext.TeamifyAsync(graphAccessToken).GetAwaiter().GetResult();
+                                                await siteContext.TeamifyAsync(graphAccessToken);
+                                                
                                                 WriteMessage($"Teamifying the O365 group connected site at URL - {siteContext.Url}", ProvisioningMessageType.Progress);
                                             }
                                             catch (Exception ex)
@@ -379,7 +381,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                         {
                                             try
                                             {
-                                                siteContext.HideTeamifyPromptAsync().GetAwaiter().GetResult();
+                                                await siteContext.HideTeamifyPromptAsync();
                                                 WriteMessage($"Teamify prompt is now hidden for site at URL - {siteContext.Url}", ProvisioningMessageType.Progress);
                                             }
                                             catch (Exception ex)
@@ -742,7 +744,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                                 if (sitecollection.IsHubSite)
                                 {
-                                    RESTUtilities.ExecuteGetAsync(web, "/_api/web/hubsitedata(true)").GetAwaiter().GetResult();
+                                    await RESTUtilities.ExecuteGetAsync(web, "/_api/web/hubsitedata(true)");
                                 }
 
                                 foreach (var token in siteTokenParser.Tokens)

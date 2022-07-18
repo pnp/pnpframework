@@ -1316,7 +1316,7 @@ namespace PnP.Framework.Graph
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
         /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
-        public static void AddUnifiedGroupMembers(string groupId, string[] members, string accessToken, bool removeExistingMembers = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+        public static async Task AddUnifiedGroupMembers(string groupId, string[] members, string accessToken, bool removeExistingMembers = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (String.IsNullOrEmpty(accessToken))
             {
@@ -1325,13 +1325,9 @@ namespace PnP.Framework.Graph
 
             try
             {
-                Task.Run(async () =>
-                {
-                    var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
+                var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
 
-                    await UpdateMembers(members, graphClient, groupId, removeExistingMembers);
-
-                }).GetAwaiter().GetResult();
+                await UpdateMembers(members, graphClient, groupId, removeExistingMembers);
             }
             catch (ServiceException ex)
             {

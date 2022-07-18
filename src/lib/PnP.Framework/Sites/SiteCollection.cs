@@ -76,14 +76,14 @@ namespace PnP.Framework.Sites
         /// <param name="noWait">If specified the site will be created and the process will be finished asynchronously</param>
         /// <param name="graphAccessToken">An optional Access Token for Microsoft Graph to use for creeating the site within an App-Only context</param>
         /// <returns>ClientContext object for the created site collection</returns>
-        public static ClientContext Create(
+        public static async Task<ClientContext> Create(
             ClientContext clientContext,
             TeamSiteCollectionCreationInformation siteCollectionCreationInformation,
             int delayAfterCreation = 0,
             bool noWait = false,
             string graphAccessToken = null)
         {
-            var context = CreateAsync(clientContext, siteCollectionCreationInformation, delayAfterCreation, noWait: noWait, graphAccessToken: graphAccessToken).GetAwaiter().GetResult();
+            var context = await CreateAsync(clientContext, siteCollectionCreationInformation, delayAfterCreation, noWait: noWait, graphAccessToken: graphAccessToken);
             return context;
         }
 
@@ -539,7 +539,8 @@ namespace PnP.Framework.Sites
 
             if (group != null && !string.IsNullOrEmpty(group.SiteUrl))
             {
-                Graph.UnifiedGroupsUtility.AddUnifiedGroupMembers(group.GroupId, siteCollectionCreationInformation.Owners, graphAccessToken);
+                await Graph.UnifiedGroupsUtility.AddUnifiedGroupMembers(group.GroupId, siteCollectionCreationInformation.Owners, graphAccessToken);
+
                 // Try to configure the site/group classification, if any
                 if (!string.IsNullOrEmpty(siteCollectionCreationInformation.Classification))
                 {

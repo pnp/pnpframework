@@ -42,10 +42,34 @@ namespace Microsoft.SharePoint.Client
         /// <param name="tenantTemplate"></param>
         /// <param name="sequenceId"></param>
         /// <param name="configuration"></param>
+        public static async Task ApplyTenantTemplateAsync(this Tenant tenant, ProvisioningHierarchy tenantTemplate, string sequenceId, ApplyConfiguration configuration = null)
+        {
+            SiteToTemplateConversion engine = new SiteToTemplateConversion();
+            await engine.ApplyTenantTemplateAsync(tenant, tenantTemplate, sequenceId, configuration);
+        }
+
+        /// <summary>
+        /// Applies a template to a tenant
+        /// </summary>
+        /// <param name="tenant"></param>
+        /// <param name="tenantTemplate"></param>
+        /// <param name="sequenceId"></param>
+        /// <param name="configuration"></param>
         public static void ApplyTenantTemplate(this Tenant tenant, ProvisioningHierarchy tenantTemplate, string sequenceId, ApplyConfiguration configuration = null)
         {
             SiteToTemplateConversion engine = new SiteToTemplateConversion();
-            engine.ApplyTenantTemplate(tenant, tenantTemplate, sequenceId, configuration);
+            engine.ApplyTenantTemplateAsync(tenant, tenantTemplate, sequenceId, configuration).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Extracts a template from a tenant
+        /// </summary>
+        /// <param name="tenant"></param>
+        /// <param name="configuration"></param>
+        /// <returns></returns>
+        public static async Task<ProvisioningHierarchy> GetTenantTemplateAsync(this Tenant tenant, ExtractConfiguration configuration)
+        {
+            return await SiteToTemplateConversion.GetTenantTemplateAsync(tenant, configuration);
         }
 
         /// <summary>
@@ -56,7 +80,7 @@ namespace Microsoft.SharePoint.Client
         /// <returns></returns>
         public static ProvisioningHierarchy GetTenantTemplate(this Tenant tenant, ExtractConfiguration configuration)
         {
-            return SiteToTemplateConversion.GetTenantTemplate(tenant, configuration);
+            return SiteToTemplateConversion.GetTenantTemplateAsync(tenant, configuration).GetAwaiter().GetResult();
         }
 
         /// <summary>

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Online.SharePoint.TenantAdministration;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Model.Configuration;
+using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -26,9 +27,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         public abstract bool WillExtract(Tenant tenant, Model.ProvisioningHierarchy hierarchy, string sequenceId, ExtractConfiguration configuration);
 
-        public abstract TokenParser ProvisionObjects(Tenant tenant, Model.ProvisioningHierarchy hierarchy, string sequenceId, TokenParser parser, ApplyConfiguration configuration);
+        public abstract Task<TokenParser> ProvisionObjects(Tenant tenant, Model.ProvisioningHierarchy hierarchy, string sequenceId, TokenParser parser, ApplyConfiguration configuration);
 
-        public abstract ProvisioningHierarchy ExtractObjects(Tenant tenant, Model.ProvisioningHierarchy hierarchy, ExtractConfiguration configuration);
+        public abstract Task<ProvisioningHierarchy> ExtractObjects(Tenant tenant, Model.ProvisioningHierarchy hierarchy, ExtractConfiguration configuration);
 
         internal void WriteMessage(string message, ProvisioningMessageType messageType)
         {

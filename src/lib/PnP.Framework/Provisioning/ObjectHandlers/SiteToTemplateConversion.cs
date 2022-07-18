@@ -7,6 +7,7 @@ using PnP.Framework.Provisioning.Model.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -142,7 +143,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
         }
 
-        internal void ApplyTenantTemplate(Tenant tenant, PnP.Framework.Provisioning.Model.ProvisioningHierarchy hierarchy, string sequenceId, ApplyConfiguration configuration)
+        internal async Task ApplyTenantTemplateAsync(Tenant tenant, PnP.Framework.Provisioning.Model.ProvisioningHierarchy hierarchy, string sequenceId, ApplyConfiguration configuration)
         {
             using (var scope = new PnPMonitoredScope(CoreResources.Provisioning_ObjectHandlers_Provisioning))
             {
@@ -202,7 +203,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         }
                         try
                         {
-                            sequenceTokenParser = handler.ProvisionObjects(tenant, hierarchy, sequenceId, sequenceTokenParser, configuration);
+                            sequenceTokenParser = await handler.ProvisionObjects(tenant, hierarchy, sequenceId, sequenceTokenParser, configuration);
                         }
                         catch (Exception ex)
                         {
@@ -219,7 +220,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
         }
 
-        internal static ProvisioningHierarchy GetTenantTemplate(Tenant tenant, ExtractConfiguration configuration = null)
+        internal static async Task<ProvisioningHierarchy> GetTenantTemplateAsync(Tenant tenant, ExtractConfiguration configuration = null)
         {
             if (configuration == null)
             {
@@ -260,7 +261,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             step++;
                         }
 
-                        tenantTemplate = handler.ExtractObjects(tenant, tenantTemplate, configuration);
+                        tenantTemplate = await handler.ExtractObjects(tenant, tenantTemplate, configuration);
                     }
                 }
 

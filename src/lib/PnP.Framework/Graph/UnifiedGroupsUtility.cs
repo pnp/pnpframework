@@ -313,84 +313,87 @@ namespace PnP.Framework.Graph
         /// <param name="removeOtherMembers">If set to true, all existing members which are not specified through <paramref name="members"/> will be removed as a member from the group</param>
         private static async Task UpdateMembers(string[] members, GraphServiceClient graphClient, string groupId, bool removeOtherMembers)
         {
-            foreach (var m in members)
+            if (members != null && members.Length > 0)
             {
-                // Search for the user object
-                var memberQuery = await graphClient.Users
-                    .Request()
-                    .Filter($"userPrincipalName eq '{Uri.EscapeDataString(m.Replace("'", "''"))}'")
-                    .GetAsync();
-
-                var member = memberQuery.FirstOrDefault();
-
-                if (member != null)
+                foreach (var m in members)
                 {
-                    try
-                    {
-                        // And if any, add it to the collection of group's owners
-                        await graphClient.Groups[groupId].Members.References.Request().AddAsync(member);
-                    }
-                    catch (Exception ex)
-                    {
-                        if (ex.Message.Contains("Request_BadRequest") &&
-                            ex.Message.Contains("added object references already exist"))
-                        {
-                            // Skip any already existing member
-                        }
-                        else
-                        {
-#pragma warning disable CA2200
-                            throw ex;
-#pragma warning restore CA2200
-                        }
-                    }
-                }
-            }
+                    // Search for the user object
+                    var memberQuery = await graphClient.Users
+                        .Request()
+                        .Filter($"userPrincipalName eq '{Uri.EscapeDataString(m.Replace("'", "''"))}'")
+                        .GetAsync();
 
-            // Check if all other members not provided should be removed
-            if (!removeOtherMembers)
-            {
-                return;
-            }
+                    var member = memberQuery.FirstOrDefault();
 
-            // Remove any leftover member
-            var fullListOfMembers = await graphClient.Groups[groupId].Members.Request().Select("userPrincipalName, Id").GetAsync();
-            var pageExists = true;
-
-            while (pageExists)
-            {
-                foreach (var member in fullListOfMembers)
-                {
-                    var currentMemberPrincipalName = (member as Microsoft.Graph.User)?.UserPrincipalName;
-                    if (!string.IsNullOrEmpty(currentMemberPrincipalName) &&
-                        !members.Contains(currentMemberPrincipalName, StringComparer.InvariantCultureIgnoreCase))
+                    if (member != null)
                     {
                         try
                         {
-                            // If it is not in the list of current owners, just remove it
-                            await graphClient.Groups[groupId].Members[member.Id].Reference.Request().DeleteAsync();
+                            // And if any, add it to the collection of group's owners
+                            await graphClient.Groups[groupId].Members.References.Request().AddAsync(member);
                         }
-                        catch (ServiceException ex)
+                        catch (Exception ex)
                         {
-                            if (ex.Error.Code == "Request_BadRequest")
+                            if (ex.Message.Contains("Request_BadRequest") &&
+                                ex.Message.Contains("added object references already exist"))
                             {
-                                // Skip any failing removal
+                                // Skip any already existing member
                             }
                             else
                             {
+#pragma warning disable CA2200
                                 throw ex;
+#pragma warning restore CA2200
                             }
                         }
                     }
                 }
 
-                if (fullListOfMembers.NextPageRequest != null)
+                // Check if all other members not provided should be removed
+                if (!removeOtherMembers)
                 {
-                    fullListOfMembers = await fullListOfMembers.NextPageRequest.GetAsync();
+                    return;
                 }
-                else
+
+                // Remove any leftover member
+                var fullListOfMembers = await graphClient.Groups[groupId].Members.Request().Select("userPrincipalName, Id").GetAsync();
+                var pageExists = true;
+
+                while (pageExists)
                 {
-                    pageExists = false;
+                    foreach (var member in fullListOfMembers)
+                    {
+                        var currentMemberPrincipalName = (member as Microsoft.Graph.User)?.UserPrincipalName;
+                        if (!string.IsNullOrEmpty(currentMemberPrincipalName) &&
+                            !members.Contains(currentMemberPrincipalName, StringComparer.InvariantCultureIgnoreCase))
+                        {
+                            try
+                            {
+                                // If it is not in the list of current owners, just remove it
+                                await graphClient.Groups[groupId].Members[member.Id].Reference.Request().DeleteAsync();
+                            }
+                            catch (ServiceException ex)
+                            {
+                                if (ex.Error.Code == "Request_BadRequest")
+                                {
+                                    // Skip any failing removal
+                                }
+                                else
+                                {
+                                    throw ex;
+                                }
+                            }
+                        }
+                    }
+
+                    if (fullListOfMembers.NextPageRequest != null)
+                    {
+                        fullListOfMembers = await fullListOfMembers.NextPageRequest.GetAsync();
+                    }
+                    else
+                    {
+                        pageExists = false;
+                    }
                 }
             }
         }

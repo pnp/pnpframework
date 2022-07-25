@@ -842,35 +842,38 @@ namespace PnP.Framework.Graph
 
                     var g = await graphClient.Groups[groupId].Request().GetAsync();
 
-                    group = new UnifiedGroupEntity
+                    if (g.GroupTypes.Contains("Unified"))
                     {
-                        GroupId = g.Id,
-                        DisplayName = g.DisplayName,
-                        Description = g.Description,
-                        Mail = g.Mail,
-                        MailNickname = g.MailNickname,
-                        Visibility = g.Visibility
-                    };
-                    if (includeSite)
-                    {
-                        try
+                        group = new UnifiedGroupEntity
                         {
-                            group.SiteUrl = GetUnifiedGroupSiteUrl(groupId, accessToken);
-                        }
-                        catch (ServiceException e)
+                            GroupId = g.Id,
+                            DisplayName = g.DisplayName,
+                            Description = g.Description,
+                            Mail = g.Mail,
+                            MailNickname = g.MailNickname,
+                            Visibility = g.Visibility
+                        };
+                        if (includeSite)
                         {
-                            group.SiteUrl = e.Error.Message;
+                            try
+                            {
+                                group.SiteUrl = GetUnifiedGroupSiteUrl(groupId, accessToken);
+                            }
+                            catch (ServiceException e)
+                            {
+                                group.SiteUrl = e.Error.Message;
+                            }
                         }
-                    }
 
-                    if (includeClassification)
-                    {
-                        group.Classification = g.Classification;
-                    }
+                        if (includeClassification)
+                        {
+                            group.Classification = g.Classification;
+                        }
 
-                    if (includeHasTeam)
-                    {
-                        group.HasTeam = HasTeamsTeam(group.GroupId, accessToken, azureEnvironment);
+                        if (includeHasTeam)
+                        {
+                            group.HasTeam = HasTeamsTeam(group.GroupId, accessToken, azureEnvironment);
+                        }
                     }
 
                     return (group);

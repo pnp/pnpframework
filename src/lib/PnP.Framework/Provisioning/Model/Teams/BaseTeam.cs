@@ -109,6 +109,10 @@ namespace PnP.Framework.Provisioning.Model.Teams
         /// <summary>
         /// Defines a Public Team
         /// </summary>
-        Public
+        Public,
+        /// <summary>
+        /// Defines a Class Team which is only available in education tenants
+        /// </summary>
+        HiddenMembership
     }
 }

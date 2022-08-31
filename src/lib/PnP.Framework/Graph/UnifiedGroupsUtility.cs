@@ -115,10 +115,12 @@ namespace PnP.Framework.Graph
         /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <param name="preferredDataLocation">Defines the codes of geographies in which there is Office 365 presence. Used for multi-geo enabled tenants. List with available geographies is available at https://docs.microsoft.com/office365/enterprise/multi-geo-add-group-with-pdl#geo-location-codes.</param>
         /// <param name="assignedLabels">AIP Labels which should be applied to the group (does not work for App-Only)</param>
+        /// <param name="welcomeEmailDisabled">Option to prevent sending of default welcome emails to new members.</param>
         /// <returns>The just created Office 365 Group</returns>
         public static UnifiedGroupEntity CreateUnifiedGroup(string displayName, string description, string mailNickname,
             string accessToken, string[] owners = null, string[] members = null, Stream groupLogo = null,
-            bool isPrivate = false, bool createTeam = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Enums.Office365Geography? preferredDataLocation = null, Guid[] assignedLabels = null)
+            bool isPrivate = false, bool createTeam = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production,
+            Enums.Office365Geography? preferredDataLocation = null, Guid[] assignedLabels = null, bool welcomeEmailDisabled = false)
         {
             UnifiedGroupEntity result = null;
 
@@ -200,6 +202,15 @@ namespace PnP.Framework.Graph
                         {
                             newGroup.MembersODataBind = users.Select(u => $"https://{AuthenticationManager.GetGraphEndPoint(azureEnvironment)}/v1.0/users/{u.Id}").ToArray();
                         }
+                    }
+
+                    if (welcomeEmailDisabled)
+                    {
+                        if (newGroup.AdditionalData == null)
+                        {
+                            newGroup.AdditionalData = new Dictionary<string, object>();
+                        }
+                        newGroup.AdditionalData.Add("resourceBehaviorOptions", new string[] { "WelcomeEmailDisabled" });
                     }
 
                     Microsoft.Graph.Group addedGroup = null;
@@ -832,35 +843,38 @@ namespace PnP.Framework.Graph
 
                     var g = await graphClient.Groups[groupId].Request().GetAsync();
 
-                    group = new UnifiedGroupEntity
+                    if (g.GroupTypes.Contains("Unified"))
                     {
-                        GroupId = g.Id,
-                        DisplayName = g.DisplayName,
-                        Description = g.Description,
-                        Mail = g.Mail,
-                        MailNickname = g.MailNickname,
-                        Visibility = g.Visibility
-                    };
-                    if (includeSite)
-                    {
-                        try
+                        group = new UnifiedGroupEntity
                         {
-                            group.SiteUrl = GetUnifiedGroupSiteUrl(groupId, accessToken);
-                        }
-                        catch (ServiceException e)
+                            GroupId = g.Id,
+                            DisplayName = g.DisplayName,
+                            Description = g.Description,
+                            Mail = g.Mail,
+                            MailNickname = g.MailNickname,
+                            Visibility = g.Visibility
+                        };
+                        if (includeSite)
                         {
-                            group.SiteUrl = e.Error.Message;
+                            try
+                            {
+                                group.SiteUrl = GetUnifiedGroupSiteUrl(groupId, accessToken);
+                            }
+                            catch (ServiceException e)
+                            {
+                                group.SiteUrl = e.Error.Message;
+                            }
                         }
-                    }
 
-                    if (includeClassification)
-                    {
-                        group.Classification = g.Classification;
-                    }
+                        if (includeClassification)
+                        {
+                            group.Classification = g.Classification;
+                        }
 
-                    if (includeHasTeam)
-                    {
-                        group.HasTeam = HasTeamsTeam(group.GroupId, accessToken, azureEnvironment);
+                        if (includeHasTeam)
+                        {
+                            group.HasTeam = HasTeamsTeam(group.GroupId, accessToken, azureEnvironment);
+                        }
                     }
 
                     return (group);

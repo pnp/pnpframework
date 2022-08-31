@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - Fix fileuniqueid and pageuniqueid export #692 [rjbooden - Ronald Booden]
+- Added null check for checking if members array is not null #694 [danielpastoor - Daniel Pastoor]
 
 ## [1.10.0]
 

@@ -4,7 +4,6 @@ using Newtonsoft.Json.Linq;
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Entities;
 using PnP.Framework.Utilities;
-using PnP.Framework.Utilities.Graph;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -348,52 +347,51 @@ namespace PnP.Framework.Graph
                         }
                     }
                 }
+            }
+            // Check if all other members not provided should be removed
+            if (!removeOtherMembers)
+            {
+                return;
+            }
 
-                // Check if all other members not provided should be removed
-                if (!removeOtherMembers)
+            // Remove any leftover member
+            var fullListOfMembers = await graphClient.Groups[groupId].Members.Request().Select("userPrincipalName, Id").GetAsync();
+            var pageExists = true;
+
+            while (pageExists)
+            {
+                foreach (var member in fullListOfMembers)
                 {
-                    return;
-                }
-
-                // Remove any leftover member
-                var fullListOfMembers = await graphClient.Groups[groupId].Members.Request().Select("userPrincipalName, Id").GetAsync();
-                var pageExists = true;
-
-                while (pageExists)
-                {
-                    foreach (var member in fullListOfMembers)
+                    var currentMemberPrincipalName = (member as Microsoft.Graph.User)?.UserPrincipalName;
+                    if (!string.IsNullOrEmpty(currentMemberPrincipalName) &&
+                        !members.Contains(currentMemberPrincipalName, StringComparer.InvariantCultureIgnoreCase))
                     {
-                        var currentMemberPrincipalName = (member as Microsoft.Graph.User)?.UserPrincipalName;
-                        if (!string.IsNullOrEmpty(currentMemberPrincipalName) &&
-                            !members.Contains(currentMemberPrincipalName, StringComparer.InvariantCultureIgnoreCase))
+                        try
                         {
-                            try
+                            // If it is not in the list of current owners, just remove it
+                            await graphClient.Groups[groupId].Members[member.Id].Reference.Request().DeleteAsync();
+                        }
+                        catch (ServiceException ex)
+                        {
+                            if (ex.Error.Code == "Request_BadRequest")
                             {
-                                // If it is not in the list of current owners, just remove it
-                                await graphClient.Groups[groupId].Members[member.Id].Reference.Request().DeleteAsync();
+                                // Skip any failing removal
                             }
-                            catch (ServiceException ex)
+                            else
                             {
-                                if (ex.Error.Code == "Request_BadRequest")
-                                {
-                                    // Skip any failing removal
-                                }
-                                else
-                                {
-                                    throw ex;
-                                }
+                                throw ex;
                             }
                         }
                     }
+                }
 
-                    if (fullListOfMembers.NextPageRequest != null)
-                    {
-                        fullListOfMembers = await fullListOfMembers.NextPageRequest.GetAsync();
-                    }
-                    else
-                    {
-                        pageExists = false;
-                    }
+                if (fullListOfMembers.NextPageRequest != null)
+                {
+                    fullListOfMembers = await fullListOfMembers.NextPageRequest.GetAsync();
+                }
+                else
+                {
+                    pageExists = false;
                 }
             }
         }

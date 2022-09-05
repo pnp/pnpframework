@@ -1989,12 +1989,11 @@ namespace Microsoft.SharePoint.Client
             var defaultValuesFileName = "client_LocationBasedDefaults.html";
             using (var clientContext = (ClientContext)list.Context)
             {
-                clientContext.Load(list.RootFolder);
-                clientContext.Load(list.RootFolder.Folders);
+                clientContext.Load(list.RootFolder, r => r.ServerRelativeUrl);
                 clientContext.ExecuteQueryRetry();
-
+                
                 // Check if default values file is present
-                var formsFolder = list.RootFolder.Folders.FirstOrDefault(x => x.Name == "Forms");
+                var formsFolder = GetFormsFolderFromList(list, clientContext);
                 if (formsFolder != null)
                 {
                     var configFile = formsFolder.Files.GetByUrl(defaultValuesFileName);
@@ -2029,12 +2028,11 @@ namespace Microsoft.SharePoint.Client
             var defaultValuesFileName = "client_LocationBasedDefaults.html";
             using (var clientContext = (ClientContext)list.Context)
             {
-                clientContext.Load(list.RootFolder);
-                clientContext.Load(list.RootFolder.Folders);
+                clientContext.Load(list.RootFolder, r => r.ServerRelativeUrl);
                 clientContext.ExecuteQueryRetry();
                 TaxonomySession taxSession = TaxonomySession.GetTaxonomySession(clientContext);
                 // Check if default values file is present
-                var formsFolder = list.RootFolder.Folders.FirstOrDefault(x => x.Name == "Forms");
+                var formsFolder = GetFormsFolderFromList(list, clientContext);
                 List<IDefaultColumnValue> remainingValues = new List<IDefaultColumnValue>();
 
                 if (formsFolder != null)

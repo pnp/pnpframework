@@ -280,7 +280,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     var fieldInternalNames = schemaElement.Descendants("FieldRef").Select(fr => fr.Attribute("Name").Value).Distinct();
                     foreach (var fieldInternalName in fieldInternalNames)
                     {
-                        formulastring = formulastring.Replace($"{fieldInternalName}", $"[{{fieldtitle:{fieldInternalName}}}]");
+                        var referencedField = fields.GetFieldByInternalName(fieldInternalName);
+                        formulastring = formulastring.Replace($"{fieldInternalName}", $"[{referencedField.Title}]");
                     }
                     var fieldRefParent = schemaElement.Descendants("FieldRefs");
                     fieldRefParent.Remove();

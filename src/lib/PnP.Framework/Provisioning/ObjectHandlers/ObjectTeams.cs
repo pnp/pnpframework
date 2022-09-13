@@ -248,18 +248,31 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 {
                     try
                     {
-                        var userIdsByUPN = team.Security.Owners
-                            .Select(o => o.UserPrincipalName)
-                            .Concat(team.Security.Members.Select(m => m.UserPrincipalName))
-                            .Distinct(StringComparer.OrdinalIgnoreCase)
-                            .ToDictionary(k => k, k =>
+                        var successfullyParsedOwnerUPNs = team.Security.Owners
+                           .Select(u => parser.ParseString(u.UserPrincipalName))
+                           .Where(u => !u.StartsWith("{") && !string.IsNullOrEmpty(u))
+                           .Distinct();
+
+                        var successfullyParsedMemberUPNs = team.Security.Members
+                            .Select(u => parser.ParseString(u.UserPrincipalName))
+                            .Where(u => !u.StartsWith("{") && !string.IsNullOrEmpty(u))
+                            .Distinct();
+
+                        var userIdsByUPN = successfullyParsedOwnerUPNs
+                            .Concat(successfullyParsedMemberUPNs)
+                            .Distinct()
+                            .ToDictionary(userPrincipalName => userPrincipalName, userPrincipalName =>
                             {
-                                var jsonUser = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/users/{Uri.EscapeDataString(k.Replace("'", "''"))}?$select=id", accessToken);
+                                var jsonUser = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/users/{Uri.EscapeDataString(userPrincipalName.Replace("'", "''"))}?$select=id", accessToken);
                                 return JToken.Parse(jsonUser).Value<string>("id");
                             });
 
-                        desiredOwnerIds = team.Security.Owners.Select(o => userIdsByUPN[o.UserPrincipalName]).ToArray();
-                        desiredMemberIds = team.Security.Members.Select(o => userIdsByUPN[o.UserPrincipalName]).Union(desiredOwnerIds).ToArray();
+                        desiredOwnerIds = successfullyParsedOwnerUPNs
+                            .Select(userPrincipalName => userIdsByUPN[userPrincipalName]).ToArray();
+
+                        desiredMemberIds = successfullyParsedMemberUPNs
+                            .Select(userPrincipalName => userIdsByUPN[userPrincipalName])
+                            .Union(desiredOwnerIds).Distinct().ToArray();
                     }
                     catch (Exception ex)
                     {
@@ -646,19 +659,31 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             string[] finalOwnerIds;
             try
             {
-                var userIdsByUPN = team.Security.Owners
-                    .Select(o => o.UserPrincipalName)
-                    .Concat(team.Security.Members.Select(m => m.UserPrincipalName))
-                    .Distinct(StringComparer.OrdinalIgnoreCase)
-                    .ToDictionary(k => k, k =>
+                var successfullyParsedOwnerUPNs = team.Security.Owners
+                   .Select(u => parser.ParseString(u.UserPrincipalName))
+                   .Where(u => !u.StartsWith("{") && !string.IsNullOrEmpty(u))
+                   .Distinct();
+
+                var successfullyParsedMemberUPNs = team.Security.Members
+                    .Select(u => parser.ParseString(u.UserPrincipalName))
+                    .Where(u => !u.StartsWith("{") && !string.IsNullOrEmpty(u))
+                    .Distinct();
+
+                var userIdsByUPN = successfullyParsedOwnerUPNs
+                    .Concat(successfullyParsedMemberUPNs)
+                    .Distinct()
+                    .ToDictionary(userPrincipalName => userPrincipalName, userPrincipalName =>
                     {
-                        var parsedUser = parser.ParseString(k);
-                        var jsonUser = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/users/{Uri.EscapeDataString(parsedUser.Replace("'", "''"))}?$select=id", accessToken);
+                        var jsonUser = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/users/{Uri.EscapeDataString(userPrincipalName.Replace("'", "''"))}?$select=id", accessToken);
                         return JToken.Parse(jsonUser).Value<string>("id");
                     });
 
-                desideredOwnerIds = team.Security.Owners.Select(o => userIdsByUPN[o.UserPrincipalName]).ToArray();
-                desideredMemberIds = team.Security.Members.Select(o => userIdsByUPN[o.UserPrincipalName]).Union(desideredOwnerIds).ToArray();
+                desideredOwnerIds = successfullyParsedOwnerUPNs
+                    .Select(userPrincipalName => userIdsByUPN[userPrincipalName]).ToArray();
+
+                desideredMemberIds = successfullyParsedMemberUPNs
+                    .Select(userPrincipalName => userIdsByUPN[userPrincipalName])
+                    .Union(desideredOwnerIds).Distinct().ToArray();
             }
             catch (Exception ex)
             {

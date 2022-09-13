@@ -1457,8 +1457,10 @@ namespace PnP.Framework.Sites
         /// </summary>
         /// <param name="context">Context to operate against</param>
         /// <param name="groupId">Id of the group</param>
+        /// <param name="ensureSharepointSiteExists">If set to true, the fetch will keep trying until the group contains the siteUrl for a maximum of {numberOfAttempts} retries. The time between the attempts will be the square of the retry (1st = 1 second, 2nd = 4 seconds, 3rd = 9 seconds and so forth...</param>
+        /// <param name="numberOfAttempts">Maximum number of retries.</param>
         /// <returns>True if in use, false otherwise</returns>
-        public static async Task<Dictionary<string, object>> GetGroupInfoByGroupIdAsync(ClientContext context, string groupId)
+        public static async Task<Dictionary<string, object>> GetGroupInfoByGroupIdAsync(ClientContext context, string groupId, bool ensureSharepointSiteExists = false, int numberOfAttempts = 6)
         {
             await new SynchronizationContextRemover();
 
@@ -1480,24 +1482,53 @@ namespace PnP.Framework.Sites
                 await PnPHttpClient.AuthenticateRequestAsync(request, context).ConfigureAwait(false);
 
                 // Perform actual GET request
-                HttpResponseMessage response = await httpClient.SendAsync(request);
+                bool keepTrying = true;
+                int attemptNo = 0;
+                do
+                {
+                    attemptNo++;
+                    HttpResponseMessage response = await httpClient.SendAsync(request);
 
-                if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                {
-                    siteInfo = null;
-                }
-                else if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                {
-                    var responseString = await response.Content.ReadAsStringAsync();
-                    siteInfo = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseString);
-                }
-                else
-                {
-                    // Something went wrong...
-                    throw new Exception(await response.Content.ReadAsStringAsync());
-                }
+                    if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                    {
+                        siteInfo = null;
+                        keepTrying = false;
+                    }
+                    else if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        var responseString = await response.Content.ReadAsStringAsync();
+                        siteInfo = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseString);
+                        if (siteInfo["siteUrl"] == null)
+                        {
+                            keepTrying = ensureSharepointSiteExists;
+                        }
+                        else
+                        {
+                            keepTrying = false;
+                        }
+                    }
+                    else
+                    {
+                        // Something went wrong...
+                        throw new Exception(await response.Content.ReadAsStringAsync());
+                    }
+
+                    if (keepTrying)
+                    {
+                        if (attemptNo <= numberOfAttempts)
+                        {
+                            System.Threading.Thread.Sleep(TimeSpan.FromSeconds(attemptNo * attemptNo));
+                        }
+                        else
+                        {
+                            keepTrying = false;
+                            siteInfo = null;
+                        }
+                    }
+
+                } while (keepTrying);
+
             }
-
             return await Task.Run(() => siteInfo);
         }
 

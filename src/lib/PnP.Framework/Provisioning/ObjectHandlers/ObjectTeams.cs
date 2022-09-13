@@ -1638,9 +1638,36 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             {
                                 // Create the Team starting from the XML PnP Provisioning Schema definition
                                 CreateTeamFromProvisioningSchema(scope, parser, hierarchy.Connector, team, accessToken);
+                                if (!string.IsNullOrWhiteSpace(team.ProvisioningTemplateId))
+                                {
+                                    WaitForTeamToBeReady(accessToken, team.GroupId);
+                                    ProvisioningSequenceCollection backup = null;
+                                    string teamSequenceId = team.ProvisioningTemplateId;
+
+                                    if (!hierarchy.Sequences.Any(s => s.ID == teamSequenceId))
+                                    {
+                                        backup = hierarchy.Sequences;
+                                        hierarchy.Sequences.Clear();
+                                        var siteCollection = new TeamSiteCollection()
+                                        {
+                                            Alias = parser.ParseString(team.MailNickname),
+                                            Title = parser.ParseString(team.DisplayName)
+                                        };
+                                        siteCollection.Templates.Add(team.ProvisioningTemplateId);
+                                        teamSequenceId = siteCollection.Alias;
+                                        var sequence = new ProvisioningSequence()
+                                        {
+                                            ID = teamSequenceId
+                                        };
+                                        sequence.SiteCollections.Add(siteCollection);
+                                        hierarchy.Sequences.Add(sequence);
+                                    }
+                                    new ObjectHierarchySequenceSites().ProvisionObjects(tenant, hierarchy, teamSequenceId, parser, configuration);
+                                    hierarchy.Sequences.Clear();
+                                    hierarchy.Sequences.AddRange(backup);
+                                }
                             }
                         }
-
                         currentProgress++;
                     }
                 }

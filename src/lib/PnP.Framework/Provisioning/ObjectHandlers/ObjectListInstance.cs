@@ -18,6 +18,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using ContentType = Microsoft.SharePoint.Client.ContentType;
@@ -1635,7 +1636,22 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         if (pnpCT != null)
                         {
                             var _list = context.Web.Lists.GetById(list.Id);
-                            _list.ContentTypes.AddAvailableContentTypeFromHubAsync(pnpCT.StringId).Wait(new TimeSpan(0, 1, 0));
+                            var ctWasAdded = false;
+                            for (int i = 0; i < 10 && !ctWasAdded; i++)
+                            {
+                                try
+                                {
+                                    _list.ContentTypes.AddAvailableContentTypeFromHubAsync(pnpCT.StringId).Wait(new TimeSpan(0, 1, 0));
+                                    ctWasAdded = true;
+                                }
+                                catch (Exception e)
+                                {
+                                    if (i >= 9)
+                                        throw new Exception("Could not add content type from hub. Cause: " + e.Message, e);
+                                    ctWasAdded = false;
+                                    Thread.Sleep(i * i * 1000);
+                                }
+                            }
                             tempCT = web.GetContentTypeById(ctb.ContentTypeId, cts => cts.Include(
                                     ct => ct.Id,
                                     ct => ct.Name,

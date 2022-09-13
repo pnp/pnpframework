@@ -18,6 +18,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -1588,6 +1589,30 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return _willExtract.Value;
         }
 
+        private static async Task WaitForSharepointProcess(Tenant tenant, string alias)
+        {
+            // Wait for the Team to be ready
+            bool wait = true;
+            int iterations = 0;
+            while (wait)
+            {
+                iterations++;
+                if (iterations > 24)
+                {
+                    throw new Exception($"Sharepoint alias {alias} was not registered or the Sharepoint site was not set up within the timeout.");
+                }
+                Dictionary<string, string> groupInfo = null;
+                var rootSiteUrl = tenant.Context.Url.Replace("-admin", "");
+                using (ClientContext context = tenant.Context.Clone(rootSiteUrl))
+                {
+                    groupInfo = await Sites.SiteCollection.GetGroupInfoAsync(context, alias);
+                    wait = groupInfo == null;
+                    if (wait)
+                        Thread.Sleep(TimeSpan.FromSeconds(iterations));
+                }
+            }
+        }
+
         public override TokenParser ProvisionObjects(Tenant tenant, ProvisioningHierarchy hierarchy, string sequenceId, TokenParser parser, ApplyConfiguration configuration)
         {
             using (var scope = new PnPMonitoredScope(Name))
@@ -1662,6 +1687,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                         sequence.SiteCollections.Add(siteCollection);
                                         hierarchy.Sequences.Add(sequence);
                                     }
+                                    WaitForSharepointProcess(tenant, parser.ParseString(team.MailNickname)).Wait();
                                     new ObjectHierarchySequenceSites().ProvisionObjects(tenant, hierarchy, teamSequenceId, parser, configuration);
                                     hierarchy.Sequences.Clear();
                                     hierarchy.Sequences.AddRange(backup);

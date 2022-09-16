@@ -100,7 +100,7 @@ namespace PnP.Framework.Provisioning.Model
                 BackgroundEmphasis.GetHashCode(),
                 VerticalSectionEmphasis.GetHashCode(),
                 this.Collapsible.GetHashCode(),
-                this.DisplayName.GetHashCode(),
+                (this.DisplayName != null ? this.DisplayName.GetHashCode() : 0),
                 this.IsExpanded.GetHashCode(),
                 this.IconAlignment.GetHashCode(),
                 this.ShowDividerLine.GetHashCode()

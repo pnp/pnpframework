@@ -49,7 +49,7 @@ namespace PnP.Framework.Provisioning.Model.Teams
         /// <summary>
         /// Declares whether the Channel is private or not
         /// </summary>
-        [Obsolete("Please use the new MembershipType property instead of this boolean property, which is now obsolete (since September 2022).")]
+        // [Obsolete("Please use the new MembershipType property instead of this boolean property, which is now obsolete (since September 2022).")]
         public bool Private {
             get { return this.MembershipType == MembershipType.Private; }
             set { this.MembershipType = value ? MembershipType.Private : MembershipType.Public; } 

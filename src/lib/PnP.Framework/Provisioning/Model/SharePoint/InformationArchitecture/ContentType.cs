@@ -191,12 +191,12 @@ namespace PnP.Framework.Provisioning.Model
                 (this.DocumentSetTemplate != null ? this.DocumentSetTemplate.GetHashCode() : 0),
                 this.FieldRefs.Aggregate(0, (acc, next) => acc += (next != null ? next.GetHashCode() : 0)),
                 this.UpdateChildren.GetHashCode(),
-                this.DisplayFormClientSideComponentId.GetHashCode(),
-                this.DisplayFormClientSideComponentProperties.GetHashCode(),
-                this.NewFormClientSideComponentId.GetHashCode(),
-                this.NewFormClientSideComponentProperties.GetHashCode(),
-                this.EditFormClientSideComponentId.GetHashCode(),
-                this.EditFormClientSideComponentProperties.GetHashCode()
+                (this.DisplayFormClientSideComponentId != null ? this.DisplayFormClientSideComponentId.GetHashCode() : 0),
+                (this.DisplayFormClientSideComponentProperties != null ? this.DisplayFormClientSideComponentProperties.GetHashCode() : 0),
+                (this.NewFormClientSideComponentId != null ? this.NewFormClientSideComponentId.GetHashCode() : 0),
+                (this.NewFormClientSideComponentProperties != null ? this.NewFormClientSideComponentProperties.GetHashCode(): 0),
+                (this.EditFormClientSideComponentId != null ? this.EditFormClientSideComponentId.GetHashCode() : 0),
+                (this.EditFormClientSideComponentProperties != null ? this.EditFormClientSideComponentProperties.GetHashCode() : 0)
             ).GetHashCode());
         }
 

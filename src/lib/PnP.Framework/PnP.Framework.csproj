@@ -281,4 +281,9 @@
 		</None>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Provisioning\Providers\Xml\Resolvers\V202209\" />
+	  <Folder Include="Provisioning\Providers\Xml\Serializers\V202209\" />
+	</ItemGroup>
+
 </Project>

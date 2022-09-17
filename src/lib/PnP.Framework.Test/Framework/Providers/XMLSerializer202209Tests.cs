@@ -782,6 +782,10 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(false, channels[1].Private);
             Assert.AreEqual(MembershipType.Private, channels[2].MembershipType);
             Assert.AreEqual(true, channels[2].Private);
+            Assert.IsTrue(channels[1].AllowNewMessageFromBots);
+            Assert.IsTrue(channels[1].AllowNewMessageFromConnectors);
+            Assert.AreEqual(ReplyRestriction.AuthorAndModerators, channels[1].ReplyRestriction);
+            Assert.AreEqual(UserNewMessageRestriction.Moderators, channels[1].UserNewMessageRestriction);
 
             // team apps
             Assert.AreEqual(2, teams[1].Apps.Count);
@@ -883,7 +887,12 @@ namespace PnP.Framework.Test.Framework.Providers
                         Description = "This is just a Sample Channel",
                         DisplayName = "Sample Channel 01",
                         IsFavoriteByDefault = true,
-                        Private = true,
+                        // Private = true,
+                        MembershipType = MembershipType.Shared,
+                        AllowNewMessageFromBots = true,
+                        AllowNewMessageFromConnectors = true,
+                        ReplyRestriction = ReplyRestriction.AuthorAndModerators,
+                        UserNewMessageRestriction = UserNewMessageRestriction.Moderators,
                         Tabs =
                         {
                             new TeamTab
@@ -1010,7 +1019,11 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.IsTrue(channels[0].TabResources[0].TabResourceSettings.Contains("\"displayName\": \"Notebook name\""));
             Assert.AreEqual("{TeamsTabId:TabDisplayName}", channels[0].TabResources[0].TargetTabId);
             Assert.AreEqual(TeamTabResourcesTabResourceType.Planner, channels[0].TabResources[0].Type);
-            Assert.AreEqual(TeamChannelMembershipType.Private, channels[0].MembershipType);
+            Assert.AreEqual(TeamChannelMembershipType.Shared, channels[0].MembershipType);
+            Assert.IsTrue(channels[0].AllowNewMessageFromBots);
+            Assert.IsTrue(channels[0].AllowNewMessageFromConnectors);
+            Assert.AreEqual(TeamChannelReplyRestriction.AuthorAndModerators, channels[0].ReplyRestriction);
+            Assert.AreEqual(TeamChannelUserNewMessageRestriction.Moderators, channels[0].UserNewMessageRestriction);
 
             // team apps
             Assert.AreEqual(1, team.Apps.Count());
@@ -2316,6 +2329,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(false, siteSettings.AllowSavePublishDeclarativeWorkflow);
             Assert.AreEqual(true, siteSettings.SocialBarOnSitePagesDisabled);
             Assert.AreEqual(PnP.Framework.Provisioning.Model.SearchBoxInNavBar.ModernOnly, siteSettings.SearchBoxInNavBar);
+            Assert.AreEqual(true, siteSettings.ShowPeoplePickerSuggestionsForGuestUsers);
             Assert.AreEqual("https://contoso.sharepoint.com/sites/SearchCenter", siteSettings.SearchCenterUrl);
         }
 
@@ -2335,6 +2349,7 @@ namespace PnP.Framework.Test.Framework.Providers
                     AllowSavePublishDeclarativeWorkflow = false,
                     SocialBarOnSitePagesDisabled = true,
                     SearchBoxInNavBar = PnP.Framework.Provisioning.Model.SearchBoxInNavBar.ModernOnly,
+                    ShowPeoplePickerSuggestionsForGuestUsers = true,
                     SearchCenterUrl = "https://contoso.sharepoint.com/sites/SearchCenter",
                 }
             };
@@ -2357,6 +2372,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(false, siteSettings.AllowSavePublishDeclarativeWorkflow);
             Assert.AreEqual(true, siteSettings.SocialBarOnSitePagesDisabled);
             Assert.AreEqual(TargetNamespace.SearchBoxInNavBar.ModernOnly, siteSettings.SearchBoxInNavBar);
+            Assert.AreEqual(true, siteSettings.ShowPeoplePickerSuggestionsForGuestUsers);
             Assert.AreEqual("https://contoso.sharepoint.com/sites/SearchCenter", siteSettings.SearchCenterUrl);
         }
 
@@ -3194,6 +3210,12 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.IsFalse(ct.ReadOnly);
             Assert.IsFalse(ct.Sealed);
             Assert.IsTrue(ct.UpdateChildren);
+            Assert.AreEqual("49b0ccdd-1bdf-47ba-a92f-dfddec265d63", ct.DisplayFormClientSideComponentId);
+            Assert.AreEqual("{'sampleProperty':'Sample value'}", ct.DisplayFormClientSideComponentProperties);
+            Assert.AreEqual("7c7c9c44-4dd4-4a2b-8619-beba16e08efa", ct.NewFormClientSideComponentId);
+            Assert.AreEqual("{'sampleProperty':'Sample value'}", ct.NewFormClientSideComponentProperties);
+            Assert.AreEqual("3c4825e4-4b20-496d-9450-cd76f5135323", ct.EditFormClientSideComponentId);
+            Assert.AreEqual("{'sampleProperty':'Sample value'}", ct.EditFormClientSideComponentProperties);
 
             ct = template.ContentTypes.FirstOrDefault(c => c.Id == "0x0120D5200039D83CD2C9BA4A4499AEE6BE3562E023");
             Assert.IsNotNull(ct.DocumentSetTemplate);
@@ -3255,6 +3277,12 @@ namespace PnP.Framework.Test.Framework.Providers
                 ReadOnly = true,
                 Sealed = true,
                 UpdateChildren = true,
+                DisplayFormClientSideComponentId = "49b0ccdd-1bdf-47ba-a92f-dfddec265d63",
+                DisplayFormClientSideComponentProperties = "{'sampleProperty':'Sample value'}",
+                NewFormClientSideComponentId = "7c7c9c44-4dd4-4a2b-8619-beba16e08efa",
+                NewFormClientSideComponentProperties = "{'sampleProperty':'Sample value'}",
+                EditFormClientSideComponentId = "3c4825e4-4b20-496d-9450-cd76f5135323",
+                EditFormClientSideComponentProperties = "{'sampleProperty':'Sample value'}"
             };
 
             var documentSetTemplate = new DocumentSetTemplate { RemoveExistingContentTypes = true, UpdateChildren = true };
@@ -3311,6 +3339,12 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.IsTrue(ct.ReadOnly);
             Assert.IsTrue(ct.Sealed);
             Assert.IsTrue(ct.UpdateChildren);
+            Assert.AreEqual("49b0ccdd-1bdf-47ba-a92f-dfddec265d63", ct.DisplayFormClientSideComponentId);
+            Assert.AreEqual("{'sampleProperty':'Sample value'}", ct.DisplayFormClientSideComponentProperties);
+            Assert.AreEqual("7c7c9c44-4dd4-4a2b-8619-beba16e08efa", ct.NewFormClientSideComponentId);
+            Assert.AreEqual("{'sampleProperty':'Sample value'}", ct.NewFormClientSideComponentProperties);
+            Assert.AreEqual("3c4825e4-4b20-496d-9450-cd76f5135323", ct.EditFormClientSideComponentId);
+            Assert.AreEqual("{'sampleProperty':'Sample value'}", ct.EditFormClientSideComponentProperties);
 
             Assert.IsNotNull(ct.DocumentSetTemplate);
             Assert.IsTrue(ct.DocumentSetTemplate.UpdateChildren);
@@ -3381,36 +3415,40 @@ namespace PnP.Framework.Test.Framework.Providers
             // common properties
             var list = template.Lists.FirstOrDefault(ls => ls.Title == "{parameter:CompanyName} - Projects");
             Assert.IsNotNull(list);
-            Assert.IsTrue(list.ContentTypesEnabled);
             Assert.AreEqual("Project Documents are stored here", list.Description);
-            Assert.AreEqual(1, list.DraftVersionVisibility);
-            Assert.IsFalse(list.EnableAttachments);
-            Assert.IsTrue(list.EnableFolderCreation);
-            Assert.IsTrue(list.EnableMinorVersions);
-            Assert.IsFalse(list.EnableModeration);
-            Assert.IsTrue(list.EnableVersioning);
-            Assert.IsTrue(list.ForceCheckout);
-            Assert.IsFalse(list.Hidden);
-            Assert.AreEqual(10, list.MaxVersionLimit);
-            Assert.AreEqual(10, list.MinorVersionLimit);
+            Assert.AreEqual("", list.DocumentTemplate);
             Assert.IsTrue(list.OnQuickLaunch);
-            Assert.IsFalse(list.RemoveExistingContentTypes);
-            Assert.AreEqual(PnP.Framework.Provisioning.Model.ListExperience.ClassicExperience, list.ListExperience);
-            Assert.AreEqual(new Guid("81a7b6a8-c0e9-4819-aea1-8fc8894d3c43"), list.TemplateFeatureID);
             Assert.AreEqual(101, list.TemplateType);
             Assert.AreEqual("Lists/Projects", list.Url);
+            Assert.IsTrue(list.EnableVersioning);
+            Assert.IsTrue(list.ForceCheckout);
+            Assert.IsFalse(list.RemoveExistingContentTypes);
+            Assert.IsTrue(list.NoCrawl);
+            Assert.AreEqual(PnP.Framework.Provisioning.Model.ListExperience.ClassicExperience, list.ListExperience);
+            Assert.IsTrue(list.ContentTypesEnabled);
             Assert.AreEqual("./Forms/Display.aspx", list.DefaultDisplayFormUrl);
             Assert.AreEqual("./Forms/Edit.aspx", list.DefaultEditFormUrl);
             Assert.AreEqual("./Forms/NewItem.aspx", list.DefaultNewFormUrl);
             Assert.AreEqual(ListReadingDirection.LTR, list.Direction);
             Assert.AreEqual(1, list.DraftVersionVisibility);
+            Assert.IsFalse(list.EnableAttachments);
+            Assert.IsTrue(list.EnableFolderCreation);
+            Assert.IsTrue(list.EnableMinorVersions);
+            Assert.IsFalse(list.EnableModeration);
+            Assert.IsFalse(list.Hidden);
+            Assert.AreEqual("./Images/Sample.png", list.ImageUrl);
             Assert.AreEqual(true, list.IrmExpire);
             Assert.AreEqual(false, list.IrmReject);
             Assert.AreEqual(false, list.IsApplicationList);
+            Assert.AreEqual(10, list.MaxVersionLimit);
+            Assert.AreEqual(10, list.MinorVersionLimit);
             Assert.AreEqual(11, list.ReadSecurity);
+            Assert.AreEqual(new Guid("81a7b6a8-c0e9-4819-aea1-8fc8894d3c43"), list.TemplateFeatureID);
             Assert.AreEqual("sample formula here", list.ValidationFormula);
             Assert.AreEqual("validation message here", list.ValidationMessage);
             Assert.AreEqual("fake-template.stp", list.TemplateInternalName);
+            Assert.IsTrue(list.EnableAudienceTargeting);
+            Assert.IsTrue(list.EnableClassicAudienceTargeting);
             Assert.AreEqual(120, list.Webhooks[0].ExpiresInDays);
             Assert.AreEqual("http://myapp.azurewebsites.net/WebHookListener", list.Webhooks[0].ServerNotificationUrl);
 
@@ -3628,25 +3666,41 @@ namespace PnP.Framework.Test.Framework.Providers
             var list = new PnP.Framework.Provisioning.Model.ListInstance()
             {
                 Title = "Project Documents",
-                ContentTypesEnabled = true,
                 Description = "Project Documents are stored here",
                 DocumentTemplate = "document.dotx",
+                OnQuickLaunch = true,
+                TemplateType = 101,
+                Url = "/Lists/ProjectDocuments",
+                EnableVersioning = true,
+                ForceCheckout = true,
+                RemoveExistingContentTypes = true,
+                NoCrawl = true,
+                ListExperience = Provisioning.Model.ListExperience.ClassicExperience,
+                ContentTypesEnabled = true,
+                DefaultDisplayFormUrl = "./Forms/Display.aspx",
+                DefaultEditFormUrl = "./Forms/Edit.aspx",
+                DefaultNewFormUrl = "./Forms/NewItem.aspx",
+                Direction = ListReadingDirection.LTR,
                 DraftVersionVisibility = 1,
                 EnableAttachments = true,
                 EnableFolderCreation = true,
                 EnableMinorVersions = true,
                 EnableModeration = true,
-                EnableVersioning = true,
-                ForceCheckout = true,
                 Hidden = true,
+                ImageUrl = "./Images/Sample.png",
+                IrmExpire = true,
+                IrmReject = false,
+                IsApplicationList = false,
                 MaxVersionLimit = 10,
                 MinorVersionLimit = 2,
-                OnQuickLaunch = true,
-                RemoveExistingContentTypes = true,
-                RemoveExistingViews = true,
+                ReadSecurity = 11,
                 TemplateFeatureID = new Guid("30FB193E-016E-45A6-B6FD-C6C2B31AA150"),
-                TemplateType = 101,
-                Url = "/Lists/ProjectDocuments",
+                ValidationFormula = "sample formula here",
+                ValidationMessage = "validation message here",
+                TemplateInternalName = "fake-template.stp",
+                EnableAudienceTargeting = true,
+                EnableClassicAudienceTargeting = true,
+                RemoveExistingViews = true,
                 Security = new PnP.Framework.Provisioning.Model.ObjectSecurity(new List<PnP.Framework.Provisioning.Model.RoleAssignment>()
                 {
                     new PnP.Framework.Provisioning.Model.RoleAssignment()
@@ -3929,27 +3983,44 @@ namespace PnP.Framework.Test.Framework.Providers
 
             var l = template.Lists.FirstOrDefault(ls => ls.Title == "Project Documents");
             Assert.IsNotNull(l);
-            Assert.IsTrue(l.ContentTypesEnabled);
             Assert.AreEqual("Project Documents are stored here", l.Description);
             Assert.AreEqual("document.dotx", l.DocumentTemplate);
+            Assert.IsTrue(l.OnQuickLaunch);
+            Assert.AreEqual(101, l.TemplateType);
+            Assert.AreEqual("/Lists/ProjectDocuments", l.Url);
+            Assert.IsTrue(l.EnableVersioning);
+            Assert.IsTrue(l.ForceCheckout);
+            Assert.IsTrue(l.RemoveExistingContentTypes);
+            Assert.IsTrue(l.NoCrawl);
+            Assert.AreEqual(PnP.Framework.Provisioning.Model.ListExperience.ClassicExperience, list.ListExperience);
+            Assert.IsTrue(l.ContentTypesEnabled);
+            Assert.AreEqual("./Forms/Display.aspx", list.DefaultDisplayFormUrl);
+            Assert.AreEqual("./Forms/Edit.aspx", list.DefaultEditFormUrl);
+            Assert.AreEqual("./Forms/NewItem.aspx", list.DefaultNewFormUrl);
+            Assert.AreEqual(ListReadingDirection.LTR, list.Direction);
             Assert.AreEqual(1, l.DraftVersionVisibility);
             Assert.IsTrue(l.DraftVersionVisibilitySpecified);
             Assert.IsTrue(l.EnableAttachments);
             Assert.IsTrue(l.EnableFolderCreation);
             Assert.IsTrue(l.EnableMinorVersions);
             Assert.IsTrue(l.EnableModeration);
-            Assert.IsTrue(l.EnableVersioning);
-            Assert.IsTrue(l.ForceCheckout);
             Assert.IsTrue(l.Hidden);
+            Assert.AreEqual("./Images/Sample.png", list.ImageUrl);
+            Assert.AreEqual(true, list.IrmExpire);
+            Assert.AreEqual(false, list.IrmReject);
+            Assert.AreEqual(false, list.IsApplicationList);
             Assert.AreEqual(10, l.MaxVersionLimit);
             Assert.IsTrue(l.MaxVersionLimitSpecified);
             Assert.AreEqual(2, l.MinorVersionLimit);
             Assert.IsTrue(l.MinorVersionLimitSpecified);
-            Assert.IsTrue(l.OnQuickLaunch);
-            Assert.IsTrue(l.RemoveExistingContentTypes);
+            Assert.AreEqual(11, list.ReadSecurity);
             Assert.AreEqual("30FB193E-016E-45A6-B6FD-C6C2B31AA150".ToLower(), l.TemplateFeatureID);
-            Assert.AreEqual(101, l.TemplateType);
-            Assert.AreEqual("/Lists/ProjectDocuments", l.Url);
+            Assert.AreEqual("sample formula here", list.ValidationFormula);
+            Assert.AreEqual("validation message here", list.ValidationMessage);
+            Assert.AreEqual("fake-template.stp", list.TemplateInternalName);
+            Assert.IsTrue(list.EnableAudienceTargeting);
+            Assert.IsTrue(list.EnableClassicAudienceTargeting);
+
             Assert.AreEqual(120, list.Webhooks[0].ExpiresInDays);
             Assert.AreEqual("http://myapp.azurewebsites.net/WebHookListener", list.Webhooks[0].ServerNotificationUrl);
 
@@ -5171,6 +5242,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(true, page.Header.ShowPublishDate);
             Assert.AreEqual(true, page.Header.ShowTopicHeader);
             Assert.AreEqual("Topic header value", page.Header.TopicHeader);
+            Assert.IsTrue(page.Header.ShowBackgroundGradient);
 
             var section = page.Sections[0];
 
@@ -5178,6 +5250,12 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(1, section.Order);
             Assert.AreEqual(PnP.Framework.Provisioning.Model.CanvasSectionType.OneColumn, section.Type);
             Assert.AreEqual(PnP.Framework.Provisioning.Model.Emphasis.Neutral, section.BackgroundEmphasis);
+            Assert.IsTrue(section.Collapsible);
+            Assert.AreEqual("My collapsible section", section.DisplayName);
+            Assert.AreEqual(IconAlignment.Left, section.IconAlignment);
+            Assert.IsTrue(section.IsExpanded);
+            Assert.IsTrue(section.ShowDividerLine);
+            Assert.AreEqual(PnP.Framework.Provisioning.Model.Emphasis.Neutral, section.VerticalSectionEmphasis);
 
             Assert.AreEqual("...", section.Controls[0].CustomWebPartName);
             Assert.AreEqual(WebPartType.Image, section.Controls[0].Type);
@@ -5238,7 +5316,8 @@ namespace PnP.Framework.Test.Framework.Providers
                     AuthorByLineId = 5,
                     ShowPublishDate = true,
                     ShowTopicHeader = true,
-                    TopicHeader = "Topic header value"
+                    TopicHeader = "Topic header value",
+                    ShowBackgroundGradient = true,
                 },
                 Sections =
                 {
@@ -5247,7 +5326,12 @@ namespace PnP.Framework.Test.Framework.Providers
                         Order = 1,
                         Type = CanvasSectionType.OneColumnVerticalSection,
                         BackgroundEmphasis = PnP.Framework.Provisioning.Model.Emphasis.Soft,
-                        VerticalSectionEmphasis = PnP.Framework.Provisioning.Model.Emphasis.Strong,
+                        Collapsible = true,
+                        DisplayName = "My collapsible section",
+                        IconAlignment = IconAlignment.Left,
+                        IsExpanded = true,
+                        ShowDividerLine = true,
+                        VerticalSectionEmphasis = PnP.Framework.Provisioning.Model.Emphasis.Neutral,
                         Controls =
                         {
                             new PnP.Framework.Provisioning.Model.CanvasControl
@@ -5323,6 +5407,8 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(true, page.Header.ShowPublishDate);
             Assert.AreEqual(true, page.Header.ShowTopicHeader);
             Assert.AreEqual("Topic header value", page.Header.TopicHeader);
+            Assert.IsTrue(page.Header.ShowBackgroundGradient);
+            Assert.IsTrue(page.Header.ShowBackgroundGradientSpecified);
 
             var section = page.Sections[0];
 
@@ -5330,7 +5416,12 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(1, section.Order);
             Assert.AreEqual(TargetNamespace.CanvasSectionType.OneColumnVerticalSection, section.Type);
             Assert.AreEqual(TargetNamespace.Emphasis.Soft, section.BackgroundEmphasis);
-            Assert.AreEqual(TargetNamespace.Emphasis.Strong, section.VerticalSectionEmphasis);
+            Assert.IsTrue(section.Collapsible);
+            Assert.AreEqual("My collapsible section", section.DisplayName);
+            Assert.AreEqual(TargetNamespace.CanvasSectionIconAlignment.Left, section.IconAlignment);
+            Assert.IsTrue(section.IsExpanded);
+            Assert.IsTrue(section.ShowDividerLine);
+            Assert.AreEqual(TargetNamespace.Emphasis.Neutral, section.VerticalSectionEmphasis);
 
             Assert.AreEqual("...", section.Controls[0].CustomWebPartName);
             Assert.AreEqual(TargetNamespace.CanvasControlWebPartType.Image, section.Controls[0].WebPartType);

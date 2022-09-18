@@ -481,6 +481,19 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             break;
                     }
 
+                    // Configure collapsible section, if needed
+                    if (section.Collapsible)
+                    {
+                        var targetSection = page.Sections[sectionCount];
+                        targetSection.Collapsible = section.Collapsible;
+                        targetSection.IsExpanded = section.IsExpanded;
+                        targetSection.DisplayName = section.DisplayName;
+                        targetSection.IconAlignment = (PnP.Core.Model.SharePoint.IconAlignment)Enum.Parse(
+                            typeof(PnP.Core.Model.SharePoint.IconAlignment), 
+                            section.IconAlignment.ToString());
+                        targetSection.ShowDividerLine = section.ShowDividerLine;
+                    }
+
                     // Add controls to the section
                     if (section.Controls.Any())
                     {

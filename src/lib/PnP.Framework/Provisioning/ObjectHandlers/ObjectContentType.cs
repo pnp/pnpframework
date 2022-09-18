@@ -222,6 +222,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 }
             }
 
+            // Set the SPFx form customizer settings, if any
+            SetContentTypeFormCustomizerSettings(templateContentType, parser, existingContentType);
+
             if (templateContentType.Name.ContainsResourceToken())
             {
                 existingContentType.NameResource.SetUserResourceValue(templateContentType.Name, parser);
@@ -617,6 +620,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 }
             }
 
+            // Set the SPFx form customizer settings, if any
+            SetContentTypeFormCustomizerSettings(templateContentType, parser, createdCT);
+
             createdCT.Update(true);
             web.Context.ExecuteQueryRetry();
 
@@ -734,6 +740,39 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return createdCT;
         }
 
+        private static void SetContentTypeFormCustomizerSettings(ContentType templateContentType, TokenParser parser, Microsoft.SharePoint.Client.ContentType createdCT)
+        {
+            // Display Form Customizer
+            if (!string.IsNullOrEmpty(parser.ParseString(templateContentType.DisplayFormClientSideComponentId)))
+            {
+                createdCT.DisplayFormClientSideComponentId = parser.ParseString(templateContentType.DisplayFormClientSideComponentId);
+            }
+            if (!string.IsNullOrEmpty(parser.ParseString(templateContentType.DisplayFormClientSideComponentProperties)))
+            {
+                createdCT.DisplayFormClientSideComponentProperties = parser.ParseString(templateContentType.DisplayFormClientSideComponentProperties);
+            }
+
+            // New Form Customizer
+            if (!string.IsNullOrEmpty(parser.ParseString(templateContentType.NewFormClientSideComponentId)))
+            {
+                createdCT.NewFormClientSideComponentId = parser.ParseString(templateContentType.NewFormClientSideComponentId);
+            }
+            if (!string.IsNullOrEmpty(parser.ParseString(templateContentType.NewFormClientSideComponentProperties)))
+            {
+                createdCT.NewFormClientSideComponentProperties = parser.ParseString(templateContentType.NewFormClientSideComponentProperties);
+            }
+
+            // Edit Form Customizer
+            if (!string.IsNullOrEmpty(parser.ParseString(templateContentType.EditFormClientSideComponentId)))
+            {
+                createdCT.EditFormClientSideComponentId = parser.ParseString(templateContentType.EditFormClientSideComponentId);
+            }
+            if (!string.IsNullOrEmpty(parser.ParseString(templateContentType.EditFormClientSideComponentProperties)))
+            {
+                createdCT.EditFormClientSideComponentProperties = parser.ParseString(templateContentType.EditFormClientSideComponentProperties);
+            }
+        }
+
         public override ProvisioningTemplate ExtractObjects(Web web, ProvisioningTemplate template, ProvisioningTemplateCreationInformation creationInfo)
         {
             using (var scope = new PnPMonitoredScope(this.Name))
@@ -754,6 +793,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             var cts = web.ContentTypes;
             web.Context.Load(cts,
                 ctCollection => ctCollection.IncludeWithDefaultProperties(
+                    ct => ct.DisplayFormClientSideComponentId,
+                    ct => ct.DisplayFormClientSideComponentProperties,
+                    ct => ct.NewFormClientSideComponentId,
+                    ct => ct.NewFormClientSideComponentProperties,
+                    ct => ct.EditFormClientSideComponentId,
+                    ct => ct.EditFormClientSideComponentProperties,
                     ct => ct.FieldLinks,
                     ct => ct.SchemaXmlWithResourceTokens,
                     ct => ct.FieldLinks.IncludeWithDefaultProperties(
@@ -850,6 +895,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         DisplayFormUrl = ct.DisplayFormUrl,
                         EditFormUrl = ct.EditFormUrl,
                         NewFormUrl = ct.NewFormUrl,
+                        DisplayFormClientSideComponentId = ct.DisplayFormClientSideComponentId,
+                        DisplayFormClientSideComponentProperties = ct.DisplayFormClientSideComponentProperties,
+                        NewFormClientSideComponentId = ct.NewFormClientSideComponentId,
+                        NewFormClientSideComponentProperties = ct.NewFormClientSideComponentProperties,
+                        EditFormClientSideComponentId = ct.EditFormClientSideComponentId,
+                        EditFormClientSideComponentProperties = ct.EditFormClientSideComponentProperties,
                     };
 
                     if (creationInfo.PersistMultiLanguageResources)

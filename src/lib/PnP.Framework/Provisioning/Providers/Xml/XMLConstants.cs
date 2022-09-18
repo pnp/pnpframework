@@ -7,7 +7,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml
         public const String PROVISIONING_SCHEMA_PREFIX = "pnp";
         //[Obsolete("The PnP Provisioning Schema v201805 is obsolete and deprecated, please use the latest version available at https://github.com/pnp/PnP-Provisioning-Schema")]
 
-        [Obsolete("The PnP Provisioning Schema v201909 is obsolete and deprecated, please use the latest version available at https://github.com/pnp/PnP-Provisioning-Schema")] 
+        [Obsolete("The PnP Provisioning Schema v201903 is obsolete and deprecated, please use the latest version available at https://github.com/pnp/PnP-Provisioning-Schema")] 
         public const String PROVISIONING_SCHEMA_NAMESPACE_2019_03 = "http://schemas.dev.office.com/PnP/2019/03/ProvisioningSchema";
         
         public const String PROVISIONING_SCHEMA_NAMESPACE_2019_09 = "http://schemas.dev.office.com/PnP/2019/09/ProvisioningSchema";

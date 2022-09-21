@@ -28,6 +28,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
     {
         private readonly FieldAndListProvisioningStepHelper.Step step;
 
+        // Check if there is a central fields list
+        private readonly string ModernAudienceTargetingInternalName = "_ModernAudienceTargetUserField"; 
+        private readonly string ModernAudienceTargetingMultiLookupInternalName = "_ModernAudienceAadObjectIds";
+        private readonly string ClassicAudienceTargetingInternalName = "Target_x0020_Audiences";
+
         public override string Name
         {
 #if DEBUG
@@ -166,6 +171,16 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     }
 
                     #endregion Fields
+
+                    #region Audience Targeting
+                    foreach (var listInfo in processedLists)
+                    {
+                        ProcessAudienceEnablement(web, listInfo.TokenParser ?? parser, scope, listInfo,
+                            listInfo.TemplateList.EnableClassicAudienceTargeting, listInfo.TemplateList.EnableAudienceTargeting);
+                    }
+
+                    #endregion
+
 
                     // We stop here unless we reached the last provisioning stop of the list
                     if (step == FieldAndListProvisioningStepHelper.Step.ListSettings)
@@ -3048,5 +3063,152 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
             return _willExtract.Value;
         }
+
+
+        private void ProcessAudienceEnablement(Web web, TokenParser tokenParser, PnPMonitoredScope scope, ListInfo listInfo, bool ClassicAudienceTargetingEnable, bool ModernAudienceTargetingEnable)
+        {
+            // Classic Audience Targeting
+            if (ClassicAudienceTargetingEnable)
+            {
+                EnableClassicAudienceTargeting(web, tokenParser, scope, listInfo);
+            }
+
+            // Modern Audience Targeting
+            if (ModernAudienceTargetingEnable)
+            {
+                EnableModernAudienceTargeting(web, tokenParser, scope, listInfo);
+            }
+        }
+
+        /// <summary>
+        /// Enable Modern Audience Targeting on a specific list
+        /// </summary>
+        private void EnableModernAudienceTargeting(Web web, TokenParser tokenParser, PnPMonitoredScope scope, ListInfo listInfo)
+        {
+            //This toggles modern audience targeting
+            //TODO: Need to check with a simple method if SP accepts the input
+            // There is a CreateField method -reuse
+            // Check if not aleady disabled
+            // What to do if explicitly false and it exists?
+            // This can only apply to modern libraries e.g. Documents, Site Pages - need to validate
+            // THis can be captured as a field in the provisioning engine, need to check that. 
+            /*
+                Example of what SP provisions when check box ticked?
+              
+                <Field ID="{7f759147-c861-4cd6-a11f-5aa3037d9634}" Type="UserMulti" List="UserInfo" Name="_ModernAudienceTargetUserField" 
+                    StaticName="_ModernAudienceTargetUserField" DisplayName="Audience" Required="FALSE" SourceID="{dfba2b63-e6f9-4028-93e2-6c32db1314a0}" 
+                    ColName="int1" RowOrdinal="0" ShowField="ImnName" ShowInDisplayForm="TRUE" ShowInListSettings="FALSE" UserSelectionMode="GroupsOnly" 
+                    UserSelectionScope="0" Mult="TRUE" Sortable="FALSE" Version="1"/>
+
+                <Field Type="LookupMulti" DisplayName="AudienceIds" List="{f4c4d004-b986-4b60-9752-8b0a35fb727a}" 
+                    WebId="b769b8a6-fdd2-4635-9147-981d5933770b" FieldRef="7f759147-c861-4cd6-a11f-5aa3037d9634" ReadOnly="TRUE" 
+                    Mult="TRUE" Sortable="FALSE" UnlimitedLengthInDocumentLibrary="FALSE" ID="{8eb098c4-34c8-4e64-9d34-a975a32d0691}" 
+                    SourceID="{dfba2b63-e6f9-4028-93e2-6c32db1314a0}" StaticName="_ModernAudienceAadObjectIds" Name="_ModernAudienceAadObjectIds" 
+                    ShowField="_AadObjectIdForUser" ShowInListSettings="FALSE" Version="1"/>
+
+            */
+            
+            // TODO Need to add filter for Site Pages and Documents Library only for modern targeting.
+            if (!listInfo.SiteList.FieldExistsByName(ModernAudienceTargetingInternalName) &&
+                   !listInfo.SiteList.FieldExistsByName(ModernAudienceTargetingMultiLookupInternalName))
+            {
+                var sourceId = listInfo.SiteList.Id.ToString();
+                var addOptions = listInfo.TemplateList.ContentTypesEnabled
+                        ? AddFieldOptions.AddFieldInternalNameHint | AddFieldOptions.AddToNoContentType
+                        : AddFieldOptions.AddFieldInternalNameHint | AddFieldOptions.AddToDefaultContentType;
+
+                web.EnsureProperties(w => w.Id);
+
+                // When comparing in SharePoint the IDs can be hard coded, they are always the same.
+                var firstModernTargetingFieldXml = @$"
+                    <Field ID=""{{7f759147-c861-4cd6-a11f-5aa3037d9634}}"" Type=""UserMulti"" List=""UserInfo"" Name=""_ModernAudienceTargetUserField"" 
+                        StaticName=""_ModernAudienceTargetUserField"" DisplayName=""Audience"" Required=""FALSE"" 
+                        SourceID=""{sourceId}"" ShowField=""ImnName"" ShowInDisplayForm=""TRUE"" ShowInListSettings=""FALSE"" UserSelectionMode=""GroupsOnly"" 
+                        UserSelectionScope=""0"" Mult=""TRUE"" Sortable=""FALSE"" Version=""1""/>";
+                
+                Field firstField = listInfo.SiteList.Fields.AddFieldAsXml(firstModernTargetingFieldXml, false, addOptions);
+                listInfo.SiteList.Context.Load(firstField);
+                listInfo.SiteList.Context.ExecuteQueryRetry();
+
+                // ID is unique for this field type
+                var secondModernTargetingFieldFormat = @$"
+                    <Field Type=""LookupMulti"" DisplayName=""AudienceIds"" 
+                        List=""{sourceId}"" WebId=""{web.Id}"" FieldRef=""7f759147-c861-4cd6-a11f-5aa3037d9634"" ReadOnly=""TRUE"" Mult=""TRUE"" Sortable=""FALSE"" 
+                        UnlimitedLengthInDocumentLibrary=""FALSE"" ID=""{Guid.NewGuid().ToString()}"" SourceID=""{sourceId}"" StaticName=""_ModernAudienceAadObjectIds"" 
+                        Name=""_ModernAudienceAadObjectIds"" ShowField=""_AadObjectIdForUser"" ShowInListSettings=""FALSE"" Version=""1""/>";
+
+                Field secondField = listInfo.SiteList.Fields.AddFieldAsXml(secondModernTargetingFieldFormat, false, addOptions);
+                listInfo.SiteList.Context.Load(secondField);
+                listInfo.SiteList.Context.ExecuteQueryRetry();
+
+            }
+        }
+
+        /// <summary>
+        /// Enable Classic Audience Targeting on a specific list
+        /// </summary>
+        private void EnableClassicAudienceTargeting(Web web, TokenParser tokenParser, PnPMonitoredScope scope, ListInfo listInfo)
+        {
+            //This toggles classic audience targeting
+            //TODO: Need to check with a simple method if SP accepts the input
+            // There is a CreateField method -reuse
+            // Check if not aleady disabled
+            // What to do if explicitly false and it exists?
+            // This can only apply to classic libraries e.g. Documents, NOT Site Pages - need to validate
+            /*
+                Example of what SP provisions when check box ticked?
+              
+               	<Field ID="{61cbb965-1e04-4273-b658-eedaa662f48d}" Type="TargetTo" Name="Target_x0020_Audiences" DisplayName="Target Audiences" Required="FALSE" SourceID="{dfba2b63-e6f9-4028-93e2-6c32db1314a0}" StaticName="Target_x0020_Audiences" ColName="ntext3" RowOrdinal="0" Version="2">
+	                <Customization>
+	                    <ArrayOfProperty>
+	                        <Property>
+	                            <Name>AllowGlobalAudience</Name>
+	                            <Value xmlns:q1="http://www.w3.org/2001/XMLSchema" p4:type="q1:boolean"
+	                                xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">true</Value>
+	                        </Property>
+	                        <Property>
+	                            <Name>AllowDL</Name>
+	                            <Value xmlns:q2="http://www.w3.org/2001/XMLSchema" p4:type="q2:boolean"
+	                                xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">true</Value>
+	                        </Property>
+	                        <Property>
+	                            <Name>AllowSPGroup</Name>
+	                            <Value xmlns:q3="http://www.w3.org/2001/XMLSchema" p4:type="q3:boolean"
+	                                xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">true</Value>
+	                        </Property>
+	                    </ArrayOfProperty>
+	                </Customization>
+	            </Field>
+
+            */
+
+            // Classic Audience Targeting
+            if (!listInfo.SiteList.FieldExistsByName(ClassicAudienceTargetingInternalName))
+            {
+                var sourceId = listInfo.SiteList.Id.ToString();
+                var addOptions = listInfo.TemplateList.ContentTypesEnabled
+                       ? AddFieldOptions.AddFieldInternalNameHint | AddFieldOptions.AddToNoContentType
+                       : AddFieldOptions.AddFieldInternalNameHint | AddFieldOptions.AddToDefaultContentType;
+
+                // When comparing in SharePoint the IDs can be hard coded, they are always the same.
+                // TODO: Need to consider multi-linugal versions of the display name (possibly internal name eek!)
+                var classicFieldXml = @$"
+                    <Field ID=""{{61cbb965-1e04-4273-b658-eedaa662f48d}}"" Type=""TargetTo"" Name=""Target_x0020_Audiences""
+                        DisplayName=""Target Audiences"" Required=""FALSE"" SourceID=""{sourceId}""
+                        StaticName=""Target_x0020_Audiences""   Version=""2"">
+                        <Customization><ArrayOfProperty>
+                            <Property><Name>AllowGlobalAudience</Name><Value xmlns:q1=""http://www.w3.org/2001/XMLSchema"" p4:type=""q1:boolean"" xmlns:p4=""http://www.w3.org/2001/XMLSchema-instance"" >true</Value></Property>
+                            <Property><Name>AllowDL</Name><Value xmlns:q2=""http://www.w3.org/2001/XMLSchema"" p4:type=""q2:boolean"" xmlns:p4=""http://www.w3.org/2001/XMLSchema-instance"" >true</Value></Property>
+                            <Property><Name>AllowSPGroup</Name><Value xmlns:q3=""http://www.w3.org/2001/XMLSchema"" p4:type=""q3:boolean"" xmlns:p4=""http://www.w3.org/2001/XMLSchema-instance"" >true</Value></Property>
+                            </ArrayOfProperty>
+                        </Customization>
+                    </Field>";
+
+                Field firstField = listInfo.SiteList.Fields.AddFieldAsXml(classicFieldXml, false, addOptions);
+                listInfo.SiteList.Context.Load(firstField);
+                listInfo.SiteList.Context.ExecuteQueryRetry();
+            }
+        }
+
     }
 }

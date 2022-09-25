@@ -2539,7 +2539,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     list = ExtractInformationRightsManagement(web, siteList, list, creationInfo, template);
 
                     list = ExtractPropertyBagEntries(siteList, list);
-
+                                        
                     if (baseTemplateList != null)
                     {
                         // do we plan to extract items from this list?
@@ -2797,6 +2797,19 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             addField = false;
                         }
                     }
+
+                    if(field.InternalName == ModernAudienceTargetingInternalName || field.InternalName == ModernAudienceTargetingMultiLookupInternalName)
+                    {
+                        //Modern Audience Targeting
+                        list.EnableAudienceTargeting = true;
+                    }
+
+                    if (field.InternalName == ClassicAudienceTargetingInternalName)
+                    {
+                        //Classic Audience Targeting
+                        list.EnableClassicAudienceTargeting = true;
+                    }
+
 
                     if (addField)
                     {

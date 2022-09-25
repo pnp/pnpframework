@@ -3098,28 +3098,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// </summary>
         private void EnableModernAudienceTargeting(Web web, TokenParser tokenParser, PnPMonitoredScope scope, ListInfo listInfo)
         {
-            //This toggles modern audience targeting
-            //TODO: Need to check with a simple method if SP accepts the input
-            // There is a CreateField method -reuse
-            // Check if not aleady disabled
-            // What to do if explicitly false and it exists?
-            // This can only apply to modern libraries e.g. Documents, Site Pages - need to validate
-            // THis can be captured as a field in the provisioning engine, need to check that. 
-            /*
-                Example of what SP provisions when check box ticked?
-              
-                <Field ID="{7f759147-c861-4cd6-a11f-5aa3037d9634}" Type="UserMulti" List="UserInfo" Name="_ModernAudienceTargetUserField" 
-                    StaticName="_ModernAudienceTargetUserField" DisplayName="Audience" Required="FALSE" SourceID="{dfba2b63-e6f9-4028-93e2-6c32db1314a0}" 
-                    ColName="int1" RowOrdinal="0" ShowField="ImnName" ShowInDisplayForm="TRUE" ShowInListSettings="FALSE" UserSelectionMode="GroupsOnly" 
-                    UserSelectionScope="0" Mult="TRUE" Sortable="FALSE" Version="1"/>
-
-                <Field Type="LookupMulti" DisplayName="AudienceIds" List="{f4c4d004-b986-4b60-9752-8b0a35fb727a}" 
-                    WebId="b769b8a6-fdd2-4635-9147-981d5933770b" FieldRef="7f759147-c861-4cd6-a11f-5aa3037d9634" ReadOnly="TRUE" 
-                    Mult="TRUE" Sortable="FALSE" UnlimitedLengthInDocumentLibrary="FALSE" ID="{8eb098c4-34c8-4e64-9d34-a975a32d0691}" 
-                    SourceID="{dfba2b63-e6f9-4028-93e2-6c32db1314a0}" StaticName="_ModernAudienceAadObjectIds" Name="_ModernAudienceAadObjectIds" 
-                    ShowField="_AadObjectIdForUser" ShowInListSettings="FALSE" Version="1"/>
-
-            */
             
             // TODO Need to add filter for Site Pages and Documents Library only for modern targeting.
             if (!listInfo.SiteList.FieldExistsByName(ModernAudienceTargetingInternalName) &&
@@ -3162,39 +3140,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// </summary>
         private void EnableClassicAudienceTargeting(Web web, TokenParser tokenParser, PnPMonitoredScope scope, ListInfo listInfo)
         {
-            //This toggles classic audience targeting
-            //TODO: Need to check with a simple method if SP accepts the input
-            // There is a CreateField method -reuse
-            // Check if not aleady disabled
-            // What to do if explicitly false and it exists?
-            // This can only apply to classic libraries e.g. Documents, NOT Site Pages - need to validate
-            /*
-                Example of what SP provisions when check box ticked?
-              
-               	<Field ID="{61cbb965-1e04-4273-b658-eedaa662f48d}" Type="TargetTo" Name="Target_x0020_Audiences" DisplayName="Target Audiences" Required="FALSE" SourceID="{dfba2b63-e6f9-4028-93e2-6c32db1314a0}" StaticName="Target_x0020_Audiences" ColName="ntext3" RowOrdinal="0" Version="2">
-	                <Customization>
-	                    <ArrayOfProperty>
-	                        <Property>
-	                            <Name>AllowGlobalAudience</Name>
-	                            <Value xmlns:q1="http://www.w3.org/2001/XMLSchema" p4:type="q1:boolean"
-	                                xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">true</Value>
-	                        </Property>
-	                        <Property>
-	                            <Name>AllowDL</Name>
-	                            <Value xmlns:q2="http://www.w3.org/2001/XMLSchema" p4:type="q2:boolean"
-	                                xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">true</Value>
-	                        </Property>
-	                        <Property>
-	                            <Name>AllowSPGroup</Name>
-	                            <Value xmlns:q3="http://www.w3.org/2001/XMLSchema" p4:type="q3:boolean"
-	                                xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">true</Value>
-	                        </Property>
-	                    </ArrayOfProperty>
-	                </Customization>
-	            </Field>
-
-            */
-
             // Classic Audience Targeting
             if (!listInfo.SiteList.FieldExistsByName(ClassicAudienceTargetingInternalName))
             {

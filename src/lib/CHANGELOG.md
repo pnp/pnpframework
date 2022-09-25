@@ -17,7 +17,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Add optional parameter to disable welcome message #700 [ohaak2 - Ole Rühaak]
 - Calculated field should be created after other fields #627 [friendbool]
 
- - Schema Implementation: ShowPeoplePickerSuggestionsForGuestUsers
+ - Schema Implementation: ShowPeoplePickerSuggestionsForGuestUsers [pkbullock]
+ - Schema Implementation: Audience Targeting Classic/Moder [pkbullock]
 
 ## [1.10.0]
 

@@ -479,6 +479,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             }
                         }
                     }
+                    if (webSettings.SiteLogoThumbnail != null)
+                    {
+                        // TODO: Handler SiteLogoThumbnail via PnP Core SDK
+                        // https://pnp.github.io/pnpcore/using-the-sdk/branding-intro.html#set-and-reset-the-site-logo-and-site-logo-thumbnail
+                    }
                     var welcomePage = parser.ParseString(webSettings.WelcomePage);
                     if (!string.IsNullOrEmpty(welcomePage))
                     {

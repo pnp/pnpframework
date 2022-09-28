@@ -512,6 +512,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                                     // And configure the new site logo thumbnail
                                     chrome.Header.SetSiteLogoThumbnail(logoThumbnailFilename, fileStream, true);
+                                    chrome.Header.HideTitle = String.IsNullOrEmpty(webSettings.Title);
+
+                                    pnpCoreContext.Web.GetBrandingManager().SetChromeOptions(chrome);
                                 }
                             }
                         }

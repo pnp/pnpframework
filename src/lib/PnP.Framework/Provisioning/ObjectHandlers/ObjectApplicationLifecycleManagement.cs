@@ -103,6 +103,18 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                 {
                                     WriteMessage($"App with ID {appId} does not exist in the target site and cannot be updated", ProvisioningMessageType.Warning);
                                 }
+                                else if (app.Action == AppAction.InstallOrUpdate)
+                                {
+                                    if (alreadyExists)
+                                    {
+                                        manager.Upgrade(appId);
+                                    }
+                                    else
+                                    {
+                                        manager.Install(appId);
+                                    }
+                                    working = true;
+                                }
 
                                 if (app.SyncMode == SyncMode.Synchronously && working)
                                 {

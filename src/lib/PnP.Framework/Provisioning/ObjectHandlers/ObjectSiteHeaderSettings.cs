@@ -132,7 +132,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     // Get the Chrome options
                     var chrome = pnpCoreContext.Web.GetBrandingManager().GetChromeOptions();
 
-                    chrome.Header.HideTitle = template.Header.ShowSiteTitle;
+                    chrome.Header.HideTitle = !template.Header.ShowSiteTitle;
                     chrome.Navigation.Visible = template.Header.ShowSiteNavigation;
 
                     pnpCoreContext.Web.GetBrandingManager().SetChromeOptions(chrome);

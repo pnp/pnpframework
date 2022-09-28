@@ -287,6 +287,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual("FooterName", template.Footer.Name);
             Assert.AreEqual(true, template.Footer.RemoveExistingNodes);
             Assert.AreEqual(SiteFooterLayout.Simple, template.Footer.Layout);
+            Assert.AreEqual(Provisioning.Model.Emphasis.Soft, template.Footer.BackgroundEmphasis);
             Assert.AreEqual("Custom footer", template.Footer.DisplayName);
             Assert.AreEqual(6, template.Footer.FooterLinks.Count);
             Assert.AreEqual("www.link01.com", template.Footer.FooterLinks[0].Url);
@@ -314,6 +315,7 @@ namespace PnP.Framework.Test.Framework.Providers
                     RemoveExistingNodes = true,
                     DisplayName = "MyFooter",
                     Layout = SiteFooterLayout.Extended,
+                    BackgroundEmphasis = Provisioning.Model.Emphasis.Soft,
                     FooterLinks = {
                         new SiteFooterLink
                         {
@@ -359,6 +361,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(true, template.Footer.RemoveExistingNodes);
             Assert.AreEqual("MyFooter", template.Footer.DisplayName);
             Assert.AreEqual(FooterLayout.Extended, template.Footer.Layout);
+            Assert.AreEqual(TargetNamespace.Emphasis.Soft, template.Footer.BackgroundEmphasis);
             Assert.AreEqual("www.link01.com", template.Footer.FooterLinks[0].Url);
             Assert.AreEqual("Link 01", template.Footer.FooterLinks[0].DisplayName);
             Assert.AreEqual(2, template.Footer.FooterLinks[1].FooterLink1.Count());
@@ -4524,7 +4527,6 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(RegistrationType.ContentType, ca.RegistrationType);
             Assert.AreEqual("70056b07-3a88-4882-989f-eb2f1a74ff5f", ca.ClientSideComponentId);
             Assert.AreEqual("{}", ca.ClientSideComponentProperties);
-            Assert.AreEqual("{}", ca.ClientSideHostProperties);
             Assert.IsNull(ca.CommandUIExtension);
 
             ca = template.CustomActions.WebCustomActions.FirstOrDefault(c => c.Name == "CA_WEB_DOCLIB_MENU_SAMPLE");

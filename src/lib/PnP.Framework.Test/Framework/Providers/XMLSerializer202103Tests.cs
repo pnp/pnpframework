@@ -4443,7 +4443,6 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(RegistrationType.ContentType, ca.RegistrationType);
             Assert.AreEqual("70056b07-3a88-4882-989f-eb2f1a74ff5f", ca.ClientSideComponentId);
             Assert.AreEqual("{}", ca.ClientSideComponentProperties);
-            Assert.AreEqual("{}", ca.ClientSideHostProperties);
             Assert.IsNull(ca.CommandUIExtension);
 
             ca = template.CustomActions.WebCustomActions.FirstOrDefault(c => c.Name == "CA_WEB_DOCLIB_MENU_SAMPLE");

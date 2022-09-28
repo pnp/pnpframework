@@ -3985,9 +3985,12 @@ namespace PnP.Framework.Provisioning.Providers.Xml.V202209 {
         
         private string displayNameField;
         
+        private Emphasis backgroundEmphasisField;
+        
         public Footer() {
             this.removeExistingNodesField = true;
             this.layoutField = FooterLayout.Simple;
+            this.backgroundEmphasisField = Emphasis.None;
         }
         
         /// <remarks/>
@@ -4068,6 +4071,18 @@ namespace PnP.Framework.Provisioning.Providers.Xml.V202209 {
                 this.displayNameField = value;
             }
         }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [System.ComponentModel.DefaultValueAttribute(Emphasis.None)]
+        public Emphasis BackgroundEmphasis {
+            get {
+                return this.backgroundEmphasisField;
+            }
+            set {
+                this.backgroundEmphasisField = value;
+            }
+        }
     }
     
     /// <remarks/>
@@ -4081,6 +4096,25 @@ namespace PnP.Framework.Provisioning.Providers.Xml.V202209 {
         
         /// <remarks/>
         Extended,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.dev.office.com/PnP/2022/09/ProvisioningSchema")]
+    public enum Emphasis {
+        
+        /// <remarks/>
+        None,
+        
+        /// <remarks/>
+        Neutral,
+        
+        /// <remarks/>
+        Soft,
+        
+        /// <remarks/>
+        Strong,
     }
     
     /// <remarks/>
@@ -4198,25 +4232,6 @@ namespace PnP.Framework.Provisioning.Providers.Xml.V202209 {
         
         /// <remarks/>
         Cascading,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.dev.office.com/PnP/2022/09/ProvisioningSchema")]
-    public enum Emphasis {
-        
-        /// <remarks/>
-        None,
-        
-        /// <remarks/>
-        Neutral,
-        
-        /// <remarks/>
-        Soft,
-        
-        /// <remarks/>
-        Strong,
     }
     
     /// <remarks/>
@@ -7417,8 +7432,6 @@ namespace PnP.Framework.Provisioning.Providers.Xml.V202209 {
         
         private string clientSideComponentPropertiesField;
         
-        private string clientSideHostPropertiesField;
-        
         public CustomAction() {
             this.enabledField = true;
             this.removeField = false;
@@ -7642,17 +7655,6 @@ namespace PnP.Framework.Provisioning.Providers.Xml.V202209 {
             }
             set {
                 this.clientSideComponentPropertiesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string ClientSideHostProperties {
-            get {
-                return this.clientSideHostPropertiesField;
-            }
-            set {
-                this.clientSideHostPropertiesField = value;
             }
         }
     }

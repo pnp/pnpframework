@@ -1031,12 +1031,21 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 }
             }
 
+            //TODO: Add Moderator settings
+            //  DOC: https://learn.microsoft.com/en-us/graph/api/resources/channel?view=graph-rest-beta
+
             var channelToCreate = new
             {
                 description = parser.ParseString(channel.Description),
                 displayName = parser.ParseString(channel.DisplayName),
                 isFavoriteByDefault = channel.Private ? false : channel.IsFavoriteByDefault,
                 membershipType = channel.Private ? "private" : "standard",
+                moderationSettings = new Dictionary<string, object>{
+                    { "userNewMessageRestriction", channel.UserNewMessageRestriction },
+                    { "replyRestriction", channel.ReplyRestriction },
+                    { "allowNewMessageFromBots", channel.AllowNewMessageFromBots },
+                    { "allowNewMessageFromConnectors", channel.AllowNewMessageFromConnectors }
+                },
                 members = (channel.Private && channelMembers != null) ? (from m in channelMembers
                                                                          select new
                                                                          {
@@ -1048,7 +1057,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             var channelId = GraphHelper.CreateOrUpdateGraphObject(scope,
                 HttpMethodVerb.POST,
-                $"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams/{teamId}/channels",
+                $"{GraphHelper.MicrosoftGraphBaseURI}beta/teams/{teamId}/channels",
                 channelToCreate,
                 HttpHelper.JsonContentType,
                 accessToken,

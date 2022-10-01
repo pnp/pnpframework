@@ -134,7 +134,7 @@ namespace PnP.Framework.Test.Framework.ObjectHandlers
         {
             if (String.IsNullOrEmpty(displayName)) return null;
 
-            var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, "Group.Read.All");
+            var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, "Group.ReadWrite.All");
             var requestUrl = $"{MicrosoftGraphBaseURI}v1.0/groups?$filter=displayName eq '{HttpUtility.UrlEncode(displayName.Replace("'", "''"))}'";
             return JToken.Parse(HttpHelper.MakeGetRequestForString(requestUrl, accessToken))["value"];
         }
@@ -143,7 +143,7 @@ namespace PnP.Framework.Test.Framework.ObjectHandlers
         {
             if (String.IsNullOrEmpty(teamId)) return null;
 
-            var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, "Group.Read.All");
+            var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, "Group.ReadWrite.All");
             return JToken.Parse(HttpHelper.MakeGetRequestForString($"{MicrosoftGraphBaseURI}beta/teams/{teamId}", accessToken));
         }
 
@@ -151,7 +151,7 @@ namespace PnP.Framework.Test.Framework.ObjectHandlers
         {
             if (String.IsNullOrEmpty(teamId)) return null;
 
-            var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, "Group.Read.All");
+            var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, "Group.ReadWrite.All");
             return JToken.Parse(HttpHelper.MakeGetRequestForString($"{MicrosoftGraphBaseURI}beta/teams/{teamId}/channels", accessToken))["value"];
         }
 
@@ -160,13 +160,13 @@ namespace PnP.Framework.Test.Framework.ObjectHandlers
             if (String.IsNullOrEmpty(teamId)) return null;
             if (String.IsNullOrEmpty(channelId)) return null;
 
-            var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, "Group.Read.All");
+            var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, "Group.ReadWrite.All");
             return JToken.Parse(HttpHelper.MakeGetRequestForString($"{MicrosoftGraphBaseURI}beta/teams/{teamId}/channels/{channelId}/tabs", accessToken))["value"];
         }
 
         private static bool GetAllowToAddGuests(string teamId)
         {
-            var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, "Group.Read.All");
+            var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, "Group.ReadWrite.All");
             var response = JToken.Parse(HttpHelper.MakeGetRequestForString($"{MicrosoftGraphBaseURI}v1.0/groups/{teamId}/settings", accessToken));
             var groupGuestSettings = response["value"]?.FirstOrDefault(x => x["templateId"].ToString() == "08d542b9-071f-4e16-94b0-74abb372e3d9");
             return (bool)groupGuestSettings["values"]?.FirstOrDefault(x => x["name"].ToString() == "AllowToAddGuests")["value"];

@@ -892,7 +892,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.V202209 {
         
         public TeamChannel() {
             this.isFavoriteByDefaultField = false;
-            this.membershipTypeField = TeamChannelMembershipType.Public;
+            this.membershipTypeField = TeamChannelMembershipType.Standard;
             this.allowNewMessageFromBotsField = false;
             this.allowNewMessageFromConnectorsField = false;
             this.replyRestrictionField = TeamChannelReplyRestriction.Everyone;
@@ -979,7 +979,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.V202209 {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        [System.ComponentModel.DefaultValueAttribute(TeamChannelMembershipType.Public)]
+        [System.ComponentModel.DefaultValueAttribute(TeamChannelMembershipType.Standard)]
         public TeamChannelMembershipType MembershipType {
             get {
                 return this.membershipTypeField;
@@ -1258,7 +1258,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.V202209 {
     public enum TeamChannelMembershipType {
         
         /// <remarks/>
-        Public,
+        Standard,
         
         /// <remarks/>
         Private,

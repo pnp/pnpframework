@@ -52,7 +52,7 @@ namespace PnP.Framework.Provisioning.Model.Teams
         // [Obsolete("Please use the new MembershipType property instead of this boolean property, which is now obsolete (since September 2022).")]
         public bool Private {
             get { return this.MembershipType == MembershipType.Private; }
-            set { this.MembershipType = value ? MembershipType.Private : MembershipType.Public; } 
+            set { this.MembershipType = value ? MembershipType.Private : MembershipType.Standard; } 
         }
 
         /// <summary>
@@ -170,9 +170,9 @@ namespace PnP.Framework.Provisioning.Model.Teams
     public enum MembershipType
     {
         /// <summary>
-        /// The channel is Public
+        /// The channel is Standard (i.e. Public)
         /// </summary>
-        Public,
+        Standard,
         /// <summary>
         /// The channel is Private
         /// </summary>

@@ -9434,7 +9434,7 @@
       </xsd:annotation>
     </xsd:attribute>
 
-    <xsd:attribute name="MembershipType" use="optional" default="Public">
+    <xsd:attribute name="MembershipType" use="optional" default="Standard">
       <xsd:annotation>
         <xsd:appinfo>Added with schema version 202209</xsd:appinfo>
         <xsd:documentation xml:lang="en">
@@ -9443,11 +9443,11 @@
       </xsd:annotation>
       <xsd:simpleType>
         <xsd:restriction base="xsd:string">
-          <xsd:enumeration value="Public">
+          <xsd:enumeration value="Standard">
             <xsd:annotation>
               <xsd:appinfo>Added with schema version 202209</xsd:appinfo>
               <xsd:documentation xml:lang="en">
-                The channel is Public
+                The channel is Standard (i.e. Public)
               </xsd:documentation>
             </xsd:annotation>
           </xsd:enumeration>

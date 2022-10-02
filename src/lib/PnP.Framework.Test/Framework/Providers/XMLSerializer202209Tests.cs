@@ -779,7 +779,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(TabResourceType.Notebook, channels[0].TabResources[0].Type);
             Assert.AreEqual(1, channels[0].Messages.Count);
             Assert.IsTrue(channels[0].Messages[0].Message.Contains("Welcome to this channel"));
-            Assert.AreEqual(MembershipType.Public, channels[0].MembershipType);
+            Assert.AreEqual(MembershipType.Standard, channels[0].MembershipType);
             Assert.AreEqual(false, channels[0].Private);
             Assert.AreEqual(MembershipType.Shared, channels[1].MembershipType);
             Assert.AreEqual(false, channels[1].Private);

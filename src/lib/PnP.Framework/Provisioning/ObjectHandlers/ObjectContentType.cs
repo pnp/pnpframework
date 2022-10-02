@@ -370,12 +370,25 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     foreach (var ctItem in templateContentType.DocumentSetTemplate.AllowedContentTypes)
                     {
                         // Validate if the content type is not part of the document set content types yet
-                        if (documentSetTemplate.AllowedContentTypes.All(d => d.StringValue != ctItem.ContentTypeId))
+                        // and if we do not have to remove it
+                        if (documentSetTemplate.AllowedContentTypes.All(d => d.StringValue != ctItem.ContentTypeId)
+                            && !ctItem.Remove)
                         {
                             Microsoft.SharePoint.Client.ContentType ct = existingCTs.FirstOrDefault(c => c.StringId == ctItem.ContentTypeId);
                             if (ct != null)
                             {
                                 documentSetTemplate.AllowedContentTypes.Add(ct.Id);
+                                documentSetIsDirty = true;
+                            }
+                        }
+                        // Otherwise, check if we need to remove the already existing content type
+                        else if (documentSetTemplate.AllowedContentTypes.Any(d => d.StringValue == ctItem.ContentTypeId)
+                            && ctItem.Remove)
+                        {
+                            Microsoft.SharePoint.Client.ContentType ct = existingCTs.FirstOrDefault(c => c.StringId == ctItem.ContentTypeId);
+                            if (ct != null)
+                            {
+                                documentSetTemplate.AllowedContentTypes.Remove(ct.Id);
                                 documentSetIsDirty = true;
                             }
                         }
@@ -413,12 +426,25 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     foreach (var sharedField in templateContentType.DocumentSetTemplate.SharedFields)
                     {
                         // Ensure the shared field is not part of the document set yet
-                        if (documentSetTemplate.SharedFields.All(f => f.Id != sharedField.Id))
+                        // and if we do not have to remove it
+                        if (documentSetTemplate.SharedFields.All(f => f.Id != sharedField.Id)
+                            && !sharedField.Remove)
                         {
                             Microsoft.SharePoint.Client.Field field = existingFields.FirstOrDefault(f => f.Id == sharedField.Id);
                             if (field != null)
                             {
                                 documentSetTemplate.SharedFields.Add(field);
+                                documentSetIsDirty = true;
+                            }
+                        }
+                        // Otherwise, check if we need to remove the already existing shared field
+                        else if (documentSetTemplate.SharedFields.Any(f => f.Id != sharedField.Id)
+                            && sharedField.Remove)
+                        {
+                            Microsoft.SharePoint.Client.Field field = existingFields.FirstOrDefault(f => f.Id == sharedField.Id);
+                            if (field != null)
+                            {
+                                documentSetTemplate.SharedFields.Remove(field);
                                 documentSetIsDirty = true;
                             }
                         }
@@ -441,7 +467,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                     if (documentSetIsDirty)
                     {
-                        documentSetTemplate.Update(true);
+                        documentSetTemplate.Update(templateContentType.DocumentSetTemplate.UpdateChildren);
                         isDirty = true;
                     }
                 }
@@ -649,12 +675,21 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     Microsoft.SharePoint.Client.ContentType ct = existingCTs.FirstOrDefault(c => c.StringId == ctItem.ContentTypeId);
                     if (ct != null)
                     {
-                        if (ct.Id.StringValue.Equals("0x0101", StringComparison.InvariantCultureIgnoreCase))
+                        // Check if we need to remove the Content Type
+                        if (ctItem.Remove)
                         {
-                            hasDefaultDocumentContentTypeInTemplate = true;
+                            documentSetTemplate.AllowedContentTypes.Remove(ct.Id);
                         }
+                        // Otherwise add it
+                        else
+                        {
+                            if (ct.Id.StringValue.Equals("0x0101", StringComparison.InvariantCultureIgnoreCase))
+                            {
+                                hasDefaultDocumentContentTypeInTemplate = true;
+                            }
 
-                        documentSetTemplate.AllowedContentTypes.Add(ct.Id);
+                            documentSetTemplate.AllowedContentTypes.Add(ct.Id);
+                        }
                     }
                 }
                 // If the default document content type (0x0101) is not in our definition then remove it
@@ -694,7 +729,16 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     Microsoft.SharePoint.Client.Field field = existingFields.FirstOrDefault(f => f.Id == sharedField.Id);
                     if (field != null)
                     {
-                        documentSetTemplate.SharedFields.Add(field);
+                        // Check if we need to remove the Content Type
+                        if (sharedField.Remove)
+                        {
+                            documentSetTemplate.SharedFields.Remove(field);
+                        }
+                        // Otherwise add it
+                        else
+                        {
+                            documentSetTemplate.SharedFields.Add(field);
+                        }
                     }
                 }
 
@@ -707,7 +751,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     }
                 }
 
-                documentSetTemplate.Update(true);
+                documentSetTemplate.Update(templateContentType.DocumentSetTemplate.UpdateChildren);
                 web.Context.ExecuteQueryRetry();
             }
             else if (templateContentType.Id.StartsWith(BuiltInContentTypeId.Workflow2013Task + "00"))

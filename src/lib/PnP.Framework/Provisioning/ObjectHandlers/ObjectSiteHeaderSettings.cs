@@ -58,6 +58,16 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     header.BackgroundEmphasis = backgroundEmphasis;
                 }
 
+                // Move to the PnP Core SDK context
+                using (var pnpCoreContext = PnPCoreSdk.Instance.GetPnPContext(web.Context as ClientContext))
+                {
+                    // Get the Chrome options
+                    var chrome = pnpCoreContext.Web.GetBrandingManager().GetChromeOptions();
+
+                    header.ShowSiteTitle = !chrome.Header.HideTitle;
+                    header.ShowSiteNavigation = chrome.Navigation.Visible;
+                }
+
                 template.Header = header;
             }
 
@@ -115,6 +125,18 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 };
 				
                 web.ExecutePostAsync("/_api/web/SetChromeOptions", System.Text.Json.JsonSerializer.Serialize(jsonRequest)).GetAwaiter().GetResult();
+
+                // Move to the PnP Core SDK context
+                using (var pnpCoreContext = PnPCoreSdk.Instance.GetPnPContext(web.Context as ClientContext))
+                {
+                    // Get the Chrome options
+                    var chrome = pnpCoreContext.Web.GetBrandingManager().GetChromeOptions();
+
+                    chrome.Header.HideTitle = !template.Header.ShowSiteTitle;
+                    chrome.Navigation.Visible = template.Header.ShowSiteNavigation;
+
+                    pnpCoreContext.Web.GetBrandingManager().SetChromeOptions(chrome);
+                }
             }
 
             return parser;

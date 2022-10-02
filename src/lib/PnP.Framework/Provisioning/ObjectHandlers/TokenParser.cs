@@ -385,7 +385,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 {
                     var matches = resourceEntries.Where(k => k.Item1 == key);
                     var entries = matches.Select(k => new ResourceEntry() { LCID = k.Item2, Value = k.Item3 }).ToList();
-                    LocalizationToken token = new LocalizationToken(web, key, entries);
+                    LocalizationToken token = new LocalizationToken(web, key, entries, localizations.DefaultLCID);
 
                     _tokens.Add(token);
                 }

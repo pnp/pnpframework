@@ -1861,6 +1861,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     channel.Private = channelJObject["membershipType"].ToString().Equals("private", StringComparison.InvariantCultureIgnoreCase);
                 }
 
+                if (channelJObject != default && channelJObject["moderationSettings"] != null && channelJObject["moderationSettings"].Any())
+                {
+                    channel.UserNewMessageRestriction = channelJObject["moderationSettings"]["userNewMessageRestriction"].ToObject<UserNewMessageRestriction>();
+                    channel.AllowNewMessageFromBots = channelJObject["moderationSettings"]["allowNewMessageFromBots"].Value<bool>();
+                    channel.AllowNewMessageFromConnectors = channelJObject["moderationSettings"]["allowNewMessageFromConnectors"].Value<bool>();
+                    channel.ReplyRestriction = channelJObject["moderationSettings"]["replyRestriction"].ToObject<ReplyRestriction>();
+                }
+
                 channel.Tabs.AddRange(GetTeamChannelTabs(configuration, accessToken, groupId, channel.ID));
                 if (configuration.Tenant.Teams.IncludeMessages)
                 {

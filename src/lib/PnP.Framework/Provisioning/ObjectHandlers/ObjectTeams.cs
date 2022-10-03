@@ -424,7 +424,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             // Check if a group with groupId exists and has a team enabled
             var doesGroupWithTeamExistReq = HttpHelper.MakeGetRequestForString(
-                $"{GraphHelper.MicrosoftGraphBaseURI}beta/groups?$select=id&$filter=id eq '{groupId}' and resourceProvisioningOptions/Any(x:x eq 'Team')", accessToken);
+                $"{GraphHelper.MicrosoftGraphBaseURI}v1.0/groups?$select=id&$filter=id eq '{groupId}' and resourceProvisioningOptions/Any(x:x eq 'Team')", accessToken);
             var returnedIds = GraphHelper.GetIdsFromList(doesGroupWithTeamExistReq);
 
             if (returnedIds.Length > 0)

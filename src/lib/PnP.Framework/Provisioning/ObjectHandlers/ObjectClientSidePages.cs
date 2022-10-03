@@ -656,6 +656,51 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                         case WebPartType.Spacer:
                                             webPartName = page.DefaultWebPartToWebPartId(PnPCore.DefaultWebPart.Spacer);
                                             break;
+                                        case WebPartType.Kindle:
+                                            webPartName = page.DefaultWebPartToWebPartId(PnPCore.DefaultWebPart.Kindle);
+                                            break;
+                                        case WebPartType.MyFeed:
+                                            webPartName = page.DefaultWebPartToWebPartId(PnPCore.DefaultWebPart.MyFeed);
+                                            break;
+                                        case WebPartType.OrgChart:
+                                            webPartName = page.DefaultWebPartToWebPartId(PnPCore.DefaultWebPart.OrgChart);
+                                            break;
+                                        case WebPartType.SavedForLater:
+                                            webPartName = page.DefaultWebPartToWebPartId(PnPCore.DefaultWebPart.SavedForLater);
+                                            break;
+                                        case WebPartType.Twitter:
+                                            webPartName = page.DefaultWebPartToWebPartId(PnPCore.DefaultWebPart.Twitter);
+                                            break;
+                                        case WebPartType.WorldClock:
+                                            webPartName = page.DefaultWebPartToWebPartId(PnPCore.DefaultWebPart.WorldClock);
+                                            break;
+                                        case WebPartType.SpacesDocLib:
+                                            webPartName = page.DefaultWebPartToWebPartId(PnPCore.DefaultWebPart.SpacesDocLib);
+                                            break;
+                                        case WebPartType.SpacesFileViewer:
+                                            webPartName = page.DefaultWebPartToWebPartId(PnPCore.DefaultWebPart.SpacesFileViewer);
+                                            break;
+                                        case WebPartType.SpacesImageViewer:
+                                            webPartName = page.DefaultWebPartToWebPartId(PnPCore.DefaultWebPart.SpacesImageViewer);
+                                            break;
+                                        case WebPartType.SpacesModelViewer:
+                                            webPartName = page.DefaultWebPartToWebPartId(PnPCore.DefaultWebPart.SpacesModelViewer);
+                                            break;
+                                        case WebPartType.SpacesImageThreeSixty:
+                                            webPartName = page.DefaultWebPartToWebPartId(PnPCore.DefaultWebPart.SpacesImageThreeSixty);
+                                            break;
+                                        case WebPartType.SpacesVideoThreeSixty:
+                                            webPartName = page.DefaultWebPartToWebPartId(PnPCore.DefaultWebPart.SpacesVideoThreeSixty);
+                                            break;
+                                        case WebPartType.SpacesText2D:
+                                            webPartName = page.DefaultWebPartToWebPartId(PnPCore.DefaultWebPart.SpacesText2D);
+                                            break;
+                                        case WebPartType.SpacesVideoPlayer:
+                                            webPartName = page.DefaultWebPartToWebPartId(PnPCore.DefaultWebPart.SpacesVideoPlayer);
+                                            break;
+                                        case WebPartType.SpacesPeople:
+                                            webPartName = page.DefaultWebPartToWebPartId(PnPCore.DefaultWebPart.SpacesPeople);
+                                            break;
                                     }
 
                                     baseControl = componentsToAdd.FirstOrDefault(p => p.Name.Equals(webPartName, StringComparison.InvariantCultureIgnoreCase));

@@ -55,5 +55,9 @@ namespace PnP.Framework
         public const string MINIMUMZONEIDREQUIREDSERVERVERSION = "16.0.4803.1200";
 
         internal static readonly uint[] SupportedLCIDs = { 1031, 1036, 2108, 1057, 1044, 1049, 2052, 1028, 1081, 1086, 1060, 1030, 1069, 1035, 1043, 1051, 1068, 1026, 1110, 1055, 1106, 1050, 1038, 1042, 1063, 1071, 1033, 1025, 1041, 1062, 1164, 1046, 2070, 9242, 1054, 5146, 1029, 3082, 1037, 1045, 10266, 2074, 1058, 1032, 1061, 1040, 1087, 1053, 1066, 1027, 1048 };
+
+        internal const string ModernAudienceTargetingInternalName = "_ModernAudienceTargetUserField";
+        internal const string ModernAudienceTargetingMultiLookupInternalName = "_ModernAudienceAadObjectIds";
+        internal const string ClassicAudienceTargetingInternalName = "Target_x0020_Audiences";
     }
 }

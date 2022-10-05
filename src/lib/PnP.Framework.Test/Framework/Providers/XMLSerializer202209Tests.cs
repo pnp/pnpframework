@@ -4,7 +4,6 @@ using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Model.AzureActiveDirectory;
 using PnP.Framework.Provisioning.Model.Teams;
 using PnP.Framework.Provisioning.Providers.Xml;
-using PnP.Framework.Provisioning.Providers.Xml.V202103;
 using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
@@ -25,6 +24,12 @@ using FileLevel = PnP.Framework.Provisioning.Model.FileLevel;
 using ProvisioningTemplate = PnP.Framework.Provisioning.Model.ProvisioningTemplate;
 using TeamTemplate = PnP.Framework.Provisioning.Model.Teams.TeamTemplate;
 using WorkHour = PnP.Framework.Provisioning.Model.WorkHour;
+
+// Replace the following statements to update the test to a new schema version
+using PnP.Framework.Provisioning.Providers.Xml.V202209;
+using TargetNamespace = PnP.Framework.Provisioning.Providers.Xml.V202209;
+using TargetSerializer = PnP.Framework.Provisioning.Providers.Xml.XMLPnPSchemaV202209Serializer;
+using TargetProvisioning = PnP.Framework.Provisioning.Providers.Xml.V202209.Provisioning;
 
 namespace PnP.Framework.Test.Framework.Providers
 {
@@ -81,12 +86,12 @@ namespace PnP.Framework.Test.Framework.Providers
     /// 
     /// </summary>
     [TestClass]
-    public class XMLSerializer202103Tests
+    public class XMLSerializer202209Tests
     {
         #region Test variables
-        private const string TEST_CATEGORY = "Framework Provisioning XML Serialization\\Deserialization 202103";
-        private const string TEST_OUT_FILE = "ProvisioningTemplate-2021-03-Sample-01-test.xml";
-        private const string TEST_TEMPLATE = "ProvisioningSchema-2021-03-FullSample-01.xml";
+        private const string TEST_CATEGORY = "Framework Provisioning XML Serialization\\Deserialization 202209";
+        private const string TEST_OUT_FILE = "ProvisioningTemplate-2022-09-Sample-01-test.xml";
+        private const string TEST_TEMPLATE = "ProvisioningSchema-2022-09-FullSample-01.xml";
 
         #endregion
 
@@ -108,7 +113,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
 
             Assert.AreEqual(3, template.ApplicationLifecycleManagement.Apps.Count);
@@ -148,14 +153,14 @@ namespace PnP.Framework.Test.Framework.Providers
                 SyncMode = SyncMode.Synchronously
             });
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            Provisioning.Providers.Xml.V202103.Provisioning wrappedResult =
-                XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            TargetProvisioning wrappedResult =
+                XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
             Assert.AreEqual(3, template.ApplicationLifecycleManagement.Apps.Count());
@@ -173,7 +178,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
 
             Assert.AreEqual(SiteHeaderLayout.Standard, template.Header.Layout);
@@ -201,14 +206,14 @@ namespace PnP.Framework.Test.Framework.Providers
                 }
             };
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
             var wrappedResult =
-                XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+                XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
 
@@ -216,7 +221,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(HeaderMenuStyle.Cascading, template.Header.MenuStyle);
             Assert.IsTrue(template.Header.ShowSiteTitle);
             Assert.IsTrue(template.Header.ShowSiteNavigation);
-            Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V202103.Emphasis.Strong, template.Header.BackgroundEmphasis);
+            Assert.AreEqual(TargetNamespace.Emphasis.Strong, template.Header.BackgroundEmphasis);
         }
 
         [TestMethod]
@@ -225,7 +230,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
 
             Assert.AreEqual(false, template.Theme.IsInverted);
@@ -251,14 +256,14 @@ namespace PnP.Framework.Test.Framework.Providers
                 }
             };
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
             var wrappedResult =
-                XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+                XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
 
@@ -274,7 +279,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
 
             Assert.AreEqual(true, template.Footer.Enabled);
@@ -282,6 +287,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual("FooterName", template.Footer.Name);
             Assert.AreEqual(true, template.Footer.RemoveExistingNodes);
             Assert.AreEqual(SiteFooterLayout.Simple, template.Footer.Layout);
+            Assert.AreEqual(Provisioning.Model.Emphasis.Soft, template.Footer.BackgroundEmphasis);
             Assert.AreEqual("Custom footer", template.Footer.DisplayName);
             Assert.AreEqual(6, template.Footer.FooterLinks.Count);
             Assert.AreEqual("www.link01.com", template.Footer.FooterLinks[0].Url);
@@ -309,6 +315,7 @@ namespace PnP.Framework.Test.Framework.Providers
                     RemoveExistingNodes = true,
                     DisplayName = "MyFooter",
                     Layout = SiteFooterLayout.Extended,
+                    BackgroundEmphasis = Provisioning.Model.Emphasis.Soft,
                     FooterLinks = {
                         new SiteFooterLink
                         {
@@ -336,14 +343,14 @@ namespace PnP.Framework.Test.Framework.Providers
                 }
             };
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
             var wrappedResult =
-                XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+                XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
 
@@ -354,6 +361,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(true, template.Footer.RemoveExistingNodes);
             Assert.AreEqual("MyFooter", template.Footer.DisplayName);
             Assert.AreEqual(FooterLayout.Extended, template.Footer.Layout);
+            Assert.AreEqual(TargetNamespace.Emphasis.Soft, template.Footer.BackgroundEmphasis);
             Assert.AreEqual("www.link01.com", template.Footer.FooterLinks[0].Url);
             Assert.AreEqual("Link 01", template.Footer.FooterLinks[0].DisplayName);
             Assert.AreEqual(2, template.Footer.FooterLinks[1].FooterLink1.Count());
@@ -367,7 +375,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
 
             Assert.AreEqual(3, template.ApplicationLifecycleManagement.AppCatalog.Packages.Count);
@@ -446,13 +454,13 @@ namespace PnP.Framework.Test.Framework.Providers
             result.ApplicationLifecycleManagement.Apps.AddRange(apps);
             result.Tenant = new ProvisioningTenant(result.ApplicationLifecycleManagement.AppCatalog, new PnP.Framework.Provisioning.Model.ContentDeliveryNetwork());
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
 
@@ -480,7 +488,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
 
             Assert.AreEqual(2, template.ProvisioningTemplateWebhooks.Count);
@@ -531,13 +539,13 @@ namespace PnP.Framework.Test.Framework.Providers
                 }
             });
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
 
@@ -612,13 +620,13 @@ namespace PnP.Framework.Test.Framework.Providers
                 }
             });
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             Assert.AreEqual(2, wrappedResult.ProvisioningWebhooks.Count());
             Assert.AreEqual("https://my.url/func01", wrappedResult.ProvisioningWebhooks[0].Url);
@@ -669,16 +677,16 @@ namespace PnP.Framework.Test.Framework.Providers
                 DisplayName = "MyTemplate"
             });
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var teamTempaltes = wrappedResult.Teams.Items
-                .Where(t => t is PnP.Framework.Provisioning.Providers.Xml.V202103.TeamTemplate).Cast<PnP.Framework.Provisioning.Providers.Xml.V202103.TeamTemplate>().ToList();
+                .Where(t => t is TargetNamespace.TeamTemplate).Cast<TargetNamespace.TeamTemplate>().ToList();
 
             Assert.AreEqual(1, teamTempaltes.Count);
             Assert.AreEqual("MyClass", teamTempaltes[0].Classification);
@@ -771,7 +779,16 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(TabResourceType.Notebook, channels[0].TabResources[0].Type);
             Assert.AreEqual(1, channels[0].Messages.Count);
             Assert.IsTrue(channels[0].Messages[0].Message.Contains("Welcome to this channel"));
+            Assert.AreEqual(MembershipType.Standard, channels[0].MembershipType);
+            Assert.AreEqual(false, channels[0].Private);
+            Assert.AreEqual(MembershipType.Shared, channels[1].MembershipType);
+            Assert.AreEqual(false, channels[1].Private);
+            Assert.AreEqual(MembershipType.Private, channels[2].MembershipType);
             Assert.AreEqual(true, channels[2].Private);
+            Assert.IsTrue(channels[1].AllowNewMessageFromBots);
+            Assert.IsTrue(channels[1].AllowNewMessageFromConnectors);
+            Assert.AreEqual(ReplyRestriction.AuthorAndModerators, channels[1].ReplyRestriction);
+            Assert.AreEqual(UserNewMessageRestriction.Moderators, channels[1].UserNewMessageRestriction);
 
             // team apps
             Assert.AreEqual(2, teams[1].Apps.Count);
@@ -873,7 +890,12 @@ namespace PnP.Framework.Test.Framework.Providers
                         Description = "This is just a Sample Channel",
                         DisplayName = "Sample Channel 01",
                         IsFavoriteByDefault = true,
-                        Private = true,
+                        // Private = true,
+                        MembershipType = MembershipType.Shared,
+                        AllowNewMessageFromBots = true,
+                        AllowNewMessageFromConnectors = true,
+                        ReplyRestriction = ReplyRestriction.AuthorAndModerators,
+                        UserNewMessageRestriction = UserNewMessageRestriction.Moderators,
                         Tabs =
                         {
                             new TeamTab
@@ -917,13 +939,13 @@ namespace PnP.Framework.Test.Framework.Providers
                 }
             });
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var teams = wrappedResult.Teams.Items
                 .Where(t => t is TeamWithSettings).Cast<TeamWithSettings>().ToList();
@@ -1000,7 +1022,11 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.IsTrue(channels[0].TabResources[0].TabResourceSettings.Contains("\"displayName\": \"Notebook name\""));
             Assert.AreEqual("{TeamsTabId:TabDisplayName}", channels[0].TabResources[0].TargetTabId);
             Assert.AreEqual(TeamTabResourcesTabResourceType.Planner, channels[0].TabResources[0].Type);
-            Assert.AreEqual(true, channels[0].Private);
+            Assert.AreEqual(TeamChannelMembershipType.Shared, channels[0].MembershipType);
+            Assert.IsTrue(channels[0].AllowNewMessageFromBots);
+            Assert.IsTrue(channels[0].AllowNewMessageFromConnectors);
+            Assert.AreEqual(TeamChannelReplyRestriction.AuthorAndModerators, channels[0].ReplyRestriction);
+            Assert.AreEqual(TeamChannelUserNewMessageRestriction.Moderators, channels[0].UserNewMessageRestriction);
 
             // team apps
             Assert.AreEqual(1, team.Apps.Count());
@@ -1035,13 +1061,13 @@ namespace PnP.Framework.Test.Framework.Providers
                 PackageUrl = "./custom-app-02.zip"
             });
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var teamApps = wrappedResult.Teams.Apps;
 
@@ -1131,13 +1157,13 @@ namespace PnP.Framework.Test.Framework.Providers
             });
 
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
             var users = wrappedResult.AzureActiveDirectory.Users;
 
             Assert.AreEqual(1, users.Count());
@@ -1299,13 +1325,13 @@ namespace PnP.Framework.Test.Framework.Providers
 
             #endregion
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
             var drives = wrappedResult.Drive;
 
             Assert.AreEqual(2, drives.Count());
@@ -1370,13 +1396,13 @@ namespace PnP.Framework.Test.Framework.Providers
                 PackageId = "d0816f0a-fda4-4a98-8e61-1bbe1f2b5b27"
             });
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
             var packages = wrappedResult.Tenant.AppCatalog;
 
             Assert.AreEqual(2, packages.Count());
@@ -1421,13 +1447,13 @@ namespace PnP.Framework.Test.Framework.Providers
                 }
             );
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
             var apiPermissions = wrappedResult.Tenant.WebApiPermissions;
 
             Assert.AreEqual("Microsoft.Graph", apiPermissions[0].Resource);
@@ -1486,13 +1512,13 @@ namespace PnP.Framework.Test.Framework.Providers
             result.ParentHierarchy.Tenant = new ProvisioningTenant(result.ApplicationLifecycleManagement.AppCatalog,
                 new PnP.Framework.Provisioning.Model.ContentDeliveryNetwork(cdnSettings, cdnSettings));
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
             var cdn = wrappedResult.Tenant.ContentDeliveryNetwork;
 
             Assert.AreEqual(true, cdn.Public.Enabled);
@@ -1569,13 +1595,13 @@ namespace PnP.Framework.Test.Framework.Providers
                 SiteScripts = new List<string> { "{SiteScriptID:PnP Site Script 01}" }
             });
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
             var siteDesigns = wrappedResult.Tenant.SiteDesigns;
 
             Assert.AreEqual("Just a sample", siteDesigns[0].Description);
@@ -1637,13 +1663,13 @@ namespace PnP.Framework.Test.Framework.Providers
                 JsonFilePath = ".\\pnp-site-script-02.json"
             });
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
             var siteScripts = wrappedResult.Tenant.SiteScripts;
 
             Assert.AreEqual("PnP Site Script Sample 01", siteScripts[0].Description);
@@ -1690,13 +1716,13 @@ namespace PnP.Framework.Test.Framework.Providers
                 Comment = "Comment 01"
             });
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
             var storageEntities = wrappedResult.Tenant.StorageEntities;
 
             Assert.AreEqual("Description 01", storageEntities[0].Description);
@@ -1743,13 +1769,13 @@ namespace PnP.Framework.Test.Framework.Providers
                 Overwrite = false
             });
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
             var themes = wrappedResult.Tenant.Themes;
 
             Assert.AreEqual(false, themes[0].IsInverted);
@@ -1818,13 +1844,13 @@ namespace PnP.Framework.Test.Framework.Providers
             result.Tenant.SPUsersProfiles[1].Properties.Add("OfficeLocation", "New York, NY");
             result.Tenant.SPUsersProfiles[1].Properties.Add("PhoneNumber", "+1-456-123456");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
             var ups = wrappedResult.Tenant.SPUsersProfiles;
 
             Assert.AreEqual(2, ups.Length);
@@ -1882,13 +1908,13 @@ namespace PnP.Framework.Test.Framework.Providers
                 }
                 );
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
             var o365LifecyclePolicies = wrappedResult.Tenant.Office365GroupLifecyclePolicies;
 
             Assert.AreEqual(1, o365LifecyclePolicies.Length);
@@ -1932,13 +1958,13 @@ namespace PnP.Framework.Test.Framework.Providers
             result.Tenant.Office365GroupsSettings.Properties.Add("EnableGroupCreation", "true");
             result.Tenant.Office365GroupsSettings.Properties.Add("DefaultClassification", "MBI");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
             var o365GroupsSettings = wrappedResult.Tenant.Office365GroupsSettings;
 
             Assert.AreEqual(4, o365GroupsSettings.Length);
@@ -2004,23 +2030,23 @@ namespace PnP.Framework.Test.Framework.Providers
             result.Tenant.SharingSettings.BlockedDomainList.Add("contoso.com");
             result.Tenant.SharingSettings.BlockedDomainList.Add("contoso-elettronics.com");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
             var sharingSettings = wrappedResult.Tenant.SharingSettings;
 
-            Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V202103.SharingSettingsSharingCapability.ExternalUserAndGuestSharing, sharingSettings.SharingCapability);
+            Assert.AreEqual(TargetNamespace.SharingSettingsSharingCapability.ExternalUserAndGuestSharing, sharingSettings.SharingCapability);
             Assert.AreEqual(30, sharingSettings.RequireAnonymousLinksExpireInDays);
-            Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V202103.AnonymousLinkType.View, sharingSettings.FileAnonymousLinkType);
-            Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V202103.AnonymousLinkType.Edit, sharingSettings.FolderAnonymousLinkType);
-            Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V202103.SharingSettingsDefaultSharingLinkType.AnonymousAccess, sharingSettings.DefaultSharingLinkType);
+            Assert.AreEqual(TargetNamespace.AnonymousLinkType.View, sharingSettings.FileAnonymousLinkType);
+            Assert.AreEqual(TargetNamespace.AnonymousLinkType.Edit, sharingSettings.FolderAnonymousLinkType);
+            Assert.AreEqual(TargetNamespace.SharingSettingsDefaultSharingLinkType.AnonymousAccess, sharingSettings.DefaultSharingLinkType);
             Assert.AreEqual(true, sharingSettings.PreventExternalUsersFromResharing);
             Assert.AreEqual(true, sharingSettings.RequireAcceptingAccountMatchInvitedAccount);
-            Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V202103.SharingSettingsSharingDomainRestrictionMode.AllowList, sharingSettings.SharingDomainRestrictionMode);
+            Assert.AreEqual(TargetNamespace.SharingSettingsSharingDomainRestrictionMode.AllowList, sharingSettings.SharingDomainRestrictionMode);
             Assert.AreEqual("contoso.com,contoso-elettronics.com", sharingSettings.AllowedDomainList);
             Assert.AreEqual("contoso.com,contoso-elettronics.com", sharingSettings.BlockedDomainList);
         }
@@ -2031,7 +2057,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
             var localizations = template.Localizations;
 
@@ -2069,13 +2095,13 @@ namespace PnP.Framework.Test.Framework.Providers
             result.Localizations.DefaultLCID = 1040;
             result.Localizations.Add(new Localization { LCID = 1040, Name = "core", ResourceFile = "resources-core.it-it.resx" });
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var localizations = wrappedResult.Localizations;
 
@@ -2093,7 +2119,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
             var properties = template.Properties;
 
@@ -2112,13 +2138,13 @@ namespace PnP.Framework.Test.Framework.Providers
             result.Properties.Add("Something", "One property");
 
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
 
@@ -2134,7 +2160,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
             var sitePolicy = template.SitePolicy;
 
@@ -2149,13 +2175,13 @@ namespace PnP.Framework.Test.Framework.Providers
 
             var result = new ProvisioningTemplate { SitePolicy = "HBI" };
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
 
@@ -2170,7 +2196,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
             var webSettings = template.WebSettings;
 
@@ -2248,13 +2274,13 @@ namespace PnP.Framework.Test.Framework.Providers
                     new AlternateUICulture { LCID = 1035 },
                 });
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
 
@@ -2286,7 +2312,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(false, webSettings.DisableAppViews);
             Assert.AreEqual(true, webSettings.HorizontalQuickLaunch);
             Assert.AreEqual(WebSettingsSearchScope.Hub, webSettings.SearchScope);
-            Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V202103.SearchBoxInNavBar.AllPages, webSettings.SearchBoxInNavBar);
+            Assert.AreEqual(TargetNamespace.SearchBoxInNavBar.AllPages, webSettings.SearchBoxInNavBar);
             Assert.AreEqual("https://contoso.sharepoint.com/sites/SearchCenter", webSettings.SearchCenterUrl);
         }
 
@@ -2296,7 +2322,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
             var siteSettings = template.SiteSettings;
 
@@ -2306,6 +2332,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(false, siteSettings.AllowSavePublishDeclarativeWorkflow);
             Assert.AreEqual(true, siteSettings.SocialBarOnSitePagesDisabled);
             Assert.AreEqual(PnP.Framework.Provisioning.Model.SearchBoxInNavBar.ModernOnly, siteSettings.SearchBoxInNavBar);
+            Assert.AreEqual(true, siteSettings.ShowPeoplePickerSuggestionsForGuestUsers);
             Assert.AreEqual("https://contoso.sharepoint.com/sites/SearchCenter", siteSettings.SearchCenterUrl);
         }
 
@@ -2325,17 +2352,18 @@ namespace PnP.Framework.Test.Framework.Providers
                     AllowSavePublishDeclarativeWorkflow = false,
                     SocialBarOnSitePagesDisabled = true,
                     SearchBoxInNavBar = PnP.Framework.Provisioning.Model.SearchBoxInNavBar.ModernOnly,
+                    ShowPeoplePickerSuggestionsForGuestUsers = true,
                     SearchCenterUrl = "https://contoso.sharepoint.com/sites/SearchCenter",
                 }
             };
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
 
@@ -2346,7 +2374,8 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(false, siteSettings.AllowSaveDeclarativeWorkflowAsTemplate);
             Assert.AreEqual(false, siteSettings.AllowSavePublishDeclarativeWorkflow);
             Assert.AreEqual(true, siteSettings.SocialBarOnSitePagesDisabled);
-            Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V202103.SearchBoxInNavBar.ModernOnly, siteSettings.SearchBoxInNavBar);
+            Assert.AreEqual(TargetNamespace.SearchBoxInNavBar.ModernOnly, siteSettings.SearchBoxInNavBar);
+            Assert.AreEqual(true, siteSettings.ShowPeoplePickerSuggestionsForGuestUsers);
             Assert.AreEqual("https://contoso.sharepoint.com/sites/SearchCenter", siteSettings.SearchCenterUrl);
         }
 
@@ -2356,7 +2385,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
             var regionalSettings = template.RegionalSettings;
 
@@ -2401,30 +2430,30 @@ namespace PnP.Framework.Test.Framework.Providers
                 }
             };
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
 
             var regionalSettings = template.RegionalSettings;
 
             Assert.AreEqual(1, regionalSettings.AdjustHijriDays);
-            Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V202103.CalendarType.ChineseLunar, regionalSettings.AlternateCalendarType);
-            Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V202103.CalendarType.Hebrew, regionalSettings.CalendarType);
+            Assert.AreEqual(TargetNamespace.CalendarType.ChineseLunar, regionalSettings.AlternateCalendarType);
+            Assert.AreEqual(TargetNamespace.CalendarType.Hebrew, regionalSettings.CalendarType);
             Assert.AreEqual(5, regionalSettings.Collation);
-            Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V202103.DayOfWeek.Sunday, regionalSettings.FirstDayOfWeek);
+            Assert.AreEqual(TargetNamespace.DayOfWeek.Sunday, regionalSettings.FirstDayOfWeek);
             Assert.AreEqual(1, regionalSettings.FirstWeekOfYear);
             Assert.AreEqual(1040, regionalSettings.LocaleId);
             Assert.AreEqual(true, regionalSettings.ShowWeeks);
             Assert.AreEqual(true, regionalSettings.Time24);
             Assert.AreEqual("4", regionalSettings.TimeZone);
-            Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V202103.WorkHour.Item500PM, regionalSettings.WorkDayEndHour);
-            Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V202103.WorkHour.Item900AM, regionalSettings.WorkDayStartHour);
+            Assert.AreEqual(TargetNamespace.WorkHour.Item500PM, regionalSettings.WorkDayEndHour);
+            Assert.AreEqual(TargetNamespace.WorkHour.Item900AM, regionalSettings.WorkDayStartHour);
             Assert.AreEqual(62, regionalSettings.WorkDays);
         }
 
@@ -2434,7 +2463,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
             var supportedUiLanguages = template.SupportedUILanguages;
 
@@ -2454,13 +2483,13 @@ namespace PnP.Framework.Test.Framework.Providers
                 LCID = 1033
             });
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
 
@@ -2476,7 +2505,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
             var auditSettings = template.AuditSettings;
 
@@ -2502,13 +2531,13 @@ namespace PnP.Framework.Test.Framework.Providers
                 }
             };
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
 
@@ -2528,7 +2557,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
             var propertyBagEntries = template.PropertyBagEntries;
 
@@ -2558,13 +2587,13 @@ namespace PnP.Framework.Test.Framework.Providers
                 Value = "value2"
             });
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
 
@@ -2582,7 +2611,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
             var security = template.Security;
 
@@ -2770,13 +2799,13 @@ namespace PnP.Framework.Test.Framework.Providers
                 Owner = "user2@contoso.com"
             });
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
 
@@ -2888,7 +2917,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
 
             // common properties
@@ -3026,13 +3055,13 @@ namespace PnP.Framework.Test.Framework.Providers
             result.Navigation.CurrentNavigation.StructuralNavigation.NavigationNodes.Add(node1);
             result.Navigation.CurrentNavigation.StructuralNavigation.NavigationNodes.Add(node2);
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
 
@@ -3102,7 +3131,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
 
             Assert.IsNotNull(template.SiteFields);
@@ -3137,13 +3166,13 @@ namespace PnP.Framework.Test.Framework.Providers
                 SchemaXml = "<Field ID = \"{F1A1715E-6C52-40DE-8403-E9AAFD0470D0}\" Type=\"Text\" Name=\"DocumentDescription\" DisplayName=\"Document Description\" Group=\"My Columns \" MaxLength=\"255\" AllowDeletion=\"TRUE\" />"
             });
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
 
@@ -3162,7 +3191,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
 
             Assert.IsNotNull(template.ContentTypes);
@@ -3184,6 +3213,12 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.IsFalse(ct.ReadOnly);
             Assert.IsFalse(ct.Sealed);
             Assert.IsTrue(ct.UpdateChildren);
+            Assert.AreEqual("49b0ccdd-1bdf-47ba-a92f-dfddec265d63", ct.DisplayFormClientSideComponentId);
+            Assert.AreEqual("{'sampleProperty':'Sample value'}", ct.DisplayFormClientSideComponentProperties);
+            Assert.AreEqual("7c7c9c44-4dd4-4a2b-8619-beba16e08efa", ct.NewFormClientSideComponentId);
+            Assert.AreEqual("{'sampleProperty':'Sample value'}", ct.NewFormClientSideComponentProperties);
+            Assert.AreEqual("3c4825e4-4b20-496d-9450-cd76f5135323", ct.EditFormClientSideComponentId);
+            Assert.AreEqual("{'sampleProperty':'Sample value'}", ct.EditFormClientSideComponentProperties);
 
             ct = template.ContentTypes.FirstOrDefault(c => c.Id == "0x0120D5200039D83CD2C9BA4A4499AEE6BE3562E023");
             Assert.IsNotNull(ct.DocumentSetTemplate);
@@ -3245,6 +3280,12 @@ namespace PnP.Framework.Test.Framework.Providers
                 ReadOnly = true,
                 Sealed = true,
                 UpdateChildren = true,
+                DisplayFormClientSideComponentId = "49b0ccdd-1bdf-47ba-a92f-dfddec265d63",
+                DisplayFormClientSideComponentProperties = "{'sampleProperty':'Sample value'}",
+                NewFormClientSideComponentId = "7c7c9c44-4dd4-4a2b-8619-beba16e08efa",
+                NewFormClientSideComponentProperties = "{'sampleProperty':'Sample value'}",
+                EditFormClientSideComponentId = "3c4825e4-4b20-496d-9450-cd76f5135323",
+                EditFormClientSideComponentProperties = "{'sampleProperty':'Sample value'}"
             };
 
             var documentSetTemplate = new DocumentSetTemplate { RemoveExistingContentTypes = true, UpdateChildren = true };
@@ -3272,13 +3313,13 @@ namespace PnP.Framework.Test.Framework.Providers
             contentType.FieldRefs.Add(new FieldRef("TestField3"));
             result.ContentTypes.Add(contentType);
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
 
@@ -3301,6 +3342,12 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.IsTrue(ct.ReadOnly);
             Assert.IsTrue(ct.Sealed);
             Assert.IsTrue(ct.UpdateChildren);
+            Assert.AreEqual("49b0ccdd-1bdf-47ba-a92f-dfddec265d63", ct.DisplayFormClientSideComponentId);
+            Assert.AreEqual("{'sampleProperty':'Sample value'}", ct.DisplayFormClientSideComponentProperties);
+            Assert.AreEqual("7c7c9c44-4dd4-4a2b-8619-beba16e08efa", ct.NewFormClientSideComponentId);
+            Assert.AreEqual("{'sampleProperty':'Sample value'}", ct.NewFormClientSideComponentProperties);
+            Assert.AreEqual("3c4825e4-4b20-496d-9450-cd76f5135323", ct.EditFormClientSideComponentId);
+            Assert.AreEqual("{'sampleProperty':'Sample value'}", ct.EditFormClientSideComponentProperties);
 
             Assert.IsNotNull(ct.DocumentSetTemplate);
             Assert.IsTrue(ct.DocumentSetTemplate.UpdateChildren);
@@ -3362,7 +3409,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
 
             Assert.IsNotNull(template.Lists);
@@ -3371,36 +3418,40 @@ namespace PnP.Framework.Test.Framework.Providers
             // common properties
             var list = template.Lists.FirstOrDefault(ls => ls.Title == "{parameter:CompanyName} - Projects");
             Assert.IsNotNull(list);
-            Assert.IsTrue(list.ContentTypesEnabled);
             Assert.AreEqual("Project Documents are stored here", list.Description);
-            Assert.AreEqual(1, list.DraftVersionVisibility);
-            Assert.IsFalse(list.EnableAttachments);
-            Assert.IsTrue(list.EnableFolderCreation);
-            Assert.IsTrue(list.EnableMinorVersions);
-            Assert.IsFalse(list.EnableModeration);
-            Assert.IsTrue(list.EnableVersioning);
-            Assert.IsTrue(list.ForceCheckout);
-            Assert.IsFalse(list.Hidden);
-            Assert.AreEqual(10, list.MaxVersionLimit);
-            Assert.AreEqual(10, list.MinorVersionLimit);
+            Assert.AreEqual("", list.DocumentTemplate);
             Assert.IsTrue(list.OnQuickLaunch);
-            Assert.IsFalse(list.RemoveExistingContentTypes);
-            Assert.AreEqual(PnP.Framework.Provisioning.Model.ListExperience.ClassicExperience, list.ListExperience);
-            Assert.AreEqual(new Guid("81a7b6a8-c0e9-4819-aea1-8fc8894d3c43"), list.TemplateFeatureID);
             Assert.AreEqual(101, list.TemplateType);
             Assert.AreEqual("Lists/Projects", list.Url);
+            Assert.IsTrue(list.EnableVersioning);
+            Assert.IsTrue(list.ForceCheckout);
+            Assert.IsFalse(list.RemoveExistingContentTypes);
+            Assert.IsTrue(list.NoCrawl);
+            Assert.AreEqual(PnP.Framework.Provisioning.Model.ListExperience.ClassicExperience, list.ListExperience);
+            Assert.IsTrue(list.ContentTypesEnabled);
             Assert.AreEqual("./Forms/Display.aspx", list.DefaultDisplayFormUrl);
             Assert.AreEqual("./Forms/Edit.aspx", list.DefaultEditFormUrl);
             Assert.AreEqual("./Forms/NewItem.aspx", list.DefaultNewFormUrl);
             Assert.AreEqual(ListReadingDirection.LTR, list.Direction);
             Assert.AreEqual(1, list.DraftVersionVisibility);
+            Assert.IsFalse(list.EnableAttachments);
+            Assert.IsTrue(list.EnableFolderCreation);
+            Assert.IsTrue(list.EnableMinorVersions);
+            Assert.IsFalse(list.EnableModeration);
+            Assert.IsFalse(list.Hidden);
+            Assert.AreEqual("./Images/Sample.png", list.ImageUrl);
             Assert.AreEqual(true, list.IrmExpire);
             Assert.AreEqual(false, list.IrmReject);
             Assert.AreEqual(false, list.IsApplicationList);
+            Assert.AreEqual(10, list.MaxVersionLimit);
+            Assert.AreEqual(10, list.MinorVersionLimit);
             Assert.AreEqual(11, list.ReadSecurity);
+            Assert.AreEqual(new Guid("81a7b6a8-c0e9-4819-aea1-8fc8894d3c43"), list.TemplateFeatureID);
             Assert.AreEqual("sample formula here", list.ValidationFormula);
             Assert.AreEqual("validation message here", list.ValidationMessage);
             Assert.AreEqual("fake-template.stp", list.TemplateInternalName);
+            Assert.IsTrue(list.EnableAudienceTargeting);
+            Assert.IsTrue(list.EnableClassicAudienceTargeting);
             Assert.AreEqual(120, list.Webhooks[0].ExpiresInDays);
             Assert.AreEqual("http://myapp.azurewebsites.net/WebHookListener", list.Webhooks[0].ServerNotificationUrl);
 
@@ -3618,25 +3669,41 @@ namespace PnP.Framework.Test.Framework.Providers
             var list = new PnP.Framework.Provisioning.Model.ListInstance()
             {
                 Title = "Project Documents",
-                ContentTypesEnabled = true,
                 Description = "Project Documents are stored here",
                 DocumentTemplate = "document.dotx",
+                OnQuickLaunch = true,
+                TemplateType = 101,
+                Url = "/Lists/ProjectDocuments",
+                EnableVersioning = true,
+                ForceCheckout = true,
+                RemoveExistingContentTypes = true,
+                NoCrawl = true,
+                ListExperience = Provisioning.Model.ListExperience.ClassicExperience,
+                ContentTypesEnabled = true,
+                DefaultDisplayFormUrl = "./Forms/Display.aspx",
+                DefaultEditFormUrl = "./Forms/Edit.aspx",
+                DefaultNewFormUrl = "./Forms/NewItem.aspx",
+                Direction = ListReadingDirection.LTR,
                 DraftVersionVisibility = 1,
                 EnableAttachments = true,
                 EnableFolderCreation = true,
                 EnableMinorVersions = true,
                 EnableModeration = true,
-                EnableVersioning = true,
-                ForceCheckout = true,
                 Hidden = true,
+                ImageUrl = "./Images/Sample.png",
+                IrmExpire = true,
+                IrmReject = false,
+                IsApplicationList = false,
                 MaxVersionLimit = 10,
                 MinorVersionLimit = 2,
-                OnQuickLaunch = true,
-                RemoveExistingContentTypes = true,
-                RemoveExistingViews = true,
+                ReadSecurity = 11,
                 TemplateFeatureID = new Guid("30FB193E-016E-45A6-B6FD-C6C2B31AA150"),
-                TemplateType = 101,
-                Url = "/Lists/ProjectDocuments",
+                ValidationFormula = "sample formula here",
+                ValidationMessage = "validation message here",
+                TemplateInternalName = "fake-template.stp",
+                EnableAudienceTargeting = true,
+                EnableClassicAudienceTargeting = true,
+                RemoveExistingViews = true,
                 Security = new PnP.Framework.Provisioning.Model.ObjectSecurity(new List<PnP.Framework.Provisioning.Model.RoleAssignment>()
                 {
                     new PnP.Framework.Provisioning.Model.RoleAssignment()
@@ -3904,13 +3971,13 @@ namespace PnP.Framework.Test.Framework.Providers
 
             result.Lists.Add(list);
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            var wrappedResult = XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            var wrappedResult = XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
 
@@ -3919,27 +3986,44 @@ namespace PnP.Framework.Test.Framework.Providers
 
             var l = template.Lists.FirstOrDefault(ls => ls.Title == "Project Documents");
             Assert.IsNotNull(l);
-            Assert.IsTrue(l.ContentTypesEnabled);
             Assert.AreEqual("Project Documents are stored here", l.Description);
             Assert.AreEqual("document.dotx", l.DocumentTemplate);
+            Assert.IsTrue(l.OnQuickLaunch);
+            Assert.AreEqual(101, l.TemplateType);
+            Assert.AreEqual("/Lists/ProjectDocuments", l.Url);
+            Assert.IsTrue(l.EnableVersioning);
+            Assert.IsTrue(l.ForceCheckout);
+            Assert.IsTrue(l.RemoveExistingContentTypes);
+            Assert.IsTrue(l.NoCrawl);
+            Assert.AreEqual(PnP.Framework.Provisioning.Model.ListExperience.ClassicExperience, list.ListExperience);
+            Assert.IsTrue(l.ContentTypesEnabled);
+            Assert.AreEqual("./Forms/Display.aspx", list.DefaultDisplayFormUrl);
+            Assert.AreEqual("./Forms/Edit.aspx", list.DefaultEditFormUrl);
+            Assert.AreEqual("./Forms/NewItem.aspx", list.DefaultNewFormUrl);
+            Assert.AreEqual(ListReadingDirection.LTR, list.Direction);
             Assert.AreEqual(1, l.DraftVersionVisibility);
             Assert.IsTrue(l.DraftVersionVisibilitySpecified);
             Assert.IsTrue(l.EnableAttachments);
             Assert.IsTrue(l.EnableFolderCreation);
             Assert.IsTrue(l.EnableMinorVersions);
             Assert.IsTrue(l.EnableModeration);
-            Assert.IsTrue(l.EnableVersioning);
-            Assert.IsTrue(l.ForceCheckout);
             Assert.IsTrue(l.Hidden);
+            Assert.AreEqual("./Images/Sample.png", list.ImageUrl);
+            Assert.AreEqual(true, list.IrmExpire);
+            Assert.AreEqual(false, list.IrmReject);
+            Assert.AreEqual(false, list.IsApplicationList);
             Assert.AreEqual(10, l.MaxVersionLimit);
             Assert.IsTrue(l.MaxVersionLimitSpecified);
             Assert.AreEqual(2, l.MinorVersionLimit);
             Assert.IsTrue(l.MinorVersionLimitSpecified);
-            Assert.IsTrue(l.OnQuickLaunch);
-            Assert.IsTrue(l.RemoveExistingContentTypes);
+            Assert.AreEqual(11, list.ReadSecurity);
             Assert.AreEqual("30FB193E-016E-45A6-B6FD-C6C2B31AA150".ToLower(), l.TemplateFeatureID);
-            Assert.AreEqual(101, l.TemplateType);
-            Assert.AreEqual("/Lists/ProjectDocuments", l.Url);
+            Assert.AreEqual("sample formula here", list.ValidationFormula);
+            Assert.AreEqual("validation message here", list.ValidationMessage);
+            Assert.AreEqual("fake-template.stp", list.TemplateInternalName);
+            Assert.IsTrue(list.EnableAudienceTargeting);
+            Assert.IsTrue(list.EnableClassicAudienceTargeting);
+
             Assert.AreEqual(120, list.Webhooks[0].ExpiresInDays);
             Assert.AreEqual("http://myapp.azurewebsites.net/WebHookListener", list.Webhooks[0].ServerNotificationUrl);
 
@@ -4209,7 +4293,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
             Assert.IsNotNull(template.Features);
             Assert.IsNotNull(template.Features.SiteFeatures);
@@ -4270,14 +4354,14 @@ namespace PnP.Framework.Test.Framework.Providers
                 Deactivate = true
             });
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
             var wrappedResult =
-                XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+                XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
 
@@ -4307,7 +4391,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
 
             Assert.IsNotNull(template);
@@ -4402,14 +4486,14 @@ namespace PnP.Framework.Test.Framework.Providers
             };
             result.CustomActions.WebCustomActions.Add(can);
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
             var wrappedResult =
-                XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+                XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
 
@@ -4463,7 +4547,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
 
             Assert.IsNotNull(template);
@@ -4565,14 +4649,14 @@ namespace PnP.Framework.Test.Framework.Providers
                 MetadataMappingFile = @"c:\LocalPath\PagesMetadata.json"
             });
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
             var wrappedResult =
-                XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+                XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
 
@@ -4591,7 +4675,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual("Full Control", file.Security.BreakRoleInheritance.RoleAssignment[0].RoleDefinition);
 
             file = template.Files.File.SingleOrDefault(f => f.Src == "CustomMaster.master");
-            Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V202103.FileLevel.Published, file.Level);
+            Assert.AreEqual(TargetNamespace.FileLevel.Published, file.Level);
 
             var dir = template.Files.Directory.SingleOrDefault(d => d.Src == @"c:\LocalPath\StyleLibrary");
             Assert.AreEqual("Style%20Library", dir.Folder);
@@ -4608,7 +4692,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
             var pages = template.Pages;
 
@@ -4681,19 +4765,19 @@ namespace PnP.Framework.Test.Framework.Providers
             }));
 
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
             var wrappedResult =
-                XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+                XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
             var pages = template.Pages;
 
-            Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V202103.WikiPageLayout.TwoColumns, pages[0].Layout);
+            Assert.AreEqual(TargetNamespace.WikiPageLayout.TwoColumns, pages[0].Layout);
             Assert.AreEqual(true, template.Pages[0].Overwrite);
             Assert.AreEqual("{site}/SitePages/DemoWikiPage.aspx", pages[0].Url);
 
@@ -4718,7 +4802,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
 
             var termGroup = template.TermGroups[0];
@@ -4823,14 +4907,14 @@ namespace PnP.Framework.Test.Framework.Providers
                 }
             });
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
             var wrappedResult =
-                XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+                XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
 
@@ -4868,7 +4952,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
 
             Assert.IsNotNull(template);
@@ -4898,14 +4982,14 @@ namespace PnP.Framework.Test.Framework.Providers
             };
             result.ComposedLook = composedLook;
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            Provisioning.Providers.Xml.V202103.Provisioning wrappedResult =
-                XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            TargetProvisioning wrappedResult =
+                XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
 
@@ -4924,7 +5008,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
 
             Assert.IsNotNull(template.SiteSearchSettings);
@@ -4948,14 +5032,14 @@ namespace PnP.Framework.Test.Framework.Providers
                 SiteSearchSettings = "<SearchConfigurationSettings></SearchConfigurationSettings>"
             };
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            Provisioning.Providers.Xml.V202103.Provisioning wrappedResult =
-                XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            TargetProvisioning wrappedResult =
+                XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
 
@@ -4968,7 +5052,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
 
             var publishing = template.Publishing;
@@ -5041,14 +5125,14 @@ namespace PnP.Framework.Test.Framework.Providers
                 }
             };
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            Provisioning.Providers.Xml.V202103.Provisioning wrappedResult =
-                XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            TargetProvisioning wrappedResult =
+                XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
             var publishing = template.Publishing;
@@ -5076,7 +5160,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
 
             var webhooks = template.SiteWebhooks;
@@ -5101,14 +5185,14 @@ namespace PnP.Framework.Test.Framework.Providers
                 ExpiresInDays = 120
             });
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            Provisioning.Providers.Xml.V202103.Provisioning wrappedResult =
-                XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            TargetProvisioning wrappedResult =
+                XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
             var publishing = template.Publishing;
@@ -5126,7 +5210,7 @@ namespace PnP.Framework.Test.Framework.Providers
         {
             var provider = new XMLFileSystemTemplateProvider($@"{AppDomain.CurrentDomain.BaseDirectory}\..\..\..\Resources", "Templates");
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             var template = provider.GetTemplate(TEST_TEMPLATE, serializer);
 
             var clientSidePages = template.ClientSidePages;
@@ -5158,6 +5242,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(true, page.Header.ShowPublishDate);
             Assert.AreEqual(true, page.Header.ShowTopicHeader);
             Assert.AreEqual("Topic header value", page.Header.TopicHeader);
+            Assert.IsTrue(page.Header.ShowBackgroundGradient);
 
             var section = page.Sections[0];
 
@@ -5165,6 +5250,12 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(1, section.Order);
             Assert.AreEqual(PnP.Framework.Provisioning.Model.CanvasSectionType.OneColumn, section.Type);
             Assert.AreEqual(PnP.Framework.Provisioning.Model.Emphasis.Neutral, section.BackgroundEmphasis);
+            Assert.IsTrue(section.Collapsible);
+            Assert.AreEqual("My collapsible section", section.DisplayName);
+            Assert.AreEqual(IconAlignment.Left, section.IconAlignment);
+            Assert.IsTrue(section.IsExpanded);
+            Assert.IsTrue(section.ShowDividerLine);
+            Assert.AreEqual(PnP.Framework.Provisioning.Model.Emphasis.Neutral, section.VerticalSectionEmphasis);
 
             Assert.AreEqual("...", section.Controls[0].CustomWebPartName);
             Assert.AreEqual(WebPartType.Image, section.Controls[0].Type);
@@ -5225,7 +5316,8 @@ namespace PnP.Framework.Test.Framework.Providers
                     AuthorByLineId = 5,
                     ShowPublishDate = true,
                     ShowTopicHeader = true,
-                    TopicHeader = "Topic header value"
+                    TopicHeader = "Topic header value",
+                    ShowBackgroundGradient = true,
                 },
                 Sections =
                 {
@@ -5234,7 +5326,12 @@ namespace PnP.Framework.Test.Framework.Providers
                         Order = 1,
                         Type = CanvasSectionType.OneColumnVerticalSection,
                         BackgroundEmphasis = PnP.Framework.Provisioning.Model.Emphasis.Soft,
-                        VerticalSectionEmphasis = PnP.Framework.Provisioning.Model.Emphasis.Strong,
+                        Collapsible = true,
+                        DisplayName = "My collapsible section",
+                        IconAlignment = IconAlignment.Left,
+                        IsExpanded = true,
+                        ShowDividerLine = true,
+                        VerticalSectionEmphasis = PnP.Framework.Provisioning.Model.Emphasis.Neutral,
                         Controls =
                         {
                             new PnP.Framework.Provisioning.Model.CanvasControl
@@ -5270,14 +5367,14 @@ namespace PnP.Framework.Test.Framework.Providers
                 RoleDefinition = "Full Control"
             });
 
-            var serializer = new XMLPnPSchemaV202103Serializer();
+            var serializer = new TargetSerializer();
             provider.SaveAs(result, TEST_OUT_FILE, serializer);
 
             var path = $"{provider.Connector.Parameters["ConnectionString"]}\\{provider.Connector.Parameters["Container"]}\\{TEST_OUT_FILE}";
             Assert.IsTrue(File.Exists(path)); path = Path.GetFullPath(path);
             var xml = XDocument.Load(path);
-            Provisioning.Providers.Xml.V202103.Provisioning wrappedResult =
-                XMLSerializer.Deserialize<Provisioning.Providers.Xml.V202103.Provisioning>(xml);
+            TargetProvisioning wrappedResult =
+                XMLSerializer.Deserialize<TargetProvisioning>(xml);
 
             var template = wrappedResult.Templates[0].ProvisioningTemplate.First();
             var clientSidePages = template.ClientSidePages;
@@ -5297,12 +5394,12 @@ namespace PnP.Framework.Test.Framework.Providers
 
             var page = clientSidePages[0];
             // header
-            Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V202103.BaseClientSidePageHeaderType.Custom, page.Header.Type);
+            Assert.AreEqual(TargetNamespace.BaseClientSidePageHeaderType.Custom, page.Header.Type);
             Assert.AreEqual("./site%20assets/picture.png", page.Header.ServerRelativeImageUrl);
             Assert.AreEqual(10.56, page.Header.TranslateX);
             Assert.AreEqual(15.12345, page.Header.TranslateY);
-            Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V202103.BaseClientSidePageHeaderLayoutType.FullWidthImage, page.Header.LayoutType);
-            Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V202103.BaseClientSidePageHeaderTextAlignment.Center, page.Header.TextAlignment);
+            Assert.AreEqual(TargetNamespace.BaseClientSidePageHeaderLayoutType.FullWidthImage, page.Header.LayoutType);
+            Assert.AreEqual(TargetNamespace.BaseClientSidePageHeaderTextAlignment.Center, page.Header.TextAlignment);
             Assert.AreEqual("Alternate text", page.Header.AlternativeText);
             Assert.AreEqual("John Black, Mike White", page.Header.Authors);
             Assert.AreEqual("Bill Green", page.Header.AuthorByLine);
@@ -5310,17 +5407,24 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(true, page.Header.ShowPublishDate);
             Assert.AreEqual(true, page.Header.ShowTopicHeader);
             Assert.AreEqual("Topic header value", page.Header.TopicHeader);
+            Assert.IsTrue(page.Header.ShowBackgroundGradient);
+            Assert.IsTrue(page.Header.ShowBackgroundGradientSpecified);
 
             var section = page.Sections[0];
 
             // sections
             Assert.AreEqual(1, section.Order);
-            Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V202103.CanvasSectionType.OneColumnVerticalSection, section.Type);
-            Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V202103.Emphasis.Soft, section.BackgroundEmphasis);
-            Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V202103.Emphasis.Strong, section.VerticalSectionEmphasis);
+            Assert.AreEqual(TargetNamespace.CanvasSectionType.OneColumnVerticalSection, section.Type);
+            Assert.AreEqual(TargetNamespace.Emphasis.Soft, section.BackgroundEmphasis);
+            Assert.IsTrue(section.Collapsible);
+            Assert.AreEqual("My collapsible section", section.DisplayName);
+            Assert.AreEqual(TargetNamespace.CanvasSectionIconAlignment.Left, section.IconAlignment);
+            Assert.IsTrue(section.IsExpanded);
+            Assert.IsTrue(section.ShowDividerLine);
+            Assert.AreEqual(TargetNamespace.Emphasis.Neutral, section.VerticalSectionEmphasis);
 
             Assert.AreEqual("...", section.Controls[0].CustomWebPartName);
-            Assert.AreEqual(PnP.Framework.Provisioning.Providers.Xml.V202103.CanvasControlWebPartType.Image, section.Controls[0].WebPartType);
+            Assert.AreEqual(TargetNamespace.CanvasControlWebPartType.Image, section.Controls[0].WebPartType);
             Assert.AreEqual("{}", section.Controls[0].JsonControlData);
             Assert.AreEqual("0eaba53f-55d8-44b5-9f7c-61301c7f1e0e", section.Controls[0].ControlId);
             Assert.AreEqual(1, section.Controls[0].Order);

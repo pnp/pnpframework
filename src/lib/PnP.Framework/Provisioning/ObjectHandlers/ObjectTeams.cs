@@ -424,7 +424,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             // Check if a group with groupId exists and has a team enabled
             var doesGroupWithTeamExistReq = HttpHelper.MakeGetRequestForString(
-                $"{GraphHelper.MicrosoftGraphBaseURI}beta/groups?$select=id&$filter=id eq '{groupId}' and resourceProvisioningOptions/Any(x:x eq 'Team')", accessToken);
+                $"{GraphHelper.MicrosoftGraphBaseURI}v1.0/groups?$select=id&$filter=id eq '{groupId}' and resourceProvisioningOptions/Any(x:x eq 'Team')", accessToken);
             var returnedIds = GraphHelper.GetIdsFromList(doesGroupWithTeamExistReq);
 
             if (returnedIds.Length > 0)
@@ -1031,12 +1031,21 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 }
             }
 
+            //TODO: Add Moderator settings
+            //  DOC: https://learn.microsoft.com/en-us/graph/api/resources/channel?view=graph-rest-beta
+
             var channelToCreate = new
             {
                 description = parser.ParseString(channel.Description),
                 displayName = parser.ParseString(channel.DisplayName),
                 isFavoriteByDefault = channel.Private ? false : channel.IsFavoriteByDefault,
                 membershipType = channel.Private ? "private" : "standard",
+                moderationSettings = new Dictionary<string, object>{
+                    { "userNewMessageRestriction", channel.UserNewMessageRestriction },
+                    { "replyRestriction", channel.ReplyRestriction },
+                    { "allowNewMessageFromBots", channel.AllowNewMessageFromBots },
+                    { "allowNewMessageFromConnectors", channel.AllowNewMessageFromConnectors }
+                },
                 members = (channel.Private && channelMembers != null) ? (from m in channelMembers
                                                                          select new
                                                                          {
@@ -1048,7 +1057,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             var channelId = GraphHelper.CreateOrUpdateGraphObject(scope,
                 HttpMethodVerb.POST,
-                $"{GraphHelper.MicrosoftGraphBaseURI}v1.0/teams/{teamId}/channels",
+                $"{GraphHelper.MicrosoftGraphBaseURI}beta/teams/{teamId}/channels",
                 channelToCreate,
                 HttpHelper.JsonContentType,
                 accessToken,
@@ -1850,6 +1859,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 if (channelJObject != default && channelJObject["membershipType"] != null)
                 {
                     channel.Private = channelJObject["membershipType"].ToString().Equals("private", StringComparison.InvariantCultureIgnoreCase);
+                }
+
+                if (channelJObject != default && channelJObject["moderationSettings"] != null && channelJObject["moderationSettings"].Any())
+                {
+                    channel.UserNewMessageRestriction = channelJObject["moderationSettings"]["userNewMessageRestriction"].ToObject<UserNewMessageRestriction>();
+                    channel.AllowNewMessageFromBots = channelJObject["moderationSettings"]["allowNewMessageFromBots"].Value<bool>();
+                    channel.AllowNewMessageFromConnectors = channelJObject["moderationSettings"]["allowNewMessageFromConnectors"].Value<bool>();
+                    channel.ReplyRestriction = channelJObject["moderationSettings"]["replyRestriction"].ToObject<ReplyRestriction>();
                 }
 
                 channel.Tabs.AddRange(GetTeamChannelTabs(configuration, accessToken, groupId, channel.ID));

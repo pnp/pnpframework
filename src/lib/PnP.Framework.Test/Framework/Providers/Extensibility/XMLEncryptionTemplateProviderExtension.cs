@@ -60,7 +60,7 @@ namespace PnP.Framework.Test.Framework.Providers.Extensibility
 
             var namespaces = new Dictionary<string, string>
             {
-                { "pnp", XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03 }
+                { "pnp", XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2022_09 }
             };
 
             SecureXml.EncryptXmlDocument(stream, result, "/pnp:Provisioning", namespaces, this._certificate);

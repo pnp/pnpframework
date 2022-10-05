@@ -456,6 +456,16 @@ namespace PnP.Framework.Provisioning.Model
             private set { this._defaultColumnValues = value; }
         }
 
+        /// <summary>
+        /// Enables Audience Targeting for the list, optional attribute.
+        /// </summary>
+        public bool EnableAudienceTargeting { get; set; }
+
+        /// <summary>
+        /// Enables Classic Audience Targeting for the list, optional attribute.
+        /// </summary>
+        public bool EnableClassicAudienceTargeting { get; set; }
+
         #endregion
 
         #region Comparison code
@@ -466,7 +476,7 @@ namespace PnP.Framework.Provisioning.Model
         /// <returns>Returns HashCode</returns>
         public override int GetHashCode()
         {
-            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}|{11}|{12}|{13}|{14}|{15}|{16}|{17}|{18}|{19}|{20}|{21}|{22}|{23}|{24}|{25}|{26}|{27}|{28}|{29}|{30}|{31}|{32}|{33}|{34}|{35}|{36}|{37}|{38}|{39}|{40}|{41}|{42}|{43}|{44}|{45}|{46}|",
+            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}|{11}|{12}|{13}|{14}|{15}|{16}|{17}|{18}|{19}|{20}|{21}|{22}|{23}|{24}|{25}|{26}|{27}|{28}|{29}|{30}|{31}|{32}|{33}|{34}|{35}|{36}|{37}|{38}|{39}|{40}|{41}|{42}|{43}|{44}|{45}|{46}|{47}|{48}|",
                 this.ContentTypesEnabled.GetHashCode(),
                 (this.Description != null ? this.Description.GetHashCode() : 0),
                 (this.DocumentTemplate != null ? this.DocumentTemplate.GetHashCode() : 0),
@@ -513,7 +523,9 @@ namespace PnP.Framework.Provisioning.Model
                 this.WriteSecurity.GetHashCode(),
                 this.PropertyBagEntries.Aggregate(0, (acc, next) => acc += (next != null ? next.GetHashCode() : 0)),
                 this.TemplateInternalName?.GetHashCode() ?? 0,
-                this.DefaultColumnValues.Aggregate(0, (acc, next) => acc += next.GetHashCode())
+                this.DefaultColumnValues.Aggregate(0, (acc, next) => acc += next.GetHashCode()),
+                this.EnableAudienceTargeting.GetHashCode(),
+                this.EnableClassicAudienceTargeting.GetHashCode()
             ).GetHashCode());
         }
 
@@ -595,7 +607,9 @@ namespace PnP.Framework.Provisioning.Model
                 this.WriteSecurity == other.WriteSecurity &&
                 this.PropertyBagEntries.DeepEquals(other.PropertyBagEntries) &&
                 this.TemplateInternalName == other.TemplateInternalName &&
-                this.DefaultColumnValues.DeepEquals(other.DefaultColumnValues)
+                this.DefaultColumnValues.DeepEquals(other.DefaultColumnValues) &&
+                this.EnableAudienceTargeting == other.EnableAudienceTargeting &&
+                this.EnableClassicAudienceTargeting == other.EnableClassicAudienceTargeting
             );
         }
 

@@ -235,6 +235,9 @@ namespace PnP.Framework.Test.Framework.Providers
         [TestCategory(TEST_CATEGORY)]
         public void XMLEncryptionTest()
         {
+            // If you need to generate the test certificate, you can use the following PowerShell syntax:
+            // New-SelfSignedCertificate -KeyUsageProperty All -KeyLength 2048 -KeyAlgorithm RSA -FriendlyName "PnPTestCertificate" -Subject "PnPTestCertificate" -NotAfter (Get-Date).AddYears(5) -CertStoreLocation "Cert:\CurrentUser\My"
+
             X509Certificate2 certificate = RetrieveCertificateFromStore(new X509Store(StoreLocation.CurrentUser), "PnPTestCertificate");
 
             if (certificate == null)
@@ -255,13 +258,13 @@ namespace PnP.Framework.Test.Framework.Providers
                     AppDomain.CurrentDomain.BaseDirectory),
                     "Templates");
 
-            var template = provider.GetTemplate("ProvisioningTemplate-2021-03-Sample-01.xml");
+            var template = provider.GetTemplate("ProvisioningTemplate-2022-09-Sample-01.xml");
             template.DisplayName = "Ciphered template";
 
-            provider.SaveAs(template, "ProvisioningTemplate-2021-03-Ciphered.xml", extensions);
-            var result = provider.GetTemplate("ProvisioningTemplate-2021-03-Ciphered.xml", extensions);
+            provider.SaveAs(template, "ProvisioningTemplate-2022-09-Ciphered.xml", extensions);
+            var result = provider.GetTemplate("ProvisioningTemplate-2022-09-Ciphered.xml", extensions);
 
-            provider.Delete("ProvisioningTemplate-2021-03-Ciphered.xml");
+            provider.Delete("ProvisioningTemplate-2022-09-Ciphered.xml");
 
             Assert.IsTrue(result.DisplayName == "Ciphered template");
         }

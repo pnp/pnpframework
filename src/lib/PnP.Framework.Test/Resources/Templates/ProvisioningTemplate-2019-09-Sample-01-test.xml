@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2019/09/ProvisioningSchema">
-  <pnp:Preferences Generator="PnP.Framework, Version=1.7.0.0, Culture=neutral, PublicKeyToken=0d501f89f11b748c" />
+  <pnp:Preferences Generator="PnP.Framework, Version=1.10.0.0, Culture=neutral, PublicKeyToken=0d501f89f11b748c" />
   <pnp:Templates ID="CONTAINER-ProvisioningTemplate-2019-09-Sample-01-test">
     <pnp:ProvisioningTemplate ID="ProvisioningTemplate-2019-09-Sample-01-test" Version="0" Scope="Undefined">
       <pnp:WebSettings RequestAccessEmail="someone@company.com" NoCrawl="false" WelcomePage="/Pages/Home.aspx" Title="Site Title" Description="Site Description" SiteLogo="{sitecollection}/SiteAssets/Logo.png" AlternateCSS="{sitecollection}/Resources/Themes/Contoso/Contoso.css" MasterPageUrl="{sitecollection}/_catalogs/MasterPage/oslo.master" CustomMasterPageUrl="{sitecollection}/_catalogs/MasterPage/CustomMaster.master" HubSiteUrl="/sites/hubsite" CommentsOnSitePagesDisabled="false" QuickLaunchEnabled="true" ExcludeFromOfflineClient="true" MembersCanShare="true" HorizontalQuickLaunch="true" SearchScope="Hub" IsMultilingual="true" OverwriteTranslationsOnChange="true">

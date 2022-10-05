@@ -1182,6 +1182,92 @@ namespace PnP.Framework.Test.Framework.ObjectHandlers
             }
         }
 
+        [TestMethod]
+        public void CanProvisionObjects_WithModernAudienceTargeting()
+        {
+            if (TestCommon.AppOnlyTesting())
+            {
+                Assert.Inconclusive("Taxonomy tests are not supported when testing using app-only");
+            }
+
+            var template = new ProvisioningTemplate();
+            var listInstance = new PnP.Framework.Provisioning.Model.ListInstance
+            {
+                Url = string.Format("lists/{0}", listName),
+                Title = listName,
+                TemplateType = (int)ListTemplateType.DocumentLibrary,
+                EnableAudienceTargeting = true
+            };
+            listInstance.FieldRefs.Add(new FieldRef() { Id = new Guid("23f27201-bee3-471e-b2e7-b64fd8b7ca38") });
+
+            using (var ctx = TestCommon.CreateClientContext())
+            {
+                template.Lists.Add(listInstance);
+
+                var parser = new TokenParser(ctx.Web, template);
+
+                // Create the List
+                parser = new ObjectListInstance(FieldAndListProvisioningStepHelper.Step.ListAndStandardFields).ProvisionObjects(ctx.Web, template, parser, new ProvisioningTemplateApplyingInformation());
+                parser = new ObjectListInstance(FieldAndListProvisioningStepHelper.Step.ListSettings).ProvisionObjects(ctx.Web, template, parser, new ProvisioningTemplateApplyingInformation());
+
+
+                var list = ctx.Web.GetListByUrl(listInstance.Url);
+                Assert.IsNotNull(list);
+
+                // Check audience targeting fields have been added
+                var fieldAudTgt1 = list.Fields.GetByInternalNameOrTitle("_ModernAudienceTargetUserField");
+                var fieldAudTgt2 = list.Fields.GetByInternalNameOrTitle("_ModernAudienceAadObjectIds");
+                ctx.Load(fieldAudTgt1);
+                ctx.ExecuteQueryRetry();
+
+                Assert.IsNotNull(fieldAudTgt1);
+                Assert.IsNotNull(fieldAudTgt2);
+
+            }
+        }
+
+        [TestMethod]
+        public void CanProvisionObjects_WithClassicAudienceTargeting()
+        {
+            if (TestCommon.AppOnlyTesting())
+            {
+                Assert.Inconclusive("Taxonomy tests are not supported when testing using app-only");
+            }
+
+            var template = new ProvisioningTemplate();
+            var listInstance = new PnP.Framework.Provisioning.Model.ListInstance
+            {
+                Url = string.Format("lists/{0}", listName),
+                Title = listName,
+                TemplateType = (int)ListTemplateType.DocumentLibrary,
+                EnableClassicAudienceTargeting = true
+            };
+            listInstance.FieldRefs.Add(new FieldRef() { Id = new Guid("23f27201-bee3-471e-b2e7-b64fd8b7ca38") });
+
+            using (var ctx = TestCommon.CreateClientContext())
+            {
+                template.Lists.Add(listInstance);
+
+                var parser = new TokenParser(ctx.Web, template);
+
+                // Create the List
+                parser = new ObjectListInstance(FieldAndListProvisioningStepHelper.Step.ListAndStandardFields).ProvisionObjects(ctx.Web, template, parser, new ProvisioningTemplateApplyingInformation());
+                parser = new ObjectListInstance(FieldAndListProvisioningStepHelper.Step.ListSettings).ProvisionObjects(ctx.Web, template, parser, new ProvisioningTemplateApplyingInformation());
+
+                
+                var list = ctx.Web.GetListByUrl(listInstance.Url);
+                Assert.IsNotNull(list);
+
+                // Check audience targeting fields have been added
+                var fieldAudTgt = list.Fields.GetByInternalNameOrTitle("Target_x0020_Audiences");
+                ctx.Load(fieldAudTgt);
+                ctx.ExecuteQueryRetry();
+
+                Assert.IsNotNull(fieldAudTgt);
+
+            }
+        }
+
         private ProvisioningTemplate BuildTemplateForLookupInListInstanceTest(string masterListName, string detailsListName,
             Guid lookupFieldId, Guid lookupMultiFieldId, Guid detailsFieldId,
             IEnumerable<DataRow> masterListRows = null,

@@ -27,7 +27,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
     internal class ObjectListInstance : ObjectHandlerBase
     {
         private readonly FieldAndListProvisioningStepHelper.Step step;
-
+        
         public override string Name
         {
 #if DEBUG
@@ -166,6 +166,23 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     }
 
                     #endregion Fields
+
+                    #region Audience Targeting
+                    foreach (var listInfo in processedLists)
+                    {
+                        if (listInfo.TemplateList.EnableClassicAudienceTargeting)
+                        {
+                            listInfo.SiteList.EnableClassicAudienceTargeting();
+                        }
+
+                        if (listInfo.TemplateList.EnableAudienceTargeting)
+                        {
+                            listInfo.SiteList.EnableModernAudienceTargeting();
+                        }
+                    }
+
+                    #endregion
+
 
                     // We stop here unless we reached the last provisioning stop of the list
                     if (step == FieldAndListProvisioningStepHelper.Step.ListSettings)
@@ -2524,7 +2541,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     list = ExtractInformationRightsManagement(web, siteList, list, creationInfo, template);
 
                     list = ExtractPropertyBagEntries(siteList, list);
-
+                                        
                     if (baseTemplateList != null)
                     {
                         // do we plan to extract items from this list?
@@ -2782,6 +2799,19 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             addField = false;
                         }
                     }
+
+                    if(field.InternalName == Constants.ModernAudienceTargetingInternalName || field.InternalName == Constants.ModernAudienceTargetingMultiLookupInternalName)
+                    {
+                        //Modern Audience Targeting
+                        list.EnableAudienceTargeting = true;
+                    }
+
+                    if (field.InternalName == Constants.ClassicAudienceTargetingInternalName)
+                    {
+                        //Classic Audience Targeting
+                        list.EnableClassicAudienceTargeting = true;
+                    }
+
 
                     if (addField)
                     {
@@ -3048,5 +3078,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
             return _willExtract.Value;
         }
+
     }
 }

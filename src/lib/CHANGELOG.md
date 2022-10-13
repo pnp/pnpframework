@@ -16,9 +16,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Added null check for checking if members array is not null #694 [danielpastoor - Daniel Pastoor]
 - Add optional parameter to disable welcome message #700 [ohaak2 - Ole Rühaak]
 - Calculated field should be created after other fields #627 [friendbool]
-
- - Schema Implementation: ShowPeoplePickerSuggestionsForGuestUsers [pkbullock]
- - Schema Implementation: Audience Targeting Classic/Moder [pkbullock]
+- Schema Implementation: ShowPeoplePickerSuggestionsForGuestUsers [pkbullock]
+- Schema Implementation: Audience Targeting Classic/Moder [pkbullock]
+- Add geo locations that has been recently added #732 [patrikhellgren - Patrik Hellgren]
 
 ## [1.10.0]
 

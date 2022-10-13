@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Schema Implementation: Audience Targeting Classic/Moder [pkbullock]
 - Add geo locations that has been recently added #732 [patrikhellgren - Patrik Hellgren]
 - Fix ClearDefaultColumnValues working on large lists #717 [cebud - Martin Dubec]
+- Export calculated field formula based on title instead of internal name #721 [madsmai - Mads Maibohm]
 
 ## [1.10.0]
 

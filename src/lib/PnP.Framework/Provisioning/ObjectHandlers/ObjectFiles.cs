@@ -9,7 +9,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Net;
 using File = Microsoft.SharePoint.Client.File;
 
@@ -58,8 +57,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 var currentFileIndex = 0;
                 var originalWeb = web; // Used to store and re-store context in case files are deployed to masterpage gallery
-                // PERFORMANCE NOTE: save already retrieved folder info to speed up uploading files to the same folders
-                var knownFolders = new Dictionary<string, Microsoft.SharePoint.Client.Folder>();
                 foreach (var file in filesToProcess)
                 {
                     file.Src = parser.ParseString(file.Src);
@@ -91,27 +88,16 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         continue;
                     }
 
-                    if (!knownFolders.TryGetValue(folderName, out var folder))
-                    {
-                        folder = web.EnsureFolderPath(folderName);
+                    var folder = web.EnsureFolderPath(folderName);
 
-                        folder.EnsureProperties(p => p.UniqueId, p => p.ServerRelativeUrl);
-                        parser.AddToken(new FileUniqueIdToken(web, folder.ServerRelativeUrl.Substring(web.ServerRelativeUrl.Length).TrimStart("/".ToCharArray()), folder.UniqueId));
-                        parser.AddToken(new FileUniqueIdEncodedToken(web, folder.ServerRelativeUrl.Substring(web.ServerRelativeUrl.Length).TrimStart("/".ToCharArray()), folder.UniqueId));
-                        knownFolders.Add(folderName, folder);
-                    }
-
+                    folder.EnsureProperties(p => p.UniqueId, p => p.ServerRelativeUrl);
+                    parser.AddToken(new FileUniqueIdToken(web, folder.ServerRelativeUrl.Substring(web.ServerRelativeUrl.Length).TrimStart("/".ToCharArray()), folder.UniqueId));
+                    parser.AddToken(new FileUniqueIdEncodedToken(web, folder.ServerRelativeUrl.Substring(web.ServerRelativeUrl.Length).TrimStart("/".ToCharArray()), folder.UniqueId));
+                    
                     var checkedOut = false;
 
                     var targetFile = folder.GetFile(template.Connector.GetFilenamePart(targetFileName));
 
-                    var additionalRetrievals = new List<Expression<Func<File, object>>>()
-                    {
-                        f => f.UniqueId,
-                        f => f.ServerRelativePath,
-                        f => f.ListItemAllFields.Id,
-                        f => f.Level
-                    };
                     if (targetFile != null)
                     {
                         if (file.Overwrite)
@@ -126,7 +112,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         }
                         else
                         {
-                            checkedOut = CheckOutIfNeeded(web, targetFile, additionalRetrievals.ToArray());
+                            checkedOut = CheckOutIfNeeded(web, targetFile);
                         }
                     }
                     else
@@ -144,21 +130,19 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             }
                         }
 
-                        checkedOut = CheckOutIfNeeded(web, targetFile, additionalRetrievals.ToArray());
+                        checkedOut = CheckOutIfNeeded(web, targetFile);
                     }
 
                     if (targetFile != null)
                     {
                         // Add the fileuniqueid tokens
-                        // PERFORMANCE NOTE: next call not needed; already loaded in CheckOutIfNeeded via additionalRetrievals (save API calls)
-                        // targetFile.EnsureProperties(p => p.UniqueId, p => p.ServerRelativePath);
+                        targetFile.EnsureProperties(p => p.UniqueId, p => p.ServerRelativePath);
 
                         // Add ListItemId token, given that a file can live outside of a library ensure this does not break provisioning
                         try
                         {
-                            // PERFORMANCE NOTE: next 2 calls not needed; already loaded in CheckOutIfNeeded via additionalRetrievals (save API calls)
-                            // web.Context.Load(targetFile, p => p.ListItemAllFields.Id);
-                            // web.Context.ExecuteQueryRetry();
+                            web.Context.Load(targetFile, p => p.ListItemAllFields.Id);
+                            web.Context.ExecuteQueryRetry();
                             if (targetFile.ListItemAllFields.ServerObjectIsNull.HasValue
                                 && !targetFile.ListItemAllFields.ServerObjectIsNull.Value)
                             {
@@ -226,18 +210,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         {
                             case Model.FileLevel.Published:
                                 {
-                                    if (targetFile.Level != Microsoft.SharePoint.Client.FileLevel.Published)
-                                    {
-                                        targetFile.PublishFileToLevel(Microsoft.SharePoint.Client.FileLevel.Published);
-                                    }
+                                    targetFile.PublishFileToLevel(Microsoft.SharePoint.Client.FileLevel.Published);
                                     break;
                                 }
                             case Model.FileLevel.Draft:
                                 {
-                                    if (targetFile.Level != Microsoft.SharePoint.Client.FileLevel.Draft)
-                                    {
-                                        targetFile.PublishFileToLevel(Microsoft.SharePoint.Client.FileLevel.Draft);
-                                    }
+                                    targetFile.PublishFileToLevel(Microsoft.SharePoint.Client.FileLevel.Draft);
                                     break;
                                 }
                             default:
@@ -266,19 +244,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return parser;
         }
 
-        private static bool CheckOutIfNeeded(Web web, File targetFile, params Expression<Func<File, object>>[] additionalRetrievals)
+        private static bool CheckOutIfNeeded(Web web, File targetFile)
         {
             var checkedOut = false;
             try
             {
-                var retrievals = new List<Expression<Func<File, object>>>
-                {
-                    f => f.CheckOutType,
-                    f => f.CheckedOutByUser,
-                    f => f.ListItemAllFields.ParentList.ForceCheckout
-                };
-                retrievals.AddRange(additionalRetrievals);
-                web.Context.Load(targetFile, retrievals.ToArray());
+                web.Context.Load(targetFile, f => f.CheckOutType, f => f.CheckedOutByUser, f => f.ListItemAllFields.ParentList.ForceCheckout);
                 web.Context.ExecuteQueryRetry();
 
                 if (targetFile.ListItemAllFields.ServerObjectIsNull.HasValue

@@ -42,8 +42,9 @@ namespace PnP.Framework
         /// Get's a PnPContext from a CSOM ClientContext
         /// </summary>
         /// <param name="context">CSOM ClientContext</param>
+        /// <param name="existingFactory">An existing factory to use for PnPContext creation, instead of an internal one.</param>
         /// <returns>The equivalent PnPContext</returns>
-        public async Task<PnPContext> GetPnPContextAsync(ClientContext context)
+        public async Task<PnPContext> GetPnPContextAsync(ClientContext context, IPnPContextFactory existingFactory = null)
         {
             Uri ctxUri = new Uri(context.Url);
 
@@ -61,12 +62,12 @@ namespace PnP.Framework
                     var iAuthProvider = ctxSettings.AuthenticationManager.PnPCoreAuthenticationProvider;
                     if (iAuthProvider != null)
                     {
-                        var factory0 = BuildContextFactory();
+                        var factory0 = existingFactory ?? BuildContextFactory();
                         return await factory0.CreateAsync(ctxUri, iAuthProvider).ConfigureAwait(false);
                     }
                 }
             }
-            var factory = BuildContextFactory();
+            var factory = existingFactory ?? BuildContextFactory();
             return await factory.CreateAsync(ctxUri, AuthenticationProviderFactory.GetAuthenticationProvider(context)).ConfigureAwait(false);
         }
 
@@ -74,10 +75,11 @@ namespace PnP.Framework
         /// Get's a PnPContext from a CSOM ClientContext
         /// </summary>
         /// <param name="context">CSOM ClientContext</param>
+        /// <param name="existingFactory">An existing factory to use for PnPContext creation, instead of an internal one.</param>
         /// <returns>The equivalent PnPContext</returns>
-        public PnPContext GetPnPContext(ClientContext context)
+        public PnPContext GetPnPContext(ClientContext context, IPnPContextFactory existingFactory = null)
         {
-            return GetPnPContextAsync(context).GetAwaiter().GetResult();
+            return GetPnPContextAsync(context, existingFactory).GetAwaiter().GetResult();
         }
 
         private IPnPContextFactory BuildContextFactory()

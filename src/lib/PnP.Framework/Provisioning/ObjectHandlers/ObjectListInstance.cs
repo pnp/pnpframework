@@ -2815,10 +2815,20 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                     if (addField)
                     {
+                        var fieldTitle = field.Title;
+                        if (creationInfo.PersistMultiLanguageResources)
+                        {
+                            var escapedFieldTitle = siteList.Title.Replace(" ", "_")+"_"+field.Title.Replace(" ", "_");
+                            if (UserResourceExtensions.PersistResourceValue(field.TitleResource, $"Field_{escapedFieldTitle}_DisplayName", template, creationInfo))
+                            {
+                                fieldTitle = $"{{res:Field_{escapedFieldTitle}_DisplayName}}";
+                            }
+                        }
+
                         list.FieldRefs.Add(new FieldRef(field.InternalName)
                         {
                             Id = field.Id,
-                            DisplayName = field.Title,
+                            DisplayName = fieldTitle,
                             Required = field.Required,
                             Hidden = field.Hidden,
                         });

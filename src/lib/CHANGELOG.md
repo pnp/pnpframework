@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Fix ClearDefaultColumnValues working on large lists #717 [cebud - Martin Dubec]
 - Export calculated field formula based on title instead of internal name #721 [madsmai - Mads Maibohm]
 - Allowing to create PnPContext from ClientContext with existing IPnPContextFactory #762 [heinrich-ulbricht - Heinrich Ulbricht]
+- Add support to exporting renamed Title columns to a PnP template #776 [jackpoz - Giacomo Pozzoni]
 
 ## [1.10.0]
 

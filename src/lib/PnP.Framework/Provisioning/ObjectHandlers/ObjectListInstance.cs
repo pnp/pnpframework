@@ -2759,7 +2759,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     {
                         if (field.InternalName == "Editor"
                             || field.InternalName == "Author"
-                            || field.InternalName == "Title"
                             || field.InternalName == "ID"
                             || field.InternalName == "Created"
                             || field.InternalName == "Modified"

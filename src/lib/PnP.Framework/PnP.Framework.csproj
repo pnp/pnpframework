@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.0;net5.0;net6.0</TargetFrameworks>
-		<LangVersion>8.0</LangVersion>
+		<TargetFrameworks>netstandard2.0;net5.0;net6.0;net7.0</TargetFrameworks>
+		<LangVersion>10.0</LangVersion>
 		<RootNamespace>PnP.Framework</RootNamespace>
 		<AssemblyName>PnP.Framework</AssemblyName>
 		<Version>1.10.0</Version>
@@ -31,6 +31,7 @@
 		<PnPCoreSdkPath Condition="'$(PnPCoreSdkPath)' == ''"></PnPCoreSdkPath>
 		<PnPCoreSdkPathNet5 Condition="'$(PnPCoreSdkPathNet5)' == ''"></PnPCoreSdkPathNet5>
 		<PnPCoreSdkPathNet6 Condition="'$(PnPCoreSdkPathNet6)' == ''"></PnPCoreSdkPathNet6>
+		<PnPCoreSdkPathNet7 Condition="'$(PnPCoreSdkPathNet7)' == ''"></PnPCoreSdkPathNet7>
 		<SignAssembly>true</SignAssembly>
 		<AssemblyOriginatorKeyFile>..\pnp.core.snk</AssemblyOriginatorKeyFile>
 	</PropertyGroup>
@@ -225,6 +226,18 @@
 		<PackageReference Include="System.IO.Packaging" Version="6.0.0" />
 	</ItemGroup>
 
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
+		<PackageReference Include="Microsoft.ApplicationInsights" Version="2.16.0" />
+		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="7.0.0-*" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0-*" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0-*" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0-*" />
+		<PackageReference Include="Microsoft.Extensions.Options" Version="7.0.0-*" />
+		<PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0-*" />
+		<PackageReference Include="System.DirectoryServices" Version="7.0.0-*" />
+		<PackageReference Include="System.IO.Packaging" Version="7.0.0-*" />
+	</ItemGroup>
+
 	<ItemGroup>
 		<!-- Required -->
 		<PackageReference Include="Microsoft.Identity.Client.Extensions.Msal" Version="2.18.4" />
@@ -267,6 +280,14 @@
 	<ItemGroup Condition="'$(PnPCoreSdkPathNet6)' != ''">
 		<Reference Include="PnP.Core" Condition="'$(TargetFramework)' == 'net6.0'">
 			<HintPath>$(PnPCoreSdkPathNet6)</HintPath>
+			<Private>true</Private>
+			<SpecificVersion>false</SpecificVersion>
+		</Reference>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(PnPCoreSdkPathNet7)' != ''">
+		<Reference Include="PnP.Core" Condition="'$(TargetFramework)' == 'net7.0'">
+			<HintPath>$(PnPCoreSdkPathNet7)</HintPath>
 			<Private>true</Private>
 			<SpecificVersion>false</SpecificVersion>
 		</Reference>

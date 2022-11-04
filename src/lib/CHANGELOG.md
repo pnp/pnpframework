@@ -10,6 +10,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Added .NET 7 binaries [jansenbe - Bert Jansen]
+- Moved to C# 10 [jansenbe - Bert Jansen
+
 ### Changed
 
 - Fix fileuniqueid and pageuniqueid export #692 [rjbooden - Ronald Booden]

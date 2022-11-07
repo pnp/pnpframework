@@ -28,6 +28,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Add support to exporting renamed Title columns to a PnP template #776 [jackpoz - Giacomo Pozzoni]
 - Drop unused Microsoft.Extensions.Logging.Abstractions reference [jansenbe - Bert Jansen]
 - Check owners if null before calling AddUnifiedGroupMembers #769 [magarma - Miguel Angel García Martínez]
+- Fixes for the EnableModernAudienceTargeting method #773 [patrikhellgren - Patrik Hellgren]
 
 ## [1.10.0]
 

@@ -31,6 +31,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Check owners if null before calling AddUnifiedGroupMembers #769 [magarma - Miguel Angel García Martínez]
 - Fixes for the EnableModernAudienceTargeting method #773 [patrikhellgren - Patrik Hellgren]
 - Fix for creating private channels #778 [patrikhellgren - Patrik Hellgren]
+- Fix for infinite loop in Replacing Tokens when property values contain the Regex special char "$" #777 [Autophanous]
 
 ## [1.10.0]
 

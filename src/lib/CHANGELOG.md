@@ -32,6 +32,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Fixes for the EnableModernAudienceTargeting method #773 [patrikhellgren - Patrik Hellgren]
 - Fix for creating private channels #778 [patrikhellgren - Patrik Hellgren]
 - Fix for infinite loop in Replacing Tokens when property values contain the Regex special char "$" #777 [Autophanous]
+- Fix LocalizationToken.GetReplaceValue: fallback to old logic #785 [czullu - Christian Zuellig]
 
 ## [1.10.0]
 

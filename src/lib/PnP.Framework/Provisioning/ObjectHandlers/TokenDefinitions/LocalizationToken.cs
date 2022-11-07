@@ -38,9 +38,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
                     _resourceEntries.First();
 
                 if (defaultEntry != null)
+                {
                     return defaultEntry.Value;
+                }
                 else
+                {
                     return _resourceEntries.First().Value; //fallback to old logic as for me _defaultLCID has always a Value i.e. 0 or the correct LCID
+                }
             }
 
         }

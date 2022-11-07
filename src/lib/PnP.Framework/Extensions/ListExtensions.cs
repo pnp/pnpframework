@@ -2308,10 +2308,11 @@ namespace Microsoft.SharePoint.Client
             if (!list.FieldExistsByName(Constants.ModernAudienceTargetingInternalName) &&
                    !list.FieldExistsByName(Constants.ModernAudienceTargetingMultiLookupInternalName))
             {
+                list.EnsureProperties(l => l.Id, l => l.ContentTypesEnabled);
 
                 var web = list.ParentWeb;
                 
-                var sourceId = list.Id.ToString();
+                var sourceId = list.Id.ToString("B");
                 var addOptions = list.ContentTypesEnabled
                         ? AddFieldOptions.AddFieldInternalNameHint | AddFieldOptions.AddToNoContentType
                         : AddFieldOptions.AddFieldInternalNameHint | AddFieldOptions.AddToDefaultContentType;
@@ -2322,24 +2323,46 @@ namespace Microsoft.SharePoint.Client
                 var firstModernTargetingFieldXml = @$"
                     <Field ID=""{{7f759147-c861-4cd6-a11f-5aa3037d9634}}"" Type=""UserMulti"" List=""UserInfo"" Name=""_ModernAudienceTargetUserField"" 
                         StaticName=""_ModernAudienceTargetUserField"" DisplayName=""Audience"" Required=""FALSE"" 
-                        SourceID=""{sourceId}"" ShowField=""ImnName"" ShowInDisplayForm=""TRUE"" ShowInListSettings=""FALSE"" UserSelectionMode=""GroupsOnly"" 
+                        SourceID=""{sourceId}"" ColName=""int2"" RowOrdinal=""0"" ShowField=""ImnName"" ShowInDisplayForm=""TRUE"" ShowInListSettings=""FALSE"" UserSelectionMode=""GroupsOnly"" 
                         UserSelectionScope=""0"" Mult=""TRUE"" Sortable=""FALSE"" Version=""1""/>";
 
                 Field firstField = list.Fields.AddFieldAsXml(firstModernTargetingFieldXml, false, addOptions);
                 list.Context.Load(firstField);
+
+                var userInformationList = web.Lists.GetByTitle("User Information List");
+                list.Context.Load(userInformationList, l => l.Id);
                 list.Context.ExecuteQueryRetry();
 
                 // ID is unique for this field type
                 var secondModernTargetingFieldFormat = @$"
                     <Field Type=""LookupMulti"" DisplayName=""AudienceIds"" 
-                        List=""{sourceId}"" WebId=""{web.Id}"" FieldRef=""7f759147-c861-4cd6-a11f-5aa3037d9634"" ReadOnly=""TRUE"" Mult=""TRUE"" Sortable=""FALSE"" 
-                        UnlimitedLengthInDocumentLibrary=""FALSE"" ID=""{Guid.NewGuid().ToString()}"" SourceID=""{sourceId}"" StaticName=""_ModernAudienceAadObjectIds"" 
+                        List=""{userInformationList.Id:B}"" WebId=""{web.Id}"" FieldRef=""7f759147-c861-4cd6-a11f-5aa3037d9634"" ReadOnly=""TRUE"" Mult=""TRUE"" Sortable=""FALSE"" 
+                        UnlimitedLengthInDocumentLibrary=""FALSE"" ID=""{Guid.NewGuid():B}"" SourceID=""{sourceId}"" StaticName=""_ModernAudienceAadObjectIds"" 
                         Name=""_ModernAudienceAadObjectIds"" ShowField=""_AadObjectIdForUser"" ShowInListSettings=""FALSE"" Version=""1""/>";
 
                 Field secondField = list.Fields.AddFieldAsXml(secondModernTargetingFieldFormat, false, addOptions);
                 list.Context.Load(secondField);
-                list.Context.ExecuteQueryRetry();
 
+                list.EventReceivers.Add(new EventReceiverDefinitionCreationInformation()
+                {
+                    EventType = EventReceiverType.ItemAdding,
+                    ReceiverName = "",
+                    ReceiverAssembly = "Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c",
+                    ReceiverClass = "Microsoft.SharePoint.Portal.AudienceEventRecevier",
+                    Synchronization = EventReceiverSynchronization.Synchronous,
+                    SequenceNumber = 10000
+                });
+                list.EventReceivers.Add(new EventReceiverDefinitionCreationInformation()
+                {
+                    EventType = EventReceiverType.ItemUpdating,
+                    ReceiverName = "",
+                    ReceiverAssembly = "Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c",
+                    ReceiverClass = "Microsoft.SharePoint.Portal.AudienceEventRecevier",
+                    Synchronization = EventReceiverSynchronization.Synchronous,
+                    SequenceNumber = 10000
+                });
+                list.Update();
+                list.Context.ExecuteQueryRetry();
             }
         }
     }

@@ -1040,7 +1040,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 displayName = parser.ParseString(channel.DisplayName),
                 isFavoriteByDefault = channel.Private ? false : channel.IsFavoriteByDefault,
                 membershipType = channel.Private ? "private" : "standard",
-                moderationSettings = new Dictionary<string, object>{
+                moderationSettings = channel.Private ? null : new Dictionary<string, object>{
                     { "userNewMessageRestriction", channel.UserNewMessageRestriction },
                     { "replyRestriction", channel.ReplyRestriction },
                     { "allowNewMessageFromBots", channel.AllowNewMessageFromBots },

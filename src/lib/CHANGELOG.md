@@ -11,7 +11,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Added .NET 7 binaries [jansenbe - Bert Jansen]
-- Moved to C# 10 [jansenbe - Bert Jansen
+- Moved to C# 10 [jansenbe - Bert Jansen]
+- Adding support to export ListInstance-FieldRef displayName with multilanguages #775 [magarma - Miguel Angel García Martínez]
 
 ### Changed
 

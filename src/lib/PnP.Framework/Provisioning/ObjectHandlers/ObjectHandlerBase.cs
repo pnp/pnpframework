@@ -117,7 +117,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                     if (!termSet.ServerObjectIsNull())
                     {
-                        termSet.EnsureProperties(ts => ts.Name, ts => ts.Group);
+                        termSet.EnsureProperties(ts => ts.Name, ts => ts.Group.Name, ts => ts.Group.IsSiteCollectionGroup);
 
                         termSetIdElement.Value = String.Format("{{termsetid:{0}:{1}}}", termSet.Group.IsSiteCollectionGroup ? "{sitecollectiontermgroupname}" : termSet.Group.Name, termSet.Name);
                     }

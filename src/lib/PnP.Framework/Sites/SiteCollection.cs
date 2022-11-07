@@ -539,7 +539,8 @@ namespace PnP.Framework.Sites
 
             if (group != null && !string.IsNullOrEmpty(group.SiteUrl))
             {
-                if (siteCollectionCreationInformation.Owners!=null){
+                if (siteCollectionCreationInformation.Owners!=null)
+                {
                     Graph.UnifiedGroupsUtility.AddUnifiedGroupMembers(group.GroupId, siteCollectionCreationInformation.Owners, graphAccessToken);
                 }
                 // Try to configure the site/group classification, if any

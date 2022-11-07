@@ -27,6 +27,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Allowing to create PnPContext from ClientContext with existing IPnPContextFactory #762 [heinrich-ulbricht - Heinrich Ulbricht]
 - Add support to exporting renamed Title columns to a PnP template #776 [jackpoz - Giacomo Pozzoni]
 - Drop unused Microsoft.Extensions.Logging.Abstractions reference [jansenbe - Bert Jansen]
+- Check owners if null before calling AddUnifiedGroupMembers #769 [magarma - Miguel Angel García Martínez]
 
 ## [1.10.0]
 

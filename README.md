@@ -1,6 +1,6 @@
 # PnP Framework
 
-**PnP Framework** is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions. This library is the cross platform successor of the [PnP-Sites-Core](https://github.com/PnP/PnP-Sites-Core) library. The original [PnP-Sites-Core](https://github.com/PnP/PnP-Sites-Core) library only works on Windows (due to the dependency on .Net Framework) and supports SharePoint on-premises and SharePoint Online, while this library will work cross platform but only supports SharePoint Online. Going forward we'll only be **actively maintaining PnP Framework**, the [PnP-Sites-Core](https://github.com/PnP/PnP-Sites-Core) library is retired and archived.
+**PnP Framework** is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions. This library is the cross platform successor of the [PnP-Sites-Core](https://github.com/PnP/PnP-Sites-Core) library. The original [PnP-Sites-Core](https://github.com/PnP/PnP-Sites-Core) library only works on Windows (due to the dependency on .Net Framework) and supports SharePoint on-premises and SharePoint Online, while this library will work cross platform but only supports SharePoint Online. Going forward we'll only be **actively maintaining PnP Framework**, the [PnP-Sites-Core](https://github.com/PnP/PnP-Sites-Core) library is retired and archived.
 
 Next to PnP Framework that will be replacing [PnP-Sites-Core](https://github.com/PnP/PnP-Sites-Core) we're also building a brand new [PnP Core SDK](https://github.com/pnp/pnpcore) that targets modern .NET development and which will work everywhere where .NET will run. This library is the long term evolution of PnP Framework, we'll enable a phased transition from PnP Framework to [PnP Core SDK](https://github.com/pnp/pnpcore) without impacting PnP Framework users.
 
@@ -29,7 +29,7 @@ This library is open-source and community provided component with active communi
 To build PnP Framework you need the following minimal components installed:
 
 - [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)
-- [.NET SDK version 6.0](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+- [.NET SDK version 7.0](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
 
 Contributions should be made against the **dev** branch of the repository.
 

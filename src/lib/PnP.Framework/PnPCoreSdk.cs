@@ -15,7 +15,7 @@ namespace PnP.Framework
     {
 
         private static readonly Lazy<PnPCoreSdk> _lazyInstance = new Lazy<PnPCoreSdk>(() => new PnPCoreSdk(), true);
-        private IPnPContextFactory pnpContextFactoryCache;
+        internal IPnPContextFactory pnpContextFactoryCache;
         private static readonly SemaphoreSlim semaphoreSlimFactory = new SemaphoreSlim(1);
         internal static ILegacyAuthenticationProviderFactory AuthenticationProviderFactory { get; set; } = new PnPCoreSdkAuthenticationProviderFactory();
         internal static event EventHandler<IServiceCollection> OnDIContainerBuilding;
@@ -62,11 +62,30 @@ namespace PnP.Framework
                     var iAuthProvider = ctxSettings.AuthenticationManager.PnPCoreAuthenticationProvider;
                     if (iAuthProvider != null)
                     {
-                        var factory0 = existingFactory ?? BuildContextFactory();
+                        IPnPContextFactory factory0;
+                        if (existingFactory != null)
+                        {
+                            // use the provided factory for all upcoming PnPContext creations, also the ones driven internally from PnP Framework
+                            pnpContextFactoryCache = existingFactory;
+                            factory0 = existingFactory;
+                        }
+                        else
+                        {
+                            factory0 = BuildContextFactory();                            
+                        }
+                        
                         return await factory0.CreateAsync(ctxUri, iAuthProvider).ConfigureAwait(false);
+
                     }
                 }
             }
+
+            if (existingFactory != null)
+            {
+                // use the provided factory for all upcoming PnPContext creations, also the ones driven internally from PnP Framework
+                pnpContextFactoryCache = existingFactory;                
+            }
+            
             var factory = existingFactory ?? BuildContextFactory();
             return await factory.CreateAsync(ctxUri, AuthenticationProviderFactory.GetAuthenticationProvider(context)).ConfigureAwait(false);
         }

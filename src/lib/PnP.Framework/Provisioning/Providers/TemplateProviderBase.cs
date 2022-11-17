@@ -106,6 +106,21 @@ namespace PnP.Framework.Provisioning.Providers
 
         #region Abstract Methods
         /// <summary>
+        /// Gets ProvisioningHierarchy
+        /// </summary>
+        /// <param name="uri">The source uri</param>
+        /// <returns>Returns a ProvisioningHierarchy</returns>
+        public abstract ProvisioningHierarchy GetHierarchy(string uri);
+
+        /// <summary>
+        /// Gets ProvisioningHierarchy
+        /// </summary>
+        /// <param name="uri">The source uri</param>
+        /// <param name="formatter">Provisioning Hierarchy formatter</param>
+        /// <returns>Returns a ProvisioningHierarchy</returns>
+        public abstract ProvisioningHierarchy GetHierarchy(string uri, IProvisioningHierarchyFormatter formatter);
+
+        /// <summary>
         /// Gets list of ProvisioningTemplates
         /// </summary>
         /// <returns>Returns collection of ProvisioningTemplate</returns>
@@ -117,13 +132,6 @@ namespace PnP.Framework.Provisioning.Providers
         /// <param name="formatter">Provisioning Template formatter</param>
         /// <returns>Returns collection of ProvisioningTemplate</returns>
         public abstract List<ProvisioningTemplate> GetTemplates(ITemplateFormatter formatter);
-
-        /// <summary>
-        /// Gets ProvisioningHierarchy
-        /// </summary>
-        /// <param name="uri">The source uri</param>
-        /// <returns>Returns a ProvisioningHierarchy</returns>
-        public abstract ProvisioningHierarchy GetHierarchy(string uri);
 
         /// <summary>
         /// Gets ProvisioningTemplate

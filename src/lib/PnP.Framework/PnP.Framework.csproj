@@ -304,4 +304,8 @@
 	  <Folder Include="Provisioning\Providers\Xml\Serializers\V202209\" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <EditorConfigFiles Remove=".editorconfig" />
+	</ItemGroup>
+
 </Project>

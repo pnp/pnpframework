@@ -25,6 +25,15 @@ namespace PnP.Framework.Provisioning.Providers.Markdown
 
         #region Base class overrides
 
+        public override ProvisioningHierarchy GetHierarchy(string uri)
+        {
+            throw new NotImplementedException();
+        }
+        public override ProvisioningHierarchy GetHierarchy(string uri, IProvisioningHierarchyFormatter formatter)
+        {
+            throw new NotImplementedException();
+        }
+
         public override List<ProvisioningTemplate> GetTemplates()
         {
             var formatter = new MarkdownPnPFormatter();
@@ -56,11 +65,6 @@ namespace PnP.Framework.Provisioning.Providers.Markdown
             }
 
             return (result);
-        }
-
-        public override ProvisioningHierarchy GetHierarchy(string uri)
-        {
-            throw new NotImplementedException();
         }
 
         public override ProvisioningTemplate GetTemplate(string uri)

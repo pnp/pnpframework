@@ -1,0 +1,505 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Modernization.Functions.XmlComparer
+  commentId: T:PnP.Framework.Modernization.Functions.XmlComparer
+  id: XmlComparer
+  parent: PnP.Framework.Modernization.Functions
+  children:
+  - PnP.Framework.Modernization.Functions.XmlComparer.AreEqual(System.String,System.String)
+  - PnP.Framework.Modernization.Functions.XmlComparer.AreEqual(System.Xml.Linq.XElement,System.Xml.Linq.XElement)
+  - PnP.Framework.Modernization.Functions.XmlComparer.ParseXml(System.String)
+  langs:
+  - csharp
+  - vb
+  name: XmlComparer
+  nameWithType: XmlComparer
+  fullName: PnP.Framework.Modernization.Functions.XmlComparer
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Functions/XmlCompare.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: XmlComparer
+    path: ../src/lib/PnP.Framework/Modernization/Functions/XmlCompare.cs
+    startLine: 19
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Functions
+  summary: "\nLoosely compares XML documents for equality:\n<ul><li>Order of siblings in an element is ignored.</li><li>Text nodes are the only node in at the bottom of the tree so sibling text nodes are merged for comparison.</li><li>The prefix used for a namespace is ignored.</li><li>Comments are ignored.</li></ul>\nThis type of comparison is useful when comparing the XML documents used as messages, configuration, etc. in various specifications.\n"
+  example: []
+  syntax:
+    content: public static class XmlComparer
+    content.vb: Public Module XmlComparer
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: PnP.Framework.Modernization.Functions.XmlComparer.AreEqual(System.String,System.String)
+  commentId: M:PnP.Framework.Modernization.Functions.XmlComparer.AreEqual(System.String,System.String)
+  id: AreEqual(System.String,System.String)
+  parent: PnP.Framework.Modernization.Functions.XmlComparer
+  langs:
+  - csharp
+  - vb
+  name: AreEqual(String, String)
+  nameWithType: XmlComparer.AreEqual(String, String)
+  fullName: PnP.Framework.Modernization.Functions.XmlComparer.AreEqual(System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Functions/XmlCompare.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AreEqual
+    path: ../src/lib/PnP.Framework/Modernization/Functions/XmlCompare.cs
+    startLine: 21
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Functions
+  syntax:
+    content: public static XmlEqualityResult AreEqual(string xmlA, string xmlB)
+    parameters:
+    - id: xmlA
+      type: System.String
+    - id: xmlB
+      type: System.String
+    return:
+      type: PnP.Framework.Modernization.Functions.XmlEqualityResult
+    content.vb: Public Shared Function AreEqual(xmlA As String, xmlB As String) As XmlEqualityResult
+  overload: PnP.Framework.Modernization.Functions.XmlComparer.AreEqual*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Modernization.Functions.XmlComparer.AreEqual(System.Xml.Linq.XElement,System.Xml.Linq.XElement)
+  commentId: M:PnP.Framework.Modernization.Functions.XmlComparer.AreEqual(System.Xml.Linq.XElement,System.Xml.Linq.XElement)
+  id: AreEqual(System.Xml.Linq.XElement,System.Xml.Linq.XElement)
+  parent: PnP.Framework.Modernization.Functions.XmlComparer
+  langs:
+  - csharp
+  - vb
+  name: AreEqual(XElement, XElement)
+  nameWithType: XmlComparer.AreEqual(XElement, XElement)
+  fullName: PnP.Framework.Modernization.Functions.XmlComparer.AreEqual(System.Xml.Linq.XElement, System.Xml.Linq.XElement)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Functions/XmlCompare.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AreEqual
+    path: ../src/lib/PnP.Framework/Modernization/Functions/XmlCompare.cs
+    startLine: 27
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Functions
+  syntax:
+    content: public static XmlEqualityResult AreEqual(XElement xmlA, XElement xmlB)
+    parameters:
+    - id: xmlA
+      type: System.Xml.Linq.XElement
+    - id: xmlB
+      type: System.Xml.Linq.XElement
+    return:
+      type: PnP.Framework.Modernization.Functions.XmlEqualityResult
+    content.vb: Public Shared Function AreEqual(xmlA As XElement, xmlB As XElement) As XmlEqualityResult
+  overload: PnP.Framework.Modernization.Functions.XmlComparer.AreEqual*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Modernization.Functions.XmlComparer.ParseXml(System.String)
+  commentId: M:PnP.Framework.Modernization.Functions.XmlComparer.ParseXml(System.String)
+  id: ParseXml(System.String)
+  parent: PnP.Framework.Modernization.Functions.XmlComparer
+  langs:
+  - csharp
+  - vb
+  name: ParseXml(String)
+  nameWithType: XmlComparer.ParseXml(String)
+  fullName: PnP.Framework.Modernization.Functions.XmlComparer.ParseXml(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Functions/XmlCompare.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ParseXml
+    path: ../src/lib/PnP.Framework/Modernization/Functions/XmlCompare.cs
+    startLine: 180
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Functions
+  syntax:
+    content: public static XDocument ParseXml(string xml)
+    parameters:
+    - id: xml
+      type: System.String
+    return:
+      type: System.Xml.Linq.XDocument
+    content.vb: Public Shared Function ParseXml(xml As String) As XDocument
+  overload: PnP.Framework.Modernization.Functions.XmlComparer.ParseXml*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: PnP.Framework.Modernization.Functions
+  commentId: N:PnP.Framework.Modernization.Functions
+  name: PnP.Framework.Modernization.Functions
+  nameWithType: PnP.Framework.Modernization.Functions
+  fullName: PnP.Framework.Modernization.Functions
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: PnP.Framework.Modernization.Functions.XmlComparer.AreEqual*
+  commentId: Overload:PnP.Framework.Modernization.Functions.XmlComparer.AreEqual
+  name: AreEqual
+  nameWithType: XmlComparer.AreEqual
+  fullName: PnP.Framework.Modernization.Functions.XmlComparer.AreEqual
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: PnP.Framework.Modernization.Functions.XmlEqualityResult
+  commentId: T:PnP.Framework.Modernization.Functions.XmlEqualityResult
+  parent: PnP.Framework.Modernization.Functions
+  name: XmlEqualityResult
+  nameWithType: XmlEqualityResult
+  fullName: PnP.Framework.Modernization.Functions.XmlEqualityResult
+- uid: System.Xml.Linq.XElement
+  commentId: T:System.Xml.Linq.XElement
+  parent: System.Xml.Linq
+  isExternal: true
+  name: XElement
+  nameWithType: XElement
+  fullName: System.Xml.Linq.XElement
+- uid: System.Xml.Linq
+  commentId: N:System.Xml.Linq
+  isExternal: true
+  name: System.Xml.Linq
+  nameWithType: System.Xml.Linq
+  fullName: System.Xml.Linq
+- uid: PnP.Framework.Modernization.Functions.XmlComparer.ParseXml*
+  commentId: Overload:PnP.Framework.Modernization.Functions.XmlComparer.ParseXml
+  name: ParseXml
+  nameWithType: XmlComparer.ParseXml
+  fullName: PnP.Framework.Modernization.Functions.XmlComparer.ParseXml
+- uid: System.Xml.Linq.XDocument
+  commentId: T:System.Xml.Linq.XDocument
+  parent: System.Xml.Linq
+  isExternal: true
+  name: XDocument
+  nameWithType: XDocument
+  fullName: System.Xml.Linq.XDocument

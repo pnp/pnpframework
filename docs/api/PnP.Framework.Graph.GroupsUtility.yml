@@ -1,0 +1,1713 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Graph.GroupsUtility
+  commentId: T:PnP.Framework.Graph.GroupsUtility
+  id: GroupsUtility
+  parent: PnP.Framework.Graph
+  children:
+  - PnP.Framework.Graph.GroupsUtility.AddGroupMembers(System.String,System.String[],System.String,System.Boolean,System.Int32,System.Int32)
+  - PnP.Framework.Graph.GroupsUtility.AddGroupOwners(System.String,System.String[],System.String,System.Boolean,System.Int32,System.Int32)
+  - PnP.Framework.Graph.GroupsUtility.ClearGroupMembers(System.String,System.String,System.Int32,System.Int32)
+  - PnP.Framework.Graph.GroupsUtility.ClearGroupOwners(System.String,System.String,System.Int32,System.Int32)
+  - PnP.Framework.Graph.GroupsUtility.CreateGroup(System.String,System.String,System.String,System.Boolean,System.Boolean,System.String,System.String[],System.String[],System.Int32,System.Int32)
+  - PnP.Framework.Graph.GroupsUtility.DeleteGroup(System.String,System.String,System.Int32,System.Int32)
+  - PnP.Framework.Graph.GroupsUtility.GetDeletedGroup(System.String,System.String)
+  - PnP.Framework.Graph.GroupsUtility.GetGroup(System.String,System.String,System.Int32,System.Int32)
+  - PnP.Framework.Graph.GroupsUtility.GetGroupMembers(PnP.Framework.Entities.GroupEntity,System.String,System.Int32,System.Int32)
+  - PnP.Framework.Graph.GroupsUtility.GetGroupOwners(PnP.Framework.Entities.GroupEntity,System.String,System.Int32,System.Int32)
+  - PnP.Framework.Graph.GroupsUtility.GetGroups(System.String,System.String,System.String,System.Int32,System.Nullable{System.Int32},System.Int32,System.Int32,System.Int32)
+  - PnP.Framework.Graph.GroupsUtility.ListDeletedGroups(System.String)
+  - PnP.Framework.Graph.GroupsUtility.PermanentlyDeleteGroup(System.String,System.String)
+  - PnP.Framework.Graph.GroupsUtility.RemoveGroupMembers(System.String,System.String[],System.String,System.Int32,System.Int32)
+  - PnP.Framework.Graph.GroupsUtility.RemoveGroupOwners(System.String,System.String[],System.String,System.Int32,System.Int32)
+  - PnP.Framework.Graph.GroupsUtility.RestoreDeletedGroup(System.String,System.String)
+  - PnP.Framework.Graph.GroupsUtility.SetGroupVisibility(System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Graph.GroupsUtility.UpdateGroup(System.String,System.String,System.Int32,System.Int32,System.String,System.String,System.String[],System.String[],System.Nullable{System.Boolean},System.Nullable{System.Boolean})
+  langs:
+  - csharp
+  - vb
+  name: GroupsUtility
+  nameWithType: GroupsUtility
+  fullName: PnP.Framework.Graph.GroupsUtility
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GroupsUtility
+    path: ../src/lib/PnP.Framework/Graph/GroupsUtility.cs
+    startLine: 20
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nClass that deals with Azure Active Directory group CRUD operations.\n"
+  example: []
+  syntax:
+    content: public static class GroupsUtility
+    content.vb: Public Module GroupsUtility
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: PnP.Framework.Graph.GroupsUtility.CreateGroup(System.String,System.String,System.String,System.Boolean,System.Boolean,System.String,System.String[],System.String[],System.Int32,System.Int32)
+  commentId: M:PnP.Framework.Graph.GroupsUtility.CreateGroup(System.String,System.String,System.String,System.Boolean,System.Boolean,System.String,System.String[],System.String[],System.Int32,System.Int32)
+  id: CreateGroup(System.String,System.String,System.String,System.Boolean,System.Boolean,System.String,System.String[],System.String[],System.Int32,System.Int32)
+  parent: PnP.Framework.Graph.GroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: CreateGroup(String, String, String, Boolean, Boolean, String, String[], String[], Int32, Int32)
+  nameWithType: GroupsUtility.CreateGroup(String, String, String, Boolean, Boolean, String, String[], String[], Int32, Int32)
+  fullName: PnP.Framework.Graph.GroupsUtility.CreateGroup(System.String, System.String, System.String, System.Boolean, System.Boolean, System.String, System.String[], System.String[], System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateGroup
+    path: ../src/lib/PnP.Framework/Graph/GroupsUtility.cs
+    startLine: 67
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nCreates a new Azure Active Directory Group\n"
+  example: []
+  syntax:
+    content: public static GroupEntity CreateGroup(string displayName, string description, string mailNickname, bool mailEnabled, bool securityEnabled, string accessToken, string[] owners = null, string[] members = null, int retryCount = 10, int delay = 500)
+    parameters:
+    - id: displayName
+      type: System.String
+      description: The Display Name for the Azure Active Directory Group
+    - id: description
+      type: System.String
+      description: The Description for the Azure Active Directory Group
+    - id: mailNickname
+      type: System.String
+      description: The Mail Nickname for the Azure Active Directory Group
+    - id: mailEnabled
+      type: System.Boolean
+      description: Boolean indicating if the group will be mail enabled
+    - id: securityEnabled
+      type: System.Boolean
+      description: Boolean indicating if the group will be security enabled
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: owners
+      type: System.String[]
+      description: A list of UPNs for group owners, if any
+    - id: members
+      type: System.String[]
+      description: A list of UPNs for group members, if any
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    return:
+      type: PnP.Framework.Entities.GroupEntity
+      description: The just created Azure Active Directory Group
+    content.vb: Public Shared Function CreateGroup(displayName As String, description As String, mailNickname As String, mailEnabled As Boolean, securityEnabled As Boolean, accessToken As String, owners As String() = Nothing, members As String() = Nothing, retryCount As Integer = 10, delay As Integer = 500) As GroupEntity
+  overload: PnP.Framework.Graph.GroupsUtility.CreateGroup*
+  nameWithType.vb: GroupsUtility.CreateGroup(String, String, String, Boolean, Boolean, String, String(), String(), Int32, Int32)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Graph.GroupsUtility.CreateGroup(System.String, System.String, System.String, System.Boolean, System.Boolean, System.String, System.String(), System.String(), System.Int32, System.Int32)
+  name.vb: CreateGroup(String, String, String, Boolean, Boolean, String, String(), String(), Int32, Int32)
+- uid: PnP.Framework.Graph.GroupsUtility.SetGroupVisibility(System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.GroupsUtility.SetGroupVisibility(System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},PnP.Framework.AzureEnvironment)
+  id: SetGroupVisibility(System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.GroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: SetGroupVisibility(String, String, Nullable<Boolean>, Nullable<Boolean>, AzureEnvironment)
+  nameWithType: GroupsUtility.SetGroupVisibility(String, String, Nullable<Boolean>, Nullable<Boolean>, AzureEnvironment)
+  fullName: PnP.Framework.Graph.GroupsUtility.SetGroupVisibility(System.String, System.String, System.Nullable<System.Boolean>, System.Nullable<System.Boolean>, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetGroupVisibility
+    path: ../src/lib/PnP.Framework/Graph/GroupsUtility.cs
+    startLine: 341
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nSets the visibility of an Azure Active Directory Group\n"
+  example: []
+  syntax:
+    content: public static void SetGroupVisibility(string groupId, string accessToken, bool? hideFromAddressLists, bool? hideFromOutlookClients, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: Id of the Azure Active Directory Group to set the visibility state for
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: hideFromAddressLists
+      type: System.Nullable{System.Boolean}
+      description: 'True if the group should not be displayed in certain parts of the Outlook UI: the Address Book, address lists for selecting message recipients, and the Browse Groups dialog for searching groups; otherwise, false. Default value is false.'
+    - id: hideFromOutlookClients
+      type: System.Nullable{System.Boolean}
+      description: True if the group should not be displayed in Outlook clients, such as Outlook for Windows and Outlook on the web; otherwise, false. Default value is false.
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    content.vb: Public Shared Sub SetGroupVisibility(groupId As String, accessToken As String, hideFromAddressLists As Boolean?, hideFromOutlookClients As Boolean?, azureEnvironment As AzureEnvironment = AzureEnvironment.Production)
+  overload: PnP.Framework.Graph.GroupsUtility.SetGroupVisibility*
+  nameWithType.vb: GroupsUtility.SetGroupVisibility(String, String, Nullable(Of Boolean), Nullable(Of Boolean), AzureEnvironment)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Graph.GroupsUtility.SetGroupVisibility(System.String, System.String, System.Nullable(Of System.Boolean), System.Nullable(Of System.Boolean), PnP.Framework.AzureEnvironment)
+  name.vb: SetGroupVisibility(String, String, Nullable(Of Boolean), Nullable(Of Boolean), AzureEnvironment)
+- uid: PnP.Framework.Graph.GroupsUtility.UpdateGroup(System.String,System.String,System.Int32,System.Int32,System.String,System.String,System.String[],System.String[],System.Nullable{System.Boolean},System.Nullable{System.Boolean})
+  commentId: M:PnP.Framework.Graph.GroupsUtility.UpdateGroup(System.String,System.String,System.Int32,System.Int32,System.String,System.String,System.String[],System.String[],System.Nullable{System.Boolean},System.Nullable{System.Boolean})
+  id: UpdateGroup(System.String,System.String,System.Int32,System.Int32,System.String,System.String,System.String[],System.String[],System.Nullable{System.Boolean},System.Nullable{System.Boolean})
+  parent: PnP.Framework.Graph.GroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: UpdateGroup(String, String, Int32, Int32, String, String, String[], String[], Nullable<Boolean>, Nullable<Boolean>)
+  nameWithType: GroupsUtility.UpdateGroup(String, String, Int32, Int32, String, String, String[], String[], Nullable<Boolean>, Nullable<Boolean>)
+  fullName: PnP.Framework.Graph.GroupsUtility.UpdateGroup(System.String, System.String, System.Int32, System.Int32, System.String, System.String, System.String[], System.String[], System.Nullable<System.Boolean>, System.Nullable<System.Boolean>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UpdateGroup
+    path: ../src/lib/PnP.Framework/Graph/GroupsUtility.cs
+    startLine: 395
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nUpdates the Azure Active Directory Group\n"
+  example: []
+  syntax:
+    content: public static bool UpdateGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500, string displayName = null, string description = null, string[] owners = null, string[] members = null, bool? securityEnabled = null, bool? mailEnabled = null)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: The ID of the Azure Active Directory Group
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: displayName
+      type: System.String
+      description: The Display Name for the Azure Active Directory Group
+    - id: description
+      type: System.String
+      description: The Description for the Azure Active Directory Group
+    - id: owners
+      type: System.String[]
+      description: A list of UPNs for group owners, if any, to be added to the group
+    - id: members
+      type: System.String[]
+      description: A list of UPNs for group members, if any, to be added to the group
+    - id: securityEnabled
+      type: System.Nullable{System.Boolean}
+      description: Boolean indicating if the group is enabled for setting permissions
+    - id: mailEnabled
+      type: System.Nullable{System.Boolean}
+      description: Boolean indicating if the group is enabled for distributing mail
+    return:
+      type: System.Boolean
+      description: Boolean indicating whether the Azure Active Directory Group has been updated or not
+    content.vb: Public Shared Function UpdateGroup(groupId As String, accessToken As String, retryCount As Integer = 10, delay As Integer = 500, displayName As String = Nothing, description As String = Nothing, owners As String() = Nothing, members As String() = Nothing, securityEnabled As Boolean? = Nothing, mailEnabled As Boolean? = Nothing) As Boolean
+  overload: PnP.Framework.Graph.GroupsUtility.UpdateGroup*
+  nameWithType.vb: GroupsUtility.UpdateGroup(String, String, Int32, Int32, String, String, String(), String(), Nullable(Of Boolean), Nullable(Of Boolean))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Graph.GroupsUtility.UpdateGroup(System.String, System.String, System.Int32, System.Int32, System.String, System.String, System.String(), System.String(), System.Nullable(Of System.Boolean), System.Nullable(Of System.Boolean))
+  name.vb: UpdateGroup(String, String, Int32, Int32, String, String, String(), String(), Nullable(Of Boolean), Nullable(Of Boolean))
+- uid: PnP.Framework.Graph.GroupsUtility.DeleteGroup(System.String,System.String,System.Int32,System.Int32)
+  commentId: M:PnP.Framework.Graph.GroupsUtility.DeleteGroup(System.String,System.String,System.Int32,System.Int32)
+  id: DeleteGroup(System.String,System.String,System.Int32,System.Int32)
+  parent: PnP.Framework.Graph.GroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: DeleteGroup(String, String, Int32, Int32)
+  nameWithType: GroupsUtility.DeleteGroup(String, String, Int32, Int32)
+  fullName: PnP.Framework.Graph.GroupsUtility.DeleteGroup(System.String, System.String, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeleteGroup
+    path: ../src/lib/PnP.Framework/Graph/GroupsUtility.cs
+    startLine: 498
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nDeletes an Azure Active Directory Group\n"
+  example: []
+  syntax:
+    content: public static void DeleteGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: The ID of the Azure Active Directory Group
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    content.vb: Public Shared Sub DeleteGroup(groupId As String, accessToken As String, retryCount As Integer = 10, delay As Integer = 500)
+  overload: PnP.Framework.Graph.GroupsUtility.DeleteGroup*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.GroupsUtility.GetGroup(System.String,System.String,System.Int32,System.Int32)
+  commentId: M:PnP.Framework.Graph.GroupsUtility.GetGroup(System.String,System.String,System.Int32,System.Int32)
+  id: GetGroup(System.String,System.String,System.Int32,System.Int32)
+  parent: PnP.Framework.Graph.GroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: GetGroup(String, String, Int32, Int32)
+  nameWithType: GroupsUtility.GetGroup(String, String, Int32, Int32)
+  fullName: PnP.Framework.Graph.GroupsUtility.GetGroup(System.String, System.String, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetGroup
+    path: ../src/lib/PnP.Framework/Graph/GroupsUtility.cs
+    startLine: 534
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nGet an Azure Active Directory Group by Id\n"
+  example: []
+  syntax:
+    content: public static GroupEntity GetGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: The ID of the Azure Active Directory Group
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    return:
+      type: PnP.Framework.Entities.GroupEntity
+      description: Group instance if found
+    content.vb: Public Shared Function GetGroup(groupId As String, accessToken As String, retryCount As Integer = 10, delay As Integer = 500) As GroupEntity
+  overload: PnP.Framework.Graph.GroupsUtility.GetGroup*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.GroupsUtility.GetGroups(System.String,System.String,System.String,System.Int32,System.Nullable{System.Int32},System.Int32,System.Int32,System.Int32)
+  commentId: M:PnP.Framework.Graph.GroupsUtility.GetGroups(System.String,System.String,System.String,System.Int32,System.Nullable{System.Int32},System.Int32,System.Int32,System.Int32)
+  id: GetGroups(System.String,System.String,System.String,System.Int32,System.Nullable{System.Int32},System.Int32,System.Int32,System.Int32)
+  parent: PnP.Framework.Graph.GroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: GetGroups(String, String, String, Int32, Nullable<Int32>, Int32, Int32, Int32)
+  nameWithType: GroupsUtility.GetGroups(String, String, String, Int32, Nullable<Int32>, Int32, Int32, Int32)
+  fullName: PnP.Framework.Graph.GroupsUtility.GetGroups(System.String, System.String, System.String, System.Int32, System.Nullable<System.Int32>, System.Int32, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetGroups
+    path: ../src/lib/PnP.Framework/Graph/GroupsUtility.cs
+    startLine: 594
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nReturns all the Azure Active Directory Groups in the current Tenant based on a startIndex.\n"
+  example: []
+  syntax:
+    content: public static List<GroupEntity> GetGroups(string accessToken, string displayName = null, string mailNickname = null, int startIndex = 0, int? endIndex = null, int retryCount = 10, int delay = 500, int pageSize = 999)
+    parameters:
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: displayName
+      type: System.String
+      description: The DisplayName of the Azure Active Directory Group. Leave NULL if you do not want to filter by display name.
+    - id: mailNickname
+      type: System.String
+      description: The MailNickname of the Azure Active Directory Group. Leave NULL if you do not want to filter by mail nickname.
+    - id: startIndex
+      type: System.Int32
+      description: If not specified, method will start with the first group.
+    - id: endIndex
+      type: System.Nullable{System.Int32}
+      description: If not specified, method will return all groups.
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: pageSize
+      type: System.Int32
+      description: Page size used for the individual requests to Micrsoft Graph. Defaults to 999 which is currently the maximum value.
+    return:
+      type: System.Collections.Generic.List{PnP.Framework.Entities.GroupEntity}
+      description: List of GroupEntity objects
+    content.vb: Public Shared Function GetGroups(accessToken As String, displayName As String = Nothing, mailNickname As String = Nothing, startIndex As Integer = 0, endIndex As Integer? = Nothing, retryCount As Integer = 10, delay As Integer = 500, pageSize As Integer = 999) As List(Of GroupEntity)
+  overload: PnP.Framework.Graph.GroupsUtility.GetGroups*
+  nameWithType.vb: GroupsUtility.GetGroups(String, String, String, Int32, Nullable(Of Int32), Int32, Int32, Int32)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Graph.GroupsUtility.GetGroups(System.String, System.String, System.String, System.Int32, System.Nullable(Of System.Int32), System.Int32, System.Int32, System.Int32)
+  name.vb: GetGroups(String, String, String, Int32, Nullable(Of Int32), Int32, Int32, Int32)
+- uid: PnP.Framework.Graph.GroupsUtility.GetGroupMembers(PnP.Framework.Entities.GroupEntity,System.String,System.Int32,System.Int32)
+  commentId: M:PnP.Framework.Graph.GroupsUtility.GetGroupMembers(PnP.Framework.Entities.GroupEntity,System.String,System.Int32,System.Int32)
+  id: GetGroupMembers(PnP.Framework.Entities.GroupEntity,System.String,System.Int32,System.Int32)
+  parent: PnP.Framework.Graph.GroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: GetGroupMembers(GroupEntity, String, Int32, Int32)
+  nameWithType: GroupsUtility.GetGroupMembers(GroupEntity, String, Int32, Int32)
+  fullName: PnP.Framework.Graph.GroupsUtility.GetGroupMembers(PnP.Framework.Entities.GroupEntity, System.String, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetGroupMembers
+    path: ../src/lib/PnP.Framework/Graph/GroupsUtility.cs
+    startLine: 682
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nReturns all the Members of an Azure Active Directory group\n"
+  example: []
+  syntax:
+    content: public static List<GroupUser> GetGroupMembers(GroupEntity group, string accessToken, int retryCount = 10, int delay = 500)
+    parameters:
+    - id: group
+      type: PnP.Framework.Entities.GroupEntity
+      description: The Azure Active Directory group to return its members of
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    return:
+      type: System.Collections.Generic.List{PnP.Framework.Entities.GroupUser}
+      description: Members of an Azure Active Directory group
+    content.vb: Public Shared Function GetGroupMembers(group As GroupEntity, accessToken As String, retryCount As Integer = 10, delay As Integer = 500) As List(Of GroupUser)
+  overload: PnP.Framework.Graph.GroupsUtility.GetGroupMembers*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.GroupsUtility.AddGroupOwners(System.String,System.String[],System.String,System.Boolean,System.Int32,System.Int32)
+  commentId: M:PnP.Framework.Graph.GroupsUtility.AddGroupOwners(System.String,System.String[],System.String,System.Boolean,System.Int32,System.Int32)
+  id: AddGroupOwners(System.String,System.String[],System.String,System.Boolean,System.Int32,System.Int32)
+  parent: PnP.Framework.Graph.GroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: AddGroupOwners(String, String[], String, Boolean, Int32, Int32)
+  nameWithType: GroupsUtility.AddGroupOwners(String, String[], String, Boolean, Int32, Int32)
+  fullName: PnP.Framework.Graph.GroupsUtility.AddGroupOwners(System.String, System.String[], System.String, System.Boolean, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddGroupOwners
+    path: ../src/lib/PnP.Framework/Graph/GroupsUtility.cs
+    startLine: 773
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nAdds owners to an Azure Active Directory group\n"
+  example: []
+  syntax:
+    content: public static void AddGroupOwners(string groupId, string[] owners, string accessToken, bool removeExistingOwners = false, int retryCount = 10, int delay = 500)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: Id of the Azure Active Directory Group to add the owners to
+    - id: owners
+      type: System.String[]
+      description: String array with the UPNs of the users that need to be added as owners to the group
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: removeExistingOwners
+      type: System.Boolean
+      description: If true, all existing owners will be removed and only those provided will become owners. If false, existing owners will remain and the ones provided will be added to the list with existing owners.
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    content.vb: Public Shared Sub AddGroupOwners(groupId As String, owners As String(), accessToken As String, removeExistingOwners As Boolean = False, retryCount As Integer = 10, delay As Integer = 500)
+  overload: PnP.Framework.Graph.GroupsUtility.AddGroupOwners*
+  nameWithType.vb: GroupsUtility.AddGroupOwners(String, String(), String, Boolean, Int32, Int32)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Graph.GroupsUtility.AddGroupOwners(System.String, System.String(), System.String, System.Boolean, System.Int32, System.Int32)
+  name.vb: AddGroupOwners(String, String(), String, Boolean, Int32, Int32)
+- uid: PnP.Framework.Graph.GroupsUtility.AddGroupMembers(System.String,System.String[],System.String,System.Boolean,System.Int32,System.Int32)
+  commentId: M:PnP.Framework.Graph.GroupsUtility.AddGroupMembers(System.String,System.String[],System.String,System.Boolean,System.Int32,System.Int32)
+  id: AddGroupMembers(System.String,System.String[],System.String,System.Boolean,System.Int32,System.Int32)
+  parent: PnP.Framework.Graph.GroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: AddGroupMembers(String, String[], String, Boolean, Int32, Int32)
+  nameWithType: GroupsUtility.AddGroupMembers(String, String[], String, Boolean, Int32, Int32)
+  fullName: PnP.Framework.Graph.GroupsUtility.AddGroupMembers(System.String, System.String[], System.String, System.Boolean, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddGroupMembers
+    path: ../src/lib/PnP.Framework/Graph/GroupsUtility.cs
+    startLine: 806
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nAdds members to an Azure Active Directory group\n"
+  example: []
+  syntax:
+    content: public static void AddGroupMembers(string groupId, string[] members, string accessToken, bool removeExistingMembers = false, int retryCount = 10, int delay = 500)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: Id of the Azure Active Directory group to add the members to
+    - id: members
+      type: System.String[]
+      description: String array with the UPNs of the users that need to be added as members to the group
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: removeExistingMembers
+      type: System.Boolean
+      description: If true, all existing members will be removed and only those provided will become members. If false, existing members will remain and the ones provided will be added to the list with existing members.
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    content.vb: Public Shared Sub AddGroupMembers(groupId As String, members As String(), accessToken As String, removeExistingMembers As Boolean = False, retryCount As Integer = 10, delay As Integer = 500)
+  overload: PnP.Framework.Graph.GroupsUtility.AddGroupMembers*
+  nameWithType.vb: GroupsUtility.AddGroupMembers(String, String(), String, Boolean, Int32, Int32)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Graph.GroupsUtility.AddGroupMembers(System.String, System.String(), System.String, System.Boolean, System.Int32, System.Int32)
+  name.vb: AddGroupMembers(String, String(), String, Boolean, Int32, Int32)
+- uid: PnP.Framework.Graph.GroupsUtility.RemoveGroupMembers(System.String,System.String[],System.String,System.Int32,System.Int32)
+  commentId: M:PnP.Framework.Graph.GroupsUtility.RemoveGroupMembers(System.String,System.String[],System.String,System.Int32,System.Int32)
+  id: RemoveGroupMembers(System.String,System.String[],System.String,System.Int32,System.Int32)
+  parent: PnP.Framework.Graph.GroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: RemoveGroupMembers(String, String[], String, Int32, Int32)
+  nameWithType: GroupsUtility.RemoveGroupMembers(String, String[], String, Int32, Int32)
+  fullName: PnP.Framework.Graph.GroupsUtility.RemoveGroupMembers(System.String, System.String[], System.String, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemoveGroupMembers
+    path: ../src/lib/PnP.Framework/Graph/GroupsUtility.cs
+    startLine: 838
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nRemoves members from an Azure Active Directory group\n"
+  example: []
+  syntax:
+    content: public static void RemoveGroupMembers(string groupId, string[] members, string accessToken, int retryCount = 10, int delay = 500)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: Id of the Azure Active Directory group to remove the members from
+    - id: members
+      type: System.String[]
+      description: String array with the UPNs of the users that need to be removed as members from the group
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    content.vb: Public Shared Sub RemoveGroupMembers(groupId As String, members As String(), accessToken As String, retryCount As Integer = 10, delay As Integer = 500)
+  overload: PnP.Framework.Graph.GroupsUtility.RemoveGroupMembers*
+  nameWithType.vb: GroupsUtility.RemoveGroupMembers(String, String(), String, Int32, Int32)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Graph.GroupsUtility.RemoveGroupMembers(System.String, System.String(), System.String, System.Int32, System.Int32)
+  name.vb: RemoveGroupMembers(String, String(), String, Int32, Int32)
+- uid: PnP.Framework.Graph.GroupsUtility.RemoveGroupOwners(System.String,System.String[],System.String,System.Int32,System.Int32)
+  commentId: M:PnP.Framework.Graph.GroupsUtility.RemoveGroupOwners(System.String,System.String[],System.String,System.Int32,System.Int32)
+  id: RemoveGroupOwners(System.String,System.String[],System.String,System.Int32,System.Int32)
+  parent: PnP.Framework.Graph.GroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: RemoveGroupOwners(String, String[], String, Int32, Int32)
+  nameWithType: GroupsUtility.RemoveGroupOwners(String, String[], String, Int32, Int32)
+  fullName: PnP.Framework.Graph.GroupsUtility.RemoveGroupOwners(System.String, System.String[], System.String, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemoveGroupOwners
+    path: ../src/lib/PnP.Framework/Graph/GroupsUtility.cs
+    startLine: 899
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nRemoves owners from an Azure Active Directory group\n"
+  example: []
+  syntax:
+    content: public static void RemoveGroupOwners(string groupId, string[] owners, string accessToken, int retryCount = 10, int delay = 500)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: Id of the Azure Active Directory group to remove the owners from
+    - id: owners
+      type: System.String[]
+      description: String array with the UPNs of the users that need to be removed as owners from the group
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    content.vb: Public Shared Sub RemoveGroupOwners(groupId As String, owners As String(), accessToken As String, retryCount As Integer = 10, delay As Integer = 500)
+  overload: PnP.Framework.Graph.GroupsUtility.RemoveGroupOwners*
+  nameWithType.vb: GroupsUtility.RemoveGroupOwners(String, String(), String, Int32, Int32)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Graph.GroupsUtility.RemoveGroupOwners(System.String, System.String(), System.String, System.Int32, System.Int32)
+  name.vb: RemoveGroupOwners(String, String(), String, Int32, Int32)
+- uid: PnP.Framework.Graph.GroupsUtility.ClearGroupOwners(System.String,System.String,System.Int32,System.Int32)
+  commentId: M:PnP.Framework.Graph.GroupsUtility.ClearGroupOwners(System.String,System.String,System.Int32,System.Int32)
+  id: ClearGroupOwners(System.String,System.String,System.Int32,System.Int32)
+  parent: PnP.Framework.Graph.GroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: ClearGroupOwners(String, String, Int32, Int32)
+  nameWithType: GroupsUtility.ClearGroupOwners(String, String, Int32, Int32)
+  fullName: PnP.Framework.Graph.GroupsUtility.ClearGroupOwners(System.String, System.String, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ClearGroupOwners
+    path: ../src/lib/PnP.Framework/Graph/GroupsUtility.cs
+    startLine: 945
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nRemoves all owners of an Azure Active Directory group\n"
+  example: []
+  syntax:
+    content: public static void ClearGroupOwners(string groupId, string accessToken, int retryCount = 10, int delay = 500)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: Id of the Azure Active Directory group to remove all the current owners of
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    content.vb: Public Shared Sub ClearGroupOwners(groupId As String, accessToken As String, retryCount As Integer = 10, delay As Integer = 500)
+  overload: PnP.Framework.Graph.GroupsUtility.ClearGroupOwners*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.GroupsUtility.ClearGroupMembers(System.String,System.String,System.Int32,System.Int32)
+  commentId: M:PnP.Framework.Graph.GroupsUtility.ClearGroupMembers(System.String,System.String,System.Int32,System.Int32)
+  id: ClearGroupMembers(System.String,System.String,System.Int32,System.Int32)
+  parent: PnP.Framework.Graph.GroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: ClearGroupMembers(String, String, Int32, Int32)
+  nameWithType: GroupsUtility.ClearGroupMembers(String, String, Int32, Int32)
+  fullName: PnP.Framework.Graph.GroupsUtility.ClearGroupMembers(System.String, System.String, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ClearGroupMembers
+    path: ../src/lib/PnP.Framework/Graph/GroupsUtility.cs
+    startLine: 971
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nRemoves all members of an Azure Active Directory group\n"
+  example: []
+  syntax:
+    content: public static void ClearGroupMembers(string groupId, string accessToken, int retryCount = 10, int delay = 500)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: Id of the Azure Active Directory group to remove all the current members of
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    content.vb: Public Shared Sub ClearGroupMembers(groupId As String, accessToken As String, retryCount As Integer = 10, delay As Integer = 500)
+  overload: PnP.Framework.Graph.GroupsUtility.ClearGroupMembers*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.GroupsUtility.GetGroupOwners(PnP.Framework.Entities.GroupEntity,System.String,System.Int32,System.Int32)
+  commentId: M:PnP.Framework.Graph.GroupsUtility.GetGroupOwners(PnP.Framework.Entities.GroupEntity,System.String,System.Int32,System.Int32)
+  id: GetGroupOwners(PnP.Framework.Entities.GroupEntity,System.String,System.Int32,System.Int32)
+  parent: PnP.Framework.Graph.GroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: GetGroupOwners(GroupEntity, String, Int32, Int32)
+  nameWithType: GroupsUtility.GetGroupOwners(GroupEntity, String, Int32, Int32)
+  fullName: PnP.Framework.Graph.GroupsUtility.GetGroupOwners(PnP.Framework.Entities.GroupEntity, System.String, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetGroupOwners
+    path: ../src/lib/PnP.Framework/Graph/GroupsUtility.cs
+    startLine: 1000
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nReturns all the Owners of an Azure Active Directory group\n"
+  example: []
+  syntax:
+    content: public static List<GroupUser> GetGroupOwners(GroupEntity group, string accessToken, int retryCount = 10, int delay = 500)
+    parameters:
+    - id: group
+      type: PnP.Framework.Entities.GroupEntity
+      description: The Azure Active Directory group object
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    return:
+      type: System.Collections.Generic.List{PnP.Framework.Entities.GroupUser}
+      description: Owners of an Azure Active Directory group
+    content.vb: Public Shared Function GetGroupOwners(group As GroupEntity, accessToken As String, retryCount As Integer = 10, delay As Integer = 500) As List(Of GroupUser)
+  overload: PnP.Framework.Graph.GroupsUtility.GetGroupOwners*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.GroupsUtility.GetDeletedGroup(System.String,System.String)
+  commentId: M:PnP.Framework.Graph.GroupsUtility.GetDeletedGroup(System.String,System.String)
+  id: GetDeletedGroup(System.String,System.String)
+  parent: PnP.Framework.Graph.GroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: GetDeletedGroup(String, String)
+  nameWithType: GroupsUtility.GetDeletedGroup(String, String)
+  fullName: PnP.Framework.Graph.GroupsUtility.GetDeletedGroup(System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetDeletedGroup
+    path: ../src/lib/PnP.Framework/Graph/GroupsUtility.cs
+    startLine: 1206
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nGets one deleted Azure Active Directory group based on its ID\n"
+  example: []
+  syntax:
+    content: public static GroupEntity GetDeletedGroup(string groupId, string accessToken)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: The ID of the deleted group.
+    - id: accessToken
+      type: System.String
+      description: Access token for accessing Microsoft Graph
+    return:
+      type: PnP.Framework.Entities.GroupEntity
+      description: The unified group object of the deleted group that matches the provided ID.
+    content.vb: Public Shared Function GetDeletedGroup(groupId As String, accessToken As String) As GroupEntity
+  overload: PnP.Framework.Graph.GroupsUtility.GetDeletedGroup*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.GroupsUtility.ListDeletedGroups(System.String)
+  commentId: M:PnP.Framework.Graph.GroupsUtility.ListDeletedGroups(System.String)
+  id: ListDeletedGroups(System.String)
+  parent: PnP.Framework.Graph.GroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: ListDeletedGroups(String)
+  nameWithType: GroupsUtility.ListDeletedGroups(String)
+  fullName: PnP.Framework.Graph.GroupsUtility.ListDeletedGroups(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ListDeletedGroups
+    path: ../src/lib/PnP.Framework/Graph/GroupsUtility.cs
+    startLine: 1240
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nLists deleted Azure Active Directory groups\n"
+  example: []
+  syntax:
+    content: public static List<GroupEntity> ListDeletedGroups(string accessToken)
+    parameters:
+    - id: accessToken
+      type: System.String
+      description: Access token for accessing Microsoft Graph
+    return:
+      type: System.Collections.Generic.List{PnP.Framework.Entities.GroupEntity}
+      description: A list of Azure Active Directory group objects that have been deleted
+    content.vb: Public Shared Function ListDeletedGroups(accessToken As String) As List(Of GroupEntity)
+  overload: PnP.Framework.Graph.GroupsUtility.ListDeletedGroups*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.GroupsUtility.RestoreDeletedGroup(System.String,System.String)
+  commentId: M:PnP.Framework.Graph.GroupsUtility.RestoreDeletedGroup(System.String,System.String)
+  id: RestoreDeletedGroup(System.String,System.String)
+  parent: PnP.Framework.Graph.GroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: RestoreDeletedGroup(String, String)
+  nameWithType: GroupsUtility.RestoreDeletedGroup(String, String)
+  fullName: PnP.Framework.Graph.GroupsUtility.RestoreDeletedGroup(System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RestoreDeletedGroup
+    path: ../src/lib/PnP.Framework/Graph/GroupsUtility.cs
+    startLine: 1289
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nRestores one deleted Azure Active Directory group based on its ID\n"
+  example: []
+  syntax:
+    content: public static void RestoreDeletedGroup(string groupId, string accessToken)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: The ID of the deleted group
+    - id: accessToken
+      type: System.String
+      description: Access token for accessing Microsoft Graph
+    content.vb: Public Shared Sub RestoreDeletedGroup(groupId As String, accessToken As String)
+  overload: PnP.Framework.Graph.GroupsUtility.RestoreDeletedGroup*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.GroupsUtility.PermanentlyDeleteGroup(System.String,System.String)
+  commentId: M:PnP.Framework.Graph.GroupsUtility.PermanentlyDeleteGroup(System.String,System.String)
+  id: PermanentlyDeleteGroup(System.String,System.String)
+  parent: PnP.Framework.Graph.GroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: PermanentlyDeleteGroup(String, String)
+  nameWithType: GroupsUtility.PermanentlyDeleteGroup(String, String)
+  fullName: PnP.Framework.Graph.GroupsUtility.PermanentlyDeleteGroup(System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PermanentlyDeleteGroup
+    path: ../src/lib/PnP.Framework/Graph/GroupsUtility.cs
+    startLine: 1308
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nPermanently deletes one deleted Azure Active Directory group based on its ID\n"
+  example: []
+  syntax:
+    content: public static void PermanentlyDeleteGroup(string groupId, string accessToken)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: The ID of the group to permanently delete
+    - id: accessToken
+      type: System.String
+      description: Access token for accessing Microsoft Graph
+    content.vb: Public Shared Sub PermanentlyDeleteGroup(groupId As String, accessToken As String)
+  overload: PnP.Framework.Graph.GroupsUtility.PermanentlyDeleteGroup*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: PnP.Framework.Graph
+  commentId: N:PnP.Framework.Graph
+  name: PnP.Framework.Graph
+  nameWithType: PnP.Framework.Graph
+  fullName: PnP.Framework.Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: PnP.Framework.Graph.GroupsUtility.CreateGroup*
+  commentId: Overload:PnP.Framework.Graph.GroupsUtility.CreateGroup
+  name: CreateGroup
+  nameWithType: GroupsUtility.CreateGroup
+  fullName: PnP.Framework.Graph.GroupsUtility.CreateGroup
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.String[]
+  isExternal: true
+  name: String[]
+  nameWithType: String[]
+  fullName: System.String[]
+  nameWithType.vb: String()
+  fullName.vb: System.String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: PnP.Framework.Entities.GroupEntity
+  commentId: T:PnP.Framework.Entities.GroupEntity
+  parent: PnP.Framework.Entities
+  name: GroupEntity
+  nameWithType: GroupEntity
+  fullName: PnP.Framework.Entities.GroupEntity
+- uid: PnP.Framework.Entities
+  commentId: N:PnP.Framework.Entities
+  name: PnP.Framework.Entities
+  nameWithType: PnP.Framework.Entities
+  fullName: PnP.Framework.Entities
+- uid: PnP.Framework.Graph.GroupsUtility.SetGroupVisibility*
+  commentId: Overload:PnP.Framework.Graph.GroupsUtility.SetGroupVisibility
+  name: SetGroupVisibility
+  nameWithType: GroupsUtility.SetGroupVisibility
+  fullName: PnP.Framework.Graph.GroupsUtility.SetGroupVisibility
+- uid: System.Nullable{System.Boolean}
+  commentId: T:System.Nullable{System.Boolean}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<Boolean>
+  nameWithType: Nullable<Boolean>
+  fullName: System.Nullable<System.Boolean>
+  nameWithType.vb: Nullable(Of Boolean)
+  fullName.vb: System.Nullable(Of System.Boolean)
+  name.vb: Nullable(Of Boolean)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.AzureEnvironment
+  commentId: T:PnP.Framework.AzureEnvironment
+  parent: PnP.Framework
+  name: AzureEnvironment
+  nameWithType: AzureEnvironment
+  fullName: PnP.Framework.AzureEnvironment
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework
+  commentId: N:PnP.Framework
+  name: PnP.Framework
+  nameWithType: PnP.Framework
+  fullName: PnP.Framework
+- uid: PnP.Framework.Graph.GroupsUtility.UpdateGroup*
+  commentId: Overload:PnP.Framework.Graph.GroupsUtility.UpdateGroup
+  name: UpdateGroup
+  nameWithType: GroupsUtility.UpdateGroup
+  fullName: PnP.Framework.Graph.GroupsUtility.UpdateGroup
+- uid: PnP.Framework.Graph.GroupsUtility.DeleteGroup*
+  commentId: Overload:PnP.Framework.Graph.GroupsUtility.DeleteGroup
+  name: DeleteGroup
+  nameWithType: GroupsUtility.DeleteGroup
+  fullName: PnP.Framework.Graph.GroupsUtility.DeleteGroup
+- uid: PnP.Framework.Graph.GroupsUtility.GetGroup*
+  commentId: Overload:PnP.Framework.Graph.GroupsUtility.GetGroup
+  name: GetGroup
+  nameWithType: GroupsUtility.GetGroup
+  fullName: PnP.Framework.Graph.GroupsUtility.GetGroup
+- uid: PnP.Framework.Graph.GroupsUtility.GetGroups*
+  commentId: Overload:PnP.Framework.Graph.GroupsUtility.GetGroups
+  name: GetGroups
+  nameWithType: GroupsUtility.GetGroups
+  fullName: PnP.Framework.Graph.GroupsUtility.GetGroups
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<Int32>
+  nameWithType: Nullable<Int32>
+  fullName: System.Nullable<System.Int32>
+  nameWithType.vb: Nullable(Of Int32)
+  fullName.vb: System.Nullable(Of System.Int32)
+  name.vb: Nullable(Of Int32)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.List{PnP.Framework.Entities.GroupEntity}
+  commentId: T:System.Collections.Generic.List{PnP.Framework.Entities.GroupEntity}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<GroupEntity>
+  nameWithType: List<GroupEntity>
+  fullName: System.Collections.Generic.List<PnP.Framework.Entities.GroupEntity>
+  nameWithType.vb: List(Of GroupEntity)
+  fullName.vb: System.Collections.Generic.List(Of PnP.Framework.Entities.GroupEntity)
+  name.vb: List(Of GroupEntity)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Entities.GroupEntity
+    name: GroupEntity
+    nameWithType: GroupEntity
+    fullName: PnP.Framework.Entities.GroupEntity
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Entities.GroupEntity
+    name: GroupEntity
+    nameWithType: GroupEntity
+    fullName: PnP.Framework.Entities.GroupEntity
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: PnP.Framework.Graph.GroupsUtility.GetGroupMembers*
+  commentId: Overload:PnP.Framework.Graph.GroupsUtility.GetGroupMembers
+  name: GetGroupMembers
+  nameWithType: GroupsUtility.GetGroupMembers
+  fullName: PnP.Framework.Graph.GroupsUtility.GetGroupMembers
+- uid: System.Collections.Generic.List{PnP.Framework.Entities.GroupUser}
+  commentId: T:System.Collections.Generic.List{PnP.Framework.Entities.GroupUser}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<GroupUser>
+  nameWithType: List<GroupUser>
+  fullName: System.Collections.Generic.List<PnP.Framework.Entities.GroupUser>
+  nameWithType.vb: List(Of GroupUser)
+  fullName.vb: System.Collections.Generic.List(Of PnP.Framework.Entities.GroupUser)
+  name.vb: List(Of GroupUser)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Entities.GroupUser
+    name: GroupUser
+    nameWithType: GroupUser
+    fullName: PnP.Framework.Entities.GroupUser
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Entities.GroupUser
+    name: GroupUser
+    nameWithType: GroupUser
+    fullName: PnP.Framework.Entities.GroupUser
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Graph.GroupsUtility.AddGroupOwners*
+  commentId: Overload:PnP.Framework.Graph.GroupsUtility.AddGroupOwners
+  name: AddGroupOwners
+  nameWithType: GroupsUtility.AddGroupOwners
+  fullName: PnP.Framework.Graph.GroupsUtility.AddGroupOwners
+- uid: PnP.Framework.Graph.GroupsUtility.AddGroupMembers*
+  commentId: Overload:PnP.Framework.Graph.GroupsUtility.AddGroupMembers
+  name: AddGroupMembers
+  nameWithType: GroupsUtility.AddGroupMembers
+  fullName: PnP.Framework.Graph.GroupsUtility.AddGroupMembers
+- uid: PnP.Framework.Graph.GroupsUtility.RemoveGroupMembers*
+  commentId: Overload:PnP.Framework.Graph.GroupsUtility.RemoveGroupMembers
+  name: RemoveGroupMembers
+  nameWithType: GroupsUtility.RemoveGroupMembers
+  fullName: PnP.Framework.Graph.GroupsUtility.RemoveGroupMembers
+- uid: PnP.Framework.Graph.GroupsUtility.RemoveGroupOwners*
+  commentId: Overload:PnP.Framework.Graph.GroupsUtility.RemoveGroupOwners
+  name: RemoveGroupOwners
+  nameWithType: GroupsUtility.RemoveGroupOwners
+  fullName: PnP.Framework.Graph.GroupsUtility.RemoveGroupOwners
+- uid: PnP.Framework.Graph.GroupsUtility.ClearGroupOwners*
+  commentId: Overload:PnP.Framework.Graph.GroupsUtility.ClearGroupOwners
+  name: ClearGroupOwners
+  nameWithType: GroupsUtility.ClearGroupOwners
+  fullName: PnP.Framework.Graph.GroupsUtility.ClearGroupOwners
+- uid: PnP.Framework.Graph.GroupsUtility.ClearGroupMembers*
+  commentId: Overload:PnP.Framework.Graph.GroupsUtility.ClearGroupMembers
+  name: ClearGroupMembers
+  nameWithType: GroupsUtility.ClearGroupMembers
+  fullName: PnP.Framework.Graph.GroupsUtility.ClearGroupMembers
+- uid: PnP.Framework.Graph.GroupsUtility.GetGroupOwners*
+  commentId: Overload:PnP.Framework.Graph.GroupsUtility.GetGroupOwners
+  name: GetGroupOwners
+  nameWithType: GroupsUtility.GetGroupOwners
+  fullName: PnP.Framework.Graph.GroupsUtility.GetGroupOwners
+- uid: PnP.Framework.Graph.GroupsUtility.GetDeletedGroup*
+  commentId: Overload:PnP.Framework.Graph.GroupsUtility.GetDeletedGroup
+  name: GetDeletedGroup
+  nameWithType: GroupsUtility.GetDeletedGroup
+  fullName: PnP.Framework.Graph.GroupsUtility.GetDeletedGroup
+- uid: PnP.Framework.Graph.GroupsUtility.ListDeletedGroups*
+  commentId: Overload:PnP.Framework.Graph.GroupsUtility.ListDeletedGroups
+  name: ListDeletedGroups
+  nameWithType: GroupsUtility.ListDeletedGroups
+  fullName: PnP.Framework.Graph.GroupsUtility.ListDeletedGroups
+- uid: PnP.Framework.Graph.GroupsUtility.RestoreDeletedGroup*
+  commentId: Overload:PnP.Framework.Graph.GroupsUtility.RestoreDeletedGroup
+  name: RestoreDeletedGroup
+  nameWithType: GroupsUtility.RestoreDeletedGroup
+  fullName: PnP.Framework.Graph.GroupsUtility.RestoreDeletedGroup
+- uid: PnP.Framework.Graph.GroupsUtility.PermanentlyDeleteGroup*
+  commentId: Overload:PnP.Framework.Graph.GroupsUtility.PermanentlyDeleteGroup
+  name: PermanentlyDeleteGroup
+  nameWithType: GroupsUtility.PermanentlyDeleteGroup
+  fullName: PnP.Framework.Graph.GroupsUtility.PermanentlyDeleteGroup

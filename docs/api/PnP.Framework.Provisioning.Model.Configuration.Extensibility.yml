@@ -1,0 +1,35 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.Configuration.Extensibility
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.Extensibility
+  id: PnP.Framework.Provisioning.Model.Configuration.Extensibility
+  children:
+  - PnP.Framework.Provisioning.Model.Configuration.Extensibility.ApplyExtensibilityConfiguration
+  - PnP.Framework.Provisioning.Model.Configuration.Extensibility.ExtractExtensibilityConfiguration
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Model.Configuration.Extensibility
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.Extensibility
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Extensibility
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Model.Configuration.Extensibility.ApplyExtensibilityConfiguration
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.Extensibility.ApplyExtensibilityConfiguration
+  parent: PnP.Framework.Provisioning.Model.Configuration.Extensibility
+  name: ApplyExtensibilityConfiguration
+  nameWithType: ApplyExtensibilityConfiguration
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Extensibility.ApplyExtensibilityConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.Extensibility.ExtractExtensibilityConfiguration
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.Extensibility.ExtractExtensibilityConfiguration
+  parent: PnP.Framework.Provisioning.Model.Configuration.Extensibility
+  name: ExtractExtensibilityConfiguration
+  nameWithType: ExtractExtensibilityConfiguration
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Extensibility.ExtractExtensibilityConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.Extensibility
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.Extensibility
+  name: PnP.Framework.Provisioning.Model.Configuration.Extensibility
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.Extensibility
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Extensibility

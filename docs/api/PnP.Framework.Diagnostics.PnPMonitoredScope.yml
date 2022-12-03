@@ -1,0 +1,2341 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Diagnostics.PnPMonitoredScope
+  commentId: T:PnP.Framework.Diagnostics.PnPMonitoredScope
+  id: PnPMonitoredScope
+  parent: PnP.Framework.Diagnostics
+  children:
+  - PnP.Framework.Diagnostics.PnPMonitoredScope.#ctor
+  - PnP.Framework.Diagnostics.PnPMonitoredScope.#ctor(System.String)
+  - PnP.Framework.Diagnostics.PnPMonitoredScope.CorrelationId
+  - PnP.Framework.Diagnostics.PnPMonitoredScope.Dispose
+  - PnP.Framework.Diagnostics.PnPMonitoredScope.LogDebug(System.Exception,System.String,System.Object[])
+  - PnP.Framework.Diagnostics.PnPMonitoredScope.LogDebug(System.String,System.Object[])
+  - PnP.Framework.Diagnostics.PnPMonitoredScope.LogError(System.Exception,System.String,System.Object[])
+  - PnP.Framework.Diagnostics.PnPMonitoredScope.LogError(System.String,System.Object[])
+  - PnP.Framework.Diagnostics.PnPMonitoredScope.LogInfo(System.Exception,System.String,System.Object[])
+  - PnP.Framework.Diagnostics.PnPMonitoredScope.LogInfo(System.String,System.Object[])
+  - PnP.Framework.Diagnostics.PnPMonitoredScope.LogWarning(System.Exception,System.String,System.Object[])
+  - PnP.Framework.Diagnostics.PnPMonitoredScope.LogWarning(System.String,System.Object[])
+  - PnP.Framework.Diagnostics.PnPMonitoredScope.Name
+  langs:
+  - csharp
+  - vb
+  name: PnPMonitoredScope
+  nameWithType: PnPMonitoredScope
+  fullName: PnP.Framework.Diagnostics.PnPMonitoredScope
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PnPMonitoredScope
+    path: ../src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+    startLine: 11
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nClass holds the methods for logging on PnP Monitoring\n"
+  example: []
+  syntax:
+    content: 'public sealed class PnPMonitoredScope : TreeNode<PnPMonitoredScope>, ITreeNode<PnPMonitoredScope>, ITreeNode, IDisposable'
+    content.vb: >-
+      Public NotInheritable Class PnPMonitoredScope
+          Inherits TreeNode(Of PnPMonitoredScope)
+          Implements ITreeNode(Of PnPMonitoredScope), ITreeNode, IDisposable
+  inheritance:
+  - System.Object
+  - PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}
+  implements:
+  - PnP.Framework.Diagnostics.Tree.ITreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}
+  - PnP.Framework.Diagnostics.Tree.ITreeNode
+  - System.IDisposable
+  inheritedMembers:
+  - PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.ParentNode
+  - PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.Parent
+  - PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.SetParent(PnP.Framework.Diagnostics.Tree.ITreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope},System.Boolean)
+  - PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.Root
+  - PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.Children
+  - PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.ChildNodes
+  - PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.Descendants
+  - PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.Subtree
+  - PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.Ancestors
+  - PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.Height
+  - PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.Value
+  - PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.Depth
+  - PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  extensionMethods:
+  - PnP.Framework.Diagnostics.PnPMonitoredScope.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - PnP.Framework.Diagnostics.PnPMonitoredScope.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Diagnostics.PnPMonitoredScope,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  modifiers.csharp:
+  - public
+  - sealed
+  - class
+  modifiers.vb:
+  - Public
+  - NotInheritable
+  - Class
+- uid: PnP.Framework.Diagnostics.PnPMonitoredScope.#ctor
+  commentId: M:PnP.Framework.Diagnostics.PnPMonitoredScope.#ctor
+  id: '#ctor'
+  parent: PnP.Framework.Diagnostics.PnPMonitoredScope
+  langs:
+  - csharp
+  - vb
+  name: PnPMonitoredScope()
+  nameWithType: PnPMonitoredScope.PnPMonitoredScope()
+  fullName: PnP.Framework.Diagnostics.PnPMonitoredScope.PnPMonitoredScope()
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+    startLine: 23
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nConstructor for PnPMonitoredScope class\n"
+  example: []
+  syntax:
+    content: public PnPMonitoredScope()
+    content.vb: Public Sub New
+  overload: PnP.Framework.Diagnostics.PnPMonitoredScope.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Diagnostics.PnPMonitoredScope.Name
+  commentId: P:PnP.Framework.Diagnostics.PnPMonitoredScope.Name
+  id: Name
+  parent: PnP.Framework.Diagnostics.PnPMonitoredScope
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: PnPMonitoredScope.Name
+  fullName: PnP.Framework.Diagnostics.PnPMonitoredScope.Name
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Name
+    path: ../src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+    startLine: 39
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nGets or sets the source name\n"
+  example: []
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: PnP.Framework.Diagnostics.PnPMonitoredScope.Name*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Diagnostics.PnPMonitoredScope.#ctor(System.String)
+  commentId: M:PnP.Framework.Diagnostics.PnPMonitoredScope.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: PnP.Framework.Diagnostics.PnPMonitoredScope
+  langs:
+  - csharp
+  - vb
+  name: PnPMonitoredScope(String)
+  nameWithType: PnPMonitoredScope.PnPMonitoredScope(String)
+  fullName: PnP.Framework.Diagnostics.PnPMonitoredScope.PnPMonitoredScope(System.String)
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+    startLine: 55
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nConstructor for PnPMonitoredScope class\n"
+  example: []
+  syntax:
+    content: public PnPMonitoredScope(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: Source name
+    content.vb: Public Sub New(name As String)
+  overload: PnP.Framework.Diagnostics.PnPMonitoredScope.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Diagnostics.PnPMonitoredScope.CorrelationId
+  commentId: P:PnP.Framework.Diagnostics.PnPMonitoredScope.CorrelationId
+  id: CorrelationId
+  parent: PnP.Framework.Diagnostics.PnPMonitoredScope
+  langs:
+  - csharp
+  - vb
+  name: CorrelationId
+  nameWithType: PnPMonitoredScope.CorrelationId
+  fullName: PnP.Framework.Diagnostics.PnPMonitoredScope.CorrelationId
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CorrelationId
+    path: ../src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+    startLine: 99
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nGets Correlation Guid\n"
+  example: []
+  syntax:
+    content: public Guid CorrelationId { get; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public ReadOnly Property CorrelationId As Guid
+  overload: PnP.Framework.Diagnostics.PnPMonitoredScope.CorrelationId*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Diagnostics.PnPMonitoredScope.LogError(System.String,System.Object[])
+  commentId: M:PnP.Framework.Diagnostics.PnPMonitoredScope.LogError(System.String,System.Object[])
+  id: LogError(System.String,System.Object[])
+  parent: PnP.Framework.Diagnostics.PnPMonitoredScope
+  langs:
+  - csharp
+  - vb
+  name: LogError(String, Object[])
+  nameWithType: PnPMonitoredScope.LogError(String, Object[])
+  fullName: PnP.Framework.Diagnostics.PnPMonitoredScope.LogError(System.String, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: LogError
+    path: ../src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+    startLine: 109
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nLogs Error\n"
+  example: []
+  syntax:
+    content: public void LogError(string message, params object[] args)
+    parameters:
+    - id: message
+      type: System.String
+      description: Message string
+    - id: args
+      type: System.Object[]
+      description: Arguments object
+    content.vb: Public Sub LogError(message As String, ParamArray args As Object())
+  overload: PnP.Framework.Diagnostics.PnPMonitoredScope.LogError*
+  nameWithType.vb: PnPMonitoredScope.LogError(String, Object())
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: PnP.Framework.Diagnostics.PnPMonitoredScope.LogError(System.String, System.Object())
+  name.vb: LogError(String, Object())
+- uid: PnP.Framework.Diagnostics.PnPMonitoredScope.LogError(System.Exception,System.String,System.Object[])
+  commentId: M:PnP.Framework.Diagnostics.PnPMonitoredScope.LogError(System.Exception,System.String,System.Object[])
+  id: LogError(System.Exception,System.String,System.Object[])
+  parent: PnP.Framework.Diagnostics.PnPMonitoredScope
+  langs:
+  - csharp
+  - vb
+  name: LogError(Exception, String, Object[])
+  nameWithType: PnPMonitoredScope.LogError(Exception, String, Object[])
+  fullName: PnP.Framework.Diagnostics.PnPMonitoredScope.LogError(System.Exception, System.String, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: LogError
+    path: ../src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+    startLine: 127
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nLogs Error\n"
+  example: []
+  syntax:
+    content: public void LogError(Exception ex, string message, params object[] args)
+    parameters:
+    - id: ex
+      type: System.Exception
+      description: Exception object
+    - id: message
+      type: System.String
+      description: Message string
+    - id: args
+      type: System.Object[]
+      description: Arguments object
+    content.vb: Public Sub LogError(ex As Exception, message As String, ParamArray args As Object())
+  overload: PnP.Framework.Diagnostics.PnPMonitoredScope.LogError*
+  nameWithType.vb: PnPMonitoredScope.LogError(Exception, String, Object())
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: PnP.Framework.Diagnostics.PnPMonitoredScope.LogError(System.Exception, System.String, System.Object())
+  name.vb: LogError(Exception, String, Object())
+- uid: PnP.Framework.Diagnostics.PnPMonitoredScope.LogInfo(System.String,System.Object[])
+  commentId: M:PnP.Framework.Diagnostics.PnPMonitoredScope.LogInfo(System.String,System.Object[])
+  id: LogInfo(System.String,System.Object[])
+  parent: PnP.Framework.Diagnostics.PnPMonitoredScope
+  langs:
+  - csharp
+  - vb
+  name: LogInfo(String, Object[])
+  nameWithType: PnPMonitoredScope.LogInfo(String, Object[])
+  fullName: PnP.Framework.Diagnostics.PnPMonitoredScope.LogInfo(System.String, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: LogInfo
+    path: ../src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+    startLine: 145
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nLogs Information\n"
+  example: []
+  syntax:
+    content: public void LogInfo(string message, params object[] args)
+    parameters:
+    - id: message
+      type: System.String
+      description: Message string
+    - id: args
+      type: System.Object[]
+      description: Arguments object
+    content.vb: Public Sub LogInfo(message As String, ParamArray args As Object())
+  overload: PnP.Framework.Diagnostics.PnPMonitoredScope.LogInfo*
+  nameWithType.vb: PnPMonitoredScope.LogInfo(String, Object())
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: PnP.Framework.Diagnostics.PnPMonitoredScope.LogInfo(System.String, System.Object())
+  name.vb: LogInfo(String, Object())
+- uid: PnP.Framework.Diagnostics.PnPMonitoredScope.LogInfo(System.Exception,System.String,System.Object[])
+  commentId: M:PnP.Framework.Diagnostics.PnPMonitoredScope.LogInfo(System.Exception,System.String,System.Object[])
+  id: LogInfo(System.Exception,System.String,System.Object[])
+  parent: PnP.Framework.Diagnostics.PnPMonitoredScope
+  langs:
+  - csharp
+  - vb
+  name: LogInfo(Exception, String, Object[])
+  nameWithType: PnPMonitoredScope.LogInfo(Exception, String, Object[])
+  fullName: PnP.Framework.Diagnostics.PnPMonitoredScope.LogInfo(System.Exception, System.String, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: LogInfo
+    path: ../src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+    startLine: 162
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nLogs Information \n"
+  example: []
+  syntax:
+    content: public void LogInfo(Exception ex, string message, params object[] args)
+    parameters:
+    - id: ex
+      type: System.Exception
+      description: Exception object
+    - id: message
+      type: System.String
+      description: Message string
+    - id: args
+      type: System.Object[]
+      description: Arguments object
+    content.vb: Public Sub LogInfo(ex As Exception, message As String, ParamArray args As Object())
+  overload: PnP.Framework.Diagnostics.PnPMonitoredScope.LogInfo*
+  nameWithType.vb: PnPMonitoredScope.LogInfo(Exception, String, Object())
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: PnP.Framework.Diagnostics.PnPMonitoredScope.LogInfo(System.Exception, System.String, System.Object())
+  name.vb: LogInfo(Exception, String, Object())
+- uid: PnP.Framework.Diagnostics.PnPMonitoredScope.LogWarning(System.String,System.Object[])
+  commentId: M:PnP.Framework.Diagnostics.PnPMonitoredScope.LogWarning(System.String,System.Object[])
+  id: LogWarning(System.String,System.Object[])
+  parent: PnP.Framework.Diagnostics.PnPMonitoredScope
+  langs:
+  - csharp
+  - vb
+  name: LogWarning(String, Object[])
+  nameWithType: PnPMonitoredScope.LogWarning(String, Object[])
+  fullName: PnP.Framework.Diagnostics.PnPMonitoredScope.LogWarning(System.String, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: LogWarning
+    path: ../src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+    startLine: 181
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nLogs Warning\n"
+  example: []
+  syntax:
+    content: public void LogWarning(string message, params object[] args)
+    parameters:
+    - id: message
+      type: System.String
+      description: Message string
+    - id: args
+      type: System.Object[]
+      description: Arguments object
+    content.vb: Public Sub LogWarning(message As String, ParamArray args As Object())
+  overload: PnP.Framework.Diagnostics.PnPMonitoredScope.LogWarning*
+  nameWithType.vb: PnPMonitoredScope.LogWarning(String, Object())
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: PnP.Framework.Diagnostics.PnPMonitoredScope.LogWarning(System.String, System.Object())
+  name.vb: LogWarning(String, Object())
+- uid: PnP.Framework.Diagnostics.PnPMonitoredScope.LogWarning(System.Exception,System.String,System.Object[])
+  commentId: M:PnP.Framework.Diagnostics.PnPMonitoredScope.LogWarning(System.Exception,System.String,System.Object[])
+  id: LogWarning(System.Exception,System.String,System.Object[])
+  parent: PnP.Framework.Diagnostics.PnPMonitoredScope
+  langs:
+  - csharp
+  - vb
+  name: LogWarning(Exception, String, Object[])
+  nameWithType: PnPMonitoredScope.LogWarning(Exception, String, Object[])
+  fullName: PnP.Framework.Diagnostics.PnPMonitoredScope.LogWarning(System.Exception, System.String, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: LogWarning
+    path: ../src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+    startLine: 200
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nLogs Warning\n"
+  example: []
+  syntax:
+    content: public void LogWarning(Exception ex, string message, params object[] args)
+    parameters:
+    - id: ex
+      type: System.Exception
+      description: Exception object
+    - id: message
+      type: System.String
+      description: Message string
+    - id: args
+      type: System.Object[]
+      description: Arguments object
+    content.vb: Public Sub LogWarning(ex As Exception, message As String, ParamArray args As Object())
+  overload: PnP.Framework.Diagnostics.PnPMonitoredScope.LogWarning*
+  nameWithType.vb: PnPMonitoredScope.LogWarning(Exception, String, Object())
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: PnP.Framework.Diagnostics.PnPMonitoredScope.LogWarning(System.Exception, System.String, System.Object())
+  name.vb: LogWarning(Exception, String, Object())
+- uid: PnP.Framework.Diagnostics.PnPMonitoredScope.LogDebug(System.String,System.Object[])
+  commentId: M:PnP.Framework.Diagnostics.PnPMonitoredScope.LogDebug(System.String,System.Object[])
+  id: LogDebug(System.String,System.Object[])
+  parent: PnP.Framework.Diagnostics.PnPMonitoredScope
+  langs:
+  - csharp
+  - vb
+  name: LogDebug(String, Object[])
+  nameWithType: PnPMonitoredScope.LogDebug(String, Object[])
+  fullName: PnP.Framework.Diagnostics.PnPMonitoredScope.LogDebug(System.String, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: LogDebug
+    path: ../src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+    startLine: 219
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nDebug Log\n"
+  example: []
+  syntax:
+    content: public void LogDebug(string message, params object[] args)
+    parameters:
+    - id: message
+      type: System.String
+      description: Message string
+    - id: args
+      type: System.Object[]
+      description: Arguments object
+    content.vb: Public Sub LogDebug(message As String, ParamArray args As Object())
+  overload: PnP.Framework.Diagnostics.PnPMonitoredScope.LogDebug*
+  nameWithType.vb: PnPMonitoredScope.LogDebug(String, Object())
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: PnP.Framework.Diagnostics.PnPMonitoredScope.LogDebug(System.String, System.Object())
+  name.vb: LogDebug(String, Object())
+- uid: PnP.Framework.Diagnostics.PnPMonitoredScope.LogDebug(System.Exception,System.String,System.Object[])
+  commentId: M:PnP.Framework.Diagnostics.PnPMonitoredScope.LogDebug(System.Exception,System.String,System.Object[])
+  id: LogDebug(System.Exception,System.String,System.Object[])
+  parent: PnP.Framework.Diagnostics.PnPMonitoredScope
+  langs:
+  - csharp
+  - vb
+  name: LogDebug(Exception, String, Object[])
+  nameWithType: PnPMonitoredScope.LogDebug(Exception, String, Object[])
+  fullName: PnP.Framework.Diagnostics.PnPMonitoredScope.LogDebug(System.Exception, System.String, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: LogDebug
+    path: ../src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+    startLine: 237
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nDebug Log\n"
+  example: []
+  syntax:
+    content: public void LogDebug(Exception ex, string message, params object[] args)
+    parameters:
+    - id: ex
+      type: System.Exception
+      description: Exception object
+    - id: message
+      type: System.String
+      description: Message string
+    - id: args
+      type: System.Object[]
+      description: Arguments object
+    content.vb: Public Sub LogDebug(ex As Exception, message As String, ParamArray args As Object())
+  overload: PnP.Framework.Diagnostics.PnPMonitoredScope.LogDebug*
+  nameWithType.vb: PnPMonitoredScope.LogDebug(Exception, String, Object())
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: PnP.Framework.Diagnostics.PnPMonitoredScope.LogDebug(System.Exception, System.String, System.Object())
+  name.vb: LogDebug(Exception, String, Object())
+- uid: PnP.Framework.Diagnostics.PnPMonitoredScope.Dispose
+  commentId: M:PnP.Framework.Diagnostics.PnPMonitoredScope.Dispose
+  id: Dispose
+  parent: PnP.Framework.Diagnostics.PnPMonitoredScope
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: PnPMonitoredScope.Dispose()
+  fullName: PnP.Framework.Diagnostics.PnPMonitoredScope.Dispose()
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Dispose
+    path: ../src/lib/PnP.Framework/Diagnostics/PnPMonitoredScope.cs
+    startLine: 278
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose
+  overload: PnP.Framework.Diagnostics.PnPMonitoredScope.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: PnP.Framework.Diagnostics
+  commentId: N:PnP.Framework.Diagnostics
+  name: PnP.Framework.Diagnostics
+  nameWithType: PnP.Framework.Diagnostics
+  fullName: PnP.Framework.Diagnostics
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}
+  commentId: T:PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}
+  parent: PnP.Framework.Diagnostics.Tree
+  definition: PnP.Framework.Diagnostics.Tree.TreeNode`1
+  name: TreeNode<PnPMonitoredScope>
+  nameWithType: TreeNode<PnPMonitoredScope>
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<PnP.Framework.Diagnostics.PnPMonitoredScope>
+  nameWithType.vb: TreeNode(Of PnPMonitoredScope)
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of PnP.Framework.Diagnostics.PnPMonitoredScope)
+  name.vb: TreeNode(Of PnPMonitoredScope)
+  spec.csharp:
+  - uid: PnP.Framework.Diagnostics.Tree.TreeNode`1
+    name: TreeNode
+    nameWithType: TreeNode
+    fullName: PnP.Framework.Diagnostics.Tree.TreeNode
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Diagnostics.PnPMonitoredScope
+    name: PnPMonitoredScope
+    nameWithType: PnPMonitoredScope
+    fullName: PnP.Framework.Diagnostics.PnPMonitoredScope
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: PnP.Framework.Diagnostics.Tree.TreeNode`1
+    name: TreeNode
+    nameWithType: TreeNode
+    fullName: PnP.Framework.Diagnostics.Tree.TreeNode
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Diagnostics.PnPMonitoredScope
+    name: PnPMonitoredScope
+    nameWithType: PnPMonitoredScope
+    fullName: PnP.Framework.Diagnostics.PnPMonitoredScope
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Diagnostics.Tree.ITreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}
+  commentId: T:PnP.Framework.Diagnostics.Tree.ITreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}
+  parent: PnP.Framework.Diagnostics.Tree
+  definition: PnP.Framework.Diagnostics.Tree.ITreeNode`1
+  name: ITreeNode<PnPMonitoredScope>
+  nameWithType: ITreeNode<PnPMonitoredScope>
+  fullName: PnP.Framework.Diagnostics.Tree.ITreeNode<PnP.Framework.Diagnostics.PnPMonitoredScope>
+  nameWithType.vb: ITreeNode(Of PnPMonitoredScope)
+  fullName.vb: PnP.Framework.Diagnostics.Tree.ITreeNode(Of PnP.Framework.Diagnostics.PnPMonitoredScope)
+  name.vb: ITreeNode(Of PnPMonitoredScope)
+  spec.csharp:
+  - uid: PnP.Framework.Diagnostics.Tree.ITreeNode`1
+    name: ITreeNode
+    nameWithType: ITreeNode
+    fullName: PnP.Framework.Diagnostics.Tree.ITreeNode
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Diagnostics.PnPMonitoredScope
+    name: PnPMonitoredScope
+    nameWithType: PnPMonitoredScope
+    fullName: PnP.Framework.Diagnostics.PnPMonitoredScope
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: PnP.Framework.Diagnostics.Tree.ITreeNode`1
+    name: ITreeNode
+    nameWithType: ITreeNode
+    fullName: PnP.Framework.Diagnostics.Tree.ITreeNode
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Diagnostics.PnPMonitoredScope
+    name: PnPMonitoredScope
+    nameWithType: PnPMonitoredScope
+    fullName: PnP.Framework.Diagnostics.PnPMonitoredScope
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Diagnostics.Tree.ITreeNode
+  commentId: T:PnP.Framework.Diagnostics.Tree.ITreeNode
+  parent: PnP.Framework.Diagnostics.Tree
+  name: ITreeNode
+  nameWithType: ITreeNode
+  fullName: PnP.Framework.Diagnostics.Tree.ITreeNode
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.ParentNode
+  commentId: P:PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.ParentNode
+  parent: PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}
+  definition: PnP.Framework.Diagnostics.Tree.TreeNode`1.ParentNode
+  name: ParentNode
+  nameWithType: TreeNode<PnPMonitoredScope>.ParentNode
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<PnP.Framework.Diagnostics.PnPMonitoredScope>.ParentNode
+  nameWithType.vb: TreeNode(Of PnPMonitoredScope).ParentNode
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of PnP.Framework.Diagnostics.PnPMonitoredScope).ParentNode
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.Parent
+  commentId: P:PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.Parent
+  parent: PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}
+  definition: PnP.Framework.Diagnostics.Tree.TreeNode`1.Parent
+  name: Parent
+  nameWithType: TreeNode<PnPMonitoredScope>.Parent
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<PnP.Framework.Diagnostics.PnPMonitoredScope>.Parent
+  nameWithType.vb: TreeNode(Of PnPMonitoredScope).Parent
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of PnP.Framework.Diagnostics.PnPMonitoredScope).Parent
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.SetParent(PnP.Framework.Diagnostics.Tree.ITreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope},System.Boolean)
+  commentId: M:PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.SetParent(PnP.Framework.Diagnostics.Tree.ITreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope},System.Boolean)
+  parent: PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}
+  definition: PnP.Framework.Diagnostics.Tree.TreeNode`1.SetParent(PnP.Framework.Diagnostics.Tree.ITreeNode{`0},System.Boolean)
+  name: SetParent(ITreeNode<PnPMonitoredScope>, Boolean)
+  nameWithType: TreeNode<PnPMonitoredScope>.SetParent(ITreeNode<PnPMonitoredScope>, Boolean)
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<PnP.Framework.Diagnostics.PnPMonitoredScope>.SetParent(PnP.Framework.Diagnostics.Tree.ITreeNode<PnP.Framework.Diagnostics.PnPMonitoredScope>, System.Boolean)
+  nameWithType.vb: TreeNode(Of PnPMonitoredScope).SetParent(ITreeNode(Of PnPMonitoredScope), Boolean)
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of PnP.Framework.Diagnostics.PnPMonitoredScope).SetParent(PnP.Framework.Diagnostics.Tree.ITreeNode(Of PnP.Framework.Diagnostics.PnPMonitoredScope), System.Boolean)
+  name.vb: SetParent(ITreeNode(Of PnPMonitoredScope), Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Diagnostics.Tree.TreeNode`1.SetParent(PnP.Framework.Diagnostics.Tree.ITreeNode{`0},System.Boolean)
+    name: SetParent
+    nameWithType: TreeNode<PnPMonitoredScope>.SetParent
+    fullName: PnP.Framework.Diagnostics.Tree.TreeNode<PnP.Framework.Diagnostics.PnPMonitoredScope>.SetParent
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Diagnostics.Tree.ITreeNode`1
+    name: ITreeNode
+    nameWithType: ITreeNode
+    fullName: PnP.Framework.Diagnostics.Tree.ITreeNode
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Diagnostics.PnPMonitoredScope
+    name: PnPMonitoredScope
+    nameWithType: PnPMonitoredScope
+    fullName: PnP.Framework.Diagnostics.PnPMonitoredScope
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Diagnostics.Tree.TreeNode`1.SetParent(PnP.Framework.Diagnostics.Tree.ITreeNode{`0},System.Boolean)
+    name: SetParent
+    nameWithType: TreeNode(Of PnPMonitoredScope).SetParent
+    fullName: PnP.Framework.Diagnostics.Tree.TreeNode(Of PnP.Framework.Diagnostics.PnPMonitoredScope).SetParent
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Diagnostics.Tree.ITreeNode`1
+    name: ITreeNode
+    nameWithType: ITreeNode
+    fullName: PnP.Framework.Diagnostics.Tree.ITreeNode
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Diagnostics.PnPMonitoredScope
+    name: PnPMonitoredScope
+    nameWithType: PnPMonitoredScope
+    fullName: PnP.Framework.Diagnostics.PnPMonitoredScope
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.Root
+  commentId: P:PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.Root
+  parent: PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}
+  definition: PnP.Framework.Diagnostics.Tree.TreeNode`1.Root
+  name: Root
+  nameWithType: TreeNode<PnPMonitoredScope>.Root
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<PnP.Framework.Diagnostics.PnPMonitoredScope>.Root
+  nameWithType.vb: TreeNode(Of PnPMonitoredScope).Root
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of PnP.Framework.Diagnostics.PnPMonitoredScope).Root
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.Children
+  commentId: P:PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.Children
+  parent: PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}
+  definition: PnP.Framework.Diagnostics.Tree.TreeNode`1.Children
+  name: Children
+  nameWithType: TreeNode<PnPMonitoredScope>.Children
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<PnP.Framework.Diagnostics.PnPMonitoredScope>.Children
+  nameWithType.vb: TreeNode(Of PnPMonitoredScope).Children
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of PnP.Framework.Diagnostics.PnPMonitoredScope).Children
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.ChildNodes
+  commentId: P:PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.ChildNodes
+  parent: PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}
+  definition: PnP.Framework.Diagnostics.Tree.TreeNode`1.ChildNodes
+  name: ChildNodes
+  nameWithType: TreeNode<PnPMonitoredScope>.ChildNodes
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<PnP.Framework.Diagnostics.PnPMonitoredScope>.ChildNodes
+  nameWithType.vb: TreeNode(Of PnPMonitoredScope).ChildNodes
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of PnP.Framework.Diagnostics.PnPMonitoredScope).ChildNodes
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.Descendants
+  commentId: P:PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.Descendants
+  parent: PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}
+  definition: PnP.Framework.Diagnostics.Tree.TreeNode`1.Descendants
+  name: Descendants
+  nameWithType: TreeNode<PnPMonitoredScope>.Descendants
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<PnP.Framework.Diagnostics.PnPMonitoredScope>.Descendants
+  nameWithType.vb: TreeNode(Of PnPMonitoredScope).Descendants
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of PnP.Framework.Diagnostics.PnPMonitoredScope).Descendants
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.Subtree
+  commentId: P:PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.Subtree
+  parent: PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}
+  definition: PnP.Framework.Diagnostics.Tree.TreeNode`1.Subtree
+  name: Subtree
+  nameWithType: TreeNode<PnPMonitoredScope>.Subtree
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<PnP.Framework.Diagnostics.PnPMonitoredScope>.Subtree
+  nameWithType.vb: TreeNode(Of PnPMonitoredScope).Subtree
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of PnP.Framework.Diagnostics.PnPMonitoredScope).Subtree
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.Ancestors
+  commentId: P:PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.Ancestors
+  parent: PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}
+  definition: PnP.Framework.Diagnostics.Tree.TreeNode`1.Ancestors
+  name: Ancestors
+  nameWithType: TreeNode<PnPMonitoredScope>.Ancestors
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<PnP.Framework.Diagnostics.PnPMonitoredScope>.Ancestors
+  nameWithType.vb: TreeNode(Of PnPMonitoredScope).Ancestors
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of PnP.Framework.Diagnostics.PnPMonitoredScope).Ancestors
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.Height
+  commentId: P:PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.Height
+  parent: PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}
+  definition: PnP.Framework.Diagnostics.Tree.TreeNode`1.Height
+  name: Height
+  nameWithType: TreeNode<PnPMonitoredScope>.Height
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<PnP.Framework.Diagnostics.PnPMonitoredScope>.Height
+  nameWithType.vb: TreeNode(Of PnPMonitoredScope).Height
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of PnP.Framework.Diagnostics.PnPMonitoredScope).Height
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.Value
+  commentId: P:PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.Value
+  parent: PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}
+  definition: PnP.Framework.Diagnostics.Tree.TreeNode`1.Value
+  name: Value
+  nameWithType: TreeNode<PnPMonitoredScope>.Value
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<PnP.Framework.Diagnostics.PnPMonitoredScope>.Value
+  nameWithType.vb: TreeNode(Of PnPMonitoredScope).Value
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of PnP.Framework.Diagnostics.PnPMonitoredScope).Value
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.Depth
+  commentId: P:PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.Depth
+  parent: PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}
+  definition: PnP.Framework.Diagnostics.Tree.TreeNode`1.Depth
+  name: Depth
+  nameWithType: TreeNode<PnPMonitoredScope>.Depth
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<PnP.Framework.Diagnostics.PnPMonitoredScope>.Depth
+  nameWithType.vb: TreeNode(Of PnPMonitoredScope).Depth
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of PnP.Framework.Diagnostics.PnPMonitoredScope).Depth
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.ToString
+  commentId: M:PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}.ToString
+  parent: PnP.Framework.Diagnostics.Tree.TreeNode{PnP.Framework.Diagnostics.PnPMonitoredScope}
+  definition: PnP.Framework.Diagnostics.Tree.TreeNode`1.ToString
+  name: ToString()
+  nameWithType: TreeNode<PnPMonitoredScope>.ToString()
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<PnP.Framework.Diagnostics.PnPMonitoredScope>.ToString()
+  nameWithType.vb: TreeNode(Of PnPMonitoredScope).ToString()
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of PnP.Framework.Diagnostics.PnPMonitoredScope).ToString()
+  spec.csharp:
+  - uid: PnP.Framework.Diagnostics.Tree.TreeNode`1.ToString
+    name: ToString
+    nameWithType: TreeNode<PnPMonitoredScope>.ToString
+    fullName: PnP.Framework.Diagnostics.Tree.TreeNode<PnP.Framework.Diagnostics.PnPMonitoredScope>.ToString
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Diagnostics.Tree.TreeNode`1.ToString
+    name: ToString
+    nameWithType: TreeNode(Of PnPMonitoredScope).ToString
+    fullName: PnP.Framework.Diagnostics.Tree.TreeNode(Of PnP.Framework.Diagnostics.PnPMonitoredScope).ToString
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Diagnostics.PnPMonitoredScope.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<PnPMonitoredScope>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<PnPMonitoredScope>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Diagnostics.PnPMonitoredScope>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of PnPMonitoredScope)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Diagnostics.PnPMonitoredScope)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of PnPMonitoredScope)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<PnPMonitoredScope>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<PnPMonitoredScope>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Diagnostics.PnPMonitoredScope>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of PnPMonitoredScope)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of PnPMonitoredScope)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Diagnostics.PnPMonitoredScope)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Diagnostics.PnPMonitoredScope.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Diagnostics.PnPMonitoredScope,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<PnPMonitoredScope, T>(Expression<Func<PnPMonitoredScope, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<PnPMonitoredScope, T>(Expression<Func<PnPMonitoredScope, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Diagnostics.PnPMonitoredScope, T>(System.Linq.Expressions.Expression<System.Func<PnP.Framework.Diagnostics.PnPMonitoredScope, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of PnPMonitoredScope, T)(Expression(Of Func(Of PnPMonitoredScope, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Diagnostics.PnPMonitoredScope, T)(System.Linq.Expressions.Expression(Of System.Func(Of PnP.Framework.Diagnostics.PnPMonitoredScope, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of PnPMonitoredScope, T)(Expression(Of Func(Of PnPMonitoredScope, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<PnPMonitoredScope, T>
+    nameWithType: ObjectExtensions.Set<PnPMonitoredScope, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Diagnostics.PnPMonitoredScope, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Diagnostics.PnPMonitoredScope
+    name: PnPMonitoredScope
+    nameWithType: PnPMonitoredScope
+    fullName: PnP.Framework.Diagnostics.PnPMonitoredScope
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of PnPMonitoredScope, T)
+    nameWithType: ObjectExtensions.Set(Of PnPMonitoredScope, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Diagnostics.PnPMonitoredScope, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Diagnostics.PnPMonitoredScope
+    name: PnPMonitoredScope
+    nameWithType: PnPMonitoredScope
+    fullName: PnP.Framework.Diagnostics.PnPMonitoredScope
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode`1
+  commentId: T:PnP.Framework.Diagnostics.Tree.TreeNode`1
+  parent: PnP.Framework.Diagnostics.Tree
+  name: TreeNode<T>
+  nameWithType: TreeNode<T>
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<T>
+  nameWithType.vb: TreeNode(Of T)
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of T)
+  name.vb: TreeNode(Of T)
+  spec.csharp:
+  - uid: PnP.Framework.Diagnostics.Tree.TreeNode`1
+    name: TreeNode
+    nameWithType: TreeNode
+    fullName: PnP.Framework.Diagnostics.Tree.TreeNode
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: PnP.Framework.Diagnostics.Tree.TreeNode`1
+    name: TreeNode
+    nameWithType: TreeNode
+    fullName: PnP.Framework.Diagnostics.Tree.TreeNode
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Diagnostics.Tree
+  commentId: N:PnP.Framework.Diagnostics.Tree
+  name: PnP.Framework.Diagnostics.Tree
+  nameWithType: PnP.Framework.Diagnostics.Tree
+  fullName: PnP.Framework.Diagnostics.Tree
+- uid: PnP.Framework.Diagnostics.Tree.ITreeNode`1
+  commentId: T:PnP.Framework.Diagnostics.Tree.ITreeNode`1
+  parent: PnP.Framework.Diagnostics.Tree
+  name: ITreeNode<T>
+  nameWithType: ITreeNode<T>
+  fullName: PnP.Framework.Diagnostics.Tree.ITreeNode<T>
+  nameWithType.vb: ITreeNode(Of T)
+  fullName.vb: PnP.Framework.Diagnostics.Tree.ITreeNode(Of T)
+  name.vb: ITreeNode(Of T)
+  spec.csharp:
+  - uid: PnP.Framework.Diagnostics.Tree.ITreeNode`1
+    name: ITreeNode
+    nameWithType: ITreeNode
+    fullName: PnP.Framework.Diagnostics.Tree.ITreeNode
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: PnP.Framework.Diagnostics.Tree.ITreeNode`1
+    name: ITreeNode
+    nameWithType: ITreeNode
+    fullName: PnP.Framework.Diagnostics.Tree.ITreeNode
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode`1.ParentNode
+  commentId: P:PnP.Framework.Diagnostics.Tree.TreeNode`1.ParentNode
+  name: ParentNode
+  nameWithType: TreeNode<T>.ParentNode
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<T>.ParentNode
+  nameWithType.vb: TreeNode(Of T).ParentNode
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of T).ParentNode
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode`1.Parent
+  commentId: P:PnP.Framework.Diagnostics.Tree.TreeNode`1.Parent
+  name: Parent
+  nameWithType: TreeNode<T>.Parent
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<T>.Parent
+  nameWithType.vb: TreeNode(Of T).Parent
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of T).Parent
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode`1.SetParent(PnP.Framework.Diagnostics.Tree.ITreeNode{`0},System.Boolean)
+  commentId: M:PnP.Framework.Diagnostics.Tree.TreeNode`1.SetParent(PnP.Framework.Diagnostics.Tree.ITreeNode{`0},System.Boolean)
+  isExternal: true
+  name: SetParent(ITreeNode<T>, Boolean)
+  nameWithType: TreeNode<T>.SetParent(ITreeNode<T>, Boolean)
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<T>.SetParent(PnP.Framework.Diagnostics.Tree.ITreeNode<T>, System.Boolean)
+  nameWithType.vb: TreeNode(Of T).SetParent(ITreeNode(Of T), Boolean)
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of T).SetParent(PnP.Framework.Diagnostics.Tree.ITreeNode(Of T), System.Boolean)
+  name.vb: SetParent(ITreeNode(Of T), Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Diagnostics.Tree.TreeNode`1.SetParent(PnP.Framework.Diagnostics.Tree.ITreeNode{`0},System.Boolean)
+    name: SetParent
+    nameWithType: TreeNode<T>.SetParent
+    fullName: PnP.Framework.Diagnostics.Tree.TreeNode<T>.SetParent
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Diagnostics.Tree.ITreeNode`1
+    name: ITreeNode
+    nameWithType: ITreeNode
+    fullName: PnP.Framework.Diagnostics.Tree.ITreeNode
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Diagnostics.Tree.TreeNode`1.SetParent(PnP.Framework.Diagnostics.Tree.ITreeNode{`0},System.Boolean)
+    name: SetParent
+    nameWithType: TreeNode(Of T).SetParent
+    fullName: PnP.Framework.Diagnostics.Tree.TreeNode(Of T).SetParent
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Diagnostics.Tree.ITreeNode`1
+    name: ITreeNode
+    nameWithType: ITreeNode
+    fullName: PnP.Framework.Diagnostics.Tree.ITreeNode
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode`1.Root
+  commentId: P:PnP.Framework.Diagnostics.Tree.TreeNode`1.Root
+  name: Root
+  nameWithType: TreeNode<T>.Root
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<T>.Root
+  nameWithType.vb: TreeNode(Of T).Root
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of T).Root
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode`1.Children
+  commentId: P:PnP.Framework.Diagnostics.Tree.TreeNode`1.Children
+  name: Children
+  nameWithType: TreeNode<T>.Children
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<T>.Children
+  nameWithType.vb: TreeNode(Of T).Children
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of T).Children
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode`1.ChildNodes
+  commentId: P:PnP.Framework.Diagnostics.Tree.TreeNode`1.ChildNodes
+  name: ChildNodes
+  nameWithType: TreeNode<T>.ChildNodes
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<T>.ChildNodes
+  nameWithType.vb: TreeNode(Of T).ChildNodes
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of T).ChildNodes
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode`1.Descendants
+  commentId: P:PnP.Framework.Diagnostics.Tree.TreeNode`1.Descendants
+  name: Descendants
+  nameWithType: TreeNode<T>.Descendants
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<T>.Descendants
+  nameWithType.vb: TreeNode(Of T).Descendants
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of T).Descendants
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode`1.Subtree
+  commentId: P:PnP.Framework.Diagnostics.Tree.TreeNode`1.Subtree
+  name: Subtree
+  nameWithType: TreeNode<T>.Subtree
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<T>.Subtree
+  nameWithType.vb: TreeNode(Of T).Subtree
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of T).Subtree
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode`1.Ancestors
+  commentId: P:PnP.Framework.Diagnostics.Tree.TreeNode`1.Ancestors
+  name: Ancestors
+  nameWithType: TreeNode<T>.Ancestors
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<T>.Ancestors
+  nameWithType.vb: TreeNode(Of T).Ancestors
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of T).Ancestors
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode`1.Height
+  commentId: P:PnP.Framework.Diagnostics.Tree.TreeNode`1.Height
+  name: Height
+  nameWithType: TreeNode<T>.Height
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<T>.Height
+  nameWithType.vb: TreeNode(Of T).Height
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of T).Height
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode`1.Value
+  commentId: P:PnP.Framework.Diagnostics.Tree.TreeNode`1.Value
+  name: Value
+  nameWithType: TreeNode<T>.Value
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<T>.Value
+  nameWithType.vb: TreeNode(Of T).Value
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of T).Value
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode`1.Depth
+  commentId: P:PnP.Framework.Diagnostics.Tree.TreeNode`1.Depth
+  name: Depth
+  nameWithType: TreeNode<T>.Depth
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<T>.Depth
+  nameWithType.vb: TreeNode(Of T).Depth
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of T).Depth
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode`1.ToString
+  commentId: M:PnP.Framework.Diagnostics.Tree.TreeNode`1.ToString
+  name: ToString()
+  nameWithType: TreeNode<T>.ToString()
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<T>.ToString()
+  nameWithType.vb: TreeNode(Of T).ToString()
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of T).ToString()
+  spec.csharp:
+  - uid: PnP.Framework.Diagnostics.Tree.TreeNode`1.ToString
+    name: ToString
+    nameWithType: TreeNode<T>.ToString
+    fullName: PnP.Framework.Diagnostics.Tree.TreeNode<T>.ToString
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Diagnostics.Tree.TreeNode`1.ToString
+    name: ToString
+    nameWithType: TreeNode(Of T).ToString
+    fullName: PnP.Framework.Diagnostics.Tree.TreeNode(Of T).ToString
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: PnP.Framework.Diagnostics.PnPMonitoredScope.#ctor*
+  commentId: Overload:PnP.Framework.Diagnostics.PnPMonitoredScope.#ctor
+  name: PnPMonitoredScope
+  nameWithType: PnPMonitoredScope.PnPMonitoredScope
+  fullName: PnP.Framework.Diagnostics.PnPMonitoredScope.PnPMonitoredScope
+- uid: PnP.Framework.Diagnostics.PnPMonitoredScope.Name*
+  commentId: Overload:PnP.Framework.Diagnostics.PnPMonitoredScope.Name
+  name: Name
+  nameWithType: PnPMonitoredScope.Name
+  fullName: PnP.Framework.Diagnostics.PnPMonitoredScope.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: PnP.Framework.Diagnostics.PnPMonitoredScope.CorrelationId*
+  commentId: Overload:PnP.Framework.Diagnostics.PnPMonitoredScope.CorrelationId
+  name: CorrelationId
+  nameWithType: PnPMonitoredScope.CorrelationId
+  fullName: PnP.Framework.Diagnostics.PnPMonitoredScope.CorrelationId
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: PnP.Framework.Diagnostics.PnPMonitoredScope.LogError*
+  commentId: Overload:PnP.Framework.Diagnostics.PnPMonitoredScope.LogError
+  name: LogError
+  nameWithType: PnPMonitoredScope.LogError
+  fullName: PnP.Framework.Diagnostics.PnPMonitoredScope.LogError
+- uid: System.Object[]
+  isExternal: true
+  name: Object[]
+  nameWithType: Object[]
+  fullName: System.Object[]
+  nameWithType.vb: Object()
+  fullName.vb: System.Object()
+  name.vb: Object()
+  spec.csharp:
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: PnP.Framework.Diagnostics.PnPMonitoredScope.LogInfo*
+  commentId: Overload:PnP.Framework.Diagnostics.PnPMonitoredScope.LogInfo
+  name: LogInfo
+  nameWithType: PnPMonitoredScope.LogInfo
+  fullName: PnP.Framework.Diagnostics.PnPMonitoredScope.LogInfo
+- uid: PnP.Framework.Diagnostics.PnPMonitoredScope.LogWarning*
+  commentId: Overload:PnP.Framework.Diagnostics.PnPMonitoredScope.LogWarning
+  name: LogWarning
+  nameWithType: PnPMonitoredScope.LogWarning
+  fullName: PnP.Framework.Diagnostics.PnPMonitoredScope.LogWarning
+- uid: PnP.Framework.Diagnostics.PnPMonitoredScope.LogDebug*
+  commentId: Overload:PnP.Framework.Diagnostics.PnPMonitoredScope.LogDebug
+  name: LogDebug
+  nameWithType: PnPMonitoredScope.LogDebug
+  fullName: PnP.Framework.Diagnostics.PnPMonitoredScope.LogDebug
+- uid: PnP.Framework.Diagnostics.PnPMonitoredScope.Dispose*
+  commentId: Overload:PnP.Framework.Diagnostics.PnPMonitoredScope.Dispose
+  name: Dispose
+  nameWithType: PnPMonitoredScope.Dispose
+  fullName: PnP.Framework.Diagnostics.PnPMonitoredScope.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    nameWithType: IDisposable.Dispose
+    fullName: System.IDisposable.Dispose
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    nameWithType: IDisposable.Dispose
+    fullName: System.IDisposable.Dispose
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )

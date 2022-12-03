@@ -1,0 +1,653 @@
+### YamlMime:ManagedReference
+items:
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory
+  commentId: T:SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory
+  id: OAuth2MessageFactory
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  children:
+  - SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithAuthorizationCode(System.String,System.String,System.String,System.String)
+  - SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithAuthorizationCode(System.String,System.String,System.String,System.Uri,System.String)
+  - SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithClientCredentials(System.String,System.String,System.String)
+  - SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithRefreshToken(System.String,System.String,System.String,System.String)
+  - SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateFromEncodedResponse(System.IO.StreamReader)
+  - SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateFromEncodedResponse(System.String)
+  langs:
+  - csharp
+  - vb
+  name: OAuth2MessageFactory
+  nameWithType: OAuth2MessageFactory
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/OAuth/OAuth2MessageFactory.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: OAuth2MessageFactory
+    path: ../src/lib/PnP.Framework/Utilities/OAuth/OAuth2MessageFactory.cs
+    startLine: 2
+  assemblies:
+  - PnP.Framework
+  namespace: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  syntax:
+    content: public static class OAuth2MessageFactory
+    content.vb: Public Module OAuth2MessageFactory
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateFromEncodedResponse(System.IO.StreamReader)
+  commentId: M:SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateFromEncodedResponse(System.IO.StreamReader)
+  id: CreateFromEncodedResponse(System.IO.StreamReader)
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateFromEncodedResponse(StreamReader)
+  nameWithType: OAuth2MessageFactory.CreateFromEncodedResponse(StreamReader)
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateFromEncodedResponse(System.IO.StreamReader)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/OAuth/OAuth2MessageFactory.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateFromEncodedResponse
+    path: ../src/lib/PnP.Framework/Utilities/OAuth/OAuth2MessageFactory.cs
+    startLine: 4
+  assemblies:
+  - PnP.Framework
+  namespace: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  syntax:
+    content: public static OAuth2Message CreateFromEncodedResponse(StreamReader reader)
+    parameters:
+    - id: reader
+      type: System.IO.StreamReader
+    return:
+      type: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2Message
+    content.vb: Public Shared Function CreateFromEncodedResponse(reader As StreamReader) As OAuth2Message
+  overload: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateFromEncodedResponse*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateFromEncodedResponse(System.String)
+  commentId: M:SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateFromEncodedResponse(System.String)
+  id: CreateFromEncodedResponse(System.String)
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateFromEncodedResponse(String)
+  nameWithType: OAuth2MessageFactory.CreateFromEncodedResponse(String)
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateFromEncodedResponse(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/OAuth/OAuth2MessageFactory.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateFromEncodedResponse
+    path: ../src/lib/PnP.Framework/Utilities/OAuth/OAuth2MessageFactory.cs
+    startLine: 9
+  assemblies:
+  - PnP.Framework
+  namespace: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  syntax:
+    content: public static OAuth2Message CreateFromEncodedResponse(string responseString)
+    parameters:
+    - id: responseString
+      type: System.String
+    return:
+      type: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2Message
+    content.vb: Public Shared Function CreateFromEncodedResponse(responseString As String) As OAuth2Message
+  overload: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateFromEncodedResponse*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithAuthorizationCode(System.String,System.String,System.String,System.Uri,System.String)
+  commentId: M:SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithAuthorizationCode(System.String,System.String,System.String,System.Uri,System.String)
+  id: CreateAccessTokenRequestWithAuthorizationCode(System.String,System.String,System.String,System.Uri,System.String)
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateAccessTokenRequestWithAuthorizationCode(String, String, String, Uri, String)
+  nameWithType: OAuth2MessageFactory.CreateAccessTokenRequestWithAuthorizationCode(String, String, String, Uri, String)
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithAuthorizationCode(System.String, System.String, System.String, System.Uri, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/OAuth/OAuth2MessageFactory.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateAccessTokenRequestWithAuthorizationCode
+    path: ../src/lib/PnP.Framework/Utilities/OAuth/OAuth2MessageFactory.cs
+    startLine: 18
+  assemblies:
+  - PnP.Framework
+  namespace: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  syntax:
+    content: public static OAuth2AccessTokenRequest CreateAccessTokenRequestWithAuthorizationCode(string clientId, string clientSecret, string authorizationCode, Uri redirectUri, string resource)
+    parameters:
+    - id: clientId
+      type: System.String
+    - id: clientSecret
+      type: System.String
+    - id: authorizationCode
+      type: System.String
+    - id: redirectUri
+      type: System.Uri
+    - id: resource
+      type: System.String
+    return:
+      type: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2AccessTokenRequest
+    content.vb: Public Shared Function CreateAccessTokenRequestWithAuthorizationCode(clientId As String, clientSecret As String, authorizationCode As String, redirectUri As Uri, resource As String) As OAuth2AccessTokenRequest
+  overload: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithAuthorizationCode*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithAuthorizationCode(System.String,System.String,System.String,System.String)
+  commentId: M:SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithAuthorizationCode(System.String,System.String,System.String,System.String)
+  id: CreateAccessTokenRequestWithAuthorizationCode(System.String,System.String,System.String,System.String)
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateAccessTokenRequestWithAuthorizationCode(String, String, String, String)
+  nameWithType: OAuth2MessageFactory.CreateAccessTokenRequestWithAuthorizationCode(String, String, String, String)
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithAuthorizationCode(System.String, System.String, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/OAuth/OAuth2MessageFactory.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateAccessTokenRequestWithAuthorizationCode
+    path: ../src/lib/PnP.Framework/Utilities/OAuth/OAuth2MessageFactory.cs
+    startLine: 35
+  assemblies:
+  - PnP.Framework
+  namespace: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  syntax:
+    content: public static OAuth2AccessTokenRequest CreateAccessTokenRequestWithAuthorizationCode(string clientId, string clientSecret, string authorizationCode, string resource)
+    parameters:
+    - id: clientId
+      type: System.String
+    - id: clientSecret
+      type: System.String
+    - id: authorizationCode
+      type: System.String
+    - id: resource
+      type: System.String
+    return:
+      type: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2AccessTokenRequest
+    content.vb: Public Shared Function CreateAccessTokenRequestWithAuthorizationCode(clientId As String, clientSecret As String, authorizationCode As String, resource As String) As OAuth2AccessTokenRequest
+  overload: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithAuthorizationCode*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithRefreshToken(System.String,System.String,System.String,System.String)
+  commentId: M:SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithRefreshToken(System.String,System.String,System.String,System.String)
+  id: CreateAccessTokenRequestWithRefreshToken(System.String,System.String,System.String,System.String)
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateAccessTokenRequestWithRefreshToken(String, String, String, String)
+  nameWithType: OAuth2MessageFactory.CreateAccessTokenRequestWithRefreshToken(String, String, String, String)
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithRefreshToken(System.String, System.String, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/OAuth/OAuth2MessageFactory.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateAccessTokenRequestWithRefreshToken
+    path: ../src/lib/PnP.Framework/Utilities/OAuth/OAuth2MessageFactory.cs
+    startLine: 47
+  assemblies:
+  - PnP.Framework
+  namespace: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  syntax:
+    content: public static OAuth2AccessTokenRequest CreateAccessTokenRequestWithRefreshToken(string clientId, string clientSecret, string refreshToken, string resource)
+    parameters:
+    - id: clientId
+      type: System.String
+    - id: clientSecret
+      type: System.String
+    - id: refreshToken
+      type: System.String
+    - id: resource
+      type: System.String
+    return:
+      type: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2AccessTokenRequest
+    content.vb: Public Shared Function CreateAccessTokenRequestWithRefreshToken(clientId As String, clientSecret As String, refreshToken As String, resource As String) As OAuth2AccessTokenRequest
+  overload: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithRefreshToken*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithClientCredentials(System.String,System.String,System.String)
+  commentId: M:SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithClientCredentials(System.String,System.String,System.String)
+  id: CreateAccessTokenRequestWithClientCredentials(System.String,System.String,System.String)
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateAccessTokenRequestWithClientCredentials(String, String, String)
+  nameWithType: OAuth2MessageFactory.CreateAccessTokenRequestWithClientCredentials(String, String, String)
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithClientCredentials(System.String, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/OAuth/OAuth2MessageFactory.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateAccessTokenRequestWithClientCredentials
+    path: ../src/lib/PnP.Framework/Utilities/OAuth/OAuth2MessageFactory.cs
+    startLine: 59
+  assemblies:
+  - PnP.Framework
+  namespace: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  syntax:
+    content: public static OAuth2AccessTokenRequest CreateAccessTokenRequestWithClientCredentials(string clientId, string clientSecret, string scope)
+    parameters:
+    - id: clientId
+      type: System.String
+    - id: clientSecret
+      type: System.String
+    - id: scope
+      type: System.String
+    return:
+      type: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2AccessTokenRequest
+    content.vb: Public Shared Function CreateAccessTokenRequestWithClientCredentials(clientId As String, clientSecret As String, scope As String) As OAuth2AccessTokenRequest
+  overload: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithClientCredentials*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  commentId: N:SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  name: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  nameWithType: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateFromEncodedResponse*
+  commentId: Overload:SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateFromEncodedResponse
+  name: CreateFromEncodedResponse
+  nameWithType: OAuth2MessageFactory.CreateFromEncodedResponse
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateFromEncodedResponse
+- uid: System.IO.StreamReader
+  commentId: T:System.IO.StreamReader
+  parent: System.IO
+  isExternal: true
+  name: StreamReader
+  nameWithType: StreamReader
+  fullName: System.IO.StreamReader
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2Message
+  commentId: T:SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2Message
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  name: OAuth2Message
+  nameWithType: OAuth2Message
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2Message
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithAuthorizationCode*
+  commentId: Overload:SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithAuthorizationCode
+  name: CreateAccessTokenRequestWithAuthorizationCode
+  nameWithType: OAuth2MessageFactory.CreateAccessTokenRequestWithAuthorizationCode
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithAuthorizationCode
+- uid: System.Uri
+  commentId: T:System.Uri
+  parent: System
+  isExternal: true
+  name: Uri
+  nameWithType: Uri
+  fullName: System.Uri
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2AccessTokenRequest
+  commentId: T:SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2AccessTokenRequest
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  name: OAuth2AccessTokenRequest
+  nameWithType: OAuth2AccessTokenRequest
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2AccessTokenRequest
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithRefreshToken*
+  commentId: Overload:SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithRefreshToken
+  name: CreateAccessTokenRequestWithRefreshToken
+  nameWithType: OAuth2MessageFactory.CreateAccessTokenRequestWithRefreshToken
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithRefreshToken
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithClientCredentials*
+  commentId: Overload:SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithClientCredentials
+  name: CreateAccessTokenRequestWithClientCredentials
+  nameWithType: OAuth2MessageFactory.CreateAccessTokenRequestWithClientCredentials
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory.CreateAccessTokenRequestWithClientCredentials

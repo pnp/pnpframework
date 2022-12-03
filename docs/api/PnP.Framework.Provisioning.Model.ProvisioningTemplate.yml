@@ -1,0 +1,3988 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  commentId: T:PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  id: ProvisioningTemplate
+  parent: PnP.Framework.Provisioning.Model
+  children:
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.#ctor
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.#ctor(PnP.Framework.Provisioning.Connectors.FileConnectorBase)
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.AddIns
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.ApplicationLifecycleManagement
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.AuditSettings
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.BaseSiteTemplate
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.ClientSidePages
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.ComposedLook
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.Connector
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.ContentTypes
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.CustomActions
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.Description
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.Directories
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.DisplayName
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.Equals(PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.Equals(System.Object)
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.ExtensibilityHandlers
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.Features
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.Files
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.Footer
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.GetHashCode
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.Header
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.Id
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.ImagePreviewUrl
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.Lists
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.Localizations
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.Navigation
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.Pages
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.Parameters
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.Properties
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.PropertyBagEntries
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.Providers
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.ProvisioningTemplateWebhooks
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.Publishing
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.RegionalSettings
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.Scope
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.SearchSettings
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.Security
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteFields
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.SitePolicy
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteSearchSettings
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteSettings
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteWebhooks
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.SupportedUILanguages
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.TemplateCultureInfo
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.Tenant
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.TermGroups
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.Theme
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.ToXML(PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.Version
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.WebSearchSettings
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.WebSettings
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.Workflows
+  langs:
+  - csharp
+  - vb
+  name: ProvisioningTemplate
+  nameWithType: ProvisioningTemplate
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ProvisioningTemplate
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 14
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDomain Object for the Provisioning Template\n"
+  example: []
+  syntax:
+    content: 'public class ProvisioningTemplate : BaseHierarchyModel, IProvisioningHierarchyDescendant, IEquatable<ProvisioningTemplate>'
+    content.vb: >-
+      Public Class ProvisioningTemplate
+          Inherits BaseHierarchyModel
+          Implements IProvisioningHierarchyDescendant, IEquatable(Of ProvisioningTemplate)
+  inheritance:
+  - System.Object
+  - PnP.Framework.Provisioning.Model.BaseHierarchyModel
+  implements:
+  - PnP.Framework.Provisioning.Model.IProvisioningHierarchyDescendant
+  - System.IEquatable{PnP.Framework.Provisioning.Model.ProvisioningTemplate}
+  inheritedMembers:
+  - PnP.Framework.Provisioning.Model.BaseHierarchyModel.ParentHierarchy
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - PnP.Framework.Provisioning.Model.ProvisioningTemplate.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Model.ProvisioningTemplate,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Providers
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Providers
+  id: Providers
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: Providers
+  nameWithType: ProvisioningTemplate.Providers
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Providers
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Deprecated/Model/ProvisioningTemplate.deprecated.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Providers
+    path: ../src/lib/PnP.Framework/Provisioning/Deprecated/Model/ProvisioningTemplate.deprecated.cs
+    startLine: 15
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets a collection of Providers that are used during the extensibility pipeline\n"
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Use ExtensibilityHandlers. This property will be removed in the June 2016 release.")]
+
+      public ProviderCollection Providers { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.ProviderCollection
+    content.vb: >-
+      <Obsolete("Use ExtensibilityHandlers. This property will be removed in the June 2016 release.")>
+
+      Public ReadOnly Property Providers As ProviderCollection
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Providers*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use ExtensibilityHandlers. This property will be removed in the June 2016 release.
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SearchSettings
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.SearchSettings
+  id: SearchSettings
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: SearchSettings
+  nameWithType: ProvisioningTemplate.SearchSettings
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SearchSettings
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Deprecated/Model/ProvisioningTemplate.deprecated.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SearchSettings
+    path: ../src/lib/PnP.Framework/Provisioning/Deprecated/Model/ProvisioningTemplate.deprecated.cs
+    startLine: 25
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nThe Search Settings for the Provisioning Template\n"
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Use SiteSearchSettings or WebSearchSettings. This property will be removed in the September 2016 release.")]
+
+      public string SearchSettings { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <Obsolete("Use SiteSearchSettings or WebSearchSettings. This property will be removed in the September 2016 release.")>
+
+      Public Property SearchSettings As String
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SearchSettings*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use SiteSearchSettings or WebSearchSettings. This property will be removed in the September 2016 release.
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.#ctor
+  commentId: M:PnP.Framework.Provisioning.Model.ProvisioningTemplate.#ctor
+  id: '#ctor'
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: ProvisioningTemplate()
+  nameWithType: ProvisioningTemplate.ProvisioningTemplate()
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ProvisioningTemplate()
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 65
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nConstructor for ProvisioningTemplate class\n"
+  example: []
+  syntax:
+    content: public ProvisioningTemplate()
+    content.vb: Public Sub New
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.#ctor(PnP.Framework.Provisioning.Connectors.FileConnectorBase)
+  commentId: M:PnP.Framework.Provisioning.Model.ProvisioningTemplate.#ctor(PnP.Framework.Provisioning.Connectors.FileConnectorBase)
+  id: '#ctor(PnP.Framework.Provisioning.Connectors.FileConnectorBase)'
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: ProvisioningTemplate(FileConnectorBase)
+  nameWithType: ProvisioningTemplate.ProvisioningTemplate(FileConnectorBase)
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ProvisioningTemplate(PnP.Framework.Provisioning.Connectors.FileConnectorBase)
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 123
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nConstructor for ProvisioningTemplate class\n"
+  example: []
+  syntax:
+    content: public ProvisioningTemplate(FileConnectorBase connector)
+    parameters:
+    - id: connector
+      type: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+      description: FileConnectorBase object
+    content.vb: Public Sub New(connector As FileConnectorBase)
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Parameters
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Parameters
+  id: Parameters
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: Parameters
+  nameWithType: ProvisioningTemplate.Parameters
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Parameters
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Parameters
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 136
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nAny parameters that can be used throughout the template\n"
+  example: []
+  syntax:
+    content: public Dictionary<string, string> Parameters { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+    content.vb: Public ReadOnly Property Parameters As Dictionary(Of String, String)
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Parameters*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Localizations
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Localizations
+  id: Localizations
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: Localizations
+  nameWithType: ProvisioningTemplate.Localizations
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Localizations
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Localizations
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 165
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets the Localizations\n"
+  example: []
+  syntax:
+    content: public LocalizationCollection Localizations { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.LocalizationCollection
+    content.vb: Public ReadOnly Property Localizations As LocalizationCollection
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Localizations*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Id
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Id
+  id: Id
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: ProvisioningTemplate.Id
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Id
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Id
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 194
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets the ID of the Provisioning Template\n"
+  example: []
+  syntax:
+    content: public string Id { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Id As String
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Id*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Version
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Version
+  id: Version
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: Version
+  nameWithType: ProvisioningTemplate.Version
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Version
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Version
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 199
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets the Version of the Provisioning Template\n"
+  example: []
+  syntax:
+    content: public double Version { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property Version As Double
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Version*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SitePolicy
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.SitePolicy
+  id: SitePolicy
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: SitePolicy
+  nameWithType: ProvisioningTemplate.SitePolicy
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SitePolicy
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SitePolicy
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 228
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or Sets the Site Policy\n"
+  example: []
+  syntax:
+    content: public string SitePolicy { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property SitePolicy As String
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SitePolicy*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.PropertyBagEntries
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.PropertyBagEntries
+  id: PropertyBagEntries
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: PropertyBagEntries
+  nameWithType: ProvisioningTemplate.PropertyBagEntries
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.PropertyBagEntries
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PropertyBagEntries
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 230
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  syntax:
+    content: public PropertyBagEntryCollection PropertyBagEntries { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.PropertyBagEntryCollection
+    content.vb: Public ReadOnly Property PropertyBagEntries As PropertyBagEntryCollection
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.PropertyBagEntries*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Security
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Security
+  id: Security
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: Security
+  nameWithType: ProvisioningTemplate.Security
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Security
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Security
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 239
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nSecurity Groups Members for the Template\n"
+  example: []
+  syntax:
+    content: public SiteSecurity Security { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.SiteSecurity
+    content.vb: Public Property Security As SiteSecurity
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Security*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Navigation
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Navigation
+  id: Navigation
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: Navigation
+  nameWithType: ProvisioningTemplate.Navigation
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Navigation
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Navigation
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 259
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nThe Navigation configurations of the Provisioning Template\n"
+  example: []
+  syntax:
+    content: public Navigation Navigation { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.Navigation
+    content.vb: Public Property Navigation As Navigation
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Navigation*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteFields
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteFields
+  id: SiteFields
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: SiteFields
+  nameWithType: ProvisioningTemplate.SiteFields
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteFields
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SiteFields
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 279
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets a collection of fields \n"
+  example: []
+  syntax:
+    content: public FieldCollection SiteFields { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.FieldCollection
+    content.vb: Public ReadOnly Property SiteFields As FieldCollection
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteFields*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ContentTypes
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.ContentTypes
+  id: ContentTypes
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: ContentTypes
+  nameWithType: ProvisioningTemplate.ContentTypes
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ContentTypes
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ContentTypes
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 288
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets a collection of Content Types to create\n"
+  example: []
+  syntax:
+    content: public ContentTypeCollection ContentTypes { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.ContentTypeCollection
+    content.vb: Public ReadOnly Property ContentTypes As ContentTypeCollection
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ContentTypes*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Lists
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Lists
+  id: Lists
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: Lists
+  nameWithType: ProvisioningTemplate.Lists
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Lists
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Lists
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 294
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  syntax:
+    content: public ListInstanceCollection Lists { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.ListInstanceCollection
+    content.vb: Public ReadOnly Property Lists As ListInstanceCollection
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Lists*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Features
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Features
+  id: Features
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: Features
+  nameWithType: ProvisioningTemplate.Features
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Features
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Features
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 303
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets a list of features to activate or deactivate\n"
+  example: []
+  syntax:
+    content: public Features Features { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.Features
+    content.vb: Public Property Features As Features
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Features*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.CustomActions
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.CustomActions
+  id: CustomActions
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: CustomActions
+  nameWithType: ProvisioningTemplate.CustomActions
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.CustomActions
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CustomActions
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 323
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets CustomActions for the template\n"
+  example: []
+  syntax:
+    content: public CustomActions CustomActions { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.CustomActions
+    content.vb: Public Property CustomActions As CustomActions
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.CustomActions*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Files
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Files
+  id: Files
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: Files
+  nameWithType: ProvisioningTemplate.Files
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Files
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Files
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 343
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets a collection of files for the template\n"
+  example: []
+  syntax:
+    content: public FileCollection Files { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.FileCollection
+    content.vb: Public ReadOnly Property Files As FileCollection
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Files*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Directories
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Directories
+  id: Directories
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: Directories
+  nameWithType: ProvisioningTemplate.Directories
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Directories
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Directories
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 352
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets a collection of directories from which upload files for the template\n"
+  example: []
+  syntax:
+    content: public DirectoryCollection Directories { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.DirectoryCollection
+    content.vb: Public ReadOnly Property Directories As DirectoryCollection
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Directories*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ComposedLook
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.ComposedLook
+  id: ComposedLook
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: ComposedLook
+  nameWithType: ProvisioningTemplate.ComposedLook
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ComposedLook
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ComposedLook
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 361
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or Sets the composed look of the template\n"
+  example: []
+  syntax:
+    content: public ComposedLook ComposedLook { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.ComposedLook
+    content.vb: Public Property ComposedLook As ComposedLook
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ComposedLook*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ExtensibilityHandlers
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.ExtensibilityHandlers
+  id: ExtensibilityHandlers
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: ExtensibilityHandlers
+  nameWithType: ProvisioningTemplate.ExtensibilityHandlers
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ExtensibilityHandlers
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ExtensibilityHandlers
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 381
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets the Extensibility Handlers\n"
+  example: []
+  syntax:
+    content: public ExtensibilityHandlerCollection ExtensibilityHandlers { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.ExtensibilityHandlerCollection
+    content.vb: Public ReadOnly Property ExtensibilityHandlers As ExtensibilityHandlerCollection
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ExtensibilityHandlers*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Pages
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Pages
+  id: Pages
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: Pages
+  nameWithType: ProvisioningTemplate.Pages
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Pages
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Pages
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 391
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets a collection of Wiki Pages for the template\n"
+  example: []
+  syntax:
+    content: public PageCollection Pages { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.PageCollection
+    content.vb: Public ReadOnly Property Pages As PageCollection
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Pages*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.TermGroups
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.TermGroups
+  id: TermGroups
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: TermGroups
+  nameWithType: ProvisioningTemplate.TermGroups
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.TermGroups
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TermGroups
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 400
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets a collection of termgroups to deploy to the site\n"
+  example: []
+  syntax:
+    content: public TermGroupCollection TermGroups { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.TermGroupCollection
+    content.vb: Public ReadOnly Property TermGroups As TermGroupCollection
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.TermGroups*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.WebSettings
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.WebSettings
+  id: WebSettings
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: WebSettings
+  nameWithType: ProvisioningTemplate.WebSettings
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.WebSettings
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WebSettings
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 409
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nThe Web Settings of the Provisioning Template\n"
+  example: []
+  syntax:
+    content: public WebSettings WebSettings { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.WebSettings
+    content.vb: Public Property WebSettings As WebSettings
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.WebSettings*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.RegionalSettings
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.RegionalSettings
+  id: RegionalSettings
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: RegionalSettings
+  nameWithType: ProvisioningTemplate.RegionalSettings
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.RegionalSettings
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RegionalSettings
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 429
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nThe Regional Settings of the Provisioning Template\n"
+  example: []
+  syntax:
+    content: public RegionalSettings RegionalSettings { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.RegionalSettings
+    content.vb: Public Property RegionalSettings As RegionalSettings
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.RegionalSettings*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SupportedUILanguages
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.SupportedUILanguages
+  id: SupportedUILanguages
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: SupportedUILanguages
+  nameWithType: ProvisioningTemplate.SupportedUILanguages
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SupportedUILanguages
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SupportedUILanguages
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 449
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nThe Supported UI Languages for the Provisioning Template\n"
+  example: []
+  syntax:
+    content: public SupportedUILanguageCollection SupportedUILanguages { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.SupportedUILanguageCollection
+    content.vb: Public ReadOnly Property SupportedUILanguages As SupportedUILanguageCollection
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SupportedUILanguages*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.AuditSettings
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.AuditSettings
+  id: AuditSettings
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: AuditSettings
+  nameWithType: ProvisioningTemplate.AuditSettings
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.AuditSettings
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AuditSettings
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 458
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nThe Audit Settings for the Provisioning Template\n"
+  example: []
+  syntax:
+    content: public AuditSettings AuditSettings { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.AuditSettings
+    content.vb: Public Property AuditSettings As AuditSettings
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.AuditSettings*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Workflows
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Workflows
+  id: Workflows
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: Workflows
+  nameWithType: ProvisioningTemplate.Workflows
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Workflows
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Workflows
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 485
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines the Workflows to provision\n"
+  example: []
+  syntax:
+    content: public Workflows Workflows { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.Workflows
+    content.vb: Public Property Workflows As Workflows
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Workflows*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteSearchSettings
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteSearchSettings
+  id: SiteSearchSettings
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: SiteSearchSettings
+  nameWithType: ProvisioningTemplate.SiteSearchSettings
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteSearchSettings
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SiteSearchSettings
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 505
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nThe Site Collection level Search Settings for the Provisioning Template\n"
+  example: []
+  syntax:
+    content: public string SiteSearchSettings { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property SiteSearchSettings As String
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteSearchSettings*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.WebSearchSettings
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.WebSearchSettings
+  id: WebSearchSettings
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: WebSearchSettings
+  nameWithType: ProvisioningTemplate.WebSearchSettings
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.WebSearchSettings
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WebSearchSettings
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 510
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nThe Web level Search Settings for the Provisioning Template\n"
+  example: []
+  syntax:
+    content: public string WebSearchSettings { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property WebSearchSettings As String
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.WebSearchSettings*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.AddIns
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.AddIns
+  id: AddIns
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: AddIns
+  nameWithType: ProvisioningTemplate.AddIns
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.AddIns
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddIns
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 515
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines the SharePoint Add-ins to provision\n"
+  example: []
+  syntax:
+    content: public AddInCollection AddIns { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.AddInCollection
+    content.vb: Public ReadOnly Property AddIns As AddInCollection
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.AddIns*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Publishing
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Publishing
+  id: Publishing
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: Publishing
+  nameWithType: ProvisioningTemplate.Publishing
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Publishing
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Publishing
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 524
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines the Publishing configuration to provision\n"
+  example: []
+  syntax:
+    content: public Publishing Publishing { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.Publishing
+    content.vb: Public Property Publishing As Publishing
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Publishing*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteWebhooks
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteWebhooks
+  id: SiteWebhooks
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: SiteWebhooks
+  nameWithType: ProvisioningTemplate.SiteWebhooks
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteWebhooks
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SiteWebhooks
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 544
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets a collection of SiteWebhooks to configure for the site\n"
+  example: []
+  syntax:
+    content: public SiteWebhookCollection SiteWebhooks { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.SiteWebhookCollection
+    content.vb: Public ReadOnly Property SiteWebhooks As SiteWebhookCollection
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteWebhooks*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ClientSidePages
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.ClientSidePages
+  id: ClientSidePages
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: ClientSidePages
+  nameWithType: ProvisioningTemplate.ClientSidePages
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ClientSidePages
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ClientSidePages
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 553
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets a collection of ClientSidePage to configure for the site\n"
+  example: []
+  syntax:
+    content: public ClientSidePageCollection ClientSidePages { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.ClientSidePageCollection
+    content.vb: Public ReadOnly Property ClientSidePages As ClientSidePageCollection
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ClientSidePages*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Properties
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Properties
+  id: Properties
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: Properties
+  nameWithType: ProvisioningTemplate.Properties
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Properties
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Properties
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 562
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nA set of custom Properties for the Provisioning Template\n"
+  example: []
+  syntax:
+    content: public Dictionary<string, string> Properties { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+    content.vb: Public ReadOnly Property Properties As Dictionary(Of String, String)
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Properties*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Tenant
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Tenant
+  id: Tenant
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: Tenant
+  nameWithType: ProvisioningTemplate.Tenant
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Tenant
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Tenant
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 571
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nThe Tenant-wide settings for the template\n"
+  example: []
+  syntax:
+    content: public ProvisioningTenant Tenant { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.ProvisioningTenant
+    content.vb: Public Property Tenant As ProvisioningTenant
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Tenant*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ApplicationLifecycleManagement
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.ApplicationLifecycleManagement
+  id: ApplicationLifecycleManagement
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: ApplicationLifecycleManagement
+  nameWithType: ProvisioningTemplate.ApplicationLifecycleManagement
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ApplicationLifecycleManagement
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ApplicationLifecycleManagement
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 605
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  syntax:
+    content: public ApplicationLifecycleManagement ApplicationLifecycleManagement { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.ApplicationLifecycleManagement
+    content.vb: Public Property ApplicationLifecycleManagement As ApplicationLifecycleManagement
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ApplicationLifecycleManagement*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Header
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Header
+  id: Header
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: Header
+  nameWithType: ProvisioningTemplate.Header
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Header
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Header
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 625
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nThe Header of the Site\n"
+  example: []
+  syntax:
+    content: public SiteHeader Header { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.SiteHeader
+    content.vb: Public Property Header As SiteHeader
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Header*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Footer
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Footer
+  id: Footer
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: Footer
+  nameWithType: ProvisioningTemplate.Footer
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Footer
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Footer
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 645
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nThe Footer of the Site\n"
+  example: []
+  syntax:
+    content: public SiteFooter Footer { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.SiteFooter
+    content.vb: Public Property Footer As SiteFooter
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Footer*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ProvisioningTemplateWebhooks
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.ProvisioningTemplateWebhooks
+  id: ProvisioningTemplateWebhooks
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: ProvisioningTemplateWebhooks
+  nameWithType: ProvisioningTemplate.ProvisioningTemplateWebhooks
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ProvisioningTemplateWebhooks
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ProvisioningTemplateWebhooks
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 665
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nThe Webhooks for the Provisioning Template\n"
+  example: []
+  syntax:
+    content: public ProvisioningTemplateWebhookCollection ProvisioningTemplateWebhooks { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.ProvisioningTemplateWebhookCollection
+    content.vb: Public Property ProvisioningTemplateWebhooks As ProvisioningTemplateWebhookCollection
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ProvisioningTemplateWebhooks*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Theme
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Theme
+  id: Theme
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: Theme
+  nameWithType: ProvisioningTemplate.Theme
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Theme
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Theme
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 685
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nThe Theme of the Site\n"
+  example: []
+  syntax:
+    content: public Theme Theme { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.Theme
+    content.vb: Public Property Theme As Theme
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Theme*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteSettings
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteSettings
+  id: SiteSettings
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: SiteSettings
+  nameWithType: ProvisioningTemplate.SiteSettings
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteSettings
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SiteSettings
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 705
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nThe Site Settings of the Provisioning Template\n"
+  example: []
+  syntax:
+    content: public SiteSettings SiteSettings { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.SiteSettings
+    content.vb: Public Property SiteSettings As SiteSettings
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteSettings*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ImagePreviewUrl
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.ImagePreviewUrl
+  id: ImagePreviewUrl
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: ImagePreviewUrl
+  nameWithType: ProvisioningTemplate.ImagePreviewUrl
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ImagePreviewUrl
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ImagePreviewUrl
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 725
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nThe Image Preview Url of the Provisioning Template\n"
+  example: []
+  syntax:
+    content: public string ImagePreviewUrl { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ImagePreviewUrl As String
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ImagePreviewUrl*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.DisplayName
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.DisplayName
+  id: DisplayName
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: DisplayName
+  nameWithType: ProvisioningTemplate.DisplayName
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.DisplayName
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DisplayName
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 730
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nThe Display Name of the Provisioning Template\n"
+  example: []
+  syntax:
+    content: public string DisplayName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property DisplayName As String
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.DisplayName*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Description
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Description
+  id: Description
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: ProvisioningTemplate.Description
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Description
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Description
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 735
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nThe Description of the Provisioning Template\n"
+  example: []
+  syntax:
+    content: public string Description { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Description As String
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Description*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.BaseSiteTemplate
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.BaseSiteTemplate
+  id: BaseSiteTemplate
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: BaseSiteTemplate
+  nameWithType: ProvisioningTemplate.BaseSiteTemplate
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.BaseSiteTemplate
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: BaseSiteTemplate
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 740
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nThe Base SiteTemplate of the Provisioning Template\n"
+  example: []
+  syntax:
+    content: public string BaseSiteTemplate { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property BaseSiteTemplate As String
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.BaseSiteTemplate*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.TemplateCultureInfo
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.TemplateCultureInfo
+  id: TemplateCultureInfo
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: TemplateCultureInfo
+  nameWithType: ProvisioningTemplate.TemplateCultureInfo
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.TemplateCultureInfo
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TemplateCultureInfo
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 745
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nThe default CultureInfo of the Provisioning Template, used to format all input values, optional attribute.\n"
+  example: []
+  syntax:
+    content: public string TemplateCultureInfo { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property TemplateCultureInfo As String
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.TemplateCultureInfo*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Scope
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Scope
+  id: Scope
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: Scope
+  nameWithType: ProvisioningTemplate.Scope
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Scope
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Scope
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 750
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDeclares the target scope of the current Provisioning Template\n"
+  example: []
+  syntax:
+    content: public ProvisioningTemplateScope Scope { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.ProvisioningTemplateScope
+    content.vb: Public Property Scope As ProvisioningTemplateScope
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Scope*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Connector
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Connector
+  id: Connector
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: Connector
+  nameWithType: ProvisioningTemplate.Connector
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Connector
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Connector
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 755
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets the File Connector\n"
+  example: []
+  syntax:
+    content: public FileConnectorBase Connector { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+    content.vb: Public Property Connector As FileConnectorBase
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Connector*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.GetHashCode
+  commentId: M:PnP.Framework.Provisioning.Model.ProvisioningTemplate.GetHashCode
+  id: GetHashCode
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode()
+  nameWithType: ProvisioningTemplate.GetHashCode()
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.GetHashCode()
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetHashCode
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 774
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets the hash code\n"
+  example: []
+  syntax:
+    content: public override int GetHashCode()
+    return:
+      type: System.Int32
+      description: Returns HashCode
+    content.vb: Public Overrides Function GetHashCode As Integer
+  overridden: System.Object.GetHashCode
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.GetHashCode*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Equals(System.Object)
+  commentId: M:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Equals(System.Object)
+  id: Equals(System.Object)
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: Equals(Object)
+  nameWithType: ProvisioningTemplate.Equals(Object)
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Equals(System.Object)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Equals
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 822
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nCompares object with ProvisioningTemplate\n"
+  example: []
+  syntax:
+    content: public override bool Equals(object obj)
+    parameters:
+    - id: obj
+      type: System.Object
+      description: Object that represents ProvisioningTemplate
+    return:
+      type: System.Boolean
+      description: true if the current object is equal to the ProvisioningTemplate
+    content.vb: Public Overrides Function Equals(obj As Object) As Boolean
+  overridden: System.Object.Equals(System.Object)
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Equals*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Equals(PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+  commentId: M:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Equals(PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+  id: Equals(PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: Equals(ProvisioningTemplate)
+  nameWithType: ProvisioningTemplate.Equals(ProvisioningTemplate)
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Equals(PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Equals
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 838
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nCompares ProvisioningTemplate object based on ComposedLook, ContentTypes, CustomActions, SiteFeature, WebFeatures, Files, Id, Lists,\nPropertyBagEntries, Providers, Security, SiteFields, SitePolicy, Version, Pages, TermGroups, Workflows, AddIns, Publishing, Loaclizations,\nWebSettings, SiteWebhooks, ClientSidePages, Tenant, and SiteSettings properties.\n"
+  example: []
+  syntax:
+    content: public bool Equals(ProvisioningTemplate other)
+    parameters:
+    - id: other
+      type: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+      description: ProvisioningTemplate object
+    return:
+      type: System.Boolean
+      description: true if the ProvisioningTemplate object is equal to the current object; otherwise, false.
+    content.vb: Public Function Equals(other As ProvisioningTemplate) As Boolean
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Equals*
+  implements:
+  - System.IEquatable{PnP.Framework.Provisioning.Model.ProvisioningTemplate}.Equals(PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ToXML(PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  commentId: M:PnP.Framework.Provisioning.Model.ProvisioningTemplate.ToXML(PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  id: ToXML(PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  parent: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  langs:
+  - csharp
+  - vb
+  name: ToXML(ITemplateFormatter)
+  nameWithType: ProvisioningTemplate.ToXML(ITemplateFormatter)
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ToXML(PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ToXML
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningTemplate.cs
+    startLine: 893
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nSerializes a template to XML\n"
+  example: []
+  syntax:
+    content: public string ToXML(ITemplateFormatter formatter = null)
+    parameters:
+    - id: formatter
+      type: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+      description: ITemplateFormatter object
+    return:
+      type: System.String
+      description: Returns XML string for the given stream
+    content.vb: Public Function ToXML(formatter As ITemplateFormatter = Nothing) As String
+  overload: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ToXML*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: PnP.Framework.Provisioning.Model
+  commentId: N:PnP.Framework.Provisioning.Model
+  name: PnP.Framework.Provisioning.Model
+  nameWithType: PnP.Framework.Provisioning.Model
+  fullName: PnP.Framework.Provisioning.Model
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: PnP.Framework.Provisioning.Model.BaseHierarchyModel
+  commentId: T:PnP.Framework.Provisioning.Model.BaseHierarchyModel
+  parent: PnP.Framework.Provisioning.Model
+  name: BaseHierarchyModel
+  nameWithType: BaseHierarchyModel
+  fullName: PnP.Framework.Provisioning.Model.BaseHierarchyModel
+- uid: PnP.Framework.Provisioning.Model.IProvisioningHierarchyDescendant
+  commentId: T:PnP.Framework.Provisioning.Model.IProvisioningHierarchyDescendant
+  parent: PnP.Framework.Provisioning.Model
+  name: IProvisioningHierarchyDescendant
+  nameWithType: IProvisioningHierarchyDescendant
+  fullName: PnP.Framework.Provisioning.Model.IProvisioningHierarchyDescendant
+- uid: System.IEquatable{PnP.Framework.Provisioning.Model.ProvisioningTemplate}
+  commentId: T:System.IEquatable{PnP.Framework.Provisioning.Model.ProvisioningTemplate}
+  parent: System
+  definition: System.IEquatable`1
+  name: IEquatable<ProvisioningTemplate>
+  nameWithType: IEquatable<ProvisioningTemplate>
+  fullName: System.IEquatable<PnP.Framework.Provisioning.Model.ProvisioningTemplate>
+  nameWithType.vb: IEquatable(Of ProvisioningTemplate)
+  fullName.vb: System.IEquatable(Of PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+  name.vb: IEquatable(Of ProvisioningTemplate)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    nameWithType: IEquatable
+    fullName: System.IEquatable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    nameWithType: IEquatable
+    fullName: System.IEquatable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.BaseHierarchyModel.ParentHierarchy
+  commentId: P:PnP.Framework.Provisioning.Model.BaseHierarchyModel.ParentHierarchy
+  parent: PnP.Framework.Provisioning.Model.BaseHierarchyModel
+  name: ParentHierarchy
+  nameWithType: BaseHierarchyModel.ParentHierarchy
+  fullName: PnP.Framework.Provisioning.Model.BaseHierarchyModel.ParentHierarchy
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<ProvisioningTemplate>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<ProvisioningTemplate>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Model.ProvisioningTemplate>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of ProvisioningTemplate)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Model.ProvisioningTemplate)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of ProvisioningTemplate)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<ProvisioningTemplate>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<ProvisioningTemplate>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Model.ProvisioningTemplate>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of ProvisioningTemplate)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of ProvisioningTemplate)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Model.ProvisioningTemplate,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<ProvisioningTemplate, T>(Expression<Func<ProvisioningTemplate, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<ProvisioningTemplate, T>(Expression<Func<ProvisioningTemplate, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Model.ProvisioningTemplate, T>(System.Linq.Expressions.Expression<System.Func<PnP.Framework.Provisioning.Model.ProvisioningTemplate, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of ProvisioningTemplate, T)(Expression(Of Func(Of ProvisioningTemplate, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Model.ProvisioningTemplate, T)(System.Linq.Expressions.Expression(Of System.Func(Of PnP.Framework.Provisioning.Model.ProvisioningTemplate, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of ProvisioningTemplate, T)(Expression(Of Func(Of ProvisioningTemplate, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<ProvisioningTemplate, T>
+    nameWithType: ObjectExtensions.Set<ProvisioningTemplate, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Model.ProvisioningTemplate, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of ProvisioningTemplate, T)
+    nameWithType: ObjectExtensions.Set(Of ProvisioningTemplate, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Model.ProvisioningTemplate, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    nameWithType: IEquatable
+    fullName: System.IEquatable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    nameWithType: IEquatable
+    fullName: System.IEquatable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Providers*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Providers
+  name: Providers
+  nameWithType: ProvisioningTemplate.Providers
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Providers
+- uid: PnP.Framework.Provisioning.Model.ProviderCollection
+  commentId: T:PnP.Framework.Provisioning.Model.ProviderCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: ProviderCollection
+  nameWithType: ProviderCollection
+  fullName: PnP.Framework.Provisioning.Model.ProviderCollection
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SearchSettings*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.SearchSettings
+  name: SearchSettings
+  nameWithType: ProvisioningTemplate.SearchSettings
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SearchSettings
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.#ctor*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.#ctor
+  name: ProvisioningTemplate
+  nameWithType: ProvisioningTemplate.ProvisioningTemplate
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ProvisioningTemplate
+- uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  commentId: T:PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  parent: PnP.Framework.Provisioning.Connectors
+  name: FileConnectorBase
+  nameWithType: FileConnectorBase
+  fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+- uid: PnP.Framework.Provisioning.Connectors
+  commentId: N:PnP.Framework.Provisioning.Connectors
+  name: PnP.Framework.Provisioning.Connectors
+  nameWithType: PnP.Framework.Provisioning.Connectors
+  fullName: PnP.Framework.Provisioning.Connectors
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Parameters*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Parameters
+  name: Parameters
+  nameWithType: ProvisioningTemplate.Parameters
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Parameters
+- uid: System.Collections.Generic.Dictionary{System.String,System.String}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  name: Dictionary<String, String>
+  nameWithType: Dictionary<String, String>
+  fullName: System.Collections.Generic.Dictionary<System.String, System.String>
+  nameWithType.vb: Dictionary(Of String, String)
+  fullName.vb: System.Collections.Generic.Dictionary(Of System.String, System.String)
+  name.vb: Dictionary(Of String, String)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Localizations*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Localizations
+  name: Localizations
+  nameWithType: ProvisioningTemplate.Localizations
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Localizations
+- uid: PnP.Framework.Provisioning.Model.LocalizationCollection
+  commentId: T:PnP.Framework.Provisioning.Model.LocalizationCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: LocalizationCollection
+  nameWithType: LocalizationCollection
+  fullName: PnP.Framework.Provisioning.Model.LocalizationCollection
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Id*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Id
+  name: Id
+  nameWithType: ProvisioningTemplate.Id
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Id
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Version*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Version
+  name: Version
+  nameWithType: ProvisioningTemplate.Version
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Version
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  name: Double
+  nameWithType: Double
+  fullName: System.Double
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SitePolicy*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.SitePolicy
+  name: SitePolicy
+  nameWithType: ProvisioningTemplate.SitePolicy
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SitePolicy
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.PropertyBagEntries*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.PropertyBagEntries
+  name: PropertyBagEntries
+  nameWithType: ProvisioningTemplate.PropertyBagEntries
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.PropertyBagEntries
+- uid: PnP.Framework.Provisioning.Model.PropertyBagEntryCollection
+  commentId: T:PnP.Framework.Provisioning.Model.PropertyBagEntryCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: PropertyBagEntryCollection
+  nameWithType: PropertyBagEntryCollection
+  fullName: PnP.Framework.Provisioning.Model.PropertyBagEntryCollection
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Security*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Security
+  name: Security
+  nameWithType: ProvisioningTemplate.Security
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Security
+- uid: PnP.Framework.Provisioning.Model.SiteSecurity
+  commentId: T:PnP.Framework.Provisioning.Model.SiteSecurity
+  parent: PnP.Framework.Provisioning.Model
+  name: SiteSecurity
+  nameWithType: SiteSecurity
+  fullName: PnP.Framework.Provisioning.Model.SiteSecurity
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Navigation*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Navigation
+  name: Navigation
+  nameWithType: ProvisioningTemplate.Navigation
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Navigation
+- uid: PnP.Framework.Provisioning.Model.Navigation
+  commentId: T:PnP.Framework.Provisioning.Model.Navigation
+  parent: PnP.Framework.Provisioning.Model
+  name: Navigation
+  nameWithType: Navigation
+  fullName: PnP.Framework.Provisioning.Model.Navigation
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteFields*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteFields
+  name: SiteFields
+  nameWithType: ProvisioningTemplate.SiteFields
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteFields
+- uid: PnP.Framework.Provisioning.Model.FieldCollection
+  commentId: T:PnP.Framework.Provisioning.Model.FieldCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: FieldCollection
+  nameWithType: FieldCollection
+  fullName: PnP.Framework.Provisioning.Model.FieldCollection
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ContentTypes*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.ContentTypes
+  name: ContentTypes
+  nameWithType: ProvisioningTemplate.ContentTypes
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ContentTypes
+- uid: PnP.Framework.Provisioning.Model.ContentTypeCollection
+  commentId: T:PnP.Framework.Provisioning.Model.ContentTypeCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: ContentTypeCollection
+  nameWithType: ContentTypeCollection
+  fullName: PnP.Framework.Provisioning.Model.ContentTypeCollection
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Lists*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Lists
+  name: Lists
+  nameWithType: ProvisioningTemplate.Lists
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Lists
+- uid: PnP.Framework.Provisioning.Model.ListInstanceCollection
+  commentId: T:PnP.Framework.Provisioning.Model.ListInstanceCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: ListInstanceCollection
+  nameWithType: ListInstanceCollection
+  fullName: PnP.Framework.Provisioning.Model.ListInstanceCollection
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Features*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Features
+  name: Features
+  nameWithType: ProvisioningTemplate.Features
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Features
+- uid: PnP.Framework.Provisioning.Model.Features
+  commentId: T:PnP.Framework.Provisioning.Model.Features
+  parent: PnP.Framework.Provisioning.Model
+  name: Features
+  nameWithType: Features
+  fullName: PnP.Framework.Provisioning.Model.Features
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.CustomActions*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.CustomActions
+  name: CustomActions
+  nameWithType: ProvisioningTemplate.CustomActions
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.CustomActions
+- uid: PnP.Framework.Provisioning.Model.CustomActions
+  commentId: T:PnP.Framework.Provisioning.Model.CustomActions
+  parent: PnP.Framework.Provisioning.Model
+  name: CustomActions
+  nameWithType: CustomActions
+  fullName: PnP.Framework.Provisioning.Model.CustomActions
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Files*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Files
+  name: Files
+  nameWithType: ProvisioningTemplate.Files
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Files
+- uid: PnP.Framework.Provisioning.Model.FileCollection
+  commentId: T:PnP.Framework.Provisioning.Model.FileCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: FileCollection
+  nameWithType: FileCollection
+  fullName: PnP.Framework.Provisioning.Model.FileCollection
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Directories*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Directories
+  name: Directories
+  nameWithType: ProvisioningTemplate.Directories
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Directories
+- uid: PnP.Framework.Provisioning.Model.DirectoryCollection
+  commentId: T:PnP.Framework.Provisioning.Model.DirectoryCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: DirectoryCollection
+  nameWithType: DirectoryCollection
+  fullName: PnP.Framework.Provisioning.Model.DirectoryCollection
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ComposedLook*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.ComposedLook
+  name: ComposedLook
+  nameWithType: ProvisioningTemplate.ComposedLook
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ComposedLook
+- uid: PnP.Framework.Provisioning.Model.ComposedLook
+  commentId: T:PnP.Framework.Provisioning.Model.ComposedLook
+  parent: PnP.Framework.Provisioning.Model
+  name: ComposedLook
+  nameWithType: ComposedLook
+  fullName: PnP.Framework.Provisioning.Model.ComposedLook
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ExtensibilityHandlers*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.ExtensibilityHandlers
+  name: ExtensibilityHandlers
+  nameWithType: ProvisioningTemplate.ExtensibilityHandlers
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ExtensibilityHandlers
+- uid: PnP.Framework.Provisioning.Model.ExtensibilityHandlerCollection
+  commentId: T:PnP.Framework.Provisioning.Model.ExtensibilityHandlerCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: ExtensibilityHandlerCollection
+  nameWithType: ExtensibilityHandlerCollection
+  fullName: PnP.Framework.Provisioning.Model.ExtensibilityHandlerCollection
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Pages*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Pages
+  name: Pages
+  nameWithType: ProvisioningTemplate.Pages
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Pages
+- uid: PnP.Framework.Provisioning.Model.PageCollection
+  commentId: T:PnP.Framework.Provisioning.Model.PageCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: PageCollection
+  nameWithType: PageCollection
+  fullName: PnP.Framework.Provisioning.Model.PageCollection
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.TermGroups*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.TermGroups
+  name: TermGroups
+  nameWithType: ProvisioningTemplate.TermGroups
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.TermGroups
+- uid: PnP.Framework.Provisioning.Model.TermGroupCollection
+  commentId: T:PnP.Framework.Provisioning.Model.TermGroupCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: TermGroupCollection
+  nameWithType: TermGroupCollection
+  fullName: PnP.Framework.Provisioning.Model.TermGroupCollection
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.WebSettings*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.WebSettings
+  name: WebSettings
+  nameWithType: ProvisioningTemplate.WebSettings
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.WebSettings
+- uid: PnP.Framework.Provisioning.Model.WebSettings
+  commentId: T:PnP.Framework.Provisioning.Model.WebSettings
+  parent: PnP.Framework.Provisioning.Model
+  name: WebSettings
+  nameWithType: WebSettings
+  fullName: PnP.Framework.Provisioning.Model.WebSettings
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.RegionalSettings*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.RegionalSettings
+  name: RegionalSettings
+  nameWithType: ProvisioningTemplate.RegionalSettings
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.RegionalSettings
+- uid: PnP.Framework.Provisioning.Model.RegionalSettings
+  commentId: T:PnP.Framework.Provisioning.Model.RegionalSettings
+  parent: PnP.Framework.Provisioning.Model
+  name: RegionalSettings
+  nameWithType: RegionalSettings
+  fullName: PnP.Framework.Provisioning.Model.RegionalSettings
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SupportedUILanguages*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.SupportedUILanguages
+  name: SupportedUILanguages
+  nameWithType: ProvisioningTemplate.SupportedUILanguages
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SupportedUILanguages
+- uid: PnP.Framework.Provisioning.Model.SupportedUILanguageCollection
+  commentId: T:PnP.Framework.Provisioning.Model.SupportedUILanguageCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: SupportedUILanguageCollection
+  nameWithType: SupportedUILanguageCollection
+  fullName: PnP.Framework.Provisioning.Model.SupportedUILanguageCollection
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.AuditSettings*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.AuditSettings
+  name: AuditSettings
+  nameWithType: ProvisioningTemplate.AuditSettings
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.AuditSettings
+- uid: PnP.Framework.Provisioning.Model.AuditSettings
+  commentId: T:PnP.Framework.Provisioning.Model.AuditSettings
+  parent: PnP.Framework.Provisioning.Model
+  name: AuditSettings
+  nameWithType: AuditSettings
+  fullName: PnP.Framework.Provisioning.Model.AuditSettings
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Workflows*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Workflows
+  name: Workflows
+  nameWithType: ProvisioningTemplate.Workflows
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Workflows
+- uid: PnP.Framework.Provisioning.Model.Workflows
+  commentId: T:PnP.Framework.Provisioning.Model.Workflows
+  parent: PnP.Framework.Provisioning.Model
+  name: Workflows
+  nameWithType: Workflows
+  fullName: PnP.Framework.Provisioning.Model.Workflows
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteSearchSettings*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteSearchSettings
+  name: SiteSearchSettings
+  nameWithType: ProvisioningTemplate.SiteSearchSettings
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteSearchSettings
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.WebSearchSettings*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.WebSearchSettings
+  name: WebSearchSettings
+  nameWithType: ProvisioningTemplate.WebSearchSettings
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.WebSearchSettings
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.AddIns*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.AddIns
+  name: AddIns
+  nameWithType: ProvisioningTemplate.AddIns
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.AddIns
+- uid: PnP.Framework.Provisioning.Model.AddInCollection
+  commentId: T:PnP.Framework.Provisioning.Model.AddInCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: AddInCollection
+  nameWithType: AddInCollection
+  fullName: PnP.Framework.Provisioning.Model.AddInCollection
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Publishing*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Publishing
+  name: Publishing
+  nameWithType: ProvisioningTemplate.Publishing
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Publishing
+- uid: PnP.Framework.Provisioning.Model.Publishing
+  commentId: T:PnP.Framework.Provisioning.Model.Publishing
+  parent: PnP.Framework.Provisioning.Model
+  name: Publishing
+  nameWithType: Publishing
+  fullName: PnP.Framework.Provisioning.Model.Publishing
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteWebhooks*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteWebhooks
+  name: SiteWebhooks
+  nameWithType: ProvisioningTemplate.SiteWebhooks
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteWebhooks
+- uid: PnP.Framework.Provisioning.Model.SiteWebhookCollection
+  commentId: T:PnP.Framework.Provisioning.Model.SiteWebhookCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: SiteWebhookCollection
+  nameWithType: SiteWebhookCollection
+  fullName: PnP.Framework.Provisioning.Model.SiteWebhookCollection
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ClientSidePages*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.ClientSidePages
+  name: ClientSidePages
+  nameWithType: ProvisioningTemplate.ClientSidePages
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ClientSidePages
+- uid: PnP.Framework.Provisioning.Model.ClientSidePageCollection
+  commentId: T:PnP.Framework.Provisioning.Model.ClientSidePageCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: ClientSidePageCollection
+  nameWithType: ClientSidePageCollection
+  fullName: PnP.Framework.Provisioning.Model.ClientSidePageCollection
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Properties*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Properties
+  name: Properties
+  nameWithType: ProvisioningTemplate.Properties
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Properties
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Tenant*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Tenant
+  name: Tenant
+  nameWithType: ProvisioningTemplate.Tenant
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Tenant
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTenant
+  commentId: T:PnP.Framework.Provisioning.Model.ProvisioningTenant
+  parent: PnP.Framework.Provisioning.Model
+  name: ProvisioningTenant
+  nameWithType: ProvisioningTenant
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTenant
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ApplicationLifecycleManagement*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.ApplicationLifecycleManagement
+  name: ApplicationLifecycleManagement
+  nameWithType: ProvisioningTemplate.ApplicationLifecycleManagement
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ApplicationLifecycleManagement
+- uid: PnP.Framework.Provisioning.Model.ApplicationLifecycleManagement
+  commentId: T:PnP.Framework.Provisioning.Model.ApplicationLifecycleManagement
+  parent: PnP.Framework.Provisioning.Model
+  name: ApplicationLifecycleManagement
+  nameWithType: ApplicationLifecycleManagement
+  fullName: PnP.Framework.Provisioning.Model.ApplicationLifecycleManagement
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Header*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Header
+  name: Header
+  nameWithType: ProvisioningTemplate.Header
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Header
+- uid: PnP.Framework.Provisioning.Model.SiteHeader
+  commentId: T:PnP.Framework.Provisioning.Model.SiteHeader
+  parent: PnP.Framework.Provisioning.Model
+  name: SiteHeader
+  nameWithType: SiteHeader
+  fullName: PnP.Framework.Provisioning.Model.SiteHeader
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Footer*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Footer
+  name: Footer
+  nameWithType: ProvisioningTemplate.Footer
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Footer
+- uid: PnP.Framework.Provisioning.Model.SiteFooter
+  commentId: T:PnP.Framework.Provisioning.Model.SiteFooter
+  parent: PnP.Framework.Provisioning.Model
+  name: SiteFooter
+  nameWithType: SiteFooter
+  fullName: PnP.Framework.Provisioning.Model.SiteFooter
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ProvisioningTemplateWebhooks*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.ProvisioningTemplateWebhooks
+  name: ProvisioningTemplateWebhooks
+  nameWithType: ProvisioningTemplate.ProvisioningTemplateWebhooks
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ProvisioningTemplateWebhooks
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplateWebhookCollection
+  commentId: T:PnP.Framework.Provisioning.Model.ProvisioningTemplateWebhookCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: ProvisioningTemplateWebhookCollection
+  nameWithType: ProvisioningTemplateWebhookCollection
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplateWebhookCollection
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Theme*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Theme
+  name: Theme
+  nameWithType: ProvisioningTemplate.Theme
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Theme
+- uid: PnP.Framework.Provisioning.Model.Theme
+  commentId: T:PnP.Framework.Provisioning.Model.Theme
+  parent: PnP.Framework.Provisioning.Model
+  name: Theme
+  nameWithType: Theme
+  fullName: PnP.Framework.Provisioning.Model.Theme
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteSettings*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteSettings
+  name: SiteSettings
+  nameWithType: ProvisioningTemplate.SiteSettings
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.SiteSettings
+- uid: PnP.Framework.Provisioning.Model.SiteSettings
+  commentId: T:PnP.Framework.Provisioning.Model.SiteSettings
+  parent: PnP.Framework.Provisioning.Model
+  name: SiteSettings
+  nameWithType: SiteSettings
+  fullName: PnP.Framework.Provisioning.Model.SiteSettings
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ImagePreviewUrl*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.ImagePreviewUrl
+  name: ImagePreviewUrl
+  nameWithType: ProvisioningTemplate.ImagePreviewUrl
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ImagePreviewUrl
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.DisplayName*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.DisplayName
+  name: DisplayName
+  nameWithType: ProvisioningTemplate.DisplayName
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.DisplayName
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Description*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Description
+  name: Description
+  nameWithType: ProvisioningTemplate.Description
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Description
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.BaseSiteTemplate*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.BaseSiteTemplate
+  name: BaseSiteTemplate
+  nameWithType: ProvisioningTemplate.BaseSiteTemplate
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.BaseSiteTemplate
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.TemplateCultureInfo*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.TemplateCultureInfo
+  name: TemplateCultureInfo
+  nameWithType: ProvisioningTemplate.TemplateCultureInfo
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.TemplateCultureInfo
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Scope*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Scope
+  name: Scope
+  nameWithType: ProvisioningTemplate.Scope
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Scope
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplateScope
+  commentId: T:PnP.Framework.Provisioning.Model.ProvisioningTemplateScope
+  parent: PnP.Framework.Provisioning.Model
+  name: ProvisioningTemplateScope
+  nameWithType: ProvisioningTemplateScope
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplateScope
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Connector*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Connector
+  name: Connector
+  nameWithType: ProvisioningTemplate.Connector
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Connector
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.GetHashCode*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.GetHashCode
+  name: GetHashCode
+  nameWithType: ProvisioningTemplate.GetHashCode
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.GetHashCode
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Equals*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.Equals
+  name: Equals
+  nameWithType: ProvisioningTemplate.Equals
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.Equals
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.IEquatable{PnP.Framework.Provisioning.Model.ProvisioningTemplate}.Equals(PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+  commentId: M:System.IEquatable{PnP.Framework.Provisioning.Model.ProvisioningTemplate}.Equals(PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+  parent: System.IEquatable{PnP.Framework.Provisioning.Model.ProvisioningTemplate}
+  definition: System.IEquatable`1.Equals(`0)
+  name: Equals(ProvisioningTemplate)
+  nameWithType: IEquatable<ProvisioningTemplate>.Equals(ProvisioningTemplate)
+  fullName: System.IEquatable<PnP.Framework.Provisioning.Model.ProvisioningTemplate>.Equals(PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+  nameWithType.vb: IEquatable(Of ProvisioningTemplate).Equals(ProvisioningTemplate)
+  fullName.vb: System.IEquatable(Of PnP.Framework.Provisioning.Model.ProvisioningTemplate).Equals(PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+  spec.csharp:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    nameWithType: IEquatable<ProvisioningTemplate>.Equals
+    fullName: System.IEquatable<PnP.Framework.Provisioning.Model.ProvisioningTemplate>.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    nameWithType: IEquatable(Of ProvisioningTemplate).Equals
+    fullName: System.IEquatable(Of PnP.Framework.Provisioning.Model.ProvisioningTemplate).Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  commentId: T:PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  parent: PnP.Framework.Provisioning.Model
+  name: ProvisioningTemplate
+  nameWithType: ProvisioningTemplate
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+- uid: System.IEquatable`1.Equals(`0)
+  commentId: M:System.IEquatable`1.Equals(`0)
+  isExternal: true
+  name: Equals(T)
+  nameWithType: IEquatable<T>.Equals(T)
+  fullName: System.IEquatable<T>.Equals(T)
+  nameWithType.vb: IEquatable(Of T).Equals(T)
+  fullName.vb: System.IEquatable(Of T).Equals(T)
+  spec.csharp:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    nameWithType: IEquatable<T>.Equals
+    fullName: System.IEquatable<T>.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    nameWithType: IEquatable(Of T).Equals
+    fullName: System.IEquatable(Of T).Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ToXML*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningTemplate.ToXML
+  name: ToXML
+  nameWithType: ProvisioningTemplate.ToXML
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate.ToXML
+- uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  commentId: T:PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  parent: PnP.Framework.Provisioning.Providers
+  name: ITemplateFormatter
+  nameWithType: ITemplateFormatter
+  fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+- uid: PnP.Framework.Provisioning.Providers
+  commentId: N:PnP.Framework.Provisioning.Providers
+  name: PnP.Framework.Provisioning.Providers
+  nameWithType: PnP.Framework.Provisioning.Providers
+  fullName: PnP.Framework.Provisioning.Providers

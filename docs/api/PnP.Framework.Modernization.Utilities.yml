@@ -1,0 +1,22 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Modernization.Utilities
+  commentId: N:PnP.Framework.Modernization.Utilities
+  id: PnP.Framework.Modernization.Utilities
+  children:
+  - PnP.Framework.Modernization.Utilities.FileManager
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Modernization.Utilities
+  nameWithType: PnP.Framework.Modernization.Utilities
+  fullName: PnP.Framework.Modernization.Utilities
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Modernization.Utilities.FileManager
+  commentId: T:PnP.Framework.Modernization.Utilities.FileManager
+  name: FileManager
+  nameWithType: FileManager
+  fullName: PnP.Framework.Modernization.Utilities.FileManager

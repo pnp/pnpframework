@@ -1,0 +1,1849 @@
+### YamlMime:ManagedReference
+items:
+- uid: Microsoft.SharePoint.Client.NavigationExtensions
+  commentId: T:Microsoft.SharePoint.Client.NavigationExtensions
+  id: NavigationExtensions
+  parent: Microsoft.SharePoint.Client
+  children:
+  - Microsoft.SharePoint.Client.NavigationExtensions.AddCustomAction(Microsoft.SharePoint.Client.Site,PnP.Framework.Entities.CustomActionEntity)
+  - Microsoft.SharePoint.Client.NavigationExtensions.AddCustomAction(Microsoft.SharePoint.Client.Web,PnP.Framework.Entities.CustomActionEntity)
+  - Microsoft.SharePoint.Client.NavigationExtensions.AddNavigationNode(Microsoft.SharePoint.Client.Web,System.String,System.Uri,System.String,PnP.Framework.Enums.NavigationType,System.Boolean,System.Boolean,System.String)
+  - Microsoft.SharePoint.Client.NavigationExtensions.CustomActionExists(Microsoft.SharePoint.Client.Site,System.String)
+  - Microsoft.SharePoint.Client.NavigationExtensions.CustomActionExists(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.NavigationExtensions.DeleteAllNavigationNodes(Microsoft.SharePoint.Client.Web,PnP.Framework.Enums.NavigationType)
+  - Microsoft.SharePoint.Client.NavigationExtensions.DeleteCustomAction(Microsoft.SharePoint.Client.Site,System.Guid)
+  - Microsoft.SharePoint.Client.NavigationExtensions.DeleteCustomAction(Microsoft.SharePoint.Client.Web,System.Guid)
+  - Microsoft.SharePoint.Client.NavigationExtensions.DeleteNavigationNode(Microsoft.SharePoint.Client.Web,System.String,System.String,PnP.Framework.Enums.NavigationType)
+  - Microsoft.SharePoint.Client.NavigationExtensions.GetCustomActions(Microsoft.SharePoint.Client.Site,System.Linq.Expressions.Expression{System.Func{Microsoft.SharePoint.Client.UserCustomAction,System.Object}}[])
+  - Microsoft.SharePoint.Client.NavigationExtensions.GetCustomActions(Microsoft.SharePoint.Client.Web,System.Linq.Expressions.Expression{System.Func{Microsoft.SharePoint.Client.UserCustomAction,System.Object}}[])
+  - Microsoft.SharePoint.Client.NavigationExtensions.GetEditableNavigationTermSet(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.ManagedNavigationKind)
+  - Microsoft.SharePoint.Client.NavigationExtensions.GetFooterLogoUrl(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.NavigationExtensions.GetFooterTitle(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.NavigationExtensions.GetNavigationSettings(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.NavigationExtensions.IsManagedNavigationEnabled(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.ManagedNavigationKind)
+  - Microsoft.SharePoint.Client.NavigationExtensions.LoadFooterNavigation(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.NavigationExtensions.LoadSearchNavigation(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.NavigationExtensions.RemoveFooterLogoUrl(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.NavigationExtensions.SetFooterLogoUrl(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.NavigationExtensions.SetFooterTitle(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.NavigationExtensions.UpdateNavigationInheritance(Microsoft.SharePoint.Client.Web,System.Boolean)
+  - Microsoft.SharePoint.Client.NavigationExtensions.UpdateNavigationSettings(Microsoft.SharePoint.Client.Web,PnP.Framework.Entities.AreaNavigationEntity)
+  langs:
+  - csharp
+  - vb
+  name: NavigationExtensions
+  nameWithType: NavigationExtensions
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: NavigationExtensions
+    path: ../src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+    startLine: 20
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nThis class holds navigation related methods\n"
+  example: []
+  syntax:
+    content: public static class NavigationExtensions
+    content.vb: Public Module NavigationExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.GetNavigationSettings(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.NavigationExtensions.GetNavigationSettings(Microsoft.SharePoint.Client.Web)
+  id: GetNavigationSettings(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.NavigationExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetNavigationSettings(Web)
+  nameWithType: NavigationExtensions.GetNavigationSettings(Web)
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.GetNavigationSettings(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetNavigationSettings
+    path: ../src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+    startLine: 40
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns the navigation settings for the selected web\n"
+  example: []
+  syntax:
+    content: public static AreaNavigationEntity GetNavigationSettings(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to process
+    return:
+      type: PnP.Framework.Entities.AreaNavigationEntity
+      description: Returns AreaNavigationEntity settings
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetNavigationSettings(web As Web) As AreaNavigationEntity
+  overload: Microsoft.SharePoint.Client.NavigationExtensions.GetNavigationSettings*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.UpdateNavigationSettings(Microsoft.SharePoint.Client.Web,PnP.Framework.Entities.AreaNavigationEntity)
+  commentId: M:Microsoft.SharePoint.Client.NavigationExtensions.UpdateNavigationSettings(Microsoft.SharePoint.Client.Web,PnP.Framework.Entities.AreaNavigationEntity)
+  id: UpdateNavigationSettings(Microsoft.SharePoint.Client.Web,PnP.Framework.Entities.AreaNavigationEntity)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.NavigationExtensions
+  langs:
+  - csharp
+  - vb
+  name: UpdateNavigationSettings(Web, AreaNavigationEntity)
+  nameWithType: NavigationExtensions.UpdateNavigationSettings(Web, AreaNavigationEntity)
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.UpdateNavigationSettings(Microsoft.SharePoint.Client.Web, PnP.Framework.Entities.AreaNavigationEntity)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UpdateNavigationSettings
+    path: ../src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+    startLine: 208
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nUpdates navigation settings for the current web\n"
+  example: []
+  syntax:
+    content: public static void UpdateNavigationSettings(this Web web, AreaNavigationEntity navigationSettings)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to process
+    - id: navigationSettings
+      type: PnP.Framework.Entities.AreaNavigationEntity
+      description: Navigation settings to update
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub UpdateNavigationSettings(web As Web, navigationSettings As AreaNavigationEntity)
+  overload: Microsoft.SharePoint.Client.NavigationExtensions.UpdateNavigationSettings*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.GetEditableNavigationTermSet(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.ManagedNavigationKind)
+  commentId: M:Microsoft.SharePoint.Client.NavigationExtensions.GetEditableNavigationTermSet(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.ManagedNavigationKind)
+  id: GetEditableNavigationTermSet(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.ManagedNavigationKind)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.NavigationExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetEditableNavigationTermSet(Web, ManagedNavigationKind)
+  nameWithType: NavigationExtensions.GetEditableNavigationTermSet(Web, ManagedNavigationKind)
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.GetEditableNavigationTermSet(Microsoft.SharePoint.Client.Web, Microsoft.SharePoint.Client.ManagedNavigationKind)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetEditableNavigationTermSet
+    path: ../src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+    startLine: 432
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns an editable version of the Global Navigation TermSet for a web site\n"
+  example: []
+  syntax:
+    content: public static NavigationTermSet GetEditableNavigationTermSet(this Web web, ManagedNavigationKind navigationKind)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The target web.
+    - id: navigationKind
+      type: Microsoft.SharePoint.Client.ManagedNavigationKind
+      description: Declares whether to look for Current or Global Navigation
+    return:
+      type: Microsoft.SharePoint.Client.Publishing.Navigation.NavigationTermSet
+      description: The editable Global Navigation TermSet
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetEditableNavigationTermSet(web As Web, navigationKind As ManagedNavigationKind) As NavigationTermSet
+  overload: Microsoft.SharePoint.Client.NavigationExtensions.GetEditableNavigationTermSet*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.IsManagedNavigationEnabled(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.ManagedNavigationKind)
+  commentId: M:Microsoft.SharePoint.Client.NavigationExtensions.IsManagedNavigationEnabled(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.ManagedNavigationKind)
+  id: IsManagedNavigationEnabled(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.ManagedNavigationKind)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.NavigationExtensions
+  langs:
+  - csharp
+  - vb
+  name: IsManagedNavigationEnabled(Web, ManagedNavigationKind)
+  nameWithType: NavigationExtensions.IsManagedNavigationEnabled(Web, ManagedNavigationKind)
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.IsManagedNavigationEnabled(Microsoft.SharePoint.Client.Web, Microsoft.SharePoint.Client.ManagedNavigationKind)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsManagedNavigationEnabled
+    path: ../src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+    startLine: 458
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDetermines whether the current Web has the managed navigation enabled\n"
+  example: []
+  syntax:
+    content: public static bool IsManagedNavigationEnabled(this Web web, ManagedNavigationKind navigationKind)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The target web.
+    - id: navigationKind
+      type: Microsoft.SharePoint.Client.ManagedNavigationKind
+      description: The kind of navigation (Current or Global).
+    return:
+      type: System.Boolean
+      description: A boolean result of the test.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function IsManagedNavigationEnabled(web As Web, navigationKind As ManagedNavigationKind) As Boolean
+  overload: Microsoft.SharePoint.Client.NavigationExtensions.IsManagedNavigationEnabled*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.AddNavigationNode(Microsoft.SharePoint.Client.Web,System.String,System.Uri,System.String,PnP.Framework.Enums.NavigationType,System.Boolean,System.Boolean,System.String)
+  commentId: M:Microsoft.SharePoint.Client.NavigationExtensions.AddNavigationNode(Microsoft.SharePoint.Client.Web,System.String,System.Uri,System.String,PnP.Framework.Enums.NavigationType,System.Boolean,System.Boolean,System.String)
+  id: AddNavigationNode(Microsoft.SharePoint.Client.Web,System.String,System.Uri,System.String,PnP.Framework.Enums.NavigationType,System.Boolean,System.Boolean,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.NavigationExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddNavigationNode(Web, String, Uri, String, NavigationType, Boolean, Boolean, String)
+  nameWithType: NavigationExtensions.AddNavigationNode(Web, String, Uri, String, NavigationType, Boolean, Boolean, String)
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.AddNavigationNode(Microsoft.SharePoint.Client.Web, System.String, System.Uri, System.String, PnP.Framework.Enums.NavigationType, System.Boolean, System.Boolean, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddNavigationNode
+    path: ../src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+    startLine: 530
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdd a node to quick launch, top navigation bar or search navigation. The node will be added as the last node in the\ncollection.\n"
+  example: []
+  syntax:
+    content: public static NavigationNode AddNavigationNode(this Web web, string nodeTitle, Uri nodeUri, string parentNodeTitle, NavigationType navigationType, bool isExternal = false, bool asLastNode = true, string l1ParentNodeTitle = null)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: nodeTitle
+      type: System.String
+      description: the title of node to add
+    - id: nodeUri
+      type: System.Uri
+      description: the URL of node to add
+    - id: parentNodeTitle
+      type: System.String
+      description: if string.Empty, then will add this node as top level node. Contains the title of the immediate parent node, for third level nodes, providing <code data-dev-comment-type="paramref" class="paramref">l1ParentNodeTitle</code> is required.
+    - id: navigationType
+      type: PnP.Framework.Enums.NavigationType
+      description: the type of navigation, quick launch, top navigation or search navigation
+    - id: isExternal
+      type: System.Boolean
+      description: true if the link is an external link
+    - id: asLastNode
+      type: System.Boolean
+      description: true if the link should be added as the last node of the collection
+    - id: l1ParentNodeTitle
+      type: System.String
+      description: title of the first level parent, if this node is a third level navigation node
+    return:
+      type: Microsoft.SharePoint.Client.NavigationNode
+      description: Newly added NavigationNode
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddNavigationNode(web As Web, nodeTitle As String, nodeUri As Uri, parentNodeTitle As String, navigationType As NavigationType, isExternal As Boolean = False, asLastNode As Boolean = True, l1ParentNodeTitle As String = Nothing) As NavigationNode
+  overload: Microsoft.SharePoint.Client.NavigationExtensions.AddNavigationNode*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.DeleteNavigationNode(Microsoft.SharePoint.Client.Web,System.String,System.String,PnP.Framework.Enums.NavigationType)
+  commentId: M:Microsoft.SharePoint.Client.NavigationExtensions.DeleteNavigationNode(Microsoft.SharePoint.Client.Web,System.String,System.String,PnP.Framework.Enums.NavigationType)
+  id: DeleteNavigationNode(Microsoft.SharePoint.Client.Web,System.String,System.String,PnP.Framework.Enums.NavigationType)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.NavigationExtensions
+  langs:
+  - csharp
+  - vb
+  name: DeleteNavigationNode(Web, String, String, NavigationType)
+  nameWithType: NavigationExtensions.DeleteNavigationNode(Web, String, String, NavigationType)
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.DeleteNavigationNode(Microsoft.SharePoint.Client.Web, System.String, System.String, PnP.Framework.Enums.NavigationType)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeleteNavigationNode
+    path: ../src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+    startLine: 617
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDeletes a navigation node from the quickLaunch or top navigation bar\n"
+  example: []
+  syntax:
+    content: public static void DeleteNavigationNode(this Web web, string nodeTitle, string parentNodeTitle, NavigationType navigationType)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: nodeTitle
+      type: System.String
+      description: the title of node to delete
+    - id: parentNodeTitle
+      type: System.String
+      description: if string.Empty, then will delete this node as top level node
+    - id: navigationType
+      type: PnP.Framework.Enums.NavigationType
+      description: the type of navigation, quick launch, top navigation or search navigation
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub DeleteNavigationNode(web As Web, nodeTitle As String, parentNodeTitle As String, navigationType As NavigationType)
+  overload: Microsoft.SharePoint.Client.NavigationExtensions.DeleteNavigationNode*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.DeleteAllNavigationNodes(Microsoft.SharePoint.Client.Web,PnP.Framework.Enums.NavigationType)
+  commentId: M:Microsoft.SharePoint.Client.NavigationExtensions.DeleteAllNavigationNodes(Microsoft.SharePoint.Client.Web,PnP.Framework.Enums.NavigationType)
+  id: DeleteAllNavigationNodes(Microsoft.SharePoint.Client.Web,PnP.Framework.Enums.NavigationType)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.NavigationExtensions
+  langs:
+  - csharp
+  - vb
+  name: DeleteAllNavigationNodes(Web, NavigationType)
+  nameWithType: NavigationExtensions.DeleteAllNavigationNodes(Web, NavigationType)
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.DeleteAllNavigationNodes(Microsoft.SharePoint.Client.Web, PnP.Framework.Enums.NavigationType)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeleteAllNavigationNodes
+    path: ../src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+    startLine: 685
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDeletes all Navigation Nodes from a given navigation\n"
+  example: []
+  syntax:
+    content: public static void DeleteAllNavigationNodes(this Web web, NavigationType navigationType)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: navigationType
+      type: PnP.Framework.Enums.NavigationType
+      description: The type of navigation to support
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub DeleteAllNavigationNodes(web As Web, navigationType As NavigationType)
+  overload: Microsoft.SharePoint.Client.NavigationExtensions.DeleteAllNavigationNodes*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.UpdateNavigationInheritance(Microsoft.SharePoint.Client.Web,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.NavigationExtensions.UpdateNavigationInheritance(Microsoft.SharePoint.Client.Web,System.Boolean)
+  id: UpdateNavigationInheritance(Microsoft.SharePoint.Client.Web,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.NavigationExtensions
+  langs:
+  - csharp
+  - vb
+  name: UpdateNavigationInheritance(Web, Boolean)
+  nameWithType: NavigationExtensions.UpdateNavigationInheritance(Web, Boolean)
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.UpdateNavigationInheritance(Microsoft.SharePoint.Client.Web, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UpdateNavigationInheritance
+    path: ../src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+    startLine: 738
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nUpdates the navigation inheritance setting\n"
+  example: []
+  syntax:
+    content: public static void UpdateNavigationInheritance(this Web web, bool inheritNavigation)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: inheritNavigation
+      type: System.Boolean
+      description: boolean indicating if navigation inheritance is needed or not
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub UpdateNavigationInheritance(web As Web, inheritNavigation As Boolean)
+  overload: Microsoft.SharePoint.Client.NavigationExtensions.UpdateNavigationInheritance*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.LoadSearchNavigation(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.NavigationExtensions.LoadSearchNavigation(Microsoft.SharePoint.Client.Web)
+  id: LoadSearchNavigation(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.NavigationExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadSearchNavigation(Web)
+  nameWithType: NavigationExtensions.LoadSearchNavigation(Web)
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.LoadSearchNavigation(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: LoadSearchNavigation
+    path: ../src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+    startLine: 750
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nLoads the search navigation nodes\n"
+  example: []
+  syntax:
+    content: public static NavigationNodeCollection LoadSearchNavigation(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    return:
+      type: Microsoft.SharePoint.Client.NavigationNodeCollection
+      description: Collection of NavigationNode instances
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function LoadSearchNavigation(web As Web) As NavigationNodeCollection
+  overload: Microsoft.SharePoint.Client.NavigationExtensions.LoadSearchNavigation*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.LoadFooterNavigation(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.NavigationExtensions.LoadFooterNavigation(Microsoft.SharePoint.Client.Web)
+  id: LoadFooterNavigation(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.NavigationExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadFooterNavigation(Web)
+  nameWithType: NavigationExtensions.LoadFooterNavigation(Web)
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.LoadFooterNavigation(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: LoadFooterNavigation
+    path: ../src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+    startLine: 772
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns the navigation elements shown in the footer\n"
+  example: []
+  syntax:
+    content: public static NavigationNodeCollection LoadFooterNavigation(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web instance to return the footer navigation of
+    return:
+      type: Microsoft.SharePoint.Client.NavigationNodeCollection
+      description: NavigationNodeCollection containing the navigation elements shown in the footer or NULL if no navigation has been set on the footer
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function LoadFooterNavigation(web As Web) As NavigationNodeCollection
+  overload: Microsoft.SharePoint.Client.NavigationExtensions.LoadFooterNavigation*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.GetFooterTitle(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.NavigationExtensions.GetFooterTitle(Microsoft.SharePoint.Client.Web)
+  id: GetFooterTitle(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.NavigationExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetFooterTitle(Web)
+  nameWithType: NavigationExtensions.GetFooterTitle(Web)
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.GetFooterTitle(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetFooterTitle
+    path: ../src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+    startLine: 817
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns the title shown in the footer\n"
+  example: []
+  syntax:
+    content: public static string GetFooterTitle(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web instance to return the footer title of
+    return:
+      type: System.String
+      description: Title shown in the footer or NULL if no title has been set
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetFooterTitle(web As Web) As String
+  overload: Microsoft.SharePoint.Client.NavigationExtensions.GetFooterTitle*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.SetFooterTitle(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.NavigationExtensions.SetFooterTitle(Microsoft.SharePoint.Client.Web,System.String)
+  id: SetFooterTitle(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.NavigationExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetFooterTitle(Web, String)
+  nameWithType: NavigationExtensions.SetFooterTitle(Web, String)
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.SetFooterTitle(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetFooterTitle
+    path: ../src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+    startLine: 849
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nSets the title shown in the footer\n"
+  example: []
+  syntax:
+    content: public static bool SetFooterTitle(this Web web, string title)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web instance to set the footer title of
+    - id: title
+      type: System.String
+      description: Title to show in the footer
+    return:
+      type: System.Boolean
+      description: Boolean indicating if setting the title succeeded
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetFooterTitle(web As Web, title As String) As Boolean
+  overload: Microsoft.SharePoint.Client.NavigationExtensions.SetFooterTitle*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.GetFooterLogoUrl(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.NavigationExtensions.GetFooterLogoUrl(Microsoft.SharePoint.Client.Web)
+  id: GetFooterLogoUrl(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.NavigationExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetFooterLogoUrl(Web)
+  nameWithType: NavigationExtensions.GetFooterLogoUrl(Web)
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.GetFooterLogoUrl(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetFooterLogoUrl
+    path: ../src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+    startLine: 864
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns the server relative URL of the logo shown in the footer\n"
+  example: []
+  syntax:
+    content: public static string GetFooterLogoUrl(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web instance to return the footer logo url of
+    return:
+      type: System.String
+      description: Server relative URL of the logo shown in the footer or NULL if no footer has been set
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetFooterLogoUrl(web As Web) As String
+  overload: Microsoft.SharePoint.Client.NavigationExtensions.GetFooterLogoUrl*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.SetFooterLogoUrl(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.NavigationExtensions.SetFooterLogoUrl(Microsoft.SharePoint.Client.Web,System.String)
+  id: SetFooterLogoUrl(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.NavigationExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetFooterLogoUrl(Web, String)
+  nameWithType: NavigationExtensions.SetFooterLogoUrl(Web, String)
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.SetFooterLogoUrl(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetFooterLogoUrl
+    path: ../src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+    startLine: 896
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nSets the logo shown in the footer\n"
+  example: []
+  syntax:
+    content: public static bool SetFooterLogoUrl(this Web web, string logoUrl)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web instance to set the footer logo url of
+    - id: logoUrl
+      type: System.String
+      description: Server relative path to the logo to show in the footer
+    return:
+      type: System.Boolean
+      description: Boolean indicating if setting the logo succeeded
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetFooterLogoUrl(web As Web, logoUrl As String) As Boolean
+  overload: Microsoft.SharePoint.Client.NavigationExtensions.SetFooterLogoUrl*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.RemoveFooterLogoUrl(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.NavigationExtensions.RemoveFooterLogoUrl(Microsoft.SharePoint.Client.Web)
+  id: RemoveFooterLogoUrl(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.NavigationExtensions
+  langs:
+  - csharp
+  - vb
+  name: RemoveFooterLogoUrl(Web)
+  nameWithType: NavigationExtensions.RemoveFooterLogoUrl(Web)
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.RemoveFooterLogoUrl(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemoveFooterLogoUrl
+    path: ../src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+    startLine: 911
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nRemoves the logo shown in the footer\n"
+  example: []
+  syntax:
+    content: public static bool RemoveFooterLogoUrl(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web instance to remove the footer of
+    return:
+      type: System.Boolean
+      description: Boolean indicating if removing the logo succeeded
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function RemoveFooterLogoUrl(web As Web) As Boolean
+  overload: Microsoft.SharePoint.Client.NavigationExtensions.RemoveFooterLogoUrl*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.AddCustomAction(Microsoft.SharePoint.Client.Web,PnP.Framework.Entities.CustomActionEntity)
+  commentId: M:Microsoft.SharePoint.Client.NavigationExtensions.AddCustomAction(Microsoft.SharePoint.Client.Web,PnP.Framework.Entities.CustomActionEntity)
+  id: AddCustomAction(Microsoft.SharePoint.Client.Web,PnP.Framework.Entities.CustomActionEntity)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.NavigationExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddCustomAction(Web, CustomActionEntity)
+  nameWithType: NavigationExtensions.AddCustomAction(Web, CustomActionEntity)
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.AddCustomAction(Microsoft.SharePoint.Client.Web, PnP.Framework.Entities.CustomActionEntity)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddCustomAction
+    path: ../src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+    startLine: 945
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdds custom action to a web. If the CustomAction exists the item will be updated.\nSetting CustomActionEntity.Remove == true will delete the CustomAction.\n"
+  example:
+  - "\nvar editAction = new CustomActionEntity()\n{\nTitle = &quot;Edit Site Classification&quot;,\nDescription = &quot;Manage business impact information for site collection or sub sites.&quot;,\nSequence = 1000,\nGroup = &quot;SiteActions&quot;,\nLocation = &quot;Microsoft.SharePoint.StandardMenu&quot;,\nUrl = EditFormUrl,\nImageUrl = EditFormImageUrl,\nRights = new BasePermissions(),\n};\neditAction.Rights.Set(PermissionKind.ManageWeb);\nweb.AddCustomAction(editAction);\n"
+  syntax:
+    content: public static bool AddCustomAction(this Web web, CustomActionEntity customAction)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: customAction
+      type: PnP.Framework.Entities.CustomActionEntity
+      description: Information about the custom action be added or deleted
+    return:
+      type: System.Boolean
+      description: True if action was successfull
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddCustomAction(web As Web, customAction As CustomActionEntity) As Boolean
+  overload: Microsoft.SharePoint.Client.NavigationExtensions.AddCustomAction*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.AddCustomAction(Microsoft.SharePoint.Client.Site,PnP.Framework.Entities.CustomActionEntity)
+  commentId: M:Microsoft.SharePoint.Client.NavigationExtensions.AddCustomAction(Microsoft.SharePoint.Client.Site,PnP.Framework.Entities.CustomActionEntity)
+  id: AddCustomAction(Microsoft.SharePoint.Client.Site,PnP.Framework.Entities.CustomActionEntity)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.NavigationExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddCustomAction(Site, CustomActionEntity)
+  nameWithType: NavigationExtensions.AddCustomAction(Site, CustomActionEntity)
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.AddCustomAction(Microsoft.SharePoint.Client.Site, PnP.Framework.Entities.CustomActionEntity)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddCustomAction
+    path: ../src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+    startLine: 957
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdds custom action to a site collection. If the CustomAction exists the item will be updated.\nSetting CustomActionEntity.Remove == true will delete the CustomAction.\n"
+  example: []
+  syntax:
+    content: public static bool AddCustomAction(this Site site, CustomActionEntity customAction)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: Site collection to be processed
+    - id: customAction
+      type: PnP.Framework.Entities.CustomActionEntity
+      description: Information about the custom action be added or deleted
+    return:
+      type: System.Boolean
+      description: True if action was successfull
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddCustomAction(site As Site, customAction As CustomActionEntity) As Boolean
+  overload: Microsoft.SharePoint.Client.NavigationExtensions.AddCustomAction*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.GetCustomActions(Microsoft.SharePoint.Client.Web,System.Linq.Expressions.Expression{System.Func{Microsoft.SharePoint.Client.UserCustomAction,System.Object}}[])
+  commentId: M:Microsoft.SharePoint.Client.NavigationExtensions.GetCustomActions(Microsoft.SharePoint.Client.Web,System.Linq.Expressions.Expression{System.Func{Microsoft.SharePoint.Client.UserCustomAction,System.Object}}[])
+  id: GetCustomActions(Microsoft.SharePoint.Client.Web,System.Linq.Expressions.Expression{System.Func{Microsoft.SharePoint.Client.UserCustomAction,System.Object}}[])
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.NavigationExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetCustomActions(Web, Expression<Func<UserCustomAction, Object>>[])
+  nameWithType: NavigationExtensions.GetCustomActions(Web, Expression<Func<UserCustomAction, Object>>[])
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.GetCustomActions(Microsoft.SharePoint.Client.Web, System.Linq.Expressions.Expression<System.Func<Microsoft.SharePoint.Client.UserCustomAction, System.Object>>[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetCustomActions
+    path: ../src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+    startLine: 1068
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns all custom actions in a web\n"
+  example: []
+  syntax:
+    content: public static IEnumerable<UserCustomAction> GetCustomActions(this Web web, params Expression<Func<UserCustomAction, object>>[] expressions)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The web to process
+    - id: expressions
+      type: System.Linq.Expressions.Expression{System.Func{Microsoft.SharePoint.Client.UserCustomAction,System.Object}}[]
+      description: List of lambda expressions of properties to load when retrieving the object
+    return:
+      type: System.Collections.Generic.IEnumerable{Microsoft.SharePoint.Client.UserCustomAction}
+      description: Returns all custom actions
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetCustomActions(web As Web, ParamArray expressions As Expression(Of Func(Of UserCustomAction, Object))()) As IEnumerable(Of UserCustomAction)
+  overload: Microsoft.SharePoint.Client.NavigationExtensions.GetCustomActions*
+  nameWithType.vb: NavigationExtensions.GetCustomActions(Web, Expression(Of Func(Of UserCustomAction, Object))())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.NavigationExtensions.GetCustomActions(Microsoft.SharePoint.Client.Web, System.Linq.Expressions.Expression(Of System.Func(Of Microsoft.SharePoint.Client.UserCustomAction, System.Object))())
+  name.vb: GetCustomActions(Web, Expression(Of Func(Of UserCustomAction, Object))())
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.GetCustomActions(Microsoft.SharePoint.Client.Site,System.Linq.Expressions.Expression{System.Func{Microsoft.SharePoint.Client.UserCustomAction,System.Object}}[])
+  commentId: M:Microsoft.SharePoint.Client.NavigationExtensions.GetCustomActions(Microsoft.SharePoint.Client.Site,System.Linq.Expressions.Expression{System.Func{Microsoft.SharePoint.Client.UserCustomAction,System.Object}}[])
+  id: GetCustomActions(Microsoft.SharePoint.Client.Site,System.Linq.Expressions.Expression{System.Func{Microsoft.SharePoint.Client.UserCustomAction,System.Object}}[])
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.NavigationExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetCustomActions(Site, Expression<Func<UserCustomAction, Object>>[])
+  nameWithType: NavigationExtensions.GetCustomActions(Site, Expression<Func<UserCustomAction, Object>>[])
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.GetCustomActions(Microsoft.SharePoint.Client.Site, System.Linq.Expressions.Expression<System.Func<Microsoft.SharePoint.Client.UserCustomAction, System.Object>>[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetCustomActions
+    path: ../src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+    startLine: 1097
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns all custom actions in a web\n"
+  example: []
+  syntax:
+    content: public static IEnumerable<UserCustomAction> GetCustomActions(this Site site, params Expression<Func<UserCustomAction, object>>[] expressions)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: The site to process
+    - id: expressions
+      type: System.Linq.Expressions.Expression{System.Func{Microsoft.SharePoint.Client.UserCustomAction,System.Object}}[]
+      description: List of lambda expressions of properties to load when retrieving the object
+    return:
+      type: System.Collections.Generic.IEnumerable{Microsoft.SharePoint.Client.UserCustomAction}
+      description: Returns all custom actions
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetCustomActions(site As Site, ParamArray expressions As Expression(Of Func(Of UserCustomAction, Object))()) As IEnumerable(Of UserCustomAction)
+  overload: Microsoft.SharePoint.Client.NavigationExtensions.GetCustomActions*
+  nameWithType.vb: NavigationExtensions.GetCustomActions(Site, Expression(Of Func(Of UserCustomAction, Object))())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.NavigationExtensions.GetCustomActions(Microsoft.SharePoint.Client.Site, System.Linq.Expressions.Expression(Of System.Func(Of Microsoft.SharePoint.Client.UserCustomAction, System.Object))())
+  name.vb: GetCustomActions(Site, Expression(Of Func(Of UserCustomAction, Object))())
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.DeleteCustomAction(Microsoft.SharePoint.Client.Web,System.Guid)
+  commentId: M:Microsoft.SharePoint.Client.NavigationExtensions.DeleteCustomAction(Microsoft.SharePoint.Client.Web,System.Guid)
+  id: DeleteCustomAction(Microsoft.SharePoint.Client.Web,System.Guid)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.NavigationExtensions
+  langs:
+  - csharp
+  - vb
+  name: DeleteCustomAction(Web, Guid)
+  nameWithType: NavigationExtensions.DeleteCustomAction(Web, Guid)
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.DeleteCustomAction(Microsoft.SharePoint.Client.Web, System.Guid)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeleteCustomAction
+    path: ../src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+    startLine: 1127
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nRemoves a custom action\n"
+  example: []
+  syntax:
+    content: public static void DeleteCustomAction(this Web web, Guid id)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The web to process
+    - id: id
+      type: System.Guid
+      description: >
+        The id of the action to remove. <seealso>
+
+        <cref>GetCustomActions</cref>
+
+        </seealso>
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub DeleteCustomAction(web As Web, id As Guid)
+  overload: Microsoft.SharePoint.Client.NavigationExtensions.DeleteCustomAction*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.DeleteCustomAction(Microsoft.SharePoint.Client.Site,System.Guid)
+  commentId: M:Microsoft.SharePoint.Client.NavigationExtensions.DeleteCustomAction(Microsoft.SharePoint.Client.Site,System.Guid)
+  id: DeleteCustomAction(Microsoft.SharePoint.Client.Site,System.Guid)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.NavigationExtensions
+  langs:
+  - csharp
+  - vb
+  name: DeleteCustomAction(Site, Guid)
+  nameWithType: NavigationExtensions.DeleteCustomAction(Site, Guid)
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.DeleteCustomAction(Microsoft.SharePoint.Client.Site, System.Guid)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeleteCustomAction
+    path: ../src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+    startLine: 1153
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nRemoves a custom action\n"
+  example: []
+  syntax:
+    content: public static void DeleteCustomAction(this Site site, Guid id)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: The site to process
+    - id: id
+      type: System.Guid
+      description: >
+        The id of the action to remove. <seealso>
+
+        <cref>GetCustomActions</cref>
+
+        </seealso>
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub DeleteCustomAction(site As Site, id As Guid)
+  overload: Microsoft.SharePoint.Client.NavigationExtensions.DeleteCustomAction*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.CustomActionExists(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.NavigationExtensions.CustomActionExists(Microsoft.SharePoint.Client.Web,System.String)
+  id: CustomActionExists(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.NavigationExtensions
+  langs:
+  - csharp
+  - vb
+  name: CustomActionExists(Web, String)
+  nameWithType: NavigationExtensions.CustomActionExists(Web, String)
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.CustomActionExists(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CustomActionExists
+    path: ../src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+    startLine: 1177
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nUtility method to check particular custom action already exists on the web\n"
+  example: []
+  syntax:
+    content: public static bool CustomActionExists(this Web web, string name)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to process
+    - id: name
+      type: System.String
+      description: Name of the custom action
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function CustomActionExists(web As Web, name As String) As Boolean
+  overload: Microsoft.SharePoint.Client.NavigationExtensions.CustomActionExists*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.CustomActionExists(Microsoft.SharePoint.Client.Site,System.String)
+  commentId: M:Microsoft.SharePoint.Client.NavigationExtensions.CustomActionExists(Microsoft.SharePoint.Client.Site,System.String)
+  id: CustomActionExists(Microsoft.SharePoint.Client.Site,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.NavigationExtensions
+  langs:
+  - csharp
+  - vb
+  name: CustomActionExists(Site, String)
+  nameWithType: NavigationExtensions.CustomActionExists(Site, String)
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.CustomActionExists(Microsoft.SharePoint.Client.Site, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CustomActionExists
+    path: ../src/lib/PnP.Framework/Extensions/NavigationExtensions.cs
+    startLine: 1204
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nUtility method to check particular custom action already exists on the web\n"
+  example: []
+  syntax:
+    content: public static bool CustomActionExists(this Site site, string name)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: Site to process
+    - id: name
+      type: System.String
+      description: Name of the custom action
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function CustomActionExists(site As Site, name As String) As Boolean
+  overload: Microsoft.SharePoint.Client.NavigationExtensions.CustomActionExists*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: Microsoft.SharePoint.Client
+  commentId: N:Microsoft.SharePoint.Client
+  name: Microsoft.SharePoint.Client
+  nameWithType: Microsoft.SharePoint.Client
+  fullName: Microsoft.SharePoint.Client
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.GetNavigationSettings*
+  commentId: Overload:Microsoft.SharePoint.Client.NavigationExtensions.GetNavigationSettings
+  name: GetNavigationSettings
+  nameWithType: NavigationExtensions.GetNavigationSettings
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.GetNavigationSettings
+- uid: Microsoft.SharePoint.Client.Web
+  commentId: T:Microsoft.SharePoint.Client.Web
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: Web
+  nameWithType: Web
+  fullName: Microsoft.SharePoint.Client.Web
+- uid: PnP.Framework.Entities.AreaNavigationEntity
+  commentId: T:PnP.Framework.Entities.AreaNavigationEntity
+  parent: PnP.Framework.Entities
+  name: AreaNavigationEntity
+  nameWithType: AreaNavigationEntity
+  fullName: PnP.Framework.Entities.AreaNavigationEntity
+- uid: PnP.Framework.Entities
+  commentId: N:PnP.Framework.Entities
+  name: PnP.Framework.Entities
+  nameWithType: PnP.Framework.Entities
+  fullName: PnP.Framework.Entities
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.UpdateNavigationSettings*
+  commentId: Overload:Microsoft.SharePoint.Client.NavigationExtensions.UpdateNavigationSettings
+  name: UpdateNavigationSettings
+  nameWithType: NavigationExtensions.UpdateNavigationSettings
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.UpdateNavigationSettings
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.GetEditableNavigationTermSet*
+  commentId: Overload:Microsoft.SharePoint.Client.NavigationExtensions.GetEditableNavigationTermSet
+  name: GetEditableNavigationTermSet
+  nameWithType: NavigationExtensions.GetEditableNavigationTermSet
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.GetEditableNavigationTermSet
+- uid: Microsoft.SharePoint.Client.ManagedNavigationKind
+  commentId: T:Microsoft.SharePoint.Client.ManagedNavigationKind
+  parent: Microsoft.SharePoint.Client
+  name: ManagedNavigationKind
+  nameWithType: ManagedNavigationKind
+  fullName: Microsoft.SharePoint.Client.ManagedNavigationKind
+- uid: Microsoft.SharePoint.Client.Publishing.Navigation.NavigationTermSet
+  commentId: T:Microsoft.SharePoint.Client.Publishing.Navigation.NavigationTermSet
+  parent: Microsoft.SharePoint.Client.Publishing.Navigation
+  isExternal: true
+  name: NavigationTermSet
+  nameWithType: NavigationTermSet
+  fullName: Microsoft.SharePoint.Client.Publishing.Navigation.NavigationTermSet
+- uid: Microsoft.SharePoint.Client.Publishing.Navigation
+  commentId: N:Microsoft.SharePoint.Client.Publishing.Navigation
+  isExternal: true
+  name: Microsoft.SharePoint.Client.Publishing.Navigation
+  nameWithType: Microsoft.SharePoint.Client.Publishing.Navigation
+  fullName: Microsoft.SharePoint.Client.Publishing.Navigation
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.IsManagedNavigationEnabled*
+  commentId: Overload:Microsoft.SharePoint.Client.NavigationExtensions.IsManagedNavigationEnabled
+  name: IsManagedNavigationEnabled
+  nameWithType: NavigationExtensions.IsManagedNavigationEnabled
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.IsManagedNavigationEnabled
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.AddNavigationNode*
+  commentId: Overload:Microsoft.SharePoint.Client.NavigationExtensions.AddNavigationNode
+  name: AddNavigationNode
+  nameWithType: NavigationExtensions.AddNavigationNode
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.AddNavigationNode
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Uri
+  commentId: T:System.Uri
+  parent: System
+  isExternal: true
+  name: Uri
+  nameWithType: Uri
+  fullName: System.Uri
+- uid: PnP.Framework.Enums.NavigationType
+  commentId: T:PnP.Framework.Enums.NavigationType
+  parent: PnP.Framework.Enums
+  name: NavigationType
+  nameWithType: NavigationType
+  fullName: PnP.Framework.Enums.NavigationType
+- uid: Microsoft.SharePoint.Client.NavigationNode
+  commentId: T:Microsoft.SharePoint.Client.NavigationNode
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: NavigationNode
+  nameWithType: NavigationNode
+  fullName: Microsoft.SharePoint.Client.NavigationNode
+- uid: PnP.Framework.Enums
+  commentId: N:PnP.Framework.Enums
+  name: PnP.Framework.Enums
+  nameWithType: PnP.Framework.Enums
+  fullName: PnP.Framework.Enums
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.DeleteNavigationNode*
+  commentId: Overload:Microsoft.SharePoint.Client.NavigationExtensions.DeleteNavigationNode
+  name: DeleteNavigationNode
+  nameWithType: NavigationExtensions.DeleteNavigationNode
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.DeleteNavigationNode
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.DeleteAllNavigationNodes*
+  commentId: Overload:Microsoft.SharePoint.Client.NavigationExtensions.DeleteAllNavigationNodes
+  name: DeleteAllNavigationNodes
+  nameWithType: NavigationExtensions.DeleteAllNavigationNodes
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.DeleteAllNavigationNodes
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.UpdateNavigationInheritance*
+  commentId: Overload:Microsoft.SharePoint.Client.NavigationExtensions.UpdateNavigationInheritance
+  name: UpdateNavigationInheritance
+  nameWithType: NavigationExtensions.UpdateNavigationInheritance
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.UpdateNavigationInheritance
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.LoadSearchNavigation*
+  commentId: Overload:Microsoft.SharePoint.Client.NavigationExtensions.LoadSearchNavigation
+  name: LoadSearchNavigation
+  nameWithType: NavigationExtensions.LoadSearchNavigation
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.LoadSearchNavigation
+- uid: Microsoft.SharePoint.Client.NavigationNodeCollection
+  commentId: T:Microsoft.SharePoint.Client.NavigationNodeCollection
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: NavigationNodeCollection
+  nameWithType: NavigationNodeCollection
+  fullName: Microsoft.SharePoint.Client.NavigationNodeCollection
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.LoadFooterNavigation*
+  commentId: Overload:Microsoft.SharePoint.Client.NavigationExtensions.LoadFooterNavigation
+  name: LoadFooterNavigation
+  nameWithType: NavigationExtensions.LoadFooterNavigation
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.LoadFooterNavigation
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.GetFooterTitle*
+  commentId: Overload:Microsoft.SharePoint.Client.NavigationExtensions.GetFooterTitle
+  name: GetFooterTitle
+  nameWithType: NavigationExtensions.GetFooterTitle
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.GetFooterTitle
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.SetFooterTitle*
+  commentId: Overload:Microsoft.SharePoint.Client.NavigationExtensions.SetFooterTitle
+  name: SetFooterTitle
+  nameWithType: NavigationExtensions.SetFooterTitle
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.SetFooterTitle
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.GetFooterLogoUrl*
+  commentId: Overload:Microsoft.SharePoint.Client.NavigationExtensions.GetFooterLogoUrl
+  name: GetFooterLogoUrl
+  nameWithType: NavigationExtensions.GetFooterLogoUrl
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.GetFooterLogoUrl
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.SetFooterLogoUrl*
+  commentId: Overload:Microsoft.SharePoint.Client.NavigationExtensions.SetFooterLogoUrl
+  name: SetFooterLogoUrl
+  nameWithType: NavigationExtensions.SetFooterLogoUrl
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.SetFooterLogoUrl
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.RemoveFooterLogoUrl*
+  commentId: Overload:Microsoft.SharePoint.Client.NavigationExtensions.RemoveFooterLogoUrl
+  name: RemoveFooterLogoUrl
+  nameWithType: NavigationExtensions.RemoveFooterLogoUrl
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.RemoveFooterLogoUrl
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.AddCustomAction*
+  commentId: Overload:Microsoft.SharePoint.Client.NavigationExtensions.AddCustomAction
+  name: AddCustomAction
+  nameWithType: NavigationExtensions.AddCustomAction
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.AddCustomAction
+- uid: PnP.Framework.Entities.CustomActionEntity
+  commentId: T:PnP.Framework.Entities.CustomActionEntity
+  parent: PnP.Framework.Entities
+  name: CustomActionEntity
+  nameWithType: CustomActionEntity
+  fullName: PnP.Framework.Entities.CustomActionEntity
+- uid: Microsoft.SharePoint.Client.Site
+  commentId: T:Microsoft.SharePoint.Client.Site
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: Site
+  nameWithType: Site
+  fullName: Microsoft.SharePoint.Client.Site
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.GetCustomActions*
+  commentId: Overload:Microsoft.SharePoint.Client.NavigationExtensions.GetCustomActions
+  name: GetCustomActions
+  nameWithType: NavigationExtensions.GetCustomActions
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.GetCustomActions
+- uid: System.Linq.Expressions.Expression{System.Func{Microsoft.SharePoint.Client.UserCustomAction,System.Object}}[]
+  isExternal: true
+  name: Expression<Func<UserCustomAction, Object>>[]
+  nameWithType: Expression<Func<UserCustomAction, Object>>[]
+  fullName: System.Linq.Expressions.Expression<System.Func<Microsoft.SharePoint.Client.UserCustomAction, System.Object>>[]
+  nameWithType.vb: Expression(Of Func(Of UserCustomAction, Object))()
+  fullName.vb: System.Linq.Expressions.Expression(Of System.Func(Of Microsoft.SharePoint.Client.UserCustomAction, System.Object))()
+  name.vb: Expression(Of Func(Of UserCustomAction, Object))()
+  spec.csharp:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Microsoft.SharePoint.Client.UserCustomAction
+    name: UserCustomAction
+    nameWithType: UserCustomAction
+    fullName: Microsoft.SharePoint.Client.UserCustomAction
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Microsoft.SharePoint.Client.UserCustomAction
+    name: UserCustomAction
+    nameWithType: UserCustomAction
+    fullName: Microsoft.SharePoint.Client.UserCustomAction
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: System.Collections.Generic.IEnumerable{Microsoft.SharePoint.Client.UserCustomAction}
+  commentId: T:System.Collections.Generic.IEnumerable{Microsoft.SharePoint.Client.UserCustomAction}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<UserCustomAction>
+  nameWithType: IEnumerable<UserCustomAction>
+  fullName: System.Collections.Generic.IEnumerable<Microsoft.SharePoint.Client.UserCustomAction>
+  nameWithType.vb: IEnumerable(Of UserCustomAction)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Microsoft.SharePoint.Client.UserCustomAction)
+  name.vb: IEnumerable(Of UserCustomAction)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Microsoft.SharePoint.Client.UserCustomAction
+    name: UserCustomAction
+    nameWithType: UserCustomAction
+    fullName: Microsoft.SharePoint.Client.UserCustomAction
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Microsoft.SharePoint.Client.UserCustomAction
+    name: UserCustomAction
+    nameWithType: UserCustomAction
+    fullName: Microsoft.SharePoint.Client.UserCustomAction
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.DeleteCustomAction*
+  commentId: Overload:Microsoft.SharePoint.Client.NavigationExtensions.DeleteCustomAction
+  name: DeleteCustomAction
+  nameWithType: NavigationExtensions.DeleteCustomAction
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.DeleteCustomAction
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Microsoft.SharePoint.Client.NavigationExtensions.CustomActionExists*
+  commentId: Overload:Microsoft.SharePoint.Client.NavigationExtensions.CustomActionExists
+  name: CustomActionExists
+  nameWithType: NavigationExtensions.CustomActionExists
+  fullName: Microsoft.SharePoint.Client.NavigationExtensions.CustomActionExists

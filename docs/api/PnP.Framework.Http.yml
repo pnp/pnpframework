@@ -1,0 +1,34 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Http
+  commentId: N:PnP.Framework.Http
+  id: PnP.Framework.Http
+  children:
+  - PnP.Framework.Http.HttpClientWebRequestExecutorFactory
+  - PnP.Framework.Http.PnPHttpClient
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Http
+  nameWithType: PnP.Framework.Http
+  fullName: PnP.Framework.Http
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Http.HttpClientWebRequestExecutorFactory
+  commentId: T:PnP.Framework.Http.HttpClientWebRequestExecutorFactory
+  name: HttpClientWebRequestExecutorFactory
+  nameWithType: HttpClientWebRequestExecutorFactory
+  fullName: PnP.Framework.Http.HttpClientWebRequestExecutorFactory
+- uid: PnP.Framework.Http.PnPHttpClient
+  commentId: T:PnP.Framework.Http.PnPHttpClient
+  parent: PnP.Framework.Http
+  name: PnPHttpClient
+  nameWithType: PnPHttpClient
+  fullName: PnP.Framework.Http.PnPHttpClient
+- uid: PnP.Framework.Http
+  commentId: N:PnP.Framework.Http
+  name: PnP.Framework.Http
+  nameWithType: PnP.Framework.Http
+  fullName: PnP.Framework.Http

@@ -1,0 +1,76 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Sites
+  commentId: N:PnP.Framework.Sites
+  id: PnP.Framework.Sites
+  children:
+  - PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation
+  - PnP.Framework.Sites.CommunicationSiteDesign
+  - PnP.Framework.Sites.SiteCollection
+  - PnP.Framework.Sites.SiteCreationGroupInformation
+  - PnP.Framework.Sites.SiteCreationInformation
+  - PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation
+  - PnP.Framework.Sites.TeamSiteCollectionCreationInformation
+  - PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Sites
+  nameWithType: PnP.Framework.Sites
+  fullName: PnP.Framework.Sites
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Sites.SiteCollection
+  commentId: T:PnP.Framework.Sites.SiteCollection
+  name: SiteCollection
+  nameWithType: SiteCollection
+  fullName: PnP.Framework.Sites.SiteCollection
+- uid: PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation
+  commentId: T:PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation
+  parent: PnP.Framework.Sites
+  name: CommunicationSiteCollectionCreationInformation
+  nameWithType: CommunicationSiteCollectionCreationInformation
+  fullName: PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation
+- uid: PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation
+  commentId: T:PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation
+  parent: PnP.Framework.Sites
+  name: TeamNoGroupSiteCollectionCreationInformation
+  nameWithType: TeamNoGroupSiteCollectionCreationInformation
+  fullName: PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation
+- uid: PnP.Framework.Sites.SiteCreationInformation
+  commentId: T:PnP.Framework.Sites.SiteCreationInformation
+  parent: PnP.Framework.Sites
+  name: SiteCreationInformation
+  nameWithType: SiteCreationInformation
+  fullName: PnP.Framework.Sites.SiteCreationInformation
+- uid: PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation
+  commentId: T:PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation
+  parent: PnP.Framework.Sites
+  name: TeamSiteCollectionGroupifyInformation
+  nameWithType: TeamSiteCollectionGroupifyInformation
+  fullName: PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation
+- uid: PnP.Framework.Sites.TeamSiteCollectionCreationInformation
+  commentId: T:PnP.Framework.Sites.TeamSiteCollectionCreationInformation
+  parent: PnP.Framework.Sites
+  name: TeamSiteCollectionCreationInformation
+  nameWithType: TeamSiteCollectionCreationInformation
+  fullName: PnP.Framework.Sites.TeamSiteCollectionCreationInformation
+- uid: PnP.Framework.Sites.SiteCreationGroupInformation
+  commentId: T:PnP.Framework.Sites.SiteCreationGroupInformation
+  parent: PnP.Framework.Sites
+  name: SiteCreationGroupInformation
+  nameWithType: SiteCreationGroupInformation
+  fullName: PnP.Framework.Sites.SiteCreationGroupInformation
+- uid: PnP.Framework.Sites.CommunicationSiteDesign
+  commentId: T:PnP.Framework.Sites.CommunicationSiteDesign
+  parent: PnP.Framework.Sites
+  name: CommunicationSiteDesign
+  nameWithType: CommunicationSiteDesign
+  fullName: PnP.Framework.Sites.CommunicationSiteDesign
+- uid: PnP.Framework.Sites
+  commentId: N:PnP.Framework.Sites
+  name: PnP.Framework.Sites
+  nameWithType: PnP.Framework.Sites
+  fullName: PnP.Framework.Sites

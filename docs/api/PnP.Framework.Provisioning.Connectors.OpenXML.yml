@@ -1,0 +1,47 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Connectors.OpenXML
+  commentId: N:PnP.Framework.Provisioning.Connectors.OpenXML
+  id: PnP.Framework.Provisioning.Connectors.OpenXML
+  children:
+  - PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage
+  - PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackageExtensions
+  - PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackageFileItem
+  - PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackageFormatException
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Connectors.OpenXML
+  nameWithType: PnP.Framework.Provisioning.Connectors.OpenXML
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXML
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage
+  commentId: T:PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage
+  parent: PnP.Framework.Provisioning.Connectors.OpenXML
+  name: PnPPackage
+  nameWithType: PnPPackage
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage
+- uid: PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackageFileItem
+  commentId: T:PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackageFileItem
+  name: PnPPackageFileItem
+  nameWithType: PnPPackageFileItem
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackageFileItem
+- uid: PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackageFormatException
+  commentId: T:PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackageFormatException
+  name: PnPPackageFormatException
+  nameWithType: PnPPackageFormatException
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackageFormatException
+- uid: PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackageExtensions
+  commentId: T:PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackageExtensions
+  parent: PnP.Framework.Provisioning.Connectors.OpenXML
+  name: PnPPackageExtensions
+  nameWithType: PnPPackageExtensions
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackageExtensions
+- uid: PnP.Framework.Provisioning.Connectors.OpenXML
+  commentId: N:PnP.Framework.Provisioning.Connectors.OpenXML
+  name: PnP.Framework.Provisioning.Connectors.OpenXML
+  nameWithType: PnP.Framework.Provisioning.Connectors.OpenXML
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXML

@@ -1,0 +1,825 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities
+  id: ListItemUtilities
+  parent: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  children:
+  - PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.ParseFieldValue(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.Field)
+  - PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.UpdateListItem(Microsoft.SharePoint.Client.ListItem,PnP.Framework.Provisioning.ObjectHandlers.TokenParser,System.Collections.Generic.IDictionary{System.String,System.String},PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.ListItemUpdateType,System.Boolean)
+  - PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.UpdateListItem(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.ListItem,Microsoft.SharePoint.Client.FieldCollection,System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUpdateValue})
+  - PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.UpdateListItem(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.ListItem,PnP.Framework.Provisioning.ObjectHandlers.TokenParser,Microsoft.SharePoint.Client.FieldCollection,System.Collections.Generic.IDictionary{System.String,System.String})
+  langs:
+  - csharp
+  - vb
+  name: ListItemUtilities
+  nameWithType: ListItemUtilities
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/ObjectHandlers/Utilities/ListItemUtilities.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ListItemUtilities
+    path: ../src/lib/PnP.Framework/Provisioning/ObjectHandlers/Utilities/ListItemUtilities.cs
+    startLine: 11
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  syntax:
+    content: public static class ListItemUtilities
+    content.vb: Public Module ListItemUtilities
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.ParseFieldValue(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.Field)
+  commentId: M:PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.ParseFieldValue(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.Field)
+  id: ParseFieldValue(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.Field)
+  parent: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities
+  langs:
+  - csharp
+  - vb
+  name: ParseFieldValue(Web, String, Field)
+  nameWithType: ListItemUtilities.ParseFieldValue(Web, String, Field)
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.ParseFieldValue(Microsoft.SharePoint.Client.Web, System.String, Microsoft.SharePoint.Client.Field)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/ObjectHandlers/Utilities/ListItemUtilities.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ParseFieldValue
+    path: ../src/lib/PnP.Framework/Provisioning/ObjectHandlers/Utilities/ListItemUtilities.cs
+    startLine: 15
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  syntax:
+    content: public static FieldUpdateValue ParseFieldValue(Web web, string fieldValue, Field dataField)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+    - id: fieldValue
+      type: System.String
+    - id: dataField
+      type: Microsoft.SharePoint.Client.Field
+    return:
+      type: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUpdateValue
+    content.vb: Public Shared Function ParseFieldValue(web As Web, fieldValue As String, dataField As Field) As FieldUpdateValue
+  overload: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.ParseFieldValue*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.UpdateListItem(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.ListItem,PnP.Framework.Provisioning.ObjectHandlers.TokenParser,Microsoft.SharePoint.Client.FieldCollection,System.Collections.Generic.IDictionary{System.String,System.String})
+  commentId: M:PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.UpdateListItem(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.ListItem,PnP.Framework.Provisioning.ObjectHandlers.TokenParser,Microsoft.SharePoint.Client.FieldCollection,System.Collections.Generic.IDictionary{System.String,System.String})
+  id: UpdateListItem(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.ListItem,PnP.Framework.Provisioning.ObjectHandlers.TokenParser,Microsoft.SharePoint.Client.FieldCollection,System.Collections.Generic.IDictionary{System.String,System.String})
+  parent: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities
+  langs:
+  - csharp
+  - vb
+  name: UpdateListItem(Web, ListItem, TokenParser, FieldCollection, IDictionary<String, String>)
+  nameWithType: ListItemUtilities.UpdateListItem(Web, ListItem, TokenParser, FieldCollection, IDictionary<String, String>)
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.UpdateListItem(Microsoft.SharePoint.Client.Web, Microsoft.SharePoint.Client.ListItem, PnP.Framework.Provisioning.ObjectHandlers.TokenParser, Microsoft.SharePoint.Client.FieldCollection, System.Collections.Generic.IDictionary<System.String, System.String>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/ObjectHandlers/Utilities/ListItemUtilities.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UpdateListItem
+    path: ../src/lib/PnP.Framework/Provisioning/ObjectHandlers/Utilities/ListItemUtilities.cs
+    startLine: 198
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  syntax:
+    content: >-
+      [Obsolete("Use UpdateListItem(ListItem item, TokenParser parser, IDictionary<string, string> valuesToSet, ListItemUpdateType updateType) instead")]
+
+      public static void UpdateListItem(Web web, ListItem listitem, TokenParser parser, FieldCollection fields, IDictionary<string, string> fieldValues)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+    - id: listitem
+      type: Microsoft.SharePoint.Client.ListItem
+    - id: parser
+      type: PnP.Framework.Provisioning.ObjectHandlers.TokenParser
+    - id: fields
+      type: Microsoft.SharePoint.Client.FieldCollection
+    - id: fieldValues
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    content.vb: >-
+      <Obsolete("Use UpdateListItem(ListItem item, TokenParser parser, IDictionary<string, string> valuesToSet, ListItemUpdateType updateType) instead")>
+
+      Public Shared Sub UpdateListItem(web As Web, listitem As ListItem, parser As TokenParser, fields As FieldCollection, fieldValues As IDictionary(Of String, String))
+  overload: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.UpdateListItem*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use UpdateListItem(ListItem item, TokenParser parser, IDictionary<string, string> valuesToSet, ListItemUpdateType updateType) instead
+  nameWithType.vb: ListItemUtilities.UpdateListItem(Web, ListItem, TokenParser, FieldCollection, IDictionary(Of String, String))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.UpdateListItem(Microsoft.SharePoint.Client.Web, Microsoft.SharePoint.Client.ListItem, PnP.Framework.Provisioning.ObjectHandlers.TokenParser, Microsoft.SharePoint.Client.FieldCollection, System.Collections.Generic.IDictionary(Of System.String, System.String))
+  name.vb: UpdateListItem(Web, ListItem, TokenParser, FieldCollection, IDictionary(Of String, String))
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.UpdateListItem(Microsoft.SharePoint.Client.ListItem,PnP.Framework.Provisioning.ObjectHandlers.TokenParser,System.Collections.Generic.IDictionary{System.String,System.String},PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.ListItemUpdateType,System.Boolean)
+  commentId: M:PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.UpdateListItem(Microsoft.SharePoint.Client.ListItem,PnP.Framework.Provisioning.ObjectHandlers.TokenParser,System.Collections.Generic.IDictionary{System.String,System.String},PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.ListItemUpdateType,System.Boolean)
+  id: UpdateListItem(Microsoft.SharePoint.Client.ListItem,PnP.Framework.Provisioning.ObjectHandlers.TokenParser,System.Collections.Generic.IDictionary{System.String,System.String},PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.ListItemUpdateType,System.Boolean)
+  parent: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities
+  langs:
+  - csharp
+  - vb
+  name: UpdateListItem(ListItem, TokenParser, IDictionary<String, String>, ListItemUtilities.ListItemUpdateType, Boolean)
+  nameWithType: ListItemUtilities.UpdateListItem(ListItem, TokenParser, IDictionary<String, String>, ListItemUtilities.ListItemUpdateType, Boolean)
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.UpdateListItem(Microsoft.SharePoint.Client.ListItem, PnP.Framework.Provisioning.ObjectHandlers.TokenParser, System.Collections.Generic.IDictionary<System.String, System.String>, PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.ListItemUpdateType, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/ObjectHandlers/Utilities/ListItemUtilities.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UpdateListItem
+    path: ../src/lib/PnP.Framework/Provisioning/ObjectHandlers/Utilities/ListItemUtilities.cs
+    startLine: 263
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  syntax:
+    content: public static void UpdateListItem(ListItem item, TokenParser parser, IDictionary<string, string> valuesToSet, ListItemUtilities.ListItemUpdateType updateType, bool SkipExecuteQuery = false)
+    parameters:
+    - id: item
+      type: Microsoft.SharePoint.Client.ListItem
+    - id: parser
+      type: PnP.Framework.Provisioning.ObjectHandlers.TokenParser
+    - id: valuesToSet
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: updateType
+      type: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.ListItemUpdateType
+    - id: SkipExecuteQuery
+      type: System.Boolean
+    content.vb: Public Shared Sub UpdateListItem(item As ListItem, parser As TokenParser, valuesToSet As IDictionary(Of String, String), updateType As ListItemUtilities.ListItemUpdateType, SkipExecuteQuery As Boolean = False)
+  overload: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.UpdateListItem*
+  nameWithType.vb: ListItemUtilities.UpdateListItem(ListItem, TokenParser, IDictionary(Of String, String), ListItemUtilities.ListItemUpdateType, Boolean)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.UpdateListItem(Microsoft.SharePoint.Client.ListItem, PnP.Framework.Provisioning.ObjectHandlers.TokenParser, System.Collections.Generic.IDictionary(Of System.String, System.String), PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.ListItemUpdateType, System.Boolean)
+  name.vb: UpdateListItem(ListItem, TokenParser, IDictionary(Of String, String), ListItemUtilities.ListItemUpdateType, Boolean)
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.UpdateListItem(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.ListItem,Microsoft.SharePoint.Client.FieldCollection,System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUpdateValue})
+  commentId: M:PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.UpdateListItem(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.ListItem,Microsoft.SharePoint.Client.FieldCollection,System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUpdateValue})
+  id: UpdateListItem(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.ListItem,Microsoft.SharePoint.Client.FieldCollection,System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUpdateValue})
+  parent: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities
+  langs:
+  - csharp
+  - vb
+  name: UpdateListItem(Web, ListItem, FieldCollection, IEnumerable<FieldUpdateValue>)
+  nameWithType: ListItemUtilities.UpdateListItem(Web, ListItem, FieldCollection, IEnumerable<FieldUpdateValue>)
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.UpdateListItem(Microsoft.SharePoint.Client.Web, Microsoft.SharePoint.Client.ListItem, Microsoft.SharePoint.Client.FieldCollection, System.Collections.Generic.IEnumerable<PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUpdateValue>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/ObjectHandlers/Utilities/ListItemUtilities.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UpdateListItem
+    path: ../src/lib/PnP.Framework/Provisioning/ObjectHandlers/Utilities/ListItemUtilities.cs
+    startLine: 677
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  syntax:
+    content: >-
+      [Obsolete("Use UpdateListItem(ListItem item, TokenParser parser, IDictionary<string, string> valuesToSet, ListItemUpdateType updateType) instead")]
+
+      public static void UpdateListItem(Web web, ListItem listItem, FieldCollection listFields, IEnumerable<FieldUpdateValue> updateValues)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+    - id: listItem
+      type: Microsoft.SharePoint.Client.ListItem
+    - id: listFields
+      type: Microsoft.SharePoint.Client.FieldCollection
+    - id: updateValues
+      type: System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUpdateValue}
+    content.vb: >-
+      <Obsolete("Use UpdateListItem(ListItem item, TokenParser parser, IDictionary<string, string> valuesToSet, ListItemUpdateType updateType) instead")>
+
+      Public Shared Sub UpdateListItem(web As Web, listItem As ListItem, listFields As FieldCollection, updateValues As IEnumerable(Of FieldUpdateValue))
+  overload: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.UpdateListItem*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use UpdateListItem(ListItem item, TokenParser parser, IDictionary<string, string> valuesToSet, ListItemUpdateType updateType) instead
+  nameWithType.vb: ListItemUtilities.UpdateListItem(Web, ListItem, FieldCollection, IEnumerable(Of FieldUpdateValue))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.UpdateListItem(Microsoft.SharePoint.Client.Web, Microsoft.SharePoint.Client.ListItem, Microsoft.SharePoint.Client.FieldCollection, System.Collections.Generic.IEnumerable(Of PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUpdateValue))
+  name.vb: UpdateListItem(Web, ListItem, FieldCollection, IEnumerable(Of FieldUpdateValue))
+references:
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  commentId: N:PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  name: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  nameWithType: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.ParseFieldValue*
+  commentId: Overload:PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.ParseFieldValue
+  name: ParseFieldValue
+  nameWithType: ListItemUtilities.ParseFieldValue
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.ParseFieldValue
+- uid: Microsoft.SharePoint.Client.Web
+  commentId: T:Microsoft.SharePoint.Client.Web
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: Web
+  nameWithType: Web
+  fullName: Microsoft.SharePoint.Client.Web
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Microsoft.SharePoint.Client.Field
+  commentId: T:Microsoft.SharePoint.Client.Field
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: Field
+  nameWithType: Field
+  fullName: Microsoft.SharePoint.Client.Field
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUpdateValue
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUpdateValue
+  parent: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  name: FieldUpdateValue
+  nameWithType: FieldUpdateValue
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUpdateValue
+- uid: Microsoft.SharePoint.Client
+  commentId: N:Microsoft.SharePoint.Client
+  name: Microsoft.SharePoint.Client
+  nameWithType: Microsoft.SharePoint.Client
+  fullName: Microsoft.SharePoint.Client
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.UpdateListItem*
+  commentId: Overload:PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.UpdateListItem
+  name: UpdateListItem
+  nameWithType: ListItemUtilities.UpdateListItem
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.UpdateListItem
+- uid: Microsoft.SharePoint.Client.ListItem
+  commentId: T:Microsoft.SharePoint.Client.ListItem
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: ListItem
+  nameWithType: ListItem
+  fullName: Microsoft.SharePoint.Client.ListItem
+- uid: PnP.Framework.Provisioning.ObjectHandlers.TokenParser
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.TokenParser
+  parent: PnP.Framework.Provisioning.ObjectHandlers
+  name: TokenParser
+  nameWithType: TokenParser
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.TokenParser
+- uid: Microsoft.SharePoint.Client.FieldCollection
+  commentId: T:Microsoft.SharePoint.Client.FieldCollection
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: FieldCollection
+  nameWithType: FieldCollection
+  fullName: Microsoft.SharePoint.Client.FieldCollection
+- uid: System.Collections.Generic.IDictionary{System.String,System.String}
+  commentId: T:System.Collections.Generic.IDictionary{System.String,System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IDictionary`2
+  name: IDictionary<String, String>
+  nameWithType: IDictionary<String, String>
+  fullName: System.Collections.Generic.IDictionary<System.String, System.String>
+  nameWithType.vb: IDictionary(Of String, String)
+  fullName.vb: System.Collections.Generic.IDictionary(Of System.String, System.String)
+  name.vb: IDictionary(Of String, String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    nameWithType: IDictionary
+    fullName: System.Collections.Generic.IDictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    nameWithType: IDictionary
+    fullName: System.Collections.Generic.IDictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.ObjectHandlers
+  commentId: N:PnP.Framework.Provisioning.ObjectHandlers
+  name: PnP.Framework.Provisioning.ObjectHandlers
+  nameWithType: PnP.Framework.Provisioning.ObjectHandlers
+  fullName: PnP.Framework.Provisioning.ObjectHandlers
+- uid: System.Collections.Generic.IDictionary`2
+  commentId: T:System.Collections.Generic.IDictionary`2
+  isExternal: true
+  name: IDictionary<TKey, TValue>
+  nameWithType: IDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IDictionary<TKey, TValue>
+  nameWithType.vb: IDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IDictionary(Of TKey, TValue)
+  name.vb: IDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    nameWithType: IDictionary
+    fullName: System.Collections.Generic.IDictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    nameWithType: IDictionary
+    fullName: System.Collections.Generic.IDictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.ListItemUpdateType
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.ListItemUpdateType
+  parent: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  name: ListItemUtilities.ListItemUpdateType
+  nameWithType: ListItemUtilities.ListItemUpdateType
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.ListItemUpdateType
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUpdateValue}
+  commentId: T:System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUpdateValue}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<FieldUpdateValue>
+  nameWithType: IEnumerable<FieldUpdateValue>
+  fullName: System.Collections.Generic.IEnumerable<PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUpdateValue>
+  nameWithType.vb: IEnumerable(Of FieldUpdateValue)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUpdateValue)
+  name.vb: IEnumerable(Of FieldUpdateValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUpdateValue
+    name: FieldUpdateValue
+    nameWithType: FieldUpdateValue
+    fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUpdateValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUpdateValue
+    name: FieldUpdateValue
+    nameWithType: FieldUpdateValue
+    fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUpdateValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )

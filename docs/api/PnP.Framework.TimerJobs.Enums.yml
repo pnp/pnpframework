@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.TimerJobs.Enums
+  commentId: N:PnP.Framework.TimerJobs.Enums
+  id: PnP.Framework.TimerJobs.Enums
+  children:
+  - PnP.Framework.TimerJobs.Enums.AuthenticationType
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.TimerJobs.Enums
+  nameWithType: PnP.Framework.TimerJobs.Enums
+  fullName: PnP.Framework.TimerJobs.Enums
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.TimerJobs.Enums.AuthenticationType
+  commentId: T:PnP.Framework.TimerJobs.Enums.AuthenticationType
+  parent: PnP.Framework.TimerJobs.Enums
+  name: AuthenticationType
+  nameWithType: AuthenticationType
+  fullName: PnP.Framework.TimerJobs.Enums.AuthenticationType
+- uid: PnP.Framework.TimerJobs.Enums
+  commentId: N:PnP.Framework.TimerJobs.Enums
+  name: PnP.Framework.TimerJobs.Enums
+  nameWithType: PnP.Framework.TimerJobs.Enums
+  fullName: PnP.Framework.TimerJobs.Enums

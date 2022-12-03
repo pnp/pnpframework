@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.Configuration.SyntexModels
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.SyntexModels
+  id: PnP.Framework.Provisioning.Model.Configuration.SyntexModels
+  children:
+  - PnP.Framework.Provisioning.Model.Configuration.SyntexModels.ExtractSyntexModelsConfiguration
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Model.Configuration.SyntexModels
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.SyntexModels
+  fullName: PnP.Framework.Provisioning.Model.Configuration.SyntexModels
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Model.Configuration.SyntexModels.ExtractSyntexModelsConfiguration
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.SyntexModels.ExtractSyntexModelsConfiguration
+  parent: PnP.Framework.Provisioning.Model.Configuration.SyntexModels
+  name: ExtractSyntexModelsConfiguration
+  nameWithType: ExtractSyntexModelsConfiguration
+  fullName: PnP.Framework.Provisioning.Model.Configuration.SyntexModels.ExtractSyntexModelsConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.SyntexModels
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.SyntexModels
+  name: PnP.Framework.Provisioning.Model.Configuration.SyntexModels
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.SyntexModels
+  fullName: PnP.Framework.Provisioning.Model.Configuration.SyntexModels

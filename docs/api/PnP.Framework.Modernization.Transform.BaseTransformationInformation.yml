@@ -1,0 +1,2804 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  commentId: T:PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  id: BaseTransformationInformation
+  parent: PnP.Framework.Modernization.Transform
+  children:
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.AddTableListImageAsImageWebPart
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.ContentTransformatorOverride
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.DisablePageComments
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.HandleWikiImagesAndVideos
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.KeepPageCreationModificationInformation
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.KeepPageSpecificPermissions
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.LayoutTransformatorOverride
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.LDAPConnectionString
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.MappingProperties
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.Overwrite
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.PageTitleOverride
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.PostAsNews
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.PublishCreatedPage
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.RemoveEmptySectionsAndColumns
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipDefaultUrlRewrite
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipHiddenWebParts
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipTelemetry
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipTermStoreMapping
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipUrlRewrite
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipUserMapping
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.SourceFile
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.SourcePage
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.TargetPageFolder
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.TargetPageFolderOverridesDefaultFolder
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.TargetPageName
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.TermMappingFile
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.UrlMappingFile
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.UserMappingFile
+  langs:
+  - csharp
+  - vb
+  name: BaseTransformationInformation
+  nameWithType: BaseTransformationInformation
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: BaseTransformationInformation
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 10
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nInformation used to configure the page transformation process which applies to all types of page transformations\n"
+  example: []
+  syntax:
+    content: public abstract class BaseTransformationInformation
+    content.vb: Public MustInherit Class BaseTransformationInformation
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - PnP.Framework.Modernization.Publishing.PublishingPageTransformationInformation
+  - PnP.Framework.Modernization.Transform.PageTransformationInformation
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - PnP.Framework.Modernization.Transform.BaseTransformationInformation.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Modernization.Transform.BaseTransformationInformation,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  modifiers.csharp:
+  - public
+  - abstract
+  - class
+  modifiers.vb:
+  - Public
+  - MustInherit
+  - Class
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SourcePage
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.SourcePage
+  id: SourcePage
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: SourcePage
+  nameWithType: BaseTransformationInformation.SourcePage
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SourcePage
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SourcePage
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 17
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nSource wiki/webpart page we want to transform\n"
+  example: []
+  syntax:
+    content: public ListItem SourcePage { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.SharePoint.Client.ListItem
+    content.vb: Public Property SourcePage As ListItem
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SourcePage*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SourceFile
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.SourceFile
+  id: SourceFile
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: SourceFile
+  nameWithType: BaseTransformationInformation.SourceFile
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SourceFile
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SourceFile
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 22
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nFile to convert - used for web part pages living outside a library as these pages do not have an associated list item\n"
+  example: []
+  syntax:
+    content: public File SourceFile { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.SharePoint.Client.File
+    content.vb: Public Property SourceFile As File
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SourceFile*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.Overwrite
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.Overwrite
+  id: Overwrite
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: Overwrite
+  nameWithType: BaseTransformationInformation.Overwrite
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.Overwrite
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Overwrite
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 27
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nOverwrite the target page if it already exists?\n"
+  example: []
+  syntax:
+    content: public bool Overwrite { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property Overwrite As Boolean
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.Overwrite*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.TargetPageName
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.TargetPageName
+  id: TargetPageName
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: TargetPageName
+  nameWithType: BaseTransformationInformation.TargetPageName
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.TargetPageName
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TargetPageName
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 32
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nName for the transformed page\n"
+  example: []
+  syntax:
+    content: public string TargetPageName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property TargetPageName As String
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.TargetPageName*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.TargetPageFolder
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.TargetPageFolder
+  id: TargetPageFolder
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: TargetPageFolder
+  nameWithType: BaseTransformationInformation.TargetPageFolder
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.TargetPageFolder
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TargetPageFolder
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 37
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nTarget page folder\n"
+  example: []
+  syntax:
+    content: public string TargetPageFolder { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property TargetPageFolder As String
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.TargetPageFolder*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.TargetPageFolderOverridesDefaultFolder
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.TargetPageFolderOverridesDefaultFolder
+  id: TargetPageFolderOverridesDefaultFolder
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: TargetPageFolderOverridesDefaultFolder
+  nameWithType: BaseTransformationInformation.TargetPageFolderOverridesDefaultFolder
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.TargetPageFolderOverridesDefaultFolder
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TargetPageFolderOverridesDefaultFolder
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 42
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nWhen a target page folder is set, it overwrites the potentially default folder path (e.g. if the source page lived in a folder then that folder is in the default folder path)\n"
+  example: []
+  syntax:
+    content: public bool TargetPageFolderOverridesDefaultFolder { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property TargetPageFolderOverridesDefaultFolder As Boolean
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.TargetPageFolderOverridesDefaultFolder*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.KeepPageSpecificPermissions
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.KeepPageSpecificPermissions
+  id: KeepPageSpecificPermissions
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: KeepPageSpecificPermissions
+  nameWithType: BaseTransformationInformation.KeepPageSpecificPermissions
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.KeepPageSpecificPermissions
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: KeepPageSpecificPermissions
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 47
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nApply the item level page permissions on to the target page, defaults to true\n"
+  example: []
+  syntax:
+    content: public bool KeepPageSpecificPermissions { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property KeepPageSpecificPermissions As Boolean
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.KeepPageSpecificPermissions*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.RemoveEmptySectionsAndColumns
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.RemoveEmptySectionsAndColumns
+  id: RemoveEmptySectionsAndColumns
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: RemoveEmptySectionsAndColumns
+  nameWithType: BaseTransformationInformation.RemoveEmptySectionsAndColumns
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.RemoveEmptySectionsAndColumns
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemoveEmptySectionsAndColumns
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 52
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nRemoves empty sections and columns to optimize screen real estate\n"
+  example: []
+  syntax:
+    content: public bool RemoveEmptySectionsAndColumns { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property RemoveEmptySectionsAndColumns As Boolean
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.RemoveEmptySectionsAndColumns*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.HandleWikiImagesAndVideos
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.HandleWikiImagesAndVideos
+  id: HandleWikiImagesAndVideos
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: HandleWikiImagesAndVideos
+  nameWithType: BaseTransformationInformation.HandleWikiImagesAndVideos
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.HandleWikiImagesAndVideos
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: HandleWikiImagesAndVideos
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 60
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nIf true images and videos embedded in wiki text will be transformed to actual image/video web parts, \nelse they&apos;ll get a placeholder and will be added as separate web parts at the end of the page\n"
+  example: []
+  syntax:
+    content: public bool HandleWikiImagesAndVideos { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property HandleWikiImagesAndVideos As Boolean
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.HandleWikiImagesAndVideos*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.AddTableListImageAsImageWebPart
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.AddTableListImageAsImageWebPart
+  id: AddTableListImageAsImageWebPart
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: AddTableListImageAsImageWebPart
+  nameWithType: BaseTransformationInformation.AddTableListImageAsImageWebPart
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.AddTableListImageAsImageWebPart
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddTableListImageAsImageWebPart
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 65
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nWhen an image lives inside a table (or list) then also add it as a separate image web part\n"
+  example: []
+  syntax:
+    content: public bool AddTableListImageAsImageWebPart { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property AddTableListImageAsImageWebPart As Boolean
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.AddTableListImageAsImageWebPart*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.MappingProperties
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.MappingProperties
+  id: MappingProperties
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: MappingProperties
+  nameWithType: BaseTransformationInformation.MappingProperties
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.MappingProperties
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MappingProperties
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 71
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nProperty bag for adding properties that will be exposed to the functions and selectors in the web part mapping file.\nThese properties are used to condition the transformation process.\n"
+  example: []
+  syntax:
+    content: public Dictionary<string, string> MappingProperties { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+    content.vb: Public Property MappingProperties As Dictionary(Of String, String)
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.MappingProperties*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.KeepPageCreationModificationInformation
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.KeepPageCreationModificationInformation
+  id: KeepPageCreationModificationInformation
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: KeepPageCreationModificationInformation
+  nameWithType: BaseTransformationInformation.KeepPageCreationModificationInformation
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.KeepPageCreationModificationInformation
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: KeepPageCreationModificationInformation
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 76
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nSet this property in case you want to retain the page&apos;s Author/Editor/Created/Modified fields. Note that a page publish will always set Editor/Modified\n"
+  example: []
+  syntax:
+    content: public bool KeepPageCreationModificationInformation { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property KeepPageCreationModificationInformation As Boolean
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.KeepPageCreationModificationInformation*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.PublishCreatedPage
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.PublishCreatedPage
+  id: PublishCreatedPage
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: PublishCreatedPage
+  nameWithType: BaseTransformationInformation.PublishCreatedPage
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.PublishCreatedPage
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PublishCreatedPage
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 81
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nShould the created page be immediately published (default = true)\n"
+  example: []
+  syntax:
+    content: public bool PublishCreatedPage { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property PublishCreatedPage As Boolean
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.PublishCreatedPage*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.PostAsNews
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.PostAsNews
+  id: PostAsNews
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: PostAsNews
+  nameWithType: BaseTransformationInformation.PostAsNews
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.PostAsNews
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PostAsNews
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 86
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nPost the created page as news\n"
+  example: []
+  syntax:
+    content: public bool PostAsNews { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property PostAsNews As Boolean
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.PostAsNews*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.DisablePageComments
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.DisablePageComments
+  id: DisablePageComments
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: DisablePageComments
+  nameWithType: BaseTransformationInformation.DisablePageComments
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.DisablePageComments
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DisablePageComments
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 91
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nDisable page comments on the created page\n"
+  example: []
+  syntax:
+    content: public bool DisablePageComments { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property DisablePageComments As Boolean
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.DisablePageComments*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipUrlRewrite
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipUrlRewrite
+  id: SkipUrlRewrite
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: SkipUrlRewrite
+  nameWithType: BaseTransformationInformation.SkipUrlRewrite
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipUrlRewrite
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SkipUrlRewrite
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 96
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nSkip URL rewriting\n"
+  example: []
+  syntax:
+    content: public bool SkipUrlRewrite { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property SkipUrlRewrite As Boolean
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipUrlRewrite*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipDefaultUrlRewrite
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipDefaultUrlRewrite
+  id: SkipDefaultUrlRewrite
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: SkipDefaultUrlRewrite
+  nameWithType: BaseTransformationInformation.SkipDefaultUrlRewrite
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipDefaultUrlRewrite
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SkipDefaultUrlRewrite
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 101
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nSkip default URL rewriting, custom URL rewriting using a URL mapping file is still handled\n"
+  example: []
+  syntax:
+    content: public bool SkipDefaultUrlRewrite { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property SkipDefaultUrlRewrite As Boolean
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipDefaultUrlRewrite*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.UrlMappingFile
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.UrlMappingFile
+  id: UrlMappingFile
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: UrlMappingFile
+  nameWithType: BaseTransformationInformation.UrlMappingFile
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.UrlMappingFile
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UrlMappingFile
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 106
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nUrl to an URL mapping file\n"
+  example: []
+  syntax:
+    content: public string UrlMappingFile { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property UrlMappingFile As String
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.UrlMappingFile*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipHiddenWebParts
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipHiddenWebParts
+  id: SkipHiddenWebParts
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: SkipHiddenWebParts
+  nameWithType: BaseTransformationInformation.SkipHiddenWebParts
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipHiddenWebParts
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SkipHiddenWebParts
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 111
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nDon&apos;t transform hidden web parts\n"
+  example: []
+  syntax:
+    content: public bool SkipHiddenWebParts { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property SkipHiddenWebParts As Boolean
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipHiddenWebParts*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.TermMappingFile
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.TermMappingFile
+  id: TermMappingFile
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: TermMappingFile
+  nameWithType: BaseTransformationInformation.TermMappingFile
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.TermMappingFile
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TermMappingFile
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 119
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nURL to an Term Store Mapping File\n"
+  example: []
+  syntax:
+    content: public string TermMappingFile { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property TermMappingFile As String
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.TermMappingFile*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipTermStoreMapping
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipTermStoreMapping
+  id: SkipTermStoreMapping
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: SkipTermStoreMapping
+  nameWithType: BaseTransformationInformation.SkipTermStoreMapping
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipTermStoreMapping
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SkipTermStoreMapping
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 124
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nTurn off term store mapping\n"
+  example: []
+  syntax:
+    content: public bool SkipTermStoreMapping { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property SkipTermStoreMapping As Boolean
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipTermStoreMapping*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipUserMapping
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipUserMapping
+  id: SkipUserMapping
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: SkipUserMapping
+  nameWithType: BaseTransformationInformation.SkipUserMapping
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipUserMapping
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SkipUserMapping
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 132
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nDon&apos;t perform user mapping\n"
+  example: []
+  syntax:
+    content: public bool SkipUserMapping { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property SkipUserMapping As Boolean
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipUserMapping*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.UserMappingFile
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.UserMappingFile
+  id: UserMappingFile
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: UserMappingFile
+  nameWithType: BaseTransformationInformation.UserMappingFile
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.UserMappingFile
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UserMappingFile
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 137
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nUser Mapping file\n"
+  example: []
+  syntax:
+    content: public string UserMappingFile { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property UserMappingFile As String
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.UserMappingFile*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.LDAPConnectionString
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.LDAPConnectionString
+  id: LDAPConnectionString
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: LDAPConnectionString
+  nameWithType: BaseTransformationInformation.LDAPConnectionString
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.LDAPConnectionString
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: LDAPConnectionString
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 145
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nSearches for users within a specific LDAP Connection String, if not specified domain LDAP will be calculated\n"
+  example:
+  - "\nLDAP://OU=Test,DC=ALPHADELTA,DC=LOCAL\n"
+  syntax:
+    content: public string LDAPConnectionString { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property LDAPConnectionString As String
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.LDAPConnectionString*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.PageTitleOverride
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.PageTitleOverride
+  id: PageTitleOverride
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: PageTitleOverride
+  nameWithType: BaseTransformationInformation.PageTitleOverride
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.PageTitleOverride
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PageTitleOverride
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 152
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nCustom function callout that can be triggered to provide a tailored page title\n"
+  example: []
+  syntax:
+    content: public Func<string, string> PageTitleOverride { get; set; }
+    parameters: []
+    return:
+      type: System.Func{System.String,System.String}
+    content.vb: Public Property PageTitleOverride As Func(Of String, String)
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.PageTitleOverride*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.LayoutTransformatorOverride
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.LayoutTransformatorOverride
+  id: LayoutTransformatorOverride
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: LayoutTransformatorOverride
+  nameWithType: BaseTransformationInformation.LayoutTransformatorOverride
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.LayoutTransformatorOverride
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: LayoutTransformatorOverride
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 156
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nCustom layout transformator to be used for this page\n"
+  example: []
+  syntax:
+    content: public Func<IPage, ILayoutTransformator> LayoutTransformatorOverride { get; set; }
+    parameters: []
+    return:
+      type: System.Func{PnP.Core.Model.SharePoint.IPage,PnP.Framework.Modernization.Transform.ILayoutTransformator}
+    content.vb: Public Property LayoutTransformatorOverride As Func(Of IPage, ILayoutTransformator)
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.LayoutTransformatorOverride*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.ContentTransformatorOverride
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.ContentTransformatorOverride
+  id: ContentTransformatorOverride
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: ContentTransformatorOverride
+  nameWithType: BaseTransformationInformation.ContentTransformatorOverride
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.ContentTransformatorOverride
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ContentTransformatorOverride
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 160
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nCustom content transformator to be used for this page\n"
+  example: []
+  syntax:
+    content: public Func<IPage, PageTransformation, IContentTransformator> ContentTransformatorOverride { get; set; }
+    parameters: []
+    return:
+      type: System.Func{PnP.Core.Model.SharePoint.IPage,PnP.Framework.Modernization.PageTransformation,PnP.Framework.Modernization.Transform.IContentTransformator}
+    content.vb: Public Property ContentTransformatorOverride As Func(Of IPage, PageTransformation, IContentTransformator)
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.ContentTransformatorOverride*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipTelemetry
+  commentId: P:PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipTelemetry
+  id: SkipTelemetry
+  parent: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  langs:
+  - csharp
+  - vb
+  name: SkipTelemetry
+  nameWithType: BaseTransformationInformation.SkipTelemetry
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipTelemetry
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SkipTelemetry
+    path: ../src/lib/PnP.Framework/Modernization/Transform/BaseTransformationInformation.cs
+    startLine: 167
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Transform
+  summary: "\nDisable telemetry: we use telemetry to make this tool better by sending anonymous data, but you&apos;re free to disable this\n"
+  example: []
+  syntax:
+    content: public bool SkipTelemetry { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property SkipTelemetry As Boolean
+  overload: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipTelemetry*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: PnP.Framework.Modernization.Transform
+  commentId: N:PnP.Framework.Modernization.Transform
+  name: PnP.Framework.Modernization.Transform
+  nameWithType: PnP.Framework.Modernization.Transform
+  fullName: PnP.Framework.Modernization.Transform
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<BaseTransformationInformation>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<BaseTransformationInformation>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Modernization.Transform.BaseTransformationInformation>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of BaseTransformationInformation)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Modernization.Transform.BaseTransformationInformation)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of BaseTransformationInformation)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<BaseTransformationInformation>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<BaseTransformationInformation>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Modernization.Transform.BaseTransformationInformation>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of BaseTransformationInformation)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of BaseTransformationInformation)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Modernization.Transform.BaseTransformationInformation)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Modernization.Transform.BaseTransformationInformation,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<BaseTransformationInformation, T>(Expression<Func<BaseTransformationInformation, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<BaseTransformationInformation, T>(Expression<Func<BaseTransformationInformation, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Modernization.Transform.BaseTransformationInformation, T>(System.Linq.Expressions.Expression<System.Func<PnP.Framework.Modernization.Transform.BaseTransformationInformation, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of BaseTransformationInformation, T)(Expression(Of Func(Of BaseTransformationInformation, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Modernization.Transform.BaseTransformationInformation, T)(System.Linq.Expressions.Expression(Of System.Func(Of PnP.Framework.Modernization.Transform.BaseTransformationInformation, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of BaseTransformationInformation, T)(Expression(Of Func(Of BaseTransformationInformation, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<BaseTransformationInformation, T>
+    nameWithType: ObjectExtensions.Set<BaseTransformationInformation, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Modernization.Transform.BaseTransformationInformation, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+    name: BaseTransformationInformation
+    nameWithType: BaseTransformationInformation
+    fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of BaseTransformationInformation, T)
+    nameWithType: ObjectExtensions.Set(Of BaseTransformationInformation, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Modernization.Transform.BaseTransformationInformation, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+    name: BaseTransformationInformation
+    nameWithType: BaseTransformationInformation
+    fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SourcePage*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.SourcePage
+  name: SourcePage
+  nameWithType: BaseTransformationInformation.SourcePage
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SourcePage
+- uid: Microsoft.SharePoint.Client.ListItem
+  commentId: T:Microsoft.SharePoint.Client.ListItem
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: ListItem
+  nameWithType: ListItem
+  fullName: Microsoft.SharePoint.Client.ListItem
+- uid: Microsoft.SharePoint.Client
+  commentId: N:Microsoft.SharePoint.Client
+  name: Microsoft.SharePoint.Client
+  nameWithType: Microsoft.SharePoint.Client
+  fullName: Microsoft.SharePoint.Client
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SourceFile*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.SourceFile
+  name: SourceFile
+  nameWithType: BaseTransformationInformation.SourceFile
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SourceFile
+- uid: Microsoft.SharePoint.Client.File
+  commentId: T:Microsoft.SharePoint.Client.File
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: File
+  nameWithType: File
+  fullName: Microsoft.SharePoint.Client.File
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.Overwrite*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.Overwrite
+  name: Overwrite
+  nameWithType: BaseTransformationInformation.Overwrite
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.Overwrite
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.TargetPageName*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.TargetPageName
+  name: TargetPageName
+  nameWithType: BaseTransformationInformation.TargetPageName
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.TargetPageName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.TargetPageFolder*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.TargetPageFolder
+  name: TargetPageFolder
+  nameWithType: BaseTransformationInformation.TargetPageFolder
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.TargetPageFolder
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.TargetPageFolderOverridesDefaultFolder*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.TargetPageFolderOverridesDefaultFolder
+  name: TargetPageFolderOverridesDefaultFolder
+  nameWithType: BaseTransformationInformation.TargetPageFolderOverridesDefaultFolder
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.TargetPageFolderOverridesDefaultFolder
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.KeepPageSpecificPermissions*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.KeepPageSpecificPermissions
+  name: KeepPageSpecificPermissions
+  nameWithType: BaseTransformationInformation.KeepPageSpecificPermissions
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.KeepPageSpecificPermissions
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.RemoveEmptySectionsAndColumns*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.RemoveEmptySectionsAndColumns
+  name: RemoveEmptySectionsAndColumns
+  nameWithType: BaseTransformationInformation.RemoveEmptySectionsAndColumns
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.RemoveEmptySectionsAndColumns
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.HandleWikiImagesAndVideos*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.HandleWikiImagesAndVideos
+  name: HandleWikiImagesAndVideos
+  nameWithType: BaseTransformationInformation.HandleWikiImagesAndVideos
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.HandleWikiImagesAndVideos
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.AddTableListImageAsImageWebPart*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.AddTableListImageAsImageWebPart
+  name: AddTableListImageAsImageWebPart
+  nameWithType: BaseTransformationInformation.AddTableListImageAsImageWebPart
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.AddTableListImageAsImageWebPart
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.MappingProperties*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.MappingProperties
+  name: MappingProperties
+  nameWithType: BaseTransformationInformation.MappingProperties
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.MappingProperties
+- uid: System.Collections.Generic.Dictionary{System.String,System.String}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  name: Dictionary<String, String>
+  nameWithType: Dictionary<String, String>
+  fullName: System.Collections.Generic.Dictionary<System.String, System.String>
+  nameWithType.vb: Dictionary(Of String, String)
+  fullName.vb: System.Collections.Generic.Dictionary(Of System.String, System.String)
+  name.vb: Dictionary(Of String, String)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.KeepPageCreationModificationInformation*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.KeepPageCreationModificationInformation
+  name: KeepPageCreationModificationInformation
+  nameWithType: BaseTransformationInformation.KeepPageCreationModificationInformation
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.KeepPageCreationModificationInformation
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.PublishCreatedPage*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.PublishCreatedPage
+  name: PublishCreatedPage
+  nameWithType: BaseTransformationInformation.PublishCreatedPage
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.PublishCreatedPage
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.PostAsNews*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.PostAsNews
+  name: PostAsNews
+  nameWithType: BaseTransformationInformation.PostAsNews
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.PostAsNews
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.DisablePageComments*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.DisablePageComments
+  name: DisablePageComments
+  nameWithType: BaseTransformationInformation.DisablePageComments
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.DisablePageComments
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipUrlRewrite*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipUrlRewrite
+  name: SkipUrlRewrite
+  nameWithType: BaseTransformationInformation.SkipUrlRewrite
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipUrlRewrite
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipDefaultUrlRewrite*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipDefaultUrlRewrite
+  name: SkipDefaultUrlRewrite
+  nameWithType: BaseTransformationInformation.SkipDefaultUrlRewrite
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipDefaultUrlRewrite
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.UrlMappingFile*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.UrlMappingFile
+  name: UrlMappingFile
+  nameWithType: BaseTransformationInformation.UrlMappingFile
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.UrlMappingFile
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipHiddenWebParts*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipHiddenWebParts
+  name: SkipHiddenWebParts
+  nameWithType: BaseTransformationInformation.SkipHiddenWebParts
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipHiddenWebParts
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.TermMappingFile*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.TermMappingFile
+  name: TermMappingFile
+  nameWithType: BaseTransformationInformation.TermMappingFile
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.TermMappingFile
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipTermStoreMapping*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipTermStoreMapping
+  name: SkipTermStoreMapping
+  nameWithType: BaseTransformationInformation.SkipTermStoreMapping
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipTermStoreMapping
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipUserMapping*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipUserMapping
+  name: SkipUserMapping
+  nameWithType: BaseTransformationInformation.SkipUserMapping
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipUserMapping
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.UserMappingFile*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.UserMappingFile
+  name: UserMappingFile
+  nameWithType: BaseTransformationInformation.UserMappingFile
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.UserMappingFile
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.LDAPConnectionString*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.LDAPConnectionString
+  name: LDAPConnectionString
+  nameWithType: BaseTransformationInformation.LDAPConnectionString
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.LDAPConnectionString
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.PageTitleOverride*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.PageTitleOverride
+  name: PageTitleOverride
+  nameWithType: BaseTransformationInformation.PageTitleOverride
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.PageTitleOverride
+- uid: System.Func{System.String,System.String}
+  commentId: T:System.Func{System.String,System.String}
+  parent: System
+  definition: System.Func`2
+  name: Func<String, String>
+  nameWithType: Func<String, String>
+  fullName: System.Func<System.String, System.String>
+  nameWithType.vb: Func(Of String, String)
+  fullName.vb: System.Func(Of System.String, System.String)
+  name.vb: Func(Of String, String)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Func`2
+  commentId: T:System.Func`2
+  isExternal: true
+  name: Func<T, TResult>
+  nameWithType: Func<T, TResult>
+  fullName: System.Func<T, TResult>
+  nameWithType.vb: Func(Of T, TResult)
+  fullName.vb: System.Func(Of T, TResult)
+  name.vb: Func(Of T, TResult)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.LayoutTransformatorOverride*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.LayoutTransformatorOverride
+  name: LayoutTransformatorOverride
+  nameWithType: BaseTransformationInformation.LayoutTransformatorOverride
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.LayoutTransformatorOverride
+- uid: System.Func{PnP.Core.Model.SharePoint.IPage,PnP.Framework.Modernization.Transform.ILayoutTransformator}
+  commentId: T:System.Func{PnP.Core.Model.SharePoint.IPage,PnP.Framework.Modernization.Transform.ILayoutTransformator}
+  parent: System
+  definition: System.Func`2
+  name: Func<IPage, ILayoutTransformator>
+  nameWithType: Func<IPage, ILayoutTransformator>
+  fullName: System.Func<PnP.Core.Model.SharePoint.IPage, PnP.Framework.Modernization.Transform.ILayoutTransformator>
+  nameWithType.vb: Func(Of IPage, ILayoutTransformator)
+  fullName.vb: System.Func(Of PnP.Core.Model.SharePoint.IPage, PnP.Framework.Modernization.Transform.ILayoutTransformator)
+  name.vb: Func(Of IPage, ILayoutTransformator)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Core.Model.SharePoint.IPage
+    name: IPage
+    nameWithType: IPage
+    fullName: PnP.Core.Model.SharePoint.IPage
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Modernization.Transform.ILayoutTransformator
+    name: ILayoutTransformator
+    nameWithType: ILayoutTransformator
+    fullName: PnP.Framework.Modernization.Transform.ILayoutTransformator
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Core.Model.SharePoint.IPage
+    name: IPage
+    nameWithType: IPage
+    fullName: PnP.Core.Model.SharePoint.IPage
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Modernization.Transform.ILayoutTransformator
+    name: ILayoutTransformator
+    nameWithType: ILayoutTransformator
+    fullName: PnP.Framework.Modernization.Transform.ILayoutTransformator
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.ContentTransformatorOverride*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.ContentTransformatorOverride
+  name: ContentTransformatorOverride
+  nameWithType: BaseTransformationInformation.ContentTransformatorOverride
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.ContentTransformatorOverride
+- uid: System.Func{PnP.Core.Model.SharePoint.IPage,PnP.Framework.Modernization.PageTransformation,PnP.Framework.Modernization.Transform.IContentTransformator}
+  commentId: T:System.Func{PnP.Core.Model.SharePoint.IPage,PnP.Framework.Modernization.PageTransformation,PnP.Framework.Modernization.Transform.IContentTransformator}
+  parent: System
+  definition: System.Func`3
+  name: Func<IPage, PageTransformation, IContentTransformator>
+  nameWithType: Func<IPage, PageTransformation, IContentTransformator>
+  fullName: System.Func<PnP.Core.Model.SharePoint.IPage, PnP.Framework.Modernization.PageTransformation, PnP.Framework.Modernization.Transform.IContentTransformator>
+  nameWithType.vb: Func(Of IPage, PageTransformation, IContentTransformator)
+  fullName.vb: System.Func(Of PnP.Core.Model.SharePoint.IPage, PnP.Framework.Modernization.PageTransformation, PnP.Framework.Modernization.Transform.IContentTransformator)
+  name.vb: Func(Of IPage, PageTransformation, IContentTransformator)
+  spec.csharp:
+  - uid: System.Func`3
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Core.Model.SharePoint.IPage
+    name: IPage
+    nameWithType: IPage
+    fullName: PnP.Core.Model.SharePoint.IPage
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Modernization.PageTransformation
+    name: PageTransformation
+    nameWithType: PageTransformation
+    fullName: PnP.Framework.Modernization.PageTransformation
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Modernization.Transform.IContentTransformator
+    name: IContentTransformator
+    nameWithType: IContentTransformator
+    fullName: PnP.Framework.Modernization.Transform.IContentTransformator
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Func`3
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Core.Model.SharePoint.IPage
+    name: IPage
+    nameWithType: IPage
+    fullName: PnP.Core.Model.SharePoint.IPage
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Modernization.PageTransformation
+    name: PageTransformation
+    nameWithType: PageTransformation
+    fullName: PnP.Framework.Modernization.PageTransformation
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Modernization.Transform.IContentTransformator
+    name: IContentTransformator
+    nameWithType: IContentTransformator
+    fullName: PnP.Framework.Modernization.Transform.IContentTransformator
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Func`3
+  commentId: T:System.Func`3
+  isExternal: true
+  name: Func<T1, T2, TResult>
+  nameWithType: Func<T1, T2, TResult>
+  fullName: System.Func<T1, T2, TResult>
+  nameWithType.vb: Func(Of T1, T2, TResult)
+  fullName.vb: System.Func(Of T1, T2, TResult)
+  name.vb: Func(Of T1, T2, TResult)
+  spec.csharp:
+  - uid: System.Func`3
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T1
+    nameWithType: T1
+    fullName: T1
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T2
+    nameWithType: T2
+    fullName: T2
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Func`3
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T1
+    nameWithType: T1
+    fullName: T1
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T2
+    nameWithType: T2
+    fullName: T2
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipTelemetry*
+  commentId: Overload:PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipTelemetry
+  name: SkipTelemetry
+  nameWithType: BaseTransformationInformation.SkipTelemetry
+  fullName: PnP.Framework.Modernization.Transform.BaseTransformationInformation.SkipTelemetry

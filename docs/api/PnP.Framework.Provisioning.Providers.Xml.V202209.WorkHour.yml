@@ -1,0 +1,2074 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  commentId: T:PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  id: WorkHour
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202209
+  children:
+  - PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item1000AM
+  - PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item1000PM
+  - PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item100AM
+  - PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item100PM
+  - PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item1100AM
+  - PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item1100PM
+  - PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item1200AM
+  - PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item1200PM
+  - PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item200AM
+  - PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item200PM
+  - PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item300AM
+  - PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item300PM
+  - PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item400AM
+  - PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item400PM
+  - PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item500AM
+  - PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item500PM
+  - PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item600AM
+  - PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item600PM
+  - PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item700AM
+  - PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item700PM
+  - PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item800AM
+  - PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item800PM
+  - PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item900AM
+  - PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item900PM
+  langs:
+  - csharp
+  - vb
+  name: WorkHour
+  nameWithType: WorkHour
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  type: Enum
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WorkHour
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+    startLine: 11739
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202209
+  remarks: ''
+  example: []
+  syntax:
+    content: >-
+      [Serializable]
+
+      public enum WorkHour
+    content.vb: >-
+      <Serializable>
+
+      Public Enum WorkHour
+  extensionMethods:
+  - System.Enum.System.EnumerationExtensions.Include``1({T})
+  - System.Enum.System.EnumerationExtensions.Remove``1({T})
+  - System.Enum.System.EnumerationExtensions.Has``1({T})
+  - System.Enum.System.EnumerationExtensions.Missing``1({T})
+  - PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item1200AM
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item1200AM
+  id: Item1200AM
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  langs:
+  - csharp
+  - vb
+  name: Item1200AM
+  nameWithType: WorkHour.Item1200AM
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item1200AM
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Item1200AM
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+    startLine: 11745
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202209
+  remarks: ''
+  example: []
+  syntax:
+    content: Item1200AM = 0
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item100AM
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item100AM
+  id: Item100AM
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  langs:
+  - csharp
+  - vb
+  name: Item100AM
+  nameWithType: WorkHour.Item100AM
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item100AM
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Item100AM
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+    startLine: 11749
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202209
+  remarks: ''
+  example: []
+  syntax:
+    content: Item100AM = 1
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item200AM
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item200AM
+  id: Item200AM
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  langs:
+  - csharp
+  - vb
+  name: Item200AM
+  nameWithType: WorkHour.Item200AM
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item200AM
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Item200AM
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+    startLine: 11753
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202209
+  remarks: ''
+  example: []
+  syntax:
+    content: Item200AM = 2
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item300AM
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item300AM
+  id: Item300AM
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  langs:
+  - csharp
+  - vb
+  name: Item300AM
+  nameWithType: WorkHour.Item300AM
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item300AM
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Item300AM
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+    startLine: 11757
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202209
+  remarks: ''
+  example: []
+  syntax:
+    content: Item300AM = 3
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item400AM
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item400AM
+  id: Item400AM
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  langs:
+  - csharp
+  - vb
+  name: Item400AM
+  nameWithType: WorkHour.Item400AM
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item400AM
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Item400AM
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+    startLine: 11761
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202209
+  remarks: ''
+  example: []
+  syntax:
+    content: Item400AM = 4
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item500AM
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item500AM
+  id: Item500AM
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  langs:
+  - csharp
+  - vb
+  name: Item500AM
+  nameWithType: WorkHour.Item500AM
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item500AM
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Item500AM
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+    startLine: 11765
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202209
+  remarks: ''
+  example: []
+  syntax:
+    content: Item500AM = 5
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item600AM
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item600AM
+  id: Item600AM
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  langs:
+  - csharp
+  - vb
+  name: Item600AM
+  nameWithType: WorkHour.Item600AM
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item600AM
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Item600AM
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+    startLine: 11769
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202209
+  remarks: ''
+  example: []
+  syntax:
+    content: Item600AM = 6
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item700AM
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item700AM
+  id: Item700AM
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  langs:
+  - csharp
+  - vb
+  name: Item700AM
+  nameWithType: WorkHour.Item700AM
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item700AM
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Item700AM
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+    startLine: 11773
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202209
+  remarks: ''
+  example: []
+  syntax:
+    content: Item700AM = 7
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item800AM
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item800AM
+  id: Item800AM
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  langs:
+  - csharp
+  - vb
+  name: Item800AM
+  nameWithType: WorkHour.Item800AM
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item800AM
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Item800AM
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+    startLine: 11777
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202209
+  remarks: ''
+  example: []
+  syntax:
+    content: Item800AM = 8
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item900AM
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item900AM
+  id: Item900AM
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  langs:
+  - csharp
+  - vb
+  name: Item900AM
+  nameWithType: WorkHour.Item900AM
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item900AM
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Item900AM
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+    startLine: 11781
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202209
+  remarks: ''
+  example: []
+  syntax:
+    content: Item900AM = 9
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item1000AM
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item1000AM
+  id: Item1000AM
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  langs:
+  - csharp
+  - vb
+  name: Item1000AM
+  nameWithType: WorkHour.Item1000AM
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item1000AM
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Item1000AM
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+    startLine: 11785
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202209
+  remarks: ''
+  example: []
+  syntax:
+    content: Item1000AM = 10
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item1100AM
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item1100AM
+  id: Item1100AM
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  langs:
+  - csharp
+  - vb
+  name: Item1100AM
+  nameWithType: WorkHour.Item1100AM
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item1100AM
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Item1100AM
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+    startLine: 11789
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202209
+  remarks: ''
+  example: []
+  syntax:
+    content: Item1100AM = 11
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item1200PM
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item1200PM
+  id: Item1200PM
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  langs:
+  - csharp
+  - vb
+  name: Item1200PM
+  nameWithType: WorkHour.Item1200PM
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item1200PM
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Item1200PM
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+    startLine: 11793
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202209
+  remarks: ''
+  example: []
+  syntax:
+    content: Item1200PM = 12
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item100PM
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item100PM
+  id: Item100PM
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  langs:
+  - csharp
+  - vb
+  name: Item100PM
+  nameWithType: WorkHour.Item100PM
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item100PM
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Item100PM
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+    startLine: 11797
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202209
+  remarks: ''
+  example: []
+  syntax:
+    content: Item100PM = 13
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item200PM
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item200PM
+  id: Item200PM
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  langs:
+  - csharp
+  - vb
+  name: Item200PM
+  nameWithType: WorkHour.Item200PM
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item200PM
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Item200PM
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+    startLine: 11801
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202209
+  remarks: ''
+  example: []
+  syntax:
+    content: Item200PM = 14
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item300PM
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item300PM
+  id: Item300PM
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  langs:
+  - csharp
+  - vb
+  name: Item300PM
+  nameWithType: WorkHour.Item300PM
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item300PM
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Item300PM
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+    startLine: 11805
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202209
+  remarks: ''
+  example: []
+  syntax:
+    content: Item300PM = 15
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item400PM
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item400PM
+  id: Item400PM
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  langs:
+  - csharp
+  - vb
+  name: Item400PM
+  nameWithType: WorkHour.Item400PM
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item400PM
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Item400PM
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+    startLine: 11809
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202209
+  remarks: ''
+  example: []
+  syntax:
+    content: Item400PM = 16
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item500PM
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item500PM
+  id: Item500PM
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  langs:
+  - csharp
+  - vb
+  name: Item500PM
+  nameWithType: WorkHour.Item500PM
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item500PM
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Item500PM
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+    startLine: 11813
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202209
+  remarks: ''
+  example: []
+  syntax:
+    content: Item500PM = 17
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item600PM
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item600PM
+  id: Item600PM
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  langs:
+  - csharp
+  - vb
+  name: Item600PM
+  nameWithType: WorkHour.Item600PM
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item600PM
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Item600PM
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+    startLine: 11817
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202209
+  remarks: ''
+  example: []
+  syntax:
+    content: Item600PM = 18
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item700PM
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item700PM
+  id: Item700PM
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  langs:
+  - csharp
+  - vb
+  name: Item700PM
+  nameWithType: WorkHour.Item700PM
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item700PM
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Item700PM
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+    startLine: 11821
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202209
+  remarks: ''
+  example: []
+  syntax:
+    content: Item700PM = 19
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item800PM
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item800PM
+  id: Item800PM
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  langs:
+  - csharp
+  - vb
+  name: Item800PM
+  nameWithType: WorkHour.Item800PM
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item800PM
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Item800PM
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+    startLine: 11825
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202209
+  remarks: ''
+  example: []
+  syntax:
+    content: Item800PM = 20
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item900PM
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item900PM
+  id: Item900PM
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  langs:
+  - csharp
+  - vb
+  name: Item900PM
+  nameWithType: WorkHour.Item900PM
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item900PM
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Item900PM
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+    startLine: 11829
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202209
+  remarks: ''
+  example: []
+  syntax:
+    content: Item900PM = 21
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item1000PM
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item1000PM
+  id: Item1000PM
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  langs:
+  - csharp
+  - vb
+  name: Item1000PM
+  nameWithType: WorkHour.Item1000PM
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item1000PM
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Item1000PM
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+    startLine: 11833
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202209
+  remarks: ''
+  example: []
+  syntax:
+    content: Item1000PM = 22
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item1100PM
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item1100PM
+  id: Item1100PM
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  langs:
+  - csharp
+  - vb
+  name: Item1100PM
+  nameWithType: WorkHour.Item1100PM
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.Item1100PM
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Item1100PM
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2022-09.cs
+    startLine: 11837
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202209
+  remarks: ''
+  example: []
+  syntax:
+    content: Item1100PM = 23
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209
+  commentId: N:PnP.Framework.Provisioning.Providers.Xml.V202209
+  name: PnP.Framework.Provisioning.Providers.Xml.V202209
+  nameWithType: PnP.Framework.Provisioning.Providers.Xml.V202209
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202209
+- uid: System.Enum.System.EnumerationExtensions.Include``1({T})
+  commentId: M:System.EnumerationExtensions.Include``1(System.Enum,``0)
+  parent: System.EnumerationExtensions
+  definition: System.EnumerationExtensions.Include``1(System.Enum,``0)
+  name: Include<T>(T)
+  nameWithType: EnumerationExtensions.Include<T>(T)
+  fullName: System.EnumerationExtensions.Include<T>(T)
+  nameWithType.vb: EnumerationExtensions.Include(Of T)(T)
+  fullName.vb: System.EnumerationExtensions.Include(Of T)(T)
+  name.vb: Include(Of T)(T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Include``1(``0)
+    name: Include<T>
+    nameWithType: EnumerationExtensions.Include<T>
+    fullName: System.EnumerationExtensions.Include<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Include``1(``0)
+    name: Include(Of T)
+    nameWithType: EnumerationExtensions.Include(Of T)
+    fullName: System.EnumerationExtensions.Include(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Enum.System.EnumerationExtensions.Remove``1({T})
+  commentId: M:System.EnumerationExtensions.Remove``1(System.Enum,``0)
+  parent: System.EnumerationExtensions
+  definition: System.EnumerationExtensions.Remove``1(System.Enum,``0)
+  name: Remove<T>(T)
+  nameWithType: EnumerationExtensions.Remove<T>(T)
+  fullName: System.EnumerationExtensions.Remove<T>(T)
+  nameWithType.vb: EnumerationExtensions.Remove(Of T)(T)
+  fullName.vb: System.EnumerationExtensions.Remove(Of T)(T)
+  name.vb: Remove(Of T)(T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Remove``1(``0)
+    name: Remove<T>
+    nameWithType: EnumerationExtensions.Remove<T>
+    fullName: System.EnumerationExtensions.Remove<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Remove``1(``0)
+    name: Remove(Of T)
+    nameWithType: EnumerationExtensions.Remove(Of T)
+    fullName: System.EnumerationExtensions.Remove(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Enum.System.EnumerationExtensions.Has``1({T})
+  commentId: M:System.EnumerationExtensions.Has``1(System.Enum,``0)
+  parent: System.EnumerationExtensions
+  definition: System.EnumerationExtensions.Has``1(System.Enum,``0)
+  name: Has<T>(T)
+  nameWithType: EnumerationExtensions.Has<T>(T)
+  fullName: System.EnumerationExtensions.Has<T>(T)
+  nameWithType.vb: EnumerationExtensions.Has(Of T)(T)
+  fullName.vb: System.EnumerationExtensions.Has(Of T)(T)
+  name.vb: Has(Of T)(T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Has``1(``0)
+    name: Has<T>
+    nameWithType: EnumerationExtensions.Has<T>
+    fullName: System.EnumerationExtensions.Has<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Has``1(``0)
+    name: Has(Of T)
+    nameWithType: EnumerationExtensions.Has(Of T)
+    fullName: System.EnumerationExtensions.Has(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Enum.System.EnumerationExtensions.Missing``1({T})
+  commentId: M:System.EnumerationExtensions.Missing``1(System.Enum,``0)
+  parent: System.EnumerationExtensions
+  definition: System.EnumerationExtensions.Missing``1(System.Enum,``0)
+  name: Missing<T>(T)
+  nameWithType: EnumerationExtensions.Missing<T>(T)
+  fullName: System.EnumerationExtensions.Missing<T>(T)
+  nameWithType.vb: EnumerationExtensions.Missing(Of T)(T)
+  fullName.vb: System.EnumerationExtensions.Missing(Of T)(T)
+  name.vb: Missing(Of T)(T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Missing``1(``0)
+    name: Missing<T>
+    nameWithType: EnumerationExtensions.Missing<T>
+    fullName: System.EnumerationExtensions.Missing<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Missing``1(``0)
+    name: Missing(Of T)
+    nameWithType: EnumerationExtensions.Missing(Of T)
+    fullName: System.EnumerationExtensions.Missing(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<WorkHour>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<WorkHour>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of WorkHour)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of WorkHour)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<WorkHour>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<WorkHour>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of WorkHour)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of WorkHour)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<WorkHour, T>(Expression<Func<WorkHour, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<WorkHour, T>(Expression<Func<WorkHour, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour, T>(System.Linq.Expressions.Expression<System.Func<PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of WorkHour, T)(Expression(Of Func(Of WorkHour, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour, T)(System.Linq.Expressions.Expression(Of System.Func(Of PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of WorkHour, T)(Expression(Of Func(Of WorkHour, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<WorkHour, T>
+    nameWithType: ObjectExtensions.Set<WorkHour, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+    name: WorkHour
+    nameWithType: WorkHour
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of WorkHour, T)
+    nameWithType: ObjectExtensions.Set(Of WorkHour, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+    name: WorkHour
+    nameWithType: WorkHour
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.EnumerationExtensions.Include``1(System.Enum,``0)
+  commentId: M:System.EnumerationExtensions.Include``1(System.Enum,``0)
+  isExternal: true
+  name: Include<T>(Enum, T)
+  nameWithType: EnumerationExtensions.Include<T>(Enum, T)
+  fullName: System.EnumerationExtensions.Include<T>(System.Enum, T)
+  nameWithType.vb: EnumerationExtensions.Include(Of T)(Enum, T)
+  fullName.vb: System.EnumerationExtensions.Include(Of T)(System.Enum, T)
+  name.vb: Include(Of T)(Enum, T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Include``1(System.Enum,``0)
+    name: Include<T>
+    nameWithType: EnumerationExtensions.Include<T>
+    fullName: System.EnumerationExtensions.Include<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Include``1(System.Enum,``0)
+    name: Include(Of T)
+    nameWithType: EnumerationExtensions.Include(Of T)
+    fullName: System.EnumerationExtensions.Include(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.EnumerationExtensions
+  commentId: T:System.EnumerationExtensions
+  parent: System
+  name: EnumerationExtensions
+  nameWithType: EnumerationExtensions
+  fullName: System.EnumerationExtensions
+- uid: System.EnumerationExtensions.Remove``1(System.Enum,``0)
+  commentId: M:System.EnumerationExtensions.Remove``1(System.Enum,``0)
+  isExternal: true
+  name: Remove<T>(Enum, T)
+  nameWithType: EnumerationExtensions.Remove<T>(Enum, T)
+  fullName: System.EnumerationExtensions.Remove<T>(System.Enum, T)
+  nameWithType.vb: EnumerationExtensions.Remove(Of T)(Enum, T)
+  fullName.vb: System.EnumerationExtensions.Remove(Of T)(System.Enum, T)
+  name.vb: Remove(Of T)(Enum, T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Remove``1(System.Enum,``0)
+    name: Remove<T>
+    nameWithType: EnumerationExtensions.Remove<T>
+    fullName: System.EnumerationExtensions.Remove<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Remove``1(System.Enum,``0)
+    name: Remove(Of T)
+    nameWithType: EnumerationExtensions.Remove(Of T)
+    fullName: System.EnumerationExtensions.Remove(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.EnumerationExtensions.Has``1(System.Enum,``0)
+  commentId: M:System.EnumerationExtensions.Has``1(System.Enum,``0)
+  isExternal: true
+  name: Has<T>(Enum, T)
+  nameWithType: EnumerationExtensions.Has<T>(Enum, T)
+  fullName: System.EnumerationExtensions.Has<T>(System.Enum, T)
+  nameWithType.vb: EnumerationExtensions.Has(Of T)(Enum, T)
+  fullName.vb: System.EnumerationExtensions.Has(Of T)(System.Enum, T)
+  name.vb: Has(Of T)(Enum, T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Has``1(System.Enum,``0)
+    name: Has<T>
+    nameWithType: EnumerationExtensions.Has<T>
+    fullName: System.EnumerationExtensions.Has<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Has``1(System.Enum,``0)
+    name: Has(Of T)
+    nameWithType: EnumerationExtensions.Has(Of T)
+    fullName: System.EnumerationExtensions.Has(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.EnumerationExtensions.Missing``1(System.Enum,``0)
+  commentId: M:System.EnumerationExtensions.Missing``1(System.Enum,``0)
+  isExternal: true
+  name: Missing<T>(Enum, T)
+  nameWithType: EnumerationExtensions.Missing<T>(Enum, T)
+  fullName: System.EnumerationExtensions.Missing<T>(System.Enum, T)
+  nameWithType.vb: EnumerationExtensions.Missing(Of T)(Enum, T)
+  fullName.vb: System.EnumerationExtensions.Missing(Of T)(System.Enum, T)
+  name.vb: Missing(Of T)(Enum, T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Missing``1(System.Enum,``0)
+    name: Missing<T>
+    nameWithType: EnumerationExtensions.Missing<T>
+    fullName: System.EnumerationExtensions.Missing<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Missing``1(System.Enum,``0)
+    name: Missing(Of T)
+    nameWithType: EnumerationExtensions.Missing(Of T)
+    fullName: System.EnumerationExtensions.Missing(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  commentId: T:PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202209
+  name: WorkHour
+  nameWithType: WorkHour
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour

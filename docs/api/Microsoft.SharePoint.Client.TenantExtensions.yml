@@ -1,0 +1,3357 @@
+### YamlMime:ManagedReference
+items:
+- uid: Microsoft.SharePoint.Client.TenantExtensions
+  commentId: T:Microsoft.SharePoint.Client.TenantExtensions
+  id: TenantExtensions
+  parent: Microsoft.SharePoint.Client
+  children:
+  - Microsoft.SharePoint.Client.TenantExtensions.AddAdministrators(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.Collections.Generic.IEnumerable{PnP.Framework.Entities.UserEntity},System.Uri,System.Boolean)
+  - Microsoft.SharePoint.Client.TenantExtensions.ApplyProvisionHierarchy(Microsoft.Online.SharePoint.TenantAdministration.Tenant,PnP.Framework.Provisioning.Model.ProvisioningHierarchy,System.String,PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation)
+  - Microsoft.SharePoint.Client.TenantExtensions.ApplyTenantTemplate(Microsoft.Online.SharePoint.TenantAdministration.Tenant,PnP.Framework.Provisioning.Model.ProvisioningHierarchy,System.String,PnP.Framework.Provisioning.Model.Configuration.ApplyConfiguration)
+  - Microsoft.SharePoint.Client.TenantExtensions.CheckIfSiteExists(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.String)
+  - Microsoft.SharePoint.Client.TenantExtensions.CreateSiteCollection(Microsoft.Online.SharePoint.TenantAdministration.Tenant,PnP.Framework.Entities.SiteEntity,System.Boolean,System.Boolean,System.Func{PnP.Framework.TenantOperationMessage,System.Boolean})
+  - Microsoft.SharePoint.Client.TenantExtensions.CreateSiteCollection(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.UInt32,System.Boolean,System.Boolean,System.Func{PnP.Framework.TenantOperationMessage,System.Boolean})
+  - Microsoft.SharePoint.Client.TenantExtensions.DeleteSiteCollection(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.Boolean,System.Func{PnP.Framework.TenantOperationMessage,System.Boolean})
+  - Microsoft.SharePoint.Client.TenantExtensions.DeleteSiteCollectionFromRecycleBin(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.Boolean,System.Func{PnP.Framework.TenantOperationMessage,System.Boolean})
+  - Microsoft.SharePoint.Client.TenantExtensions.DisableSiteClassifications(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  - Microsoft.SharePoint.Client.TenantExtensions.EnableCommSite(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  - Microsoft.SharePoint.Client.TenantExtensions.EnableCommunicationSite(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  - Microsoft.SharePoint.Client.TenantExtensions.EnableSiteClassifications(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,PnP.Framework.Graph.Model.SiteClassificationsSettings)
+  - Microsoft.SharePoint.Client.TenantExtensions.EnableSiteClassifications(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.Collections.Generic.IEnumerable{System.String},System.String,System.String)
+  - Microsoft.SharePoint.Client.TenantExtensions.EnsureAppCatalogAsync(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.String,System.Int32,System.Boolean)
+  - Microsoft.SharePoint.Client.TenantExtensions.GetAppCatalog(Microsoft.Online.SharePoint.TenantAdministration.Tenant)
+  - Microsoft.SharePoint.Client.TenantExtensions.GetHubSiteChildUrls(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.Guid)
+  - Microsoft.SharePoint.Client.TenantExtensions.GetHubSiteChildUrls(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  - Microsoft.SharePoint.Client.TenantExtensions.GetSiteClassificationsSettings(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  - Microsoft.SharePoint.Client.TenantExtensions.GetSiteCollections(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.Int32,System.Int32,System.Boolean,System.Boolean)
+  - Microsoft.SharePoint.Client.TenantExtensions.GetSiteGuidByUrl(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  - Microsoft.SharePoint.Client.TenantExtensions.GetSiteGuidByUrl(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.Uri)
+  - Microsoft.SharePoint.Client.TenantExtensions.GetSitePropertiesById(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.Guid,System.Boolean)
+  - Microsoft.SharePoint.Client.TenantExtensions.GetTenantIdByUrl(System.String,PnP.Framework.AzureEnvironment)
+  - Microsoft.SharePoint.Client.TenantExtensions.GetTenantRootSiteUrl(Microsoft.Online.SharePoint.TenantAdministration.Tenant)
+  - Microsoft.SharePoint.Client.TenantExtensions.GetTenantTemplate(Microsoft.Online.SharePoint.TenantAdministration.Tenant,PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration)
+  - Microsoft.SharePoint.Client.TenantExtensions.GetWebTemplates(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.UInt32,System.Int32)
+  - Microsoft.SharePoint.Client.TenantExtensions.GroupifySite(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation)
+  - Microsoft.SharePoint.Client.TenantExtensions.IsCurrentUserTenantAdmin(Microsoft.SharePoint.Client.ClientContext)
+  - Microsoft.SharePoint.Client.TenantExtensions.IsCurrentUserTenantAdmin(Microsoft.SharePoint.Client.ClientContext,System.String)
+  - Microsoft.SharePoint.Client.TenantExtensions.IsSiteActive(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  - Microsoft.SharePoint.Client.TenantExtensions.SetSiteLockState(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,PnP.Framework.SiteLockState,System.Boolean,System.Func{PnP.Framework.TenantOperationMessage,System.Boolean})
+  - Microsoft.SharePoint.Client.TenantExtensions.SetSiteProperties(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.String,System.Nullable{System.Boolean},System.Nullable{Microsoft.Online.SharePoint.TenantManagement.SharingCapabilities},System.Nullable{System.Int64},System.Nullable{System.Int64},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{Microsoft.Online.SharePoint.TenantManagement.SharingPermissionType},System.Nullable{Microsoft.Online.SharePoint.TenantManagement.SharingLinkType},System.Boolean,System.Func{PnP.Framework.TenantOperationMessage,System.Boolean})
+  - Microsoft.SharePoint.Client.TenantExtensions.SiteExists(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  - Microsoft.SharePoint.Client.TenantExtensions.SiteExistsAnywhere(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  - Microsoft.SharePoint.Client.TenantExtensions.SubSiteExists(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  - Microsoft.SharePoint.Client.TenantExtensions.UpdateSiteClassificationsSettings(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,PnP.Framework.Graph.Model.SiteClassificationsSettings)
+  - Microsoft.SharePoint.Client.TenantExtensions.UpdateSiteClassificationsSettings(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.Collections.Generic.IEnumerable{System.String},System.String,System.String)
+  langs:
+  - csharp
+  - vb
+  name: TenantExtensions
+  nameWithType: TenantExtensions
+  fullName: Microsoft.SharePoint.Client.TenantExtensions
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TenantExtensions
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 26
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nClass for tenant extension methods\n"
+  example: []
+  syntax:
+    content: public static class TenantExtensions
+    content.vb: Public Module TenantExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: Microsoft.SharePoint.Client.TenantExtensions.ApplyProvisionHierarchy(Microsoft.Online.SharePoint.TenantAdministration.Tenant,PnP.Framework.Provisioning.Model.ProvisioningHierarchy,System.String,PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.ApplyProvisionHierarchy(Microsoft.Online.SharePoint.TenantAdministration.Tenant,PnP.Framework.Provisioning.Model.ProvisioningHierarchy,System.String,PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation)
+  id: ApplyProvisionHierarchy(Microsoft.Online.SharePoint.TenantAdministration.Tenant,PnP.Framework.Provisioning.Model.ProvisioningHierarchy,System.String,PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: ApplyProvisionHierarchy(Tenant, ProvisioningHierarchy, String, ProvisioningTemplateApplyingInformation)
+  nameWithType: TenantExtensions.ApplyProvisionHierarchy(Tenant, ProvisioningHierarchy, String, ProvisioningTemplateApplyingInformation)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.ApplyProvisionHierarchy(Microsoft.Online.SharePoint.TenantAdministration.Tenant, PnP.Framework.Provisioning.Model.ProvisioningHierarchy, System.String, PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/Deprecated/TenantExtensions.deprecated.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ApplyProvisionHierarchy
+    path: ../src/lib/PnP.Framework/Extensions/Deprecated/TenantExtensions.deprecated.cs
+    startLine: 15
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  syntax:
+    content: >-
+      [Obsolete("Use ApplyTenantTemplate(this Tenant tenant, ProvisioningHierarchy tenantTemplate, string sequenceId, ApplyConfiguration configuration). This method will be removed in the May 2020 release.")]
+
+      public static void ApplyProvisionHierarchy(this Tenant tenant, ProvisioningHierarchy hierarchy, string sequenceId, ProvisioningTemplateApplyingInformation applyingInformation = null)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+    - id: hierarchy
+      type: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+    - id: sequenceId
+      type: System.String
+    - id: applyingInformation
+      type: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation
+    content.vb: >-
+      <Obsolete("Use ApplyTenantTemplate(this Tenant tenant, ProvisioningHierarchy tenantTemplate, string sequenceId, ApplyConfiguration configuration). This method will be removed in the May 2020 release.")>
+
+      <ExtensionAttribute>
+
+      Public Shared Sub ApplyProvisionHierarchy(tenant As Tenant, hierarchy As ProvisioningHierarchy, sequenceId As String, applyingInformation As ProvisioningTemplateApplyingInformation = Nothing)
+  overload: Microsoft.SharePoint.Client.TenantExtensions.ApplyProvisionHierarchy*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use ApplyTenantTemplate(this Tenant tenant, ProvisioningHierarchy tenantTemplate, string sequenceId, ApplyConfiguration configuration). This method will be removed in the May 2020 release.
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TenantExtensions.SiteExists(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.SiteExists(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  id: SiteExists(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: SiteExists(Tenant, String)
+  nameWithType: TenantExtensions.SiteExists(Tenant, String)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.SiteExists(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/Deprecated/TenantExtensions.deprecated.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SiteExists
+    path: ../src/lib/PnP.Framework/Extensions/Deprecated/TenantExtensions.deprecated.cs
+    startLine: 35
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nChecks if a site collection exists, relies on tenant admin API. Sites that are recycled also return as existing sites\n"
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Use SiteExistsAnywhere(Tenant, string) instead")]
+
+      public static bool SiteExists(this Tenant tenant, string siteFullUrl)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: A tenant object pointing to the context of a Tenant Administration site
+    - id: siteFullUrl
+      type: System.String
+      description: URL to the site collection
+    return:
+      type: System.Boolean
+      description: True if existing, false if not
+    content.vb: >-
+      <Obsolete("Use SiteExistsAnywhere(Tenant, string) instead")>
+
+      <ExtensionAttribute>
+
+      Public Shared Function SiteExists(tenant As Tenant, siteFullUrl As String) As Boolean
+  overload: Microsoft.SharePoint.Client.TenantExtensions.SiteExists*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use SiteExistsAnywhere(Tenant, string) instead
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TenantExtensions.EnableCommSite(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.EnableCommSite(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  id: EnableCommSite(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: EnableCommSite(Tenant, String)
+  nameWithType: TenantExtensions.EnableCommSite(Tenant, String)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.EnableCommSite(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/Deprecated/TenantExtensions.deprecated.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnableCommSite
+    path: ../src/lib/PnP.Framework/Extensions/Deprecated/TenantExtensions.deprecated.cs
+    startLine: 47
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nEnable communication site on the root site of a tenant\n"
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Use EnableCommunicationSite")]
+
+      public static void EnableCommSite(this Tenant tenant, string siteUrl = "")
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: A tenant object pointing to the context of a Tenant Administration site
+    - id: siteUrl
+      type: System.String
+      description: Root site url of your tenant
+    content.vb: >-
+      <Obsolete("Use EnableCommunicationSite")>
+
+      <ExtensionAttribute>
+
+      Public Shared Sub EnableCommSite(tenant As Tenant, siteUrl As String = "")
+  overload: Microsoft.SharePoint.Client.TenantExtensions.EnableCommSite*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use EnableCommunicationSite
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TenantExtensions.ApplyTenantTemplate(Microsoft.Online.SharePoint.TenantAdministration.Tenant,PnP.Framework.Provisioning.Model.ProvisioningHierarchy,System.String,PnP.Framework.Provisioning.Model.Configuration.ApplyConfiguration)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.ApplyTenantTemplate(Microsoft.Online.SharePoint.TenantAdministration.Tenant,PnP.Framework.Provisioning.Model.ProvisioningHierarchy,System.String,PnP.Framework.Provisioning.Model.Configuration.ApplyConfiguration)
+  id: ApplyTenantTemplate(Microsoft.Online.SharePoint.TenantAdministration.Tenant,PnP.Framework.Provisioning.Model.ProvisioningHierarchy,System.String,PnP.Framework.Provisioning.Model.Configuration.ApplyConfiguration)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: ApplyTenantTemplate(Tenant, ProvisioningHierarchy, String, ApplyConfiguration)
+  nameWithType: TenantExtensions.ApplyTenantTemplate(Tenant, ProvisioningHierarchy, String, ApplyConfiguration)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.ApplyTenantTemplate(Microsoft.Online.SharePoint.TenantAdministration.Tenant, PnP.Framework.Provisioning.Model.ProvisioningHierarchy, System.String, PnP.Framework.Provisioning.Model.Configuration.ApplyConfiguration)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ApplyTenantTemplate
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 44
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nApplies a template to a tenant\n"
+  example: []
+  syntax:
+    content: public static void ApplyTenantTemplate(this Tenant tenant, ProvisioningHierarchy tenantTemplate, string sequenceId, ApplyConfiguration configuration = null)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: ''
+    - id: tenantTemplate
+      type: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+      description: ''
+    - id: sequenceId
+      type: System.String
+      description: ''
+    - id: configuration
+      type: PnP.Framework.Provisioning.Model.Configuration.ApplyConfiguration
+      description: ''
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub ApplyTenantTemplate(tenant As Tenant, tenantTemplate As ProvisioningHierarchy, sequenceId As String, configuration As ApplyConfiguration = Nothing)
+  overload: Microsoft.SharePoint.Client.TenantExtensions.ApplyTenantTemplate*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TenantExtensions.GetTenantTemplate(Microsoft.Online.SharePoint.TenantAdministration.Tenant,PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.GetTenantTemplate(Microsoft.Online.SharePoint.TenantAdministration.Tenant,PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration)
+  id: GetTenantTemplate(Microsoft.Online.SharePoint.TenantAdministration.Tenant,PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetTenantTemplate(Tenant, ExtractConfiguration)
+  nameWithType: TenantExtensions.GetTenantTemplate(Tenant, ExtractConfiguration)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.GetTenantTemplate(Microsoft.Online.SharePoint.TenantAdministration.Tenant, PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetTenantTemplate
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 56
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nExtracts a template from a tenant\n"
+  example: []
+  syntax:
+    content: public static ProvisioningHierarchy GetTenantTemplate(this Tenant tenant, ExtractConfiguration configuration)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: ''
+    - id: configuration
+      type: PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration
+      description: ''
+    return:
+      type: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+      description: ''
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetTenantTemplate(tenant As Tenant, configuration As ExtractConfiguration) As ProvisioningHierarchy
+  overload: Microsoft.SharePoint.Client.TenantExtensions.GetTenantTemplate*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TenantExtensions.GetHubSiteChildUrls(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.GetHubSiteChildUrls(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  id: GetHubSiteChildUrls(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetHubSiteChildUrls(Tenant, String)
+  nameWithType: TenantExtensions.GetHubSiteChildUrls(Tenant, String)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.GetHubSiteChildUrls(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetHubSiteChildUrls
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 67
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns the urls of sites connected to the hubsite specified\n"
+  example: []
+  syntax:
+    content: public static List<string> GetHubSiteChildUrls(this Tenant tenant, string hubSiteUrl)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: A tenant object pointing to the context of a Tenant Administration site
+    - id: hubSiteUrl
+      type: System.String
+      description: The fully qualified url of the hubsite
+    return:
+      type: System.Collections.Generic.List{System.String}
+      description: ''
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetHubSiteChildUrls(tenant As Tenant, hubSiteUrl As String) As List(Of String)
+  overload: Microsoft.SharePoint.Client.TenantExtensions.GetHubSiteChildUrls*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TenantExtensions.GetHubSiteChildUrls(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.Guid)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.GetHubSiteChildUrls(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.Guid)
+  id: GetHubSiteChildUrls(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.Guid)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetHubSiteChildUrls(Tenant, Guid)
+  nameWithType: TenantExtensions.GetHubSiteChildUrls(Tenant, Guid)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.GetHubSiteChildUrls(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.Guid)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetHubSiteChildUrls
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 81
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns the urls of sites connected to the hubsite specified\n"
+  example: []
+  syntax:
+    content: public static List<string> GetHubSiteChildUrls(this Tenant tenant, Guid hubsiteId)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: A tenant object pointing to the context of a Tenant Administration site
+    - id: hubsiteId
+      type: System.Guid
+      description: The id of the hubsite
+    return:
+      type: System.Collections.Generic.List{System.String}
+      description: ''
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetHubSiteChildUrls(tenant As Tenant, hubsiteId As Guid) As List(Of String)
+  overload: Microsoft.SharePoint.Client.TenantExtensions.GetHubSiteChildUrls*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TenantExtensions.GetSitePropertiesById(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.Guid,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.GetSitePropertiesById(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.Guid,System.Boolean)
+  id: GetSitePropertiesById(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.Guid,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetSitePropertiesById(Tenant, Guid, Boolean)
+  nameWithType: TenantExtensions.GetSitePropertiesById(Tenant, Guid, Boolean)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.GetSitePropertiesById(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.Guid, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetSitePropertiesById
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 136
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  syntax:
+    content: public static SiteProperties GetSitePropertiesById(this Tenant tenant, Guid siteId, bool detailed = true)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+    - id: siteId
+      type: System.Guid
+    - id: detailed
+      type: System.Boolean
+    return:
+      type: Microsoft.Online.SharePoint.TenantAdministration.SiteProperties
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetSitePropertiesById(tenant As Tenant, siteId As Guid, detailed As Boolean = True) As SiteProperties
+  overload: Microsoft.SharePoint.Client.TenantExtensions.GetSitePropertiesById*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TenantExtensions.CreateSiteCollection(Microsoft.Online.SharePoint.TenantAdministration.Tenant,PnP.Framework.Entities.SiteEntity,System.Boolean,System.Boolean,System.Func{PnP.Framework.TenantOperationMessage,System.Boolean})
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.CreateSiteCollection(Microsoft.Online.SharePoint.TenantAdministration.Tenant,PnP.Framework.Entities.SiteEntity,System.Boolean,System.Boolean,System.Func{PnP.Framework.TenantOperationMessage,System.Boolean})
+  id: CreateSiteCollection(Microsoft.Online.SharePoint.TenantAdministration.Tenant,PnP.Framework.Entities.SiteEntity,System.Boolean,System.Boolean,System.Func{PnP.Framework.TenantOperationMessage,System.Boolean})
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: CreateSiteCollection(Tenant, SiteEntity, Boolean, Boolean, Func<TenantOperationMessage, Boolean>)
+  nameWithType: TenantExtensions.CreateSiteCollection(Tenant, SiteEntity, Boolean, Boolean, Func<TenantOperationMessage, Boolean>)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.CreateSiteCollection(Microsoft.Online.SharePoint.TenantAdministration.Tenant, PnP.Framework.Entities.SiteEntity, System.Boolean, System.Boolean, System.Func<PnP.Framework.TenantOperationMessage, System.Boolean>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateSiteCollection
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 213
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdds a SiteEntity by launching site collection creation and waits for the creation to finish\n"
+  example: []
+  syntax:
+    content: public static Guid CreateSiteCollection(this Tenant tenant, SiteEntity properties, bool removeFromRecycleBin = false, bool wait = true, Func<TenantOperationMessage, bool> timeoutFunction = null)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: A tenant object pointing to the context of a Tenant Administration site
+    - id: properties
+      type: PnP.Framework.Entities.SiteEntity
+      description: Describes the site collection to be created
+    - id: removeFromRecycleBin
+      type: System.Boolean
+      description: It true and site is present in recycle bin, it will be removed first from the recycle bin
+    - id: wait
+      type: System.Boolean
+      description: If true, processing will halt until the site collection has been created
+    - id: timeoutFunction
+      type: System.Func{PnP.Framework.TenantOperationMessage,System.Boolean}
+      description: An optional function that will be called while waiting for the site to be created. If set will override the wait variable. Return true to cancel the wait loop.
+    return:
+      type: System.Guid
+      description: Guid of the created site collection and Guid.Empty is the wait parameter is specified as false. Returns Guid.Empty if the wait is cancelled.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function CreateSiteCollection(tenant As Tenant, properties As SiteEntity, removeFromRecycleBin As Boolean = False, wait As Boolean = True, timeoutFunction As Func(Of TenantOperationMessage, Boolean) = Nothing) As Guid
+  overload: Microsoft.SharePoint.Client.TenantExtensions.CreateSiteCollection*
+  nameWithType.vb: TenantExtensions.CreateSiteCollection(Tenant, SiteEntity, Boolean, Boolean, Func(Of TenantOperationMessage, Boolean))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.TenantExtensions.CreateSiteCollection(Microsoft.Online.SharePoint.TenantAdministration.Tenant, PnP.Framework.Entities.SiteEntity, System.Boolean, System.Boolean, System.Func(Of PnP.Framework.TenantOperationMessage, System.Boolean))
+  name.vb: CreateSiteCollection(Tenant, SiteEntity, Boolean, Boolean, Func(Of TenantOperationMessage, Boolean))
+- uid: Microsoft.SharePoint.Client.TenantExtensions.CreateSiteCollection(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.UInt32,System.Boolean,System.Boolean,System.Func{PnP.Framework.TenantOperationMessage,System.Boolean})
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.CreateSiteCollection(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.UInt32,System.Boolean,System.Boolean,System.Func{PnP.Framework.TenantOperationMessage,System.Boolean})
+  id: CreateSiteCollection(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.UInt32,System.Boolean,System.Boolean,System.Func{PnP.Framework.TenantOperationMessage,System.Boolean})
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: CreateSiteCollection(Tenant, String, String, String, String, Int32, Int32, Int32, Int32, Int32, UInt32, Boolean, Boolean, Func<TenantOperationMessage, Boolean>)
+  nameWithType: TenantExtensions.CreateSiteCollection(Tenant, String, String, String, String, Int32, Int32, Int32, Int32, Int32, UInt32, Boolean, Boolean, Func<TenantOperationMessage, Boolean>)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.CreateSiteCollection(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String, System.String, System.String, System.String, System.Int32, System.Int32, System.Int32, System.Int32, System.Int32, System.UInt32, System.Boolean, System.Boolean, System.Func<PnP.Framework.TenantOperationMessage, System.Boolean>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateSiteCollection
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 295
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nLaunches a site collection creation and waits for the creation to finish \n"
+  example: []
+  syntax:
+    content: public static Guid CreateSiteCollection(this Tenant tenant, string siteFullUrl, string title, string siteOwnerLogin, string template, int storageMaximumLevel, int storageWarningLevel, int timeZoneId, int userCodeMaximumLevel, int userCodeWarningLevel, uint lcid, bool removeFromRecycleBin = false, bool wait = true, Func<TenantOperationMessage, bool> timeoutFunction = null)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: A tenant object pointing to the context of a Tenant Administration site
+    - id: siteFullUrl
+      type: System.String
+      description: The SPO URL
+    - id: title
+      type: System.String
+      description: The site title
+    - id: siteOwnerLogin
+      type: System.String
+      description: Owner account
+    - id: template
+      type: System.String
+      description: Site template being used
+    - id: storageMaximumLevel
+      type: System.Int32
+      description: Site quota in MB
+    - id: storageWarningLevel
+      type: System.Int32
+      description: Site quota warning level in MB
+    - id: timeZoneId
+      type: System.Int32
+      description: 'TimeZoneID for the site. &quot;(UTC+01:00) Brussels, Copenhagen, Madrid, Paris&quot; = 3 '
+    - id: userCodeMaximumLevel
+      type: System.Int32
+      description: The user code quota in points
+    - id: userCodeWarningLevel
+      type: System.Int32
+      description: The user code quota warning level in points
+    - id: lcid
+      type: System.UInt32
+      description: The site locale. See http://technet.microsoft.com/en-us/library/ff463597.aspx for a complete list of Lcid&apos;s
+    - id: removeFromRecycleBin
+      type: System.Boolean
+      description: If true, any existing site with the same URL will be removed from the recycle bin
+    - id: wait
+      type: System.Boolean
+      description: Wait for the site to be created before continuing processing
+    - id: timeoutFunction
+      type: System.Func{PnP.Framework.TenantOperationMessage,System.Boolean}
+      description: An optional function that will be called while waiting for the site to be created. If set will override the wait variable. Return true to cancel the wait loop.
+    return:
+      type: System.Guid
+      description: Guid of the created site collection and Guid.Empty is the wait parameter is specified as false. Returns Guid.Empty if the wait is cancelled.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function CreateSiteCollection(tenant As Tenant, siteFullUrl As String, title As String, siteOwnerLogin As String, template As String, storageMaximumLevel As Integer, storageWarningLevel As Integer, timeZoneId As Integer, userCodeMaximumLevel As Integer, userCodeWarningLevel As Integer, lcid As UInteger, removeFromRecycleBin As Boolean = False, wait As Boolean = True, timeoutFunction As Func(Of TenantOperationMessage, Boolean) = Nothing) As Guid
+  overload: Microsoft.SharePoint.Client.TenantExtensions.CreateSiteCollection*
+  nameWithType.vb: TenantExtensions.CreateSiteCollection(Tenant, String, String, String, String, Int32, Int32, Int32, Int32, Int32, UInt32, Boolean, Boolean, Func(Of TenantOperationMessage, Boolean))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.TenantExtensions.CreateSiteCollection(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String, System.String, System.String, System.String, System.Int32, System.Int32, System.Int32, System.Int32, System.Int32, System.UInt32, System.Boolean, System.Boolean, System.Func(Of PnP.Framework.TenantOperationMessage, System.Boolean))
+  name.vb: CreateSiteCollection(Tenant, String, String, String, String, Int32, Int32, Int32, Int32, Int32, UInt32, Boolean, Boolean, Func(Of TenantOperationMessage, Boolean))
+- uid: Microsoft.SharePoint.Client.TenantExtensions.EnsureAppCatalogAsync(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.String,System.Int32,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.EnsureAppCatalogAsync(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.String,System.Int32,System.Boolean)
+  id: EnsureAppCatalogAsync(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.String,System.Int32,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: EnsureAppCatalogAsync(Tenant, String, String, Int32, Boolean)
+  nameWithType: TenantExtensions.EnsureAppCatalogAsync(Tenant, String, String, Int32, Boolean)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.EnsureAppCatalogAsync(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String, System.String, System.Int32, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnsureAppCatalogAsync
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 325
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCreates a new App Catalog and registers the app catalog site as the tenant App Catalog.\n"
+  example: []
+  syntax:
+    content: public static async Task EnsureAppCatalogAsync(this Tenant tenant, string url, string ownerLogin, int timeZoneId, bool force = false)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: A tenant object pointing to the context of a Tenant Administration site
+    - id: url
+      type: System.String
+      description: The Full Site Url, e.g. https://yourtenant.sharepoint.com/sites/appcatalog
+    - id: ownerLogin
+      type: System.String
+      description: The username of the owner of the appcatalog, e.g. user@domain.com
+    - id: timeZoneId
+      type: System.Int32
+      description: TimeZoneId for the appcatalog site. &quot;(UTC+01:00) Brussels, Copenhagen, Madrid, Paris&quot; = 3&quot;
+    - id: force
+      type: System.Boolean
+      description: If true, and an appcatalog is already registered and present, the new appcatalog will be created. If the same URL is provided and the site is present the current one will be deleted and a new one will be created.
+    return:
+      type: System.Threading.Tasks.Task
+      description: ''
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function EnsureAppCatalogAsync(tenant As Tenant, url As String, ownerLogin As String, timeZoneId As Integer, force As Boolean = False) As Task
+  overload: Microsoft.SharePoint.Client.TenantExtensions.EnsureAppCatalogAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TenantExtensions.IsSiteActive(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.IsSiteActive(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  id: IsSiteActive(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: IsSiteActive(Tenant, String)
+  nameWithType: TenantExtensions.IsSiteActive(Tenant, String)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.IsSiteActive(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsSiteActive
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 387
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nChecks if a site collection is Active\n"
+  example: []
+  syntax:
+    content: public static bool IsSiteActive(this Tenant tenant, string siteFullUrl)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: A tenant object pointing to the context of a Tenant Administration site
+    - id: siteFullUrl
+      type: System.String
+      description: URL to the site collection
+    return:
+      type: System.Boolean
+      description: True if active, false if not
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function IsSiteActive(tenant As Tenant, siteFullUrl As String) As Boolean
+  overload: Microsoft.SharePoint.Client.TenantExtensions.IsSiteActive*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TenantExtensions.DeleteSiteCollection(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.Boolean,System.Func{PnP.Framework.TenantOperationMessage,System.Boolean})
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.DeleteSiteCollection(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.Boolean,System.Func{PnP.Framework.TenantOperationMessage,System.Boolean})
+  id: DeleteSiteCollection(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.Boolean,System.Func{PnP.Framework.TenantOperationMessage,System.Boolean})
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: DeleteSiteCollection(Tenant, String, Boolean, Func<TenantOperationMessage, Boolean>)
+  nameWithType: TenantExtensions.DeleteSiteCollection(Tenant, String, Boolean, Func<TenantOperationMessage, Boolean>)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.DeleteSiteCollection(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String, System.Boolean, System.Func<PnP.Framework.TenantOperationMessage, System.Boolean>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeleteSiteCollection
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 417
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDeletes a site collection\n"
+  example: []
+  syntax:
+    content: public static bool DeleteSiteCollection(this Tenant tenant, string siteFullUrl, bool useRecycleBin, Func<TenantOperationMessage, bool> timeoutFunction = null)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: A tenant object pointing to the context of a Tenant Administration site
+    - id: siteFullUrl
+      type: System.String
+      description: Url of the site collection to delete
+    - id: useRecycleBin
+      type: System.Boolean
+      description: Leave the deleted site collection in the site collection recycle bin
+    - id: timeoutFunction
+      type: System.Func{PnP.Framework.TenantOperationMessage,System.Boolean}
+      description: An optional function that will be called while waiting for the site to be created. Return true to cancel the wait loop.
+    return:
+      type: System.Boolean
+      description: True if deleted
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function DeleteSiteCollection(tenant As Tenant, siteFullUrl As String, useRecycleBin As Boolean, timeoutFunction As Func(Of TenantOperationMessage, Boolean) = Nothing) As Boolean
+  overload: Microsoft.SharePoint.Client.TenantExtensions.DeleteSiteCollection*
+  nameWithType.vb: TenantExtensions.DeleteSiteCollection(Tenant, String, Boolean, Func(Of TenantOperationMessage, Boolean))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.TenantExtensions.DeleteSiteCollection(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String, System.Boolean, System.Func(Of PnP.Framework.TenantOperationMessage, System.Boolean))
+  name.vb: DeleteSiteCollection(Tenant, String, Boolean, Func(Of TenantOperationMessage, Boolean))
+- uid: Microsoft.SharePoint.Client.TenantExtensions.DeleteSiteCollectionFromRecycleBin(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.Boolean,System.Func{PnP.Framework.TenantOperationMessage,System.Boolean})
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.DeleteSiteCollectionFromRecycleBin(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.Boolean,System.Func{PnP.Framework.TenantOperationMessage,System.Boolean})
+  id: DeleteSiteCollectionFromRecycleBin(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.Boolean,System.Func{PnP.Framework.TenantOperationMessage,System.Boolean})
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: DeleteSiteCollectionFromRecycleBin(Tenant, String, Boolean, Func<TenantOperationMessage, Boolean>)
+  nameWithType: TenantExtensions.DeleteSiteCollectionFromRecycleBin(Tenant, String, Boolean, Func<TenantOperationMessage, Boolean>)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.DeleteSiteCollectionFromRecycleBin(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String, System.Boolean, System.Func<PnP.Framework.TenantOperationMessage, System.Boolean>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeleteSiteCollectionFromRecycleBin
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 470
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDeletes a site collection from the site collection recycle bin\n"
+  example: []
+  syntax:
+    content: public static bool DeleteSiteCollectionFromRecycleBin(this Tenant tenant, string siteFullUrl, bool wait = true, Func<TenantOperationMessage, bool> timeoutFunction = null)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: A tenant object pointing to the context of a Tenant Administration site
+    - id: siteFullUrl
+      type: System.String
+      description: URL of the site collection to delete
+    - id: wait
+      type: System.Boolean
+      description: If true, processing will halt until the site collection has been deleted from the recycle bin
+    - id: timeoutFunction
+      type: System.Func{PnP.Framework.TenantOperationMessage,System.Boolean}
+      description: An optional function that will be called while waiting for the site to be created. If set will override the wait variable. Return true to cancel the wait loop.
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function DeleteSiteCollectionFromRecycleBin(tenant As Tenant, siteFullUrl As String, wait As Boolean = True, timeoutFunction As Func(Of TenantOperationMessage, Boolean) = Nothing) As Boolean
+  overload: Microsoft.SharePoint.Client.TenantExtensions.DeleteSiteCollectionFromRecycleBin*
+  nameWithType.vb: TenantExtensions.DeleteSiteCollectionFromRecycleBin(Tenant, String, Boolean, Func(Of TenantOperationMessage, Boolean))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.TenantExtensions.DeleteSiteCollectionFromRecycleBin(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String, System.Boolean, System.Func(Of PnP.Framework.TenantOperationMessage, System.Boolean))
+  name.vb: DeleteSiteCollectionFromRecycleBin(Tenant, String, Boolean, Func(Of TenantOperationMessage, Boolean))
+- uid: Microsoft.SharePoint.Client.TenantExtensions.GetSiteGuidByUrl(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.GetSiteGuidByUrl(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  id: GetSiteGuidByUrl(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetSiteGuidByUrl(Tenant, String)
+  nameWithType: TenantExtensions.GetSiteGuidByUrl(Tenant, String)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.GetSiteGuidByUrl(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetSiteGuidByUrl
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 498
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets the ID of site collection with specified URL\n"
+  example: []
+  syntax:
+    content: public static Guid GetSiteGuidByUrl(this Tenant tenant, string siteFullUrl)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: A tenant object pointing to the context of a Tenant Administration site
+    - id: siteFullUrl
+      type: System.String
+      description: A URL that specifies a site collection to get ID.
+    return:
+      type: System.Guid
+      description: The Guid of a site collection
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetSiteGuidByUrl(tenant As Tenant, siteFullUrl As String) As Guid
+  overload: Microsoft.SharePoint.Client.TenantExtensions.GetSiteGuidByUrl*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TenantExtensions.GetSiteGuidByUrl(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.Uri)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.GetSiteGuidByUrl(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.Uri)
+  id: GetSiteGuidByUrl(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.Uri)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetSiteGuidByUrl(Tenant, Uri)
+  nameWithType: TenantExtensions.GetSiteGuidByUrl(Tenant, Uri)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.GetSiteGuidByUrl(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.Uri)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetSiteGuidByUrl
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 512
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets the ID of site collection with specified URL\n"
+  example: []
+  syntax:
+    content: public static Guid GetSiteGuidByUrl(this Tenant tenant, Uri siteFullUrl)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: A tenant object pointing to the context of a Tenant Administration site
+    - id: siteFullUrl
+      type: System.Uri
+      description: A URL that specifies a site collection to get ID.
+    return:
+      type: System.Guid
+      description: The Guid of a site collection or an Guid.Empty if the Site does not exist
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetSiteGuidByUrl(tenant As Tenant, siteFullUrl As Uri) As Guid
+  overload: Microsoft.SharePoint.Client.TenantExtensions.GetSiteGuidByUrl*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TenantExtensions.GetWebTemplates(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.UInt32,System.Int32)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.GetWebTemplates(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.UInt32,System.Int32)
+  id: GetWebTemplates(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.UInt32,System.Int32)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetWebTemplates(Tenant, UInt32, Int32)
+  nameWithType: TenantExtensions.GetWebTemplates(Tenant, UInt32, Int32)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.GetWebTemplates(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.UInt32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetWebTemplates
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 530
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns available webtemplates/site definitions\n"
+  example: []
+  syntax:
+    content: public static SPOTenantWebTemplateCollection GetWebTemplates(this Tenant tenant, uint lcid, int compatibilityLevel)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: A tenant object pointing to the context of a Tenant Administration site
+    - id: lcid
+      type: System.UInt32
+      description: Locale identifier (LCID) for the language
+    - id: compatibilityLevel
+      type: System.Int32
+      description: 14 for SharePoint 2010, 15 for SharePoint 2013/SharePoint Online
+    return:
+      type: Microsoft.Online.SharePoint.TenantAdministration.SPOTenantWebTemplateCollection
+      description: Returns collection of SPTenantWebTemplate
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetWebTemplates(tenant As Tenant, lcid As UInteger, compatibilityLevel As Integer) As SPOTenantWebTemplateCollection
+  overload: Microsoft.SharePoint.Client.TenantExtensions.GetWebTemplates*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TenantExtensions.SetSiteProperties(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.String,System.Nullable{System.Boolean},System.Nullable{Microsoft.Online.SharePoint.TenantManagement.SharingCapabilities},System.Nullable{System.Int64},System.Nullable{System.Int64},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{Microsoft.Online.SharePoint.TenantManagement.SharingPermissionType},System.Nullable{Microsoft.Online.SharePoint.TenantManagement.SharingLinkType},System.Boolean,System.Func{PnP.Framework.TenantOperationMessage,System.Boolean})
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.SetSiteProperties(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.String,System.Nullable{System.Boolean},System.Nullable{Microsoft.Online.SharePoint.TenantManagement.SharingCapabilities},System.Nullable{System.Int64},System.Nullable{System.Int64},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{Microsoft.Online.SharePoint.TenantManagement.SharingPermissionType},System.Nullable{Microsoft.Online.SharePoint.TenantManagement.SharingLinkType},System.Boolean,System.Func{PnP.Framework.TenantOperationMessage,System.Boolean})
+  id: SetSiteProperties(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.String,System.Nullable{System.Boolean},System.Nullable{Microsoft.Online.SharePoint.TenantManagement.SharingCapabilities},System.Nullable{System.Int64},System.Nullable{System.Int64},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{Microsoft.Online.SharePoint.TenantManagement.SharingPermissionType},System.Nullable{Microsoft.Online.SharePoint.TenantManagement.SharingLinkType},System.Boolean,System.Func{PnP.Framework.TenantOperationMessage,System.Boolean})
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetSiteProperties(Tenant, String, String, Nullable<Boolean>, Nullable<SharingCapabilities>, Nullable<Int64>, Nullable<Int64>, Nullable<Double>, Nullable<Double>, Nullable<Boolean>, Nullable<Boolean>, Nullable<Boolean>, Nullable<SharingPermissionType>, Nullable<SharingLinkType>, Boolean, Func<TenantOperationMessage, Boolean>)
+  nameWithType: TenantExtensions.SetSiteProperties(Tenant, String, String, Nullable<Boolean>, Nullable<SharingCapabilities>, Nullable<Int64>, Nullable<Int64>, Nullable<Double>, Nullable<Double>, Nullable<Boolean>, Nullable<Boolean>, Nullable<Boolean>, Nullable<SharingPermissionType>, Nullable<SharingLinkType>, Boolean, Func<TenantOperationMessage, Boolean>)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.SetSiteProperties(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String, System.String, System.Nullable<System.Boolean>, System.Nullable<Microsoft.Online.SharePoint.TenantManagement.SharingCapabilities>, System.Nullable<System.Int64>, System.Nullable<System.Int64>, System.Nullable<System.Double>, System.Nullable<System.Double>, System.Nullable<System.Boolean>, System.Nullable<System.Boolean>, System.Nullable<System.Boolean>, System.Nullable<Microsoft.Online.SharePoint.TenantManagement.SharingPermissionType>, System.Nullable<Microsoft.Online.SharePoint.TenantManagement.SharingLinkType>, System.Boolean, System.Func<PnP.Framework.TenantOperationMessage, System.Boolean>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetSiteProperties
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 557
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nSets tenant site Properties\n"
+  example: []
+  syntax:
+    content: public static void SetSiteProperties(this Tenant tenant, string siteFullUrl, string title = null, bool? allowSelfServiceUpgrade = null, SharingCapabilities? sharingCapability = null, long? storageMaximumLevel = null, long? storageWarningLevel = null, double? userCodeMaximumLevel = null, double? userCodeWarningLevel = null, bool? noScriptSite = null, bool? commentsOnSitePagesDisabled = null, bool? socialBarOnSitePagesDisabled = null, SharingPermissionType? defaultLinkPermission = null, SharingLinkType? defaultSharingLinkType = null, bool wait = true, Func<TenantOperationMessage, bool> timeoutFunction = null)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: A tenant object pointing to the context of a Tenant Administration site
+    - id: siteFullUrl
+      type: System.String
+      description: full URL of site
+    - id: title
+      type: System.String
+      description: site title
+    - id: allowSelfServiceUpgrade
+      type: System.Nullable{System.Boolean}
+      description: Boolean value to allow serlf service upgrade
+    - id: sharingCapability
+      type: System.Nullable{Microsoft.Online.SharePoint.TenantManagement.SharingCapabilities}
+      description: SharingCapabilities enumeration value (i.e. Disabled/ExternalUserSharingOnly/ExternalUserAndGuestSharing/ExistingExternalUserSharingOnly)
+    - id: storageMaximumLevel
+      type: System.Nullable{System.Int64}
+      description: A limit on all disk space used by the site collection
+    - id: storageWarningLevel
+      type: System.Nullable{System.Int64}
+      description: A storage warning level for when administrators of the site collection receive advance notice before available storage is expended.
+    - id: userCodeMaximumLevel
+      type: System.Nullable{System.Double}
+      description: A value that represents the maximum allowed resource usage for the site/
+    - id: userCodeWarningLevel
+      type: System.Nullable{System.Double}
+      description: A value that determines the level of resource usage at which a warning e-mail message is sent
+    - id: noScriptSite
+      type: System.Nullable{System.Boolean}
+      description: Boolean value which allows to customize the site using scripts
+    - id: commentsOnSitePagesDisabled
+      type: System.Nullable{System.Boolean}
+      description: Boolean value which Enables/Disables comments on the Site Pages
+    - id: socialBarOnSitePagesDisabled
+      type: System.Nullable{System.Boolean}
+      description: Boolean value which Enables/Disables likes and view count on the Site Pages
+    - id: defaultLinkPermission
+      type: System.Nullable{Microsoft.Online.SharePoint.TenantManagement.SharingPermissionType}
+      description: Specifies the default link permission for the site collection
+    - id: defaultSharingLinkType
+      type: System.Nullable{Microsoft.Online.SharePoint.TenantManagement.SharingLinkType}
+      description: Specifies the default link type for the site collection
+    - id: wait
+      type: System.Boolean
+      description: Id true this function only returns when the tenant properties are set, if false it will return immediately
+    - id: timeoutFunction
+      type: System.Func{PnP.Framework.TenantOperationMessage,System.Boolean}
+      description: An optional function that will be called while waiting for the tenant properties to be set. If set will override the wait variable. Return true to cancel the wait loop.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetSiteProperties(tenant As Tenant, siteFullUrl As String, title As String = Nothing, allowSelfServiceUpgrade As Boolean? = Nothing, sharingCapability As SharingCapabilities? = Nothing, storageMaximumLevel As Long? = Nothing, storageWarningLevel As Long? = Nothing, userCodeMaximumLevel As Double? = Nothing, userCodeWarningLevel As Double? = Nothing, noScriptSite As Boolean? = Nothing, commentsOnSitePagesDisabled As Boolean? = Nothing, socialBarOnSitePagesDisabled As Boolean? = Nothing, defaultLinkPermission As SharingPermissionType? = Nothing, defaultSharingLinkType As SharingLinkType? = Nothing, wait As Boolean = True, timeoutFunction As Func(Of TenantOperationMessage, Boolean) = Nothing)
+  overload: Microsoft.SharePoint.Client.TenantExtensions.SetSiteProperties*
+  nameWithType.vb: TenantExtensions.SetSiteProperties(Tenant, String, String, Nullable(Of Boolean), Nullable(Of SharingCapabilities), Nullable(Of Int64), Nullable(Of Int64), Nullable(Of Double), Nullable(Of Double), Nullable(Of Boolean), Nullable(Of Boolean), Nullable(Of Boolean), Nullable(Of SharingPermissionType), Nullable(Of SharingLinkType), Boolean, Func(Of TenantOperationMessage, Boolean))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.TenantExtensions.SetSiteProperties(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String, System.String, System.Nullable(Of System.Boolean), System.Nullable(Of Microsoft.Online.SharePoint.TenantManagement.SharingCapabilities), System.Nullable(Of System.Int64), System.Nullable(Of System.Int64), System.Nullable(Of System.Double), System.Nullable(Of System.Double), System.Nullable(Of System.Boolean), System.Nullable(Of System.Boolean), System.Nullable(Of System.Boolean), System.Nullable(Of Microsoft.Online.SharePoint.TenantManagement.SharingPermissionType), System.Nullable(Of Microsoft.Online.SharePoint.TenantManagement.SharingLinkType), System.Boolean, System.Func(Of PnP.Framework.TenantOperationMessage, System.Boolean))
+  name.vb: SetSiteProperties(Tenant, String, String, Nullable(Of Boolean), Nullable(Of SharingCapabilities), Nullable(Of Int64), Nullable(Of Int64), Nullable(Of Double), Nullable(Of Double), Nullable(Of Boolean), Nullable(Of Boolean), Nullable(Of Boolean), Nullable(Of SharingPermissionType), Nullable(Of SharingLinkType), Boolean, Func(Of TenantOperationMessage, Boolean))
+- uid: Microsoft.SharePoint.Client.TenantExtensions.SetSiteLockState(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,PnP.Framework.SiteLockState,System.Boolean,System.Func{PnP.Framework.TenantOperationMessage,System.Boolean})
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.SetSiteLockState(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,PnP.Framework.SiteLockState,System.Boolean,System.Func{PnP.Framework.TenantOperationMessage,System.Boolean})
+  id: SetSiteLockState(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,PnP.Framework.SiteLockState,System.Boolean,System.Func{PnP.Framework.TenantOperationMessage,System.Boolean})
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetSiteLockState(Tenant, String, SiteLockState, Boolean, Func<TenantOperationMessage, Boolean>)
+  nameWithType: TenantExtensions.SetSiteLockState(Tenant, String, SiteLockState, Boolean, Func<TenantOperationMessage, Boolean>)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.SetSiteLockState(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String, PnP.Framework.SiteLockState, System.Boolean, System.Func<PnP.Framework.TenantOperationMessage, System.Boolean>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetSiteLockState
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 626
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nSets a site to Unlock access or NoAccess. This operation may occur immediately, but the site lock may take a short while before it goes into effect.\n"
+  example: []
+  syntax:
+    content: public static void SetSiteLockState(this Tenant tenant, string siteFullUrl, SiteLockState lockState, bool wait = false, Func<TenantOperationMessage, bool> timeoutFunction = null)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: A tenant object pointing to the context of a Tenant Administration site (i.e. https://[tenant]-admin.sharepoint.com)
+    - id: siteFullUrl
+      type: System.String
+      description: The target site to change the lock state.
+    - id: lockState
+      type: PnP.Framework.SiteLockState
+      description: The target state the site should be changed to.
+    - id: wait
+      type: System.Boolean
+      description: If true, processing will halt until the site collection lock state has been implemented
+    - id: timeoutFunction
+      type: System.Func{PnP.Framework.TenantOperationMessage,System.Boolean}
+      description: An optional function that will be called while waiting for the site to be created. If set will override the wait variable. Return true to cancel the wait loop.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetSiteLockState(tenant As Tenant, siteFullUrl As String, lockState As SiteLockState, wait As Boolean = False, timeoutFunction As Func(Of TenantOperationMessage, Boolean) = Nothing)
+  overload: Microsoft.SharePoint.Client.TenantExtensions.SetSiteLockState*
+  nameWithType.vb: TenantExtensions.SetSiteLockState(Tenant, String, SiteLockState, Boolean, Func(Of TenantOperationMessage, Boolean))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.TenantExtensions.SetSiteLockState(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String, PnP.Framework.SiteLockState, System.Boolean, System.Func(Of PnP.Framework.TenantOperationMessage, System.Boolean))
+  name.vb: SetSiteLockState(Tenant, String, SiteLockState, Boolean, Func(Of TenantOperationMessage, Boolean))
+- uid: Microsoft.SharePoint.Client.TenantExtensions.AddAdministrators(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.Collections.Generic.IEnumerable{PnP.Framework.Entities.UserEntity},System.Uri,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.AddAdministrators(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.Collections.Generic.IEnumerable{PnP.Framework.Entities.UserEntity},System.Uri,System.Boolean)
+  id: AddAdministrators(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.Collections.Generic.IEnumerable{PnP.Framework.Entities.UserEntity},System.Uri,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddAdministrators(Tenant, IEnumerable<UserEntity>, Uri, Boolean)
+  nameWithType: TenantExtensions.AddAdministrators(Tenant, IEnumerable<UserEntity>, Uri, Boolean)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.AddAdministrators(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.Collections.Generic.IEnumerable<PnP.Framework.Entities.UserEntity>, System.Uri, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddAdministrators
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 660
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdd a site collection administrator to a site collection\n"
+  example: []
+  syntax:
+    content: public static void AddAdministrators(this Tenant tenant, IEnumerable<UserEntity> adminLogins, Uri siteUrl, bool addToOwnersGroup = false)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: A tenant object pointing to the context of a Tenant Administration site
+    - id: adminLogins
+      type: System.Collections.Generic.IEnumerable{PnP.Framework.Entities.UserEntity}
+      description: Array of admins loginnames to add
+    - id: siteUrl
+      type: System.Uri
+      description: Url of the site to operate on
+    - id: addToOwnersGroup
+      type: System.Boolean
+      description: Optionally the added admins can also be added to the Site owners group
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub AddAdministrators(tenant As Tenant, adminLogins As IEnumerable(Of UserEntity), siteUrl As Uri, addToOwnersGroup As Boolean = False)
+  overload: Microsoft.SharePoint.Client.TenantExtensions.AddAdministrators*
+  nameWithType.vb: TenantExtensions.AddAdministrators(Tenant, IEnumerable(Of UserEntity), Uri, Boolean)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.TenantExtensions.AddAdministrators(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.Collections.Generic.IEnumerable(Of PnP.Framework.Entities.UserEntity), System.Uri, System.Boolean)
+  name.vb: AddAdministrators(Tenant, IEnumerable(Of UserEntity), Uri, Boolean)
+- uid: Microsoft.SharePoint.Client.TenantExtensions.GetSiteCollections(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.Int32,System.Int32,System.Boolean,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.GetSiteCollections(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.Int32,System.Int32,System.Boolean,System.Boolean)
+  id: GetSiteCollections(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.Int32,System.Int32,System.Boolean,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetSiteCollections(Tenant, Int32, Int32, Boolean, Boolean)
+  nameWithType: TenantExtensions.GetSiteCollections(Tenant, Int32, Int32, Boolean, Boolean)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.GetSiteCollections(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.Int32, System.Int32, System.Boolean, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetSiteCollections
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 720
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns all site collections in the current Tenant based on a startIndex. IncludeDetail adds additional properties to the SPSite object. \n"
+  example: []
+  syntax:
+    content: public static IList<SiteEntity> GetSiteCollections(this Tenant tenant, int startIndex = 0, int endIndex = 500000, bool includeDetail = true, bool includeOD4BSites = false)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: Tenant object to operate against
+    - id: startIndex
+      type: System.Int32
+      description: Not relevant anymore
+    - id: endIndex
+      type: System.Int32
+      description: Not relevant anymore
+    - id: includeDetail
+      type: System.Boolean
+      description: Option to return a limited set of data
+    - id: includeOD4BSites
+      type: System.Boolean
+      description: Also return the OD4B sites
+    return:
+      type: System.Collections.Generic.IList{PnP.Framework.Entities.SiteEntity}
+      description: An IList of SiteEntity objects
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetSiteCollections(tenant As Tenant, startIndex As Integer = 0, endIndex As Integer = 500000, includeDetail As Boolean = True, includeOD4BSites As Boolean = False) As IList(Of SiteEntity)
+  overload: Microsoft.SharePoint.Client.TenantExtensions.GetSiteCollections*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TenantExtensions.EnableSiteClassifications(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,PnP.Framework.Graph.Model.SiteClassificationsSettings)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.EnableSiteClassifications(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,PnP.Framework.Graph.Model.SiteClassificationsSettings)
+  id: EnableSiteClassifications(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,PnP.Framework.Graph.Model.SiteClassificationsSettings)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: EnableSiteClassifications(Tenant, String, SiteClassificationsSettings)
+  nameWithType: TenantExtensions.EnableSiteClassifications(Tenant, String, SiteClassificationsSettings)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.EnableSiteClassifications(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String, PnP.Framework.Graph.Model.SiteClassificationsSettings)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnableSiteClassifications
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 802
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nEnables Site Classifications for the target tenant \n"
+  example: []
+  syntax:
+    content: public static void EnableSiteClassifications(this Tenant tenant, string accessToken, SiteClassificationsSettings siteClassificationsSettings)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: The target tenant
+    - id: accessToken
+      type: System.String
+      description: The OAuth accessToken for Microsoft Graph with Azure AD
+    - id: siteClassificationsSettings
+      type: PnP.Framework.Graph.Model.SiteClassificationsSettings
+      description: The site classifications settings to apply.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub EnableSiteClassifications(tenant As Tenant, accessToken As String, siteClassificationsSettings As SiteClassificationsSettings)
+  overload: Microsoft.SharePoint.Client.TenantExtensions.EnableSiteClassifications*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TenantExtensions.EnableSiteClassifications(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.Collections.Generic.IEnumerable{System.String},System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.EnableSiteClassifications(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.Collections.Generic.IEnumerable{System.String},System.String,System.String)
+  id: EnableSiteClassifications(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.Collections.Generic.IEnumerable{System.String},System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: EnableSiteClassifications(Tenant, String, IEnumerable<String>, String, String)
+  nameWithType: TenantExtensions.EnableSiteClassifications(Tenant, String, IEnumerable<String>, String, String)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.EnableSiteClassifications(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String, System.Collections.Generic.IEnumerable<System.String>, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnableSiteClassifications
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 815
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nEnables Site Classifications for the target tenant \n"
+  example: []
+  syntax:
+    content: public static void EnableSiteClassifications(this Tenant tenant, string accessToken, IEnumerable<string> classificationsList, string defaultClassification = "", string usageGuidelinesUrl = "")
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: The target tenant
+    - id: accessToken
+      type: System.String
+      description: The OAuth accessToken for Microsoft Graph with Azure AD
+    - id: classificationsList
+      type: System.Collections.Generic.IEnumerable{System.String}
+      description: The list of classification values
+    - id: defaultClassification
+      type: System.String
+      description: The default classification
+    - id: usageGuidelinesUrl
+      type: System.String
+      description: The URL of a guidance page
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub EnableSiteClassifications(tenant As Tenant, accessToken As String, classificationsList As IEnumerable(Of String), defaultClassification As String = "", usageGuidelinesUrl As String = "")
+  overload: Microsoft.SharePoint.Client.TenantExtensions.EnableSiteClassifications*
+  nameWithType.vb: TenantExtensions.EnableSiteClassifications(Tenant, String, IEnumerable(Of String), String, String)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.TenantExtensions.EnableSiteClassifications(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String, System.Collections.Generic.IEnumerable(Of System.String), System.String, System.String)
+  name.vb: EnableSiteClassifications(Tenant, String, IEnumerable(Of String), String, String)
+- uid: Microsoft.SharePoint.Client.TenantExtensions.GetSiteClassificationsSettings(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.GetSiteClassificationsSettings(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  id: GetSiteClassificationsSettings(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetSiteClassificationsSettings(Tenant, String)
+  nameWithType: TenantExtensions.GetSiteClassificationsSettings(Tenant, String)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.GetSiteClassificationsSettings(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetSiteClassificationsSettings
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 826
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nEnables Site Classifications for the target tenant \n"
+  example: []
+  syntax:
+    content: public static SiteClassificationsSettings GetSiteClassificationsSettings(this Tenant tenant, string accessToken)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: The target tenant
+    - id: accessToken
+      type: System.String
+      description: The OAuth accessToken for Microsoft Graph with Azure AD
+    return:
+      type: PnP.Framework.Graph.Model.SiteClassificationsSettings
+      description: The list of Site Classifications values
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetSiteClassificationsSettings(tenant As Tenant, accessToken As String) As SiteClassificationsSettings
+  overload: Microsoft.SharePoint.Client.TenantExtensions.GetSiteClassificationsSettings*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TenantExtensions.UpdateSiteClassificationsSettings(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,PnP.Framework.Graph.Model.SiteClassificationsSettings)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.UpdateSiteClassificationsSettings(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,PnP.Framework.Graph.Model.SiteClassificationsSettings)
+  id: UpdateSiteClassificationsSettings(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,PnP.Framework.Graph.Model.SiteClassificationsSettings)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: UpdateSiteClassificationsSettings(Tenant, String, SiteClassificationsSettings)
+  nameWithType: TenantExtensions.UpdateSiteClassificationsSettings(Tenant, String, SiteClassificationsSettings)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.UpdateSiteClassificationsSettings(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String, PnP.Framework.Graph.Model.SiteClassificationsSettings)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UpdateSiteClassificationsSettings
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 837
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nUpdates Site Classifications settings for the target tenant\n"
+  example: []
+  syntax:
+    content: public static void UpdateSiteClassificationsSettings(this Tenant tenant, string accessToken, SiteClassificationsSettings siteClassificationsSettings)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: The target tenant
+    - id: accessToken
+      type: System.String
+      description: The OAuth accessToken for Microsoft Graph with Azure AD
+    - id: siteClassificationsSettings
+      type: PnP.Framework.Graph.Model.SiteClassificationsSettings
+      description: The site classifications settings to update.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub UpdateSiteClassificationsSettings(tenant As Tenant, accessToken As String, siteClassificationsSettings As SiteClassificationsSettings)
+  overload: Microsoft.SharePoint.Client.TenantExtensions.UpdateSiteClassificationsSettings*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TenantExtensions.UpdateSiteClassificationsSettings(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.Collections.Generic.IEnumerable{System.String},System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.UpdateSiteClassificationsSettings(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.Collections.Generic.IEnumerable{System.String},System.String,System.String)
+  id: UpdateSiteClassificationsSettings(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.Collections.Generic.IEnumerable{System.String},System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: UpdateSiteClassificationsSettings(Tenant, String, IEnumerable<String>, String, String)
+  nameWithType: TenantExtensions.UpdateSiteClassificationsSettings(Tenant, String, IEnumerable<String>, String, String)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.UpdateSiteClassificationsSettings(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String, System.Collections.Generic.IEnumerable<System.String>, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UpdateSiteClassificationsSettings
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 850
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nUpdates Site Classifications settings for the target tenant\n"
+  example: []
+  syntax:
+    content: public static void UpdateSiteClassificationsSettings(this Tenant tenant, string accessToken, IEnumerable<string> classificationsList, string defaultClassification = "", string usageGuidelinesUrl = "")
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: The target tenant
+    - id: accessToken
+      type: System.String
+      description: The OAuth accessToken for Microsoft Graph with Azure AD
+    - id: classificationsList
+      type: System.Collections.Generic.IEnumerable{System.String}
+      description: The list of classification values
+    - id: defaultClassification
+      type: System.String
+      description: The default classification
+    - id: usageGuidelinesUrl
+      type: System.String
+      description: The URL of a guidance page
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub UpdateSiteClassificationsSettings(tenant As Tenant, accessToken As String, classificationsList As IEnumerable(Of String), defaultClassification As String = "", usageGuidelinesUrl As String = "")
+  overload: Microsoft.SharePoint.Client.TenantExtensions.UpdateSiteClassificationsSettings*
+  nameWithType.vb: TenantExtensions.UpdateSiteClassificationsSettings(Tenant, String, IEnumerable(Of String), String, String)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.TenantExtensions.UpdateSiteClassificationsSettings(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String, System.Collections.Generic.IEnumerable(Of System.String), System.String, System.String)
+  name.vb: UpdateSiteClassificationsSettings(Tenant, String, IEnumerable(Of String), String, String)
+- uid: Microsoft.SharePoint.Client.TenantExtensions.DisableSiteClassifications(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.DisableSiteClassifications(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  id: DisableSiteClassifications(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: DisableSiteClassifications(Tenant, String)
+  nameWithType: TenantExtensions.DisableSiteClassifications(Tenant, String)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.DisableSiteClassifications(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DisableSiteClassifications
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 860
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDisables Site Classifications settings for the target tenant\n"
+  example: []
+  syntax:
+    content: public static void DisableSiteClassifications(this Tenant tenant, string accessToken)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: The target tenant
+    - id: accessToken
+      type: System.String
+      description: The OAuth accessToken for Microsoft Graph with Azure AD
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub DisableSiteClassifications(tenant As Tenant, accessToken As String)
+  overload: Microsoft.SharePoint.Client.TenantExtensions.DisableSiteClassifications*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TenantExtensions.GroupifySite(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.GroupifySite(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation)
+  id: GroupifySite(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: GroupifySite(Tenant, String, TeamSiteCollectionGroupifyInformation)
+  nameWithType: TenantExtensions.GroupifySite(Tenant, String, TeamSiteCollectionGroupifyInformation)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.GroupifySite(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String, PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GroupifySite
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 874
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nConnect an Office 365 group to an existing SharePoint site collection\n"
+  example: []
+  syntax:
+    content: public static void GroupifySite(this Tenant tenant, string siteUrl, TeamSiteCollectionGroupifyInformation siteCollectionGroupifyInformation)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: The target tenant
+    - id: siteUrl
+      type: System.String
+      description: Url to the site collection that needs to get connected to an Office 365 group
+    - id: siteCollectionGroupifyInformation
+      type: PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation
+      description: Information that configures the &quot;groupify&quot; process
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub GroupifySite(tenant As Tenant, siteUrl As String, siteCollectionGroupifyInformation As TeamSiteCollectionGroupifyInformation)
+  overload: Microsoft.SharePoint.Client.TenantExtensions.GroupifySite*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TenantExtensions.EnableCommunicationSite(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.EnableCommunicationSite(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  id: EnableCommunicationSite(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: EnableCommunicationSite(Tenant, String)
+  nameWithType: TenantExtensions.EnableCommunicationSite(Tenant, String)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.EnableCommunicationSite(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnableCommunicationSite
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 932
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nEnable communication site on the root site of a tenant\n"
+  example: []
+  syntax:
+    content: public static void EnableCommunicationSite(this Tenant tenant, string siteUrl = "")
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: A tenant object pointing to the context of a Tenant Administration site
+    - id: siteUrl
+      type: System.String
+      description: Root site url of your tenant
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub EnableCommunicationSite(tenant As Tenant, siteUrl As String = "")
+  overload: Microsoft.SharePoint.Client.TenantExtensions.EnableCommunicationSite*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TenantExtensions.IsCurrentUserTenantAdmin(Microsoft.SharePoint.Client.ClientContext)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.IsCurrentUserTenantAdmin(Microsoft.SharePoint.Client.ClientContext)
+  id: IsCurrentUserTenantAdmin(Microsoft.SharePoint.Client.ClientContext)
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: IsCurrentUserTenantAdmin(ClientContext)
+  nameWithType: TenantExtensions.IsCurrentUserTenantAdmin(ClientContext)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.IsCurrentUserTenantAdmin(Microsoft.SharePoint.Client.ClientContext)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsCurrentUserTenantAdmin
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 951
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns if the current user is a tenant administrator\n"
+  example: []
+  syntax:
+    content: public static bool IsCurrentUserTenantAdmin(ClientContext clientContext)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Shared Function IsCurrentUserTenantAdmin(clientContext As ClientContext) As Boolean
+  overload: Microsoft.SharePoint.Client.TenantExtensions.IsCurrentUserTenantAdmin*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TenantExtensions.IsCurrentUserTenantAdmin(Microsoft.SharePoint.Client.ClientContext,System.String)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.IsCurrentUserTenantAdmin(Microsoft.SharePoint.Client.ClientContext,System.String)
+  id: IsCurrentUserTenantAdmin(Microsoft.SharePoint.Client.ClientContext,System.String)
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: IsCurrentUserTenantAdmin(ClientContext, String)
+  nameWithType: TenantExtensions.IsCurrentUserTenantAdmin(ClientContext, String)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.IsCurrentUserTenantAdmin(Microsoft.SharePoint.Client.ClientContext, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsCurrentUserTenantAdmin
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 1050
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  syntax:
+    content: public static bool IsCurrentUserTenantAdmin(ClientContext clientContext, string tenantAdminSiteUrl)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientContext
+    - id: tenantAdminSiteUrl
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function IsCurrentUserTenantAdmin(clientContext As ClientContext, tenantAdminSiteUrl As String) As Boolean
+  overload: Microsoft.SharePoint.Client.TenantExtensions.IsCurrentUserTenantAdmin*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TenantExtensions.CheckIfSiteExists(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.CheckIfSiteExists(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.String)
+  id: CheckIfSiteExists(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: CheckIfSiteExists(Tenant, String, String)
+  nameWithType: TenantExtensions.CheckIfSiteExists(Tenant, String, String)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.CheckIfSiteExists(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CheckIfSiteExists
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 1164
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns if a site collection is in a particular status. If the URL contains a sub site then returns true is the sub site exists, false if not. \nStatus is irrelevant for sub sites\n"
+  example: []
+  syntax:
+    content: public static bool CheckIfSiteExists(this Tenant tenant, string siteFullUrl, string status)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: A tenant object pointing to the context of a Tenant Administration site
+    - id: siteFullUrl
+      type: System.String
+      description: Url to the site collection
+    - id: status
+      type: System.String
+      description: Status to check (Active, Creating, Recycled)
+    return:
+      type: System.Boolean
+      description: True if in status, false if not in status
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function CheckIfSiteExists(tenant As Tenant, siteFullUrl As String, status As String) As Boolean
+  overload: Microsoft.SharePoint.Client.TenantExtensions.CheckIfSiteExists*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TenantExtensions.SiteExistsAnywhere(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.SiteExistsAnywhere(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  id: SiteExistsAnywhere(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: SiteExistsAnywhere(Tenant, String)
+  nameWithType: TenantExtensions.SiteExistsAnywhere(Tenant, String)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.SiteExistsAnywhere(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SiteExistsAnywhere
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 1225
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nChecks if a site collection exists, relies on tenant admin API. Sites that are recycled also return as existing sites, but with a different flag\n"
+  example: []
+  syntax:
+    content: public static SiteExistence SiteExistsAnywhere(this Tenant tenant, string siteFullUrl)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: A tenant object pointing to the context of a Tenant Administration site
+    - id: siteFullUrl
+      type: System.String
+      description: URL to the site collection
+    return:
+      type: Microsoft.SharePoint.Client.SiteExistence
+      description: 'An enumerated type that can be: No, Yes, Recycled'
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SiteExistsAnywhere(tenant As Tenant, siteFullUrl As String) As SiteExistence
+  overload: Microsoft.SharePoint.Client.TenantExtensions.SiteExistsAnywhere*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TenantExtensions.SubSiteExists(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.SubSiteExists(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  id: SubSiteExists(Microsoft.Online.SharePoint.TenantAdministration.Tenant,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: SubSiteExists(Tenant, String)
+  nameWithType: TenantExtensions.SubSiteExists(Tenant, String)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.SubSiteExists(Microsoft.Online.SharePoint.TenantAdministration.Tenant, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SubSiteExists
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 1302
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nChecks if a sub site exists\n"
+  example: []
+  syntax:
+    content: public static bool SubSiteExists(this Tenant tenant, string siteFullUrl)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: A tenant object pointing to the context of a Tenant Administration site
+    - id: siteFullUrl
+      type: System.String
+      description: URL to the sub site
+    return:
+      type: System.Boolean
+      description: True if existing, false if not
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SubSiteExists(tenant As Tenant, siteFullUrl As String) As Boolean
+  overload: Microsoft.SharePoint.Client.TenantExtensions.SubSiteExists*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TenantExtensions.GetAppCatalog(Microsoft.Online.SharePoint.TenantAdministration.Tenant)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.GetAppCatalog(Microsoft.Online.SharePoint.TenantAdministration.Tenant)
+  id: GetAppCatalog(Microsoft.Online.SharePoint.TenantAdministration.Tenant)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetAppCatalog(Tenant)
+  nameWithType: TenantExtensions.GetAppCatalog(Tenant)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.GetAppCatalog(Microsoft.Online.SharePoint.TenantAdministration.Tenant)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetAppCatalog
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 1445
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets the Uri for the tenant&apos;s app catalog site (if that one has already been created)\n"
+  example: []
+  syntax:
+    content: public static Uri GetAppCatalog(this Tenant tenant)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+      description: Tenant to operate against
+    return:
+      type: System.Uri
+      description: The Uri holding the app catalog site URL
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetAppCatalog(tenant As Tenant) As Uri
+  overload: Microsoft.SharePoint.Client.TenantExtensions.GetAppCatalog*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TenantExtensions.GetTenantIdByUrl(System.String,PnP.Framework.AzureEnvironment)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.GetTenantIdByUrl(System.String,PnP.Framework.AzureEnvironment)
+  id: GetTenantIdByUrl(System.String,PnP.Framework.AzureEnvironment)
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetTenantIdByUrl(String, AzureEnvironment)
+  nameWithType: TenantExtensions.GetTenantIdByUrl(String, AzureEnvironment)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.GetTenantIdByUrl(System.String, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetTenantIdByUrl
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 1460
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  syntax:
+    content: public static string GetTenantIdByUrl(string tenantUrl, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: tenantUrl
+      type: System.String
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+    return:
+      type: System.String
+    content.vb: Public Shared Function GetTenantIdByUrl(tenantUrl As String, azureEnvironment As AzureEnvironment = AzureEnvironment.Production) As String
+  overload: Microsoft.SharePoint.Client.TenantExtensions.GetTenantIdByUrl*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TenantExtensions.GetTenantRootSiteUrl(Microsoft.Online.SharePoint.TenantAdministration.Tenant)
+  commentId: M:Microsoft.SharePoint.Client.TenantExtensions.GetTenantRootSiteUrl(Microsoft.Online.SharePoint.TenantAdministration.Tenant)
+  id: GetTenantRootSiteUrl(Microsoft.Online.SharePoint.TenantAdministration.Tenant)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TenantExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetTenantRootSiteUrl(Tenant)
+  nameWithType: TenantExtensions.GetTenantRootSiteUrl(Tenant)
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.GetTenantRootSiteUrl(Microsoft.Online.SharePoint.TenantAdministration.Tenant)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetTenantRootSiteUrl
+    path: ../src/lib/PnP.Framework/Extensions/TenantExtensions.cs
+    startLine: 1502
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  syntax:
+    content: public static string GetTenantRootSiteUrl(this Tenant tenant)
+    parameters:
+    - id: tenant
+      type: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+    return:
+      type: System.String
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetTenantRootSiteUrl(tenant As Tenant) As String
+  overload: Microsoft.SharePoint.Client.TenantExtensions.GetTenantRootSiteUrl*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: Microsoft.SharePoint.Client
+  commentId: N:Microsoft.SharePoint.Client
+  name: Microsoft.SharePoint.Client
+  nameWithType: Microsoft.SharePoint.Client
+  fullName: Microsoft.SharePoint.Client
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Microsoft.SharePoint.Client.TenantExtensions.ApplyProvisionHierarchy*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.ApplyProvisionHierarchy
+  name: ApplyProvisionHierarchy
+  nameWithType: TenantExtensions.ApplyProvisionHierarchy
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.ApplyProvisionHierarchy
+- uid: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+  commentId: T:Microsoft.Online.SharePoint.TenantAdministration.Tenant
+  parent: Microsoft.Online.SharePoint.TenantAdministration
+  isExternal: true
+  name: Tenant
+  nameWithType: Tenant
+  fullName: Microsoft.Online.SharePoint.TenantAdministration.Tenant
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  commentId: T:PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  parent: PnP.Framework.Provisioning.Model
+  name: ProvisioningHierarchy
+  nameWithType: ProvisioningHierarchy
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation
+  parent: PnP.Framework.Provisioning.ObjectHandlers
+  name: ProvisioningTemplateApplyingInformation
+  nameWithType: ProvisioningTemplateApplyingInformation
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation
+- uid: Microsoft.Online.SharePoint.TenantAdministration
+  commentId: N:Microsoft.Online.SharePoint.TenantAdministration
+  isExternal: true
+  name: Microsoft.Online.SharePoint.TenantAdministration
+  nameWithType: Microsoft.Online.SharePoint.TenantAdministration
+  fullName: Microsoft.Online.SharePoint.TenantAdministration
+- uid: PnP.Framework.Provisioning.Model
+  commentId: N:PnP.Framework.Provisioning.Model
+  name: PnP.Framework.Provisioning.Model
+  nameWithType: PnP.Framework.Provisioning.Model
+  fullName: PnP.Framework.Provisioning.Model
+- uid: PnP.Framework.Provisioning.ObjectHandlers
+  commentId: N:PnP.Framework.Provisioning.ObjectHandlers
+  name: PnP.Framework.Provisioning.ObjectHandlers
+  nameWithType: PnP.Framework.Provisioning.ObjectHandlers
+  fullName: PnP.Framework.Provisioning.ObjectHandlers
+- uid: Microsoft.SharePoint.Client.TenantExtensions.SiteExists*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.SiteExists
+  name: SiteExists
+  nameWithType: TenantExtensions.SiteExists
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.SiteExists
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: Microsoft.SharePoint.Client.TenantExtensions.EnableCommSite*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.EnableCommSite
+  name: EnableCommSite
+  nameWithType: TenantExtensions.EnableCommSite
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.EnableCommSite
+- uid: Microsoft.SharePoint.Client.TenantExtensions.ApplyTenantTemplate*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.ApplyTenantTemplate
+  name: ApplyTenantTemplate
+  nameWithType: TenantExtensions.ApplyTenantTemplate
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.ApplyTenantTemplate
+- uid: PnP.Framework.Provisioning.Model.Configuration.ApplyConfiguration
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.ApplyConfiguration
+  parent: PnP.Framework.Provisioning.Model.Configuration
+  name: ApplyConfiguration
+  nameWithType: ApplyConfiguration
+  fullName: PnP.Framework.Provisioning.Model.Configuration.ApplyConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration
+  name: PnP.Framework.Provisioning.Model.Configuration
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration
+  fullName: PnP.Framework.Provisioning.Model.Configuration
+- uid: Microsoft.SharePoint.Client.TenantExtensions.GetTenantTemplate*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.GetTenantTemplate
+  name: GetTenantTemplate
+  nameWithType: TenantExtensions.GetTenantTemplate
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.GetTenantTemplate
+- uid: PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration
+  parent: PnP.Framework.Provisioning.Model.Configuration
+  name: ExtractConfiguration
+  nameWithType: ExtractConfiguration
+  fullName: PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration
+- uid: Microsoft.SharePoint.Client.TenantExtensions.GetHubSiteChildUrls*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.GetHubSiteChildUrls
+  name: GetHubSiteChildUrls
+  nameWithType: TenantExtensions.GetHubSiteChildUrls
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.GetHubSiteChildUrls
+- uid: System.Collections.Generic.List{System.String}
+  commentId: T:System.Collections.Generic.List{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<String>
+  nameWithType: List<String>
+  fullName: System.Collections.Generic.List<System.String>
+  nameWithType.vb: List(Of String)
+  fullName.vb: System.Collections.Generic.List(Of System.String)
+  name.vb: List(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Microsoft.SharePoint.Client.TenantExtensions.GetSitePropertiesById*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.GetSitePropertiesById
+  name: GetSitePropertiesById
+  nameWithType: TenantExtensions.GetSitePropertiesById
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.GetSitePropertiesById
+- uid: Microsoft.Online.SharePoint.TenantAdministration.SiteProperties
+  commentId: T:Microsoft.Online.SharePoint.TenantAdministration.SiteProperties
+  parent: Microsoft.Online.SharePoint.TenantAdministration
+  isExternal: true
+  name: SiteProperties
+  nameWithType: SiteProperties
+  fullName: Microsoft.Online.SharePoint.TenantAdministration.SiteProperties
+- uid: Microsoft.SharePoint.Client.TenantExtensions.CreateSiteCollection*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.CreateSiteCollection
+  name: CreateSiteCollection
+  nameWithType: TenantExtensions.CreateSiteCollection
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.CreateSiteCollection
+- uid: PnP.Framework.Entities.SiteEntity
+  commentId: T:PnP.Framework.Entities.SiteEntity
+  parent: PnP.Framework.Entities
+  name: SiteEntity
+  nameWithType: SiteEntity
+  fullName: PnP.Framework.Entities.SiteEntity
+- uid: System.Func{PnP.Framework.TenantOperationMessage,System.Boolean}
+  commentId: T:System.Func{PnP.Framework.TenantOperationMessage,System.Boolean}
+  parent: System
+  definition: System.Func`2
+  name: Func<TenantOperationMessage, Boolean>
+  nameWithType: Func<TenantOperationMessage, Boolean>
+  fullName: System.Func<PnP.Framework.TenantOperationMessage, System.Boolean>
+  nameWithType.vb: Func(Of TenantOperationMessage, Boolean)
+  fullName.vb: System.Func(Of PnP.Framework.TenantOperationMessage, System.Boolean)
+  name.vb: Func(Of TenantOperationMessage, Boolean)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.TenantOperationMessage
+    name: TenantOperationMessage
+    nameWithType: TenantOperationMessage
+    fullName: PnP.Framework.TenantOperationMessage
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.TenantOperationMessage
+    name: TenantOperationMessage
+    nameWithType: TenantOperationMessage
+    fullName: PnP.Framework.TenantOperationMessage
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Entities
+  commentId: N:PnP.Framework.Entities
+  name: PnP.Framework.Entities
+  nameWithType: PnP.Framework.Entities
+  fullName: PnP.Framework.Entities
+- uid: System.Func`2
+  commentId: T:System.Func`2
+  isExternal: true
+  name: Func<T, TResult>
+  nameWithType: Func<T, TResult>
+  fullName: System.Func<T, TResult>
+  nameWithType.vb: Func(Of T, TResult)
+  fullName.vb: System.Func(Of T, TResult)
+  name.vb: Func(Of T, TResult)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  name: UInt32
+  nameWithType: UInt32
+  fullName: System.UInt32
+- uid: Microsoft.SharePoint.Client.TenantExtensions.EnsureAppCatalogAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.EnsureAppCatalogAsync
+  name: EnsureAppCatalogAsync
+  nameWithType: TenantExtensions.EnsureAppCatalogAsync
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.EnsureAppCatalogAsync
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+- uid: Microsoft.SharePoint.Client.TenantExtensions.IsSiteActive*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.IsSiteActive
+  name: IsSiteActive
+  nameWithType: TenantExtensions.IsSiteActive
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.IsSiteActive
+- uid: Microsoft.SharePoint.Client.TenantExtensions.DeleteSiteCollection*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.DeleteSiteCollection
+  name: DeleteSiteCollection
+  nameWithType: TenantExtensions.DeleteSiteCollection
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.DeleteSiteCollection
+- uid: Microsoft.SharePoint.Client.TenantExtensions.DeleteSiteCollectionFromRecycleBin*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.DeleteSiteCollectionFromRecycleBin
+  name: DeleteSiteCollectionFromRecycleBin
+  nameWithType: TenantExtensions.DeleteSiteCollectionFromRecycleBin
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.DeleteSiteCollectionFromRecycleBin
+- uid: Microsoft.SharePoint.Client.TenantExtensions.GetSiteGuidByUrl*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.GetSiteGuidByUrl
+  name: GetSiteGuidByUrl
+  nameWithType: TenantExtensions.GetSiteGuidByUrl
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.GetSiteGuidByUrl
+- uid: System.Uri
+  commentId: T:System.Uri
+  parent: System
+  isExternal: true
+  name: Uri
+  nameWithType: Uri
+  fullName: System.Uri
+- uid: Microsoft.SharePoint.Client.TenantExtensions.GetWebTemplates*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.GetWebTemplates
+  name: GetWebTemplates
+  nameWithType: TenantExtensions.GetWebTemplates
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.GetWebTemplates
+- uid: Microsoft.Online.SharePoint.TenantAdministration.SPOTenantWebTemplateCollection
+  commentId: T:Microsoft.Online.SharePoint.TenantAdministration.SPOTenantWebTemplateCollection
+  parent: Microsoft.Online.SharePoint.TenantAdministration
+  isExternal: true
+  name: SPOTenantWebTemplateCollection
+  nameWithType: SPOTenantWebTemplateCollection
+  fullName: Microsoft.Online.SharePoint.TenantAdministration.SPOTenantWebTemplateCollection
+- uid: Microsoft.SharePoint.Client.TenantExtensions.SetSiteProperties*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.SetSiteProperties
+  name: SetSiteProperties
+  nameWithType: TenantExtensions.SetSiteProperties
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.SetSiteProperties
+- uid: System.Nullable{System.Boolean}
+  commentId: T:System.Nullable{System.Boolean}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<Boolean>
+  nameWithType: Nullable<Boolean>
+  fullName: System.Nullable<System.Boolean>
+  nameWithType.vb: Nullable(Of Boolean)
+  fullName.vb: System.Nullable(Of System.Boolean)
+  name.vb: Nullable(Of Boolean)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Nullable{Microsoft.Online.SharePoint.TenantManagement.SharingCapabilities}
+  commentId: T:System.Nullable{Microsoft.Online.SharePoint.TenantManagement.SharingCapabilities}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<SharingCapabilities>
+  nameWithType: Nullable<SharingCapabilities>
+  fullName: System.Nullable<Microsoft.Online.SharePoint.TenantManagement.SharingCapabilities>
+  nameWithType.vb: Nullable(Of SharingCapabilities)
+  fullName.vb: System.Nullable(Of Microsoft.Online.SharePoint.TenantManagement.SharingCapabilities)
+  name.vb: Nullable(Of SharingCapabilities)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Microsoft.Online.SharePoint.TenantManagement.SharingCapabilities
+    name: SharingCapabilities
+    nameWithType: SharingCapabilities
+    fullName: Microsoft.Online.SharePoint.TenantManagement.SharingCapabilities
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Microsoft.Online.SharePoint.TenantManagement.SharingCapabilities
+    name: SharingCapabilities
+    nameWithType: SharingCapabilities
+    fullName: Microsoft.Online.SharePoint.TenantManagement.SharingCapabilities
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Nullable{System.Int64}
+  commentId: T:System.Nullable{System.Int64}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<Int64>
+  nameWithType: Nullable<Int64>
+  fullName: System.Nullable<System.Int64>
+  nameWithType.vb: Nullable(Of Int64)
+  fullName.vb: System.Nullable(Of System.Int64)
+  name.vb: Nullable(Of Int64)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Nullable{System.Double}
+  commentId: T:System.Nullable{System.Double}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<Double>
+  nameWithType: Nullable<Double>
+  fullName: System.Nullable<System.Double>
+  nameWithType.vb: Nullable(Of Double)
+  fullName.vb: System.Nullable(Of System.Double)
+  name.vb: Nullable(Of Double)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Double
+    name: Double
+    nameWithType: Double
+    fullName: System.Double
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Double
+    name: Double
+    nameWithType: Double
+    fullName: System.Double
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Nullable{Microsoft.Online.SharePoint.TenantManagement.SharingPermissionType}
+  commentId: T:System.Nullable{Microsoft.Online.SharePoint.TenantManagement.SharingPermissionType}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<SharingPermissionType>
+  nameWithType: Nullable<SharingPermissionType>
+  fullName: System.Nullable<Microsoft.Online.SharePoint.TenantManagement.SharingPermissionType>
+  nameWithType.vb: Nullable(Of SharingPermissionType)
+  fullName.vb: System.Nullable(Of Microsoft.Online.SharePoint.TenantManagement.SharingPermissionType)
+  name.vb: Nullable(Of SharingPermissionType)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Microsoft.Online.SharePoint.TenantManagement.SharingPermissionType
+    name: SharingPermissionType
+    nameWithType: SharingPermissionType
+    fullName: Microsoft.Online.SharePoint.TenantManagement.SharingPermissionType
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Microsoft.Online.SharePoint.TenantManagement.SharingPermissionType
+    name: SharingPermissionType
+    nameWithType: SharingPermissionType
+    fullName: Microsoft.Online.SharePoint.TenantManagement.SharingPermissionType
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Nullable{Microsoft.Online.SharePoint.TenantManagement.SharingLinkType}
+  commentId: T:System.Nullable{Microsoft.Online.SharePoint.TenantManagement.SharingLinkType}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<SharingLinkType>
+  nameWithType: Nullable<SharingLinkType>
+  fullName: System.Nullable<Microsoft.Online.SharePoint.TenantManagement.SharingLinkType>
+  nameWithType.vb: Nullable(Of SharingLinkType)
+  fullName.vb: System.Nullable(Of Microsoft.Online.SharePoint.TenantManagement.SharingLinkType)
+  name.vb: Nullable(Of SharingLinkType)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Microsoft.Online.SharePoint.TenantManagement.SharingLinkType
+    name: SharingLinkType
+    nameWithType: SharingLinkType
+    fullName: Microsoft.Online.SharePoint.TenantManagement.SharingLinkType
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Microsoft.Online.SharePoint.TenantManagement.SharingLinkType
+    name: SharingLinkType
+    nameWithType: SharingLinkType
+    fullName: Microsoft.Online.SharePoint.TenantManagement.SharingLinkType
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.SharePoint.Client.TenantExtensions.SetSiteLockState*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.SetSiteLockState
+  name: SetSiteLockState
+  nameWithType: TenantExtensions.SetSiteLockState
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.SetSiteLockState
+- uid: PnP.Framework.SiteLockState
+  commentId: T:PnP.Framework.SiteLockState
+  parent: PnP.Framework
+  name: SiteLockState
+  nameWithType: SiteLockState
+  fullName: PnP.Framework.SiteLockState
+- uid: PnP.Framework
+  commentId: N:PnP.Framework
+  name: PnP.Framework
+  nameWithType: PnP.Framework
+  fullName: PnP.Framework
+- uid: Microsoft.SharePoint.Client.TenantExtensions.AddAdministrators*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.AddAdministrators
+  name: AddAdministrators
+  nameWithType: TenantExtensions.AddAdministrators
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.AddAdministrators
+- uid: System.Collections.Generic.IEnumerable{PnP.Framework.Entities.UserEntity}
+  commentId: T:System.Collections.Generic.IEnumerable{PnP.Framework.Entities.UserEntity}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<UserEntity>
+  nameWithType: IEnumerable<UserEntity>
+  fullName: System.Collections.Generic.IEnumerable<PnP.Framework.Entities.UserEntity>
+  nameWithType.vb: IEnumerable(Of UserEntity)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of PnP.Framework.Entities.UserEntity)
+  name.vb: IEnumerable(Of UserEntity)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Entities.UserEntity
+    name: UserEntity
+    nameWithType: UserEntity
+    fullName: PnP.Framework.Entities.UserEntity
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Entities.UserEntity
+    name: UserEntity
+    nameWithType: UserEntity
+    fullName: PnP.Framework.Entities.UserEntity
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.SharePoint.Client.TenantExtensions.GetSiteCollections*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.GetSiteCollections
+  name: GetSiteCollections
+  nameWithType: TenantExtensions.GetSiteCollections
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.GetSiteCollections
+- uid: System.Collections.Generic.IList{PnP.Framework.Entities.SiteEntity}
+  commentId: T:System.Collections.Generic.IList{PnP.Framework.Entities.SiteEntity}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IList`1
+  name: IList<SiteEntity>
+  nameWithType: IList<SiteEntity>
+  fullName: System.Collections.Generic.IList<PnP.Framework.Entities.SiteEntity>
+  nameWithType.vb: IList(Of SiteEntity)
+  fullName.vb: System.Collections.Generic.IList(Of PnP.Framework.Entities.SiteEntity)
+  name.vb: IList(Of SiteEntity)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    nameWithType: IList
+    fullName: System.Collections.Generic.IList
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Entities.SiteEntity
+    name: SiteEntity
+    nameWithType: SiteEntity
+    fullName: PnP.Framework.Entities.SiteEntity
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    nameWithType: IList
+    fullName: System.Collections.Generic.IList
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Entities.SiteEntity
+    name: SiteEntity
+    nameWithType: SiteEntity
+    fullName: PnP.Framework.Entities.SiteEntity
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.IList`1
+  commentId: T:System.Collections.Generic.IList`1
+  isExternal: true
+  name: IList<T>
+  nameWithType: IList<T>
+  fullName: System.Collections.Generic.IList<T>
+  nameWithType.vb: IList(Of T)
+  fullName.vb: System.Collections.Generic.IList(Of T)
+  name.vb: IList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    nameWithType: IList
+    fullName: System.Collections.Generic.IList
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    nameWithType: IList
+    fullName: System.Collections.Generic.IList
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.SharePoint.Client.TenantExtensions.EnableSiteClassifications*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.EnableSiteClassifications
+  name: EnableSiteClassifications
+  nameWithType: TenantExtensions.EnableSiteClassifications
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.EnableSiteClassifications
+- uid: PnP.Framework.Graph.Model.SiteClassificationsSettings
+  commentId: T:PnP.Framework.Graph.Model.SiteClassificationsSettings
+  parent: PnP.Framework.Graph.Model
+  name: SiteClassificationsSettings
+  nameWithType: SiteClassificationsSettings
+  fullName: PnP.Framework.Graph.Model.SiteClassificationsSettings
+- uid: PnP.Framework.Graph.Model
+  commentId: N:PnP.Framework.Graph.Model
+  name: PnP.Framework.Graph.Model
+  nameWithType: PnP.Framework.Graph.Model
+  fullName: PnP.Framework.Graph.Model
+- uid: System.Collections.Generic.IEnumerable{System.String}
+  commentId: T:System.Collections.Generic.IEnumerable{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<String>
+  nameWithType: IEnumerable<String>
+  fullName: System.Collections.Generic.IEnumerable<System.String>
+  nameWithType.vb: IEnumerable(Of String)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.String)
+  name.vb: IEnumerable(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.SharePoint.Client.TenantExtensions.GetSiteClassificationsSettings*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.GetSiteClassificationsSettings
+  name: GetSiteClassificationsSettings
+  nameWithType: TenantExtensions.GetSiteClassificationsSettings
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.GetSiteClassificationsSettings
+- uid: Microsoft.SharePoint.Client.TenantExtensions.UpdateSiteClassificationsSettings*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.UpdateSiteClassificationsSettings
+  name: UpdateSiteClassificationsSettings
+  nameWithType: TenantExtensions.UpdateSiteClassificationsSettings
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.UpdateSiteClassificationsSettings
+- uid: Microsoft.SharePoint.Client.TenantExtensions.DisableSiteClassifications*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.DisableSiteClassifications
+  name: DisableSiteClassifications
+  nameWithType: TenantExtensions.DisableSiteClassifications
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.DisableSiteClassifications
+- uid: Microsoft.SharePoint.Client.TenantExtensions.GroupifySite*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.GroupifySite
+  name: GroupifySite
+  nameWithType: TenantExtensions.GroupifySite
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.GroupifySite
+- uid: PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation
+  commentId: T:PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation
+  parent: PnP.Framework.Sites
+  name: TeamSiteCollectionGroupifyInformation
+  nameWithType: TeamSiteCollectionGroupifyInformation
+  fullName: PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation
+- uid: PnP.Framework.Sites
+  commentId: N:PnP.Framework.Sites
+  name: PnP.Framework.Sites
+  nameWithType: PnP.Framework.Sites
+  fullName: PnP.Framework.Sites
+- uid: Microsoft.SharePoint.Client.TenantExtensions.EnableCommunicationSite*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.EnableCommunicationSite
+  name: EnableCommunicationSite
+  nameWithType: TenantExtensions.EnableCommunicationSite
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.EnableCommunicationSite
+- uid: Microsoft.SharePoint.Client.TenantExtensions.IsCurrentUserTenantAdmin*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.IsCurrentUserTenantAdmin
+  name: IsCurrentUserTenantAdmin
+  nameWithType: TenantExtensions.IsCurrentUserTenantAdmin
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.IsCurrentUserTenantAdmin
+- uid: Microsoft.SharePoint.Client.ClientContext
+  commentId: T:Microsoft.SharePoint.Client.ClientContext
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: ClientContext
+  nameWithType: ClientContext
+  fullName: Microsoft.SharePoint.Client.ClientContext
+- uid: Microsoft.SharePoint.Client.TenantExtensions.CheckIfSiteExists*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.CheckIfSiteExists
+  name: CheckIfSiteExists
+  nameWithType: TenantExtensions.CheckIfSiteExists
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.CheckIfSiteExists
+- uid: Microsoft.SharePoint.Client.TenantExtensions.SiteExistsAnywhere*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.SiteExistsAnywhere
+  name: SiteExistsAnywhere
+  nameWithType: TenantExtensions.SiteExistsAnywhere
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.SiteExistsAnywhere
+- uid: Microsoft.SharePoint.Client.SiteExistence
+  commentId: T:Microsoft.SharePoint.Client.SiteExistence
+  parent: Microsoft.SharePoint.Client
+  name: SiteExistence
+  nameWithType: SiteExistence
+  fullName: Microsoft.SharePoint.Client.SiteExistence
+- uid: Microsoft.SharePoint.Client.TenantExtensions.SubSiteExists*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.SubSiteExists
+  name: SubSiteExists
+  nameWithType: TenantExtensions.SubSiteExists
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.SubSiteExists
+- uid: Microsoft.SharePoint.Client.TenantExtensions.GetAppCatalog*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.GetAppCatalog
+  name: GetAppCatalog
+  nameWithType: TenantExtensions.GetAppCatalog
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.GetAppCatalog
+- uid: Microsoft.SharePoint.Client.TenantExtensions.GetTenantIdByUrl*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.GetTenantIdByUrl
+  name: GetTenantIdByUrl
+  nameWithType: TenantExtensions.GetTenantIdByUrl
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.GetTenantIdByUrl
+- uid: PnP.Framework.AzureEnvironment
+  commentId: T:PnP.Framework.AzureEnvironment
+  parent: PnP.Framework
+  name: AzureEnvironment
+  nameWithType: AzureEnvironment
+  fullName: PnP.Framework.AzureEnvironment
+- uid: Microsoft.SharePoint.Client.TenantExtensions.GetTenantRootSiteUrl*
+  commentId: Overload:Microsoft.SharePoint.Client.TenantExtensions.GetTenantRootSiteUrl
+  name: GetTenantRootSiteUrl
+  nameWithType: TenantExtensions.GetTenantRootSiteUrl
+  fullName: Microsoft.SharePoint.Client.TenantExtensions.GetTenantRootSiteUrl

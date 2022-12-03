@@ -1,0 +1,2317 @@
+### YamlMime:ManagedReference
+items:
+- uid: Microsoft.SharePoint.Client.PageExtensions
+  commentId: T:Microsoft.SharePoint.Client.PageExtensions
+  id: PageExtensions
+  parent: Microsoft.SharePoint.Client
+  children:
+  - Microsoft.SharePoint.Client.PageExtensions.AddClientSidePage(Microsoft.SharePoint.Client.Web,System.String,System.Boolean)
+  - Microsoft.SharePoint.Client.PageExtensions.AddClientSidePageAsync(Microsoft.SharePoint.Client.Web,System.String,System.Boolean)
+  - Microsoft.SharePoint.Client.PageExtensions.AddHtmlToWikiPage(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  - Microsoft.SharePoint.Client.PageExtensions.AddHtmlToWikiPage(Microsoft.SharePoint.Client.Web,System.String,System.String,System.Int32,System.Int32)
+  - Microsoft.SharePoint.Client.PageExtensions.AddHtmlToWikiPage(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String)
+  - Microsoft.SharePoint.Client.PageExtensions.AddHtmlToWikiPage(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.Int32,System.Int32)
+  - Microsoft.SharePoint.Client.PageExtensions.AddLayoutToWikiPage(Microsoft.SharePoint.Client.Web,PnP.Framework.WikiPageLayout,System.String)
+  - Microsoft.SharePoint.Client.PageExtensions.AddLayoutToWikiPage(Microsoft.SharePoint.Client.Web,System.String,PnP.Framework.WikiPageLayout,System.String)
+  - Microsoft.SharePoint.Client.PageExtensions.AddNavigationFriendlyUrl(Microsoft.SharePoint.Client.Publishing.PublishingPage,Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.Publishing.Navigation.NavigationTermSetItem,System.Boolean,System.Boolean)
+  - Microsoft.SharePoint.Client.PageExtensions.AddWebPartToWebPartPage(Microsoft.SharePoint.Client.Web,PnP.Framework.Entities.WebPartEntity,System.String)
+  - Microsoft.SharePoint.Client.PageExtensions.AddWebPartToWebPartPage(Microsoft.SharePoint.Client.Web,System.String,PnP.Framework.Entities.WebPartEntity)
+  - Microsoft.SharePoint.Client.PageExtensions.AddWebPartToWikiPage(Microsoft.SharePoint.Client.Web,System.String,PnP.Framework.Entities.WebPartEntity,System.Int32,System.Int32,System.Boolean)
+  - Microsoft.SharePoint.Client.PageExtensions.AddWebPartToWikiPage(Microsoft.SharePoint.Client.Web,System.String,PnP.Framework.Entities.WebPartEntity,System.String,System.Int32,System.Int32,System.Boolean)
+  - Microsoft.SharePoint.Client.PageExtensions.AddWikiPage(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  - Microsoft.SharePoint.Client.PageExtensions.AddWikiPageByUrl(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  - Microsoft.SharePoint.Client.PageExtensions.DeleteWebPart(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  - Microsoft.SharePoint.Client.PageExtensions.DeleteWebPart(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String)
+  - Microsoft.SharePoint.Client.PageExtensions.EnsureWikiPage(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  - Microsoft.SharePoint.Client.PageExtensions.GetWebPartProperties(Microsoft.SharePoint.Client.Web,System.Guid,System.String)
+  - Microsoft.SharePoint.Client.PageExtensions.GetWebParts(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.PageExtensions.GetWebPartXml(Microsoft.SharePoint.Client.Web,System.Guid,System.String)
+  - Microsoft.SharePoint.Client.PageExtensions.GetWikiPageContent(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.PageExtensions.LoadClientSidePage(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.PageExtensions.LoadClientSidePageAsync(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.PageExtensions.SetWebPartProperty(Microsoft.SharePoint.Client.Web,System.String,System.Boolean,System.Guid,System.String)
+  - Microsoft.SharePoint.Client.PageExtensions.SetWebPartProperty(Microsoft.SharePoint.Client.Web,System.String,System.Int32,System.Guid,System.String)
+  - Microsoft.SharePoint.Client.PageExtensions.SetWebPartProperty(Microsoft.SharePoint.Client.Web,System.String,System.String,System.Guid,System.String)
+  langs:
+  - csharp
+  - vb
+  name: PageExtensions
+  nameWithType: PageExtensions
+  fullName: Microsoft.SharePoint.Client.PageExtensions
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PageExtensions
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 23
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nClass that handles all page and web part related operations\n"
+  example: []
+  syntax:
+    content: public static class PageExtensions
+    content.vb: Public Module PageExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: Microsoft.SharePoint.Client.PageExtensions.GetWikiPageContent(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.PageExtensions.GetWikiPageContent(Microsoft.SharePoint.Client.Web,System.String)
+  id: GetWikiPageContent(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PageExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetWikiPageContent(Web, String)
+  nameWithType: PageExtensions.GetWikiPageContent(Web, String)
+  fullName: Microsoft.SharePoint.Client.PageExtensions.GetWikiPageContent(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetWikiPageContent
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 43
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets the HTML contents of a wiki page\n"
+  example: []
+  syntax:
+    content: public static string GetWikiPageContent(this Web web, string serverRelativePageUrl)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: serverRelativePageUrl
+      type: System.String
+      description: Server relative URL of the page, e.g. /sites/demo/SitePages/Test.aspx
+    return:
+      type: System.String
+      description: Returns the HTML contents of a wiki page
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetWikiPageContent(web As Web, serverRelativePageUrl As String) As String
+  overload: Microsoft.SharePoint.Client.PageExtensions.GetWikiPageContent*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when serverRelativePageUrl is a zero-length string or contains only white space
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when serverRelativePageUrl is null
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PageExtensions.GetWebParts(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.PageExtensions.GetWebParts(Microsoft.SharePoint.Client.Web,System.String)
+  id: GetWebParts(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PageExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetWebParts(Web, String)
+  nameWithType: PageExtensions.GetWebParts(Web, String)
+  fullName: Microsoft.SharePoint.Client.PageExtensions.GetWebParts(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetWebParts
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 68
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nList the web parts on a page\n"
+  example: []
+  syntax:
+    content: public static IEnumerable<WebPartDefinition> GetWebParts(this Web web, string serverRelativePageUrl)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: serverRelativePageUrl
+      type: System.String
+      description: Server relative URL of the page containing the webparts
+    return:
+      type: System.Collections.Generic.IEnumerable{Microsoft.SharePoint.Client.WebParts.WebPartDefinition}
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetWebParts(web As Web, serverRelativePageUrl As String) As IEnumerable(Of WebPartDefinition)
+  overload: Microsoft.SharePoint.Client.PageExtensions.GetWebParts*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when serverRelativePageUrl is a zero-length string or contains only white space
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when serverRelativePageUrl is null
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PageExtensions.AddWebPartToWebPartPage(Microsoft.SharePoint.Client.Web,PnP.Framework.Entities.WebPartEntity,System.String)
+  commentId: M:Microsoft.SharePoint.Client.PageExtensions.AddWebPartToWebPartPage(Microsoft.SharePoint.Client.Web,PnP.Framework.Entities.WebPartEntity,System.String)
+  id: AddWebPartToWebPartPage(Microsoft.SharePoint.Client.Web,PnP.Framework.Entities.WebPartEntity,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PageExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddWebPartToWebPartPage(Web, WebPartEntity, String)
+  nameWithType: PageExtensions.AddWebPartToWebPartPage(Web, WebPartEntity, String)
+  fullName: Microsoft.SharePoint.Client.PageExtensions.AddWebPartToWebPartPage(Microsoft.SharePoint.Client.Web, PnP.Framework.Entities.WebPartEntity, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddWebPartToWebPartPage
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 96
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nInserts a web part on a web part page\n"
+  example: []
+  syntax:
+    content: public static WebPartDefinition AddWebPartToWebPartPage(this Web web, WebPartEntity webPart, string page)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: webPart
+      type: PnP.Framework.Entities.WebPartEntity
+      description: Information about the web part to insert
+    - id: page
+      type: System.String
+      description: Page to add the web part on
+    return:
+      type: Microsoft.SharePoint.Client.WebParts.WebPartDefinition
+      description: Returns the added <xref href="Microsoft.SharePoint.Client.WebParts.WebPartDefinition" data-throw-if-not-resolved="false"></xref> object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddWebPartToWebPartPage(web As Web, webPart As WebPartEntity, page As String) As WebPartDefinition
+  overload: Microsoft.SharePoint.Client.PageExtensions.AddWebPartToWebPartPage*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when page is a zero-length string or contains only white space
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when webPart or page is null
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PageExtensions.AddWebPartToWebPartPage(Microsoft.SharePoint.Client.Web,System.String,PnP.Framework.Entities.WebPartEntity)
+  commentId: M:Microsoft.SharePoint.Client.PageExtensions.AddWebPartToWebPartPage(Microsoft.SharePoint.Client.Web,System.String,PnP.Framework.Entities.WebPartEntity)
+  id: AddWebPartToWebPartPage(Microsoft.SharePoint.Client.Web,System.String,PnP.Framework.Entities.WebPartEntity)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PageExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddWebPartToWebPartPage(Web, String, WebPartEntity)
+  nameWithType: PageExtensions.AddWebPartToWebPartPage(Web, String, WebPartEntity)
+  fullName: Microsoft.SharePoint.Client.PageExtensions.AddWebPartToWebPartPage(Microsoft.SharePoint.Client.Web, System.String, PnP.Framework.Entities.WebPartEntity)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddWebPartToWebPartPage
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 129
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nInserts a web part on a web part page\n"
+  example: []
+  syntax:
+    content: public static WebPartDefinition AddWebPartToWebPartPage(this Web web, string serverRelativePageUrl, WebPartEntity webPart)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: serverRelativePageUrl
+      type: System.String
+      description: Page to add the web part on
+    - id: webPart
+      type: PnP.Framework.Entities.WebPartEntity
+      description: Information about the web part to insert
+    return:
+      type: Microsoft.SharePoint.Client.WebParts.WebPartDefinition
+      description: Returns the added <xref href="Microsoft.SharePoint.Client.WebParts.WebPartDefinition" data-throw-if-not-resolved="false"></xref> object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddWebPartToWebPartPage(web As Web, serverRelativePageUrl As String, webPart As WebPartEntity) As WebPartDefinition
+  overload: Microsoft.SharePoint.Client.PageExtensions.AddWebPartToWebPartPage*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when serverRelativePageUrl is a zero-length string or contains only white space
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when serverRelativePageUrl or webPart is null
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PageExtensions.AddWebPartToWikiPage(Microsoft.SharePoint.Client.Web,System.String,PnP.Framework.Entities.WebPartEntity,System.String,System.Int32,System.Int32,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.PageExtensions.AddWebPartToWikiPage(Microsoft.SharePoint.Client.Web,System.String,PnP.Framework.Entities.WebPartEntity,System.String,System.Int32,System.Int32,System.Boolean)
+  id: AddWebPartToWikiPage(Microsoft.SharePoint.Client.Web,System.String,PnP.Framework.Entities.WebPartEntity,System.String,System.Int32,System.Int32,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PageExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddWebPartToWikiPage(Web, String, WebPartEntity, String, Int32, Int32, Boolean)
+  nameWithType: PageExtensions.AddWebPartToWikiPage(Web, String, WebPartEntity, String, Int32, Int32, Boolean)
+  fullName: Microsoft.SharePoint.Client.PageExtensions.AddWebPartToWikiPage(Microsoft.SharePoint.Client.Web, System.String, PnP.Framework.Entities.WebPartEntity, System.String, System.Int32, System.Int32, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddWebPartToWikiPage
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 169
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdd web part to a wiki style page\n"
+  example: []
+  syntax:
+    content: public static WebPartDefinition AddWebPartToWikiPage(this Web web, string folder, WebPartEntity webPart, string page, int row, int col, bool addSpace)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: folder
+      type: System.String
+      description: System name of the wiki page library - typically sitepages
+    - id: webPart
+      type: PnP.Framework.Entities.WebPartEntity
+      description: Information about the web part to insert
+    - id: page
+      type: System.String
+      description: Page to add the web part on
+    - id: row
+      type: System.Int32
+      description: Row of the wiki table that should hold the inserted web part
+    - id: col
+      type: System.Int32
+      description: Column of the wiki table that should hold the inserted web part
+    - id: addSpace
+      type: System.Boolean
+      description: Does a blank line need to be added after the web part (to space web parts)
+    return:
+      type: Microsoft.SharePoint.Client.WebParts.WebPartDefinition
+      description: Returns the added <xref href="Microsoft.SharePoint.Client.WebParts.WebPartDefinition" data-throw-if-not-resolved="false"></xref> object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddWebPartToWikiPage(web As Web, folder As String, webPart As WebPartEntity, page As String, row As Integer, col As Integer, addSpace As Boolean) As WebPartDefinition
+  overload: Microsoft.SharePoint.Client.PageExtensions.AddWebPartToWikiPage*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when folder or page is a zero-length string or contains only white space
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when folder, webPart or page is null
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PageExtensions.AddWebPartToWikiPage(Microsoft.SharePoint.Client.Web,System.String,PnP.Framework.Entities.WebPartEntity,System.Int32,System.Int32,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.PageExtensions.AddWebPartToWikiPage(Microsoft.SharePoint.Client.Web,System.String,PnP.Framework.Entities.WebPartEntity,System.Int32,System.Int32,System.Boolean)
+  id: AddWebPartToWikiPage(Microsoft.SharePoint.Client.Web,System.String,PnP.Framework.Entities.WebPartEntity,System.Int32,System.Int32,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PageExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddWebPartToWikiPage(Web, String, WebPartEntity, Int32, Int32, Boolean)
+  nameWithType: PageExtensions.AddWebPartToWikiPage(Web, String, WebPartEntity, Int32, Int32, Boolean)
+  fullName: Microsoft.SharePoint.Client.PageExtensions.AddWebPartToWikiPage(Microsoft.SharePoint.Client.Web, System.String, PnP.Framework.Entities.WebPartEntity, System.Int32, System.Int32, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddWebPartToWikiPage
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 213
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdd web part to a wiki style page\n"
+  example: []
+  syntax:
+    content: public static WebPartDefinition AddWebPartToWikiPage(this Web web, string serverRelativePageUrl, WebPartEntity webPart, int row, int col, bool addSpace)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: serverRelativePageUrl
+      type: System.String
+      description: Server relative URL of the page to add the webpart to
+    - id: webPart
+      type: PnP.Framework.Entities.WebPartEntity
+      description: Information about the web part to insert
+    - id: row
+      type: System.Int32
+      description: Row of the wiki table that should hold the inserted web part
+    - id: col
+      type: System.Int32
+      description: Column of the wiki table that should hold the inserted web part
+    - id: addSpace
+      type: System.Boolean
+      description: Does a blank line need to be added after the web part (to space web parts)
+    return:
+      type: Microsoft.SharePoint.Client.WebParts.WebPartDefinition
+      description: Returns the added <xref href="Microsoft.SharePoint.Client.WebParts.WebPartDefinition" data-throw-if-not-resolved="false"></xref> object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddWebPartToWikiPage(web As Web, serverRelativePageUrl As String, webPart As WebPartEntity, row As Integer, col As Integer, addSpace As Boolean) As WebPartDefinition
+  overload: Microsoft.SharePoint.Client.PageExtensions.AddWebPartToWikiPage*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when serverRelativePageUrl is a zero-length string or contains only white space
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when serverRelativePageUrl or webPart is null
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PageExtensions.GetWebPartXml(Microsoft.SharePoint.Client.Web,System.Guid,System.String)
+  commentId: M:Microsoft.SharePoint.Client.PageExtensions.GetWebPartXml(Microsoft.SharePoint.Client.Web,System.Guid,System.String)
+  id: GetWebPartXml(Microsoft.SharePoint.Client.Web,System.Guid,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PageExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetWebPartXml(Web, Guid, String)
+  nameWithType: PageExtensions.GetWebPartXml(Web, Guid, String)
+  fullName: Microsoft.SharePoint.Client.PageExtensions.GetWebPartXml(Microsoft.SharePoint.Client.Web, System.Guid, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetWebPartXml
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 363
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets XML string of a Webpart\n"
+  example: []
+  syntax:
+    content: public static string GetWebPartXml(this Web web, Guid webPartId, string serverRelativePageUrl)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: webPartId
+      type: System.Guid
+      description: The id of the webpart
+    - id: serverRelativePageUrl
+      type: System.String
+      description: Server relative URL of the page to add the xml to
+    return:
+      type: System.String
+      description: Returns XML string of a Webpart
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetWebPartXml(web As Web, webPartId As Guid, serverRelativePageUrl As String) As String
+  overload: Microsoft.SharePoint.Client.PageExtensions.GetWebPartXml*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PageExtensions.AddLayoutToWikiPage(Microsoft.SharePoint.Client.Web,PnP.Framework.WikiPageLayout,System.String)
+  commentId: M:Microsoft.SharePoint.Client.PageExtensions.AddLayoutToWikiPage(Microsoft.SharePoint.Client.Web,PnP.Framework.WikiPageLayout,System.String)
+  id: AddLayoutToWikiPage(Microsoft.SharePoint.Client.Web,PnP.Framework.WikiPageLayout,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PageExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddLayoutToWikiPage(Web, WikiPageLayout, String)
+  nameWithType: PageExtensions.AddLayoutToWikiPage(Web, WikiPageLayout, String)
+  fullName: Microsoft.SharePoint.Client.PageExtensions.AddLayoutToWikiPage(Microsoft.SharePoint.Client.Web, PnP.Framework.WikiPageLayout, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddLayoutToWikiPage
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 438
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nApplies a layout to a wiki page\n"
+  example: []
+  syntax:
+    content: public static void AddLayoutToWikiPage(this Web web, WikiPageLayout layout, string serverRelativePageUrl)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: layout
+      type: PnP.Framework.WikiPageLayout
+      description: Wiki page layout to be applied
+    - id: serverRelativePageUrl
+      type: System.String
+      description: Server relative URL of the page to add the layout to
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub AddLayoutToWikiPage(web As Web, layout As WikiPageLayout, serverRelativePageUrl As String)
+  overload: Microsoft.SharePoint.Client.PageExtensions.AddLayoutToWikiPage*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when serverRelativePageUrl is a zero-length string or contains only white space
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when serverRelativePageUrl is null
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PageExtensions.AddLayoutToWikiPage(Microsoft.SharePoint.Client.Web,System.String,PnP.Framework.WikiPageLayout,System.String)
+  commentId: M:Microsoft.SharePoint.Client.PageExtensions.AddLayoutToWikiPage(Microsoft.SharePoint.Client.Web,System.String,PnP.Framework.WikiPageLayout,System.String)
+  id: AddLayoutToWikiPage(Microsoft.SharePoint.Client.Web,System.String,PnP.Framework.WikiPageLayout,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PageExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddLayoutToWikiPage(Web, String, WikiPageLayout, String)
+  nameWithType: PageExtensions.AddLayoutToWikiPage(Web, String, WikiPageLayout, String)
+  fullName: Microsoft.SharePoint.Client.PageExtensions.AddLayoutToWikiPage(Microsoft.SharePoint.Client.Web, System.String, PnP.Framework.WikiPageLayout, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddLayoutToWikiPage
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 490
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nApplies a layout to a wiki page\n"
+  example: []
+  syntax:
+    content: public static void AddLayoutToWikiPage(this Web web, string folder, WikiPageLayout layout, string page)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: folder
+      type: System.String
+      description: System name of the wiki page library - typically sitepages
+    - id: layout
+      type: PnP.Framework.WikiPageLayout
+      description: Wiki page layout to be applied
+    - id: page
+      type: System.String
+      description: Name of the page that will get a new wiki page layout
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub AddLayoutToWikiPage(web As Web, folder As String, layout As WikiPageLayout, page As String)
+  overload: Microsoft.SharePoint.Client.PageExtensions.AddLayoutToWikiPage*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when folder or page is a zero-length string or contains only white space
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when folder or page is null
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PageExtensions.AddHtmlToWikiPage(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.PageExtensions.AddHtmlToWikiPage(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String)
+  id: AddHtmlToWikiPage(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PageExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddHtmlToWikiPage(Web, String, String, String)
+  nameWithType: PageExtensions.AddHtmlToWikiPage(Web, String, String, String)
+  fullName: Microsoft.SharePoint.Client.PageExtensions.AddHtmlToWikiPage(Microsoft.SharePoint.Client.Web, System.String, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddHtmlToWikiPage
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 549
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdd html to a wiki style page\n"
+  example: []
+  syntax:
+    content: public static void AddHtmlToWikiPage(this Web web, string folder, string html, string page)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: folder
+      type: System.String
+      description: System name of the wiki page library - typically sitepages
+    - id: html
+      type: System.String
+      description: The html to insert
+    - id: page
+      type: System.String
+      description: Page to add the html on
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub AddHtmlToWikiPage(web As Web, folder As String, html As String, page As String)
+  overload: Microsoft.SharePoint.Client.PageExtensions.AddHtmlToWikiPage*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when folder, html or page is a zero-length string or contains only white space
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when folder, html or page is null
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PageExtensions.AddHtmlToWikiPage(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.PageExtensions.AddHtmlToWikiPage(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  id: AddHtmlToWikiPage(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PageExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddHtmlToWikiPage(Web, String, String)
+  nameWithType: PageExtensions.AddHtmlToWikiPage(Web, String, String)
+  fullName: Microsoft.SharePoint.Client.PageExtensions.AddHtmlToWikiPage(Microsoft.SharePoint.Client.Web, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddHtmlToWikiPage
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 593
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdd HTML to a wiki page\n"
+  example: []
+  syntax:
+    content: public static void AddHtmlToWikiPage(this Web web, string serverRelativePageUrl, string html)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: serverRelativePageUrl
+      type: System.String
+      description: Server relative URL of the page to add html to
+    - id: html
+      type: System.String
+      description: ''
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub AddHtmlToWikiPage(web As Web, serverRelativePageUrl As String, html As String)
+  overload: Microsoft.SharePoint.Client.PageExtensions.AddHtmlToWikiPage*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when serverRelativePageUrl or html is a zero-length string or contains only white space
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when serverRelativePageUrl or html is null
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PageExtensions.AddHtmlToWikiPage(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.Int32,System.Int32)
+  commentId: M:Microsoft.SharePoint.Client.PageExtensions.AddHtmlToWikiPage(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.Int32,System.Int32)
+  id: AddHtmlToWikiPage(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.Int32,System.Int32)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PageExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddHtmlToWikiPage(Web, String, String, String, Int32, Int32)
+  nameWithType: PageExtensions.AddHtmlToWikiPage(Web, String, String, String, Int32, Int32)
+  fullName: Microsoft.SharePoint.Client.PageExtensions.AddHtmlToWikiPage(Microsoft.SharePoint.Client.Web, System.String, System.String, System.String, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddHtmlToWikiPage
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 642
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdd a HTML fragment to a location on a wiki style page\n"
+  example: []
+  syntax:
+    content: public static void AddHtmlToWikiPage(this Web web, string folder, string html, string page, int row, int col)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: folder
+      type: System.String
+      description: System name of the wiki page library - typically sitepages
+    - id: html
+      type: System.String
+      description: html to be inserted
+    - id: page
+      type: System.String
+      description: Page to add the web part on
+    - id: row
+      type: System.Int32
+      description: Row of the wiki table that should hold the inserted web part
+    - id: col
+      type: System.Int32
+      description: Column of the wiki table that should hold the inserted web part
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub AddHtmlToWikiPage(web As Web, folder As String, html As String, page As String, row As Integer, col As Integer)
+  overload: Microsoft.SharePoint.Client.PageExtensions.AddHtmlToWikiPage*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when folder, html or page is a zero-length string or contains only white space
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when folder, html or page is null
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PageExtensions.AddHtmlToWikiPage(Microsoft.SharePoint.Client.Web,System.String,System.String,System.Int32,System.Int32)
+  commentId: M:Microsoft.SharePoint.Client.PageExtensions.AddHtmlToWikiPage(Microsoft.SharePoint.Client.Web,System.String,System.String,System.Int32,System.Int32)
+  id: AddHtmlToWikiPage(Microsoft.SharePoint.Client.Web,System.String,System.String,System.Int32,System.Int32)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PageExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddHtmlToWikiPage(Web, String, String, Int32, Int32)
+  nameWithType: PageExtensions.AddHtmlToWikiPage(Web, String, String, Int32, Int32)
+  fullName: Microsoft.SharePoint.Client.PageExtensions.AddHtmlToWikiPage(Microsoft.SharePoint.Client.Web, System.String, System.String, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddHtmlToWikiPage
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 688
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdd a HTML fragment to a location on a wiki style page\n"
+  example: []
+  syntax:
+    content: public static void AddHtmlToWikiPage(this Web web, string serverRelativePageUrl, string html, int row, int col)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: serverRelativePageUrl
+      type: System.String
+      description: server relative Url of the page to add the fragment to
+    - id: html
+      type: System.String
+      description: html to be inserted
+    - id: row
+      type: System.Int32
+      description: Row of the wiki table that should hold the inserted web part
+    - id: col
+      type: System.Int32
+      description: Column of the wiki table that should hold the inserted web part
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub AddHtmlToWikiPage(web As Web, serverRelativePageUrl As String, html As String, row As Integer, col As Integer)
+  overload: Microsoft.SharePoint.Client.PageExtensions.AddHtmlToWikiPage*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when serverRelativePageUrl or html is a zero-length string or contains only white space
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when serverRelativePageUrl or html is null
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PageExtensions.DeleteWebPart(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.PageExtensions.DeleteWebPart(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String)
+  id: DeleteWebPart(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PageExtensions
+  langs:
+  - csharp
+  - vb
+  name: DeleteWebPart(Web, String, String, String)
+  nameWithType: PageExtensions.DeleteWebPart(Web, String, String, String)
+  fullName: Microsoft.SharePoint.Client.PageExtensions.DeleteWebPart(Microsoft.SharePoint.Client.Web, System.String, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeleteWebPart
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 746
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDeletes a web part from a page\n"
+  example: []
+  syntax:
+    content: public static void DeleteWebPart(this Web web, string folder, string title, string page)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: folder
+      type: System.String
+      description: System name of the wiki page library - typically sitepages
+    - id: title
+      type: System.String
+      description: Title of the web part that needs to be deleted
+    - id: page
+      type: System.String
+      description: Page to remove the web part from
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub DeleteWebPart(web As Web, folder As String, title As String, page As String)
+  overload: Microsoft.SharePoint.Client.PageExtensions.DeleteWebPart*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when folder, title or page is a zero-length string or contains only white space
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when folder, title or page is null
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PageExtensions.DeleteWebPart(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.PageExtensions.DeleteWebPart(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  id: DeleteWebPart(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PageExtensions
+  langs:
+  - csharp
+  - vb
+  name: DeleteWebPart(Web, String, String)
+  nameWithType: PageExtensions.DeleteWebPart(Web, String, String)
+  fullName: Microsoft.SharePoint.Client.PageExtensions.DeleteWebPart(Microsoft.SharePoint.Client.Web, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeleteWebPart
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 790
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDeletes a web part from a page\n"
+  example: []
+  syntax:
+    content: public static void DeleteWebPart(this Web web, string serverRelativePageUrl, string title)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: serverRelativePageUrl
+      type: System.String
+      description: Server relative URL of the page to remove
+    - id: title
+      type: System.String
+      description: Title of the web part that needs to be deleted
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub DeleteWebPart(web As Web, serverRelativePageUrl As String, title As String)
+  overload: Microsoft.SharePoint.Client.PageExtensions.DeleteWebPart*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when serverRelativePageUrl or title is a zero-length string or contains only white space
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when serverRelativePageUrl or title is null
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PageExtensions.AddClientSidePageAsync(Microsoft.SharePoint.Client.Web,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.PageExtensions.AddClientSidePageAsync(Microsoft.SharePoint.Client.Web,System.String,System.Boolean)
+  id: AddClientSidePageAsync(Microsoft.SharePoint.Client.Web,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PageExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddClientSidePageAsync(Web, String, Boolean)
+  nameWithType: PageExtensions.AddClientSidePageAsync(Web, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.PageExtensions.AddClientSidePageAsync(Microsoft.SharePoint.Client.Web, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddClientSidePageAsync
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 842
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdds a client side &quot;modern&quot; page to a &quot;classic&quot; or &quot;modern&quot; site\n"
+  example: []
+  syntax:
+    content: public static async Task<IPage> AddClientSidePageAsync(this Web web, string pageName = "", bool alreadyPersist = false)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to add the page to
+    - id: pageName
+      type: System.String
+      description: Name (e.g. demo.aspx) of the page to be added
+    - id: alreadyPersist
+      type: System.Boolean
+      description: Already persist the created, empty, page before returning the instantiated <xref href="PnP.Framework.Provisioning.Model.ClientSidePage" data-throw-if-not-resolved="false"></xref> instance
+    return:
+      type: System.Threading.Tasks.Task{PnP.Core.Model.SharePoint.IPage}
+      description: A <xref href="PnP.Framework.Provisioning.Model.ClientSidePage" data-throw-if-not-resolved="false"></xref> instance
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddClientSidePageAsync(web As Web, pageName As String = "", alreadyPersist As Boolean = False) As Task(Of IPage)
+  overload: Microsoft.SharePoint.Client.PageExtensions.AddClientSidePageAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PageExtensions.AddClientSidePage(Microsoft.SharePoint.Client.Web,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.PageExtensions.AddClientSidePage(Microsoft.SharePoint.Client.Web,System.String,System.Boolean)
+  id: AddClientSidePage(Microsoft.SharePoint.Client.Web,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PageExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddClientSidePage(Web, String, Boolean)
+  nameWithType: PageExtensions.AddClientSidePage(Web, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.PageExtensions.AddClientSidePage(Microsoft.SharePoint.Client.Web, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddClientSidePage
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 862
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdds a client side &quot;modern&quot; page to a &quot;classic&quot; or &quot;modern&quot; site\n"
+  example: []
+  syntax:
+    content: public static IPage AddClientSidePage(this Web web, string pageName = "", bool alreadyPersist = false)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to add the page to
+    - id: pageName
+      type: System.String
+      description: Name (e.g. demo.aspx) of the page to be added
+    - id: alreadyPersist
+      type: System.Boolean
+      description: Already persist the created, empty, page before returning the instantiated <xref href="PnP.Framework.Provisioning.Model.ClientSidePage" data-throw-if-not-resolved="false"></xref> instance
+    return:
+      type: PnP.Core.Model.SharePoint.IPage
+      description: A <xref href="PnP.Framework.Provisioning.Model.ClientSidePage" data-throw-if-not-resolved="false"></xref> instance
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddClientSidePage(web As Web, pageName As String = "", alreadyPersist As Boolean = False) As IPage
+  overload: Microsoft.SharePoint.Client.PageExtensions.AddClientSidePage*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PageExtensions.LoadClientSidePageAsync(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.PageExtensions.LoadClientSidePageAsync(Microsoft.SharePoint.Client.Web,System.String)
+  id: LoadClientSidePageAsync(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PageExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadClientSidePageAsync(Web, String)
+  nameWithType: PageExtensions.LoadClientSidePageAsync(Web, String)
+  fullName: Microsoft.SharePoint.Client.PageExtensions.LoadClientSidePageAsync(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: LoadClientSidePageAsync
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 873
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nLoads a client side &quot;modern&quot; page\n"
+  example: []
+  syntax:
+    content: public static async Task<IPage> LoadClientSidePageAsync(this Web web, string pageName)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to load the page from
+    - id: pageName
+      type: System.String
+      description: Name (e.g. demo.aspx) of the page to be loaded
+    return:
+      type: System.Threading.Tasks.Task{PnP.Core.Model.SharePoint.IPage}
+      description: A <xref href="PnP.Framework.Provisioning.Model.ClientSidePage" data-throw-if-not-resolved="false"></xref> instance
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function LoadClientSidePageAsync(web As Web, pageName As String) As Task(Of IPage)
+  overload: Microsoft.SharePoint.Client.PageExtensions.LoadClientSidePageAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PageExtensions.LoadClientSidePage(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.PageExtensions.LoadClientSidePage(Microsoft.SharePoint.Client.Web,System.String)
+  id: LoadClientSidePage(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PageExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadClientSidePage(Web, String)
+  nameWithType: PageExtensions.LoadClientSidePage(Web, String)
+  fullName: Microsoft.SharePoint.Client.PageExtensions.LoadClientSidePage(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: LoadClientSidePage
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 887
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nLoads a client side &quot;modern&quot; page\n"
+  example: []
+  syntax:
+    content: public static IPage LoadClientSidePage(this Web web, string pageName)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to load the page from
+    - id: pageName
+      type: System.String
+      description: Name (e.g. demo.aspx) of the page to be loaded
+    return:
+      type: PnP.Core.Model.SharePoint.IPage
+      description: A <xref href="PnP.Framework.Provisioning.Model.ClientSidePage" data-throw-if-not-resolved="false"></xref> instance
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function LoadClientSidePage(web As Web, pageName As String) As IPage
+  overload: Microsoft.SharePoint.Client.PageExtensions.LoadClientSidePage*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PageExtensions.AddWikiPage(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.PageExtensions.AddWikiPage(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  id: AddWikiPage(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PageExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddWikiPage(Web, String, String)
+  nameWithType: PageExtensions.AddWikiPage(Web, String, String)
+  fullName: Microsoft.SharePoint.Client.PageExtensions.AddWikiPage(Microsoft.SharePoint.Client.Web, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddWikiPage
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 930
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdds a blank Wiki page to the site pages library\n"
+  example: []
+  syntax:
+    content: public static string AddWikiPage(this Web web, string wikiPageLibraryName, string wikiPageName)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: wikiPageLibraryName
+      type: System.String
+      description: Name of the wiki page library
+    - id: wikiPageName
+      type: System.String
+      description: Wiki page to operate on
+    return:
+      type: System.String
+      description: The relative URL of the added wiki page
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddWikiPage(web As Web, wikiPageLibraryName As String, wikiPageName As String) As String
+  overload: Microsoft.SharePoint.Client.PageExtensions.AddWikiPage*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when wikiPageLibraryName or wikiPageName is a zero-length string or contains only white space
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when wikiPageLibraryName or wikiPageName is null
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PageExtensions.EnsureWikiPage(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.PageExtensions.EnsureWikiPage(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  id: EnsureWikiPage(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PageExtensions
+  langs:
+  - csharp
+  - vb
+  name: EnsureWikiPage(Web, String, String)
+  nameWithType: PageExtensions.EnsureWikiPage(Web, String, String)
+  fullName: Microsoft.SharePoint.Client.PageExtensions.EnsureWikiPage(Microsoft.SharePoint.Client.Web, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnsureWikiPage
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 958
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns the Url for the requested wiki page, creates it if the pageis not yet available\n"
+  example: []
+  syntax:
+    content: public static string EnsureWikiPage(this Web web, string wikiPageLibraryName, string wikiPageName)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: wikiPageLibraryName
+      type: System.String
+      description: Name of the wiki page library
+    - id: wikiPageName
+      type: System.String
+      description: Wiki page to operate on
+    return:
+      type: System.String
+      description: The relative URL of the added wiki page
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function EnsureWikiPage(web As Web, wikiPageLibraryName As String, wikiPageName As String) As String
+  overload: Microsoft.SharePoint.Client.PageExtensions.EnsureWikiPage*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when wikiPageLibraryName or wikiPageName is a zero-length string or contains only white space
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when wikiPageLibraryName or wikiPageName is null
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PageExtensions.AddWikiPageByUrl(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.PageExtensions.AddWikiPageByUrl(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  id: AddWikiPageByUrl(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PageExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddWikiPageByUrl(Web, String, String)
+  nameWithType: PageExtensions.AddWikiPageByUrl(Web, String, String)
+  fullName: Microsoft.SharePoint.Client.PageExtensions.AddWikiPageByUrl(Microsoft.SharePoint.Client.Web, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddWikiPageByUrl
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 1026
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdds a wiki page by Url\n"
+  example: []
+  syntax:
+    content: public static void AddWikiPageByUrl(this Web web, string serverRelativePageUrl, string html = null)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The web to process
+    - id: serverRelativePageUrl
+      type: System.String
+      description: Server relative URL of the wiki page to process
+    - id: html
+      type: System.String
+      description: HTML to add to wiki page
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub AddWikiPageByUrl(web As Web, serverRelativePageUrl As String, html As String = Nothing)
+  overload: Microsoft.SharePoint.Client.PageExtensions.AddWikiPageByUrl*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when serverRelativePageUrl is a zero-length string or contains only white space
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when serverRelativePageUrl is null
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PageExtensions.SetWebPartProperty(Microsoft.SharePoint.Client.Web,System.String,System.String,System.Guid,System.String)
+  commentId: M:Microsoft.SharePoint.Client.PageExtensions.SetWebPartProperty(Microsoft.SharePoint.Client.Web,System.String,System.String,System.Guid,System.String)
+  id: SetWebPartProperty(Microsoft.SharePoint.Client.Web,System.String,System.String,System.Guid,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PageExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetWebPartProperty(Web, String, String, Guid, String)
+  nameWithType: PageExtensions.SetWebPartProperty(Web, String, String, Guid, String)
+  fullName: Microsoft.SharePoint.Client.PageExtensions.SetWebPartProperty(Microsoft.SharePoint.Client.Web, System.String, System.String, System.Guid, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetWebPartProperty
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 1080
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nSets a web part property\n"
+  example: []
+  syntax:
+    content: public static void SetWebPartProperty(this Web web, string key, string value, Guid id, string serverRelativePageUrl)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The web to process
+    - id: key
+      type: System.String
+      description: The key to update
+    - id: value
+      type: System.String
+      description: The value to set
+    - id: id
+      type: System.Guid
+      description: The id of the webpart
+    - id: serverRelativePageUrl
+      type: System.String
+      description: Server relative URL of the page to set web part property
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetWebPartProperty(web As Web, key As String, value As String, id As Guid, serverRelativePageUrl As String)
+  overload: Microsoft.SharePoint.Client.PageExtensions.SetWebPartProperty*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when key or serverRelativePageUrl is a zero-length string or contains only white space
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when key or serverRelativePageUrl is null
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PageExtensions.SetWebPartProperty(Microsoft.SharePoint.Client.Web,System.String,System.Int32,System.Guid,System.String)
+  commentId: M:Microsoft.SharePoint.Client.PageExtensions.SetWebPartProperty(Microsoft.SharePoint.Client.Web,System.String,System.Int32,System.Guid,System.String)
+  id: SetWebPartProperty(Microsoft.SharePoint.Client.Web,System.String,System.Int32,System.Guid,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PageExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetWebPartProperty(Web, String, Int32, Guid, String)
+  nameWithType: PageExtensions.SetWebPartProperty(Web, String, Int32, Guid, String)
+  fullName: Microsoft.SharePoint.Client.PageExtensions.SetWebPartProperty(Microsoft.SharePoint.Client.Web, System.String, System.Int32, System.Guid, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetWebPartProperty
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 1095
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nSets a web part property\n"
+  example: []
+  syntax:
+    content: public static void SetWebPartProperty(this Web web, string key, int value, Guid id, string serverRelativePageUrl)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The web to process
+    - id: key
+      type: System.String
+      description: The key to update
+    - id: value
+      type: System.Int32
+      description: The value to set
+    - id: id
+      type: System.Guid
+      description: The id of the webpart
+    - id: serverRelativePageUrl
+      type: System.String
+      description: Server relative URL of the page to set web part property
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetWebPartProperty(web As Web, key As String, value As Integer, id As Guid, serverRelativePageUrl As String)
+  overload: Microsoft.SharePoint.Client.PageExtensions.SetWebPartProperty*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when key or serverRelativePageUrl is a zero-length string or contains only white space
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when key or serverRelativePageUrl is null
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PageExtensions.SetWebPartProperty(Microsoft.SharePoint.Client.Web,System.String,System.Boolean,System.Guid,System.String)
+  commentId: M:Microsoft.SharePoint.Client.PageExtensions.SetWebPartProperty(Microsoft.SharePoint.Client.Web,System.String,System.Boolean,System.Guid,System.String)
+  id: SetWebPartProperty(Microsoft.SharePoint.Client.Web,System.String,System.Boolean,System.Guid,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PageExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetWebPartProperty(Web, String, Boolean, Guid, String)
+  nameWithType: PageExtensions.SetWebPartProperty(Web, String, Boolean, Guid, String)
+  fullName: Microsoft.SharePoint.Client.PageExtensions.SetWebPartProperty(Microsoft.SharePoint.Client.Web, System.String, System.Boolean, System.Guid, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetWebPartProperty
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 1110
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nSets a web part property\n"
+  example: []
+  syntax:
+    content: public static void SetWebPartProperty(this Web web, string key, bool value, Guid id, string serverRelativePageUrl)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The web to process
+    - id: key
+      type: System.String
+      description: The key to update
+    - id: value
+      type: System.Boolean
+      description: The value to set
+    - id: id
+      type: System.Guid
+      description: The id of the webpart
+    - id: serverRelativePageUrl
+      type: System.String
+      description: Server relative URL of the page to set web part property
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetWebPartProperty(web As Web, key As String, value As Boolean, id As Guid, serverRelativePageUrl As String)
+  overload: Microsoft.SharePoint.Client.PageExtensions.SetWebPartProperty*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when key or serverRelativePageUrl is a zero-length string or contains only white space
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when key or serverRelativePageUrl is null
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PageExtensions.GetWebPartProperties(Microsoft.SharePoint.Client.Web,System.Guid,System.String)
+  commentId: M:Microsoft.SharePoint.Client.PageExtensions.GetWebPartProperties(Microsoft.SharePoint.Client.Web,System.Guid,System.String)
+  id: GetWebPartProperties(Microsoft.SharePoint.Client.Web,System.Guid,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PageExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetWebPartProperties(Web, Guid, String)
+  nameWithType: PageExtensions.GetWebPartProperties(Web, Guid, String)
+  fullName: Microsoft.SharePoint.Client.PageExtensions.GetWebPartProperties(Microsoft.SharePoint.Client.Web, System.Guid, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetWebPartProperties
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 1216
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns web part properties\n"
+  example: []
+  syntax:
+    content: public static PropertyValues GetWebPartProperties(this Web web, Guid id, string serverRelativePageUrl)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The web to process
+    - id: id
+      type: System.Guid
+      description: The id of the webpart
+    - id: serverRelativePageUrl
+      type: System.String
+      description: ''
+    return:
+      type: Microsoft.SharePoint.Client.PropertyValues
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetWebPartProperties(web As Web, id As Guid, serverRelativePageUrl As String) As PropertyValues
+  overload: Microsoft.SharePoint.Client.PageExtensions.GetWebPartProperties*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when key or serverRelativePageUrl is a zero-length string or contains only white space
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when key or serverRelativePageUrl is null
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PageExtensions.AddNavigationFriendlyUrl(Microsoft.SharePoint.Client.Publishing.PublishingPage,Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.Publishing.Navigation.NavigationTermSetItem,System.Boolean,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.PageExtensions.AddNavigationFriendlyUrl(Microsoft.SharePoint.Client.Publishing.PublishingPage,Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.Publishing.Navigation.NavigationTermSetItem,System.Boolean,System.Boolean)
+  id: AddNavigationFriendlyUrl(Microsoft.SharePoint.Client.Publishing.PublishingPage,Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.Publishing.Navigation.NavigationTermSetItem,System.Boolean,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PageExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddNavigationFriendlyUrl(PublishingPage, Web, String, String, NavigationTermSetItem, Boolean, Boolean)
+  nameWithType: PageExtensions.AddNavigationFriendlyUrl(PublishingPage, Web, String, String, NavigationTermSetItem, Boolean, Boolean)
+  fullName: Microsoft.SharePoint.Client.PageExtensions.AddNavigationFriendlyUrl(Microsoft.SharePoint.Client.Publishing.PublishingPage, Microsoft.SharePoint.Client.Web, System.String, System.String, Microsoft.SharePoint.Client.Publishing.Navigation.NavigationTermSetItem, System.Boolean, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PageExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddNavigationFriendlyUrl
+    path: ../src/lib/PnP.Framework/Extensions/PageExtensions.cs
+    startLine: 1253
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdds a user-friendly URL for a PublishingPage object.\n"
+  example: []
+  syntax:
+    content: public static string AddNavigationFriendlyUrl(this PublishingPage page, Web web, string navigationTitle, string friendlyUrlSegment, NavigationTermSetItem editableParent, bool showInGlobalNavigation = true, bool showInCurrentNavigation = true)
+    parameters:
+    - id: page
+      type: Microsoft.SharePoint.Client.Publishing.PublishingPage
+      description: The target page to add to managed navigation.
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The target web.
+    - id: navigationTitle
+      type: System.String
+      description: The title for the navigation item.
+    - id: friendlyUrlSegment
+      type: System.String
+      description: The user-friendly text to use as the URL segment.
+    - id: editableParent
+      type: Microsoft.SharePoint.Client.Publishing.Navigation.NavigationTermSetItem
+      description: The parent NavigationTermSetItem object below which this new friendly URL should be created.
+    - id: showInGlobalNavigation
+      type: System.Boolean
+      description: Defines whether the navigation item has to be shown in the Global Navigation, optional and default to true.
+    - id: showInCurrentNavigation
+      type: System.Boolean
+      description: Defines whether the navigation item has to be shown in the Current Navigation, optional and default to true.
+    return:
+      type: System.String
+      description: The simple link URL just created.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddNavigationFriendlyUrl(page As PublishingPage, web As Web, navigationTitle As String, friendlyUrlSegment As String, editableParent As NavigationTermSetItem, showInGlobalNavigation As Boolean = True, showInCurrentNavigation As Boolean = True) As String
+  overload: Microsoft.SharePoint.Client.PageExtensions.AddNavigationFriendlyUrl*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: Microsoft.SharePoint.Client
+  commentId: N:Microsoft.SharePoint.Client
+  name: Microsoft.SharePoint.Client
+  nameWithType: Microsoft.SharePoint.Client
+  fullName: Microsoft.SharePoint.Client
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+- uid: Microsoft.SharePoint.Client.PageExtensions.GetWikiPageContent*
+  commentId: Overload:Microsoft.SharePoint.Client.PageExtensions.GetWikiPageContent
+  name: GetWikiPageContent
+  nameWithType: PageExtensions.GetWikiPageContent
+  fullName: Microsoft.SharePoint.Client.PageExtensions.GetWikiPageContent
+- uid: Microsoft.SharePoint.Client.Web
+  commentId: T:Microsoft.SharePoint.Client.Web
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: Web
+  nameWithType: Web
+  fullName: Microsoft.SharePoint.Client.Web
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Microsoft.SharePoint.Client.PageExtensions.GetWebParts*
+  commentId: Overload:Microsoft.SharePoint.Client.PageExtensions.GetWebParts
+  name: GetWebParts
+  nameWithType: PageExtensions.GetWebParts
+  fullName: Microsoft.SharePoint.Client.PageExtensions.GetWebParts
+- uid: System.Collections.Generic.IEnumerable{Microsoft.SharePoint.Client.WebParts.WebPartDefinition}
+  commentId: T:System.Collections.Generic.IEnumerable{Microsoft.SharePoint.Client.WebParts.WebPartDefinition}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<WebPartDefinition>
+  nameWithType: IEnumerable<WebPartDefinition>
+  fullName: System.Collections.Generic.IEnumerable<Microsoft.SharePoint.Client.WebParts.WebPartDefinition>
+  nameWithType.vb: IEnumerable(Of WebPartDefinition)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Microsoft.SharePoint.Client.WebParts.WebPartDefinition)
+  name.vb: IEnumerable(Of WebPartDefinition)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Microsoft.SharePoint.Client.WebParts.WebPartDefinition
+    name: WebPartDefinition
+    nameWithType: WebPartDefinition
+    fullName: Microsoft.SharePoint.Client.WebParts.WebPartDefinition
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Microsoft.SharePoint.Client.WebParts.WebPartDefinition
+    name: WebPartDefinition
+    nameWithType: WebPartDefinition
+    fullName: Microsoft.SharePoint.Client.WebParts.WebPartDefinition
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: Microsoft.SharePoint.Client.WebParts.WebPartDefinition
+  commentId: T:Microsoft.SharePoint.Client.WebParts.WebPartDefinition
+  parent: Microsoft.SharePoint.Client.WebParts
+  isExternal: true
+  name: WebPartDefinition
+  nameWithType: WebPartDefinition
+  fullName: Microsoft.SharePoint.Client.WebParts.WebPartDefinition
+- uid: Microsoft.SharePoint.Client.PageExtensions.AddWebPartToWebPartPage*
+  commentId: Overload:Microsoft.SharePoint.Client.PageExtensions.AddWebPartToWebPartPage
+  name: AddWebPartToWebPartPage
+  nameWithType: PageExtensions.AddWebPartToWebPartPage
+  fullName: Microsoft.SharePoint.Client.PageExtensions.AddWebPartToWebPartPage
+- uid: PnP.Framework.Entities.WebPartEntity
+  commentId: T:PnP.Framework.Entities.WebPartEntity
+  parent: PnP.Framework.Entities
+  name: WebPartEntity
+  nameWithType: WebPartEntity
+  fullName: PnP.Framework.Entities.WebPartEntity
+- uid: Microsoft.SharePoint.Client.WebParts
+  commentId: N:Microsoft.SharePoint.Client.WebParts
+  isExternal: true
+  name: Microsoft.SharePoint.Client.WebParts
+  nameWithType: Microsoft.SharePoint.Client.WebParts
+  fullName: Microsoft.SharePoint.Client.WebParts
+- uid: PnP.Framework.Entities
+  commentId: N:PnP.Framework.Entities
+  name: PnP.Framework.Entities
+  nameWithType: PnP.Framework.Entities
+  fullName: PnP.Framework.Entities
+- uid: Microsoft.SharePoint.Client.PageExtensions.AddWebPartToWikiPage*
+  commentId: Overload:Microsoft.SharePoint.Client.PageExtensions.AddWebPartToWikiPage
+  name: AddWebPartToWikiPage
+  nameWithType: PageExtensions.AddWebPartToWikiPage
+  fullName: Microsoft.SharePoint.Client.PageExtensions.AddWebPartToWikiPage
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: Microsoft.SharePoint.Client.PageExtensions.GetWebPartXml*
+  commentId: Overload:Microsoft.SharePoint.Client.PageExtensions.GetWebPartXml
+  name: GetWebPartXml
+  nameWithType: PageExtensions.GetWebPartXml
+  fullName: Microsoft.SharePoint.Client.PageExtensions.GetWebPartXml
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Microsoft.SharePoint.Client.PageExtensions.AddLayoutToWikiPage*
+  commentId: Overload:Microsoft.SharePoint.Client.PageExtensions.AddLayoutToWikiPage
+  name: AddLayoutToWikiPage
+  nameWithType: PageExtensions.AddLayoutToWikiPage
+  fullName: Microsoft.SharePoint.Client.PageExtensions.AddLayoutToWikiPage
+- uid: PnP.Framework.WikiPageLayout
+  commentId: T:PnP.Framework.WikiPageLayout
+  parent: PnP.Framework
+  name: WikiPageLayout
+  nameWithType: WikiPageLayout
+  fullName: PnP.Framework.WikiPageLayout
+- uid: PnP.Framework
+  commentId: N:PnP.Framework
+  name: PnP.Framework
+  nameWithType: PnP.Framework
+  fullName: PnP.Framework
+- uid: Microsoft.SharePoint.Client.PageExtensions.AddHtmlToWikiPage*
+  commentId: Overload:Microsoft.SharePoint.Client.PageExtensions.AddHtmlToWikiPage
+  name: AddHtmlToWikiPage
+  nameWithType: PageExtensions.AddHtmlToWikiPage
+  fullName: Microsoft.SharePoint.Client.PageExtensions.AddHtmlToWikiPage
+- uid: Microsoft.SharePoint.Client.PageExtensions.DeleteWebPart*
+  commentId: Overload:Microsoft.SharePoint.Client.PageExtensions.DeleteWebPart
+  name: DeleteWebPart
+  nameWithType: PageExtensions.DeleteWebPart
+  fullName: Microsoft.SharePoint.Client.PageExtensions.DeleteWebPart
+- uid: PnP.Framework.Provisioning.Model.ClientSidePage
+  commentId: T:PnP.Framework.Provisioning.Model.ClientSidePage
+  name: ClientSidePage
+  nameWithType: ClientSidePage
+  fullName: PnP.Framework.Provisioning.Model.ClientSidePage
+- uid: Microsoft.SharePoint.Client.PageExtensions.AddClientSidePageAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.PageExtensions.AddClientSidePageAsync
+  name: AddClientSidePageAsync
+  nameWithType: PageExtensions.AddClientSidePageAsync
+  fullName: Microsoft.SharePoint.Client.PageExtensions.AddClientSidePageAsync
+- uid: System.Threading.Tasks.Task{PnP.Core.Model.SharePoint.IPage}
+  commentId: T:System.Threading.Tasks.Task{PnP.Core.Model.SharePoint.IPage}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<IPage>
+  nameWithType: Task<IPage>
+  fullName: System.Threading.Tasks.Task<PnP.Core.Model.SharePoint.IPage>
+  nameWithType.vb: Task(Of IPage)
+  fullName.vb: System.Threading.Tasks.Task(Of PnP.Core.Model.SharePoint.IPage)
+  name.vb: Task(Of IPage)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Core.Model.SharePoint.IPage
+    name: IPage
+    nameWithType: IPage
+    fullName: PnP.Core.Model.SharePoint.IPage
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Core.Model.SharePoint.IPage
+    name: IPage
+    nameWithType: IPage
+    fullName: PnP.Core.Model.SharePoint.IPage
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+- uid: Microsoft.SharePoint.Client.PageExtensions.AddClientSidePage*
+  commentId: Overload:Microsoft.SharePoint.Client.PageExtensions.AddClientSidePage
+  name: AddClientSidePage
+  nameWithType: PageExtensions.AddClientSidePage
+  fullName: Microsoft.SharePoint.Client.PageExtensions.AddClientSidePage
+- uid: PnP.Core.Model.SharePoint.IPage
+  commentId: T:PnP.Core.Model.SharePoint.IPage
+  parent: PnP.Core.Model.SharePoint
+  isExternal: true
+  name: IPage
+  nameWithType: IPage
+  fullName: PnP.Core.Model.SharePoint.IPage
+- uid: PnP.Core.Model.SharePoint
+  commentId: N:PnP.Core.Model.SharePoint
+  isExternal: true
+  name: PnP.Core.Model.SharePoint
+  nameWithType: PnP.Core.Model.SharePoint
+  fullName: PnP.Core.Model.SharePoint
+- uid: Microsoft.SharePoint.Client.PageExtensions.LoadClientSidePageAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.PageExtensions.LoadClientSidePageAsync
+  name: LoadClientSidePageAsync
+  nameWithType: PageExtensions.LoadClientSidePageAsync
+  fullName: Microsoft.SharePoint.Client.PageExtensions.LoadClientSidePageAsync
+- uid: Microsoft.SharePoint.Client.PageExtensions.LoadClientSidePage*
+  commentId: Overload:Microsoft.SharePoint.Client.PageExtensions.LoadClientSidePage
+  name: LoadClientSidePage
+  nameWithType: PageExtensions.LoadClientSidePage
+  fullName: Microsoft.SharePoint.Client.PageExtensions.LoadClientSidePage
+- uid: Microsoft.SharePoint.Client.PageExtensions.AddWikiPage*
+  commentId: Overload:Microsoft.SharePoint.Client.PageExtensions.AddWikiPage
+  name: AddWikiPage
+  nameWithType: PageExtensions.AddWikiPage
+  fullName: Microsoft.SharePoint.Client.PageExtensions.AddWikiPage
+- uid: Microsoft.SharePoint.Client.PageExtensions.EnsureWikiPage*
+  commentId: Overload:Microsoft.SharePoint.Client.PageExtensions.EnsureWikiPage
+  name: EnsureWikiPage
+  nameWithType: PageExtensions.EnsureWikiPage
+  fullName: Microsoft.SharePoint.Client.PageExtensions.EnsureWikiPage
+- uid: Microsoft.SharePoint.Client.PageExtensions.AddWikiPageByUrl*
+  commentId: Overload:Microsoft.SharePoint.Client.PageExtensions.AddWikiPageByUrl
+  name: AddWikiPageByUrl
+  nameWithType: PageExtensions.AddWikiPageByUrl
+  fullName: Microsoft.SharePoint.Client.PageExtensions.AddWikiPageByUrl
+- uid: Microsoft.SharePoint.Client.PageExtensions.SetWebPartProperty*
+  commentId: Overload:Microsoft.SharePoint.Client.PageExtensions.SetWebPartProperty
+  name: SetWebPartProperty
+  nameWithType: PageExtensions.SetWebPartProperty
+  fullName: Microsoft.SharePoint.Client.PageExtensions.SetWebPartProperty
+- uid: Microsoft.SharePoint.Client.PageExtensions.GetWebPartProperties*
+  commentId: Overload:Microsoft.SharePoint.Client.PageExtensions.GetWebPartProperties
+  name: GetWebPartProperties
+  nameWithType: PageExtensions.GetWebPartProperties
+  fullName: Microsoft.SharePoint.Client.PageExtensions.GetWebPartProperties
+- uid: Microsoft.SharePoint.Client.PropertyValues
+  commentId: T:Microsoft.SharePoint.Client.PropertyValues
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: PropertyValues
+  nameWithType: PropertyValues
+  fullName: Microsoft.SharePoint.Client.PropertyValues
+- uid: Microsoft.SharePoint.Client.PageExtensions.AddNavigationFriendlyUrl*
+  commentId: Overload:Microsoft.SharePoint.Client.PageExtensions.AddNavigationFriendlyUrl
+  name: AddNavigationFriendlyUrl
+  nameWithType: PageExtensions.AddNavigationFriendlyUrl
+  fullName: Microsoft.SharePoint.Client.PageExtensions.AddNavigationFriendlyUrl
+- uid: Microsoft.SharePoint.Client.Publishing.PublishingPage
+  commentId: T:Microsoft.SharePoint.Client.Publishing.PublishingPage
+  parent: Microsoft.SharePoint.Client.Publishing
+  isExternal: true
+  name: PublishingPage
+  nameWithType: PublishingPage
+  fullName: Microsoft.SharePoint.Client.Publishing.PublishingPage
+- uid: Microsoft.SharePoint.Client.Publishing.Navigation.NavigationTermSetItem
+  commentId: T:Microsoft.SharePoint.Client.Publishing.Navigation.NavigationTermSetItem
+  parent: Microsoft.SharePoint.Client.Publishing.Navigation
+  isExternal: true
+  name: NavigationTermSetItem
+  nameWithType: NavigationTermSetItem
+  fullName: Microsoft.SharePoint.Client.Publishing.Navigation.NavigationTermSetItem
+- uid: Microsoft.SharePoint.Client.Publishing
+  commentId: N:Microsoft.SharePoint.Client.Publishing
+  isExternal: true
+  name: Microsoft.SharePoint.Client.Publishing
+  nameWithType: Microsoft.SharePoint.Client.Publishing
+  fullName: Microsoft.SharePoint.Client.Publishing
+- uid: Microsoft.SharePoint.Client.Publishing.Navigation
+  commentId: N:Microsoft.SharePoint.Client.Publishing.Navigation
+  isExternal: true
+  name: Microsoft.SharePoint.Client.Publishing.Navigation
+  nameWithType: Microsoft.SharePoint.Client.Publishing.Navigation
+  fullName: Microsoft.SharePoint.Client.Publishing.Navigation

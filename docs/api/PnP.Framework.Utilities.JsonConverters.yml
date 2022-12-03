@@ -1,0 +1,22 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Utilities.JsonConverters
+  commentId: N:PnP.Framework.Utilities.JsonConverters
+  id: PnP.Framework.Utilities.JsonConverters
+  children:
+  - PnP.Framework.Utilities.JsonConverters.EmphasisJsonConverter
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Utilities.JsonConverters
+  nameWithType: PnP.Framework.Utilities.JsonConverters
+  fullName: PnP.Framework.Utilities.JsonConverters
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Utilities.JsonConverters.EmphasisJsonConverter
+  commentId: T:PnP.Framework.Utilities.JsonConverters.EmphasisJsonConverter
+  name: EmphasisJsonConverter
+  nameWithType: EmphasisJsonConverter
+  fullName: PnP.Framework.Utilities.JsonConverters.EmphasisJsonConverter

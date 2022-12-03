@@ -1,0 +1,3763 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  commentId: T:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  id: ListInstance
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103
+  children:
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.#ctor
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ContentTypeBindings
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ContentTypesEnabled
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DataRows
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DataSource
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultColumnValues
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultDisplayFormUrl
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultEditFormUrl
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultNewFormUrl
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Description
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Direction
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DocumentTemplate
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DraftVersionVisibility
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DraftVersionVisibilitySpecified
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableAttachments
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableFolderCreation
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableMinorVersions
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableModeration
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableVersioning
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.FieldDefaults
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.FieldRefs
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Fields
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Folders
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ForceCheckout
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Hidden
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ImageUrl
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmExpire
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmExpireSpecified
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmReject
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmRejectSpecified
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IRMSettings
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IsApplicationList
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IsApplicationListSpecified
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ListExperience
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MaxVersionLimit
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MaxVersionLimitSpecified
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MinorVersionLimit
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MinorVersionLimitSpecified
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.NoCrawl
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.OnQuickLaunch
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.PropertyBagEntries
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ReadSecurity
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.RemoveExistingContentTypes
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Security
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.TemplateFeatureID
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.TemplateInternalName
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.TemplateType
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Title
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Url
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.UserCustomActions
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ValidationFormula
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ValidationMessage
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Views
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Webhooks
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.WriteSecurity
+  langs:
+  - csharp
+  - vb
+  name: ListInstance
+  nameWithType: ListInstance
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ListInstance
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8099
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: >-
+      [Serializable]
+
+      public class ListInstance
+    content.vb: >-
+      <Serializable>
+
+      Public Class ListInstance
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.#ctor
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.#ctor
+  id: '#ctor'
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: ListInstance()
+  nameWithType: ListInstance.ListInstance()
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ListInstance()
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8214
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  syntax:
+    content: public ListInstance()
+    content.vb: Public Sub New
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultColumnValues
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultColumnValues
+  id: DefaultColumnValues
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: DefaultColumnValues
+  nameWithType: ListInstance.DefaultColumnValues
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultColumnValues
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DefaultColumnValues
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8233
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public StringDictionaryItem[] DefaultColumnValues { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.StringDictionaryItem[]
+    content.vb: Public Property DefaultColumnValues As StringDictionaryItem()
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultColumnValues*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.PropertyBagEntries
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.PropertyBagEntries
+  id: PropertyBagEntries
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: PropertyBagEntries
+  nameWithType: ListInstance.PropertyBagEntries
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.PropertyBagEntries
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PropertyBagEntries
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8244
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public PropertyBagEntry[] PropertyBagEntries { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.PropertyBagEntry[]
+    content.vb: Public Property PropertyBagEntries As PropertyBagEntry()
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.PropertyBagEntries*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ContentTypeBindings
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ContentTypeBindings
+  id: ContentTypeBindings
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: ContentTypeBindings
+  nameWithType: ListInstance.ContentTypeBindings
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ContentTypeBindings
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ContentTypeBindings
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8255
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public ContentTypeBinding[] ContentTypeBindings { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.ContentTypeBinding[]
+    content.vb: Public Property ContentTypeBindings As ContentTypeBinding()
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ContentTypeBindings*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Views
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Views
+  id: Views
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: Views
+  nameWithType: ListInstance.Views
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Views
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Views
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8266
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public ListInstanceViews Views { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceViews
+    content.vb: Public Property Views As ListInstanceViews
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Views*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Fields
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Fields
+  id: Fields
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: Fields
+  nameWithType: ListInstance.Fields
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Fields
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Fields
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8276
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public ListInstanceFields Fields { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceFields
+    content.vb: Public Property Fields As ListInstanceFields
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Fields*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.FieldRefs
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.FieldRefs
+  id: FieldRefs
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: FieldRefs
+  nameWithType: ListInstance.FieldRefs
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.FieldRefs
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FieldRefs
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8286
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public ListInstanceFieldRef[] FieldRefs { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceFieldRef[]
+    content.vb: Public Property FieldRefs As ListInstanceFieldRef()
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.FieldRefs*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DataRows
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DataRows
+  id: DataRows
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: DataRows
+  nameWithType: ListInstance.DataRows
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DataRows
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DataRows
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8297
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public ListInstanceDataRows DataRows { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceDataRows
+    content.vb: Public Property DataRows As ListInstanceDataRows
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DataRows*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Folders
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Folders
+  id: Folders
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: Folders
+  nameWithType: ListInstance.Folders
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Folders
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Folders
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8307
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public Folder[] Folders { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.Folder[]
+    content.vb: Public Property Folders As Folder()
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Folders*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.FieldDefaults
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.FieldDefaults
+  id: FieldDefaults
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: FieldDefaults
+  nameWithType: ListInstance.FieldDefaults
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.FieldDefaults
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FieldDefaults
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8318
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public FieldDefault[] FieldDefaults { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.FieldDefault[]
+    content.vb: Public Property FieldDefaults As FieldDefault()
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.FieldDefaults*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Security
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Security
+  id: Security
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: Security
+  nameWithType: ListInstance.Security
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Security
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Security
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8329
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public ObjectSecurity Security { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.ObjectSecurity
+    content.vb: Public Property Security As ObjectSecurity
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Security*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.UserCustomActions
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.UserCustomActions
+  id: UserCustomActions
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: UserCustomActions
+  nameWithType: ListInstance.UserCustomActions
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.UserCustomActions
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UserCustomActions
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8339
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public CustomAction[] UserCustomActions { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.CustomAction[]
+    content.vb: Public Property UserCustomActions As CustomAction()
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.UserCustomActions*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Webhooks
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Webhooks
+  id: Webhooks
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: Webhooks
+  nameWithType: ListInstance.Webhooks
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Webhooks
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Webhooks
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8350
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public Webhook[] Webhooks { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.Webhook[]
+    content.vb: Public Property Webhooks As Webhook()
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Webhooks*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IRMSettings
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IRMSettings
+  id: IRMSettings
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: IRMSettings
+  nameWithType: ListInstance.IRMSettings
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IRMSettings
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IRMSettings
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8361
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public IRMSettings IRMSettings { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings
+    content.vb: Public Property IRMSettings As IRMSettings
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IRMSettings*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DataSource
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DataSource
+  id: DataSource
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: DataSource
+  nameWithType: ListInstance.DataSource
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DataSource
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DataSource
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8371
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public StringDictionaryItem[] DataSource { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.StringDictionaryItem[]
+    content.vb: Public Property DataSource As StringDictionaryItem()
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DataSource*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Title
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Title
+  id: Title
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: Title
+  nameWithType: ListInstance.Title
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Title
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Title
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8382
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public string Title { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Title As String
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Title*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Description
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Description
+  id: Description
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: ListInstance.Description
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Description
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Description
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8393
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public string Description { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Description As String
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Description*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DocumentTemplate
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DocumentTemplate
+  id: DocumentTemplate
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: DocumentTemplate
+  nameWithType: ListInstance.DocumentTemplate
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DocumentTemplate
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DocumentTemplate
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8404
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public string DocumentTemplate { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property DocumentTemplate As String
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DocumentTemplate*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.OnQuickLaunch
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.OnQuickLaunch
+  id: OnQuickLaunch
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: OnQuickLaunch
+  nameWithType: ListInstance.OnQuickLaunch
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.OnQuickLaunch
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: OnQuickLaunch
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8415
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool OnQuickLaunch { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property OnQuickLaunch As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.OnQuickLaunch*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.TemplateType
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.TemplateType
+  id: TemplateType
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: TemplateType
+  nameWithType: ListInstance.TemplateType
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.TemplateType
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TemplateType
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8427
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public int TemplateType { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property TemplateType As Integer
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.TemplateType*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Url
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Url
+  id: Url
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: Url
+  nameWithType: ListInstance.Url
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Url
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Url
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8438
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public string Url { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Url As String
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Url*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ForceCheckout
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ForceCheckout
+  id: ForceCheckout
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: ForceCheckout
+  nameWithType: ListInstance.ForceCheckout
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ForceCheckout
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ForceCheckout
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8449
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool ForceCheckout { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property ForceCheckout As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ForceCheckout*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableVersioning
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableVersioning
+  id: EnableVersioning
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: EnableVersioning
+  nameWithType: ListInstance.EnableVersioning
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableVersioning
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnableVersioning
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8461
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool EnableVersioning { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property EnableVersioning As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableVersioning*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableMinorVersions
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableMinorVersions
+  id: EnableMinorVersions
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: EnableMinorVersions
+  nameWithType: ListInstance.EnableMinorVersions
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableMinorVersions
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnableMinorVersions
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8473
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool EnableMinorVersions { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property EnableMinorVersions As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableMinorVersions*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableModeration
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableModeration
+  id: EnableModeration
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: EnableModeration
+  nameWithType: ListInstance.EnableModeration
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableModeration
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnableModeration
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8485
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool EnableModeration { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property EnableModeration As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableModeration*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MinorVersionLimit
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MinorVersionLimit
+  id: MinorVersionLimit
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: MinorVersionLimit
+  nameWithType: ListInstance.MinorVersionLimit
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MinorVersionLimit
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MinorVersionLimit
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8497
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public int MinorVersionLimit { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MinorVersionLimit As Integer
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MinorVersionLimit*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MinorVersionLimitSpecified
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MinorVersionLimitSpecified
+  id: MinorVersionLimitSpecified
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: MinorVersionLimitSpecified
+  nameWithType: ListInstance.MinorVersionLimitSpecified
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MinorVersionLimitSpecified
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MinorVersionLimitSpecified
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8508
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool MinorVersionLimitSpecified { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property MinorVersionLimitSpecified As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MinorVersionLimitSpecified*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MaxVersionLimit
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MaxVersionLimit
+  id: MaxVersionLimit
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: MaxVersionLimit
+  nameWithType: ListInstance.MaxVersionLimit
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MaxVersionLimit
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MaxVersionLimit
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8519
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public int MaxVersionLimit { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaxVersionLimit As Integer
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MaxVersionLimit*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MaxVersionLimitSpecified
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MaxVersionLimitSpecified
+  id: MaxVersionLimitSpecified
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: MaxVersionLimitSpecified
+  nameWithType: ListInstance.MaxVersionLimitSpecified
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MaxVersionLimitSpecified
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MaxVersionLimitSpecified
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8530
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool MaxVersionLimitSpecified { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property MaxVersionLimitSpecified As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MaxVersionLimitSpecified*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DraftVersionVisibility
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DraftVersionVisibility
+  id: DraftVersionVisibility
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: DraftVersionVisibility
+  nameWithType: ListInstance.DraftVersionVisibility
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DraftVersionVisibility
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DraftVersionVisibility
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8541
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public int DraftVersionVisibility { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property DraftVersionVisibility As Integer
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DraftVersionVisibility*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DraftVersionVisibilitySpecified
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DraftVersionVisibilitySpecified
+  id: DraftVersionVisibilitySpecified
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: DraftVersionVisibilitySpecified
+  nameWithType: ListInstance.DraftVersionVisibilitySpecified
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DraftVersionVisibilitySpecified
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DraftVersionVisibilitySpecified
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8552
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool DraftVersionVisibilitySpecified { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property DraftVersionVisibilitySpecified As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DraftVersionVisibilitySpecified*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.RemoveExistingContentTypes
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.RemoveExistingContentTypes
+  id: RemoveExistingContentTypes
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: RemoveExistingContentTypes
+  nameWithType: ListInstance.RemoveExistingContentTypes
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.RemoveExistingContentTypes
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemoveExistingContentTypes
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8563
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool RemoveExistingContentTypes { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property RemoveExistingContentTypes As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.RemoveExistingContentTypes*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.TemplateFeatureID
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.TemplateFeatureID
+  id: TemplateFeatureID
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: TemplateFeatureID
+  nameWithType: ListInstance.TemplateFeatureID
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.TemplateFeatureID
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TemplateFeatureID
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8575
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public string TemplateFeatureID { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property TemplateFeatureID As String
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.TemplateFeatureID*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ContentTypesEnabled
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ContentTypesEnabled
+  id: ContentTypesEnabled
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: ContentTypesEnabled
+  nameWithType: ListInstance.ContentTypesEnabled
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ContentTypesEnabled
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ContentTypesEnabled
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8586
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool ContentTypesEnabled { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property ContentTypesEnabled As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ContentTypesEnabled*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Hidden
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Hidden
+  id: Hidden
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: Hidden
+  nameWithType: ListInstance.Hidden
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Hidden
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Hidden
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8598
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool Hidden { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property Hidden As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Hidden*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableAttachments
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableAttachments
+  id: EnableAttachments
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: EnableAttachments
+  nameWithType: ListInstance.EnableAttachments
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableAttachments
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnableAttachments
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8610
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool EnableAttachments { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property EnableAttachments As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableAttachments*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableFolderCreation
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableFolderCreation
+  id: EnableFolderCreation
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: EnableFolderCreation
+  nameWithType: ListInstance.EnableFolderCreation
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableFolderCreation
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnableFolderCreation
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8622
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool EnableFolderCreation { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property EnableFolderCreation As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableFolderCreation*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.NoCrawl
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.NoCrawl
+  id: NoCrawl
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: NoCrawl
+  nameWithType: ListInstance.NoCrawl
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.NoCrawl
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: NoCrawl
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8634
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool NoCrawl { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property NoCrawl As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.NoCrawl*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ListExperience
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ListExperience
+  id: ListExperience
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: ListExperience
+  nameWithType: ListInstance.ListExperience
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ListExperience
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ListExperience
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8646
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public ListInstanceListExperience ListExperience { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceListExperience
+    content.vb: Public Property ListExperience As ListInstanceListExperience
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ListExperience*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultDisplayFormUrl
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultDisplayFormUrl
+  id: DefaultDisplayFormUrl
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: DefaultDisplayFormUrl
+  nameWithType: ListInstance.DefaultDisplayFormUrl
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultDisplayFormUrl
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DefaultDisplayFormUrl
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8658
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public string DefaultDisplayFormUrl { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property DefaultDisplayFormUrl As String
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultDisplayFormUrl*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultEditFormUrl
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultEditFormUrl
+  id: DefaultEditFormUrl
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: DefaultEditFormUrl
+  nameWithType: ListInstance.DefaultEditFormUrl
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultEditFormUrl
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DefaultEditFormUrl
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8669
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public string DefaultEditFormUrl { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property DefaultEditFormUrl As String
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultEditFormUrl*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultNewFormUrl
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultNewFormUrl
+  id: DefaultNewFormUrl
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: DefaultNewFormUrl
+  nameWithType: ListInstance.DefaultNewFormUrl
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultNewFormUrl
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DefaultNewFormUrl
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8680
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public string DefaultNewFormUrl { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property DefaultNewFormUrl As String
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultNewFormUrl*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Direction
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Direction
+  id: Direction
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: Direction
+  nameWithType: ListInstance.Direction
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Direction
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Direction
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8691
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public ListInstanceDirection Direction { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceDirection
+    content.vb: Public Property Direction As ListInstanceDirection
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Direction*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ImageUrl
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ImageUrl
+  id: ImageUrl
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: ImageUrl
+  nameWithType: ListInstance.ImageUrl
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ImageUrl
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ImageUrl
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8703
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public string ImageUrl { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ImageUrl As String
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ImageUrl*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmExpire
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmExpire
+  id: IrmExpire
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: IrmExpire
+  nameWithType: ListInstance.IrmExpire
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmExpire
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IrmExpire
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8714
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool IrmExpire { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IrmExpire As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmExpire*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmExpireSpecified
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmExpireSpecified
+  id: IrmExpireSpecified
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: IrmExpireSpecified
+  nameWithType: ListInstance.IrmExpireSpecified
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmExpireSpecified
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IrmExpireSpecified
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8725
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool IrmExpireSpecified { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IrmExpireSpecified As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmExpireSpecified*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmReject
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmReject
+  id: IrmReject
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: IrmReject
+  nameWithType: ListInstance.IrmReject
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmReject
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IrmReject
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8736
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool IrmReject { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IrmReject As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmReject*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmRejectSpecified
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmRejectSpecified
+  id: IrmRejectSpecified
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: IrmRejectSpecified
+  nameWithType: ListInstance.IrmRejectSpecified
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmRejectSpecified
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IrmRejectSpecified
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8747
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool IrmRejectSpecified { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IrmRejectSpecified As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmRejectSpecified*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IsApplicationList
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IsApplicationList
+  id: IsApplicationList
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: IsApplicationList
+  nameWithType: ListInstance.IsApplicationList
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IsApplicationList
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsApplicationList
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8758
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool IsApplicationList { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsApplicationList As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IsApplicationList*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IsApplicationListSpecified
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IsApplicationListSpecified
+  id: IsApplicationListSpecified
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: IsApplicationListSpecified
+  nameWithType: ListInstance.IsApplicationListSpecified
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IsApplicationListSpecified
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsApplicationListSpecified
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8769
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool IsApplicationListSpecified { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsApplicationListSpecified As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IsApplicationListSpecified*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ReadSecurity
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ReadSecurity
+  id: ReadSecurity
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: ReadSecurity
+  nameWithType: ListInstance.ReadSecurity
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ReadSecurity
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ReadSecurity
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8780
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public int ReadSecurity { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ReadSecurity As Integer
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ReadSecurity*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.WriteSecurity
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.WriteSecurity
+  id: WriteSecurity
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: WriteSecurity
+  nameWithType: ListInstance.WriteSecurity
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.WriteSecurity
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WriteSecurity
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8792
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public int WriteSecurity { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property WriteSecurity As Integer
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.WriteSecurity*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ValidationFormula
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ValidationFormula
+  id: ValidationFormula
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: ValidationFormula
+  nameWithType: ListInstance.ValidationFormula
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ValidationFormula
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ValidationFormula
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8804
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public string ValidationFormula { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ValidationFormula As String
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ValidationFormula*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ValidationMessage
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ValidationMessage
+  id: ValidationMessage
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: ValidationMessage
+  nameWithType: ListInstance.ValidationMessage
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ValidationMessage
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ValidationMessage
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8815
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public string ValidationMessage { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ValidationMessage As String
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ValidationMessage*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.TemplateInternalName
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.TemplateInternalName
+  id: TemplateInternalName
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: TemplateInternalName
+  nameWithType: ListInstance.TemplateInternalName
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.TemplateInternalName
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TemplateInternalName
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 8826
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public string TemplateInternalName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property TemplateInternalName As String
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.TemplateInternalName*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103
+  commentId: N:PnP.Framework.Provisioning.Providers.Xml.V202103
+  name: PnP.Framework.Provisioning.Providers.Xml.V202103
+  nameWithType: PnP.Framework.Provisioning.Providers.Xml.V202103
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<ListInstance>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<ListInstance>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of ListInstance)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of ListInstance)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<ListInstance>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<ListInstance>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of ListInstance)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of ListInstance)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<ListInstance, T>(Expression<Func<ListInstance, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<ListInstance, T>(Expression<Func<ListInstance, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance, T>(System.Linq.Expressions.Expression<System.Func<PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of ListInstance, T)(Expression(Of Func(Of ListInstance, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance, T)(System.Linq.Expressions.Expression(Of System.Func(Of PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of ListInstance, T)(Expression(Of Func(Of ListInstance, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<ListInstance, T>
+    nameWithType: ObjectExtensions.Set<ListInstance, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+    name: ListInstance
+    nameWithType: ListInstance
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of ListInstance, T)
+    nameWithType: ObjectExtensions.Set(Of ListInstance, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+    name: ListInstance
+    nameWithType: ListInstance
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.#ctor*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.#ctor
+  name: ListInstance
+  nameWithType: ListInstance.ListInstance
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ListInstance
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultColumnValues*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultColumnValues
+  name: DefaultColumnValues
+  nameWithType: ListInstance.DefaultColumnValues
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultColumnValues
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.StringDictionaryItem[]
+  isExternal: true
+  name: StringDictionaryItem[]
+  nameWithType: StringDictionaryItem[]
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.StringDictionaryItem[]
+  nameWithType.vb: StringDictionaryItem()
+  fullName.vb: PnP.Framework.Provisioning.Providers.Xml.V202103.StringDictionaryItem()
+  name.vb: StringDictionaryItem()
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.StringDictionaryItem
+    name: StringDictionaryItem
+    nameWithType: StringDictionaryItem
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.StringDictionaryItem
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.StringDictionaryItem
+    name: StringDictionaryItem
+    nameWithType: StringDictionaryItem
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.StringDictionaryItem
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.PropertyBagEntries*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.PropertyBagEntries
+  name: PropertyBagEntries
+  nameWithType: ListInstance.PropertyBagEntries
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.PropertyBagEntries
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.PropertyBagEntry[]
+  isExternal: true
+  name: PropertyBagEntry[]
+  nameWithType: PropertyBagEntry[]
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.PropertyBagEntry[]
+  nameWithType.vb: PropertyBagEntry()
+  fullName.vb: PnP.Framework.Provisioning.Providers.Xml.V202103.PropertyBagEntry()
+  name.vb: PropertyBagEntry()
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.PropertyBagEntry
+    name: PropertyBagEntry
+    nameWithType: PropertyBagEntry
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.PropertyBagEntry
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.PropertyBagEntry
+    name: PropertyBagEntry
+    nameWithType: PropertyBagEntry
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.PropertyBagEntry
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ContentTypeBindings*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ContentTypeBindings
+  name: ContentTypeBindings
+  nameWithType: ListInstance.ContentTypeBindings
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ContentTypeBindings
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ContentTypeBinding[]
+  isExternal: true
+  name: ContentTypeBinding[]
+  nameWithType: ContentTypeBinding[]
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ContentTypeBinding[]
+  nameWithType.vb: ContentTypeBinding()
+  fullName.vb: PnP.Framework.Provisioning.Providers.Xml.V202103.ContentTypeBinding()
+  name.vb: ContentTypeBinding()
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ContentTypeBinding
+    name: ContentTypeBinding
+    nameWithType: ContentTypeBinding
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ContentTypeBinding
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ContentTypeBinding
+    name: ContentTypeBinding
+    nameWithType: ContentTypeBinding
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ContentTypeBinding
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Views*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Views
+  name: Views
+  nameWithType: ListInstance.Views
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Views
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceViews
+  commentId: T:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceViews
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103
+  name: ListInstanceViews
+  nameWithType: ListInstanceViews
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceViews
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Fields*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Fields
+  name: Fields
+  nameWithType: ListInstance.Fields
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Fields
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceFields
+  commentId: T:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceFields
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103
+  name: ListInstanceFields
+  nameWithType: ListInstanceFields
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceFields
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.FieldRefs*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.FieldRefs
+  name: FieldRefs
+  nameWithType: ListInstance.FieldRefs
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.FieldRefs
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceFieldRef[]
+  isExternal: true
+  name: ListInstanceFieldRef[]
+  nameWithType: ListInstanceFieldRef[]
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceFieldRef[]
+  nameWithType.vb: ListInstanceFieldRef()
+  fullName.vb: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceFieldRef()
+  name.vb: ListInstanceFieldRef()
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceFieldRef
+    name: ListInstanceFieldRef
+    nameWithType: ListInstanceFieldRef
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceFieldRef
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceFieldRef
+    name: ListInstanceFieldRef
+    nameWithType: ListInstanceFieldRef
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceFieldRef
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DataRows*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DataRows
+  name: DataRows
+  nameWithType: ListInstance.DataRows
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DataRows
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceDataRows
+  commentId: T:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceDataRows
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103
+  name: ListInstanceDataRows
+  nameWithType: ListInstanceDataRows
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceDataRows
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Folders*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Folders
+  name: Folders
+  nameWithType: ListInstance.Folders
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Folders
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Folder[]
+  isExternal: true
+  name: Folder[]
+  nameWithType: Folder[]
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Folder[]
+  nameWithType.vb: Folder()
+  fullName.vb: PnP.Framework.Provisioning.Providers.Xml.V202103.Folder()
+  name.vb: Folder()
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Folder
+    name: Folder
+    nameWithType: Folder
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Folder
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Folder
+    name: Folder
+    nameWithType: Folder
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Folder
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.FieldDefaults*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.FieldDefaults
+  name: FieldDefaults
+  nameWithType: ListInstance.FieldDefaults
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.FieldDefaults
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.FieldDefault[]
+  isExternal: true
+  name: FieldDefault[]
+  nameWithType: FieldDefault[]
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.FieldDefault[]
+  nameWithType.vb: FieldDefault()
+  fullName.vb: PnP.Framework.Provisioning.Providers.Xml.V202103.FieldDefault()
+  name.vb: FieldDefault()
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.FieldDefault
+    name: FieldDefault
+    nameWithType: FieldDefault
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.FieldDefault
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.FieldDefault
+    name: FieldDefault
+    nameWithType: FieldDefault
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.FieldDefault
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Security*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Security
+  name: Security
+  nameWithType: ListInstance.Security
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Security
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ObjectSecurity
+  commentId: T:PnP.Framework.Provisioning.Providers.Xml.V202103.ObjectSecurity
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103
+  name: ObjectSecurity
+  nameWithType: ObjectSecurity
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ObjectSecurity
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.UserCustomActions*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.UserCustomActions
+  name: UserCustomActions
+  nameWithType: ListInstance.UserCustomActions
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.UserCustomActions
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.CustomAction[]
+  isExternal: true
+  name: CustomAction[]
+  nameWithType: CustomAction[]
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.CustomAction[]
+  nameWithType.vb: CustomAction()
+  fullName.vb: PnP.Framework.Provisioning.Providers.Xml.V202103.CustomAction()
+  name.vb: CustomAction()
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.CustomAction
+    name: CustomAction
+    nameWithType: CustomAction
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.CustomAction
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.CustomAction
+    name: CustomAction
+    nameWithType: CustomAction
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.CustomAction
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Webhooks*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Webhooks
+  name: Webhooks
+  nameWithType: ListInstance.Webhooks
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Webhooks
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Webhook[]
+  isExternal: true
+  name: Webhook[]
+  nameWithType: Webhook[]
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Webhook[]
+  nameWithType.vb: Webhook()
+  fullName.vb: PnP.Framework.Provisioning.Providers.Xml.V202103.Webhook()
+  name.vb: Webhook()
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Webhook
+    name: Webhook
+    nameWithType: Webhook
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Webhook
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Webhook
+    name: Webhook
+    nameWithType: Webhook
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Webhook
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IRMSettings*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IRMSettings
+  name: IRMSettings
+  nameWithType: ListInstance.IRMSettings
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IRMSettings
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings
+  commentId: T:PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103
+  name: IRMSettings
+  nameWithType: IRMSettings
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DataSource*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DataSource
+  name: DataSource
+  nameWithType: ListInstance.DataSource
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DataSource
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Title*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Title
+  name: Title
+  nameWithType: ListInstance.Title
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Title
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Description*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Description
+  name: Description
+  nameWithType: ListInstance.Description
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Description
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DocumentTemplate*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DocumentTemplate
+  name: DocumentTemplate
+  nameWithType: ListInstance.DocumentTemplate
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DocumentTemplate
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.OnQuickLaunch*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.OnQuickLaunch
+  name: OnQuickLaunch
+  nameWithType: ListInstance.OnQuickLaunch
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.OnQuickLaunch
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.TemplateType*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.TemplateType
+  name: TemplateType
+  nameWithType: ListInstance.TemplateType
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.TemplateType
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Url*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Url
+  name: Url
+  nameWithType: ListInstance.Url
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Url
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ForceCheckout*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ForceCheckout
+  name: ForceCheckout
+  nameWithType: ListInstance.ForceCheckout
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ForceCheckout
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableVersioning*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableVersioning
+  name: EnableVersioning
+  nameWithType: ListInstance.EnableVersioning
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableVersioning
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableMinorVersions*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableMinorVersions
+  name: EnableMinorVersions
+  nameWithType: ListInstance.EnableMinorVersions
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableMinorVersions
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableModeration*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableModeration
+  name: EnableModeration
+  nameWithType: ListInstance.EnableModeration
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableModeration
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MinorVersionLimit*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MinorVersionLimit
+  name: MinorVersionLimit
+  nameWithType: ListInstance.MinorVersionLimit
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MinorVersionLimit
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MinorVersionLimitSpecified*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MinorVersionLimitSpecified
+  name: MinorVersionLimitSpecified
+  nameWithType: ListInstance.MinorVersionLimitSpecified
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MinorVersionLimitSpecified
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MaxVersionLimit*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MaxVersionLimit
+  name: MaxVersionLimit
+  nameWithType: ListInstance.MaxVersionLimit
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MaxVersionLimit
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MaxVersionLimitSpecified*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MaxVersionLimitSpecified
+  name: MaxVersionLimitSpecified
+  nameWithType: ListInstance.MaxVersionLimitSpecified
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.MaxVersionLimitSpecified
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DraftVersionVisibility*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DraftVersionVisibility
+  name: DraftVersionVisibility
+  nameWithType: ListInstance.DraftVersionVisibility
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DraftVersionVisibility
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DraftVersionVisibilitySpecified*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DraftVersionVisibilitySpecified
+  name: DraftVersionVisibilitySpecified
+  nameWithType: ListInstance.DraftVersionVisibilitySpecified
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DraftVersionVisibilitySpecified
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.RemoveExistingContentTypes*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.RemoveExistingContentTypes
+  name: RemoveExistingContentTypes
+  nameWithType: ListInstance.RemoveExistingContentTypes
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.RemoveExistingContentTypes
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.TemplateFeatureID*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.TemplateFeatureID
+  name: TemplateFeatureID
+  nameWithType: ListInstance.TemplateFeatureID
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.TemplateFeatureID
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ContentTypesEnabled*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ContentTypesEnabled
+  name: ContentTypesEnabled
+  nameWithType: ListInstance.ContentTypesEnabled
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ContentTypesEnabled
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Hidden*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Hidden
+  name: Hidden
+  nameWithType: ListInstance.Hidden
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Hidden
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableAttachments*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableAttachments
+  name: EnableAttachments
+  nameWithType: ListInstance.EnableAttachments
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableAttachments
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableFolderCreation*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableFolderCreation
+  name: EnableFolderCreation
+  nameWithType: ListInstance.EnableFolderCreation
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.EnableFolderCreation
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.NoCrawl*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.NoCrawl
+  name: NoCrawl
+  nameWithType: ListInstance.NoCrawl
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.NoCrawl
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ListExperience*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ListExperience
+  name: ListExperience
+  nameWithType: ListInstance.ListExperience
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ListExperience
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceListExperience
+  commentId: T:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceListExperience
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103
+  name: ListInstanceListExperience
+  nameWithType: ListInstanceListExperience
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceListExperience
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultDisplayFormUrl*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultDisplayFormUrl
+  name: DefaultDisplayFormUrl
+  nameWithType: ListInstance.DefaultDisplayFormUrl
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultDisplayFormUrl
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultEditFormUrl*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultEditFormUrl
+  name: DefaultEditFormUrl
+  nameWithType: ListInstance.DefaultEditFormUrl
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultEditFormUrl
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultNewFormUrl*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultNewFormUrl
+  name: DefaultNewFormUrl
+  nameWithType: ListInstance.DefaultNewFormUrl
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.DefaultNewFormUrl
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Direction*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Direction
+  name: Direction
+  nameWithType: ListInstance.Direction
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.Direction
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceDirection
+  commentId: T:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceDirection
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103
+  name: ListInstanceDirection
+  nameWithType: ListInstanceDirection
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceDirection
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ImageUrl*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ImageUrl
+  name: ImageUrl
+  nameWithType: ListInstance.ImageUrl
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ImageUrl
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmExpire*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmExpire
+  name: IrmExpire
+  nameWithType: ListInstance.IrmExpire
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmExpire
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmExpireSpecified*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmExpireSpecified
+  name: IrmExpireSpecified
+  nameWithType: ListInstance.IrmExpireSpecified
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmExpireSpecified
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmReject*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmReject
+  name: IrmReject
+  nameWithType: ListInstance.IrmReject
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmReject
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmRejectSpecified*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmRejectSpecified
+  name: IrmRejectSpecified
+  nameWithType: ListInstance.IrmRejectSpecified
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IrmRejectSpecified
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IsApplicationList*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IsApplicationList
+  name: IsApplicationList
+  nameWithType: ListInstance.IsApplicationList
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IsApplicationList
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IsApplicationListSpecified*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IsApplicationListSpecified
+  name: IsApplicationListSpecified
+  nameWithType: ListInstance.IsApplicationListSpecified
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.IsApplicationListSpecified
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ReadSecurity*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ReadSecurity
+  name: ReadSecurity
+  nameWithType: ListInstance.ReadSecurity
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ReadSecurity
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.WriteSecurity*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.WriteSecurity
+  name: WriteSecurity
+  nameWithType: ListInstance.WriteSecurity
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.WriteSecurity
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ValidationFormula*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ValidationFormula
+  name: ValidationFormula
+  nameWithType: ListInstance.ValidationFormula
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ValidationFormula
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ValidationMessage*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ValidationMessage
+  name: ValidationMessage
+  nameWithType: ListInstance.ValidationMessage
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.ValidationMessage
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.TemplateInternalName*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.TemplateInternalName
+  name: TemplateInternalName
+  nameWithType: ListInstance.TemplateInternalName
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance.TemplateInternalName

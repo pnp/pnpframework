@@ -1,0 +1,47 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Modernization.KQL
+  commentId: N:PnP.Framework.Modernization.KQL
+  id: PnP.Framework.Modernization.KQL
+  children:
+  - PnP.Framework.Modernization.KQL.KQLElement
+  - PnP.Framework.Modernization.KQL.KQLFilterType
+  - PnP.Framework.Modernization.KQL.KQLParser
+  - PnP.Framework.Modernization.KQL.KQLPropertyOperator
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Modernization.KQL
+  nameWithType: PnP.Framework.Modernization.KQL
+  fullName: PnP.Framework.Modernization.KQL
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Modernization.KQL.KQLElement
+  commentId: T:PnP.Framework.Modernization.KQL.KQLElement
+  name: KQLElement
+  nameWithType: KQLElement
+  fullName: PnP.Framework.Modernization.KQL.KQLElement
+- uid: PnP.Framework.Modernization.KQL.KQLParser
+  commentId: T:PnP.Framework.Modernization.KQL.KQLParser
+  name: KQLParser
+  nameWithType: KQLParser
+  fullName: PnP.Framework.Modernization.KQL.KQLParser
+- uid: PnP.Framework.Modernization.KQL.KQLPropertyOperator
+  commentId: T:PnP.Framework.Modernization.KQL.KQLPropertyOperator
+  parent: PnP.Framework.Modernization.KQL
+  name: KQLPropertyOperator
+  nameWithType: KQLPropertyOperator
+  fullName: PnP.Framework.Modernization.KQL.KQLPropertyOperator
+- uid: PnP.Framework.Modernization.KQL.KQLFilterType
+  commentId: T:PnP.Framework.Modernization.KQL.KQLFilterType
+  parent: PnP.Framework.Modernization.KQL
+  name: KQLFilterType
+  nameWithType: KQLFilterType
+  fullName: PnP.Framework.Modernization.KQL.KQLFilterType
+- uid: PnP.Framework.Modernization.KQL
+  commentId: N:PnP.Framework.Modernization.KQL
+  name: PnP.Framework.Modernization.KQL
+  nameWithType: PnP.Framework.Modernization.KQL
+  fullName: PnP.Framework.Modernization.KQL

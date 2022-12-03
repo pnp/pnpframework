@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.Configuration.Tenant.Sequence
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.Tenant.Sequence
+  id: PnP.Framework.Provisioning.Model.Configuration.Tenant.Sequence
+  children:
+  - PnP.Framework.Provisioning.Model.Configuration.Tenant.Sequence.ExtractSequenceConfiguration
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Model.Configuration.Tenant.Sequence
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.Tenant.Sequence
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Tenant.Sequence
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Model.Configuration.Tenant.Sequence.ExtractSequenceConfiguration
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.Tenant.Sequence.ExtractSequenceConfiguration
+  parent: PnP.Framework.Provisioning.Model.Configuration.Tenant.Sequence
+  name: ExtractSequenceConfiguration
+  nameWithType: ExtractSequenceConfiguration
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Tenant.Sequence.ExtractSequenceConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.Tenant.Sequence
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.Tenant.Sequence
+  name: PnP.Framework.Provisioning.Model.Configuration.Tenant.Sequence
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.Tenant.Sequence
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Tenant.Sequence

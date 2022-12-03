@@ -1,0 +1,61 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  id: PnP.Framework.Extensions
+  children:
+  - PnP.Framework.Extensions.DictionaryExtensions
+  - PnP.Framework.Extensions.EnumerableExtensions
+  - PnP.Framework.Extensions.ObjectExtensions
+  - PnP.Framework.Extensions.SecureStringExtensions
+  - PnP.Framework.Extensions.StreamExtensions
+  - PnP.Framework.Extensions.TopologicalSort
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Extensions.DictionaryExtensions
+  commentId: T:PnP.Framework.Extensions.DictionaryExtensions
+  name: DictionaryExtensions
+  nameWithType: DictionaryExtensions
+  fullName: PnP.Framework.Extensions.DictionaryExtensions
+- uid: PnP.Framework.Extensions.EnumerableExtensions
+  commentId: T:PnP.Framework.Extensions.EnumerableExtensions
+  parent: PnP.Framework.Extensions
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: PnP.Framework.Extensions.EnumerableExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.SecureStringExtensions
+  commentId: T:PnP.Framework.Extensions.SecureStringExtensions
+  name: SecureStringExtensions
+  nameWithType: SecureStringExtensions
+  fullName: PnP.Framework.Extensions.SecureStringExtensions
+- uid: PnP.Framework.Extensions.StreamExtensions
+  commentId: T:PnP.Framework.Extensions.StreamExtensions
+  parent: PnP.Framework.Extensions
+  name: StreamExtensions
+  nameWithType: StreamExtensions
+  fullName: PnP.Framework.Extensions.StreamExtensions
+- uid: PnP.Framework.Extensions.TopologicalSort
+  commentId: T:PnP.Framework.Extensions.TopologicalSort
+  parent: PnP.Framework.Extensions
+  name: TopologicalSort
+  nameWithType: TopologicalSort
+  fullName: PnP.Framework.Extensions.TopologicalSort
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions

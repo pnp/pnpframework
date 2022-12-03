@@ -1,0 +1,1898 @@
+### YamlMime:ManagedReference
+items:
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions
+  commentId: T:Microsoft.SharePoint.Client.WorkflowExtensions
+  id: WorkflowExtensions
+  parent: Microsoft.SharePoint.Client
+  children:
+  - Microsoft.SharePoint.Client.WorkflowExtensions.AddWorkflowDefinition(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition,System.Boolean)
+  - Microsoft.SharePoint.Client.WorkflowExtensions.AddWorkflowSubscription(Microsoft.SharePoint.Client.List,Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition,System.String,System.Boolean,System.Boolean,System.Boolean,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  - Microsoft.SharePoint.Client.WorkflowExtensions.AddWorkflowSubscription(Microsoft.SharePoint.Client.List,System.String,System.String,System.Boolean,System.Boolean,System.Boolean,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  - Microsoft.SharePoint.Client.WorkflowExtensions.CancelWorkFlow(Microsoft.SharePoint.Client.WorkflowServices.WorkflowInstance)
+  - Microsoft.SharePoint.Client.WorkflowExtensions.Delete(Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition)
+  - Microsoft.SharePoint.Client.WorkflowExtensions.Delete(Microsoft.SharePoint.Client.WorkflowServices.WorkflowSubscription)
+  - Microsoft.SharePoint.Client.WorkflowExtensions.GetInstances(Microsoft.SharePoint.Client.WorkflowServices.WorkflowSubscription)
+  - Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowDefinition(Microsoft.SharePoint.Client.Web,System.Guid)
+  - Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowDefinition(Microsoft.SharePoint.Client.Web,System.String,System.Boolean)
+  - Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowDefinitions(Microsoft.SharePoint.Client.Web,System.Boolean)
+  - Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowInstances(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowInstances(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.ListItem)
+  - Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowSubscription(Microsoft.SharePoint.Client.List,System.String)
+  - Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowSubscription(Microsoft.SharePoint.Client.Web,System.Guid)
+  - Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowSubscription(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowSubscriptions(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.WorkflowExtensions.PublishCustomEvent(Microsoft.SharePoint.Client.WorkflowServices.WorkflowInstance,System.String,System.String)
+  - Microsoft.SharePoint.Client.WorkflowExtensions.ResumeWorkflow(Microsoft.SharePoint.Client.WorkflowServices.WorkflowInstance)
+  - Microsoft.SharePoint.Client.WorkflowExtensions.StartWorkflowInstance(Microsoft.SharePoint.Client.ListItem,System.Guid,System.Collections.Generic.IDictionary{System.String,System.Object})
+  - Microsoft.SharePoint.Client.WorkflowExtensions.StartWorkflowInstance(Microsoft.SharePoint.Client.ListItem,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})
+  - Microsoft.SharePoint.Client.WorkflowExtensions.StartWorkflowInstance(Microsoft.SharePoint.Client.Web,System.Guid,System.Collections.Generic.IDictionary{System.String,System.Object})
+  - Microsoft.SharePoint.Client.WorkflowExtensions.StartWorkflowInstance(Microsoft.SharePoint.Client.Web,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})
+  langs:
+  - csharp
+  - vb
+  name: WorkflowExtensions
+  nameWithType: WorkflowExtensions
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WorkflowExtensions
+    path: ../src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+    startLine: 10
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nClass for workflow extension methods\n"
+  example: []
+  syntax:
+    content: public static class WorkflowExtensions
+    content.vb: Public Module WorkflowExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowSubscription(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowSubscription(Microsoft.SharePoint.Client.Web,System.String)
+  id: GetWorkflowSubscription(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WorkflowExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetWorkflowSubscription(Web, String)
+  nameWithType: WorkflowExtensions.GetWorkflowSubscription(Web, String)
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowSubscription(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetWorkflowSubscription
+    path: ../src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+    startLine: 19
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns a workflow subscription for a site.\n"
+  example: []
+  syntax:
+    content: public static WorkflowSubscription GetWorkflowSubscription(this Web web, string name)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The web to get workflow subscription
+    - id: name
+      type: System.String
+      description: The name of the workflow subscription
+    return:
+      type: Microsoft.SharePoint.Client.WorkflowServices.WorkflowSubscription
+      description: Returns a WorkflowSubscription object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetWorkflowSubscription(web As Web, name As String) As WorkflowSubscription
+  overload: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowSubscription*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowSubscription(Microsoft.SharePoint.Client.Web,System.Guid)
+  commentId: M:Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowSubscription(Microsoft.SharePoint.Client.Web,System.Guid)
+  id: GetWorkflowSubscription(Microsoft.SharePoint.Client.Web,System.Guid)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WorkflowExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetWorkflowSubscription(Web, Guid)
+  nameWithType: WorkflowExtensions.GetWorkflowSubscription(Web, Guid)
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowSubscription(Microsoft.SharePoint.Client.Web, System.Guid)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetWorkflowSubscription
+    path: ../src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+    startLine: 38
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns a workflow subscription\n"
+  example: []
+  syntax:
+    content: public static WorkflowSubscription GetWorkflowSubscription(this Web web, Guid id)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The web to get workflow subscription
+    - id: id
+      type: System.Guid
+      description: The id of the workflow subscription
+    return:
+      type: Microsoft.SharePoint.Client.WorkflowServices.WorkflowSubscription
+      description: Returns a WorkflowSubscription object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetWorkflowSubscription(web As Web, id As Guid) As WorkflowSubscription
+  overload: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowSubscription*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowSubscription(Microsoft.SharePoint.Client.List,System.String)
+  commentId: M:Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowSubscription(Microsoft.SharePoint.Client.List,System.String)
+  id: GetWorkflowSubscription(Microsoft.SharePoint.Client.List,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WorkflowExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetWorkflowSubscription(List, String)
+  nameWithType: WorkflowExtensions.GetWorkflowSubscription(List, String)
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowSubscription(Microsoft.SharePoint.Client.List, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetWorkflowSubscription
+    path: ../src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+    startLine: 54
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns a workflow subscription (associations) for a list\n"
+  example: []
+  syntax:
+    content: public static WorkflowSubscription GetWorkflowSubscription(this List list, string name)
+    parameters:
+    - id: list
+      type: Microsoft.SharePoint.Client.List
+      description: The target list
+    - id: name
+      type: System.String
+      description: Name of workflow subscription to get
+    return:
+      type: Microsoft.SharePoint.Client.WorkflowServices.WorkflowSubscription
+      description: Returns a WorkflowSubscription object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetWorkflowSubscription(list As List, name As String) As WorkflowSubscription
+  overload: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowSubscription*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowSubscriptions(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowSubscriptions(Microsoft.SharePoint.Client.Web)
+  id: GetWorkflowSubscriptions(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WorkflowExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetWorkflowSubscriptions(Web)
+  nameWithType: WorkflowExtensions.GetWorkflowSubscriptions(Web)
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowSubscriptions(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetWorkflowSubscriptions
+    path: ../src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+    startLine: 71
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns all the workflow subscriptions (associations) for the web and the lists of that web\n"
+  example: []
+  syntax:
+    content: public static WorkflowSubscription[] GetWorkflowSubscriptions(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The target Web
+    return:
+      type: Microsoft.SharePoint.Client.WorkflowServices.WorkflowSubscription[]
+      description: Returns all WorkflowSubscriptions
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetWorkflowSubscriptions(web As Web) As WorkflowSubscription()
+  overload: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowSubscriptions*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.AddWorkflowSubscription(Microsoft.SharePoint.Client.List,System.String,System.String,System.Boolean,System.Boolean,System.Boolean,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  commentId: M:Microsoft.SharePoint.Client.WorkflowExtensions.AddWorkflowSubscription(Microsoft.SharePoint.Client.List,System.String,System.String,System.Boolean,System.Boolean,System.Boolean,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  id: AddWorkflowSubscription(Microsoft.SharePoint.Client.List,System.String,System.String,System.Boolean,System.Boolean,System.Boolean,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WorkflowExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddWorkflowSubscription(List, String, String, Boolean, Boolean, Boolean, String, String, Dictionary<String, String>)
+  nameWithType: WorkflowExtensions.AddWorkflowSubscription(List, String, String, Boolean, Boolean, Boolean, String, String, Dictionary<String, String>)
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.AddWorkflowSubscription(Microsoft.SharePoint.Client.List, System.String, System.String, System.Boolean, System.Boolean, System.Boolean, System.String, System.String, System.Collections.Generic.Dictionary<System.String, System.String>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddWorkflowSubscription
+    path: ../src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+    startLine: 100
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdds a workflow subscription\n"
+  example: []
+  syntax:
+    content: public static Guid AddWorkflowSubscription(this List list, string workflowDefinitionName, string subscriptionName, bool startManually, bool startOnCreate, bool startOnChange, string historyListName, string taskListName, Dictionary<string, string> associationValues = null)
+    parameters:
+    - id: list
+      type: Microsoft.SharePoint.Client.List
+      description: The target list
+    - id: workflowDefinitionName
+      type: System.String
+      description: >
+        The name of the workflow definition <seealso>
+
+        <cref>WorkflowExtensions.GetWorkflowDefinition</cref>
+
+        </seealso>
+    - id: subscriptionName
+      type: System.String
+      description: The name of the workflow subscription to create
+    - id: startManually
+      type: System.Boolean
+      description: if True the workflow can be started manually
+    - id: startOnCreate
+      type: System.Boolean
+      description: if True the workflow will be started on item creation
+    - id: startOnChange
+      type: System.Boolean
+      description: if True the workflow will be started on item change
+    - id: historyListName
+      type: System.String
+      description: the name of the history list. If not available it will be created
+    - id: taskListName
+      type: System.String
+      description: the name of the task list. If not available it will be created
+    - id: associationValues
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: the name-value pairs for workflow definition
+    return:
+      type: System.Guid
+      description: Guid of the workflow subscription
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddWorkflowSubscription(list As List, workflowDefinitionName As String, subscriptionName As String, startManually As Boolean, startOnCreate As Boolean, startOnChange As Boolean, historyListName As String, taskListName As String, associationValues As Dictionary(Of String, String) = Nothing) As Guid
+  overload: Microsoft.SharePoint.Client.WorkflowExtensions.AddWorkflowSubscription*
+  nameWithType.vb: WorkflowExtensions.AddWorkflowSubscription(List, String, String, Boolean, Boolean, Boolean, String, String, Dictionary(Of String, String))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.WorkflowExtensions.AddWorkflowSubscription(Microsoft.SharePoint.Client.List, System.String, System.String, System.Boolean, System.Boolean, System.Boolean, System.String, System.String, System.Collections.Generic.Dictionary(Of System.String, System.String))
+  name.vb: AddWorkflowSubscription(List, String, String, Boolean, Boolean, Boolean, String, String, Dictionary(Of String, String))
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.AddWorkflowSubscription(Microsoft.SharePoint.Client.List,Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition,System.String,System.Boolean,System.Boolean,System.Boolean,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  commentId: M:Microsoft.SharePoint.Client.WorkflowExtensions.AddWorkflowSubscription(Microsoft.SharePoint.Client.List,Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition,System.String,System.Boolean,System.Boolean,System.Boolean,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  id: AddWorkflowSubscription(Microsoft.SharePoint.Client.List,Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition,System.String,System.Boolean,System.Boolean,System.Boolean,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WorkflowExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddWorkflowSubscription(List, WorkflowDefinition, String, Boolean, Boolean, Boolean, String, String, Dictionary<String, String>)
+  nameWithType: WorkflowExtensions.AddWorkflowSubscription(List, WorkflowDefinition, String, Boolean, Boolean, Boolean, String, String, Dictionary<String, String>)
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.AddWorkflowSubscription(Microsoft.SharePoint.Client.List, Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition, System.String, System.Boolean, System.Boolean, System.Boolean, System.String, System.String, System.Collections.Generic.Dictionary<System.String, System.String>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddWorkflowSubscription
+    path: ../src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+    startLine: 123
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdds a workflow subscription to a list\n"
+  example: []
+  syntax:
+    content: public static Guid AddWorkflowSubscription(this List list, WorkflowDefinition workflowDefinition, string subscriptionName, bool startManually, bool startOnCreate, bool startOnChange, string historyListName, string taskListName, Dictionary<string, string> associationValues = null)
+    parameters:
+    - id: list
+      type: Microsoft.SharePoint.Client.List
+      description: The target list
+    - id: workflowDefinition
+      type: Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition
+      description: >
+        The workflow definition. <seealso>
+
+        <cref>WorkflowExtensions.GetWorkflowDefinition</cref>
+
+        </seealso>
+    - id: subscriptionName
+      type: System.String
+      description: The name of the workflow subscription to create
+    - id: startManually
+      type: System.Boolean
+      description: if True the workflow can be started manually
+    - id: startOnCreate
+      type: System.Boolean
+      description: if True the workflow will be started on item creation
+    - id: startOnChange
+      type: System.Boolean
+      description: if True the workflow will be started on item change
+    - id: historyListName
+      type: System.String
+      description: the name of the history list. If not available it will be created
+    - id: taskListName
+      type: System.String
+      description: the name of the task list. If not available it will be created
+    - id: associationValues
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: the name-value pairs for workflow definition
+    return:
+      type: System.Guid
+      description: Guid of the workflow subscription
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddWorkflowSubscription(list As List, workflowDefinition As WorkflowDefinition, subscriptionName As String, startManually As Boolean, startOnCreate As Boolean, startOnChange As Boolean, historyListName As String, taskListName As String, associationValues As Dictionary(Of String, String) = Nothing) As Guid
+  overload: Microsoft.SharePoint.Client.WorkflowExtensions.AddWorkflowSubscription*
+  nameWithType.vb: WorkflowExtensions.AddWorkflowSubscription(List, WorkflowDefinition, String, Boolean, Boolean, Boolean, String, String, Dictionary(Of String, String))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.WorkflowExtensions.AddWorkflowSubscription(Microsoft.SharePoint.Client.List, Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition, System.String, System.Boolean, System.Boolean, System.Boolean, System.String, System.String, System.Collections.Generic.Dictionary(Of System.String, System.String))
+  name.vb: AddWorkflowSubscription(List, WorkflowDefinition, String, Boolean, Boolean, Boolean, String, String, Dictionary(Of String, String))
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.Delete(Microsoft.SharePoint.Client.WorkflowServices.WorkflowSubscription)
+  commentId: M:Microsoft.SharePoint.Client.WorkflowExtensions.Delete(Microsoft.SharePoint.Client.WorkflowServices.WorkflowSubscription)
+  id: Delete(Microsoft.SharePoint.Client.WorkflowServices.WorkflowSubscription)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WorkflowExtensions
+  langs:
+  - csharp
+  - vb
+  name: Delete(WorkflowSubscription)
+  nameWithType: WorkflowExtensions.Delete(WorkflowSubscription)
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.Delete(Microsoft.SharePoint.Client.WorkflowServices.WorkflowSubscription)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Delete
+    path: ../src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+    startLine: 186
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDeletes the subscription\n"
+  example: []
+  syntax:
+    content: public static void Delete(this WorkflowSubscription subscription)
+    parameters:
+    - id: subscription
+      type: Microsoft.SharePoint.Client.WorkflowServices.WorkflowSubscription
+      description: the workflow subscription to delete
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub Delete(subscription As WorkflowSubscription)
+  overload: Microsoft.SharePoint.Client.WorkflowExtensions.Delete*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowDefinition(Microsoft.SharePoint.Client.Web,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowDefinition(Microsoft.SharePoint.Client.Web,System.String,System.Boolean)
+  id: GetWorkflowDefinition(Microsoft.SharePoint.Client.Web,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WorkflowExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetWorkflowDefinition(Web, String, Boolean)
+  nameWithType: WorkflowExtensions.GetWorkflowDefinition(Web, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowDefinition(Microsoft.SharePoint.Client.Web, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetWorkflowDefinition
+    path: ../src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+    startLine: 207
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns a workflow definition for a site\n"
+  example: []
+  syntax:
+    content: public static WorkflowDefinition GetWorkflowDefinition(this Web web, string displayName, bool publishedOnly = true)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: the target web
+    - id: displayName
+      type: System.String
+      description: the workflow definition display name, which is displayed to users
+    - id: publishedOnly
+      type: System.Boolean
+      description: Defines whether to include only published definition, or all the definitions
+    return:
+      type: Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition
+      description: Returns a WorkflowDefinition object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetWorkflowDefinition(web As Web, displayName As String, publishedOnly As Boolean = True) As WorkflowDefinition
+  overload: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowDefinition*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowDefinition(Microsoft.SharePoint.Client.Web,System.Guid)
+  commentId: M:Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowDefinition(Microsoft.SharePoint.Client.Web,System.Guid)
+  id: GetWorkflowDefinition(Microsoft.SharePoint.Client.Web,System.Guid)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WorkflowExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetWorkflowDefinition(Web, Guid)
+  nameWithType: WorkflowExtensions.GetWorkflowDefinition(Web, Guid)
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowDefinition(Microsoft.SharePoint.Client.Web, System.Guid)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetWorkflowDefinition
+    path: ../src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+    startLine: 225
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns a workflow definition\n"
+  example: []
+  syntax:
+    content: public static WorkflowDefinition GetWorkflowDefinition(this Web web, Guid id)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: the target web
+    - id: id
+      type: System.Guid
+      description: the id of workflow definition
+    return:
+      type: Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition
+      description: Returns a WorkflowDefinition object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetWorkflowDefinition(web As Web, id As Guid) As WorkflowDefinition
+  overload: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowDefinition*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowDefinitions(Microsoft.SharePoint.Client.Web,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowDefinitions(Microsoft.SharePoint.Client.Web,System.Boolean)
+  id: GetWorkflowDefinitions(Microsoft.SharePoint.Client.Web,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WorkflowExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetWorkflowDefinitions(Web, Boolean)
+  nameWithType: WorkflowExtensions.GetWorkflowDefinitions(Web, Boolean)
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowDefinitions(Microsoft.SharePoint.Client.Web, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetWorkflowDefinitions
+    path: ../src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+    startLine: 242
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns all the workflow definitions\n"
+  example: []
+  syntax:
+    content: public static WorkflowDefinition[] GetWorkflowDefinitions(this Web web, bool publishedOnly)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The target Web
+    - id: publishedOnly
+      type: System.Boolean
+      description: Defines whether to include only published definition, or all the definitions
+    return:
+      type: Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition[]
+      description: Returns all WorkflowDefinitions
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetWorkflowDefinitions(web As Web, publishedOnly As Boolean) As WorkflowDefinition()
+  overload: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowDefinitions*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.AddWorkflowDefinition(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.WorkflowExtensions.AddWorkflowDefinition(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition,System.Boolean)
+  id: AddWorkflowDefinition(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WorkflowExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddWorkflowDefinition(Web, WorkflowDefinition, Boolean)
+  nameWithType: WorkflowExtensions.AddWorkflowDefinition(Web, WorkflowDefinition, Boolean)
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.AddWorkflowDefinition(Microsoft.SharePoint.Client.Web, Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddWorkflowDefinition
+    path: ../src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+    startLine: 261
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdds a workflow definition\n"
+  example: []
+  syntax:
+    content: public static Guid AddWorkflowDefinition(this Web web, WorkflowDefinition definition, bool publish = true)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: the target web
+    - id: definition
+      type: Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition
+      description: the workflow definition to add
+    - id: publish
+      type: System.Boolean
+      description: specify true to publish workflow definition
+    return:
+      type: System.Guid
+      description: ''
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddWorkflowDefinition(web As Web, definition As WorkflowDefinition, publish As Boolean = True) As Guid
+  overload: Microsoft.SharePoint.Client.WorkflowExtensions.AddWorkflowDefinition*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.Delete(Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition)
+  commentId: M:Microsoft.SharePoint.Client.WorkflowExtensions.Delete(Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition)
+  id: Delete(Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WorkflowExtensions
+  langs:
+  - csharp
+  - vb
+  name: Delete(WorkflowDefinition)
+  nameWithType: WorkflowExtensions.Delete(WorkflowDefinition)
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.Delete(Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Delete
+    path: ../src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+    startLine: 300
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDeletes a workflow definition\n"
+  example: []
+  syntax:
+    content: public static void Delete(this WorkflowDefinition definition)
+    parameters:
+    - id: definition
+      type: Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition
+      description: the workflow defition to delete
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub Delete(definition As WorkflowDefinition)
+  overload: Microsoft.SharePoint.Client.WorkflowExtensions.Delete*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowInstances(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowInstances(Microsoft.SharePoint.Client.Web)
+  id: GetWorkflowInstances(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WorkflowExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetWorkflowInstances(Web)
+  nameWithType: WorkflowExtensions.GetWorkflowInstances(Web)
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowInstances(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetWorkflowInstances
+    path: ../src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+    startLine: 316
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns alls workflow instances for a site\n"
+  example: []
+  syntax:
+    content: public static WorkflowInstanceCollection GetWorkflowInstances(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: the target web
+    return:
+      type: Microsoft.SharePoint.Client.WorkflowServices.WorkflowInstanceCollection
+      description: Returns a WorkflowInstanceCollection object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetWorkflowInstances(web As Web) As WorkflowInstanceCollection
+  overload: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowInstances*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowInstances(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.ListItem)
+  commentId: M:Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowInstances(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.ListItem)
+  id: GetWorkflowInstances(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.ListItem)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WorkflowExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetWorkflowInstances(Web, ListItem)
+  nameWithType: WorkflowExtensions.GetWorkflowInstances(Web, ListItem)
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowInstances(Microsoft.SharePoint.Client.Web, Microsoft.SharePoint.Client.ListItem)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetWorkflowInstances
+    path: ../src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+    startLine: 332
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns alls workflow instances for a list item\n"
+  example: []
+  syntax:
+    content: public static WorkflowInstanceCollection GetWorkflowInstances(this Web web, ListItem item)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: the target web
+    - id: item
+      type: Microsoft.SharePoint.Client.ListItem
+      description: the target list item to get workflow instances
+    return:
+      type: Microsoft.SharePoint.Client.WorkflowServices.WorkflowInstanceCollection
+      description: Returns a WorkflowInstanceCollection object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetWorkflowInstances(web As Web, item As ListItem) As WorkflowInstanceCollection
+  overload: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowInstances*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.GetInstances(Microsoft.SharePoint.Client.WorkflowServices.WorkflowSubscription)
+  commentId: M:Microsoft.SharePoint.Client.WorkflowExtensions.GetInstances(Microsoft.SharePoint.Client.WorkflowServices.WorkflowSubscription)
+  id: GetInstances(Microsoft.SharePoint.Client.WorkflowServices.WorkflowSubscription)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WorkflowExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetInstances(WorkflowSubscription)
+  nameWithType: WorkflowExtensions.GetInstances(WorkflowSubscription)
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.GetInstances(Microsoft.SharePoint.Client.WorkflowServices.WorkflowSubscription)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetInstances
+    path: ../src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+    startLine: 347
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns all instances of a workflow for this subscription\n"
+  example: []
+  syntax:
+    content: public static WorkflowInstanceCollection GetInstances(this WorkflowSubscription subscription)
+    parameters:
+    - id: subscription
+      type: Microsoft.SharePoint.Client.WorkflowServices.WorkflowSubscription
+      description: the workflow subscription to get instances
+    return:
+      type: Microsoft.SharePoint.Client.WorkflowServices.WorkflowInstanceCollection
+      description: Returns a WorkflowInstanceCollection object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetInstances(subscription As WorkflowSubscription) As WorkflowInstanceCollection
+  overload: Microsoft.SharePoint.Client.WorkflowExtensions.GetInstances*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.CancelWorkFlow(Microsoft.SharePoint.Client.WorkflowServices.WorkflowInstance)
+  commentId: M:Microsoft.SharePoint.Client.WorkflowExtensions.CancelWorkFlow(Microsoft.SharePoint.Client.WorkflowServices.WorkflowInstance)
+  id: CancelWorkFlow(Microsoft.SharePoint.Client.WorkflowServices.WorkflowInstance)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WorkflowExtensions
+  langs:
+  - csharp
+  - vb
+  name: CancelWorkFlow(WorkflowInstance)
+  nameWithType: WorkflowExtensions.CancelWorkFlow(WorkflowInstance)
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.CancelWorkFlow(Microsoft.SharePoint.Client.WorkflowServices.WorkflowInstance)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CancelWorkFlow
+    path: ../src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+    startLine: 362
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCancels a workflow instance\n"
+  example: []
+  syntax:
+    content: public static void CancelWorkFlow(this WorkflowInstance instance)
+    parameters:
+    - id: instance
+      type: Microsoft.SharePoint.Client.WorkflowServices.WorkflowInstance
+      description: the workflow instance to cancel
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub CancelWorkFlow(instance As WorkflowInstance)
+  overload: Microsoft.SharePoint.Client.WorkflowExtensions.CancelWorkFlow*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.ResumeWorkflow(Microsoft.SharePoint.Client.WorkflowServices.WorkflowInstance)
+  commentId: M:Microsoft.SharePoint.Client.WorkflowExtensions.ResumeWorkflow(Microsoft.SharePoint.Client.WorkflowServices.WorkflowInstance)
+  id: ResumeWorkflow(Microsoft.SharePoint.Client.WorkflowServices.WorkflowInstance)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WorkflowExtensions
+  langs:
+  - csharp
+  - vb
+  name: ResumeWorkflow(WorkflowInstance)
+  nameWithType: WorkflowExtensions.ResumeWorkflow(WorkflowInstance)
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.ResumeWorkflow(Microsoft.SharePoint.Client.WorkflowServices.WorkflowInstance)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ResumeWorkflow
+    path: ../src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+    startLine: 375
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nResumes a workflow\n"
+  example: []
+  syntax:
+    content: public static void ResumeWorkflow(this WorkflowInstance instance)
+    parameters:
+    - id: instance
+      type: Microsoft.SharePoint.Client.WorkflowServices.WorkflowInstance
+      description: the workflow instance to resume
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub ResumeWorkflow(instance As WorkflowInstance)
+  overload: Microsoft.SharePoint.Client.WorkflowExtensions.ResumeWorkflow*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.PublishCustomEvent(Microsoft.SharePoint.Client.WorkflowServices.WorkflowInstance,System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.WorkflowExtensions.PublishCustomEvent(Microsoft.SharePoint.Client.WorkflowServices.WorkflowInstance,System.String,System.String)
+  id: PublishCustomEvent(Microsoft.SharePoint.Client.WorkflowServices.WorkflowInstance,System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WorkflowExtensions
+  langs:
+  - csharp
+  - vb
+  name: PublishCustomEvent(WorkflowInstance, String, String)
+  nameWithType: WorkflowExtensions.PublishCustomEvent(WorkflowInstance, String, String)
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.PublishCustomEvent(Microsoft.SharePoint.Client.WorkflowServices.WorkflowInstance, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PublishCustomEvent
+    path: ../src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+    startLine: 393
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nPublish a custom event to a target workflow instance\n"
+  example: []
+  syntax:
+    content: public static void PublishCustomEvent(this WorkflowInstance instance, string eventName, string payload)
+    parameters:
+    - id: instance
+      type: Microsoft.SharePoint.Client.WorkflowServices.WorkflowInstance
+      description: the workflow instance to publish event
+    - id: eventName
+      type: System.String
+      description: The name of the target event
+    - id: payload
+      type: System.String
+      description: The payload that will be sent to the event
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub PublishCustomEvent(instance As WorkflowInstance, eventName As String, payload As String)
+  overload: Microsoft.SharePoint.Client.WorkflowExtensions.PublishCustomEvent*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.StartWorkflowInstance(Microsoft.SharePoint.Client.Web,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})
+  commentId: M:Microsoft.SharePoint.Client.WorkflowExtensions.StartWorkflowInstance(Microsoft.SharePoint.Client.Web,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})
+  id: StartWorkflowInstance(Microsoft.SharePoint.Client.Web,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WorkflowExtensions
+  langs:
+  - csharp
+  - vb
+  name: StartWorkflowInstance(Web, String, IDictionary<String, Object>)
+  nameWithType: WorkflowExtensions.StartWorkflowInstance(Web, String, IDictionary<String, Object>)
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.StartWorkflowInstance(Microsoft.SharePoint.Client.Web, System.String, System.Collections.Generic.IDictionary<System.String, System.Object>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: StartWorkflowInstance
+    path: ../src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+    startLine: 409
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nStarts a new instance of a workflow definition against the current web site\n"
+  example: []
+  syntax:
+    content: public static Guid StartWorkflowInstance(this Web web, string subscriptionName, IDictionary<string, object> payload)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The target web site
+    - id: subscriptionName
+      type: System.String
+      description: The name of the workflow subscription to start
+    - id: payload
+      type: System.Collections.Generic.IDictionary{System.String,System.Object}
+      description: Any input argument for the workflow instance
+    return:
+      type: System.Guid
+      description: The ID of the just started workflow instance
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function StartWorkflowInstance(web As Web, subscriptionName As String, payload As IDictionary(Of String, Object)) As Guid
+  overload: Microsoft.SharePoint.Client.WorkflowExtensions.StartWorkflowInstance*
+  nameWithType.vb: WorkflowExtensions.StartWorkflowInstance(Web, String, IDictionary(Of String, Object))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.WorkflowExtensions.StartWorkflowInstance(Microsoft.SharePoint.Client.Web, System.String, System.Collections.Generic.IDictionary(Of System.String, System.Object))
+  name.vb: StartWorkflowInstance(Web, String, IDictionary(Of String, Object))
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.StartWorkflowInstance(Microsoft.SharePoint.Client.Web,System.Guid,System.Collections.Generic.IDictionary{System.String,System.Object})
+  commentId: M:Microsoft.SharePoint.Client.WorkflowExtensions.StartWorkflowInstance(Microsoft.SharePoint.Client.Web,System.Guid,System.Collections.Generic.IDictionary{System.String,System.Object})
+  id: StartWorkflowInstance(Microsoft.SharePoint.Client.Web,System.Guid,System.Collections.Generic.IDictionary{System.String,System.Object})
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WorkflowExtensions
+  langs:
+  - csharp
+  - vb
+  name: StartWorkflowInstance(Web, Guid, IDictionary<String, Object>)
+  nameWithType: WorkflowExtensions.StartWorkflowInstance(Web, Guid, IDictionary<String, Object>)
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.StartWorkflowInstance(Microsoft.SharePoint.Client.Web, System.Guid, System.Collections.Generic.IDictionary<System.String, System.Object>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: StartWorkflowInstance
+    path: ../src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+    startLine: 438
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nStarts a new instance of a workflow definition against the current web site\n"
+  example: []
+  syntax:
+    content: public static Guid StartWorkflowInstance(this Web web, Guid subscriptionId, IDictionary<string, object> payload)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The target web site
+    - id: subscriptionId
+      type: System.Guid
+      description: The ID of the workflow subscription to start
+    - id: payload
+      type: System.Collections.Generic.IDictionary{System.String,System.Object}
+      description: Any input argument for the workflow instance
+    return:
+      type: System.Guid
+      description: The ID of the just started workflow instance
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function StartWorkflowInstance(web As Web, subscriptionId As Guid, payload As IDictionary(Of String, Object)) As Guid
+  overload: Microsoft.SharePoint.Client.WorkflowExtensions.StartWorkflowInstance*
+  nameWithType.vb: WorkflowExtensions.StartWorkflowInstance(Web, Guid, IDictionary(Of String, Object))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.WorkflowExtensions.StartWorkflowInstance(Microsoft.SharePoint.Client.Web, System.Guid, System.Collections.Generic.IDictionary(Of System.String, System.Object))
+  name.vb: StartWorkflowInstance(Web, Guid, IDictionary(Of String, Object))
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.StartWorkflowInstance(Microsoft.SharePoint.Client.ListItem,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})
+  commentId: M:Microsoft.SharePoint.Client.WorkflowExtensions.StartWorkflowInstance(Microsoft.SharePoint.Client.ListItem,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})
+  id: StartWorkflowInstance(Microsoft.SharePoint.Client.ListItem,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WorkflowExtensions
+  langs:
+  - csharp
+  - vb
+  name: StartWorkflowInstance(ListItem, String, IDictionary<String, Object>)
+  nameWithType: WorkflowExtensions.StartWorkflowInstance(ListItem, String, IDictionary<String, Object>)
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.StartWorkflowInstance(Microsoft.SharePoint.Client.ListItem, System.String, System.Collections.Generic.IDictionary<System.String, System.Object>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: StartWorkflowInstance
+    path: ../src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+    startLine: 471
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nStarts a new instance of a workflow definition against the current item\n"
+  example: []
+  syntax:
+    content: public static Guid StartWorkflowInstance(this ListItem item, string subscriptionName, IDictionary<string, object> payload)
+    parameters:
+    - id: item
+      type: Microsoft.SharePoint.Client.ListItem
+      description: The target item
+    - id: subscriptionName
+      type: System.String
+      description: The name of the workflow subscription to start
+    - id: payload
+      type: System.Collections.Generic.IDictionary{System.String,System.Object}
+      description: Any input argument for the workflow instance
+    return:
+      type: System.Guid
+      description: The ID of the just started workflow instance
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function StartWorkflowInstance(item As ListItem, subscriptionName As String, payload As IDictionary(Of String, Object)) As Guid
+  overload: Microsoft.SharePoint.Client.WorkflowExtensions.StartWorkflowInstance*
+  nameWithType.vb: WorkflowExtensions.StartWorkflowInstance(ListItem, String, IDictionary(Of String, Object))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.WorkflowExtensions.StartWorkflowInstance(Microsoft.SharePoint.Client.ListItem, System.String, System.Collections.Generic.IDictionary(Of System.String, System.Object))
+  name.vb: StartWorkflowInstance(ListItem, String, IDictionary(Of String, Object))
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.StartWorkflowInstance(Microsoft.SharePoint.Client.ListItem,System.Guid,System.Collections.Generic.IDictionary{System.String,System.Object})
+  commentId: M:Microsoft.SharePoint.Client.WorkflowExtensions.StartWorkflowInstance(Microsoft.SharePoint.Client.ListItem,System.Guid,System.Collections.Generic.IDictionary{System.String,System.Object})
+  id: StartWorkflowInstance(Microsoft.SharePoint.Client.ListItem,System.Guid,System.Collections.Generic.IDictionary{System.String,System.Object})
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WorkflowExtensions
+  langs:
+  - csharp
+  - vb
+  name: StartWorkflowInstance(ListItem, Guid, IDictionary<String, Object>)
+  nameWithType: WorkflowExtensions.StartWorkflowInstance(ListItem, Guid, IDictionary<String, Object>)
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.StartWorkflowInstance(Microsoft.SharePoint.Client.ListItem, System.Guid, System.Collections.Generic.IDictionary<System.String, System.Object>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: StartWorkflowInstance
+    path: ../src/lib/PnP.Framework/Extensions/WorkflowExtensions.cs
+    startLine: 502
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nStarts a new instance of a workflow definition against the current item\n"
+  example: []
+  syntax:
+    content: public static Guid StartWorkflowInstance(this ListItem item, Guid subscriptionId, IDictionary<string, object> payload)
+    parameters:
+    - id: item
+      type: Microsoft.SharePoint.Client.ListItem
+      description: The target item
+    - id: subscriptionId
+      type: System.Guid
+      description: The ID of the workflow subscription to start
+    - id: payload
+      type: System.Collections.Generic.IDictionary{System.String,System.Object}
+      description: Any input argument for the workflow instance
+    return:
+      type: System.Guid
+      description: The ID of the just started workflow instance
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function StartWorkflowInstance(item As ListItem, subscriptionId As Guid, payload As IDictionary(Of String, Object)) As Guid
+  overload: Microsoft.SharePoint.Client.WorkflowExtensions.StartWorkflowInstance*
+  nameWithType.vb: WorkflowExtensions.StartWorkflowInstance(ListItem, Guid, IDictionary(Of String, Object))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.WorkflowExtensions.StartWorkflowInstance(Microsoft.SharePoint.Client.ListItem, System.Guid, System.Collections.Generic.IDictionary(Of System.String, System.Object))
+  name.vb: StartWorkflowInstance(ListItem, Guid, IDictionary(Of String, Object))
+references:
+- uid: Microsoft.SharePoint.Client
+  commentId: N:Microsoft.SharePoint.Client
+  name: Microsoft.SharePoint.Client
+  nameWithType: Microsoft.SharePoint.Client
+  fullName: Microsoft.SharePoint.Client
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowSubscription*
+  commentId: Overload:Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowSubscription
+  name: GetWorkflowSubscription
+  nameWithType: WorkflowExtensions.GetWorkflowSubscription
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowSubscription
+- uid: Microsoft.SharePoint.Client.Web
+  commentId: T:Microsoft.SharePoint.Client.Web
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: Web
+  nameWithType: Web
+  fullName: Microsoft.SharePoint.Client.Web
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Microsoft.SharePoint.Client.WorkflowServices.WorkflowSubscription
+  commentId: T:Microsoft.SharePoint.Client.WorkflowServices.WorkflowSubscription
+  parent: Microsoft.SharePoint.Client.WorkflowServices
+  isExternal: true
+  name: WorkflowSubscription
+  nameWithType: WorkflowSubscription
+  fullName: Microsoft.SharePoint.Client.WorkflowServices.WorkflowSubscription
+- uid: Microsoft.SharePoint.Client.WorkflowServices
+  commentId: N:Microsoft.SharePoint.Client.WorkflowServices
+  isExternal: true
+  name: Microsoft.SharePoint.Client.WorkflowServices
+  nameWithType: Microsoft.SharePoint.Client.WorkflowServices
+  fullName: Microsoft.SharePoint.Client.WorkflowServices
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Microsoft.SharePoint.Client.List
+  commentId: T:Microsoft.SharePoint.Client.List
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: List
+  nameWithType: List
+  fullName: Microsoft.SharePoint.Client.List
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowSubscriptions*
+  commentId: Overload:Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowSubscriptions
+  name: GetWorkflowSubscriptions
+  nameWithType: WorkflowExtensions.GetWorkflowSubscriptions
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowSubscriptions
+- uid: Microsoft.SharePoint.Client.WorkflowServices.WorkflowSubscription[]
+  isExternal: true
+  name: WorkflowSubscription[]
+  nameWithType: WorkflowSubscription[]
+  fullName: Microsoft.SharePoint.Client.WorkflowServices.WorkflowSubscription[]
+  nameWithType.vb: WorkflowSubscription()
+  fullName.vb: Microsoft.SharePoint.Client.WorkflowServices.WorkflowSubscription()
+  name.vb: WorkflowSubscription()
+  spec.csharp:
+  - uid: Microsoft.SharePoint.Client.WorkflowServices.WorkflowSubscription
+    name: WorkflowSubscription
+    nameWithType: WorkflowSubscription
+    fullName: Microsoft.SharePoint.Client.WorkflowServices.WorkflowSubscription
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: Microsoft.SharePoint.Client.WorkflowServices.WorkflowSubscription
+    name: WorkflowSubscription
+    nameWithType: WorkflowSubscription
+    fullName: Microsoft.SharePoint.Client.WorkflowServices.WorkflowSubscription
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.AddWorkflowSubscription*
+  commentId: Overload:Microsoft.SharePoint.Client.WorkflowExtensions.AddWorkflowSubscription
+  name: AddWorkflowSubscription
+  nameWithType: WorkflowExtensions.AddWorkflowSubscription
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.AddWorkflowSubscription
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Collections.Generic.Dictionary{System.String,System.String}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  name: Dictionary<String, String>
+  nameWithType: Dictionary<String, String>
+  fullName: System.Collections.Generic.Dictionary<System.String, System.String>
+  nameWithType.vb: Dictionary(Of String, String)
+  fullName.vb: System.Collections.Generic.Dictionary(Of System.String, System.String)
+  name.vb: Dictionary(Of String, String)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition
+  commentId: T:Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition
+  parent: Microsoft.SharePoint.Client.WorkflowServices
+  isExternal: true
+  name: WorkflowDefinition
+  nameWithType: WorkflowDefinition
+  fullName: Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.Delete*
+  commentId: Overload:Microsoft.SharePoint.Client.WorkflowExtensions.Delete
+  name: Delete
+  nameWithType: WorkflowExtensions.Delete
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.Delete
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowDefinition*
+  commentId: Overload:Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowDefinition
+  name: GetWorkflowDefinition
+  nameWithType: WorkflowExtensions.GetWorkflowDefinition
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowDefinition
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowDefinitions*
+  commentId: Overload:Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowDefinitions
+  name: GetWorkflowDefinitions
+  nameWithType: WorkflowExtensions.GetWorkflowDefinitions
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowDefinitions
+- uid: Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition[]
+  isExternal: true
+  name: WorkflowDefinition[]
+  nameWithType: WorkflowDefinition[]
+  fullName: Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition[]
+  nameWithType.vb: WorkflowDefinition()
+  fullName.vb: Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition()
+  name.vb: WorkflowDefinition()
+  spec.csharp:
+  - uid: Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition
+    name: WorkflowDefinition
+    nameWithType: WorkflowDefinition
+    fullName: Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition
+    name: WorkflowDefinition
+    nameWithType: WorkflowDefinition
+    fullName: Microsoft.SharePoint.Client.WorkflowServices.WorkflowDefinition
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.AddWorkflowDefinition*
+  commentId: Overload:Microsoft.SharePoint.Client.WorkflowExtensions.AddWorkflowDefinition
+  name: AddWorkflowDefinition
+  nameWithType: WorkflowExtensions.AddWorkflowDefinition
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.AddWorkflowDefinition
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowInstances*
+  commentId: Overload:Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowInstances
+  name: GetWorkflowInstances
+  nameWithType: WorkflowExtensions.GetWorkflowInstances
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.GetWorkflowInstances
+- uid: Microsoft.SharePoint.Client.WorkflowServices.WorkflowInstanceCollection
+  commentId: T:Microsoft.SharePoint.Client.WorkflowServices.WorkflowInstanceCollection
+  parent: Microsoft.SharePoint.Client.WorkflowServices
+  isExternal: true
+  name: WorkflowInstanceCollection
+  nameWithType: WorkflowInstanceCollection
+  fullName: Microsoft.SharePoint.Client.WorkflowServices.WorkflowInstanceCollection
+- uid: Microsoft.SharePoint.Client.ListItem
+  commentId: T:Microsoft.SharePoint.Client.ListItem
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: ListItem
+  nameWithType: ListItem
+  fullName: Microsoft.SharePoint.Client.ListItem
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.GetInstances*
+  commentId: Overload:Microsoft.SharePoint.Client.WorkflowExtensions.GetInstances
+  name: GetInstances
+  nameWithType: WorkflowExtensions.GetInstances
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.GetInstances
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.CancelWorkFlow*
+  commentId: Overload:Microsoft.SharePoint.Client.WorkflowExtensions.CancelWorkFlow
+  name: CancelWorkFlow
+  nameWithType: WorkflowExtensions.CancelWorkFlow
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.CancelWorkFlow
+- uid: Microsoft.SharePoint.Client.WorkflowServices.WorkflowInstance
+  commentId: T:Microsoft.SharePoint.Client.WorkflowServices.WorkflowInstance
+  parent: Microsoft.SharePoint.Client.WorkflowServices
+  isExternal: true
+  name: WorkflowInstance
+  nameWithType: WorkflowInstance
+  fullName: Microsoft.SharePoint.Client.WorkflowServices.WorkflowInstance
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.ResumeWorkflow*
+  commentId: Overload:Microsoft.SharePoint.Client.WorkflowExtensions.ResumeWorkflow
+  name: ResumeWorkflow
+  nameWithType: WorkflowExtensions.ResumeWorkflow
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.ResumeWorkflow
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.PublishCustomEvent*
+  commentId: Overload:Microsoft.SharePoint.Client.WorkflowExtensions.PublishCustomEvent
+  name: PublishCustomEvent
+  nameWithType: WorkflowExtensions.PublishCustomEvent
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.PublishCustomEvent
+- uid: Microsoft.SharePoint.Client.WorkflowExtensions.StartWorkflowInstance*
+  commentId: Overload:Microsoft.SharePoint.Client.WorkflowExtensions.StartWorkflowInstance
+  name: StartWorkflowInstance
+  nameWithType: WorkflowExtensions.StartWorkflowInstance
+  fullName: Microsoft.SharePoint.Client.WorkflowExtensions.StartWorkflowInstance
+- uid: System.Collections.Generic.IDictionary{System.String,System.Object}
+  commentId: T:System.Collections.Generic.IDictionary{System.String,System.Object}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IDictionary`2
+  name: IDictionary<String, Object>
+  nameWithType: IDictionary<String, Object>
+  fullName: System.Collections.Generic.IDictionary<System.String, System.Object>
+  nameWithType.vb: IDictionary(Of String, Object)
+  fullName.vb: System.Collections.Generic.IDictionary(Of System.String, System.Object)
+  name.vb: IDictionary(Of String, Object)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    nameWithType: IDictionary
+    fullName: System.Collections.Generic.IDictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    nameWithType: IDictionary
+    fullName: System.Collections.Generic.IDictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.IDictionary`2
+  commentId: T:System.Collections.Generic.IDictionary`2
+  isExternal: true
+  name: IDictionary<TKey, TValue>
+  nameWithType: IDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IDictionary<TKey, TValue>
+  nameWithType.vb: IDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IDictionary(Of TKey, TValue)
+  name.vb: IDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    nameWithType: IDictionary
+    fullName: System.Collections.Generic.IDictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    nameWithType: IDictionary
+    fullName: System.Collections.Generic.IDictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )

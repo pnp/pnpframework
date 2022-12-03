@@ -1,0 +1,2434 @@
+### YamlMime:ManagedReference
+items:
+- uid: Microsoft.SharePoint.Client.BrandingExtensions
+  commentId: T:Microsoft.SharePoint.Client.BrandingExtensions
+  id: BrandingExtensions
+  parent: Microsoft.SharePoint.Client
+  children:
+  - Microsoft.SharePoint.Client.BrandingExtensions.AllowAllPageLayouts(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.BrandingExtensions.ClearAvailableWebTemplates(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.BrandingExtensions.ComposedLookExists(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.BrandingExtensions.CreateComposedLookByName(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Boolean)
+  - Microsoft.SharePoint.Client.BrandingExtensions.CreateComposedLookByUrl(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Boolean)
+  - Microsoft.SharePoint.Client.BrandingExtensions.DeployHtmlPageLayout(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String)
+  - Microsoft.SharePoint.Client.BrandingExtensions.DeployMasterPage(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String,System.String)
+  - Microsoft.SharePoint.Client.BrandingExtensions.DeployPageLayout(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String)
+  - Microsoft.SharePoint.Client.BrandingExtensions.DisableReponsiveUI(Microsoft.SharePoint.Client.Site)
+  - Microsoft.SharePoint.Client.BrandingExtensions.DisableReponsiveUI(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.BrandingExtensions.DisableResponsiveUI(Microsoft.SharePoint.Client.Site)
+  - Microsoft.SharePoint.Client.BrandingExtensions.DisableResponsiveUI(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.BrandingExtensions.GetComposedLook(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.BrandingExtensions.GetCurrentComposedLook(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.BrandingExtensions.GetPageLayoutListItemByName(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.BrandingExtensions.GetRelativeUrlForMasterByName(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.BrandingExtensions.SetAvailablePageLayouts(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Web,System.Collections.Generic.IEnumerable{System.String})
+  - Microsoft.SharePoint.Client.BrandingExtensions.SetAvailableWebTemplates(Microsoft.SharePoint.Client.Web,System.Collections.Generic.List{PnP.Framework.Entities.WebTemplateEntity})
+  - Microsoft.SharePoint.Client.BrandingExtensions.SetComposedLookByUrl(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)
+  - Microsoft.SharePoint.Client.BrandingExtensions.SetCustomMasterPageByName(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.BrandingExtensions.SetCustomMasterPageByUrl(Microsoft.SharePoint.Client.Web,System.String,System.Boolean,System.Boolean)
+  - Microsoft.SharePoint.Client.BrandingExtensions.SetDefaultPageLayoutForSite(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.BrandingExtensions.SetHomePage(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPageByName(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPageByUrl(Microsoft.SharePoint.Client.Web,System.String,System.Boolean,System.Boolean)
+  - Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPagesByName(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  - Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPagesByUrl(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  - Microsoft.SharePoint.Client.BrandingExtensions.SetSiteToInheritPageLayouts(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.BrandingExtensions.SetThemeByUrl(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.Boolean,System.Boolean)
+  - Microsoft.SharePoint.Client.BrandingExtensions.UploadThemeFile(Microsoft.SharePoint.Client.Web,System.String,System.IO.Stream,System.String)
+  - Microsoft.SharePoint.Client.BrandingExtensions.UploadThemeFile(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  - Microsoft.SharePoint.Client.BrandingExtensions.UploadThemeFile(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String)
+  langs:
+  - csharp
+  - vb
+  name: BrandingExtensions
+  nameWithType: BrandingExtensions
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/Deprecated/BrandingExtensions.deprecated.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: BrandingExtensions
+    path: ../src/lib/PnP.Framework/Extensions/Deprecated/BrandingExtensions.deprecated.cs
+    startLine: 8
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nClass that deals with branding features\n"
+  example: []
+  syntax:
+    content: public static class BrandingExtensions
+    content.vb: Public Module BrandingExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.ComposedLookExists(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.ComposedLookExists(Microsoft.SharePoint.Client.Web,System.String)
+  id: ComposedLookExists(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: ComposedLookExists(Web, String)
+  nameWithType: BrandingExtensions.ComposedLookExists(Web, String)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.ComposedLookExists(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ComposedLookExists
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 47
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nChecks if a composed look exists.\n"
+  example: []
+  syntax:
+    content: public static bool ComposedLookExists(this Web web, string composedLookName)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to check
+    - id: composedLookName
+      type: System.String
+      description: Name of the composed look
+    return:
+      type: System.Boolean
+      description: true if it exists; otherwise false
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ComposedLookExists(web As Web, composedLookName As String) As Boolean
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.ComposedLookExists*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.CreateComposedLookByName(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.CreateComposedLookByName(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Boolean)
+  id: CreateComposedLookByName(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: CreateComposedLookByName(Web, String, String, String, String, String, Int32, Boolean)
+  nameWithType: BrandingExtensions.CreateComposedLookByName(Web, String, String, String, String, String, Int32, Boolean)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.CreateComposedLookByName(Microsoft.SharePoint.Client.Web, System.String, System.String, System.String, System.String, System.String, System.Int32, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateComposedLookByName
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 64
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCreates (or updates) a composed look in the web site; usually this is done in the root site of the collection.\n"
+  example: []
+  syntax:
+    content: public static void CreateComposedLookByName(this Web web, string lookName, string paletteFileName, string fontFileName, string backgroundFileName, string masterFileName, int displayOrder = 1, bool replaceContent = true)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to create the composed look in
+    - id: lookName
+      type: System.String
+      description: Name of the theme
+    - id: paletteFileName
+      type: System.String
+      description: File name of the palette file in the theme catalog of the site collection; path component ignored.
+    - id: fontFileName
+      type: System.String
+      description: File name of the font file in the theme catalog of the site collection; path component ignored.
+    - id: backgroundFileName
+      type: System.String
+      description: File name of the background image file in the theme catalog of the site collection; path component ignored.
+    - id: masterFileName
+      type: System.String
+      description: File name of the master page in the mastepage catalog of the web site; path component ignored.
+    - id: displayOrder
+      type: System.Int32
+      description: Display order of the composed look
+    - id: replaceContent
+      type: System.Boolean
+      description: Replace composed look if it already exists (default true)
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub CreateComposedLookByName(web As Web, lookName As String, paletteFileName As String, fontFileName As String, backgroundFileName As String, masterFileName As String, displayOrder As Integer = 1, replaceContent As Boolean = True)
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.CreateComposedLookByName*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.CreateComposedLookByUrl(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.CreateComposedLookByUrl(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Boolean)
+  id: CreateComposedLookByUrl(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: CreateComposedLookByUrl(Web, String, String, String, String, String, Int32, Boolean)
+  nameWithType: BrandingExtensions.CreateComposedLookByUrl(Web, String, String, String, String, String, Int32, Boolean)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.CreateComposedLookByUrl(Microsoft.SharePoint.Client.Web, System.String, System.String, System.String, System.String, System.String, System.Int32, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateComposedLookByUrl
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 105
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCreates (or updates) a composed look in the web site; usually this is done in the root site of the collection.\n"
+  example: []
+  syntax:
+    content: public static void CreateComposedLookByUrl(this Web web, string lookName, string paletteServerRelativeUrl, string fontServerRelativeUrl, string backgroundServerRelativeUrl, string masterServerRelativeUrl, int displayOrder = 1, bool replaceContent = true)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to create the composed look in
+    - id: lookName
+      type: System.String
+      description: Name of the theme
+    - id: paletteServerRelativeUrl
+      type: System.String
+      description: URL of the palette file, usually in the theme catalog of the site collection
+    - id: fontServerRelativeUrl
+      type: System.String
+      description: URL of the font file, usually in the theme catalog of the site collection
+    - id: backgroundServerRelativeUrl
+      type: System.String
+      description: URL of the background image file, usually in /_layouts/15/images
+    - id: masterServerRelativeUrl
+      type: System.String
+      description: URL of the master page, usually in the masterpage catalog of the web site
+    - id: displayOrder
+      type: System.Int32
+      description: Display order of the composed look
+    - id: replaceContent
+      type: System.Boolean
+      description: Replace composed look if it already exists (default true)
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub CreateComposedLookByUrl(web As Web, lookName As String, paletteServerRelativeUrl As String, fontServerRelativeUrl As String, backgroundServerRelativeUrl As String, masterServerRelativeUrl As String, displayOrder As Integer = 1, replaceContent As Boolean = True)
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.CreateComposedLookByUrl*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetComposedLookByUrl(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.SetComposedLookByUrl(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)
+  id: SetComposedLookByUrl(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetComposedLookByUrl(Web, String, String, String, String, String, Boolean, Boolean)
+  nameWithType: BrandingExtensions.SetComposedLookByUrl(Web, String, String, String, String, String, Boolean, Boolean)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetComposedLookByUrl(Microsoft.SharePoint.Client.Web, System.String, System.String, System.String, System.String, System.String, System.Boolean, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetComposedLookByUrl
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 176
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nRetrieves the named composed look, overrides with specified palette, font, background and master page, and then recursively sets the specified values.\n"
+  example: []
+  syntax:
+    content: public static void SetComposedLookByUrl(this Web web, string lookName, string paletteServerRelativeUrl = null, string fontServerRelativeUrl = null, string backgroundServerRelativeUrl = null, string masterServerRelativeUrl = null, bool resetSubsitesToInherit = false, bool updateRootOnly = true)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to apply composed look to
+    - id: lookName
+      type: System.String
+      description: Name of the composed look to apply; null will apply the override values only
+    - id: paletteServerRelativeUrl
+      type: System.String
+      description: Override palette file URL to use
+    - id: fontServerRelativeUrl
+      type: System.String
+      description: Override font file URL to use
+    - id: backgroundServerRelativeUrl
+      type: System.String
+      description: Override background image file URL to use
+    - id: masterServerRelativeUrl
+      type: System.String
+      description: Override master page file URL to use
+    - id: resetSubsitesToInherit
+      type: System.Boolean
+      description: false (default) to apply to currently inheriting subsites only; true to force all subsites to inherit
+    - id: updateRootOnly
+      type: System.Boolean
+      description: false to apply to subsites; true (default) to only apply to specified site
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetComposedLookByUrl(web As Web, lookName As String, paletteServerRelativeUrl As String = Nothing, fontServerRelativeUrl As String = Nothing, backgroundServerRelativeUrl As String = Nothing, masterServerRelativeUrl As String = Nothing, resetSubsitesToInherit As Boolean = False, updateRootOnly As Boolean = True)
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.SetComposedLookByUrl*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetThemeByUrl(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.Boolean,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.SetThemeByUrl(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.Boolean,System.Boolean)
+  id: SetThemeByUrl(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.Boolean,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetThemeByUrl(Web, String, String, String, Boolean, Boolean)
+  nameWithType: BrandingExtensions.SetThemeByUrl(Web, String, String, String, Boolean, Boolean)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetThemeByUrl(Microsoft.SharePoint.Client.Web, System.String, System.String, System.String, System.Boolean, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetThemeByUrl
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 275
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nRecursively applies the specified palette, font, and background image.\n"
+  example: []
+  syntax:
+    content: public static void SetThemeByUrl(this Web web, string paletteServerRelativeUrl, string fontServerRelativeUrl, string backgroundServerRelativeUrl, bool resetSubsitesToInherit = false, bool updateRootOnly = false)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to apply to
+    - id: paletteServerRelativeUrl
+      type: System.String
+      description: URL of palette file to apply
+    - id: fontServerRelativeUrl
+      type: System.String
+      description: URL of font file to apply
+    - id: backgroundServerRelativeUrl
+      type: System.String
+      description: URL of background image to apply
+    - id: resetSubsitesToInherit
+      type: System.Boolean
+      description: false (default) to apply to currently inheriting subsites only; true to force all subsites to inherit
+    - id: updateRootOnly
+      type: System.Boolean
+      description: false (default) to apply to subsites; true to only apply to specified site
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetThemeByUrl(web As Web, paletteServerRelativeUrl As String, fontServerRelativeUrl As String, backgroundServerRelativeUrl As String, resetSubsitesToInherit As Boolean = False, updateRootOnly As Boolean = False)
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.SetThemeByUrl*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.UploadThemeFile(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.UploadThemeFile(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  id: UploadThemeFile(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: UploadThemeFile(Web, String, String)
+  nameWithType: BrandingExtensions.UploadThemeFile(Web, String, String)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.UploadThemeFile(Microsoft.SharePoint.Client.Web, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UploadThemeFile
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 342
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nUploads the specified file (usually an spcolor or spfont file) to the web site themes gallery \n(usually only exists in the root web of a site collection).\n"
+  example: []
+  syntax:
+    content: public static File UploadThemeFile(this Web web, string localFilePath, string themeFolderVersion = "15")
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web site to upload to
+    - id: localFilePath
+      type: System.String
+      description: Location of the file to be uploaded
+    - id: themeFolderVersion
+      type: System.String
+      description: Leaf folder name to upload to; default is &quot;15&quot;
+    return:
+      type: Microsoft.SharePoint.Client.File
+      description: The uploaded file, with at least the ServerRelativeUrl property available
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function UploadThemeFile(web As Web, localFilePath As String, themeFolderVersion As String = "15") As File
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.UploadThemeFile*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.UploadThemeFile(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.UploadThemeFile(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String)
+  id: UploadThemeFile(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: UploadThemeFile(Web, String, String, String)
+  nameWithType: BrandingExtensions.UploadThemeFile(Web, String, String, String)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.UploadThemeFile(Microsoft.SharePoint.Client.Web, System.String, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UploadThemeFile
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 363
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nUploads the specified file (usually an spcolor or spfont file) to the web site themes gallery \n(usually only exists in the root web of a site collection).\n"
+  example: []
+  syntax:
+    content: public static File UploadThemeFile(this Web web, string fileName, string localFilePath, string themeFolderVersion = "15")
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web site to upload to
+    - id: fileName
+      type: System.String
+      description: Name of the file to upload
+    - id: localFilePath
+      type: System.String
+      description: Location of the file to be uploaded
+    - id: themeFolderVersion
+      type: System.String
+      description: Leaf folder name to upload to; default is &quot;15&quot;
+    return:
+      type: Microsoft.SharePoint.Client.File
+      description: The uploaded file, with at least the ServerRelativeUrl property available
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function UploadThemeFile(web As Web, fileName As String, localFilePath As String, themeFolderVersion As String = "15") As File
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.UploadThemeFile*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.UploadThemeFile(Microsoft.SharePoint.Client.Web,System.String,System.IO.Stream,System.String)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.UploadThemeFile(Microsoft.SharePoint.Client.Web,System.String,System.IO.Stream,System.String)
+  id: UploadThemeFile(Microsoft.SharePoint.Client.Web,System.String,System.IO.Stream,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: UploadThemeFile(Web, String, Stream, String)
+  nameWithType: BrandingExtensions.UploadThemeFile(Web, String, Stream, String)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.UploadThemeFile(Microsoft.SharePoint.Client.Web, System.String, System.IO.Stream, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UploadThemeFile
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 386
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nUploads the specified file (usually an spcolor or spfont file) to the web site themes gallery \n(usually only exists in the root web of a site collection).\n"
+  example: []
+  syntax:
+    content: public static File UploadThemeFile(this Web web, string fileName, Stream localStream, string themeFolderVersion = "15")
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web site to upload to
+    - id: fileName
+      type: System.String
+      description: Name of the file to upload
+    - id: localStream
+      type: System.IO.Stream
+      description: Stream containing the contents of the file
+    - id: themeFolderVersion
+      type: System.String
+      description: Leaf folder name to upload to; default is &quot;15&quot;
+    return:
+      type: Microsoft.SharePoint.Client.File
+      description: The uploaded file, with at least the ServerRelativeUrl property available
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function UploadThemeFile(web As Web, fileName As String, localStream As Stream, themeFolderVersion As String = "15") As File
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.UploadThemeFile*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.DeployPageLayout(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.DeployPageLayout(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String)
+  id: DeployPageLayout(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: DeployPageLayout(Web, String, String, String, String, String)
+  nameWithType: BrandingExtensions.DeployPageLayout(Web, String, String, String, String, String)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.DeployPageLayout(Microsoft.SharePoint.Client.Web, System.String, System.String, System.String, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeployPageLayout
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 412
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCan be used to deploy page layouts to master page gallery. \n<remarks>Should be only used with root web of site collection where publishing features are enabled.</remarks>\n"
+  example: []
+  syntax:
+    content: public static void DeployPageLayout(this Web web, string sourceFilePath, string title, string description, string associatedContentTypeID, string folderHierarchy = "")
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web as the root site of the publishing site collection
+    - id: sourceFilePath
+      type: System.String
+      description: Full path to the file which will be uploaded
+    - id: title
+      type: System.String
+      description: Title for the page layout
+    - id: description
+      type: System.String
+      description: Description for the page layout
+    - id: associatedContentTypeID
+      type: System.String
+      description: Associated content type ID
+    - id: folderHierarchy
+      type: System.String
+      description: Folder hierarchy where the page layouts will be deployed
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub DeployPageLayout(web As Web, sourceFilePath As String, title As String, description As String, associatedContentTypeID As String, folderHierarchy As String = "")
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.DeployPageLayout*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.DeployHtmlPageLayout(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.DeployHtmlPageLayout(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String)
+  id: DeployHtmlPageLayout(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: DeployHtmlPageLayout(Web, String, String, String, String, String)
+  nameWithType: BrandingExtensions.DeployHtmlPageLayout(Web, String, String, String, String, String)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.DeployHtmlPageLayout(Microsoft.SharePoint.Client.Web, System.String, System.String, System.String, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeployHtmlPageLayout
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 427
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCan be used to deploy html page layouts to master page gallery. \n<remarks>Should be only used with root web of site collection where publishing features are enabled.</remarks>\n"
+  example: []
+  syntax:
+    content: public static void DeployHtmlPageLayout(this Web web, string sourceFilePath, string title, string description, string associatedContentTypeID, string folderHierarchy = "")
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web as the root site of the publishing site collection
+    - id: sourceFilePath
+      type: System.String
+      description: Full path to the file which will be uploaded
+    - id: title
+      type: System.String
+      description: Title for the page layout
+    - id: description
+      type: System.String
+      description: Description for the page layout
+    - id: associatedContentTypeID
+      type: System.String
+      description: Associated content type ID
+    - id: folderHierarchy
+      type: System.String
+      description: Folder hierarchy where the html page layouts will be deployed
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub DeployHtmlPageLayout(web As Web, sourceFilePath As String, title As String, description As String, associatedContentTypeID As String, folderHierarchy As String = "")
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.DeployHtmlPageLayout*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.DeployMasterPage(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.DeployMasterPage(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String,System.String)
+  id: DeployMasterPage(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: DeployMasterPage(Web, String, String, String, String, String, String)
+  nameWithType: BrandingExtensions.DeployMasterPage(Web, String, String, String, String, String, String)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.DeployMasterPage(Microsoft.SharePoint.Client.Web, System.String, System.String, System.String, System.String, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeployMasterPage
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 527
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDeploys a new masterpage\n"
+  example: []
+  syntax:
+    content: public static File DeployMasterPage(this Web web, string sourceFilePath, string title, string description, string uiVersion = "15", string defaultCSSFile = "", string folderPath = "")
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The web to process
+    - id: sourceFilePath
+      type: System.String
+      description: The path to the source file
+    - id: title
+      type: System.String
+      description: The title of the masterpage
+    - id: description
+      type: System.String
+      description: The description of the masterpage
+    - id: uiVersion
+      type: System.String
+      description: UIVersion of the masterpage
+    - id: defaultCSSFile
+      type: System.String
+      description: DefaultCSSFile of the masterpage
+    - id: folderPath
+      type: System.String
+      description: FolderPath of the masterpage
+    return:
+      type: Microsoft.SharePoint.Client.File
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function DeployMasterPage(web As Web, sourceFilePath As String, title As String, description As String, uiVersion As String = "15", defaultCSSFile As String = "", folderPath As String = "") As File
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.DeployMasterPage*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPagesByName(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPagesByName(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  id: SetMasterPagesByName(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetMasterPagesByName(Web, String, String)
+  nameWithType: BrandingExtensions.SetMasterPagesByName(Web, String, String)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPagesByName(Microsoft.SharePoint.Client.Web, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetMasterPagesByName
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 604
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCan be used to set master page and custom master page in single command\n"
+  example: []
+  syntax:
+    content: public static void SetMasterPagesByName(this Web web, string masterPageName, string customMasterPageName)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Current web
+    - id: masterPageName
+      type: System.String
+      description: Name of the master page
+    - id: customMasterPageName
+      type: System.String
+      description: Name of the custom master page
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetMasterPagesByName(web As Web, masterPageName As String, customMasterPageName As String)
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPagesByName*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when masterPageName or customMasterPageName is a zero-length string or contains only white space
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when masterPageName or customMasterPageName is null
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPagesByUrl(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPagesByUrl(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  id: SetMasterPagesByUrl(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetMasterPagesByUrl(Web, String, String)
+  nameWithType: BrandingExtensions.SetMasterPagesByUrl(Web, String, String)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPagesByUrl(Microsoft.SharePoint.Client.Web, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetMasterPagesByUrl
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 632
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCan be used to set master page and custom master page in single command\n"
+  example: []
+  syntax:
+    content: public static void SetMasterPagesByUrl(this Web web, string masterPageUrl, string customMasterPageUrl)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Current web
+    - id: masterPageUrl
+      type: System.String
+      description: Url of the master page
+    - id: customMasterPageUrl
+      type: System.String
+      description: Url of the custom master page
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetMasterPagesByUrl(web As Web, masterPageUrl As String, customMasterPageUrl As String)
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPagesByUrl*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when masterPageName or customMasterPageName is a zero-length string or contains only white space
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when masterPageName or customMasterPageName is null
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPageByName(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPageByName(Microsoft.SharePoint.Client.Web,System.String)
+  id: SetMasterPageByName(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetMasterPageByName(Web, String)
+  nameWithType: BrandingExtensions.SetMasterPageByName(Web, String)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPageByName(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetMasterPageByName
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 658
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nMaster page is set by using master page name. Master page is set from the current web.\n"
+  example: []
+  syntax:
+    content: public static void SetMasterPageByName(this Web web, string masterPageName)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Current web
+    - id: masterPageName
+      type: System.String
+      description: Name of the master page. Path is resolved from this.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetMasterPageByName(web As Web, masterPageName As String)
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPageByName*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when masterPageName is a zero-length string or contains only white space
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when masterPageName is null
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetCustomMasterPageByName(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.SetCustomMasterPageByName(Microsoft.SharePoint.Client.Web,System.String)
+  id: SetCustomMasterPageByName(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetCustomMasterPageByName(Web, String)
+  nameWithType: BrandingExtensions.SetCustomMasterPageByName(Web, String)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetCustomMasterPageByName(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetCustomMasterPageByName
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 681
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nMaster page is set by using master page name. Master page is set from the current web.\n"
+  example: []
+  syntax:
+    content: public static void SetCustomMasterPageByName(this Web web, string masterPageName)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Current web
+    - id: masterPageName
+      type: System.String
+      description: Name of the master page. Path is resolved from this.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetCustomMasterPageByName(web As Web, masterPageName As String)
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.SetCustomMasterPageByName*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when masterPageName is a zero-length string or contains only white space
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when masterPageName is null
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.GetRelativeUrlForMasterByName(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.GetRelativeUrlForMasterByName(Microsoft.SharePoint.Client.Web,System.String)
+  id: GetRelativeUrlForMasterByName(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetRelativeUrlForMasterByName(Web, String)
+  nameWithType: BrandingExtensions.GetRelativeUrlForMasterByName(Web, String)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.GetRelativeUrlForMasterByName(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetRelativeUrlForMasterByName
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 703
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns the relative URL for a masterpage\n"
+  example: []
+  syntax:
+    content: public static string GetRelativeUrlForMasterByName(this Web web, string masterPageName)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to process
+    - id: masterPageName
+      type: System.String
+      description: The name of the masterpage, e.g. &apos;default&apos; or &apos;seattle&apos;
+    return:
+      type: System.String
+      description: ''
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetRelativeUrlForMasterByName(web As Web, masterPageName As String) As String
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.GetRelativeUrlForMasterByName*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.GetCurrentComposedLook(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.GetCurrentComposedLook(Microsoft.SharePoint.Client.Web)
+  id: GetCurrentComposedLook(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetCurrentComposedLook(Web)
+  nameWithType: BrandingExtensions.GetCurrentComposedLook(Web)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.GetCurrentComposedLook(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetCurrentComposedLook
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 745
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns the current theme of a web\n"
+  example: []
+  syntax:
+    content: public static ThemeEntity GetCurrentComposedLook(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to check
+    return:
+      type: PnP.Framework.Entities.ThemeEntity
+      description: Entity with attributes of current composed look, or null if none
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetCurrentComposedLook(web As Web) As ThemeEntity
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.GetCurrentComposedLook*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.GetComposedLook(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.GetComposedLook(Microsoft.SharePoint.Client.Web,System.String)
+  id: GetComposedLook(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetComposedLook(Web, String)
+  nameWithType: BrandingExtensions.GetComposedLook(Web, String)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.GetComposedLook(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetComposedLook
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 757
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns the named composed look from the web gallery\n"
+  example: []
+  syntax:
+    content: public static ThemeEntity GetComposedLook(this Web web, string composedLookName)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to check
+    - id: composedLookName
+      type: System.String
+      description: Name of the composed look to retrieve
+    return:
+      type: PnP.Framework.Entities.ThemeEntity
+      description: Entity with the attributes of the composed look, or null if the composed look does not exists or cannot be determined
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetComposedLook(web As Web, composedLookName As String) As ThemeEntity
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.GetComposedLook*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.GetPageLayoutListItemByName(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.GetPageLayoutListItemByName(Microsoft.SharePoint.Client.Web,System.String)
+  id: GetPageLayoutListItemByName(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetPageLayoutListItemByName(Web, String)
+  nameWithType: BrandingExtensions.GetPageLayoutListItemByName(Web, String)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.GetPageLayoutListItemByName(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetPageLayoutListItemByName
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 1148
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets a page layout from the master page catalog. Can be called with paramter as &quot;pagelayout.aspx&quot; or as full path like &quot;_catalog/masterpage/pagelayout.aspx&quot;\n"
+  example: []
+  syntax:
+    content: public static ListItem GetPageLayoutListItemByName(this Web web, string pageLayoutName)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: root web
+    - id: pageLayoutName
+      type: System.String
+      description: name of the page layout to retrieve
+    return:
+      type: Microsoft.SharePoint.Client.ListItem
+      description: ListItem holding the page layout, null if not found
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetPageLayoutListItemByName(web As Web, pageLayoutName As String) As ListItem
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.GetPageLayoutListItemByName*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPageByUrl(Microsoft.SharePoint.Client.Web,System.String,System.Boolean,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPageByUrl(Microsoft.SharePoint.Client.Web,System.String,System.Boolean,System.Boolean)
+  id: SetMasterPageByUrl(Microsoft.SharePoint.Client.Web,System.String,System.Boolean,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetMasterPageByUrl(Web, String, Boolean, Boolean)
+  nameWithType: BrandingExtensions.SetMasterPageByUrl(Web, String, Boolean, Boolean)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPageByUrl(Microsoft.SharePoint.Client.Web, System.String, System.Boolean, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetMasterPageByUrl
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 1195
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nSet master page by using given URL as parameter. Suitable for example in cases where you want sub sites to reference root site master page gallery. This is typical with publishing sites.\n"
+  example: []
+  syntax:
+    content: public static void SetMasterPageByUrl(this Web web, string masterPageServerRelativeUrl, bool resetSubsitesToInherit = false, bool updateRootOnly = false)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Context web
+    - id: masterPageServerRelativeUrl
+      type: System.String
+      description: URL to the master page.
+    - id: resetSubsitesToInherit
+      type: System.Boolean
+      description: false (default) to apply to currently inheriting subsites only; true to force all subsites to inherit
+    - id: updateRootOnly
+      type: System.Boolean
+      description: false (default) to apply to subsites; true to only apply to specified site
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetMasterPageByUrl(web As Web, masterPageServerRelativeUrl As String, resetSubsitesToInherit As Boolean = False, updateRootOnly As Boolean = False)
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPageByUrl*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetCustomMasterPageByUrl(Microsoft.SharePoint.Client.Web,System.String,System.Boolean,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.SetCustomMasterPageByUrl(Microsoft.SharePoint.Client.Web,System.String,System.Boolean,System.Boolean)
+  id: SetCustomMasterPageByUrl(Microsoft.SharePoint.Client.Web,System.String,System.Boolean,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetCustomMasterPageByUrl(Web, String, Boolean, Boolean)
+  nameWithType: BrandingExtensions.SetCustomMasterPageByUrl(Web, String, Boolean, Boolean)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetCustomMasterPageByUrl(Microsoft.SharePoint.Client.Web, System.String, System.Boolean, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetCustomMasterPageByUrl
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 1254
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nSet Custom master page by using given URL as parameter. Suitable for example in cases where you want sub sites to reference root site master page gallery. This is typical with publishing sites.\n"
+  example: []
+  syntax:
+    content: public static void SetCustomMasterPageByUrl(this Web web, string masterPageServerRelativeUrl, bool resetSubsitesToInherit = false, bool updateRootOnly = false)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Context web
+    - id: masterPageServerRelativeUrl
+      type: System.String
+      description: URL to the master page.
+    - id: resetSubsitesToInherit
+      type: System.Boolean
+      description: false (default) to apply to currently inheriting subsites only; true to force all subsites to inherit
+    - id: updateRootOnly
+      type: System.Boolean
+      description: false (default) to apply to subsites; true to only apply to specified site
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetCustomMasterPageByUrl(web As Web, masterPageServerRelativeUrl As String, resetSubsitesToInherit As Boolean = False, updateRootOnly As Boolean = False)
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.SetCustomMasterPageByUrl*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetDefaultPageLayoutForSite(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.SetDefaultPageLayoutForSite(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Web,System.String)
+  id: SetDefaultPageLayoutForSite(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetDefaultPageLayoutForSite(Web, Web, String)
+  nameWithType: BrandingExtensions.SetDefaultPageLayoutForSite(Web, Web, String)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetDefaultPageLayoutForSite(Microsoft.SharePoint.Client.Web, Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetDefaultPageLayoutForSite
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 1313
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nSets specific page layout the default page layout for the particular site\n"
+  example: []
+  syntax:
+    content: public static void SetDefaultPageLayoutForSite(this Web web, Web rootWeb, string pageLayoutName)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to process
+    - id: rootWeb
+      type: Microsoft.SharePoint.Client.Web
+      description: The rootWeb
+    - id: pageLayoutName
+      type: System.String
+      description: Name of the page layout
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetDefaultPageLayoutForSite(web As Web, rootWeb As Web, pageLayoutName As String)
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.SetDefaultPageLayoutForSite*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetSiteToInheritPageLayouts(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.SetSiteToInheritPageLayouts(Microsoft.SharePoint.Client.Web)
+  id: SetSiteToInheritPageLayouts(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetSiteToInheritPageLayouts(Web)
+  nameWithType: BrandingExtensions.SetSiteToInheritPageLayouts(Web)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetSiteToInheritPageLayouts(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetSiteToInheritPageLayouts
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 1384
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCan be used to set the site to inherit the default page layout option from parent. Cannot be used for root site of the site collection\n"
+  example: []
+  syntax:
+    content: public static void SetSiteToInheritPageLayouts(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate against
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetSiteToInheritPageLayouts(web As Web)
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.SetSiteToInheritPageLayouts*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.AllowAllPageLayouts(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.AllowAllPageLayouts(Microsoft.SharePoint.Client.Web)
+  id: AllowAllPageLayouts(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: AllowAllPageLayouts(Web)
+  nameWithType: BrandingExtensions.AllowAllPageLayouts(Web)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.AllowAllPageLayouts(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AllowAllPageLayouts
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 1393
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAllow the web to use all available page layouts\n"
+  example: []
+  syntax:
+    content: public static void AllowAllPageLayouts(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate against
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub AllowAllPageLayouts(web As Web)
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.AllowAllPageLayouts*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetAvailablePageLayouts(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Web,System.Collections.Generic.IEnumerable{System.String})
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.SetAvailablePageLayouts(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Web,System.Collections.Generic.IEnumerable{System.String})
+  id: SetAvailablePageLayouts(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Web,System.Collections.Generic.IEnumerable{System.String})
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetAvailablePageLayouts(Web, Web, IEnumerable<String>)
+  nameWithType: BrandingExtensions.SetAvailablePageLayouts(Web, Web, IEnumerable<String>)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetAvailablePageLayouts(Microsoft.SharePoint.Client.Web, Microsoft.SharePoint.Client.Web, System.Collections.Generic.IEnumerable<System.String>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetAvailablePageLayouts
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 1404
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nSets the available page layouts\n"
+  example: []
+  syntax:
+    content: public static void SetAvailablePageLayouts(this Web web, Web rootWeb, IEnumerable<string> pageLayouts)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The web to process
+    - id: rootWeb
+      type: Microsoft.SharePoint.Client.Web
+      description: The rootweb
+    - id: pageLayouts
+      type: System.Collections.Generic.IEnumerable{System.String}
+      description: The page layouts to make available
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetAvailablePageLayouts(web As Web, rootWeb As Web, pageLayouts As IEnumerable(Of String))
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.SetAvailablePageLayouts*
+  nameWithType.vb: BrandingExtensions.SetAvailablePageLayouts(Web, Web, IEnumerable(Of String))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.BrandingExtensions.SetAvailablePageLayouts(Microsoft.SharePoint.Client.Web, Microsoft.SharePoint.Client.Web, System.Collections.Generic.IEnumerable(Of System.String))
+  name.vb: SetAvailablePageLayouts(Web, Web, IEnumerable(Of String))
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetAvailableWebTemplates(Microsoft.SharePoint.Client.Web,System.Collections.Generic.List{PnP.Framework.Entities.WebTemplateEntity})
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.SetAvailableWebTemplates(Microsoft.SharePoint.Client.Web,System.Collections.Generic.List{PnP.Framework.Entities.WebTemplateEntity})
+  id: SetAvailableWebTemplates(Microsoft.SharePoint.Client.Web,System.Collections.Generic.List{PnP.Framework.Entities.WebTemplateEntity})
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetAvailableWebTemplates(Web, List<WebTemplateEntity>)
+  nameWithType: BrandingExtensions.SetAvailableWebTemplates(Web, List<WebTemplateEntity>)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetAvailableWebTemplates(Microsoft.SharePoint.Client.Web, System.Collections.Generic.List<PnP.Framework.Entities.WebTemplateEntity>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetAvailableWebTemplates
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 1422
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDefines which templates are available for subsite creation\n"
+  example: []
+  syntax:
+    content: public static void SetAvailableWebTemplates(this Web web, List<WebTemplateEntity> availableTemplates)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate against
+    - id: availableTemplates
+      type: System.Collections.Generic.List{PnP.Framework.Entities.WebTemplateEntity}
+      description: List of <xref href="PnP.Framework.Entities.WebTemplateEntity" data-throw-if-not-resolved="false"></xref> objects that define the templates that are allowed
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetAvailableWebTemplates(web As Web, availableTemplates As List(Of WebTemplateEntity))
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.SetAvailableWebTemplates*
+  nameWithType.vb: BrandingExtensions.SetAvailableWebTemplates(Web, List(Of WebTemplateEntity))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.BrandingExtensions.SetAvailableWebTemplates(Microsoft.SharePoint.Client.Web, System.Collections.Generic.List(Of PnP.Framework.Entities.WebTemplateEntity))
+  name.vb: SetAvailableWebTemplates(Web, List(Of WebTemplateEntity))
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.ClearAvailableWebTemplates(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.ClearAvailableWebTemplates(Microsoft.SharePoint.Client.Web)
+  id: ClearAvailableWebTemplates(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: ClearAvailableWebTemplates(Web)
+  nameWithType: BrandingExtensions.ClearAvailableWebTemplates(Web)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.ClearAvailableWebTemplates(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ClearAvailableWebTemplates
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 1464
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCan be used to remote filters from the available web template\n"
+  example: []
+  syntax:
+    content: public static void ClearAvailableWebTemplates(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to process
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub ClearAvailableWebTemplates(web As Web)
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.ClearAvailableWebTemplates*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetHomePage(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.SetHomePage(Microsoft.SharePoint.Client.Web,System.String)
+  id: SetHomePage(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetHomePage(Web, String)
+  nameWithType: BrandingExtensions.SetHomePage(Web, String)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetHomePage(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetHomePage
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 1493
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nSets the web home page\n"
+  example: []
+  syntax:
+    content: public static void SetHomePage(this Web web, string rootFolderRelativePath)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The Web to process
+    - id: rootFolderRelativePath
+      type: System.String
+      description: The path relative to the root folder of the site, e.g. SitePages/Home.aspx
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetHomePage(web As Web, rootFolderRelativePath As String)
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.SetHomePage*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.DisableResponsiveUI(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.DisableResponsiveUI(Microsoft.SharePoint.Client.Web)
+  id: DisableResponsiveUI(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: DisableResponsiveUI(Web)
+  nameWithType: BrandingExtensions.DisableResponsiveUI(Web)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.DisableResponsiveUI(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DisableResponsiveUI
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 1529
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDisables the Responsive UI on a Classic SharePoint Web\n"
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Responsive UI is not applicable anymore to SharePoint Online")]
+
+      public static void DisableResponsiveUI(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The Web to disable the Responsive UI on
+    content.vb: >-
+      <Obsolete("Responsive UI is not applicable anymore to SharePoint Online")>
+
+      <ExtensionAttribute>
+
+      Public Shared Sub DisableResponsiveUI(web As Web)
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.DisableResponsiveUI*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Responsive UI is not applicable anymore to SharePoint Online
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.DisableResponsiveUI(Microsoft.SharePoint.Client.Site)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.DisableResponsiveUI(Microsoft.SharePoint.Client.Site)
+  id: DisableResponsiveUI(Microsoft.SharePoint.Client.Site)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: DisableResponsiveUI(Site)
+  nameWithType: BrandingExtensions.DisableResponsiveUI(Site)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.DisableResponsiveUI(Microsoft.SharePoint.Client.Site)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DisableResponsiveUI
+    path: ../src/lib/PnP.Framework/Extensions/BrandingExtensions.cs
+    startLine: 1546
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDisables the Responsive UI on a Classic SharePoint Site\n"
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Responsive UI is not applicable anymore to SharePoint Online")]
+
+      public static void DisableResponsiveUI(this Site site)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: The Site to disable the Responsive UI on
+    content.vb: >-
+      <Obsolete("Responsive UI is not applicable anymore to SharePoint Online")>
+
+      <ExtensionAttribute>
+
+      Public Shared Sub DisableResponsiveUI(site As Site)
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.DisableResponsiveUI*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Responsive UI is not applicable anymore to SharePoint Online
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.DisableReponsiveUI(Microsoft.SharePoint.Client.Site)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.DisableReponsiveUI(Microsoft.SharePoint.Client.Site)
+  id: DisableReponsiveUI(Microsoft.SharePoint.Client.Site)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: DisableReponsiveUI(Site)
+  nameWithType: BrandingExtensions.DisableReponsiveUI(Site)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.DisableReponsiveUI(Microsoft.SharePoint.Client.Site)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/Deprecated/BrandingExtensions.deprecated.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DisableReponsiveUI
+    path: ../src/lib/PnP.Framework/Extensions/Deprecated/BrandingExtensions.deprecated.cs
+    startLine: 17
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDisables the Responsive UI on a Classic SharePoint Site\n"
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Use DisableResponsiveUI(site)")]
+
+      public static void DisableReponsiveUI(this Site site)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: The Site to disable the Responsive UI on
+    content.vb: >-
+      <Obsolete("Use DisableResponsiveUI(site)")>
+
+      <ExtensionAttribute>
+
+      Public Shared Sub DisableReponsiveUI(site As Site)
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.DisableReponsiveUI*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use DisableResponsiveUI(site)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.DisableReponsiveUI(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.DisableReponsiveUI(Microsoft.SharePoint.Client.Web)
+  id: DisableReponsiveUI(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.BrandingExtensions
+  langs:
+  - csharp
+  - vb
+  name: DisableReponsiveUI(Web)
+  nameWithType: BrandingExtensions.DisableReponsiveUI(Web)
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.DisableReponsiveUI(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/Deprecated/BrandingExtensions.deprecated.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DisableReponsiveUI
+    path: ../src/lib/PnP.Framework/Extensions/Deprecated/BrandingExtensions.deprecated.cs
+    startLine: 34
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDisables the Responsive UI on a Classic SharePoint Web\n"
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Use DisableResponsiveUI(web)")]
+
+      public static void DisableReponsiveUI(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The Web to disable the Responsive UI on
+    content.vb: >-
+      <Obsolete("Use DisableResponsiveUI(web)")>
+
+      <ExtensionAttribute>
+
+      Public Shared Sub DisableReponsiveUI(web As Web)
+  overload: Microsoft.SharePoint.Client.BrandingExtensions.DisableReponsiveUI*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use DisableResponsiveUI(web)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: Microsoft.SharePoint.Client
+  commentId: N:Microsoft.SharePoint.Client
+  name: Microsoft.SharePoint.Client
+  nameWithType: Microsoft.SharePoint.Client
+  fullName: Microsoft.SharePoint.Client
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.ComposedLookExists*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.ComposedLookExists
+  name: ComposedLookExists
+  nameWithType: BrandingExtensions.ComposedLookExists
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.ComposedLookExists
+- uid: Microsoft.SharePoint.Client.Web
+  commentId: T:Microsoft.SharePoint.Client.Web
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: Web
+  nameWithType: Web
+  fullName: Microsoft.SharePoint.Client.Web
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.CreateComposedLookByName*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.CreateComposedLookByName
+  name: CreateComposedLookByName
+  nameWithType: BrandingExtensions.CreateComposedLookByName
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.CreateComposedLookByName
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.CreateComposedLookByUrl*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.CreateComposedLookByUrl
+  name: CreateComposedLookByUrl
+  nameWithType: BrandingExtensions.CreateComposedLookByUrl
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.CreateComposedLookByUrl
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetComposedLookByUrl*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.SetComposedLookByUrl
+  name: SetComposedLookByUrl
+  nameWithType: BrandingExtensions.SetComposedLookByUrl
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetComposedLookByUrl
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetThemeByUrl*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.SetThemeByUrl
+  name: SetThemeByUrl
+  nameWithType: BrandingExtensions.SetThemeByUrl
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetThemeByUrl
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.UploadThemeFile*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.UploadThemeFile
+  name: UploadThemeFile
+  nameWithType: BrandingExtensions.UploadThemeFile
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.UploadThemeFile
+- uid: Microsoft.SharePoint.Client.File
+  commentId: T:Microsoft.SharePoint.Client.File
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: File
+  nameWithType: File
+  fullName: Microsoft.SharePoint.Client.File
+- uid: System.IO.Stream
+  commentId: T:System.IO.Stream
+  parent: System.IO
+  isExternal: true
+  name: Stream
+  nameWithType: Stream
+  fullName: System.IO.Stream
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.DeployPageLayout*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.DeployPageLayout
+  name: DeployPageLayout
+  nameWithType: BrandingExtensions.DeployPageLayout
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.DeployPageLayout
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.DeployHtmlPageLayout*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.DeployHtmlPageLayout
+  name: DeployHtmlPageLayout
+  nameWithType: BrandingExtensions.DeployHtmlPageLayout
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.DeployHtmlPageLayout
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.DeployMasterPage*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.DeployMasterPage
+  name: DeployMasterPage
+  nameWithType: BrandingExtensions.DeployMasterPage
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.DeployMasterPage
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPagesByName*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPagesByName
+  name: SetMasterPagesByName
+  nameWithType: BrandingExtensions.SetMasterPagesByName
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPagesByName
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPagesByUrl*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPagesByUrl
+  name: SetMasterPagesByUrl
+  nameWithType: BrandingExtensions.SetMasterPagesByUrl
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPagesByUrl
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPageByName*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPageByName
+  name: SetMasterPageByName
+  nameWithType: BrandingExtensions.SetMasterPageByName
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPageByName
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetCustomMasterPageByName*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.SetCustomMasterPageByName
+  name: SetCustomMasterPageByName
+  nameWithType: BrandingExtensions.SetCustomMasterPageByName
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetCustomMasterPageByName
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.GetRelativeUrlForMasterByName*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.GetRelativeUrlForMasterByName
+  name: GetRelativeUrlForMasterByName
+  nameWithType: BrandingExtensions.GetRelativeUrlForMasterByName
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.GetRelativeUrlForMasterByName
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.GetCurrentComposedLook*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.GetCurrentComposedLook
+  name: GetCurrentComposedLook
+  nameWithType: BrandingExtensions.GetCurrentComposedLook
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.GetCurrentComposedLook
+- uid: PnP.Framework.Entities.ThemeEntity
+  commentId: T:PnP.Framework.Entities.ThemeEntity
+  parent: PnP.Framework.Entities
+  name: ThemeEntity
+  nameWithType: ThemeEntity
+  fullName: PnP.Framework.Entities.ThemeEntity
+- uid: PnP.Framework.Entities
+  commentId: N:PnP.Framework.Entities
+  name: PnP.Framework.Entities
+  nameWithType: PnP.Framework.Entities
+  fullName: PnP.Framework.Entities
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.GetComposedLook*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.GetComposedLook
+  name: GetComposedLook
+  nameWithType: BrandingExtensions.GetComposedLook
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.GetComposedLook
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.GetPageLayoutListItemByName*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.GetPageLayoutListItemByName
+  name: GetPageLayoutListItemByName
+  nameWithType: BrandingExtensions.GetPageLayoutListItemByName
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.GetPageLayoutListItemByName
+- uid: Microsoft.SharePoint.Client.ListItem
+  commentId: T:Microsoft.SharePoint.Client.ListItem
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: ListItem
+  nameWithType: ListItem
+  fullName: Microsoft.SharePoint.Client.ListItem
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPageByUrl*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPageByUrl
+  name: SetMasterPageByUrl
+  nameWithType: BrandingExtensions.SetMasterPageByUrl
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPageByUrl
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetCustomMasterPageByUrl*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.SetCustomMasterPageByUrl
+  name: SetCustomMasterPageByUrl
+  nameWithType: BrandingExtensions.SetCustomMasterPageByUrl
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetCustomMasterPageByUrl
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetDefaultPageLayoutForSite*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.SetDefaultPageLayoutForSite
+  name: SetDefaultPageLayoutForSite
+  nameWithType: BrandingExtensions.SetDefaultPageLayoutForSite
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetDefaultPageLayoutForSite
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetSiteToInheritPageLayouts*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.SetSiteToInheritPageLayouts
+  name: SetSiteToInheritPageLayouts
+  nameWithType: BrandingExtensions.SetSiteToInheritPageLayouts
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetSiteToInheritPageLayouts
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.AllowAllPageLayouts*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.AllowAllPageLayouts
+  name: AllowAllPageLayouts
+  nameWithType: BrandingExtensions.AllowAllPageLayouts
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.AllowAllPageLayouts
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetAvailablePageLayouts*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.SetAvailablePageLayouts
+  name: SetAvailablePageLayouts
+  nameWithType: BrandingExtensions.SetAvailablePageLayouts
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetAvailablePageLayouts
+- uid: System.Collections.Generic.IEnumerable{System.String}
+  commentId: T:System.Collections.Generic.IEnumerable{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<String>
+  nameWithType: IEnumerable<String>
+  fullName: System.Collections.Generic.IEnumerable<System.String>
+  nameWithType.vb: IEnumerable(Of String)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.String)
+  name.vb: IEnumerable(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: PnP.Framework.Entities.WebTemplateEntity
+  commentId: T:PnP.Framework.Entities.WebTemplateEntity
+  name: WebTemplateEntity
+  nameWithType: WebTemplateEntity
+  fullName: PnP.Framework.Entities.WebTemplateEntity
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetAvailableWebTemplates*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.SetAvailableWebTemplates
+  name: SetAvailableWebTemplates
+  nameWithType: BrandingExtensions.SetAvailableWebTemplates
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetAvailableWebTemplates
+- uid: System.Collections.Generic.List{PnP.Framework.Entities.WebTemplateEntity}
+  commentId: T:System.Collections.Generic.List{PnP.Framework.Entities.WebTemplateEntity}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<WebTemplateEntity>
+  nameWithType: List<WebTemplateEntity>
+  fullName: System.Collections.Generic.List<PnP.Framework.Entities.WebTemplateEntity>
+  nameWithType.vb: List(Of WebTemplateEntity)
+  fullName.vb: System.Collections.Generic.List(Of PnP.Framework.Entities.WebTemplateEntity)
+  name.vb: List(Of WebTemplateEntity)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Entities.WebTemplateEntity
+    name: WebTemplateEntity
+    nameWithType: WebTemplateEntity
+    fullName: PnP.Framework.Entities.WebTemplateEntity
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Entities.WebTemplateEntity
+    name: WebTemplateEntity
+    nameWithType: WebTemplateEntity
+    fullName: PnP.Framework.Entities.WebTemplateEntity
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.ClearAvailableWebTemplates*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.ClearAvailableWebTemplates
+  name: ClearAvailableWebTemplates
+  nameWithType: BrandingExtensions.ClearAvailableWebTemplates
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.ClearAvailableWebTemplates
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetHomePage*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.SetHomePage
+  name: SetHomePage
+  nameWithType: BrandingExtensions.SetHomePage
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetHomePage
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.DisableResponsiveUI*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.DisableResponsiveUI
+  name: DisableResponsiveUI
+  nameWithType: BrandingExtensions.DisableResponsiveUI
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.DisableResponsiveUI
+- uid: Microsoft.SharePoint.Client.Site
+  commentId: T:Microsoft.SharePoint.Client.Site
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: Site
+  nameWithType: Site
+  fullName: Microsoft.SharePoint.Client.Site
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.DisableReponsiveUI*
+  commentId: Overload:Microsoft.SharePoint.Client.BrandingExtensions.DisableReponsiveUI
+  name: DisableReponsiveUI
+  nameWithType: BrandingExtensions.DisableReponsiveUI
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.DisableReponsiveUI

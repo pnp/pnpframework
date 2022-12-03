@@ -1,0 +1,53 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Utilities.REST
+  commentId: N:PnP.Framework.Utilities.REST
+  id: PnP.Framework.Utilities.REST
+  children:
+  - PnP.Framework.Utilities.REST.ResultCollection`1
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Utilities.REST
+  nameWithType: PnP.Framework.Utilities.REST
+  fullName: PnP.Framework.Utilities.REST
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Utilities.REST.ResultCollection`1
+  commentId: T:PnP.Framework.Utilities.REST.ResultCollection`1
+  name: ResultCollection<T>
+  nameWithType: ResultCollection<T>
+  fullName: PnP.Framework.Utilities.REST.ResultCollection<T>
+  nameWithType.vb: ResultCollection(Of T)
+  fullName.vb: PnP.Framework.Utilities.REST.ResultCollection(Of T)
+  name.vb: ResultCollection(Of T)
+  spec.csharp:
+  - uid: PnP.Framework.Utilities.REST.ResultCollection`1
+    name: ResultCollection
+    nameWithType: ResultCollection
+    fullName: PnP.Framework.Utilities.REST.ResultCollection
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: PnP.Framework.Utilities.REST.ResultCollection`1
+    name: ResultCollection
+    nameWithType: ResultCollection
+    fullName: PnP.Framework.Utilities.REST.ResultCollection
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )

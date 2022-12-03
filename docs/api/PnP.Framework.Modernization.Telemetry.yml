@@ -1,0 +1,68 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Modernization.Telemetry
+  commentId: N:PnP.Framework.Modernization.Telemetry
+  id: PnP.Framework.Modernization.Telemetry
+  children:
+  - PnP.Framework.Modernization.Telemetry.ILogObserver
+  - PnP.Framework.Modernization.Telemetry.LogEntry
+  - PnP.Framework.Modernization.Telemetry.LogEntrySignificance
+  - PnP.Framework.Modernization.Telemetry.LogHelpers
+  - PnP.Framework.Modernization.Telemetry.LogLevel
+  - PnP.Framework.Modernization.Telemetry.LogStrings
+  - PnP.Framework.Modernization.Telemetry.PageTelemetry
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Modernization.Telemetry
+  nameWithType: PnP.Framework.Modernization.Telemetry
+  fullName: PnP.Framework.Modernization.Telemetry
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Modernization.Telemetry.ILogObserver
+  commentId: T:PnP.Framework.Modernization.Telemetry.ILogObserver
+  parent: PnP.Framework.Modernization.Telemetry
+  name: ILogObserver
+  nameWithType: ILogObserver
+  fullName: PnP.Framework.Modernization.Telemetry.ILogObserver
+- uid: PnP.Framework.Modernization.Telemetry.LogEntry
+  commentId: T:PnP.Framework.Modernization.Telemetry.LogEntry
+  parent: PnP.Framework.Modernization.Telemetry
+  name: LogEntry
+  nameWithType: LogEntry
+  fullName: PnP.Framework.Modernization.Telemetry.LogEntry
+- uid: PnP.Framework.Modernization.Telemetry.LogEntrySignificance
+  commentId: T:PnP.Framework.Modernization.Telemetry.LogEntrySignificance
+  parent: PnP.Framework.Modernization.Telemetry
+  name: LogEntrySignificance
+  nameWithType: LogEntrySignificance
+  fullName: PnP.Framework.Modernization.Telemetry.LogEntrySignificance
+- uid: PnP.Framework.Modernization.Telemetry.LogHelpers
+  commentId: T:PnP.Framework.Modernization.Telemetry.LogHelpers
+  parent: PnP.Framework.Modernization.Telemetry
+  name: LogHelpers
+  nameWithType: LogHelpers
+  fullName: PnP.Framework.Modernization.Telemetry.LogHelpers
+- uid: PnP.Framework.Modernization.Telemetry.LogLevel
+  commentId: T:PnP.Framework.Modernization.Telemetry.LogLevel
+  parent: PnP.Framework.Modernization.Telemetry
+  name: LogLevel
+  nameWithType: LogLevel
+  fullName: PnP.Framework.Modernization.Telemetry.LogLevel
+- uid: PnP.Framework.Modernization.Telemetry.LogStrings
+  commentId: T:PnP.Framework.Modernization.Telemetry.LogStrings
+  name: LogStrings
+  nameWithType: LogStrings
+  fullName: PnP.Framework.Modernization.Telemetry.LogStrings
+- uid: PnP.Framework.Modernization.Telemetry.PageTelemetry
+  commentId: T:PnP.Framework.Modernization.Telemetry.PageTelemetry
+  name: PageTelemetry
+  nameWithType: PageTelemetry
+  fullName: PnP.Framework.Modernization.Telemetry.PageTelemetry
+- uid: PnP.Framework.Modernization.Telemetry
+  commentId: N:PnP.Framework.Modernization.Telemetry
+  name: PnP.Framework.Modernization.Telemetry
+  nameWithType: PnP.Framework.Modernization.Telemetry
+  fullName: PnP.Framework.Modernization.Telemetry

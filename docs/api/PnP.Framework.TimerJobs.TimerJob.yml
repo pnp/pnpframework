@@ -1,0 +1,3174 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.TimerJobs.TimerJob
+  commentId: T:PnP.Framework.TimerJobs.TimerJob
+  id: TimerJob
+  parent: PnP.Framework.TimerJobs
+  children:
+  - PnP.Framework.TimerJobs.TimerJob.#ctor(System.String)
+  - PnP.Framework.TimerJobs.TimerJob.#ctor(System.String,System.String)
+  - PnP.Framework.TimerJobs.TimerJob.#ctor(System.String,System.String,System.String)
+  - PnP.Framework.TimerJobs.TimerJob.AddSite(System.String)
+  - PnP.Framework.TimerJobs.TimerJob.AuthenticationType
+  - PnP.Framework.TimerJobs.TimerJob.AzureEnvironment
+  - PnP.Framework.TimerJobs.TimerJob.ClearAddedSites
+  - PnP.Framework.TimerJobs.TimerJob.Clone(PnP.Framework.TimerJobs.TimerJob)
+  - PnP.Framework.TimerJobs.TimerJob.ConfigurationData
+  - PnP.Framework.TimerJobs.TimerJob.CreateClientContext(System.String)
+  - PnP.Framework.TimerJobs.TimerJob.ExcludeOD4B
+  - PnP.Framework.TimerJobs.TimerJob.ExpandSubSites
+  - PnP.Framework.TimerJobs.TimerJob.GetAllSubSites(Microsoft.SharePoint.Client.Site)
+  - PnP.Framework.TimerJobs.TimerJob.IsRunning
+  - PnP.Framework.TimerJobs.TimerJob.ManageState
+  - PnP.Framework.TimerJobs.TimerJob.MaximumThreads
+  - PnP.Framework.TimerJobs.TimerJob.Name
+  - PnP.Framework.TimerJobs.TimerJob.Realm
+  - PnP.Framework.TimerJobs.TimerJob.ResolveAddedSites(System.Collections.Generic.List{System.String})
+  - PnP.Framework.TimerJobs.TimerJob.Run
+  - PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String)
+  - PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String,System.Security.SecureString)
+  - PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String,System.Security.SecureString,System.String)
+  - PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String,System.String)
+  - PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String,System.String,System.String)
+  - PnP.Framework.TimerJobs.TimerJob.SharePointVersion
+  - PnP.Framework.TimerJobs.TimerJob.TenantAdminSite
+  - PnP.Framework.TimerJobs.TimerJob.TimerJobRun
+  - PnP.Framework.TimerJobs.TimerJob.UpdateAddedSites(System.Collections.Generic.List{System.String})
+  - PnP.Framework.TimerJobs.TimerJob.UseAccessTokenAuthentication(System.String)
+  - PnP.Framework.TimerJobs.TimerJob.UseAppOnlyAuthentication(System.String,System.String)
+  - PnP.Framework.TimerJobs.TimerJob.UseAppOnlyAuthentication(System.String,System.String,System.Security.SecureString,System.String)
+  - PnP.Framework.TimerJobs.TimerJob.UseAppOnlyAuthentication(System.String,System.String,System.String,System.String)
+  - PnP.Framework.TimerJobs.TimerJob.UseAzureADAppOnlyAuthentication(System.String,System.String,System.Security.Cryptography.X509Certificates.X509Certificate2)
+  - PnP.Framework.TimerJobs.TimerJob.UseAzureADAppOnlyAuthentication(System.String,System.String,System.String,System.Security.SecureString)
+  - PnP.Framework.TimerJobs.TimerJob.UseAzureADAppOnlyAuthentication(System.String,System.String,System.String,System.String)
+  - PnP.Framework.TimerJobs.TimerJob.UseOffice365Authentication(System.String)
+  - PnP.Framework.TimerJobs.TimerJob.UseOffice365Authentication(System.String,System.Security.SecureString)
+  - PnP.Framework.TimerJobs.TimerJob.UseOffice365Authentication(System.String,System.String)
+  - PnP.Framework.TimerJobs.TimerJob.UseThreading
+  - PnP.Framework.TimerJobs.TimerJob.Version
+  langs:
+  - csharp
+  - vb
+  name: TimerJob
+  nameWithType: TimerJob
+  fullName: PnP.Framework.TimerJobs.TimerJob
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TimerJob
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 31
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nAbstract base class for creating timer jobs (background processes) that operate against SharePoint sites. These timer jobs \nare designed to use the CSOM API and thus can run on any server that can communicate with SharePoint.\n"
+  example: []
+  syntax:
+    content: public abstract class TimerJob
+    content.vb: Public MustInherit Class TimerJob
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - PnP.Framework.TimerJobs.TimerJob.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - PnP.Framework.TimerJobs.TimerJob.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.TimerJobs.TimerJob,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  modifiers.csharp:
+  - public
+  - abstract
+  - class
+  modifiers.vb:
+  - Public
+  - MustInherit
+  - Class
+- uid: PnP.Framework.TimerJobs.TimerJob.TimerJobRun
+  commentId: E:PnP.Framework.TimerJobs.TimerJob.TimerJobRun
+  id: TimerJobRun
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: TimerJobRun
+  nameWithType: TimerJob.TimerJobRun
+  fullName: PnP.Framework.TimerJobs.TimerJob.TimerJobRun
+  type: Event
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TimerJobRun
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 80
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nTimerJobRun event\n"
+  example: []
+  syntax:
+    content: public event TimerJobRunHandler TimerJobRun
+    return:
+      type: PnP.Framework.TimerJobs.TimerJobRunHandler
+    content.vb: Public Event TimerJobRun As TimerJobRunHandler
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.#ctor(System.String)
+  commentId: M:PnP.Framework.TimerJobs.TimerJob.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: TimerJob(String)
+  nameWithType: TimerJob.TimerJob(String)
+  fullName: PnP.Framework.TimerJobs.TimerJob.TimerJob(System.String)
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 88
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nSimpliefied constructor for timer job, version is always set to &quot;1.0&quot;\n"
+  example: []
+  syntax:
+    content: public TimerJob(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: Name of the timer job
+    content.vb: Public Sub New(name As String)
+  overload: PnP.Framework.TimerJobs.TimerJob.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.#ctor(System.String,System.String)
+  commentId: M:PnP.Framework.TimerJobs.TimerJob.#ctor(System.String,System.String)
+  id: '#ctor(System.String,System.String)'
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: TimerJob(String, String)
+  nameWithType: TimerJob.TimerJob(String, String)
+  fullName: PnP.Framework.TimerJobs.TimerJob.TimerJob(System.String, System.String)
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 98
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nSimpliefied constructor for timer job, sets given version to timer job\n"
+  example: []
+  syntax:
+    content: public TimerJob(string name, string version)
+    parameters:
+    - id: name
+      type: System.String
+      description: Name of the timer job
+    - id: version
+      type: System.String
+      description: Version of the timer job
+    content.vb: Public Sub New(name As String, version As String)
+  overload: PnP.Framework.TimerJobs.TimerJob.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.#ctor(System.String,System.String,System.String)
+  commentId: M:PnP.Framework.TimerJobs.TimerJob.#ctor(System.String,System.String,System.String)
+  id: '#ctor(System.String,System.String,System.String)'
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: TimerJob(String, String, String)
+  nameWithType: TimerJob.TimerJob(String, String, String)
+  fullName: PnP.Framework.TimerJobs.TimerJob.TimerJob(System.String, System.String, System.String)
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 109
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nDefault constructor for timer job\n"
+  example: []
+  syntax:
+    content: public TimerJob(string name, string version, string configurationData)
+    parameters:
+    - id: name
+      type: System.String
+      description: Name of the timer job
+    - id: version
+      type: System.String
+      description: Version of the timer job
+    - id: configurationData
+      type: System.String
+      description: Timer job configuration data
+    content.vb: Public Sub New(name As String, version As String, configurationData As String)
+  overload: PnP.Framework.TimerJobs.TimerJob.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.Name
+  commentId: P:PnP.Framework.TimerJobs.TimerJob.Name
+  id: Name
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: TimerJob.Name
+  fullName: PnP.Framework.TimerJobs.TimerJob.Name
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Name
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 130
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nGets the name of this timer job\n"
+  example: []
+  syntax:
+    content: public string Name { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Name As String
+  overload: PnP.Framework.TimerJobs.TimerJob.Name*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.TimerJobs.TimerJob.Version
+  commentId: P:PnP.Framework.TimerJobs.TimerJob.Version
+  id: Version
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: Version
+  nameWithType: TimerJob.Version
+  fullName: PnP.Framework.TimerJobs.TimerJob.Version
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Version
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 141
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nGets the version of this timer job\n"
+  example: []
+  syntax:
+    content: public string Version { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Version As String
+  overload: PnP.Framework.TimerJobs.TimerJob.Version*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.TimerJobs.TimerJob.ConfigurationData
+  commentId: P:PnP.Framework.TimerJobs.TimerJob.ConfigurationData
+  id: ConfigurationData
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: ConfigurationData
+  nameWithType: TimerJob.ConfigurationData
+  fullName: PnP.Framework.TimerJobs.TimerJob.ConfigurationData
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ConfigurationData
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 152
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nGets or sets additional timer job configuration data\n"
+  example: []
+  syntax:
+    content: public string ConfigurationData { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ConfigurationData As String
+  overload: PnP.Framework.TimerJobs.TimerJob.ConfigurationData*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.ManageState
+  commentId: P:PnP.Framework.TimerJobs.TimerJob.ManageState
+  id: ManageState
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: ManageState
+  nameWithType: TimerJob.ManageState
+  fullName: PnP.Framework.TimerJobs.TimerJob.ManageState
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ManageState
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 168
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nGets and sets the state management value: when true the timer job will automatically handle state by \nstoring a json serialized class as a web property bag entry. Default value is false\n"
+  example: []
+  syntax:
+    content: public bool ManageState { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property ManageState As Boolean
+  overload: PnP.Framework.TimerJobs.TimerJob.ManageState*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.IsRunning
+  commentId: P:PnP.Framework.TimerJobs.TimerJob.IsRunning
+  id: IsRunning
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: IsRunning
+  nameWithType: TimerJob.IsRunning
+  fullName: PnP.Framework.TimerJobs.TimerJob.IsRunning
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsRunning
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 184
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nIs this timer job running?\n"
+  example: []
+  syntax:
+    content: public bool IsRunning { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsRunning As Boolean
+  overload: PnP.Framework.TimerJobs.TimerJob.IsRunning*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.TimerJobs.TimerJob.UseThreading
+  commentId: P:PnP.Framework.TimerJobs.TimerJob.UseThreading
+  id: UseThreading
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: UseThreading
+  nameWithType: TimerJob.UseThreading
+  fullName: PnP.Framework.TimerJobs.TimerJob.UseThreading
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UseThreading
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 195
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nCan this timer job use multiple threads. Defaults to true\n"
+  example: []
+  syntax:
+    content: public bool UseThreading { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property UseThreading As Boolean
+  overload: PnP.Framework.TimerJobs.TimerJob.UseThreading*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.MaximumThreads
+  commentId: P:PnP.Framework.TimerJobs.TimerJob.MaximumThreads
+  id: MaximumThreads
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: MaximumThreads
+  nameWithType: TimerJob.MaximumThreads
+  fullName: PnP.Framework.TimerJobs.TimerJob.MaximumThreads
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MaximumThreads
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 211
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nHow many threads can be used by this timer job. Default value is 5.\n"
+  example: []
+  syntax:
+    content: public int MaximumThreads { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaximumThreads As Integer
+  overload: PnP.Framework.TimerJobs.TimerJob.MaximumThreads*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.Run
+  commentId: M:PnP.Framework.TimerJobs.TimerJob.Run
+  id: Run
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: Run()
+  nameWithType: TimerJob.Run()
+  fullName: PnP.Framework.TimerJobs.TimerJob.Run()
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Run
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 243
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nTriggers the timer job to start running\n"
+  example: []
+  syntax:
+    content: public void Run()
+    content.vb: Public Sub Run
+  overload: PnP.Framework.TimerJobs.TimerJob.Run*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.AuthenticationType
+  commentId: P:PnP.Framework.TimerJobs.TimerJob.AuthenticationType
+  id: AuthenticationType
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: AuthenticationType
+  nameWithType: TimerJob.AuthenticationType
+  fullName: PnP.Framework.TimerJobs.TimerJob.AuthenticationType
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AuthenticationType
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 564
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nGets the authentication type that the timer job will use. This will be set as part \nof the UseOffice365Authentication and UseNetworkCredentialsAuthentication methods\n"
+  example: []
+  syntax:
+    content: public AuthenticationType AuthenticationType { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.TimerJobs.Enums.AuthenticationType
+    content.vb: Public ReadOnly Property AuthenticationType As AuthenticationType
+  overload: PnP.Framework.TimerJobs.TimerJob.AuthenticationType*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.TimerJobs.TimerJob.SharePointVersion
+  commentId: P:PnP.Framework.TimerJobs.TimerJob.SharePointVersion
+  id: SharePointVersion
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: SharePointVersion
+  nameWithType: TimerJob.SharePointVersion
+  fullName: PnP.Framework.TimerJobs.TimerJob.SharePointVersion
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SharePointVersion
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 576
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nGets or sets the SharePoint version. Default value is detected based on the laoded CSOM assembly version, but can be overriden\nin case you want to for example use v16 assemblies in v15 (on-premises)\n"
+  example: []
+  syntax:
+    content: public int SharePointVersion { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property SharePointVersion As Integer
+  overload: PnP.Framework.TimerJobs.TimerJob.SharePointVersion*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.Realm
+  commentId: P:PnP.Framework.TimerJobs.TimerJob.Realm
+  id: Realm
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: Realm
+  nameWithType: TimerJob.Realm
+  fullName: PnP.Framework.TimerJobs.TimerJob.Realm
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Realm
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 598
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nRealm will be automatically defined, but there&apos;s an option to manually specify it which may \nbe needed when did an override of ResolveAddedSites and specify your sites.\n"
+  example: []
+  syntax:
+    content: public string Realm { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Realm As String
+  overload: PnP.Framework.TimerJobs.TimerJob.Realm*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.AzureEnvironment
+  commentId: P:PnP.Framework.TimerJobs.TimerJob.AzureEnvironment
+  id: AzureEnvironment
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: AzureEnvironment
+  nameWithType: TimerJob.AzureEnvironment
+  fullName: PnP.Framework.TimerJobs.TimerJob.AzureEnvironment
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AzureEnvironment
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 614
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nAzure environment that will be used\n"
+  example: []
+  syntax:
+    content: public AzureEnvironment AzureEnvironment { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.AzureEnvironment
+    content.vb: Public Property AzureEnvironment As AzureEnvironment
+  overload: PnP.Framework.TimerJobs.TimerJob.AzureEnvironment*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.TenantAdminSite
+  commentId: P:PnP.Framework.TimerJobs.TimerJob.TenantAdminSite
+  id: TenantAdminSite
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: TenantAdminSite
+  nameWithType: TimerJob.TenantAdminSite
+  fullName: PnP.Framework.TimerJobs.TimerJob.TenantAdminSite
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TenantAdminSite
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 629
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nOption to specify the tenant admin site. For MT this typically is not needed since we can detect the tenant admin site, but for on premises and DvNext this is needed\n"
+  example: []
+  syntax:
+    content: public string TenantAdminSite { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property TenantAdminSite As String
+  overload: PnP.Framework.TimerJobs.TimerJob.TenantAdminSite*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.UseOffice365Authentication(System.String,System.String)
+  commentId: M:PnP.Framework.TimerJobs.TimerJob.UseOffice365Authentication(System.String,System.String)
+  id: UseOffice365Authentication(System.String,System.String)
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: UseOffice365Authentication(String, String)
+  nameWithType: TimerJob.UseOffice365Authentication(String, String)
+  fullName: PnP.Framework.TimerJobs.TimerJob.UseOffice365Authentication(System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UseOffice365Authentication
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 648
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nPrepares the TimerJob to operate against Office 365 with user and password credentials. Sets AuthenticationType \nto AuthenticationType.Office365\n"
+  example: []
+  syntax:
+    content: public void UseOffice365Authentication(string userUPN, string password)
+    parameters:
+    - id: userUPN
+      type: System.String
+      description: user name
+    - id: password
+      type: System.String
+      description: Password of the user that will be used to operate the timer job work
+    content.vb: Public Sub UseOffice365Authentication(userUPN As String, password As String)
+  overload: PnP.Framework.TimerJobs.TimerJob.UseOffice365Authentication*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.UseOffice365Authentication(System.String,System.Security.SecureString)
+  commentId: M:PnP.Framework.TimerJobs.TimerJob.UseOffice365Authentication(System.String,System.Security.SecureString)
+  id: UseOffice365Authentication(System.String,System.Security.SecureString)
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: UseOffice365Authentication(String, SecureString)
+  nameWithType: TimerJob.UseOffice365Authentication(String, SecureString)
+  fullName: PnP.Framework.TimerJobs.TimerJob.UseOffice365Authentication(System.String, System.Security.SecureString)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UseOffice365Authentication
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 664
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nPrepares the TimerJob to operate against Office 365 with user and password credentials. Sets AuthenticationType \nto AuthenticationType.Office365\n"
+  example: []
+  syntax:
+    content: public void UseOffice365Authentication(string userUPN, SecureString password)
+    parameters:
+    - id: userUPN
+      type: System.String
+      description: user name
+    - id: password
+      type: System.Security.SecureString
+      description: Password of the user that will be used to operate the timer job work
+    content.vb: Public Sub UseOffice365Authentication(userUPN As String, password As SecureString)
+  overload: PnP.Framework.TimerJobs.TimerJob.UseOffice365Authentication*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.UseOffice365Authentication(System.String)
+  commentId: M:PnP.Framework.TimerJobs.TimerJob.UseOffice365Authentication(System.String)
+  id: UseOffice365Authentication(System.String)
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: UseOffice365Authentication(String)
+  nameWithType: TimerJob.UseOffice365Authentication(String)
+  fullName: PnP.Framework.TimerJobs.TimerJob.UseOffice365Authentication(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UseOffice365Authentication
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 688
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nPrepares the TimerJob to operate against Office 365 with user and password credentials which are retrieved via \nthe windows Credential Manager. Also sets AuthenticationType to AuthenticationType.Office365\n"
+  example: []
+  syntax:
+    content: public void UseOffice365Authentication(string credentialName)
+    parameters:
+    - id: credentialName
+      type: System.String
+      description: Name of the credential manager registration
+    content.vb: Public Sub UseOffice365Authentication(credentialName As String)
+  overload: PnP.Framework.TimerJobs.TimerJob.UseOffice365Authentication*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.UseAppOnlyAuthentication(System.String,System.String)
+  commentId: M:PnP.Framework.TimerJobs.TimerJob.UseAppOnlyAuthentication(System.String,System.String)
+  id: UseAppOnlyAuthentication(System.String,System.String)
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: UseAppOnlyAuthentication(String, String)
+  nameWithType: TimerJob.UseAppOnlyAuthentication(String, String)
+  fullName: PnP.Framework.TimerJobs.TimerJob.UseAppOnlyAuthentication(System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UseAppOnlyAuthentication
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 720
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nPrepares the TimerJob to operate against SharePoint on-premises with app-only credentials. Sets AuthenticationType \nto AuthenticationType.AppOnly\n"
+  example: []
+  syntax:
+    content: public void UseAppOnlyAuthentication(string clientId, string clientSecret)
+    parameters:
+    - id: clientId
+      type: System.String
+      description: Client ID of the app
+    - id: clientSecret
+      type: System.String
+      description: Client Secret of the app
+    content.vb: Public Sub UseAppOnlyAuthentication(clientId As String, clientSecret As String)
+  overload: PnP.Framework.TimerJobs.TimerJob.UseAppOnlyAuthentication*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.UseAppOnlyAuthentication(System.String,System.String,System.Security.SecureString,System.String)
+  commentId: M:PnP.Framework.TimerJobs.TimerJob.UseAppOnlyAuthentication(System.String,System.String,System.Security.SecureString,System.String)
+  id: UseAppOnlyAuthentication(System.String,System.String,System.Security.SecureString,System.String)
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: UseAppOnlyAuthentication(String, String, SecureString, String)
+  nameWithType: TimerJob.UseAppOnlyAuthentication(String, String, SecureString, String)
+  fullName: PnP.Framework.TimerJobs.TimerJob.UseAppOnlyAuthentication(System.String, System.String, System.Security.SecureString, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UseAppOnlyAuthentication
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 747
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nPrepares the timerjob to operate against SharePoint on-premises with app-only client Id and certificate in High Trust mode. \nSets AuthenticationType to AuthenticationType.AppOnly\n"
+  example: []
+  syntax:
+    content: public void UseAppOnlyAuthentication(string clientId, string certificatePath, SecureString certificatePassword, string certificateIssuerId)
+    parameters:
+    - id: clientId
+      type: System.String
+      description: Client ID of the app
+    - id: certificatePath
+      type: System.String
+      description: Path of the Certificate file
+    - id: certificatePassword
+      type: System.Security.SecureString
+      description: Password of the Certificate
+    - id: certificateIssuerId
+      type: System.String
+      description: The Issuer ID of the certificate
+    content.vb: Public Sub UseAppOnlyAuthentication(clientId As String, certificatePath As String, certificatePassword As SecureString, certificateIssuerId As String)
+  overload: PnP.Framework.TimerJobs.TimerJob.UseAppOnlyAuthentication*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.UseAppOnlyAuthentication(System.String,System.String,System.String,System.String)
+  commentId: M:PnP.Framework.TimerJobs.TimerJob.UseAppOnlyAuthentication(System.String,System.String,System.String,System.String)
+  id: UseAppOnlyAuthentication(System.String,System.String,System.String,System.String)
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: UseAppOnlyAuthentication(String, String, String, String)
+  nameWithType: TimerJob.UseAppOnlyAuthentication(String, String, String, String)
+  fullName: PnP.Framework.TimerJobs.TimerJob.UseAppOnlyAuthentication(System.String, System.String, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UseAppOnlyAuthentication
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 786
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nPrepares the timerjob to operate against SharePoint on-premises with app-only client Id and certificate in High Trust mode. \nSets AuthenticationType to AuthenticationType.AppOnly\n"
+  example: []
+  syntax:
+    content: public void UseAppOnlyAuthentication(string clientId, string certificatePath, string certificatePassword, string certificateIssuerId)
+    parameters:
+    - id: clientId
+      type: System.String
+      description: Client ID of the app
+    - id: certificatePath
+      type: System.String
+      description: Path of the Certificate file
+    - id: certificatePassword
+      type: System.String
+      description: Password of the Certificate
+    - id: certificateIssuerId
+      type: System.String
+      description: The Issuer ID of the certificate
+    content.vb: Public Sub UseAppOnlyAuthentication(clientId As String, certificatePath As String, certificatePassword As String, certificateIssuerId As String)
+  overload: PnP.Framework.TimerJobs.TimerJob.UseAppOnlyAuthentication*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.UseAzureADAppOnlyAuthentication(System.String,System.String,System.String,System.String)
+  commentId: M:PnP.Framework.TimerJobs.TimerJob.UseAzureADAppOnlyAuthentication(System.String,System.String,System.String,System.String)
+  id: UseAzureADAppOnlyAuthentication(System.String,System.String,System.String,System.String)
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: UseAzureADAppOnlyAuthentication(String, String, String, String)
+  nameWithType: TimerJob.UseAzureADAppOnlyAuthentication(String, String, String, String)
+  fullName: PnP.Framework.TimerJobs.TimerJob.UseAzureADAppOnlyAuthentication(System.String, System.String, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UseAzureADAppOnlyAuthentication
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 805
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nPrepares the TimerJob to operate against SharePoint Only with Azure AD app-only credentials. Sets AuthenticationType \nto AuthenticationType.AzureADAppOnly\n"
+  example: []
+  syntax:
+    content: public void UseAzureADAppOnlyAuthentication(string clientId, string azureTenant, string certificatePath, string certificatePassword)
+    parameters:
+    - id: clientId
+      type: System.String
+      description: Client ID of the app
+    - id: azureTenant
+      type: System.String
+      description: The Azure tenant name, like contoso.com
+    - id: certificatePath
+      type: System.String
+      description: The path to the *.pfx certicate file
+    - id: certificatePassword
+      type: System.String
+      description: The password to the certificate
+    content.vb: Public Sub UseAzureADAppOnlyAuthentication(clientId As String, azureTenant As String, certificatePath As String, certificatePassword As String)
+  overload: PnP.Framework.TimerJobs.TimerJob.UseAzureADAppOnlyAuthentication*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.UseAzureADAppOnlyAuthentication(System.String,System.String,System.String,System.Security.SecureString)
+  commentId: M:PnP.Framework.TimerJobs.TimerJob.UseAzureADAppOnlyAuthentication(System.String,System.String,System.String,System.Security.SecureString)
+  id: UseAzureADAppOnlyAuthentication(System.String,System.String,System.String,System.Security.SecureString)
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: UseAzureADAppOnlyAuthentication(String, String, String, SecureString)
+  nameWithType: TimerJob.UseAzureADAppOnlyAuthentication(String, String, String, SecureString)
+  fullName: PnP.Framework.TimerJobs.TimerJob.UseAzureADAppOnlyAuthentication(System.String, System.String, System.String, System.Security.SecureString)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UseAzureADAppOnlyAuthentication
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 822
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nPrepares the TimerJob to operate against SharePoint Only with Azure AD app-only credentials. Sets AuthenticationType \nto AuthenticationType.AzureADAppOnly\n"
+  example: []
+  syntax:
+    content: public void UseAzureADAppOnlyAuthentication(string clientId, string azureTenant, string certificatePath, SecureString certificatePassword)
+    parameters:
+    - id: clientId
+      type: System.String
+      description: Client ID of the app
+    - id: azureTenant
+      type: System.String
+      description: The Azure tenant name, like contoso.com
+    - id: certificatePath
+      type: System.String
+      description: The path to the *.pfx certicate file
+    - id: certificatePassword
+      type: System.Security.SecureString
+      description: The password to the certificate
+    content.vb: Public Sub UseAzureADAppOnlyAuthentication(clientId As String, azureTenant As String, certificatePath As String, certificatePassword As SecureString)
+  overload: PnP.Framework.TimerJobs.TimerJob.UseAzureADAppOnlyAuthentication*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.UseAzureADAppOnlyAuthentication(System.String,System.String,System.Security.Cryptography.X509Certificates.X509Certificate2)
+  commentId: M:PnP.Framework.TimerJobs.TimerJob.UseAzureADAppOnlyAuthentication(System.String,System.String,System.Security.Cryptography.X509Certificates.X509Certificate2)
+  id: UseAzureADAppOnlyAuthentication(System.String,System.String,System.Security.Cryptography.X509Certificates.X509Certificate2)
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: UseAzureADAppOnlyAuthentication(String, String, X509Certificate2)
+  nameWithType: TimerJob.UseAzureADAppOnlyAuthentication(String, String, X509Certificate2)
+  fullName: PnP.Framework.TimerJobs.TimerJob.UseAzureADAppOnlyAuthentication(System.String, System.String, System.Security.Cryptography.X509Certificates.X509Certificate2)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UseAzureADAppOnlyAuthentication
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 859
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nPrepares the TimerJob to operate against SharePoint Only with Azure AD app-only credentials. Sets AuthenticationType \nto AuthenticationType.AzureADAppOnly\n"
+  example: []
+  syntax:
+    content: public void UseAzureADAppOnlyAuthentication(string clientId, string azureTenant, X509Certificate2 certificate)
+    parameters:
+    - id: clientId
+      type: System.String
+      description: Client ID of the app
+    - id: azureTenant
+      type: System.String
+      description: The Azure tenant name, like contoso.com
+    - id: certificate
+      type: System.Security.Cryptography.X509Certificates.X509Certificate2
+      description: The X.509 Certificate to use for AppOnly Authentication
+    content.vb: Public Sub UseAzureADAppOnlyAuthentication(clientId As String, azureTenant As String, certificate As X509Certificate2)
+  overload: PnP.Framework.TimerJobs.TimerJob.UseAzureADAppOnlyAuthentication*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.UseAccessTokenAuthentication(System.String)
+  commentId: M:PnP.Framework.TimerJobs.TimerJob.UseAccessTokenAuthentication(System.String)
+  id: UseAccessTokenAuthentication(System.String)
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: UseAccessTokenAuthentication(String)
+  nameWithType: TimerJob.UseAccessTokenAuthentication(String)
+  fullName: PnP.Framework.TimerJobs.TimerJob.UseAccessTokenAuthentication(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UseAccessTokenAuthentication
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 889
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nPrepares the TimerJob to operate against SharePoint Only with a provided access token. Sets AuthenticationType \nto AuthenticationType.AccessToken\n"
+  example: []
+  syntax:
+    content: public void UseAccessTokenAuthentication(string accessToken)
+    parameters:
+    - id: accessToken
+      type: System.String
+      description: Provided access token
+    content.vb: Public Sub UseAccessTokenAuthentication(accessToken As String)
+  overload: PnP.Framework.TimerJobs.TimerJob.UseAccessTokenAuthentication*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.Clone(PnP.Framework.TimerJobs.TimerJob)
+  commentId: M:PnP.Framework.TimerJobs.TimerJob.Clone(PnP.Framework.TimerJobs.TimerJob)
+  id: Clone(PnP.Framework.TimerJobs.TimerJob)
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: Clone(TimerJob)
+  nameWithType: TimerJob.Clone(TimerJob)
+  fullName: PnP.Framework.TimerJobs.TimerJob.Clone(PnP.Framework.TimerJobs.TimerJob)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Clone
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 909
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nTakes over the settings from the passed timer job. Is useful when you run multiple jobs in a row or chain \njob execution. Settings that are taken over are all the authentication, enumeration settings and SharePointVersion\n"
+  example: []
+  syntax:
+    content: public void Clone(TimerJob job)
+    parameters:
+    - id: job
+      type: PnP.Framework.TimerJobs.TimerJob
+      description: TimerJob
+    content.vb: Public Sub Clone(job As TimerJob)
+  overload: PnP.Framework.TimerJobs.TimerJob.Clone*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.ExcludeOD4B
+  commentId: P:PnP.Framework.TimerJobs.TimerJob.ExcludeOD4B
+  id: ExcludeOD4B
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: ExcludeOD4B
+  nameWithType: TimerJob.ExcludeOD4B
+  fullName: PnP.Framework.TimerJobs.TimerJob.ExcludeOD4B
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ExcludeOD4B
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 976
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nDoes the TimerJob also need to enumerate OD4B site collections\n"
+  example: []
+  syntax:
+    content: public bool ExcludeOD4B { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property ExcludeOD4B As Boolean
+  overload: PnP.Framework.TimerJobs.TimerJob.ExcludeOD4B*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.ExpandSubSites
+  commentId: P:PnP.Framework.TimerJobs.TimerJob.ExpandSubSites
+  id: ExpandSubSites
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: ExpandSubSites
+  nameWithType: TimerJob.ExpandSubSites
+  fullName: PnP.Framework.TimerJobs.TimerJob.ExpandSubSites
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ExpandSubSites
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 992
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nDoes the TimerJob need to fire as well for every sub site in the site?\n"
+  example: []
+  syntax:
+    content: public bool ExpandSubSites { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property ExpandSubSites As Boolean
+  overload: PnP.Framework.TimerJobs.TimerJob.ExpandSubSites*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String,System.String)
+  commentId: M:PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String,System.String)
+  id: SetEnumerationCredentials(System.String,System.String)
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: SetEnumerationCredentials(String, String)
+  nameWithType: TimerJob.SetEnumerationCredentials(String, String)
+  fullName: PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetEnumerationCredentials
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 1076
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nProvides the timer job with the enumeration credentials. For Office 365 username and password is sufficient\n"
+  example: []
+  syntax:
+    content: public void SetEnumerationCredentials(string userUPN, string password)
+    parameters:
+    - id: userUPN
+      type: System.String
+      description: user name
+    - id: password
+      type: System.String
+      description: Password of the enumeration user
+    content.vb: Public Sub SetEnumerationCredentials(userUPN As String, password As String)
+  overload: PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String,System.Security.SecureString)
+  commentId: M:PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String,System.Security.SecureString)
+  id: SetEnumerationCredentials(System.String,System.Security.SecureString)
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: SetEnumerationCredentials(String, SecureString)
+  nameWithType: TimerJob.SetEnumerationCredentials(String, SecureString)
+  fullName: PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String, System.Security.SecureString)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetEnumerationCredentials
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 1091
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nProvides the timer job with the enumeration credentials. For Office 365 username and password is sufficient\n"
+  example: []
+  syntax:
+    content: public void SetEnumerationCredentials(string userUPN, SecureString password)
+    parameters:
+    - id: userUPN
+      type: System.String
+      description: user name
+    - id: password
+      type: System.Security.SecureString
+      description: Password of the enumeration user
+    content.vb: Public Sub SetEnumerationCredentials(userUPN As String, password As SecureString)
+  overload: PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String,System.String,System.String)
+  commentId: M:PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String,System.String,System.String)
+  id: SetEnumerationCredentials(System.String,System.String,System.String)
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: SetEnumerationCredentials(String, String, String)
+  nameWithType: TimerJob.SetEnumerationCredentials(String, String, String)
+  fullName: PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetEnumerationCredentials
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 1114
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nProvides the timer job with the enumeration credentials. For SharePoint on-premises username, password and domain are needed\n"
+  example: []
+  syntax:
+    content: public void SetEnumerationCredentials(string samAccountName, string password, string domain)
+    parameters:
+    - id: samAccountName
+      type: System.String
+      description: UPN of the enumeration user
+    - id: password
+      type: System.String
+      description: Password of the enumeration user
+    - id: domain
+      type: System.String
+      description: Domain of the enumeration user
+    content.vb: Public Sub SetEnumerationCredentials(samAccountName As String, password As String, domain As String)
+  overload: PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String,System.Security.SecureString,System.String)
+  commentId: M:PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String,System.Security.SecureString,System.String)
+  id: SetEnumerationCredentials(System.String,System.Security.SecureString,System.String)
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: SetEnumerationCredentials(String, SecureString, String)
+  nameWithType: TimerJob.SetEnumerationCredentials(String, SecureString, String)
+  fullName: PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String, System.Security.SecureString, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetEnumerationCredentials
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 1130
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nProvides the timer job with the enumeration credentials. For SharePoint on-premises username, password and domain are needed\n"
+  example: []
+  syntax:
+    content: public void SetEnumerationCredentials(string samAccountName, SecureString password, string domain)
+    parameters:
+    - id: samAccountName
+      type: System.String
+      description: Account name of the enumeration user
+    - id: password
+      type: System.Security.SecureString
+      description: Password of the enumeration user
+    - id: domain
+      type: System.String
+      description: Domain of the enumeration user
+    content.vb: Public Sub SetEnumerationCredentials(samAccountName As String, password As SecureString, domain As String)
+  overload: PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String)
+  commentId: M:PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String)
+  id: SetEnumerationCredentials(System.String)
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: SetEnumerationCredentials(String)
+  nameWithType: TimerJob.SetEnumerationCredentials(String)
+  fullName: PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetEnumerationCredentials
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 1157
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nProvides the timer job with the enumeration credentials. For SharePoint on-premises username, password and domain are needed\n"
+  example: []
+  syntax:
+    content: public void SetEnumerationCredentials(string credentialName)
+    parameters:
+    - id: credentialName
+      type: System.String
+      description: Name of the credential manager registration
+    content.vb: Public Sub SetEnumerationCredentials(credentialName As String)
+  overload: PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.AddSite(System.String)
+  commentId: M:PnP.Framework.TimerJobs.TimerJob.AddSite(System.String)
+  id: AddSite(System.String)
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: AddSite(String)
+  nameWithType: TimerJob.AddSite(String)
+  fullName: PnP.Framework.TimerJobs.TimerJob.AddSite(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddSite
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 1206
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nAdds a site Url or wildcard site Url to the collection of sites that the timer job will process\n"
+  example: []
+  syntax:
+    content: public void AddSite(string site)
+    parameters:
+    - id: site
+      type: System.String
+      description: Site Url or wildcard site Url to be processed by the timer job
+    content.vb: Public Sub AddSite(site As String)
+  overload: PnP.Framework.TimerJobs.TimerJob.AddSite*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.ClearAddedSites
+  commentId: M:PnP.Framework.TimerJobs.TimerJob.ClearAddedSites
+  id: ClearAddedSites
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: ClearAddedSites()
+  nameWithType: TimerJob.ClearAddedSites()
+  fullName: PnP.Framework.TimerJobs.TimerJob.ClearAddedSites()
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ClearAddedSites
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 1230
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nClears the list of added site Url&apos;s and/or wildcard site Url&apos;s\n"
+  example: []
+  syntax:
+    content: public void ClearAddedSites()
+    content.vb: Public Sub ClearAddedSites
+  overload: PnP.Framework.TimerJobs.TimerJob.ClearAddedSites*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.TimerJobs.TimerJob.UpdateAddedSites(System.Collections.Generic.List{System.String})
+  commentId: M:PnP.Framework.TimerJobs.TimerJob.UpdateAddedSites(System.Collections.Generic.List{System.String})
+  id: UpdateAddedSites(System.Collections.Generic.List{System.String})
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: UpdateAddedSites(List<String>)
+  nameWithType: TimerJob.UpdateAddedSites(List<String>)
+  fullName: PnP.Framework.TimerJobs.TimerJob.UpdateAddedSites(System.Collections.Generic.List<System.String>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UpdateAddedSites
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 1242
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nVirtual method that can be overriden to allow the timer job itself to control the list of sites to operate against.\nScenario is for example timer job that reads this data from a database instead of being fed by the calling program\n"
+  example: []
+  syntax:
+    content: public virtual List<string> UpdateAddedSites(List<string> addedSites)
+    parameters:
+    - id: addedSites
+      type: System.Collections.Generic.List{System.String}
+      description: List of added site Url&apos;s and/or wildcard site Url&apos;s
+    return:
+      type: System.Collections.Generic.List{System.String}
+      description: List of added site Url&apos;s and/or wildcard site Url&apos;s
+    content.vb: Public Overridable Function UpdateAddedSites(addedSites As List(Of String)) As List(Of String)
+  overload: PnP.Framework.TimerJobs.TimerJob.UpdateAddedSites*
+  nameWithType.vb: TimerJob.UpdateAddedSites(List(Of String))
+  modifiers.csharp:
+  - public
+  - virtual
+  modifiers.vb:
+  - Public
+  - Overridable
+  fullName.vb: PnP.Framework.TimerJobs.TimerJob.UpdateAddedSites(System.Collections.Generic.List(Of System.String))
+  name.vb: UpdateAddedSites(List(Of String))
+- uid: PnP.Framework.TimerJobs.TimerJob.ResolveAddedSites(System.Collections.Generic.List{System.String})
+  commentId: M:PnP.Framework.TimerJobs.TimerJob.ResolveAddedSites(System.Collections.Generic.List{System.String})
+  id: ResolveAddedSites(System.Collections.Generic.List{System.String})
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: ResolveAddedSites(List<String>)
+  nameWithType: TimerJob.ResolveAddedSites(List<String>)
+  fullName: PnP.Framework.TimerJobs.TimerJob.ResolveAddedSites(System.Collections.Generic.List<System.String>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ResolveAddedSites
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 1253
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nVirtual method that can be overriden to control the list of resolved sites\n"
+  example: []
+  syntax:
+    content: public virtual List<string> ResolveAddedSites(List<string> addedSites)
+    parameters:
+    - id: addedSites
+      type: System.Collections.Generic.List{System.String}
+      description: List of added site Url&apos;s and/or wildcard site Url&apos;s
+    return:
+      type: System.Collections.Generic.List{System.String}
+      description: List of resolved sites
+    content.vb: Public Overridable Function ResolveAddedSites(addedSites As List(Of String)) As List(Of String)
+  overload: PnP.Framework.TimerJobs.TimerJob.ResolveAddedSites*
+  nameWithType.vb: TimerJob.ResolveAddedSites(List(Of String))
+  modifiers.csharp:
+  - public
+  - virtual
+  modifiers.vb:
+  - Public
+  - Overridable
+  fullName.vb: PnP.Framework.TimerJobs.TimerJob.ResolveAddedSites(System.Collections.Generic.List(Of System.String))
+  name.vb: ResolveAddedSites(List(Of String))
+- uid: PnP.Framework.TimerJobs.TimerJob.CreateClientContext(System.String)
+  commentId: M:PnP.Framework.TimerJobs.TimerJob.CreateClientContext(System.String)
+  id: CreateClientContext(System.String)
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: CreateClientContext(String)
+  nameWithType: TimerJob.CreateClientContext(String)
+  fullName: PnP.Framework.TimerJobs.TimerJob.CreateClientContext(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateClientContext
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 1433
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nCreates a ClientContext object based on the set AuthenticationType and the used version of SharePoint\n"
+  example: []
+  syntax:
+    content: protected ClientContext CreateClientContext(string site)
+    parameters:
+    - id: site
+      type: System.String
+      description: Site Url to create a ClientContext for
+    return:
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: The created ClientContext object. Returns null if no ClientContext was created
+    content.vb: Protected Function CreateClientContext(site As String) As ClientContext
+  overload: PnP.Framework.TimerJobs.TimerJob.CreateClientContext*
+  modifiers.csharp:
+  - protected
+  modifiers.vb:
+  - Protected
+- uid: PnP.Framework.TimerJobs.TimerJob.GetAllSubSites(Microsoft.SharePoint.Client.Site)
+  commentId: M:PnP.Framework.TimerJobs.TimerJob.GetAllSubSites(Microsoft.SharePoint.Client.Site)
+  id: GetAllSubSites(Microsoft.SharePoint.Client.Site)
+  parent: PnP.Framework.TimerJobs.TimerJob
+  langs:
+  - csharp
+  - vb
+  name: GetAllSubSites(Site)
+  nameWithType: TimerJob.GetAllSubSites(Site)
+  fullName: PnP.Framework.TimerJobs.TimerJob.GetAllSubSites(Microsoft.SharePoint.Client.Site)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetAllSubSites
+    path: ../src/lib/PnP.Framework/TimerJobs/TimerJob.cs
+    startLine: 1484
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.TimerJobs
+  summary: "\nGets all sub sites for a given site\n"
+  example: []
+  syntax:
+    content: public IEnumerable<string> GetAllSubSites(Site site)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: Site to find all sub site for
+    return:
+      type: System.Collections.Generic.IEnumerable{System.String}
+      description: IEnumerable of strings holding the sub site URLs
+    content.vb: Public Function GetAllSubSites(site As Site) As IEnumerable(Of String)
+  overload: PnP.Framework.TimerJobs.TimerJob.GetAllSubSites*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: PnP.Framework.TimerJobs
+  commentId: N:PnP.Framework.TimerJobs
+  name: PnP.Framework.TimerJobs
+  nameWithType: PnP.Framework.TimerJobs
+  fullName: PnP.Framework.TimerJobs
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.TimerJobs.TimerJob.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<TimerJob>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<TimerJob>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.TimerJobs.TimerJob>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of TimerJob)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.TimerJobs.TimerJob)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of TimerJob)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<TimerJob>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<TimerJob>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.TimerJobs.TimerJob>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of TimerJob)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of TimerJob)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.TimerJobs.TimerJob)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.TimerJobs.TimerJob.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.TimerJobs.TimerJob,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<TimerJob, T>(Expression<Func<TimerJob, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TimerJob, T>(Expression<Func<TimerJob, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.TimerJobs.TimerJob, T>(System.Linq.Expressions.Expression<System.Func<PnP.Framework.TimerJobs.TimerJob, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TimerJob, T)(Expression(Of Func(Of TimerJob, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.TimerJobs.TimerJob, T)(System.Linq.Expressions.Expression(Of System.Func(Of PnP.Framework.TimerJobs.TimerJob, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TimerJob, T)(Expression(Of Func(Of TimerJob, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TimerJob, T>
+    nameWithType: ObjectExtensions.Set<TimerJob, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.TimerJobs.TimerJob, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.TimerJobs.TimerJob
+    name: TimerJob
+    nameWithType: TimerJob
+    fullName: PnP.Framework.TimerJobs.TimerJob
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TimerJob, T)
+    nameWithType: ObjectExtensions.Set(Of TimerJob, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.TimerJobs.TimerJob, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.TimerJobs.TimerJob
+    name: TimerJob
+    nameWithType: TimerJob
+    fullName: PnP.Framework.TimerJobs.TimerJob
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: PnP.Framework.TimerJobs.TimerJobRunHandler
+  commentId: T:PnP.Framework.TimerJobs.TimerJobRunHandler
+  parent: PnP.Framework.TimerJobs
+  name: TimerJobRunHandler
+  nameWithType: TimerJobRunHandler
+  fullName: PnP.Framework.TimerJobs.TimerJobRunHandler
+- uid: PnP.Framework.TimerJobs.TimerJob.#ctor*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.#ctor
+  name: TimerJob
+  nameWithType: TimerJob.TimerJob
+  fullName: PnP.Framework.TimerJobs.TimerJob.TimerJob
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: PnP.Framework.TimerJobs.TimerJob.Name*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.Name
+  name: Name
+  nameWithType: TimerJob.Name
+  fullName: PnP.Framework.TimerJobs.TimerJob.Name
+- uid: PnP.Framework.TimerJobs.TimerJob.Version*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.Version
+  name: Version
+  nameWithType: TimerJob.Version
+  fullName: PnP.Framework.TimerJobs.TimerJob.Version
+- uid: PnP.Framework.TimerJobs.TimerJob.ConfigurationData*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.ConfigurationData
+  name: ConfigurationData
+  nameWithType: TimerJob.ConfigurationData
+  fullName: PnP.Framework.TimerJobs.TimerJob.ConfigurationData
+- uid: PnP.Framework.TimerJobs.TimerJob.ManageState*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.ManageState
+  name: ManageState
+  nameWithType: TimerJob.ManageState
+  fullName: PnP.Framework.TimerJobs.TimerJob.ManageState
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: PnP.Framework.TimerJobs.TimerJob.IsRunning*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.IsRunning
+  name: IsRunning
+  nameWithType: TimerJob.IsRunning
+  fullName: PnP.Framework.TimerJobs.TimerJob.IsRunning
+- uid: PnP.Framework.TimerJobs.TimerJob.UseThreading*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.UseThreading
+  name: UseThreading
+  nameWithType: TimerJob.UseThreading
+  fullName: PnP.Framework.TimerJobs.TimerJob.UseThreading
+- uid: PnP.Framework.TimerJobs.TimerJob.MaximumThreads*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.MaximumThreads
+  name: MaximumThreads
+  nameWithType: TimerJob.MaximumThreads
+  fullName: PnP.Framework.TimerJobs.TimerJob.MaximumThreads
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: PnP.Framework.TimerJobs.TimerJob.Run*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.Run
+  name: Run
+  nameWithType: TimerJob.Run
+  fullName: PnP.Framework.TimerJobs.TimerJob.Run
+- uid: PnP.Framework.TimerJobs.TimerJob.AuthenticationType*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.AuthenticationType
+  name: AuthenticationType
+  nameWithType: TimerJob.AuthenticationType
+  fullName: PnP.Framework.TimerJobs.TimerJob.AuthenticationType
+- uid: PnP.Framework.TimerJobs.Enums.AuthenticationType
+  commentId: T:PnP.Framework.TimerJobs.Enums.AuthenticationType
+  parent: PnP.Framework.TimerJobs.Enums
+  name: AuthenticationType
+  nameWithType: AuthenticationType
+  fullName: PnP.Framework.TimerJobs.Enums.AuthenticationType
+- uid: PnP.Framework.TimerJobs.Enums
+  commentId: N:PnP.Framework.TimerJobs.Enums
+  name: PnP.Framework.TimerJobs.Enums
+  nameWithType: PnP.Framework.TimerJobs.Enums
+  fullName: PnP.Framework.TimerJobs.Enums
+- uid: PnP.Framework.TimerJobs.TimerJob.SharePointVersion*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.SharePointVersion
+  name: SharePointVersion
+  nameWithType: TimerJob.SharePointVersion
+  fullName: PnP.Framework.TimerJobs.TimerJob.SharePointVersion
+- uid: PnP.Framework.TimerJobs.TimerJob.Realm*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.Realm
+  name: Realm
+  nameWithType: TimerJob.Realm
+  fullName: PnP.Framework.TimerJobs.TimerJob.Realm
+- uid: PnP.Framework.TimerJobs.TimerJob.AzureEnvironment*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.AzureEnvironment
+  name: AzureEnvironment
+  nameWithType: TimerJob.AzureEnvironment
+  fullName: PnP.Framework.TimerJobs.TimerJob.AzureEnvironment
+- uid: PnP.Framework.AzureEnvironment
+  commentId: T:PnP.Framework.AzureEnvironment
+  parent: PnP.Framework
+  name: AzureEnvironment
+  nameWithType: AzureEnvironment
+  fullName: PnP.Framework.AzureEnvironment
+- uid: PnP.Framework
+  commentId: N:PnP.Framework
+  name: PnP.Framework
+  nameWithType: PnP.Framework
+  fullName: PnP.Framework
+- uid: PnP.Framework.TimerJobs.TimerJob.TenantAdminSite*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.TenantAdminSite
+  name: TenantAdminSite
+  nameWithType: TimerJob.TenantAdminSite
+  fullName: PnP.Framework.TimerJobs.TimerJob.TenantAdminSite
+- uid: PnP.Framework.TimerJobs.TimerJob.UseOffice365Authentication*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.UseOffice365Authentication
+  name: UseOffice365Authentication
+  nameWithType: TimerJob.UseOffice365Authentication
+  fullName: PnP.Framework.TimerJobs.TimerJob.UseOffice365Authentication
+- uid: System.Security.SecureString
+  commentId: T:System.Security.SecureString
+  parent: System.Security
+  isExternal: true
+  name: SecureString
+  nameWithType: SecureString
+  fullName: System.Security.SecureString
+- uid: System.Security
+  commentId: N:System.Security
+  isExternal: true
+  name: System.Security
+  nameWithType: System.Security
+  fullName: System.Security
+- uid: PnP.Framework.TimerJobs.TimerJob.UseAppOnlyAuthentication*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.UseAppOnlyAuthentication
+  name: UseAppOnlyAuthentication
+  nameWithType: TimerJob.UseAppOnlyAuthentication
+  fullName: PnP.Framework.TimerJobs.TimerJob.UseAppOnlyAuthentication
+- uid: PnP.Framework.TimerJobs.TimerJob.UseAzureADAppOnlyAuthentication*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.UseAzureADAppOnlyAuthentication
+  name: UseAzureADAppOnlyAuthentication
+  nameWithType: TimerJob.UseAzureADAppOnlyAuthentication
+  fullName: PnP.Framework.TimerJobs.TimerJob.UseAzureADAppOnlyAuthentication
+- uid: System.Security.Cryptography.X509Certificates.X509Certificate2
+  commentId: T:System.Security.Cryptography.X509Certificates.X509Certificate2
+  parent: System.Security.Cryptography.X509Certificates
+  isExternal: true
+  name: X509Certificate2
+  nameWithType: X509Certificate2
+  fullName: System.Security.Cryptography.X509Certificates.X509Certificate2
+- uid: System.Security.Cryptography.X509Certificates
+  commentId: N:System.Security.Cryptography.X509Certificates
+  isExternal: true
+  name: System.Security.Cryptography.X509Certificates
+  nameWithType: System.Security.Cryptography.X509Certificates
+  fullName: System.Security.Cryptography.X509Certificates
+- uid: PnP.Framework.TimerJobs.TimerJob.UseAccessTokenAuthentication*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.UseAccessTokenAuthentication
+  name: UseAccessTokenAuthentication
+  nameWithType: TimerJob.UseAccessTokenAuthentication
+  fullName: PnP.Framework.TimerJobs.TimerJob.UseAccessTokenAuthentication
+- uid: PnP.Framework.TimerJobs.TimerJob.Clone*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.Clone
+  name: Clone
+  nameWithType: TimerJob.Clone
+  fullName: PnP.Framework.TimerJobs.TimerJob.Clone
+- uid: PnP.Framework.TimerJobs.TimerJob
+  commentId: T:PnP.Framework.TimerJobs.TimerJob
+  parent: PnP.Framework.TimerJobs
+  name: TimerJob
+  nameWithType: TimerJob
+  fullName: PnP.Framework.TimerJobs.TimerJob
+- uid: PnP.Framework.TimerJobs.TimerJob.ExcludeOD4B*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.ExcludeOD4B
+  name: ExcludeOD4B
+  nameWithType: TimerJob.ExcludeOD4B
+  fullName: PnP.Framework.TimerJobs.TimerJob.ExcludeOD4B
+- uid: PnP.Framework.TimerJobs.TimerJob.ExpandSubSites*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.ExpandSubSites
+  name: ExpandSubSites
+  nameWithType: TimerJob.ExpandSubSites
+  fullName: PnP.Framework.TimerJobs.TimerJob.ExpandSubSites
+- uid: PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials
+  name: SetEnumerationCredentials
+  nameWithType: TimerJob.SetEnumerationCredentials
+  fullName: PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials
+- uid: PnP.Framework.TimerJobs.TimerJob.AddSite*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.AddSite
+  name: AddSite
+  nameWithType: TimerJob.AddSite
+  fullName: PnP.Framework.TimerJobs.TimerJob.AddSite
+- uid: PnP.Framework.TimerJobs.TimerJob.ClearAddedSites*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.ClearAddedSites
+  name: ClearAddedSites
+  nameWithType: TimerJob.ClearAddedSites
+  fullName: PnP.Framework.TimerJobs.TimerJob.ClearAddedSites
+- uid: PnP.Framework.TimerJobs.TimerJob.UpdateAddedSites*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.UpdateAddedSites
+  name: UpdateAddedSites
+  nameWithType: TimerJob.UpdateAddedSites
+  fullName: PnP.Framework.TimerJobs.TimerJob.UpdateAddedSites
+- uid: System.Collections.Generic.List{System.String}
+  commentId: T:System.Collections.Generic.List{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<String>
+  nameWithType: List<String>
+  fullName: System.Collections.Generic.List<System.String>
+  nameWithType.vb: List(Of String)
+  fullName.vb: System.Collections.Generic.List(Of System.String)
+  name.vb: List(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: PnP.Framework.TimerJobs.TimerJob.ResolveAddedSites*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.ResolveAddedSites
+  name: ResolveAddedSites
+  nameWithType: TimerJob.ResolveAddedSites
+  fullName: PnP.Framework.TimerJobs.TimerJob.ResolveAddedSites
+- uid: PnP.Framework.TimerJobs.TimerJob.CreateClientContext*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.CreateClientContext
+  name: CreateClientContext
+  nameWithType: TimerJob.CreateClientContext
+  fullName: PnP.Framework.TimerJobs.TimerJob.CreateClientContext
+- uid: Microsoft.SharePoint.Client.ClientContext
+  commentId: T:Microsoft.SharePoint.Client.ClientContext
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: ClientContext
+  nameWithType: ClientContext
+  fullName: Microsoft.SharePoint.Client.ClientContext
+- uid: Microsoft.SharePoint.Client
+  commentId: N:Microsoft.SharePoint.Client
+  name: Microsoft.SharePoint.Client
+  nameWithType: Microsoft.SharePoint.Client
+  fullName: Microsoft.SharePoint.Client
+- uid: PnP.Framework.TimerJobs.TimerJob.GetAllSubSites*
+  commentId: Overload:PnP.Framework.TimerJobs.TimerJob.GetAllSubSites
+  name: GetAllSubSites
+  nameWithType: TimerJob.GetAllSubSites
+  fullName: PnP.Framework.TimerJobs.TimerJob.GetAllSubSites
+- uid: Microsoft.SharePoint.Client.Site
+  commentId: T:Microsoft.SharePoint.Client.Site
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: Site
+  nameWithType: Site
+  fullName: Microsoft.SharePoint.Client.Site
+- uid: System.Collections.Generic.IEnumerable{System.String}
+  commentId: T:System.Collections.Generic.IEnumerable{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<String>
+  nameWithType: IEnumerable<String>
+  fullName: System.Collections.Generic.IEnumerable<System.String>
+  nameWithType.vb: IEnumerable(Of String)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.String)
+  name.vb: IEnumerable(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )

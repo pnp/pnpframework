@@ -1,0 +1,930 @@
+### YamlMime:ManagedReference
+items:
+- uid: Microsoft.SharePoint.Client.PublishingExtensions
+  commentId: T:Microsoft.SharePoint.Client.PublishingExtensions
+  id: PublishingExtensions
+  parent: Microsoft.SharePoint.Client
+  children:
+  - Microsoft.SharePoint.Client.PublishingExtensions.AddPublishingPage(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.Boolean,Microsoft.SharePoint.Client.Folder,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Boolean)
+  - Microsoft.SharePoint.Client.PublishingExtensions.CreatePublishingImageRendition(Microsoft.SharePoint.Client.Web,System.String,System.Int32,System.Int32)
+  - Microsoft.SharePoint.Client.PublishingExtensions.GetPublishingImageRenditions(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.PublishingExtensions.GetPublishingPage(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.PublishingExtensions.GetPublishingPage(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.Folder)
+  - Microsoft.SharePoint.Client.PublishingExtensions.RemovePublishingImageRendition(Microsoft.SharePoint.Client.Web,System.String)
+  langs:
+  - csharp
+  - vb
+  name: PublishingExtensions
+  nameWithType: PublishingExtensions
+  fullName: Microsoft.SharePoint.Client.PublishingExtensions
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PublishingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PublishingExtensions
+    path: ../src/lib/PnP.Framework/Extensions/PublishingExtensions.cs
+    startLine: 13
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nClass for publishing extension methods\n"
+  example: []
+  syntax:
+    content: public static class PublishingExtensions
+    content.vb: Public Module PublishingExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: Microsoft.SharePoint.Client.PublishingExtensions.AddPublishingPage(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.Boolean,Microsoft.SharePoint.Client.Folder,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.PublishingExtensions.AddPublishingPage(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.Boolean,Microsoft.SharePoint.Client.Folder,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Boolean)
+  id: AddPublishingPage(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.Boolean,Microsoft.SharePoint.Client.Folder,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PublishingExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddPublishingPage(Web, String, String, String, Boolean, Folder, Nullable<DateTime>, Nullable<DateTime>, Boolean)
+  nameWithType: PublishingExtensions.AddPublishingPage(Web, String, String, String, Boolean, Folder, Nullable<DateTime>, Nullable<DateTime>, Boolean)
+  fullName: Microsoft.SharePoint.Client.PublishingExtensions.AddPublishingPage(Microsoft.SharePoint.Client.Web, System.String, System.String, System.String, System.Boolean, Microsoft.SharePoint.Client.Folder, System.Nullable<System.DateTime>, System.Nullable<System.DateTime>, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PublishingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddPublishingPage
+    path: ../src/lib/PnP.Framework/Extensions/PublishingExtensions.cs
+    startLine: 30
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdds the publishing page.\n"
+  example: []
+  syntax:
+    content: public static void AddPublishingPage(this Web web, string pageName, string pageTemplateName, string title = null, bool publish = false, Folder folder = null, DateTime? startDate = null, DateTime? endDate = null, bool schedule = false)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The web.
+    - id: pageName
+      type: System.String
+      description: Name of the page.
+    - id: pageTemplateName
+      type: System.String
+      description: Name of the page template/layout excluded the .aspx file extension.
+    - id: title
+      type: System.String
+      description: The title of the target publishing page.
+    - id: publish
+      type: System.Boolean
+      description: Should the page be published or not?
+    - id: folder
+      type: Microsoft.SharePoint.Client.Folder
+      description: The target folder for the page, within the Pages library.
+    - id: startDate
+      type: System.Nullable{System.DateTime}
+      description: Start date for scheduled publishing.
+    - id: endDate
+      type: System.Nullable{System.DateTime}
+      description: End date for scheduled publishing.
+    - id: schedule
+      type: System.Boolean
+      description: Defines whether to define a schedule or not.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub AddPublishingPage(web As Web, pageName As String, pageTemplateName As String, title As String = Nothing, publish As Boolean = False, folder As Folder = Nothing, startDate As Date? = Nothing, endDate As Date? = Nothing, schedule As Boolean = False)
+  overload: Microsoft.SharePoint.Client.PublishingExtensions.AddPublishingPage*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when key or pageName is a zero-length string or contains only white space
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when key or pageName is null
+  nameWithType.vb: PublishingExtensions.AddPublishingPage(Web, String, String, String, Boolean, Folder, Nullable(Of DateTime), Nullable(Of DateTime), Boolean)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.PublishingExtensions.AddPublishingPage(Microsoft.SharePoint.Client.Web, System.String, System.String, System.String, System.Boolean, Microsoft.SharePoint.Client.Folder, System.Nullable(Of System.DateTime), System.Nullable(Of System.DateTime), System.Boolean)
+  name.vb: AddPublishingPage(Web, String, String, String, Boolean, Folder, Nullable(Of DateTime), Nullable(Of DateTime), Boolean)
+- uid: Microsoft.SharePoint.Client.PublishingExtensions.GetPublishingPage(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.PublishingExtensions.GetPublishingPage(Microsoft.SharePoint.Client.Web,System.String)
+  id: GetPublishingPage(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PublishingExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetPublishingPage(Web, String)
+  nameWithType: PublishingExtensions.GetPublishingPage(Web, String)
+  fullName: Microsoft.SharePoint.Client.PublishingExtensions.GetPublishingPage(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PublishingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetPublishingPage
+    path: ../src/lib/PnP.Framework/Extensions/PublishingExtensions.cs
+    startLine: 126
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets a Publishing Page from the root folder of the Pages library.\n"
+  example: []
+  syntax:
+    content: public static PublishingPage GetPublishingPage(this Web web, string fileLeafRef)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The web.
+    - id: fileLeafRef
+      type: System.String
+      description: The file leaf reference.
+    return:
+      type: Microsoft.SharePoint.Client.Publishing.PublishingPage
+      description: The PublishingPage object, if any. Otherwise null.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetPublishingPage(web As Web, fileLeafRef As String) As PublishingPage
+  overload: Microsoft.SharePoint.Client.PublishingExtensions.GetPublishingPage*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: fileLeafRef
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: fileLeafRef
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PublishingExtensions.GetPublishingPage(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.Folder)
+  commentId: M:Microsoft.SharePoint.Client.PublishingExtensions.GetPublishingPage(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.Folder)
+  id: GetPublishingPage(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.Folder)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PublishingExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetPublishingPage(Web, String, Folder)
+  nameWithType: PublishingExtensions.GetPublishingPage(Web, String, Folder)
+  fullName: Microsoft.SharePoint.Client.PublishingExtensions.GetPublishingPage(Microsoft.SharePoint.Client.Web, System.String, Microsoft.SharePoint.Client.Folder)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PublishingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetPublishingPage
+    path: ../src/lib/PnP.Framework/Extensions/PublishingExtensions.cs
+    startLine: 140
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets a Publishing Page from any folder in the Pages library.\n"
+  example: []
+  syntax:
+    content: public static PublishingPage GetPublishingPage(this Web web, string fileLeafRef, Folder folder)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The web.
+    - id: fileLeafRef
+      type: System.String
+      description: The file leaf reference.
+    - id: folder
+      type: Microsoft.SharePoint.Client.Folder
+      description: The folder where to search the page.
+    return:
+      type: Microsoft.SharePoint.Client.Publishing.PublishingPage
+      description: The PublishingPage object, if any. Otherwise null.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetPublishingPage(web As Web, fileLeafRef As String, folder As Folder) As PublishingPage
+  overload: Microsoft.SharePoint.Client.PublishingExtensions.GetPublishingPage*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: fileLeafRef
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: fileLeafRef
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PublishingExtensions.CreatePublishingImageRendition(Microsoft.SharePoint.Client.Web,System.String,System.Int32,System.Int32)
+  commentId: M:Microsoft.SharePoint.Client.PublishingExtensions.CreatePublishingImageRendition(Microsoft.SharePoint.Client.Web,System.String,System.Int32,System.Int32)
+  id: CreatePublishingImageRendition(Microsoft.SharePoint.Client.Web,System.String,System.Int32,System.Int32)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PublishingExtensions
+  langs:
+  - csharp
+  - vb
+  name: CreatePublishingImageRendition(Web, String, Int32, Int32)
+  nameWithType: PublishingExtensions.CreatePublishingImageRendition(Web, String, Int32, Int32)
+  fullName: Microsoft.SharePoint.Client.PublishingExtensions.CreatePublishingImageRendition(Microsoft.SharePoint.Client.Web, System.String, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PublishingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreatePublishingImageRendition
+    path: ../src/lib/PnP.Framework/Extensions/PublishingExtensions.cs
+    startLine: 193
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCreates an Image Rendition if the name of the Image Rendition doesn&apos;t already exist.\n"
+  example: []
+  syntax:
+    content: public static void CreatePublishingImageRendition(this Web web, string imageRenditionName, int imageRenditionWidth, int imageRenditionHeight)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: SharePoint Web
+    - id: imageRenditionName
+      type: System.String
+      description: The display name of the Image Rendition
+    - id: imageRenditionWidth
+      type: System.Int32
+      description: The width of the Image Rendition
+    - id: imageRenditionHeight
+      type: System.Int32
+      description: The height of the Image Rendition
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub CreatePublishingImageRendition(web As Web, imageRenditionName As String, imageRenditionWidth As Integer, imageRenditionHeight As Integer)
+  overload: Microsoft.SharePoint.Client.PublishingExtensions.CreatePublishingImageRendition*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PublishingExtensions.RemovePublishingImageRendition(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.PublishingExtensions.RemovePublishingImageRendition(Microsoft.SharePoint.Client.Web,System.String)
+  id: RemovePublishingImageRendition(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PublishingExtensions
+  langs:
+  - csharp
+  - vb
+  name: RemovePublishingImageRendition(Web, String)
+  nameWithType: PublishingExtensions.RemovePublishingImageRendition(Web, String)
+  fullName: Microsoft.SharePoint.Client.PublishingExtensions.RemovePublishingImageRendition(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PublishingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemovePublishingImageRendition
+    path: ../src/lib/PnP.Framework/Extensions/PublishingExtensions.cs
+    startLine: 226
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nRemoves an existing image rendition\n"
+  example: []
+  syntax:
+    content: public static void RemovePublishingImageRendition(this Web web, string imageRenditionName)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: SharePoint Web
+    - id: imageRenditionName
+      type: System.String
+      description: The name of the image rendition
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub RemovePublishingImageRendition(web As Web, imageRenditionName As String)
+  overload: Microsoft.SharePoint.Client.PublishingExtensions.RemovePublishingImageRendition*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.PublishingExtensions.GetPublishingImageRenditions(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.PublishingExtensions.GetPublishingImageRenditions(Microsoft.SharePoint.Client.Web)
+  id: GetPublishingImageRenditions(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.PublishingExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetPublishingImageRenditions(Web)
+  nameWithType: PublishingExtensions.GetPublishingImageRenditions(Web)
+  fullName: Microsoft.SharePoint.Client.PublishingExtensions.GetPublishingImageRenditions(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/PublishingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetPublishingImageRenditions
+    path: ../src/lib/PnP.Framework/Extensions/PublishingExtensions.cs
+    startLine: 239
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns all image renditions\n"
+  example: []
+  syntax:
+    content: public static IList<ImageRendition> GetPublishingImageRenditions(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: SharePoint Web
+    return:
+      type: System.Collections.Generic.IList{Microsoft.SharePoint.Client.Publishing.ImageRendition}
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetPublishingImageRenditions(web As Web) As IList(Of ImageRendition)
+  overload: Microsoft.SharePoint.Client.PublishingExtensions.GetPublishingImageRenditions*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: Microsoft.SharePoint.Client
+  commentId: N:Microsoft.SharePoint.Client
+  name: Microsoft.SharePoint.Client
+  nameWithType: Microsoft.SharePoint.Client
+  fullName: Microsoft.SharePoint.Client
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+- uid: Microsoft.SharePoint.Client.PublishingExtensions.AddPublishingPage*
+  commentId: Overload:Microsoft.SharePoint.Client.PublishingExtensions.AddPublishingPage
+  name: AddPublishingPage
+  nameWithType: PublishingExtensions.AddPublishingPage
+  fullName: Microsoft.SharePoint.Client.PublishingExtensions.AddPublishingPage
+- uid: Microsoft.SharePoint.Client.Web
+  commentId: T:Microsoft.SharePoint.Client.Web
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: Web
+  nameWithType: Web
+  fullName: Microsoft.SharePoint.Client.Web
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: Microsoft.SharePoint.Client.Folder
+  commentId: T:Microsoft.SharePoint.Client.Folder
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: Folder
+  nameWithType: Folder
+  fullName: Microsoft.SharePoint.Client.Folder
+- uid: System.Nullable{System.DateTime}
+  commentId: T:System.Nullable{System.DateTime}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<DateTime>
+  nameWithType: Nullable<DateTime>
+  fullName: System.Nullable<System.DateTime>
+  nameWithType.vb: Nullable(Of DateTime)
+  fullName.vb: System.Nullable(Of System.DateTime)
+  name.vb: Nullable(Of DateTime)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.DateTime
+    name: DateTime
+    nameWithType: DateTime
+    fullName: System.DateTime
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.DateTime
+    name: DateTime
+    nameWithType: DateTime
+    fullName: System.DateTime
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.SharePoint.Client.PublishingExtensions.GetPublishingPage*
+  commentId: Overload:Microsoft.SharePoint.Client.PublishingExtensions.GetPublishingPage
+  name: GetPublishingPage
+  nameWithType: PublishingExtensions.GetPublishingPage
+  fullName: Microsoft.SharePoint.Client.PublishingExtensions.GetPublishingPage
+- uid: Microsoft.SharePoint.Client.Publishing.PublishingPage
+  commentId: T:Microsoft.SharePoint.Client.Publishing.PublishingPage
+  parent: Microsoft.SharePoint.Client.Publishing
+  isExternal: true
+  name: PublishingPage
+  nameWithType: PublishingPage
+  fullName: Microsoft.SharePoint.Client.Publishing.PublishingPage
+- uid: Microsoft.SharePoint.Client.Publishing
+  commentId: N:Microsoft.SharePoint.Client.Publishing
+  isExternal: true
+  name: Microsoft.SharePoint.Client.Publishing
+  nameWithType: Microsoft.SharePoint.Client.Publishing
+  fullName: Microsoft.SharePoint.Client.Publishing
+- uid: Microsoft.SharePoint.Client.PublishingExtensions.CreatePublishingImageRendition*
+  commentId: Overload:Microsoft.SharePoint.Client.PublishingExtensions.CreatePublishingImageRendition
+  name: CreatePublishingImageRendition
+  nameWithType: PublishingExtensions.CreatePublishingImageRendition
+  fullName: Microsoft.SharePoint.Client.PublishingExtensions.CreatePublishingImageRendition
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: Microsoft.SharePoint.Client.PublishingExtensions.RemovePublishingImageRendition*
+  commentId: Overload:Microsoft.SharePoint.Client.PublishingExtensions.RemovePublishingImageRendition
+  name: RemovePublishingImageRendition
+  nameWithType: PublishingExtensions.RemovePublishingImageRendition
+  fullName: Microsoft.SharePoint.Client.PublishingExtensions.RemovePublishingImageRendition
+- uid: Microsoft.SharePoint.Client.PublishingExtensions.GetPublishingImageRenditions*
+  commentId: Overload:Microsoft.SharePoint.Client.PublishingExtensions.GetPublishingImageRenditions
+  name: GetPublishingImageRenditions
+  nameWithType: PublishingExtensions.GetPublishingImageRenditions
+  fullName: Microsoft.SharePoint.Client.PublishingExtensions.GetPublishingImageRenditions
+- uid: System.Collections.Generic.IList{Microsoft.SharePoint.Client.Publishing.ImageRendition}
+  commentId: T:System.Collections.Generic.IList{Microsoft.SharePoint.Client.Publishing.ImageRendition}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IList`1
+  name: IList<ImageRendition>
+  nameWithType: IList<ImageRendition>
+  fullName: System.Collections.Generic.IList<Microsoft.SharePoint.Client.Publishing.ImageRendition>
+  nameWithType.vb: IList(Of ImageRendition)
+  fullName.vb: System.Collections.Generic.IList(Of Microsoft.SharePoint.Client.Publishing.ImageRendition)
+  name.vb: IList(Of ImageRendition)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    nameWithType: IList
+    fullName: System.Collections.Generic.IList
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Microsoft.SharePoint.Client.Publishing.ImageRendition
+    name: ImageRendition
+    nameWithType: ImageRendition
+    fullName: Microsoft.SharePoint.Client.Publishing.ImageRendition
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    nameWithType: IList
+    fullName: System.Collections.Generic.IList
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Microsoft.SharePoint.Client.Publishing.ImageRendition
+    name: ImageRendition
+    nameWithType: ImageRendition
+    fullName: Microsoft.SharePoint.Client.Publishing.ImageRendition
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.IList`1
+  commentId: T:System.Collections.Generic.IList`1
+  isExternal: true
+  name: IList<T>
+  nameWithType: IList<T>
+  fullName: System.Collections.Generic.IList<T>
+  nameWithType.vb: IList(Of T)
+  fullName.vb: System.Collections.Generic.IList(Of T)
+  name.vb: IList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    nameWithType: IList
+    fullName: System.Collections.Generic.IList
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    nameWithType: IList
+    fullName: System.Collections.Generic.IList
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic

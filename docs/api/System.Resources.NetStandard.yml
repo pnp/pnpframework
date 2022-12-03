@@ -1,0 +1,55 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Resources.NetStandard
+  commentId: N:System.Resources.NetStandard
+  id: System.Resources.NetStandard
+  children:
+  - System.Resources.NetStandard.ResXDataNode
+  - System.Resources.NetStandard.ResXFileRef
+  - System.Resources.NetStandard.ResXFileRef.Converter
+  - System.Resources.NetStandard.ResXResourceReader
+  - System.Resources.NetStandard.ResXResourceWriter
+  langs:
+  - csharp
+  - vb
+  name: System.Resources.NetStandard
+  nameWithType: System.Resources.NetStandard
+  fullName: System.Resources.NetStandard
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: System.Resources.NetStandard.ResXDataNode
+  commentId: T:System.Resources.NetStandard.ResXDataNode
+  parent: System.Resources.NetStandard
+  name: ResXDataNode
+  nameWithType: ResXDataNode
+  fullName: System.Resources.NetStandard.ResXDataNode
+- uid: System.Resources.NetStandard.ResXFileRef
+  commentId: T:System.Resources.NetStandard.ResXFileRef
+  parent: System.Resources.NetStandard
+  name: ResXFileRef
+  nameWithType: ResXFileRef
+  fullName: System.Resources.NetStandard.ResXFileRef
+- uid: System.Resources.NetStandard.ResXFileRef.Converter
+  commentId: T:System.Resources.NetStandard.ResXFileRef.Converter
+  parent: System.Resources.NetStandard
+  name: ResXFileRef.Converter
+  nameWithType: ResXFileRef.Converter
+  fullName: System.Resources.NetStandard.ResXFileRef.Converter
+- uid: System.Resources.NetStandard.ResXResourceReader
+  commentId: T:System.Resources.NetStandard.ResXResourceReader
+  parent: System.Resources.NetStandard
+  name: ResXResourceReader
+  nameWithType: ResXResourceReader
+  fullName: System.Resources.NetStandard.ResXResourceReader
+- uid: System.Resources.NetStandard.ResXResourceWriter
+  commentId: T:System.Resources.NetStandard.ResXResourceWriter
+  name: ResXResourceWriter
+  nameWithType: ResXResourceWriter
+  fullName: System.Resources.NetStandard.ResXResourceWriter
+- uid: System.Resources.NetStandard
+  commentId: N:System.Resources.NetStandard
+  name: System.Resources.NetStandard
+  nameWithType: System.Resources.NetStandard
+  fullName: System.Resources.NetStandard

@@ -1,0 +1,22 @@
+### YamlMime:ManagedReference
+items:
+- uid: AngleSharp.Dom
+  commentId: N:AngleSharp.Dom
+  id: AngleSharp.Dom
+  children:
+  - AngleSharp.Dom.AngleSharpExtensions
+  langs:
+  - csharp
+  - vb
+  name: AngleSharp.Dom
+  nameWithType: AngleSharp.Dom
+  fullName: AngleSharp.Dom
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: AngleSharp.Dom.AngleSharpExtensions
+  commentId: T:AngleSharp.Dom.AngleSharpExtensions
+  name: AngleSharpExtensions
+  nameWithType: AngleSharpExtensions
+  fullName: AngleSharp.Dom.AngleSharpExtensions

@@ -1,0 +1,48 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.TimerJobs
+  commentId: N:PnP.Framework.TimerJobs
+  id: PnP.Framework.TimerJobs
+  children:
+  - PnP.Framework.TimerJobs.TimerJob
+  - PnP.Framework.TimerJobs.TimerJobRun
+  - PnP.Framework.TimerJobs.TimerJobRunEventArgs
+  - PnP.Framework.TimerJobs.TimerJobRunHandler
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.TimerJobs
+  nameWithType: PnP.Framework.TimerJobs
+  fullName: PnP.Framework.TimerJobs
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.TimerJobs.TimerJobRunHandler
+  commentId: T:PnP.Framework.TimerJobs.TimerJobRunHandler
+  parent: PnP.Framework.TimerJobs
+  name: TimerJobRunHandler
+  nameWithType: TimerJobRunHandler
+  fullName: PnP.Framework.TimerJobs.TimerJobRunHandler
+- uid: PnP.Framework.TimerJobs.TimerJob
+  commentId: T:PnP.Framework.TimerJobs.TimerJob
+  parent: PnP.Framework.TimerJobs
+  name: TimerJob
+  nameWithType: TimerJob
+  fullName: PnP.Framework.TimerJobs.TimerJob
+- uid: PnP.Framework.TimerJobs.TimerJobRun
+  commentId: T:PnP.Framework.TimerJobs.TimerJobRun
+  name: TimerJobRun
+  nameWithType: TimerJobRun
+  fullName: PnP.Framework.TimerJobs.TimerJobRun
+- uid: PnP.Framework.TimerJobs.TimerJobRunEventArgs
+  commentId: T:PnP.Framework.TimerJobs.TimerJobRunEventArgs
+  parent: PnP.Framework.TimerJobs
+  name: TimerJobRunEventArgs
+  nameWithType: TimerJobRunEventArgs
+  fullName: PnP.Framework.TimerJobs.TimerJobRunEventArgs
+- uid: PnP.Framework.TimerJobs
+  commentId: N:PnP.Framework.TimerJobs
+  name: PnP.Framework.TimerJobs
+  nameWithType: PnP.Framework.TimerJobs
+  fullName: PnP.Framework.TimerJobs

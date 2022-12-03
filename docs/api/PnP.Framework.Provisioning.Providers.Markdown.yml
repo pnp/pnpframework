@@ -1,0 +1,65 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Providers.Markdown
+  commentId: N:PnP.Framework.Provisioning.Providers.Markdown
+  id: PnP.Framework.Provisioning.Providers.Markdown
+  children:
+  - PnP.Framework.Provisioning.Providers.Markdown.IPnPSchemaWriter
+  - PnP.Framework.Provisioning.Providers.Markdown.MarkdownFileSystemTemplateProvider
+  - PnP.Framework.Provisioning.Providers.Markdown.MarkdownOpenXMLTemplateProvider
+  - PnP.Framework.Provisioning.Providers.Markdown.MarkdownPnPFormatter
+  - PnP.Framework.Provisioning.Providers.Markdown.MarkdownTemplateProvider
+  - PnP.Framework.Provisioning.Providers.Markdown.TemplateSchemaWriterAttribute
+  - PnP.Framework.Provisioning.Providers.Markdown.WriterScope
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Providers.Markdown
+  nameWithType: PnP.Framework.Provisioning.Providers.Markdown
+  fullName: PnP.Framework.Provisioning.Providers.Markdown
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Providers.Markdown.IPnPSchemaWriter
+  commentId: T:PnP.Framework.Provisioning.Providers.Markdown.IPnPSchemaWriter
+  name: IPnPSchemaWriter
+  nameWithType: IPnPSchemaWriter
+  fullName: PnP.Framework.Provisioning.Providers.Markdown.IPnPSchemaWriter
+- uid: PnP.Framework.Provisioning.Providers.Markdown.MarkdownFileSystemTemplateProvider
+  commentId: T:PnP.Framework.Provisioning.Providers.Markdown.MarkdownFileSystemTemplateProvider
+  name: MarkdownFileSystemTemplateProvider
+  nameWithType: MarkdownFileSystemTemplateProvider
+  fullName: PnP.Framework.Provisioning.Providers.Markdown.MarkdownFileSystemTemplateProvider
+- uid: PnP.Framework.Provisioning.Providers.Markdown.MarkdownOpenXMLTemplateProvider
+  commentId: T:PnP.Framework.Provisioning.Providers.Markdown.MarkdownOpenXMLTemplateProvider
+  name: MarkdownOpenXMLTemplateProvider
+  nameWithType: MarkdownOpenXMLTemplateProvider
+  fullName: PnP.Framework.Provisioning.Providers.Markdown.MarkdownOpenXMLTemplateProvider
+- uid: PnP.Framework.Provisioning.Providers.Markdown.MarkdownPnPFormatter
+  commentId: T:PnP.Framework.Provisioning.Providers.Markdown.MarkdownPnPFormatter
+  name: MarkdownPnPFormatter
+  nameWithType: MarkdownPnPFormatter
+  fullName: PnP.Framework.Provisioning.Providers.Markdown.MarkdownPnPFormatter
+- uid: PnP.Framework.Provisioning.Providers.Markdown.MarkdownTemplateProvider
+  commentId: T:PnP.Framework.Provisioning.Providers.Markdown.MarkdownTemplateProvider
+  parent: PnP.Framework.Provisioning.Providers.Markdown
+  name: MarkdownTemplateProvider
+  nameWithType: MarkdownTemplateProvider
+  fullName: PnP.Framework.Provisioning.Providers.Markdown.MarkdownTemplateProvider
+- uid: PnP.Framework.Provisioning.Providers.Markdown.TemplateSchemaWriterAttribute
+  commentId: T:PnP.Framework.Provisioning.Providers.Markdown.TemplateSchemaWriterAttribute
+  name: TemplateSchemaWriterAttribute
+  nameWithType: TemplateSchemaWriterAttribute
+  fullName: PnP.Framework.Provisioning.Providers.Markdown.TemplateSchemaWriterAttribute
+- uid: PnP.Framework.Provisioning.Providers.Markdown.WriterScope
+  commentId: T:PnP.Framework.Provisioning.Providers.Markdown.WriterScope
+  parent: PnP.Framework.Provisioning.Providers.Markdown
+  name: WriterScope
+  nameWithType: WriterScope
+  fullName: PnP.Framework.Provisioning.Providers.Markdown.WriterScope
+- uid: PnP.Framework.Provisioning.Providers.Markdown
+  commentId: N:PnP.Framework.Provisioning.Providers.Markdown
+  name: PnP.Framework.Provisioning.Providers.Markdown
+  nameWithType: PnP.Framework.Provisioning.Providers.Markdown
+  fullName: PnP.Framework.Provisioning.Providers.Markdown

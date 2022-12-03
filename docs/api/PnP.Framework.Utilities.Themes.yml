@@ -1,0 +1,40 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Utilities.Themes
+  commentId: N:PnP.Framework.Utilities.Themes
+  id: PnP.Framework.Utilities.Themes
+  children:
+  - PnP.Framework.Utilities.Themes.ThemeAction
+  - PnP.Framework.Utilities.Themes.ThemeManager
+  - PnP.Framework.Utilities.Themes.ThemeUtility
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Utilities.Themes
+  nameWithType: PnP.Framework.Utilities.Themes
+  fullName: PnP.Framework.Utilities.Themes
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Utilities.Themes.ThemeManager
+  commentId: T:PnP.Framework.Utilities.Themes.ThemeManager
+  name: ThemeManager
+  nameWithType: ThemeManager
+  fullName: PnP.Framework.Utilities.Themes.ThemeManager
+- uid: PnP.Framework.Utilities.Themes.ThemeAction
+  commentId: T:PnP.Framework.Utilities.Themes.ThemeAction
+  parent: PnP.Framework.Utilities.Themes
+  name: ThemeAction
+  nameWithType: ThemeAction
+  fullName: PnP.Framework.Utilities.Themes.ThemeAction
+- uid: PnP.Framework.Utilities.Themes.ThemeUtility
+  commentId: T:PnP.Framework.Utilities.Themes.ThemeUtility
+  name: ThemeUtility
+  nameWithType: ThemeUtility
+  fullName: PnP.Framework.Utilities.Themes.ThemeUtility
+- uid: PnP.Framework.Utilities.Themes
+  commentId: N:PnP.Framework.Utilities.Themes
+  name: PnP.Framework.Utilities.Themes
+  nameWithType: PnP.Framework.Utilities.Themes
+  fullName: PnP.Framework.Utilities.Themes

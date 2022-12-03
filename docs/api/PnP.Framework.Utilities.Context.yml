@@ -1,0 +1,35 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Utilities.Context
+  commentId: N:PnP.Framework.Utilities.Context
+  id: PnP.Framework.Utilities.Context
+  children:
+  - PnP.Framework.Utilities.Context.ClientContextSettings
+  - PnP.Framework.Utilities.Context.ClientContextType
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Utilities.Context
+  nameWithType: PnP.Framework.Utilities.Context
+  fullName: PnP.Framework.Utilities.Context
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Utilities.Context.ClientContextSettings
+  commentId: T:PnP.Framework.Utilities.Context.ClientContextSettings
+  parent: PnP.Framework.Utilities.Context
+  name: ClientContextSettings
+  nameWithType: ClientContextSettings
+  fullName: PnP.Framework.Utilities.Context.ClientContextSettings
+- uid: PnP.Framework.Utilities.Context.ClientContextType
+  commentId: T:PnP.Framework.Utilities.Context.ClientContextType
+  parent: PnP.Framework.Utilities.Context
+  name: ClientContextType
+  nameWithType: ClientContextType
+  fullName: PnP.Framework.Utilities.Context.ClientContextType
+- uid: PnP.Framework.Utilities.Context
+  commentId: N:PnP.Framework.Utilities.Context
+  name: PnP.Framework.Utilities.Context
+  nameWithType: PnP.Framework.Utilities.Context
+  fullName: PnP.Framework.Utilities.Context

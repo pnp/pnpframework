@@ -1,0 +1,73 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  commentId: N:PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  id: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  children:
+  - PnP.Framework.Provisioning.ObjectHandlers.Utilities.ClientSidePageContentsHelper
+  - PnP.Framework.Provisioning.ObjectHandlers.Utilities.ConnectorFileHelper
+  - PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUpdateValue
+  - PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUtilities
+  - PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities
+  - PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities
+  - PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.ListItemUpdateType
+  - PnP.Framework.Provisioning.ObjectHandlers.Utilities.PageToExport
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  nameWithType: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ClientSidePageContentsHelper
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.Utilities.ClientSidePageContentsHelper
+  name: ClientSidePageContentsHelper
+  nameWithType: ClientSidePageContentsHelper
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ClientSidePageContentsHelper
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ConnectorFileHelper
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.Utilities.ConnectorFileHelper
+  name: ConnectorFileHelper
+  nameWithType: ConnectorFileHelper
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ConnectorFileHelper
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUpdateValue
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUpdateValue
+  parent: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  name: FieldUpdateValue
+  nameWithType: FieldUpdateValue
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUpdateValue
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUtilities
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUtilities
+  name: FieldUtilities
+  nameWithType: FieldUtilities
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUtilities
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities
+  parent: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  name: FileUtilities
+  nameWithType: FileUtilities
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities
+  name: ListItemUtilities
+  nameWithType: ListItemUtilities
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.ListItemUpdateType
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.ListItemUpdateType
+  parent: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  name: ListItemUtilities.ListItemUpdateType
+  nameWithType: ListItemUtilities.ListItemUpdateType
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.ListItemUpdateType
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.PageToExport
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.Utilities.PageToExport
+  parent: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  name: PageToExport
+  nameWithType: PageToExport
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities.PageToExport
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  commentId: N:PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  name: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  nameWithType: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities

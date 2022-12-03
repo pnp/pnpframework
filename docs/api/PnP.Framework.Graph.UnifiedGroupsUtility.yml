@@ -1,0 +1,2475 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility
+  commentId: T:PnP.Framework.Graph.UnifiedGroupsUtility
+  id: UnifiedGroupsUtility
+  parent: PnP.Framework.Graph
+  children:
+  - PnP.Framework.Graph.UnifiedGroupsUtility.AddUnifiedGroupMembers(System.String,System.String[],System.String,System.Boolean,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Graph.UnifiedGroupsUtility.AddUnifiedGroupOwners(System.String,System.String[],System.String,System.Boolean,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Graph.UnifiedGroupsUtility.ClearUnifiedGroupMembers(System.String,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Graph.UnifiedGroupsUtility.ClearUnifiedGroupOwners(System.String,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Graph.UnifiedGroupsUtility.CreateTeam(System.String,System.String,System.Int32,PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup(System.String,System.String,System.String,System.String,System.String[],System.String[],System.Boolean,System.Boolean,System.Int32,System.Int32,PnP.Framework.AzureEnvironment,System.Nullable{PnP.Framework.Enums.Office365Geography})
+  - PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup(System.String,System.String,System.String,System.String,System.String[],System.String[],System.IO.Stream,System.Boolean,System.Boolean,System.Int32,System.Int32,PnP.Framework.AzureEnvironment,System.Nullable{PnP.Framework.Enums.Office365Geography},System.Guid[],System.Boolean)
+  - PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup(System.String,System.String,System.String,System.String,System.String[],System.String[],System.String,System.Boolean,System.Boolean,System.Int32,System.Int32,PnP.Framework.AzureEnvironment,System.Nullable{PnP.Framework.Enums.Office365Geography})
+  - PnP.Framework.Graph.UnifiedGroupsUtility.DeleteUnifiedGroup(System.String,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Graph.UnifiedGroupsUtility.GetDeletedUnifiedGroup(System.String,System.String,PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Graph.UnifiedGroupsUtility.GetGroupClassification(System.String,System.String,PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Graph.UnifiedGroupsUtility.GetNestedUnifiedGroupMembers(PnP.Framework.Entities.UnifiedGroupEntity,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroup(System.String,System.String,System.Int32,System.Int32,System.Boolean,System.Boolean,System.Boolean,PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupMembers(PnP.Framework.Entities.UnifiedGroupEntity,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupOwners(PnP.Framework.Entities.UnifiedGroupEntity,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroups(System.String,System.String,System.String,System.Int32,System.Nullable{System.Int32},System.Boolean,System.Int32,System.Int32,System.Boolean,System.Boolean,System.Int32,PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupSiteUrl(System.String,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Graph.UnifiedGroupsUtility.HasTeamsTeam(System.String,System.String,PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Graph.UnifiedGroupsUtility.ListDeletedUnifiedGroups(System.String,PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Graph.UnifiedGroupsUtility.ListUnifiedGroups(System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean,System.Int32,System.Int32,System.Boolean,System.Boolean,PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Graph.UnifiedGroupsUtility.PermanentlyDeleteUnifiedGroup(System.String,System.String,PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Graph.UnifiedGroupsUtility.RemoveUnifiedGroupMembers(System.String,System.String[],System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Graph.UnifiedGroupsUtility.RemoveUnifiedGroupOwners(System.String,System.String[],System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Graph.UnifiedGroupsUtility.RenewUnifiedGroup(System.String,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Graph.UnifiedGroupsUtility.RestoreDeletedUnifiedGroup(System.String,System.String,PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Graph.UnifiedGroupsUtility.SetUnifiedGroupVisibility(System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Graph.UnifiedGroupsUtility.UpdateUnifiedGroup(System.String,System.String,System.Int32,System.Int32,System.String,System.String,System.String[],System.String[],System.IO.Stream,System.Nullable{System.Boolean},System.Boolean,PnP.Framework.AzureEnvironment)
+  langs:
+  - csharp
+  - vb
+  name: UnifiedGroupsUtility
+  nameWithType: UnifiedGroupsUtility
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UnifiedGroupsUtility
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 28
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nClass that deals with Unified group CRUD operations.\n"
+  example: []
+  syntax:
+    content: public static class UnifiedGroupsUtility
+    content.vb: Public Module UnifiedGroupsUtility
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupSiteUrl(System.String,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupSiteUrl(System.String,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  id: GetUnifiedGroupSiteUrl(System.String,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.UnifiedGroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: GetUnifiedGroupSiteUrl(String, String, Int32, Int32, AzureEnvironment)
+  nameWithType: UnifiedGroupsUtility.GetUnifiedGroupSiteUrl(String, String, Int32, Int32, AzureEnvironment)
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupSiteUrl(System.String, System.String, System.Int32, System.Int32, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetUnifiedGroupSiteUrl
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 73
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nReturns the URL of the Modern SharePoint Site backing an Office 365 Group (i.e. Unified Group)\n"
+  example: []
+  syntax:
+    content: public static string GetUnifiedGroupSiteUrl(string groupId, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: The ID of the Office 365 Group
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    return:
+      type: System.String
+      description: The URL of the modern site backing the Office 365 Group
+    content.vb: Public Shared Function GetUnifiedGroupSiteUrl(groupId As String, accessToken As String, retryCount As Integer = 10, delay As Integer = 500, azureEnvironment As AzureEnvironment = AzureEnvironment.Production) As String
+  overload: PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupSiteUrl*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup(System.String,System.String,System.String,System.String,System.String[],System.String[],System.IO.Stream,System.Boolean,System.Boolean,System.Int32,System.Int32,PnP.Framework.AzureEnvironment,System.Nullable{PnP.Framework.Enums.Office365Geography},System.Guid[],System.Boolean)
+  commentId: M:PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup(System.String,System.String,System.String,System.String,System.String[],System.String[],System.IO.Stream,System.Boolean,System.Boolean,System.Int32,System.Int32,PnP.Framework.AzureEnvironment,System.Nullable{PnP.Framework.Enums.Office365Geography},System.Guid[],System.Boolean)
+  id: CreateUnifiedGroup(System.String,System.String,System.String,System.String,System.String[],System.String[],System.IO.Stream,System.Boolean,System.Boolean,System.Int32,System.Int32,PnP.Framework.AzureEnvironment,System.Nullable{PnP.Framework.Enums.Office365Geography},System.Guid[],System.Boolean)
+  parent: PnP.Framework.Graph.UnifiedGroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: CreateUnifiedGroup(String, String, String, String, String[], String[], Stream, Boolean, Boolean, Int32, Int32, AzureEnvironment, Nullable<Office365Geography>, Guid[], Boolean)
+  nameWithType: UnifiedGroupsUtility.CreateUnifiedGroup(String, String, String, String, String[], String[], Stream, Boolean, Boolean, Int32, Int32, AzureEnvironment, Nullable<Office365Geography>, Guid[], Boolean)
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup(System.String, System.String, System.String, System.String, System.String[], System.String[], System.IO.Stream, System.Boolean, System.Boolean, System.Int32, System.Int32, PnP.Framework.AzureEnvironment, System.Nullable<PnP.Framework.Enums.Office365Geography>, System.Guid[], System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateUnifiedGroup
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 119
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nCreates a new Office 365 Group (i.e. Unified Group) with its backing Modern SharePoint Site\n"
+  example: []
+  syntax:
+    content: public static UnifiedGroupEntity CreateUnifiedGroup(string displayName, string description, string mailNickname, string accessToken, string[] owners = null, string[] members = null, Stream groupLogo = null, bool isPrivate = false, bool createTeam = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Office365Geography? preferredDataLocation = null, Guid[] assignedLabels = null, bool welcomeEmailDisabled = false)
+    parameters:
+    - id: displayName
+      type: System.String
+      description: The Display Name for the Office 365 Group
+    - id: description
+      type: System.String
+      description: The Description for the Office 365 Group
+    - id: mailNickname
+      type: System.String
+      description: The Mail Nickname for the Office 365 Group
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: owners
+      type: System.String[]
+      description: A list of UPNs for group owners, if any
+    - id: members
+      type: System.String[]
+      description: A list of UPNs for group members, if any
+    - id: groupLogo
+      type: System.IO.Stream
+      description: The binary stream of the logo for the Office 365 Group
+    - id: isPrivate
+      type: System.Boolean
+      description: Defines whether the group will be private or public, optional with default false (i.e. public)
+    - id: createTeam
+      type: System.Boolean
+      description: Defines whether to create MS Teams team associated with the group
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    - id: preferredDataLocation
+      type: System.Nullable{PnP.Framework.Enums.Office365Geography}
+      description: Defines the codes of geographies in which there is Office 365 presence. Used for multi-geo enabled tenants. List with available geographies is available at https://docs.microsoft.com/office365/enterprise/multi-geo-add-group-with-pdl#geo-location-codes.
+    - id: assignedLabels
+      type: System.Guid[]
+      description: AIP Labels which should be applied to the group (does not work for App-Only)
+    - id: welcomeEmailDisabled
+      type: System.Boolean
+      description: Option to prevent sending of default welcome emails to new members.
+    return:
+      type: PnP.Framework.Entities.UnifiedGroupEntity
+      description: The just created Office 365 Group
+    content.vb: Public Shared Function CreateUnifiedGroup(displayName As String, description As String, mailNickname As String, accessToken As String, owners As String() = Nothing, members As String() = Nothing, groupLogo As Stream = Nothing, isPrivate As Boolean = False, createTeam As Boolean = False, retryCount As Integer = 10, delay As Integer = 500, azureEnvironment As AzureEnvironment = AzureEnvironment.Production, preferredDataLocation As Office365Geography? = Nothing, assignedLabels As Guid() = Nothing, welcomeEmailDisabled As Boolean = False) As UnifiedGroupEntity
+  overload: PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup*
+  nameWithType.vb: UnifiedGroupsUtility.CreateUnifiedGroup(String, String, String, String, String(), String(), Stream, Boolean, Boolean, Int32, Int32, AzureEnvironment, Nullable(Of Office365Geography), Guid(), Boolean)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup(System.String, System.String, System.String, System.String, System.String(), System.String(), System.IO.Stream, System.Boolean, System.Boolean, System.Int32, System.Int32, PnP.Framework.AzureEnvironment, System.Nullable(Of PnP.Framework.Enums.Office365Geography), System.Guid(), System.Boolean)
+  name.vb: CreateUnifiedGroup(String, String, String, String, String(), String(), Stream, Boolean, Boolean, Int32, Int32, AzureEnvironment, Nullable(Of Office365Geography), Guid(), Boolean)
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.SetUnifiedGroupVisibility(System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.UnifiedGroupsUtility.SetUnifiedGroupVisibility(System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},PnP.Framework.AzureEnvironment)
+  id: SetUnifiedGroupVisibility(System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.UnifiedGroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: SetUnifiedGroupVisibility(String, String, Nullable<Boolean>, Nullable<Boolean>, AzureEnvironment)
+  nameWithType: UnifiedGroupsUtility.SetUnifiedGroupVisibility(String, String, Nullable<Boolean>, Nullable<Boolean>, AzureEnvironment)
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.SetUnifiedGroupVisibility(System.String, System.String, System.Nullable<System.Boolean>, System.Nullable<System.Boolean>, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetUnifiedGroupVisibility
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 508
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nSets the visibility of a Group\n"
+  example: []
+  syntax:
+    content: public static void SetUnifiedGroupVisibility(string groupId, string accessToken, bool? hideFromAddressLists, bool? hideFromOutlookClients, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: Id of the Microsoft 365 Group to set the visibility state for
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: hideFromAddressLists
+      type: System.Nullable{System.Boolean}
+      description: 'True if the group should not be displayed in certain parts of the Outlook UI: the Address Book, address lists for selecting message recipients, and the Browse Groups dialog for searching groups; otherwise, false. Default value is false.'
+    - id: hideFromOutlookClients
+      type: System.Nullable{System.Boolean}
+      description: True if the group should not be displayed in Outlook clients, such as Outlook for Windows and Outlook on the web; otherwise, false. Default value is false.
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    content.vb: Public Shared Sub SetUnifiedGroupVisibility(groupId As String, accessToken As String, hideFromAddressLists As Boolean?, hideFromOutlookClients As Boolean?, azureEnvironment As AzureEnvironment = AzureEnvironment.Production)
+  overload: PnP.Framework.Graph.UnifiedGroupsUtility.SetUnifiedGroupVisibility*
+  nameWithType.vb: UnifiedGroupsUtility.SetUnifiedGroupVisibility(String, String, Nullable(Of Boolean), Nullable(Of Boolean), AzureEnvironment)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Graph.UnifiedGroupsUtility.SetUnifiedGroupVisibility(System.String, System.String, System.Nullable(Of System.Boolean), System.Nullable(Of System.Boolean), PnP.Framework.AzureEnvironment)
+  name.vb: SetUnifiedGroupVisibility(String, String, Nullable(Of Boolean), Nullable(Of Boolean), AzureEnvironment)
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.RenewUnifiedGroup(System.String,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.UnifiedGroupsUtility.RenewUnifiedGroup(System.String,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  id: RenewUnifiedGroup(System.String,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.UnifiedGroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: RenewUnifiedGroup(String, String, Int32, Int32, AzureEnvironment)
+  nameWithType: UnifiedGroupsUtility.RenewUnifiedGroup(String, String, Int32, Int32, AzureEnvironment)
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.RenewUnifiedGroup(System.String, System.String, System.Int32, System.Int32, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RenewUnifiedGroup
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 556
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nRenews the Office 365 Group by extending its expiration with the number of days defined in the group expiration policy set on the Azure Active Directory\n"
+  example: []
+  syntax:
+    content: public static void RenewUnifiedGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: The ID of the Office 365 Group
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry.
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    content.vb: Public Shared Sub RenewUnifiedGroup(groupId As String, accessToken As String, retryCount As Integer = 10, delay As Integer = 500, azureEnvironment As AzureEnvironment = AzureEnvironment.Production)
+  overload: PnP.Framework.Graph.UnifiedGroupsUtility.RenewUnifiedGroup*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.UpdateUnifiedGroup(System.String,System.String,System.Int32,System.Int32,System.String,System.String,System.String[],System.String[],System.IO.Stream,System.Nullable{System.Boolean},System.Boolean,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.UnifiedGroupsUtility.UpdateUnifiedGroup(System.String,System.String,System.Int32,System.Int32,System.String,System.String,System.String[],System.String[],System.IO.Stream,System.Nullable{System.Boolean},System.Boolean,PnP.Framework.AzureEnvironment)
+  id: UpdateUnifiedGroup(System.String,System.String,System.Int32,System.Int32,System.String,System.String,System.String[],System.String[],System.IO.Stream,System.Nullable{System.Boolean},System.Boolean,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.UnifiedGroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: UpdateUnifiedGroup(String, String, Int32, Int32, String, String, String[], String[], Stream, Nullable<Boolean>, Boolean, AzureEnvironment)
+  nameWithType: UnifiedGroupsUtility.UpdateUnifiedGroup(String, String, Int32, Int32, String, String, String[], String[], Stream, Nullable<Boolean>, Boolean, AzureEnvironment)
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.UpdateUnifiedGroup(System.String, System.String, System.Int32, System.Int32, System.String, System.String, System.String[], System.String[], System.IO.Stream, System.Nullable<System.Boolean>, System.Boolean, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UpdateUnifiedGroup
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 595
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nUpdates the logo, members or visibility state of an Office 365 Group\n"
+  example: []
+  syntax:
+    content: public static bool UpdateUnifiedGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500, string displayName = null, string description = null, string[] owners = null, string[] members = null, Stream groupLogo = null, bool? isPrivate = null, bool createTeam = false, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: The ID of the Office 365 Group
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: displayName
+      type: System.String
+      description: The Display Name for the Office 365 Group
+    - id: description
+      type: System.String
+      description: The Description for the Office 365 Group
+    - id: owners
+      type: System.String[]
+      description: A list of UPNs for group owners, if any, to be added to the site
+    - id: members
+      type: System.String[]
+      description: A list of UPNs for group members, if any, to be added to the site
+    - id: groupLogo
+      type: System.IO.Stream
+      description: The binary stream of the logo for the Office 365 Group
+    - id: isPrivate
+      type: System.Nullable{System.Boolean}
+      description: Defines whether the group will be private or public, optional with default false (i.e. public)
+    - id: createTeam
+      type: System.Boolean
+      description: Defines whether to create MS Teams team associated with the group
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    return:
+      type: System.Boolean
+      description: Declares whether the Office 365 Group has been updated or not
+    content.vb: Public Shared Function UpdateUnifiedGroup(groupId As String, accessToken As String, retryCount As Integer = 10, delay As Integer = 500, displayName As String = Nothing, description As String = Nothing, owners As String() = Nothing, members As String() = Nothing, groupLogo As Stream = Nothing, isPrivate As Boolean? = Nothing, createTeam As Boolean = False, azureEnvironment As AzureEnvironment = AzureEnvironment.Production) As Boolean
+  overload: PnP.Framework.Graph.UnifiedGroupsUtility.UpdateUnifiedGroup*
+  nameWithType.vb: UnifiedGroupsUtility.UpdateUnifiedGroup(String, String, Int32, Int32, String, String, String(), String(), Stream, Nullable(Of Boolean), Boolean, AzureEnvironment)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Graph.UnifiedGroupsUtility.UpdateUnifiedGroup(System.String, System.String, System.Int32, System.Int32, System.String, System.String, System.String(), System.String(), System.IO.Stream, System.Nullable(Of System.Boolean), System.Boolean, PnP.Framework.AzureEnvironment)
+  name.vb: UpdateUnifiedGroup(String, String, Int32, Int32, String, String, String(), String(), Stream, Nullable(Of Boolean), Boolean, AzureEnvironment)
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup(System.String,System.String,System.String,System.String,System.String[],System.String[],System.String,System.Boolean,System.Boolean,System.Int32,System.Int32,PnP.Framework.AzureEnvironment,System.Nullable{PnP.Framework.Enums.Office365Geography})
+  commentId: M:PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup(System.String,System.String,System.String,System.String,System.String[],System.String[],System.String,System.Boolean,System.Boolean,System.Int32,System.Int32,PnP.Framework.AzureEnvironment,System.Nullable{PnP.Framework.Enums.Office365Geography})
+  id: CreateUnifiedGroup(System.String,System.String,System.String,System.String,System.String[],System.String[],System.String,System.Boolean,System.Boolean,System.Int32,System.Int32,PnP.Framework.AzureEnvironment,System.Nullable{PnP.Framework.Enums.Office365Geography})
+  parent: PnP.Framework.Graph.UnifiedGroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: CreateUnifiedGroup(String, String, String, String, String[], String[], String, Boolean, Boolean, Int32, Int32, AzureEnvironment, Nullable<Office365Geography>)
+  nameWithType: UnifiedGroupsUtility.CreateUnifiedGroup(String, String, String, String, String[], String[], String, Boolean, Boolean, Int32, Int32, AzureEnvironment, Nullable<Office365Geography>)
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup(System.String, System.String, System.String, System.String, System.String[], System.String[], System.String, System.Boolean, System.Boolean, System.Int32, System.Int32, PnP.Framework.AzureEnvironment, System.Nullable<PnP.Framework.Enums.Office365Geography>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateUnifiedGroup
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 721
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nCreates a new Office 365 Group (i.e. Unified Group) with its backing Modern SharePoint Site\n"
+  example: []
+  syntax:
+    content: public static UnifiedGroupEntity CreateUnifiedGroup(string displayName, string description, string mailNickname, string accessToken, string[] owners = null, string[] members = null, string groupLogoPath = null, bool isPrivate = false, bool createTeam = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Office365Geography? preferredDataLocation = null)
+    parameters:
+    - id: displayName
+      type: System.String
+      description: The Display Name for the Office 365 Group
+    - id: description
+      type: System.String
+      description: The Description for the Office 365 Group
+    - id: mailNickname
+      type: System.String
+      description: The Mail Nickname for the Office 365 Group
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: owners
+      type: System.String[]
+      description: A list of UPNs for group owners, if any
+    - id: members
+      type: System.String[]
+      description: A list of UPNs for group members, if any
+    - id: groupLogoPath
+      type: System.String
+      description: The path of the logo for the Office 365 Group
+    - id: isPrivate
+      type: System.Boolean
+      description: Defines whether the group will be private or public, optional with default false (i.e. public)
+    - id: createTeam
+      type: System.Boolean
+      description: Defines whether to create MS Teams team associated with the group
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    - id: preferredDataLocation
+      type: System.Nullable{PnP.Framework.Enums.Office365Geography}
+      description: Defines the codes of geographies in which there is Office 365 presence. Used for multi-geo enabled tenants. List with available geographies is available at https://docs.microsoft.com/office365/enterprise/multi-geo-add-group-with-pdl#geo-location-codes.
+    return:
+      type: PnP.Framework.Entities.UnifiedGroupEntity
+      description: The just created Office 365 Group
+    content.vb: Public Shared Function CreateUnifiedGroup(displayName As String, description As String, mailNickname As String, accessToken As String, owners As String() = Nothing, members As String() = Nothing, groupLogoPath As String = Nothing, isPrivate As Boolean = False, createTeam As Boolean = False, retryCount As Integer = 10, delay As Integer = 500, azureEnvironment As AzureEnvironment = AzureEnvironment.Production, preferredDataLocation As Office365Geography? = Nothing) As UnifiedGroupEntity
+  overload: PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup*
+  nameWithType.vb: UnifiedGroupsUtility.CreateUnifiedGroup(String, String, String, String, String(), String(), String, Boolean, Boolean, Int32, Int32, AzureEnvironment, Nullable(Of Office365Geography))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup(System.String, System.String, System.String, System.String, System.String(), System.String(), System.String, System.Boolean, System.Boolean, System.Int32, System.Int32, PnP.Framework.AzureEnvironment, System.Nullable(Of PnP.Framework.Enums.Office365Geography))
+  name.vb: CreateUnifiedGroup(String, String, String, String, String(), String(), String, Boolean, Boolean, Int32, Int32, AzureEnvironment, Nullable(Of Office365Geography))
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup(System.String,System.String,System.String,System.String,System.String[],System.String[],System.Boolean,System.Boolean,System.Int32,System.Int32,PnP.Framework.AzureEnvironment,System.Nullable{PnP.Framework.Enums.Office365Geography})
+  commentId: M:PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup(System.String,System.String,System.String,System.String,System.String[],System.String[],System.Boolean,System.Boolean,System.Int32,System.Int32,PnP.Framework.AzureEnvironment,System.Nullable{PnP.Framework.Enums.Office365Geography})
+  id: CreateUnifiedGroup(System.String,System.String,System.String,System.String,System.String[],System.String[],System.Boolean,System.Boolean,System.Int32,System.Int32,PnP.Framework.AzureEnvironment,System.Nullable{PnP.Framework.Enums.Office365Geography})
+  parent: PnP.Framework.Graph.UnifiedGroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: CreateUnifiedGroup(String, String, String, String, String[], String[], Boolean, Boolean, Int32, Int32, AzureEnvironment, Nullable<Office365Geography>)
+  nameWithType: UnifiedGroupsUtility.CreateUnifiedGroup(String, String, String, String, String[], String[], Boolean, Boolean, Int32, Int32, AzureEnvironment, Nullable<Office365Geography>)
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup(System.String, System.String, System.String, System.String, System.String[], System.String[], System.Boolean, System.Boolean, System.Int32, System.Int32, PnP.Framework.AzureEnvironment, System.Nullable<PnP.Framework.Enums.Office365Geography>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateUnifiedGroup
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 764
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nCreates a new Office 365 Group (i.e. Unified Group) with its backing Modern SharePoint Site\n"
+  example: []
+  syntax:
+    content: public static UnifiedGroupEntity CreateUnifiedGroup(string displayName, string description, string mailNickname, string accessToken, string[] owners = null, string[] members = null, bool isPrivate = false, bool createTeam = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Office365Geography? preferredDataLocation = null)
+    parameters:
+    - id: displayName
+      type: System.String
+      description: The Display Name for the Office 365 Group
+    - id: description
+      type: System.String
+      description: The Description for the Office 365 Group
+    - id: mailNickname
+      type: System.String
+      description: The Mail Nickname for the Office 365 Group
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: owners
+      type: System.String[]
+      description: A list of UPNs for group owners, if any
+    - id: members
+      type: System.String[]
+      description: A list of UPNs for group members, if any
+    - id: isPrivate
+      type: System.Boolean
+      description: Defines whether the group will be private or public, optional with default false (i.e. public)
+    - id: createTeam
+      type: System.Boolean
+      description: Defines whether to create MS Teams team associated with the group
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    - id: preferredDataLocation
+      type: System.Nullable{PnP.Framework.Enums.Office365Geography}
+      description: Defines the codes of geographies in which there is Office 365 presence. Used for multi-geo enabled tenants. List with available geographies is available at https://docs.microsoft.com/office365/enterprise/multi-geo-add-group-with-pdl#geo-location-codes.
+    return:
+      type: PnP.Framework.Entities.UnifiedGroupEntity
+      description: The just created Office 365 Group
+    content.vb: Public Shared Function CreateUnifiedGroup(displayName As String, description As String, mailNickname As String, accessToken As String, owners As String() = Nothing, members As String() = Nothing, isPrivate As Boolean = False, createTeam As Boolean = False, retryCount As Integer = 10, delay As Integer = 500, azureEnvironment As AzureEnvironment = AzureEnvironment.Production, preferredDataLocation As Office365Geography? = Nothing) As UnifiedGroupEntity
+  overload: PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup*
+  nameWithType.vb: UnifiedGroupsUtility.CreateUnifiedGroup(String, String, String, String, String(), String(), Boolean, Boolean, Int32, Int32, AzureEnvironment, Nullable(Of Office365Geography))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup(System.String, System.String, System.String, System.String, System.String(), System.String(), System.Boolean, System.Boolean, System.Int32, System.Int32, PnP.Framework.AzureEnvironment, System.Nullable(Of PnP.Framework.Enums.Office365Geography))
+  name.vb: CreateUnifiedGroup(String, String, String, String, String(), String(), Boolean, Boolean, Int32, Int32, AzureEnvironment, Nullable(Of Office365Geography))
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.DeleteUnifiedGroup(System.String,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.UnifiedGroupsUtility.DeleteUnifiedGroup(System.String,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  id: DeleteUnifiedGroup(System.String,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.UnifiedGroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: DeleteUnifiedGroup(String, String, Int32, Int32, AzureEnvironment)
+  nameWithType: UnifiedGroupsUtility.DeleteUnifiedGroup(String, String, Int32, Int32, AzureEnvironment)
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.DeleteUnifiedGroup(System.String, System.String, System.Int32, System.Int32, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeleteUnifiedGroup
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 782
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nDeletes an Office 365 Group (i.e. Unified Group)\n"
+  example: []
+  syntax:
+    content: public static void DeleteUnifiedGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: The ID of the Office 365 Group
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    content.vb: Public Shared Sub DeleteUnifiedGroup(groupId As String, accessToken As String, retryCount As Integer = 10, delay As Integer = 500, azureEnvironment As AzureEnvironment = AzureEnvironment.Production)
+  overload: PnP.Framework.Graph.UnifiedGroupsUtility.DeleteUnifiedGroup*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroup(System.String,System.String,System.Int32,System.Int32,System.Boolean,System.Boolean,System.Boolean,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroup(System.String,System.String,System.Int32,System.Int32,System.Boolean,System.Boolean,System.Boolean,PnP.Framework.AzureEnvironment)
+  id: GetUnifiedGroup(System.String,System.String,System.Int32,System.Int32,System.Boolean,System.Boolean,System.Boolean,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.UnifiedGroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: GetUnifiedGroup(String, String, Int32, Int32, Boolean, Boolean, Boolean, AzureEnvironment)
+  nameWithType: UnifiedGroupsUtility.GetUnifiedGroup(String, String, Int32, Int32, Boolean, Boolean, Boolean, AzureEnvironment)
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroup(System.String, System.String, System.Int32, System.Int32, System.Boolean, System.Boolean, System.Boolean, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetUnifiedGroup
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 821
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nGet an Office 365 Group (i.e. Unified Group) by Id\n"
+  example: []
+  syntax:
+    content: public static UnifiedGroupEntity GetUnifiedGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500, bool includeSite = true, bool includeClassification = false, bool includeHasTeam = false, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: The ID of the Office 365 Group
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: includeSite
+      type: System.Boolean
+      description: Defines whether to return details about the Modern SharePoint Site backing the group. Default is true.
+    - id: includeClassification
+      type: System.Boolean
+      description: Defines whether to return classification value of the unified group. Default is false.
+    - id: includeHasTeam
+      type: System.Boolean
+      description: Defines whether to check for each unified group if it has a Microsoft Team provisioned for it. Default is false.
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    return:
+      type: PnP.Framework.Entities.UnifiedGroupEntity
+    content.vb: Public Shared Function GetUnifiedGroup(groupId As String, accessToken As String, retryCount As Integer = 10, delay As Integer = 500, includeSite As Boolean = True, includeClassification As Boolean = False, includeHasTeam As Boolean = False, azureEnvironment As AzureEnvironment = AzureEnvironment.Production) As UnifiedGroupEntity
+  overload: PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroup*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.ListUnifiedGroups(System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean,System.Int32,System.Int32,System.Boolean,System.Boolean,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.UnifiedGroupsUtility.ListUnifiedGroups(System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean,System.Int32,System.Int32,System.Boolean,System.Boolean,PnP.Framework.AzureEnvironment)
+  id: ListUnifiedGroups(System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean,System.Int32,System.Int32,System.Boolean,System.Boolean,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.UnifiedGroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: ListUnifiedGroups(String, String, String, Int32, Int32, Boolean, Int32, Int32, Boolean, Boolean, AzureEnvironment)
+  nameWithType: UnifiedGroupsUtility.ListUnifiedGroups(String, String, String, Int32, Int32, Boolean, Int32, Int32, Boolean, Boolean, AzureEnvironment)
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.ListUnifiedGroups(System.String, System.String, System.String, System.Int32, System.Int32, System.Boolean, System.Int32, System.Int32, System.Boolean, System.Boolean, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ListUnifiedGroups
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 906
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nReturns all the Office 365 Groups in the current Tenant based on a startIndex. IncludeSite adds additional properties about the Modern SharePoint Site backing the group\n"
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("ListUnifiedGroups is deprecated, please use GetUnifiedGroups instead.")]
+
+      public static List<UnifiedGroupEntity> ListUnifiedGroups(string accessToken, string displayName = null, string mailNickname = null, int startIndex = 0, int endIndex = 999, bool includeSite = true, int retryCount = 10, int delay = 500, bool includeClassification = false, bool includeHasTeam = false, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: displayName
+      type: System.String
+      description: The DisplayName of the Office 365 Group
+    - id: mailNickname
+      type: System.String
+      description: The MailNickname of the Office 365 Group
+    - id: startIndex
+      type: System.Int32
+      description: Not relevant anymore
+    - id: endIndex
+      type: System.Int32
+      description: Not relevant anymore
+    - id: includeSite
+      type: System.Boolean
+      description: Defines whether to return details about the Modern SharePoint Site backing the group. Default is true.
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: includeClassification
+      type: System.Boolean
+      description: Defines whether or not to return details about the Modern Site classification value.
+    - id: includeHasTeam
+      type: System.Boolean
+      description: Defines whether to check for each unified group if it has a Microsoft Team provisioned for it. Default is false.
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    return:
+      type: System.Collections.Generic.List{PnP.Framework.Entities.UnifiedGroupEntity}
+      description: An IList of SiteEntity objects
+    content.vb: >-
+      <Obsolete("ListUnifiedGroups is deprecated, please use GetUnifiedGroups instead.")>
+
+      Public Shared Function ListUnifiedGroups(accessToken As String, displayName As String = Nothing, mailNickname As String = Nothing, startIndex As Integer = 0, endIndex As Integer = 999, includeSite As Boolean = True, retryCount As Integer = 10, delay As Integer = 500, includeClassification As Boolean = False, includeHasTeam As Boolean = False, azureEnvironment As AzureEnvironment = AzureEnvironment.Production) As List(Of UnifiedGroupEntity)
+  overload: PnP.Framework.Graph.UnifiedGroupsUtility.ListUnifiedGroups*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: ListUnifiedGroups is deprecated, please use GetUnifiedGroups instead.
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroups(System.String,System.String,System.String,System.Int32,System.Nullable{System.Int32},System.Boolean,System.Int32,System.Int32,System.Boolean,System.Boolean,System.Int32,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroups(System.String,System.String,System.String,System.Int32,System.Nullable{System.Int32},System.Boolean,System.Int32,System.Int32,System.Boolean,System.Boolean,System.Int32,PnP.Framework.AzureEnvironment)
+  id: GetUnifiedGroups(System.String,System.String,System.String,System.Int32,System.Nullable{System.Int32},System.Boolean,System.Int32,System.Int32,System.Boolean,System.Boolean,System.Int32,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.UnifiedGroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: GetUnifiedGroups(String, String, String, Int32, Nullable<Int32>, Boolean, Int32, Int32, Boolean, Boolean, Int32, AzureEnvironment)
+  nameWithType: UnifiedGroupsUtility.GetUnifiedGroups(String, String, String, Int32, Nullable<Int32>, Boolean, Int32, Int32, Boolean, Boolean, Int32, AzureEnvironment)
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroups(System.String, System.String, System.String, System.Int32, System.Nullable<System.Int32>, System.Boolean, System.Int32, System.Int32, System.Boolean, System.Boolean, System.Int32, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetUnifiedGroups
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 1024
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nReturns all the Office 365 Groups in the current Tenant based on a startIndex. IncludeSite adds additional properties about the Modern SharePoint Site backing the group\n"
+  example: []
+  syntax:
+    content: public static List<UnifiedGroupEntity> GetUnifiedGroups(string accessToken, string displayName = null, string mailNickname = null, int startIndex = 0, int? endIndex = null, bool includeSite = true, int retryCount = 10, int delay = 500, bool includeClassification = false, bool includeHasTeam = false, int pageSize = 999, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: displayName
+      type: System.String
+      description: The DisplayName of the Office 365 Group
+    - id: mailNickname
+      type: System.String
+      description: The MailNickname of the Office 365 Group
+    - id: startIndex
+      type: System.Int32
+      description: If not specified, method will start with the first group.
+    - id: endIndex
+      type: System.Nullable{System.Int32}
+      description: If not specified, method will return all groups.
+    - id: includeSite
+      type: System.Boolean
+      description: Defines whether to return details about the Modern SharePoint Site backing the group. Default is true.
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: includeClassification
+      type: System.Boolean
+      description: Defines whether or not to return details about the Modern Site classification value.
+    - id: includeHasTeam
+      type: System.Boolean
+      description: Defines whether to check for each unified group if it has a Microsoft Team provisioned for it. Default is false.
+    - id: pageSize
+      type: System.Int32
+      description: Page size used for the individual requests to Micrsoft Graph. Defaults to 999 which is currently the maximum value.
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    return:
+      type: System.Collections.Generic.List{PnP.Framework.Entities.UnifiedGroupEntity}
+      description: An IList of SiteEntity objects
+    content.vb: Public Shared Function GetUnifiedGroups(accessToken As String, displayName As String = Nothing, mailNickname As String = Nothing, startIndex As Integer = 0, endIndex As Integer? = Nothing, includeSite As Boolean = True, retryCount As Integer = 10, delay As Integer = 500, includeClassification As Boolean = False, includeHasTeam As Boolean = False, pageSize As Integer = 999, azureEnvironment As AzureEnvironment = AzureEnvironment.Production) As List(Of UnifiedGroupEntity)
+  overload: PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroups*
+  nameWithType.vb: UnifiedGroupsUtility.GetUnifiedGroups(String, String, String, Int32, Nullable(Of Int32), Boolean, Int32, Int32, Boolean, Boolean, Int32, AzureEnvironment)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroups(System.String, System.String, System.String, System.Int32, System.Nullable(Of System.Int32), System.Boolean, System.Int32, System.Int32, System.Boolean, System.Boolean, System.Int32, PnP.Framework.AzureEnvironment)
+  name.vb: GetUnifiedGroups(String, String, String, Int32, Nullable(Of Int32), Boolean, Int32, Int32, Boolean, Boolean, Int32, AzureEnvironment)
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupMembers(PnP.Framework.Entities.UnifiedGroupEntity,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupMembers(PnP.Framework.Entities.UnifiedGroupEntity,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  id: GetUnifiedGroupMembers(PnP.Framework.Entities.UnifiedGroupEntity,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.UnifiedGroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: GetUnifiedGroupMembers(UnifiedGroupEntity, String, Int32, Int32, AzureEnvironment)
+  nameWithType: UnifiedGroupsUtility.GetUnifiedGroupMembers(UnifiedGroupEntity, String, Int32, Int32, AzureEnvironment)
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupMembers(PnP.Framework.Entities.UnifiedGroupEntity, System.String, System.Int32, System.Int32, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetUnifiedGroupMembers
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 1133
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nReturns all the Members of an Office 365 group.\n"
+  example: []
+  syntax:
+    content: public static List<UnifiedGroupUser> GetUnifiedGroupMembers(UnifiedGroupEntity group, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: group
+      type: PnP.Framework.Entities.UnifiedGroupEntity
+      description: The Office 365 group object of type UnifiedGroupEntity
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    return:
+      type: System.Collections.Generic.List{PnP.Framework.Entities.UnifiedGroupUser}
+      description: Members of an Office 365 group as a list of UnifiedGroupUser entity
+    content.vb: Public Shared Function GetUnifiedGroupMembers(group As UnifiedGroupEntity, accessToken As String, retryCount As Integer = 10, delay As Integer = 500, azureEnvironment As AzureEnvironment = AzureEnvironment.Production) As List(Of UnifiedGroupUser)
+  overload: PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupMembers*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.GetNestedUnifiedGroupMembers(PnP.Framework.Entities.UnifiedGroupEntity,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.UnifiedGroupsUtility.GetNestedUnifiedGroupMembers(PnP.Framework.Entities.UnifiedGroupEntity,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  id: GetNestedUnifiedGroupMembers(PnP.Framework.Entities.UnifiedGroupEntity,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.UnifiedGroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: GetNestedUnifiedGroupMembers(UnifiedGroupEntity, String, Int32, Int32, AzureEnvironment)
+  nameWithType: UnifiedGroupsUtility.GetNestedUnifiedGroupMembers(UnifiedGroupEntity, String, Int32, Int32, AzureEnvironment)
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.GetNestedUnifiedGroupMembers(PnP.Framework.Entities.UnifiedGroupEntity, System.String, System.Int32, System.Int32, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetNestedUnifiedGroupMembers
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 1216
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nReturns all the Members of an Office 365 group (including nested groups).\n"
+  example: []
+  syntax:
+    content: public static List<UnifiedGroupUser> GetNestedUnifiedGroupMembers(UnifiedGroupEntity group, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: group
+      type: PnP.Framework.Entities.UnifiedGroupEntity
+      description: ''
+    - id: accessToken
+      type: System.String
+      description: ''
+    - id: retryCount
+      type: System.Int32
+      description: ''
+    - id: delay
+      type: System.Int32
+      description: ''
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    return:
+      type: System.Collections.Generic.List{PnP.Framework.Entities.UnifiedGroupUser}
+      description: ''
+    content.vb: Public Shared Function GetNestedUnifiedGroupMembers(group As UnifiedGroupEntity, accessToken As String, retryCount As Integer = 10, delay As Integer = 500, azureEnvironment As AzureEnvironment = AzureEnvironment.Production) As List(Of UnifiedGroupUser)
+  overload: PnP.Framework.Graph.UnifiedGroupsUtility.GetNestedUnifiedGroupMembers*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.AddUnifiedGroupOwners(System.String,System.String[],System.String,System.Boolean,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.UnifiedGroupsUtility.AddUnifiedGroupOwners(System.String,System.String[],System.String,System.Boolean,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  id: AddUnifiedGroupOwners(System.String,System.String[],System.String,System.Boolean,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.UnifiedGroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: AddUnifiedGroupOwners(String, String[], String, Boolean, Int32, Int32, AzureEnvironment)
+  nameWithType: UnifiedGroupsUtility.AddUnifiedGroupOwners(String, String[], String, Boolean, Int32, Int32, AzureEnvironment)
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.AddUnifiedGroupOwners(System.String, System.String[], System.String, System.Boolean, System.Int32, System.Int32, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddUnifiedGroupOwners
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 1299
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nAdds owners to a Microsoft 365 group\n"
+  example: []
+  syntax:
+    content: public static void AddUnifiedGroupOwners(string groupId, string[] owners, string accessToken, bool removeExistingOwners = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: Id of the Microsoft 365 group to add the owners to
+    - id: owners
+      type: System.String[]
+      description: String array with the UPNs of the users that need to be added as owners to the group
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: removeExistingOwners
+      type: System.Boolean
+      description: If true, all existing owners will be removed and only those provided will become owners. If false, existing owners will remain and the ones provided will be added to the list with existing owners.
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    content.vb: Public Shared Sub AddUnifiedGroupOwners(groupId As String, owners As String(), accessToken As String, removeExistingOwners As Boolean = False, retryCount As Integer = 10, delay As Integer = 500, azureEnvironment As AzureEnvironment = AzureEnvironment.Production)
+  overload: PnP.Framework.Graph.UnifiedGroupsUtility.AddUnifiedGroupOwners*
+  nameWithType.vb: UnifiedGroupsUtility.AddUnifiedGroupOwners(String, String(), String, Boolean, Int32, Int32, AzureEnvironment)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Graph.UnifiedGroupsUtility.AddUnifiedGroupOwners(System.String, System.String(), System.String, System.Boolean, System.Int32, System.Int32, PnP.Framework.AzureEnvironment)
+  name.vb: AddUnifiedGroupOwners(String, String(), String, Boolean, Int32, Int32, AzureEnvironment)
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.AddUnifiedGroupMembers(System.String,System.String[],System.String,System.Boolean,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.UnifiedGroupsUtility.AddUnifiedGroupMembers(System.String,System.String[],System.String,System.Boolean,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  id: AddUnifiedGroupMembers(System.String,System.String[],System.String,System.Boolean,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.UnifiedGroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: AddUnifiedGroupMembers(String, String[], String, Boolean, Int32, Int32, AzureEnvironment)
+  nameWithType: UnifiedGroupsUtility.AddUnifiedGroupMembers(String, String[], String, Boolean, Int32, Int32, AzureEnvironment)
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.AddUnifiedGroupMembers(System.String, System.String[], System.String, System.Boolean, System.Int32, System.Int32, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddUnifiedGroupMembers
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 1333
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nAdds members to a Microsoft 365 group\n"
+  example: []
+  syntax:
+    content: public static void AddUnifiedGroupMembers(string groupId, string[] members, string accessToken, bool removeExistingMembers = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: Id of the Microsoft 365 group to add the members to
+    - id: members
+      type: System.String[]
+      description: String array with the UPNs of the users that need to be added as members to the group
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: removeExistingMembers
+      type: System.Boolean
+      description: If true, all existing members will be removed and only those provided will become members. If false, existing members will remain and the ones provided will be added to the list with existing members.
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    content.vb: Public Shared Sub AddUnifiedGroupMembers(groupId As String, members As String(), accessToken As String, removeExistingMembers As Boolean = False, retryCount As Integer = 10, delay As Integer = 500, azureEnvironment As AzureEnvironment = AzureEnvironment.Production)
+  overload: PnP.Framework.Graph.UnifiedGroupsUtility.AddUnifiedGroupMembers*
+  nameWithType.vb: UnifiedGroupsUtility.AddUnifiedGroupMembers(String, String(), String, Boolean, Int32, Int32, AzureEnvironment)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Graph.UnifiedGroupsUtility.AddUnifiedGroupMembers(System.String, System.String(), System.String, System.Boolean, System.Int32, System.Int32, PnP.Framework.AzureEnvironment)
+  name.vb: AddUnifiedGroupMembers(String, String(), String, Boolean, Int32, Int32, AzureEnvironment)
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.RemoveUnifiedGroupMembers(System.String,System.String[],System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.UnifiedGroupsUtility.RemoveUnifiedGroupMembers(System.String,System.String[],System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  id: RemoveUnifiedGroupMembers(System.String,System.String[],System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.UnifiedGroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: RemoveUnifiedGroupMembers(String, String[], String, Int32, Int32, AzureEnvironment)
+  nameWithType: UnifiedGroupsUtility.RemoveUnifiedGroupMembers(String, String[], String, Int32, Int32, AzureEnvironment)
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.RemoveUnifiedGroupMembers(System.String, System.String[], System.String, System.Int32, System.Int32, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemoveUnifiedGroupMembers
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 1366
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nRemoves members from a Microsoft 365 group\n"
+  example: []
+  syntax:
+    content: public static void RemoveUnifiedGroupMembers(string groupId, string[] members, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: Id of the Microsoft 365 group to remove the members from
+    - id: members
+      type: System.String[]
+      description: String array with the UPNs of the users that need to be removed as members from the group
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    content.vb: Public Shared Sub RemoveUnifiedGroupMembers(groupId As String, members As String(), accessToken As String, retryCount As Integer = 10, delay As Integer = 500, azureEnvironment As AzureEnvironment = AzureEnvironment.Production)
+  overload: PnP.Framework.Graph.UnifiedGroupsUtility.RemoveUnifiedGroupMembers*
+  nameWithType.vb: UnifiedGroupsUtility.RemoveUnifiedGroupMembers(String, String(), String, Int32, Int32, AzureEnvironment)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Graph.UnifiedGroupsUtility.RemoveUnifiedGroupMembers(System.String, System.String(), System.String, System.Int32, System.Int32, PnP.Framework.AzureEnvironment)
+  name.vb: RemoveUnifiedGroupMembers(String, String(), String, Int32, Int32, AzureEnvironment)
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.RemoveUnifiedGroupOwners(System.String,System.String[],System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.UnifiedGroupsUtility.RemoveUnifiedGroupOwners(System.String,System.String[],System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  id: RemoveUnifiedGroupOwners(System.String,System.String[],System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.UnifiedGroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: RemoveUnifiedGroupOwners(String, String[], String, Int32, Int32, AzureEnvironment)
+  nameWithType: UnifiedGroupsUtility.RemoveUnifiedGroupOwners(String, String[], String, Int32, Int32, AzureEnvironment)
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.RemoveUnifiedGroupOwners(System.String, System.String[], System.String, System.Int32, System.Int32, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemoveUnifiedGroupOwners
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 1428
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nRemoves owners from a Microsoft 365 group\n"
+  example: []
+  syntax:
+    content: public static void RemoveUnifiedGroupOwners(string groupId, string[] owners, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: Id of the Microsoft 365 group to remove the owners from
+    - id: owners
+      type: System.String[]
+      description: String array with the UPNs of the users that need to be removed as owners from the group
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    content.vb: Public Shared Sub RemoveUnifiedGroupOwners(groupId As String, owners As String(), accessToken As String, retryCount As Integer = 10, delay As Integer = 500, azureEnvironment As AzureEnvironment = AzureEnvironment.Production)
+  overload: PnP.Framework.Graph.UnifiedGroupsUtility.RemoveUnifiedGroupOwners*
+  nameWithType.vb: UnifiedGroupsUtility.RemoveUnifiedGroupOwners(String, String(), String, Int32, Int32, AzureEnvironment)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Graph.UnifiedGroupsUtility.RemoveUnifiedGroupOwners(System.String, System.String(), System.String, System.Int32, System.Int32, PnP.Framework.AzureEnvironment)
+  name.vb: RemoveUnifiedGroupOwners(String, String(), String, Int32, Int32, AzureEnvironment)
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.ClearUnifiedGroupOwners(System.String,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.UnifiedGroupsUtility.ClearUnifiedGroupOwners(System.String,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  id: ClearUnifiedGroupOwners(System.String,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.UnifiedGroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: ClearUnifiedGroupOwners(String, String, Int32, Int32, AzureEnvironment)
+  nameWithType: UnifiedGroupsUtility.ClearUnifiedGroupOwners(String, String, Int32, Int32, AzureEnvironment)
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.ClearUnifiedGroupOwners(System.String, System.String, System.Int32, System.Int32, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ClearUnifiedGroupOwners
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 1489
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nRemoves all owners of a Microsoft 365 group\n"
+  example: []
+  syntax:
+    content: public static void ClearUnifiedGroupOwners(string groupId, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: Id of the Microsoft 365 group to remove all the current owners of
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    content.vb: Public Shared Sub ClearUnifiedGroupOwners(groupId As String, accessToken As String, retryCount As Integer = 10, delay As Integer = 500, azureEnvironment As AzureEnvironment = AzureEnvironment.Production)
+  overload: PnP.Framework.Graph.UnifiedGroupsUtility.ClearUnifiedGroupOwners*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.ClearUnifiedGroupMembers(System.String,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.UnifiedGroupsUtility.ClearUnifiedGroupMembers(System.String,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  id: ClearUnifiedGroupMembers(System.String,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.UnifiedGroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: ClearUnifiedGroupMembers(String, String, Int32, Int32, AzureEnvironment)
+  nameWithType: UnifiedGroupsUtility.ClearUnifiedGroupMembers(String, String, Int32, Int32, AzureEnvironment)
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.ClearUnifiedGroupMembers(System.String, System.String, System.Int32, System.Int32, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ClearUnifiedGroupMembers
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 1516
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nRemoves all members of a Microsoft 365 group\n"
+  example: []
+  syntax:
+    content: public static void ClearUnifiedGroupMembers(string groupId, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: Id of the Microsoft 365 group to remove all the current members of
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    content.vb: Public Shared Sub ClearUnifiedGroupMembers(groupId As String, accessToken As String, retryCount As Integer = 10, delay As Integer = 500, azureEnvironment As AzureEnvironment = AzureEnvironment.Production)
+  overload: PnP.Framework.Graph.UnifiedGroupsUtility.ClearUnifiedGroupMembers*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupOwners(PnP.Framework.Entities.UnifiedGroupEntity,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupOwners(PnP.Framework.Entities.UnifiedGroupEntity,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  id: GetUnifiedGroupOwners(PnP.Framework.Entities.UnifiedGroupEntity,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.UnifiedGroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: GetUnifiedGroupOwners(UnifiedGroupEntity, String, Int32, Int32, AzureEnvironment)
+  nameWithType: UnifiedGroupsUtility.GetUnifiedGroupOwners(UnifiedGroupEntity, String, Int32, Int32, AzureEnvironment)
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupOwners(PnP.Framework.Entities.UnifiedGroupEntity, System.String, System.Int32, System.Int32, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetUnifiedGroupOwners
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 1544
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nReturns all the Owners of an Office 365 group.\n"
+  example: []
+  syntax:
+    content: public static List<UnifiedGroupUser> GetUnifiedGroupOwners(UnifiedGroupEntity group, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: group
+      type: PnP.Framework.Entities.UnifiedGroupEntity
+      description: The Office 365 group object of type UnifiedGroupEntity
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    return:
+      type: System.Collections.Generic.List{PnP.Framework.Entities.UnifiedGroupUser}
+      description: Owners of an Office 365 group as a list of UnifiedGroupUser entity
+    content.vb: Public Shared Function GetUnifiedGroupOwners(group As UnifiedGroupEntity, accessToken As String, retryCount As Integer = 10, delay As Integer = 500, azureEnvironment As AzureEnvironment = AzureEnvironment.Production) As List(Of UnifiedGroupUser)
+  overload: PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupOwners*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.GetGroupClassification(System.String,System.String,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.UnifiedGroupsUtility.GetGroupClassification(System.String,System.String,PnP.Framework.AzureEnvironment)
+  id: GetGroupClassification(System.String,System.String,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.UnifiedGroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: GetGroupClassification(String, String, AzureEnvironment)
+  nameWithType: UnifiedGroupsUtility.GetGroupClassification(String, String, AzureEnvironment)
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.GetGroupClassification(System.String, System.String, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetGroupClassification
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 1744
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nReturns the classification value of an Office 365 Group.\n"
+  example: []
+  syntax:
+    content: public static string GetGroupClassification(string groupId, string accessToken, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: ID of the unified Group
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    return:
+      type: System.String
+      description: Classification value of a Unified group
+    content.vb: Public Shared Function GetGroupClassification(groupId As String, accessToken As String, azureEnvironment As AzureEnvironment = AzureEnvironment.Production) As String
+  overload: PnP.Framework.Graph.UnifiedGroupsUtility.GetGroupClassification*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.HasTeamsTeam(System.String,System.String,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.UnifiedGroupsUtility.HasTeamsTeam(System.String,System.String,PnP.Framework.AzureEnvironment)
+  id: HasTeamsTeam(System.String,System.String,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.UnifiedGroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: HasTeamsTeam(String, String, AzureEnvironment)
+  nameWithType: UnifiedGroupsUtility.HasTeamsTeam(String, String, AzureEnvironment)
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.HasTeamsTeam(System.String, System.String, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: HasTeamsTeam
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 1789
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nDoes this group have a Teams team?\n"
+  example: []
+  syntax:
+    content: public static bool HasTeamsTeam(string groupId, string accessToken, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: Id of the group to check
+    - id: accessToken
+      type: System.String
+      description: Access token with scope Group.Read.All
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    return:
+      type: System.Boolean
+      description: True if there&apos;s a Teams linked to this group
+    content.vb: Public Shared Function HasTeamsTeam(groupId As String, accessToken As String, azureEnvironment As AzureEnvironment = AzureEnvironment.Production) As Boolean
+  overload: PnP.Framework.Graph.UnifiedGroupsUtility.HasTeamsTeam*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.CreateTeam(System.String,System.String,System.Int32,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.UnifiedGroupsUtility.CreateTeam(System.String,System.String,System.Int32,PnP.Framework.AzureEnvironment)
+  id: CreateTeam(System.String,System.String,System.Int32,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.UnifiedGroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: CreateTeam(String, String, Int32, AzureEnvironment)
+  nameWithType: UnifiedGroupsUtility.CreateTeam(String, String, Int32, AzureEnvironment)
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.CreateTeam(System.String, System.String, System.Int32, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateTeam
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 1839
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nCreates a team associated with an Office 365 group\n"
+  example: []
+  syntax:
+    content: public static async Task CreateTeam(string groupId, string accessToken, int timeoutSeconds = 300, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: The ID of the Office 365 Group
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: timeoutSeconds
+      type: System.Int32
+      description: Time to wait till Team is created. Default is 300 seconds (5 mins)
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    return:
+      type: System.Threading.Tasks.Task
+      description: ''
+    content.vb: Public Shared Function CreateTeam(groupId As String, accessToken As String, timeoutSeconds As Integer = 300, azureEnvironment As AzureEnvironment = AzureEnvironment.Production) As Task
+  overload: PnP.Framework.Graph.UnifiedGroupsUtility.CreateTeam*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.GetDeletedUnifiedGroup(System.String,System.String,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.UnifiedGroupsUtility.GetDeletedUnifiedGroup(System.String,System.String,PnP.Framework.AzureEnvironment)
+  id: GetDeletedUnifiedGroup(System.String,System.String,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.UnifiedGroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: GetDeletedUnifiedGroup(String, String, AzureEnvironment)
+  nameWithType: UnifiedGroupsUtility.GetDeletedUnifiedGroup(String, String, AzureEnvironment)
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.GetDeletedUnifiedGroup(System.String, System.String, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetDeletedUnifiedGroup
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 1892
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nGets one deleted unified group based on its ID.\n"
+  example: []
+  syntax:
+    content: public static UnifiedGroupEntity GetDeletedUnifiedGroup(string groupId, string accessToken, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: The ID of the deleted group.
+    - id: accessToken
+      type: System.String
+      description: Access token for accessing Microsoft Graph
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    return:
+      type: PnP.Framework.Entities.UnifiedGroupEntity
+      description: The unified group object of the deleted group that matches the provided ID.
+    content.vb: Public Shared Function GetDeletedUnifiedGroup(groupId As String, accessToken As String, azureEnvironment As AzureEnvironment = AzureEnvironment.Production) As UnifiedGroupEntity
+  overload: PnP.Framework.Graph.UnifiedGroupsUtility.GetDeletedUnifiedGroup*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.ListDeletedUnifiedGroups(System.String,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.UnifiedGroupsUtility.ListDeletedUnifiedGroups(System.String,PnP.Framework.AzureEnvironment)
+  id: ListDeletedUnifiedGroups(System.String,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.UnifiedGroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: ListDeletedUnifiedGroups(String, AzureEnvironment)
+  nameWithType: UnifiedGroupsUtility.ListDeletedUnifiedGroups(String, AzureEnvironment)
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.ListDeletedUnifiedGroups(System.String, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ListDeletedUnifiedGroups
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 1926
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nLists deleted unified groups.\n"
+  example: []
+  syntax:
+    content: public static List<UnifiedGroupEntity> ListDeletedUnifiedGroups(string accessToken, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: accessToken
+      type: System.String
+      description: Access token for accessing Microsoft Graph
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    return:
+      type: System.Collections.Generic.List{PnP.Framework.Entities.UnifiedGroupEntity}
+      description: A list of unified group objects for the deleted groups.
+    content.vb: Public Shared Function ListDeletedUnifiedGroups(accessToken As String, azureEnvironment As AzureEnvironment = AzureEnvironment.Production) As List(Of UnifiedGroupEntity)
+  overload: PnP.Framework.Graph.UnifiedGroupsUtility.ListDeletedUnifiedGroups*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.RestoreDeletedUnifiedGroup(System.String,System.String,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.UnifiedGroupsUtility.RestoreDeletedUnifiedGroup(System.String,System.String,PnP.Framework.AzureEnvironment)
+  id: RestoreDeletedUnifiedGroup(System.String,System.String,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.UnifiedGroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: RestoreDeletedUnifiedGroup(String, String, AzureEnvironment)
+  nameWithType: UnifiedGroupsUtility.RestoreDeletedUnifiedGroup(String, String, AzureEnvironment)
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.RestoreDeletedUnifiedGroup(System.String, System.String, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RestoreDeletedUnifiedGroup
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 1975
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nRestores one deleted unified group based on its ID.\n"
+  example: []
+  syntax:
+    content: public static void RestoreDeletedUnifiedGroup(string groupId, string accessToken, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: The ID of the deleted group.
+    - id: accessToken
+      type: System.String
+      description: Access token for accessing Microsoft Graph
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    content.vb: Public Shared Sub RestoreDeletedUnifiedGroup(groupId As String, accessToken As String, azureEnvironment As AzureEnvironment = AzureEnvironment.Production)
+  overload: PnP.Framework.Graph.UnifiedGroupsUtility.RestoreDeletedUnifiedGroup*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.PermanentlyDeleteUnifiedGroup(System.String,System.String,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.UnifiedGroupsUtility.PermanentlyDeleteUnifiedGroup(System.String,System.String,PnP.Framework.AzureEnvironment)
+  id: PermanentlyDeleteUnifiedGroup(System.String,System.String,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.UnifiedGroupsUtility
+  langs:
+  - csharp
+  - vb
+  name: PermanentlyDeleteUnifiedGroup(String, String, AzureEnvironment)
+  nameWithType: UnifiedGroupsUtility.PermanentlyDeleteUnifiedGroup(String, String, AzureEnvironment)
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.PermanentlyDeleteUnifiedGroup(System.String, System.String, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PermanentlyDeleteUnifiedGroup
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 1995
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nPermanently deletes one deleted unified group based on its ID.\n"
+  example: []
+  syntax:
+    content: public static void PermanentlyDeleteUnifiedGroup(string groupId, string accessToken, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: groupId
+      type: System.String
+      description: The ID of the deleted group.
+    - id: accessToken
+      type: System.String
+      description: Access token for accessing Microsoft Graph
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    content.vb: Public Shared Sub PermanentlyDeleteUnifiedGroup(groupId As String, accessToken As String, azureEnvironment As AzureEnvironment = AzureEnvironment.Production)
+  overload: PnP.Framework.Graph.UnifiedGroupsUtility.PermanentlyDeleteUnifiedGroup*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: PnP.Framework.Graph
+  commentId: N:PnP.Framework.Graph
+  name: PnP.Framework.Graph
+  nameWithType: PnP.Framework.Graph
+  fullName: PnP.Framework.Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupSiteUrl*
+  commentId: Overload:PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupSiteUrl
+  name: GetUnifiedGroupSiteUrl
+  nameWithType: UnifiedGroupsUtility.GetUnifiedGroupSiteUrl
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupSiteUrl
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: PnP.Framework.AzureEnvironment
+  commentId: T:PnP.Framework.AzureEnvironment
+  parent: PnP.Framework
+  name: AzureEnvironment
+  nameWithType: AzureEnvironment
+  fullName: PnP.Framework.AzureEnvironment
+- uid: PnP.Framework
+  commentId: N:PnP.Framework
+  name: PnP.Framework
+  nameWithType: PnP.Framework
+  fullName: PnP.Framework
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup*
+  commentId: Overload:PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup
+  name: CreateUnifiedGroup
+  nameWithType: UnifiedGroupsUtility.CreateUnifiedGroup
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup
+- uid: System.String[]
+  isExternal: true
+  name: String[]
+  nameWithType: String[]
+  fullName: System.String[]
+  nameWithType.vb: String()
+  fullName.vb: System.String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: System.IO.Stream
+  commentId: T:System.IO.Stream
+  parent: System.IO
+  isExternal: true
+  name: Stream
+  nameWithType: Stream
+  fullName: System.IO.Stream
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Nullable{PnP.Framework.Enums.Office365Geography}
+  commentId: T:System.Nullable{PnP.Framework.Enums.Office365Geography}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<Office365Geography>
+  nameWithType: Nullable<Office365Geography>
+  fullName: System.Nullable<PnP.Framework.Enums.Office365Geography>
+  nameWithType.vb: Nullable(Of Office365Geography)
+  fullName.vb: System.Nullable(Of PnP.Framework.Enums.Office365Geography)
+  name.vb: Nullable(Of Office365Geography)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Enums.Office365Geography
+    name: Office365Geography
+    nameWithType: Office365Geography
+    fullName: PnP.Framework.Enums.Office365Geography
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Enums.Office365Geography
+    name: Office365Geography
+    nameWithType: Office365Geography
+    fullName: PnP.Framework.Enums.Office365Geography
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Guid[]
+  isExternal: true
+  name: Guid[]
+  nameWithType: Guid[]
+  fullName: System.Guid[]
+  nameWithType.vb: Guid()
+  fullName.vb: System.Guid()
+  name.vb: Guid()
+  spec.csharp:
+  - uid: System.Guid
+    name: Guid
+    nameWithType: Guid
+    fullName: System.Guid
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Guid
+    name: Guid
+    nameWithType: Guid
+    fullName: System.Guid
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: PnP.Framework.Entities.UnifiedGroupEntity
+  commentId: T:PnP.Framework.Entities.UnifiedGroupEntity
+  parent: PnP.Framework.Entities
+  name: UnifiedGroupEntity
+  nameWithType: UnifiedGroupEntity
+  fullName: PnP.Framework.Entities.UnifiedGroupEntity
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Entities
+  commentId: N:PnP.Framework.Entities
+  name: PnP.Framework.Entities
+  nameWithType: PnP.Framework.Entities
+  fullName: PnP.Framework.Entities
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.SetUnifiedGroupVisibility*
+  commentId: Overload:PnP.Framework.Graph.UnifiedGroupsUtility.SetUnifiedGroupVisibility
+  name: SetUnifiedGroupVisibility
+  nameWithType: UnifiedGroupsUtility.SetUnifiedGroupVisibility
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.SetUnifiedGroupVisibility
+- uid: System.Nullable{System.Boolean}
+  commentId: T:System.Nullable{System.Boolean}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<Boolean>
+  nameWithType: Nullable<Boolean>
+  fullName: System.Nullable<System.Boolean>
+  nameWithType.vb: Nullable(Of Boolean)
+  fullName.vb: System.Nullable(Of System.Boolean)
+  name.vb: Nullable(Of Boolean)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.RenewUnifiedGroup*
+  commentId: Overload:PnP.Framework.Graph.UnifiedGroupsUtility.RenewUnifiedGroup
+  name: RenewUnifiedGroup
+  nameWithType: UnifiedGroupsUtility.RenewUnifiedGroup
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.RenewUnifiedGroup
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.UpdateUnifiedGroup*
+  commentId: Overload:PnP.Framework.Graph.UnifiedGroupsUtility.UpdateUnifiedGroup
+  name: UpdateUnifiedGroup
+  nameWithType: UnifiedGroupsUtility.UpdateUnifiedGroup
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.UpdateUnifiedGroup
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.DeleteUnifiedGroup*
+  commentId: Overload:PnP.Framework.Graph.UnifiedGroupsUtility.DeleteUnifiedGroup
+  name: DeleteUnifiedGroup
+  nameWithType: UnifiedGroupsUtility.DeleteUnifiedGroup
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.DeleteUnifiedGroup
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroup*
+  commentId: Overload:PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroup
+  name: GetUnifiedGroup
+  nameWithType: UnifiedGroupsUtility.GetUnifiedGroup
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroup
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.ListUnifiedGroups*
+  commentId: Overload:PnP.Framework.Graph.UnifiedGroupsUtility.ListUnifiedGroups
+  name: ListUnifiedGroups
+  nameWithType: UnifiedGroupsUtility.ListUnifiedGroups
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.ListUnifiedGroups
+- uid: System.Collections.Generic.List{PnP.Framework.Entities.UnifiedGroupEntity}
+  commentId: T:System.Collections.Generic.List{PnP.Framework.Entities.UnifiedGroupEntity}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<UnifiedGroupEntity>
+  nameWithType: List<UnifiedGroupEntity>
+  fullName: System.Collections.Generic.List<PnP.Framework.Entities.UnifiedGroupEntity>
+  nameWithType.vb: List(Of UnifiedGroupEntity)
+  fullName.vb: System.Collections.Generic.List(Of PnP.Framework.Entities.UnifiedGroupEntity)
+  name.vb: List(Of UnifiedGroupEntity)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Entities.UnifiedGroupEntity
+    name: UnifiedGroupEntity
+    nameWithType: UnifiedGroupEntity
+    fullName: PnP.Framework.Entities.UnifiedGroupEntity
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Entities.UnifiedGroupEntity
+    name: UnifiedGroupEntity
+    nameWithType: UnifiedGroupEntity
+    fullName: PnP.Framework.Entities.UnifiedGroupEntity
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroups*
+  commentId: Overload:PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroups
+  name: GetUnifiedGroups
+  nameWithType: UnifiedGroupsUtility.GetUnifiedGroups
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroups
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<Int32>
+  nameWithType: Nullable<Int32>
+  fullName: System.Nullable<System.Int32>
+  nameWithType.vb: Nullable(Of Int32)
+  fullName.vb: System.Nullable(Of System.Int32)
+  name.vb: Nullable(Of Int32)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupMembers*
+  commentId: Overload:PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupMembers
+  name: GetUnifiedGroupMembers
+  nameWithType: UnifiedGroupsUtility.GetUnifiedGroupMembers
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupMembers
+- uid: System.Collections.Generic.List{PnP.Framework.Entities.UnifiedGroupUser}
+  commentId: T:System.Collections.Generic.List{PnP.Framework.Entities.UnifiedGroupUser}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<UnifiedGroupUser>
+  nameWithType: List<UnifiedGroupUser>
+  fullName: System.Collections.Generic.List<PnP.Framework.Entities.UnifiedGroupUser>
+  nameWithType.vb: List(Of UnifiedGroupUser)
+  fullName.vb: System.Collections.Generic.List(Of PnP.Framework.Entities.UnifiedGroupUser)
+  name.vb: List(Of UnifiedGroupUser)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Entities.UnifiedGroupUser
+    name: UnifiedGroupUser
+    nameWithType: UnifiedGroupUser
+    fullName: PnP.Framework.Entities.UnifiedGroupUser
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Entities.UnifiedGroupUser
+    name: UnifiedGroupUser
+    nameWithType: UnifiedGroupUser
+    fullName: PnP.Framework.Entities.UnifiedGroupUser
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.GetNestedUnifiedGroupMembers*
+  commentId: Overload:PnP.Framework.Graph.UnifiedGroupsUtility.GetNestedUnifiedGroupMembers
+  name: GetNestedUnifiedGroupMembers
+  nameWithType: UnifiedGroupsUtility.GetNestedUnifiedGroupMembers
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.GetNestedUnifiedGroupMembers
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.AddUnifiedGroupOwners*
+  commentId: Overload:PnP.Framework.Graph.UnifiedGroupsUtility.AddUnifiedGroupOwners
+  name: AddUnifiedGroupOwners
+  nameWithType: UnifiedGroupsUtility.AddUnifiedGroupOwners
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.AddUnifiedGroupOwners
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.AddUnifiedGroupMembers*
+  commentId: Overload:PnP.Framework.Graph.UnifiedGroupsUtility.AddUnifiedGroupMembers
+  name: AddUnifiedGroupMembers
+  nameWithType: UnifiedGroupsUtility.AddUnifiedGroupMembers
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.AddUnifiedGroupMembers
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.RemoveUnifiedGroupMembers*
+  commentId: Overload:PnP.Framework.Graph.UnifiedGroupsUtility.RemoveUnifiedGroupMembers
+  name: RemoveUnifiedGroupMembers
+  nameWithType: UnifiedGroupsUtility.RemoveUnifiedGroupMembers
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.RemoveUnifiedGroupMembers
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.RemoveUnifiedGroupOwners*
+  commentId: Overload:PnP.Framework.Graph.UnifiedGroupsUtility.RemoveUnifiedGroupOwners
+  name: RemoveUnifiedGroupOwners
+  nameWithType: UnifiedGroupsUtility.RemoveUnifiedGroupOwners
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.RemoveUnifiedGroupOwners
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.ClearUnifiedGroupOwners*
+  commentId: Overload:PnP.Framework.Graph.UnifiedGroupsUtility.ClearUnifiedGroupOwners
+  name: ClearUnifiedGroupOwners
+  nameWithType: UnifiedGroupsUtility.ClearUnifiedGroupOwners
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.ClearUnifiedGroupOwners
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.ClearUnifiedGroupMembers*
+  commentId: Overload:PnP.Framework.Graph.UnifiedGroupsUtility.ClearUnifiedGroupMembers
+  name: ClearUnifiedGroupMembers
+  nameWithType: UnifiedGroupsUtility.ClearUnifiedGroupMembers
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.ClearUnifiedGroupMembers
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupOwners*
+  commentId: Overload:PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupOwners
+  name: GetUnifiedGroupOwners
+  nameWithType: UnifiedGroupsUtility.GetUnifiedGroupOwners
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupOwners
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.GetGroupClassification*
+  commentId: Overload:PnP.Framework.Graph.UnifiedGroupsUtility.GetGroupClassification
+  name: GetGroupClassification
+  nameWithType: UnifiedGroupsUtility.GetGroupClassification
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.GetGroupClassification
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.HasTeamsTeam*
+  commentId: Overload:PnP.Framework.Graph.UnifiedGroupsUtility.HasTeamsTeam
+  name: HasTeamsTeam
+  nameWithType: UnifiedGroupsUtility.HasTeamsTeam
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.HasTeamsTeam
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.CreateTeam*
+  commentId: Overload:PnP.Framework.Graph.UnifiedGroupsUtility.CreateTeam
+  name: CreateTeam
+  nameWithType: UnifiedGroupsUtility.CreateTeam
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.CreateTeam
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.GetDeletedUnifiedGroup*
+  commentId: Overload:PnP.Framework.Graph.UnifiedGroupsUtility.GetDeletedUnifiedGroup
+  name: GetDeletedUnifiedGroup
+  nameWithType: UnifiedGroupsUtility.GetDeletedUnifiedGroup
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.GetDeletedUnifiedGroup
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.ListDeletedUnifiedGroups*
+  commentId: Overload:PnP.Framework.Graph.UnifiedGroupsUtility.ListDeletedUnifiedGroups
+  name: ListDeletedUnifiedGroups
+  nameWithType: UnifiedGroupsUtility.ListDeletedUnifiedGroups
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.ListDeletedUnifiedGroups
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.RestoreDeletedUnifiedGroup*
+  commentId: Overload:PnP.Framework.Graph.UnifiedGroupsUtility.RestoreDeletedUnifiedGroup
+  name: RestoreDeletedUnifiedGroup
+  nameWithType: UnifiedGroupsUtility.RestoreDeletedUnifiedGroup
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.RestoreDeletedUnifiedGroup
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility.PermanentlyDeleteUnifiedGroup*
+  commentId: Overload:PnP.Framework.Graph.UnifiedGroupsUtility.PermanentlyDeleteUnifiedGroup
+  name: PermanentlyDeleteUnifiedGroup
+  nameWithType: UnifiedGroupsUtility.PermanentlyDeleteUnifiedGroup
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility.PermanentlyDeleteUnifiedGroup

@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Modernization.Extensions
+  commentId: N:PnP.Framework.Modernization.Extensions
+  id: PnP.Framework.Modernization.Extensions
+  children:
+  - PnP.Framework.Modernization.Extensions.FileFolderExtensions
+  - PnP.Framework.Modernization.Extensions.StringExtensions
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Modernization.Extensions
+  nameWithType: PnP.Framework.Modernization.Extensions
+  fullName: PnP.Framework.Modernization.Extensions
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Modernization.Extensions.FileFolderExtensions
+  commentId: T:PnP.Framework.Modernization.Extensions.FileFolderExtensions
+  name: FileFolderExtensions
+  nameWithType: FileFolderExtensions
+  fullName: PnP.Framework.Modernization.Extensions.FileFolderExtensions
+- uid: PnP.Framework.Modernization.Extensions.StringExtensions
+  commentId: T:PnP.Framework.Modernization.Extensions.StringExtensions
+  name: StringExtensions
+  nameWithType: StringExtensions
+  fullName: PnP.Framework.Modernization.Extensions.StringExtensions

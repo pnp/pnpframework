@@ -1,0 +1,924 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Graph.GraphHttpClient
+  commentId: T:PnP.Framework.Graph.GraphHttpClient
+  id: GraphHttpClient
+  parent: PnP.Framework.Graph
+  children:
+  - PnP.Framework.Graph.GraphHttpClient.GetGraphEndPointUrl(PnP.Framework.AzureEnvironment,System.Boolean)
+  - PnP.Framework.Graph.GraphHttpClient.GraphBaseUrl
+  - PnP.Framework.Graph.GraphHttpClient.MakeDeleteRequest(System.String,System.String)
+  - PnP.Framework.Graph.GraphHttpClient.MakeGetRequestForStream(System.String,System.String,System.String)
+  - PnP.Framework.Graph.GraphHttpClient.MakeGetRequestForString(System.String,System.String)
+  - PnP.Framework.Graph.GraphHttpClient.MakePatchRequestForString(System.String,System.Object,System.String,System.String)
+  - PnP.Framework.Graph.GraphHttpClient.MakePostRequest(System.String,System.Object,System.String,System.String)
+  - PnP.Framework.Graph.GraphHttpClient.MakePostRequestForString(System.String,System.Object,System.String,System.String)
+  - PnP.Framework.Graph.GraphHttpClient.MakePutRequest(System.String,System.Object,System.String,System.String)
+  - PnP.Framework.Graph.GraphHttpClient.MicrosoftGraphBetaBaseUri
+  - PnP.Framework.Graph.GraphHttpClient.MicrosoftGraphV1BaseUri
+  langs:
+  - csharp
+  - vb
+  name: GraphHttpClient
+  nameWithType: GraphHttpClient
+  fullName: PnP.Framework.Graph.GraphHttpClient
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GraphHttpClient.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GraphHttpClient
+    path: ../src/lib/PnP.Framework/Graph/GraphHttpClient.cs
+    startLine: 6
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  syntax:
+    content: public static class GraphHttpClient
+    content.vb: Public Module GraphHttpClient
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: PnP.Framework.Graph.GraphHttpClient.GraphBaseUrl
+  commentId: F:PnP.Framework.Graph.GraphHttpClient.GraphBaseUrl
+  id: GraphBaseUrl
+  parent: PnP.Framework.Graph.GraphHttpClient
+  langs:
+  - csharp
+  - vb
+  name: GraphBaseUrl
+  nameWithType: GraphHttpClient.GraphBaseUrl
+  fullName: PnP.Framework.Graph.GraphHttpClient.GraphBaseUrl
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GraphHttpClient.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GraphBaseUrl
+    path: ../src/lib/PnP.Framework/Graph/GraphHttpClient.cs
+    startLine: 8
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  syntax:
+    content: public const string GraphBaseUrl = "https://graph.microsoft.com"
+    return:
+      type: System.String
+    content.vb: Public Const GraphBaseUrl As String = "https://graph.microsoft.com"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Graph.GraphHttpClient.MicrosoftGraphV1BaseUri
+  commentId: F:PnP.Framework.Graph.GraphHttpClient.MicrosoftGraphV1BaseUri
+  id: MicrosoftGraphV1BaseUri
+  parent: PnP.Framework.Graph.GraphHttpClient
+  langs:
+  - csharp
+  - vb
+  name: MicrosoftGraphV1BaseUri
+  nameWithType: GraphHttpClient.MicrosoftGraphV1BaseUri
+  fullName: PnP.Framework.Graph.GraphHttpClient.MicrosoftGraphV1BaseUri
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GraphHttpClient.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MicrosoftGraphV1BaseUri
+    path: ../src/lib/PnP.Framework/Graph/GraphHttpClient.cs
+    startLine: 10
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  syntax:
+    content: >-
+      [Obsolete("Use GraphHttpClient.GetGraphEndPointUrl(AzureEnvironment) instead.")]
+
+      public const string MicrosoftGraphV1BaseUri = "https://graph.microsoft.com/v1.0/"
+    return:
+      type: System.String
+    content.vb: >-
+      <Obsolete("Use GraphHttpClient.GetGraphEndPointUrl(AzureEnvironment) instead.")>
+
+      Public Const MicrosoftGraphV1BaseUri As String = "https://graph.microsoft.com/v1.0/"
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use GraphHttpClient.GetGraphEndPointUrl(AzureEnvironment) instead.
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Graph.GraphHttpClient.MicrosoftGraphBetaBaseUri
+  commentId: F:PnP.Framework.Graph.GraphHttpClient.MicrosoftGraphBetaBaseUri
+  id: MicrosoftGraphBetaBaseUri
+  parent: PnP.Framework.Graph.GraphHttpClient
+  langs:
+  - csharp
+  - vb
+  name: MicrosoftGraphBetaBaseUri
+  nameWithType: GraphHttpClient.MicrosoftGraphBetaBaseUri
+  fullName: PnP.Framework.Graph.GraphHttpClient.MicrosoftGraphBetaBaseUri
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GraphHttpClient.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MicrosoftGraphBetaBaseUri
+    path: ../src/lib/PnP.Framework/Graph/GraphHttpClient.cs
+    startLine: 12
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  syntax:
+    content: >-
+      [Obsolete("Use GraphHttpClient.GetGraphEndPointUrl(AzureEnvironment, true) instead.")]
+
+      public const string MicrosoftGraphBetaBaseUri = "https://graph.microsoft.com/beta/"
+    return:
+      type: System.String
+    content.vb: >-
+      <Obsolete("Use GraphHttpClient.GetGraphEndPointUrl(AzureEnvironment, true) instead.")>
+
+      Public Const MicrosoftGraphBetaBaseUri As String = "https://graph.microsoft.com/beta/"
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use GraphHttpClient.GetGraphEndPointUrl(AzureEnvironment, true) instead.
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Graph.GraphHttpClient.GetGraphEndPointUrl(PnP.Framework.AzureEnvironment,System.Boolean)
+  commentId: M:PnP.Framework.Graph.GraphHttpClient.GetGraphEndPointUrl(PnP.Framework.AzureEnvironment,System.Boolean)
+  id: GetGraphEndPointUrl(PnP.Framework.AzureEnvironment,System.Boolean)
+  parent: PnP.Framework.Graph.GraphHttpClient
+  langs:
+  - csharp
+  - vb
+  name: GetGraphEndPointUrl(AzureEnvironment, Boolean)
+  nameWithType: GraphHttpClient.GetGraphEndPointUrl(AzureEnvironment, Boolean)
+  fullName: PnP.Framework.Graph.GraphHttpClient.GetGraphEndPointUrl(PnP.Framework.AzureEnvironment, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GraphHttpClient.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetGraphEndPointUrl
+    path: ../src/lib/PnP.Framework/Graph/GraphHttpClient.cs
+    startLine: 20
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nReturns the graph endpoint URL based upon the Azure Environment\n"
+  example: []
+  syntax:
+    content: public static string GetGraphEndPointUrl(AzureEnvironment azureEnvironment = AzureEnvironment.Production, bool beta = false)
+    parameters:
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: ''
+    - id: beta
+      type: System.Boolean
+      description: ''
+    return:
+      type: System.String
+      description: ''
+    content.vb: Public Shared Function GetGraphEndPointUrl(azureEnvironment As AzureEnvironment = AzureEnvironment.Production, beta As Boolean = False) As String
+  overload: PnP.Framework.Graph.GraphHttpClient.GetGraphEndPointUrl*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.GraphHttpClient.MakeGetRequestForString(System.String,System.String)
+  commentId: M:PnP.Framework.Graph.GraphHttpClient.MakeGetRequestForString(System.String,System.String)
+  id: MakeGetRequestForString(System.String,System.String)
+  parent: PnP.Framework.Graph.GraphHttpClient
+  langs:
+  - csharp
+  - vb
+  name: MakeGetRequestForString(String, String)
+  nameWithType: GraphHttpClient.MakeGetRequestForString(String, String)
+  fullName: PnP.Framework.Graph.GraphHttpClient.MakeGetRequestForString(System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GraphHttpClient.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MakeGetRequestForString
+    path: ../src/lib/PnP.Framework/Graph/GraphHttpClient.cs
+    startLine: 33
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nThis helper method makes an HTTP GET request and returns the result as a String\n"
+  example: []
+  syntax:
+    content: public static string MakeGetRequestForString(string requestUrl, string accessToken = null)
+    parameters:
+    - id: requestUrl
+      type: System.String
+      description: The URL of the request
+    - id: accessToken
+      type: System.String
+      description: The AccessToken to use for the request
+    return:
+      type: System.String
+      description: The string value of the result
+    content.vb: Public Shared Function MakeGetRequestForString(requestUrl As String, accessToken As String = Nothing) As String
+  overload: PnP.Framework.Graph.GraphHttpClient.MakeGetRequestForString*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.GraphHttpClient.MakeGetRequestForStream(System.String,System.String,System.String)
+  commentId: M:PnP.Framework.Graph.GraphHttpClient.MakeGetRequestForStream(System.String,System.String,System.String)
+  id: MakeGetRequestForStream(System.String,System.String,System.String)
+  parent: PnP.Framework.Graph.GraphHttpClient
+  langs:
+  - csharp
+  - vb
+  name: MakeGetRequestForStream(String, String, String)
+  nameWithType: GraphHttpClient.MakeGetRequestForStream(String, String, String)
+  fullName: PnP.Framework.Graph.GraphHttpClient.MakeGetRequestForStream(System.String, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GraphHttpClient.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MakeGetRequestForStream
+    path: ../src/lib/PnP.Framework/Graph/GraphHttpClient.cs
+    startLine: 48
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nThis helper method makes an HTTP GET request and returns the result as a String\n"
+  example: []
+  syntax:
+    content: public static Stream MakeGetRequestForStream(string requestUrl, string accept, string accessToken = null)
+    parameters:
+    - id: requestUrl
+      type: System.String
+      description: The URL of the request
+    - id: accept
+      type: System.String
+      description: The accept header for the response
+    - id: accessToken
+      type: System.String
+      description: The AccessToken to use for the request
+    return:
+      type: System.IO.Stream
+      description: The Stream  of the result
+    content.vb: Public Shared Function MakeGetRequestForStream(requestUrl As String, accept As String, accessToken As String = Nothing) As Stream
+  overload: PnP.Framework.Graph.GraphHttpClient.MakeGetRequestForStream*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.GraphHttpClient.MakePostRequest(System.String,System.Object,System.String,System.String)
+  commentId: M:PnP.Framework.Graph.GraphHttpClient.MakePostRequest(System.String,System.Object,System.String,System.String)
+  id: MakePostRequest(System.String,System.Object,System.String,System.String)
+  parent: PnP.Framework.Graph.GraphHttpClient
+  langs:
+  - csharp
+  - vb
+  name: MakePostRequest(String, Object, String, String)
+  nameWithType: GraphHttpClient.MakePostRequest(String, Object, String, String)
+  fullName: PnP.Framework.Graph.GraphHttpClient.MakePostRequest(System.String, System.Object, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GraphHttpClient.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MakePostRequest
+    path: ../src/lib/PnP.Framework/Graph/GraphHttpClient.cs
+    startLine: 63
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nThis helper method makes an HTTP POST request without a response\n"
+  example: []
+  syntax:
+    content: public static void MakePostRequest(string requestUrl, object content = null, string contentType = null, string accessToken = null)
+    parameters:
+    - id: requestUrl
+      type: System.String
+      description: The URL of the request
+    - id: content
+      type: System.Object
+      description: The content of the request
+    - id: contentType
+      type: System.String
+      description: The content/type of the request
+    - id: accessToken
+      type: System.String
+      description: The AccessToken to use for the request
+    content.vb: Public Shared Sub MakePostRequest(requestUrl As String, content As Object = Nothing, contentType As String = Nothing, accessToken As String = Nothing)
+  overload: PnP.Framework.Graph.GraphHttpClient.MakePostRequest*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.GraphHttpClient.MakePostRequestForString(System.String,System.Object,System.String,System.String)
+  commentId: M:PnP.Framework.Graph.GraphHttpClient.MakePostRequestForString(System.String,System.Object,System.String,System.String)
+  id: MakePostRequestForString(System.String,System.Object,System.String,System.String)
+  parent: PnP.Framework.Graph.GraphHttpClient
+  langs:
+  - csharp
+  - vb
+  name: MakePostRequestForString(String, Object, String, String)
+  nameWithType: GraphHttpClient.MakePostRequestForString(String, Object, String, String)
+  fullName: PnP.Framework.Graph.GraphHttpClient.MakePostRequestForString(System.String, System.Object, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GraphHttpClient.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MakePostRequestForString
+    path: ../src/lib/PnP.Framework/Graph/GraphHttpClient.cs
+    startLine: 80
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nThis helper method makes an HTTP POST request and returns the result as a String\n"
+  example: []
+  syntax:
+    content: public static string MakePostRequestForString(string requestUrl, object content = null, string contentType = null, string accessToken = null)
+    parameters:
+    - id: requestUrl
+      type: System.String
+      description: The URL of the request
+    - id: content
+      type: System.Object
+      description: The content of the request
+    - id: contentType
+      type: System.String
+      description: The content/type of the request
+    - id: accessToken
+      type: System.String
+      description: The AccessToken to use for the request
+    return:
+      type: System.String
+      description: The String value of the result
+    content.vb: Public Shared Function MakePostRequestForString(requestUrl As String, content As Object = Nothing, contentType As String = Nothing, accessToken As String = Nothing) As String
+  overload: PnP.Framework.Graph.GraphHttpClient.MakePostRequestForString*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.GraphHttpClient.MakePutRequest(System.String,System.Object,System.String,System.String)
+  commentId: M:PnP.Framework.Graph.GraphHttpClient.MakePutRequest(System.String,System.Object,System.String,System.String)
+  id: MakePutRequest(System.String,System.Object,System.String,System.String)
+  parent: PnP.Framework.Graph.GraphHttpClient
+  langs:
+  - csharp
+  - vb
+  name: MakePutRequest(String, Object, String, String)
+  nameWithType: GraphHttpClient.MakePutRequest(String, Object, String, String)
+  fullName: PnP.Framework.Graph.GraphHttpClient.MakePutRequest(System.String, System.Object, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GraphHttpClient.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MakePutRequest
+    path: ../src/lib/PnP.Framework/Graph/GraphHttpClient.cs
+    startLine: 97
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nThis helper method makes an HTTP PUT request without a response\n"
+  example: []
+  syntax:
+    content: public static void MakePutRequest(string requestUrl, object content = null, string contentType = null, string accessToken = null)
+    parameters:
+    - id: requestUrl
+      type: System.String
+      description: The URL of the request
+    - id: content
+      type: System.Object
+      description: The content of the request
+    - id: contentType
+      type: System.String
+      description: The content/type of the request
+    - id: accessToken
+      type: System.String
+      description: The AccessToken to use for the request
+    content.vb: Public Shared Sub MakePutRequest(requestUrl As String, content As Object = Nothing, contentType As String = Nothing, accessToken As String = Nothing)
+  overload: PnP.Framework.Graph.GraphHttpClient.MakePutRequest*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.GraphHttpClient.MakePatchRequestForString(System.String,System.Object,System.String,System.String)
+  commentId: M:PnP.Framework.Graph.GraphHttpClient.MakePatchRequestForString(System.String,System.Object,System.String,System.String)
+  id: MakePatchRequestForString(System.String,System.Object,System.String,System.String)
+  parent: PnP.Framework.Graph.GraphHttpClient
+  langs:
+  - csharp
+  - vb
+  name: MakePatchRequestForString(String, Object, String, String)
+  nameWithType: GraphHttpClient.MakePatchRequestForString(String, Object, String, String)
+  fullName: PnP.Framework.Graph.GraphHttpClient.MakePatchRequestForString(System.String, System.Object, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GraphHttpClient.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MakePatchRequestForString
+    path: ../src/lib/PnP.Framework/Graph/GraphHttpClient.cs
+    startLine: 114
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nThis helper method makes an HTTP PATCH request and returns the result as a String\n"
+  example: []
+  syntax:
+    content: public static string MakePatchRequestForString(string requestUrl, object content = null, string contentType = null, string accessToken = null)
+    parameters:
+    - id: requestUrl
+      type: System.String
+      description: The URL of the request
+    - id: content
+      type: System.Object
+      description: The content of the request
+    - id: contentType
+      type: System.String
+      description: The content/type of the request
+    - id: accessToken
+      type: System.String
+      description: The AccessToken to use for the request
+    return:
+      type: System.String
+      description: The String value of the result
+    content.vb: Public Shared Function MakePatchRequestForString(requestUrl As String, content As Object = Nothing, contentType As String = Nothing, accessToken As String = Nothing) As String
+  overload: PnP.Framework.Graph.GraphHttpClient.MakePatchRequestForString*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.GraphHttpClient.MakeDeleteRequest(System.String,System.String)
+  commentId: M:PnP.Framework.Graph.GraphHttpClient.MakeDeleteRequest(System.String,System.String)
+  id: MakeDeleteRequest(System.String,System.String)
+  parent: PnP.Framework.Graph.GraphHttpClient
+  langs:
+  - csharp
+  - vb
+  name: MakeDeleteRequest(String, String)
+  nameWithType: GraphHttpClient.MakeDeleteRequest(String, String)
+  fullName: PnP.Framework.Graph.GraphHttpClient.MakeDeleteRequest(System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/GraphHttpClient.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MakeDeleteRequest
+    path: ../src/lib/PnP.Framework/Graph/GraphHttpClient.cs
+    startLine: 130
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nThis helper method makes an HTTP DELETE request\n"
+  example: []
+  syntax:
+    content: public static void MakeDeleteRequest(string requestUrl, string accessToken = null)
+    parameters:
+    - id: requestUrl
+      type: System.String
+      description: The URL of the request
+    - id: accessToken
+      type: System.String
+      description: The AccessToken to use for the request
+    content.vb: Public Shared Sub MakeDeleteRequest(requestUrl As String, accessToken As String = Nothing)
+  overload: PnP.Framework.Graph.GraphHttpClient.MakeDeleteRequest*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: PnP.Framework.Graph
+  commentId: N:PnP.Framework.Graph
+  name: PnP.Framework.Graph
+  nameWithType: PnP.Framework.Graph
+  fullName: PnP.Framework.Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: PnP.Framework.Graph.GraphHttpClient.GetGraphEndPointUrl*
+  commentId: Overload:PnP.Framework.Graph.GraphHttpClient.GetGraphEndPointUrl
+  name: GetGraphEndPointUrl
+  nameWithType: GraphHttpClient.GetGraphEndPointUrl
+  fullName: PnP.Framework.Graph.GraphHttpClient.GetGraphEndPointUrl
+- uid: PnP.Framework.AzureEnvironment
+  commentId: T:PnP.Framework.AzureEnvironment
+  parent: PnP.Framework
+  name: AzureEnvironment
+  nameWithType: AzureEnvironment
+  fullName: PnP.Framework.AzureEnvironment
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: PnP.Framework
+  commentId: N:PnP.Framework
+  name: PnP.Framework
+  nameWithType: PnP.Framework
+  fullName: PnP.Framework
+- uid: PnP.Framework.Graph.GraphHttpClient.MakeGetRequestForString*
+  commentId: Overload:PnP.Framework.Graph.GraphHttpClient.MakeGetRequestForString
+  name: MakeGetRequestForString
+  nameWithType: GraphHttpClient.MakeGetRequestForString
+  fullName: PnP.Framework.Graph.GraphHttpClient.MakeGetRequestForString
+- uid: PnP.Framework.Graph.GraphHttpClient.MakeGetRequestForStream*
+  commentId: Overload:PnP.Framework.Graph.GraphHttpClient.MakeGetRequestForStream
+  name: MakeGetRequestForStream
+  nameWithType: GraphHttpClient.MakeGetRequestForStream
+  fullName: PnP.Framework.Graph.GraphHttpClient.MakeGetRequestForStream
+- uid: System.IO.Stream
+  commentId: T:System.IO.Stream
+  parent: System.IO
+  isExternal: true
+  name: Stream
+  nameWithType: Stream
+  fullName: System.IO.Stream
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+- uid: PnP.Framework.Graph.GraphHttpClient.MakePostRequest*
+  commentId: Overload:PnP.Framework.Graph.GraphHttpClient.MakePostRequest
+  name: MakePostRequest
+  nameWithType: GraphHttpClient.MakePostRequest
+  fullName: PnP.Framework.Graph.GraphHttpClient.MakePostRequest
+- uid: PnP.Framework.Graph.GraphHttpClient.MakePostRequestForString*
+  commentId: Overload:PnP.Framework.Graph.GraphHttpClient.MakePostRequestForString
+  name: MakePostRequestForString
+  nameWithType: GraphHttpClient.MakePostRequestForString
+  fullName: PnP.Framework.Graph.GraphHttpClient.MakePostRequestForString
+- uid: PnP.Framework.Graph.GraphHttpClient.MakePutRequest*
+  commentId: Overload:PnP.Framework.Graph.GraphHttpClient.MakePutRequest
+  name: MakePutRequest
+  nameWithType: GraphHttpClient.MakePutRequest
+  fullName: PnP.Framework.Graph.GraphHttpClient.MakePutRequest
+- uid: PnP.Framework.Graph.GraphHttpClient.MakePatchRequestForString*
+  commentId: Overload:PnP.Framework.Graph.GraphHttpClient.MakePatchRequestForString
+  name: MakePatchRequestForString
+  nameWithType: GraphHttpClient.MakePatchRequestForString
+  fullName: PnP.Framework.Graph.GraphHttpClient.MakePatchRequestForString
+- uid: PnP.Framework.Graph.GraphHttpClient.MakeDeleteRequest*
+  commentId: Overload:PnP.Framework.Graph.GraphHttpClient.MakeDeleteRequest
+  name: MakeDeleteRequest
+  nameWithType: GraphHttpClient.MakeDeleteRequest
+  fullName: PnP.Framework.Graph.GraphHttpClient.MakeDeleteRequest

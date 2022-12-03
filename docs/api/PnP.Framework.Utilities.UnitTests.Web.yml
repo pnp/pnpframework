@@ -1,0 +1,114 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Utilities.UnitTests.Web
+  commentId: N:PnP.Framework.Utilities.UnitTests.Web
+  id: PnP.Framework.Utilities.UnitTests.Web
+  children:
+  - PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor
+  - PnP.Framework.Utilities.UnitTests.Web.IMockResponseProvider
+  - PnP.Framework.Utilities.UnitTests.Web.MockEntryResponseProvider
+  - PnP.Framework.Utilities.UnitTests.Web.MockEntryResponseProvider`1
+  - PnP.Framework.Utilities.UnitTests.Web.MockExecutorFactory
+  - PnP.Framework.Utilities.UnitTests.Web.MockHttpHandler
+  - PnP.Framework.Utilities.UnitTests.Web.MockResponseProvider
+  - PnP.Framework.Utilities.UnitTests.Web.MockWebRequestExecutor
+  - PnP.Framework.Utilities.UnitTests.Web.MockWebRequestExecutorFactory
+  - PnP.Framework.Utilities.UnitTests.Web.StoreResponseToAFile
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Utilities.UnitTests.Web
+  nameWithType: PnP.Framework.Utilities.UnitTests.Web
+  fullName: PnP.Framework.Utilities.UnitTests.Web
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor
+  commentId: T:PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor
+  name: ComposedWebRequestExecutor
+  nameWithType: ComposedWebRequestExecutor
+  fullName: PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor
+- uid: PnP.Framework.Utilities.UnitTests.Web.IMockResponseProvider
+  commentId: T:PnP.Framework.Utilities.UnitTests.Web.IMockResponseProvider
+  parent: PnP.Framework.Utilities.UnitTests.Web
+  name: IMockResponseProvider
+  nameWithType: IMockResponseProvider
+  fullName: PnP.Framework.Utilities.UnitTests.Web.IMockResponseProvider
+- uid: PnP.Framework.Utilities.UnitTests.Web.MockEntryResponseProvider`1
+  commentId: T:PnP.Framework.Utilities.UnitTests.Web.MockEntryResponseProvider`1
+  name: MockEntryResponseProvider<T>
+  nameWithType: MockEntryResponseProvider<T>
+  fullName: PnP.Framework.Utilities.UnitTests.Web.MockEntryResponseProvider<T>
+  nameWithType.vb: MockEntryResponseProvider(Of T)
+  fullName.vb: PnP.Framework.Utilities.UnitTests.Web.MockEntryResponseProvider(Of T)
+  name.vb: MockEntryResponseProvider(Of T)
+  spec.csharp:
+  - uid: PnP.Framework.Utilities.UnitTests.Web.MockEntryResponseProvider`1
+    name: MockEntryResponseProvider
+    nameWithType: MockEntryResponseProvider
+    fullName: PnP.Framework.Utilities.UnitTests.Web.MockEntryResponseProvider
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: PnP.Framework.Utilities.UnitTests.Web.MockEntryResponseProvider`1
+    name: MockEntryResponseProvider
+    nameWithType: MockEntryResponseProvider
+    fullName: PnP.Framework.Utilities.UnitTests.Web.MockEntryResponseProvider
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Utilities.UnitTests.Web.MockEntryResponseProvider
+  commentId: T:PnP.Framework.Utilities.UnitTests.Web.MockEntryResponseProvider
+  name: MockEntryResponseProvider
+  nameWithType: MockEntryResponseProvider
+  fullName: PnP.Framework.Utilities.UnitTests.Web.MockEntryResponseProvider
+- uid: PnP.Framework.Utilities.UnitTests.Web.MockExecutorFactory
+  commentId: T:PnP.Framework.Utilities.UnitTests.Web.MockExecutorFactory
+  parent: PnP.Framework.Utilities.UnitTests.Web
+  name: MockExecutorFactory
+  nameWithType: MockExecutorFactory
+  fullName: PnP.Framework.Utilities.UnitTests.Web.MockExecutorFactory
+- uid: PnP.Framework.Utilities.UnitTests.Web.MockHttpHandler
+  commentId: T:PnP.Framework.Utilities.UnitTests.Web.MockHttpHandler
+  name: MockHttpHandler
+  nameWithType: MockHttpHandler
+  fullName: PnP.Framework.Utilities.UnitTests.Web.MockHttpHandler
+- uid: PnP.Framework.Utilities.UnitTests.Web.MockResponseProvider
+  commentId: T:PnP.Framework.Utilities.UnitTests.Web.MockResponseProvider
+  name: MockResponseProvider
+  nameWithType: MockResponseProvider
+  fullName: PnP.Framework.Utilities.UnitTests.Web.MockResponseProvider
+- uid: PnP.Framework.Utilities.UnitTests.Web.MockWebRequestExecutor
+  commentId: T:PnP.Framework.Utilities.UnitTests.Web.MockWebRequestExecutor
+  name: MockWebRequestExecutor
+  nameWithType: MockWebRequestExecutor
+  fullName: PnP.Framework.Utilities.UnitTests.Web.MockWebRequestExecutor
+- uid: PnP.Framework.Utilities.UnitTests.Web.MockWebRequestExecutorFactory
+  commentId: T:PnP.Framework.Utilities.UnitTests.Web.MockWebRequestExecutorFactory
+  name: MockWebRequestExecutorFactory
+  nameWithType: MockWebRequestExecutorFactory
+  fullName: PnP.Framework.Utilities.UnitTests.Web.MockWebRequestExecutorFactory
+- uid: PnP.Framework.Utilities.UnitTests.Web.StoreResponseToAFile
+  commentId: T:PnP.Framework.Utilities.UnitTests.Web.StoreResponseToAFile
+  name: StoreResponseToAFile
+  nameWithType: StoreResponseToAFile
+  fullName: PnP.Framework.Utilities.UnitTests.Web.StoreResponseToAFile
+- uid: PnP.Framework.Utilities.UnitTests.Web
+  commentId: N:PnP.Framework.Utilities.UnitTests.Web
+  name: PnP.Framework.Utilities.UnitTests.Web
+  nameWithType: PnP.Framework.Utilities.UnitTests.Web
+  fullName: PnP.Framework.Utilities.UnitTests.Web

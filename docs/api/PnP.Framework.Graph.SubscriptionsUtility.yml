@@ -1,0 +1,814 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Graph.SubscriptionsUtility
+  commentId: T:PnP.Framework.Graph.SubscriptionsUtility
+  id: SubscriptionsUtility
+  parent: PnP.Framework.Graph
+  children:
+  - PnP.Framework.Graph.SubscriptionsUtility.CreateSubscription(PnP.Framework.Enums.GraphSubscriptionChangeType,System.String,System.String,System.DateTimeOffset,System.String,System.String,PnP.Framework.Enums.GraphSubscriptionTlsVersion,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Graph.SubscriptionsUtility.DeleteSubscription(System.String,System.String,System.Int32,System.Int32)
+  - PnP.Framework.Graph.SubscriptionsUtility.GetSubscription(System.String,System.Guid,System.Int32,System.Int32,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Graph.SubscriptionsUtility.ListSubscriptions(System.String,System.Int32,System.Int32,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Graph.SubscriptionsUtility.UpdateSubscription(System.String,System.DateTimeOffset,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  langs:
+  - csharp
+  - vb
+  name: SubscriptionsUtility
+  nameWithType: SubscriptionsUtility
+  fullName: PnP.Framework.Graph.SubscriptionsUtility
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/SubscriptionsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SubscriptionsUtility
+    path: ../src/lib/PnP.Framework/Graph/SubscriptionsUtility.cs
+    startLine: 12
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nClass that deals with Microsoft Graph Subscriptions\n"
+  example: []
+  syntax:
+    content: public static class SubscriptionsUtility
+    content.vb: Public Module SubscriptionsUtility
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: PnP.Framework.Graph.SubscriptionsUtility.GetSubscription(System.String,System.Guid,System.Int32,System.Int32,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.SubscriptionsUtility.GetSubscription(System.String,System.Guid,System.Int32,System.Int32,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  id: GetSubscription(System.String,System.Guid,System.Int32,System.Int32,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.SubscriptionsUtility
+  langs:
+  - csharp
+  - vb
+  name: GetSubscription(String, Guid, Int32, Int32, Int32, Int32, AzureEnvironment)
+  nameWithType: SubscriptionsUtility.GetSubscription(String, Guid, Int32, Int32, Int32, Int32, AzureEnvironment)
+  fullName: PnP.Framework.Graph.SubscriptionsUtility.GetSubscription(System.String, System.Guid, System.Int32, System.Int32, System.Int32, System.Int32, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/SubscriptionsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetSubscription
+    path: ../src/lib/PnP.Framework/Graph/SubscriptionsUtility.cs
+    startLine: 25
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nReturns the subscription with the provided subscriptionId from Microsoft Graph\n"
+  example: []
+  syntax:
+    content: public static Subscription GetSubscription(string accessToken, Guid subscriptionId, int startIndex = 0, int endIndex = 999, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: subscriptionId
+      type: System.Guid
+      description: The unique identifier of the subscription to return from Microsoft Graph
+    - id: startIndex
+      type: System.Int32
+      description: First item in the results returned by Microsoft Graph to return
+    - id: endIndex
+      type: System.Int32
+      description: Last item in the results returned by Microsoft Graph to return
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry.
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    return:
+      type: PnP.Framework.Graph.Model.Subscription
+      description: Subscription object
+    content.vb: Public Shared Function GetSubscription(accessToken As String, subscriptionId As Guid, startIndex As Integer = 0, endIndex As Integer = 999, retryCount As Integer = 10, delay As Integer = 500, azureEnvironment As AzureEnvironment = AzureEnvironment.Production) As Subscription
+  overload: PnP.Framework.Graph.SubscriptionsUtility.GetSubscription*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.SubscriptionsUtility.ListSubscriptions(System.String,System.Int32,System.Int32,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.SubscriptionsUtility.ListSubscriptions(System.String,System.Int32,System.Int32,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  id: ListSubscriptions(System.String,System.Int32,System.Int32,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.SubscriptionsUtility
+  langs:
+  - csharp
+  - vb
+  name: ListSubscriptions(String, Int32, Int32, Int32, Int32, AzureEnvironment)
+  nameWithType: SubscriptionsUtility.ListSubscriptions(String, Int32, Int32, Int32, Int32, AzureEnvironment)
+  fullName: PnP.Framework.Graph.SubscriptionsUtility.ListSubscriptions(System.String, System.Int32, System.Int32, System.Int32, System.Int32, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/SubscriptionsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ListSubscriptions
+    path: ../src/lib/PnP.Framework/Graph/SubscriptionsUtility.cs
+    startLine: 61
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nReturns all the active Microsoft Graph subscriptions\n"
+  example: []
+  syntax:
+    content: public static List<Subscription> ListSubscriptions(string accessToken, int startIndex = 0, int endIndex = 999, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: startIndex
+      type: System.Int32
+      description: First item in the results returned by Microsoft Graph to return
+    - id: endIndex
+      type: System.Int32
+      description: Last item in the results returned by Microsoft Graph to return
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry.
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    return:
+      type: System.Collections.Generic.List{PnP.Framework.Graph.Model.Subscription}
+      description: List with Subscription objects
+    content.vb: Public Shared Function ListSubscriptions(accessToken As String, startIndex As Integer = 0, endIndex As Integer = 999, retryCount As Integer = 10, delay As Integer = 500, azureEnvironment As AzureEnvironment = AzureEnvironment.Production) As List(Of Subscription)
+  overload: PnP.Framework.Graph.SubscriptionsUtility.ListSubscriptions*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.SubscriptionsUtility.CreateSubscription(PnP.Framework.Enums.GraphSubscriptionChangeType,System.String,System.String,System.DateTimeOffset,System.String,System.String,PnP.Framework.Enums.GraphSubscriptionTlsVersion,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.SubscriptionsUtility.CreateSubscription(PnP.Framework.Enums.GraphSubscriptionChangeType,System.String,System.String,System.DateTimeOffset,System.String,System.String,PnP.Framework.Enums.GraphSubscriptionTlsVersion,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  id: CreateSubscription(PnP.Framework.Enums.GraphSubscriptionChangeType,System.String,System.String,System.DateTimeOffset,System.String,System.String,PnP.Framework.Enums.GraphSubscriptionTlsVersion,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.SubscriptionsUtility
+  langs:
+  - csharp
+  - vb
+  name: CreateSubscription(GraphSubscriptionChangeType, String, String, DateTimeOffset, String, String, GraphSubscriptionTlsVersion, Int32, Int32, AzureEnvironment)
+  nameWithType: SubscriptionsUtility.CreateSubscription(GraphSubscriptionChangeType, String, String, DateTimeOffset, String, String, GraphSubscriptionTlsVersion, Int32, Int32, AzureEnvironment)
+  fullName: PnP.Framework.Graph.SubscriptionsUtility.CreateSubscription(PnP.Framework.Enums.GraphSubscriptionChangeType, System.String, System.String, System.DateTimeOffset, System.String, System.String, PnP.Framework.Enums.GraphSubscriptionTlsVersion, System.Int32, System.Int32, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/SubscriptionsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateSubscription
+    path: ../src/lib/PnP.Framework/Graph/SubscriptionsUtility.cs
+    startLine: 135
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nCreates a new Microsoft Graph Subscription\n"
+  example: []
+  syntax:
+    content: public static Subscription CreateSubscription(GraphSubscriptionChangeType changeType, string notificationUrl, string resource, DateTimeOffset expirationDateTime, string clientState, string accessToken, GraphSubscriptionTlsVersion latestSupportedTlsVersion = GraphSubscriptionTlsVersion.v1_2, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: changeType
+      type: PnP.Framework.Enums.GraphSubscriptionChangeType
+      description: The event(s) the subscription should trigger on
+    - id: notificationUrl
+      type: System.String
+      description: The URL that should be called when an event matching this subscription occurs
+    - id: resource
+      type: System.String
+      description: The resource to monitor for changes. See https://docs.microsoft.com/graph/api/subscription-post-subscriptions#permissions for the list with supported options.
+    - id: expirationDateTime
+      type: System.DateTimeOffset
+      description: The datetime defining how long this subscription should stay alive before which it needs to get extended to stay alive. See https://docs.microsoft.com/graph/api/resources/subscription#maximum-length-of-subscription-per-resource-type for the supported maximum lifetime of the subscriber endpoints.
+    - id: clientState
+      type: System.String
+      description: Specifies the value of the clientState property sent by the service in each notification. The maximum length is 128 characters. The client can check that the notification came from the service by comparing the value of the clientState property sent with the subscription with the value of the clientState property received with each notification.
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: latestSupportedTlsVersion
+      type: PnP.Framework.Enums.GraphSubscriptionTlsVersion
+      description: Specifies the latest version of Transport Layer Security (TLS) that the notification endpoint, specified by <code data-dev-comment-type="paramref" class="paramref">notificationUrl</code>, supports. If not provided, TLS 1.2 will be assumed.
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    return:
+      type: PnP.Framework.Graph.Model.Subscription
+      description: The just created Microsoft Graph subscription
+    content.vb: Public Shared Function CreateSubscription(changeType As GraphSubscriptionChangeType, notificationUrl As String, resource As String, expirationDateTime As DateTimeOffset, clientState As String, accessToken As String, latestSupportedTlsVersion As GraphSubscriptionTlsVersion = GraphSubscriptionTlsVersion.v1_2, retryCount As Integer = 10, delay As Integer = 500, azureEnvironment As AzureEnvironment = AzureEnvironment.Production) As Subscription
+  overload: PnP.Framework.Graph.SubscriptionsUtility.CreateSubscription*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.SubscriptionsUtility.UpdateSubscription(System.String,System.DateTimeOffset,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.SubscriptionsUtility.UpdateSubscription(System.String,System.DateTimeOffset,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  id: UpdateSubscription(System.String,System.DateTimeOffset,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.SubscriptionsUtility
+  langs:
+  - csharp
+  - vb
+  name: UpdateSubscription(String, DateTimeOffset, String, Int32, Int32, AzureEnvironment)
+  nameWithType: SubscriptionsUtility.UpdateSubscription(String, DateTimeOffset, String, Int32, Int32, AzureEnvironment)
+  fullName: PnP.Framework.Graph.SubscriptionsUtility.UpdateSubscription(System.String, System.DateTimeOffset, System.String, System.Int32, System.Int32, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/SubscriptionsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UpdateSubscription
+    path: ../src/lib/PnP.Framework/Graph/SubscriptionsUtility.cs
+    startLine: 199
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nUpdates an existing Microsoft Graph Subscription\n"
+  example: []
+  syntax:
+    content: public static Subscription UpdateSubscription(string subscriptionId, DateTimeOffset expirationDateTime, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: subscriptionId
+      type: System.String
+      description: Unique identifier of the Microsoft Graph subscription
+    - id: expirationDateTime
+      type: System.DateTimeOffset
+      description: The datetime defining how long this subscription should stay alive before which it needs to get extended to stay alive. See https://docs.microsoft.com/graph/api/resources/subscription#maximum-length-of-subscription-per-resource-type for the supported maximum lifetime of the subscriber endpoints.
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    return:
+      type: PnP.Framework.Graph.Model.Subscription
+      description: The just updated Microsoft Graph subscription
+    content.vb: Public Shared Function UpdateSubscription(subscriptionId As String, expirationDateTime As DateTimeOffset, accessToken As String, retryCount As Integer = 10, delay As Integer = 500, azureEnvironment As AzureEnvironment = AzureEnvironment.Production) As Subscription
+  overload: PnP.Framework.Graph.SubscriptionsUtility.UpdateSubscription*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Graph.SubscriptionsUtility.DeleteSubscription(System.String,System.String,System.Int32,System.Int32)
+  commentId: M:PnP.Framework.Graph.SubscriptionsUtility.DeleteSubscription(System.String,System.String,System.Int32,System.Int32)
+  id: DeleteSubscription(System.String,System.String,System.Int32,System.Int32)
+  parent: PnP.Framework.Graph.SubscriptionsUtility
+  langs:
+  - csharp
+  - vb
+  name: DeleteSubscription(String, String, Int32, Int32)
+  nameWithType: SubscriptionsUtility.DeleteSubscription(String, String, Int32, Int32)
+  fullName: PnP.Framework.Graph.SubscriptionsUtility.DeleteSubscription(System.String, System.String, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/SubscriptionsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeleteSubscription
+    path: ../src/lib/PnP.Framework/Graph/SubscriptionsUtility.cs
+    startLine: 250
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nDeletes an existing Microsoft Graph Subscription\n"
+  example: []
+  syntax:
+    content: public static void DeleteSubscription(string subscriptionId, string accessToken, int retryCount = 10, int delay = 500)
+    parameters:
+    - id: subscriptionId
+      type: System.String
+      description: Unique identifier of the Microsoft Graph subscription
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    content.vb: Public Shared Sub DeleteSubscription(subscriptionId As String, accessToken As String, retryCount As Integer = 10, delay As Integer = 500)
+  overload: PnP.Framework.Graph.SubscriptionsUtility.DeleteSubscription*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: PnP.Framework.Graph
+  commentId: N:PnP.Framework.Graph
+  name: PnP.Framework.Graph
+  nameWithType: PnP.Framework.Graph
+  fullName: PnP.Framework.Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: PnP.Framework.Graph.SubscriptionsUtility.GetSubscription*
+  commentId: Overload:PnP.Framework.Graph.SubscriptionsUtility.GetSubscription
+  name: GetSubscription
+  nameWithType: SubscriptionsUtility.GetSubscription
+  fullName: PnP.Framework.Graph.SubscriptionsUtility.GetSubscription
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: PnP.Framework.AzureEnvironment
+  commentId: T:PnP.Framework.AzureEnvironment
+  parent: PnP.Framework
+  name: AzureEnvironment
+  nameWithType: AzureEnvironment
+  fullName: PnP.Framework.AzureEnvironment
+- uid: PnP.Framework.Graph.Model.Subscription
+  commentId: T:PnP.Framework.Graph.Model.Subscription
+  parent: PnP.Framework.Graph.Model
+  name: Subscription
+  nameWithType: Subscription
+  fullName: PnP.Framework.Graph.Model.Subscription
+- uid: PnP.Framework
+  commentId: N:PnP.Framework
+  name: PnP.Framework
+  nameWithType: PnP.Framework
+  fullName: PnP.Framework
+- uid: PnP.Framework.Graph.Model
+  commentId: N:PnP.Framework.Graph.Model
+  name: PnP.Framework.Graph.Model
+  nameWithType: PnP.Framework.Graph.Model
+  fullName: PnP.Framework.Graph.Model
+- uid: PnP.Framework.Graph.SubscriptionsUtility.ListSubscriptions*
+  commentId: Overload:PnP.Framework.Graph.SubscriptionsUtility.ListSubscriptions
+  name: ListSubscriptions
+  nameWithType: SubscriptionsUtility.ListSubscriptions
+  fullName: PnP.Framework.Graph.SubscriptionsUtility.ListSubscriptions
+- uid: System.Collections.Generic.List{PnP.Framework.Graph.Model.Subscription}
+  commentId: T:System.Collections.Generic.List{PnP.Framework.Graph.Model.Subscription}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<Subscription>
+  nameWithType: List<Subscription>
+  fullName: System.Collections.Generic.List<PnP.Framework.Graph.Model.Subscription>
+  nameWithType.vb: List(Of Subscription)
+  fullName.vb: System.Collections.Generic.List(Of PnP.Framework.Graph.Model.Subscription)
+  name.vb: List(Of Subscription)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Graph.Model.Subscription
+    name: Subscription
+    nameWithType: Subscription
+    fullName: PnP.Framework.Graph.Model.Subscription
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Graph.Model.Subscription
+    name: Subscription
+    nameWithType: Subscription
+    fullName: PnP.Framework.Graph.Model.Subscription
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: PnP.Framework.Graph.SubscriptionsUtility.CreateSubscription*
+  commentId: Overload:PnP.Framework.Graph.SubscriptionsUtility.CreateSubscription
+  name: CreateSubscription
+  nameWithType: SubscriptionsUtility.CreateSubscription
+  fullName: PnP.Framework.Graph.SubscriptionsUtility.CreateSubscription
+- uid: PnP.Framework.Enums.GraphSubscriptionChangeType
+  commentId: T:PnP.Framework.Enums.GraphSubscriptionChangeType
+  parent: PnP.Framework.Enums
+  name: GraphSubscriptionChangeType
+  nameWithType: GraphSubscriptionChangeType
+  fullName: PnP.Framework.Enums.GraphSubscriptionChangeType
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: PnP.Framework.Enums.GraphSubscriptionTlsVersion
+  commentId: T:PnP.Framework.Enums.GraphSubscriptionTlsVersion
+  parent: PnP.Framework.Enums
+  name: GraphSubscriptionTlsVersion
+  nameWithType: GraphSubscriptionTlsVersion
+  fullName: PnP.Framework.Enums.GraphSubscriptionTlsVersion
+- uid: PnP.Framework.Enums
+  commentId: N:PnP.Framework.Enums
+  name: PnP.Framework.Enums
+  nameWithType: PnP.Framework.Enums
+  fullName: PnP.Framework.Enums
+- uid: PnP.Framework.Graph.SubscriptionsUtility.UpdateSubscription*
+  commentId: Overload:PnP.Framework.Graph.SubscriptionsUtility.UpdateSubscription
+  name: UpdateSubscription
+  nameWithType: SubscriptionsUtility.UpdateSubscription
+  fullName: PnP.Framework.Graph.SubscriptionsUtility.UpdateSubscription
+- uid: PnP.Framework.Graph.SubscriptionsUtility.DeleteSubscription*
+  commentId: Overload:PnP.Framework.Graph.SubscriptionsUtility.DeleteSubscription
+  name: DeleteSubscription
+  nameWithType: SubscriptionsUtility.DeleteSubscription
+  fullName: PnP.Framework.Graph.SubscriptionsUtility.DeleteSubscription

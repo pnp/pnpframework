@@ -1,0 +1,476 @@
+### YamlMime:ManagedReference
+items:
+- uid: Microsoft.SharePoint.Client.ProvisioningExtensions
+  commentId: T:Microsoft.SharePoint.Client.ProvisioningExtensions
+  id: ProvisioningExtensions
+  parent: Microsoft.SharePoint.Client
+  children:
+  - Microsoft.SharePoint.Client.ProvisioningExtensions.ProvisionElementFile(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.ProvisioningExtensions.ProvisionElementXml(Microsoft.SharePoint.Client.Web,System.String,System.Xml.Linq.XElement)
+  langs:
+  - csharp
+  - vb
+  name: ProvisioningExtensions
+  nameWithType: ProvisioningExtensions
+  fullName: Microsoft.SharePoint.Client.ProvisioningExtensions
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ProvisioningExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ProvisioningExtensions
+    path: ../src/lib/PnP.Framework/Extensions/ProvisioningExtensions.cs
+    startLine: 13
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nFile-based (CAML) provisioning extensions\n"
+  example: []
+  syntax:
+    content: public static class ProvisioningExtensions
+    content.vb: Public Module ProvisioningExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: Microsoft.SharePoint.Client.ProvisioningExtensions.ProvisionElementFile(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.ProvisioningExtensions.ProvisionElementFile(Microsoft.SharePoint.Client.Web,System.String)
+  id: ProvisionElementFile(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ProvisioningExtensions
+  langs:
+  - csharp
+  - vb
+  name: ProvisionElementFile(Web, String)
+  nameWithType: ProvisioningExtensions.ProvisionElementFile(Web, String)
+  fullName: Microsoft.SharePoint.Client.ProvisioningExtensions.ProvisionElementFile(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ProvisioningExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ProvisionElementFile
+    path: ../src/lib/PnP.Framework/Extensions/ProvisioningExtensions.cs
+    startLine: 22
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nProvisions the items defined by the specified Elements (CAML) file; currently only supports modules (files).\n"
+  example: []
+  syntax:
+    content: public static void ProvisionElementFile(this Web web, string path)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to provision the elements to
+    - id: path
+      type: System.String
+      description: Path to the XML file containing the Elements CAML defintion
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub ProvisionElementFile(web As Web, path As String)
+  overload: Microsoft.SharePoint.Client.ProvisioningExtensions.ProvisionElementFile*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ProvisioningExtensions.ProvisionElementXml(Microsoft.SharePoint.Client.Web,System.String,System.Xml.Linq.XElement)
+  commentId: M:Microsoft.SharePoint.Client.ProvisioningExtensions.ProvisionElementXml(Microsoft.SharePoint.Client.Web,System.String,System.Xml.Linq.XElement)
+  id: ProvisionElementXml(Microsoft.SharePoint.Client.Web,System.String,System.Xml.Linq.XElement)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ProvisioningExtensions
+  langs:
+  - csharp
+  - vb
+  name: ProvisionElementXml(Web, String, XElement)
+  nameWithType: ProvisioningExtensions.ProvisionElementXml(Web, String, XElement)
+  fullName: Microsoft.SharePoint.Client.ProvisioningExtensions.ProvisionElementXml(Microsoft.SharePoint.Client.Web, System.String, System.Xml.Linq.XElement)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ProvisioningExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ProvisionElementXml
+    path: ../src/lib/PnP.Framework/Extensions/ProvisioningExtensions.cs
+    startLine: 44
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nProvisions the items defined by the specified Elements (CAML) XML; currently only supports modules (files).\n"
+  example: []
+  syntax:
+    content: public static void ProvisionElementXml(this Web web, string baseFolder, XElement elementsXml)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to provision the elements to
+    - id: baseFolder
+      type: System.String
+      description: Base local folder to find any referenced items, e.g. files
+    - id: elementsXml
+      type: System.Xml.Linq.XElement
+      description: Elements (CAML) XML element that defines the items to provision; currently only supports modules (files)
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub ProvisionElementXml(web As Web, baseFolder As String, elementsXml As XElement)
+  overload: Microsoft.SharePoint.Client.ProvisioningExtensions.ProvisionElementXml*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: Microsoft.SharePoint.Client
+  commentId: N:Microsoft.SharePoint.Client
+  name: Microsoft.SharePoint.Client
+  nameWithType: Microsoft.SharePoint.Client
+  fullName: Microsoft.SharePoint.Client
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Microsoft.SharePoint.Client.ProvisioningExtensions.ProvisionElementFile*
+  commentId: Overload:Microsoft.SharePoint.Client.ProvisioningExtensions.ProvisionElementFile
+  name: ProvisionElementFile
+  nameWithType: ProvisioningExtensions.ProvisionElementFile
+  fullName: Microsoft.SharePoint.Client.ProvisioningExtensions.ProvisionElementFile
+- uid: Microsoft.SharePoint.Client.Web
+  commentId: T:Microsoft.SharePoint.Client.Web
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: Web
+  nameWithType: Web
+  fullName: Microsoft.SharePoint.Client.Web
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Microsoft.SharePoint.Client.ProvisioningExtensions.ProvisionElementXml*
+  commentId: Overload:Microsoft.SharePoint.Client.ProvisioningExtensions.ProvisionElementXml
+  name: ProvisionElementXml
+  nameWithType: ProvisioningExtensions.ProvisionElementXml
+  fullName: Microsoft.SharePoint.Client.ProvisioningExtensions.ProvisionElementXml
+- uid: System.Xml.Linq.XElement
+  commentId: T:System.Xml.Linq.XElement
+  parent: System.Xml.Linq
+  isExternal: true
+  name: XElement
+  nameWithType: XElement
+  fullName: System.Xml.Linq.XElement
+- uid: System.Xml.Linq
+  commentId: N:System.Xml.Linq
+  isExternal: true
+  name: System.Xml.Linq
+  nameWithType: System.Xml.Linq
+  fullName: System.Xml.Linq

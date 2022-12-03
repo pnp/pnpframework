@@ -1,0 +1,4751 @@
+### YamlMime:ManagedReference
+items:
+- uid: Microsoft.SharePoint.Client.WebExtensions
+  commentId: T:Microsoft.SharePoint.Client.WebExtensions
+  id: WebExtensions
+  parent: Microsoft.SharePoint.Client
+  children:
+  - Microsoft.SharePoint.Client.WebExtensions.AddIndexedPropertyBagKey(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.WebExtensions.AddRemoteEventReceiver(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.EventReceiverType,Microsoft.SharePoint.Client.EventReceiverSynchronization,System.Boolean)
+  - Microsoft.SharePoint.Client.WebExtensions.AddRemoteEventReceiver(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.EventReceiverType,Microsoft.SharePoint.Client.EventReceiverSynchronization,System.Int32,System.Boolean)
+  - Microsoft.SharePoint.Client.WebExtensions.ApplyProvisioningTemplate(Microsoft.SharePoint.Client.Web,PnP.Framework.Provisioning.Model.ProvisioningTemplate,PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation)
+  - Microsoft.SharePoint.Client.WebExtensions.ClaimsHaveRoleAssignment(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  - Microsoft.SharePoint.Client.WebExtensions.CreateWeb(Microsoft.SharePoint.Client.Web,PnP.Framework.Entities.SiteEntity,System.Boolean,System.Boolean)
+  - Microsoft.SharePoint.Client.WebExtensions.CreateWeb(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.Int32,System.Boolean,System.Boolean)
+  - Microsoft.SharePoint.Client.WebExtensions.DeleteWeb(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.WebExtensions.DeployApplicationPackageToAppCatalog(Microsoft.SharePoint.Client.Web,System.String,System.String,System.Boolean,System.Boolean)
+  - Microsoft.SharePoint.Client.WebExtensions.DeployApplicationPackageToAppCatalog(Microsoft.SharePoint.Client.Web,System.String,System.String,System.Boolean,System.Boolean,System.Boolean)
+  - Microsoft.SharePoint.Client.WebExtensions.DisableRequestAccess(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.WebExtensions.EnableRequestAccess(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.WebExtensions.EnableRequestAccess(Microsoft.SharePoint.Client.Web,System.Collections.Generic.IEnumerable{System.String})
+  - Microsoft.SharePoint.Client.WebExtensions.EnableRequestAccess(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.WebExtensions.EnableRequestAccess(Microsoft.SharePoint.Client.Web,System.String[])
+  - Microsoft.SharePoint.Client.WebExtensions.GetAdmins(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.WebExtensions.GetAllWebUrls(Microsoft.SharePoint.Client.Site)
+  - Microsoft.SharePoint.Client.WebExtensions.GetAppCatalog(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.WebExtensions.GetAppInstances(Microsoft.SharePoint.Client.Web,System.Linq.Expressions.Expression{System.Func{Microsoft.SharePoint.Client.AppInstance,System.Object}}[])
+  - Microsoft.SharePoint.Client.WebExtensions.GetBaseTemplateId(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.WebExtensions.GetBlogsFromList(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String)
+  - Microsoft.SharePoint.Client.WebExtensions.GetEventReceiverById(Microsoft.SharePoint.Client.Web,System.Guid)
+  - Microsoft.SharePoint.Client.WebExtensions.GetEventReceiverByName(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.WebExtensions.GetEveryoneExceptExternalUsersClaim(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.WebExtensions.GetIndexedPropertyBagKeys(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.WebExtensions.GetListByName(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.WebExtensions.GetMembers(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.WebExtensions.GetName(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.WebExtensions.GetOwners(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.WebExtensions.GetPages(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  - Microsoft.SharePoint.Client.WebExtensions.GetPagesFromList(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String)
+  - Microsoft.SharePoint.Client.WebExtensions.GetPagesLibraryId(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.WebExtensions.GetPostsLibrary(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.WebExtensions.GetPropertyBagValueDateTime(Microsoft.SharePoint.Client.Web,System.String,System.DateTime)
+  - Microsoft.SharePoint.Client.WebExtensions.GetPropertyBagValueInt(Microsoft.SharePoint.Client.Web,System.String,System.Int32)
+  - Microsoft.SharePoint.Client.WebExtensions.GetPropertyBagValueString(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  - Microsoft.SharePoint.Client.WebExtensions.GetProvisioningTemplate(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.WebExtensions.GetProvisioningTemplate(Microsoft.SharePoint.Client.Web,PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation)
+  - Microsoft.SharePoint.Client.WebExtensions.GetRequestAccessEmails(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.WebExtensions.GetSitePagesLibrary(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.WebExtensions.GetUrl(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.WebExtensions.GetVisitors(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.WebExtensions.GetWeb(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.WebExtensions.InstallSolution(Microsoft.SharePoint.Client.Site,System.Guid,System.String,System.Int32,System.Int32)
+  - Microsoft.SharePoint.Client.WebExtensions.IsAdminSite(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.WebExtensions.IsNoScriptSite(Microsoft.SharePoint.Client.Site)
+  - Microsoft.SharePoint.Client.WebExtensions.IsNoScriptSite(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.WebExtensions.IsPublishingWeb(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.WebExtensions.IsSubSite(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.WebExtensions.MySiteSearch(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.WebExtensions.PropertyBagContainsKey(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.WebExtensions.ReIndexWeb(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.WebExtensions.RemoveAppInstanceByTitle(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.WebExtensions.RemoveIndexedPropertyBagKey(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.WebExtensions.RemovePropertyBagValue(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.WebExtensions.SetLocalizationLabels(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String)
+  - Microsoft.SharePoint.Client.WebExtensions.SetPageOutputCache(Microsoft.SharePoint.Client.Web,System.Boolean,System.Int32,System.Int32,System.Boolean)
+  - Microsoft.SharePoint.Client.WebExtensions.SetPropertyBagValue(Microsoft.SharePoint.Client.Web,System.String,System.DateTime)
+  - Microsoft.SharePoint.Client.WebExtensions.SetPropertyBagValue(Microsoft.SharePoint.Client.Web,System.String,System.Int32)
+  - Microsoft.SharePoint.Client.WebExtensions.SetPropertyBagValue(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  - Microsoft.SharePoint.Client.WebExtensions.SiteSearch(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.WebExtensions.SiteSearch(Microsoft.SharePoint.Client.Web,System.String,System.Boolean,System.Nullable{System.Guid})
+  - Microsoft.SharePoint.Client.WebExtensions.SiteSearchScopedByTitle(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.WebExtensions.SiteSearchScopedByUrl(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.WebExtensions.UninstallSolution(Microsoft.SharePoint.Client.Site,System.Guid,System.String,System.Int32,System.Int32)
+  - Microsoft.SharePoint.Client.WebExtensions.WebExists(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.WebExtensions.WebExistsByTitle(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.WebExtensions.WebExistsFullUrl(Microsoft.SharePoint.Client.ClientRuntimeContext,System.String)
+  langs:
+  - csharp
+  - vb
+  name: WebExtensions
+  nameWithType: WebExtensions
+  fullName: Microsoft.SharePoint.Client.WebExtensions
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WebExtensions
+    path: ../src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+    startLine: 13
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nClass that deals with site (both site collection and web site) creation, status, retrieval and settings\n"
+  example: []
+  syntax:
+    content: public static class WebExtensions
+    content.vb: Public Module WebExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetBaseTemplateId(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetBaseTemplateId(Microsoft.SharePoint.Client.Web)
+  id: GetBaseTemplateId(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetBaseTemplateId(Web)
+  nameWithType: WebExtensions.GetBaseTemplateId(Web)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetBaseTemplateId(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetBaseTemplateId
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 36
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns the Base Template ID for the current web\n"
+  example: []
+  syntax:
+    content: public static string GetBaseTemplateId(this Web parentWeb)
+    parameters:
+    - id: parentWeb
+      type: Microsoft.SharePoint.Client.Web
+      description: The parent Web (site) to get the base template from
+    return:
+      type: System.String
+      description: The Base Template ID for the current web
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetBaseTemplateId(parentWeb As Web) As String
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetBaseTemplateId*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.CreateWeb(Microsoft.SharePoint.Client.Web,PnP.Framework.Entities.SiteEntity,System.Boolean,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.CreateWeb(Microsoft.SharePoint.Client.Web,PnP.Framework.Entities.SiteEntity,System.Boolean,System.Boolean)
+  id: CreateWeb(Microsoft.SharePoint.Client.Web,PnP.Framework.Entities.SiteEntity,System.Boolean,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: CreateWeb(Web, SiteEntity, Boolean, Boolean)
+  nameWithType: WebExtensions.CreateWeb(Web, SiteEntity, Boolean, Boolean)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.CreateWeb(Microsoft.SharePoint.Client.Web, PnP.Framework.Entities.SiteEntity, System.Boolean, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateWeb
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 50
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdds a new child Web (site) to a parent Web.\n"
+  example: []
+  syntax:
+    content: public static Web CreateWeb(this Web parentWeb, SiteEntity subsite, bool inheritPermissions = true, bool inheritNavigation = true)
+    parameters:
+    - id: parentWeb
+      type: Microsoft.SharePoint.Client.Web
+      description: The parent Web (site) to create under
+    - id: subsite
+      type: PnP.Framework.Entities.SiteEntity
+      description: Details of the Web (site) to add. Only Title, Url (as the leaf URL), Description, Template and Language are used.
+    - id: inheritPermissions
+      type: System.Boolean
+      description: Specifies whether the new site will inherit permissions from its parent site.
+    - id: inheritNavigation
+      type: System.Boolean
+      description: Specifies whether the site inherits navigation.
+    return:
+      type: Microsoft.SharePoint.Client.Web
+      description: ''
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function CreateWeb(parentWeb As Web, subsite As SiteEntity, inheritPermissions As Boolean = True, inheritNavigation As Boolean = True) As Web
+  overload: Microsoft.SharePoint.Client.WebExtensions.CreateWeb*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.CreateWeb(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.Int32,System.Boolean,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.CreateWeb(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.Int32,System.Boolean,System.Boolean)
+  id: CreateWeb(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.Int32,System.Boolean,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: CreateWeb(Web, String, String, String, String, Int32, Boolean, Boolean)
+  nameWithType: WebExtensions.CreateWeb(Web, String, String, String, String, Int32, Boolean, Boolean)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.CreateWeb(Microsoft.SharePoint.Client.Web, System.String, System.String, System.String, System.String, System.Int32, System.Boolean, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateWeb
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 66
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdds a new child Web (site) to a parent Web.\n"
+  example: []
+  syntax:
+    content: public static Web CreateWeb(this Web parentWeb, string title, string leafUrl, string description, string template, int language, bool inheritPermissions = true, bool inheritNavigation = true)
+    parameters:
+    - id: parentWeb
+      type: Microsoft.SharePoint.Client.Web
+      description: The parent Web (site) to create under
+    - id: title
+      type: System.String
+      description: 'The title of the new site. '
+    - id: leafUrl
+      type: System.String
+      description: A string that represents the URL leaf name.
+    - id: description
+      type: System.String
+      description: 'The description of the new site. '
+    - id: template
+      type: System.String
+      description: 'The name of the site template to be used for creating the new site. '
+    - id: language
+      type: System.Int32
+      description: 'The locale ID that specifies the language of the new site. '
+    - id: inheritPermissions
+      type: System.Boolean
+      description: Specifies whether the new site will inherit permissions from its parent site.
+    - id: inheritNavigation
+      type: System.Boolean
+      description: Specifies whether the site inherits navigation.
+    return:
+      type: Microsoft.SharePoint.Client.Web
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function CreateWeb(parentWeb As Web, title As String, leafUrl As String, description As String, template As String, language As Integer, inheritPermissions As Boolean = True, inheritNavigation As Boolean = True) As Web
+  overload: Microsoft.SharePoint.Client.WebExtensions.CreateWeb*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.DeleteWeb(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.DeleteWeb(Microsoft.SharePoint.Client.Web,System.String)
+  id: DeleteWeb(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: DeleteWeb(Web, String)
+  nameWithType: WebExtensions.DeleteWeb(Web, String)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.DeleteWeb(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeleteWeb
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 106
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDeletes the child website with the specified leaf URL, from a parent Web, if it exists.\n"
+  example: []
+  syntax:
+    content: public static bool DeleteWeb(this Web parentWeb, string leafUrl)
+    parameters:
+    - id: parentWeb
+      type: Microsoft.SharePoint.Client.Web
+      description: The parent Web (site) to delete from
+    - id: leafUrl
+      type: System.String
+      description: A string that represents the URL leaf name.
+    return:
+      type: System.Boolean
+      description: true if the web was deleted; otherwise false if nothing was done
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function DeleteWeb(parentWeb As Web, leafUrl As String) As Boolean
+  overload: Microsoft.SharePoint.Client.WebExtensions.DeleteWeb*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetAllWebUrls(Microsoft.SharePoint.Client.Site)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetAllWebUrls(Microsoft.SharePoint.Client.Site)
+  id: GetAllWebUrls(Microsoft.SharePoint.Client.Site)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetAllWebUrls(Site)
+  nameWithType: WebExtensions.GetAllWebUrls(Site)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetAllWebUrls(Microsoft.SharePoint.Client.Site)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetAllWebUrls
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 150
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets the collection of the URLs of all Web sites that are contained within the site collection,\nincluding the top-level site and its subsites.\n"
+  remarks: "\n<p>\nThis is analagous to the <pre><code>SPSite.AllWebs</code></pre> property and can be used to get a collection\nof all web site URLs to loop through, e.g. for branding.\n</p>\n"
+  example: []
+  syntax:
+    content: public static IEnumerable<string> GetAllWebUrls(this Site site)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: Site collection to retrieve the URLs for.
+    return:
+      type: System.Collections.Generic.IEnumerable{System.String}
+      description: An enumeration containing the full URLs as strings.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetAllWebUrls(site As Site) As IEnumerable(Of String)
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetAllWebUrls*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetWeb(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetWeb(Microsoft.SharePoint.Client.Web,System.String)
+  id: GetWeb(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetWeb(Web, String)
+  nameWithType: WebExtensions.GetWeb(Web, String)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetWeb(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetWeb
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 184
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns the child Web site with the specified leaf URL.\n"
+  remarks: "\n<p>\nThe ServerRelativeUrl property of the retrieved Web is instantiated.\n</p>\n"
+  example: []
+  syntax:
+    content: public static Web GetWeb(this Web parentWeb, string leafUrl)
+    parameters:
+    - id: parentWeb
+      type: Microsoft.SharePoint.Client.Web
+      description: The Web site to check under
+    - id: leafUrl
+      type: System.String
+      description: A string that represents the URL leaf name.
+    return:
+      type: Microsoft.SharePoint.Client.Web
+      description: The requested Web, if it exists, otherwise null.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetWeb(parentWeb As Web, leafUrl As String) As Web
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetWeb*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.WebExists(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.WebExists(Microsoft.SharePoint.Client.Web,System.String)
+  id: WebExists(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: WebExists(Web, String)
+  nameWithType: WebExtensions.WebExists(Web, String)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.WebExists(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WebExists
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 209
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDetermines if a child Web site with the specified leaf URL exists.\n"
+  example: []
+  syntax:
+    content: public static bool WebExists(this Web parentWeb, string leafUrl)
+    parameters:
+    - id: parentWeb
+      type: Microsoft.SharePoint.Client.Web
+      description: The Web site to check under
+    - id: leafUrl
+      type: System.String
+      description: A string that represents the URL leaf name.
+    return:
+      type: System.Boolean
+      description: true if the Web (site) exists; otherwise false
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function WebExists(parentWeb As Web, leafUrl As String) As Boolean
+  overload: Microsoft.SharePoint.Client.WebExtensions.WebExists*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.WebExistsFullUrl(Microsoft.SharePoint.Client.ClientRuntimeContext,System.String)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.WebExistsFullUrl(Microsoft.SharePoint.Client.ClientRuntimeContext,System.String)
+  id: WebExistsFullUrl(Microsoft.SharePoint.Client.ClientRuntimeContext,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: WebExistsFullUrl(ClientRuntimeContext, String)
+  nameWithType: WebExtensions.WebExistsFullUrl(ClientRuntimeContext, String)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.WebExistsFullUrl(Microsoft.SharePoint.Client.ClientRuntimeContext, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WebExistsFullUrl
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 234
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDetermines if a Web (site) exists at the specified full URL, either accessible or that returns an access error.\n"
+  example: []
+  syntax:
+    content: public static bool WebExistsFullUrl(this ClientRuntimeContext context, string webFullUrl)
+    parameters:
+    - id: context
+      type: Microsoft.SharePoint.Client.ClientRuntimeContext
+      description: Existing context, used to provide credentials.
+    - id: webFullUrl
+      type: System.String
+      description: Full URL of the site to check.
+    return:
+      type: System.Boolean
+      description: true if the Web (site) exists; otherwise false
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function WebExistsFullUrl(context As ClientRuntimeContext, webFullUrl As String) As Boolean
+  overload: Microsoft.SharePoint.Client.WebExtensions.WebExistsFullUrl*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.WebExistsByTitle(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.WebExistsByTitle(Microsoft.SharePoint.Client.Web,System.String)
+  id: WebExistsByTitle(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: WebExistsByTitle(Web, String)
+  nameWithType: WebExtensions.WebExistsByTitle(Web, String)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.WebExistsByTitle(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WebExistsByTitle
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 265
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDetermines if a web exists by title.\n"
+  example: []
+  syntax:
+    content: public static bool WebExistsByTitle(this Web parentWeb, string title)
+    parameters:
+    - id: parentWeb
+      type: Microsoft.SharePoint.Client.Web
+      description: Parent web to check under.
+    - id: title
+      type: System.String
+      description: Title of the web to check.
+    return:
+      type: System.Boolean
+      description: True if a web with the given title exists.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function WebExistsByTitle(parentWeb As Web, title As String) As Boolean
+  overload: Microsoft.SharePoint.Client.WebExtensions.WebExistsByTitle*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.IsSubSite(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.IsSubSite(Microsoft.SharePoint.Client.Web)
+  id: IsSubSite(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: IsSubSite(Web)
+  nameWithType: WebExtensions.IsSubSite(Web)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.IsSubSite(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsSubSite
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 284
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nChecks if the current web is a sub site or not\n"
+  example: []
+  syntax:
+    content: public static bool IsSubSite(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to check
+    return:
+      type: System.Boolean
+      description: True is sub site, false otherwise
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function IsSubSite(web As Web) As Boolean
+  overload: Microsoft.SharePoint.Client.WebExtensions.IsSubSite*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.IsPublishingWeb(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.IsPublishingWeb(Microsoft.SharePoint.Client.Web)
+  id: IsPublishingWeb(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: IsPublishingWeb(Web)
+  nameWithType: WebExtensions.IsPublishingWeb(Web)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.IsPublishingWeb(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsPublishingWeb
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 306
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nChecks if the current web is a publishing site or not\n"
+  example: []
+  syntax:
+    content: public static bool IsPublishingWeb(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to check
+    return:
+      type: System.Boolean
+      description: True is publishing site, false otherwise
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function IsPublishingWeb(web As Web) As Boolean
+  overload: Microsoft.SharePoint.Client.WebExtensions.IsPublishingWeb*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.IsNoScriptSite(Microsoft.SharePoint.Client.Site)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.IsNoScriptSite(Microsoft.SharePoint.Client.Site)
+  id: IsNoScriptSite(Microsoft.SharePoint.Client.Site)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: IsNoScriptSite(Site)
+  nameWithType: WebExtensions.IsNoScriptSite(Site)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.IsNoScriptSite(Microsoft.SharePoint.Client.Site)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsNoScriptSite
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 325
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nPerforms a best effort detection of if the site in question has no script enabled or not.\nDetection is done by verifying if the authenticated user has AddAndCustomizePages permission on the web.\nDetection will return a false positive if the current user does not have the AddAndCustomizePages permission. \n\nSee https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f\nfor the effects of NoScript\n\n"
+  example: []
+  syntax:
+    content: public static bool IsNoScriptSite(this Site site)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: site to verify
+    return:
+      type: System.Boolean
+      description: True if noscript, false otherwise
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function IsNoScriptSite(site As Site) As Boolean
+  overload: Microsoft.SharePoint.Client.WebExtensions.IsNoScriptSite*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.IsNoScriptSite(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.IsNoScriptSite(Microsoft.SharePoint.Client.Web)
+  id: IsNoScriptSite(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: IsNoScriptSite(Web)
+  nameWithType: WebExtensions.IsNoScriptSite(Web)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.IsNoScriptSite(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsNoScriptSite
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 341
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nPerforms a best effort detection of if the site in question has no script enabled or not.\nDetection is done by verifying if the authenticated user has AddAndCustomizePages permission on the web.\nDetection will return a false positive if the current user does not have the AddAndCustomizePages permission. \n\nSee https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f\nfor the effects of NoScript\n\n"
+  example: []
+  syntax:
+    content: public static bool IsNoScriptSite(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to verify
+    return:
+      type: System.Boolean
+      description: True if noscript, false otherwise
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function IsNoScriptSite(web As Web) As Boolean
+  overload: Microsoft.SharePoint.Client.WebExtensions.IsNoScriptSite*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetAppInstances(Microsoft.SharePoint.Client.Web,System.Linq.Expressions.Expression{System.Func{Microsoft.SharePoint.Client.AppInstance,System.Object}}[])
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetAppInstances(Microsoft.SharePoint.Client.Web,System.Linq.Expressions.Expression{System.Func{Microsoft.SharePoint.Client.AppInstance,System.Object}}[])
+  id: GetAppInstances(Microsoft.SharePoint.Client.Web,System.Linq.Expressions.Expression{System.Func{Microsoft.SharePoint.Client.AppInstance,System.Object}}[])
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetAppInstances(Web, Expression<Func<AppInstance, Object>>[])
+  nameWithType: WebExtensions.GetAppInstances(Web, Expression<Func<AppInstance, Object>>[])
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetAppInstances(Microsoft.SharePoint.Client.Web, System.Linq.Expressions.Expression<System.Func<Microsoft.SharePoint.Client.AppInstance, System.Object>>[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetAppInstances
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 401
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns all app instances\n"
+  example: []
+  syntax:
+    content: public static ClientObjectList<AppInstance> GetAppInstances(this Web web, params Expression<Func<AppInstance, object>>[] expressions)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The site to process
+    - id: expressions
+      type: System.Linq.Expressions.Expression{System.Func{Microsoft.SharePoint.Client.AppInstance,System.Object}}[]
+      description: List of lambda expressions of properties to load when retrieving the object
+    return:
+      type: Microsoft.SharePoint.Client.ClientObjectList{Microsoft.SharePoint.Client.AppInstance}
+      description: all app instances
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetAppInstances(web As Web, ParamArray expressions As Expression(Of Func(Of AppInstance, Object))()) As ClientObjectList(Of AppInstance)
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetAppInstances*
+  nameWithType.vb: WebExtensions.GetAppInstances(Web, Expression(Of Func(Of AppInstance, Object))())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.WebExtensions.GetAppInstances(Microsoft.SharePoint.Client.Web, System.Linq.Expressions.Expression(Of System.Func(Of Microsoft.SharePoint.Client.AppInstance, System.Object))())
+  name.vb: GetAppInstances(Web, Expression(Of Func(Of AppInstance, Object))())
+- uid: Microsoft.SharePoint.Client.WebExtensions.RemoveAppInstanceByTitle(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.RemoveAppInstanceByTitle(Microsoft.SharePoint.Client.Web,System.String)
+  id: RemoveAppInstanceByTitle(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: RemoveAppInstanceByTitle(Web, String)
+  nameWithType: WebExtensions.RemoveAppInstanceByTitle(Web, String)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.RemoveAppInstanceByTitle(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemoveAppInstanceByTitle
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 425
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nRemoves the app instance with the specified title.\n"
+  example: []
+  syntax:
+    content: public static bool RemoveAppInstanceByTitle(this Web web, string appTitle)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to remove the app instance from
+    - id: appTitle
+      type: System.String
+      description: Title of the app instance to remove
+    return:
+      type: System.Boolean
+      description: true if the the app instance was removed; false if it does not exist
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function RemoveAppInstanceByTitle(web As Web, appTitle As String) As Boolean
+  overload: Microsoft.SharePoint.Client.WebExtensions.RemoveAppInstanceByTitle*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.InstallSolution(Microsoft.SharePoint.Client.Site,System.Guid,System.String,System.Int32,System.Int32)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.InstallSolution(Microsoft.SharePoint.Client.Site,System.Guid,System.String,System.Int32,System.Int32)
+  id: InstallSolution(Microsoft.SharePoint.Client.Site,System.Guid,System.String,System.Int32,System.Int32)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: InstallSolution(Site, Guid, String, Int32, Int32)
+  nameWithType: WebExtensions.InstallSolution(Site, Guid, String, Int32, Int32)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.InstallSolution(Microsoft.SharePoint.Client.Site, System.Guid, System.String, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: InstallSolution
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 458
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nUploads and installs a sandbox solution package (.WSP) file, replacing existing solution if necessary.\n"
+  example: []
+  syntax:
+    content: public static void InstallSolution(this Site site, Guid packageGuid, string sourceFilePath, int majorVersion = 1, int minorVersion = 0)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: Site collection to install to
+    - id: packageGuid
+      type: System.Guid
+      description: ID of the solution, from the solution manifest (required for the remove step)
+    - id: sourceFilePath
+      type: System.String
+      description: Path to the sandbox solution package (.WSP) file
+    - id: majorVersion
+      type: System.Int32
+      description: Optional major version of the solution, defaults to 1
+    - id: minorVersion
+      type: System.Int32
+      description: Optional minor version of the solution, defaults to 0
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub InstallSolution(site As Site, packageGuid As Guid, sourceFilePath As String, majorVersion As Integer = 1, minorVersion As Integer = 0)
+  overload: Microsoft.SharePoint.Client.WebExtensions.InstallSolution*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.UninstallSolution(Microsoft.SharePoint.Client.Site,System.Guid,System.String,System.Int32,System.Int32)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.UninstallSolution(Microsoft.SharePoint.Client.Site,System.Guid,System.String,System.Int32,System.Int32)
+  id: UninstallSolution(Microsoft.SharePoint.Client.Site,System.Guid,System.String,System.Int32,System.Int32)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: UninstallSolution(Site, Guid, String, Int32, Int32)
+  nameWithType: WebExtensions.UninstallSolution(Site, Guid, String, Int32, Int32)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.UninstallSolution(Microsoft.SharePoint.Client.Site, System.Guid, System.String, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UninstallSolution
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 509
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nUninstalls a sandbox solution package (.WSP) file\n"
+  example: []
+  syntax:
+    content: public static void UninstallSolution(this Site site, Guid packageGuid, string fileName, int majorVersion = 1, int minorVersion = 0)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: Site collection to install to
+    - id: packageGuid
+      type: System.Guid
+      description: ID of the solution, from the solution manifest
+    - id: fileName
+      type: System.String
+      description: filename of the WSP file to uninstall
+    - id: majorVersion
+      type: System.Int32
+      description: Optional major version of the solution, defaults to 1
+    - id: minorVersion
+      type: System.Int32
+      description: Optional minor version of the solution, defaults to 0
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub UninstallSolution(site As Site, packageGuid As Guid, fileName As String, majorVersion As Integer = 1, minorVersion As Integer = 0)
+  overload: Microsoft.SharePoint.Client.WebExtensions.UninstallSolution*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.MySiteSearch(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.MySiteSearch(Microsoft.SharePoint.Client.Web)
+  id: MySiteSearch(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: MySiteSearch(Web)
+  nameWithType: WebExtensions.MySiteSearch(Web)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.MySiteSearch(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MySiteSearch
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 554
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns all my site site collections\n"
+  example: []
+  syntax:
+    content: public static List<SiteEntity> MySiteSearch(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    return:
+      type: System.Collections.Generic.List{PnP.Framework.Entities.SiteEntity}
+      description: All my site site collections
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function MySiteSearch(web As Web) As List(Of SiteEntity)
+  overload: Microsoft.SharePoint.Client.WebExtensions.MySiteSearch*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.SiteSearch(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.SiteSearch(Microsoft.SharePoint.Client.Web)
+  id: SiteSearch(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: SiteSearch(Web)
+  nameWithType: WebExtensions.SiteSearch(Web)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.SiteSearch(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SiteSearch
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 568
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns all site collections that are indexed. In MT the search center, mysite host and contenttype hub are defined as non indexable by default and thus\nare not returned\n"
+  example: []
+  syntax:
+    content: public static List<SiteEntity> SiteSearch(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    return:
+      type: System.Collections.Generic.List{PnP.Framework.Entities.SiteEntity}
+      description: All site collections
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SiteSearch(web As Web) As List(Of SiteEntity)
+  overload: Microsoft.SharePoint.Client.WebExtensions.SiteSearch*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.SiteSearch(Microsoft.SharePoint.Client.Web,System.String,System.Boolean,System.Nullable{System.Guid})
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.SiteSearch(Microsoft.SharePoint.Client.Web,System.String,System.Boolean,System.Nullable{System.Guid})
+  id: SiteSearch(Microsoft.SharePoint.Client.Web,System.String,System.Boolean,System.Nullable{System.Guid})
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: SiteSearch(Web, String, Boolean, Nullable<Guid>)
+  nameWithType: WebExtensions.SiteSearch(Web, String, Boolean, Nullable<Guid>)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.SiteSearch(Microsoft.SharePoint.Client.Web, System.String, System.Boolean, System.Nullable<System.Guid>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SiteSearch
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 581
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns the site collections that comply with the passed keyword query\n"
+  example: []
+  syntax:
+    content: public static List<SiteEntity> SiteSearch(this Web web, string keywordQueryValue, bool trimDuplicates = false, Guid? sourceResultId = null)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: keywordQueryValue
+      type: System.String
+      description: Keyword query
+    - id: trimDuplicates
+      type: System.Boolean
+      description: Indicates if duplicates should be trimmed or not
+    - id: sourceResultId
+      type: System.Nullable{System.Guid}
+      description: Indicated which search results source to use
+    return:
+      type: System.Collections.Generic.List{PnP.Framework.Entities.SiteEntity}
+      description: All found site collections
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SiteSearch(web As Web, keywordQueryValue As String, trimDuplicates As Boolean = False, sourceResultId As Guid? = Nothing) As List(Of SiteEntity)
+  overload: Microsoft.SharePoint.Client.WebExtensions.SiteSearch*
+  nameWithType.vb: WebExtensions.SiteSearch(Web, String, Boolean, Nullable(Of Guid))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.WebExtensions.SiteSearch(Microsoft.SharePoint.Client.Web, System.String, System.Boolean, System.Nullable(Of System.Guid))
+  name.vb: SiteSearch(Web, String, Boolean, Nullable(Of Guid))
+- uid: Microsoft.SharePoint.Client.WebExtensions.SiteSearchScopedByUrl(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.SiteSearchScopedByUrl(Microsoft.SharePoint.Client.Web,System.String)
+  id: SiteSearchScopedByUrl(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: SiteSearchScopedByUrl(Web, String)
+  nameWithType: WebExtensions.SiteSearchScopedByUrl(Web, String)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.SiteSearchScopedByUrl(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SiteSearchScopedByUrl
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 636
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns all site collection that start with the provided URL\n"
+  example: []
+  syntax:
+    content: public static List<SiteEntity> SiteSearchScopedByUrl(this Web web, string siteUrl)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: siteUrl
+      type: System.String
+      description: Base URL for which sites can be returned
+    return:
+      type: System.Collections.Generic.List{PnP.Framework.Entities.SiteEntity}
+      description: All found site collections
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SiteSearchScopedByUrl(web As Web, siteUrl As String) As List(Of SiteEntity)
+  overload: Microsoft.SharePoint.Client.WebExtensions.SiteSearchScopedByUrl*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.SiteSearchScopedByTitle(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.SiteSearchScopedByTitle(Microsoft.SharePoint.Client.Web,System.String)
+  id: SiteSearchScopedByTitle(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: SiteSearchScopedByTitle(Web, String)
+  nameWithType: WebExtensions.SiteSearchScopedByTitle(Web, String)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.SiteSearchScopedByTitle(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SiteSearchScopedByTitle
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 648
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns all site collection that match with the provided title\n"
+  example: []
+  syntax:
+    content: public static List<SiteEntity> SiteSearchScopedByTitle(this Web web, string siteTitle)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: siteTitle
+      type: System.String
+      description: Title of the site to search for
+    return:
+      type: System.Collections.Generic.List{PnP.Framework.Entities.SiteEntity}
+      description: All found site collections
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SiteSearchScopedByTitle(web As Web, siteTitle As String) As List(Of SiteEntity)
+  overload: Microsoft.SharePoint.Client.WebExtensions.SiteSearchScopedByTitle*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.SetPropertyBagValue(Microsoft.SharePoint.Client.Web,System.String,System.Int32)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.SetPropertyBagValue(Microsoft.SharePoint.Client.Web,System.String,System.Int32)
+  id: SetPropertyBagValue(Microsoft.SharePoint.Client.Web,System.String,System.Int32)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetPropertyBagValue(Web, String, Int32)
+  nameWithType: WebExtensions.SetPropertyBagValue(Web, String, Int32)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.SetPropertyBagValue(Microsoft.SharePoint.Client.Web, System.String, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetPropertyBagValue
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 717
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nSets a key/value pair in the web property bag\n"
+  example: []
+  syntax:
+    content: public static void SetPropertyBagValue(this Web web, string key, int value)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web that will hold the property bag entry
+    - id: key
+      type: System.String
+      description: Key for the property bag entry
+    - id: value
+      type: System.Int32
+      description: Integer value for the property bag entry
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetPropertyBagValue(web As Web, key As String, value As Integer)
+  overload: Microsoft.SharePoint.Client.WebExtensions.SetPropertyBagValue*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.SetPropertyBagValue(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.SetPropertyBagValue(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  id: SetPropertyBagValue(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetPropertyBagValue(Web, String, String)
+  nameWithType: WebExtensions.SetPropertyBagValue(Web, String, String)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.SetPropertyBagValue(Microsoft.SharePoint.Client.Web, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetPropertyBagValue
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 729
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nSets a key/value pair in the web property bag\n"
+  example: []
+  syntax:
+    content: public static void SetPropertyBagValue(this Web web, string key, string value)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web that will hold the property bag entry
+    - id: key
+      type: System.String
+      description: Key for the property bag entry
+    - id: value
+      type: System.String
+      description: String value for the property bag entry
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetPropertyBagValue(web As Web, key As String, value As String)
+  overload: Microsoft.SharePoint.Client.WebExtensions.SetPropertyBagValue*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.SetPropertyBagValue(Microsoft.SharePoint.Client.Web,System.String,System.DateTime)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.SetPropertyBagValue(Microsoft.SharePoint.Client.Web,System.String,System.DateTime)
+  id: SetPropertyBagValue(Microsoft.SharePoint.Client.Web,System.String,System.DateTime)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetPropertyBagValue(Web, String, DateTime)
+  nameWithType: WebExtensions.SetPropertyBagValue(Web, String, DateTime)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.SetPropertyBagValue(Microsoft.SharePoint.Client.Web, System.String, System.DateTime)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetPropertyBagValue
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 740
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nSets a key/value pair in the web property bag\n"
+  example: []
+  syntax:
+    content: public static void SetPropertyBagValue(this Web web, string key, DateTime value)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web that will hold the property bag entry
+    - id: key
+      type: System.String
+      description: Key for the property bag entry
+    - id: value
+      type: System.DateTime
+      description: Datetime value for the property bag entry
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetPropertyBagValue(web As Web, key As String, value As Date)
+  overload: Microsoft.SharePoint.Client.WebExtensions.SetPropertyBagValue*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.RemovePropertyBagValue(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.RemovePropertyBagValue(Microsoft.SharePoint.Client.Web,System.String)
+  id: RemovePropertyBagValue(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: RemovePropertyBagValue(Web, String)
+  nameWithType: WebExtensions.RemovePropertyBagValue(Web, String)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.RemovePropertyBagValue(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemovePropertyBagValue
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 780
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nRemoves a property bag value from the property bag\n"
+  example: []
+  syntax:
+    content: public static void RemovePropertyBagValue(this Web web, string key)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The site to process
+    - id: key
+      type: System.String
+      description: The key to remove
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub RemovePropertyBagValue(web As Web, key As String)
+  overload: Microsoft.SharePoint.Client.WebExtensions.RemovePropertyBagValue*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetPropertyBagValueInt(Microsoft.SharePoint.Client.Web,System.String,System.Int32)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetPropertyBagValueInt(Microsoft.SharePoint.Client.Web,System.String,System.Int32)
+  id: GetPropertyBagValueInt(Microsoft.SharePoint.Client.Web,System.String,System.Int32)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetPropertyBagValueInt(Web, String, Int32)
+  nameWithType: WebExtensions.GetPropertyBagValueInt(Web, String, Int32)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetPropertyBagValueInt(Microsoft.SharePoint.Client.Web, System.String, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetPropertyBagValueInt
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 812
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGet int typed property bag value. If does not contain, returns default value.\n"
+  example: []
+  syntax:
+    content: public static int? GetPropertyBagValueInt(this Web web, string key, int defaultValue)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to read the property bag value from
+    - id: key
+      type: System.String
+      description: Key of the property bag entry to return
+    - id: defaultValue
+      type: System.Int32
+      description: ''
+    return:
+      type: System.Nullable{System.Int32}
+      description: Value of the property bag entry as integer
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetPropertyBagValueInt(web As Web, key As String, defaultValue As Integer) As Integer?
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetPropertyBagValueInt*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetPropertyBagValueDateTime(Microsoft.SharePoint.Client.Web,System.String,System.DateTime)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetPropertyBagValueDateTime(Microsoft.SharePoint.Client.Web,System.String,System.DateTime)
+  id: GetPropertyBagValueDateTime(Microsoft.SharePoint.Client.Web,System.String,System.DateTime)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetPropertyBagValueDateTime(Web, String, DateTime)
+  nameWithType: WebExtensions.GetPropertyBagValueDateTime(Web, String, DateTime)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetPropertyBagValueDateTime(Microsoft.SharePoint.Client.Web, System.String, System.DateTime)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetPropertyBagValueDateTime
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 832
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGet DateTime typed property bag value. If does not contain, returns default value.\n"
+  example: []
+  syntax:
+    content: public static DateTime? GetPropertyBagValueDateTime(this Web web, string key, DateTime defaultValue)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to read the property bag value from
+    - id: key
+      type: System.String
+      description: Key of the property bag entry to return
+    - id: defaultValue
+      type: System.DateTime
+      description: ''
+    return:
+      type: System.Nullable{System.DateTime}
+      description: Value of the property bag entry as integer
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetPropertyBagValueDateTime(web As Web, key As String, defaultValue As Date) As Date?
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetPropertyBagValueDateTime*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetPropertyBagValueString(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetPropertyBagValueString(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  id: GetPropertyBagValueString(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetPropertyBagValueString(Web, String, String)
+  nameWithType: WebExtensions.GetPropertyBagValueString(Web, String, String)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetPropertyBagValueString(Microsoft.SharePoint.Client.Web, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetPropertyBagValueString
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 852
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGet string typed property bag value. If does not contain, returns given default value.\n"
+  example: []
+  syntax:
+    content: public static string GetPropertyBagValueString(this Web web, string key, string defaultValue)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to read the property bag value from
+    - id: key
+      type: System.String
+      description: Key of the property bag entry to return
+    - id: defaultValue
+      type: System.String
+      description: ''
+    return:
+      type: System.String
+      description: Value of the property bag entry as string
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetPropertyBagValueString(web As Web, key As String, defaultValue As String) As String
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetPropertyBagValueString*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.PropertyBagContainsKey(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.PropertyBagContainsKey(Microsoft.SharePoint.Client.Web,System.String)
+  id: PropertyBagContainsKey(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: PropertyBagContainsKey(Web, String)
+  nameWithType: WebExtensions.PropertyBagContainsKey(Web, String)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.PropertyBagContainsKey(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PropertyBagContainsKey
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 895
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nChecks if the given property bag entry exists\n"
+  example: []
+  syntax:
+    content: public static bool PropertyBagContainsKey(this Web web, string key)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: key
+      type: System.String
+      description: Key of the property bag entry to check
+    return:
+      type: System.Boolean
+      description: True if the entry exists, false otherwise
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function PropertyBagContainsKey(web As Web, key As String) As Boolean
+  overload: Microsoft.SharePoint.Client.WebExtensions.PropertyBagContainsKey*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetIndexedPropertyBagKeys(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetIndexedPropertyBagKeys(Microsoft.SharePoint.Client.Web)
+  id: GetIndexedPropertyBagKeys(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetIndexedPropertyBagKeys(Web)
+  nameWithType: WebExtensions.GetIndexedPropertyBagKeys(Web)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetIndexedPropertyBagKeys(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetIndexedPropertyBagKeys
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 933
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns all keys in the property bag that have been marked for indexing\n"
+  example: []
+  syntax:
+    content: public static IEnumerable<string> GetIndexedPropertyBagKeys(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The site to process
+    return:
+      type: System.Collections.Generic.IEnumerable{System.String}
+      description: all indexed property bag keys
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetIndexedPropertyBagKeys(web As Web) As IEnumerable(Of String)
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetIndexedPropertyBagKeys*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.AddIndexedPropertyBagKey(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.AddIndexedPropertyBagKey(Microsoft.SharePoint.Client.Web,System.String)
+  id: AddIndexedPropertyBagKey(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddIndexedPropertyBagKey(Web, String)
+  nameWithType: WebExtensions.AddIndexedPropertyBagKey(Web, String)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.AddIndexedPropertyBagKey(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddIndexedPropertyBagKey
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 955
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nMarks a property bag key for indexing\n"
+  example: []
+  syntax:
+    content: public static bool AddIndexedPropertyBagKey(this Web web, string key)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The web to process
+    - id: key
+      type: System.String
+      description: The key to mark for indexing
+    return:
+      type: System.Boolean
+      description: Returns True if succeeded
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddIndexedPropertyBagKey(web As Web, key As String) As Boolean
+  overload: Microsoft.SharePoint.Client.WebExtensions.AddIndexedPropertyBagKey*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.RemoveIndexedPropertyBagKey(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.RemoveIndexedPropertyBagKey(Microsoft.SharePoint.Client.Web,System.String)
+  id: RemoveIndexedPropertyBagKey(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: RemoveIndexedPropertyBagKey(Web, String)
+  nameWithType: WebExtensions.RemoveIndexedPropertyBagKey(Web, String)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.RemoveIndexedPropertyBagKey(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemoveIndexedPropertyBagKey
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 974
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nUnmarks a property bag key for indexing\n"
+  example: []
+  syntax:
+    content: public static bool RemoveIndexedPropertyBagKey(this Web web, string key)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The site to process
+    - id: key
+      type: System.String
+      description: The key to unmark for indexed. Case-sensitive
+    return:
+      type: System.Boolean
+      description: Returns True if succeeded
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function RemoveIndexedPropertyBagKey(web As Web, key As String) As Boolean
+  overload: Microsoft.SharePoint.Client.WebExtensions.RemoveIndexedPropertyBagKey*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.ReIndexWeb(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.ReIndexWeb(Microsoft.SharePoint.Client.Web)
+  id: ReIndexWeb(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: ReIndexWeb(Web)
+  nameWithType: WebExtensions.ReIndexWeb(Web)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.ReIndexWeb(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ReIndexWeb
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 1002
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nQueues a web for a full crawl the next incremental/continous crawl\n"
+  example: []
+  syntax:
+    content: public static void ReIndexWeb(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub ReIndexWeb(web As Web)
+  overload: Microsoft.SharePoint.Client.WebExtensions.ReIndexWeb*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.AddRemoteEventReceiver(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.EventReceiverType,Microsoft.SharePoint.Client.EventReceiverSynchronization,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.AddRemoteEventReceiver(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.EventReceiverType,Microsoft.SharePoint.Client.EventReceiverSynchronization,System.Boolean)
+  id: AddRemoteEventReceiver(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.EventReceiverType,Microsoft.SharePoint.Client.EventReceiverSynchronization,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddRemoteEventReceiver(Web, String, String, EventReceiverType, EventReceiverSynchronization, Boolean)
+  nameWithType: WebExtensions.AddRemoteEventReceiver(Web, String, String, EventReceiverType, EventReceiverSynchronization, Boolean)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.AddRemoteEventReceiver(Microsoft.SharePoint.Client.Web, System.String, System.String, Microsoft.SharePoint.Client.EventReceiverType, Microsoft.SharePoint.Client.EventReceiverSynchronization, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddRemoteEventReceiver
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 1040
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nRegisters a remote event receiver\n"
+  example: []
+  syntax:
+    content: public static EventReceiverDefinition AddRemoteEventReceiver(this Web web, string name, string url, EventReceiverType eventReceiverType, EventReceiverSynchronization synchronization, bool force)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The web to process
+    - id: name
+      type: System.String
+      description: The name of the event receiver (needs to be unique among the event receivers registered on this list)
+    - id: url
+      type: System.String
+      description: The URL of the remote WCF service that handles the event
+    - id: eventReceiverType
+      type: Microsoft.SharePoint.Client.EventReceiverType
+      description: ''
+    - id: synchronization
+      type: Microsoft.SharePoint.Client.EventReceiverSynchronization
+      description: ''
+    - id: force
+      type: System.Boolean
+      description: If True any event already registered with the same name will be removed first.
+    return:
+      type: Microsoft.SharePoint.Client.EventReceiverDefinition
+      description: Returns an EventReceiverDefinition if succeeded. Returns null if failed.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddRemoteEventReceiver(web As Web, name As String, url As String, eventReceiverType As EventReceiverType, synchronization As EventReceiverSynchronization, force As Boolean) As EventReceiverDefinition
+  overload: Microsoft.SharePoint.Client.WebExtensions.AddRemoteEventReceiver*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.AddRemoteEventReceiver(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.EventReceiverType,Microsoft.SharePoint.Client.EventReceiverSynchronization,System.Int32,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.AddRemoteEventReceiver(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.EventReceiverType,Microsoft.SharePoint.Client.EventReceiverSynchronization,System.Int32,System.Boolean)
+  id: AddRemoteEventReceiver(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.EventReceiverType,Microsoft.SharePoint.Client.EventReceiverSynchronization,System.Int32,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddRemoteEventReceiver(Web, String, String, EventReceiverType, EventReceiverSynchronization, Int32, Boolean)
+  nameWithType: WebExtensions.AddRemoteEventReceiver(Web, String, String, EventReceiverType, EventReceiverSynchronization, Int32, Boolean)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.AddRemoteEventReceiver(Microsoft.SharePoint.Client.Web, System.String, System.String, Microsoft.SharePoint.Client.EventReceiverType, Microsoft.SharePoint.Client.EventReceiverSynchronization, System.Int32, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddRemoteEventReceiver
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 1056
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nRegisters a remote event receiver\n"
+  example: []
+  syntax:
+    content: public static EventReceiverDefinition AddRemoteEventReceiver(this Web web, string name, string url, EventReceiverType eventReceiverType, EventReceiverSynchronization synchronization, int sequenceNumber, bool force)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The web to process
+    - id: name
+      type: System.String
+      description: The name of the event receiver (needs to be unique among the event receivers registered on this list)
+    - id: url
+      type: System.String
+      description: The URL of the remote WCF service that handles the event
+    - id: eventReceiverType
+      type: Microsoft.SharePoint.Client.EventReceiverType
+      description: The type of event for the event receiver.
+    - id: synchronization
+      type: Microsoft.SharePoint.Client.EventReceiverSynchronization
+      description: An enumeration that specifies the synchronization state for the event receiver.
+    - id: sequenceNumber
+      type: System.Int32
+      description: An integer that represents the relative sequence of the event.
+    - id: force
+      type: System.Boolean
+      description: If True any event already registered with the same name will be removed first.
+    return:
+      type: Microsoft.SharePoint.Client.EventReceiverDefinition
+      description: Returns an EventReceiverDefinition if succeeded. Returns null if failed.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddRemoteEventReceiver(web As Web, name As String, url As String, eventReceiverType As EventReceiverType, synchronization As EventReceiverSynchronization, sequenceNumber As Integer, force As Boolean) As EventReceiverDefinition
+  overload: Microsoft.SharePoint.Client.WebExtensions.AddRemoteEventReceiver*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetEventReceiverById(Microsoft.SharePoint.Client.Web,System.Guid)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetEventReceiverById(Microsoft.SharePoint.Client.Web,System.Guid)
+  id: GetEventReceiverById(Microsoft.SharePoint.Client.Web,System.Guid)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetEventReceiverById(Web, Guid)
+  nameWithType: WebExtensions.GetEventReceiverById(Web, Guid)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetEventReceiverById(Microsoft.SharePoint.Client.Web, System.Guid)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetEventReceiverById
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 1098
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns an event receiver definition\n"
+  example: []
+  syntax:
+    content: public static EventReceiverDefinition GetEventReceiverById(this Web web, Guid id)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to process
+    - id: id
+      type: System.Guid
+      description: The id of event receiver
+    return:
+      type: Microsoft.SharePoint.Client.EventReceiverDefinition
+      description: Returns an EventReceiverDefinition if succeeded. Returns null if failed.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetEventReceiverById(web As Web, id As Guid) As EventReceiverDefinition
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetEventReceiverById*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetEventReceiverByName(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetEventReceiverByName(Microsoft.SharePoint.Client.Web,System.String)
+  id: GetEventReceiverByName(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetEventReceiverByName(Web, String)
+  nameWithType: WebExtensions.GetEventReceiverByName(Web, String)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetEventReceiverByName(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetEventReceiverByName
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 1124
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns an event receiver definition\n"
+  example: []
+  syntax:
+    content: public static EventReceiverDefinition GetEventReceiverByName(this Web web, string name)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to process
+    - id: name
+      type: System.String
+      description: The name of the receiver
+    return:
+      type: Microsoft.SharePoint.Client.EventReceiverDefinition
+      description: Returns an EventReceiverDefinition if succeeded. Returns null if failed.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetEventReceiverByName(web As Web, name As String) As EventReceiverDefinition
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetEventReceiverByName*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.SetLocalizationLabels(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.SetLocalizationLabels(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String)
+  id: SetLocalizationLabels(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetLocalizationLabels(Web, String, String, String)
+  nameWithType: WebExtensions.SetLocalizationLabels(Web, String, String, String)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.SetLocalizationLabels(Microsoft.SharePoint.Client.Web, System.String, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetLocalizationLabels
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 1158
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCan be used to set translations for different cultures.\n"
+  example:
+  - "\nweb.SetLocalizationForSiteLabels(&quot;fi-fi&quot;, &quot;Name of the site in Finnish&quot;, &quot;Description in Finnish&quot;);\n"
+  syntax:
+    content: public static void SetLocalizationLabels(this Web web, string cultureName, string titleResource, string descriptionResource)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: cultureName
+      type: System.String
+      description: Culture name like en-us or fi-fi
+    - id: titleResource
+      type: System.String
+      description: Localized Title string
+    - id: descriptionResource
+      type: System.String
+      description: Localized Description string
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetLocalizationLabels(web As Web, cultureName As String, titleResource As String, descriptionResource As String)
+  overload: Microsoft.SharePoint.Client.WebExtensions.SetLocalizationLabels*
+  see:
+  - linkType: HRef
+    linkId: http://blogs.msdn.com/b/vesku/archive/2014/03/20/office365-multilingual-content-types-site-columns-and-site-other-elements.aspx
+    altText: http://blogs.msdn.com/b/vesku/archive/2014/03/20/office365-multilingual-content-types-site-columns-and-site-other-elements.aspx
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.ApplyProvisioningTemplate(Microsoft.SharePoint.Client.Web,PnP.Framework.Provisioning.Model.ProvisioningTemplate,PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.ApplyProvisioningTemplate(Microsoft.SharePoint.Client.Web,PnP.Framework.Provisioning.Model.ProvisioningTemplate,PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation)
+  id: ApplyProvisioningTemplate(Microsoft.SharePoint.Client.Web,PnP.Framework.Provisioning.Model.ProvisioningTemplate,PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: ApplyProvisioningTemplate(Web, ProvisioningTemplate, ProvisioningTemplateApplyingInformation)
+  nameWithType: WebExtensions.ApplyProvisioningTemplate(Web, ProvisioningTemplate, ProvisioningTemplateApplyingInformation)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.ApplyProvisioningTemplate(Microsoft.SharePoint.Client.Web, PnP.Framework.Provisioning.Model.ProvisioningTemplate, PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ApplyProvisioningTemplate
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 1178
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCan be used to apply custom remote provisioning template on top of existing site.\n"
+  example: []
+  syntax:
+    content: public static void ApplyProvisioningTemplate(this Web web, ProvisioningTemplate template, ProvisioningTemplateApplyingInformation applyingInformation = null)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: web to apply remote template
+    - id: template
+      type: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+      description: ProvisioningTemplate with the settings to be applied
+    - id: applyingInformation
+      type: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation
+      description: Specified additional settings and or properties
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub ApplyProvisioningTemplate(web As Web, template As ProvisioningTemplate, applyingInformation As ProvisioningTemplateApplyingInformation = Nothing)
+  overload: Microsoft.SharePoint.Client.WebExtensions.ApplyProvisioningTemplate*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetProvisioningTemplate(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetProvisioningTemplate(Microsoft.SharePoint.Client.Web)
+  id: GetProvisioningTemplate(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetProvisioningTemplate(Web)
+  nameWithType: WebExtensions.GetProvisioningTemplate(Web)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetProvisioningTemplate(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetProvisioningTemplate
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 1190
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCan be used to extract custom provisioning template from existing site. The extracted template\nwill be compared with the default base template.\n"
+  example: []
+  syntax:
+    content: public static ProvisioningTemplate GetProvisioningTemplate(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to get template from
+    return:
+      type: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+      description: ProvisioningTemplate object with generated values from existing site
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetProvisioningTemplate(web As Web) As ProvisioningTemplate
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetProvisioningTemplate*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetProvisioningTemplate(Microsoft.SharePoint.Client.Web,PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetProvisioningTemplate(Microsoft.SharePoint.Client.Web,PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation)
+  id: GetProvisioningTemplate(Microsoft.SharePoint.Client.Web,PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetProvisioningTemplate(Web, ProvisioningTemplateCreationInformation)
+  nameWithType: WebExtensions.GetProvisioningTemplate(Web, ProvisioningTemplateCreationInformation)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetProvisioningTemplate(Microsoft.SharePoint.Client.Web, PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetProvisioningTemplate
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 1204
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCan be used to extract custom provisioning template from existing site. The extracted template\nwill be compared with the default base template.\n"
+  example: []
+  syntax:
+    content: public static ProvisioningTemplate GetProvisioningTemplate(this Web web, ProvisioningTemplateCreationInformation creationInfo)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to get template from
+    - id: creationInfo
+      type: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation
+      description: Specifies additional settings and/or properties
+    return:
+      type: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+      description: ProvisioningTemplate object with generated values from existing site
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetProvisioningTemplate(web As Web, creationInfo As ProvisioningTemplateCreationInformation) As ProvisioningTemplate
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetProvisioningTemplate*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.SetPageOutputCache(Microsoft.SharePoint.Client.Web,System.Boolean,System.Int32,System.Int32,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.SetPageOutputCache(Microsoft.SharePoint.Client.Web,System.Boolean,System.Int32,System.Int32,System.Boolean)
+  id: SetPageOutputCache(Microsoft.SharePoint.Client.Web,System.Boolean,System.Int32,System.Int32,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetPageOutputCache(Web, Boolean, Int32, Int32, Boolean)
+  nameWithType: WebExtensions.SetPageOutputCache(Web, Boolean, Int32, Int32, Boolean)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.SetPageOutputCache(Microsoft.SharePoint.Client.Web, System.Boolean, System.Int32, System.Int32, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetPageOutputCache
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 1221
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nSets output cache on publishing web. The settings can be maintained from UI by visiting URL /_layouts/15/sitecachesettings.aspx\n"
+  example: []
+  syntax:
+    content: public static void SetPageOutputCache(this Web web, bool enableOutputCache, int anonymousCacheProfileId, int authenticatedCacheProfileId, bool debugCacheInformation)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: SharePoint web
+    - id: enableOutputCache
+      type: System.Boolean
+      description: Specify true to enable output cache. False otherwise.
+    - id: anonymousCacheProfileId
+      type: System.Int32
+      description: Applies for anonymous users access for a site in Site Collection. Id of the profile specified in &quot;Cache Profiles&quot; list.
+    - id: authenticatedCacheProfileId
+      type: System.Int32
+      description: Applies for authenticated users access for a site in the Site Collection. Id of the profile specified in &quot;Cache Profiles&quot; list.
+    - id: debugCacheInformation
+      type: System.Boolean
+      description: Specify true to enable the display of additional cache information on pages in this site collection. False otherwise.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetPageOutputCache(web As Web, enableOutputCache As Boolean, anonymousCacheProfileId As Integer, authenticatedCacheProfileId As Integer, debugCacheInformation As Boolean)
+  overload: Microsoft.SharePoint.Client.WebExtensions.SetPageOutputCache*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.DisableRequestAccess(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.DisableRequestAccess(Microsoft.SharePoint.Client.Web)
+  id: DisableRequestAccess(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: DisableRequestAccess(Web)
+  nameWithType: WebExtensions.DisableRequestAccess(Web)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.DisableRequestAccess(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DisableRequestAccess
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 1244
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDisables the request access on the web.\n"
+  example: []
+  syntax:
+    content: public static void DisableRequestAccess(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The web to disable request access.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub DisableRequestAccess(web As Web)
+  overload: Microsoft.SharePoint.Client.WebExtensions.DisableRequestAccess*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.EnableRequestAccess(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.EnableRequestAccess(Microsoft.SharePoint.Client.Web)
+  id: EnableRequestAccess(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: EnableRequestAccess(Web)
+  nameWithType: WebExtensions.EnableRequestAccess(Web)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.EnableRequestAccess(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnableRequestAccess
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 1255
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nEnables request access for the default owners group of the site.\n"
+  example: []
+  syntax:
+    content: public static void EnableRequestAccess(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The web to enable request access.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub EnableRequestAccess(web As Web)
+  overload: Microsoft.SharePoint.Client.WebExtensions.EnableRequestAccess*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.EnableRequestAccess(Microsoft.SharePoint.Client.Web,System.String[])
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.EnableRequestAccess(Microsoft.SharePoint.Client.Web,System.String[])
+  id: EnableRequestAccess(Microsoft.SharePoint.Client.Web,System.String[])
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: EnableRequestAccess(Web, String[])
+  nameWithType: WebExtensions.EnableRequestAccess(Web, String[])
+  fullName: Microsoft.SharePoint.Client.WebExtensions.EnableRequestAccess(Microsoft.SharePoint.Client.Web, System.String[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnableRequestAccess
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 1267
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nEnables request access for the specified e-mail addresses.\n"
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Only one e-mail address can be set for receiving access requests, use the EnableRequestAccess with string email instead")]
+
+      public static void EnableRequestAccess(this Web web, params string[] emails)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The web to enable request access.
+    - id: emails
+      type: System.String[]
+      description: The e-mail addresses to send access requests to.
+    content.vb: >-
+      <Obsolete("Only one e-mail address can be set for receiving access requests, use the EnableRequestAccess with string email instead")>
+
+      <ExtensionAttribute>
+
+      Public Shared Sub EnableRequestAccess(web As Web, ParamArray emails As String())
+  overload: Microsoft.SharePoint.Client.WebExtensions.EnableRequestAccess*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Only one e-mail address can be set for receiving access requests, use the EnableRequestAccess with string email instead
+  nameWithType.vb: WebExtensions.EnableRequestAccess(Web, String())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.WebExtensions.EnableRequestAccess(Microsoft.SharePoint.Client.Web, System.String())
+  name.vb: EnableRequestAccess(Web, String())
+- uid: Microsoft.SharePoint.Client.WebExtensions.EnableRequestAccess(Microsoft.SharePoint.Client.Web,System.Collections.Generic.IEnumerable{System.String})
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.EnableRequestAccess(Microsoft.SharePoint.Client.Web,System.Collections.Generic.IEnumerable{System.String})
+  id: EnableRequestAccess(Microsoft.SharePoint.Client.Web,System.Collections.Generic.IEnumerable{System.String})
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: EnableRequestAccess(Web, IEnumerable<String>)
+  nameWithType: WebExtensions.EnableRequestAccess(Web, IEnumerable<String>)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.EnableRequestAccess(Microsoft.SharePoint.Client.Web, System.Collections.Generic.IEnumerable<System.String>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnableRequestAccess
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 1278
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nEnables request access for the specified e-mail addresses.\n"
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Only one e-mail address can be set for receiving access requests, use the EnableRequestAccess with string email instead")]
+
+      public static void EnableRequestAccess(this Web web, IEnumerable<string> emails)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The web to enable request access.
+    - id: emails
+      type: System.Collections.Generic.IEnumerable{System.String}
+      description: The e-mail addresses to send access requests to.
+    content.vb: >-
+      <Obsolete("Only one e-mail address can be set for receiving access requests, use the EnableRequestAccess with string email instead")>
+
+      <ExtensionAttribute>
+
+      Public Shared Sub EnableRequestAccess(web As Web, emails As IEnumerable(Of String))
+  overload: Microsoft.SharePoint.Client.WebExtensions.EnableRequestAccess*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Only one e-mail address can be set for receiving access requests, use the EnableRequestAccess with string email instead
+  nameWithType.vb: WebExtensions.EnableRequestAccess(Web, IEnumerable(Of String))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.WebExtensions.EnableRequestAccess(Microsoft.SharePoint.Client.Web, System.Collections.Generic.IEnumerable(Of System.String))
+  name.vb: EnableRequestAccess(Web, IEnumerable(Of String))
+- uid: Microsoft.SharePoint.Client.WebExtensions.EnableRequestAccess(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.EnableRequestAccess(Microsoft.SharePoint.Client.Web,System.String)
+  id: EnableRequestAccess(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: EnableRequestAccess(Web, String)
+  nameWithType: WebExtensions.EnableRequestAccess(Web, String)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.EnableRequestAccess(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnableRequestAccess
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 1319
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nEnables request access for the specified e-mail address.\n"
+  example: []
+  syntax:
+    content: public static void EnableRequestAccess(this Web web, string email)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The web to enable request access.
+    - id: email
+      type: System.String
+      description: The e-mail address to send access requests to.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub EnableRequestAccess(web As Web, email As String)
+  overload: Microsoft.SharePoint.Client.WebExtensions.EnableRequestAccess*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetRequestAccessEmails(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetRequestAccessEmails(Microsoft.SharePoint.Client.Web)
+  id: GetRequestAccessEmails(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetRequestAccessEmails(Web)
+  nameWithType: WebExtensions.GetRequestAccessEmails(Web)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetRequestAccessEmails(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetRequestAccessEmails
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 1332
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets the request access e-mail addresses of the web.\n"
+  example: []
+  syntax:
+    content: public static IEnumerable<string> GetRequestAccessEmails(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The web to get the request access e-mail addresses from.
+    return:
+      type: System.Collections.Generic.IEnumerable{System.String}
+      description: The request access e-mail addresses of the web.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetRequestAccessEmails(web As Web) As IEnumerable(Of String)
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetRequestAccessEmails*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.IsAdminSite(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.IsAdminSite(Microsoft.SharePoint.Client.Web)
+  id: IsAdminSite(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: IsAdminSite(Web)
+  nameWithType: WebExtensions.IsAdminSite(Web)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.IsAdminSite(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsAdminSite
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 1355
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nChecks if the site is the SharePoint Admin site\n"
+  example: []
+  syntax:
+    content: public static bool IsAdminSite(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function IsAdminSite(web As Web) As Boolean
+  overload: Microsoft.SharePoint.Client.WebExtensions.IsAdminSite*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetName(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetName(Microsoft.SharePoint.Client.Web)
+  id: GetName(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetName(Web)
+  nameWithType: WebExtensions.GetName(Web)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetName(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetName
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 1367
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets the name part of the URL of the Server Relative URL of the Web.\n"
+  example: []
+  syntax:
+    content: public static string GetName(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The Web to process
+    return:
+      type: System.String
+      description: A string that contains the name part of the Server Relative URL (the last part of the URL) of a web.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetName(web As Web) As String
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetName*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetAppCatalog(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetAppCatalog(Microsoft.SharePoint.Client.Web)
+  id: GetAppCatalog(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetAppCatalog(Web)
+  nameWithType: WebExtensions.GetAppCatalog(Web)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetAppCatalog(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetAppCatalog
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 1402
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets the Uri for the tenant&apos;s app catalog site (if that one has already been created)\n"
+  example: []
+  syntax:
+    content: public static Uri GetAppCatalog(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate against
+    return:
+      type: System.Uri
+      description: The Uri holding the app catalog site URL
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetAppCatalog(web As Web) As Uri
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetAppCatalog*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.DeployApplicationPackageToAppCatalog(Microsoft.SharePoint.Client.Web,System.String,System.String,System.Boolean,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.DeployApplicationPackageToAppCatalog(Microsoft.SharePoint.Client.Web,System.String,System.String,System.Boolean,System.Boolean)
+  id: DeployApplicationPackageToAppCatalog(Microsoft.SharePoint.Client.Web,System.String,System.String,System.Boolean,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: DeployApplicationPackageToAppCatalog(Web, String, String, Boolean, Boolean)
+  nameWithType: WebExtensions.DeployApplicationPackageToAppCatalog(Web, String, String, Boolean, Boolean)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.DeployApplicationPackageToAppCatalog(Microsoft.SharePoint.Client.Web, System.String, System.String, System.Boolean, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeployApplicationPackageToAppCatalog
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 1422
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdds a package to the tenants app catalog and by default deploys it if the package is a client side package (sppkg)\n"
+  example: []
+  syntax:
+    content: public static ListItem DeployApplicationPackageToAppCatalog(this Web web, string spPkgName, string spPkgPath, bool autoDeploy = true, bool overwrite = true)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate against
+    - id: spPkgName
+      type: System.String
+      description: 'Name of the package to upload (e.g. demo.sppkg) '
+    - id: spPkgPath
+      type: System.String
+      description: Path on the filesystem where this package is stored
+    - id: autoDeploy
+      type: System.Boolean
+      description: Automatically deploy the package, only applies to client side packages (sppkg)
+    - id: overwrite
+      type: System.Boolean
+      description: Overwrite the package if it was already listed in the app catalog
+    return:
+      type: Microsoft.SharePoint.Client.ListItem
+      description: The ListItem of the added package row
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function DeployApplicationPackageToAppCatalog(web As Web, spPkgName As String, spPkgPath As String, autoDeploy As Boolean = True, overwrite As Boolean = True) As ListItem
+  overload: Microsoft.SharePoint.Client.WebExtensions.DeployApplicationPackageToAppCatalog*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.DeployApplicationPackageToAppCatalog(Microsoft.SharePoint.Client.Web,System.String,System.String,System.Boolean,System.Boolean,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.DeployApplicationPackageToAppCatalog(Microsoft.SharePoint.Client.Web,System.String,System.String,System.Boolean,System.Boolean,System.Boolean)
+  id: DeployApplicationPackageToAppCatalog(Microsoft.SharePoint.Client.Web,System.String,System.String,System.Boolean,System.Boolean,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: DeployApplicationPackageToAppCatalog(Web, String, String, Boolean, Boolean, Boolean)
+  nameWithType: WebExtensions.DeployApplicationPackageToAppCatalog(Web, String, String, Boolean, Boolean, Boolean)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.DeployApplicationPackageToAppCatalog(Microsoft.SharePoint.Client.Web, System.String, System.String, System.Boolean, System.Boolean, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeployApplicationPackageToAppCatalog
+    path: ../src/lib/PnP.Framework/Extensions/WebExtensions.cs
+    startLine: 1443
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdds a package to the tenants app catalog and by default deploys it if the package is a client side package (sppkg)\n"
+  example: []
+  syntax:
+    content: public static ListItem DeployApplicationPackageToAppCatalog(this Web web, string spPkgName, string spPkgPath, bool autoDeploy = true, bool skipFeatureDeployment = true, bool overwrite = true)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Tenant to operate against
+    - id: spPkgName
+      type: System.String
+      description: 'Name of the package to upload (e.g. demo.sppkg) '
+    - id: spPkgPath
+      type: System.String
+      description: Path on the filesystem where this package is stored
+    - id: autoDeploy
+      type: System.Boolean
+      description: Automatically deploy the package, only applies to client side packages (sppkg)
+    - id: skipFeatureDeployment
+      type: System.Boolean
+      description: Skip the feature deployment step, allows for a one-time central deployment of your solution
+    - id: overwrite
+      type: System.Boolean
+      description: Overwrite the package if it was already listed in the app catalog
+    return:
+      type: Microsoft.SharePoint.Client.ListItem
+      description: The ListItem of the added package row
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function DeployApplicationPackageToAppCatalog(web As Web, spPkgName As String, spPkgPath As String, autoDeploy As Boolean = True, skipFeatureDeployment As Boolean = True, overwrite As Boolean = True) As ListItem
+  overload: Microsoft.SharePoint.Client.WebExtensions.DeployApplicationPackageToAppCatalog*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetPages(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetPages(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  id: GetPages(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetPages(Web, String, String)
+  nameWithType: WebExtensions.GetPages(Web, String, String)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetPages(Microsoft.SharePoint.Client.Web, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetPages
+    path: ../src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+    startLine: 22
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns the site pages from a web, optionally filtered on pagename\n"
+  example: []
+  syntax:
+    content: public static ListItemCollection GetPages(this Web web, string pageNameStartsWith = null, string folder = null)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to get the pages from
+    - id: pageNameStartsWith
+      type: System.String
+      description: Filter to get all pages starting with
+    - id: folder
+      type: System.String
+      description: ''
+    return:
+      type: Microsoft.SharePoint.Client.ListItemCollection
+      description: A list of pages (ListItem intances)
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetPages(web As Web, pageNameStartsWith As String = Nothing, folder As String = Nothing) As ListItemCollection
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetPages*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetPagesFromList(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetPagesFromList(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String)
+  id: GetPagesFromList(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetPagesFromList(Web, String, String, String)
+  nameWithType: WebExtensions.GetPagesFromList(Web, String, String, String)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetPagesFromList(Microsoft.SharePoint.Client.Web, System.String, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetPagesFromList
+    path: ../src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+    startLine: 70
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns the site pages from a web, optionally filtered on pagename\n"
+  example: []
+  syntax:
+    content: public static ListItemCollection GetPagesFromList(this Web web, string webRelativeListName, string pageNameStartsWith = null, string folder = null)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to get the pages from
+    - id: webRelativeListName
+      type: System.String
+      description: Web relative URL of the list (e.g. SiteAssets)
+    - id: pageNameStartsWith
+      type: System.String
+      description: Filter to get all pages starting with
+    - id: folder
+      type: System.String
+      description: Folder to search in
+    return:
+      type: Microsoft.SharePoint.Client.ListItemCollection
+      description: A list of pages (ListItem intances)
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetPagesFromList(web As Web, webRelativeListName As String, pageNameStartsWith As String = Nothing, folder As String = Nothing) As ListItemCollection
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetPagesFromList*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetBlogsFromList(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetBlogsFromList(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String)
+  id: GetBlogsFromList(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetBlogsFromList(Web, String, String, String)
+  nameWithType: WebExtensions.GetBlogsFromList(Web, String, String, String)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetBlogsFromList(Microsoft.SharePoint.Client.Web, System.String, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetBlogsFromList
+    path: ../src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+    startLine: 139
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns the blogs from a web, optionally filtered on blog name\n"
+  example: []
+  syntax:
+    content: public static ListItemCollection GetBlogsFromList(this Web web, string webRelativeListName, string pageNameStartsWith = null, string folder = null)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to get the blogs from
+    - id: webRelativeListName
+      type: System.String
+      description: Web relative URL of the blog list (e.g. Posts)
+    - id: pageNameStartsWith
+      type: System.String
+      description: Filter to get all blogs starting with
+    - id: folder
+      type: System.String
+      description: Folder to search in
+    return:
+      type: Microsoft.SharePoint.Client.ListItemCollection
+      description: A list of pages (ListItem intances)
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetBlogsFromList(web As Web, webRelativeListName As String, pageNameStartsWith As String = Nothing, folder As String = Nothing) As ListItemCollection
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetBlogsFromList*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetAdmins(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetAdmins(Microsoft.SharePoint.Client.Web)
+  id: GetAdmins(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetAdmins(Web)
+  nameWithType: WebExtensions.GetAdmins(Web)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetAdmins(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetAdmins
+    path: ../src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+    startLine: 202
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns the admins of this site\n"
+  example: []
+  syntax:
+    content: public static List<UserEntity> GetAdmins(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to scan
+    return:
+      type: System.Collections.Generic.List{PnP.Framework.Entities.UserEntity}
+      description: List of admins
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetAdmins(web As Web) As List(Of UserEntity)
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetAdmins*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetOwners(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetOwners(Microsoft.SharePoint.Client.Web)
+  id: GetOwners(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetOwners(Web)
+  nameWithType: WebExtensions.GetOwners(Web)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetOwners(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetOwners
+    path: ../src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+    startLine: 224
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns owners of this web\n"
+  example: []
+  syntax:
+    content: public static List<UserEntity> GetOwners(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to scan
+    return:
+      type: System.Collections.Generic.List{PnP.Framework.Entities.UserEntity}
+      description: List of owners
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetOwners(web As Web) As List(Of UserEntity)
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetOwners*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetMembers(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetMembers(Microsoft.SharePoint.Client.Web)
+  id: GetMembers(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetMembers(Web)
+  nameWithType: WebExtensions.GetMembers(Web)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetMembers(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetMembers
+    path: ../src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+    startLine: 245
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns members of this site\n"
+  example: []
+  syntax:
+    content: public static List<UserEntity> GetMembers(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to scan
+    return:
+      type: System.Collections.Generic.List{PnP.Framework.Entities.UserEntity}
+      description: Members of this web
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetMembers(web As Web) As List(Of UserEntity)
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetMembers*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetVisitors(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetVisitors(Microsoft.SharePoint.Client.Web)
+  id: GetVisitors(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetVisitors(Web)
+  nameWithType: WebExtensions.GetVisitors(Web)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetVisitors(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetVisitors
+    path: ../src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+    startLine: 266
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns visitors of this site\n"
+  example: []
+  syntax:
+    content: public static List<UserEntity> GetVisitors(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to scan
+    return:
+      type: System.Collections.Generic.List{PnP.Framework.Entities.UserEntity}
+      description: Visitors of this web
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetVisitors(web As Web) As List(Of UserEntity)
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetVisitors*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.ClaimsHaveRoleAssignment(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.ClaimsHaveRoleAssignment(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  id: ClaimsHaveRoleAssignment(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: ClaimsHaveRoleAssignment(Web, String, String)
+  nameWithType: WebExtensions.ClaimsHaveRoleAssignment(Web, String, String)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.ClaimsHaveRoleAssignment(Microsoft.SharePoint.Client.Web, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ClaimsHaveRoleAssignment
+    path: ../src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+    startLine: 289
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nChecks if the passed claims are assigned a role\n"
+  example: []
+  syntax:
+    content: public static bool ClaimsHaveRoleAssignment(this Web web, string claim1, string claim2)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to check
+    - id: claim1
+      type: System.String
+      description: Claim to check
+    - id: claim2
+      type: System.String
+      description: Claim to check
+    return:
+      type: System.Boolean
+      description: True if claim1 or claim2 has a role
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ClaimsHaveRoleAssignment(web As Web, claim1 As String, claim2 As String) As Boolean
+  overload: Microsoft.SharePoint.Client.WebExtensions.ClaimsHaveRoleAssignment*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetEveryoneExceptExternalUsersClaim(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetEveryoneExceptExternalUsersClaim(Microsoft.SharePoint.Client.Web)
+  id: GetEveryoneExceptExternalUsersClaim(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetEveryoneExceptExternalUsersClaim(Web)
+  nameWithType: WebExtensions.GetEveryoneExceptExternalUsersClaim(Web)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetEveryoneExceptExternalUsersClaim(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetEveryoneExceptExternalUsersClaim
+    path: ../src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+    startLine: 341
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nResolves the Everyone Except External Users claim\n"
+  example: []
+  syntax:
+    content: public static string GetEveryoneExceptExternalUsersClaim(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: web to use for the resolving
+    return:
+      type: System.String
+      description: Loginname for the &quot;Everyone Except External Users&quot; claim
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetEveryoneExceptExternalUsersClaim(web As Web) As String
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetEveryoneExceptExternalUsersClaim*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetUrl(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetUrl(Microsoft.SharePoint.Client.Web)
+  id: GetUrl(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetUrl(Web)
+  nameWithType: WebExtensions.GetUrl(Web)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetUrl(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetUrl
+    path: ../src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+    startLine: 516
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nMethod to bypass missing property in SharePoint 2010\n"
+  remarks: Only required on source contexts
+  example: []
+  syntax:
+    content: public static string GetUrl(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate on
+    return:
+      type: System.String
+      description: web url
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetUrl(web As Web) As String
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetUrl*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetPagesLibraryId(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetPagesLibraryId(Microsoft.SharePoint.Client.Web)
+  id: GetPagesLibraryId(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetPagesLibraryId(Web)
+  nameWithType: WebExtensions.GetPagesLibraryId(Web)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetPagesLibraryId(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetPagesLibraryId
+    path: ../src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+    startLine: 542
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGet Pages Library ID for the Web\n"
+  example: []
+  syntax:
+    content: public static string GetPagesLibraryId(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate on
+    return:
+      type: System.String
+      description: ID of the pages library
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetPagesLibraryId(web As Web) As String
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetPagesLibraryId*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetSitePagesLibrary(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetSitePagesLibrary(Microsoft.SharePoint.Client.Web)
+  id: GetSitePagesLibrary(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetSitePagesLibrary(Web)
+  nameWithType: WebExtensions.GetSitePagesLibrary(Web)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetSitePagesLibrary(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetSitePagesLibrary
+    path: ../src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+    startLine: 561
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets site pages library from web\n"
+  example: []
+  syntax:
+    content: public static List GetSitePagesLibrary(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate on
+    return:
+      type: Microsoft.SharePoint.Client.List
+      description: Site pages library instance
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetSitePagesLibrary(web As Web) As List
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetSitePagesLibrary*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetPostsLibrary(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetPostsLibrary(Microsoft.SharePoint.Client.Web)
+  id: GetPostsLibrary(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetPostsLibrary(Web)
+  nameWithType: WebExtensions.GetPostsLibrary(Web)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetPostsLibrary(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetPostsLibrary
+    path: ../src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+    startLine: 576
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets blog post library in an SP2010 compatible fashion\n"
+  example: []
+  syntax:
+    content: public static List GetPostsLibrary(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate on
+    return:
+      type: Microsoft.SharePoint.Client.List
+      description: Blog post library
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetPostsLibrary(web As Web) As List
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetPostsLibrary*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetListByName(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.GetListByName(Microsoft.SharePoint.Client.Web,System.String)
+  id: GetListByName(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.WebExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetListByName(Web, String)
+  nameWithType: WebExtensions.GetListByName(Web, String)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetListByName(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetListByName
+    path: ../src/lib/PnP.Framework/Modernization/Extensions/WebExtensions.cs
+    startLine: 591
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets list from web in an SP2010 compatible fashion\n"
+  example: []
+  syntax:
+    content: public static List GetListByName(this Web web, string listName)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate on
+    - id: listName
+      type: System.String
+      description: List to lookup
+    return:
+      type: Microsoft.SharePoint.Client.List
+      description: List instance
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetListByName(web As Web, listName As String) As List
+  overload: Microsoft.SharePoint.Client.WebExtensions.GetListByName*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: Microsoft.SharePoint.Client
+  commentId: N:Microsoft.SharePoint.Client
+  name: Microsoft.SharePoint.Client
+  nameWithType: Microsoft.SharePoint.Client
+  fullName: Microsoft.SharePoint.Client
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetBaseTemplateId*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.GetBaseTemplateId
+  name: GetBaseTemplateId
+  nameWithType: WebExtensions.GetBaseTemplateId
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetBaseTemplateId
+- uid: Microsoft.SharePoint.Client.Web
+  commentId: T:Microsoft.SharePoint.Client.Web
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: Web
+  nameWithType: Web
+  fullName: Microsoft.SharePoint.Client.Web
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Microsoft.SharePoint.Client.WebExtensions.CreateWeb*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.CreateWeb
+  name: CreateWeb
+  nameWithType: WebExtensions.CreateWeb
+  fullName: Microsoft.SharePoint.Client.WebExtensions.CreateWeb
+- uid: PnP.Framework.Entities.SiteEntity
+  commentId: T:PnP.Framework.Entities.SiteEntity
+  parent: PnP.Framework.Entities
+  name: SiteEntity
+  nameWithType: SiteEntity
+  fullName: PnP.Framework.Entities.SiteEntity
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: PnP.Framework.Entities
+  commentId: N:PnP.Framework.Entities
+  name: PnP.Framework.Entities
+  nameWithType: PnP.Framework.Entities
+  fullName: PnP.Framework.Entities
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: Microsoft.SharePoint.Client.WebExtensions.DeleteWeb*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.DeleteWeb
+  name: DeleteWeb
+  nameWithType: WebExtensions.DeleteWeb
+  fullName: Microsoft.SharePoint.Client.WebExtensions.DeleteWeb
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetAllWebUrls*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.GetAllWebUrls
+  name: GetAllWebUrls
+  nameWithType: WebExtensions.GetAllWebUrls
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetAllWebUrls
+- uid: Microsoft.SharePoint.Client.Site
+  commentId: T:Microsoft.SharePoint.Client.Site
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: Site
+  nameWithType: Site
+  fullName: Microsoft.SharePoint.Client.Site
+- uid: System.Collections.Generic.IEnumerable{System.String}
+  commentId: T:System.Collections.Generic.IEnumerable{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<String>
+  nameWithType: IEnumerable<String>
+  fullName: System.Collections.Generic.IEnumerable<System.String>
+  nameWithType.vb: IEnumerable(Of String)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.String)
+  name.vb: IEnumerable(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetWeb*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.GetWeb
+  name: GetWeb
+  nameWithType: WebExtensions.GetWeb
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetWeb
+- uid: Microsoft.SharePoint.Client.WebExtensions.WebExists*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.WebExists
+  name: WebExists
+  nameWithType: WebExtensions.WebExists
+  fullName: Microsoft.SharePoint.Client.WebExtensions.WebExists
+- uid: Microsoft.SharePoint.Client.WebExtensions.WebExistsFullUrl*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.WebExistsFullUrl
+  name: WebExistsFullUrl
+  nameWithType: WebExtensions.WebExistsFullUrl
+  fullName: Microsoft.SharePoint.Client.WebExtensions.WebExistsFullUrl
+- uid: Microsoft.SharePoint.Client.ClientRuntimeContext
+  commentId: T:Microsoft.SharePoint.Client.ClientRuntimeContext
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: ClientRuntimeContext
+  nameWithType: ClientRuntimeContext
+  fullName: Microsoft.SharePoint.Client.ClientRuntimeContext
+- uid: Microsoft.SharePoint.Client.WebExtensions.WebExistsByTitle*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.WebExistsByTitle
+  name: WebExistsByTitle
+  nameWithType: WebExtensions.WebExistsByTitle
+  fullName: Microsoft.SharePoint.Client.WebExtensions.WebExistsByTitle
+- uid: Microsoft.SharePoint.Client.WebExtensions.IsSubSite*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.IsSubSite
+  name: IsSubSite
+  nameWithType: WebExtensions.IsSubSite
+  fullName: Microsoft.SharePoint.Client.WebExtensions.IsSubSite
+- uid: Microsoft.SharePoint.Client.WebExtensions.IsPublishingWeb*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.IsPublishingWeb
+  name: IsPublishingWeb
+  nameWithType: WebExtensions.IsPublishingWeb
+  fullName: Microsoft.SharePoint.Client.WebExtensions.IsPublishingWeb
+- uid: Microsoft.SharePoint.Client.WebExtensions.IsNoScriptSite*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.IsNoScriptSite
+  name: IsNoScriptSite
+  nameWithType: WebExtensions.IsNoScriptSite
+  fullName: Microsoft.SharePoint.Client.WebExtensions.IsNoScriptSite
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetAppInstances*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.GetAppInstances
+  name: GetAppInstances
+  nameWithType: WebExtensions.GetAppInstances
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetAppInstances
+- uid: System.Linq.Expressions.Expression{System.Func{Microsoft.SharePoint.Client.AppInstance,System.Object}}[]
+  isExternal: true
+  name: Expression<Func<AppInstance, Object>>[]
+  nameWithType: Expression<Func<AppInstance, Object>>[]
+  fullName: System.Linq.Expressions.Expression<System.Func<Microsoft.SharePoint.Client.AppInstance, System.Object>>[]
+  nameWithType.vb: Expression(Of Func(Of AppInstance, Object))()
+  fullName.vb: System.Linq.Expressions.Expression(Of System.Func(Of Microsoft.SharePoint.Client.AppInstance, System.Object))()
+  name.vb: Expression(Of Func(Of AppInstance, Object))()
+  spec.csharp:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Microsoft.SharePoint.Client.AppInstance
+    name: AppInstance
+    nameWithType: AppInstance
+    fullName: Microsoft.SharePoint.Client.AppInstance
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Microsoft.SharePoint.Client.AppInstance
+    name: AppInstance
+    nameWithType: AppInstance
+    fullName: Microsoft.SharePoint.Client.AppInstance
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: Microsoft.SharePoint.Client.ClientObjectList{Microsoft.SharePoint.Client.AppInstance}
+  commentId: T:Microsoft.SharePoint.Client.ClientObjectList{Microsoft.SharePoint.Client.AppInstance}
+  parent: Microsoft.SharePoint.Client
+  definition: Microsoft.SharePoint.Client.ClientObjectList`1
+  name: ClientObjectList<AppInstance>
+  nameWithType: ClientObjectList<AppInstance>
+  fullName: Microsoft.SharePoint.Client.ClientObjectList<Microsoft.SharePoint.Client.AppInstance>
+  nameWithType.vb: ClientObjectList(Of AppInstance)
+  fullName.vb: Microsoft.SharePoint.Client.ClientObjectList(Of Microsoft.SharePoint.Client.AppInstance)
+  name.vb: ClientObjectList(Of AppInstance)
+  spec.csharp:
+  - uid: Microsoft.SharePoint.Client.ClientObjectList`1
+    name: ClientObjectList
+    nameWithType: ClientObjectList
+    fullName: Microsoft.SharePoint.Client.ClientObjectList
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Microsoft.SharePoint.Client.AppInstance
+    name: AppInstance
+    nameWithType: AppInstance
+    fullName: Microsoft.SharePoint.Client.AppInstance
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Microsoft.SharePoint.Client.ClientObjectList`1
+    name: ClientObjectList
+    nameWithType: ClientObjectList
+    fullName: Microsoft.SharePoint.Client.ClientObjectList
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Microsoft.SharePoint.Client.AppInstance
+    name: AppInstance
+    nameWithType: AppInstance
+    fullName: Microsoft.SharePoint.Client.AppInstance
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.SharePoint.Client.ClientObjectList`1
+  commentId: T:Microsoft.SharePoint.Client.ClientObjectList`1
+  isExternal: true
+  name: ClientObjectList<T>
+  nameWithType: ClientObjectList<T>
+  fullName: Microsoft.SharePoint.Client.ClientObjectList<T>
+  nameWithType.vb: ClientObjectList(Of T)
+  fullName.vb: Microsoft.SharePoint.Client.ClientObjectList(Of T)
+  name.vb: ClientObjectList(Of T)
+  spec.csharp:
+  - uid: Microsoft.SharePoint.Client.ClientObjectList`1
+    name: ClientObjectList
+    nameWithType: ClientObjectList
+    fullName: Microsoft.SharePoint.Client.ClientObjectList
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Microsoft.SharePoint.Client.ClientObjectList`1
+    name: ClientObjectList
+    nameWithType: ClientObjectList
+    fullName: Microsoft.SharePoint.Client.ClientObjectList
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.SharePoint.Client.WebExtensions.RemoveAppInstanceByTitle*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.RemoveAppInstanceByTitle
+  name: RemoveAppInstanceByTitle
+  nameWithType: WebExtensions.RemoveAppInstanceByTitle
+  fullName: Microsoft.SharePoint.Client.WebExtensions.RemoveAppInstanceByTitle
+- uid: Microsoft.SharePoint.Client.WebExtensions.InstallSolution*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.InstallSolution
+  name: InstallSolution
+  nameWithType: WebExtensions.InstallSolution
+  fullName: Microsoft.SharePoint.Client.WebExtensions.InstallSolution
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Microsoft.SharePoint.Client.WebExtensions.UninstallSolution*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.UninstallSolution
+  name: UninstallSolution
+  nameWithType: WebExtensions.UninstallSolution
+  fullName: Microsoft.SharePoint.Client.WebExtensions.UninstallSolution
+- uid: Microsoft.SharePoint.Client.WebExtensions.MySiteSearch*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.MySiteSearch
+  name: MySiteSearch
+  nameWithType: WebExtensions.MySiteSearch
+  fullName: Microsoft.SharePoint.Client.WebExtensions.MySiteSearch
+- uid: System.Collections.Generic.List{PnP.Framework.Entities.SiteEntity}
+  commentId: T:System.Collections.Generic.List{PnP.Framework.Entities.SiteEntity}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<SiteEntity>
+  nameWithType: List<SiteEntity>
+  fullName: System.Collections.Generic.List<PnP.Framework.Entities.SiteEntity>
+  nameWithType.vb: List(Of SiteEntity)
+  fullName.vb: System.Collections.Generic.List(Of PnP.Framework.Entities.SiteEntity)
+  name.vb: List(Of SiteEntity)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Entities.SiteEntity
+    name: SiteEntity
+    nameWithType: SiteEntity
+    fullName: PnP.Framework.Entities.SiteEntity
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Entities.SiteEntity
+    name: SiteEntity
+    nameWithType: SiteEntity
+    fullName: PnP.Framework.Entities.SiteEntity
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.SharePoint.Client.WebExtensions.SiteSearch*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.SiteSearch
+  name: SiteSearch
+  nameWithType: WebExtensions.SiteSearch
+  fullName: Microsoft.SharePoint.Client.WebExtensions.SiteSearch
+- uid: System.Nullable{System.Guid}
+  commentId: T:System.Nullable{System.Guid}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<Guid>
+  nameWithType: Nullable<Guid>
+  fullName: System.Nullable<System.Guid>
+  nameWithType.vb: Nullable(Of Guid)
+  fullName.vb: System.Nullable(Of System.Guid)
+  name.vb: Nullable(Of Guid)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Guid
+    name: Guid
+    nameWithType: Guid
+    fullName: System.Guid
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Guid
+    name: Guid
+    nameWithType: Guid
+    fullName: System.Guid
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.SharePoint.Client.WebExtensions.SiteSearchScopedByUrl*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.SiteSearchScopedByUrl
+  name: SiteSearchScopedByUrl
+  nameWithType: WebExtensions.SiteSearchScopedByUrl
+  fullName: Microsoft.SharePoint.Client.WebExtensions.SiteSearchScopedByUrl
+- uid: Microsoft.SharePoint.Client.WebExtensions.SiteSearchScopedByTitle*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.SiteSearchScopedByTitle
+  name: SiteSearchScopedByTitle
+  nameWithType: WebExtensions.SiteSearchScopedByTitle
+  fullName: Microsoft.SharePoint.Client.WebExtensions.SiteSearchScopedByTitle
+- uid: Microsoft.SharePoint.Client.WebExtensions.SetPropertyBagValue*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.SetPropertyBagValue
+  name: SetPropertyBagValue
+  nameWithType: WebExtensions.SetPropertyBagValue
+  fullName: Microsoft.SharePoint.Client.WebExtensions.SetPropertyBagValue
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+- uid: Microsoft.SharePoint.Client.WebExtensions.RemovePropertyBagValue*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.RemovePropertyBagValue
+  name: RemovePropertyBagValue
+  nameWithType: WebExtensions.RemovePropertyBagValue
+  fullName: Microsoft.SharePoint.Client.WebExtensions.RemovePropertyBagValue
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetPropertyBagValueInt*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.GetPropertyBagValueInt
+  name: GetPropertyBagValueInt
+  nameWithType: WebExtensions.GetPropertyBagValueInt
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetPropertyBagValueInt
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<Int32>
+  nameWithType: Nullable<Int32>
+  fullName: System.Nullable<System.Int32>
+  nameWithType.vb: Nullable(Of Int32)
+  fullName.vb: System.Nullable(Of System.Int32)
+  name.vb: Nullable(Of Int32)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetPropertyBagValueDateTime*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.GetPropertyBagValueDateTime
+  name: GetPropertyBagValueDateTime
+  nameWithType: WebExtensions.GetPropertyBagValueDateTime
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetPropertyBagValueDateTime
+- uid: System.Nullable{System.DateTime}
+  commentId: T:System.Nullable{System.DateTime}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<DateTime>
+  nameWithType: Nullable<DateTime>
+  fullName: System.Nullable<System.DateTime>
+  nameWithType.vb: Nullable(Of DateTime)
+  fullName.vb: System.Nullable(Of System.DateTime)
+  name.vb: Nullable(Of DateTime)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.DateTime
+    name: DateTime
+    nameWithType: DateTime
+    fullName: System.DateTime
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.DateTime
+    name: DateTime
+    nameWithType: DateTime
+    fullName: System.DateTime
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetPropertyBagValueString*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.GetPropertyBagValueString
+  name: GetPropertyBagValueString
+  nameWithType: WebExtensions.GetPropertyBagValueString
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetPropertyBagValueString
+- uid: Microsoft.SharePoint.Client.WebExtensions.PropertyBagContainsKey*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.PropertyBagContainsKey
+  name: PropertyBagContainsKey
+  nameWithType: WebExtensions.PropertyBagContainsKey
+  fullName: Microsoft.SharePoint.Client.WebExtensions.PropertyBagContainsKey
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetIndexedPropertyBagKeys*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.GetIndexedPropertyBagKeys
+  name: GetIndexedPropertyBagKeys
+  nameWithType: WebExtensions.GetIndexedPropertyBagKeys
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetIndexedPropertyBagKeys
+- uid: Microsoft.SharePoint.Client.WebExtensions.AddIndexedPropertyBagKey*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.AddIndexedPropertyBagKey
+  name: AddIndexedPropertyBagKey
+  nameWithType: WebExtensions.AddIndexedPropertyBagKey
+  fullName: Microsoft.SharePoint.Client.WebExtensions.AddIndexedPropertyBagKey
+- uid: Microsoft.SharePoint.Client.WebExtensions.RemoveIndexedPropertyBagKey*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.RemoveIndexedPropertyBagKey
+  name: RemoveIndexedPropertyBagKey
+  nameWithType: WebExtensions.RemoveIndexedPropertyBagKey
+  fullName: Microsoft.SharePoint.Client.WebExtensions.RemoveIndexedPropertyBagKey
+- uid: Microsoft.SharePoint.Client.WebExtensions.ReIndexWeb*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.ReIndexWeb
+  name: ReIndexWeb
+  nameWithType: WebExtensions.ReIndexWeb
+  fullName: Microsoft.SharePoint.Client.WebExtensions.ReIndexWeb
+- uid: Microsoft.SharePoint.Client.WebExtensions.AddRemoteEventReceiver*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.AddRemoteEventReceiver
+  name: AddRemoteEventReceiver
+  nameWithType: WebExtensions.AddRemoteEventReceiver
+  fullName: Microsoft.SharePoint.Client.WebExtensions.AddRemoteEventReceiver
+- uid: Microsoft.SharePoint.Client.EventReceiverType
+  commentId: T:Microsoft.SharePoint.Client.EventReceiverType
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: EventReceiverType
+  nameWithType: EventReceiverType
+  fullName: Microsoft.SharePoint.Client.EventReceiverType
+- uid: Microsoft.SharePoint.Client.EventReceiverSynchronization
+  commentId: T:Microsoft.SharePoint.Client.EventReceiverSynchronization
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: EventReceiverSynchronization
+  nameWithType: EventReceiverSynchronization
+  fullName: Microsoft.SharePoint.Client.EventReceiverSynchronization
+- uid: Microsoft.SharePoint.Client.EventReceiverDefinition
+  commentId: T:Microsoft.SharePoint.Client.EventReceiverDefinition
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: EventReceiverDefinition
+  nameWithType: EventReceiverDefinition
+  fullName: Microsoft.SharePoint.Client.EventReceiverDefinition
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetEventReceiverById*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.GetEventReceiverById
+  name: GetEventReceiverById
+  nameWithType: WebExtensions.GetEventReceiverById
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetEventReceiverById
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetEventReceiverByName*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.GetEventReceiverByName
+  name: GetEventReceiverByName
+  nameWithType: WebExtensions.GetEventReceiverByName
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetEventReceiverByName
+- uid: Microsoft.SharePoint.Client.WebExtensions.SetLocalizationLabels*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.SetLocalizationLabels
+  name: SetLocalizationLabels
+  nameWithType: WebExtensions.SetLocalizationLabels
+  fullName: Microsoft.SharePoint.Client.WebExtensions.SetLocalizationLabels
+- uid: Microsoft.SharePoint.Client.WebExtensions.ApplyProvisioningTemplate*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.ApplyProvisioningTemplate
+  name: ApplyProvisioningTemplate
+  nameWithType: WebExtensions.ApplyProvisioningTemplate
+  fullName: Microsoft.SharePoint.Client.WebExtensions.ApplyProvisioningTemplate
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  commentId: T:PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  parent: PnP.Framework.Provisioning.Model
+  name: ProvisioningTemplate
+  nameWithType: ProvisioningTemplate
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+- uid: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation
+  parent: PnP.Framework.Provisioning.ObjectHandlers
+  name: ProvisioningTemplateApplyingInformation
+  nameWithType: ProvisioningTemplateApplyingInformation
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation
+- uid: PnP.Framework.Provisioning.Model
+  commentId: N:PnP.Framework.Provisioning.Model
+  name: PnP.Framework.Provisioning.Model
+  nameWithType: PnP.Framework.Provisioning.Model
+  fullName: PnP.Framework.Provisioning.Model
+- uid: PnP.Framework.Provisioning.ObjectHandlers
+  commentId: N:PnP.Framework.Provisioning.ObjectHandlers
+  name: PnP.Framework.Provisioning.ObjectHandlers
+  nameWithType: PnP.Framework.Provisioning.ObjectHandlers
+  fullName: PnP.Framework.Provisioning.ObjectHandlers
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetProvisioningTemplate*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.GetProvisioningTemplate
+  name: GetProvisioningTemplate
+  nameWithType: WebExtensions.GetProvisioningTemplate
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetProvisioningTemplate
+- uid: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation
+  parent: PnP.Framework.Provisioning.ObjectHandlers
+  name: ProvisioningTemplateCreationInformation
+  nameWithType: ProvisioningTemplateCreationInformation
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation
+- uid: Microsoft.SharePoint.Client.WebExtensions.SetPageOutputCache*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.SetPageOutputCache
+  name: SetPageOutputCache
+  nameWithType: WebExtensions.SetPageOutputCache
+  fullName: Microsoft.SharePoint.Client.WebExtensions.SetPageOutputCache
+- uid: Microsoft.SharePoint.Client.WebExtensions.DisableRequestAccess*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.DisableRequestAccess
+  name: DisableRequestAccess
+  nameWithType: WebExtensions.DisableRequestAccess
+  fullName: Microsoft.SharePoint.Client.WebExtensions.DisableRequestAccess
+- uid: Microsoft.SharePoint.Client.WebExtensions.EnableRequestAccess*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.EnableRequestAccess
+  name: EnableRequestAccess
+  nameWithType: WebExtensions.EnableRequestAccess
+  fullName: Microsoft.SharePoint.Client.WebExtensions.EnableRequestAccess
+- uid: System.String[]
+  isExternal: true
+  name: String[]
+  nameWithType: String[]
+  fullName: System.String[]
+  nameWithType.vb: String()
+  fullName.vb: System.String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetRequestAccessEmails*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.GetRequestAccessEmails
+  name: GetRequestAccessEmails
+  nameWithType: WebExtensions.GetRequestAccessEmails
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetRequestAccessEmails
+- uid: Microsoft.SharePoint.Client.WebExtensions.IsAdminSite*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.IsAdminSite
+  name: IsAdminSite
+  nameWithType: WebExtensions.IsAdminSite
+  fullName: Microsoft.SharePoint.Client.WebExtensions.IsAdminSite
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetName*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.GetName
+  name: GetName
+  nameWithType: WebExtensions.GetName
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetName
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetAppCatalog*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.GetAppCatalog
+  name: GetAppCatalog
+  nameWithType: WebExtensions.GetAppCatalog
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetAppCatalog
+- uid: System.Uri
+  commentId: T:System.Uri
+  parent: System
+  isExternal: true
+  name: Uri
+  nameWithType: Uri
+  fullName: System.Uri
+- uid: Microsoft.SharePoint.Client.WebExtensions.DeployApplicationPackageToAppCatalog*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.DeployApplicationPackageToAppCatalog
+  name: DeployApplicationPackageToAppCatalog
+  nameWithType: WebExtensions.DeployApplicationPackageToAppCatalog
+  fullName: Microsoft.SharePoint.Client.WebExtensions.DeployApplicationPackageToAppCatalog
+- uid: Microsoft.SharePoint.Client.ListItem
+  commentId: T:Microsoft.SharePoint.Client.ListItem
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: ListItem
+  nameWithType: ListItem
+  fullName: Microsoft.SharePoint.Client.ListItem
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetPages*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.GetPages
+  name: GetPages
+  nameWithType: WebExtensions.GetPages
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetPages
+- uid: Microsoft.SharePoint.Client.ListItemCollection
+  commentId: T:Microsoft.SharePoint.Client.ListItemCollection
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: ListItemCollection
+  nameWithType: ListItemCollection
+  fullName: Microsoft.SharePoint.Client.ListItemCollection
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetPagesFromList*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.GetPagesFromList
+  name: GetPagesFromList
+  nameWithType: WebExtensions.GetPagesFromList
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetPagesFromList
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetBlogsFromList*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.GetBlogsFromList
+  name: GetBlogsFromList
+  nameWithType: WebExtensions.GetBlogsFromList
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetBlogsFromList
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetAdmins*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.GetAdmins
+  name: GetAdmins
+  nameWithType: WebExtensions.GetAdmins
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetAdmins
+- uid: System.Collections.Generic.List{PnP.Framework.Entities.UserEntity}
+  commentId: T:System.Collections.Generic.List{PnP.Framework.Entities.UserEntity}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<UserEntity>
+  nameWithType: List<UserEntity>
+  fullName: System.Collections.Generic.List<PnP.Framework.Entities.UserEntity>
+  nameWithType.vb: List(Of UserEntity)
+  fullName.vb: System.Collections.Generic.List(Of PnP.Framework.Entities.UserEntity)
+  name.vb: List(Of UserEntity)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Entities.UserEntity
+    name: UserEntity
+    nameWithType: UserEntity
+    fullName: PnP.Framework.Entities.UserEntity
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Entities.UserEntity
+    name: UserEntity
+    nameWithType: UserEntity
+    fullName: PnP.Framework.Entities.UserEntity
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetOwners*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.GetOwners
+  name: GetOwners
+  nameWithType: WebExtensions.GetOwners
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetOwners
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetMembers*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.GetMembers
+  name: GetMembers
+  nameWithType: WebExtensions.GetMembers
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetMembers
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetVisitors*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.GetVisitors
+  name: GetVisitors
+  nameWithType: WebExtensions.GetVisitors
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetVisitors
+- uid: Microsoft.SharePoint.Client.WebExtensions.ClaimsHaveRoleAssignment*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.ClaimsHaveRoleAssignment
+  name: ClaimsHaveRoleAssignment
+  nameWithType: WebExtensions.ClaimsHaveRoleAssignment
+  fullName: Microsoft.SharePoint.Client.WebExtensions.ClaimsHaveRoleAssignment
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetEveryoneExceptExternalUsersClaim*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.GetEveryoneExceptExternalUsersClaim
+  name: GetEveryoneExceptExternalUsersClaim
+  nameWithType: WebExtensions.GetEveryoneExceptExternalUsersClaim
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetEveryoneExceptExternalUsersClaim
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetUrl*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.GetUrl
+  name: GetUrl
+  nameWithType: WebExtensions.GetUrl
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetUrl
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetPagesLibraryId*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.GetPagesLibraryId
+  name: GetPagesLibraryId
+  nameWithType: WebExtensions.GetPagesLibraryId
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetPagesLibraryId
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetSitePagesLibrary*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.GetSitePagesLibrary
+  name: GetSitePagesLibrary
+  nameWithType: WebExtensions.GetSitePagesLibrary
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetSitePagesLibrary
+- uid: Microsoft.SharePoint.Client.List
+  commentId: T:Microsoft.SharePoint.Client.List
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: List
+  nameWithType: List
+  fullName: Microsoft.SharePoint.Client.List
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetPostsLibrary*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.GetPostsLibrary
+  name: GetPostsLibrary
+  nameWithType: WebExtensions.GetPostsLibrary
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetPostsLibrary
+- uid: Microsoft.SharePoint.Client.WebExtensions.GetListByName*
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.GetListByName
+  name: GetListByName
+  nameWithType: WebExtensions.GetListByName
+  fullName: Microsoft.SharePoint.Client.WebExtensions.GetListByName

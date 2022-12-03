@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.Configuration.SiteFooter
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.SiteFooter
+  id: PnP.Framework.Provisioning.Model.Configuration.SiteFooter
+  children:
+  - PnP.Framework.Provisioning.Model.Configuration.SiteFooter.ExtractSiteFooterConfiguration
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Model.Configuration.SiteFooter
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.SiteFooter
+  fullName: PnP.Framework.Provisioning.Model.Configuration.SiteFooter
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Model.Configuration.SiteFooter.ExtractSiteFooterConfiguration
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.SiteFooter.ExtractSiteFooterConfiguration
+  parent: PnP.Framework.Provisioning.Model.Configuration.SiteFooter
+  name: ExtractSiteFooterConfiguration
+  nameWithType: ExtractSiteFooterConfiguration
+  fullName: PnP.Framework.Provisioning.Model.Configuration.SiteFooter.ExtractSiteFooterConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.SiteFooter
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.SiteFooter
+  name: PnP.Framework.Provisioning.Model.Configuration.SiteFooter
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.SiteFooter
+  fullName: PnP.Framework.Provisioning.Model.Configuration.SiteFooter

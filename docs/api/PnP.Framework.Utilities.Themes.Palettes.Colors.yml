@@ -1,0 +1,924 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Utilities.Themes.Palettes.Colors
+  commentId: T:PnP.Framework.Utilities.Themes.Palettes.Colors
+  id: Colors
+  parent: PnP.Framework.Utilities.Themes.Palettes
+  children:
+  - PnP.Framework.Utilities.Themes.Palettes.Colors.cssColor(System.String)
+  - PnP.Framework.Utilities.Themes.Palettes.Colors.GetColorFromRGBA(PnP.Framework.Utilities.Themes.Palettes.IRGB,System.Int32)
+  - PnP.Framework.Utilities.Themes.Palettes.Colors.getColorFromString(System.String)
+  - PnP.Framework.Utilities.Themes.Palettes.Colors.hsl2hsv(System.Single,System.Single,System.Single)
+  - PnP.Framework.Utilities.Themes.Palettes.Colors.hsl2rgb(System.Int32,System.Int32,System.Int32)
+  - PnP.Framework.Utilities.Themes.Palettes.Colors.hsv2hex(System.Single,System.Single,System.Single)
+  - PnP.Framework.Utilities.Themes.Palettes.Colors.hsv2hsl(System.Single,System.Single,System.Single)
+  - PnP.Framework.Utilities.Themes.Palettes.Colors.hsv2rgb(System.Single,System.Single,System.Single)
+  - PnP.Framework.Utilities.Themes.Palettes.Colors.MAX_COLOR_RGBA
+  - PnP.Framework.Utilities.Themes.Palettes.Colors.numberToPaddedHex(System.Int32)
+  - PnP.Framework.Utilities.Themes.Palettes.Colors.rgb2hex(System.Int32,System.Int32,System.Int32)
+  - PnP.Framework.Utilities.Themes.Palettes.Colors.rgb2hsv(System.Int32,System.Int32,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: Colors
+  nameWithType: Colors
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Colors
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Palettes/Colors.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Colors
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Palettes/Colors.cs
+    startLine: 35
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Palettes
+  syntax:
+    content: public static class Colors
+    content.vb: Public Module Colors
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: PnP.Framework.Utilities.Themes.Palettes.Colors.MAX_COLOR_RGBA
+  commentId: F:PnP.Framework.Utilities.Themes.Palettes.Colors.MAX_COLOR_RGBA
+  id: MAX_COLOR_RGBA
+  parent: PnP.Framework.Utilities.Themes.Palettes.Colors
+  langs:
+  - csharp
+  - vb
+  name: MAX_COLOR_RGBA
+  nameWithType: Colors.MAX_COLOR_RGBA
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Colors.MAX_COLOR_RGBA
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Palettes/Colors.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MAX_COLOR_RGBA
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Palettes/Colors.cs
+    startLine: 40
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Palettes
+  syntax:
+    content: public const int MAX_COLOR_RGBA = 255
+    return:
+      type: System.Int32
+    content.vb: Public Const MAX_COLOR_RGBA As Integer = 255
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Utilities.Themes.Palettes.Colors.cssColor(System.String)
+  commentId: M:PnP.Framework.Utilities.Themes.Palettes.Colors.cssColor(System.String)
+  id: cssColor(System.String)
+  parent: PnP.Framework.Utilities.Themes.Palettes.Colors
+  langs:
+  - csharp
+  - vb
+  name: cssColor(String)
+  nameWithType: Colors.cssColor(String)
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Colors.cssColor(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Palettes/Colors.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: cssColor
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Palettes/Colors.cs
+    startLine: 44
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Palettes
+  syntax:
+    content: public static IRGB cssColor(string color)
+    parameters:
+    - id: color
+      type: System.String
+    return:
+      type: PnP.Framework.Utilities.Themes.Palettes.IRGB
+    content.vb: Public Shared Function cssColor(color As String) As IRGB
+  overload: PnP.Framework.Utilities.Themes.Palettes.Colors.cssColor*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.Themes.Palettes.Colors.getColorFromString(System.String)
+  commentId: M:PnP.Framework.Utilities.Themes.Palettes.Colors.getColorFromString(System.String)
+  id: getColorFromString(System.String)
+  parent: PnP.Framework.Utilities.Themes.Palettes.Colors
+  langs:
+  - csharp
+  - vb
+  name: getColorFromString(String)
+  nameWithType: Colors.getColorFromString(String)
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Colors.getColorFromString(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Palettes/Colors.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: getColorFromString
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Palettes/Colors.cs
+    startLine: 57
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Palettes
+  syntax:
+    content: public static IColor getColorFromString(string inputColor)
+    parameters:
+    - id: inputColor
+      type: System.String
+    return:
+      type: PnP.Framework.Utilities.Themes.Palettes.IColor
+    content.vb: Public Shared Function getColorFromString(inputColor As String) As IColor
+  overload: PnP.Framework.Utilities.Themes.Palettes.Colors.getColorFromString*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.Themes.Palettes.Colors.GetColorFromRGBA(PnP.Framework.Utilities.Themes.Palettes.IRGB,System.Int32)
+  commentId: M:PnP.Framework.Utilities.Themes.Palettes.Colors.GetColorFromRGBA(PnP.Framework.Utilities.Themes.Palettes.IRGB,System.Int32)
+  id: GetColorFromRGBA(PnP.Framework.Utilities.Themes.Palettes.IRGB,System.Int32)
+  parent: PnP.Framework.Utilities.Themes.Palettes.Colors
+  langs:
+  - csharp
+  - vb
+  name: GetColorFromRGBA(IRGB, Int32)
+  nameWithType: Colors.GetColorFromRGBA(IRGB, Int32)
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Colors.GetColorFromRGBA(PnP.Framework.Utilities.Themes.Palettes.IRGB, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Palettes/Colors.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetColorFromRGBA
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Palettes/Colors.cs
+    startLine: 82
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Palettes
+  syntax:
+    content: public static IColor GetColorFromRGBA(IRGB c, int a)
+    parameters:
+    - id: c
+      type: PnP.Framework.Utilities.Themes.Palettes.IRGB
+    - id: a
+      type: System.Int32
+    return:
+      type: PnP.Framework.Utilities.Themes.Palettes.IColor
+    content.vb: Public Shared Function GetColorFromRGBA(c As IRGB, a As Integer) As IColor
+  overload: PnP.Framework.Utilities.Themes.Palettes.Colors.GetColorFromRGBA*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.Themes.Palettes.Colors.rgb2hex(System.Int32,System.Int32,System.Int32)
+  commentId: M:PnP.Framework.Utilities.Themes.Palettes.Colors.rgb2hex(System.Int32,System.Int32,System.Int32)
+  id: rgb2hex(System.Int32,System.Int32,System.Int32)
+  parent: PnP.Framework.Utilities.Themes.Palettes.Colors
+  langs:
+  - csharp
+  - vb
+  name: rgb2hex(Int32, Int32, Int32)
+  nameWithType: Colors.rgb2hex(Int32, Int32, Int32)
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Colors.rgb2hex(System.Int32, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Palettes/Colors.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: rgb2hex
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Palettes/Colors.cs
+    startLine: 104
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Palettes
+  syntax:
+    content: public static string rgb2hex(int r, int g, int b)
+    parameters:
+    - id: r
+      type: System.Int32
+    - id: g
+      type: System.Int32
+    - id: b
+      type: System.Int32
+    return:
+      type: System.String
+    content.vb: Public Shared Function rgb2hex(r As Integer, g As Integer, b As Integer) As String
+  overload: PnP.Framework.Utilities.Themes.Palettes.Colors.rgb2hex*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.Themes.Palettes.Colors.hsv2hex(System.Single,System.Single,System.Single)
+  commentId: M:PnP.Framework.Utilities.Themes.Palettes.Colors.hsv2hex(System.Single,System.Single,System.Single)
+  id: hsv2hex(System.Single,System.Single,System.Single)
+  parent: PnP.Framework.Utilities.Themes.Palettes.Colors
+  langs:
+  - csharp
+  - vb
+  name: hsv2hex(Single, Single, Single)
+  nameWithType: Colors.hsv2hex(Single, Single, Single)
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Colors.hsv2hex(System.Single, System.Single, System.Single)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Palettes/Colors.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: hsv2hex
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Palettes/Colors.cs
+    startLine: 109
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Palettes
+  syntax:
+    content: public static string hsv2hex(float h, float s, float v)
+    parameters:
+    - id: h
+      type: System.Single
+    - id: s
+      type: System.Single
+    - id: v
+      type: System.Single
+    return:
+      type: System.String
+    content.vb: Public Shared Function hsv2hex(h As Single, s As Single, v As Single) As String
+  overload: PnP.Framework.Utilities.Themes.Palettes.Colors.hsv2hex*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.Themes.Palettes.Colors.rgb2hsv(System.Int32,System.Int32,System.Int32)
+  commentId: M:PnP.Framework.Utilities.Themes.Palettes.Colors.rgb2hsv(System.Int32,System.Int32,System.Int32)
+  id: rgb2hsv(System.Int32,System.Int32,System.Int32)
+  parent: PnP.Framework.Utilities.Themes.Palettes.Colors
+  langs:
+  - csharp
+  - vb
+  name: rgb2hsv(Int32, Int32, Int32)
+  nameWithType: Colors.rgb2hsv(Int32, Int32, Int32)
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Colors.rgb2hsv(System.Int32, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Palettes/Colors.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: rgb2hsv
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Palettes/Colors.cs
+    startLine: 116
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Palettes
+  syntax:
+    content: public static IHSV rgb2hsv(int r, int g, int b)
+    parameters:
+    - id: r
+      type: System.Int32
+    - id: g
+      type: System.Int32
+    - id: b
+      type: System.Int32
+    return:
+      type: PnP.Framework.Utilities.Themes.Palettes.IHSV
+    content.vb: Public Shared Function rgb2hsv(r As Integer, g As Integer, b As Integer) As IHSV
+  overload: PnP.Framework.Utilities.Themes.Palettes.Colors.rgb2hsv*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.Themes.Palettes.Colors.hsl2hsv(System.Single,System.Single,System.Single)
+  commentId: M:PnP.Framework.Utilities.Themes.Palettes.Colors.hsl2hsv(System.Single,System.Single,System.Single)
+  id: hsl2hsv(System.Single,System.Single,System.Single)
+  parent: PnP.Framework.Utilities.Themes.Palettes.Colors
+  langs:
+  - csharp
+  - vb
+  name: hsl2hsv(Single, Single, Single)
+  nameWithType: Colors.hsl2hsv(Single, Single, Single)
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Colors.hsl2hsv(System.Single, System.Single, System.Single)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Palettes/Colors.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: hsl2hsv
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Palettes/Colors.cs
+    startLine: 164
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Palettes
+  syntax:
+    content: public static IHSV hsl2hsv(float h, float s, float l)
+    parameters:
+    - id: h
+      type: System.Single
+    - id: s
+      type: System.Single
+    - id: l
+      type: System.Single
+    return:
+      type: PnP.Framework.Utilities.Themes.Palettes.IHSV
+    content.vb: Public Shared Function hsl2hsv(h As Single, s As Single, l As Single) As IHSV
+  overload: PnP.Framework.Utilities.Themes.Palettes.Colors.hsl2hsv*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.Themes.Palettes.Colors.hsv2hsl(System.Single,System.Single,System.Single)
+  commentId: M:PnP.Framework.Utilities.Themes.Palettes.Colors.hsv2hsl(System.Single,System.Single,System.Single)
+  id: hsv2hsl(System.Single,System.Single,System.Single)
+  parent: PnP.Framework.Utilities.Themes.Palettes.Colors
+  langs:
+  - csharp
+  - vb
+  name: hsv2hsl(Single, Single, Single)
+  nameWithType: Colors.hsv2hsl(Single, Single, Single)
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Colors.hsv2hsl(System.Single, System.Single, System.Single)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Palettes/Colors.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: hsv2hsl
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Palettes/Colors.cs
+    startLine: 176
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Palettes
+  syntax:
+    content: public static IHSL hsv2hsl(float h, float s, float v)
+    parameters:
+    - id: h
+      type: System.Single
+    - id: s
+      type: System.Single
+    - id: v
+      type: System.Single
+    return:
+      type: PnP.Framework.Utilities.Themes.Palettes.IHSL
+    content.vb: Public Shared Function hsv2hsl(h As Single, s As Single, v As Single) As IHSL
+  overload: PnP.Framework.Utilities.Themes.Palettes.Colors.hsv2hsl*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.Themes.Palettes.Colors.hsl2rgb(System.Int32,System.Int32,System.Int32)
+  commentId: M:PnP.Framework.Utilities.Themes.Palettes.Colors.hsl2rgb(System.Int32,System.Int32,System.Int32)
+  id: hsl2rgb(System.Int32,System.Int32,System.Int32)
+  parent: PnP.Framework.Utilities.Themes.Palettes.Colors
+  langs:
+  - csharp
+  - vb
+  name: hsl2rgb(Int32, Int32, Int32)
+  nameWithType: Colors.hsl2rgb(Int32, Int32, Int32)
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Colors.hsl2rgb(System.Int32, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Palettes/Colors.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: hsl2rgb
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Palettes/Colors.cs
+    startLine: 189
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Palettes
+  syntax:
+    content: public static IRGB hsl2rgb(int h, int s, int l)
+    parameters:
+    - id: h
+      type: System.Int32
+    - id: s
+      type: System.Int32
+    - id: l
+      type: System.Int32
+    return:
+      type: PnP.Framework.Utilities.Themes.Palettes.IRGB
+    content.vb: Public Shared Function hsl2rgb(h As Integer, s As Integer, l As Integer) As IRGB
+  overload: PnP.Framework.Utilities.Themes.Palettes.Colors.hsl2rgb*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.Themes.Palettes.Colors.hsv2rgb(System.Single,System.Single,System.Single)
+  commentId: M:PnP.Framework.Utilities.Themes.Palettes.Colors.hsv2rgb(System.Single,System.Single,System.Single)
+  id: hsv2rgb(System.Single,System.Single,System.Single)
+  parent: PnP.Framework.Utilities.Themes.Palettes.Colors
+  langs:
+  - csharp
+  - vb
+  name: hsv2rgb(Single, Single, Single)
+  nameWithType: Colors.hsv2rgb(Single, Single, Single)
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Colors.hsv2rgb(System.Single, System.Single, System.Single)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Palettes/Colors.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: hsv2rgb
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Palettes/Colors.cs
+    startLine: 196
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Palettes
+  syntax:
+    content: public static IRGB hsv2rgb(float h, float s, float v)
+    parameters:
+    - id: h
+      type: System.Single
+    - id: s
+      type: System.Single
+    - id: v
+      type: System.Single
+    return:
+      type: PnP.Framework.Utilities.Themes.Palettes.IRGB
+    content.vb: Public Shared Function hsv2rgb(h As Single, s As Single, v As Single) As IRGB
+  overload: PnP.Framework.Utilities.Themes.Palettes.Colors.hsv2rgb*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.Themes.Palettes.Colors.numberToPaddedHex(System.Int32)
+  commentId: M:PnP.Framework.Utilities.Themes.Palettes.Colors.numberToPaddedHex(System.Int32)
+  id: numberToPaddedHex(System.Int32)
+  parent: PnP.Framework.Utilities.Themes.Palettes.Colors
+  langs:
+  - csharp
+  - vb
+  name: numberToPaddedHex(Int32)
+  nameWithType: Colors.numberToPaddedHex(Int32)
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Colors.numberToPaddedHex(System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Palettes/Colors.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: numberToPaddedHex
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Palettes/Colors.cs
+    startLine: 240
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Palettes
+  syntax:
+    content: public static string numberToPaddedHex(int num)
+    parameters:
+    - id: num
+      type: System.Int32
+    return:
+      type: System.String
+    content.vb: Public Shared Function numberToPaddedHex(num As Integer) As String
+  overload: PnP.Framework.Utilities.Themes.Palettes.Colors.numberToPaddedHex*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: PnP.Framework.Utilities.Themes.Palettes
+  commentId: N:PnP.Framework.Utilities.Themes.Palettes
+  name: PnP.Framework.Utilities.Themes.Palettes
+  nameWithType: PnP.Framework.Utilities.Themes.Palettes
+  fullName: PnP.Framework.Utilities.Themes.Palettes
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: PnP.Framework.Utilities.Themes.Palettes.Colors.cssColor*
+  commentId: Overload:PnP.Framework.Utilities.Themes.Palettes.Colors.cssColor
+  name: cssColor
+  nameWithType: Colors.cssColor
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Colors.cssColor
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: PnP.Framework.Utilities.Themes.Palettes.IRGB
+  commentId: T:PnP.Framework.Utilities.Themes.Palettes.IRGB
+  parent: PnP.Framework.Utilities.Themes.Palettes
+  name: IRGB
+  nameWithType: IRGB
+  fullName: PnP.Framework.Utilities.Themes.Palettes.IRGB
+- uid: PnP.Framework.Utilities.Themes.Palettes.Colors.getColorFromString*
+  commentId: Overload:PnP.Framework.Utilities.Themes.Palettes.Colors.getColorFromString
+  name: getColorFromString
+  nameWithType: Colors.getColorFromString
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Colors.getColorFromString
+- uid: PnP.Framework.Utilities.Themes.Palettes.IColor
+  commentId: T:PnP.Framework.Utilities.Themes.Palettes.IColor
+  parent: PnP.Framework.Utilities.Themes.Palettes
+  name: IColor
+  nameWithType: IColor
+  fullName: PnP.Framework.Utilities.Themes.Palettes.IColor
+- uid: PnP.Framework.Utilities.Themes.Palettes.Colors.GetColorFromRGBA*
+  commentId: Overload:PnP.Framework.Utilities.Themes.Palettes.Colors.GetColorFromRGBA
+  name: GetColorFromRGBA
+  nameWithType: Colors.GetColorFromRGBA
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Colors.GetColorFromRGBA
+- uid: PnP.Framework.Utilities.Themes.Palettes.Colors.rgb2hex*
+  commentId: Overload:PnP.Framework.Utilities.Themes.Palettes.Colors.rgb2hex
+  name: rgb2hex
+  nameWithType: Colors.rgb2hex
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Colors.rgb2hex
+- uid: PnP.Framework.Utilities.Themes.Palettes.Colors.hsv2hex*
+  commentId: Overload:PnP.Framework.Utilities.Themes.Palettes.Colors.hsv2hex
+  name: hsv2hex
+  nameWithType: Colors.hsv2hex
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Colors.hsv2hex
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: PnP.Framework.Utilities.Themes.Palettes.Colors.rgb2hsv*
+  commentId: Overload:PnP.Framework.Utilities.Themes.Palettes.Colors.rgb2hsv
+  name: rgb2hsv
+  nameWithType: Colors.rgb2hsv
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Colors.rgb2hsv
+- uid: PnP.Framework.Utilities.Themes.Palettes.IHSV
+  commentId: T:PnP.Framework.Utilities.Themes.Palettes.IHSV
+  parent: PnP.Framework.Utilities.Themes.Palettes
+  name: IHSV
+  nameWithType: IHSV
+  fullName: PnP.Framework.Utilities.Themes.Palettes.IHSV
+- uid: PnP.Framework.Utilities.Themes.Palettes.Colors.hsl2hsv*
+  commentId: Overload:PnP.Framework.Utilities.Themes.Palettes.Colors.hsl2hsv
+  name: hsl2hsv
+  nameWithType: Colors.hsl2hsv
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Colors.hsl2hsv
+- uid: PnP.Framework.Utilities.Themes.Palettes.Colors.hsv2hsl*
+  commentId: Overload:PnP.Framework.Utilities.Themes.Palettes.Colors.hsv2hsl
+  name: hsv2hsl
+  nameWithType: Colors.hsv2hsl
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Colors.hsv2hsl
+- uid: PnP.Framework.Utilities.Themes.Palettes.IHSL
+  commentId: T:PnP.Framework.Utilities.Themes.Palettes.IHSL
+  parent: PnP.Framework.Utilities.Themes.Palettes
+  name: IHSL
+  nameWithType: IHSL
+  fullName: PnP.Framework.Utilities.Themes.Palettes.IHSL
+- uid: PnP.Framework.Utilities.Themes.Palettes.Colors.hsl2rgb*
+  commentId: Overload:PnP.Framework.Utilities.Themes.Palettes.Colors.hsl2rgb
+  name: hsl2rgb
+  nameWithType: Colors.hsl2rgb
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Colors.hsl2rgb
+- uid: PnP.Framework.Utilities.Themes.Palettes.Colors.hsv2rgb*
+  commentId: Overload:PnP.Framework.Utilities.Themes.Palettes.Colors.hsv2rgb
+  name: hsv2rgb
+  nameWithType: Colors.hsv2rgb
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Colors.hsv2rgb
+- uid: PnP.Framework.Utilities.Themes.Palettes.Colors.numberToPaddedHex*
+  commentId: Overload:PnP.Framework.Utilities.Themes.Palettes.Colors.numberToPaddedHex
+  name: numberToPaddedHex
+  nameWithType: Colors.numberToPaddedHex
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Colors.numberToPaddedHex

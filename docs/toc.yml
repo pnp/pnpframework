@@ -1,3 +1,5 @@
+- name: Home
+  href: index.md
 - name: Using the Framework
   href: using-the-framework/
 - name: API Documentation

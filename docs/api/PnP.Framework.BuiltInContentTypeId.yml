@@ -1,0 +1,3027 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.BuiltInContentTypeId
+  commentId: T:PnP.Framework.BuiltInContentTypeId
+  id: BuiltInContentTypeId
+  parent: PnP.Framework
+  children:
+  - PnP.Framework.BuiltInContentTypeId.AdminTask
+  - PnP.Framework.BuiltInContentTypeId.Announcement
+  - PnP.Framework.BuiltInContentTypeId.ArticlePage
+  - PnP.Framework.BuiltInContentTypeId.ASPNETMasterPage
+  - PnP.Framework.BuiltInContentTypeId.BasicPage
+  - PnP.Framework.BuiltInContentTypeId.BlogComment
+  - PnP.Framework.BuiltInContentTypeId.BlogPost
+  - PnP.Framework.BuiltInContentTypeId.CallTracking
+  - PnP.Framework.BuiltInContentTypeId.Contact
+  - PnP.Framework.BuiltInContentTypeId.Contains(System.String)
+  - PnP.Framework.BuiltInContentTypeId.DeviceChannel
+  - PnP.Framework.BuiltInContentTypeId.DeviceChannelMappings
+  - PnP.Framework.BuiltInContentTypeId.Discussion
+  - PnP.Framework.BuiltInContentTypeId.DisplayTemplateJS
+  - PnP.Framework.BuiltInContentTypeId.Document
+  - PnP.Framework.BuiltInContentTypeId.DocumentSet
+  - PnP.Framework.BuiltInContentTypeId.DocumentWorkflowItem
+  - PnP.Framework.BuiltInContentTypeId.DomainGroup
+  - PnP.Framework.BuiltInContentTypeId.DublinCoreName
+  - PnP.Framework.BuiltInContentTypeId.EnterpriseWikiPage
+  - PnP.Framework.BuiltInContentTypeId.ErrorPage
+  - PnP.Framework.BuiltInContentTypeId.Event
+  - PnP.Framework.BuiltInContentTypeId.FarEastContact
+  - PnP.Framework.BuiltInContentTypeId.Folder
+  - PnP.Framework.BuiltInContentTypeId.GbwCirculationCTName
+  - PnP.Framework.BuiltInContentTypeId.GbwOfficeNoticeCTName
+  - PnP.Framework.BuiltInContentTypeId.HealthReport
+  - PnP.Framework.BuiltInContentTypeId.HealthRuleDefinition
+  - PnP.Framework.BuiltInContentTypeId.Holiday
+  - PnP.Framework.BuiltInContentTypeId.HtmlMasterPage
+  - PnP.Framework.BuiltInContentTypeId.HtmlPageLayout
+  - PnP.Framework.BuiltInContentTypeId.IMEDictionaryItem
+  - PnP.Framework.BuiltInContentTypeId.Issue
+  - PnP.Framework.BuiltInContentTypeId.Item
+  - PnP.Framework.BuiltInContentTypeId.Link
+  - PnP.Framework.BuiltInContentTypeId.LinkToDocument
+  - PnP.Framework.BuiltInContentTypeId.MasterPage
+  - PnP.Framework.BuiltInContentTypeId.Message
+  - PnP.Framework.BuiltInContentTypeId.ModernArticlePage
+  - PnP.Framework.BuiltInContentTypeId.ODCDocument
+  - PnP.Framework.BuiltInContentTypeId.Page
+  - PnP.Framework.BuiltInContentTypeId.PageLayout
+  - PnP.Framework.BuiltInContentTypeId.PageOutputCache
+  - PnP.Framework.BuiltInContentTypeId.Person
+  - PnP.Framework.BuiltInContentTypeId.Picture
+  - PnP.Framework.BuiltInContentTypeId.ProjectPage
+  - PnP.Framework.BuiltInContentTypeId.PublishedLink
+  - PnP.Framework.BuiltInContentTypeId.RedirectPage
+  - PnP.Framework.BuiltInContentTypeId.RepostPage
+  - PnP.Framework.BuiltInContentTypeId.Resource
+  - PnP.Framework.BuiltInContentTypeId.ResourceGroup
+  - PnP.Framework.BuiltInContentTypeId.ResourceReservation
+  - PnP.Framework.BuiltInContentTypeId.ReusableHTML
+  - PnP.Framework.BuiltInContentTypeId.ReusableText
+  - PnP.Framework.BuiltInContentTypeId.RootOfList
+  - PnP.Framework.BuiltInContentTypeId.Schedule
+  - PnP.Framework.BuiltInContentTypeId.ScheduleAndResourceReservation
+  - PnP.Framework.BuiltInContentTypeId.SharePointGroup
+  - PnP.Framework.BuiltInContentTypeId.SpacesPage
+  - PnP.Framework.BuiltInContentTypeId.SummaryTask
+  - PnP.Framework.BuiltInContentTypeId.System
+  - PnP.Framework.BuiltInContentTypeId.SystemMasterPage
+  - PnP.Framework.BuiltInContentTypeId.SystemPage
+  - PnP.Framework.BuiltInContentTypeId.SystemPageLayout
+  - PnP.Framework.BuiltInContentTypeId.Task
+  - PnP.Framework.BuiltInContentTypeId.Timecard
+  - PnP.Framework.BuiltInContentTypeId.UDCDocument
+  - PnP.Framework.BuiltInContentTypeId.UntypedDocument
+  - PnP.Framework.BuiltInContentTypeId.WebPartPage
+  - PnP.Framework.BuiltInContentTypeId.WelcomePage
+  - PnP.Framework.BuiltInContentTypeId.WhatsNew
+  - PnP.Framework.BuiltInContentTypeId.Whereabouts
+  - PnP.Framework.BuiltInContentTypeId.WikiDocument
+  - PnP.Framework.BuiltInContentTypeId.Workflow2013Task
+  - PnP.Framework.BuiltInContentTypeId.WorkflowHistory
+  - PnP.Framework.BuiltInContentTypeId.WorkflowTask
+  - PnP.Framework.BuiltInContentTypeId.XMLDocument
+  - PnP.Framework.BuiltInContentTypeId.XSLStyle
+  langs:
+  - csharp
+  - vb
+  name: BuiltInContentTypeId
+  nameWithType: BuiltInContentTypeId
+  fullName: PnP.Framework.BuiltInContentTypeId
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: BuiltInContentTypeId
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 7
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  summary: "\nA class that returns strings that represent identifiers (IDs) for built-in content types.\n"
+  example: []
+  syntax:
+    content: public static class BuiltInContentTypeId
+    content.vb: Public Module BuiltInContentTypeId
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: PnP.Framework.BuiltInContentTypeId.AdminTask
+  commentId: F:PnP.Framework.BuiltInContentTypeId.AdminTask
+  id: AdminTask
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: AdminTask
+  nameWithType: BuiltInContentTypeId.AdminTask
+  fullName: PnP.Framework.BuiltInContentTypeId.AdminTask
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AdminTask
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 9
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string AdminTask = "0x010802"
+    return:
+      type: System.String
+    content.vb: Public Const AdminTask As String = "0x010802"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.Announcement
+  commentId: F:PnP.Framework.BuiltInContentTypeId.Announcement
+  id: Announcement
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: Announcement
+  nameWithType: BuiltInContentTypeId.Announcement
+  fullName: PnP.Framework.BuiltInContentTypeId.Announcement
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Announcement
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 10
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string Announcement = "0x0104"
+    return:
+      type: System.String
+    content.vb: Public Const Announcement As String = "0x0104"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.BasicPage
+  commentId: F:PnP.Framework.BuiltInContentTypeId.BasicPage
+  id: BasicPage
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: BasicPage
+  nameWithType: BuiltInContentTypeId.BasicPage
+  fullName: PnP.Framework.BuiltInContentTypeId.BasicPage
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: BasicPage
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 11
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string BasicPage = "0x010109"
+    return:
+      type: System.String
+    content.vb: Public Const BasicPage As String = "0x010109"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.BlogComment
+  commentId: F:PnP.Framework.BuiltInContentTypeId.BlogComment
+  id: BlogComment
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: BlogComment
+  nameWithType: BuiltInContentTypeId.BlogComment
+  fullName: PnP.Framework.BuiltInContentTypeId.BlogComment
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: BlogComment
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 12
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string BlogComment = "0x0111"
+    return:
+      type: System.String
+    content.vb: Public Const BlogComment As String = "0x0111"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.BlogPost
+  commentId: F:PnP.Framework.BuiltInContentTypeId.BlogPost
+  id: BlogPost
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: BlogPost
+  nameWithType: BuiltInContentTypeId.BlogPost
+  fullName: PnP.Framework.BuiltInContentTypeId.BlogPost
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: BlogPost
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 13
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string BlogPost = "0x0110"
+    return:
+      type: System.String
+    content.vb: Public Const BlogPost As String = "0x0110"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.CallTracking
+  commentId: F:PnP.Framework.BuiltInContentTypeId.CallTracking
+  id: CallTracking
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: CallTracking
+  nameWithType: BuiltInContentTypeId.CallTracking
+  fullName: PnP.Framework.BuiltInContentTypeId.CallTracking
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CallTracking
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 14
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string CallTracking = "0x0100807FBAC5EB8A4653B8D24775195B5463"
+    return:
+      type: System.String
+    content.vb: Public Const CallTracking As String = "0x0100807FBAC5EB8A4653B8D24775195B5463"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.Contact
+  commentId: F:PnP.Framework.BuiltInContentTypeId.Contact
+  id: Contact
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: Contact
+  nameWithType: BuiltInContentTypeId.Contact
+  fullName: PnP.Framework.BuiltInContentTypeId.Contact
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Contact
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 15
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string Contact = "0x0106"
+    return:
+      type: System.String
+    content.vb: Public Const Contact As String = "0x0106"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.Discussion
+  commentId: F:PnP.Framework.BuiltInContentTypeId.Discussion
+  id: Discussion
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: Discussion
+  nameWithType: BuiltInContentTypeId.Discussion
+  fullName: PnP.Framework.BuiltInContentTypeId.Discussion
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Discussion
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 16
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string Discussion = "0x012002"
+    return:
+      type: System.String
+    content.vb: Public Const Discussion As String = "0x012002"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.DisplayTemplateJS
+  commentId: F:PnP.Framework.BuiltInContentTypeId.DisplayTemplateJS
+  id: DisplayTemplateJS
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: DisplayTemplateJS
+  nameWithType: BuiltInContentTypeId.DisplayTemplateJS
+  fullName: PnP.Framework.BuiltInContentTypeId.DisplayTemplateJS
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DisplayTemplateJS
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 17
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string DisplayTemplateJS = "0x0101002039C03B61C64EC4A04F5361F3851068"
+    return:
+      type: System.String
+    content.vb: Public Const DisplayTemplateJS As String = "0x0101002039C03B61C64EC4A04F5361F3851068"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.Document
+  commentId: F:PnP.Framework.BuiltInContentTypeId.Document
+  id: Document
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: Document
+  nameWithType: BuiltInContentTypeId.Document
+  fullName: PnP.Framework.BuiltInContentTypeId.Document
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Document
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 18
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string Document = "0x0101"
+    return:
+      type: System.String
+    content.vb: Public Const Document As String = "0x0101"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.DocumentSet
+  commentId: F:PnP.Framework.BuiltInContentTypeId.DocumentSet
+  id: DocumentSet
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: DocumentSet
+  nameWithType: BuiltInContentTypeId.DocumentSet
+  fullName: PnP.Framework.BuiltInContentTypeId.DocumentSet
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DocumentSet
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 23
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  summary: "\nContains the content identifier (ID) for the DocumentSet content type. To get content type from a list, use BestMatchContentTypeId().\n"
+  example: []
+  syntax:
+    content: public const string DocumentSet = "0x0120D520"
+    return:
+      type: System.String
+    content.vb: Public Const DocumentSet As String = "0x0120D520"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.DocumentWorkflowItem
+  commentId: F:PnP.Framework.BuiltInContentTypeId.DocumentWorkflowItem
+  id: DocumentWorkflowItem
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: DocumentWorkflowItem
+  nameWithType: BuiltInContentTypeId.DocumentWorkflowItem
+  fullName: PnP.Framework.BuiltInContentTypeId.DocumentWorkflowItem
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DocumentWorkflowItem
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 25
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string DocumentWorkflowItem = "0x010107"
+    return:
+      type: System.String
+    content.vb: Public Const DocumentWorkflowItem As String = "0x010107"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.DomainGroup
+  commentId: F:PnP.Framework.BuiltInContentTypeId.DomainGroup
+  id: DomainGroup
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: DomainGroup
+  nameWithType: BuiltInContentTypeId.DomainGroup
+  fullName: PnP.Framework.BuiltInContentTypeId.DomainGroup
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DomainGroup
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 26
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string DomainGroup = "0x010C"
+    return:
+      type: System.String
+    content.vb: Public Const DomainGroup As String = "0x010C"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.DublinCoreName
+  commentId: F:PnP.Framework.BuiltInContentTypeId.DublinCoreName
+  id: DublinCoreName
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: DublinCoreName
+  nameWithType: BuiltInContentTypeId.DublinCoreName
+  fullName: PnP.Framework.BuiltInContentTypeId.DublinCoreName
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DublinCoreName
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 27
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string DublinCoreName = "0x01010B"
+    return:
+      type: System.String
+    content.vb: Public Const DublinCoreName As String = "0x01010B"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.Event
+  commentId: F:PnP.Framework.BuiltInContentTypeId.Event
+  id: Event
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: Event
+  nameWithType: BuiltInContentTypeId.Event
+  fullName: PnP.Framework.BuiltInContentTypeId.Event
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Event
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 28
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string Event = "0x0102"
+    return:
+      type: System.String
+    content.vb: Public Const Event As String = "0x0102"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.FarEastContact
+  commentId: F:PnP.Framework.BuiltInContentTypeId.FarEastContact
+  id: FarEastContact
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: FarEastContact
+  nameWithType: BuiltInContentTypeId.FarEastContact
+  fullName: PnP.Framework.BuiltInContentTypeId.FarEastContact
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FarEastContact
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 29
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string FarEastContact = "0x0116"
+    return:
+      type: System.String
+    content.vb: Public Const FarEastContact As String = "0x0116"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.Folder
+  commentId: F:PnP.Framework.BuiltInContentTypeId.Folder
+  id: Folder
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: Folder
+  nameWithType: BuiltInContentTypeId.Folder
+  fullName: PnP.Framework.BuiltInContentTypeId.Folder
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Folder
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 30
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string Folder = "0x0120"
+    return:
+      type: System.String
+    content.vb: Public Const Folder As String = "0x0120"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.GbwCirculationCTName
+  commentId: F:PnP.Framework.BuiltInContentTypeId.GbwCirculationCTName
+  id: GbwCirculationCTName
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: GbwCirculationCTName
+  nameWithType: BuiltInContentTypeId.GbwCirculationCTName
+  fullName: PnP.Framework.BuiltInContentTypeId.GbwCirculationCTName
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GbwCirculationCTName
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 31
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string GbwCirculationCTName = "0x01000F389E14C9CE4CE486270B9D4713A5D6"
+    return:
+      type: System.String
+    content.vb: Public Const GbwCirculationCTName As String = "0x01000F389E14C9CE4CE486270B9D4713A5D6"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.GbwOfficeNoticeCTName
+  commentId: F:PnP.Framework.BuiltInContentTypeId.GbwOfficeNoticeCTName
+  id: GbwOfficeNoticeCTName
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: GbwOfficeNoticeCTName
+  nameWithType: BuiltInContentTypeId.GbwOfficeNoticeCTName
+  fullName: PnP.Framework.BuiltInContentTypeId.GbwOfficeNoticeCTName
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GbwOfficeNoticeCTName
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 32
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string GbwOfficeNoticeCTName = "0x01007CE30DD1206047728BAFD1C39A850120"
+    return:
+      type: System.String
+    content.vb: Public Const GbwOfficeNoticeCTName As String = "0x01007CE30DD1206047728BAFD1C39A850120"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.HealthReport
+  commentId: F:PnP.Framework.BuiltInContentTypeId.HealthReport
+  id: HealthReport
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: HealthReport
+  nameWithType: BuiltInContentTypeId.HealthReport
+  fullName: PnP.Framework.BuiltInContentTypeId.HealthReport
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: HealthReport
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 33
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string HealthReport = "0x0100F95DB3A97E8046B58C6A54FB31F2BD46"
+    return:
+      type: System.String
+    content.vb: Public Const HealthReport As String = "0x0100F95DB3A97E8046B58C6A54FB31F2BD46"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.HealthRuleDefinition
+  commentId: F:PnP.Framework.BuiltInContentTypeId.HealthRuleDefinition
+  id: HealthRuleDefinition
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: HealthRuleDefinition
+  nameWithType: BuiltInContentTypeId.HealthRuleDefinition
+  fullName: PnP.Framework.BuiltInContentTypeId.HealthRuleDefinition
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: HealthRuleDefinition
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 34
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string HealthRuleDefinition = "0x01003A8AA7A4F53046158C5ABD98036A01D5"
+    return:
+      type: System.String
+    content.vb: Public Const HealthRuleDefinition As String = "0x01003A8AA7A4F53046158C5ABD98036A01D5"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.Holiday
+  commentId: F:PnP.Framework.BuiltInContentTypeId.Holiday
+  id: Holiday
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: Holiday
+  nameWithType: BuiltInContentTypeId.Holiday
+  fullName: PnP.Framework.BuiltInContentTypeId.Holiday
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Holiday
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 35
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string Holiday = "0x01009BE2AB5291BF4C1A986910BD278E4F18"
+    return:
+      type: System.String
+    content.vb: Public Const Holiday As String = "0x01009BE2AB5291BF4C1A986910BD278E4F18"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.IMEDictionaryItem
+  commentId: F:PnP.Framework.BuiltInContentTypeId.IMEDictionaryItem
+  id: IMEDictionaryItem
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: IMEDictionaryItem
+  nameWithType: BuiltInContentTypeId.IMEDictionaryItem
+  fullName: PnP.Framework.BuiltInContentTypeId.IMEDictionaryItem
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IMEDictionaryItem
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 36
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string IMEDictionaryItem = "0x010018F21907ED4E401CB4F14422ABC65304"
+    return:
+      type: System.String
+    content.vb: Public Const IMEDictionaryItem As String = "0x010018F21907ED4E401CB4F14422ABC65304"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.Issue
+  commentId: F:PnP.Framework.BuiltInContentTypeId.Issue
+  id: Issue
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: Issue
+  nameWithType: BuiltInContentTypeId.Issue
+  fullName: PnP.Framework.BuiltInContentTypeId.Issue
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Issue
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 37
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string Issue = "0x0103"
+    return:
+      type: System.String
+    content.vb: Public Const Issue As String = "0x0103"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.Item
+  commentId: F:PnP.Framework.BuiltInContentTypeId.Item
+  id: Item
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: Item
+  nameWithType: BuiltInContentTypeId.Item
+  fullName: PnP.Framework.BuiltInContentTypeId.Item
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Item
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 42
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  summary: "\nContains the content identifier (ID) for the Item content type.\n"
+  example: []
+  syntax:
+    content: public const string Item = "0x01"
+    return:
+      type: System.String
+    content.vb: Public Const Item As String = "0x01"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.Link
+  commentId: F:PnP.Framework.BuiltInContentTypeId.Link
+  id: Link
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: Link
+  nameWithType: BuiltInContentTypeId.Link
+  fullName: PnP.Framework.BuiltInContentTypeId.Link
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Link
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 44
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string Link = "0x0105"
+    return:
+      type: System.String
+    content.vb: Public Const Link As String = "0x0105"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.LinkToDocument
+  commentId: F:PnP.Framework.BuiltInContentTypeId.LinkToDocument
+  id: LinkToDocument
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: LinkToDocument
+  nameWithType: BuiltInContentTypeId.LinkToDocument
+  fullName: PnP.Framework.BuiltInContentTypeId.LinkToDocument
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: LinkToDocument
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 45
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string LinkToDocument = "0x01010A"
+    return:
+      type: System.String
+    content.vb: Public Const LinkToDocument As String = "0x01010A"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.MasterPage
+  commentId: F:PnP.Framework.BuiltInContentTypeId.MasterPage
+  id: MasterPage
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: MasterPage
+  nameWithType: BuiltInContentTypeId.MasterPage
+  fullName: PnP.Framework.BuiltInContentTypeId.MasterPage
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MasterPage
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 46
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string MasterPage = "0x010105"
+    return:
+      type: System.String
+    content.vb: Public Const MasterPage As String = "0x010105"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.Message
+  commentId: F:PnP.Framework.BuiltInContentTypeId.Message
+  id: Message
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: Message
+  nameWithType: BuiltInContentTypeId.Message
+  fullName: PnP.Framework.BuiltInContentTypeId.Message
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Message
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 47
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string Message = "0x0107"
+    return:
+      type: System.String
+    content.vb: Public Const Message As String = "0x0107"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.ODCDocument
+  commentId: F:PnP.Framework.BuiltInContentTypeId.ODCDocument
+  id: ODCDocument
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: ODCDocument
+  nameWithType: BuiltInContentTypeId.ODCDocument
+  fullName: PnP.Framework.BuiltInContentTypeId.ODCDocument
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ODCDocument
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 48
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string ODCDocument = "0x010100629D00608F814DD6AC8A86903AEE72AA"
+    return:
+      type: System.String
+    content.vb: Public Const ODCDocument As String = "0x010100629D00608F814DD6AC8A86903AEE72AA"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.Person
+  commentId: F:PnP.Framework.BuiltInContentTypeId.Person
+  id: Person
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: Person
+  nameWithType: BuiltInContentTypeId.Person
+  fullName: PnP.Framework.BuiltInContentTypeId.Person
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Person
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 49
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string Person = "0x010A"
+    return:
+      type: System.String
+    content.vb: Public Const Person As String = "0x010A"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.Picture
+  commentId: F:PnP.Framework.BuiltInContentTypeId.Picture
+  id: Picture
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: Picture
+  nameWithType: BuiltInContentTypeId.Picture
+  fullName: PnP.Framework.BuiltInContentTypeId.Picture
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Picture
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 50
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string Picture = "0x010102"
+    return:
+      type: System.String
+    content.vb: Public Const Picture As String = "0x010102"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.Resource
+  commentId: F:PnP.Framework.BuiltInContentTypeId.Resource
+  id: Resource
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: Resource
+  nameWithType: BuiltInContentTypeId.Resource
+  fullName: PnP.Framework.BuiltInContentTypeId.Resource
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Resource
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 51
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string Resource = "0x01004C9F4486FBF54864A7B0A33D02AD19B1"
+    return:
+      type: System.String
+    content.vb: Public Const Resource As String = "0x01004C9F4486FBF54864A7B0A33D02AD19B1"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.ResourceGroup
+  commentId: F:PnP.Framework.BuiltInContentTypeId.ResourceGroup
+  id: ResourceGroup
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: ResourceGroup
+  nameWithType: BuiltInContentTypeId.ResourceGroup
+  fullName: PnP.Framework.BuiltInContentTypeId.ResourceGroup
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ResourceGroup
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 52
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string ResourceGroup = "0x0100CA13F2F8D61541B180952DFB25E3E8E4"
+    return:
+      type: System.String
+    content.vb: Public Const ResourceGroup As String = "0x0100CA13F2F8D61541B180952DFB25E3E8E4"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.ResourceReservation
+  commentId: F:PnP.Framework.BuiltInContentTypeId.ResourceReservation
+  id: ResourceReservation
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: ResourceReservation
+  nameWithType: BuiltInContentTypeId.ResourceReservation
+  fullName: PnP.Framework.BuiltInContentTypeId.ResourceReservation
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ResourceReservation
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 53
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string ResourceReservation = "0x0102004F51EFDEA49C49668EF9C6744C8CF87D"
+    return:
+      type: System.String
+    content.vb: Public Const ResourceReservation As String = "0x0102004F51EFDEA49C49668EF9C6744C8CF87D"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.RootOfList
+  commentId: F:PnP.Framework.BuiltInContentTypeId.RootOfList
+  id: RootOfList
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: RootOfList
+  nameWithType: BuiltInContentTypeId.RootOfList
+  fullName: PnP.Framework.BuiltInContentTypeId.RootOfList
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RootOfList
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 54
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string RootOfList = "0x012001"
+    return:
+      type: System.String
+    content.vb: Public Const RootOfList As String = "0x012001"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.Schedule
+  commentId: F:PnP.Framework.BuiltInContentTypeId.Schedule
+  id: Schedule
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: Schedule
+  nameWithType: BuiltInContentTypeId.Schedule
+  fullName: PnP.Framework.BuiltInContentTypeId.Schedule
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Schedule
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 55
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string Schedule = "0x0102007DBDC1392EAF4EBBBF99E41D8922B264"
+    return:
+      type: System.String
+    content.vb: Public Const Schedule As String = "0x0102007DBDC1392EAF4EBBBF99E41D8922B264"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.ScheduleAndResourceReservation
+  commentId: F:PnP.Framework.BuiltInContentTypeId.ScheduleAndResourceReservation
+  id: ScheduleAndResourceReservation
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: ScheduleAndResourceReservation
+  nameWithType: BuiltInContentTypeId.ScheduleAndResourceReservation
+  fullName: PnP.Framework.BuiltInContentTypeId.ScheduleAndResourceReservation
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ScheduleAndResourceReservation
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 56
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string ScheduleAndResourceReservation = "0x01020072BB2A38F0DB49C3A96CF4FA85529956"
+    return:
+      type: System.String
+    content.vb: Public Const ScheduleAndResourceReservation As String = "0x01020072BB2A38F0DB49C3A96CF4FA85529956"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.SharePointGroup
+  commentId: F:PnP.Framework.BuiltInContentTypeId.SharePointGroup
+  id: SharePointGroup
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: SharePointGroup
+  nameWithType: BuiltInContentTypeId.SharePointGroup
+  fullName: PnP.Framework.BuiltInContentTypeId.SharePointGroup
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SharePointGroup
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 57
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string SharePointGroup = "0x010B"
+    return:
+      type: System.String
+    content.vb: Public Const SharePointGroup As String = "0x010B"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.SummaryTask
+  commentId: F:PnP.Framework.BuiltInContentTypeId.SummaryTask
+  id: SummaryTask
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: SummaryTask
+  nameWithType: BuiltInContentTypeId.SummaryTask
+  fullName: PnP.Framework.BuiltInContentTypeId.SummaryTask
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SummaryTask
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 58
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string SummaryTask = "0x012004"
+    return:
+      type: System.String
+    content.vb: Public Const SummaryTask As String = "0x012004"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.System
+  commentId: F:PnP.Framework.BuiltInContentTypeId.System
+  id: System
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: System
+  nameWithType: BuiltInContentTypeId.System
+  fullName: PnP.Framework.BuiltInContentTypeId.System
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: System
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 59
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string System = "0x"
+    return:
+      type: System.String
+    content.vb: Public Const System As String = "0x"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.Task
+  commentId: F:PnP.Framework.BuiltInContentTypeId.Task
+  id: Task
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: Task
+  nameWithType: BuiltInContentTypeId.Task
+  fullName: PnP.Framework.BuiltInContentTypeId.Task
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Task
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 60
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string Task = "0x0108"
+    return:
+      type: System.String
+    content.vb: Public Const Task As String = "0x0108"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.Timecard
+  commentId: F:PnP.Framework.BuiltInContentTypeId.Timecard
+  id: Timecard
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: Timecard
+  nameWithType: BuiltInContentTypeId.Timecard
+  fullName: PnP.Framework.BuiltInContentTypeId.Timecard
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Timecard
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 61
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string Timecard = "0x0100C30DDA8EDB2E434EA22D793D9EE42058"
+    return:
+      type: System.String
+    content.vb: Public Const Timecard As String = "0x0100C30DDA8EDB2E434EA22D793D9EE42058"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.UDCDocument
+  commentId: F:PnP.Framework.BuiltInContentTypeId.UDCDocument
+  id: UDCDocument
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: UDCDocument
+  nameWithType: BuiltInContentTypeId.UDCDocument
+  fullName: PnP.Framework.BuiltInContentTypeId.UDCDocument
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UDCDocument
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 62
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string UDCDocument = "0x010100B4CBD48E029A4AD8B62CB0E41868F2B0"
+    return:
+      type: System.String
+    content.vb: Public Const UDCDocument As String = "0x010100B4CBD48E029A4AD8B62CB0E41868F2B0"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.UntypedDocument
+  commentId: F:PnP.Framework.BuiltInContentTypeId.UntypedDocument
+  id: UntypedDocument
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: UntypedDocument
+  nameWithType: BuiltInContentTypeId.UntypedDocument
+  fullName: PnP.Framework.BuiltInContentTypeId.UntypedDocument
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UntypedDocument
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 63
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string UntypedDocument = "0x010104"
+    return:
+      type: System.String
+    content.vb: Public Const UntypedDocument As String = "0x010104"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.WebPartPage
+  commentId: F:PnP.Framework.BuiltInContentTypeId.WebPartPage
+  id: WebPartPage
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: WebPartPage
+  nameWithType: BuiltInContentTypeId.WebPartPage
+  fullName: PnP.Framework.BuiltInContentTypeId.WebPartPage
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WebPartPage
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 64
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string WebPartPage = "0x01010901"
+    return:
+      type: System.String
+    content.vb: Public Const WebPartPage As String = "0x01010901"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.WhatsNew
+  commentId: F:PnP.Framework.BuiltInContentTypeId.WhatsNew
+  id: WhatsNew
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: WhatsNew
+  nameWithType: BuiltInContentTypeId.WhatsNew
+  fullName: PnP.Framework.BuiltInContentTypeId.WhatsNew
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WhatsNew
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 65
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string WhatsNew = "0x0100A2CA87FF01B442AD93F37CD7DD0943EB"
+    return:
+      type: System.String
+    content.vb: Public Const WhatsNew As String = "0x0100A2CA87FF01B442AD93F37CD7DD0943EB"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.Whereabouts
+  commentId: F:PnP.Framework.BuiltInContentTypeId.Whereabouts
+  id: Whereabouts
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: Whereabouts
+  nameWithType: BuiltInContentTypeId.Whereabouts
+  fullName: PnP.Framework.BuiltInContentTypeId.Whereabouts
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Whereabouts
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 66
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string Whereabouts = "0x0100FBEEE6F0C500489B99CDA6BB16C398F7"
+    return:
+      type: System.String
+    content.vb: Public Const Whereabouts As String = "0x0100FBEEE6F0C500489B99CDA6BB16C398F7"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.WikiDocument
+  commentId: F:PnP.Framework.BuiltInContentTypeId.WikiDocument
+  id: WikiDocument
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: WikiDocument
+  nameWithType: BuiltInContentTypeId.WikiDocument
+  fullName: PnP.Framework.BuiltInContentTypeId.WikiDocument
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WikiDocument
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 67
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string WikiDocument = "0x010108"
+    return:
+      type: System.String
+    content.vb: Public Const WikiDocument As String = "0x010108"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.WorkflowHistory
+  commentId: F:PnP.Framework.BuiltInContentTypeId.WorkflowHistory
+  id: WorkflowHistory
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: WorkflowHistory
+  nameWithType: BuiltInContentTypeId.WorkflowHistory
+  fullName: PnP.Framework.BuiltInContentTypeId.WorkflowHistory
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WorkflowHistory
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 68
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string WorkflowHistory = "0x0109"
+    return:
+      type: System.String
+    content.vb: Public Const WorkflowHistory As String = "0x0109"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.WorkflowTask
+  commentId: F:PnP.Framework.BuiltInContentTypeId.WorkflowTask
+  id: WorkflowTask
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: WorkflowTask
+  nameWithType: BuiltInContentTypeId.WorkflowTask
+  fullName: PnP.Framework.BuiltInContentTypeId.WorkflowTask
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WorkflowTask
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 69
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string WorkflowTask = "0x010801"
+    return:
+      type: System.String
+    content.vb: Public Const WorkflowTask As String = "0x010801"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.Workflow2013Task
+  commentId: F:PnP.Framework.BuiltInContentTypeId.Workflow2013Task
+  id: Workflow2013Task
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: Workflow2013Task
+  nameWithType: BuiltInContentTypeId.Workflow2013Task
+  fullName: PnP.Framework.BuiltInContentTypeId.Workflow2013Task
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Workflow2013Task
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 70
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string Workflow2013Task = "0x0108003365C4474CAE8C42BCE396314E88E51F"
+    return:
+      type: System.String
+    content.vb: Public Const Workflow2013Task As String = "0x0108003365C4474CAE8C42BCE396314E88E51F"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.XMLDocument
+  commentId: F:PnP.Framework.BuiltInContentTypeId.XMLDocument
+  id: XMLDocument
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: XMLDocument
+  nameWithType: BuiltInContentTypeId.XMLDocument
+  fullName: PnP.Framework.BuiltInContentTypeId.XMLDocument
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: XMLDocument
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 71
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string XMLDocument = "0x010101"
+    return:
+      type: System.String
+    content.vb: Public Const XMLDocument As String = "0x010101"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.XSLStyle
+  commentId: F:PnP.Framework.BuiltInContentTypeId.XSLStyle
+  id: XSLStyle
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: XSLStyle
+  nameWithType: BuiltInContentTypeId.XSLStyle
+  fullName: PnP.Framework.BuiltInContentTypeId.XSLStyle
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: XSLStyle
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 72
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string XSLStyle = "0x010100734778F2B7DF462491FC91844AE431CF"
+    return:
+      type: System.String
+    content.vb: Public Const XSLStyle As String = "0x010100734778F2B7DF462491FC91844AE431CF"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.ReusableHTML
+  commentId: F:PnP.Framework.BuiltInContentTypeId.ReusableHTML
+  id: ReusableHTML
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: ReusableHTML
+  nameWithType: BuiltInContentTypeId.ReusableHTML
+  fullName: PnP.Framework.BuiltInContentTypeId.ReusableHTML
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ReusableHTML
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 77
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  summary: "\nContains the content identifier (ID) for content types used in the publishing infrastructure.\n"
+  example: []
+  syntax:
+    content: public const string ReusableHTML = "0x01002CF74A4DAE39480396EEA7A4BA2BE5FB"
+    return:
+      type: System.String
+    content.vb: Public Const ReusableHTML As String = "0x01002CF74A4DAE39480396EEA7A4BA2BE5FB"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.PublishedLink
+  commentId: F:PnP.Framework.BuiltInContentTypeId.PublishedLink
+  id: PublishedLink
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: PublishedLink
+  nameWithType: BuiltInContentTypeId.PublishedLink
+  fullName: PnP.Framework.BuiltInContentTypeId.PublishedLink
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PublishedLink
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 78
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string PublishedLink = "0x01004613D6562E4C41A7B9DADDAC1689E00D"
+    return:
+      type: System.String
+    content.vb: Public Const PublishedLink As String = "0x01004613D6562E4C41A7B9DADDAC1689E00D"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.ReusableText
+  commentId: F:PnP.Framework.BuiltInContentTypeId.ReusableText
+  id: ReusableText
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: ReusableText
+  nameWithType: BuiltInContentTypeId.ReusableText
+  fullName: PnP.Framework.BuiltInContentTypeId.ReusableText
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ReusableText
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 79
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string ReusableText = "0x01004D5A79BAFA4A4576B79C56FF3D0D662D"
+    return:
+      type: System.String
+    content.vb: Public Const ReusableText As String = "0x01004D5A79BAFA4A4576B79C56FF3D0D662D"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.PageOutputCache
+  commentId: F:PnP.Framework.BuiltInContentTypeId.PageOutputCache
+  id: PageOutputCache
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: PageOutputCache
+  nameWithType: BuiltInContentTypeId.PageOutputCache
+  fullName: PnP.Framework.BuiltInContentTypeId.PageOutputCache
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PageOutputCache
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 80
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string PageOutputCache = "0x010087D89D279834C94E98E5E1B4A913C67E"
+    return:
+      type: System.String
+    content.vb: Public Const PageOutputCache As String = "0x010087D89D279834C94E98E5E1B4A913C67E"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.DeviceChannel
+  commentId: F:PnP.Framework.BuiltInContentTypeId.DeviceChannel
+  id: DeviceChannel
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: DeviceChannel
+  nameWithType: BuiltInContentTypeId.DeviceChannel
+  fullName: PnP.Framework.BuiltInContentTypeId.DeviceChannel
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeviceChannel
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 81
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string DeviceChannel = "0x01009AF87C5C1DF34CA38277FEABCB5018F6"
+    return:
+      type: System.String
+    content.vb: Public Const DeviceChannel As String = "0x01009AF87C5C1DF34CA38277FEABCB5018F6"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.DeviceChannelMappings
+  commentId: F:PnP.Framework.BuiltInContentTypeId.DeviceChannelMappings
+  id: DeviceChannelMappings
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: DeviceChannelMappings
+  nameWithType: BuiltInContentTypeId.DeviceChannelMappings
+  fullName: PnP.Framework.BuiltInContentTypeId.DeviceChannelMappings
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeviceChannelMappings
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 82
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string DeviceChannelMappings = "0x010100FDA260FD09A244B183A666F2AE2475A6"
+    return:
+      type: System.String
+    content.vb: Public Const DeviceChannelMappings As String = "0x010100FDA260FD09A244B183A666F2AE2475A6"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.SystemPageLayout
+  commentId: F:PnP.Framework.BuiltInContentTypeId.SystemPageLayout
+  id: SystemPageLayout
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: SystemPageLayout
+  nameWithType: BuiltInContentTypeId.SystemPageLayout
+  fullName: PnP.Framework.BuiltInContentTypeId.SystemPageLayout
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SystemPageLayout
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 83
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string SystemPageLayout = "0x01010007FF3E057FA8AB4AA42FCB67B453FFC1"
+    return:
+      type: System.String
+    content.vb: Public Const SystemPageLayout As String = "0x01010007FF3E057FA8AB4AA42FCB67B453FFC1"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.PageLayout
+  commentId: F:PnP.Framework.BuiltInContentTypeId.PageLayout
+  id: PageLayout
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: PageLayout
+  nameWithType: BuiltInContentTypeId.PageLayout
+  fullName: PnP.Framework.BuiltInContentTypeId.PageLayout
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PageLayout
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 84
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string PageLayout = "0x01010007FF3E057FA8AB4AA42FCB67B453FFC100E214EEE741181F4E9F7ACC43278EE811"
+    return:
+      type: System.String
+    content.vb: Public Const PageLayout As String = "0x01010007FF3E057FA8AB4AA42FCB67B453FFC100E214EEE741181F4E9F7ACC43278EE811"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.HtmlPageLayout
+  commentId: F:PnP.Framework.BuiltInContentTypeId.HtmlPageLayout
+  id: HtmlPageLayout
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: HtmlPageLayout
+  nameWithType: BuiltInContentTypeId.HtmlPageLayout
+  fullName: PnP.Framework.BuiltInContentTypeId.HtmlPageLayout
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: HtmlPageLayout
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 85
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string HtmlPageLayout = "0x01010007FF3E057FA8AB4AA42FCB67B453FFC100E214EEE741181F4E9F7ACC43278EE8110003D357F861E29844953D5CAA1D4D8A3B"
+    return:
+      type: System.String
+    content.vb: Public Const HtmlPageLayout As String = "0x01010007FF3E057FA8AB4AA42FCB67B453FFC100E214EEE741181F4E9F7ACC43278EE8110003D357F861E29844953D5CAA1D4D8A3B"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.SystemMasterPage
+  commentId: F:PnP.Framework.BuiltInContentTypeId.SystemMasterPage
+  id: SystemMasterPage
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: SystemMasterPage
+  nameWithType: BuiltInContentTypeId.SystemMasterPage
+  fullName: PnP.Framework.BuiltInContentTypeId.SystemMasterPage
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SystemMasterPage
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 86
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string SystemMasterPage = "0x0101000F1C8B9E0EB4BE489F09807B2C53288F"
+    return:
+      type: System.String
+    content.vb: Public Const SystemMasterPage As String = "0x0101000F1C8B9E0EB4BE489F09807B2C53288F"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.ASPNETMasterPage
+  commentId: F:PnP.Framework.BuiltInContentTypeId.ASPNETMasterPage
+  id: ASPNETMasterPage
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: ASPNETMasterPage
+  nameWithType: BuiltInContentTypeId.ASPNETMasterPage
+  fullName: PnP.Framework.BuiltInContentTypeId.ASPNETMasterPage
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ASPNETMasterPage
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 87
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string ASPNETMasterPage = "0x0101000F1C8B9E0EB4BE489F09807B2C53288F0054AD6EF48B9F7B45A142F8173F171BD1"
+    return:
+      type: System.String
+    content.vb: Public Const ASPNETMasterPage As String = "0x0101000F1C8B9E0EB4BE489F09807B2C53288F0054AD6EF48B9F7B45A142F8173F171BD1"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.HtmlMasterPage
+  commentId: F:PnP.Framework.BuiltInContentTypeId.HtmlMasterPage
+  id: HtmlMasterPage
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: HtmlMasterPage
+  nameWithType: BuiltInContentTypeId.HtmlMasterPage
+  fullName: PnP.Framework.BuiltInContentTypeId.HtmlMasterPage
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: HtmlMasterPage
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 88
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string HtmlMasterPage = "0x0101000F1C8B9E0EB4BE489F09807B2C53288F0054AD6EF48B9F7B45A142F8173F171BD10003D357F861E29844953D5CAA1D4D8A3A"
+    return:
+      type: System.String
+    content.vb: Public Const HtmlMasterPage As String = "0x0101000F1C8B9E0EB4BE489F09807B2C53288F0054AD6EF48B9F7B45A142F8173F171BD10003D357F861E29844953D5CAA1D4D8A3A"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.SystemPage
+  commentId: F:PnP.Framework.BuiltInContentTypeId.SystemPage
+  id: SystemPage
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: SystemPage
+  nameWithType: BuiltInContentTypeId.SystemPage
+  fullName: PnP.Framework.BuiltInContentTypeId.SystemPage
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SystemPage
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 89
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string SystemPage = "0x010100C568DB52D9D0A14D9B2FDCC96666E9F2"
+    return:
+      type: System.String
+    content.vb: Public Const SystemPage As String = "0x010100C568DB52D9D0A14D9B2FDCC96666E9F2"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.Page
+  commentId: F:PnP.Framework.BuiltInContentTypeId.Page
+  id: Page
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: Page
+  nameWithType: BuiltInContentTypeId.Page
+  fullName: PnP.Framework.BuiltInContentTypeId.Page
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Page
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 90
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string Page = "0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF39"
+    return:
+      type: System.String
+    content.vb: Public Const Page As String = "0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF39"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.ArticlePage
+  commentId: F:PnP.Framework.BuiltInContentTypeId.ArticlePage
+  id: ArticlePage
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: ArticlePage
+  nameWithType: BuiltInContentTypeId.ArticlePage
+  fullName: PnP.Framework.BuiltInContentTypeId.ArticlePage
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ArticlePage
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 91
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string ArticlePage = "0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF3900242457EFB8B24247815D688C526CD44D"
+    return:
+      type: System.String
+    content.vb: Public Const ArticlePage As String = "0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF3900242457EFB8B24247815D688C526CD44D"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.EnterpriseWikiPage
+  commentId: F:PnP.Framework.BuiltInContentTypeId.EnterpriseWikiPage
+  id: EnterpriseWikiPage
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: EnterpriseWikiPage
+  nameWithType: BuiltInContentTypeId.EnterpriseWikiPage
+  fullName: PnP.Framework.BuiltInContentTypeId.EnterpriseWikiPage
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnterpriseWikiPage
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 92
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string EnterpriseWikiPage = "0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF39004C1F8B46085B4D22B1CDC3DE08CFFB9C"
+    return:
+      type: System.String
+    content.vb: Public Const EnterpriseWikiPage As String = "0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF39004C1F8B46085B4D22B1CDC3DE08CFFB9C"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.ProjectPage
+  commentId: F:PnP.Framework.BuiltInContentTypeId.ProjectPage
+  id: ProjectPage
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: ProjectPage
+  nameWithType: BuiltInContentTypeId.ProjectPage
+  fullName: PnP.Framework.BuiltInContentTypeId.ProjectPage
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ProjectPage
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 93
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string ProjectPage = "0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF39004C1F8B46085B4D22B1CDC3DE08CFFB9C0055EF50AAFF2E4BADA437E4BAE09A30F8"
+    return:
+      type: System.String
+    content.vb: Public Const ProjectPage As String = "0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF39004C1F8B46085B4D22B1CDC3DE08CFFB9C0055EF50AAFF2E4BADA437E4BAE09A30F8"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.WelcomePage
+  commentId: F:PnP.Framework.BuiltInContentTypeId.WelcomePage
+  id: WelcomePage
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: WelcomePage
+  nameWithType: BuiltInContentTypeId.WelcomePage
+  fullName: PnP.Framework.BuiltInContentTypeId.WelcomePage
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WelcomePage
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 94
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string WelcomePage = "0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF390064DEA0F50FC8C147B0B6EA0636C4A7D4"
+    return:
+      type: System.String
+    content.vb: Public Const WelcomePage As String = "0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF390064DEA0F50FC8C147B0B6EA0636C4A7D4"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.ErrorPage
+  commentId: F:PnP.Framework.BuiltInContentTypeId.ErrorPage
+  id: ErrorPage
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: ErrorPage
+  nameWithType: BuiltInContentTypeId.ErrorPage
+  fullName: PnP.Framework.BuiltInContentTypeId.ErrorPage
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ErrorPage
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 95
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string ErrorPage = "0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF3900796F542FC5E446758C697981E370458C"
+    return:
+      type: System.String
+    content.vb: Public Const ErrorPage As String = "0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF3900796F542FC5E446758C697981E370458C"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.RedirectPage
+  commentId: F:PnP.Framework.BuiltInContentTypeId.RedirectPage
+  id: RedirectPage
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: RedirectPage
+  nameWithType: BuiltInContentTypeId.RedirectPage
+  fullName: PnP.Framework.BuiltInContentTypeId.RedirectPage
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RedirectPage
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 96
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string RedirectPage = "0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF3900FD0E870BA06948879DBD5F9813CD8799"
+    return:
+      type: System.String
+    content.vb: Public Const RedirectPage As String = "0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF3900FD0E870BA06948879DBD5F9813CD8799"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.ModernArticlePage
+  commentId: F:PnP.Framework.BuiltInContentTypeId.ModernArticlePage
+  id: ModernArticlePage
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: ModernArticlePage
+  nameWithType: BuiltInContentTypeId.ModernArticlePage
+  fullName: PnP.Framework.BuiltInContentTypeId.ModernArticlePage
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ModernArticlePage
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 101
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  summary: "\nContains the content identifier (ID) for content types used in the modern page infrastructure\n"
+  example: []
+  syntax:
+    content: public const string ModernArticlePage = "0x0101009D1CB255DA76424F860D91F20E6C4118"
+    return:
+      type: System.String
+    content.vb: Public Const ModernArticlePage As String = "0x0101009D1CB255DA76424F860D91F20E6C4118"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.RepostPage
+  commentId: F:PnP.Framework.BuiltInContentTypeId.RepostPage
+  id: RepostPage
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: RepostPage
+  nameWithType: BuiltInContentTypeId.RepostPage
+  fullName: PnP.Framework.BuiltInContentTypeId.RepostPage
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RepostPage
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 102
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string RepostPage = "0x0101009D1CB255DA76424F860D91F20E6C4118002A50BFCFB7614729B56886FADA02339B"
+    return:
+      type: System.String
+    content.vb: Public Const RepostPage As String = "0x0101009D1CB255DA76424F860D91F20E6C4118002A50BFCFB7614729B56886FADA02339B"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.SpacesPage
+  commentId: F:PnP.Framework.BuiltInContentTypeId.SpacesPage
+  id: SpacesPage
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: SpacesPage
+  nameWithType: BuiltInContentTypeId.SpacesPage
+  fullName: PnP.Framework.BuiltInContentTypeId.SpacesPage
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SpacesPage
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 103
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string SpacesPage = "0x0101009D1CB255DA76424F860D91F20E6C41180043153F945E98468297E67C3EEE43AB70"
+    return:
+      type: System.String
+    content.vb: Public Const SpacesPage As String = "0x0101009D1CB255DA76424F860D91F20E6C41180043153F945E98468297E67C3EEE43AB70"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.BuiltInContentTypeId.Contains(System.String)
+  commentId: M:PnP.Framework.BuiltInContentTypeId.Contains(System.String)
+  id: Contains(System.String)
+  parent: PnP.Framework.BuiltInContentTypeId
+  langs:
+  - csharp
+  - vb
+  name: Contains(String)
+  nameWithType: BuiltInContentTypeId.Contains(String)
+  fullName: PnP.Framework.BuiltInContentTypeId.Contains(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/BuiltInContentTypeId.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Contains
+    path: ../src/lib/PnP.Framework/BuiltInContentTypeId.cs
+    startLine: 107
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public static bool Contains(string id)
+    parameters:
+    - id: id
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function Contains(id As String) As Boolean
+  overload: PnP.Framework.BuiltInContentTypeId.Contains*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: PnP.Framework
+  commentId: N:PnP.Framework
+  name: PnP.Framework
+  nameWithType: PnP.Framework
+  fullName: PnP.Framework
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: PnP.Framework.BuiltInContentTypeId.Contains*
+  commentId: Overload:PnP.Framework.BuiltInContentTypeId.Contains
+  name: Contains
+  nameWithType: BuiltInContentTypeId.Contains
+  fullName: PnP.Framework.BuiltInContentTypeId.Contains
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean

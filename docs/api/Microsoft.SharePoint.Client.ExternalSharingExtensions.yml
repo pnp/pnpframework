@@ -1,0 +1,2171 @@
+### YamlMime:ManagedReference
+items:
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  commentId: T:Microsoft.SharePoint.Client.ExternalSharingExtensions
+  id: ExternalSharingExtensions
+  parent: Microsoft.SharePoint.Client
+  children:
+  - Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkForDocument(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption)
+  - Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkForDocumentAsync(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption)
+  - Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkWithExpirationForDocument(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.DateTime)
+  - Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkWithExpirationForDocumentAsync(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.DateTime)
+  - Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForDocument(Microsoft.SharePoint.Client.Web,System.String,System.Boolean)
+  - Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForDocumentAsync(Microsoft.SharePoint.Client.Web,System.String,System.Boolean)
+  - Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForSite(Microsoft.SharePoint.Client.Web,System.Boolean)
+  - Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForSiteAsync(Microsoft.SharePoint.Client.Web,System.Boolean)
+  - Microsoft.SharePoint.Client.ExternalSharingExtensions.InviteExternalUser(Microsoft.SharePoint.Client.Group,System.String,System.Boolean,System.String)
+  - Microsoft.SharePoint.Client.ExternalSharingExtensions.InviteExternalUserAsync(Microsoft.SharePoint.Client.Group,System.String,System.Boolean,System.String)
+  - Microsoft.SharePoint.Client.ExternalSharingExtensions.ResolvePeoplePickerValueForEmail(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.ExternalSharingExtensions.ResolvePeoplePickerValueForEmailAsync(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocument(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.Boolean,System.String,System.Boolean)
+  - Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentAsync(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.Boolean,System.String,System.Boolean)
+  - Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentWithPeoplePickerValue(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.Boolean,System.String,System.Boolean)
+  - Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentWithPeoplePickerValueAsync(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.Boolean,System.String,System.Boolean)
+  - Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSite(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingSiteOption,System.Boolean,System.String,System.Boolean)
+  - Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSite(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.Group,System.Boolean,System.String)
+  - Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteAsync(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingSiteOption,System.Boolean,System.String,System.Boolean)
+  - Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteAsync(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.Group,System.Boolean,System.String)
+  - Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteWithPeoplePickerValue(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingSiteOption,System.Boolean,System.String,System.Boolean)
+  - Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteWithPeoplePickerValue(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.Group,System.Boolean,System.String)
+  - Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteWithPeoplePickerValueAsync(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingSiteOption,System.Boolean,System.String,System.Boolean)
+  - Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteWithPeoplePickerValueAsync(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.Group,System.Boolean,System.String)
+  - Microsoft.SharePoint.Client.ExternalSharingExtensions.UnshareDocument(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.ExternalSharingExtensions.UnshareDocumentAsync(Microsoft.SharePoint.Client.Web,System.String)
+  langs:
+  - csharp
+  - vb
+  name: ExternalSharingExtensions
+  nameWithType: ExternalSharingExtensions
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ExternalSharingExtensions
+    path: ../src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+    startLine: 44
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nThis class holds the methods for sharing and unsharing of the document and the site. \n"
+  example: []
+  syntax:
+    content: public static class ExternalSharingExtensions
+    content.vb: Public Module ExternalSharingExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.ResolvePeoplePickerValueForEmail(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.ResolvePeoplePickerValueForEmail(Microsoft.SharePoint.Client.Web,System.String)
+  id: ResolvePeoplePickerValueForEmail(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  langs:
+  - csharp
+  - vb
+  name: ResolvePeoplePickerValueForEmail(Web, String)
+  nameWithType: ExternalSharingExtensions.ResolvePeoplePickerValueForEmail(Web, String)
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.ResolvePeoplePickerValueForEmail(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ResolvePeoplePickerValueForEmail
+    path: ../src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+    startLine: 53
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCan be used to get needed people picker search result value for given email account. \nSee <a href=\"https://msdn.microsoft.com/en-us/library/office/jj179690.aspx\">MSDN</a>\n"
+  example: []
+  syntax:
+    content: public static string ResolvePeoplePickerValueForEmail(this Web web, string emailAddress)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web for the context used for people picker search
+    - id: emailAddress
+      type: System.String
+      description: Email address to be used as the query parameter. Should be pointing to unique person which is then searched using people picker capability programatically.
+    return:
+      type: System.String
+      description: Resolves people picker value which can be used for sharing objects in the SharePoint site
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ResolvePeoplePickerValueForEmail(web As Web, emailAddress As String) As String
+  overload: Microsoft.SharePoint.Client.ExternalSharingExtensions.ResolvePeoplePickerValueForEmail*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.ResolvePeoplePickerValueForEmailAsync(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.ResolvePeoplePickerValueForEmailAsync(Microsoft.SharePoint.Client.Web,System.String)
+  id: ResolvePeoplePickerValueForEmailAsync(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  langs:
+  - csharp
+  - vb
+  name: ResolvePeoplePickerValueForEmailAsync(Web, String)
+  nameWithType: ExternalSharingExtensions.ResolvePeoplePickerValueForEmailAsync(Web, String)
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.ResolvePeoplePickerValueForEmailAsync(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ResolvePeoplePickerValueForEmailAsync
+    path: ../src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+    startLine: 64
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCan be used to get needed people picker search result value for given email account. \nSee <a href=\"https://msdn.microsoft.com/en-us/library/office/jj179690.aspx\">MSDN</a>\n"
+  example: []
+  syntax:
+    content: public static async Task<string> ResolvePeoplePickerValueForEmailAsync(this Web web, string emailAddress)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web for the context used for people picker search
+    - id: emailAddress
+      type: System.String
+      description: Email address to be used as the query parameter. Should be pointing to unique person which is then searched using people picker capability programatically.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+      description: Resolves people picker value which can be used for sharing objects in the SharePoint site
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ResolvePeoplePickerValueForEmailAsync(web As Web, emailAddress As String) As Task(Of String)
+  overload: Microsoft.SharePoint.Client.ExternalSharingExtensions.ResolvePeoplePickerValueForEmailAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkForDocument(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkForDocument(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption)
+  id: CreateAnonymousLinkForDocument(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  langs:
+  - csharp
+  - vb
+  name: CreateAnonymousLinkForDocument(Web, String, ExternalSharingDocumentOption)
+  nameWithType: ExternalSharingExtensions.CreateAnonymousLinkForDocument(Web, String, ExternalSharingDocumentOption)
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkForDocument(Microsoft.SharePoint.Client.Web, System.String, Microsoft.SharePoint.Client.ExternalSharingDocumentOption)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateAnonymousLinkForDocument
+    path: ../src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+    startLine: 104
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCreates anonymous link to given document.\nSee <a href=\"https://msdn.microsoft.com/en-us/library/office/microsoft.sharepoint.client.web.createanonymouslink.aspx\">MSDN</a>\n"
+  example: []
+  syntax:
+    content: public static string CreateAnonymousLinkForDocument(this Web web, string urlToDocument, ExternalSharingDocumentOption shareOption)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web for the context used for people picker search
+    - id: urlToDocument
+      type: System.String
+      description: Full URL to the file which is shared
+    - id: shareOption
+      type: Microsoft.SharePoint.Client.ExternalSharingDocumentOption
+      description: Type of the link to be created - View or Edit
+    return:
+      type: System.String
+      description: Anonymous URL to the file as string
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function CreateAnonymousLinkForDocument(web As Web, urlToDocument As String, shareOption As ExternalSharingDocumentOption) As String
+  overload: Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkForDocument*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkForDocumentAsync(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkForDocumentAsync(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption)
+  id: CreateAnonymousLinkForDocumentAsync(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  langs:
+  - csharp
+  - vb
+  name: CreateAnonymousLinkForDocumentAsync(Web, String, ExternalSharingDocumentOption)
+  nameWithType: ExternalSharingExtensions.CreateAnonymousLinkForDocumentAsync(Web, String, ExternalSharingDocumentOption)
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkForDocumentAsync(Microsoft.SharePoint.Client.Web, System.String, Microsoft.SharePoint.Client.ExternalSharingDocumentOption)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateAnonymousLinkForDocumentAsync
+    path: ../src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+    startLine: 116
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCreates anonymous link to given document.\nSee <a href=\"https://msdn.microsoft.com/en-us/library/office/microsoft.sharepoint.client.web.createanonymouslink.aspx\">MSDN</a>\n"
+  example: []
+  syntax:
+    content: public static async Task<string> CreateAnonymousLinkForDocumentAsync(this Web web, string urlToDocument, ExternalSharingDocumentOption shareOption)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web for the context used for people picker search
+    - id: urlToDocument
+      type: System.String
+      description: Full URL to the file which is shared
+    - id: shareOption
+      type: Microsoft.SharePoint.Client.ExternalSharingDocumentOption
+      description: Type of the link to be created - View or Edit
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+      description: Anonymous URL to the file as string
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function CreateAnonymousLinkForDocumentAsync(web As Web, urlToDocument As String, shareOption As ExternalSharingDocumentOption) As Task(Of String)
+  overload: Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkForDocumentAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkWithExpirationForDocument(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.DateTime)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkWithExpirationForDocument(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.DateTime)
+  id: CreateAnonymousLinkWithExpirationForDocument(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.DateTime)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  langs:
+  - csharp
+  - vb
+  name: CreateAnonymousLinkWithExpirationForDocument(Web, String, ExternalSharingDocumentOption, DateTime)
+  nameWithType: ExternalSharingExtensions.CreateAnonymousLinkWithExpirationForDocument(Web, String, ExternalSharingDocumentOption, DateTime)
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkWithExpirationForDocument(Microsoft.SharePoint.Client.Web, System.String, Microsoft.SharePoint.Client.ExternalSharingDocumentOption, System.DateTime)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateAnonymousLinkWithExpirationForDocument
+    path: ../src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+    startLine: 152
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCreates anonymous link to the given document with automatic expiration time.\nSee <a href=\"https://msdn.microsoft.com/en-us/library/office/microsoft.sharepoint.client.web.createanonymouslinkwithexpiration.aspx\">MSDN</a>\n"
+  example: []
+  syntax:
+    content: public static string CreateAnonymousLinkWithExpirationForDocument(this Web web, string urlToDocument, ExternalSharingDocumentOption shareOption, DateTime expireTime)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web for the context used for people picker search
+    - id: urlToDocument
+      type: System.String
+      description: Full URL to the file which is shared
+    - id: shareOption
+      type: Microsoft.SharePoint.Client.ExternalSharingDocumentOption
+      description: Type of the link to be created - View or Edit
+    - id: expireTime
+      type: System.DateTime
+      description: Date time for link expiration - will be converted to ISO 8601 format automatically
+    return:
+      type: System.String
+      description: Anonymous URL to the file as string
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function CreateAnonymousLinkWithExpirationForDocument(web As Web, urlToDocument As String, shareOption As ExternalSharingDocumentOption, expireTime As Date) As String
+  overload: Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkWithExpirationForDocument*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkWithExpirationForDocumentAsync(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.DateTime)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkWithExpirationForDocumentAsync(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.DateTime)
+  id: CreateAnonymousLinkWithExpirationForDocumentAsync(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.DateTime)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  langs:
+  - csharp
+  - vb
+  name: CreateAnonymousLinkWithExpirationForDocumentAsync(Web, String, ExternalSharingDocumentOption, DateTime)
+  nameWithType: ExternalSharingExtensions.CreateAnonymousLinkWithExpirationForDocumentAsync(Web, String, ExternalSharingDocumentOption, DateTime)
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkWithExpirationForDocumentAsync(Microsoft.SharePoint.Client.Web, System.String, Microsoft.SharePoint.Client.ExternalSharingDocumentOption, System.DateTime)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateAnonymousLinkWithExpirationForDocumentAsync
+    path: ../src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+    startLine: 165
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCreates anonymous link to the given document with automatic expiration time.\nSee <a href=\"https://msdn.microsoft.com/en-us/library/office/microsoft.sharepoint.client.web.createanonymouslinkwithexpiration.aspx\">MSDN</a>\n"
+  example: []
+  syntax:
+    content: public static async Task<string> CreateAnonymousLinkWithExpirationForDocumentAsync(this Web web, string urlToDocument, ExternalSharingDocumentOption shareOption, DateTime expireTime)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web for the context used for people picker search
+    - id: urlToDocument
+      type: System.String
+      description: Full URL to the file which is shared
+    - id: shareOption
+      type: Microsoft.SharePoint.Client.ExternalSharingDocumentOption
+      description: Type of the link to be created - View or Edit
+    - id: expireTime
+      type: System.DateTime
+      description: Date time for link expiration - will be converted to ISO 8601 format automatically
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+      description: Anonymous URL to the file as string
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function CreateAnonymousLinkWithExpirationForDocumentAsync(web As Web, urlToDocument As String, shareOption As ExternalSharingDocumentOption, expireTime As Date) As Task(Of String)
+  overload: Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkWithExpirationForDocumentAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocument(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.Boolean,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocument(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.Boolean,System.String,System.Boolean)
+  id: ShareDocument(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.Boolean,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  langs:
+  - csharp
+  - vb
+  name: ShareDocument(Web, String, String, ExternalSharingDocumentOption, Boolean, String, Boolean)
+  nameWithType: ExternalSharingExtensions.ShareDocument(Web, String, String, ExternalSharingDocumentOption, Boolean, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocument(Microsoft.SharePoint.Client.Web, System.String, System.String, Microsoft.SharePoint.Client.ExternalSharingDocumentOption, System.Boolean, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ShareDocument
+    path: ../src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+    startLine: 209
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAbstracted method for sharing documents just with given email address. \n"
+  example: []
+  syntax:
+    content: public static SharingResult ShareDocument(this Web web, string urlToDocument, string targetEmailToShare, ExternalSharingDocumentOption shareOption, bool sendEmail = true, string emailBody = "Document shared", bool useSimplifiedRoles = true)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web for the context used for people picker search
+    - id: urlToDocument
+      type: System.String
+      description: Full URL to the file which is shared
+    - id: targetEmailToShare
+      type: System.String
+      description: Email address for the person to whom the document will be shared
+    - id: shareOption
+      type: Microsoft.SharePoint.Client.ExternalSharingDocumentOption
+      description: View or Edit option
+    - id: sendEmail
+      type: System.Boolean
+      description: Send email or not
+    - id: emailBody
+      type: System.String
+      description: Text attached to the email sent for the person to whom the document is shared
+    - id: useSimplifiedRoles
+      type: System.Boolean
+      description: Boolean value indicating whether to use the SharePoint simplified roles (Edit, View)
+    return:
+      type: Microsoft.SharePoint.Client.SharingResult
+      description: A SharingResult object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ShareDocument(web As Web, urlToDocument As String, targetEmailToShare As String, shareOption As ExternalSharingDocumentOption, sendEmail As Boolean = True, emailBody As String = "Document shared", useSimplifiedRoles As Boolean = True) As SharingResult
+  overload: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocument*
+  see:
+  - linkId: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocument(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.Boolean,System.String,System.Boolean)
+    commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocument(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.Boolean,System.String,System.Boolean)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentAsync(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.Boolean,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentAsync(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.Boolean,System.String,System.Boolean)
+  id: ShareDocumentAsync(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.Boolean,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  langs:
+  - csharp
+  - vb
+  name: ShareDocumentAsync(Web, String, String, ExternalSharingDocumentOption, Boolean, String, Boolean)
+  nameWithType: ExternalSharingExtensions.ShareDocumentAsync(Web, String, String, ExternalSharingDocumentOption, Boolean, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentAsync(Microsoft.SharePoint.Client.Web, System.String, System.String, Microsoft.SharePoint.Client.ExternalSharingDocumentOption, System.Boolean, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ShareDocumentAsync
+    path: ../src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+    startLine: 228
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAbstracted method for sharing documents just with given email address. \n"
+  example: []
+  syntax:
+    content: public static async Task<SharingResult> ShareDocumentAsync(this Web web, string urlToDocument, string targetEmailToShare, ExternalSharingDocumentOption shareOption, bool sendEmail = true, string emailBody = "Document shared", bool useSimplifiedRoles = true)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web for the context used for people picker search
+    - id: urlToDocument
+      type: System.String
+      description: Full URL to the file which is shared
+    - id: targetEmailToShare
+      type: System.String
+      description: Email address for the person to whom the document will be shared
+    - id: shareOption
+      type: Microsoft.SharePoint.Client.ExternalSharingDocumentOption
+      description: View or Edit option
+    - id: sendEmail
+      type: System.Boolean
+      description: Send email or not
+    - id: emailBody
+      type: System.String
+      description: Text attached to the email sent for the person to whom the document is shared
+    - id: useSimplifiedRoles
+      type: System.Boolean
+      description: Boolean value indicating whether to use the SharePoint simplified roles (Edit, View)
+    return:
+      type: System.Threading.Tasks.Task{Microsoft.SharePoint.Client.SharingResult}
+      description: A SharingResult object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ShareDocumentAsync(web As Web, urlToDocument As String, targetEmailToShare As String, shareOption As ExternalSharingDocumentOption, sendEmail As Boolean = True, emailBody As String = "Document shared", useSimplifiedRoles As Boolean = True) As Task(Of SharingResult)
+  overload: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentAsync*
+  see:
+  - linkId: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentAsync(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.Boolean,System.String,System.Boolean)
+    commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentAsync(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.Boolean,System.String,System.Boolean)
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentWithPeoplePickerValue(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.Boolean,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentWithPeoplePickerValue(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.Boolean,System.String,System.Boolean)
+  id: ShareDocumentWithPeoplePickerValue(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.Boolean,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  langs:
+  - csharp
+  - vb
+  name: ShareDocumentWithPeoplePickerValue(Web, String, String, ExternalSharingDocumentOption, Boolean, String, Boolean)
+  nameWithType: ExternalSharingExtensions.ShareDocumentWithPeoplePickerValue(Web, String, String, ExternalSharingDocumentOption, Boolean, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentWithPeoplePickerValue(Microsoft.SharePoint.Client.Web, System.String, System.String, Microsoft.SharePoint.Client.ExternalSharingDocumentOption, System.Boolean, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ShareDocumentWithPeoplePickerValue
+    path: ../src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+    startLine: 256
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nShare document with complex JSON string value.\n"
+  example: []
+  syntax:
+    content: public static SharingResult ShareDocumentWithPeoplePickerValue(this Web web, string urlToDocument, string peoplePickerInput, ExternalSharingDocumentOption shareOption, bool sendEmail = true, string emailBody = "Document shared for you.", bool useSimplifiedRoles = true)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web for the context used for people picker search
+    - id: urlToDocument
+      type: System.String
+      description: Full URL to the file which is shared
+    - id: peoplePickerInput
+      type: System.String
+      description: People picker JSON string value containing the target person information
+    - id: shareOption
+      type: Microsoft.SharePoint.Client.ExternalSharingDocumentOption
+      description: View or Edit option
+    - id: sendEmail
+      type: System.Boolean
+      description: Send email or not
+    - id: emailBody
+      type: System.String
+      description: Text attached to the email sent for the person to whom the document is shared
+    - id: useSimplifiedRoles
+      type: System.Boolean
+      description: Boolean value indicating whether to use the SharePoint simplified roles (Edit, View)
+    return:
+      type: Microsoft.SharePoint.Client.SharingResult
+      description: A SharingResult object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ShareDocumentWithPeoplePickerValue(web As Web, urlToDocument As String, peoplePickerInput As String, shareOption As ExternalSharingDocumentOption, sendEmail As Boolean = True, emailBody As String = "Document shared for you.", useSimplifiedRoles As Boolean = True) As SharingResult
+  overload: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentWithPeoplePickerValue*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentWithPeoplePickerValueAsync(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.Boolean,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentWithPeoplePickerValueAsync(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.Boolean,System.String,System.Boolean)
+  id: ShareDocumentWithPeoplePickerValueAsync(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.Boolean,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  langs:
+  - csharp
+  - vb
+  name: ShareDocumentWithPeoplePickerValueAsync(Web, String, String, ExternalSharingDocumentOption, Boolean, String, Boolean)
+  nameWithType: ExternalSharingExtensions.ShareDocumentWithPeoplePickerValueAsync(Web, String, String, ExternalSharingDocumentOption, Boolean, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentWithPeoplePickerValueAsync(Microsoft.SharePoint.Client.Web, System.String, System.String, Microsoft.SharePoint.Client.ExternalSharingDocumentOption, System.Boolean, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ShareDocumentWithPeoplePickerValueAsync
+    path: ../src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+    startLine: 273
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nShare document with complex JSON string value.\n"
+  example: []
+  syntax:
+    content: public static async Task<SharingResult> ShareDocumentWithPeoplePickerValueAsync(this Web web, string urlToDocument, string peoplePickerInput, ExternalSharingDocumentOption shareOption, bool sendEmail = true, string emailBody = "Document shared for you.", bool useSimplifiedRoles = true)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web for the context used for people picker search
+    - id: urlToDocument
+      type: System.String
+      description: Full URL to the file which is shared
+    - id: peoplePickerInput
+      type: System.String
+      description: People picker JSON string value containing the target person information
+    - id: shareOption
+      type: Microsoft.SharePoint.Client.ExternalSharingDocumentOption
+      description: View or Edit option
+    - id: sendEmail
+      type: System.Boolean
+      description: Send email or not
+    - id: emailBody
+      type: System.String
+      description: Text attached to the email sent for the person to whom the document is shared
+    - id: useSimplifiedRoles
+      type: System.Boolean
+      description: Boolean value indicating whether to use the SharePoint simplified roles (Edit, View)
+    return:
+      type: System.Threading.Tasks.Task{Microsoft.SharePoint.Client.SharingResult}
+      description: A SharingResult object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ShareDocumentWithPeoplePickerValueAsync(web As Web, urlToDocument As String, peoplePickerInput As String, shareOption As ExternalSharingDocumentOption, sendEmail As Boolean = True, emailBody As String = "Document shared for you.", useSimplifiedRoles As Boolean = True) As Task(Of SharingResult)
+  overload: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentWithPeoplePickerValueAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.UnshareDocument(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.UnshareDocument(Microsoft.SharePoint.Client.Web,System.String)
+  id: UnshareDocument(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  langs:
+  - csharp
+  - vb
+  name: UnshareDocument(Web, String)
+  nameWithType: ExternalSharingExtensions.UnshareDocument(Web, String)
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.UnshareDocument(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UnshareDocument
+    path: ../src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+    startLine: 318
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCan be used to programatically to unshare any document with the document URL.\n"
+  example: []
+  syntax:
+    content: public static SharingResult UnshareDocument(this Web web, string urlToDocument)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web for the context used for people picker search
+    - id: urlToDocument
+      type: System.String
+      description: Full URL to the file which is shared
+    return:
+      type: Microsoft.SharePoint.Client.SharingResult
+      description: A SharingResult object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function UnshareDocument(web As Web, urlToDocument As String) As SharingResult
+  overload: Microsoft.SharePoint.Client.ExternalSharingExtensions.UnshareDocument*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.UnshareDocumentAsync(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.UnshareDocumentAsync(Microsoft.SharePoint.Client.Web,System.String)
+  id: UnshareDocumentAsync(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  langs:
+  - csharp
+  - vb
+  name: UnshareDocumentAsync(Web, String)
+  nameWithType: ExternalSharingExtensions.UnshareDocumentAsync(Web, String)
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.UnshareDocumentAsync(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UnshareDocumentAsync
+    path: ../src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+    startLine: 328
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCan be used to programatically to unshare any document with the document URL.\n"
+  example: []
+  syntax:
+    content: public static async Task<SharingResult> UnshareDocumentAsync(this Web web, string urlToDocument)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web for the context used for people picker search
+    - id: urlToDocument
+      type: System.String
+      description: Full URL to the file which is shared
+    return:
+      type: System.Threading.Tasks.Task{Microsoft.SharePoint.Client.SharingResult}
+      description: A SharingResult object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function UnshareDocumentAsync(web As Web, urlToDocument As String) As Task(Of SharingResult)
+  overload: Microsoft.SharePoint.Client.ExternalSharingExtensions.UnshareDocumentAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForDocument(Microsoft.SharePoint.Client.Web,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForDocument(Microsoft.SharePoint.Client.Web,System.String,System.Boolean)
+  id: GetObjectSharingSettingsForDocument(Microsoft.SharePoint.Client.Web,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetObjectSharingSettingsForDocument(Web, String, Boolean)
+  nameWithType: ExternalSharingExtensions.GetObjectSharingSettingsForDocument(Web, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForDocument(Microsoft.SharePoint.Client.Web, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetObjectSharingSettingsForDocument
+    path: ../src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+    startLine: 351
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGet current sharing settings for document and load list of users it has been shared automatically.\n"
+  example: []
+  syntax:
+    content: public static ObjectSharingSettings GetObjectSharingSettingsForDocument(this Web web, string urlToDocument, bool useSimplifiedPolicies = true)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web for the context
+    - id: urlToDocument
+      type: System.String
+      description: Full URL to the file which is shared
+    - id: useSimplifiedPolicies
+      type: System.Boolean
+      description: Boolean value indicating whether to use the SharePoint simplified roles (Edit, View).
+    return:
+      type: Microsoft.SharePoint.Client.ObjectSharingSettings
+      description: A ObjectSharingSettings object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetObjectSharingSettingsForDocument(web As Web, urlToDocument As String, useSimplifiedPolicies As Boolean = True) As ObjectSharingSettings
+  overload: Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForDocument*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForDocumentAsync(Microsoft.SharePoint.Client.Web,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForDocumentAsync(Microsoft.SharePoint.Client.Web,System.String,System.Boolean)
+  id: GetObjectSharingSettingsForDocumentAsync(Microsoft.SharePoint.Client.Web,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetObjectSharingSettingsForDocumentAsync(Web, String, Boolean)
+  nameWithType: ExternalSharingExtensions.GetObjectSharingSettingsForDocumentAsync(Web, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForDocumentAsync(Microsoft.SharePoint.Client.Web, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetObjectSharingSettingsForDocumentAsync
+    path: ../src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+    startLine: 362
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGet current sharing settings for document and load list of users it has been shared automatically.\n"
+  example: []
+  syntax:
+    content: public static async Task<ObjectSharingSettings> GetObjectSharingSettingsForDocumentAsync(this Web web, string urlToDocument, bool useSimplifiedPolicies = true)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web for the context
+    - id: urlToDocument
+      type: System.String
+      description: Full URL to the file which is shared
+    - id: useSimplifiedPolicies
+      type: System.Boolean
+      description: Boolean value indicating whether to use the SharePoint simplified roles (Edit, View).
+    return:
+      type: System.Threading.Tasks.Task{Microsoft.SharePoint.Client.ObjectSharingSettings}
+      description: A ObjectSharingSettings object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetObjectSharingSettingsForDocumentAsync(web As Web, urlToDocument As String, useSimplifiedPolicies As Boolean = True) As Task(Of ObjectSharingSettings)
+  overload: Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForDocumentAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForSite(Microsoft.SharePoint.Client.Web,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForSite(Microsoft.SharePoint.Client.Web,System.Boolean)
+  id: GetObjectSharingSettingsForSite(Microsoft.SharePoint.Client.Web,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetObjectSharingSettingsForSite(Web, Boolean)
+  nameWithType: ExternalSharingExtensions.GetObjectSharingSettingsForSite(Web, Boolean)
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForSite(Microsoft.SharePoint.Client.Web, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetObjectSharingSettingsForSite
+    path: ../src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+    startLine: 386
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGet current sharing settings for site and load list of users it has been shared automatically.\n"
+  example: []
+  syntax:
+    content: public static ObjectSharingSettings GetObjectSharingSettingsForSite(this Web web, bool useSimplifiedPolicies = true)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web for the context
+    - id: useSimplifiedPolicies
+      type: System.Boolean
+      description: ''
+    return:
+      type: Microsoft.SharePoint.Client.ObjectSharingSettings
+      description: A ObjectSharingSettings object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetObjectSharingSettingsForSite(web As Web, useSimplifiedPolicies As Boolean = True) As ObjectSharingSettings
+  overload: Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForSite*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForSiteAsync(Microsoft.SharePoint.Client.Web,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForSiteAsync(Microsoft.SharePoint.Client.Web,System.Boolean)
+  id: GetObjectSharingSettingsForSiteAsync(Microsoft.SharePoint.Client.Web,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetObjectSharingSettingsForSiteAsync(Web, Boolean)
+  nameWithType: ExternalSharingExtensions.GetObjectSharingSettingsForSiteAsync(Web, Boolean)
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForSiteAsync(Microsoft.SharePoint.Client.Web, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetObjectSharingSettingsForSiteAsync
+    path: ../src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+    startLine: 396
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGet current sharing settings for site and load list of users it has been shared automatically.\n"
+  example: []
+  syntax:
+    content: public static async Task<ObjectSharingSettings> GetObjectSharingSettingsForSiteAsync(this Web web, bool useSimplifiedPolicies = true)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web for the context
+    - id: useSimplifiedPolicies
+      type: System.Boolean
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{Microsoft.SharePoint.Client.ObjectSharingSettings}
+      description: A ObjectSharingSettings object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetObjectSharingSettingsForSiteAsync(web As Web, useSimplifiedPolicies As Boolean = True) As Task(Of ObjectSharingSettings)
+  overload: Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForSiteAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.InviteExternalUser(Microsoft.SharePoint.Client.Group,System.String,System.Boolean,System.String)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.InviteExternalUser(Microsoft.SharePoint.Client.Group,System.String,System.Boolean,System.String)
+  id: InviteExternalUser(Microsoft.SharePoint.Client.Group,System.String,System.Boolean,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  langs:
+  - csharp
+  - vb
+  name: InviteExternalUser(Group, String, Boolean, String)
+  nameWithType: ExternalSharingExtensions.InviteExternalUser(Group, String, Boolean, String)
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.InviteExternalUser(Microsoft.SharePoint.Client.Group, System.String, System.Boolean, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: InviteExternalUser
+    path: ../src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+    startLine: 428
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nInvites an external user as a group member\n"
+  example: []
+  syntax:
+    content: public static SharingResult InviteExternalUser(this Group group, string email, bool sendEmail = true, string emailBody = "Site shared with you.")
+    parameters:
+    - id: group
+      type: Microsoft.SharePoint.Client.Group
+      description: Group to add the user to
+    - id: email
+      type: System.String
+      description: The email address of the external user
+    - id: sendEmail
+      type: System.Boolean
+      description: Should we send an email to the given address
+    - id: emailBody
+      type: System.String
+      description: Text to be added to the email
+    return:
+      type: Microsoft.SharePoint.Client.SharingResult
+      description: A SharingResult object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function InviteExternalUser(group As Group, email As String, sendEmail As Boolean = True, emailBody As String = "Site shared with you.") As SharingResult
+  overload: Microsoft.SharePoint.Client.ExternalSharingExtensions.InviteExternalUser*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.InviteExternalUserAsync(Microsoft.SharePoint.Client.Group,System.String,System.Boolean,System.String)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.InviteExternalUserAsync(Microsoft.SharePoint.Client.Group,System.String,System.Boolean,System.String)
+  id: InviteExternalUserAsync(Microsoft.SharePoint.Client.Group,System.String,System.Boolean,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  langs:
+  - csharp
+  - vb
+  name: InviteExternalUserAsync(Group, String, Boolean, String)
+  nameWithType: ExternalSharingExtensions.InviteExternalUserAsync(Group, String, Boolean, String)
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.InviteExternalUserAsync(Microsoft.SharePoint.Client.Group, System.String, System.Boolean, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: InviteExternalUserAsync
+    path: ../src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+    startLine: 441
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nInvites an external user as a group member\n"
+  example: []
+  syntax:
+    content: public static async Task<SharingResult> InviteExternalUserAsync(this Group group, string email, bool sendEmail = true, string emailBody = "Site shared with you.")
+    parameters:
+    - id: group
+      type: Microsoft.SharePoint.Client.Group
+      description: Group to add the user to
+    - id: email
+      type: System.String
+      description: The email address of the external user
+    - id: sendEmail
+      type: System.Boolean
+      description: Should we send an email to the given address
+    - id: emailBody
+      type: System.String
+      description: Text to be added to the email
+    return:
+      type: System.Threading.Tasks.Task{Microsoft.SharePoint.Client.SharingResult}
+      description: A SharingResult object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function InviteExternalUserAsync(group As Group, email As String, sendEmail As Boolean = True, emailBody As String = "Site shared with you.") As Task(Of SharingResult)
+  overload: Microsoft.SharePoint.Client.ExternalSharingExtensions.InviteExternalUserAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSite(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.Group,System.Boolean,System.String)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSite(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.Group,System.Boolean,System.String)
+  id: ShareSite(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.Group,System.Boolean,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  langs:
+  - csharp
+  - vb
+  name: ShareSite(Web, String, Group, Boolean, String)
+  nameWithType: ExternalSharingExtensions.ShareSite(Web, String, Group, Boolean, String)
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSite(Microsoft.SharePoint.Client.Web, System.String, Microsoft.SharePoint.Client.Group, System.Boolean, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ShareSite
+    path: ../src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+    startLine: 464
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nShare site for a person using just email. Will resolve needed people picker JSON value automatically.\n"
+  example: []
+  syntax:
+    content: public static SharingResult ShareSite(this Web web, string email, Group group, bool sendEmail = true, string emailBody = "Site shared for you.")
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web for the context of the site to be shared.
+    - id: email
+      type: System.String
+      description: Email of the person to whom site should be shared.
+    - id: group
+      type: Microsoft.SharePoint.Client.Group
+      description: Group to invite the external user to
+    - id: sendEmail
+      type: System.Boolean
+      description: Should we send email for the given address.
+    - id: emailBody
+      type: System.String
+      description: Text to be added on share email sent to receiver.
+    return:
+      type: Microsoft.SharePoint.Client.SharingResult
+      description: A SharingResult object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ShareSite(web As Web, email As String, group As Group, sendEmail As Boolean = True, emailBody As String = "Site shared for you.") As SharingResult
+  overload: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSite*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteAsync(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.Group,System.Boolean,System.String)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteAsync(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.Group,System.Boolean,System.String)
+  id: ShareSiteAsync(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.Group,System.Boolean,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  langs:
+  - csharp
+  - vb
+  name: ShareSiteAsync(Web, String, Group, Boolean, String)
+  nameWithType: ExternalSharingExtensions.ShareSiteAsync(Web, String, Group, Boolean, String)
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteAsync(Microsoft.SharePoint.Client.Web, System.String, Microsoft.SharePoint.Client.Group, System.Boolean, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ShareSiteAsync
+    path: ../src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+    startLine: 478
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nShare site for a person using just email. Will resolve needed people picker JSON value automatically.\n"
+  example: []
+  syntax:
+    content: public static async Task<SharingResult> ShareSiteAsync(this Web web, string email, Group group, bool sendEmail = true, string emailBody = "Site shared for you.")
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web for the context of the site to be shared.
+    - id: email
+      type: System.String
+      description: Email of the person to whom site should be shared.
+    - id: group
+      type: Microsoft.SharePoint.Client.Group
+      description: Group to invite the external user to
+    - id: sendEmail
+      type: System.Boolean
+      description: Should we send email for the given address.
+    - id: emailBody
+      type: System.String
+      description: Text to be added on share email sent to receiver.
+    return:
+      type: System.Threading.Tasks.Task{Microsoft.SharePoint.Client.SharingResult}
+      description: A SharingResult object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ShareSiteAsync(web As Web, email As String, group As Group, sendEmail As Boolean = True, emailBody As String = "Site shared for you.") As Task(Of SharingResult)
+  overload: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSite(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingSiteOption,System.Boolean,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSite(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingSiteOption,System.Boolean,System.String,System.Boolean)
+  id: ShareSite(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingSiteOption,System.Boolean,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  langs:
+  - csharp
+  - vb
+  name: ShareSite(Web, String, ExternalSharingSiteOption, Boolean, String, Boolean)
+  nameWithType: ExternalSharingExtensions.ShareSite(Web, String, ExternalSharingSiteOption, Boolean, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSite(Microsoft.SharePoint.Client.Web, System.String, Microsoft.SharePoint.Client.ExternalSharingSiteOption, System.Boolean, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ShareSite
+    path: ../src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+    startLine: 501
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nShare site for a person using just email. Will resolve needed people picker JSON value automatically.\n"
+  example: []
+  syntax:
+    content: public static SharingResult ShareSite(this Web web, string email, ExternalSharingSiteOption shareOption, bool sendEmail = true, string emailBody = "Site shared for you.", bool useSimplifiedRoles = true)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web for the context of the site to be shared.
+    - id: email
+      type: System.String
+      description: Email of the person to whom site should be shared.
+    - id: shareOption
+      type: Microsoft.SharePoint.Client.ExternalSharingSiteOption
+      description: Sharing style - View, Edit, Owner
+    - id: sendEmail
+      type: System.Boolean
+      description: Should we send email for the given address.
+    - id: emailBody
+      type: System.String
+      description: Text to be added on share email sent to receiver.
+    - id: useSimplifiedRoles
+      type: System.Boolean
+      description: Boolean value indicating whether to use the SharePoint simplified roles (Edit, View)
+    return:
+      type: Microsoft.SharePoint.Client.SharingResult
+      description: A SharingResult object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ShareSite(web As Web, email As String, shareOption As ExternalSharingSiteOption, sendEmail As Boolean = True, emailBody As String = "Site shared for you.", useSimplifiedRoles As Boolean = True) As SharingResult
+  overload: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSite*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteAsync(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingSiteOption,System.Boolean,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteAsync(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingSiteOption,System.Boolean,System.String,System.Boolean)
+  id: ShareSiteAsync(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingSiteOption,System.Boolean,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  langs:
+  - csharp
+  - vb
+  name: ShareSiteAsync(Web, String, ExternalSharingSiteOption, Boolean, String, Boolean)
+  nameWithType: ExternalSharingExtensions.ShareSiteAsync(Web, String, ExternalSharingSiteOption, Boolean, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteAsync(Microsoft.SharePoint.Client.Web, System.String, Microsoft.SharePoint.Client.ExternalSharingSiteOption, System.Boolean, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ShareSiteAsync
+    path: ../src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+    startLine: 517
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nShare site for a person using just email. Will resolve needed people picker JSON value automatically.\n"
+  example: []
+  syntax:
+    content: public static async Task<SharingResult> ShareSiteAsync(this Web web, string email, ExternalSharingSiteOption shareOption, bool sendEmail = true, string emailBody = "Site shared for you.", bool useSimplifiedRoles = true)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web for the context of the site to be shared.
+    - id: email
+      type: System.String
+      description: Email of the person to whom site should be shared.
+    - id: shareOption
+      type: Microsoft.SharePoint.Client.ExternalSharingSiteOption
+      description: Sharing style - View, Edit, Owner
+    - id: sendEmail
+      type: System.Boolean
+      description: Should we send email for the given address.
+    - id: emailBody
+      type: System.String
+      description: Text to be added on share email sent to receiver.
+    - id: useSimplifiedRoles
+      type: System.Boolean
+      description: Boolean value indicating whether to use the SharePoint simplified roles (Edit, View)
+    return:
+      type: System.Threading.Tasks.Task{Microsoft.SharePoint.Client.SharingResult}
+      description: A SharingResult object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ShareSiteAsync(web As Web, email As String, shareOption As ExternalSharingSiteOption, sendEmail As Boolean = True, emailBody As String = "Site shared for you.", useSimplifiedRoles As Boolean = True) As Task(Of SharingResult)
+  overload: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteWithPeoplePickerValue(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingSiteOption,System.Boolean,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteWithPeoplePickerValue(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingSiteOption,System.Boolean,System.String,System.Boolean)
+  id: ShareSiteWithPeoplePickerValue(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingSiteOption,System.Boolean,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  langs:
+  - csharp
+  - vb
+  name: ShareSiteWithPeoplePickerValue(Web, String, ExternalSharingSiteOption, Boolean, String, Boolean)
+  nameWithType: ExternalSharingExtensions.ShareSiteWithPeoplePickerValue(Web, String, ExternalSharingSiteOption, Boolean, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteWithPeoplePickerValue(Microsoft.SharePoint.Client.Web, System.String, Microsoft.SharePoint.Client.ExternalSharingSiteOption, System.Boolean, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ShareSiteWithPeoplePickerValue
+    path: ../src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+    startLine: 544
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nShare site for a person using complex JSON object for people picker value.\n"
+  example: []
+  syntax:
+    content: public static SharingResult ShareSiteWithPeoplePickerValue(this Web web, string peoplePickerInput, ExternalSharingSiteOption shareOption, bool sendEmail = true, string emailBody = "Site shared for you.", bool useSimplifiedRoles = true)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web for the context of the site to be shared.
+    - id: peoplePickerInput
+      type: System.String
+      description: JSON object with the people picker value
+    - id: shareOption
+      type: Microsoft.SharePoint.Client.ExternalSharingSiteOption
+      description: Sharing style - View, Edit, Owner
+    - id: sendEmail
+      type: System.Boolean
+      description: Should we send email for the given address.
+    - id: emailBody
+      type: System.String
+      description: Text to be added on share email sent to receiver.
+    - id: useSimplifiedRoles
+      type: System.Boolean
+      description: Boolean value indicating whether to use the SharePoint simplified roles (Edit, View)
+    return:
+      type: Microsoft.SharePoint.Client.SharingResult
+      description: A SharingResult object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ShareSiteWithPeoplePickerValue(web As Web, peoplePickerInput As String, shareOption As ExternalSharingSiteOption, sendEmail As Boolean = True, emailBody As String = "Site shared for you.", useSimplifiedRoles As Boolean = True) As SharingResult
+  overload: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteWithPeoplePickerValue*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteWithPeoplePickerValueAsync(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingSiteOption,System.Boolean,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteWithPeoplePickerValueAsync(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingSiteOption,System.Boolean,System.String,System.Boolean)
+  id: ShareSiteWithPeoplePickerValueAsync(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.ExternalSharingSiteOption,System.Boolean,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  langs:
+  - csharp
+  - vb
+  name: ShareSiteWithPeoplePickerValueAsync(Web, String, ExternalSharingSiteOption, Boolean, String, Boolean)
+  nameWithType: ExternalSharingExtensions.ShareSiteWithPeoplePickerValueAsync(Web, String, ExternalSharingSiteOption, Boolean, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteWithPeoplePickerValueAsync(Microsoft.SharePoint.Client.Web, System.String, Microsoft.SharePoint.Client.ExternalSharingSiteOption, System.Boolean, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ShareSiteWithPeoplePickerValueAsync
+    path: ../src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+    startLine: 561
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nShare site for a person using complex JSON object for people picker value.\n"
+  example: []
+  syntax:
+    content: public static async Task<SharingResult> ShareSiteWithPeoplePickerValueAsync(this Web web, string peoplePickerInput, ExternalSharingSiteOption shareOption, bool sendEmail = true, string emailBody = "Site shared for you.", bool useSimplifiedRoles = true)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web for the context of the site to be shared.
+    - id: peoplePickerInput
+      type: System.String
+      description: JSON object with the people picker value
+    - id: shareOption
+      type: Microsoft.SharePoint.Client.ExternalSharingSiteOption
+      description: Sharing style - View, Edit, Owner
+    - id: sendEmail
+      type: System.Boolean
+      description: Should we send email for the given address.
+    - id: emailBody
+      type: System.String
+      description: Text to be added on share email sent to receiver.
+    - id: useSimplifiedRoles
+      type: System.Boolean
+      description: Boolean value indicating whether to use the SharePoint simplified roles (Edit, View)
+    return:
+      type: System.Threading.Tasks.Task{Microsoft.SharePoint.Client.SharingResult}
+      description: A SharingResult object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ShareSiteWithPeoplePickerValueAsync(web As Web, peoplePickerInput As String, shareOption As ExternalSharingSiteOption, sendEmail As Boolean = True, emailBody As String = "Site shared for you.", useSimplifiedRoles As Boolean = True) As Task(Of SharingResult)
+  overload: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteWithPeoplePickerValueAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteWithPeoplePickerValue(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.Group,System.Boolean,System.String)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteWithPeoplePickerValue(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.Group,System.Boolean,System.String)
+  id: ShareSiteWithPeoplePickerValue(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.Group,System.Boolean,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  langs:
+  - csharp
+  - vb
+  name: ShareSiteWithPeoplePickerValue(Web, String, Group, Boolean, String)
+  nameWithType: ExternalSharingExtensions.ShareSiteWithPeoplePickerValue(Web, String, Group, Boolean, String)
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteWithPeoplePickerValue(Microsoft.SharePoint.Client.Web, System.String, Microsoft.SharePoint.Client.Group, System.Boolean, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ShareSiteWithPeoplePickerValue
+    path: ../src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+    startLine: 600
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nShare site for a person using complex JSON object for people picker value.\n"
+  example: []
+  syntax:
+    content: public static SharingResult ShareSiteWithPeoplePickerValue(this Web web, string peoplePickerInput, Group group, bool sendEmail = true, string emailBody = "Site shared for you.")
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web for the context of the site to be shared.
+    - id: peoplePickerInput
+      type: System.String
+      description: JSON object with the people picker value
+    - id: group
+      type: Microsoft.SharePoint.Client.Group
+      description: The group to invite the user to
+    - id: sendEmail
+      type: System.Boolean
+      description: Should we send email for the given address.
+    - id: emailBody
+      type: System.String
+      description: Text to be added on share email sent to receiver.
+    return:
+      type: Microsoft.SharePoint.Client.SharingResult
+      description: A SharingResult object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ShareSiteWithPeoplePickerValue(web As Web, peoplePickerInput As String, group As Group, sendEmail As Boolean = True, emailBody As String = "Site shared for you.") As SharingResult
+  overload: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteWithPeoplePickerValue*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteWithPeoplePickerValueAsync(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.Group,System.Boolean,System.String)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteWithPeoplePickerValueAsync(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.Group,System.Boolean,System.String)
+  id: ShareSiteWithPeoplePickerValueAsync(Microsoft.SharePoint.Client.Web,System.String,Microsoft.SharePoint.Client.Group,System.Boolean,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ExternalSharingExtensions
+  langs:
+  - csharp
+  - vb
+  name: ShareSiteWithPeoplePickerValueAsync(Web, String, Group, Boolean, String)
+  nameWithType: ExternalSharingExtensions.ShareSiteWithPeoplePickerValueAsync(Web, String, Group, Boolean, String)
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteWithPeoplePickerValueAsync(Microsoft.SharePoint.Client.Web, System.String, Microsoft.SharePoint.Client.Group, System.Boolean, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ShareSiteWithPeoplePickerValueAsync
+    path: ../src/lib/PnP.Framework/Extensions/ExternalSharingExtensions.cs
+    startLine: 615
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nShare site for a person using complex JSON object for people picker value.\n"
+  example: []
+  syntax:
+    content: public static async Task<SharingResult> ShareSiteWithPeoplePickerValueAsync(this Web web, string peoplePickerInput, Group group, bool sendEmail = true, string emailBody = "Site shared for you.")
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web for the context of the site to be shared.
+    - id: peoplePickerInput
+      type: System.String
+      description: JSON object with the people picker value
+    - id: group
+      type: Microsoft.SharePoint.Client.Group
+      description: The group to invite the user to
+    - id: sendEmail
+      type: System.Boolean
+      description: Should we send email for the given address.
+    - id: emailBody
+      type: System.String
+      description: Text to be added on share email sent to receiver.
+    return:
+      type: System.Threading.Tasks.Task{Microsoft.SharePoint.Client.SharingResult}
+      description: A SharingResult object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ShareSiteWithPeoplePickerValueAsync(web As Web, peoplePickerInput As String, group As Group, sendEmail As Boolean = True, emailBody As String = "Site shared for you.") As Task(Of SharingResult)
+  overload: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteWithPeoplePickerValueAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: Microsoft.SharePoint.Client
+  commentId: N:Microsoft.SharePoint.Client
+  name: Microsoft.SharePoint.Client
+  nameWithType: Microsoft.SharePoint.Client
+  fullName: Microsoft.SharePoint.Client
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.ResolvePeoplePickerValueForEmail*
+  commentId: Overload:Microsoft.SharePoint.Client.ExternalSharingExtensions.ResolvePeoplePickerValueForEmail
+  name: ResolvePeoplePickerValueForEmail
+  nameWithType: ExternalSharingExtensions.ResolvePeoplePickerValueForEmail
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.ResolvePeoplePickerValueForEmail
+- uid: Microsoft.SharePoint.Client.Web
+  commentId: T:Microsoft.SharePoint.Client.Web
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: Web
+  nameWithType: Web
+  fullName: Microsoft.SharePoint.Client.Web
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.ResolvePeoplePickerValueForEmailAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.ExternalSharingExtensions.ResolvePeoplePickerValueForEmailAsync
+  name: ResolvePeoplePickerValueForEmailAsync
+  nameWithType: ExternalSharingExtensions.ResolvePeoplePickerValueForEmailAsync
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.ResolvePeoplePickerValueForEmailAsync
+- uid: System.Threading.Tasks.Task{System.String}
+  commentId: T:System.Threading.Tasks.Task{System.String}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<String>
+  nameWithType: Task<String>
+  fullName: System.Threading.Tasks.Task<System.String>
+  nameWithType.vb: Task(Of String)
+  fullName.vb: System.Threading.Tasks.Task(Of System.String)
+  name.vb: Task(Of String)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkForDocument*
+  commentId: Overload:Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkForDocument
+  name: CreateAnonymousLinkForDocument
+  nameWithType: ExternalSharingExtensions.CreateAnonymousLinkForDocument
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkForDocument
+- uid: Microsoft.SharePoint.Client.ExternalSharingDocumentOption
+  commentId: T:Microsoft.SharePoint.Client.ExternalSharingDocumentOption
+  parent: Microsoft.SharePoint.Client
+  name: ExternalSharingDocumentOption
+  nameWithType: ExternalSharingDocumentOption
+  fullName: Microsoft.SharePoint.Client.ExternalSharingDocumentOption
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkForDocumentAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkForDocumentAsync
+  name: CreateAnonymousLinkForDocumentAsync
+  nameWithType: ExternalSharingExtensions.CreateAnonymousLinkForDocumentAsync
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkForDocumentAsync
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkWithExpirationForDocument*
+  commentId: Overload:Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkWithExpirationForDocument
+  name: CreateAnonymousLinkWithExpirationForDocument
+  nameWithType: ExternalSharingExtensions.CreateAnonymousLinkWithExpirationForDocument
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkWithExpirationForDocument
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkWithExpirationForDocumentAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkWithExpirationForDocumentAsync
+  name: CreateAnonymousLinkWithExpirationForDocumentAsync
+  nameWithType: ExternalSharingExtensions.CreateAnonymousLinkWithExpirationForDocumentAsync
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.CreateAnonymousLinkWithExpirationForDocumentAsync
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocument(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.Boolean,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocument(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.Boolean,System.String,System.Boolean)
+  isExternal: true
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocument*
+  commentId: Overload:Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocument
+  name: ShareDocument
+  nameWithType: ExternalSharingExtensions.ShareDocument
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocument
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: Microsoft.SharePoint.Client.SharingResult
+  commentId: T:Microsoft.SharePoint.Client.SharingResult
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: SharingResult
+  nameWithType: SharingResult
+  fullName: Microsoft.SharePoint.Client.SharingResult
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentAsync(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.Boolean,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentAsync(Microsoft.SharePoint.Client.Web,System.String,System.String,Microsoft.SharePoint.Client.ExternalSharingDocumentOption,System.Boolean,System.String,System.Boolean)
+  isExternal: true
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentAsync
+  name: ShareDocumentAsync
+  nameWithType: ExternalSharingExtensions.ShareDocumentAsync
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentAsync
+- uid: System.Threading.Tasks.Task{Microsoft.SharePoint.Client.SharingResult}
+  commentId: T:System.Threading.Tasks.Task{Microsoft.SharePoint.Client.SharingResult}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<SharingResult>
+  nameWithType: Task<SharingResult>
+  fullName: System.Threading.Tasks.Task<Microsoft.SharePoint.Client.SharingResult>
+  nameWithType.vb: Task(Of SharingResult)
+  fullName.vb: System.Threading.Tasks.Task(Of Microsoft.SharePoint.Client.SharingResult)
+  name.vb: Task(Of SharingResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Microsoft.SharePoint.Client.SharingResult
+    name: SharingResult
+    nameWithType: SharingResult
+    fullName: Microsoft.SharePoint.Client.SharingResult
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Microsoft.SharePoint.Client.SharingResult
+    name: SharingResult
+    nameWithType: SharingResult
+    fullName: Microsoft.SharePoint.Client.SharingResult
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentWithPeoplePickerValue*
+  commentId: Overload:Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentWithPeoplePickerValue
+  name: ShareDocumentWithPeoplePickerValue
+  nameWithType: ExternalSharingExtensions.ShareDocumentWithPeoplePickerValue
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentWithPeoplePickerValue
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentWithPeoplePickerValueAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentWithPeoplePickerValueAsync
+  name: ShareDocumentWithPeoplePickerValueAsync
+  nameWithType: ExternalSharingExtensions.ShareDocumentWithPeoplePickerValueAsync
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareDocumentWithPeoplePickerValueAsync
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.UnshareDocument*
+  commentId: Overload:Microsoft.SharePoint.Client.ExternalSharingExtensions.UnshareDocument
+  name: UnshareDocument
+  nameWithType: ExternalSharingExtensions.UnshareDocument
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.UnshareDocument
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.UnshareDocumentAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.ExternalSharingExtensions.UnshareDocumentAsync
+  name: UnshareDocumentAsync
+  nameWithType: ExternalSharingExtensions.UnshareDocumentAsync
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.UnshareDocumentAsync
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForDocument*
+  commentId: Overload:Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForDocument
+  name: GetObjectSharingSettingsForDocument
+  nameWithType: ExternalSharingExtensions.GetObjectSharingSettingsForDocument
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForDocument
+- uid: Microsoft.SharePoint.Client.ObjectSharingSettings
+  commentId: T:Microsoft.SharePoint.Client.ObjectSharingSettings
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: ObjectSharingSettings
+  nameWithType: ObjectSharingSettings
+  fullName: Microsoft.SharePoint.Client.ObjectSharingSettings
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForDocumentAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForDocumentAsync
+  name: GetObjectSharingSettingsForDocumentAsync
+  nameWithType: ExternalSharingExtensions.GetObjectSharingSettingsForDocumentAsync
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForDocumentAsync
+- uid: System.Threading.Tasks.Task{Microsoft.SharePoint.Client.ObjectSharingSettings}
+  commentId: T:System.Threading.Tasks.Task{Microsoft.SharePoint.Client.ObjectSharingSettings}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<ObjectSharingSettings>
+  nameWithType: Task<ObjectSharingSettings>
+  fullName: System.Threading.Tasks.Task<Microsoft.SharePoint.Client.ObjectSharingSettings>
+  nameWithType.vb: Task(Of ObjectSharingSettings)
+  fullName.vb: System.Threading.Tasks.Task(Of Microsoft.SharePoint.Client.ObjectSharingSettings)
+  name.vb: Task(Of ObjectSharingSettings)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Microsoft.SharePoint.Client.ObjectSharingSettings
+    name: ObjectSharingSettings
+    nameWithType: ObjectSharingSettings
+    fullName: Microsoft.SharePoint.Client.ObjectSharingSettings
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Microsoft.SharePoint.Client.ObjectSharingSettings
+    name: ObjectSharingSettings
+    nameWithType: ObjectSharingSettings
+    fullName: Microsoft.SharePoint.Client.ObjectSharingSettings
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForSite*
+  commentId: Overload:Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForSite
+  name: GetObjectSharingSettingsForSite
+  nameWithType: ExternalSharingExtensions.GetObjectSharingSettingsForSite
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForSite
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForSiteAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForSiteAsync
+  name: GetObjectSharingSettingsForSiteAsync
+  nameWithType: ExternalSharingExtensions.GetObjectSharingSettingsForSiteAsync
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.GetObjectSharingSettingsForSiteAsync
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.InviteExternalUser*
+  commentId: Overload:Microsoft.SharePoint.Client.ExternalSharingExtensions.InviteExternalUser
+  name: InviteExternalUser
+  nameWithType: ExternalSharingExtensions.InviteExternalUser
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.InviteExternalUser
+- uid: Microsoft.SharePoint.Client.Group
+  commentId: T:Microsoft.SharePoint.Client.Group
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: Group
+  nameWithType: Group
+  fullName: Microsoft.SharePoint.Client.Group
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.InviteExternalUserAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.ExternalSharingExtensions.InviteExternalUserAsync
+  name: InviteExternalUserAsync
+  nameWithType: ExternalSharingExtensions.InviteExternalUserAsync
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.InviteExternalUserAsync
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSite*
+  commentId: Overload:Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSite
+  name: ShareSite
+  nameWithType: ExternalSharingExtensions.ShareSite
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSite
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteAsync
+  name: ShareSiteAsync
+  nameWithType: ExternalSharingExtensions.ShareSiteAsync
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteAsync
+- uid: Microsoft.SharePoint.Client.ExternalSharingSiteOption
+  commentId: T:Microsoft.SharePoint.Client.ExternalSharingSiteOption
+  parent: Microsoft.SharePoint.Client
+  name: ExternalSharingSiteOption
+  nameWithType: ExternalSharingSiteOption
+  fullName: Microsoft.SharePoint.Client.ExternalSharingSiteOption
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteWithPeoplePickerValue*
+  commentId: Overload:Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteWithPeoplePickerValue
+  name: ShareSiteWithPeoplePickerValue
+  nameWithType: ExternalSharingExtensions.ShareSiteWithPeoplePickerValue
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteWithPeoplePickerValue
+- uid: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteWithPeoplePickerValueAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteWithPeoplePickerValueAsync
+  name: ShareSiteWithPeoplePickerValueAsync
+  nameWithType: ExternalSharingExtensions.ShareSiteWithPeoplePickerValueAsync
+  fullName: Microsoft.SharePoint.Client.ExternalSharingExtensions.ShareSiteWithPeoplePickerValueAsync

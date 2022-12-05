@@ -1,0 +1,2774 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  commentId: T:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  id: CanvasControlWebPartType
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909
+  children:
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.BingMap
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Button
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.CallToAction
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.ClientWebPart
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.CodeSnippet
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.ContentEmbed
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.ContentRollup
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.CountDown
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Custom
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.CustomMessageRegion
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Divider
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.DocumentEmbed
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Events
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.GroupCalendar
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Hero
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Image
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.ImageGallery
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.LinkPreview
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.List
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.ListProperties
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.MarkDown
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.MicrosoftForms
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.MyDocuments
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.News
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.NewsFeed
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.NewsReel
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.PageFields
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.PageTitle
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.People
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Planner
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.PowerApps
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.PowerBIReportEmbed
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.QuickChart
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.QuickLinks
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.SiteActivity
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Sites
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Spacer
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Text
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.ThirdParty
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.VideoEmbed
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Weather
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.YammerEmbed
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.YammerFullFeed
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.YouTube
+  langs:
+  - csharp
+  - vb
+  name: CanvasControlWebPartType
+  nameWithType: CanvasControlWebPartType
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  type: Enum
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CanvasControlWebPartType
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3888
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: >-
+      [Serializable]
+
+      public enum CanvasControlWebPartType
+    content.vb: >-
+      <Serializable>
+
+      Public Enum CanvasControlWebPartType
+  extensionMethods:
+  - System.Enum.System.EnumerationExtensions.Include``1({T})
+  - System.Enum.System.EnumerationExtensions.Remove``1({T})
+  - System.Enum.System.EnumerationExtensions.Has``1({T})
+  - System.Enum.System.EnumerationExtensions.Missing``1({T})
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Custom
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Custom
+  id: Custom
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: Custom
+  nameWithType: CanvasControlWebPartType.Custom
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Custom
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Custom
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3894
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: Custom = 0
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Text
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Text
+  id: Text
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: Text
+  nameWithType: CanvasControlWebPartType.Text
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Text
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Text
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3897
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: Text = 1
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.BingMap
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.BingMap
+  id: BingMap
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: BingMap
+  nameWithType: CanvasControlWebPartType.BingMap
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.BingMap
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: BingMap
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3900
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: BingMap = 2
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Button
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Button
+  id: Button
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: Button
+  nameWithType: CanvasControlWebPartType.Button
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Button
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Button
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3903
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: Button = 3
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.CallToAction
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.CallToAction
+  id: CallToAction
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: CallToAction
+  nameWithType: CanvasControlWebPartType.CallToAction
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.CallToAction
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CallToAction
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3906
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: CallToAction = 4
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.ClientWebPart
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.ClientWebPart
+  id: ClientWebPart
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: ClientWebPart
+  nameWithType: CanvasControlWebPartType.ClientWebPart
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.ClientWebPart
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ClientWebPart
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3909
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: ClientWebPart = 5
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.CodeSnippet
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.CodeSnippet
+  id: CodeSnippet
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: CodeSnippet
+  nameWithType: CanvasControlWebPartType.CodeSnippet
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.CodeSnippet
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CodeSnippet
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3912
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: CodeSnippet = 6
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.ContentEmbed
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.ContentEmbed
+  id: ContentEmbed
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: ContentEmbed
+  nameWithType: CanvasControlWebPartType.ContentEmbed
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.ContentEmbed
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ContentEmbed
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3915
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: ContentEmbed = 7
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.ContentRollup
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.ContentRollup
+  id: ContentRollup
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: ContentRollup
+  nameWithType: CanvasControlWebPartType.ContentRollup
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.ContentRollup
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ContentRollup
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3918
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: ContentRollup = 8
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.CountDown
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.CountDown
+  id: CountDown
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: CountDown
+  nameWithType: CanvasControlWebPartType.CountDown
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.CountDown
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CountDown
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3921
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: CountDown = 9
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.CustomMessageRegion
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.CustomMessageRegion
+  id: CustomMessageRegion
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: CustomMessageRegion
+  nameWithType: CanvasControlWebPartType.CustomMessageRegion
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.CustomMessageRegion
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CustomMessageRegion
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3924
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: CustomMessageRegion = 10
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Divider
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Divider
+  id: Divider
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: Divider
+  nameWithType: CanvasControlWebPartType.Divider
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Divider
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Divider
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3927
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: Divider = 11
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.DocumentEmbed
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.DocumentEmbed
+  id: DocumentEmbed
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: DocumentEmbed
+  nameWithType: CanvasControlWebPartType.DocumentEmbed
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.DocumentEmbed
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DocumentEmbed
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3930
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: DocumentEmbed = 12
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Events
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Events
+  id: Events
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: Events
+  nameWithType: CanvasControlWebPartType.Events
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Events
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Events
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3933
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: Events = 13
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.GroupCalendar
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.GroupCalendar
+  id: GroupCalendar
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: GroupCalendar
+  nameWithType: CanvasControlWebPartType.GroupCalendar
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.GroupCalendar
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GroupCalendar
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3936
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: GroupCalendar = 14
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Hero
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Hero
+  id: Hero
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: Hero
+  nameWithType: CanvasControlWebPartType.Hero
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Hero
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Hero
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3939
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: Hero = 15
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Image
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Image
+  id: Image
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: Image
+  nameWithType: CanvasControlWebPartType.Image
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Image
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Image
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3942
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: Image = 16
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.ImageGallery
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.ImageGallery
+  id: ImageGallery
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: ImageGallery
+  nameWithType: CanvasControlWebPartType.ImageGallery
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.ImageGallery
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ImageGallery
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3945
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: ImageGallery = 17
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.LinkPreview
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.LinkPreview
+  id: LinkPreview
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: LinkPreview
+  nameWithType: CanvasControlWebPartType.LinkPreview
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.LinkPreview
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: LinkPreview
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3948
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: LinkPreview = 18
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.List
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.List
+  id: List
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: List
+  nameWithType: CanvasControlWebPartType.List
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.List
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: List
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3951
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: List = 19
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.ListProperties
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.ListProperties
+  id: ListProperties
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: ListProperties
+  nameWithType: CanvasControlWebPartType.ListProperties
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.ListProperties
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ListProperties
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3954
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: ListProperties = 20
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.MarkDown
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.MarkDown
+  id: MarkDown
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: MarkDown
+  nameWithType: CanvasControlWebPartType.MarkDown
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.MarkDown
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MarkDown
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3957
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: MarkDown = 21
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.MicrosoftForms
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.MicrosoftForms
+  id: MicrosoftForms
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: MicrosoftForms
+  nameWithType: CanvasControlWebPartType.MicrosoftForms
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.MicrosoftForms
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MicrosoftForms
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3960
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: MicrosoftForms = 22
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.MyDocuments
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.MyDocuments
+  id: MyDocuments
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: MyDocuments
+  nameWithType: CanvasControlWebPartType.MyDocuments
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.MyDocuments
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MyDocuments
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3963
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: MyDocuments = 23
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.News
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.News
+  id: News
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: News
+  nameWithType: CanvasControlWebPartType.News
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.News
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: News
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3966
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: News = 24
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.NewsFeed
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.NewsFeed
+  id: NewsFeed
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: NewsFeed
+  nameWithType: CanvasControlWebPartType.NewsFeed
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.NewsFeed
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: NewsFeed
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3969
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: NewsFeed = 25
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.NewsReel
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.NewsReel
+  id: NewsReel
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: NewsReel
+  nameWithType: CanvasControlWebPartType.NewsReel
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.NewsReel
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: NewsReel
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3972
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: NewsReel = 26
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.PageFields
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.PageFields
+  id: PageFields
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: PageFields
+  nameWithType: CanvasControlWebPartType.PageFields
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.PageFields
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PageFields
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3975
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: PageFields = 27
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.PageTitle
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.PageTitle
+  id: PageTitle
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: PageTitle
+  nameWithType: CanvasControlWebPartType.PageTitle
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.PageTitle
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PageTitle
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3978
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: PageTitle = 28
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.People
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.People
+  id: People
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: People
+  nameWithType: CanvasControlWebPartType.People
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.People
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: People
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3981
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: People = 29
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Planner
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Planner
+  id: Planner
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: Planner
+  nameWithType: CanvasControlWebPartType.Planner
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Planner
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Planner
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3984
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: Planner = 30
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.PowerApps
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.PowerApps
+  id: PowerApps
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: PowerApps
+  nameWithType: CanvasControlWebPartType.PowerApps
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.PowerApps
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PowerApps
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3987
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: PowerApps = 31
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.PowerBIReportEmbed
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.PowerBIReportEmbed
+  id: PowerBIReportEmbed
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: PowerBIReportEmbed
+  nameWithType: CanvasControlWebPartType.PowerBIReportEmbed
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.PowerBIReportEmbed
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PowerBIReportEmbed
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3990
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: PowerBIReportEmbed = 32
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.QuickChart
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.QuickChart
+  id: QuickChart
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: QuickChart
+  nameWithType: CanvasControlWebPartType.QuickChart
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.QuickChart
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: QuickChart
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3993
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: QuickChart = 33
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.QuickLinks
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.QuickLinks
+  id: QuickLinks
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: QuickLinks
+  nameWithType: CanvasControlWebPartType.QuickLinks
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.QuickLinks
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: QuickLinks
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3996
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: QuickLinks = 34
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.SiteActivity
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.SiteActivity
+  id: SiteActivity
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: SiteActivity
+  nameWithType: CanvasControlWebPartType.SiteActivity
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.SiteActivity
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SiteActivity
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 3999
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: SiteActivity = 35
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Sites
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Sites
+  id: Sites
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: Sites
+  nameWithType: CanvasControlWebPartType.Sites
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Sites
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Sites
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 4002
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: Sites = 36
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Spacer
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Spacer
+  id: Spacer
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: Spacer
+  nameWithType: CanvasControlWebPartType.Spacer
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Spacer
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Spacer
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 4005
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: Spacer = 37
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.ThirdParty
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.ThirdParty
+  id: ThirdParty
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: ThirdParty
+  nameWithType: CanvasControlWebPartType.ThirdParty
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.ThirdParty
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ThirdParty
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 4008
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: ThirdParty = 38
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.VideoEmbed
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.VideoEmbed
+  id: VideoEmbed
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: VideoEmbed
+  nameWithType: CanvasControlWebPartType.VideoEmbed
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.VideoEmbed
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: VideoEmbed
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 4011
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: VideoEmbed = 39
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Weather
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Weather
+  id: Weather
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: Weather
+  nameWithType: CanvasControlWebPartType.Weather
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.Weather
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Weather
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 4014
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: Weather = 40
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.YammerEmbed
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.YammerEmbed
+  id: YammerEmbed
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: YammerEmbed
+  nameWithType: CanvasControlWebPartType.YammerEmbed
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.YammerEmbed
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: YammerEmbed
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 4017
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: YammerEmbed = 41
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.YammerFullFeed
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.YammerFullFeed
+  id: YammerFullFeed
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: YammerFullFeed
+  nameWithType: CanvasControlWebPartType.YammerFullFeed
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.YammerFullFeed
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: YammerFullFeed
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 4020
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: YammerFullFeed = 42
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.YouTube
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.YouTube
+  id: YouTube
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  langs:
+  - csharp
+  - vb
+  name: YouTube
+  nameWithType: CanvasControlWebPartType.YouTube
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.YouTube
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: YouTube
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2019-09.cs
+    startLine: 4023
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V201909
+  remarks: ''
+  example: []
+  syntax:
+    content: YouTube = 43
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909
+  commentId: N:PnP.Framework.Provisioning.Providers.Xml.V201909
+  name: PnP.Framework.Provisioning.Providers.Xml.V201909
+  nameWithType: PnP.Framework.Provisioning.Providers.Xml.V201909
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909
+- uid: System.Enum.System.EnumerationExtensions.Include``1({T})
+  commentId: M:System.EnumerationExtensions.Include``1(System.Enum,``0)
+  parent: System.EnumerationExtensions
+  definition: System.EnumerationExtensions.Include``1(System.Enum,``0)
+  name: Include<T>(T)
+  nameWithType: EnumerationExtensions.Include<T>(T)
+  fullName: System.EnumerationExtensions.Include<T>(T)
+  nameWithType.vb: EnumerationExtensions.Include(Of T)(T)
+  fullName.vb: System.EnumerationExtensions.Include(Of T)(T)
+  name.vb: Include(Of T)(T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Include``1(``0)
+    name: Include<T>
+    nameWithType: EnumerationExtensions.Include<T>
+    fullName: System.EnumerationExtensions.Include<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Include``1(``0)
+    name: Include(Of T)
+    nameWithType: EnumerationExtensions.Include(Of T)
+    fullName: System.EnumerationExtensions.Include(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Enum.System.EnumerationExtensions.Remove``1({T})
+  commentId: M:System.EnumerationExtensions.Remove``1(System.Enum,``0)
+  parent: System.EnumerationExtensions
+  definition: System.EnumerationExtensions.Remove``1(System.Enum,``0)
+  name: Remove<T>(T)
+  nameWithType: EnumerationExtensions.Remove<T>(T)
+  fullName: System.EnumerationExtensions.Remove<T>(T)
+  nameWithType.vb: EnumerationExtensions.Remove(Of T)(T)
+  fullName.vb: System.EnumerationExtensions.Remove(Of T)(T)
+  name.vb: Remove(Of T)(T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Remove``1(``0)
+    name: Remove<T>
+    nameWithType: EnumerationExtensions.Remove<T>
+    fullName: System.EnumerationExtensions.Remove<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Remove``1(``0)
+    name: Remove(Of T)
+    nameWithType: EnumerationExtensions.Remove(Of T)
+    fullName: System.EnumerationExtensions.Remove(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Enum.System.EnumerationExtensions.Has``1({T})
+  commentId: M:System.EnumerationExtensions.Has``1(System.Enum,``0)
+  parent: System.EnumerationExtensions
+  definition: System.EnumerationExtensions.Has``1(System.Enum,``0)
+  name: Has<T>(T)
+  nameWithType: EnumerationExtensions.Has<T>(T)
+  fullName: System.EnumerationExtensions.Has<T>(T)
+  nameWithType.vb: EnumerationExtensions.Has(Of T)(T)
+  fullName.vb: System.EnumerationExtensions.Has(Of T)(T)
+  name.vb: Has(Of T)(T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Has``1(``0)
+    name: Has<T>
+    nameWithType: EnumerationExtensions.Has<T>
+    fullName: System.EnumerationExtensions.Has<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Has``1(``0)
+    name: Has(Of T)
+    nameWithType: EnumerationExtensions.Has(Of T)
+    fullName: System.EnumerationExtensions.Has(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Enum.System.EnumerationExtensions.Missing``1({T})
+  commentId: M:System.EnumerationExtensions.Missing``1(System.Enum,``0)
+  parent: System.EnumerationExtensions
+  definition: System.EnumerationExtensions.Missing``1(System.Enum,``0)
+  name: Missing<T>(T)
+  nameWithType: EnumerationExtensions.Missing<T>(T)
+  fullName: System.EnumerationExtensions.Missing<T>(T)
+  nameWithType.vb: EnumerationExtensions.Missing(Of T)(T)
+  fullName.vb: System.EnumerationExtensions.Missing(Of T)(T)
+  name.vb: Missing(Of T)(T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Missing``1(``0)
+    name: Missing<T>
+    nameWithType: EnumerationExtensions.Missing<T>
+    fullName: System.EnumerationExtensions.Missing<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Missing``1(``0)
+    name: Missing(Of T)
+    nameWithType: EnumerationExtensions.Missing(Of T)
+    fullName: System.EnumerationExtensions.Missing(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<CanvasControlWebPartType>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<CanvasControlWebPartType>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of CanvasControlWebPartType)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of CanvasControlWebPartType)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<CanvasControlWebPartType>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<CanvasControlWebPartType>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of CanvasControlWebPartType)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of CanvasControlWebPartType)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<CanvasControlWebPartType, T>(Expression<Func<CanvasControlWebPartType, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<CanvasControlWebPartType, T>(Expression<Func<CanvasControlWebPartType, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType, T>(System.Linq.Expressions.Expression<System.Func<PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of CanvasControlWebPartType, T)(Expression(Of Func(Of CanvasControlWebPartType, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType, T)(System.Linq.Expressions.Expression(Of System.Func(Of PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of CanvasControlWebPartType, T)(Expression(Of Func(Of CanvasControlWebPartType, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<CanvasControlWebPartType, T>
+    nameWithType: ObjectExtensions.Set<CanvasControlWebPartType, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+    name: CanvasControlWebPartType
+    nameWithType: CanvasControlWebPartType
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of CanvasControlWebPartType, T)
+    nameWithType: ObjectExtensions.Set(Of CanvasControlWebPartType, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+    name: CanvasControlWebPartType
+    nameWithType: CanvasControlWebPartType
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.EnumerationExtensions.Include``1(System.Enum,``0)
+  commentId: M:System.EnumerationExtensions.Include``1(System.Enum,``0)
+  isExternal: true
+  name: Include<T>(Enum, T)
+  nameWithType: EnumerationExtensions.Include<T>(Enum, T)
+  fullName: System.EnumerationExtensions.Include<T>(System.Enum, T)
+  nameWithType.vb: EnumerationExtensions.Include(Of T)(Enum, T)
+  fullName.vb: System.EnumerationExtensions.Include(Of T)(System.Enum, T)
+  name.vb: Include(Of T)(Enum, T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Include``1(System.Enum,``0)
+    name: Include<T>
+    nameWithType: EnumerationExtensions.Include<T>
+    fullName: System.EnumerationExtensions.Include<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Include``1(System.Enum,``0)
+    name: Include(Of T)
+    nameWithType: EnumerationExtensions.Include(Of T)
+    fullName: System.EnumerationExtensions.Include(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.EnumerationExtensions
+  commentId: T:System.EnumerationExtensions
+  parent: System
+  name: EnumerationExtensions
+  nameWithType: EnumerationExtensions
+  fullName: System.EnumerationExtensions
+- uid: System.EnumerationExtensions.Remove``1(System.Enum,``0)
+  commentId: M:System.EnumerationExtensions.Remove``1(System.Enum,``0)
+  isExternal: true
+  name: Remove<T>(Enum, T)
+  nameWithType: EnumerationExtensions.Remove<T>(Enum, T)
+  fullName: System.EnumerationExtensions.Remove<T>(System.Enum, T)
+  nameWithType.vb: EnumerationExtensions.Remove(Of T)(Enum, T)
+  fullName.vb: System.EnumerationExtensions.Remove(Of T)(System.Enum, T)
+  name.vb: Remove(Of T)(Enum, T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Remove``1(System.Enum,``0)
+    name: Remove<T>
+    nameWithType: EnumerationExtensions.Remove<T>
+    fullName: System.EnumerationExtensions.Remove<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Remove``1(System.Enum,``0)
+    name: Remove(Of T)
+    nameWithType: EnumerationExtensions.Remove(Of T)
+    fullName: System.EnumerationExtensions.Remove(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.EnumerationExtensions.Has``1(System.Enum,``0)
+  commentId: M:System.EnumerationExtensions.Has``1(System.Enum,``0)
+  isExternal: true
+  name: Has<T>(Enum, T)
+  nameWithType: EnumerationExtensions.Has<T>(Enum, T)
+  fullName: System.EnumerationExtensions.Has<T>(System.Enum, T)
+  nameWithType.vb: EnumerationExtensions.Has(Of T)(Enum, T)
+  fullName.vb: System.EnumerationExtensions.Has(Of T)(System.Enum, T)
+  name.vb: Has(Of T)(Enum, T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Has``1(System.Enum,``0)
+    name: Has<T>
+    nameWithType: EnumerationExtensions.Has<T>
+    fullName: System.EnumerationExtensions.Has<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Has``1(System.Enum,``0)
+    name: Has(Of T)
+    nameWithType: EnumerationExtensions.Has(Of T)
+    fullName: System.EnumerationExtensions.Has(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.EnumerationExtensions.Missing``1(System.Enum,``0)
+  commentId: M:System.EnumerationExtensions.Missing``1(System.Enum,``0)
+  isExternal: true
+  name: Missing<T>(Enum, T)
+  nameWithType: EnumerationExtensions.Missing<T>(Enum, T)
+  fullName: System.EnumerationExtensions.Missing<T>(System.Enum, T)
+  nameWithType.vb: EnumerationExtensions.Missing(Of T)(Enum, T)
+  fullName.vb: System.EnumerationExtensions.Missing(Of T)(System.Enum, T)
+  name.vb: Missing(Of T)(Enum, T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Missing``1(System.Enum,``0)
+    name: Missing<T>
+    nameWithType: EnumerationExtensions.Missing<T>
+    fullName: System.EnumerationExtensions.Missing<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Missing``1(System.Enum,``0)
+    name: Missing(Of T)
+    nameWithType: EnumerationExtensions.Missing(Of T)
+    fullName: System.EnumerationExtensions.Missing(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  commentId: T:PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+  parent: PnP.Framework.Provisioning.Providers.Xml.V201909
+  name: CanvasControlWebPartType
+  nameWithType: CanvasControlWebPartType
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType

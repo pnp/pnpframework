@@ -1,0 +1,1455 @@
+### YamlMime:ManagedReference
+items:
+- uid: CamlBuilder.FieldReferenceFunctionType
+  commentId: T:CamlBuilder.FieldReferenceFunctionType
+  id: FieldReferenceFunctionType
+  parent: CamlBuilder
+  children:
+  - CamlBuilder.FieldReferenceFunctionType.Average
+  - CamlBuilder.FieldReferenceFunctionType.Count
+  - CamlBuilder.FieldReferenceFunctionType.Maximum
+  - CamlBuilder.FieldReferenceFunctionType.Minimum
+  - CamlBuilder.FieldReferenceFunctionType.StandardDeviation
+  - CamlBuilder.FieldReferenceFunctionType.Sum
+  - CamlBuilder.FieldReferenceFunctionType.Variance
+  langs:
+  - csharp
+  - vb
+  name: FieldReferenceFunctionType
+  nameWithType: FieldReferenceFunctionType
+  fullName: CamlBuilder.FieldReferenceFunctionType
+  type: Enum
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/FieldReferenceFunctionType.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FieldReferenceFunctionType
+    path: ../src/lib/PnP.Framework/Modernization/Caml/FieldReferenceFunctionType.cs
+    startLine: 5
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nSpecifies the function that is applied to a totals column or a calculated column.\n"
+  example: []
+  syntax:
+    content: public enum FieldReferenceFunctionType
+    content.vb: Public Enum FieldReferenceFunctionType
+  extensionMethods:
+  - System.Enum.System.EnumerationExtensions.Include``1({T})
+  - System.Enum.System.EnumerationExtensions.Remove``1({T})
+  - System.Enum.System.EnumerationExtensions.Has``1({T})
+  - System.Enum.System.EnumerationExtensions.Missing``1({T})
+  - CamlBuilder.FieldReferenceFunctionType.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - CamlBuilder.FieldReferenceFunctionType.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{CamlBuilder.FieldReferenceFunctionType,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: CamlBuilder.FieldReferenceFunctionType.Average
+  commentId: F:CamlBuilder.FieldReferenceFunctionType.Average
+  id: Average
+  parent: CamlBuilder.FieldReferenceFunctionType
+  langs:
+  - csharp
+  - vb
+  name: Average
+  nameWithType: FieldReferenceFunctionType.Average
+  fullName: CamlBuilder.FieldReferenceFunctionType.Average
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/FieldReferenceFunctionType.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Average
+    path: ../src/lib/PnP.Framework/Modernization/Caml/FieldReferenceFunctionType.cs
+    startLine: 7
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  syntax:
+    content: Average = 0
+    return:
+      type: CamlBuilder.FieldReferenceFunctionType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: CamlBuilder.FieldReferenceFunctionType.Count
+  commentId: F:CamlBuilder.FieldReferenceFunctionType.Count
+  id: Count
+  parent: CamlBuilder.FieldReferenceFunctionType
+  langs:
+  - csharp
+  - vb
+  name: Count
+  nameWithType: FieldReferenceFunctionType.Count
+  fullName: CamlBuilder.FieldReferenceFunctionType.Count
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/FieldReferenceFunctionType.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Count
+    path: ../src/lib/PnP.Framework/Modernization/Caml/FieldReferenceFunctionType.cs
+    startLine: 8
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  syntax:
+    content: Count = 1
+    return:
+      type: CamlBuilder.FieldReferenceFunctionType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: CamlBuilder.FieldReferenceFunctionType.Maximum
+  commentId: F:CamlBuilder.FieldReferenceFunctionType.Maximum
+  id: Maximum
+  parent: CamlBuilder.FieldReferenceFunctionType
+  langs:
+  - csharp
+  - vb
+  name: Maximum
+  nameWithType: FieldReferenceFunctionType.Maximum
+  fullName: CamlBuilder.FieldReferenceFunctionType.Maximum
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/FieldReferenceFunctionType.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Maximum
+    path: ../src/lib/PnP.Framework/Modernization/Caml/FieldReferenceFunctionType.cs
+    startLine: 9
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  syntax:
+    content: Maximum = 2
+    return:
+      type: CamlBuilder.FieldReferenceFunctionType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: CamlBuilder.FieldReferenceFunctionType.Minimum
+  commentId: F:CamlBuilder.FieldReferenceFunctionType.Minimum
+  id: Minimum
+  parent: CamlBuilder.FieldReferenceFunctionType
+  langs:
+  - csharp
+  - vb
+  name: Minimum
+  nameWithType: FieldReferenceFunctionType.Minimum
+  fullName: CamlBuilder.FieldReferenceFunctionType.Minimum
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/FieldReferenceFunctionType.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Minimum
+    path: ../src/lib/PnP.Framework/Modernization/Caml/FieldReferenceFunctionType.cs
+    startLine: 10
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  syntax:
+    content: Minimum = 3
+    return:
+      type: CamlBuilder.FieldReferenceFunctionType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: CamlBuilder.FieldReferenceFunctionType.Sum
+  commentId: F:CamlBuilder.FieldReferenceFunctionType.Sum
+  id: Sum
+  parent: CamlBuilder.FieldReferenceFunctionType
+  langs:
+  - csharp
+  - vb
+  name: Sum
+  nameWithType: FieldReferenceFunctionType.Sum
+  fullName: CamlBuilder.FieldReferenceFunctionType.Sum
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/FieldReferenceFunctionType.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Sum
+    path: ../src/lib/PnP.Framework/Modernization/Caml/FieldReferenceFunctionType.cs
+    startLine: 11
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  syntax:
+    content: Sum = 4
+    return:
+      type: CamlBuilder.FieldReferenceFunctionType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: CamlBuilder.FieldReferenceFunctionType.StandardDeviation
+  commentId: F:CamlBuilder.FieldReferenceFunctionType.StandardDeviation
+  id: StandardDeviation
+  parent: CamlBuilder.FieldReferenceFunctionType
+  langs:
+  - csharp
+  - vb
+  name: StandardDeviation
+  nameWithType: FieldReferenceFunctionType.StandardDeviation
+  fullName: CamlBuilder.FieldReferenceFunctionType.StandardDeviation
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/FieldReferenceFunctionType.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: StandardDeviation
+    path: ../src/lib/PnP.Framework/Modernization/Caml/FieldReferenceFunctionType.cs
+    startLine: 12
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  syntax:
+    content: StandardDeviation = 5
+    return:
+      type: CamlBuilder.FieldReferenceFunctionType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: CamlBuilder.FieldReferenceFunctionType.Variance
+  commentId: F:CamlBuilder.FieldReferenceFunctionType.Variance
+  id: Variance
+  parent: CamlBuilder.FieldReferenceFunctionType
+  langs:
+  - csharp
+  - vb
+  name: Variance
+  nameWithType: FieldReferenceFunctionType.Variance
+  fullName: CamlBuilder.FieldReferenceFunctionType.Variance
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/FieldReferenceFunctionType.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Variance
+    path: ../src/lib/PnP.Framework/Modernization/Caml/FieldReferenceFunctionType.cs
+    startLine: 13
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  syntax:
+    content: Variance = 6
+    return:
+      type: CamlBuilder.FieldReferenceFunctionType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: CamlBuilder
+  commentId: N:CamlBuilder
+  name: CamlBuilder
+  nameWithType: CamlBuilder
+  fullName: CamlBuilder
+- uid: System.Enum.System.EnumerationExtensions.Include``1({T})
+  commentId: M:System.EnumerationExtensions.Include``1(System.Enum,``0)
+  parent: System.EnumerationExtensions
+  definition: System.EnumerationExtensions.Include``1(System.Enum,``0)
+  name: Include<T>(T)
+  nameWithType: EnumerationExtensions.Include<T>(T)
+  fullName: System.EnumerationExtensions.Include<T>(T)
+  nameWithType.vb: EnumerationExtensions.Include(Of T)(T)
+  fullName.vb: System.EnumerationExtensions.Include(Of T)(T)
+  name.vb: Include(Of T)(T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Include``1(``0)
+    name: Include<T>
+    nameWithType: EnumerationExtensions.Include<T>
+    fullName: System.EnumerationExtensions.Include<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Include``1(``0)
+    name: Include(Of T)
+    nameWithType: EnumerationExtensions.Include(Of T)
+    fullName: System.EnumerationExtensions.Include(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Enum.System.EnumerationExtensions.Remove``1({T})
+  commentId: M:System.EnumerationExtensions.Remove``1(System.Enum,``0)
+  parent: System.EnumerationExtensions
+  definition: System.EnumerationExtensions.Remove``1(System.Enum,``0)
+  name: Remove<T>(T)
+  nameWithType: EnumerationExtensions.Remove<T>(T)
+  fullName: System.EnumerationExtensions.Remove<T>(T)
+  nameWithType.vb: EnumerationExtensions.Remove(Of T)(T)
+  fullName.vb: System.EnumerationExtensions.Remove(Of T)(T)
+  name.vb: Remove(Of T)(T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Remove``1(``0)
+    name: Remove<T>
+    nameWithType: EnumerationExtensions.Remove<T>
+    fullName: System.EnumerationExtensions.Remove<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Remove``1(``0)
+    name: Remove(Of T)
+    nameWithType: EnumerationExtensions.Remove(Of T)
+    fullName: System.EnumerationExtensions.Remove(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Enum.System.EnumerationExtensions.Has``1({T})
+  commentId: M:System.EnumerationExtensions.Has``1(System.Enum,``0)
+  parent: System.EnumerationExtensions
+  definition: System.EnumerationExtensions.Has``1(System.Enum,``0)
+  name: Has<T>(T)
+  nameWithType: EnumerationExtensions.Has<T>(T)
+  fullName: System.EnumerationExtensions.Has<T>(T)
+  nameWithType.vb: EnumerationExtensions.Has(Of T)(T)
+  fullName.vb: System.EnumerationExtensions.Has(Of T)(T)
+  name.vb: Has(Of T)(T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Has``1(``0)
+    name: Has<T>
+    nameWithType: EnumerationExtensions.Has<T>
+    fullName: System.EnumerationExtensions.Has<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Has``1(``0)
+    name: Has(Of T)
+    nameWithType: EnumerationExtensions.Has(Of T)
+    fullName: System.EnumerationExtensions.Has(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Enum.System.EnumerationExtensions.Missing``1({T})
+  commentId: M:System.EnumerationExtensions.Missing``1(System.Enum,``0)
+  parent: System.EnumerationExtensions
+  definition: System.EnumerationExtensions.Missing``1(System.Enum,``0)
+  name: Missing<T>(T)
+  nameWithType: EnumerationExtensions.Missing<T>(T)
+  fullName: System.EnumerationExtensions.Missing<T>(T)
+  nameWithType.vb: EnumerationExtensions.Missing(Of T)(T)
+  fullName.vb: System.EnumerationExtensions.Missing(Of T)(T)
+  name.vb: Missing(Of T)(T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Missing``1(``0)
+    name: Missing<T>
+    nameWithType: EnumerationExtensions.Missing<T>
+    fullName: System.EnumerationExtensions.Missing<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Missing``1(``0)
+    name: Missing(Of T)
+    nameWithType: EnumerationExtensions.Missing(Of T)
+    fullName: System.EnumerationExtensions.Missing(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: CamlBuilder.FieldReferenceFunctionType.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<FieldReferenceFunctionType>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<FieldReferenceFunctionType>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<CamlBuilder.FieldReferenceFunctionType>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of FieldReferenceFunctionType)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of CamlBuilder.FieldReferenceFunctionType)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of FieldReferenceFunctionType)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<FieldReferenceFunctionType>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<FieldReferenceFunctionType>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<CamlBuilder.FieldReferenceFunctionType>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of FieldReferenceFunctionType)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of FieldReferenceFunctionType)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of CamlBuilder.FieldReferenceFunctionType)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: CamlBuilder.FieldReferenceFunctionType.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{CamlBuilder.FieldReferenceFunctionType,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<FieldReferenceFunctionType, T>(Expression<Func<FieldReferenceFunctionType, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<FieldReferenceFunctionType, T>(Expression<Func<FieldReferenceFunctionType, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<CamlBuilder.FieldReferenceFunctionType, T>(System.Linq.Expressions.Expression<System.Func<CamlBuilder.FieldReferenceFunctionType, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of FieldReferenceFunctionType, T)(Expression(Of Func(Of FieldReferenceFunctionType, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of CamlBuilder.FieldReferenceFunctionType, T)(System.Linq.Expressions.Expression(Of System.Func(Of CamlBuilder.FieldReferenceFunctionType, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of FieldReferenceFunctionType, T)(Expression(Of Func(Of FieldReferenceFunctionType, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<FieldReferenceFunctionType, T>
+    nameWithType: ObjectExtensions.Set<FieldReferenceFunctionType, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<CamlBuilder.FieldReferenceFunctionType, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: CamlBuilder.FieldReferenceFunctionType
+    name: FieldReferenceFunctionType
+    nameWithType: FieldReferenceFunctionType
+    fullName: CamlBuilder.FieldReferenceFunctionType
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of FieldReferenceFunctionType, T)
+    nameWithType: ObjectExtensions.Set(Of FieldReferenceFunctionType, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of CamlBuilder.FieldReferenceFunctionType, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: CamlBuilder.FieldReferenceFunctionType
+    name: FieldReferenceFunctionType
+    nameWithType: FieldReferenceFunctionType
+    fullName: CamlBuilder.FieldReferenceFunctionType
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.EnumerationExtensions.Include``1(System.Enum,``0)
+  commentId: M:System.EnumerationExtensions.Include``1(System.Enum,``0)
+  isExternal: true
+  name: Include<T>(Enum, T)
+  nameWithType: EnumerationExtensions.Include<T>(Enum, T)
+  fullName: System.EnumerationExtensions.Include<T>(System.Enum, T)
+  nameWithType.vb: EnumerationExtensions.Include(Of T)(Enum, T)
+  fullName.vb: System.EnumerationExtensions.Include(Of T)(System.Enum, T)
+  name.vb: Include(Of T)(Enum, T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Include``1(System.Enum,``0)
+    name: Include<T>
+    nameWithType: EnumerationExtensions.Include<T>
+    fullName: System.EnumerationExtensions.Include<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Include``1(System.Enum,``0)
+    name: Include(Of T)
+    nameWithType: EnumerationExtensions.Include(Of T)
+    fullName: System.EnumerationExtensions.Include(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.EnumerationExtensions
+  commentId: T:System.EnumerationExtensions
+  parent: System
+  name: EnumerationExtensions
+  nameWithType: EnumerationExtensions
+  fullName: System.EnumerationExtensions
+- uid: System.EnumerationExtensions.Remove``1(System.Enum,``0)
+  commentId: M:System.EnumerationExtensions.Remove``1(System.Enum,``0)
+  isExternal: true
+  name: Remove<T>(Enum, T)
+  nameWithType: EnumerationExtensions.Remove<T>(Enum, T)
+  fullName: System.EnumerationExtensions.Remove<T>(System.Enum, T)
+  nameWithType.vb: EnumerationExtensions.Remove(Of T)(Enum, T)
+  fullName.vb: System.EnumerationExtensions.Remove(Of T)(System.Enum, T)
+  name.vb: Remove(Of T)(Enum, T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Remove``1(System.Enum,``0)
+    name: Remove<T>
+    nameWithType: EnumerationExtensions.Remove<T>
+    fullName: System.EnumerationExtensions.Remove<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Remove``1(System.Enum,``0)
+    name: Remove(Of T)
+    nameWithType: EnumerationExtensions.Remove(Of T)
+    fullName: System.EnumerationExtensions.Remove(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.EnumerationExtensions.Has``1(System.Enum,``0)
+  commentId: M:System.EnumerationExtensions.Has``1(System.Enum,``0)
+  isExternal: true
+  name: Has<T>(Enum, T)
+  nameWithType: EnumerationExtensions.Has<T>(Enum, T)
+  fullName: System.EnumerationExtensions.Has<T>(System.Enum, T)
+  nameWithType.vb: EnumerationExtensions.Has(Of T)(Enum, T)
+  fullName.vb: System.EnumerationExtensions.Has(Of T)(System.Enum, T)
+  name.vb: Has(Of T)(Enum, T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Has``1(System.Enum,``0)
+    name: Has<T>
+    nameWithType: EnumerationExtensions.Has<T>
+    fullName: System.EnumerationExtensions.Has<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Has``1(System.Enum,``0)
+    name: Has(Of T)
+    nameWithType: EnumerationExtensions.Has(Of T)
+    fullName: System.EnumerationExtensions.Has(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.EnumerationExtensions.Missing``1(System.Enum,``0)
+  commentId: M:System.EnumerationExtensions.Missing``1(System.Enum,``0)
+  isExternal: true
+  name: Missing<T>(Enum, T)
+  nameWithType: EnumerationExtensions.Missing<T>(Enum, T)
+  fullName: System.EnumerationExtensions.Missing<T>(System.Enum, T)
+  nameWithType.vb: EnumerationExtensions.Missing(Of T)(Enum, T)
+  fullName.vb: System.EnumerationExtensions.Missing(Of T)(System.Enum, T)
+  name.vb: Missing(Of T)(Enum, T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Missing``1(System.Enum,``0)
+    name: Missing<T>
+    nameWithType: EnumerationExtensions.Missing<T>
+    fullName: System.EnumerationExtensions.Missing<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Missing``1(System.Enum,``0)
+    name: Missing(Of T)
+    nameWithType: EnumerationExtensions.Missing(Of T)
+    fullName: System.EnumerationExtensions.Missing(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: CamlBuilder.FieldReferenceFunctionType
+  commentId: T:CamlBuilder.FieldReferenceFunctionType
+  parent: CamlBuilder
+  name: FieldReferenceFunctionType
+  nameWithType: FieldReferenceFunctionType
+  fullName: CamlBuilder.FieldReferenceFunctionType

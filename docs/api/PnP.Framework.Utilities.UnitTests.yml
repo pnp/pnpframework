@@ -1,0 +1,34 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Utilities.UnitTests
+  commentId: N:PnP.Framework.Utilities.UnitTests
+  id: PnP.Framework.Utilities.UnitTests
+  children:
+  - PnP.Framework.Utilities.UnitTests.MockLegacyAuthenticationProvider
+  - PnP.Framework.Utilities.UnitTests.UnitTestClientContext
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Utilities.UnitTests
+  nameWithType: PnP.Framework.Utilities.UnitTests
+  fullName: PnP.Framework.Utilities.UnitTests
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Utilities.UnitTests.MockLegacyAuthenticationProvider
+  commentId: T:PnP.Framework.Utilities.UnitTests.MockLegacyAuthenticationProvider
+  name: MockLegacyAuthenticationProvider
+  nameWithType: MockLegacyAuthenticationProvider
+  fullName: PnP.Framework.Utilities.UnitTests.MockLegacyAuthenticationProvider
+- uid: PnP.Framework.Utilities.UnitTests.UnitTestClientContext
+  commentId: T:PnP.Framework.Utilities.UnitTests.UnitTestClientContext
+  parent: PnP.Framework.Utilities.UnitTests
+  name: UnitTestClientContext
+  nameWithType: UnitTestClientContext
+  fullName: PnP.Framework.Utilities.UnitTests.UnitTestClientContext
+- uid: PnP.Framework.Utilities.UnitTests
+  commentId: N:PnP.Framework.Utilities.UnitTests
+  name: PnP.Framework.Utilities.UnitTests
+  nameWithType: PnP.Framework.Utilities.UnitTests
+  fullName: PnP.Framework.Utilities.UnitTests

@@ -1,0 +1,1948 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  commentId: T:PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  id: FabricSlots
+  parent: PnP.Framework.Utilities.Themes.Generator
+  children:
+  - PnP.Framework.Utilities.Themes.Generator.FabricSlots.black
+  - PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralDark
+  - PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralLight
+  - PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralLighter
+  - PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralLighterAlt
+  - PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralPrimary
+  - PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralPrimaryAlt
+  - PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralQuaternary
+  - PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralQuaternaryAlt
+  - PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralSecondary
+  - PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralTertiary
+  - PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralTertiaryAlt
+  - PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeDark
+  - PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeDarkAlt
+  - PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeDarker
+  - PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeLight
+  - PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeLighter
+  - PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeLighterAlt
+  - PnP.Framework.Utilities.Themes.Generator.FabricSlots.themePrimary
+  - PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeSecondary
+  - PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeTertiary
+  - PnP.Framework.Utilities.Themes.Generator.FabricSlots.white
+  langs:
+  - csharp
+  - vb
+  name: FabricSlots
+  nameWithType: FabricSlots
+  fullName: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  type: Enum
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FabricSlots
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+    startLine: 19
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Generator
+  syntax:
+    content: public enum FabricSlots
+    content.vb: Public Enum FabricSlots
+  extensionMethods:
+  - System.Enum.System.EnumerationExtensions.Include``1({T})
+  - System.Enum.System.EnumerationExtensions.Remove``1({T})
+  - System.Enum.System.EnumerationExtensions.Has``1({T})
+  - System.Enum.System.EnumerationExtensions.Missing``1({T})
+  - PnP.Framework.Utilities.Themes.Generator.FabricSlots.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - PnP.Framework.Utilities.Themes.Generator.FabricSlots.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Utilities.Themes.Generator.FabricSlots,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots.themePrimary
+  commentId: F:PnP.Framework.Utilities.Themes.Generator.FabricSlots.themePrimary
+  id: themePrimary
+  parent: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  langs:
+  - csharp
+  - vb
+  name: themePrimary
+  nameWithType: FabricSlots.themePrimary
+  fullName: PnP.Framework.Utilities.Themes.Generator.FabricSlots.themePrimary
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: themePrimary
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+    startLine: 21
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Generator
+  syntax:
+    content: themePrimary = 0
+    return:
+      type: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeLighterAlt
+  commentId: F:PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeLighterAlt
+  id: themeLighterAlt
+  parent: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  langs:
+  - csharp
+  - vb
+  name: themeLighterAlt
+  nameWithType: FabricSlots.themeLighterAlt
+  fullName: PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeLighterAlt
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: themeLighterAlt
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+    startLine: 22
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Generator
+  syntax:
+    content: themeLighterAlt = 1
+    return:
+      type: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeLighter
+  commentId: F:PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeLighter
+  id: themeLighter
+  parent: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  langs:
+  - csharp
+  - vb
+  name: themeLighter
+  nameWithType: FabricSlots.themeLighter
+  fullName: PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeLighter
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: themeLighter
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+    startLine: 23
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Generator
+  syntax:
+    content: themeLighter = 2
+    return:
+      type: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeLight
+  commentId: F:PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeLight
+  id: themeLight
+  parent: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  langs:
+  - csharp
+  - vb
+  name: themeLight
+  nameWithType: FabricSlots.themeLight
+  fullName: PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeLight
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: themeLight
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+    startLine: 24
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Generator
+  syntax:
+    content: themeLight = 3
+    return:
+      type: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeTertiary
+  commentId: F:PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeTertiary
+  id: themeTertiary
+  parent: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  langs:
+  - csharp
+  - vb
+  name: themeTertiary
+  nameWithType: FabricSlots.themeTertiary
+  fullName: PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeTertiary
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: themeTertiary
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+    startLine: 25
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Generator
+  syntax:
+    content: themeTertiary = 4
+    return:
+      type: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeSecondary
+  commentId: F:PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeSecondary
+  id: themeSecondary
+  parent: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  langs:
+  - csharp
+  - vb
+  name: themeSecondary
+  nameWithType: FabricSlots.themeSecondary
+  fullName: PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeSecondary
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: themeSecondary
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+    startLine: 26
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Generator
+  syntax:
+    content: themeSecondary = 5
+    return:
+      type: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeDarkAlt
+  commentId: F:PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeDarkAlt
+  id: themeDarkAlt
+  parent: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  langs:
+  - csharp
+  - vb
+  name: themeDarkAlt
+  nameWithType: FabricSlots.themeDarkAlt
+  fullName: PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeDarkAlt
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: themeDarkAlt
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+    startLine: 27
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Generator
+  syntax:
+    content: themeDarkAlt = 6
+    return:
+      type: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeDark
+  commentId: F:PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeDark
+  id: themeDark
+  parent: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  langs:
+  - csharp
+  - vb
+  name: themeDark
+  nameWithType: FabricSlots.themeDark
+  fullName: PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeDark
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: themeDark
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+    startLine: 28
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Generator
+  syntax:
+    content: themeDark = 7
+    return:
+      type: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeDarker
+  commentId: F:PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeDarker
+  id: themeDarker
+  parent: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  langs:
+  - csharp
+  - vb
+  name: themeDarker
+  nameWithType: FabricSlots.themeDarker
+  fullName: PnP.Framework.Utilities.Themes.Generator.FabricSlots.themeDarker
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: themeDarker
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+    startLine: 29
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Generator
+  syntax:
+    content: themeDarker = 8
+    return:
+      type: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralLighterAlt
+  commentId: F:PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralLighterAlt
+  id: neutralLighterAlt
+  parent: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  langs:
+  - csharp
+  - vb
+  name: neutralLighterAlt
+  nameWithType: FabricSlots.neutralLighterAlt
+  fullName: PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralLighterAlt
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: neutralLighterAlt
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+    startLine: 31
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Generator
+  syntax:
+    content: neutralLighterAlt = 9
+    return:
+      type: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralLighter
+  commentId: F:PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralLighter
+  id: neutralLighter
+  parent: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  langs:
+  - csharp
+  - vb
+  name: neutralLighter
+  nameWithType: FabricSlots.neutralLighter
+  fullName: PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralLighter
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: neutralLighter
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+    startLine: 32
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Generator
+  syntax:
+    content: neutralLighter = 10
+    return:
+      type: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralLight
+  commentId: F:PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralLight
+  id: neutralLight
+  parent: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  langs:
+  - csharp
+  - vb
+  name: neutralLight
+  nameWithType: FabricSlots.neutralLight
+  fullName: PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralLight
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: neutralLight
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+    startLine: 33
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Generator
+  syntax:
+    content: neutralLight = 11
+    return:
+      type: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralQuaternaryAlt
+  commentId: F:PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralQuaternaryAlt
+  id: neutralQuaternaryAlt
+  parent: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  langs:
+  - csharp
+  - vb
+  name: neutralQuaternaryAlt
+  nameWithType: FabricSlots.neutralQuaternaryAlt
+  fullName: PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralQuaternaryAlt
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: neutralQuaternaryAlt
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+    startLine: 34
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Generator
+  syntax:
+    content: neutralQuaternaryAlt = 12
+    return:
+      type: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralQuaternary
+  commentId: F:PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralQuaternary
+  id: neutralQuaternary
+  parent: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  langs:
+  - csharp
+  - vb
+  name: neutralQuaternary
+  nameWithType: FabricSlots.neutralQuaternary
+  fullName: PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralQuaternary
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: neutralQuaternary
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+    startLine: 35
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Generator
+  syntax:
+    content: neutralQuaternary = 13
+    return:
+      type: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralTertiaryAlt
+  commentId: F:PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralTertiaryAlt
+  id: neutralTertiaryAlt
+  parent: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  langs:
+  - csharp
+  - vb
+  name: neutralTertiaryAlt
+  nameWithType: FabricSlots.neutralTertiaryAlt
+  fullName: PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralTertiaryAlt
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: neutralTertiaryAlt
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+    startLine: 36
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Generator
+  syntax:
+    content: neutralTertiaryAlt = 14
+    return:
+      type: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralTertiary
+  commentId: F:PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralTertiary
+  id: neutralTertiary
+  parent: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  langs:
+  - csharp
+  - vb
+  name: neutralTertiary
+  nameWithType: FabricSlots.neutralTertiary
+  fullName: PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralTertiary
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: neutralTertiary
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+    startLine: 37
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Generator
+  syntax:
+    content: neutralTertiary = 15
+    return:
+      type: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralSecondary
+  commentId: F:PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralSecondary
+  id: neutralSecondary
+  parent: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  langs:
+  - csharp
+  - vb
+  name: neutralSecondary
+  nameWithType: FabricSlots.neutralSecondary
+  fullName: PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralSecondary
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: neutralSecondary
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+    startLine: 39
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Generator
+  syntax:
+    content: neutralSecondary = 16
+    return:
+      type: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralPrimaryAlt
+  commentId: F:PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralPrimaryAlt
+  id: neutralPrimaryAlt
+  parent: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  langs:
+  - csharp
+  - vb
+  name: neutralPrimaryAlt
+  nameWithType: FabricSlots.neutralPrimaryAlt
+  fullName: PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralPrimaryAlt
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: neutralPrimaryAlt
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+    startLine: 40
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Generator
+  syntax:
+    content: neutralPrimaryAlt = 17
+    return:
+      type: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralPrimary
+  commentId: F:PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralPrimary
+  id: neutralPrimary
+  parent: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  langs:
+  - csharp
+  - vb
+  name: neutralPrimary
+  nameWithType: FabricSlots.neutralPrimary
+  fullName: PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralPrimary
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: neutralPrimary
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+    startLine: 41
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Generator
+  syntax:
+    content: neutralPrimary = 18
+    return:
+      type: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralDark
+  commentId: F:PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralDark
+  id: neutralDark
+  parent: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  langs:
+  - csharp
+  - vb
+  name: neutralDark
+  nameWithType: FabricSlots.neutralDark
+  fullName: PnP.Framework.Utilities.Themes.Generator.FabricSlots.neutralDark
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: neutralDark
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+    startLine: 42
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Generator
+  syntax:
+    content: neutralDark = 19
+    return:
+      type: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots.black
+  commentId: F:PnP.Framework.Utilities.Themes.Generator.FabricSlots.black
+  id: black
+  parent: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  langs:
+  - csharp
+  - vb
+  name: black
+  nameWithType: FabricSlots.black
+  fullName: PnP.Framework.Utilities.Themes.Generator.FabricSlots.black
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: black
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+    startLine: 44
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Generator
+  syntax:
+    content: black = 20
+    return:
+      type: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots.white
+  commentId: F:PnP.Framework.Utilities.Themes.Generator.FabricSlots.white
+  id: white
+  parent: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  langs:
+  - csharp
+  - vb
+  name: white
+  nameWithType: FabricSlots.white
+  fullName: PnP.Framework.Utilities.Themes.Generator.FabricSlots.white
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: white
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Generator/ThemeRulesStandard.cs
+    startLine: 45
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Generator
+  syntax:
+    content: white = 21
+    return:
+      type: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: PnP.Framework.Utilities.Themes.Generator
+  commentId: N:PnP.Framework.Utilities.Themes.Generator
+  name: PnP.Framework.Utilities.Themes.Generator
+  nameWithType: PnP.Framework.Utilities.Themes.Generator
+  fullName: PnP.Framework.Utilities.Themes.Generator
+- uid: System.Enum.System.EnumerationExtensions.Include``1({T})
+  commentId: M:System.EnumerationExtensions.Include``1(System.Enum,``0)
+  parent: System.EnumerationExtensions
+  definition: System.EnumerationExtensions.Include``1(System.Enum,``0)
+  name: Include<T>(T)
+  nameWithType: EnumerationExtensions.Include<T>(T)
+  fullName: System.EnumerationExtensions.Include<T>(T)
+  nameWithType.vb: EnumerationExtensions.Include(Of T)(T)
+  fullName.vb: System.EnumerationExtensions.Include(Of T)(T)
+  name.vb: Include(Of T)(T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Include``1(``0)
+    name: Include<T>
+    nameWithType: EnumerationExtensions.Include<T>
+    fullName: System.EnumerationExtensions.Include<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Include``1(``0)
+    name: Include(Of T)
+    nameWithType: EnumerationExtensions.Include(Of T)
+    fullName: System.EnumerationExtensions.Include(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Enum.System.EnumerationExtensions.Remove``1({T})
+  commentId: M:System.EnumerationExtensions.Remove``1(System.Enum,``0)
+  parent: System.EnumerationExtensions
+  definition: System.EnumerationExtensions.Remove``1(System.Enum,``0)
+  name: Remove<T>(T)
+  nameWithType: EnumerationExtensions.Remove<T>(T)
+  fullName: System.EnumerationExtensions.Remove<T>(T)
+  nameWithType.vb: EnumerationExtensions.Remove(Of T)(T)
+  fullName.vb: System.EnumerationExtensions.Remove(Of T)(T)
+  name.vb: Remove(Of T)(T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Remove``1(``0)
+    name: Remove<T>
+    nameWithType: EnumerationExtensions.Remove<T>
+    fullName: System.EnumerationExtensions.Remove<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Remove``1(``0)
+    name: Remove(Of T)
+    nameWithType: EnumerationExtensions.Remove(Of T)
+    fullName: System.EnumerationExtensions.Remove(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Enum.System.EnumerationExtensions.Has``1({T})
+  commentId: M:System.EnumerationExtensions.Has``1(System.Enum,``0)
+  parent: System.EnumerationExtensions
+  definition: System.EnumerationExtensions.Has``1(System.Enum,``0)
+  name: Has<T>(T)
+  nameWithType: EnumerationExtensions.Has<T>(T)
+  fullName: System.EnumerationExtensions.Has<T>(T)
+  nameWithType.vb: EnumerationExtensions.Has(Of T)(T)
+  fullName.vb: System.EnumerationExtensions.Has(Of T)(T)
+  name.vb: Has(Of T)(T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Has``1(``0)
+    name: Has<T>
+    nameWithType: EnumerationExtensions.Has<T>
+    fullName: System.EnumerationExtensions.Has<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Has``1(``0)
+    name: Has(Of T)
+    nameWithType: EnumerationExtensions.Has(Of T)
+    fullName: System.EnumerationExtensions.Has(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Enum.System.EnumerationExtensions.Missing``1({T})
+  commentId: M:System.EnumerationExtensions.Missing``1(System.Enum,``0)
+  parent: System.EnumerationExtensions
+  definition: System.EnumerationExtensions.Missing``1(System.Enum,``0)
+  name: Missing<T>(T)
+  nameWithType: EnumerationExtensions.Missing<T>(T)
+  fullName: System.EnumerationExtensions.Missing<T>(T)
+  nameWithType.vb: EnumerationExtensions.Missing(Of T)(T)
+  fullName.vb: System.EnumerationExtensions.Missing(Of T)(T)
+  name.vb: Missing(Of T)(T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Missing``1(``0)
+    name: Missing<T>
+    nameWithType: EnumerationExtensions.Missing<T>
+    fullName: System.EnumerationExtensions.Missing<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Missing``1(``0)
+    name: Missing(Of T)
+    nameWithType: EnumerationExtensions.Missing(Of T)
+    fullName: System.EnumerationExtensions.Missing(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<FabricSlots>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<FabricSlots>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Utilities.Themes.Generator.FabricSlots>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of FabricSlots)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Utilities.Themes.Generator.FabricSlots)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of FabricSlots)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<FabricSlots>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<FabricSlots>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Utilities.Themes.Generator.FabricSlots>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of FabricSlots)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of FabricSlots)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Utilities.Themes.Generator.FabricSlots)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Utilities.Themes.Generator.FabricSlots,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<FabricSlots, T>(Expression<Func<FabricSlots, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<FabricSlots, T>(Expression<Func<FabricSlots, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Utilities.Themes.Generator.FabricSlots, T>(System.Linq.Expressions.Expression<System.Func<PnP.Framework.Utilities.Themes.Generator.FabricSlots, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of FabricSlots, T)(Expression(Of Func(Of FabricSlots, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Utilities.Themes.Generator.FabricSlots, T)(System.Linq.Expressions.Expression(Of System.Func(Of PnP.Framework.Utilities.Themes.Generator.FabricSlots, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of FabricSlots, T)(Expression(Of Func(Of FabricSlots, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<FabricSlots, T>
+    nameWithType: ObjectExtensions.Set<FabricSlots, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Utilities.Themes.Generator.FabricSlots, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+    name: FabricSlots
+    nameWithType: FabricSlots
+    fullName: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of FabricSlots, T)
+    nameWithType: ObjectExtensions.Set(Of FabricSlots, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Utilities.Themes.Generator.FabricSlots, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+    name: FabricSlots
+    nameWithType: FabricSlots
+    fullName: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.EnumerationExtensions.Include``1(System.Enum,``0)
+  commentId: M:System.EnumerationExtensions.Include``1(System.Enum,``0)
+  isExternal: true
+  name: Include<T>(Enum, T)
+  nameWithType: EnumerationExtensions.Include<T>(Enum, T)
+  fullName: System.EnumerationExtensions.Include<T>(System.Enum, T)
+  nameWithType.vb: EnumerationExtensions.Include(Of T)(Enum, T)
+  fullName.vb: System.EnumerationExtensions.Include(Of T)(System.Enum, T)
+  name.vb: Include(Of T)(Enum, T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Include``1(System.Enum,``0)
+    name: Include<T>
+    nameWithType: EnumerationExtensions.Include<T>
+    fullName: System.EnumerationExtensions.Include<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Include``1(System.Enum,``0)
+    name: Include(Of T)
+    nameWithType: EnumerationExtensions.Include(Of T)
+    fullName: System.EnumerationExtensions.Include(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.EnumerationExtensions
+  commentId: T:System.EnumerationExtensions
+  parent: System
+  name: EnumerationExtensions
+  nameWithType: EnumerationExtensions
+  fullName: System.EnumerationExtensions
+- uid: System.EnumerationExtensions.Remove``1(System.Enum,``0)
+  commentId: M:System.EnumerationExtensions.Remove``1(System.Enum,``0)
+  isExternal: true
+  name: Remove<T>(Enum, T)
+  nameWithType: EnumerationExtensions.Remove<T>(Enum, T)
+  fullName: System.EnumerationExtensions.Remove<T>(System.Enum, T)
+  nameWithType.vb: EnumerationExtensions.Remove(Of T)(Enum, T)
+  fullName.vb: System.EnumerationExtensions.Remove(Of T)(System.Enum, T)
+  name.vb: Remove(Of T)(Enum, T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Remove``1(System.Enum,``0)
+    name: Remove<T>
+    nameWithType: EnumerationExtensions.Remove<T>
+    fullName: System.EnumerationExtensions.Remove<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Remove``1(System.Enum,``0)
+    name: Remove(Of T)
+    nameWithType: EnumerationExtensions.Remove(Of T)
+    fullName: System.EnumerationExtensions.Remove(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.EnumerationExtensions.Has``1(System.Enum,``0)
+  commentId: M:System.EnumerationExtensions.Has``1(System.Enum,``0)
+  isExternal: true
+  name: Has<T>(Enum, T)
+  nameWithType: EnumerationExtensions.Has<T>(Enum, T)
+  fullName: System.EnumerationExtensions.Has<T>(System.Enum, T)
+  nameWithType.vb: EnumerationExtensions.Has(Of T)(Enum, T)
+  fullName.vb: System.EnumerationExtensions.Has(Of T)(System.Enum, T)
+  name.vb: Has(Of T)(Enum, T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Has``1(System.Enum,``0)
+    name: Has<T>
+    nameWithType: EnumerationExtensions.Has<T>
+    fullName: System.EnumerationExtensions.Has<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Has``1(System.Enum,``0)
+    name: Has(Of T)
+    nameWithType: EnumerationExtensions.Has(Of T)
+    fullName: System.EnumerationExtensions.Has(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.EnumerationExtensions.Missing``1(System.Enum,``0)
+  commentId: M:System.EnumerationExtensions.Missing``1(System.Enum,``0)
+  isExternal: true
+  name: Missing<T>(Enum, T)
+  nameWithType: EnumerationExtensions.Missing<T>(Enum, T)
+  fullName: System.EnumerationExtensions.Missing<T>(System.Enum, T)
+  nameWithType.vb: EnumerationExtensions.Missing(Of T)(Enum, T)
+  fullName.vb: System.EnumerationExtensions.Missing(Of T)(System.Enum, T)
+  name.vb: Missing(Of T)(Enum, T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Missing``1(System.Enum,``0)
+    name: Missing<T>
+    nameWithType: EnumerationExtensions.Missing<T>
+    fullName: System.EnumerationExtensions.Missing<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Missing``1(System.Enum,``0)
+    name: Missing(Of T)
+    nameWithType: EnumerationExtensions.Missing(Of T)
+    fullName: System.EnumerationExtensions.Missing(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  commentId: T:PnP.Framework.Utilities.Themes.Generator.FabricSlots
+  parent: PnP.Framework.Utilities.Themes.Generator
+  name: FabricSlots
+  nameWithType: FabricSlots
+  fullName: PnP.Framework.Utilities.Themes.Generator.FabricSlots

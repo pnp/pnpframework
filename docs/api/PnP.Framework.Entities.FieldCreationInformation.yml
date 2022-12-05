@@ -1,0 +1,1906 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Entities.FieldCreationInformation
+  commentId: T:PnP.Framework.Entities.FieldCreationInformation
+  id: FieldCreationInformation
+  parent: PnP.Framework.Entities
+  children:
+  - PnP.Framework.Entities.FieldCreationInformation.#ctor(Microsoft.SharePoint.Client.FieldType)
+  - PnP.Framework.Entities.FieldCreationInformation.#ctor(System.String)
+  - PnP.Framework.Entities.FieldCreationInformation.AdditionalAttributes
+  - PnP.Framework.Entities.FieldCreationInformation.AdditionalChildNodes
+  - PnP.Framework.Entities.FieldCreationInformation.AddToDefaultView
+  - PnP.Framework.Entities.FieldCreationInformation.ClientSideComponentId
+  - PnP.Framework.Entities.FieldCreationInformation.ClientSideComponentProperties
+  - PnP.Framework.Entities.FieldCreationInformation.DisplayName
+  - PnP.Framework.Entities.FieldCreationInformation.FieldOptions
+  - PnP.Framework.Entities.FieldCreationInformation.FieldType
+  - PnP.Framework.Entities.FieldCreationInformation.Group
+  - PnP.Framework.Entities.FieldCreationInformation.Id
+  - PnP.Framework.Entities.FieldCreationInformation.InternalName
+  - PnP.Framework.Entities.FieldCreationInformation.Required
+  langs:
+  - csharp
+  - vb
+  name: FieldCreationInformation
+  nameWithType: FieldCreationInformation
+  fullName: PnP.Framework.Entities.FieldCreationInformation
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FieldCreationInformation
+    path: ../src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+    startLine: 9
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nClass that describes the field creation information\n"
+  example: []
+  syntax:
+    content: public class FieldCreationInformation
+    content.vb: Public Class FieldCreationInformation
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - PnP.Framework.Entities.TaxonomyFieldCreationInformation
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - PnP.Framework.Entities.FieldCreationInformation.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - PnP.Framework.Entities.FieldCreationInformation.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Entities.FieldCreationInformation,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: PnP.Framework.Entities.FieldCreationInformation.Id
+  commentId: P:PnP.Framework.Entities.FieldCreationInformation.Id
+  id: Id
+  parent: PnP.Framework.Entities.FieldCreationInformation
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: FieldCreationInformation.Id
+  fullName: PnP.Framework.Entities.FieldCreationInformation.Id
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Id
+    path: ../src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+    startLine: 14
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nGuid of the field\n"
+  example: []
+  syntax:
+    content: public Guid Id { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property Id As Guid
+  overload: PnP.Framework.Entities.FieldCreationInformation.Id*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.FieldCreationInformation.DisplayName
+  commentId: P:PnP.Framework.Entities.FieldCreationInformation.DisplayName
+  id: DisplayName
+  parent: PnP.Framework.Entities.FieldCreationInformation
+  langs:
+  - csharp
+  - vb
+  name: DisplayName
+  nameWithType: FieldCreationInformation.DisplayName
+  fullName: PnP.Framework.Entities.FieldCreationInformation.DisplayName
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DisplayName
+    path: ../src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+    startLine: 18
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nField display name\n"
+  example: []
+  syntax:
+    content: public string DisplayName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property DisplayName As String
+  overload: PnP.Framework.Entities.FieldCreationInformation.DisplayName*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.FieldCreationInformation.InternalName
+  commentId: P:PnP.Framework.Entities.FieldCreationInformation.InternalName
+  id: InternalName
+  parent: PnP.Framework.Entities.FieldCreationInformation
+  langs:
+  - csharp
+  - vb
+  name: InternalName
+  nameWithType: FieldCreationInformation.InternalName
+  fullName: PnP.Framework.Entities.FieldCreationInformation.InternalName
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: InternalName
+    path: ../src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+    startLine: 22
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nField internal name\n"
+  example: []
+  syntax:
+    content: public string InternalName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property InternalName As String
+  overload: PnP.Framework.Entities.FieldCreationInformation.InternalName*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.FieldCreationInformation.AddToDefaultView
+  commentId: P:PnP.Framework.Entities.FieldCreationInformation.AddToDefaultView
+  id: AddToDefaultView
+  parent: PnP.Framework.Entities.FieldCreationInformation
+  langs:
+  - csharp
+  - vb
+  name: AddToDefaultView
+  nameWithType: FieldCreationInformation.AddToDefaultView
+  fullName: PnP.Framework.Entities.FieldCreationInformation.AddToDefaultView
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddToDefaultView
+    path: ../src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+    startLine: 26
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nAdds fields to default view if value is true.\n"
+  example: []
+  syntax:
+    content: public bool AddToDefaultView { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property AddToDefaultView As Boolean
+  overload: PnP.Framework.Entities.FieldCreationInformation.AddToDefaultView*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.FieldCreationInformation.AdditionalAttributes
+  commentId: P:PnP.Framework.Entities.FieldCreationInformation.AdditionalAttributes
+  id: AdditionalAttributes
+  parent: PnP.Framework.Entities.FieldCreationInformation
+  langs:
+  - csharp
+  - vb
+  name: AdditionalAttributes
+  nameWithType: FieldCreationInformation.AdditionalAttributes
+  fullName: PnP.Framework.Entities.FieldCreationInformation.AdditionalAttributes
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AdditionalAttributes
+    path: ../src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+    startLine: 30
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nList of additional properties that need to be applied to the field on creation\n"
+  example: []
+  syntax:
+    content: public IEnumerable<KeyValuePair<string, string>> AdditionalAttributes { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}}
+    content.vb: Public Property AdditionalAttributes As IEnumerable(Of KeyValuePair(Of String, String))
+  overload: PnP.Framework.Entities.FieldCreationInformation.AdditionalAttributes*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.FieldCreationInformation.AdditionalChildNodes
+  commentId: P:PnP.Framework.Entities.FieldCreationInformation.AdditionalChildNodes
+  id: AdditionalChildNodes
+  parent: PnP.Framework.Entities.FieldCreationInformation
+  langs:
+  - csharp
+  - vb
+  name: AdditionalChildNodes
+  nameWithType: FieldCreationInformation.AdditionalChildNodes
+  fullName: PnP.Framework.Entities.FieldCreationInformation.AdditionalChildNodes
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AdditionalChildNodes
+    path: ../src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+    startLine: 34
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nList of additional child nodes that need to be included in the CAML field on creation\n"
+  example: []
+  syntax:
+    content: public IEnumerable<KeyValuePair<string, string>> AdditionalChildNodes { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}}
+    content.vb: Public Property AdditionalChildNodes As IEnumerable(Of KeyValuePair(Of String, String))
+  overload: PnP.Framework.Entities.FieldCreationInformation.AdditionalChildNodes*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.FieldCreationInformation.FieldType
+  commentId: P:PnP.Framework.Entities.FieldCreationInformation.FieldType
+  id: FieldType
+  parent: PnP.Framework.Entities.FieldCreationInformation
+  langs:
+  - csharp
+  - vb
+  name: FieldType
+  nameWithType: FieldCreationInformation.FieldType
+  fullName: PnP.Framework.Entities.FieldCreationInformation.FieldType
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FieldType
+    path: ../src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+    startLine: 38
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nType of the field\n"
+  example: []
+  syntax:
+    content: public string FieldType { get; protected set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property FieldType As String
+  overload: PnP.Framework.Entities.FieldCreationInformation.FieldType*
+  modifiers.csharp:
+  - public
+  - get
+  - protected set
+  modifiers.vb:
+  - Public
+  - Get
+  - Protected Set
+- uid: PnP.Framework.Entities.FieldCreationInformation.Group
+  commentId: P:PnP.Framework.Entities.FieldCreationInformation.Group
+  id: Group
+  parent: PnP.Framework.Entities.FieldCreationInformation
+  langs:
+  - csharp
+  - vb
+  name: Group
+  nameWithType: FieldCreationInformation.Group
+  fullName: PnP.Framework.Entities.FieldCreationInformation.Group
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Group
+    path: ../src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+    startLine: 42
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nGroup of the field\n"
+  example: []
+  syntax:
+    content: public string Group { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Group As String
+  overload: PnP.Framework.Entities.FieldCreationInformation.Group*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.FieldCreationInformation.Required
+  commentId: P:PnP.Framework.Entities.FieldCreationInformation.Required
+  id: Required
+  parent: PnP.Framework.Entities.FieldCreationInformation
+  langs:
+  - csharp
+  - vb
+  name: Required
+  nameWithType: FieldCreationInformation.Required
+  fullName: PnP.Framework.Entities.FieldCreationInformation.Required
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Required
+    path: ../src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+    startLine: 46
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nSpecifies fields is required to enter vlaue or not.\n"
+  example: []
+  syntax:
+    content: public bool Required { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property Required As Boolean
+  overload: PnP.Framework.Entities.FieldCreationInformation.Required*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.FieldCreationInformation.FieldOptions
+  commentId: P:PnP.Framework.Entities.FieldCreationInformation.FieldOptions
+  id: FieldOptions
+  parent: PnP.Framework.Entities.FieldCreationInformation
+  langs:
+  - csharp
+  - vb
+  name: FieldOptions
+  nameWithType: FieldCreationInformation.FieldOptions
+  fullName: PnP.Framework.Entities.FieldCreationInformation.FieldOptions
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FieldOptions
+    path: ../src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+    startLine: 50
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nSpecifies field options\n"
+  example: []
+  syntax:
+    content: public AddFieldOptions FieldOptions { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.SharePoint.Client.AddFieldOptions
+    content.vb: Public Property FieldOptions As AddFieldOptions
+  overload: PnP.Framework.Entities.FieldCreationInformation.FieldOptions*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.FieldCreationInformation.ClientSideComponentId
+  commentId: P:PnP.Framework.Entities.FieldCreationInformation.ClientSideComponentId
+  id: ClientSideComponentId
+  parent: PnP.Framework.Entities.FieldCreationInformation
+  langs:
+  - csharp
+  - vb
+  name: ClientSideComponentId
+  nameWithType: FieldCreationInformation.ClientSideComponentId
+  fullName: PnP.Framework.Entities.FieldCreationInformation.ClientSideComponentId
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ClientSideComponentId
+    path: ../src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+    startLine: 54
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nIgnored currently for SP2016\n"
+  example: []
+  syntax:
+    content: public Guid ClientSideComponentId { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property ClientSideComponentId As Guid
+  overload: PnP.Framework.Entities.FieldCreationInformation.ClientSideComponentId*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.FieldCreationInformation.ClientSideComponentProperties
+  commentId: P:PnP.Framework.Entities.FieldCreationInformation.ClientSideComponentProperties
+  id: ClientSideComponentProperties
+  parent: PnP.Framework.Entities.FieldCreationInformation
+  langs:
+  - csharp
+  - vb
+  name: ClientSideComponentProperties
+  nameWithType: FieldCreationInformation.ClientSideComponentProperties
+  fullName: PnP.Framework.Entities.FieldCreationInformation.ClientSideComponentProperties
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ClientSideComponentProperties
+    path: ../src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+    startLine: 58
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nIgnored currently for SP2016\n"
+  example: []
+  syntax:
+    content: public string ClientSideComponentProperties { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ClientSideComponentProperties As String
+  overload: PnP.Framework.Entities.FieldCreationInformation.ClientSideComponentProperties*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.FieldCreationInformation.#ctor(System.String)
+  commentId: M:PnP.Framework.Entities.FieldCreationInformation.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: PnP.Framework.Entities.FieldCreationInformation
+  langs:
+  - csharp
+  - vb
+  name: FieldCreationInformation(String)
+  nameWithType: FieldCreationInformation.FieldCreationInformation(String)
+  fullName: PnP.Framework.Entities.FieldCreationInformation.FieldCreationInformation(System.String)
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+    startLine: 64
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nConstructor\n"
+  example: []
+  syntax:
+    content: public FieldCreationInformation(string fieldType)
+    parameters:
+    - id: fieldType
+      type: System.String
+      description: Type of the field
+    content.vb: Public Sub New(fieldType As String)
+  overload: PnP.Framework.Entities.FieldCreationInformation.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.FieldCreationInformation.#ctor(Microsoft.SharePoint.Client.FieldType)
+  commentId: M:PnP.Framework.Entities.FieldCreationInformation.#ctor(Microsoft.SharePoint.Client.FieldType)
+  id: '#ctor(Microsoft.SharePoint.Client.FieldType)'
+  parent: PnP.Framework.Entities.FieldCreationInformation
+  langs:
+  - csharp
+  - vb
+  name: FieldCreationInformation(FieldType)
+  nameWithType: FieldCreationInformation.FieldCreationInformation(FieldType)
+  fullName: PnP.Framework.Entities.FieldCreationInformation.FieldCreationInformation(Microsoft.SharePoint.Client.FieldType)
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Entities/FieldCreationInformation.cs
+    startLine: 73
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nConstructor\n"
+  example: []
+  syntax:
+    content: public FieldCreationInformation(FieldType fieldType)
+    parameters:
+    - id: fieldType
+      type: Microsoft.SharePoint.Client.FieldType
+      description: Type of the field
+    content.vb: Public Sub New(fieldType As FieldType)
+  overload: PnP.Framework.Entities.FieldCreationInformation.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: PnP.Framework.Entities
+  commentId: N:PnP.Framework.Entities
+  name: PnP.Framework.Entities
+  nameWithType: PnP.Framework.Entities
+  fullName: PnP.Framework.Entities
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Entities.FieldCreationInformation.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<FieldCreationInformation>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<FieldCreationInformation>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Entities.FieldCreationInformation>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of FieldCreationInformation)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Entities.FieldCreationInformation)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of FieldCreationInformation)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<FieldCreationInformation>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<FieldCreationInformation>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Entities.FieldCreationInformation>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of FieldCreationInformation)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of FieldCreationInformation)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Entities.FieldCreationInformation)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Entities.FieldCreationInformation.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Entities.FieldCreationInformation,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<FieldCreationInformation, T>(Expression<Func<FieldCreationInformation, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<FieldCreationInformation, T>(Expression<Func<FieldCreationInformation, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Entities.FieldCreationInformation, T>(System.Linq.Expressions.Expression<System.Func<PnP.Framework.Entities.FieldCreationInformation, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of FieldCreationInformation, T)(Expression(Of Func(Of FieldCreationInformation, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Entities.FieldCreationInformation, T)(System.Linq.Expressions.Expression(Of System.Func(Of PnP.Framework.Entities.FieldCreationInformation, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of FieldCreationInformation, T)(Expression(Of Func(Of FieldCreationInformation, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<FieldCreationInformation, T>
+    nameWithType: ObjectExtensions.Set<FieldCreationInformation, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Entities.FieldCreationInformation, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Entities.FieldCreationInformation
+    name: FieldCreationInformation
+    nameWithType: FieldCreationInformation
+    fullName: PnP.Framework.Entities.FieldCreationInformation
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of FieldCreationInformation, T)
+    nameWithType: ObjectExtensions.Set(Of FieldCreationInformation, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Entities.FieldCreationInformation, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Entities.FieldCreationInformation
+    name: FieldCreationInformation
+    nameWithType: FieldCreationInformation
+    fullName: PnP.Framework.Entities.FieldCreationInformation
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: PnP.Framework.Entities.FieldCreationInformation.Id*
+  commentId: Overload:PnP.Framework.Entities.FieldCreationInformation.Id
+  name: Id
+  nameWithType: FieldCreationInformation.Id
+  fullName: PnP.Framework.Entities.FieldCreationInformation.Id
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: PnP.Framework.Entities.FieldCreationInformation.DisplayName*
+  commentId: Overload:PnP.Framework.Entities.FieldCreationInformation.DisplayName
+  name: DisplayName
+  nameWithType: FieldCreationInformation.DisplayName
+  fullName: PnP.Framework.Entities.FieldCreationInformation.DisplayName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: PnP.Framework.Entities.FieldCreationInformation.InternalName*
+  commentId: Overload:PnP.Framework.Entities.FieldCreationInformation.InternalName
+  name: InternalName
+  nameWithType: FieldCreationInformation.InternalName
+  fullName: PnP.Framework.Entities.FieldCreationInformation.InternalName
+- uid: PnP.Framework.Entities.FieldCreationInformation.AddToDefaultView*
+  commentId: Overload:PnP.Framework.Entities.FieldCreationInformation.AddToDefaultView
+  name: AddToDefaultView
+  nameWithType: FieldCreationInformation.AddToDefaultView
+  fullName: PnP.Framework.Entities.FieldCreationInformation.AddToDefaultView
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: PnP.Framework.Entities.FieldCreationInformation.AdditionalAttributes*
+  commentId: Overload:PnP.Framework.Entities.FieldCreationInformation.AdditionalAttributes
+  name: AdditionalAttributes
+  nameWithType: FieldCreationInformation.AdditionalAttributes
+  fullName: PnP.Framework.Entities.FieldCreationInformation.AdditionalAttributes
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<KeyValuePair<String, String>>
+  nameWithType: IEnumerable<KeyValuePair<String, String>>
+  fullName: System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<System.String, System.String>>
+  nameWithType.vb: IEnumerable(Of KeyValuePair(Of String, String))
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of System.String, System.String))
+  name.vb: IEnumerable(Of KeyValuePair(Of String, String))
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    nameWithType: KeyValuePair
+    fullName: System.Collections.Generic.KeyValuePair
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    nameWithType: KeyValuePair
+    fullName: System.Collections.Generic.KeyValuePair
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: PnP.Framework.Entities.FieldCreationInformation.AdditionalChildNodes*
+  commentId: Overload:PnP.Framework.Entities.FieldCreationInformation.AdditionalChildNodes
+  name: AdditionalChildNodes
+  nameWithType: FieldCreationInformation.AdditionalChildNodes
+  fullName: PnP.Framework.Entities.FieldCreationInformation.AdditionalChildNodes
+- uid: PnP.Framework.Entities.FieldCreationInformation.FieldType*
+  commentId: Overload:PnP.Framework.Entities.FieldCreationInformation.FieldType
+  name: FieldType
+  nameWithType: FieldCreationInformation.FieldType
+  fullName: PnP.Framework.Entities.FieldCreationInformation.FieldType
+- uid: PnP.Framework.Entities.FieldCreationInformation.Group*
+  commentId: Overload:PnP.Framework.Entities.FieldCreationInformation.Group
+  name: Group
+  nameWithType: FieldCreationInformation.Group
+  fullName: PnP.Framework.Entities.FieldCreationInformation.Group
+- uid: PnP.Framework.Entities.FieldCreationInformation.Required*
+  commentId: Overload:PnP.Framework.Entities.FieldCreationInformation.Required
+  name: Required
+  nameWithType: FieldCreationInformation.Required
+  fullName: PnP.Framework.Entities.FieldCreationInformation.Required
+- uid: PnP.Framework.Entities.FieldCreationInformation.FieldOptions*
+  commentId: Overload:PnP.Framework.Entities.FieldCreationInformation.FieldOptions
+  name: FieldOptions
+  nameWithType: FieldCreationInformation.FieldOptions
+  fullName: PnP.Framework.Entities.FieldCreationInformation.FieldOptions
+- uid: Microsoft.SharePoint.Client.AddFieldOptions
+  commentId: T:Microsoft.SharePoint.Client.AddFieldOptions
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: AddFieldOptions
+  nameWithType: AddFieldOptions
+  fullName: Microsoft.SharePoint.Client.AddFieldOptions
+- uid: Microsoft.SharePoint.Client
+  commentId: N:Microsoft.SharePoint.Client
+  name: Microsoft.SharePoint.Client
+  nameWithType: Microsoft.SharePoint.Client
+  fullName: Microsoft.SharePoint.Client
+- uid: PnP.Framework.Entities.FieldCreationInformation.ClientSideComponentId*
+  commentId: Overload:PnP.Framework.Entities.FieldCreationInformation.ClientSideComponentId
+  name: ClientSideComponentId
+  nameWithType: FieldCreationInformation.ClientSideComponentId
+  fullName: PnP.Framework.Entities.FieldCreationInformation.ClientSideComponentId
+- uid: PnP.Framework.Entities.FieldCreationInformation.ClientSideComponentProperties*
+  commentId: Overload:PnP.Framework.Entities.FieldCreationInformation.ClientSideComponentProperties
+  name: ClientSideComponentProperties
+  nameWithType: FieldCreationInformation.ClientSideComponentProperties
+  fullName: PnP.Framework.Entities.FieldCreationInformation.ClientSideComponentProperties
+- uid: PnP.Framework.Entities.FieldCreationInformation.#ctor*
+  commentId: Overload:PnP.Framework.Entities.FieldCreationInformation.#ctor
+  name: FieldCreationInformation
+  nameWithType: FieldCreationInformation.FieldCreationInformation
+  fullName: PnP.Framework.Entities.FieldCreationInformation.FieldCreationInformation
+- uid: Microsoft.SharePoint.Client.FieldType
+  commentId: T:Microsoft.SharePoint.Client.FieldType
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: FieldType
+  nameWithType: FieldType
+  fullName: Microsoft.SharePoint.Client.FieldType

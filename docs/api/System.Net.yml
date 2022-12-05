@@ -1,0 +1,22 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Net
+  commentId: N:System.Net
+  id: System.Net
+  children:
+  - System.Net.HttpWebRequestExtensions
+  langs:
+  - csharp
+  - vb
+  name: System.Net
+  nameWithType: System.Net
+  fullName: System.Net
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: System.Net.HttpWebRequestExtensions
+  commentId: T:System.Net.HttpWebRequestExtensions
+  name: HttpWebRequestExtensions
+  nameWithType: HttpWebRequestExtensions
+  fullName: System.Net.HttpWebRequestExtensions

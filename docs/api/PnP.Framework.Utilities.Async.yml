@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Utilities.Async
+  commentId: N:PnP.Framework.Utilities.Async
+  id: PnP.Framework.Utilities.Async
+  children:
+  - PnP.Framework.Utilities.Async.SynchronizationContextRemover
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Utilities.Async
+  nameWithType: PnP.Framework.Utilities.Async
+  fullName: PnP.Framework.Utilities.Async
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Utilities.Async.SynchronizationContextRemover
+  commentId: T:PnP.Framework.Utilities.Async.SynchronizationContextRemover
+  parent: PnP.Framework.Utilities.Async
+  name: SynchronizationContextRemover
+  nameWithType: SynchronizationContextRemover
+  fullName: PnP.Framework.Utilities.Async.SynchronizationContextRemover
+- uid: PnP.Framework.Utilities.Async
+  commentId: N:PnP.Framework.Utilities.Async
+  name: PnP.Framework.Utilities.Async
+  nameWithType: PnP.Framework.Utilities.Async
+  fullName: PnP.Framework.Utilities.Async

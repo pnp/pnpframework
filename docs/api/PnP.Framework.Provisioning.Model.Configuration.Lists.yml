@@ -1,0 +1,35 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.Configuration.Lists
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.Lists
+  id: PnP.Framework.Provisioning.Model.Configuration.Lists
+  children:
+  - PnP.Framework.Provisioning.Model.Configuration.Lists.ApplyListsConfiguration
+  - PnP.Framework.Provisioning.Model.Configuration.Lists.ExtractListsConfiguration
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Model.Configuration.Lists
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.Lists
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Lists
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Model.Configuration.Lists.ApplyListsConfiguration
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.Lists.ApplyListsConfiguration
+  parent: PnP.Framework.Provisioning.Model.Configuration.Lists
+  name: ApplyListsConfiguration
+  nameWithType: ApplyListsConfiguration
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Lists.ApplyListsConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.Lists.ExtractListsConfiguration
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.Lists.ExtractListsConfiguration
+  parent: PnP.Framework.Provisioning.Model.Configuration.Lists
+  name: ExtractListsConfiguration
+  nameWithType: ExtractListsConfiguration
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Lists.ExtractListsConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.Lists
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.Lists
+  name: PnP.Framework.Provisioning.Model.Configuration.Lists
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.Lists
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Lists

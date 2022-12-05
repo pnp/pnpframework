@@ -1,0 +1,79 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.Configuration
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration
+  id: PnP.Framework.Provisioning.Model.Configuration
+  children:
+  - PnP.Framework.Provisioning.Model.Configuration.ApplyConfiguration
+  - PnP.Framework.Provisioning.Model.Configuration.ConfigurationHandler
+  - PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration
+  - PnP.Framework.Provisioning.Model.Configuration.ListEnumConverter`1
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Model.Configuration
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration
+  fullName: PnP.Framework.Provisioning.Model.Configuration
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Model.Configuration.ApplyConfiguration
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.ApplyConfiguration
+  parent: PnP.Framework.Provisioning.Model.Configuration
+  name: ApplyConfiguration
+  nameWithType: ApplyConfiguration
+  fullName: PnP.Framework.Provisioning.Model.Configuration.ApplyConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.ConfigurationHandler
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.ConfigurationHandler
+  parent: PnP.Framework.Provisioning.Model.Configuration
+  name: ConfigurationHandler
+  nameWithType: ConfigurationHandler
+  fullName: PnP.Framework.Provisioning.Model.Configuration.ConfigurationHandler
+- uid: PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration
+  parent: PnP.Framework.Provisioning.Model.Configuration
+  name: ExtractConfiguration
+  nameWithType: ExtractConfiguration
+  fullName: PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.ListEnumConverter`1
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.ListEnumConverter`1
+  name: ListEnumConverter<TEnum>
+  nameWithType: ListEnumConverter<TEnum>
+  fullName: PnP.Framework.Provisioning.Model.Configuration.ListEnumConverter<TEnum>
+  nameWithType.vb: ListEnumConverter(Of TEnum)
+  fullName.vb: PnP.Framework.Provisioning.Model.Configuration.ListEnumConverter(Of TEnum)
+  name.vb: ListEnumConverter(Of TEnum)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Model.Configuration.ListEnumConverter`1
+    name: ListEnumConverter
+    nameWithType: ListEnumConverter
+    fullName: PnP.Framework.Provisioning.Model.Configuration.ListEnumConverter
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TEnum
+    nameWithType: TEnum
+    fullName: TEnum
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Model.Configuration.ListEnumConverter`1
+    name: ListEnumConverter
+    nameWithType: ListEnumConverter
+    fullName: PnP.Framework.Provisioning.Model.Configuration.ListEnumConverter
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TEnum
+    nameWithType: TEnum
+    fullName: TEnum
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.Configuration
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration
+  name: PnP.Framework.Provisioning.Model.Configuration
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration
+  fullName: PnP.Framework.Provisioning.Model.Configuration

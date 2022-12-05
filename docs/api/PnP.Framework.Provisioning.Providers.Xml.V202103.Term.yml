@@ -1,0 +1,1913 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term
+  commentId: T:PnP.Framework.Provisioning.Providers.Xml.V202103.Term
+  id: Term
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103
+  children:
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.Term.#ctor
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.Term.CustomProperties
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.Term.CustomSortOrder
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsDeprecated
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsPinned
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsPinnedRoot
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsReused
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsSourceTerm
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.Term.Labels
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.Term.Language
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.Term.LanguageSpecified
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.Term.LocalCustomProperties
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.Term.ReuseChildren
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.Term.SourceTermId
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.Term.Terms
+  langs:
+  - csharp
+  - vb
+  name: Term
+  nameWithType: Term
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Term
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 3248
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: >-
+      [Serializable]
+
+      public class Term : TermSetItem
+    content.vb: >-
+      <Serializable>
+
+      Public Class Term
+          Inherits TermSetItem
+  inheritance:
+  - System.Object
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.TaxonomyItem
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.TermSetItem
+  inheritedMembers:
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.TermSetItem.Owner
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.TermSetItem.Description
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.TermSetItem.IsAvailableForTagging
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.TaxonomyItem.Name
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.TaxonomyItem.ID
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.Term.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.Term.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Providers.Xml.V202103.Term,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.#ctor
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.#ctor
+  id: '#ctor'
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.Term
+  langs:
+  - csharp
+  - vb
+  name: Term()
+  nameWithType: Term.Term()
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.Term()
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 3283
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  syntax:
+    content: public Term()
+    content.vb: Public Sub New
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.Terms
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.Terms
+  id: Terms
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.Term
+  langs:
+  - csharp
+  - vb
+  name: Terms
+  nameWithType: Term.Terms
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.Terms
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Terms
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 3294
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public TermTerms Terms { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.TermTerms
+    content.vb: Public Property Terms As TermTerms
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.Terms*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.Labels
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.Labels
+  id: Labels
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.Term
+  langs:
+  - csharp
+  - vb
+  name: Labels
+  nameWithType: Term.Labels
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.Labels
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Labels
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 3304
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public TermLabelsLabel[] Labels { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.TermLabelsLabel[]
+    content.vb: Public Property Labels As TermLabelsLabel()
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.Labels*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.CustomProperties
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.CustomProperties
+  id: CustomProperties
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.Term
+  langs:
+  - csharp
+  - vb
+  name: CustomProperties
+  nameWithType: Term.CustomProperties
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.CustomProperties
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CustomProperties
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 3315
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public StringDictionaryItem[] CustomProperties { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.StringDictionaryItem[]
+    content.vb: Public Property CustomProperties As StringDictionaryItem()
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.CustomProperties*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.LocalCustomProperties
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.LocalCustomProperties
+  id: LocalCustomProperties
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.Term
+  langs:
+  - csharp
+  - vb
+  name: LocalCustomProperties
+  nameWithType: Term.LocalCustomProperties
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.LocalCustomProperties
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: LocalCustomProperties
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 3326
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public StringDictionaryItem[] LocalCustomProperties { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.StringDictionaryItem[]
+    content.vb: Public Property LocalCustomProperties As StringDictionaryItem()
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.LocalCustomProperties*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.Language
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.Language
+  id: Language
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.Term
+  langs:
+  - csharp
+  - vb
+  name: Language
+  nameWithType: Term.Language
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.Language
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Language
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 3337
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public int Language { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Language As Integer
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.Language*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.LanguageSpecified
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.LanguageSpecified
+  id: LanguageSpecified
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.Term
+  langs:
+  - csharp
+  - vb
+  name: LanguageSpecified
+  nameWithType: Term.LanguageSpecified
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.LanguageSpecified
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: LanguageSpecified
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 3348
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool LanguageSpecified { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property LanguageSpecified As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.LanguageSpecified*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.CustomSortOrder
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.CustomSortOrder
+  id: CustomSortOrder
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.Term
+  langs:
+  - csharp
+  - vb
+  name: CustomSortOrder
+  nameWithType: Term.CustomSortOrder
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.CustomSortOrder
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CustomSortOrder
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 3359
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public int CustomSortOrder { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property CustomSortOrder As Integer
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.CustomSortOrder*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsReused
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsReused
+  id: IsReused
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.Term
+  langs:
+  - csharp
+  - vb
+  name: IsReused
+  nameWithType: Term.IsReused
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsReused
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsReused
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 3371
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool IsReused { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsReused As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsReused*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsSourceTerm
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsSourceTerm
+  id: IsSourceTerm
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.Term
+  langs:
+  - csharp
+  - vb
+  name: IsSourceTerm
+  nameWithType: Term.IsSourceTerm
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsSourceTerm
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsSourceTerm
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 3383
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool IsSourceTerm { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsSourceTerm As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsSourceTerm*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsDeprecated
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsDeprecated
+  id: IsDeprecated
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.Term
+  langs:
+  - csharp
+  - vb
+  name: IsDeprecated
+  nameWithType: Term.IsDeprecated
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsDeprecated
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsDeprecated
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 3395
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool IsDeprecated { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsDeprecated As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsDeprecated*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.SourceTermId
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.SourceTermId
+  id: SourceTermId
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.Term
+  langs:
+  - csharp
+  - vb
+  name: SourceTermId
+  nameWithType: Term.SourceTermId
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.SourceTermId
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SourceTermId
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 3407
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public string SourceTermId { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property SourceTermId As String
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.SourceTermId*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.ReuseChildren
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.ReuseChildren
+  id: ReuseChildren
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.Term
+  langs:
+  - csharp
+  - vb
+  name: ReuseChildren
+  nameWithType: Term.ReuseChildren
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.ReuseChildren
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ReuseChildren
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 3418
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool ReuseChildren { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property ReuseChildren As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.ReuseChildren*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsPinned
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsPinned
+  id: IsPinned
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.Term
+  langs:
+  - csharp
+  - vb
+  name: IsPinned
+  nameWithType: Term.IsPinned
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsPinned
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsPinned
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 3430
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool IsPinned { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsPinned As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsPinned*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsPinnedRoot
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsPinnedRoot
+  id: IsPinnedRoot
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.Term
+  langs:
+  - csharp
+  - vb
+  name: IsPinnedRoot
+  nameWithType: Term.IsPinnedRoot
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsPinnedRoot
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsPinnedRoot
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 3442
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool IsPinnedRoot { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsPinnedRoot As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsPinnedRoot*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103
+  commentId: N:PnP.Framework.Provisioning.Providers.Xml.V202103
+  name: PnP.Framework.Provisioning.Providers.Xml.V202103
+  nameWithType: PnP.Framework.Provisioning.Providers.Xml.V202103
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TaxonomyItem
+  commentId: T:PnP.Framework.Provisioning.Providers.Xml.V202103.TaxonomyItem
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103
+  name: TaxonomyItem
+  nameWithType: TaxonomyItem
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.TaxonomyItem
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TermSetItem
+  commentId: T:PnP.Framework.Provisioning.Providers.Xml.V202103.TermSetItem
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103
+  name: TermSetItem
+  nameWithType: TermSetItem
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.TermSetItem
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TermSetItem.Owner
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.TermSetItem.Owner
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.TermSetItem
+  name: Owner
+  nameWithType: TermSetItem.Owner
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.TermSetItem.Owner
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TermSetItem.Description
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.TermSetItem.Description
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.TermSetItem
+  name: Description
+  nameWithType: TermSetItem.Description
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.TermSetItem.Description
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TermSetItem.IsAvailableForTagging
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.TermSetItem.IsAvailableForTagging
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.TermSetItem
+  name: IsAvailableForTagging
+  nameWithType: TermSetItem.IsAvailableForTagging
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.TermSetItem.IsAvailableForTagging
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TaxonomyItem.Name
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.TaxonomyItem.Name
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.TaxonomyItem
+  name: Name
+  nameWithType: TaxonomyItem.Name
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.TaxonomyItem.Name
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TaxonomyItem.ID
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.TaxonomyItem.ID
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.TaxonomyItem
+  name: ID
+  nameWithType: TaxonomyItem.ID
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.TaxonomyItem.ID
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<Term>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<Term>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Providers.Xml.V202103.Term>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of Term)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Providers.Xml.V202103.Term)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of Term)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<Term>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<Term>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Providers.Xml.V202103.Term>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of Term)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of Term)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Providers.Xml.V202103.Term)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Providers.Xml.V202103.Term,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<Term, T>(Expression<Func<Term, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<Term, T>(Expression<Func<Term, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Providers.Xml.V202103.Term, T>(System.Linq.Expressions.Expression<System.Func<PnP.Framework.Provisioning.Providers.Xml.V202103.Term, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of Term, T)(Expression(Of Func(Of Term, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Providers.Xml.V202103.Term, T)(System.Linq.Expressions.Expression(Of System.Func(Of PnP.Framework.Provisioning.Providers.Xml.V202103.Term, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of Term, T)(Expression(Of Func(Of Term, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<Term, T>
+    nameWithType: ObjectExtensions.Set<Term, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Providers.Xml.V202103.Term, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term
+    name: Term
+    nameWithType: Term
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of Term, T)
+    nameWithType: ObjectExtensions.Set(Of Term, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Providers.Xml.V202103.Term, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term
+    name: Term
+    nameWithType: Term
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.#ctor*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.#ctor
+  name: Term
+  nameWithType: Term.Term
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.Term
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.Terms*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.Terms
+  name: Terms
+  nameWithType: Term.Terms
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.Terms
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TermTerms
+  commentId: T:PnP.Framework.Provisioning.Providers.Xml.V202103.TermTerms
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103
+  name: TermTerms
+  nameWithType: TermTerms
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.TermTerms
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.Labels*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.Labels
+  name: Labels
+  nameWithType: Term.Labels
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.Labels
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TermLabelsLabel[]
+  isExternal: true
+  name: TermLabelsLabel[]
+  nameWithType: TermLabelsLabel[]
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.TermLabelsLabel[]
+  nameWithType.vb: TermLabelsLabel()
+  fullName.vb: PnP.Framework.Provisioning.Providers.Xml.V202103.TermLabelsLabel()
+  name.vb: TermLabelsLabel()
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TermLabelsLabel
+    name: TermLabelsLabel
+    nameWithType: TermLabelsLabel
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.TermLabelsLabel
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TermLabelsLabel
+    name: TermLabelsLabel
+    nameWithType: TermLabelsLabel
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.TermLabelsLabel
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.CustomProperties*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.CustomProperties
+  name: CustomProperties
+  nameWithType: Term.CustomProperties
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.CustomProperties
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.StringDictionaryItem[]
+  isExternal: true
+  name: StringDictionaryItem[]
+  nameWithType: StringDictionaryItem[]
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.StringDictionaryItem[]
+  nameWithType.vb: StringDictionaryItem()
+  fullName.vb: PnP.Framework.Provisioning.Providers.Xml.V202103.StringDictionaryItem()
+  name.vb: StringDictionaryItem()
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.StringDictionaryItem
+    name: StringDictionaryItem
+    nameWithType: StringDictionaryItem
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.StringDictionaryItem
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.StringDictionaryItem
+    name: StringDictionaryItem
+    nameWithType: StringDictionaryItem
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.StringDictionaryItem
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.LocalCustomProperties*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.LocalCustomProperties
+  name: LocalCustomProperties
+  nameWithType: Term.LocalCustomProperties
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.LocalCustomProperties
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.Language*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.Language
+  name: Language
+  nameWithType: Term.Language
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.Language
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.LanguageSpecified*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.LanguageSpecified
+  name: LanguageSpecified
+  nameWithType: Term.LanguageSpecified
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.LanguageSpecified
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.CustomSortOrder*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.CustomSortOrder
+  name: CustomSortOrder
+  nameWithType: Term.CustomSortOrder
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.CustomSortOrder
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsReused*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsReused
+  name: IsReused
+  nameWithType: Term.IsReused
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsReused
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsSourceTerm*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsSourceTerm
+  name: IsSourceTerm
+  nameWithType: Term.IsSourceTerm
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsSourceTerm
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsDeprecated*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsDeprecated
+  name: IsDeprecated
+  nameWithType: Term.IsDeprecated
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsDeprecated
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.SourceTermId*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.SourceTermId
+  name: SourceTermId
+  nameWithType: Term.SourceTermId
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.SourceTermId
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.ReuseChildren*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.ReuseChildren
+  name: ReuseChildren
+  nameWithType: Term.ReuseChildren
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.ReuseChildren
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsPinned*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsPinned
+  name: IsPinned
+  nameWithType: Term.IsPinned
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsPinned
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsPinnedRoot*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsPinnedRoot
+  name: IsPinnedRoot
+  nameWithType: Term.IsPinnedRoot
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.Term.IsPinnedRoot

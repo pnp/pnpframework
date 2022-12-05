@@ -1,0 +1,54 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Providers
+  commentId: N:PnP.Framework.Provisioning.Providers
+  id: PnP.Framework.Provisioning.Providers
+  children:
+  - PnP.Framework.Provisioning.Providers.IProvisioningHierarchyFormatter
+  - PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  - PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  - PnP.Framework.Provisioning.Providers.TemplateProviderBase
+  - PnP.Framework.Provisioning.Providers.ValidationResult
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Providers
+  nameWithType: PnP.Framework.Provisioning.Providers
+  fullName: PnP.Framework.Provisioning.Providers
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Providers.IProvisioningHierarchyFormatter
+  commentId: T:PnP.Framework.Provisioning.Providers.IProvisioningHierarchyFormatter
+  name: IProvisioningHierarchyFormatter
+  nameWithType: IProvisioningHierarchyFormatter
+  fullName: PnP.Framework.Provisioning.Providers.IProvisioningHierarchyFormatter
+- uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  commentId: T:PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  parent: PnP.Framework.Provisioning.Providers
+  name: ITemplateFormatter
+  nameWithType: ITemplateFormatter
+  fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+- uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  commentId: T:PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  name: ITemplateProviderExtension
+  nameWithType: ITemplateProviderExtension
+  fullName: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+- uid: PnP.Framework.Provisioning.Providers.TemplateProviderBase
+  commentId: T:PnP.Framework.Provisioning.Providers.TemplateProviderBase
+  parent: PnP.Framework.Provisioning.Providers
+  name: TemplateProviderBase
+  nameWithType: TemplateProviderBase
+  fullName: PnP.Framework.Provisioning.Providers.TemplateProviderBase
+- uid: PnP.Framework.Provisioning.Providers.ValidationResult
+  commentId: T:PnP.Framework.Provisioning.Providers.ValidationResult
+  parent: PnP.Framework.Provisioning.Providers
+  name: ValidationResult
+  nameWithType: ValidationResult
+  fullName: PnP.Framework.Provisioning.Providers.ValidationResult
+- uid: PnP.Framework.Provisioning.Providers
+  commentId: N:PnP.Framework.Provisioning.Providers
+  name: PnP.Framework.Provisioning.Providers
+  nameWithType: PnP.Framework.Provisioning.Providers
+  fullName: PnP.Framework.Provisioning.Providers

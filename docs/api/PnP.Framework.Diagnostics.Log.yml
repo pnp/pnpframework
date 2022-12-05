@@ -1,0 +1,1106 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Diagnostics.Log
+  commentId: T:PnP.Framework.Diagnostics.Log
+  id: Log
+  parent: PnP.Framework.Diagnostics
+  children:
+  - PnP.Framework.Diagnostics.Log.Debug(PnP.Framework.Diagnostics.LogEntry)
+  - PnP.Framework.Diagnostics.Log.Debug(System.String,System.Exception,System.String,System.Object[])
+  - PnP.Framework.Diagnostics.Log.Debug(System.String,System.String,System.Object[])
+  - PnP.Framework.Diagnostics.Log.Error(PnP.Framework.Diagnostics.LogEntry)
+  - PnP.Framework.Diagnostics.Log.Error(System.Exception,System.String,System.String,System.Object[])
+  - PnP.Framework.Diagnostics.Log.Error(System.String,System.String,System.Object[])
+  - PnP.Framework.Diagnostics.Log.Info(PnP.Framework.Diagnostics.LogEntry)
+  - PnP.Framework.Diagnostics.Log.Info(System.Exception,System.String,System.String,System.Object[])
+  - PnP.Framework.Diagnostics.Log.Info(System.String,System.String,System.Object[])
+  - PnP.Framework.Diagnostics.Log.Logger
+  - PnP.Framework.Diagnostics.Log.LogLevel
+  - PnP.Framework.Diagnostics.Log.Warning(PnP.Framework.Diagnostics.LogEntry)
+  - PnP.Framework.Diagnostics.Log.Warning(System.String,System.Exception,System.String,System.Object[])
+  - PnP.Framework.Diagnostics.Log.Warning(System.String,System.String)
+  - PnP.Framework.Diagnostics.Log.Warning(System.String,System.String,System.Object[])
+  langs:
+  - csharp
+  - vb
+  name: Log
+  nameWithType: Log
+  fullName: PnP.Framework.Diagnostics.Log
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/Log.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Log
+    path: ../src/lib/PnP.Framework/Diagnostics/Log.cs
+    startLine: 8
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nLogging class\n"
+  example: []
+  syntax:
+    content: public static class Log
+    content.vb: Public Module Log
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: PnP.Framework.Diagnostics.Log.LogLevel
+  commentId: P:PnP.Framework.Diagnostics.Log.LogLevel
+  id: LogLevel
+  parent: PnP.Framework.Diagnostics.Log
+  langs:
+  - csharp
+  - vb
+  name: LogLevel
+  nameWithType: Log.LogLevel
+  fullName: PnP.Framework.Diagnostics.Log.LogLevel
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/Log.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: LogLevel
+    path: ../src/lib/PnP.Framework/Diagnostics/Log.cs
+    startLine: 18
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nGets or sets Log Level\n"
+  example: []
+  syntax:
+    content: public static LogLevel LogLevel { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Diagnostics.LogLevel
+    content.vb: Public Shared Property LogLevel As LogLevel
+  overload: PnP.Framework.Diagnostics.Log.LogLevel*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  - set
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Diagnostics.Log.Logger
+  commentId: P:PnP.Framework.Diagnostics.Log.Logger
+  id: Logger
+  parent: PnP.Framework.Diagnostics.Log
+  langs:
+  - csharp
+  - vb
+  name: Logger
+  nameWithType: Log.Logger
+  fullName: PnP.Framework.Diagnostics.Log.Logger
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/Log.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Logger
+    path: ../src/lib/PnP.Framework/Diagnostics/Log.cs
+    startLine: 27
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nGets or sets ILogger object\n"
+  example: []
+  syntax:
+    content: public static ILogger Logger { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Diagnostics.ILogger
+    content.vb: Public Shared Property Logger As ILogger
+  overload: PnP.Framework.Diagnostics.Log.Logger*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  - set
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Diagnostics.Log.Error(System.String,System.String,System.Object[])
+  commentId: M:PnP.Framework.Diagnostics.Log.Error(System.String,System.String,System.Object[])
+  id: Error(System.String,System.String,System.Object[])
+  parent: PnP.Framework.Diagnostics.Log
+  langs:
+  - csharp
+  - vb
+  name: Error(String, String, Object[])
+  nameWithType: Log.Error(String, String, Object[])
+  fullName: PnP.Framework.Diagnostics.Log.Error(System.String, System.String, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/Log.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Error
+    path: ../src/lib/PnP.Framework/Diagnostics/Log.cs
+    startLine: 120
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nLogs error message and source\n"
+  example: []
+  syntax:
+    content: public static void Error(string source, string message, params object[] args)
+    parameters:
+    - id: source
+      type: System.String
+      description: Error source
+    - id: message
+      type: System.String
+      description: Error message
+    - id: args
+      type: System.Object[]
+      description: Arguments object
+    content.vb: Public Shared Sub Error(source As String, message As String, ParamArray args As Object())
+  overload: PnP.Framework.Diagnostics.Log.Error*
+  nameWithType.vb: Log.Error(String, String, Object())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Diagnostics.Log.Error(System.String, System.String, System.Object())
+  name.vb: Error(String, String, Object())
+- uid: PnP.Framework.Diagnostics.Log.Error(System.Exception,System.String,System.String,System.Object[])
+  commentId: M:PnP.Framework.Diagnostics.Log.Error(System.Exception,System.String,System.String,System.Object[])
+  id: Error(System.Exception,System.String,System.String,System.Object[])
+  parent: PnP.Framework.Diagnostics.Log
+  langs:
+  - csharp
+  - vb
+  name: Error(Exception, String, String, Object[])
+  nameWithType: Log.Error(Exception, String, String, Object[])
+  fullName: PnP.Framework.Diagnostics.Log.Error(System.Exception, System.String, System.String, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/Log.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Error
+    path: ../src/lib/PnP.Framework/Diagnostics/Log.cs
+    startLine: 139
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nLogs error message, source and exception\n"
+  example: []
+  syntax:
+    content: public static void Error(Exception ex, string source, string message, params object[] args)
+    parameters:
+    - id: ex
+      type: System.Exception
+      description: Exception object
+    - id: source
+      type: System.String
+      description: Error source
+    - id: message
+      type: System.String
+      description: Error message
+    - id: args
+      type: System.Object[]
+      description: Arguments object
+    content.vb: Public Shared Sub Error(ex As Exception, source As String, message As String, ParamArray args As Object())
+  overload: PnP.Framework.Diagnostics.Log.Error*
+  nameWithType.vb: Log.Error(Exception, String, String, Object())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Diagnostics.Log.Error(System.Exception, System.String, System.String, System.Object())
+  name.vb: Error(Exception, String, String, Object())
+- uid: PnP.Framework.Diagnostics.Log.Error(PnP.Framework.Diagnostics.LogEntry)
+  commentId: M:PnP.Framework.Diagnostics.Log.Error(PnP.Framework.Diagnostics.LogEntry)
+  id: Error(PnP.Framework.Diagnostics.LogEntry)
+  parent: PnP.Framework.Diagnostics.Log
+  langs:
+  - csharp
+  - vb
+  name: Error(LogEntry)
+  nameWithType: Log.Error(LogEntry)
+  fullName: PnP.Framework.Diagnostics.Log.Error(PnP.Framework.Diagnostics.LogEntry)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/Log.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Error
+    path: ../src/lib/PnP.Framework/Diagnostics/Log.cs
+    startLine: 156
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nError LogEntry\n"
+  example: []
+  syntax:
+    content: public static void Error(LogEntry logEntry)
+    parameters:
+    - id: logEntry
+      type: PnP.Framework.Diagnostics.LogEntry
+      description: LogEntry object
+    content.vb: Public Shared Sub Error(logEntry As LogEntry)
+  overload: PnP.Framework.Diagnostics.Log.Error*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Diagnostics.Log.Info(System.String,System.String,System.Object[])
+  commentId: M:PnP.Framework.Diagnostics.Log.Info(System.String,System.String,System.Object[])
+  id: Info(System.String,System.String,System.Object[])
+  parent: PnP.Framework.Diagnostics.Log
+  langs:
+  - csharp
+  - vb
+  name: Info(String, String, Object[])
+  nameWithType: Log.Info(String, String, Object[])
+  fullName: PnP.Framework.Diagnostics.Log.Info(System.String, System.String, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/Log.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Info
+    path: ../src/lib/PnP.Framework/Diagnostics/Log.cs
+    startLine: 173
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nLog Information\n"
+  example: []
+  syntax:
+    content: public static void Info(string source, string message, params object[] args)
+    parameters:
+    - id: source
+      type: System.String
+      description: Source string
+    - id: message
+      type: System.String
+      description: Message string
+    - id: args
+      type: System.Object[]
+      description: Arguments object
+    content.vb: Public Shared Sub Info(source As String, message As String, ParamArray args As Object())
+  overload: PnP.Framework.Diagnostics.Log.Info*
+  nameWithType.vb: Log.Info(String, String, Object())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Diagnostics.Log.Info(System.String, System.String, System.Object())
+  name.vb: Info(String, String, Object())
+- uid: PnP.Framework.Diagnostics.Log.Info(System.Exception,System.String,System.String,System.Object[])
+  commentId: M:PnP.Framework.Diagnostics.Log.Info(System.Exception,System.String,System.String,System.Object[])
+  id: Info(System.Exception,System.String,System.String,System.Object[])
+  parent: PnP.Framework.Diagnostics.Log
+  langs:
+  - csharp
+  - vb
+  name: Info(Exception, String, String, Object[])
+  nameWithType: Log.Info(Exception, String, String, Object[])
+  fullName: PnP.Framework.Diagnostics.Log.Info(System.Exception, System.String, System.String, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/Log.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Info
+    path: ../src/lib/PnP.Framework/Diagnostics/Log.cs
+    startLine: 192
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nLog Information\n"
+  example: []
+  syntax:
+    content: public static void Info(Exception ex, string source, string message, params object[] args)
+    parameters:
+    - id: ex
+      type: System.Exception
+      description: Exception object
+    - id: source
+      type: System.String
+      description: Source string
+    - id: message
+      type: System.String
+      description: Message string
+    - id: args
+      type: System.Object[]
+      description: Arguments option
+    content.vb: Public Shared Sub Info(ex As Exception, source As String, message As String, ParamArray args As Object())
+  overload: PnP.Framework.Diagnostics.Log.Info*
+  nameWithType.vb: Log.Info(Exception, String, String, Object())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Diagnostics.Log.Info(System.Exception, System.String, System.String, System.Object())
+  name.vb: Info(Exception, String, String, Object())
+- uid: PnP.Framework.Diagnostics.Log.Info(PnP.Framework.Diagnostics.LogEntry)
+  commentId: M:PnP.Framework.Diagnostics.Log.Info(PnP.Framework.Diagnostics.LogEntry)
+  id: Info(PnP.Framework.Diagnostics.LogEntry)
+  parent: PnP.Framework.Diagnostics.Log
+  langs:
+  - csharp
+  - vb
+  name: Info(LogEntry)
+  nameWithType: Log.Info(LogEntry)
+  fullName: PnP.Framework.Diagnostics.Log.Info(PnP.Framework.Diagnostics.LogEntry)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/Log.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Info
+    path: ../src/lib/PnP.Framework/Diagnostics/Log.cs
+    startLine: 209
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nLog Information\n"
+  example: []
+  syntax:
+    content: public static void Info(LogEntry logEntry)
+    parameters:
+    - id: logEntry
+      type: PnP.Framework.Diagnostics.LogEntry
+      description: LogEntry object
+    content.vb: Public Shared Sub Info(logEntry As LogEntry)
+  overload: PnP.Framework.Diagnostics.Log.Info*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Diagnostics.Log.Warning(System.String,System.String,System.Object[])
+  commentId: M:PnP.Framework.Diagnostics.Log.Warning(System.String,System.String,System.Object[])
+  id: Warning(System.String,System.String,System.Object[])
+  parent: PnP.Framework.Diagnostics.Log
+  langs:
+  - csharp
+  - vb
+  name: Warning(String, String, Object[])
+  nameWithType: Log.Warning(String, String, Object[])
+  fullName: PnP.Framework.Diagnostics.Log.Warning(System.String, System.String, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/Log.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Warning
+    path: ../src/lib/PnP.Framework/Diagnostics/Log.cs
+    startLine: 226
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nWarning Log\n"
+  example: []
+  syntax:
+    content: public static void Warning(string source, string message, params object[] args)
+    parameters:
+    - id: source
+      type: System.String
+      description: Source string
+    - id: message
+      type: System.String
+      description: Message string
+    - id: args
+      type: System.Object[]
+      description: Arguments object
+    content.vb: Public Shared Sub Warning(source As String, message As String, ParamArray args As Object())
+  overload: PnP.Framework.Diagnostics.Log.Warning*
+  nameWithType.vb: Log.Warning(String, String, Object())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Diagnostics.Log.Warning(System.String, System.String, System.Object())
+  name.vb: Warning(String, String, Object())
+- uid: PnP.Framework.Diagnostics.Log.Warning(System.String,System.String)
+  commentId: M:PnP.Framework.Diagnostics.Log.Warning(System.String,System.String)
+  id: Warning(System.String,System.String)
+  parent: PnP.Framework.Diagnostics.Log
+  langs:
+  - csharp
+  - vb
+  name: Warning(String, String)
+  nameWithType: Log.Warning(String, String)
+  fullName: PnP.Framework.Diagnostics.Log.Warning(System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/Log.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Warning
+    path: ../src/lib/PnP.Framework/Diagnostics/Log.cs
+    startLine: 244
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nLog Warning\n"
+  example: []
+  syntax:
+    content: public static void Warning(string source, string message)
+    parameters:
+    - id: source
+      type: System.String
+      description: Source of event
+    - id: message
+      type: System.String
+      description: Message to log
+    content.vb: Public Shared Sub Warning(source As String, message As String)
+  overload: PnP.Framework.Diagnostics.Log.Warning*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Diagnostics.Log.Warning(System.String,System.Exception,System.String,System.Object[])
+  commentId: M:PnP.Framework.Diagnostics.Log.Warning(System.String,System.Exception,System.String,System.Object[])
+  id: Warning(System.String,System.Exception,System.String,System.Object[])
+  parent: PnP.Framework.Diagnostics.Log
+  langs:
+  - csharp
+  - vb
+  name: Warning(String, Exception, String, Object[])
+  nameWithType: Log.Warning(String, Exception, String, Object[])
+  fullName: PnP.Framework.Diagnostics.Log.Warning(System.String, System.Exception, System.String, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/Log.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Warning
+    path: ../src/lib/PnP.Framework/Diagnostics/Log.cs
+    startLine: 263
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nWarning Log\n"
+  example: []
+  syntax:
+    content: public static void Warning(string source, Exception ex, string message, params object[] args)
+    parameters:
+    - id: source
+      type: System.String
+      description: Source string
+    - id: ex
+      type: System.Exception
+      description: Exception object
+    - id: message
+      type: System.String
+      description: Message string
+    - id: args
+      type: System.Object[]
+      description: Arguments object
+    content.vb: Public Shared Sub Warning(source As String, ex As Exception, message As String, ParamArray args As Object())
+  overload: PnP.Framework.Diagnostics.Log.Warning*
+  nameWithType.vb: Log.Warning(String, Exception, String, Object())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Diagnostics.Log.Warning(System.String, System.Exception, System.String, System.Object())
+  name.vb: Warning(String, Exception, String, Object())
+- uid: PnP.Framework.Diagnostics.Log.Warning(PnP.Framework.Diagnostics.LogEntry)
+  commentId: M:PnP.Framework.Diagnostics.Log.Warning(PnP.Framework.Diagnostics.LogEntry)
+  id: Warning(PnP.Framework.Diagnostics.LogEntry)
+  parent: PnP.Framework.Diagnostics.Log
+  langs:
+  - csharp
+  - vb
+  name: Warning(LogEntry)
+  nameWithType: Log.Warning(LogEntry)
+  fullName: PnP.Framework.Diagnostics.Log.Warning(PnP.Framework.Diagnostics.LogEntry)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/Log.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Warning
+    path: ../src/lib/PnP.Framework/Diagnostics/Log.cs
+    startLine: 281
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nWarning Log\n"
+  example: []
+  syntax:
+    content: public static void Warning(LogEntry logEntry)
+    parameters:
+    - id: logEntry
+      type: PnP.Framework.Diagnostics.LogEntry
+      description: LogEntry object
+    content.vb: Public Shared Sub Warning(logEntry As LogEntry)
+  overload: PnP.Framework.Diagnostics.Log.Warning*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Diagnostics.Log.Debug(System.String,System.String,System.Object[])
+  commentId: M:PnP.Framework.Diagnostics.Log.Debug(System.String,System.String,System.Object[])
+  id: Debug(System.String,System.String,System.Object[])
+  parent: PnP.Framework.Diagnostics.Log
+  langs:
+  - csharp
+  - vb
+  name: Debug(String, String, Object[])
+  nameWithType: Log.Debug(String, String, Object[])
+  fullName: PnP.Framework.Diagnostics.Log.Debug(System.String, System.String, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/Log.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Debug
+    path: ../src/lib/PnP.Framework/Diagnostics/Log.cs
+    startLine: 298
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nDebug Log\n"
+  example: []
+  syntax:
+    content: public static void Debug(string source, string message, params object[] args)
+    parameters:
+    - id: source
+      type: System.String
+      description: Source stirng
+    - id: message
+      type: System.String
+      description: Message string
+    - id: args
+      type: System.Object[]
+      description: Arguments object
+    content.vb: Public Shared Sub Debug(source As String, message As String, ParamArray args As Object())
+  overload: PnP.Framework.Diagnostics.Log.Debug*
+  nameWithType.vb: Log.Debug(String, String, Object())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Diagnostics.Log.Debug(System.String, System.String, System.Object())
+  name.vb: Debug(String, String, Object())
+- uid: PnP.Framework.Diagnostics.Log.Debug(System.String,System.Exception,System.String,System.Object[])
+  commentId: M:PnP.Framework.Diagnostics.Log.Debug(System.String,System.Exception,System.String,System.Object[])
+  id: Debug(System.String,System.Exception,System.String,System.Object[])
+  parent: PnP.Framework.Diagnostics.Log
+  langs:
+  - csharp
+  - vb
+  name: Debug(String, Exception, String, Object[])
+  nameWithType: Log.Debug(String, Exception, String, Object[])
+  fullName: PnP.Framework.Diagnostics.Log.Debug(System.String, System.Exception, System.String, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/Log.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Debug
+    path: ../src/lib/PnP.Framework/Diagnostics/Log.cs
+    startLine: 319
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nDebug Log\n"
+  example: []
+  syntax:
+    content: public static void Debug(string source, Exception ex, string message, params object[] args)
+    parameters:
+    - id: source
+      type: System.String
+      description: Source string
+    - id: ex
+      type: System.Exception
+      description: Exception object
+    - id: message
+      type: System.String
+      description: Message string
+    - id: args
+      type: System.Object[]
+      description: Arguments object
+    content.vb: Public Shared Sub Debug(source As String, ex As Exception, message As String, ParamArray args As Object())
+  overload: PnP.Framework.Diagnostics.Log.Debug*
+  nameWithType.vb: Log.Debug(String, Exception, String, Object())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Diagnostics.Log.Debug(System.String, System.Exception, System.String, System.Object())
+  name.vb: Debug(String, Exception, String, Object())
+- uid: PnP.Framework.Diagnostics.Log.Debug(PnP.Framework.Diagnostics.LogEntry)
+  commentId: M:PnP.Framework.Diagnostics.Log.Debug(PnP.Framework.Diagnostics.LogEntry)
+  id: Debug(PnP.Framework.Diagnostics.LogEntry)
+  parent: PnP.Framework.Diagnostics.Log
+  langs:
+  - csharp
+  - vb
+  name: Debug(LogEntry)
+  nameWithType: Log.Debug(LogEntry)
+  fullName: PnP.Framework.Diagnostics.Log.Debug(PnP.Framework.Diagnostics.LogEntry)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Diagnostics/Log.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Debug
+    path: ../src/lib/PnP.Framework/Diagnostics/Log.cs
+    startLine: 337
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Diagnostics
+  summary: "\nDebug Log\n"
+  example: []
+  syntax:
+    content: public static void Debug(LogEntry logEntry)
+    parameters:
+    - id: logEntry
+      type: PnP.Framework.Diagnostics.LogEntry
+      description: LogEntry object
+    content.vb: Public Shared Sub Debug(logEntry As LogEntry)
+  overload: PnP.Framework.Diagnostics.Log.Debug*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: PnP.Framework.Diagnostics
+  commentId: N:PnP.Framework.Diagnostics
+  name: PnP.Framework.Diagnostics
+  nameWithType: PnP.Framework.Diagnostics
+  fullName: PnP.Framework.Diagnostics
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: PnP.Framework.Diagnostics.Log.LogLevel*
+  commentId: Overload:PnP.Framework.Diagnostics.Log.LogLevel
+  name: LogLevel
+  nameWithType: Log.LogLevel
+  fullName: PnP.Framework.Diagnostics.Log.LogLevel
+- uid: PnP.Framework.Diagnostics.LogLevel
+  commentId: T:PnP.Framework.Diagnostics.LogLevel
+  parent: PnP.Framework.Diagnostics
+  name: LogLevel
+  nameWithType: LogLevel
+  fullName: PnP.Framework.Diagnostics.LogLevel
+- uid: PnP.Framework.Diagnostics.Log.Logger*
+  commentId: Overload:PnP.Framework.Diagnostics.Log.Logger
+  name: Logger
+  nameWithType: Log.Logger
+  fullName: PnP.Framework.Diagnostics.Log.Logger
+- uid: PnP.Framework.Diagnostics.ILogger
+  commentId: T:PnP.Framework.Diagnostics.ILogger
+  parent: PnP.Framework.Diagnostics
+  name: ILogger
+  nameWithType: ILogger
+  fullName: PnP.Framework.Diagnostics.ILogger
+- uid: PnP.Framework.Diagnostics.Log.Error*
+  commentId: Overload:PnP.Framework.Diagnostics.Log.Error
+  name: Error
+  nameWithType: Log.Error
+  fullName: PnP.Framework.Diagnostics.Log.Error
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Object[]
+  isExternal: true
+  name: Object[]
+  nameWithType: Object[]
+  fullName: System.Object[]
+  nameWithType.vb: Object()
+  fullName.vb: System.Object()
+  name.vb: Object()
+  spec.csharp:
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: PnP.Framework.Diagnostics.LogEntry
+  commentId: T:PnP.Framework.Diagnostics.LogEntry
+  parent: PnP.Framework.Diagnostics
+  name: LogEntry
+  nameWithType: LogEntry
+  fullName: PnP.Framework.Diagnostics.LogEntry
+- uid: PnP.Framework.Diagnostics.Log.Info*
+  commentId: Overload:PnP.Framework.Diagnostics.Log.Info
+  name: Info
+  nameWithType: Log.Info
+  fullName: PnP.Framework.Diagnostics.Log.Info
+- uid: PnP.Framework.Diagnostics.Log.Warning*
+  commentId: Overload:PnP.Framework.Diagnostics.Log.Warning
+  name: Warning
+  nameWithType: Log.Warning
+  fullName: PnP.Framework.Diagnostics.Log.Warning
+- uid: PnP.Framework.Diagnostics.Log.Debug*
+  commentId: Overload:PnP.Framework.Diagnostics.Log.Debug
+  name: Debug
+  nameWithType: Log.Debug
+  fullName: PnP.Framework.Diagnostics.Log.Debug

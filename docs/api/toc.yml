@@ -1,0 +1,3895 @@
+### YamlMime:TableOfContent
+- uid: AngleSharp.Dom
+  name: AngleSharp.Dom
+  items:
+  - uid: AngleSharp.Dom.AngleSharpExtensions
+    name: AngleSharpExtensions
+- uid: CamlBuilder
+  name: CamlBuilder
+  items:
+  - uid: CamlBuilder.FieldReference
+    name: FieldReference
+  - uid: CamlBuilder.FieldReferenceFunctionType
+    name: FieldReferenceFunctionType
+  - uid: CamlBuilder.ListPropertyValueItem
+    name: ListPropertyValueItem
+  - uid: CamlBuilder.LogicalJoin
+    name: LogicalJoin
+  - uid: CamlBuilder.LogicalJoinType
+    name: LogicalJoinType
+  - uid: CamlBuilder.MembershipType
+    name: MembershipType
+  - uid: CamlBuilder.Operator
+    name: Operator
+  - uid: CamlBuilder.OperatorType
+    name: OperatorType
+  - uid: CamlBuilder.OrderByFieldOrder
+    name: OrderByFieldOrder
+  - uid: CamlBuilder.Query
+    name: Query
+  - uid: CamlBuilder.Statement
+    name: Statement
+  - uid: CamlBuilder.Value
+    name: Value
+  - uid: CamlBuilder.ValueType
+    name: ValueType
+- uid: Microsoft.SharePoint.Client
+  name: Microsoft.SharePoint.Client
+  items:
+  - uid: Microsoft.SharePoint.Client.BaseTemplateManager
+    name: BaseTemplateManager
+  - uid: Microsoft.SharePoint.Client.BrandingExtensions
+    name: BrandingExtensions
+  - uid: Microsoft.SharePoint.Client.ClientContextExtensions
+    name: ClientContextExtensions
+  - uid: Microsoft.SharePoint.Client.ClientContextExtensions.MaximumRetryAttemptedException
+    name: ClientContextExtensions.MaximumRetryAttemptedException
+  - uid: Microsoft.SharePoint.Client.ClientObjectExtensions
+    name: ClientObjectExtensions
+  - uid: Microsoft.SharePoint.Client.ExternalSharingDocumentOption
+    name: ExternalSharingDocumentOption
+  - uid: Microsoft.SharePoint.Client.ExternalSharingExtensions
+    name: ExternalSharingExtensions
+  - uid: Microsoft.SharePoint.Client.ExternalSharingSiteOption
+    name: ExternalSharingSiteOption
+  - uid: Microsoft.SharePoint.Client.FeatureExtensions
+    name: FeatureExtensions
+  - uid: Microsoft.SharePoint.Client.FieldAndContentTypeExtensions
+    name: FieldAndContentTypeExtensions
+  - uid: Microsoft.SharePoint.Client.FileFolderExtensions
+    name: FileFolderExtensions
+  - uid: Microsoft.SharePoint.Client.InformationManagementExtensions
+    name: InformationManagementExtensions
+  - uid: Microsoft.SharePoint.Client.InternalClientContextExtensions
+    name: InternalClientContextExtensions
+  - uid: Microsoft.SharePoint.Client.JavaScriptExtensions
+    name: JavaScriptExtensions
+  - uid: Microsoft.SharePoint.Client.ListExtensions
+    name: ListExtensions
+  - uid: Microsoft.SharePoint.Client.ListItemExtensions
+    name: ListItemExtensions
+  - uid: Microsoft.SharePoint.Client.ListRatingExtensions
+    name: ListRatingExtensions
+  - uid: Microsoft.SharePoint.Client.ManagedNavigationKind
+    name: ManagedNavigationKind
+  - uid: Microsoft.SharePoint.Client.NavigationExtensions
+    name: NavigationExtensions
+  - uid: Microsoft.SharePoint.Client.PageExtensions
+    name: PageExtensions
+  - uid: Microsoft.SharePoint.Client.ProvisioningExtensions
+    name: ProvisioningExtensions
+  - uid: Microsoft.SharePoint.Client.PublishingExtensions
+    name: PublishingExtensions
+  - uid: Microsoft.SharePoint.Client.RecordsManagementExtensions
+    name: RecordsManagementExtensions
+  - uid: Microsoft.SharePoint.Client.SearchExtensions
+    name: SearchExtensions
+  - uid: Microsoft.SharePoint.Client.SecurityExtensions
+    name: SecurityExtensions
+  - uid: Microsoft.SharePoint.Client.SiteExistence
+    name: SiteExistence
+  - uid: Microsoft.SharePoint.Client.SiteExtensions
+    name: SiteExtensions
+  - uid: Microsoft.SharePoint.Client.SiteExtensionsModernization
+    name: SiteExtensionsModernization
+  - uid: Microsoft.SharePoint.Client.TaxonomyExtensions
+    name: TaxonomyExtensions
+  - uid: Microsoft.SharePoint.Client.TenantExtensions
+    name: TenantExtensions
+  - uid: Microsoft.SharePoint.Client.VariationExtensions
+    name: VariationExtensions
+  - uid: Microsoft.SharePoint.Client.WebExtensions
+    name: WebExtensions
+  - uid: Microsoft.SharePoint.Client.WorkflowExtensions
+    name: WorkflowExtensions
+- uid: PnP.Framework
+  name: PnP.Framework
+  items:
+  - uid: PnP.Framework.AuthenticationManager
+    name: AuthenticationManager
+  - uid: PnP.Framework.AzureEnvironment
+    name: AzureEnvironment
+  - uid: PnP.Framework.BuiltInContentTypeId
+    name: BuiltInContentTypeId
+  - uid: PnP.Framework.Constants
+    name: Constants
+  - uid: PnP.Framework.EcmListManualRecordDeclaration
+    name: EcmListManualRecordDeclaration
+  - uid: PnP.Framework.EcmRecordDeclarationBy
+    name: EcmRecordDeclarationBy
+  - uid: PnP.Framework.EcmSiteRecordRestrictions
+    name: EcmSiteRecordRestrictions
+  - uid: PnP.Framework.KnownClientId
+    name: KnownClientId
+  - uid: PnP.Framework.PnPClientContext
+    name: PnPClientContext
+  - uid: PnP.Framework.PnPCoreSdk
+    name: PnPCoreSdk
+  - uid: PnP.Framework.SiteLockState
+    name: SiteLockState
+  - uid: PnP.Framework.TenantOperationMessage
+    name: TenantOperationMessage
+  - uid: PnP.Framework.VotingExperience
+    name: VotingExperience
+  - uid: PnP.Framework.WikiPageLayout
+    name: WikiPageLayout
+- uid: PnP.Framework.ALM
+  name: PnP.Framework.ALM
+  items:
+  - uid: PnP.Framework.ALM.AppManager
+    name: AppManager
+  - uid: PnP.Framework.ALM.AppMetadata
+    name: AppMetadata
+- uid: PnP.Framework.AppModelExtensions
+  name: PnP.Framework.AppModelExtensions
+  items:
+  - uid: PnP.Framework.AppModelExtensions.VariationExtensions
+    name: VariationExtensions
+- uid: PnP.Framework.Attributes
+  name: PnP.Framework.Attributes
+  items:
+  - uid: PnP.Framework.Attributes.TokenDefinitionDescriptionAttribute
+    name: TokenDefinitionDescriptionAttribute
+- uid: PnP.Framework.Diagnostics
+  name: PnP.Framework.Diagnostics
+  items:
+  - uid: PnP.Framework.Diagnostics.ILogger
+    name: ILogger
+  - uid: PnP.Framework.Diagnostics.Log
+    name: Log
+  - uid: PnP.Framework.Diagnostics.LogConfigurationTracingLoggerElement
+    name: LogConfigurationTracingLoggerElement
+  - uid: PnP.Framework.Diagnostics.LogConfigurationTracingSection
+    name: LogConfigurationTracingSection
+  - uid: PnP.Framework.Diagnostics.LogEntry
+    name: LogEntry
+  - uid: PnP.Framework.Diagnostics.LogLevel
+    name: LogLevel
+  - uid: PnP.Framework.Diagnostics.PnPMonitoredScope
+    name: PnPMonitoredScope
+- uid: PnP.Framework.Diagnostics.Tree
+  name: PnP.Framework.Diagnostics.Tree
+  items:
+  - uid: PnP.Framework.Diagnostics.Tree.DepthBreadthTraversalType
+    name: DepthBreadthTraversalType
+  - uid: PnP.Framework.Diagnostics.Tree.ITreeNode
+    name: ITreeNode
+  - uid: PnP.Framework.Diagnostics.Tree.ITreeNode`1
+    name: ITreeNode<T>
+    name.vb: ITreeNode(Of T)
+  - uid: PnP.Framework.Diagnostics.Tree.ITreeNodeAware`1
+    name: ITreeNodeAware<T>
+    name.vb: ITreeNodeAware(Of T)
+  - uid: PnP.Framework.Diagnostics.Tree.ITreeNodeList`1
+    name: ITreeNodeList<T>
+    name.vb: ITreeNodeList(Of T)
+  - uid: PnP.Framework.Diagnostics.Tree.NodeChangeType
+    name: NodeChangeType
+  - uid: PnP.Framework.Diagnostics.Tree.NodeRelationType
+    name: NodeRelationType
+  - uid: PnP.Framework.Diagnostics.Tree.Tree`1
+    name: Tree<T>
+    name.vb: Tree(Of T)
+  - uid: PnP.Framework.Diagnostics.Tree.TreeNode`1
+    name: TreeNode<T>
+    name.vb: TreeNode(Of T)
+  - uid: PnP.Framework.Diagnostics.Tree.TreeNodeList`1
+    name: TreeNodeList<T>
+    name.vb: TreeNodeList(Of T)
+  - uid: PnP.Framework.Diagnostics.Tree.UpDownTraversalType
+    name: UpDownTraversalType
+- uid: PnP.Framework.Entities
+  name: PnP.Framework.Entities
+  items:
+  - uid: PnP.Framework.Entities.AreaNavigationEntity
+    name: AreaNavigationEntity
+  - uid: PnP.Framework.Entities.CustomActionEntity
+    name: CustomActionEntity
+  - uid: PnP.Framework.Entities.DefaultColumnTermPathValue
+    name: DefaultColumnTermPathValue
+  - uid: PnP.Framework.Entities.DefaultColumnTermValue
+    name: DefaultColumnTermValue
+  - uid: PnP.Framework.Entities.DefaultColumnTextValue
+    name: DefaultColumnTextValue
+  - uid: PnP.Framework.Entities.DefaultColumnValue
+    name: DefaultColumnValue
+  - uid: PnP.Framework.Entities.ExternalUserEntity
+    name: ExternalUserEntity
+  - uid: PnP.Framework.Entities.FieldCreationInformation
+    name: FieldCreationInformation
+  - uid: PnP.Framework.Entities.GroupEntity
+    name: GroupEntity
+  - uid: PnP.Framework.Entities.GroupUser
+    name: GroupUser
+  - uid: PnP.Framework.Entities.IDefaultColumnValue
+    name: IDefaultColumnValue
+  - uid: PnP.Framework.Entities.RoleAssignmentEntity
+    name: RoleAssignmentEntity
+  - uid: PnP.Framework.Entities.SiteEntity
+    name: SiteEntity
+  - uid: PnP.Framework.Entities.SitePolicyEntity
+    name: SitePolicyEntity
+  - uid: PnP.Framework.Entities.StructuralNavigationEntity
+    name: StructuralNavigationEntity
+  - uid: PnP.Framework.Entities.TaxonomyFieldCreationInformation
+    name: TaxonomyFieldCreationInformation
+  - uid: PnP.Framework.Entities.ThemeEntity
+    name: ThemeEntity
+  - uid: PnP.Framework.Entities.UnifiedGroupEntity
+    name: UnifiedGroupEntity
+  - uid: PnP.Framework.Entities.UnifiedGroupUser
+    name: UnifiedGroupUser
+  - uid: PnP.Framework.Entities.UserEntity
+    name: UserEntity
+  - uid: PnP.Framework.Entities.VariationInformation
+    name: VariationInformation
+  - uid: PnP.Framework.Entities.VariationLabelEntity
+    name: VariationLabelEntity
+  - uid: PnP.Framework.Entities.WebhookNotification
+    name: WebhookNotification
+  - uid: PnP.Framework.Entities.WebhookSubscription
+    name: WebhookSubscription
+  - uid: PnP.Framework.Entities.WebPartEntity
+    name: WebPartEntity
+  - uid: PnP.Framework.Entities.WebTemplateEntity
+    name: WebTemplateEntity
+  - uid: PnP.Framework.Entities.YammerGroup
+    name: YammerGroup
+  - uid: PnP.Framework.Entities.YammerGroupStats
+    name: YammerGroupStats
+  - uid: PnP.Framework.Entities.YammerUser
+    name: YammerUser
+  - uid: PnP.Framework.Entities.YammerUserContact
+    name: YammerUserContact
+  - uid: PnP.Framework.Entities.YammerUserEmailAddress
+    name: YammerUserEmailAddress
+  - uid: PnP.Framework.Entities.YammerUserHomeTab
+    name: YammerUserHomeTab
+  - uid: PnP.Framework.Entities.YammerUserIm
+    name: YammerUserIm
+  - uid: PnP.Framework.Entities.YammerUserNetworkSettings
+    name: YammerUserNetworkSettings
+  - uid: PnP.Framework.Entities.YammerUserSettings
+    name: YammerUserSettings
+  - uid: PnP.Framework.Entities.YammerUserStats
+    name: YammerUserStats
+  - uid: PnP.Framework.Entities.YammerUserWebPreferences
+    name: YammerUserWebPreferences
+- uid: PnP.Framework.Enums
+  name: PnP.Framework.Enums
+  items:
+  - uid: PnP.Framework.Enums.AppCatalogScope
+    name: AppCatalogScope
+  - uid: PnP.Framework.Enums.BuiltInFieldId
+    name: BuiltInFieldId
+  - uid: PnP.Framework.Enums.BuiltInIdentity
+    name: BuiltInIdentity
+  - uid: PnP.Framework.Enums.GraphSubscriptionChangeType
+    name: GraphSubscriptionChangeType
+  - uid: PnP.Framework.Enums.GraphSubscriptionTlsVersion
+    name: GraphSubscriptionTlsVersion
+  - uid: PnP.Framework.Enums.GroupUserType
+    name: GroupUserType
+  - uid: PnP.Framework.Enums.NavigationType
+    name: NavigationType
+  - uid: PnP.Framework.Enums.Office365Geography
+    name: Office365Geography
+  - uid: PnP.Framework.Enums.SharePointPlatform
+    name: SharePointPlatform
+  - uid: PnP.Framework.Enums.SharePointTheme
+    name: SharePointTheme
+  - uid: PnP.Framework.Enums.StructuralNavigationSortBy
+    name: StructuralNavigationSortBy
+  - uid: PnP.Framework.Enums.StructuralNavigationSorting
+    name: StructuralNavigationSorting
+  - uid: PnP.Framework.Enums.TimeZone
+    name: TimeZone
+- uid: PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  items:
+  - uid: PnP.Framework.Extensions.DictionaryExtensions
+    name: DictionaryExtensions
+  - uid: PnP.Framework.Extensions.EnumerableExtensions
+    name: EnumerableExtensions
+  - uid: PnP.Framework.Extensions.ObjectExtensions
+    name: ObjectExtensions
+  - uid: PnP.Framework.Extensions.SecureStringExtensions
+    name: SecureStringExtensions
+  - uid: PnP.Framework.Extensions.StreamExtensions
+    name: StreamExtensions
+  - uid: PnP.Framework.Extensions.TopologicalSort
+    name: TopologicalSort
+- uid: PnP.Framework.Graph
+  name: PnP.Framework.Graph
+  items:
+  - uid: PnP.Framework.Graph.GraphHttpClient
+    name: GraphHttpClient
+  - uid: PnP.Framework.Graph.GraphUtility
+    name: GraphUtility
+  - uid: PnP.Framework.Graph.GroupExtended
+    name: GroupExtended
+  - uid: PnP.Framework.Graph.GroupsUtility
+    name: GroupsUtility
+  - uid: PnP.Framework.Graph.PnPHttpProvider
+    name: PnPHttpProvider
+  - uid: PnP.Framework.Graph.SiteClassificationsUtility
+    name: SiteClassificationsUtility
+  - uid: PnP.Framework.Graph.SubscriptionsUtility
+    name: SubscriptionsUtility
+  - uid: PnP.Framework.Graph.UnifiedGroupsUtility
+    name: UnifiedGroupsUtility
+  - uid: PnP.Framework.Graph.UsersUtility
+    name: UsersUtility
+- uid: PnP.Framework.Graph.Model
+  name: PnP.Framework.Graph.Model
+  items:
+  - uid: PnP.Framework.Graph.Model.DirectorySetting
+    name: DirectorySetting
+  - uid: PnP.Framework.Graph.Model.DirectorySettingTemplates
+    name: DirectorySettingTemplates
+  - uid: PnP.Framework.Graph.Model.DirectorySettingValue
+    name: DirectorySettingValue
+  - uid: PnP.Framework.Graph.Model.Group
+    name: Group
+  - uid: PnP.Framework.Graph.Model.GroupCreationRequest
+    name: GroupCreationRequest
+  - uid: PnP.Framework.Graph.Model.SiteClassificationsSettings
+    name: SiteClassificationsSettings
+  - uid: PnP.Framework.Graph.Model.Subscription
+    name: Subscription
+  - uid: PnP.Framework.Graph.Model.TemporaryAccessPassRequest
+    name: TemporaryAccessPassRequest
+  - uid: PnP.Framework.Graph.Model.TemporaryAccessPassResponse
+    name: TemporaryAccessPassResponse
+  - uid: PnP.Framework.Graph.Model.User
+    name: User
+  - uid: PnP.Framework.Graph.Model.UserDelta
+    name: UserDelta
+- uid: PnP.Framework.Http
+  name: PnP.Framework.Http
+  items:
+  - uid: PnP.Framework.Http.HttpClientWebRequestExecutorFactory
+    name: HttpClientWebRequestExecutorFactory
+  - uid: PnP.Framework.Http.PnPHttpClient
+    name: PnPHttpClient
+- uid: PnP.Framework.Modernization
+  name: PnP.Framework.Modernization
+  items:
+  - uid: PnP.Framework.Modernization.AddOn
+    name: AddOn
+  - uid: PnP.Framework.Modernization.BaseWebPart
+    name: BaseWebPart
+  - uid: PnP.Framework.Modernization.ClientSideText
+    name: ClientSideText
+  - uid: PnP.Framework.Modernization.ClientSideWebPart
+    name: ClientSideWebPart
+  - uid: PnP.Framework.Modernization.ClientSideWebPartType
+    name: ClientSideWebPartType
+  - uid: PnP.Framework.Modernization.Constants
+    name: Constants
+  - uid: PnP.Framework.Modernization.Mapping
+    name: Mapping
+  - uid: PnP.Framework.Modernization.Mappings
+    name: Mappings
+  - uid: PnP.Framework.Modernization.PageTransformation
+    name: PageTransformation
+  - uid: PnP.Framework.Modernization.Property
+    name: Property
+  - uid: PnP.Framework.Modernization.PropertyType
+    name: PropertyType
+  - uid: PnP.Framework.Modernization.WebPart
+    name: WebPart
+  - uid: PnP.Framework.Modernization.WebParts
+    name: WebParts
+- uid: PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  items:
+  - uid: PnP.Framework.Modernization.Cache.CacheManager
+    name: CacheManager
+  - uid: PnP.Framework.Modernization.Cache.CacheOptions
+    name: CacheOptions
+  - uid: PnP.Framework.Modernization.Cache.Extensions
+    name: Extensions
+  - uid: PnP.Framework.Modernization.Cache.FieldData
+    name: FieldData
+  - uid: PnP.Framework.Modernization.Cache.ICacheOptions
+    name: ICacheOptions
+- uid: PnP.Framework.Modernization.Entities
+  name: PnP.Framework.Modernization.Entities
+  items:
+  - uid: PnP.Framework.Modernization.Entities.AssetTransferredEntity
+    name: AssetTransferredEntity
+  - uid: PnP.Framework.Modernization.Entities.AudienceEntity
+    name: AudienceEntity
+  - uid: PnP.Framework.Modernization.Entities.ListItemPermission
+    name: ListItemPermission
+  - uid: PnP.Framework.Modernization.Entities.ResolvedUser
+    name: ResolvedUser
+  - uid: PnP.Framework.Modernization.Entities.TermData
+    name: TermData
+  - uid: PnP.Framework.Modernization.Entities.TermMapping
+    name: TermMapping
+  - uid: PnP.Framework.Modernization.Entities.TransformationLogAnalysis
+    name: TransformationLogAnalysis
+  - uid: PnP.Framework.Modernization.Entities.UrlMapping
+    name: UrlMapping
+  - uid: PnP.Framework.Modernization.Entities.UserEntity
+    name: UserEntity
+  - uid: PnP.Framework.Modernization.Entities.UserMappingEntity
+    name: UserMappingEntity
+  - uid: PnP.Framework.Modernization.Entities.WebPartEntity
+    name: WebPartEntity
+  - uid: PnP.Framework.Modernization.Entities.WebServiceWebPartEntity
+    name: WebServiceWebPartEntity
+  - uid: PnP.Framework.Modernization.Entities.WebServiceWebPartProperties
+    name: WebServiceWebPartProperties
+- uid: PnP.Framework.Modernization.Extensions
+  name: PnP.Framework.Modernization.Extensions
+  items:
+  - uid: PnP.Framework.Modernization.Extensions.FileFolderExtensions
+    name: FileFolderExtensions
+  - uid: PnP.Framework.Modernization.Extensions.StringExtensions
+    name: StringExtensions
+- uid: PnP.Framework.Modernization.Functions
+  name: PnP.Framework.Modernization.Functions
+  items:
+  - uid: PnP.Framework.Modernization.Functions.BaseFunctionDocumentationAttribute
+    name: BaseFunctionDocumentationAttribute
+  - uid: PnP.Framework.Modernization.Functions.BaseFunctionProcessor
+    name: BaseFunctionProcessor
+  - uid: PnP.Framework.Modernization.Functions.BuiltIn
+    name: BuiltIn
+  - uid: PnP.Framework.Modernization.Functions.FunctionDocumentationAttribute
+    name: FunctionDocumentationAttribute
+  - uid: PnP.Framework.Modernization.Functions.FunctionProcessor
+    name: FunctionProcessor
+  - uid: PnP.Framework.Modernization.Functions.FunctionsBase
+    name: FunctionsBase
+  - uid: PnP.Framework.Modernization.Functions.InputDocumentationAttribute
+    name: InputDocumentationAttribute
+  - uid: PnP.Framework.Modernization.Functions.MediaWebpartConfigurationException
+    name: MediaWebpartConfigurationException
+  - uid: PnP.Framework.Modernization.Functions.NotAvailableAtTargetException
+    name: NotAvailableAtTargetException
+  - uid: PnP.Framework.Modernization.Functions.OutputDocumentationAttribute
+    name: OutputDocumentationAttribute
+  - uid: PnP.Framework.Modernization.Functions.ParameterDocumentationAttribute
+    name: ParameterDocumentationAttribute
+  - uid: PnP.Framework.Modernization.Functions.SelectorDocumentationAttribute
+    name: SelectorDocumentationAttribute
+  - uid: PnP.Framework.Modernization.Functions.XmlComparer
+    name: XmlComparer
+  - uid: PnP.Framework.Modernization.Functions.XmlEqualityResult
+    name: XmlEqualityResult
+- uid: PnP.Framework.Modernization.KQL
+  name: PnP.Framework.Modernization.KQL
+  items:
+  - uid: PnP.Framework.Modernization.KQL.KQLElement
+    name: KQLElement
+  - uid: PnP.Framework.Modernization.KQL.KQLFilterType
+    name: KQLFilterType
+  - uid: PnP.Framework.Modernization.KQL.KQLParser
+    name: KQLParser
+  - uid: PnP.Framework.Modernization.KQL.KQLPropertyOperator
+    name: KQLPropertyOperator
+- uid: PnP.Framework.Modernization.Pages
+  name: PnP.Framework.Modernization.Pages
+  items:
+  - uid: PnP.Framework.Modernization.Pages.BasePage
+    name: BasePage
+  - uid: PnP.Framework.Modernization.Pages.PageLayout
+    name: PageLayout
+  - uid: PnP.Framework.Modernization.Pages.PublishingPage
+    name: PublishingPage
+  - uid: PnP.Framework.Modernization.Pages.PublishingPageOnPremises
+    name: PublishingPageOnPremises
+  - uid: PnP.Framework.Modernization.Pages.WebPartPage
+    name: WebPartPage
+  - uid: PnP.Framework.Modernization.Pages.WebPartPageOnPremises
+    name: WebPartPageOnPremises
+  - uid: PnP.Framework.Modernization.Pages.WikiPage
+    name: WikiPage
+- uid: PnP.Framework.Modernization.Publishing
+  name: PnP.Framework.Modernization.Publishing
+  items:
+  - uid: PnP.Framework.Modernization.Publishing.AddOn
+    name: AddOn
+  - uid: PnP.Framework.Modernization.Publishing.BackgroundEmphasis
+    name: BackgroundEmphasis
+  - uid: PnP.Framework.Modernization.Publishing.FixedWebPart
+    name: FixedWebPart
+  - uid: PnP.Framework.Modernization.Publishing.FixedWebPartProperty
+    name: FixedWebPartProperty
+  - uid: PnP.Framework.Modernization.Publishing.Header
+    name: Header
+  - uid: PnP.Framework.Modernization.Publishing.HeaderAlignment
+    name: HeaderAlignment
+  - uid: PnP.Framework.Modernization.Publishing.HeaderField
+    name: HeaderField
+  - uid: PnP.Framework.Modernization.Publishing.HeaderFieldHeaderProperty
+    name: HeaderFieldHeaderProperty
+  - uid: PnP.Framework.Modernization.Publishing.HeaderType
+    name: HeaderType
+  - uid: PnP.Framework.Modernization.Publishing.MetaData
+    name: MetaData
+  - uid: PnP.Framework.Modernization.Publishing.MetaDataField
+    name: MetaDataField
+  - uid: PnP.Framework.Modernization.Publishing.PageLayout
+    name: PageLayout
+  - uid: PnP.Framework.Modernization.Publishing.PageLayoutAnalyser
+    name: PageLayoutAnalyser
+  - uid: PnP.Framework.Modernization.Publishing.PageLayoutManager
+    name: PageLayoutManager
+  - uid: PnP.Framework.Modernization.Publishing.PageLayoutPageHeader
+    name: PageLayoutPageHeader
+  - uid: PnP.Framework.Modernization.Publishing.PageLayoutPageLayoutTemplate
+    name: PageLayoutPageLayoutTemplate
+  - uid: PnP.Framework.Modernization.Publishing.PublishingBuiltIn
+    name: PublishingBuiltIn
+  - uid: PnP.Framework.Modernization.Publishing.PublishingFunctionProcessor
+    name: PublishingFunctionProcessor
+  - uid: PnP.Framework.Modernization.Publishing.PublishingFunctionProcessor.FieldType
+    name: PublishingFunctionProcessor.FieldType
+  - uid: PnP.Framework.Modernization.Publishing.PublishingLayoutTransformator
+    name: PublishingLayoutTransformator
+  - uid: PnP.Framework.Modernization.Publishing.PublishingMetadataTransformator
+    name: PublishingMetadataTransformator
+  - uid: PnP.Framework.Modernization.Publishing.PublishingPageHeaderTransformator
+    name: PublishingPageHeaderTransformator
+  - uid: PnP.Framework.Modernization.Publishing.PublishingPageTransformation
+    name: PublishingPageTransformation
+  - uid: PnP.Framework.Modernization.Publishing.PublishingPageTransformationInformation
+    name: PublishingPageTransformationInformation
+  - uid: PnP.Framework.Modernization.Publishing.PublishingPageTransformator
+    name: PublishingPageTransformator
+  - uid: PnP.Framework.Modernization.Publishing.Section
+    name: Section
+  - uid: PnP.Framework.Modernization.Publishing.SectionEmphasis
+    name: SectionEmphasis
+  - uid: PnP.Framework.Modernization.Publishing.WebPartField
+    name: WebPartField
+  - uid: PnP.Framework.Modernization.Publishing.WebPartOccurrence
+    name: WebPartOccurrence
+  - uid: PnP.Framework.Modernization.Publishing.WebPartProperty
+    name: WebPartProperty
+  - uid: PnP.Framework.Modernization.Publishing.WebPartProperyType
+    name: WebPartProperyType
+  - uid: PnP.Framework.Modernization.Publishing.WebPartZone
+    name: WebPartZone
+- uid: PnP.Framework.Modernization.Telemetry
+  name: PnP.Framework.Modernization.Telemetry
+  items:
+  - uid: PnP.Framework.Modernization.Telemetry.ILogObserver
+    name: ILogObserver
+  - uid: PnP.Framework.Modernization.Telemetry.LogEntry
+    name: LogEntry
+  - uid: PnP.Framework.Modernization.Telemetry.LogEntrySignificance
+    name: LogEntrySignificance
+  - uid: PnP.Framework.Modernization.Telemetry.LogHelpers
+    name: LogHelpers
+  - uid: PnP.Framework.Modernization.Telemetry.LogLevel
+    name: LogLevel
+  - uid: PnP.Framework.Modernization.Telemetry.LogStrings
+    name: LogStrings
+  - uid: PnP.Framework.Modernization.Telemetry.PageTelemetry
+    name: PageTelemetry
+- uid: PnP.Framework.Modernization.Telemetry.Observers
+  name: PnP.Framework.Modernization.Telemetry.Observers
+  items:
+  - uid: PnP.Framework.Modernization.Telemetry.Observers.ConsoleObserver
+    name: ConsoleObserver
+  - uid: PnP.Framework.Modernization.Telemetry.Observers.MarkdownObserver
+    name: MarkdownObserver
+  - uid: PnP.Framework.Modernization.Telemetry.Observers.MarkdownToSharePointObserver
+    name: MarkdownToSharePointObserver
+- uid: PnP.Framework.Modernization.Transform
+  name: PnP.Framework.Modernization.Transform
+  items:
+  - uid: PnP.Framework.Modernization.Transform.AssetTransfer
+    name: AssetTransfer
+  - uid: PnP.Framework.Modernization.Transform.BasePageTransformator
+    name: BasePageTransformator
+  - uid: PnP.Framework.Modernization.Transform.BaseTransform
+    name: BaseTransform
+  - uid: PnP.Framework.Modernization.Transform.BaseTransformationInformation
+    name: BaseTransformationInformation
+  - uid: PnP.Framework.Modernization.Transform.ButtonLayoutOptions
+    name: ButtonLayoutOptions
+  - uid: PnP.Framework.Modernization.Transform.ButtonTreatment
+    name: ButtonTreatment
+  - uid: PnP.Framework.Modernization.Transform.ContentAlignment
+    name: ContentAlignment
+  - uid: PnP.Framework.Modernization.Transform.ContentByQuery
+    name: ContentByQuery
+  - uid: PnP.Framework.Modernization.Transform.ContentByQuerySearchTransformator
+    name: ContentByQuerySearchTransformator
+  - uid: PnP.Framework.Modernization.Transform.ContentByQuerySearchTransformatorResult
+    name: ContentByQuerySearchTransformatorResult
+  - uid: PnP.Framework.Modernization.Transform.ContentBySearch
+    name: ContentBySearch
+  - uid: PnP.Framework.Modernization.Transform.ContentLocation
+    name: ContentLocation
+  - uid: PnP.Framework.Modernization.Transform.ContentRollupLayout
+    name: ContentRollupLayout
+  - uid: PnP.Framework.Modernization.Transform.ContentRollupWebPartProperties
+    name: ContentRollupWebPartProperties
+  - uid: PnP.Framework.Modernization.Transform.ContentTransformator
+    name: ContentTransformator
+  - uid: PnP.Framework.Modernization.Transform.ContentType
+    name: ContentType
+  - uid: PnP.Framework.Modernization.Transform.DocumentType
+    name: DocumentType
+  - uid: PnP.Framework.Modernization.Transform.FilterChainingOperator
+    name: FilterChainingOperator
+  - uid: PnP.Framework.Modernization.Transform.FilterFieldQueryOperator
+    name: FilterFieldQueryOperator
+  - uid: PnP.Framework.Modernization.Transform.FilterOperator
+    name: FilterOperator
+  - uid: PnP.Framework.Modernization.Transform.FilterType
+    name: FilterType
+  - uid: PnP.Framework.Modernization.Transform.GuidSet
+    name: GuidSet
+  - uid: PnP.Framework.Modernization.Transform.HtmlTransformator
+    name: HtmlTransformator
+  - uid: PnP.Framework.Modernization.Transform.IconPositionType
+    name: IconPositionType
+  - uid: PnP.Framework.Modernization.Transform.IconSize
+    name: IconSize
+  - uid: PnP.Framework.Modernization.Transform.IContentTransformator
+    name: IContentTransformator
+  - uid: PnP.Framework.Modernization.Transform.IHtmlTransformator
+    name: IHtmlTransformator
+  - uid: PnP.Framework.Modernization.Transform.ILayoutTransformator
+    name: ILayoutTransformator
+  - uid: PnP.Framework.Modernization.Transform.ImageFit
+    name: ImageFit
+  - uid: PnP.Framework.Modernization.Transform.LayoutTransformator
+    name: LayoutTransformator
+  - uid: PnP.Framework.Modernization.Transform.LinesOfText
+    name: LinesOfText
+  - uid: PnP.Framework.Modernization.Transform.ListLayoutOptions
+    name: ListLayoutOptions
+  - uid: PnP.Framework.Modernization.Transform.ManagedPropertiesRefinerOptions
+    name: ManagedPropertiesRefinerOptions
+  - uid: PnP.Framework.Modernization.Transform.ModernizationCenterInformation
+    name: ModernizationCenterInformation
+  - uid: PnP.Framework.Modernization.Transform.PageTransformationInformation
+    name: PageTransformationInformation
+  - uid: PnP.Framework.Modernization.Transform.PageTransformator
+    name: PageTransformator
+  - uid: PnP.Framework.Modernization.Transform.QuickLink
+    name: QuickLink
+  - uid: PnP.Framework.Modernization.Transform.QuickLinkCustomizedImageInfo
+    name: QuickLinkCustomizedImageInfo
+  - uid: PnP.Framework.Modernization.Transform.QuickLinkFabricReactIconInfo
+    name: QuickLinkFabricReactIconInfo
+  - uid: PnP.Framework.Modernization.Transform.QuickLinksLayout
+    name: QuickLinksLayout
+  - uid: PnP.Framework.Modernization.Transform.QuickLinksTransformator
+    name: QuickLinksTransformator
+  - uid: PnP.Framework.Modernization.Transform.QuickLinksTransformatorResult
+    name: QuickLinksTransformatorResult
+  - uid: PnP.Framework.Modernization.Transform.QuickLinksWebPartProperties
+    name: QuickLinksWebPartProperties
+  - uid: PnP.Framework.Modernization.Transform.QuickLinkThumbnailSourceType
+    name: QuickLinkThumbnailSourceType
+  - uid: PnP.Framework.Modernization.Transform.QuickLinkType
+    name: QuickLinkType
+  - uid: PnP.Framework.Modernization.Transform.SearchQuery
+    name: SearchQuery
+  - uid: PnP.Framework.Modernization.Transform.SearchQueryFilter
+    name: SearchQueryFilter
+  - uid: PnP.Framework.Modernization.Transform.SiteMetadata
+    name: SiteMetadata
+  - uid: PnP.Framework.Modernization.Transform.SiteReference
+    name: SiteReference
+  - uid: PnP.Framework.Modernization.Transform.SortDirection
+    name: SortDirection
+  - uid: PnP.Framework.Modernization.Transform.SortType
+    name: SortType
+  - uid: PnP.Framework.Modernization.Transform.SourceItemInfo
+    name: SourceItemInfo
+  - uid: PnP.Framework.Modernization.Transform.SPVersion
+    name: SPVersion
+  - uid: PnP.Framework.Modernization.Transform.SummaryLink
+    name: SummaryLink
+  - uid: PnP.Framework.Modernization.Transform.SummaryLinksHtmlTransformator
+    name: SummaryLinksHtmlTransformator
+  - uid: PnP.Framework.Modernization.Transform.TermTransformator
+    name: TermTransformator
+  - uid: PnP.Framework.Modernization.Transform.TokenParser
+    name: TokenParser
+  - uid: PnP.Framework.Modernization.Transform.UrlTransformator
+    name: UrlTransformator
+  - uid: PnP.Framework.Modernization.Transform.UserTransformator
+    name: UserTransformator
+  - uid: PnP.Framework.Modernization.Transform.UserType
+    name: UserType
+  - uid: PnP.Framework.Modernization.Transform.WaffleLayoutOptions
+    name: WaffleLayoutOptions
+  - uid: PnP.Framework.Modernization.Transform.WikiHtmlTransformator
+    name: WikiHtmlTransformator
+- uid: PnP.Framework.Modernization.Utilities
+  name: PnP.Framework.Modernization.Utilities
+  items:
+  - uid: PnP.Framework.Modernization.Utilities.FileManager
+    name: FileManager
+- uid: PnP.Framework.Provisioning.CanProvisionRules
+  name: PnP.Framework.Provisioning.CanProvisionRules
+  items:
+  - uid: PnP.Framework.Provisioning.CanProvisionRules.CanProvisionIssue
+    name: CanProvisionIssue
+  - uid: PnP.Framework.Provisioning.CanProvisionRules.CanProvisionIssueTags
+    name: CanProvisionIssueTags
+  - uid: PnP.Framework.Provisioning.CanProvisionRules.CanProvisionResult
+    name: CanProvisionResult
+  - uid: PnP.Framework.Provisioning.CanProvisionRules.CanProvisionRulesManager
+    name: CanProvisionRulesManager
+- uid: PnP.Framework.Provisioning.Connectors
+  name: PnP.Framework.Provisioning.Connectors
+  items:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+    name: FileConnectorBase
+  - uid: PnP.Framework.Provisioning.Connectors.FileSystemConnector
+    name: FileSystemConnector
+  - uid: PnP.Framework.Provisioning.Connectors.ICommitableFileConnector
+    name: ICommitableFileConnector
+  - uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+    name: OpenXMLConnector
+  - uid: PnP.Framework.Provisioning.Connectors.SharePointConnector
+    name: SharePointConnector
+- uid: PnP.Framework.Provisioning.Connectors.OpenXML
+  name: PnP.Framework.Provisioning.Connectors.OpenXML
+  items:
+  - uid: PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage
+    name: PnPPackage
+  - uid: PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackageExtensions
+    name: PnPPackageExtensions
+  - uid: PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackageFileItem
+    name: PnPPackageFileItem
+  - uid: PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackageFormatException
+    name: PnPPackageFormatException
+- uid: PnP.Framework.Provisioning.Connectors.OpenXML.Model
+  name: PnP.Framework.Provisioning.Connectors.OpenXML.Model
+  items:
+  - uid: PnP.Framework.Provisioning.Connectors.OpenXML.Model.PackageType
+    name: PackageType
+  - uid: PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPFileInfo
+    name: PnPFileInfo
+  - uid: PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPFilesMap
+    name: PnPFilesMap
+  - uid: PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPInfo
+    name: PnPInfo
+  - uid: PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPManifest
+    name: PnPManifest
+  - uid: PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPProperties
+    name: PnPProperties
+- uid: PnP.Framework.Provisioning.Extensibility
+  name: PnP.Framework.Provisioning.Extensibility
+  items:
+  - uid: PnP.Framework.Provisioning.Extensibility.ExtensibilityManager
+    name: ExtensibilityManager
+  - uid: PnP.Framework.Provisioning.Extensibility.ExtensiblityPipelineException
+    name: ExtensiblityPipelineException
+  - uid: PnP.Framework.Provisioning.Extensibility.IProvisioningExtensibilityHandler
+    name: IProvisioningExtensibilityHandler
+  - uid: PnP.Framework.Provisioning.Extensibility.IProvisioningExtensibilityProvider
+    name: IProvisioningExtensibilityProvider
+  - uid: PnP.Framework.Provisioning.Extensibility.IProvisioningExtensibilityTokenProvider
+    name: IProvisioningExtensibilityTokenProvider
+  - uid: PnP.Framework.Provisioning.Extensibility.IProvisioningTemplateProcessor
+    name: IProvisioningTemplateProcessor
+- uid: PnP.Framework.Provisioning.Model
+  name: PnP.Framework.Provisioning.Model
+  items:
+  - uid: PnP.Framework.Provisioning.Model.AddIn
+    name: AddIn
+  - uid: PnP.Framework.Provisioning.Model.AddInCollection
+    name: AddInCollection
+  - uid: PnP.Framework.Provisioning.Model.AlternateUICulture
+    name: AlternateUICulture
+  - uid: PnP.Framework.Provisioning.Model.AlternateUICultureCollection
+    name: AlternateUICultureCollection
+  - uid: PnP.Framework.Provisioning.Model.AnonymousLinkType
+    name: AnonymousLinkType
+  - uid: PnP.Framework.Provisioning.Model.App
+    name: App
+  - uid: PnP.Framework.Provisioning.Model.AppAction
+    name: AppAction
+  - uid: PnP.Framework.Provisioning.Model.AppCatalog
+    name: AppCatalog
+  - uid: PnP.Framework.Provisioning.Model.AppCollection
+    name: AppCollection
+  - uid: PnP.Framework.Provisioning.Model.ApplicationLifecycleManagement
+    name: ApplicationLifecycleManagement
+  - uid: PnP.Framework.Provisioning.Model.AuditSettings
+    name: AuditSettings
+  - uid: PnP.Framework.Provisioning.Model.AutoCheckRequirementsOptions
+    name: AutoCheckRequirementsOptions
+  - uid: PnP.Framework.Provisioning.Model.AvailableWebTemplate
+    name: AvailableWebTemplate
+  - uid: PnP.Framework.Provisioning.Model.AvailableWebTemplateCollection
+    name: AvailableWebTemplateCollection
+  - uid: PnP.Framework.Provisioning.Model.BaseClientSidePage
+    name: BaseClientSidePage
+  - uid: PnP.Framework.Provisioning.Model.BaseHierarchyModel
+    name: BaseHierarchyModel
+  - uid: PnP.Framework.Provisioning.Model.BaseModel
+    name: BaseModel
+  - uid: PnP.Framework.Provisioning.Model.BaseNavigationKind
+    name: BaseNavigationKind
+  - uid: PnP.Framework.Provisioning.Model.BaseProvisioningHierarchyObjectCollection`1
+    name: BaseProvisioningHierarchyObjectCollection<T>
+    name.vb: BaseProvisioningHierarchyObjectCollection(Of T)
+  - uid: PnP.Framework.Provisioning.Model.BaseProvisioningTemplateObjectCollection`1
+    name: BaseProvisioningTemplateObjectCollection<T>
+    name.vb: BaseProvisioningTemplateObjectCollection(Of T)
+  - uid: PnP.Framework.Provisioning.Model.BaseProvisioningTemplateObjectDictionary`2
+    name: BaseProvisioningTemplateObjectDictionary<TKey, TItem>
+    name.vb: BaseProvisioningTemplateObjectDictionary(Of TKey, TItem)
+  - uid: PnP.Framework.Provisioning.Model.CanvasControl
+    name: CanvasControl
+  - uid: PnP.Framework.Provisioning.Model.CanvasControlCollection
+    name: CanvasControlCollection
+  - uid: PnP.Framework.Provisioning.Model.CanvasSection
+    name: CanvasSection
+  - uid: PnP.Framework.Provisioning.Model.CanvasSectionCollection
+    name: CanvasSectionCollection
+  - uid: PnP.Framework.Provisioning.Model.CanvasSectionType
+    name: CanvasSectionType
+  - uid: PnP.Framework.Provisioning.Model.CdnOrigin
+    name: CdnOrigin
+  - uid: PnP.Framework.Provisioning.Model.CdnOriginCollection
+    name: CdnOriginCollection
+  - uid: PnP.Framework.Provisioning.Model.CdnSettings
+    name: CdnSettings
+  - uid: PnP.Framework.Provisioning.Model.ClassicSiteCollection
+    name: ClassicSiteCollection
+  - uid: PnP.Framework.Provisioning.Model.ClientSidePage
+    name: ClientSidePage
+  - uid: PnP.Framework.Provisioning.Model.ClientSidePageCollection
+    name: ClientSidePageCollection
+  - uid: PnP.Framework.Provisioning.Model.ClientSidePageHeader
+    name: ClientSidePageHeader
+  - uid: PnP.Framework.Provisioning.Model.ClientSidePageHeaderLayoutType
+    name: ClientSidePageHeaderLayoutType
+  - uid: PnP.Framework.Provisioning.Model.ClientSidePageHeaderTextAlignment
+    name: ClientSidePageHeaderTextAlignment
+  - uid: PnP.Framework.Provisioning.Model.ClientSidePageHeaderType
+    name: ClientSidePageHeaderType
+  - uid: PnP.Framework.Provisioning.Model.CommunicationSiteCollection
+    name: CommunicationSiteCollection
+  - uid: PnP.Framework.Provisioning.Model.ComposedLook
+    name: ComposedLook
+  - uid: PnP.Framework.Provisioning.Model.ContentDeliveryNetwork
+    name: ContentDeliveryNetwork
+  - uid: PnP.Framework.Provisioning.Model.ContentType
+    name: ContentType
+  - uid: PnP.Framework.Provisioning.Model.ContentTypeBinding
+    name: ContentTypeBinding
+  - uid: PnP.Framework.Provisioning.Model.ContentTypeBindingCollection
+    name: ContentTypeBindingCollection
+  - uid: PnP.Framework.Provisioning.Model.ContentTypeCollection
+    name: ContentTypeCollection
+  - uid: PnP.Framework.Provisioning.Model.ContentTypeReference
+    name: ContentTypeReference
+  - uid: PnP.Framework.Provisioning.Model.ContentTypeReferenceCollection
+    name: ContentTypeReferenceCollection
+  - uid: PnP.Framework.Provisioning.Model.CurrentNavigation
+    name: CurrentNavigation
+  - uid: PnP.Framework.Provisioning.Model.CurrentNavigationType
+    name: CurrentNavigationType
+  - uid: PnP.Framework.Provisioning.Model.CustomAction
+    name: CustomAction
+  - uid: PnP.Framework.Provisioning.Model.CustomActionCollection
+    name: CustomActionCollection
+  - uid: PnP.Framework.Provisioning.Model.CustomActions
+    name: CustomActions
+  - uid: PnP.Framework.Provisioning.Model.DataRow
+    name: DataRow
+  - uid: PnP.Framework.Provisioning.Model.DataRowCollection
+    name: DataRowCollection
+  - uid: PnP.Framework.Provisioning.Model.DefaultDocument
+    name: DefaultDocument
+  - uid: PnP.Framework.Provisioning.Model.DefaultDocumentCollection
+    name: DefaultDocumentCollection
+  - uid: PnP.Framework.Provisioning.Model.DesignPackage
+    name: DesignPackage
+  - uid: PnP.Framework.Provisioning.Model.Directory
+    name: Directory
+  - uid: PnP.Framework.Provisioning.Model.DirectoryCollection
+    name: DirectoryCollection
+  - uid: PnP.Framework.Provisioning.Model.DocumentSetTemplate
+    name: DocumentSetTemplate
+  - uid: PnP.Framework.Provisioning.Model.Emphasis
+    name: Emphasis
+  - uid: PnP.Framework.Provisioning.Model.ExtensibilityHandler
+    name: ExtensibilityHandler
+  - uid: PnP.Framework.Provisioning.Model.ExtensibilityHandlerCollection
+    name: ExtensibilityHandlerCollection
+  - uid: PnP.Framework.Provisioning.Model.Feature
+    name: Feature
+  - uid: PnP.Framework.Provisioning.Model.FeatureCollection
+    name: FeatureCollection
+  - uid: PnP.Framework.Provisioning.Model.Features
+    name: Features
+  - uid: PnP.Framework.Provisioning.Model.Field
+    name: Field
+  - uid: PnP.Framework.Provisioning.Model.FieldCollection
+    name: FieldCollection
+  - uid: PnP.Framework.Provisioning.Model.FieldRef
+    name: FieldRef
+  - uid: PnP.Framework.Provisioning.Model.FieldRefCollection
+    name: FieldRefCollection
+  - uid: PnP.Framework.Provisioning.Model.FieldReference
+    name: FieldReference
+  - uid: PnP.Framework.Provisioning.Model.FieldReferenceCollection
+    name: FieldReferenceCollection
+  - uid: PnP.Framework.Provisioning.Model.File
+    name: File
+  - uid: PnP.Framework.Provisioning.Model.FileCollection
+    name: FileCollection
+  - uid: PnP.Framework.Provisioning.Model.FileLevel
+    name: FileLevel
+  - uid: PnP.Framework.Provisioning.Model.Folder
+    name: Folder
+  - uid: PnP.Framework.Provisioning.Model.FolderCollection
+    name: FolderCollection
+  - uid: PnP.Framework.Provisioning.Model.GlobalNavigation
+    name: GlobalNavigation
+  - uid: PnP.Framework.Provisioning.Model.GlobalNavigationType
+    name: GlobalNavigationType
+  - uid: PnP.Framework.Provisioning.Model.Handlers
+    name: Handlers
+  - uid: PnP.Framework.Provisioning.Model.IconAlignment
+    name: IconAlignment
+  - uid: PnP.Framework.Provisioning.Model.ImageRendition
+    name: ImageRendition
+  - uid: PnP.Framework.Provisioning.Model.ImageRenditionCollection
+    name: ImageRenditionCollection
+  - uid: PnP.Framework.Provisioning.Model.IProvisioningHierarchyDescendant
+    name: IProvisioningHierarchyDescendant
+  - uid: PnP.Framework.Provisioning.Model.IProvisioningTemplateDescendant
+    name: IProvisioningTemplateDescendant
+  - uid: PnP.Framework.Provisioning.Model.IRMSettings
+    name: IRMSettings
+  - uid: PnP.Framework.Provisioning.Model.ListExperience
+    name: ListExperience
+  - uid: PnP.Framework.Provisioning.Model.ListInstance
+    name: ListInstance
+  - uid: PnP.Framework.Provisioning.Model.ListInstanceCollection
+    name: ListInstanceCollection
+  - uid: PnP.Framework.Provisioning.Model.ListReadingDirection
+    name: ListReadingDirection
+  - uid: PnP.Framework.Provisioning.Model.Localization
+    name: Localization
+  - uid: PnP.Framework.Provisioning.Model.LocalizationCollection
+    name: LocalizationCollection
+  - uid: PnP.Framework.Provisioning.Model.ManagedNavigation
+    name: ManagedNavigation
+  - uid: PnP.Framework.Provisioning.Model.Navigation
+    name: Navigation
+  - uid: PnP.Framework.Provisioning.Model.NavigationNode
+    name: NavigationNode
+  - uid: PnP.Framework.Provisioning.Model.NavigationNodeCollection
+    name: NavigationNodeCollection
+  - uid: PnP.Framework.Provisioning.Model.ObjectSecurity
+    name: ObjectSecurity
+  - uid: PnP.Framework.Provisioning.Model.OriginAction
+    name: OriginAction
+  - uid: PnP.Framework.Provisioning.Model.Package
+    name: Package
+  - uid: PnP.Framework.Provisioning.Model.PackageAction
+    name: PackageAction
+  - uid: PnP.Framework.Provisioning.Model.PackageCollection
+    name: PackageCollection
+  - uid: PnP.Framework.Provisioning.Model.Page
+    name: Page
+  - uid: PnP.Framework.Provisioning.Model.PageCollection
+    name: PageCollection
+  - uid: PnP.Framework.Provisioning.Model.PageLayout
+    name: PageLayout
+  - uid: PnP.Framework.Provisioning.Model.PageLayoutCollection
+    name: PageLayoutCollection
+  - uid: PnP.Framework.Provisioning.Model.PropertyBagEntry
+    name: PropertyBagEntry
+  - uid: PnP.Framework.Provisioning.Model.PropertyBagEntryCollection
+    name: PropertyBagEntryCollection
+  - uid: PnP.Framework.Provisioning.Model.Provider
+    name: Provider
+  - uid: PnP.Framework.Provisioning.Model.ProviderCollection
+    name: ProviderCollection
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+    name: ProvisioningHierarchy
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningSequence
+    name: ProvisioningSequence
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningSequenceCollection
+    name: ProvisioningSequenceCollection
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplateCollection
+    name: ProvisioningTemplateCollection
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplateInfo
+    name: ProvisioningTemplateInfo
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplateScope
+    name: ProvisioningTemplateScope
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplateWebhook
+    name: ProvisioningTemplateWebhook
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplateWebhookBodyFormat
+    name: ProvisioningTemplateWebhookBodyFormat
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplateWebhookCollection
+    name: ProvisioningTemplateWebhookCollection
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplateWebhookKind
+    name: ProvisioningTemplateWebhookKind
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplateWebhookMethod
+    name: ProvisioningTemplateWebhookMethod
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTenant
+    name: ProvisioningTenant
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTermStore
+    name: ProvisioningTermStore
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningWebhook
+    name: ProvisioningWebhook
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningWebhookBase
+    name: ProvisioningWebhookBase
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningWebhookCollection
+    name: ProvisioningWebhookCollection
+  - uid: PnP.Framework.Provisioning.Model.Publishing
+    name: Publishing
+  - uid: PnP.Framework.Provisioning.Model.RegionalSettings
+    name: RegionalSettings
+  - uid: PnP.Framework.Provisioning.Model.RoleAssignment
+    name: RoleAssignment
+  - uid: PnP.Framework.Provisioning.Model.RoleAssignmentCollection
+    name: RoleAssignmentCollection
+  - uid: PnP.Framework.Provisioning.Model.RoleDefinition
+    name: RoleDefinition
+  - uid: PnP.Framework.Provisioning.Model.RoleDefinitionCollection
+    name: RoleDefinitionCollection
+  - uid: PnP.Framework.Provisioning.Model.SearchBoxInNavBar
+    name: SearchBoxInNavBar
+  - uid: PnP.Framework.Provisioning.Model.SearchScopes
+    name: SearchScopes
+  - uid: PnP.Framework.Provisioning.Model.SharingCapability
+    name: SharingCapability
+  - uid: PnP.Framework.Provisioning.Model.SharingDomainRestrictionMode
+    name: SharingDomainRestrictionMode
+  - uid: PnP.Framework.Provisioning.Model.SharingLinkType
+    name: SharingLinkType
+  - uid: PnP.Framework.Provisioning.Model.SharingSettings
+    name: SharingSettings
+  - uid: PnP.Framework.Provisioning.Model.SiteCollection
+    name: SiteCollection
+  - uid: PnP.Framework.Provisioning.Model.SiteCollectionCollection
+    name: SiteCollectionCollection
+  - uid: PnP.Framework.Provisioning.Model.SiteDesign
+    name: SiteDesign
+  - uid: PnP.Framework.Provisioning.Model.SiteDesignCollection
+    name: SiteDesignCollection
+  - uid: PnP.Framework.Provisioning.Model.SiteDesignGrant
+    name: SiteDesignGrant
+  - uid: PnP.Framework.Provisioning.Model.SiteDesignGrantCollection
+    name: SiteDesignGrantCollection
+  - uid: PnP.Framework.Provisioning.Model.SiteDesignRight
+    name: SiteDesignRight
+  - uid: PnP.Framework.Provisioning.Model.SiteDesignWebTemplate
+    name: SiteDesignWebTemplate
+  - uid: PnP.Framework.Provisioning.Model.SiteFooter
+    name: SiteFooter
+  - uid: PnP.Framework.Provisioning.Model.SiteFooterLayout
+    name: SiteFooterLayout
+  - uid: PnP.Framework.Provisioning.Model.SiteFooterLink
+    name: SiteFooterLink
+  - uid: PnP.Framework.Provisioning.Model.SiteFooterLinkCollection
+    name: SiteFooterLinkCollection
+  - uid: PnP.Framework.Provisioning.Model.SiteGroup
+    name: SiteGroup
+  - uid: PnP.Framework.Provisioning.Model.SiteGroupCollection
+    name: SiteGroupCollection
+  - uid: PnP.Framework.Provisioning.Model.SiteHeader
+    name: SiteHeader
+  - uid: PnP.Framework.Provisioning.Model.SiteHeaderLayout
+    name: SiteHeaderLayout
+  - uid: PnP.Framework.Provisioning.Model.SiteHeaderMenuStyle
+    name: SiteHeaderMenuStyle
+  - uid: PnP.Framework.Provisioning.Model.SiteScript
+    name: SiteScript
+  - uid: PnP.Framework.Provisioning.Model.SiteScriptCollection
+    name: SiteScriptCollection
+  - uid: PnP.Framework.Provisioning.Model.SiteSecurity
+    name: SiteSecurity
+  - uid: PnP.Framework.Provisioning.Model.SiteSecurityPermissions
+    name: SiteSecurityPermissions
+  - uid: PnP.Framework.Provisioning.Model.SiteSettings
+    name: SiteSettings
+  - uid: PnP.Framework.Provisioning.Model.SiteWebhook
+    name: SiteWebhook
+  - uid: PnP.Framework.Provisioning.Model.SiteWebhookCollection
+    name: SiteWebhookCollection
+  - uid: PnP.Framework.Provisioning.Model.SiteWebhookType
+    name: SiteWebhookType
+  - uid: PnP.Framework.Provisioning.Model.StorageEntity
+    name: StorageEntity
+  - uid: PnP.Framework.Provisioning.Model.StorageEntityCollection
+    name: StorageEntityCollection
+  - uid: PnP.Framework.Provisioning.Model.StructuralNavigation
+    name: StructuralNavigation
+  - uid: PnP.Framework.Provisioning.Model.SubSite
+    name: SubSite
+  - uid: PnP.Framework.Provisioning.Model.SubSiteCollection
+    name: SubSiteCollection
+  - uid: PnP.Framework.Provisioning.Model.SupportedUILanguage
+    name: SupportedUILanguage
+  - uid: PnP.Framework.Provisioning.Model.SupportedUILanguageCollection
+    name: SupportedUILanguageCollection
+  - uid: PnP.Framework.Provisioning.Model.SyncMode
+    name: SyncMode
+  - uid: PnP.Framework.Provisioning.Model.TeamNoGroupSiteCollection
+    name: TeamNoGroupSiteCollection
+  - uid: PnP.Framework.Provisioning.Model.TeamNoGroupSubSite
+    name: TeamNoGroupSubSite
+  - uid: PnP.Framework.Provisioning.Model.TeamSiteCollection
+    name: TeamSiteCollection
+  - uid: PnP.Framework.Provisioning.Model.Term
+    name: Term
+  - uid: PnP.Framework.Provisioning.Model.TermCollection
+    name: TermCollection
+  - uid: PnP.Framework.Provisioning.Model.TermGroup
+    name: TermGroup
+  - uid: PnP.Framework.Provisioning.Model.TermGroupCollection
+    name: TermGroupCollection
+  - uid: PnP.Framework.Provisioning.Model.TermGroupUpdateBehavior
+    name: TermGroupUpdateBehavior
+  - uid: PnP.Framework.Provisioning.Model.TermLabel
+    name: TermLabel
+  - uid: PnP.Framework.Provisioning.Model.TermLabelCollection
+    name: TermLabelCollection
+  - uid: PnP.Framework.Provisioning.Model.TermSet
+    name: TermSet
+  - uid: PnP.Framework.Provisioning.Model.TermSetCollection
+    name: TermSetCollection
+  - uid: PnP.Framework.Provisioning.Model.Theme
+    name: Theme
+  - uid: PnP.Framework.Provisioning.Model.ThemeCollection
+    name: ThemeCollection
+  - uid: PnP.Framework.Provisioning.Model.TranslatedClientSidePage
+    name: TranslatedClientSidePage
+  - uid: PnP.Framework.Provisioning.Model.TranslatedClientSidePageCollection
+    name: TranslatedClientSidePageCollection
+  - uid: PnP.Framework.Provisioning.Model.UpdateBehavior
+    name: UpdateBehavior
+  - uid: PnP.Framework.Provisioning.Model.User
+    name: User
+  - uid: PnP.Framework.Provisioning.Model.UserCollection
+    name: UserCollection
+  - uid: PnP.Framework.Provisioning.Model.View
+    name: View
+  - uid: PnP.Framework.Provisioning.Model.ViewCollection
+    name: ViewCollection
+  - uid: PnP.Framework.Provisioning.Model.WebApiPermission
+    name: WebApiPermission
+  - uid: PnP.Framework.Provisioning.Model.WebApiPermissionCollection
+    name: WebApiPermissionCollection
+  - uid: PnP.Framework.Provisioning.Model.Webhook
+    name: Webhook
+  - uid: PnP.Framework.Provisioning.Model.WebhookCollection
+    name: WebhookCollection
+  - uid: PnP.Framework.Provisioning.Model.WebPart
+    name: WebPart
+  - uid: PnP.Framework.Provisioning.Model.WebPartCollection
+    name: WebPartCollection
+  - uid: PnP.Framework.Provisioning.Model.WebPartType
+    name: WebPartType
+  - uid: PnP.Framework.Provisioning.Model.WebSettings
+    name: WebSettings
+  - uid: PnP.Framework.Provisioning.Model.WorkflowDefinition
+    name: WorkflowDefinition
+  - uid: PnP.Framework.Provisioning.Model.WorkflowDefinitionCollection
+    name: WorkflowDefinitionCollection
+  - uid: PnP.Framework.Provisioning.Model.Workflows
+    name: Workflows
+  - uid: PnP.Framework.Provisioning.Model.WorkflowSubscription
+    name: WorkflowSubscription
+  - uid: PnP.Framework.Provisioning.Model.WorkflowSubscriptionCollection
+    name: WorkflowSubscriptionCollection
+  - uid: PnP.Framework.Provisioning.Model.WorkHour
+    name: WorkHour
+- uid: PnP.Framework.Provisioning.Model.AzureActiveDirectory
+  name: PnP.Framework.Provisioning.Model.AzureActiveDirectory
+  items:
+  - uid: PnP.Framework.Provisioning.Model.AzureActiveDirectory.PasswordProfile
+    name: PasswordProfile
+  - uid: PnP.Framework.Provisioning.Model.AzureActiveDirectory.ProvisioningAzureActiveDirectory
+    name: ProvisioningAzureActiveDirectory
+  - uid: PnP.Framework.Provisioning.Model.AzureActiveDirectory.User
+    name: User
+  - uid: PnP.Framework.Provisioning.Model.AzureActiveDirectory.UserCollection
+    name: UserCollection
+  - uid: PnP.Framework.Provisioning.Model.AzureActiveDirectory.UserLicense
+    name: UserLicense
+  - uid: PnP.Framework.Provisioning.Model.AzureActiveDirectory.UserLicenseCollection
+    name: UserLicenseCollection
+- uid: PnP.Framework.Provisioning.Model.Configuration
+  name: PnP.Framework.Provisioning.Model.Configuration
+  items:
+  - uid: PnP.Framework.Provisioning.Model.Configuration.ApplyConfiguration
+    name: ApplyConfiguration
+  - uid: PnP.Framework.Provisioning.Model.Configuration.ConfigurationHandler
+    name: ConfigurationHandler
+  - uid: PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration
+    name: ExtractConfiguration
+  - uid: PnP.Framework.Provisioning.Model.Configuration.ListEnumConverter`1
+    name: ListEnumConverter<TEnum>
+    name.vb: ListEnumConverter(Of TEnum)
+- uid: PnP.Framework.Provisioning.Model.Configuration.ContentTypes
+  name: PnP.Framework.Provisioning.Model.Configuration.ContentTypes
+  items:
+  - uid: PnP.Framework.Provisioning.Model.Configuration.ContentTypes.ApplyContentTypeConfiguration
+    name: ApplyContentTypeConfiguration
+  - uid: PnP.Framework.Provisioning.Model.Configuration.ContentTypes.ExtractContentTypeConfiguration
+    name: ExtractContentTypeConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.Extensibility
+  name: PnP.Framework.Provisioning.Model.Configuration.Extensibility
+  items:
+  - uid: PnP.Framework.Provisioning.Model.Configuration.Extensibility.ApplyExtensibilityConfiguration
+    name: ApplyExtensibilityConfiguration
+  - uid: PnP.Framework.Provisioning.Model.Configuration.Extensibility.ExtractExtensibilityConfiguration
+    name: ExtractExtensibilityConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.Fields
+  name: PnP.Framework.Provisioning.Model.Configuration.Fields
+  items:
+  - uid: PnP.Framework.Provisioning.Model.Configuration.Fields.ApplyFieldsConfiguration
+    name: ApplyFieldsConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.Lists
+  name: PnP.Framework.Provisioning.Model.Configuration.Lists
+  items:
+  - uid: PnP.Framework.Provisioning.Model.Configuration.Lists.ApplyListsConfiguration
+    name: ApplyListsConfiguration
+  - uid: PnP.Framework.Provisioning.Model.Configuration.Lists.ExtractListsConfiguration
+    name: ExtractListsConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.Lists.Lists
+  name: PnP.Framework.Provisioning.Model.Configuration.Lists.Lists
+  items:
+  - uid: PnP.Framework.Provisioning.Model.Configuration.Lists.Lists.ExtractListsListsConfiguration
+    name: ExtractListsListsConfiguration
+  - uid: PnP.Framework.Provisioning.Model.Configuration.Lists.Lists.ExtractListsQueryConfiguration
+    name: ExtractListsQueryConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.MultiLanguage
+  name: PnP.Framework.Provisioning.Model.Configuration.MultiLanguage
+  items:
+  - uid: PnP.Framework.Provisioning.Model.Configuration.MultiLanguage.ExtractMultiLanguageConfiguration
+    name: ExtractMultiLanguageConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.Navigation
+  name: PnP.Framework.Provisioning.Model.Configuration.Navigation
+  items:
+  - uid: PnP.Framework.Provisioning.Model.Configuration.Navigation.ApplyNavigationConfiguration
+    name: ApplyNavigationConfiguration
+  - uid: PnP.Framework.Provisioning.Model.Configuration.Navigation.ExtractNavigationConfiguration
+    name: ExtractNavigationConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.Pages
+  name: PnP.Framework.Provisioning.Model.Configuration.Pages
+  items:
+  - uid: PnP.Framework.Provisioning.Model.Configuration.Pages.ExtractPagesConfiguration
+    name: ExtractPagesConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.PropertyBag
+  name: PnP.Framework.Provisioning.Model.Configuration.PropertyBag
+  items:
+  - uid: PnP.Framework.Provisioning.Model.Configuration.PropertyBag.ApplyPropertyBagConfiguration
+    name: ApplyPropertyBagConfiguration
+  - uid: PnP.Framework.Provisioning.Model.Configuration.PropertyBag.ExtractPropertyBagConfiguration
+    name: ExtractPropertyBagConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.Publishing
+  name: PnP.Framework.Provisioning.Model.Configuration.Publishing
+  items:
+  - uid: PnP.Framework.Provisioning.Model.Configuration.Publishing.ExtractPublishingConfiguration
+    name: ExtractPublishingConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.SearchSettings
+  name: PnP.Framework.Provisioning.Model.Configuration.SearchSettings
+  items:
+  - uid: PnP.Framework.Provisioning.Model.Configuration.SearchSettings.ExtractSearchConfiguration
+    name: ExtractSearchConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.SiteFooter
+  name: PnP.Framework.Provisioning.Model.Configuration.SiteFooter
+  items:
+  - uid: PnP.Framework.Provisioning.Model.Configuration.SiteFooter.ExtractSiteFooterConfiguration
+    name: ExtractSiteFooterConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.SiteSecurity
+  name: PnP.Framework.Provisioning.Model.Configuration.SiteSecurity
+  items:
+  - uid: PnP.Framework.Provisioning.Model.Configuration.SiteSecurity.ExtractConfiguration
+    name: ExtractConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.SyntexModels
+  name: PnP.Framework.Provisioning.Model.Configuration.SyntexModels
+  items:
+  - uid: PnP.Framework.Provisioning.Model.Configuration.SyntexModels.ExtractSyntexModelsConfiguration
+    name: ExtractSyntexModelsConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.SyntexModels.Models
+  name: PnP.Framework.Provisioning.Model.Configuration.SyntexModels.Models
+  items:
+  - uid: PnP.Framework.Provisioning.Model.Configuration.SyntexModels.Models.ExtractSyntexModelsModelsConfiguration
+    name: ExtractSyntexModelsModelsConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.Taxonomy
+  name: PnP.Framework.Provisioning.Model.Configuration.Taxonomy
+  items:
+  - uid: PnP.Framework.Provisioning.Model.Configuration.Taxonomy.ExtractTaxonomyConfiguration
+    name: ExtractTaxonomyConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.Tenant
+  name: PnP.Framework.Provisioning.Model.Configuration.Tenant
+  items:
+  - uid: PnP.Framework.Provisioning.Model.Configuration.Tenant.ApplyTenantConfiguration
+    name: ApplyTenantConfiguration
+  - uid: PnP.Framework.Provisioning.Model.Configuration.Tenant.ExtractTenantConfiguration
+    name: ExtractTenantConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.Tenant.Sequence
+  name: PnP.Framework.Provisioning.Model.Configuration.Tenant.Sequence
+  items:
+  - uid: PnP.Framework.Provisioning.Model.Configuration.Tenant.Sequence.ExtractSequenceConfiguration
+    name: ExtractSequenceConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.Tenant.Teams
+  name: PnP.Framework.Provisioning.Model.Configuration.Tenant.Teams
+  items:
+  - uid: PnP.Framework.Provisioning.Model.Configuration.Tenant.Teams.ExtractTeamsConfiguration
+    name: ExtractTeamsConfiguration
+- uid: PnP.Framework.Provisioning.Model.Deprecated
+  name: PnP.Framework.Provisioning.Model.Deprecated
+  items:
+  - uid: PnP.Framework.Provisioning.Model.Deprecated.NavigationNode
+    name: NavigationNode
+- uid: PnP.Framework.Provisioning.Model.Drive
+  name: PnP.Framework.Provisioning.Model.Drive
+  items:
+  - uid: PnP.Framework.Provisioning.Model.Drive.Drive
+    name: Drive
+  - uid: PnP.Framework.Provisioning.Model.Drive.DriveFile
+    name: DriveFile
+  - uid: PnP.Framework.Provisioning.Model.Drive.DriveFileCollection
+    name: DriveFileCollection
+  - uid: PnP.Framework.Provisioning.Model.Drive.DriveFolder
+    name: DriveFolder
+  - uid: PnP.Framework.Provisioning.Model.Drive.DriveFolderBase
+    name: DriveFolderBase
+  - uid: PnP.Framework.Provisioning.Model.Drive.DriveFolderCollection
+    name: DriveFolderCollection
+  - uid: PnP.Framework.Provisioning.Model.Drive.DriveRoot
+    name: DriveRoot
+  - uid: PnP.Framework.Provisioning.Model.Drive.DriveRootCollection
+    name: DriveRootCollection
+  - uid: PnP.Framework.Provisioning.Model.Drive.DriveRootFolder
+    name: DriveRootFolder
+- uid: PnP.Framework.Provisioning.Model.Office365Groups
+  name: PnP.Framework.Provisioning.Model.Office365Groups
+  items:
+  - uid: PnP.Framework.Provisioning.Model.Office365Groups.ManagedGroupTypes
+    name: ManagedGroupTypes
+  - uid: PnP.Framework.Provisioning.Model.Office365Groups.Office365GroupLifecyclePolicy
+    name: Office365GroupLifecyclePolicy
+  - uid: PnP.Framework.Provisioning.Model.Office365Groups.Office365GroupLifecyclePolicyCollection
+    name: Office365GroupLifecyclePolicyCollection
+  - uid: PnP.Framework.Provisioning.Model.Office365Groups.Office365GroupsSettings
+    name: Office365GroupsSettings
+- uid: PnP.Framework.Provisioning.Model.SharePoint.InformationArchitecture
+  name: PnP.Framework.Provisioning.Model.SharePoint.InformationArchitecture
+  items:
+  - uid: PnP.Framework.Provisioning.Model.SharePoint.InformationArchitecture.DataRowAttachment
+    name: DataRowAttachment
+  - uid: PnP.Framework.Provisioning.Model.SharePoint.InformationArchitecture.DataRowAttachmentCollection
+    name: DataRowAttachmentCollection
+- uid: PnP.Framework.Provisioning.Model.SPUPS
+  name: PnP.Framework.Provisioning.Model.SPUPS
+  items:
+  - uid: PnP.Framework.Provisioning.Model.SPUPS.UserProfile
+    name: UserProfile
+  - uid: PnP.Framework.Provisioning.Model.SPUPS.UserProfileCollection
+    name: UserProfileCollection
+- uid: PnP.Framework.Provisioning.Model.Teams
+  name: PnP.Framework.Provisioning.Model.Teams
+  items:
+  - uid: PnP.Framework.Provisioning.Model.Teams.BaseTeam
+    name: BaseTeam
+  - uid: PnP.Framework.Provisioning.Model.Teams.MembershipType
+    name: MembershipType
+  - uid: PnP.Framework.Provisioning.Model.Teams.ProvisioningTeams
+    name: ProvisioningTeams
+  - uid: PnP.Framework.Provisioning.Model.Teams.ReplyRestriction
+    name: ReplyRestriction
+  - uid: PnP.Framework.Provisioning.Model.Teams.TabResourceType
+    name: TabResourceType
+  - uid: PnP.Framework.Provisioning.Model.Teams.Team
+    name: Team
+  - uid: PnP.Framework.Provisioning.Model.Teams.TeamApp
+    name: TeamApp
+  - uid: PnP.Framework.Provisioning.Model.Teams.TeamAppCollection
+    name: TeamAppCollection
+  - uid: PnP.Framework.Provisioning.Model.Teams.TeamAppInstance
+    name: TeamAppInstance
+  - uid: PnP.Framework.Provisioning.Model.Teams.TeamAppInstanceCollection
+    name: TeamAppInstanceCollection
+  - uid: PnP.Framework.Provisioning.Model.Teams.TeamChannel
+    name: TeamChannel
+  - uid: PnP.Framework.Provisioning.Model.Teams.TeamChannelCollection
+    name: TeamChannelCollection
+  - uid: PnP.Framework.Provisioning.Model.Teams.TeamChannelMessage
+    name: TeamChannelMessage
+  - uid: PnP.Framework.Provisioning.Model.Teams.TeamChannelMessageCollection
+    name: TeamChannelMessageCollection
+  - uid: PnP.Framework.Provisioning.Model.Teams.TeamCollection
+    name: TeamCollection
+  - uid: PnP.Framework.Provisioning.Model.Teams.TeamDiscoverySettings
+    name: TeamDiscoverySettings
+  - uid: PnP.Framework.Provisioning.Model.Teams.TeamFunSettings
+    name: TeamFunSettings
+  - uid: PnP.Framework.Provisioning.Model.Teams.TeamGiphyContentRating
+    name: TeamGiphyContentRating
+  - uid: PnP.Framework.Provisioning.Model.Teams.TeamGuestSettings
+    name: TeamGuestSettings
+  - uid: PnP.Framework.Provisioning.Model.Teams.TeamMemberSettings
+    name: TeamMemberSettings
+  - uid: PnP.Framework.Provisioning.Model.Teams.TeamMessagingSettings
+    name: TeamMessagingSettings
+  - uid: PnP.Framework.Provisioning.Model.Teams.TeamSecurity
+    name: TeamSecurity
+  - uid: PnP.Framework.Provisioning.Model.Teams.TeamSecurityUser
+    name: TeamSecurityUser
+  - uid: PnP.Framework.Provisioning.Model.Teams.TeamSecurityUserCollection
+    name: TeamSecurityUserCollection
+  - uid: PnP.Framework.Provisioning.Model.Teams.TeamSpecialization
+    name: TeamSpecialization
+  - uid: PnP.Framework.Provisioning.Model.Teams.TeamTab
+    name: TeamTab
+  - uid: PnP.Framework.Provisioning.Model.Teams.TeamTabCollection
+    name: TeamTabCollection
+  - uid: PnP.Framework.Provisioning.Model.Teams.TeamTabConfiguration
+    name: TeamTabConfiguration
+  - uid: PnP.Framework.Provisioning.Model.Teams.TeamTabResource
+    name: TeamTabResource
+  - uid: PnP.Framework.Provisioning.Model.Teams.TeamTabResourceCollection
+    name: TeamTabResourceCollection
+  - uid: PnP.Framework.Provisioning.Model.Teams.TeamTemplate
+    name: TeamTemplate
+  - uid: PnP.Framework.Provisioning.Model.Teams.TeamTemplateCollection
+    name: TeamTemplateCollection
+  - uid: PnP.Framework.Provisioning.Model.Teams.TeamVisibility
+    name: TeamVisibility
+  - uid: PnP.Framework.Provisioning.Model.Teams.UserNewMessageRestriction
+    name: UserNewMessageRestriction
+- uid: PnP.Framework.Provisioning.ObjectHandlers
+  name: PnP.Framework.Provisioning.ObjectHandlers
+  items:
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.AcquireCookieAsyncDelegate
+    name: AcquireCookieAsyncDelegate
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.AcquireTokenAsyncDelegate
+    name: AcquireTokenAsyncDelegate
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.FieldAndListProvisioningStepHelper
+    name: FieldAndListProvisioningStepHelper
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.FieldAndListProvisioningStepHelper.Step
+    name: FieldAndListProvisioningStepHelper.Step
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext
+    name: PnPProvisioningContext
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningMessagesDelegate
+    name: ProvisioningMessagesDelegate
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningMessageType
+    name: ProvisioningMessageType
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningProgressDelegate
+    name: ProvisioningProgressDelegate
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningSiteProvisionedDelegate
+    name: ProvisioningSiteProvisionedDelegate
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation
+    name: ProvisioningTemplateApplyingInformation
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation
+    name: ProvisioningTemplateCreationInformation
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.RecycledSiteException
+    name: RecycledSiteException
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.TokenParser
+    name: TokenParser
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.WebhookSender
+    name: WebhookSender
+- uid: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
+  name: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
+  items:
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.DateNowToken
+    name: DateNowToken
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.FqdnToken
+    name: FqdnToken
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.HostUrlToken
+    name: HostUrlToken
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.SimpleTokenDefinition
+    name: SimpleTokenDefinition
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.TokenDefinition
+    name: TokenDefinition
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.VolatileTokenDefinition
+    name: VolatileTokenDefinition
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  name: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  items:
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ClientSidePageContentsHelper
+    name: ClientSidePageContentsHelper
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ConnectorFileHelper
+    name: ConnectorFileHelper
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUpdateValue
+    name: FieldUpdateValue
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FieldUtilities
+    name: FieldUtilities
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities
+    name: FileUtilities
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities
+    name: ListItemUtilities
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.ListItemUtilities.ListItemUpdateType
+    name: ListItemUtilities.ListItemUpdateType
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.PageToExport
+    name: PageToExport
+- uid: PnP.Framework.Provisioning.Providers
+  name: PnP.Framework.Provisioning.Providers
+  items:
+  - uid: PnP.Framework.Provisioning.Providers.IProvisioningHierarchyFormatter
+    name: IProvisioningHierarchyFormatter
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+    name: ITemplateFormatter
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+    name: ITemplateProviderExtension
+  - uid: PnP.Framework.Provisioning.Providers.TemplateProviderBase
+    name: TemplateProviderBase
+  - uid: PnP.Framework.Provisioning.Providers.ValidationResult
+    name: ValidationResult
+- uid: PnP.Framework.Provisioning.Providers.Json
+  name: PnP.Framework.Provisioning.Providers.Json
+  items:
+  - uid: PnP.Framework.Provisioning.Providers.Json.JsonFileSystemTemplateProvider
+    name: JsonFileSystemTemplateProvider
+  - uid: PnP.Framework.Provisioning.Providers.Json.JsonOpenXMLTemplateProvider
+    name: JsonOpenXMLTemplateProvider
+  - uid: PnP.Framework.Provisioning.Providers.Json.JsonPnPFormatter
+    name: JsonPnPFormatter
+  - uid: PnP.Framework.Provisioning.Providers.Json.JsonSharePointTemplateProvider
+    name: JsonSharePointTemplateProvider
+  - uid: PnP.Framework.Provisioning.Providers.Json.JsonTemplateProvider
+    name: JsonTemplateProvider
+- uid: PnP.Framework.Provisioning.Providers.Markdown
+  name: PnP.Framework.Provisioning.Providers.Markdown
+  items:
+  - uid: PnP.Framework.Provisioning.Providers.Markdown.IPnPSchemaWriter
+    name: IPnPSchemaWriter
+  - uid: PnP.Framework.Provisioning.Providers.Markdown.MarkdownFileSystemTemplateProvider
+    name: MarkdownFileSystemTemplateProvider
+  - uid: PnP.Framework.Provisioning.Providers.Markdown.MarkdownOpenXMLTemplateProvider
+    name: MarkdownOpenXMLTemplateProvider
+  - uid: PnP.Framework.Provisioning.Providers.Markdown.MarkdownPnPFormatter
+    name: MarkdownPnPFormatter
+  - uid: PnP.Framework.Provisioning.Providers.Markdown.MarkdownTemplateProvider
+    name: MarkdownTemplateProvider
+  - uid: PnP.Framework.Provisioning.Providers.Markdown.TemplateSchemaWriterAttribute
+    name: TemplateSchemaWriterAttribute
+  - uid: PnP.Framework.Provisioning.Providers.Markdown.WriterScope
+    name: WriterScope
+- uid: PnP.Framework.Provisioning.Providers.Xml
+  name: PnP.Framework.Provisioning.Providers.Xml
+  items:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.IPnPSchemaSerializer
+    name: IPnPSchemaSerializer
+  - uid: PnP.Framework.Provisioning.Providers.Xml.IResolver
+    name: IResolver
+  - uid: PnP.Framework.Provisioning.Providers.Xml.ITypeResolver
+    name: ITypeResolver
+  - uid: PnP.Framework.Provisioning.Providers.Xml.IXMLSchemaFormatter
+    name: IXMLSchemaFormatter
+  - uid: PnP.Framework.Provisioning.Providers.Xml.SerializerScope
+    name: SerializerScope
+  - uid: PnP.Framework.Provisioning.Providers.Xml.TemplateSchemaSerializerAttribute
+    name: TemplateSchemaSerializerAttribute
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLConstants
+    name: XMLConstants
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLExtensions
+    name: XMLExtensions
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLFileSystemTemplateProvider
+    name: XMLFileSystemTemplateProvider
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLOpenXMLTemplateProvider
+    name: XMLOpenXMLTemplateProvider
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLPnPSchemaFormatter
+    name: XMLPnPSchemaFormatter
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLPnPSchemaVersion
+    name: XMLPnPSchemaVersion
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider
+    name: XMLSharePointTemplateProvider
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLStreamTemplateProvider
+    name: XMLStreamTemplateProvider
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+    name: XMLTemplateProvider
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201903
+  name: PnP.Framework.Provisioning.Providers.Xml.V201903
+  items:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.AADUsersUser
+    name: AADUsersUser
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.AADUsersUserLicense
+    name: AADUsersUserLicense
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.AADUsersUserPasswordProfile
+    name: AADUsersUserPasswordProfile
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.AppCatalogPackage
+    name: AppCatalogPackage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.AppCatalogPackageAction
+    name: AppCatalogPackageAction
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ApplicationLifecycleManagement
+    name: ApplicationLifecycleManagement
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ApplicationLifecycleManagementApp
+    name: ApplicationLifecycleManagementApp
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ApplicationLifecycleManagementAppAction
+    name: ApplicationLifecycleManagementAppAction
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ApplicationLifecycleManagementAppSyncMode
+    name: ApplicationLifecycleManagementAppSyncMode
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.AuditSettings
+    name: AuditSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.AuditSettingsAudit
+    name: AuditSettingsAudit
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.AuditSettingsAuditAuditFlag
+    name: AuditSettingsAuditAuditFlag
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.AzureActiveDirectory
+    name: AzureActiveDirectory
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.BackgroundEmphasis
+    name: BackgroundEmphasis
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.BaseFieldValue
+    name: BaseFieldValue
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.BaseTeam
+    name: BaseTeam
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.BaseTeamVisibility
+    name: BaseTeamVisibility
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.CalendarType
+    name: CalendarType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.CanvasControl
+    name: CanvasControl
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.CanvasControlWebPartType
+    name: CanvasControlWebPartType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.CanvasSection
+    name: CanvasSection
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.CanvasSectionType
+    name: CanvasSectionType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.CdnSetting
+    name: CdnSetting
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.CdnSettingOrigin
+    name: CdnSettingOrigin
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.CdnSettingOriginAction
+    name: CdnSettingOriginAction
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ClientSidePage
+    name: ClientSidePage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ClientSidePageHeader
+    name: ClientSidePageHeader
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ClientSidePageHeaderLayoutType
+    name: ClientSidePageHeaderLayoutType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ClientSidePageHeaderTextAlignment
+    name: ClientSidePageHeaderTextAlignment
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ClientSidePageHeaderType
+    name: ClientSidePageHeaderType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.CommunicationSite
+    name: CommunicationSite
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ComposedLook
+    name: ComposedLook
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ContentDeliveryNetwork
+    name: ContentDeliveryNetwork
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ContentType
+    name: ContentType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ContentTypeBinding
+    name: ContentTypeBinding
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ContentTypeDocumentTemplate
+    name: ContentTypeDocumentTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ContentTypeFieldRef
+    name: ContentTypeFieldRef
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.CustomAction
+    name: CustomAction
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.CustomActionCommandUIExtension
+    name: CustomActionCommandUIExtension
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.CustomActions
+    name: CustomActions
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.DataValue
+    name: DataValue
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.DayOfWeek
+    name: DayOfWeek
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.Directory
+    name: Directory
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.DocumentSetFieldRef
+    name: DocumentSetFieldRef
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.DocumentSetTemplate
+    name: DocumentSetTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.DocumentSetTemplateAllowedContentTypes
+    name: DocumentSetTemplateAllowedContentTypes
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.DocumentSetTemplateAllowedContentTypesAllowedContentType
+    name: DocumentSetTemplateAllowedContentTypesAllowedContentType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.DocumentSetTemplateDefaultDocument
+    name: DocumentSetTemplateDefaultDocument
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.DocumentSetTemplateXmlDocuments
+    name: DocumentSetTemplateXmlDocuments
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.Feature
+    name: Feature
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.Features
+    name: Features
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.FieldDefault
+    name: FieldDefault
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.FieldRefBase
+    name: FieldRefBase
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.FieldRefFull
+    name: FieldRefFull
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.File
+    name: File
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.FileLevel
+    name: FileLevel
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.Folder
+    name: Folder
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.Footer
+    name: Footer
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.FooterLink
+    name: FooterLink
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.Header
+    name: Header
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.HeaderLayout
+    name: HeaderLayout
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.HeaderMenuStyle
+    name: HeaderMenuStyle
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.IRMSettings
+    name: IRMSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ListInstance
+    name: ListInstance
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ListInstanceDataRows
+    name: ListInstanceDataRows
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ListInstanceDataRowsDataRow
+    name: ListInstanceDataRowsDataRow
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ListInstanceDataRowsUpdateBehavior
+    name: ListInstanceDataRowsUpdateBehavior
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ListInstanceDirection
+    name: ListInstanceDirection
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ListInstanceFieldRef
+    name: ListInstanceFieldRef
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ListInstanceFields
+    name: ListInstanceFields
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ListInstanceListExperience
+    name: ListInstanceListExperience
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ListInstanceViews
+    name: ListInstanceViews
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.LocalizationsLocalization
+    name: LocalizationsLocalization
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ManagedNavigation
+    name: ManagedNavigation
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.Navigation
+    name: Navigation
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.NavigationCurrentNavigation
+    name: NavigationCurrentNavigation
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.NavigationCurrentNavigationNavigationType
+    name: NavigationCurrentNavigationNavigationType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.NavigationGlobalNavigation
+    name: NavigationGlobalNavigation
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.NavigationGlobalNavigationNavigationType
+    name: NavigationGlobalNavigationNavigationType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.NavigationNode
+    name: NavigationNode
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ObjectSecurity
+    name: ObjectSecurity
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ObjectSecurityBreakRoleInheritance
+    name: ObjectSecurityBreakRoleInheritance
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.Page
+    name: Page
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.Preferences
+    name: Preferences
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.PreferencesParameter
+    name: PreferencesParameter
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.PropertyBagEntry
+    name: PropertyBagEntry
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.Provider
+    name: Provider
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.Provisioning
+    name: Provisioning
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ProvisioningTemplate
+    name: ProvisioningTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ProvisioningTemplateFile
+    name: ProvisioningTemplateFile
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ProvisioningTemplateFiles
+    name: ProvisioningTemplateFiles
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ProvisioningTemplateReference
+    name: ProvisioningTemplateReference
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ProvisioningTemplateScope
+    name: ProvisioningTemplateScope
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ProvisioningTemplateSearchSettings
+    name: ProvisioningTemplateSearchSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ProvisioningTemplateSiteFields
+    name: ProvisioningTemplateSiteFields
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ProvisioningTemplateWebhooksProvisioningTemplateWebhook
+    name: ProvisioningTemplateWebhooksProvisioningTemplateWebhook
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ProvisioningTemplateWebhooksProvisioningTemplateWebhookBodyFormat
+    name: ProvisioningTemplateWebhooksProvisioningTemplateWebhookBodyFormat
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ProvisioningTemplateWebhooksProvisioningTemplateWebhookKind
+    name: ProvisioningTemplateWebhooksProvisioningTemplateWebhookKind
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.ProvisioningTemplateWebhooksProvisioningTemplateWebhookMethod
+    name: ProvisioningTemplateWebhooksProvisioningTemplateWebhookMethod
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.Publishing
+    name: Publishing
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.PublishingAutoCheckRequirements
+    name: PublishingAutoCheckRequirements
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.PublishingDesignPackage
+    name: PublishingDesignPackage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.PublishingImageRendition
+    name: PublishingImageRendition
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.PublishingPageLayouts
+    name: PublishingPageLayouts
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.PublishingPageLayoutsPageLayout
+    name: PublishingPageLayoutsPageLayout
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.PublishingWebTemplate
+    name: PublishingWebTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.RegionalSettings
+    name: RegionalSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.RegistrationType
+    name: RegistrationType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.RoleAssignment
+    name: RoleAssignment
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.RoleDefinition
+    name: RoleDefinition
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.RoleDefinitionPermission
+    name: RoleDefinitionPermission
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.Security
+    name: Security
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.SecurityPermissions
+    name: SecurityPermissions
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.Sequence
+    name: Sequence
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.Site
+    name: Site
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.SiteCollection
+    name: SiteCollection
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.SiteDesignsSiteDesign
+    name: SiteDesignsSiteDesign
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.SiteDesignsSiteDesignGrant
+    name: SiteDesignsSiteDesignGrant
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.SiteDesignsSiteDesignGrantRight
+    name: SiteDesignsSiteDesignGrantRight
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.SiteDesignsSiteDesignSiteScriptRef
+    name: SiteDesignsSiteDesignSiteScriptRef
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.SiteDesignsSiteDesignWebTemplate
+    name: SiteDesignsSiteDesignWebTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.SiteGroup
+    name: SiteGroup
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.SiteScriptsSiteScript
+    name: SiteScriptsSiteScript
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.SiteWebhook
+    name: SiteWebhook
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.SiteWebhookSiteWebhookType
+    name: SiteWebhookSiteWebhookType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.StorageEntitiesStorageEntity
+    name: StorageEntitiesStorageEntity
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.StringDictionaryItem
+    name: StringDictionaryItem
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.StructuralNavigation
+    name: StructuralNavigation
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.SupportedUILanguagesSupportedUILanguage
+    name: SupportedUILanguagesSupportedUILanguage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TaxonomyItem
+    name: TaxonomyItem
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TeamChannel
+    name: TeamChannel
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TeamChannelTabsTab
+    name: TeamChannelTabsTab
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TeamChannelTabsTabConfiguration
+    name: TeamChannelTabsTabConfiguration
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.Teams
+    name: Teams
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TeamsAppsApp
+    name: TeamsAppsApp
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TeamSecurity
+    name: TeamSecurity
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TeamSecurityUsers
+    name: TeamSecurityUsers
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TeamSecurityUsersUser
+    name: TeamSecurityUsersUser
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TeamSite
+    name: TeamSite
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TeamSiteNoGroup
+    name: TeamSiteNoGroup
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TeamSubSiteNoGroup
+    name: TeamSubSiteNoGroup
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TeamTabResourcesTabResource
+    name: TeamTabResourcesTabResource
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TeamTabResourcesTabResourceType
+    name: TeamTabResourcesTabResourceType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TeamTemplate
+    name: TeamTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TeamWithSettings
+    name: TeamWithSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TeamWithSettingsApp
+    name: TeamWithSettingsApp
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TeamWithSettingsFunSettings
+    name: TeamWithSettingsFunSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TeamWithSettingsFunSettingsGiphyContentRating
+    name: TeamWithSettingsFunSettingsGiphyContentRating
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TeamWithSettingsGuestSettings
+    name: TeamWithSettingsGuestSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TeamWithSettingsMembersSettings
+    name: TeamWithSettingsMembersSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TeamWithSettingsMessagingSettings
+    name: TeamWithSettingsMessagingSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TeamWithSettingsSpecialization
+    name: TeamWithSettingsSpecialization
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.Templates
+    name: Templates
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.Tenant
+    name: Tenant
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.Term
+    name: Term
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TermGroup
+    name: TermGroup
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TermGroupUpdateBehavior
+    name: TermGroupUpdateBehavior
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TermLabelsLabel
+    name: TermLabelsLabel
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TermSet
+    name: TermSet
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TermSetItem
+    name: TermSetItem
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.TermTerms
+    name: TermTerms
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.Theme
+    name: Theme
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.User
+    name: User
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.UsersList
+    name: UsersList
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.WebApiPermissionsWebApiPermission
+    name: WebApiPermissionsWebApiPermission
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.Webhook
+    name: Webhook
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.WebPartPageWebPart
+    name: WebPartPageWebPart
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.WebSettings
+    name: WebSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.WikiPageLayout
+    name: WikiPageLayout
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.WikiPageWebPart
+    name: WikiPageWebPart
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.Workflows
+    name: Workflows
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.WorkflowsWorkflowDefinition
+    name: WorkflowsWorkflowDefinition
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.WorkflowsWorkflowDefinitionRestrictToType
+    name: WorkflowsWorkflowDefinitionRestrictToType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.WorkflowsWorkflowSubscription
+    name: WorkflowsWorkflowSubscription
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201903.WorkHour
+    name: WorkHour
+- uid: PnP.Framework.Provisioning.Providers.Xml.V201909
+  name: PnP.Framework.Provisioning.Providers.Xml.V201909
+  items:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.AADUsersUser
+    name: AADUsersUser
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.AADUsersUserLicense
+    name: AADUsersUserLicense
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.AADUsersUserPasswordProfile
+    name: AADUsersUserPasswordProfile
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.AppCatalogPackage
+    name: AppCatalogPackage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.AppCatalogPackageAction
+    name: AppCatalogPackageAction
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ApplicationLifecycleManagement
+    name: ApplicationLifecycleManagement
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ApplicationLifecycleManagementApp
+    name: ApplicationLifecycleManagementApp
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ApplicationLifecycleManagementAppAction
+    name: ApplicationLifecycleManagementAppAction
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ApplicationLifecycleManagementAppSyncMode
+    name: ApplicationLifecycleManagementAppSyncMode
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.AuditSettings
+    name: AuditSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.AuditSettingsAudit
+    name: AuditSettingsAudit
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.AuditSettingsAuditAuditFlag
+    name: AuditSettingsAuditAuditFlag
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.AzureActiveDirectory
+    name: AzureActiveDirectory
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.BaseClientSidePage
+    name: BaseClientSidePage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.BaseClientSidePageHeader
+    name: BaseClientSidePageHeader
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.BaseClientSidePageHeaderLayoutType
+    name: BaseClientSidePageHeaderLayoutType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.BaseClientSidePageHeaderTextAlignment
+    name: BaseClientSidePageHeaderTextAlignment
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.BaseClientSidePageHeaderType
+    name: BaseClientSidePageHeaderType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.BaseFieldValue
+    name: BaseFieldValue
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.BaseTeam
+    name: BaseTeam
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.BaseTeamVisibility
+    name: BaseTeamVisibility
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CalendarType
+    name: CalendarType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControl
+    name: CanvasControl
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasControlWebPartType
+    name: CanvasControlWebPartType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasSection
+    name: CanvasSection
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CanvasSectionType
+    name: CanvasSectionType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CdnSetting
+    name: CdnSetting
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CdnSettingOrigin
+    name: CdnSettingOrigin
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CdnSettingOriginAction
+    name: CdnSettingOriginAction
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ClientSidePage
+    name: ClientSidePage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CommunicationSite
+    name: CommunicationSite
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ComposedLook
+    name: ComposedLook
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ContentDeliveryNetwork
+    name: ContentDeliveryNetwork
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ContentType
+    name: ContentType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ContentTypeBinding
+    name: ContentTypeBinding
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ContentTypeDocumentTemplate
+    name: ContentTypeDocumentTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ContentTypeFieldRef
+    name: ContentTypeFieldRef
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CustomAction
+    name: CustomAction
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CustomActionCommandUIExtension
+    name: CustomActionCommandUIExtension
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.CustomActions
+    name: CustomActions
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.DataValue
+    name: DataValue
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.DayOfWeek
+    name: DayOfWeek
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.Directory
+    name: Directory
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.DocumentSetFieldRef
+    name: DocumentSetFieldRef
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.DocumentSetTemplate
+    name: DocumentSetTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.DocumentSetTemplateAllowedContentTypes
+    name: DocumentSetTemplateAllowedContentTypes
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.DocumentSetTemplateAllowedContentTypesAllowedContentType
+    name: DocumentSetTemplateAllowedContentTypesAllowedContentType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.DocumentSetTemplateDefaultDocument
+    name: DocumentSetTemplateDefaultDocument
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.DocumentSetTemplateXmlDocuments
+    name: DocumentSetTemplateXmlDocuments
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.DriveFile
+    name: DriveFile
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.DriveFolder
+    name: DriveFolder
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.DriveRoot
+    name: DriveRoot
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.Emphasis
+    name: Emphasis
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.Feature
+    name: Feature
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.Features
+    name: Features
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.FieldDefault
+    name: FieldDefault
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.FieldRefBase
+    name: FieldRefBase
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.FieldRefFull
+    name: FieldRefFull
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.File
+    name: File
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.FileLevel
+    name: FileLevel
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.Folder
+    name: Folder
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.Footer
+    name: Footer
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.FooterLink
+    name: FooterLink
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.Header
+    name: Header
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.HeaderLayout
+    name: HeaderLayout
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.HeaderMenuStyle
+    name: HeaderMenuStyle
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.IRMSettings
+    name: IRMSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ListInstance
+    name: ListInstance
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ListInstanceDataRows
+    name: ListInstanceDataRows
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ListInstanceDataRowsDataRow
+    name: ListInstanceDataRowsDataRow
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ListInstanceDataRowsDataRowAttachment
+    name: ListInstanceDataRowsDataRowAttachment
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ListInstanceDataRowsUpdateBehavior
+    name: ListInstanceDataRowsUpdateBehavior
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ListInstanceDirection
+    name: ListInstanceDirection
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ListInstanceFieldRef
+    name: ListInstanceFieldRef
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ListInstanceFields
+    name: ListInstanceFields
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ListInstanceListExperience
+    name: ListInstanceListExperience
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ListInstanceViews
+    name: ListInstanceViews
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.LocalizationsLocalization
+    name: LocalizationsLocalization
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ManagedNavigation
+    name: ManagedNavigation
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.Navigation
+    name: Navigation
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.NavigationCurrentNavigation
+    name: NavigationCurrentNavigation
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.NavigationCurrentNavigationNavigationType
+    name: NavigationCurrentNavigationNavigationType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.NavigationGlobalNavigation
+    name: NavigationGlobalNavigation
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.NavigationGlobalNavigationNavigationType
+    name: NavigationGlobalNavigationNavigationType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.NavigationNode
+    name: NavigationNode
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ObjectSecurity
+    name: ObjectSecurity
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ObjectSecurityBreakRoleInheritance
+    name: ObjectSecurityBreakRoleInheritance
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.Office365GroupLifecyclePolicy
+    name: Office365GroupLifecyclePolicy
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.Office365GroupLifecyclePolicyManagedGroupTypes
+    name: Office365GroupLifecyclePolicyManagedGroupTypes
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.Page
+    name: Page
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.Preferences
+    name: Preferences
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.PreferencesParameter
+    name: PreferencesParameter
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.PropertyBagEntry
+    name: PropertyBagEntry
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.Provider
+    name: Provider
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.Provisioning
+    name: Provisioning
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ProvisioningTemplate
+    name: ProvisioningTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ProvisioningTemplateFile
+    name: ProvisioningTemplateFile
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ProvisioningTemplateFiles
+    name: ProvisioningTemplateFiles
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ProvisioningTemplateReference
+    name: ProvisioningTemplateReference
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ProvisioningTemplateScope
+    name: ProvisioningTemplateScope
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ProvisioningTemplateSearchSettings
+    name: ProvisioningTemplateSearchSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ProvisioningTemplateSiteFields
+    name: ProvisioningTemplateSiteFields
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ProvisioningWebhook
+    name: ProvisioningWebhook
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ProvisioningWebhookBodyFormat
+    name: ProvisioningWebhookBodyFormat
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ProvisioningWebhookKind
+    name: ProvisioningWebhookKind
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.ProvisioningWebhookMethod
+    name: ProvisioningWebhookMethod
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.Publishing
+    name: Publishing
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.PublishingAutoCheckRequirements
+    name: PublishingAutoCheckRequirements
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.PublishingDesignPackage
+    name: PublishingDesignPackage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.PublishingImageRendition
+    name: PublishingImageRendition
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.PublishingPageLayouts
+    name: PublishingPageLayouts
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.PublishingPageLayoutsPageLayout
+    name: PublishingPageLayoutsPageLayout
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.PublishingWebTemplate
+    name: PublishingWebTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.RegionalSettings
+    name: RegionalSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.RegistrationType
+    name: RegistrationType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.RoleAssignment
+    name: RoleAssignment
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.RoleDefinition
+    name: RoleDefinition
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.RoleDefinitionPermission
+    name: RoleDefinitionPermission
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.Security
+    name: Security
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.SecurityPermissions
+    name: SecurityPermissions
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.Sequence
+    name: Sequence
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.Site
+    name: Site
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.SiteCollection
+    name: SiteCollection
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.SiteDesignsSiteDesign
+    name: SiteDesignsSiteDesign
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.SiteDesignsSiteDesignGrant
+    name: SiteDesignsSiteDesignGrant
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.SiteDesignsSiteDesignGrantRight
+    name: SiteDesignsSiteDesignGrantRight
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.SiteDesignsSiteDesignSiteScriptRef
+    name: SiteDesignsSiteDesignSiteScriptRef
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.SiteDesignsSiteDesignWebTemplate
+    name: SiteDesignsSiteDesignWebTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.SiteGroup
+    name: SiteGroup
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.SiteScriptsSiteScript
+    name: SiteScriptsSiteScript
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.SiteSettings
+    name: SiteSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.SiteWebhook
+    name: SiteWebhook
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.SiteWebhookSiteWebhookType
+    name: SiteWebhookSiteWebhookType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.SPUserProfile
+    name: SPUserProfile
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.StorageEntitiesStorageEntity
+    name: StorageEntitiesStorageEntity
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.StringDictionaryItem
+    name: StringDictionaryItem
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.StructuralNavigation
+    name: StructuralNavigation
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.SupportedUILanguagesSupportedUILanguage
+    name: SupportedUILanguagesSupportedUILanguage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TaxonomyItem
+    name: TaxonomyItem
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TeamChannel
+    name: TeamChannel
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TeamChannelTabsTab
+    name: TeamChannelTabsTab
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TeamChannelTabsTabConfiguration
+    name: TeamChannelTabsTabConfiguration
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.Teams
+    name: Teams
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TeamsAppsApp
+    name: TeamsAppsApp
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TeamSecurity
+    name: TeamSecurity
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TeamSecurityUsers
+    name: TeamSecurityUsers
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TeamSecurityUsersUser
+    name: TeamSecurityUsersUser
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TeamSite
+    name: TeamSite
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TeamSiteNoGroup
+    name: TeamSiteNoGroup
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TeamSubSiteNoGroup
+    name: TeamSubSiteNoGroup
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TeamTabResourcesTabResource
+    name: TeamTabResourcesTabResource
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TeamTabResourcesTabResourceType
+    name: TeamTabResourcesTabResourceType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TeamTemplate
+    name: TeamTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TeamWithSettings
+    name: TeamWithSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TeamWithSettingsApp
+    name: TeamWithSettingsApp
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TeamWithSettingsDiscoverySettings
+    name: TeamWithSettingsDiscoverySettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TeamWithSettingsFunSettings
+    name: TeamWithSettingsFunSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TeamWithSettingsFunSettingsGiphyContentRating
+    name: TeamWithSettingsFunSettingsGiphyContentRating
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TeamWithSettingsGuestSettings
+    name: TeamWithSettingsGuestSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TeamWithSettingsMembersSettings
+    name: TeamWithSettingsMembersSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TeamWithSettingsMessagingSettings
+    name: TeamWithSettingsMessagingSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TeamWithSettingsSpecialization
+    name: TeamWithSettingsSpecialization
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.Templates
+    name: Templates
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.Tenant
+    name: Tenant
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.Term
+    name: Term
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TermGroup
+    name: TermGroup
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TermGroupUpdateBehavior
+    name: TermGroupUpdateBehavior
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TermLabelsLabel
+    name: TermLabelsLabel
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TermSet
+    name: TermSet
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TermSetItem
+    name: TermSetItem
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TermTerms
+    name: TermTerms
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.Theme
+    name: Theme
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.TranslatedClientSidePage
+    name: TranslatedClientSidePage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.User
+    name: User
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.UsersList
+    name: UsersList
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.WebApiPermissionsWebApiPermission
+    name: WebApiPermissionsWebApiPermission
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.Webhook
+    name: Webhook
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.WebPartPageWebPart
+    name: WebPartPageWebPart
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.WebSettings
+    name: WebSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.WebSettingsAlternateUICulture
+    name: WebSettingsAlternateUICulture
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.WebSettingsSearchScope
+    name: WebSettingsSearchScope
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.WikiPageLayout
+    name: WikiPageLayout
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.WikiPageWebPart
+    name: WikiPageWebPart
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.Workflows
+    name: Workflows
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.WorkflowsWorkflowDefinition
+    name: WorkflowsWorkflowDefinition
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.WorkflowsWorkflowDefinitionRestrictToType
+    name: WorkflowsWorkflowDefinitionRestrictToType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.WorkflowsWorkflowSubscription
+    name: WorkflowsWorkflowSubscription
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V201909.WorkHour
+    name: WorkHour
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202002
+  name: PnP.Framework.Provisioning.Providers.Xml.V202002
+  items:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.AADUsersUser
+    name: AADUsersUser
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.AADUsersUserLicense
+    name: AADUsersUserLicense
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.AADUsersUserPasswordProfile
+    name: AADUsersUserPasswordProfile
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.AnonymousLinkType
+    name: AnonymousLinkType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.AppCatalogPackage
+    name: AppCatalogPackage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.AppCatalogPackageAction
+    name: AppCatalogPackageAction
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ApplicationLifecycleManagement
+    name: ApplicationLifecycleManagement
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ApplicationLifecycleManagementApp
+    name: ApplicationLifecycleManagementApp
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ApplicationLifecycleManagementAppAction
+    name: ApplicationLifecycleManagementAppAction
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ApplicationLifecycleManagementAppSyncMode
+    name: ApplicationLifecycleManagementAppSyncMode
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.AuditSettings
+    name: AuditSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.AuditSettingsAudit
+    name: AuditSettingsAudit
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.AuditSettingsAuditAuditFlag
+    name: AuditSettingsAuditAuditFlag
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.AzureActiveDirectory
+    name: AzureActiveDirectory
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.BaseClientSidePage
+    name: BaseClientSidePage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.BaseClientSidePageHeader
+    name: BaseClientSidePageHeader
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.BaseClientSidePageHeaderLayoutType
+    name: BaseClientSidePageHeaderLayoutType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.BaseClientSidePageHeaderTextAlignment
+    name: BaseClientSidePageHeaderTextAlignment
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.BaseClientSidePageHeaderType
+    name: BaseClientSidePageHeaderType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.BaseFieldValue
+    name: BaseFieldValue
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.BaseTeam
+    name: BaseTeam
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.BaseTeamVisibility
+    name: BaseTeamVisibility
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.CalendarType
+    name: CalendarType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.CanvasControl
+    name: CanvasControl
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.CanvasControlWebPartType
+    name: CanvasControlWebPartType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.CanvasSection
+    name: CanvasSection
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.CanvasSectionType
+    name: CanvasSectionType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.CdnSetting
+    name: CdnSetting
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.CdnSettingOrigin
+    name: CdnSettingOrigin
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.CdnSettingOriginAction
+    name: CdnSettingOriginAction
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ClientSidePage
+    name: ClientSidePage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.CommunicationSite
+    name: CommunicationSite
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ComposedLook
+    name: ComposedLook
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ContentDeliveryNetwork
+    name: ContentDeliveryNetwork
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ContentType
+    name: ContentType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ContentTypeBinding
+    name: ContentTypeBinding
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ContentTypeDocumentTemplate
+    name: ContentTypeDocumentTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ContentTypeFieldRef
+    name: ContentTypeFieldRef
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.CustomAction
+    name: CustomAction
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.CustomActionCommandUIExtension
+    name: CustomActionCommandUIExtension
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.CustomActions
+    name: CustomActions
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.DataValue
+    name: DataValue
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.DayOfWeek
+    name: DayOfWeek
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.Directory
+    name: Directory
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.DocumentSetFieldRef
+    name: DocumentSetFieldRef
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.DocumentSetTemplate
+    name: DocumentSetTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.DocumentSetTemplateAllowedContentTypes
+    name: DocumentSetTemplateAllowedContentTypes
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.DocumentSetTemplateAllowedContentTypesAllowedContentType
+    name: DocumentSetTemplateAllowedContentTypesAllowedContentType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.DocumentSetTemplateDefaultDocument
+    name: DocumentSetTemplateDefaultDocument
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.DocumentSetTemplateXmlDocuments
+    name: DocumentSetTemplateXmlDocuments
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.DriveFile
+    name: DriveFile
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.DriveFolder
+    name: DriveFolder
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.DriveRoot
+    name: DriveRoot
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.Emphasis
+    name: Emphasis
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.Feature
+    name: Feature
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.Features
+    name: Features
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.FieldDefault
+    name: FieldDefault
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.FieldRefBase
+    name: FieldRefBase
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.FieldRefFull
+    name: FieldRefFull
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.File
+    name: File
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.FileLevel
+    name: FileLevel
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.Folder
+    name: Folder
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.Footer
+    name: Footer
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.FooterLink
+    name: FooterLink
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.Header
+    name: Header
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.HeaderLayout
+    name: HeaderLayout
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.HeaderMenuStyle
+    name: HeaderMenuStyle
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.IRMSettings
+    name: IRMSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance
+    name: ListInstance
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstanceDataRows
+    name: ListInstanceDataRows
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstanceDataRowsDataRow
+    name: ListInstanceDataRowsDataRow
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstanceDataRowsDataRowAttachment
+    name: ListInstanceDataRowsDataRowAttachment
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstanceDataRowsUpdateBehavior
+    name: ListInstanceDataRowsUpdateBehavior
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstanceDirection
+    name: ListInstanceDirection
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstanceFieldRef
+    name: ListInstanceFieldRef
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstanceFields
+    name: ListInstanceFields
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstanceListExperience
+    name: ListInstanceListExperience
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstanceViews
+    name: ListInstanceViews
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.LocalizationsLocalization
+    name: LocalizationsLocalization
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ManagedNavigation
+    name: ManagedNavigation
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.Navigation
+    name: Navigation
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.NavigationCurrentNavigation
+    name: NavigationCurrentNavigation
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.NavigationCurrentNavigationNavigationType
+    name: NavigationCurrentNavigationNavigationType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.NavigationGlobalNavigation
+    name: NavigationGlobalNavigation
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.NavigationGlobalNavigationNavigationType
+    name: NavigationGlobalNavigationNavigationType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.NavigationNode
+    name: NavigationNode
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ObjectSecurity
+    name: ObjectSecurity
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ObjectSecurityBreakRoleInheritance
+    name: ObjectSecurityBreakRoleInheritance
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.Office365GroupLifecyclePolicy
+    name: Office365GroupLifecyclePolicy
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.Office365GroupLifecyclePolicyManagedGroupTypes
+    name: Office365GroupLifecyclePolicyManagedGroupTypes
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.Page
+    name: Page
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.Preferences
+    name: Preferences
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.PreferencesParameter
+    name: PreferencesParameter
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.PropertyBagEntry
+    name: PropertyBagEntry
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.Provider
+    name: Provider
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.Provisioning
+    name: Provisioning
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ProvisioningTemplate
+    name: ProvisioningTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ProvisioningTemplateFile
+    name: ProvisioningTemplateFile
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ProvisioningTemplateFiles
+    name: ProvisioningTemplateFiles
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ProvisioningTemplateReference
+    name: ProvisioningTemplateReference
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ProvisioningTemplateScope
+    name: ProvisioningTemplateScope
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ProvisioningTemplateSearchSettings
+    name: ProvisioningTemplateSearchSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ProvisioningTemplateSiteFields
+    name: ProvisioningTemplateSiteFields
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ProvisioningWebhook
+    name: ProvisioningWebhook
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ProvisioningWebhookBodyFormat
+    name: ProvisioningWebhookBodyFormat
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ProvisioningWebhookKind
+    name: ProvisioningWebhookKind
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.ProvisioningWebhookMethod
+    name: ProvisioningWebhookMethod
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.Publishing
+    name: Publishing
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.PublishingAutoCheckRequirements
+    name: PublishingAutoCheckRequirements
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.PublishingDesignPackage
+    name: PublishingDesignPackage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.PublishingImageRendition
+    name: PublishingImageRendition
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.PublishingPageLayouts
+    name: PublishingPageLayouts
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.PublishingPageLayoutsPageLayout
+    name: PublishingPageLayoutsPageLayout
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.PublishingWebTemplate
+    name: PublishingWebTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.RegionalSettings
+    name: RegionalSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.RegistrationType
+    name: RegistrationType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.RoleAssignment
+    name: RoleAssignment
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.RoleDefinition
+    name: RoleDefinition
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.RoleDefinitionPermission
+    name: RoleDefinitionPermission
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.SearchBoxInNavBar
+    name: SearchBoxInNavBar
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.Security
+    name: Security
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.SecurityPermissions
+    name: SecurityPermissions
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.Sequence
+    name: Sequence
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.SharingSettings
+    name: SharingSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.SharingSettingsDefaultSharingLinkType
+    name: SharingSettingsDefaultSharingLinkType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.SharingSettingsSharingCapability
+    name: SharingSettingsSharingCapability
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.SharingSettingsSharingDomainRestrictionMode
+    name: SharingSettingsSharingDomainRestrictionMode
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.Site
+    name: Site
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.SiteCollection
+    name: SiteCollection
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.SiteDesignsSiteDesign
+    name: SiteDesignsSiteDesign
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.SiteDesignsSiteDesignGrant
+    name: SiteDesignsSiteDesignGrant
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.SiteDesignsSiteDesignGrantRight
+    name: SiteDesignsSiteDesignGrantRight
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.SiteDesignsSiteDesignSiteScriptRef
+    name: SiteDesignsSiteDesignSiteScriptRef
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.SiteDesignsSiteDesignWebTemplate
+    name: SiteDesignsSiteDesignWebTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.SiteGroup
+    name: SiteGroup
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.SiteScriptsSiteScript
+    name: SiteScriptsSiteScript
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.SiteSettings
+    name: SiteSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.SiteWebhook
+    name: SiteWebhook
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.SiteWebhookSiteWebhookType
+    name: SiteWebhookSiteWebhookType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.SPUserProfile
+    name: SPUserProfile
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.StorageEntitiesStorageEntity
+    name: StorageEntitiesStorageEntity
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.StringDictionaryItem
+    name: StringDictionaryItem
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.StructuralNavigation
+    name: StructuralNavigation
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.SupportedUILanguagesSupportedUILanguage
+    name: SupportedUILanguagesSupportedUILanguage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TaxonomyItem
+    name: TaxonomyItem
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TeamChannel
+    name: TeamChannel
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TeamChannelTabsTab
+    name: TeamChannelTabsTab
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TeamChannelTabsTabConfiguration
+    name: TeamChannelTabsTabConfiguration
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.Teams
+    name: Teams
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TeamsAppsApp
+    name: TeamsAppsApp
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TeamSecurity
+    name: TeamSecurity
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TeamSecurityUsers
+    name: TeamSecurityUsers
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TeamSecurityUsersUser
+    name: TeamSecurityUsersUser
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TeamSite
+    name: TeamSite
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TeamSiteNoGroup
+    name: TeamSiteNoGroup
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TeamSubSiteNoGroup
+    name: TeamSubSiteNoGroup
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TeamTabResourcesTabResource
+    name: TeamTabResourcesTabResource
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TeamTabResourcesTabResourceType
+    name: TeamTabResourcesTabResourceType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TeamTemplate
+    name: TeamTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TeamWithSettings
+    name: TeamWithSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TeamWithSettingsApp
+    name: TeamWithSettingsApp
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TeamWithSettingsDiscoverySettings
+    name: TeamWithSettingsDiscoverySettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TeamWithSettingsFunSettings
+    name: TeamWithSettingsFunSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TeamWithSettingsFunSettingsGiphyContentRating
+    name: TeamWithSettingsFunSettingsGiphyContentRating
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TeamWithSettingsGuestSettings
+    name: TeamWithSettingsGuestSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TeamWithSettingsMembersSettings
+    name: TeamWithSettingsMembersSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TeamWithSettingsMessagingSettings
+    name: TeamWithSettingsMessagingSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TeamWithSettingsSpecialization
+    name: TeamWithSettingsSpecialization
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.Templates
+    name: Templates
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.Tenant
+    name: Tenant
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.Term
+    name: Term
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TermGroup
+    name: TermGroup
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TermGroupUpdateBehavior
+    name: TermGroupUpdateBehavior
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TermLabelsLabel
+    name: TermLabelsLabel
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TermSet
+    name: TermSet
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TermSetItem
+    name: TermSetItem
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TermTerms
+    name: TermTerms
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.Theme
+    name: Theme
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.TranslatedClientSidePage
+    name: TranslatedClientSidePage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.User
+    name: User
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.UsersList
+    name: UsersList
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.WebApiPermissionsWebApiPermission
+    name: WebApiPermissionsWebApiPermission
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.Webhook
+    name: Webhook
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.WebPartPageWebPart
+    name: WebPartPageWebPart
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.WebSettings
+    name: WebSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.WebSettingsAlternateUICulture
+    name: WebSettingsAlternateUICulture
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.WebSettingsSearchScope
+    name: WebSettingsSearchScope
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.WikiPageLayout
+    name: WikiPageLayout
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.WikiPageWebPart
+    name: WikiPageWebPart
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.Workflows
+    name: Workflows
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.WorkflowsWorkflowDefinition
+    name: WorkflowsWorkflowDefinition
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.WorkflowsWorkflowDefinitionRestrictToType
+    name: WorkflowsWorkflowDefinitionRestrictToType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.WorkflowsWorkflowSubscription
+    name: WorkflowsWorkflowSubscription
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202002.WorkHour
+    name: WorkHour
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103
+  name: PnP.Framework.Provisioning.Providers.Xml.V202103
+  items:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser
+    name: AADUsersUser
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUserLicense
+    name: AADUsersUserLicense
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUserPasswordProfile
+    name: AADUsersUserPasswordProfile
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AnonymousLinkType
+    name: AnonymousLinkType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AppCatalogPackage
+    name: AppCatalogPackage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AppCatalogPackageAction
+    name: AppCatalogPackageAction
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ApplicationLifecycleManagement
+    name: ApplicationLifecycleManagement
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ApplicationLifecycleManagementApp
+    name: ApplicationLifecycleManagementApp
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ApplicationLifecycleManagementAppAction
+    name: ApplicationLifecycleManagementAppAction
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ApplicationLifecycleManagementAppSyncMode
+    name: ApplicationLifecycleManagementAppSyncMode
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AuditSettings
+    name: AuditSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AuditSettingsAudit
+    name: AuditSettingsAudit
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AuditSettingsAuditAuditFlag
+    name: AuditSettingsAuditAuditFlag
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AzureActiveDirectory
+    name: AzureActiveDirectory
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.BaseClientSidePage
+    name: BaseClientSidePage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.BaseClientSidePageHeader
+    name: BaseClientSidePageHeader
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.BaseClientSidePageHeaderLayoutType
+    name: BaseClientSidePageHeaderLayoutType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.BaseClientSidePageHeaderTextAlignment
+    name: BaseClientSidePageHeaderTextAlignment
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.BaseClientSidePageHeaderType
+    name: BaseClientSidePageHeaderType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.BaseFieldValue
+    name: BaseFieldValue
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.BaseTeam
+    name: BaseTeam
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.BaseTeamVisibility
+    name: BaseTeamVisibility
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.CalendarType
+    name: CalendarType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.CanvasControl
+    name: CanvasControl
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.CanvasControlWebPartType
+    name: CanvasControlWebPartType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.CanvasSection
+    name: CanvasSection
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.CanvasSectionType
+    name: CanvasSectionType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.CdnSetting
+    name: CdnSetting
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.CdnSettingOrigin
+    name: CdnSettingOrigin
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.CdnSettingOriginAction
+    name: CdnSettingOriginAction
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ClassicSite
+    name: ClassicSite
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ClientSidePage
+    name: ClientSidePage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.CommunicationSite
+    name: CommunicationSite
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ComposedLook
+    name: ComposedLook
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ContentDeliveryNetwork
+    name: ContentDeliveryNetwork
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ContentType
+    name: ContentType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ContentTypeBinding
+    name: ContentTypeBinding
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ContentTypeDocumentTemplate
+    name: ContentTypeDocumentTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ContentTypeFieldRef
+    name: ContentTypeFieldRef
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.CustomAction
+    name: CustomAction
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.CustomActionCommandUIExtension
+    name: CustomActionCommandUIExtension
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.CustomActions
+    name: CustomActions
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.DataValue
+    name: DataValue
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.DayOfWeek
+    name: DayOfWeek
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Directory
+    name: Directory
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.DocumentSetFieldRef
+    name: DocumentSetFieldRef
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.DocumentSetTemplate
+    name: DocumentSetTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.DocumentSetTemplateAllowedContentTypes
+    name: DocumentSetTemplateAllowedContentTypes
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.DocumentSetTemplateAllowedContentTypesAllowedContentType
+    name: DocumentSetTemplateAllowedContentTypesAllowedContentType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.DocumentSetTemplateDefaultDocument
+    name: DocumentSetTemplateDefaultDocument
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.DocumentSetTemplateXmlDocuments
+    name: DocumentSetTemplateXmlDocuments
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.DriveFile
+    name: DriveFile
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.DriveFolder
+    name: DriveFolder
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.DriveRoot
+    name: DriveRoot
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Emphasis
+    name: Emphasis
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Feature
+    name: Feature
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Features
+    name: Features
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.FieldDefault
+    name: FieldDefault
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.FieldRefBase
+    name: FieldRefBase
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.FieldRefFull
+    name: FieldRefFull
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.File
+    name: File
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.FileLevel
+    name: FileLevel
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Folder
+    name: Folder
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Footer
+    name: Footer
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.FooterLayout
+    name: FooterLayout
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.FooterLink
+    name: FooterLink
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Header
+    name: Header
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.HeaderLayout
+    name: HeaderLayout
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.HeaderMenuStyle
+    name: HeaderMenuStyle
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings
+    name: IRMSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstance
+    name: ListInstance
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceDataRows
+    name: ListInstanceDataRows
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceDataRowsDataRow
+    name: ListInstanceDataRowsDataRow
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceDataRowsDataRowAttachment
+    name: ListInstanceDataRowsDataRowAttachment
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceDataRowsUpdateBehavior
+    name: ListInstanceDataRowsUpdateBehavior
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceDirection
+    name: ListInstanceDirection
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceFieldRef
+    name: ListInstanceFieldRef
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceFields
+    name: ListInstanceFields
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceListExperience
+    name: ListInstanceListExperience
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ListInstanceViews
+    name: ListInstanceViews
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Localizations
+    name: Localizations
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.LocalizationsLocalization
+    name: LocalizationsLocalization
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ManagedNavigation
+    name: ManagedNavigation
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Navigation
+    name: Navigation
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.NavigationCurrentNavigation
+    name: NavigationCurrentNavigation
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.NavigationCurrentNavigationNavigationType
+    name: NavigationCurrentNavigationNavigationType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.NavigationGlobalNavigation
+    name: NavigationGlobalNavigation
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.NavigationGlobalNavigationNavigationType
+    name: NavigationGlobalNavigationNavigationType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.NavigationNode
+    name: NavigationNode
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ObjectSecurity
+    name: ObjectSecurity
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ObjectSecurityBreakRoleInheritance
+    name: ObjectSecurityBreakRoleInheritance
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Office365GroupLifecyclePolicy
+    name: Office365GroupLifecyclePolicy
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Office365GroupLifecyclePolicyManagedGroupTypes
+    name: Office365GroupLifecyclePolicyManagedGroupTypes
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Page
+    name: Page
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Preferences
+    name: Preferences
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.PreferencesParameter
+    name: PreferencesParameter
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.PropertyBagEntry
+    name: PropertyBagEntry
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Provider
+    name: Provider
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Provisioning
+    name: Provisioning
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ProvisioningTemplate
+    name: ProvisioningTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ProvisioningTemplateFile
+    name: ProvisioningTemplateFile
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ProvisioningTemplateFiles
+    name: ProvisioningTemplateFiles
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ProvisioningTemplateReference
+    name: ProvisioningTemplateReference
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ProvisioningTemplateScope
+    name: ProvisioningTemplateScope
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ProvisioningTemplateSearchSettings
+    name: ProvisioningTemplateSearchSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ProvisioningTemplateSiteFields
+    name: ProvisioningTemplateSiteFields
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ProvisioningWebhook
+    name: ProvisioningWebhook
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ProvisioningWebhookBodyFormat
+    name: ProvisioningWebhookBodyFormat
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ProvisioningWebhookKind
+    name: ProvisioningWebhookKind
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.ProvisioningWebhookMethod
+    name: ProvisioningWebhookMethod
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Publishing
+    name: Publishing
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.PublishingAutoCheckRequirements
+    name: PublishingAutoCheckRequirements
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.PublishingDesignPackage
+    name: PublishingDesignPackage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.PublishingImageRendition
+    name: PublishingImageRendition
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.PublishingPageLayouts
+    name: PublishingPageLayouts
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.PublishingPageLayoutsPageLayout
+    name: PublishingPageLayoutsPageLayout
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.PublishingWebTemplate
+    name: PublishingWebTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RegionalSettings
+    name: RegionalSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RegistrationType
+    name: RegistrationType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleAssignment
+    name: RoleAssignment
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinition
+    name: RoleDefinition
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+    name: RoleDefinitionPermission
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.SearchBoxInNavBar
+    name: SearchBoxInNavBar
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Security
+    name: Security
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.SecurityPermissions
+    name: SecurityPermissions
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Sequence
+    name: Sequence
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.SharingSettings
+    name: SharingSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.SharingSettingsDefaultSharingLinkType
+    name: SharingSettingsDefaultSharingLinkType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.SharingSettingsSharingCapability
+    name: SharingSettingsSharingCapability
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.SharingSettingsSharingDomainRestrictionMode
+    name: SharingSettingsSharingDomainRestrictionMode
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Site
+    name: Site
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.SiteCollection
+    name: SiteCollection
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.SiteDesignsSiteDesign
+    name: SiteDesignsSiteDesign
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.SiteDesignsSiteDesignGrant
+    name: SiteDesignsSiteDesignGrant
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.SiteDesignsSiteDesignGrantRight
+    name: SiteDesignsSiteDesignGrantRight
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.SiteDesignsSiteDesignSiteScriptRef
+    name: SiteDesignsSiteDesignSiteScriptRef
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.SiteDesignsSiteDesignWebTemplate
+    name: SiteDesignsSiteDesignWebTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.SiteGroup
+    name: SiteGroup
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.SiteScriptsSiteScript
+    name: SiteScriptsSiteScript
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.SiteSettings
+    name: SiteSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.SiteWebhook
+    name: SiteWebhook
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.SiteWebhookSiteWebhookType
+    name: SiteWebhookSiteWebhookType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.SPUserProfile
+    name: SPUserProfile
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.StorageEntitiesStorageEntity
+    name: StorageEntitiesStorageEntity
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.StringDictionaryItem
+    name: StringDictionaryItem
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.StructuralNavigation
+    name: StructuralNavigation
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.SupportedUILanguagesSupportedUILanguage
+    name: SupportedUILanguagesSupportedUILanguage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TaxonomyItem
+    name: TaxonomyItem
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TeamChannel
+    name: TeamChannel
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TeamChannelTabsTab
+    name: TeamChannelTabsTab
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TeamChannelTabsTabConfiguration
+    name: TeamChannelTabsTabConfiguration
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Teams
+    name: Teams
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TeamsAppsApp
+    name: TeamsAppsApp
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TeamSecurity
+    name: TeamSecurity
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TeamSecurityUsers
+    name: TeamSecurityUsers
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TeamSecurityUsersUser
+    name: TeamSecurityUsersUser
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TeamSite
+    name: TeamSite
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TeamSiteNoGroup
+    name: TeamSiteNoGroup
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TeamSubSiteNoGroup
+    name: TeamSubSiteNoGroup
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TeamTabResourcesTabResource
+    name: TeamTabResourcesTabResource
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TeamTabResourcesTabResourceType
+    name: TeamTabResourcesTabResourceType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TeamTemplate
+    name: TeamTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TeamWithSettings
+    name: TeamWithSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TeamWithSettingsApp
+    name: TeamWithSettingsApp
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TeamWithSettingsDiscoverySettings
+    name: TeamWithSettingsDiscoverySettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TeamWithSettingsFunSettings
+    name: TeamWithSettingsFunSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TeamWithSettingsFunSettingsGiphyContentRating
+    name: TeamWithSettingsFunSettingsGiphyContentRating
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TeamWithSettingsGuestSettings
+    name: TeamWithSettingsGuestSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TeamWithSettingsMembersSettings
+    name: TeamWithSettingsMembersSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TeamWithSettingsMessagingSettings
+    name: TeamWithSettingsMessagingSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TeamWithSettingsSpecialization
+    name: TeamWithSettingsSpecialization
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Templates
+    name: Templates
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Tenant
+    name: Tenant
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Term
+    name: Term
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TermGroup
+    name: TermGroup
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TermGroupUpdateBehavior
+    name: TermGroupUpdateBehavior
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TermLabelsLabel
+    name: TermLabelsLabel
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TermSet
+    name: TermSet
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TermSetItem
+    name: TermSetItem
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TermTerms
+    name: TermTerms
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Theme
+    name: Theme
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.TranslatedClientSidePage
+    name: TranslatedClientSidePage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.User
+    name: User
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.UsersList
+    name: UsersList
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.WebApiPermissionsWebApiPermission
+    name: WebApiPermissionsWebApiPermission
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Webhook
+    name: Webhook
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.WebPartPageWebPart
+    name: WebPartPageWebPart
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.WebSettings
+    name: WebSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.WebSettingsAlternateUICulture
+    name: WebSettingsAlternateUICulture
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.WebSettingsSearchScope
+    name: WebSettingsSearchScope
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.WikiPageLayout
+    name: WikiPageLayout
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.WikiPageWebPart
+    name: WikiPageWebPart
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.Workflows
+    name: Workflows
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.WorkflowsWorkflowDefinition
+    name: WorkflowsWorkflowDefinition
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.WorkflowsWorkflowDefinitionRestrictToType
+    name: WorkflowsWorkflowDefinitionRestrictToType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.WorkflowsWorkflowSubscription
+    name: WorkflowsWorkflowSubscription
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.WorkHour
+    name: WorkHour
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202209
+  name: PnP.Framework.Provisioning.Providers.Xml.V202209
+  items:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.AADUsersUser
+    name: AADUsersUser
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.AADUsersUserLicense
+    name: AADUsersUserLicense
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.AADUsersUserPasswordProfile
+    name: AADUsersUserPasswordProfile
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.AnonymousLinkType
+    name: AnonymousLinkType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.AppCatalogPackage
+    name: AppCatalogPackage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.AppCatalogPackageAction
+    name: AppCatalogPackageAction
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ApplicationLifecycleManagement
+    name: ApplicationLifecycleManagement
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ApplicationLifecycleManagementApp
+    name: ApplicationLifecycleManagementApp
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ApplicationLifecycleManagementAppAction
+    name: ApplicationLifecycleManagementAppAction
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ApplicationLifecycleManagementAppSyncMode
+    name: ApplicationLifecycleManagementAppSyncMode
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.AuditSettings
+    name: AuditSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.AuditSettingsAudit
+    name: AuditSettingsAudit
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.AuditSettingsAuditAuditFlag
+    name: AuditSettingsAuditAuditFlag
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.AzureActiveDirectory
+    name: AzureActiveDirectory
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.BaseClientSidePage
+    name: BaseClientSidePage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.BaseClientSidePageHeader
+    name: BaseClientSidePageHeader
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.BaseClientSidePageHeaderLayoutType
+    name: BaseClientSidePageHeaderLayoutType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.BaseClientSidePageHeaderTextAlignment
+    name: BaseClientSidePageHeaderTextAlignment
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.BaseClientSidePageHeaderType
+    name: BaseClientSidePageHeaderType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.BaseFieldValue
+    name: BaseFieldValue
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.BaseTeam
+    name: BaseTeam
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.BaseTeamVisibility
+    name: BaseTeamVisibility
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.CalendarType
+    name: CalendarType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.CanvasControl
+    name: CanvasControl
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.CanvasControlWebPartType
+    name: CanvasControlWebPartType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.CanvasSection
+    name: CanvasSection
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.CanvasSectionIconAlignment
+    name: CanvasSectionIconAlignment
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.CanvasSectionType
+    name: CanvasSectionType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.CdnSetting
+    name: CdnSetting
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.CdnSettingOrigin
+    name: CdnSettingOrigin
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.CdnSettingOriginAction
+    name: CdnSettingOriginAction
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ClassicSite
+    name: ClassicSite
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ClientSidePage
+    name: ClientSidePage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.CommunicationSite
+    name: CommunicationSite
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ComposedLook
+    name: ComposedLook
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ContentDeliveryNetwork
+    name: ContentDeliveryNetwork
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ContentType
+    name: ContentType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ContentTypeBinding
+    name: ContentTypeBinding
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ContentTypeDocumentTemplate
+    name: ContentTypeDocumentTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ContentTypeFieldRef
+    name: ContentTypeFieldRef
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.CustomAction
+    name: CustomAction
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.CustomActionCommandUIExtension
+    name: CustomActionCommandUIExtension
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.CustomActions
+    name: CustomActions
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.DataValue
+    name: DataValue
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.DayOfWeek
+    name: DayOfWeek
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.Directory
+    name: Directory
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.DocumentSetFieldRef
+    name: DocumentSetFieldRef
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.DocumentSetTemplate
+    name: DocumentSetTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.DocumentSetTemplateAllowedContentTypes
+    name: DocumentSetTemplateAllowedContentTypes
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.DocumentSetTemplateAllowedContentTypesAllowedContentType
+    name: DocumentSetTemplateAllowedContentTypesAllowedContentType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.DocumentSetTemplateDefaultDocument
+    name: DocumentSetTemplateDefaultDocument
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.DocumentSetTemplateXmlDocuments
+    name: DocumentSetTemplateXmlDocuments
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.DriveFile
+    name: DriveFile
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.DriveFolder
+    name: DriveFolder
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.DriveRoot
+    name: DriveRoot
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.Emphasis
+    name: Emphasis
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.Feature
+    name: Feature
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.Features
+    name: Features
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.FieldDefault
+    name: FieldDefault
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.FieldRefBase
+    name: FieldRefBase
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.FieldRefFull
+    name: FieldRefFull
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.File
+    name: File
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.FileLevel
+    name: FileLevel
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.Folder
+    name: Folder
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.Footer
+    name: Footer
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.FooterLayout
+    name: FooterLayout
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.FooterLink
+    name: FooterLink
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.Header
+    name: Header
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.HeaderLayout
+    name: HeaderLayout
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.HeaderMenuStyle
+    name: HeaderMenuStyle
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.IRMSettings
+    name: IRMSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ListInstance
+    name: ListInstance
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ListInstanceDataRows
+    name: ListInstanceDataRows
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ListInstanceDataRowsDataRow
+    name: ListInstanceDataRowsDataRow
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ListInstanceDataRowsDataRowAttachment
+    name: ListInstanceDataRowsDataRowAttachment
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ListInstanceDataRowsUpdateBehavior
+    name: ListInstanceDataRowsUpdateBehavior
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ListInstanceDirection
+    name: ListInstanceDirection
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ListInstanceFieldRef
+    name: ListInstanceFieldRef
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ListInstanceFields
+    name: ListInstanceFields
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ListInstanceListExperience
+    name: ListInstanceListExperience
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ListInstanceViews
+    name: ListInstanceViews
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.Localizations
+    name: Localizations
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.LocalizationsLocalization
+    name: LocalizationsLocalization
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ManagedNavigation
+    name: ManagedNavigation
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.Navigation
+    name: Navigation
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.NavigationCurrentNavigation
+    name: NavigationCurrentNavigation
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.NavigationCurrentNavigationNavigationType
+    name: NavigationCurrentNavigationNavigationType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.NavigationGlobalNavigation
+    name: NavigationGlobalNavigation
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.NavigationGlobalNavigationNavigationType
+    name: NavigationGlobalNavigationNavigationType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.NavigationNode
+    name: NavigationNode
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ObjectSecurity
+    name: ObjectSecurity
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ObjectSecurityBreakRoleInheritance
+    name: ObjectSecurityBreakRoleInheritance
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.Office365GroupLifecyclePolicy
+    name: Office365GroupLifecyclePolicy
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.Office365GroupLifecyclePolicyManagedGroupTypes
+    name: Office365GroupLifecyclePolicyManagedGroupTypes
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.Page
+    name: Page
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.Preferences
+    name: Preferences
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.PreferencesParameter
+    name: PreferencesParameter
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.PropertyBagEntry
+    name: PropertyBagEntry
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.Provider
+    name: Provider
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.Provisioning
+    name: Provisioning
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ProvisioningTemplate
+    name: ProvisioningTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ProvisioningTemplateFile
+    name: ProvisioningTemplateFile
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ProvisioningTemplateFiles
+    name: ProvisioningTemplateFiles
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ProvisioningTemplateReference
+    name: ProvisioningTemplateReference
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ProvisioningTemplateScope
+    name: ProvisioningTemplateScope
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ProvisioningTemplateSearchSettings
+    name: ProvisioningTemplateSearchSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ProvisioningTemplateSiteFields
+    name: ProvisioningTemplateSiteFields
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ProvisioningWebhook
+    name: ProvisioningWebhook
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ProvisioningWebhookBodyFormat
+    name: ProvisioningWebhookBodyFormat
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ProvisioningWebhookKind
+    name: ProvisioningWebhookKind
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.ProvisioningWebhookMethod
+    name: ProvisioningWebhookMethod
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.Publishing
+    name: Publishing
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.PublishingAutoCheckRequirements
+    name: PublishingAutoCheckRequirements
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.PublishingDesignPackage
+    name: PublishingDesignPackage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.PublishingImageRendition
+    name: PublishingImageRendition
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.PublishingPageLayouts
+    name: PublishingPageLayouts
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.PublishingPageLayoutsPageLayout
+    name: PublishingPageLayoutsPageLayout
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.PublishingWebTemplate
+    name: PublishingWebTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.RegionalSettings
+    name: RegionalSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.RegistrationType
+    name: RegistrationType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.RoleAssignment
+    name: RoleAssignment
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.RoleDefinition
+    name: RoleDefinition
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.RoleDefinitionPermission
+    name: RoleDefinitionPermission
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.SearchBoxInNavBar
+    name: SearchBoxInNavBar
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.Security
+    name: Security
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.SecurityPermissions
+    name: SecurityPermissions
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.Sequence
+    name: Sequence
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.SharingSettings
+    name: SharingSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.SharingSettingsDefaultSharingLinkType
+    name: SharingSettingsDefaultSharingLinkType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.SharingSettingsSharingCapability
+    name: SharingSettingsSharingCapability
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.SharingSettingsSharingDomainRestrictionMode
+    name: SharingSettingsSharingDomainRestrictionMode
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.Site
+    name: Site
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.SiteCollection
+    name: SiteCollection
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.SiteDesignsSiteDesign
+    name: SiteDesignsSiteDesign
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.SiteDesignsSiteDesignGrant
+    name: SiteDesignsSiteDesignGrant
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.SiteDesignsSiteDesignGrantRight
+    name: SiteDesignsSiteDesignGrantRight
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.SiteDesignsSiteDesignSiteScriptRef
+    name: SiteDesignsSiteDesignSiteScriptRef
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.SiteDesignsSiteDesignWebTemplate
+    name: SiteDesignsSiteDesignWebTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.SiteGroup
+    name: SiteGroup
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.SiteScriptsSiteScript
+    name: SiteScriptsSiteScript
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.SiteSettings
+    name: SiteSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.SiteWebhook
+    name: SiteWebhook
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.SiteWebhookSiteWebhookType
+    name: SiteWebhookSiteWebhookType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.SPUserProfile
+    name: SPUserProfile
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.StorageEntitiesStorageEntity
+    name: StorageEntitiesStorageEntity
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.StringDictionaryItem
+    name: StringDictionaryItem
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.StructuralNavigation
+    name: StructuralNavigation
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.SupportedUILanguagesSupportedUILanguage
+    name: SupportedUILanguagesSupportedUILanguage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TaxonomyItem
+    name: TaxonomyItem
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TeamChannel
+    name: TeamChannel
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TeamChannelMembershipType
+    name: TeamChannelMembershipType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TeamChannelReplyRestriction
+    name: TeamChannelReplyRestriction
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TeamChannelTabsTab
+    name: TeamChannelTabsTab
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TeamChannelTabsTabConfiguration
+    name: TeamChannelTabsTabConfiguration
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TeamChannelUserNewMessageRestriction
+    name: TeamChannelUserNewMessageRestriction
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.Teams
+    name: Teams
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TeamsAppsApp
+    name: TeamsAppsApp
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TeamSecurity
+    name: TeamSecurity
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TeamSecurityUsers
+    name: TeamSecurityUsers
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TeamSecurityUsersUser
+    name: TeamSecurityUsersUser
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TeamSite
+    name: TeamSite
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TeamSiteNoGroup
+    name: TeamSiteNoGroup
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TeamSubSiteNoGroup
+    name: TeamSubSiteNoGroup
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TeamTabResourcesTabResource
+    name: TeamTabResourcesTabResource
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TeamTabResourcesTabResourceType
+    name: TeamTabResourcesTabResourceType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TeamTemplate
+    name: TeamTemplate
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TeamWithSettings
+    name: TeamWithSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TeamWithSettingsApp
+    name: TeamWithSettingsApp
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TeamWithSettingsDiscoverySettings
+    name: TeamWithSettingsDiscoverySettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TeamWithSettingsFunSettings
+    name: TeamWithSettingsFunSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TeamWithSettingsFunSettingsGiphyContentRating
+    name: TeamWithSettingsFunSettingsGiphyContentRating
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TeamWithSettingsGuestSettings
+    name: TeamWithSettingsGuestSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TeamWithSettingsMembersSettings
+    name: TeamWithSettingsMembersSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TeamWithSettingsMessagingSettings
+    name: TeamWithSettingsMessagingSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TeamWithSettingsSpecialization
+    name: TeamWithSettingsSpecialization
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.Templates
+    name: Templates
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.Tenant
+    name: Tenant
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.Term
+    name: Term
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TermGroup
+    name: TermGroup
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TermGroupUpdateBehavior
+    name: TermGroupUpdateBehavior
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TermLabelsLabel
+    name: TermLabelsLabel
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TermSet
+    name: TermSet
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TermSetItem
+    name: TermSetItem
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TermTerms
+    name: TermTerms
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.Theme
+    name: Theme
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.TranslatedClientSidePage
+    name: TranslatedClientSidePage
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.User
+    name: User
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.UsersList
+    name: UsersList
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WebApiPermissionsWebApiPermission
+    name: WebApiPermissionsWebApiPermission
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.Webhook
+    name: Webhook
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WebPartPageWebPart
+    name: WebPartPageWebPart
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WebSettings
+    name: WebSettings
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WebSettingsAlternateUICulture
+    name: WebSettingsAlternateUICulture
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WebSettingsSearchScope
+    name: WebSettingsSearchScope
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WikiPageLayout
+    name: WikiPageLayout
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WikiPageWebPart
+    name: WikiPageWebPart
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.Workflows
+    name: Workflows
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkflowsWorkflowDefinition
+    name: WorkflowsWorkflowDefinition
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkflowsWorkflowDefinitionRestrictToType
+    name: WorkflowsWorkflowDefinitionRestrictToType
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkflowsWorkflowSubscription
+    name: WorkflowsWorkflowSubscription
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202209.WorkHour
+    name: WorkHour
+- uid: PnP.Framework.Sites
+  name: PnP.Framework.Sites
+  items:
+  - uid: PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation
+    name: CommunicationSiteCollectionCreationInformation
+  - uid: PnP.Framework.Sites.CommunicationSiteDesign
+    name: CommunicationSiteDesign
+  - uid: PnP.Framework.Sites.SiteCollection
+    name: SiteCollection
+  - uid: PnP.Framework.Sites.SiteCreationGroupInformation
+    name: SiteCreationGroupInformation
+  - uid: PnP.Framework.Sites.SiteCreationInformation
+    name: SiteCreationInformation
+  - uid: PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation
+    name: TeamNoGroupSiteCollectionCreationInformation
+  - uid: PnP.Framework.Sites.TeamSiteCollectionCreationInformation
+    name: TeamSiteCollectionCreationInformation
+  - uid: PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation
+    name: TeamSiteCollectionGroupifyInformation
+- uid: PnP.Framework.TimerJobs
+  name: PnP.Framework.TimerJobs
+  items:
+  - uid: PnP.Framework.TimerJobs.TimerJob
+    name: TimerJob
+  - uid: PnP.Framework.TimerJobs.TimerJobRun
+    name: TimerJobRun
+  - uid: PnP.Framework.TimerJobs.TimerJobRunEventArgs
+    name: TimerJobRunEventArgs
+  - uid: PnP.Framework.TimerJobs.TimerJobRunHandler
+    name: TimerJobRunHandler
+- uid: PnP.Framework.TimerJobs.Enums
+  name: PnP.Framework.TimerJobs.Enums
+  items:
+  - uid: PnP.Framework.TimerJobs.Enums.AuthenticationType
+    name: AuthenticationType
+- uid: PnP.Framework.Utilities
+  name: PnP.Framework.Utilities
+  items:
+  - uid: PnP.Framework.Utilities.CAML
+    name: CAML
+  - uid: PnP.Framework.Utilities.CredentialManager
+    name: CredentialManager
+  - uid: PnP.Framework.Utilities.EncryptionUtility
+    name: EncryptionUtility
+  - uid: PnP.Framework.Utilities.HttpHelper
+    name: HttpHelper
+  - uid: PnP.Framework.Utilities.JsonUtility
+    name: JsonUtility
+  - uid: PnP.Framework.Utilities.MailUtility
+    name: MailUtility
+  - uid: PnP.Framework.Utilities.OrderByField
+    name: OrderByField
+  - uid: PnP.Framework.Utilities.PnPCoreUtilities
+    name: PnPCoreUtilities
+  - uid: PnP.Framework.Utilities.PnPHttpProvider
+    name: PnPHttpProvider
+  - uid: PnP.Framework.Utilities.PnPHttpUtility
+    name: PnPHttpUtility
+  - uid: PnP.Framework.Utilities.StringUtilities
+    name: StringUtilities
+  - uid: PnP.Framework.Utilities.UrlUtility
+    name: UrlUtility
+  - uid: PnP.Framework.Utilities.Utility
+    name: Utility
+  - uid: PnP.Framework.Utilities.WebHookResourceType
+    name: WebHookResourceType
+  - uid: PnP.Framework.Utilities.X509CertificateUtility
+    name: X509CertificateUtility
+  - uid: PnP.Framework.Utilities.XMLSerializer
+    name: XMLSerializer
+  - uid: PnP.Framework.Utilities.YammerUtility
+    name: YammerUtility
+- uid: PnP.Framework.Utilities.Async
+  name: PnP.Framework.Utilities.Async
+  items:
+  - uid: PnP.Framework.Utilities.Async.SynchronizationContextRemover
+    name: SynchronizationContextRemover
+- uid: PnP.Framework.Utilities.Cache
+  name: PnP.Framework.Utilities.Cache
+  items:
+  - uid: PnP.Framework.Utilities.Cache.ICacheProvider
+    name: ICacheProvider
+  - uid: PnP.Framework.Utilities.Cache.InMemoryCacheProvider
+    name: InMemoryCacheProvider
+- uid: PnP.Framework.Utilities.CanvasControl
+  name: PnP.Framework.Utilities.CanvasControl
+  items:
+  - uid: PnP.Framework.Utilities.CanvasControl.CanvasControlPostProcessorFactory
+    name: CanvasControlPostProcessorFactory
+  - uid: PnP.Framework.Utilities.CanvasControl.ICanvasControlPostProcessor
+    name: ICanvasControlPostProcessor
+- uid: PnP.Framework.Utilities.CanvasControl.Processors
+  name: PnP.Framework.Utilities.CanvasControl.Processors
+  items:
+  - uid: PnP.Framework.Utilities.CanvasControl.Processors.CanvasControlPassThroughProcessor
+    name: CanvasControlPassThroughProcessor
+  - uid: PnP.Framework.Utilities.CanvasControl.Processors.ListControlPostProcessor
+    name: ListControlPostProcessor
+- uid: PnP.Framework.Utilities.Context
+  name: PnP.Framework.Utilities.Context
+  items:
+  - uid: PnP.Framework.Utilities.Context.ClientContextSettings
+    name: ClientContextSettings
+  - uid: PnP.Framework.Utilities.Context.ClientContextType
+    name: ClientContextType
+- uid: PnP.Framework.Utilities.JsonConverters
+  name: PnP.Framework.Utilities.JsonConverters
+  items:
+  - uid: PnP.Framework.Utilities.JsonConverters.EmphasisJsonConverter
+    name: EmphasisJsonConverter
+- uid: PnP.Framework.Utilities.REST
+  name: PnP.Framework.Utilities.REST
+  items:
+  - uid: PnP.Framework.Utilities.REST.ResultCollection`1
+    name: ResultCollection<T>
+    name.vb: ResultCollection(Of T)
+- uid: PnP.Framework.Utilities.Themes
+  name: PnP.Framework.Utilities.Themes
+  items:
+  - uid: PnP.Framework.Utilities.Themes.ThemeAction
+    name: ThemeAction
+  - uid: PnP.Framework.Utilities.Themes.ThemeManager
+    name: ThemeManager
+  - uid: PnP.Framework.Utilities.Themes.ThemeUtility
+    name: ThemeUtility
+- uid: PnP.Framework.Utilities.Themes.Generator
+  name: PnP.Framework.Utilities.Themes.Generator
+  items:
+  - uid: PnP.Framework.Utilities.Themes.Generator.BaseSlots
+    name: BaseSlots
+  - uid: PnP.Framework.Utilities.Themes.Generator.FabricSlots
+    name: FabricSlots
+  - uid: PnP.Framework.Utilities.Themes.Generator.IThemeRules
+    name: IThemeRules
+  - uid: PnP.Framework.Utilities.Themes.Generator.IThemeSlotRule
+    name: IThemeSlotRule
+  - uid: PnP.Framework.Utilities.Themes.Generator.SemanticColorSlots
+    name: SemanticColorSlots
+  - uid: PnP.Framework.Utilities.Themes.Generator.ThemeGenerator
+    name: ThemeGenerator
+  - uid: PnP.Framework.Utilities.Themes.Generator.ThemeRules
+    name: ThemeRules
+  - uid: PnP.Framework.Utilities.Themes.Generator.ThemeRulesStandard
+    name: ThemeRulesStandard
+  - uid: PnP.Framework.Utilities.Themes.Generator.ThemeSlotRule
+    name: ThemeSlotRule
+- uid: PnP.Framework.Utilities.Themes.Palettes
+  name: PnP.Framework.Utilities.Themes.Palettes
+  items:
+  - uid: PnP.Framework.Utilities.Themes.Palettes.Color
+    name: Color
+  - uid: PnP.Framework.Utilities.Themes.Palettes.Colors
+    name: Colors
+  - uid: PnP.Framework.Utilities.Themes.Palettes.ColorValues
+    name: ColorValues
+  - uid: PnP.Framework.Utilities.Themes.Palettes.HslColor
+    name: HslColor
+  - uid: PnP.Framework.Utilities.Themes.Palettes.IColor
+    name: IColor
+  - uid: PnP.Framework.Utilities.Themes.Palettes.IHSL
+    name: IHSL
+  - uid: PnP.Framework.Utilities.Themes.Palettes.IHSV
+    name: IHSV
+  - uid: PnP.Framework.Utilities.Themes.Palettes.IRGB
+    name: IRGB
+  - uid: PnP.Framework.Utilities.Themes.Palettes.Shade
+    name: Shade
+  - uid: PnP.Framework.Utilities.Themes.Palettes.Shades
+    name: Shades
+- uid: PnP.Framework.Utilities.UnitTests
+  name: PnP.Framework.Utilities.UnitTests
+  items:
+  - uid: PnP.Framework.Utilities.UnitTests.MockLegacyAuthenticationProvider
+    name: MockLegacyAuthenticationProvider
+  - uid: PnP.Framework.Utilities.UnitTests.UnitTestClientContext
+    name: UnitTestClientContext
+- uid: PnP.Framework.Utilities.UnitTests.Helpers
+  name: PnP.Framework.Utilities.UnitTests.Helpers
+  items:
+  - uid: PnP.Framework.Utilities.UnitTests.Helpers.ComposedStream
+    name: ComposedStream
+  - uid: PnP.Framework.Utilities.UnitTests.Helpers.FileMockDataRepository`1
+    name: FileMockDataRepository<T>
+    name.vb: FileMockDataRepository(Of T)
+  - uid: PnP.Framework.Utilities.UnitTests.Helpers.FileMockResponseRepository
+    name: FileMockResponseRepository
+  - uid: PnP.Framework.Utilities.UnitTests.Helpers.IMockDataRepository
+    name: IMockDataRepository
+  - uid: PnP.Framework.Utilities.UnitTests.Helpers.IMockDataRepository`1
+    name: IMockDataRepository<T>
+    name.vb: IMockDataRepository(Of T)
+  - uid: PnP.Framework.Utilities.UnitTests.Helpers.MockDataCreator
+    name: MockDataCreator
+- uid: PnP.Framework.Utilities.UnitTests.Model
+  name: PnP.Framework.Utilities.UnitTests.Model
+  items:
+  - uid: PnP.Framework.Utilities.UnitTests.Model.ActionObjectPath
+    name: ActionObjectPath
+  - uid: PnP.Framework.Utilities.UnitTests.Model.ActionObjectPath`1
+    name: ActionObjectPath<T>
+    name.vb: ActionObjectPath(Of T)
+  - uid: PnP.Framework.Utilities.UnitTests.Model.BaseAction
+    name: BaseAction
+  - uid: PnP.Framework.Utilities.UnitTests.Model.CSOMRequest
+    name: CSOMRequest
+  - uid: PnP.Framework.Utilities.UnitTests.Model.Identity
+    name: Identity
+  - uid: PnP.Framework.Utilities.UnitTests.Model.IdentityQueryAction
+    name: IdentityQueryAction
+  - uid: PnP.Framework.Utilities.UnitTests.Model.MethodAction
+    name: MethodAction
+  - uid: PnP.Framework.Utilities.UnitTests.Model.MethodParameter
+    name: MethodParameter
+  - uid: PnP.Framework.Utilities.UnitTests.Model.MockHttpResponse
+    name: MockHttpResponse
+  - uid: PnP.Framework.Utilities.UnitTests.Model.MockResponse
+    name: MockResponse
+  - uid: PnP.Framework.Utilities.UnitTests.Model.MockResponseEntry
+    name: MockResponseEntry
+  - uid: PnP.Framework.Utilities.UnitTests.Model.MockResponseEntry`1
+    name: MockResponseEntry<T>
+    name.vb: MockResponseEntry(Of T)
+  - uid: PnP.Framework.Utilities.UnitTests.Model.ObjectPathMethod
+    name: ObjectPathMethod
+  - uid: PnP.Framework.Utilities.UnitTests.Model.Parameter
+    name: Parameter
+  - uid: PnP.Framework.Utilities.UnitTests.Model.Property
+    name: Property
+  - uid: PnP.Framework.Utilities.UnitTests.Model.QueryAction
+    name: QueryAction
+  - uid: PnP.Framework.Utilities.UnitTests.Model.RequestExecutedArgs
+    name: RequestExecutedArgs
+  - uid: PnP.Framework.Utilities.UnitTests.Model.ResponseHeader
+    name: ResponseHeader
+  - uid: PnP.Framework.Utilities.UnitTests.Model.SelectQuery
+    name: SelectQuery
+  - uid: PnP.Framework.Utilities.UnitTests.Model.StaticMethod
+    name: StaticMethod
+  - uid: PnP.Framework.Utilities.UnitTests.Model.StaticProperty
+    name: StaticProperty
+- uid: PnP.Framework.Utilities.UnitTests.Web
+  name: PnP.Framework.Utilities.UnitTests.Web
+  items:
+  - uid: PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor
+    name: ComposedWebRequestExecutor
+  - uid: PnP.Framework.Utilities.UnitTests.Web.IMockResponseProvider
+    name: IMockResponseProvider
+  - uid: PnP.Framework.Utilities.UnitTests.Web.MockEntryResponseProvider
+    name: MockEntryResponseProvider
+  - uid: PnP.Framework.Utilities.UnitTests.Web.MockEntryResponseProvider`1
+    name: MockEntryResponseProvider<T>
+    name.vb: MockEntryResponseProvider(Of T)
+  - uid: PnP.Framework.Utilities.UnitTests.Web.MockExecutorFactory
+    name: MockExecutorFactory
+  - uid: PnP.Framework.Utilities.UnitTests.Web.MockHttpHandler
+    name: MockHttpHandler
+  - uid: PnP.Framework.Utilities.UnitTests.Web.MockResponseProvider
+    name: MockResponseProvider
+  - uid: PnP.Framework.Utilities.UnitTests.Web.MockWebRequestExecutor
+    name: MockWebRequestExecutor
+  - uid: PnP.Framework.Utilities.UnitTests.Web.MockWebRequestExecutorFactory
+    name: MockWebRequestExecutorFactory
+  - uid: PnP.Framework.Utilities.UnitTests.Web.StoreResponseToAFile
+    name: StoreResponseToAFile
+- uid: PnP.Framework.Utilities.WebParts
+  name: PnP.Framework.Utilities.WebParts
+  items:
+  - uid: PnP.Framework.Utilities.WebParts.IWebPartPostProcessor
+    name: IWebPartPostProcessor
+  - uid: PnP.Framework.Utilities.WebParts.WebPartPostProcessorFactory
+    name: WebPartPostProcessorFactory
+- uid: PnP.Framework.Utilities.WebParts.Processors
+  name: PnP.Framework.Utilities.WebParts.Processors
+  items:
+  - uid: PnP.Framework.Utilities.WebParts.Processors.PassThroughProcessor
+    name: PassThroughProcessor
+  - uid: PnP.Framework.Utilities.WebParts.Processors.XsltWebPartPostProcessor
+    name: XsltWebPartPostProcessor
+- uid: PnP.Framework.Utilities.WebParts.Schema
+  name: PnP.Framework.Utilities.WebParts.Schema
+  items:
+  - uid: PnP.Framework.Utilities.WebParts.Schema.PropertyContainerType
+    name: PropertyContainerType
+  - uid: PnP.Framework.Utilities.WebParts.Schema.PropertyContainerTypeIpersonalizable
+    name: PropertyContainerTypeIpersonalizable
+  - uid: PnP.Framework.Utilities.WebParts.Schema.PropertyType
+    name: PropertyType
+  - uid: PnP.Framework.Utilities.WebParts.Schema.WebPart
+    name: WebPart
+  - uid: PnP.Framework.Utilities.WebParts.Schema.WebPartData
+    name: WebPartData
+  - uid: PnP.Framework.Utilities.WebParts.Schema.WebPartMetaData
+    name: WebPartMetaData
+  - uid: PnP.Framework.Utilities.WebParts.Schema.WebPartMetaDataType
+    name: WebPartMetaDataType
+  - uid: PnP.Framework.Utilities.WebParts.Schema.WebParts
+    name: WebParts
+- uid: SharePointPnP.IdentityModel.Extensions.S2S
+  name: SharePointPnP.IdentityModel.Extensions.S2S
+  items:
+  - uid: SharePointPnP.IdentityModel.Extensions.S2S.DateTimeUtil
+    name: DateTimeUtil
+  - uid: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension
+    name: DictionaryExtension
+  - uid: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder
+    name: DictionaryExtension.Encoder
+  - uid: SharePointPnP.IdentityModel.Extensions.S2S.EpochTime
+    name: EpochTime
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  name: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  items:
+  - uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2AccessTokenRequest
+    name: OAuth2AccessTokenRequest
+  - uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2AccessTokenResponse
+    name: OAuth2AccessTokenResponse
+  - uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2ErrorResponse
+    name: OAuth2ErrorResponse
+  - uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2Message
+    name: OAuth2Message
+  - uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory
+    name: OAuth2MessageFactory
+  - uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2S2SClient
+    name: OAuth2S2SClient
+  - uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2WebRequest
+    name: OAuth2WebRequest
+- uid: System
+  name: System
+  items:
+  - uid: System.EnumerationExtensions
+    name: EnumerationExtensions
+  - uid: System.ExceptionExtensions
+    name: ExceptionExtensions
+  - uid: System.ExceptionOptions
+    name: ExceptionOptions
+  - uid: System.SafeConvertExtensions
+    name: SafeConvertExtensions
+  - uid: System.ValidationExtensions
+    name: ValidationExtensions
+- uid: System.Net
+  name: System.Net
+  items:
+  - uid: System.Net.HttpWebRequestExtensions
+    name: HttpWebRequestExtensions
+- uid: System.Resources.NetStandard
+  name: System.Resources.NetStandard
+  items:
+  - uid: System.Resources.NetStandard.ResXDataNode
+    name: ResXDataNode
+  - uid: System.Resources.NetStandard.ResXFileRef
+    name: ResXFileRef
+  - uid: System.Resources.NetStandard.ResXFileRef.Converter
+    name: ResXFileRef.Converter
+  - uid: System.Resources.NetStandard.ResXResourceReader
+    name: ResXResourceReader
+  - uid: System.Resources.NetStandard.ResXResourceWriter
+    name: ResXResourceWriter

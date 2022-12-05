@@ -1,0 +1,1162 @@
+### YamlMime:ManagedReference
+items:
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension
+  commentId: T:SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension
+  id: DictionaryExtension
+  parent: SharePointPnP.IdentityModel.Extensions.S2S
+  children:
+  - SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Decode(System.Collections.Generic.IDictionary{System.String,System.String},System.String)
+  - SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Decode(System.Collections.Generic.IDictionary{System.String,System.String},System.String,SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder)
+  - SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Decode(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.Char,System.Char,SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder,SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder,System.Boolean)
+  - SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Decode(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.Char,System.Char,System.Boolean)
+  - SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.DecodeFromJson(System.Collections.Generic.IDictionary{System.String,System.String},System.String)
+  - SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.DefaultDecoder
+  - SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.DefaultEncoder
+  - SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.DefaultKeyValueSeparator
+  - SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.DefaultSeparator
+  - SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encode(System.Collections.Generic.IDictionary{System.String,System.String})
+  - SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encode(System.Collections.Generic.IDictionary{System.String,System.String},SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder)
+  - SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encode(System.Collections.Generic.IDictionary{System.String,System.String},System.Char,System.Char,SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder,SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder,System.Boolean)
+  - SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encode(System.Collections.Generic.IDictionary{System.String,System.String},System.Char,System.Char,System.Boolean)
+  - SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.EncodeToJson(System.Collections.Generic.IDictionary{System.String,System.String})
+  - SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.NullEncoder
+  langs:
+  - csharp
+  - vb
+  name: DictionaryExtension
+  nameWithType: DictionaryExtension
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DictionaryExtension
+    path: ../src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+    startLine: 5
+  assemblies:
+  - PnP.Framework
+  namespace: SharePointPnP.IdentityModel.Extensions.S2S
+  syntax:
+    content: public static class DictionaryExtension
+    content.vb: Public Module DictionaryExtension
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.DefaultSeparator
+  commentId: F:SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.DefaultSeparator
+  id: DefaultSeparator
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension
+  langs:
+  - csharp
+  - vb
+  name: DefaultSeparator
+  nameWithType: DictionaryExtension.DefaultSeparator
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.DefaultSeparator
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DefaultSeparator
+    path: ../src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+    startLine: 9
+  assemblies:
+  - PnP.Framework
+  namespace: SharePointPnP.IdentityModel.Extensions.S2S
+  syntax:
+    content: public const char DefaultSeparator = '&'
+    return:
+      type: System.Char
+    content.vb: Public Const DefaultSeparator As Char = "&"c
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.DefaultKeyValueSeparator
+  commentId: F:SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.DefaultKeyValueSeparator
+  id: DefaultKeyValueSeparator
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension
+  langs:
+  - csharp
+  - vb
+  name: DefaultKeyValueSeparator
+  nameWithType: DictionaryExtension.DefaultKeyValueSeparator
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.DefaultKeyValueSeparator
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DefaultKeyValueSeparator
+    path: ../src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+    startLine: 11
+  assemblies:
+  - PnP.Framework
+  namespace: SharePointPnP.IdentityModel.Extensions.S2S
+  syntax:
+    content: public const char DefaultKeyValueSeparator = '='
+    return:
+      type: System.Char
+    content.vb: Public Const DefaultKeyValueSeparator As Char = "="c
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.DefaultDecoder
+  commentId: F:SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.DefaultDecoder
+  id: DefaultDecoder
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension
+  langs:
+  - csharp
+  - vb
+  name: DefaultDecoder
+  nameWithType: DictionaryExtension.DefaultDecoder
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.DefaultDecoder
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DefaultDecoder
+    path: ../src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+    startLine: 13
+  assemblies:
+  - PnP.Framework
+  namespace: SharePointPnP.IdentityModel.Extensions.S2S
+  syntax:
+    content: public static DictionaryExtension.Encoder DefaultDecoder
+    return:
+      type: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder
+    content.vb: Public Shared DefaultDecoder As DictionaryExtension.Encoder
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.DefaultEncoder
+  commentId: F:SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.DefaultEncoder
+  id: DefaultEncoder
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension
+  langs:
+  - csharp
+  - vb
+  name: DefaultEncoder
+  nameWithType: DictionaryExtension.DefaultEncoder
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.DefaultEncoder
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DefaultEncoder
+    path: ../src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+    startLine: 15
+  assemblies:
+  - PnP.Framework
+  namespace: SharePointPnP.IdentityModel.Extensions.S2S
+  syntax:
+    content: public static DictionaryExtension.Encoder DefaultEncoder
+    return:
+      type: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder
+    content.vb: Public Shared DefaultEncoder As DictionaryExtension.Encoder
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.NullEncoder
+  commentId: F:SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.NullEncoder
+  id: NullEncoder
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension
+  langs:
+  - csharp
+  - vb
+  name: NullEncoder
+  nameWithType: DictionaryExtension.NullEncoder
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.NullEncoder
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: NullEncoder
+    path: ../src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+    startLine: 17
+  assemblies:
+  - PnP.Framework
+  namespace: SharePointPnP.IdentityModel.Extensions.S2S
+  syntax:
+    content: public static DictionaryExtension.Encoder NullEncoder
+    return:
+      type: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder
+    content.vb: Public Shared NullEncoder As DictionaryExtension.Encoder
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Decode(System.Collections.Generic.IDictionary{System.String,System.String},System.String)
+  commentId: M:SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Decode(System.Collections.Generic.IDictionary{System.String,System.String},System.String)
+  id: Decode(System.Collections.Generic.IDictionary{System.String,System.String},System.String)
+  isExtensionMethod: true
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension
+  langs:
+  - csharp
+  - vb
+  name: Decode(IDictionary<String, String>, String)
+  nameWithType: DictionaryExtension.Decode(IDictionary<String, String>, String)
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Decode(System.Collections.Generic.IDictionary<System.String, System.String>, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Decode
+    path: ../src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+    startLine: 24
+  assemblies:
+  - PnP.Framework
+  namespace: SharePointPnP.IdentityModel.Extensions.S2S
+  syntax:
+    content: public static void Decode(this IDictionary<string, string> self, string encodedDictionary)
+    parameters:
+    - id: self
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: encodedDictionary
+      type: System.String
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub Decode(self As IDictionary(Of String, String), encodedDictionary As String)
+  overload: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Decode*
+  nameWithType.vb: DictionaryExtension.Decode(IDictionary(Of String, String), String)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Decode(System.Collections.Generic.IDictionary(Of System.String, System.String), System.String)
+  name.vb: Decode(IDictionary(Of String, String), String)
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Decode(System.Collections.Generic.IDictionary{System.String,System.String},System.String,SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder)
+  commentId: M:SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Decode(System.Collections.Generic.IDictionary{System.String,System.String},System.String,SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder)
+  id: Decode(System.Collections.Generic.IDictionary{System.String,System.String},System.String,SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder)
+  isExtensionMethod: true
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension
+  langs:
+  - csharp
+  - vb
+  name: Decode(IDictionary<String, String>, String, DictionaryExtension.Encoder)
+  nameWithType: DictionaryExtension.Decode(IDictionary<String, String>, String, DictionaryExtension.Encoder)
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Decode(System.Collections.Generic.IDictionary<System.String, System.String>, System.String, SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Decode
+    path: ../src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+    startLine: 29
+  assemblies:
+  - PnP.Framework
+  namespace: SharePointPnP.IdentityModel.Extensions.S2S
+  syntax:
+    content: public static void Decode(this IDictionary<string, string> self, string encodedDictionary, DictionaryExtension.Encoder decoder)
+    parameters:
+    - id: self
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: encodedDictionary
+      type: System.String
+    - id: decoder
+      type: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub Decode(self As IDictionary(Of String, String), encodedDictionary As String, decoder As DictionaryExtension.Encoder)
+  overload: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Decode*
+  nameWithType.vb: DictionaryExtension.Decode(IDictionary(Of String, String), String, DictionaryExtension.Encoder)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Decode(System.Collections.Generic.IDictionary(Of System.String, System.String), System.String, SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder)
+  name.vb: Decode(IDictionary(Of String, String), String, DictionaryExtension.Encoder)
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Decode(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.Char,System.Char,System.Boolean)
+  commentId: M:SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Decode(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.Char,System.Char,System.Boolean)
+  id: Decode(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.Char,System.Char,System.Boolean)
+  isExtensionMethod: true
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension
+  langs:
+  - csharp
+  - vb
+  name: Decode(IDictionary<String, String>, String, Char, Char, Boolean)
+  nameWithType: DictionaryExtension.Decode(IDictionary<String, String>, String, Char, Char, Boolean)
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Decode(System.Collections.Generic.IDictionary<System.String, System.String>, System.String, System.Char, System.Char, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Decode
+    path: ../src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+    startLine: 34
+  assemblies:
+  - PnP.Framework
+  namespace: SharePointPnP.IdentityModel.Extensions.S2S
+  syntax:
+    content: public static void Decode(this IDictionary<string, string> self, string encodedDictionary, char separator, char keyValueSplitter, bool endsWithSeparator)
+    parameters:
+    - id: self
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: encodedDictionary
+      type: System.String
+    - id: separator
+      type: System.Char
+    - id: keyValueSplitter
+      type: System.Char
+    - id: endsWithSeparator
+      type: System.Boolean
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub Decode(self As IDictionary(Of String, String), encodedDictionary As String, separator As Char, keyValueSplitter As Char, endsWithSeparator As Boolean)
+  overload: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Decode*
+  nameWithType.vb: DictionaryExtension.Decode(IDictionary(Of String, String), String, Char, Char, Boolean)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Decode(System.Collections.Generic.IDictionary(Of System.String, System.String), System.String, System.Char, System.Char, System.Boolean)
+  name.vb: Decode(IDictionary(Of String, String), String, Char, Char, Boolean)
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Decode(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.Char,System.Char,SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder,SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder,System.Boolean)
+  commentId: M:SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Decode(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.Char,System.Char,SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder,SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder,System.Boolean)
+  id: Decode(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.Char,System.Char,SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder,SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder,System.Boolean)
+  isExtensionMethod: true
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension
+  langs:
+  - csharp
+  - vb
+  name: Decode(IDictionary<String, String>, String, Char, Char, DictionaryExtension.Encoder, DictionaryExtension.Encoder, Boolean)
+  nameWithType: DictionaryExtension.Decode(IDictionary<String, String>, String, Char, Char, DictionaryExtension.Encoder, DictionaryExtension.Encoder, Boolean)
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Decode(System.Collections.Generic.IDictionary<System.String, System.String>, System.String, System.Char, System.Char, SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder, SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Decode
+    path: ../src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+    startLine: 39
+  assemblies:
+  - PnP.Framework
+  namespace: SharePointPnP.IdentityModel.Extensions.S2S
+  syntax:
+    content: public static void Decode(this IDictionary<string, string> self, string encodedDictionary, char separator, char keyValueSplitter, DictionaryExtension.Encoder keyDecoder, DictionaryExtension.Encoder valueDecoder, bool endsWithSeparator)
+    parameters:
+    - id: self
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: encodedDictionary
+      type: System.String
+    - id: separator
+      type: System.Char
+    - id: keyValueSplitter
+      type: System.Char
+    - id: keyDecoder
+      type: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder
+    - id: valueDecoder
+      type: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder
+    - id: endsWithSeparator
+      type: System.Boolean
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub Decode(self As IDictionary(Of String, String), encodedDictionary As String, separator As Char, keyValueSplitter As Char, keyDecoder As DictionaryExtension.Encoder, valueDecoder As DictionaryExtension.Encoder, endsWithSeparator As Boolean)
+  overload: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Decode*
+  nameWithType.vb: DictionaryExtension.Decode(IDictionary(Of String, String), String, Char, Char, DictionaryExtension.Encoder, DictionaryExtension.Encoder, Boolean)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Decode(System.Collections.Generic.IDictionary(Of System.String, System.String), System.String, System.Char, System.Char, SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder, SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder, System.Boolean)
+  name.vb: Decode(IDictionary(Of String, String), String, Char, Char, DictionaryExtension.Encoder, DictionaryExtension.Encoder, Boolean)
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encode(System.Collections.Generic.IDictionary{System.String,System.String})
+  commentId: M:SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encode(System.Collections.Generic.IDictionary{System.String,System.String})
+  id: Encode(System.Collections.Generic.IDictionary{System.String,System.String})
+  isExtensionMethod: true
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension
+  langs:
+  - csharp
+  - vb
+  name: Encode(IDictionary<String, String>)
+  nameWithType: DictionaryExtension.Encode(IDictionary<String, String>)
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encode(System.Collections.Generic.IDictionary<System.String, System.String>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Encode
+    path: ../src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+    startLine: 96
+  assemblies:
+  - PnP.Framework
+  namespace: SharePointPnP.IdentityModel.Extensions.S2S
+  syntax:
+    content: public static string Encode(this IDictionary<string, string> self)
+    parameters:
+    - id: self
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    return:
+      type: System.String
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Encode(self As IDictionary(Of String, String)) As String
+  overload: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encode*
+  nameWithType.vb: DictionaryExtension.Encode(IDictionary(Of String, String))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encode(System.Collections.Generic.IDictionary(Of System.String, System.String))
+  name.vb: Encode(IDictionary(Of String, String))
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encode(System.Collections.Generic.IDictionary{System.String,System.String},SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder)
+  commentId: M:SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encode(System.Collections.Generic.IDictionary{System.String,System.String},SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder)
+  id: Encode(System.Collections.Generic.IDictionary{System.String,System.String},SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder)
+  isExtensionMethod: true
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension
+  langs:
+  - csharp
+  - vb
+  name: Encode(IDictionary<String, String>, DictionaryExtension.Encoder)
+  nameWithType: DictionaryExtension.Encode(IDictionary<String, String>, DictionaryExtension.Encoder)
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encode(System.Collections.Generic.IDictionary<System.String, System.String>, SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Encode
+    path: ../src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+    startLine: 101
+  assemblies:
+  - PnP.Framework
+  namespace: SharePointPnP.IdentityModel.Extensions.S2S
+  syntax:
+    content: public static string Encode(this IDictionary<string, string> self, DictionaryExtension.Encoder encoder)
+    parameters:
+    - id: self
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: encoder
+      type: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder
+    return:
+      type: System.String
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Encode(self As IDictionary(Of String, String), encoder As DictionaryExtension.Encoder) As String
+  overload: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encode*
+  nameWithType.vb: DictionaryExtension.Encode(IDictionary(Of String, String), DictionaryExtension.Encoder)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encode(System.Collections.Generic.IDictionary(Of System.String, System.String), SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder)
+  name.vb: Encode(IDictionary(Of String, String), DictionaryExtension.Encoder)
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encode(System.Collections.Generic.IDictionary{System.String,System.String},System.Char,System.Char,System.Boolean)
+  commentId: M:SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encode(System.Collections.Generic.IDictionary{System.String,System.String},System.Char,System.Char,System.Boolean)
+  id: Encode(System.Collections.Generic.IDictionary{System.String,System.String},System.Char,System.Char,System.Boolean)
+  isExtensionMethod: true
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension
+  langs:
+  - csharp
+  - vb
+  name: Encode(IDictionary<String, String>, Char, Char, Boolean)
+  nameWithType: DictionaryExtension.Encode(IDictionary<String, String>, Char, Char, Boolean)
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encode(System.Collections.Generic.IDictionary<System.String, System.String>, System.Char, System.Char, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Encode
+    path: ../src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+    startLine: 106
+  assemblies:
+  - PnP.Framework
+  namespace: SharePointPnP.IdentityModel.Extensions.S2S
+  syntax:
+    content: public static string Encode(this IDictionary<string, string> self, char separator, char keyValueSplitter, bool endsWithSeparator)
+    parameters:
+    - id: self
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: separator
+      type: System.Char
+    - id: keyValueSplitter
+      type: System.Char
+    - id: endsWithSeparator
+      type: System.Boolean
+    return:
+      type: System.String
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Encode(self As IDictionary(Of String, String), separator As Char, keyValueSplitter As Char, endsWithSeparator As Boolean) As String
+  overload: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encode*
+  nameWithType.vb: DictionaryExtension.Encode(IDictionary(Of String, String), Char, Char, Boolean)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encode(System.Collections.Generic.IDictionary(Of System.String, System.String), System.Char, System.Char, System.Boolean)
+  name.vb: Encode(IDictionary(Of String, String), Char, Char, Boolean)
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encode(System.Collections.Generic.IDictionary{System.String,System.String},System.Char,System.Char,SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder,SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder,System.Boolean)
+  commentId: M:SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encode(System.Collections.Generic.IDictionary{System.String,System.String},System.Char,System.Char,SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder,SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder,System.Boolean)
+  id: Encode(System.Collections.Generic.IDictionary{System.String,System.String},System.Char,System.Char,SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder,SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder,System.Boolean)
+  isExtensionMethod: true
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension
+  langs:
+  - csharp
+  - vb
+  name: Encode(IDictionary<String, String>, Char, Char, DictionaryExtension.Encoder, DictionaryExtension.Encoder, Boolean)
+  nameWithType: DictionaryExtension.Encode(IDictionary<String, String>, Char, Char, DictionaryExtension.Encoder, DictionaryExtension.Encoder, Boolean)
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encode(System.Collections.Generic.IDictionary<System.String, System.String>, System.Char, System.Char, SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder, SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Encode
+    path: ../src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+    startLine: 111
+  assemblies:
+  - PnP.Framework
+  namespace: SharePointPnP.IdentityModel.Extensions.S2S
+  syntax:
+    content: public static string Encode(this IDictionary<string, string> self, char separator, char keyValueSplitter, DictionaryExtension.Encoder keyEncoder, DictionaryExtension.Encoder valueEncoder, bool endsWithSeparator)
+    parameters:
+    - id: self
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: separator
+      type: System.Char
+    - id: keyValueSplitter
+      type: System.Char
+    - id: keyEncoder
+      type: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder
+    - id: valueEncoder
+      type: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder
+    - id: endsWithSeparator
+      type: System.Boolean
+    return:
+      type: System.String
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Encode(self As IDictionary(Of String, String), separator As Char, keyValueSplitter As Char, keyEncoder As DictionaryExtension.Encoder, valueEncoder As DictionaryExtension.Encoder, endsWithSeparator As Boolean) As String
+  overload: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encode*
+  nameWithType.vb: DictionaryExtension.Encode(IDictionary(Of String, String), Char, Char, DictionaryExtension.Encoder, DictionaryExtension.Encoder, Boolean)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encode(System.Collections.Generic.IDictionary(Of System.String, System.String), System.Char, System.Char, SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder, SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder, System.Boolean)
+  name.vb: Encode(IDictionary(Of String, String), Char, Char, DictionaryExtension.Encoder, DictionaryExtension.Encoder, Boolean)
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.EncodeToJson(System.Collections.Generic.IDictionary{System.String,System.String})
+  commentId: M:SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.EncodeToJson(System.Collections.Generic.IDictionary{System.String,System.String})
+  id: EncodeToJson(System.Collections.Generic.IDictionary{System.String,System.String})
+  isExtensionMethod: true
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension
+  langs:
+  - csharp
+  - vb
+  name: EncodeToJson(IDictionary<String, String>)
+  nameWithType: DictionaryExtension.EncodeToJson(IDictionary<String, String>)
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.EncodeToJson(System.Collections.Generic.IDictionary<System.String, System.String>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EncodeToJson
+    path: ../src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+    startLine: 137
+  assemblies:
+  - PnP.Framework
+  namespace: SharePointPnP.IdentityModel.Extensions.S2S
+  syntax:
+    content: public static string EncodeToJson(this IDictionary<string, string> self)
+    parameters:
+    - id: self
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    return:
+      type: System.String
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function EncodeToJson(self As IDictionary(Of String, String)) As String
+  overload: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.EncodeToJson*
+  nameWithType.vb: DictionaryExtension.EncodeToJson(IDictionary(Of String, String))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.EncodeToJson(System.Collections.Generic.IDictionary(Of System.String, System.String))
+  name.vb: EncodeToJson(IDictionary(Of String, String))
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.DecodeFromJson(System.Collections.Generic.IDictionary{System.String,System.String},System.String)
+  commentId: M:SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.DecodeFromJson(System.Collections.Generic.IDictionary{System.String,System.String},System.String)
+  id: DecodeFromJson(System.Collections.Generic.IDictionary{System.String,System.String},System.String)
+  isExtensionMethod: true
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension
+  langs:
+  - csharp
+  - vb
+  name: DecodeFromJson(IDictionary<String, String>, String)
+  nameWithType: DictionaryExtension.DecodeFromJson(IDictionary<String, String>, String)
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.DecodeFromJson(System.Collections.Generic.IDictionary<System.String, System.String>, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DecodeFromJson
+    path: ../src/lib/PnP.Framework/Utilities/OAuth/DictionaryExtension.cs
+    startLine: 142
+  assemblies:
+  - PnP.Framework
+  namespace: SharePointPnP.IdentityModel.Extensions.S2S
+  syntax:
+    content: public static void DecodeFromJson(this IDictionary<string, string> self, string encodedDictionary)
+    parameters:
+    - id: self
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: encodedDictionary
+      type: System.String
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub DecodeFromJson(self As IDictionary(Of String, String), encodedDictionary As String)
+  overload: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.DecodeFromJson*
+  nameWithType.vb: DictionaryExtension.DecodeFromJson(IDictionary(Of String, String), String)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.DecodeFromJson(System.Collections.Generic.IDictionary(Of System.String, System.String), System.String)
+  name.vb: DecodeFromJson(IDictionary(Of String, String), String)
+references:
+- uid: SharePointPnP.IdentityModel.Extensions.S2S
+  commentId: N:SharePointPnP.IdentityModel.Extensions.S2S
+  name: SharePointPnP.IdentityModel.Extensions.S2S
+  nameWithType: SharePointPnP.IdentityModel.Extensions.S2S
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Char
+  commentId: T:System.Char
+  parent: System
+  isExternal: true
+  name: Char
+  nameWithType: Char
+  fullName: System.Char
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder
+  commentId: T:SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder
+  parent: SharePointPnP.IdentityModel.Extensions.S2S
+  name: DictionaryExtension.Encoder
+  nameWithType: DictionaryExtension.Encoder
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Decode*
+  commentId: Overload:SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Decode
+  name: Decode
+  nameWithType: DictionaryExtension.Decode
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Decode
+- uid: System.Collections.Generic.IDictionary{System.String,System.String}
+  commentId: T:System.Collections.Generic.IDictionary{System.String,System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IDictionary`2
+  name: IDictionary<String, String>
+  nameWithType: IDictionary<String, String>
+  fullName: System.Collections.Generic.IDictionary<System.String, System.String>
+  nameWithType.vb: IDictionary(Of String, String)
+  fullName.vb: System.Collections.Generic.IDictionary(Of System.String, System.String)
+  name.vb: IDictionary(Of String, String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    nameWithType: IDictionary
+    fullName: System.Collections.Generic.IDictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    nameWithType: IDictionary
+    fullName: System.Collections.Generic.IDictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Collections.Generic.IDictionary`2
+  commentId: T:System.Collections.Generic.IDictionary`2
+  isExternal: true
+  name: IDictionary<TKey, TValue>
+  nameWithType: IDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IDictionary<TKey, TValue>
+  nameWithType.vb: IDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IDictionary(Of TKey, TValue)
+  name.vb: IDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    nameWithType: IDictionary
+    fullName: System.Collections.Generic.IDictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    nameWithType: IDictionary
+    fullName: System.Collections.Generic.IDictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encode*
+  commentId: Overload:SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encode
+  name: Encode
+  nameWithType: DictionaryExtension.Encode
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encode
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.EncodeToJson*
+  commentId: Overload:SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.EncodeToJson
+  name: EncodeToJson
+  nameWithType: DictionaryExtension.EncodeToJson
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.EncodeToJson
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.DecodeFromJson*
+  commentId: Overload:SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.DecodeFromJson
+  name: DecodeFromJson
+  nameWithType: DictionaryExtension.DecodeFromJson
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.DecodeFromJson

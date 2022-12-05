@@ -1,0 +1,22 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.Deprecated
+  commentId: N:PnP.Framework.Provisioning.Model.Deprecated
+  id: PnP.Framework.Provisioning.Model.Deprecated
+  children:
+  - PnP.Framework.Provisioning.Model.Deprecated.NavigationNode
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Model.Deprecated
+  nameWithType: PnP.Framework.Provisioning.Model.Deprecated
+  fullName: PnP.Framework.Provisioning.Model.Deprecated
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Model.Deprecated.NavigationNode
+  commentId: T:PnP.Framework.Provisioning.Model.Deprecated.NavigationNode
+  name: NavigationNode
+  nameWithType: NavigationNode
+  fullName: PnP.Framework.Provisioning.Model.Deprecated.NavigationNode

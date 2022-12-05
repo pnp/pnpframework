@@ -1,0 +1,632 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Constants
+  commentId: T:PnP.Framework.Constants
+  id: Constants
+  parent: PnP.Framework
+  children:
+  - PnP.Framework.Constants.APPSIDELOADINGFEATUREID
+  - PnP.Framework.Constants.FeatureId_Site_AppSideLoading
+  - PnP.Framework.Constants.FeatureId_Site_Publishing
+  - PnP.Framework.Constants.FeatureId_Web_MinimalDownloadStrategy
+  - PnP.Framework.Constants.FeatureId_Web_Publishing
+  - PnP.Framework.Constants.MINIMALDOWNLOADSTRATEGYFEATUREID
+  - PnP.Framework.Constants.MINIMUMZONEIDREQUIREDSERVERVERSION
+  langs:
+  - csharp
+  - vb
+  name: Constants
+  nameWithType: Constants
+  fullName: PnP.Framework.Constants
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Constants
+    path: ../src/lib/PnP.Framework/Constants.cs
+    startLine: 8
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  summary: "\nConstants.\n"
+  example: []
+  syntax:
+    content: public static class Constants
+    content.vb: Public Module Constants
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: PnP.Framework.Constants.APPSIDELOADINGFEATUREID
+  commentId: F:PnP.Framework.Constants.APPSIDELOADINGFEATUREID
+  id: APPSIDELOADINGFEATUREID
+  parent: PnP.Framework.Constants
+  langs:
+  - csharp
+  - vb
+  name: APPSIDELOADINGFEATUREID
+  nameWithType: Constants.APPSIDELOADINGFEATUREID
+  fullName: PnP.Framework.Constants.APPSIDELOADINGFEATUREID
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: APPSIDELOADINGFEATUREID
+    path: ../src/lib/PnP.Framework/Constants.cs
+    startLine: 11
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: >-
+      [Obsolete("Use Constants.FeatureId_Site_AppSideLoading instead.")]
+
+      public static readonly Guid APPSIDELOADINGFEATUREID
+    return:
+      type: System.Guid
+    content.vb: >-
+      <Obsolete("Use Constants.FeatureId_Site_AppSideLoading instead.")>
+
+      Public Shared ReadOnly APPSIDELOADINGFEATUREID As Guid
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use Constants.FeatureId_Site_AppSideLoading instead.
+  modifiers.csharp:
+  - public
+  - static
+  - readonly
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: PnP.Framework.Constants.MINIMALDOWNLOADSTRATEGYFEATUREID
+  commentId: F:PnP.Framework.Constants.MINIMALDOWNLOADSTRATEGYFEATUREID
+  id: MINIMALDOWNLOADSTRATEGYFEATUREID
+  parent: PnP.Framework.Constants
+  langs:
+  - csharp
+  - vb
+  name: MINIMALDOWNLOADSTRATEGYFEATUREID
+  nameWithType: Constants.MINIMALDOWNLOADSTRATEGYFEATUREID
+  fullName: PnP.Framework.Constants.MINIMALDOWNLOADSTRATEGYFEATUREID
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MINIMALDOWNLOADSTRATEGYFEATUREID
+    path: ../src/lib/PnP.Framework/Constants.cs
+    startLine: 13
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: >-
+      [Obsolete("Use Constants.FeatureId_Web_MinimalDownloadStrategy instead.")]
+
+      public static readonly Guid MINIMALDOWNLOADSTRATEGYFEATUREID
+    return:
+      type: System.Guid
+    content.vb: >-
+      <Obsolete("Use Constants.FeatureId_Web_MinimalDownloadStrategy instead.")>
+
+      Public Shared ReadOnly MINIMALDOWNLOADSTRATEGYFEATUREID As Guid
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use Constants.FeatureId_Web_MinimalDownloadStrategy instead.
+  modifiers.csharp:
+  - public
+  - static
+  - readonly
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: PnP.Framework.Constants.FeatureId_Web_Publishing
+  commentId: F:PnP.Framework.Constants.FeatureId_Web_Publishing
+  id: FeatureId_Web_Publishing
+  parent: PnP.Framework.Constants
+  langs:
+  - csharp
+  - vb
+  name: FeatureId_Web_Publishing
+  nameWithType: Constants.FeatureId_Web_Publishing
+  fullName: PnP.Framework.Constants.FeatureId_Web_Publishing
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FeatureId_Web_Publishing
+    path: ../src/lib/PnP.Framework/Constants.cs
+    startLine: 16
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public static readonly Guid FeatureId_Web_Publishing
+    return:
+      type: System.Guid
+    content.vb: Public Shared ReadOnly FeatureId_Web_Publishing As Guid
+  modifiers.csharp:
+  - public
+  - static
+  - readonly
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: PnP.Framework.Constants.FeatureId_Site_Publishing
+  commentId: F:PnP.Framework.Constants.FeatureId_Site_Publishing
+  id: FeatureId_Site_Publishing
+  parent: PnP.Framework.Constants
+  langs:
+  - csharp
+  - vb
+  name: FeatureId_Site_Publishing
+  nameWithType: Constants.FeatureId_Site_Publishing
+  fullName: PnP.Framework.Constants.FeatureId_Site_Publishing
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FeatureId_Site_Publishing
+    path: ../src/lib/PnP.Framework/Constants.cs
+    startLine: 18
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public static readonly Guid FeatureId_Site_Publishing
+    return:
+      type: System.Guid
+    content.vb: Public Shared ReadOnly FeatureId_Site_Publishing As Guid
+  modifiers.csharp:
+  - public
+  - static
+  - readonly
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: PnP.Framework.Constants.FeatureId_Web_MinimalDownloadStrategy
+  commentId: F:PnP.Framework.Constants.FeatureId_Web_MinimalDownloadStrategy
+  id: FeatureId_Web_MinimalDownloadStrategy
+  parent: PnP.Framework.Constants
+  langs:
+  - csharp
+  - vb
+  name: FeatureId_Web_MinimalDownloadStrategy
+  nameWithType: Constants.FeatureId_Web_MinimalDownloadStrategy
+  fullName: PnP.Framework.Constants.FeatureId_Web_MinimalDownloadStrategy
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FeatureId_Web_MinimalDownloadStrategy
+    path: ../src/lib/PnP.Framework/Constants.cs
+    startLine: 20
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public static readonly Guid FeatureId_Web_MinimalDownloadStrategy
+    return:
+      type: System.Guid
+    content.vb: Public Shared ReadOnly FeatureId_Web_MinimalDownloadStrategy As Guid
+  modifiers.csharp:
+  - public
+  - static
+  - readonly
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: PnP.Framework.Constants.FeatureId_Site_AppSideLoading
+  commentId: F:PnP.Framework.Constants.FeatureId_Site_AppSideLoading
+  id: FeatureId_Site_AppSideLoading
+  parent: PnP.Framework.Constants
+  langs:
+  - csharp
+  - vb
+  name: FeatureId_Site_AppSideLoading
+  nameWithType: Constants.FeatureId_Site_AppSideLoading
+  fullName: PnP.Framework.Constants.FeatureId_Site_AppSideLoading
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FeatureId_Site_AppSideLoading
+    path: ../src/lib/PnP.Framework/Constants.cs
+    startLine: 22
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public static readonly Guid FeatureId_Site_AppSideLoading
+    return:
+      type: System.Guid
+    content.vb: Public Shared ReadOnly FeatureId_Site_AppSideLoading As Guid
+  modifiers.csharp:
+  - public
+  - static
+  - readonly
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: PnP.Framework.Constants.MINIMUMZONEIDREQUIREDSERVERVERSION
+  commentId: F:PnP.Framework.Constants.MINIMUMZONEIDREQUIREDSERVERVERSION
+  id: MINIMUMZONEIDREQUIREDSERVERVERSION
+  parent: PnP.Framework.Constants
+  langs:
+  - csharp
+  - vb
+  name: MINIMUMZONEIDREQUIREDSERVERVERSION
+  nameWithType: Constants.MINIMUMZONEIDREQUIREDSERVERVERSION
+  fullName: PnP.Framework.Constants.MINIMUMZONEIDREQUIREDSERVERVERSION
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MINIMUMZONEIDREQUIREDSERVERVERSION
+    path: ../src/lib/PnP.Framework/Constants.cs
+    startLine: 54
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework
+  syntax:
+    content: public const string MINIMUMZONEIDREQUIREDSERVERVERSION = "16.0.4803.1200"
+    return:
+      type: System.String
+    content.vb: Public Const MINIMUMZONEIDREQUIREDSERVERVERSION As String = "16.0.4803.1200"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: PnP.Framework
+  commentId: N:PnP.Framework
+  name: PnP.Framework
+  nameWithType: PnP.Framework
+  fullName: PnP.Framework
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String

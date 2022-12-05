@@ -1,0 +1,35 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.Configuration.Navigation
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.Navigation
+  id: PnP.Framework.Provisioning.Model.Configuration.Navigation
+  children:
+  - PnP.Framework.Provisioning.Model.Configuration.Navigation.ApplyNavigationConfiguration
+  - PnP.Framework.Provisioning.Model.Configuration.Navigation.ExtractNavigationConfiguration
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Model.Configuration.Navigation
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.Navigation
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Navigation
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Model.Configuration.Navigation.ApplyNavigationConfiguration
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.Navigation.ApplyNavigationConfiguration
+  parent: PnP.Framework.Provisioning.Model.Configuration.Navigation
+  name: ApplyNavigationConfiguration
+  nameWithType: ApplyNavigationConfiguration
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Navigation.ApplyNavigationConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.Navigation.ExtractNavigationConfiguration
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.Navigation.ExtractNavigationConfiguration
+  parent: PnP.Framework.Provisioning.Model.Configuration.Navigation
+  name: ExtractNavigationConfiguration
+  nameWithType: ExtractNavigationConfiguration
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Navigation.ExtractNavigationConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.Navigation
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.Navigation
+  name: PnP.Framework.Provisioning.Model.Configuration.Navigation
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.Navigation
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Navigation

@@ -1,0 +1,34 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Utilities.WebParts
+  commentId: N:PnP.Framework.Utilities.WebParts
+  id: PnP.Framework.Utilities.WebParts
+  children:
+  - PnP.Framework.Utilities.WebParts.IWebPartPostProcessor
+  - PnP.Framework.Utilities.WebParts.WebPartPostProcessorFactory
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Utilities.WebParts
+  nameWithType: PnP.Framework.Utilities.WebParts
+  fullName: PnP.Framework.Utilities.WebParts
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Utilities.WebParts.IWebPartPostProcessor
+  commentId: T:PnP.Framework.Utilities.WebParts.IWebPartPostProcessor
+  parent: PnP.Framework.Utilities.WebParts
+  name: IWebPartPostProcessor
+  nameWithType: IWebPartPostProcessor
+  fullName: PnP.Framework.Utilities.WebParts.IWebPartPostProcessor
+- uid: PnP.Framework.Utilities.WebParts.WebPartPostProcessorFactory
+  commentId: T:PnP.Framework.Utilities.WebParts.WebPartPostProcessorFactory
+  name: WebPartPostProcessorFactory
+  nameWithType: WebPartPostProcessorFactory
+  fullName: PnP.Framework.Utilities.WebParts.WebPartPostProcessorFactory
+- uid: PnP.Framework.Utilities.WebParts
+  commentId: N:PnP.Framework.Utilities.WebParts
+  name: PnP.Framework.Utilities.WebParts
+  nameWithType: PnP.Framework.Utilities.WebParts
+  fullName: PnP.Framework.Utilities.WebParts

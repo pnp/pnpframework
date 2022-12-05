@@ -1,0 +1,121 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Utilities.UnitTests.Helpers
+  commentId: N:PnP.Framework.Utilities.UnitTests.Helpers
+  id: PnP.Framework.Utilities.UnitTests.Helpers
+  children:
+  - PnP.Framework.Utilities.UnitTests.Helpers.ComposedStream
+  - PnP.Framework.Utilities.UnitTests.Helpers.FileMockDataRepository`1
+  - PnP.Framework.Utilities.UnitTests.Helpers.FileMockResponseRepository
+  - PnP.Framework.Utilities.UnitTests.Helpers.IMockDataRepository
+  - PnP.Framework.Utilities.UnitTests.Helpers.IMockDataRepository`1
+  - PnP.Framework.Utilities.UnitTests.Helpers.MockDataCreator
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Utilities.UnitTests.Helpers
+  nameWithType: PnP.Framework.Utilities.UnitTests.Helpers
+  fullName: PnP.Framework.Utilities.UnitTests.Helpers
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Utilities.UnitTests.Helpers.ComposedStream
+  commentId: T:PnP.Framework.Utilities.UnitTests.Helpers.ComposedStream
+  name: ComposedStream
+  nameWithType: ComposedStream
+  fullName: PnP.Framework.Utilities.UnitTests.Helpers.ComposedStream
+- uid: PnP.Framework.Utilities.UnitTests.Helpers.FileMockDataRepository`1
+  commentId: T:PnP.Framework.Utilities.UnitTests.Helpers.FileMockDataRepository`1
+  name: FileMockDataRepository<T>
+  nameWithType: FileMockDataRepository<T>
+  fullName: PnP.Framework.Utilities.UnitTests.Helpers.FileMockDataRepository<T>
+  nameWithType.vb: FileMockDataRepository(Of T)
+  fullName.vb: PnP.Framework.Utilities.UnitTests.Helpers.FileMockDataRepository(Of T)
+  name.vb: FileMockDataRepository(Of T)
+  spec.csharp:
+  - uid: PnP.Framework.Utilities.UnitTests.Helpers.FileMockDataRepository`1
+    name: FileMockDataRepository
+    nameWithType: FileMockDataRepository
+    fullName: PnP.Framework.Utilities.UnitTests.Helpers.FileMockDataRepository
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: PnP.Framework.Utilities.UnitTests.Helpers.FileMockDataRepository`1
+    name: FileMockDataRepository
+    nameWithType: FileMockDataRepository
+    fullName: PnP.Framework.Utilities.UnitTests.Helpers.FileMockDataRepository
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Utilities.UnitTests.Helpers.FileMockResponseRepository
+  commentId: T:PnP.Framework.Utilities.UnitTests.Helpers.FileMockResponseRepository
+  name: FileMockResponseRepository
+  nameWithType: FileMockResponseRepository
+  fullName: PnP.Framework.Utilities.UnitTests.Helpers.FileMockResponseRepository
+- uid: PnP.Framework.Utilities.UnitTests.Helpers.IMockDataRepository
+  commentId: T:PnP.Framework.Utilities.UnitTests.Helpers.IMockDataRepository
+  parent: PnP.Framework.Utilities.UnitTests.Helpers
+  name: IMockDataRepository
+  nameWithType: IMockDataRepository
+  fullName: PnP.Framework.Utilities.UnitTests.Helpers.IMockDataRepository
+- uid: PnP.Framework.Utilities.UnitTests.Helpers.IMockDataRepository`1
+  commentId: T:PnP.Framework.Utilities.UnitTests.Helpers.IMockDataRepository`1
+  name: IMockDataRepository<T>
+  nameWithType: IMockDataRepository<T>
+  fullName: PnP.Framework.Utilities.UnitTests.Helpers.IMockDataRepository<T>
+  nameWithType.vb: IMockDataRepository(Of T)
+  fullName.vb: PnP.Framework.Utilities.UnitTests.Helpers.IMockDataRepository(Of T)
+  name.vb: IMockDataRepository(Of T)
+  spec.csharp:
+  - uid: PnP.Framework.Utilities.UnitTests.Helpers.IMockDataRepository`1
+    name: IMockDataRepository
+    nameWithType: IMockDataRepository
+    fullName: PnP.Framework.Utilities.UnitTests.Helpers.IMockDataRepository
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: PnP.Framework.Utilities.UnitTests.Helpers.IMockDataRepository`1
+    name: IMockDataRepository
+    nameWithType: IMockDataRepository
+    fullName: PnP.Framework.Utilities.UnitTests.Helpers.IMockDataRepository
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Utilities.UnitTests.Helpers.MockDataCreator
+  commentId: T:PnP.Framework.Utilities.UnitTests.Helpers.MockDataCreator
+  parent: PnP.Framework.Utilities.UnitTests.Helpers
+  name: MockDataCreator
+  nameWithType: MockDataCreator
+  fullName: PnP.Framework.Utilities.UnitTests.Helpers.MockDataCreator
+- uid: PnP.Framework.Utilities.UnitTests.Helpers
+  commentId: N:PnP.Framework.Utilities.UnitTests.Helpers
+  name: PnP.Framework.Utilities.UnitTests.Helpers
+  nameWithType: PnP.Framework.Utilities.UnitTests.Helpers
+  fullName: PnP.Framework.Utilities.UnitTests.Helpers

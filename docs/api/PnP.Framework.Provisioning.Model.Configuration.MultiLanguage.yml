@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.Configuration.MultiLanguage
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.MultiLanguage
+  id: PnP.Framework.Provisioning.Model.Configuration.MultiLanguage
+  children:
+  - PnP.Framework.Provisioning.Model.Configuration.MultiLanguage.ExtractMultiLanguageConfiguration
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Model.Configuration.MultiLanguage
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.MultiLanguage
+  fullName: PnP.Framework.Provisioning.Model.Configuration.MultiLanguage
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Model.Configuration.MultiLanguage.ExtractMultiLanguageConfiguration
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.MultiLanguage.ExtractMultiLanguageConfiguration
+  parent: PnP.Framework.Provisioning.Model.Configuration.MultiLanguage
+  name: ExtractMultiLanguageConfiguration
+  nameWithType: ExtractMultiLanguageConfiguration
+  fullName: PnP.Framework.Provisioning.Model.Configuration.MultiLanguage.ExtractMultiLanguageConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.MultiLanguage
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.MultiLanguage
+  name: PnP.Framework.Provisioning.Model.Configuration.MultiLanguage
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.MultiLanguage
+  fullName: PnP.Framework.Provisioning.Model.Configuration.MultiLanguage

@@ -1,0 +1,3317 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.ALM.AppManager
+  commentId: T:PnP.Framework.ALM.AppManager
+  id: AppManager
+  parent: PnP.Framework.ALM
+  children:
+  - PnP.Framework.ALM.AppManager.#ctor(Microsoft.SharePoint.Client.ClientContext)
+  - PnP.Framework.ALM.AppManager.Add(System.Byte[],System.String,System.Boolean,PnP.Framework.Enums.AppCatalogScope,System.Int32)
+  - PnP.Framework.ALM.AppManager.Add(System.String,System.Boolean,PnP.Framework.Enums.AppCatalogScope,System.Int32)
+  - PnP.Framework.ALM.AppManager.AddAsync(System.Byte[],System.String,System.Boolean,PnP.Framework.Enums.AppCatalogScope,System.Int32)
+  - PnP.Framework.ALM.AppManager.AddAsync(System.String,System.Boolean,PnP.Framework.Enums.AppCatalogScope,System.Int32)
+  - PnP.Framework.ALM.AppManager.Deploy(PnP.Framework.ALM.AppMetadata,System.Boolean,PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.Deploy(System.Guid,System.Boolean,PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.DeployAsync(PnP.Framework.ALM.AppMetadata,System.Boolean,PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.DeployAsync(System.Guid,System.Boolean,PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.GetAvailable(PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.GetAvailable(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.GetAvailable(System.String,PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.GetAvailableAsync(PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.GetAvailableAsync(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.GetAvailableAsync(System.String,PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.Install(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.Install(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.InstallAsync(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.InstallAsync(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.Remove(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.Remove(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.RemoveAsync(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.RemoveAsync(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.Retract(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.Retract(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.RetractAsync(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.RetractAsync(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.SyncToTeams(PnP.Framework.ALM.AppMetadata)
+  - PnP.Framework.ALM.AppManager.SyncToTeams(System.Guid)
+  - PnP.Framework.ALM.AppManager.SyncToTeamsAsync(PnP.Framework.ALM.AppMetadata)
+  - PnP.Framework.ALM.AppManager.SyncToTeamsAsync(System.Guid)
+  - PnP.Framework.ALM.AppManager.Uninstall(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.Uninstall(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.UninstallAsync(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.UninstallAsync(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.Upgrade(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.Upgrade(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.UpgradeAsync(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  - PnP.Framework.ALM.AppManager.UpgradeAsync(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  langs:
+  - csharp
+  - vb
+  name: AppManager
+  nameWithType: AppManager
+  fullName: PnP.Framework.ALM.AppManager
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AppManager
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 21
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nAllows Application Lifecycle Management for Apps\n"
+  example: []
+  syntax:
+    content: public class AppManager
+    content.vb: Public Class AppManager
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - PnP.Framework.ALM.AppManager.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - PnP.Framework.ALM.AppManager.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.ALM.AppManager,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: PnP.Framework.ALM.AppManager.#ctor(Microsoft.SharePoint.Client.ClientContext)
+  commentId: M:PnP.Framework.ALM.AppManager.#ctor(Microsoft.SharePoint.Client.ClientContext)
+  id: '#ctor(Microsoft.SharePoint.Client.ClientContext)'
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: AppManager(ClientContext)
+  nameWithType: AppManager.AppManager(ClientContext)
+  fullName: PnP.Framework.ALM.AppManager.AppManager(Microsoft.SharePoint.Client.ClientContext)
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 34
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  syntax:
+    content: public AppManager(ClientContext context)
+    parameters:
+    - id: context
+      type: Microsoft.SharePoint.Client.ClientContext
+    content.vb: Public Sub New(context As ClientContext)
+  overload: PnP.Framework.ALM.AppManager.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.Add(System.Byte[],System.String,System.Boolean,PnP.Framework.Enums.AppCatalogScope,System.Int32)
+  commentId: M:PnP.Framework.ALM.AppManager.Add(System.Byte[],System.String,System.Boolean,PnP.Framework.Enums.AppCatalogScope,System.Int32)
+  id: Add(System.Byte[],System.String,System.Boolean,PnP.Framework.Enums.AppCatalogScope,System.Int32)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: Add(Byte[], String, Boolean, AppCatalogScope, Int32)
+  nameWithType: AppManager.Add(Byte[], String, Boolean, AppCatalogScope, Int32)
+  fullName: PnP.Framework.ALM.AppManager.Add(System.Byte[], System.String, System.Boolean, PnP.Framework.Enums.AppCatalogScope, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Add
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 56
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nUploads a file to the Tenant App Catalog\n"
+  example: []
+  syntax:
+    content: public AppMetadata Add(byte[] file, string filename, bool overwrite = false, AppCatalogScope scope = AppCatalogScope.Tenant, int timeoutSeconds = 200)
+    parameters:
+    - id: file
+      type: System.Byte[]
+      description: A byte array containing the file
+    - id: filename
+      type: System.String
+      description: The filename (e.g. myapp.sppkg) of the file to upload
+    - id: overwrite
+      type: System.Boolean
+      description: If true will overwrite an existing entry
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    - id: timeoutSeconds
+      type: System.Int32
+      description: If specified will set the timeout on the request. Defaults to 200 seconds.
+    return:
+      type: PnP.Framework.ALM.AppMetadata
+      description: ''
+    content.vb: Public Function Add(file As Byte(), filename As String, overwrite As Boolean = False, scope As AppCatalogScope = AppCatalogScope.Tenant, timeoutSeconds As Integer = 200) As AppMetadata
+  overload: PnP.Framework.ALM.AppManager.Add*
+  nameWithType.vb: AppManager.Add(Byte(), String, Boolean, AppCatalogScope, Int32)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: PnP.Framework.ALM.AppManager.Add(System.Byte(), System.String, System.Boolean, PnP.Framework.Enums.AppCatalogScope, System.Int32)
+  name.vb: Add(Byte(), String, Boolean, AppCatalogScope, Int32)
+- uid: PnP.Framework.ALM.AppManager.Add(System.String,System.Boolean,PnP.Framework.Enums.AppCatalogScope,System.Int32)
+  commentId: M:PnP.Framework.ALM.AppManager.Add(System.String,System.Boolean,PnP.Framework.Enums.AppCatalogScope,System.Int32)
+  id: Add(System.String,System.Boolean,PnP.Framework.Enums.AppCatalogScope,System.Int32)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: Add(String, Boolean, AppCatalogScope, Int32)
+  nameWithType: AppManager.Add(String, Boolean, AppCatalogScope, Int32)
+  fullName: PnP.Framework.ALM.AppManager.Add(System.String, System.Boolean, PnP.Framework.Enums.AppCatalogScope, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Add
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 69
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nUploads an app file to the Tenant App Catalog\n"
+  example: []
+  syntax:
+    content: public AppMetadata Add(string path, bool overwrite = false, AppCatalogScope scope = AppCatalogScope.Tenant, int timeoutSeconds = 200)
+    parameters:
+    - id: path
+      type: System.String
+      description: ''
+    - id: overwrite
+      type: System.Boolean
+      description: If true will overwrite an existing entry
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    - id: timeoutSeconds
+      type: System.Int32
+      description: If specified will set the timeout on the request. Defaults to 200 seconds.
+    return:
+      type: PnP.Framework.ALM.AppMetadata
+      description: ''
+    content.vb: Public Function Add(path As String, overwrite As Boolean = False, scope As AppCatalogScope = AppCatalogScope.Tenant, timeoutSeconds As Integer = 200) As AppMetadata
+  overload: PnP.Framework.ALM.AppManager.Add*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.AddAsync(System.Byte[],System.String,System.Boolean,PnP.Framework.Enums.AppCatalogScope,System.Int32)
+  commentId: M:PnP.Framework.ALM.AppManager.AddAsync(System.Byte[],System.String,System.Boolean,PnP.Framework.Enums.AppCatalogScope,System.Int32)
+  id: AddAsync(System.Byte[],System.String,System.Boolean,PnP.Framework.Enums.AppCatalogScope,System.Int32)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: AddAsync(Byte[], String, Boolean, AppCatalogScope, Int32)
+  nameWithType: AppManager.AddAsync(Byte[], String, Boolean, AppCatalogScope, Int32)
+  fullName: PnP.Framework.ALM.AppManager.AddAsync(System.Byte[], System.String, System.Boolean, PnP.Framework.Enums.AppCatalogScope, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddAsync
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 83
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nUploads a file to the Tenant App Catalog\n"
+  example: []
+  syntax:
+    content: public async Task<AppMetadata> AddAsync(byte[] file, string filename, bool overwrite = false, AppCatalogScope scope = AppCatalogScope.Tenant, int timeoutSeconds = 200)
+    parameters:
+    - id: file
+      type: System.Byte[]
+      description: A byte array containing the file
+    - id: filename
+      type: System.String
+      description: The filename (e.g. myapp.sppkg) of the file to upload
+    - id: overwrite
+      type: System.Boolean
+      description: If true will overwrite an existing entry
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    - id: timeoutSeconds
+      type: System.Int32
+      description: If specified will set the timeout on the request. Defaults to 200 seconds.
+    return:
+      type: System.Threading.Tasks.Task{PnP.Framework.ALM.AppMetadata}
+      description: ''
+    content.vb: Public Function AddAsync(file As Byte(), filename As String, overwrite As Boolean = False, scope As AppCatalogScope = AppCatalogScope.Tenant, timeoutSeconds As Integer = 200) As Task(Of AppMetadata)
+  overload: PnP.Framework.ALM.AppManager.AddAsync*
+  nameWithType.vb: AppManager.AddAsync(Byte(), String, Boolean, AppCatalogScope, Int32)
+  modifiers.csharp:
+  - public
+  - async
+  modifiers.vb:
+  - Public
+  fullName.vb: PnP.Framework.ALM.AppManager.AddAsync(System.Byte(), System.String, System.Boolean, PnP.Framework.Enums.AppCatalogScope, System.Int32)
+  name.vb: AddAsync(Byte(), String, Boolean, AppCatalogScope, Int32)
+- uid: PnP.Framework.ALM.AppManager.AddAsync(System.String,System.Boolean,PnP.Framework.Enums.AppCatalogScope,System.Int32)
+  commentId: M:PnP.Framework.ALM.AppManager.AddAsync(System.String,System.Boolean,PnP.Framework.Enums.AppCatalogScope,System.Int32)
+  id: AddAsync(System.String,System.Boolean,PnP.Framework.Enums.AppCatalogScope,System.Int32)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: AddAsync(String, Boolean, AppCatalogScope, Int32)
+  nameWithType: AppManager.AddAsync(String, Boolean, AppCatalogScope, Int32)
+  fullName: PnP.Framework.ALM.AppManager.AddAsync(System.String, System.Boolean, PnP.Framework.Enums.AppCatalogScope, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddAsync
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 107
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nUploads an app file to the Tenant App Catalog\n"
+  example: []
+  syntax:
+    content: public async Task<AppMetadata> AddAsync(string path, bool overwrite = false, AppCatalogScope scope = AppCatalogScope.Tenant, int timeoutSeconds = 200)
+    parameters:
+    - id: path
+      type: System.String
+      description: ''
+    - id: overwrite
+      type: System.Boolean
+      description: If true will overwrite an existing entry
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    - id: timeoutSeconds
+      type: System.Int32
+      description: If specified will set the timeout on the request. Defaults to 200 seconds.
+    return:
+      type: System.Threading.Tasks.Task{PnP.Framework.ALM.AppMetadata}
+      description: ''
+    content.vb: Public Function AddAsync(path As String, overwrite As Boolean = False, scope As AppCatalogScope = AppCatalogScope.Tenant, timeoutSeconds As Integer = 200) As Task(Of AppMetadata)
+  overload: PnP.Framework.ALM.AppManager.AddAsync*
+  modifiers.csharp:
+  - public
+  - async
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.Install(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.Install(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  id: Install(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: Install(AppMetadata, AppCatalogScope)
+  nameWithType: AppManager.Install(AppMetadata, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.Install(PnP.Framework.ALM.AppMetadata, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Install
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 133
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nInstalls an available app from the app catalog in a site.\n"
+  example: []
+  syntax:
+    content: public bool Install(AppMetadata appMetadata, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: appMetadata
+      type: PnP.Framework.ALM.AppMetadata
+      description: The app metadata object of the app to install
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function Install(appMetadata As AppMetadata, scope As AppCatalogScope = AppCatalogScope.Tenant) As Boolean
+  overload: PnP.Framework.ALM.AppManager.Install*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.InstallAsync(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.InstallAsync(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  id: InstallAsync(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: InstallAsync(AppMetadata, AppCatalogScope)
+  nameWithType: AppManager.InstallAsync(AppMetadata, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.InstallAsync(PnP.Framework.ALM.AppMetadata, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: InstallAsync
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 144
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nInstalls an available app from the app catalog in a site.\n"
+  example: []
+  syntax:
+    content: public async Task<bool> InstallAsync(AppMetadata appMetadata, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: appMetadata
+      type: PnP.Framework.ALM.AppMetadata
+      description: The app metadata object of the app to install
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: ''
+    content.vb: Public Function InstallAsync(appMetadata As AppMetadata, scope As AppCatalogScope = AppCatalogScope.Tenant) As Task(Of Boolean)
+  overload: PnP.Framework.ALM.AppManager.InstallAsync*
+  modifiers.csharp:
+  - public
+  - async
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.Install(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.Install(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  id: Install(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: Install(Guid, AppCatalogScope)
+  nameWithType: AppManager.Install(Guid, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.Install(System.Guid, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Install
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 166
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nInstalls an available app from the app catalog in a site.\n"
+  example: []
+  syntax:
+    content: public bool Install(Guid id, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: id
+      type: System.Guid
+      description: The unique id of the app. Notice that this is not the product id as listed in the app catalog.
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function Install(id As Guid, scope As AppCatalogScope = AppCatalogScope.Tenant) As Boolean
+  overload: PnP.Framework.ALM.AppManager.Install*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.InstallAsync(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.InstallAsync(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  id: InstallAsync(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: InstallAsync(Guid, AppCatalogScope)
+  nameWithType: AppManager.InstallAsync(Guid, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.InstallAsync(System.Guid, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: InstallAsync
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 177
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nInstalls an available app from the app catalog in a site.\n"
+  example: []
+  syntax:
+    content: public async Task<bool> InstallAsync(Guid id, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: id
+      type: System.Guid
+      description: The unique id of the app. Notice that this is not the product id as listed in the app catalog.
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: ''
+    content.vb: Public Function InstallAsync(id As Guid, scope As AppCatalogScope = AppCatalogScope.Tenant) As Task(Of Boolean)
+  overload: PnP.Framework.ALM.AppManager.InstallAsync*
+  modifiers.csharp:
+  - public
+  - async
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.Uninstall(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.Uninstall(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  id: Uninstall(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: Uninstall(AppMetadata, AppCatalogScope)
+  nameWithType: AppManager.Uninstall(AppMetadata, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.Uninstall(PnP.Framework.ALM.AppMetadata, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Uninstall
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 195
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nUninstalls an app from a site.\n"
+  example: []
+  syntax:
+    content: public bool Uninstall(AppMetadata appMetadata, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: appMetadata
+      type: PnP.Framework.ALM.AppMetadata
+      description: The app metadata object of the app to uninstall.
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function Uninstall(appMetadata As AppMetadata, scope As AppCatalogScope = AppCatalogScope.Tenant) As Boolean
+  overload: PnP.Framework.ALM.AppManager.Uninstall*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.UninstallAsync(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.UninstallAsync(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  id: UninstallAsync(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: UninstallAsync(AppMetadata, AppCatalogScope)
+  nameWithType: AppManager.UninstallAsync(AppMetadata, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.UninstallAsync(PnP.Framework.ALM.AppMetadata, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UninstallAsync
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 206
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nUninstalls an app from a site.\n"
+  example: []
+  syntax:
+    content: public async Task<bool> UninstallAsync(AppMetadata appMetadata, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: appMetadata
+      type: PnP.Framework.ALM.AppMetadata
+      description: The app metadata object of the app to uninstall.
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: ''
+    content.vb: Public Function UninstallAsync(appMetadata As AppMetadata, scope As AppCatalogScope = AppCatalogScope.Tenant) As Task(Of Boolean)
+  overload: PnP.Framework.ALM.AppManager.UninstallAsync*
+  modifiers.csharp:
+  - public
+  - async
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.Uninstall(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.Uninstall(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  id: Uninstall(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: Uninstall(Guid, AppCatalogScope)
+  nameWithType: AppManager.Uninstall(Guid, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.Uninstall(System.Guid, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Uninstall
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 228
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nUninstalls an app from a site.\n"
+  example: []
+  syntax:
+    content: public bool Uninstall(Guid id, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: id
+      type: System.Guid
+      description: The unique id of the app. Notice that this is not the product id as listed in the app catalog.
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function Uninstall(id As Guid, scope As AppCatalogScope = AppCatalogScope.Tenant) As Boolean
+  overload: PnP.Framework.ALM.AppManager.Uninstall*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.UninstallAsync(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.UninstallAsync(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  id: UninstallAsync(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: UninstallAsync(Guid, AppCatalogScope)
+  nameWithType: AppManager.UninstallAsync(Guid, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.UninstallAsync(System.Guid, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UninstallAsync
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 239
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nUninstalls an app from a site.\n"
+  example: []
+  syntax:
+    content: public async Task<bool> UninstallAsync(Guid id, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: id
+      type: System.Guid
+      description: The unique id of the app. Notice that this is not the product id as listed in the app catalog.
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: ''
+    content.vb: Public Function UninstallAsync(id As Guid, scope As AppCatalogScope = AppCatalogScope.Tenant) As Task(Of Boolean)
+  overload: PnP.Framework.ALM.AppManager.UninstallAsync*
+  modifiers.csharp:
+  - public
+  - async
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.Upgrade(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.Upgrade(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  id: Upgrade(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: Upgrade(AppMetadata, AppCatalogScope)
+  nameWithType: AppManager.Upgrade(AppMetadata, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.Upgrade(PnP.Framework.ALM.AppMetadata, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Upgrade
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 257
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nUpgrades an app in a site\n"
+  example: []
+  syntax:
+    content: public bool Upgrade(AppMetadata appMetadata, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: appMetadata
+      type: PnP.Framework.ALM.AppMetadata
+      description: The app metadata object of the app to upgrade.
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function Upgrade(appMetadata As AppMetadata, scope As AppCatalogScope = AppCatalogScope.Tenant) As Boolean
+  overload: PnP.Framework.ALM.AppManager.Upgrade*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.UpgradeAsync(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.UpgradeAsync(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  id: UpgradeAsync(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: UpgradeAsync(AppMetadata, AppCatalogScope)
+  nameWithType: AppManager.UpgradeAsync(AppMetadata, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.UpgradeAsync(PnP.Framework.ALM.AppMetadata, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UpgradeAsync
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 268
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nUpgrades an app in a site\n"
+  example: []
+  syntax:
+    content: public async Task<bool> UpgradeAsync(AppMetadata appMetadata, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: appMetadata
+      type: PnP.Framework.ALM.AppMetadata
+      description: The app metadata object of the app to upgrade.
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: ''
+    content.vb: Public Function UpgradeAsync(appMetadata As AppMetadata, scope As AppCatalogScope = AppCatalogScope.Tenant) As Task(Of Boolean)
+  overload: PnP.Framework.ALM.AppManager.UpgradeAsync*
+  modifiers.csharp:
+  - public
+  - async
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.Upgrade(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.Upgrade(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  id: Upgrade(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: Upgrade(Guid, AppCatalogScope)
+  nameWithType: AppManager.Upgrade(Guid, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.Upgrade(System.Guid, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Upgrade
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 290
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nUpgrades an app in a site\n"
+  example: []
+  syntax:
+    content: public bool Upgrade(Guid id, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: id
+      type: System.Guid
+      description: The unique id of the app. Notice that this is not the product id as listed in the app catalog.
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function Upgrade(id As Guid, scope As AppCatalogScope = AppCatalogScope.Tenant) As Boolean
+  overload: PnP.Framework.ALM.AppManager.Upgrade*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.UpgradeAsync(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.UpgradeAsync(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  id: UpgradeAsync(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: UpgradeAsync(Guid, AppCatalogScope)
+  nameWithType: AppManager.UpgradeAsync(Guid, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.UpgradeAsync(System.Guid, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UpgradeAsync
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 301
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nUpgrades an app in a site\n"
+  example: []
+  syntax:
+    content: public async Task<bool> UpgradeAsync(Guid id, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: id
+      type: System.Guid
+      description: The unique id of the app. Notice that this is not the product id as listed in the app catalog.
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: ''
+    content.vb: Public Function UpgradeAsync(id As Guid, scope As AppCatalogScope = AppCatalogScope.Tenant) As Task(Of Boolean)
+  overload: PnP.Framework.ALM.AppManager.UpgradeAsync*
+  modifiers.csharp:
+  - public
+  - async
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.Deploy(PnP.Framework.ALM.AppMetadata,System.Boolean,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.Deploy(PnP.Framework.ALM.AppMetadata,System.Boolean,PnP.Framework.Enums.AppCatalogScope)
+  id: Deploy(PnP.Framework.ALM.AppMetadata,System.Boolean,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: Deploy(AppMetadata, Boolean, AppCatalogScope)
+  nameWithType: AppManager.Deploy(AppMetadata, Boolean, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.Deploy(PnP.Framework.ALM.AppMetadata, System.Boolean, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Deploy
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 320
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nDeploys/trusts an app in the app catalog\n"
+  example: []
+  syntax:
+    content: public bool Deploy(AppMetadata appMetadata, bool skipFeatureDeployment = true, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: appMetadata
+      type: PnP.Framework.ALM.AppMetadata
+      description: The app metadata object of the app to deploy.
+    - id: skipFeatureDeployment
+      type: System.Boolean
+      description: If set to true will skip the feature deployed for tenant scoped apps.
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function Deploy(appMetadata As AppMetadata, skipFeatureDeployment As Boolean = True, scope As AppCatalogScope = AppCatalogScope.Tenant) As Boolean
+  overload: PnP.Framework.ALM.AppManager.Deploy*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.DeployAsync(PnP.Framework.ALM.AppMetadata,System.Boolean,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.DeployAsync(PnP.Framework.ALM.AppMetadata,System.Boolean,PnP.Framework.Enums.AppCatalogScope)
+  id: DeployAsync(PnP.Framework.ALM.AppMetadata,System.Boolean,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: DeployAsync(AppMetadata, Boolean, AppCatalogScope)
+  nameWithType: AppManager.DeployAsync(AppMetadata, Boolean, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.DeployAsync(PnP.Framework.ALM.AppMetadata, System.Boolean, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeployAsync
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 332
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nDeploys/trusts an app in the app catalog\n"
+  example: []
+  syntax:
+    content: public async Task<bool> DeployAsync(AppMetadata appMetadata, bool skipFeatureDeployment = true, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: appMetadata
+      type: PnP.Framework.ALM.AppMetadata
+      description: The app metadata object of the app to deploy.
+    - id: skipFeatureDeployment
+      type: System.Boolean
+      description: If set to true will skip the feature deployed for tenant scoped apps.
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: ''
+    content.vb: Public Function DeployAsync(appMetadata As AppMetadata, skipFeatureDeployment As Boolean = True, scope As AppCatalogScope = AppCatalogScope.Tenant) As Task(Of Boolean)
+  overload: PnP.Framework.ALM.AppManager.DeployAsync*
+  modifiers.csharp:
+  - public
+  - async
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.Deploy(System.Guid,System.Boolean,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.Deploy(System.Guid,System.Boolean,PnP.Framework.Enums.AppCatalogScope)
+  id: Deploy(System.Guid,System.Boolean,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: Deploy(Guid, Boolean, AppCatalogScope)
+  nameWithType: AppManager.Deploy(Guid, Boolean, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.Deploy(System.Guid, System.Boolean, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Deploy
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 359
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nDeploys/trusts an app in the app catalog\n"
+  example: []
+  syntax:
+    content: public bool Deploy(Guid id, bool skipFeatureDeployment = true, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: id
+      type: System.Guid
+      description: The unique id of the app. Notice that this is not the product id as listed in the app catalog.
+    - id: skipFeatureDeployment
+      type: System.Boolean
+      description: If set to true will skip the feature deployed for tenant scoped apps.
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function Deploy(id As Guid, skipFeatureDeployment As Boolean = True, scope As AppCatalogScope = AppCatalogScope.Tenant) As Boolean
+  overload: PnP.Framework.ALM.AppManager.Deploy*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.DeployAsync(System.Guid,System.Boolean,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.DeployAsync(System.Guid,System.Boolean,PnP.Framework.Enums.AppCatalogScope)
+  id: DeployAsync(System.Guid,System.Boolean,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: DeployAsync(Guid, Boolean, AppCatalogScope)
+  nameWithType: AppManager.DeployAsync(Guid, Boolean, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.DeployAsync(System.Guid, System.Boolean, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeployAsync
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 371
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nDeploys/trusts an app in the app catalog\n"
+  example: []
+  syntax:
+    content: public async Task<bool> DeployAsync(Guid id, bool skipFeatureDeployment = true, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: id
+      type: System.Guid
+      description: The unique id of the app. Notice that this is not the product id as listed in the app catalog.
+    - id: skipFeatureDeployment
+      type: System.Boolean
+      description: If set to true will skip the feature deployed for tenant scoped apps.
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: ''
+    content.vb: Public Function DeployAsync(id As Guid, skipFeatureDeployment As Boolean = True, scope As AppCatalogScope = AppCatalogScope.Tenant) As Task(Of Boolean)
+  overload: PnP.Framework.ALM.AppManager.DeployAsync*
+  modifiers.csharp:
+  - public
+  - async
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.Retract(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.Retract(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  id: Retract(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: Retract(AppMetadata, AppCatalogScope)
+  nameWithType: AppManager.Retract(AppMetadata, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.Retract(PnP.Framework.ALM.AppMetadata, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Retract
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 393
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nRetracts an app in the app catalog. Notice that this will not remove the app from the app catalog.\n"
+  example: []
+  syntax:
+    content: public bool Retract(AppMetadata appMetadata, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: appMetadata
+      type: PnP.Framework.ALM.AppMetadata
+      description: The app metadata object of the app to retract.
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function Retract(appMetadata As AppMetadata, scope As AppCatalogScope = AppCatalogScope.Tenant) As Boolean
+  overload: PnP.Framework.ALM.AppManager.Retract*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.RetractAsync(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.RetractAsync(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  id: RetractAsync(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: RetractAsync(AppMetadata, AppCatalogScope)
+  nameWithType: AppManager.RetractAsync(AppMetadata, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.RetractAsync(PnP.Framework.ALM.AppMetadata, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RetractAsync
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 404
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nRetracts an app in the app catalog. Notice that this will not remove the app from the app catalog.\n"
+  example: []
+  syntax:
+    content: public async Task<bool> RetractAsync(AppMetadata appMetadata, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: appMetadata
+      type: PnP.Framework.ALM.AppMetadata
+      description: The app metadata object of the app to retract.
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: ''
+    content.vb: Public Function RetractAsync(appMetadata As AppMetadata, scope As AppCatalogScope = AppCatalogScope.Tenant) As Task(Of Boolean)
+  overload: PnP.Framework.ALM.AppManager.RetractAsync*
+  modifiers.csharp:
+  - public
+  - async
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.Retract(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.Retract(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  id: Retract(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: Retract(Guid, AppCatalogScope)
+  nameWithType: AppManager.Retract(Guid, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.Retract(System.Guid, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Retract
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 426
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nRetracts an app in the app catalog. Notice that this will not remove the app from the app catalog.\n"
+  example: []
+  syntax:
+    content: public bool Retract(Guid id, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: id
+      type: System.Guid
+      description: The unique id of the app. Notice that this is not the product id as listed in the app catalog.
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function Retract(id As Guid, scope As AppCatalogScope = AppCatalogScope.Tenant) As Boolean
+  overload: PnP.Framework.ALM.AppManager.Retract*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.RetractAsync(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.RetractAsync(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  id: RetractAsync(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: RetractAsync(Guid, AppCatalogScope)
+  nameWithType: AppManager.RetractAsync(Guid, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.RetractAsync(System.Guid, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RetractAsync
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 437
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nRetracts an app in the app catalog. Notice that this will not remove the app from the app catalog.\n"
+  example: []
+  syntax:
+    content: public async Task<bool> RetractAsync(Guid id, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: id
+      type: System.Guid
+      description: The unique id of the app. Notice that this is not the product id as listed in the app catalog.
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: ''
+    content.vb: Public Function RetractAsync(id As Guid, scope As AppCatalogScope = AppCatalogScope.Tenant) As Task(Of Boolean)
+  overload: PnP.Framework.ALM.AppManager.RetractAsync*
+  modifiers.csharp:
+  - public
+  - async
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.Remove(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.Remove(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  id: Remove(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: Remove(AppMetadata, AppCatalogScope)
+  nameWithType: AppManager.Remove(AppMetadata, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.Remove(PnP.Framework.ALM.AppMetadata, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Remove
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 455
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nRemoves an app from the app catalog\n"
+  example: []
+  syntax:
+    content: public bool Remove(AppMetadata appMetadata, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: appMetadata
+      type: PnP.Framework.ALM.AppMetadata
+      description: The app metadata object of the app to remove.
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function Remove(appMetadata As AppMetadata, scope As AppCatalogScope = AppCatalogScope.Tenant) As Boolean
+  overload: PnP.Framework.ALM.AppManager.Remove*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.RemoveAsync(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.RemoveAsync(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  id: RemoveAsync(PnP.Framework.ALM.AppMetadata,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: RemoveAsync(AppMetadata, AppCatalogScope)
+  nameWithType: AppManager.RemoveAsync(AppMetadata, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.RemoveAsync(PnP.Framework.ALM.AppMetadata, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemoveAsync
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 466
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nRemoves an app from the app catalog\n"
+  example: []
+  syntax:
+    content: public async Task<bool> RemoveAsync(AppMetadata appMetadata, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: appMetadata
+      type: PnP.Framework.ALM.AppMetadata
+      description: The app metadata object of the app to remove.
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: ''
+    content.vb: Public Function RemoveAsync(appMetadata As AppMetadata, scope As AppCatalogScope = AppCatalogScope.Tenant) As Task(Of Boolean)
+  overload: PnP.Framework.ALM.AppManager.RemoveAsync*
+  modifiers.csharp:
+  - public
+  - async
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.Remove(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.Remove(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  id: Remove(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: Remove(Guid, AppCatalogScope)
+  nameWithType: AppManager.Remove(Guid, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.Remove(System.Guid, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Remove
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 488
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nRemoves an app from the app catalog\n"
+  example: []
+  syntax:
+    content: public bool Remove(Guid id, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: id
+      type: System.Guid
+      description: The unique id of the app. Notice that this is not the product id as listed in the app catalog.
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function Remove(id As Guid, scope As AppCatalogScope = AppCatalogScope.Tenant) As Boolean
+  overload: PnP.Framework.ALM.AppManager.Remove*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.RemoveAsync(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.RemoveAsync(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  id: RemoveAsync(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: RemoveAsync(Guid, AppCatalogScope)
+  nameWithType: AppManager.RemoveAsync(Guid, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.RemoveAsync(System.Guid, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemoveAsync
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 499
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nRemoves an app from the app catalog\n"
+  example: []
+  syntax:
+    content: public async Task<bool> RemoveAsync(Guid id, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: id
+      type: System.Guid
+      description: The unique id of the app. Notice that this is not the product id as listed in the app catalog.
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: ''
+    content.vb: Public Function RemoveAsync(id As Guid, scope As AppCatalogScope = AppCatalogScope.Tenant) As Task(Of Boolean)
+  overload: PnP.Framework.ALM.AppManager.RemoveAsync*
+  modifiers.csharp:
+  - public
+  - async
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.SyncToTeamsAsync(System.Guid)
+  commentId: M:PnP.Framework.ALM.AppManager.SyncToTeamsAsync(System.Guid)
+  id: SyncToTeamsAsync(System.Guid)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: SyncToTeamsAsync(Guid)
+  nameWithType: AppManager.SyncToTeamsAsync(Guid)
+  fullName: PnP.Framework.ALM.AppManager.SyncToTeamsAsync(System.Guid)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SyncToTeamsAsync
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 516
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nSynchronize an app from the tenant app catalog with the teams app catalog\n"
+  example: []
+  syntax:
+    content: public async Task<bool> SyncToTeamsAsync(Guid id)
+    parameters:
+    - id: id
+      type: System.Guid
+      description: The unique id of the app. Notice that this is not the product id as listen in the app catalog
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: ''
+    content.vb: Public Function SyncToTeamsAsync(id As Guid) As Task(Of Boolean)
+  overload: PnP.Framework.ALM.AppManager.SyncToTeamsAsync*
+  modifiers.csharp:
+  - public
+  - async
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.SyncToTeamsAsync(PnP.Framework.ALM.AppMetadata)
+  commentId: M:PnP.Framework.ALM.AppManager.SyncToTeamsAsync(PnP.Framework.ALM.AppMetadata)
+  id: SyncToTeamsAsync(PnP.Framework.ALM.AppMetadata)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: SyncToTeamsAsync(AppMetadata)
+  nameWithType: AppManager.SyncToTeamsAsync(AppMetadata)
+  fullName: PnP.Framework.ALM.AppManager.SyncToTeamsAsync(PnP.Framework.ALM.AppMetadata)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SyncToTeamsAsync
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 533
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nSynchronize an app from the tenant app catalog with the teams app catalog\n"
+  example: []
+  syntax:
+    content: public async Task<bool> SyncToTeamsAsync(AppMetadata appMetadata)
+    parameters:
+    - id: appMetadata
+      type: PnP.Framework.ALM.AppMetadata
+      description: The app metadata object of the app to remove.
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: ''
+    content.vb: Public Function SyncToTeamsAsync(appMetadata As AppMetadata) As Task(Of Boolean)
+  overload: PnP.Framework.ALM.AppManager.SyncToTeamsAsync*
+  modifiers.csharp:
+  - public
+  - async
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.SyncToTeams(System.Guid)
+  commentId: M:PnP.Framework.ALM.AppManager.SyncToTeams(System.Guid)
+  id: SyncToTeams(System.Guid)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: SyncToTeams(Guid)
+  nameWithType: AppManager.SyncToTeams(Guid)
+  fullName: PnP.Framework.ALM.AppManager.SyncToTeams(System.Guid)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SyncToTeams
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 550
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nSynchronize an app from the tenant app catalog with the teams app catalog\n"
+  example: []
+  syntax:
+    content: public bool SyncToTeams(Guid id)
+    parameters:
+    - id: id
+      type: System.Guid
+      description: The unique id of the app. Notice that this is not the product id as listen in the app catalog
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function SyncToTeams(id As Guid) As Boolean
+  overload: PnP.Framework.ALM.AppManager.SyncToTeams*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.SyncToTeams(PnP.Framework.ALM.AppMetadata)
+  commentId: M:PnP.Framework.ALM.AppManager.SyncToTeams(PnP.Framework.ALM.AppMetadata)
+  id: SyncToTeams(PnP.Framework.ALM.AppMetadata)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: SyncToTeams(AppMetadata)
+  nameWithType: AppManager.SyncToTeams(AppMetadata)
+  fullName: PnP.Framework.ALM.AppManager.SyncToTeams(PnP.Framework.ALM.AppMetadata)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SyncToTeams
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 560
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nSynchronize an app from the tenant app catalog with the teams app catalog\n"
+  example: []
+  syntax:
+    content: public bool SyncToTeams(AppMetadata appMetadata)
+    parameters:
+    - id: appMetadata
+      type: PnP.Framework.ALM.AppMetadata
+      description: The app metadata object of the app to remove.
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function SyncToTeams(appMetadata As AppMetadata) As Boolean
+  overload: PnP.Framework.ALM.AppManager.SyncToTeams*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.GetAvailable(PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.GetAvailable(PnP.Framework.Enums.AppCatalogScope)
+  id: GetAvailable(PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: GetAvailable(AppCatalogScope)
+  nameWithType: AppManager.GetAvailable(AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.GetAvailable(PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetAvailable
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 570
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nReturns all available apps.\n"
+  example: []
+  syntax:
+    content: public List<AppMetadata> GetAvailable(AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Collections.Generic.List{PnP.Framework.ALM.AppMetadata}
+      description: ''
+    content.vb: Public Function GetAvailable(scope As AppCatalogScope = AppCatalogScope.Tenant) As List(Of AppMetadata)
+  overload: PnP.Framework.ALM.AppManager.GetAvailable*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.GetAvailableAsync(PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.GetAvailableAsync(PnP.Framework.Enums.AppCatalogScope)
+  id: GetAvailableAsync(PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: GetAvailableAsync(AppCatalogScope)
+  nameWithType: AppManager.GetAvailableAsync(AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.GetAvailableAsync(PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetAvailableAsync
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 580
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nReturns all available apps.\n"
+  example: []
+  syntax:
+    content: public async Task<List<AppMetadata>> GetAvailableAsync(AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.List{PnP.Framework.ALM.AppMetadata}}
+      description: ''
+    content.vb: Public Function GetAvailableAsync(scope As AppCatalogScope = AppCatalogScope.Tenant) As Task(Of List(Of AppMetadata))
+  overload: PnP.Framework.ALM.AppManager.GetAvailableAsync*
+  modifiers.csharp:
+  - public
+  - async
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.GetAvailable(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.GetAvailable(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  id: GetAvailable(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: GetAvailable(Guid, AppCatalogScope)
+  nameWithType: AppManager.GetAvailable(Guid, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.GetAvailable(System.Guid, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetAvailable
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 593
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nReturns an available app\n"
+  example: []
+  syntax:
+    content: public AppMetadata GetAvailable(Guid id, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: id
+      type: System.Guid
+      description: The unique id of the app. Notice that this is not the product id as listed in the app catalog.
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: PnP.Framework.ALM.AppMetadata
+      description: ''
+    content.vb: Public Function GetAvailable(id As Guid, scope As AppCatalogScope = AppCatalogScope.Tenant) As AppMetadata
+  overload: PnP.Framework.ALM.AppManager.GetAvailable*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.GetAvailableAsync(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.GetAvailableAsync(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  id: GetAvailableAsync(System.Guid,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: GetAvailableAsync(Guid, AppCatalogScope)
+  nameWithType: AppManager.GetAvailableAsync(Guid, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.GetAvailableAsync(System.Guid, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetAvailableAsync
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 604
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nReturns an available app\n"
+  example: []
+  syntax:
+    content: public async Task<AppMetadata> GetAvailableAsync(Guid id, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: id
+      type: System.Guid
+      description: The id of the app
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Threading.Tasks.Task{PnP.Framework.ALM.AppMetadata}
+      description: ''
+    content.vb: Public Function GetAvailableAsync(id As Guid, scope As AppCatalogScope = AppCatalogScope.Tenant) As Task(Of AppMetadata)
+  overload: PnP.Framework.ALM.AppManager.GetAvailableAsync*
+  modifiers.csharp:
+  - public
+  - async
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.GetAvailable(System.String,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.GetAvailable(System.String,PnP.Framework.Enums.AppCatalogScope)
+  id: GetAvailable(System.String,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: GetAvailable(String, AppCatalogScope)
+  nameWithType: AppManager.GetAvailable(String, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.GetAvailable(System.String, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetAvailable
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 617
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nReturns an available app\n"
+  example: []
+  syntax:
+    content: public AppMetadata GetAvailable(string title, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: title
+      type: System.String
+      description: The title of the app.
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: PnP.Framework.ALM.AppMetadata
+      description: ''
+    content.vb: Public Function GetAvailable(title As String, scope As AppCatalogScope = AppCatalogScope.Tenant) As AppMetadata
+  overload: PnP.Framework.ALM.AppManager.GetAvailable*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.ALM.AppManager.GetAvailableAsync(System.String,PnP.Framework.Enums.AppCatalogScope)
+  commentId: M:PnP.Framework.ALM.AppManager.GetAvailableAsync(System.String,PnP.Framework.Enums.AppCatalogScope)
+  id: GetAvailableAsync(System.String,PnP.Framework.Enums.AppCatalogScope)
+  parent: PnP.Framework.ALM.AppManager
+  langs:
+  - csharp
+  - vb
+  name: GetAvailableAsync(String, AppCatalogScope)
+  nameWithType: AppManager.GetAvailableAsync(String, AppCatalogScope)
+  fullName: PnP.Framework.ALM.AppManager.GetAvailableAsync(System.String, PnP.Framework.Enums.AppCatalogScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/ALM/AppManager.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetAvailableAsync
+    path: ../src/lib/PnP.Framework/ALM/AppManager.cs
+    startLine: 628
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.ALM
+  summary: "\nReturns an avialable app\n"
+  example: []
+  syntax:
+    content: public async Task<AppMetadata> GetAvailableAsync(string title, AppCatalogScope scope = AppCatalogScope.Tenant)
+    parameters:
+    - id: title
+      type: System.String
+      description: The title of the app.
+    - id: scope
+      type: PnP.Framework.Enums.AppCatalogScope
+      description: Specifies the app catalog to work with. Defaults to Tenant
+    return:
+      type: System.Threading.Tasks.Task{PnP.Framework.ALM.AppMetadata}
+      description: ''
+    content.vb: Public Function GetAvailableAsync(title As String, scope As AppCatalogScope = AppCatalogScope.Tenant) As Task(Of AppMetadata)
+  overload: PnP.Framework.ALM.AppManager.GetAvailableAsync*
+  modifiers.csharp:
+  - public
+  - async
+  modifiers.vb:
+  - Public
+references:
+- uid: PnP.Framework.ALM
+  commentId: N:PnP.Framework.ALM
+  name: PnP.Framework.ALM
+  nameWithType: PnP.Framework.ALM
+  fullName: PnP.Framework.ALM
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.ALM.AppManager.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<AppManager>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<AppManager>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.ALM.AppManager>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of AppManager)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.ALM.AppManager)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of AppManager)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<AppManager>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<AppManager>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.ALM.AppManager>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of AppManager)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of AppManager)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.ALM.AppManager)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.ALM.AppManager.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.ALM.AppManager,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<AppManager, T>(Expression<Func<AppManager, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<AppManager, T>(Expression<Func<AppManager, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.ALM.AppManager, T>(System.Linq.Expressions.Expression<System.Func<PnP.Framework.ALM.AppManager, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of AppManager, T)(Expression(Of Func(Of AppManager, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.ALM.AppManager, T)(System.Linq.Expressions.Expression(Of System.Func(Of PnP.Framework.ALM.AppManager, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of AppManager, T)(Expression(Of Func(Of AppManager, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<AppManager, T>
+    nameWithType: ObjectExtensions.Set<AppManager, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.ALM.AppManager, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.ALM.AppManager
+    name: AppManager
+    nameWithType: AppManager
+    fullName: PnP.Framework.ALM.AppManager
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of AppManager, T)
+    nameWithType: ObjectExtensions.Set(Of AppManager, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.ALM.AppManager, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.ALM.AppManager
+    name: AppManager
+    nameWithType: AppManager
+    fullName: PnP.Framework.ALM.AppManager
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: PnP.Framework.ALM.AppManager.#ctor*
+  commentId: Overload:PnP.Framework.ALM.AppManager.#ctor
+  name: AppManager
+  nameWithType: AppManager.AppManager
+  fullName: PnP.Framework.ALM.AppManager.AppManager
+- uid: Microsoft.SharePoint.Client.ClientContext
+  commentId: T:Microsoft.SharePoint.Client.ClientContext
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: ClientContext
+  nameWithType: ClientContext
+  fullName: Microsoft.SharePoint.Client.ClientContext
+- uid: Microsoft.SharePoint.Client
+  commentId: N:Microsoft.SharePoint.Client
+  name: Microsoft.SharePoint.Client
+  nameWithType: Microsoft.SharePoint.Client
+  fullName: Microsoft.SharePoint.Client
+- uid: PnP.Framework.ALM.AppManager.Add*
+  commentId: Overload:PnP.Framework.ALM.AppManager.Add
+  name: Add
+  nameWithType: AppManager.Add
+  fullName: PnP.Framework.ALM.AppManager.Add
+- uid: System.Byte[]
+  isExternal: true
+  name: Byte[]
+  nameWithType: Byte[]
+  fullName: System.Byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: System.Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: Byte
+    nameWithType: Byte
+    fullName: System.Byte
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    nameWithType: Byte
+    fullName: System.Byte
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: PnP.Framework.Enums.AppCatalogScope
+  commentId: T:PnP.Framework.Enums.AppCatalogScope
+  parent: PnP.Framework.Enums
+  name: AppCatalogScope
+  nameWithType: AppCatalogScope
+  fullName: PnP.Framework.Enums.AppCatalogScope
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: PnP.Framework.ALM.AppMetadata
+  commentId: T:PnP.Framework.ALM.AppMetadata
+  parent: PnP.Framework.ALM
+  name: AppMetadata
+  nameWithType: AppMetadata
+  fullName: PnP.Framework.ALM.AppMetadata
+- uid: PnP.Framework.Enums
+  commentId: N:PnP.Framework.Enums
+  name: PnP.Framework.Enums
+  nameWithType: PnP.Framework.Enums
+  fullName: PnP.Framework.Enums
+- uid: PnP.Framework.ALM.AppManager.AddAsync*
+  commentId: Overload:PnP.Framework.ALM.AppManager.AddAsync
+  name: AddAsync
+  nameWithType: AppManager.AddAsync
+  fullName: PnP.Framework.ALM.AppManager.AddAsync
+- uid: System.Threading.Tasks.Task{PnP.Framework.ALM.AppMetadata}
+  commentId: T:System.Threading.Tasks.Task{PnP.Framework.ALM.AppMetadata}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<AppMetadata>
+  nameWithType: Task<AppMetadata>
+  fullName: System.Threading.Tasks.Task<PnP.Framework.ALM.AppMetadata>
+  nameWithType.vb: Task(Of AppMetadata)
+  fullName.vb: System.Threading.Tasks.Task(Of PnP.Framework.ALM.AppMetadata)
+  name.vb: Task(Of AppMetadata)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.ALM.AppMetadata
+    name: AppMetadata
+    nameWithType: AppMetadata
+    fullName: PnP.Framework.ALM.AppMetadata
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.ALM.AppMetadata
+    name: AppMetadata
+    nameWithType: AppMetadata
+    fullName: PnP.Framework.ALM.AppMetadata
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+- uid: PnP.Framework.ALM.AppManager.Install*
+  commentId: Overload:PnP.Framework.ALM.AppManager.Install
+  name: Install
+  nameWithType: AppManager.Install
+  fullName: PnP.Framework.ALM.AppManager.Install
+- uid: PnP.Framework.ALM.AppManager.InstallAsync*
+  commentId: Overload:PnP.Framework.ALM.AppManager.InstallAsync
+  name: InstallAsync
+  nameWithType: AppManager.InstallAsync
+  fullName: PnP.Framework.ALM.AppManager.InstallAsync
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<Boolean>
+  nameWithType: Task<Boolean>
+  fullName: System.Threading.Tasks.Task<System.Boolean>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of System.Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: PnP.Framework.ALM.AppManager.Uninstall*
+  commentId: Overload:PnP.Framework.ALM.AppManager.Uninstall
+  name: Uninstall
+  nameWithType: AppManager.Uninstall
+  fullName: PnP.Framework.ALM.AppManager.Uninstall
+- uid: PnP.Framework.ALM.AppManager.UninstallAsync*
+  commentId: Overload:PnP.Framework.ALM.AppManager.UninstallAsync
+  name: UninstallAsync
+  nameWithType: AppManager.UninstallAsync
+  fullName: PnP.Framework.ALM.AppManager.UninstallAsync
+- uid: PnP.Framework.ALM.AppManager.Upgrade*
+  commentId: Overload:PnP.Framework.ALM.AppManager.Upgrade
+  name: Upgrade
+  nameWithType: AppManager.Upgrade
+  fullName: PnP.Framework.ALM.AppManager.Upgrade
+- uid: PnP.Framework.ALM.AppManager.UpgradeAsync*
+  commentId: Overload:PnP.Framework.ALM.AppManager.UpgradeAsync
+  name: UpgradeAsync
+  nameWithType: AppManager.UpgradeAsync
+  fullName: PnP.Framework.ALM.AppManager.UpgradeAsync
+- uid: PnP.Framework.ALM.AppManager.Deploy*
+  commentId: Overload:PnP.Framework.ALM.AppManager.Deploy
+  name: Deploy
+  nameWithType: AppManager.Deploy
+  fullName: PnP.Framework.ALM.AppManager.Deploy
+- uid: PnP.Framework.ALM.AppManager.DeployAsync*
+  commentId: Overload:PnP.Framework.ALM.AppManager.DeployAsync
+  name: DeployAsync
+  nameWithType: AppManager.DeployAsync
+  fullName: PnP.Framework.ALM.AppManager.DeployAsync
+- uid: PnP.Framework.ALM.AppManager.Retract*
+  commentId: Overload:PnP.Framework.ALM.AppManager.Retract
+  name: Retract
+  nameWithType: AppManager.Retract
+  fullName: PnP.Framework.ALM.AppManager.Retract
+- uid: PnP.Framework.ALM.AppManager.RetractAsync*
+  commentId: Overload:PnP.Framework.ALM.AppManager.RetractAsync
+  name: RetractAsync
+  nameWithType: AppManager.RetractAsync
+  fullName: PnP.Framework.ALM.AppManager.RetractAsync
+- uid: PnP.Framework.ALM.AppManager.Remove*
+  commentId: Overload:PnP.Framework.ALM.AppManager.Remove
+  name: Remove
+  nameWithType: AppManager.Remove
+  fullName: PnP.Framework.ALM.AppManager.Remove
+- uid: PnP.Framework.ALM.AppManager.RemoveAsync*
+  commentId: Overload:PnP.Framework.ALM.AppManager.RemoveAsync
+  name: RemoveAsync
+  nameWithType: AppManager.RemoveAsync
+  fullName: PnP.Framework.ALM.AppManager.RemoveAsync
+- uid: PnP.Framework.ALM.AppManager.SyncToTeamsAsync*
+  commentId: Overload:PnP.Framework.ALM.AppManager.SyncToTeamsAsync
+  name: SyncToTeamsAsync
+  nameWithType: AppManager.SyncToTeamsAsync
+  fullName: PnP.Framework.ALM.AppManager.SyncToTeamsAsync
+- uid: PnP.Framework.ALM.AppManager.SyncToTeams*
+  commentId: Overload:PnP.Framework.ALM.AppManager.SyncToTeams
+  name: SyncToTeams
+  nameWithType: AppManager.SyncToTeams
+  fullName: PnP.Framework.ALM.AppManager.SyncToTeams
+- uid: PnP.Framework.ALM.AppManager.GetAvailable*
+  commentId: Overload:PnP.Framework.ALM.AppManager.GetAvailable
+  name: GetAvailable
+  nameWithType: AppManager.GetAvailable
+  fullName: PnP.Framework.ALM.AppManager.GetAvailable
+- uid: System.Collections.Generic.List{PnP.Framework.ALM.AppMetadata}
+  commentId: T:System.Collections.Generic.List{PnP.Framework.ALM.AppMetadata}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<AppMetadata>
+  nameWithType: List<AppMetadata>
+  fullName: System.Collections.Generic.List<PnP.Framework.ALM.AppMetadata>
+  nameWithType.vb: List(Of AppMetadata)
+  fullName.vb: System.Collections.Generic.List(Of PnP.Framework.ALM.AppMetadata)
+  name.vb: List(Of AppMetadata)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.ALM.AppMetadata
+    name: AppMetadata
+    nameWithType: AppMetadata
+    fullName: PnP.Framework.ALM.AppMetadata
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.ALM.AppMetadata
+    name: AppMetadata
+    nameWithType: AppMetadata
+    fullName: PnP.Framework.ALM.AppMetadata
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: PnP.Framework.ALM.AppManager.GetAvailableAsync*
+  commentId: Overload:PnP.Framework.ALM.AppManager.GetAvailableAsync
+  name: GetAvailableAsync
+  nameWithType: AppManager.GetAvailableAsync
+  fullName: PnP.Framework.ALM.AppManager.GetAvailableAsync
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.List{PnP.Framework.ALM.AppMetadata}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.List{PnP.Framework.ALM.AppMetadata}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<List<AppMetadata>>
+  nameWithType: Task<List<AppMetadata>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.List<PnP.Framework.ALM.AppMetadata>>
+  nameWithType.vb: Task(Of List(Of AppMetadata))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of PnP.Framework.ALM.AppMetadata))
+  name.vb: Task(Of List(Of AppMetadata))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.ALM.AppMetadata
+    name: AppMetadata
+    nameWithType: AppMetadata
+    fullName: PnP.Framework.ALM.AppMetadata
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.ALM.AppMetadata
+    name: AppMetadata
+    nameWithType: AppMetadata
+    fullName: PnP.Framework.ALM.AppMetadata
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )

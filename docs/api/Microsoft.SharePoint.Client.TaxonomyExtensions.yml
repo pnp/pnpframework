@@ -1,0 +1,3278 @@
+### YamlMime:ManagedReference
+items:
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions
+  commentId: T:Microsoft.SharePoint.Client.TaxonomyExtensions
+  id: TaxonomyExtensions
+  parent: Microsoft.SharePoint.Client
+  children:
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.AddTermToTermset(Microsoft.SharePoint.Client.Site,System.Guid,System.String)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.AddTermToTermset(Microsoft.SharePoint.Client.Site,System.Guid,System.String,System.Guid)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTaxonomyField(Microsoft.SharePoint.Client.List,PnP.Framework.Entities.TaxonomyFieldCreationInformation)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTaxonomyField(Microsoft.SharePoint.Client.Web,PnP.Framework.Entities.TaxonomyFieldCreationInformation)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTermGroup(Microsoft.SharePoint.Client.Taxonomy.TermStore,System.String,System.Guid,System.String)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.DenormalizeName(System.String)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureLabel(Microsoft.SharePoint.Client.Taxonomy.Term,System.Int32,System.String,System.Boolean)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureTermGroup(Microsoft.SharePoint.Client.Site,System.String,System.Guid,System.String)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureTermSet(Microsoft.SharePoint.Client.Taxonomy.TermGroup,System.String,System.Guid,System.Nullable{System.Int32},System.String,System.Nullable{System.Boolean},System.String,System.String)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.ExportAllTerms(Microsoft.SharePoint.Client.Site,System.Boolean,System.String)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.ExportTermSet(Microsoft.SharePoint.Client.Site,System.Guid,System.Boolean,Microsoft.SharePoint.Client.Taxonomy.TermStore,System.String,System.Int32)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.ExportTermSet(Microsoft.SharePoint.Client.Site,System.Guid,System.Boolean,System.String,System.Int32)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.GetDefaultKeywordsTermStore(Microsoft.SharePoint.Client.Site)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.GetDefaultSiteCollectionTermStore(Microsoft.SharePoint.Client.Site)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.GetTaxonomyItemByPath(Microsoft.SharePoint.Client.Site,System.String,System.String)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.GetTaxonomySession(Microsoft.SharePoint.Client.Site)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermByName(Microsoft.SharePoint.Client.Site,System.Guid,System.String)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupById(Microsoft.SharePoint.Client.Site,System.Guid)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupByName(Microsoft.SharePoint.Client.Site,System.String)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupByName(Microsoft.SharePoint.Client.Taxonomy.TermStore,System.String)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermSetsByName(Microsoft.SharePoint.Client.Site,System.String,System.Int32)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.GetWssIdForTerm(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Taxonomy.Term)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTerms(Microsoft.SharePoint.Client.Site,System.String[],System.Int32,Microsoft.SharePoint.Client.Taxonomy.TermStore,System.String,System.Boolean)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTerms(Microsoft.SharePoint.Client.Site,System.String[],System.Int32,System.String,System.Boolean)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTermSet(Microsoft.SharePoint.Client.Taxonomy.TermGroup,System.IO.Stream,System.Guid,System.Boolean,System.Nullable{System.Boolean},System.String,System.String)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTermSet(Microsoft.SharePoint.Client.Taxonomy.TermGroup,System.String,System.Guid,System.Boolean,System.Nullable{System.Boolean},System.String,System.String)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.NormalizeName(System.String)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.RemoveTaxonomyFieldById(Microsoft.SharePoint.Client.Web,System.Guid)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.RemoveTaxonomyFieldByInternalName(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.SetFieldValueByLabelGuidPair(Microsoft.SharePoint.Client.Taxonomy.TaxonomyField,Microsoft.SharePoint.Client.ListItem,System.String,System.Boolean)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldDefaultValue(Microsoft.SharePoint.Client.Field,Microsoft.SharePoint.Client.Taxonomy.TaxonomyItem,System.String,System.Boolean)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValue(Microsoft.SharePoint.Client.ListItem,System.Guid,System.String,System.Guid,System.Boolean)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValueByTermPath(Microsoft.SharePoint.Client.ListItem,System.String,System.Guid,System.Boolean)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValues(Microsoft.SharePoint.Client.ListItem,System.Guid,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.Guid,System.String}},System.Boolean)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.TaxonomyGuidLabelDelimiter
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.List,Microsoft.SharePoint.Client.Field,Microsoft.SharePoint.Client.Taxonomy.Term,System.Boolean)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.List,Microsoft.SharePoint.Client.Field,Microsoft.SharePoint.Client.Taxonomy.TermSet,System.Boolean)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.List,Microsoft.SharePoint.Client.Field,System.String,System.String,System.Boolean)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.List,System.Guid,System.String,System.String,System.Boolean)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Field,Microsoft.SharePoint.Client.Taxonomy.Term,System.Boolean)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Field,Microsoft.SharePoint.Client.Taxonomy.TermSet,System.Boolean)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Field,System.String,System.String,System.Boolean)
+  - Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.Web,System.Guid,System.String,System.String,System.Boolean)
+  langs:
+  - csharp
+  - vb
+  name: TaxonomyExtensions
+  nameWithType: TaxonomyExtensions
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TaxonomyExtensions
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 18
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nClass for taxonomy extension methods\n"
+  example: []
+  syntax:
+    content: >-
+      [Guid("8A8AEA7A-7C25-4138-9C83-2584028868C5")]
+
+      public static class TaxonomyExtensions
+    content.vb: >-
+      <Guid("8A8AEA7A-7C25-4138-9C83-2584028868C5")>
+
+      Public Module TaxonomyExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: System.Runtime.InteropServices.GuidAttribute
+    ctor: System.Runtime.InteropServices.GuidAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 8A8AEA7A-7C25-4138-9C83-2584028868C5
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.TaxonomyGuidLabelDelimiter
+  commentId: F:Microsoft.SharePoint.Client.TaxonomyExtensions.TaxonomyGuidLabelDelimiter
+  id: TaxonomyGuidLabelDelimiter
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: TaxonomyGuidLabelDelimiter
+  nameWithType: TaxonomyExtensions.TaxonomyGuidLabelDelimiter
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.TaxonomyGuidLabelDelimiter
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TaxonomyGuidLabelDelimiter
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 31
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nThe default Taxonomy Guid Label Delimiter\n"
+  example: []
+  syntax:
+    content: public const string TaxonomyGuidLabelDelimiter = "|"
+    return:
+      type: System.String
+    content.vb: Public Const TaxonomyGuidLabelDelimiter As String = "|"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTermGroup(Microsoft.SharePoint.Client.Taxonomy.TermStore,System.String,System.Guid,System.String)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTermGroup(Microsoft.SharePoint.Client.Taxonomy.TermStore,System.String,System.Guid,System.String)
+  id: CreateTermGroup(Microsoft.SharePoint.Client.Taxonomy.TermStore,System.String,System.Guid,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: CreateTermGroup(TermStore, String, Guid, String)
+  nameWithType: TaxonomyExtensions.CreateTermGroup(TermStore, String, Guid, String)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTermGroup(Microsoft.SharePoint.Client.Taxonomy.TermStore, System.String, System.Guid, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateTermGroup
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 41
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCreates a new term group, in the specified term store.\n"
+  example: []
+  syntax:
+    content: public static TermGroup CreateTermGroup(this TermStore termStore, string groupName, Guid groupId = default(Guid), string groupDescription = null)
+    parameters:
+    - id: termStore
+      type: Microsoft.SharePoint.Client.Taxonomy.TermStore
+      description: the term store to use
+    - id: groupName
+      type: System.String
+      description: Name of the term group
+    - id: groupId
+      type: System.Guid
+      description: (Optional) ID of the group; if not provided a random GUID is used
+    - id: groupDescription
+      type: System.String
+      description: (Optional) Description of the term group
+    return:
+      type: Microsoft.SharePoint.Client.Taxonomy.TermGroup
+      description: The created term group
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function CreateTermGroup(termStore As TermStore, groupName As String, groupId As Guid = Nothing, groupDescription As String = Nothing) As TermGroup
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTermGroup*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureTermGroup(Microsoft.SharePoint.Client.Site,System.String,System.Guid,System.String)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureTermGroup(Microsoft.SharePoint.Client.Site,System.String,System.Guid,System.String)
+  id: EnsureTermGroup(Microsoft.SharePoint.Client.Site,System.String,System.Guid,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: EnsureTermGroup(Site, String, Guid, String)
+  nameWithType: TaxonomyExtensions.EnsureTermGroup(Site, String, Guid, String)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureTermGroup(Microsoft.SharePoint.Client.Site, System.String, System.Guid, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnsureTermGroup
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 100
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nEnsures the named group exists, returning a reference to the group, and creating or updating as necessary.\n"
+  example: []
+  syntax:
+    content: public static TermGroup EnsureTermGroup(this Site site, string groupName, Guid groupId = default(Guid), string groupDescription = null)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: Site connected to the term store to use
+    - id: groupName
+      type: System.String
+      description: Name of the term group
+    - id: groupId
+      type: System.Guid
+      description: (Optional) ID of the group; if not provided the parameter is ignored, a random GUID is used if necessary to create the group, otherwise if the ID differs a warning is logged
+    - id: groupDescription
+      type: System.String
+      description: (Optional) Description of the term group; if null or not provided the parameter is ignored, otherwise the group is updated as necessary to match the description; passing an empty string will clear the description
+    return:
+      type: Microsoft.SharePoint.Client.Taxonomy.TermGroup
+      description: The required term group
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function EnsureTermGroup(site As Site, groupName As String, groupId As Guid = Nothing, groupDescription As String = Nothing) As TermGroup
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureTermGroup*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureTermSet(Microsoft.SharePoint.Client.Taxonomy.TermGroup,System.String,System.Guid,System.Nullable{System.Int32},System.String,System.Nullable{System.Boolean},System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureTermSet(Microsoft.SharePoint.Client.Taxonomy.TermGroup,System.String,System.Guid,System.Nullable{System.Int32},System.String,System.Nullable{System.Boolean},System.String,System.String)
+  id: EnsureTermSet(Microsoft.SharePoint.Client.Taxonomy.TermGroup,System.String,System.Guid,System.Nullable{System.Int32},System.String,System.Nullable{System.Boolean},System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: EnsureTermSet(TermGroup, String, Guid, Nullable<Int32>, String, Nullable<Boolean>, String, String)
+  nameWithType: TaxonomyExtensions.EnsureTermSet(TermGroup, String, Guid, Nullable<Int32>, String, Nullable<Boolean>, String, String)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureTermSet(Microsoft.SharePoint.Client.Taxonomy.TermGroup, System.String, System.Guid, System.Nullable<System.Int32>, System.String, System.Nullable<System.Boolean>, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnsureTermSet
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 186
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nEnsures the named term set exists, returning a reference to the set, and creating or updating as necessary.\n"
+  example: []
+  syntax:
+    content: public static TermSet EnsureTermSet(this TermGroup parentGroup, string termSetName, Guid termSetId = default(Guid), int? lcid = null, string description = null, bool? isOpen = null, string termSetContact = null, string termSetOwner = null)
+    parameters:
+    - id: parentGroup
+      type: Microsoft.SharePoint.Client.Taxonomy.TermGroup
+      description: Group to check or create the term set in
+    - id: termSetName
+      type: System.String
+      description: Name of the term set
+    - id: termSetId
+      type: System.Guid
+      description: (Optional) ID of the term set; if not provided the parameter is ignored, a random GUID is used if necessary to create the term set, otherwise if the ID differs a warning is logged
+    - id: lcid
+      type: System.Nullable{System.Int32}
+      description: (Optional) Default language of the term set; if not provided the default of the associate term store is used
+    - id: description
+      type: System.String
+      description: (Optional) Description of the term set; if null or not provided the parameter is ignored, otherwise the term set is updated as necessary to match the description; passing an empty string will clear the description
+    - id: isOpen
+      type: System.Nullable{System.Boolean}
+      description: (Optional) Whether the term store is open for new term creation or not
+    - id: termSetContact
+      type: System.String
+      description: (Optional) E-mail address for term suggestions and feedback
+    - id: termSetOwner
+      type: System.String
+      description: Owner of termset
+    return:
+      type: Microsoft.SharePoint.Client.Taxonomy.TermSet
+      description: The required term set
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function EnsureTermSet(parentGroup As TermGroup, termSetName As String, termSetId As Guid = Nothing, lcid As Integer? = Nothing, description As String = Nothing, isOpen As Boolean? = Nothing, termSetContact As String = Nothing, termSetOwner As String = Nothing) As TermSet
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureTermSet*
+  nameWithType.vb: TaxonomyExtensions.EnsureTermSet(TermGroup, String, Guid, Nullable(Of Int32), String, Nullable(Of Boolean), String, String)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureTermSet(Microsoft.SharePoint.Client.Taxonomy.TermGroup, System.String, System.Guid, System.Nullable(Of System.Int32), System.String, System.Nullable(Of System.Boolean), System.String, System.String)
+  name.vb: EnsureTermSet(TermGroup, String, Guid, Nullable(Of Int32), String, Nullable(Of Boolean), String, String)
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTaxonomySession(Microsoft.SharePoint.Client.Site)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.GetTaxonomySession(Microsoft.SharePoint.Client.Site)
+  id: GetTaxonomySession(Microsoft.SharePoint.Client.Site)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetTaxonomySession(Site)
+  nameWithType: TaxonomyExtensions.GetTaxonomySession(Site)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTaxonomySession(Microsoft.SharePoint.Client.Site)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetTaxonomySession
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 320
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns a new taxonomy session for the current site\n"
+  example: []
+  syntax:
+    content: public static TaxonomySession GetTaxonomySession(this Site site)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: Site to be processed
+    return:
+      type: Microsoft.SharePoint.Client.Taxonomy.TaxonomySession
+      description: Returns TaxonomySession object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetTaxonomySession(site As Site) As TaxonomySession
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTaxonomySession*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.GetDefaultKeywordsTermStore(Microsoft.SharePoint.Client.Site)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.GetDefaultKeywordsTermStore(Microsoft.SharePoint.Client.Site)
+  id: GetDefaultKeywordsTermStore(Microsoft.SharePoint.Client.Site)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetDefaultKeywordsTermStore(Site)
+  nameWithType: TaxonomyExtensions.GetDefaultKeywordsTermStore(Site)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.GetDefaultKeywordsTermStore(Microsoft.SharePoint.Client.Site)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetDefaultKeywordsTermStore
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 333
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns the default keywords termstore for the current site\n"
+  example: []
+  syntax:
+    content: public static TermStore GetDefaultKeywordsTermStore(this Site site)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: Site to be processed
+    return:
+      type: Microsoft.SharePoint.Client.Taxonomy.TermStore
+      description: Returns TermStore object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetDefaultKeywordsTermStore(site As Site) As TermStore
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.GetDefaultKeywordsTermStore*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.GetDefaultSiteCollectionTermStore(Microsoft.SharePoint.Client.Site)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.GetDefaultSiteCollectionTermStore(Microsoft.SharePoint.Client.Site)
+  id: GetDefaultSiteCollectionTermStore(Microsoft.SharePoint.Client.Site)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetDefaultSiteCollectionTermStore(Site)
+  nameWithType: TaxonomyExtensions.GetDefaultSiteCollectionTermStore(Site)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.GetDefaultSiteCollectionTermStore(Microsoft.SharePoint.Client.Site)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetDefaultSiteCollectionTermStore
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 348
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns the default site collection termstore\n"
+  example: []
+  syntax:
+    content: public static TermStore GetDefaultSiteCollectionTermStore(this Site site)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: Site to be processed
+    return:
+      type: Microsoft.SharePoint.Client.Taxonomy.TermStore
+      description: Returns TermStore object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetDefaultSiteCollectionTermStore(site As Site) As TermStore
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.GetDefaultSiteCollectionTermStore*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermSetsByName(Microsoft.SharePoint.Client.Site,System.String,System.Int32)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermSetsByName(Microsoft.SharePoint.Client.Site,System.String,System.Int32)
+  id: GetTermSetsByName(Microsoft.SharePoint.Client.Site,System.String,System.Int32)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetTermSetsByName(Site, String, Int32)
+  nameWithType: TaxonomyExtensions.GetTermSetsByName(Site, String, Int32)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermSetsByName(Microsoft.SharePoint.Client.Site, System.String, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetTermSetsByName
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 366
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nFinds a termset by name\n"
+  example: []
+  syntax:
+    content: public static TermSetCollection GetTermSetsByName(this Site site, string name, int lcid = 1033)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: The current site
+    - id: name
+      type: System.String
+      description: The name of the termset
+    - id: lcid
+      type: System.Int32
+      description: The locale ID for the termset to return, defaults to 1033
+    return:
+      type: Microsoft.SharePoint.Client.Taxonomy.TermSetCollection
+      description: Returns collection of TermSet
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetTermSetsByName(site As Site, name As String, lcid As Integer = 1033) As TermSetCollection
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermSetsByName*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupByName(Microsoft.SharePoint.Client.Site,System.String)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupByName(Microsoft.SharePoint.Client.Site,System.String)
+  id: GetTermGroupByName(Microsoft.SharePoint.Client.Site,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetTermGroupByName(Site, String)
+  nameWithType: TaxonomyExtensions.GetTermGroupByName(Site, String)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupByName(Microsoft.SharePoint.Client.Site, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetTermGroupByName
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 386
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nFinds a termgroup by name\n"
+  example: []
+  syntax:
+    content: public static TermGroup GetTermGroupByName(this Site site, string name)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: The current site
+    - id: name
+      type: System.String
+      description: The name of the termgroup
+    return:
+      type: Microsoft.SharePoint.Client.Taxonomy.TermGroup
+      description: Returns TermGroup object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetTermGroupByName(site As Site, name As String) As TermGroup
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupByName*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupByName(Microsoft.SharePoint.Client.Taxonomy.TermStore,System.String)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupByName(Microsoft.SharePoint.Client.Taxonomy.TermStore,System.String)
+  id: GetTermGroupByName(Microsoft.SharePoint.Client.Taxonomy.TermStore,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetTermGroupByName(TermStore, String)
+  nameWithType: TaxonomyExtensions.GetTermGroupByName(TermStore, String)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupByName(Microsoft.SharePoint.Client.Taxonomy.TermStore, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetTermGroupByName
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 404
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets the named term group, if it exists in the term store.\n"
+  example: []
+  syntax:
+    content: public static TermGroup GetTermGroupByName(this TermStore termStore, string groupName)
+    parameters:
+    - id: termStore
+      type: Microsoft.SharePoint.Client.Taxonomy.TermStore
+      description: The term store to use
+    - id: groupName
+      type: System.String
+      description: Name of the term group
+    return:
+      type: Microsoft.SharePoint.Client.Taxonomy.TermGroup
+      description: The requested term group, or null if it does not exist
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetTermGroupByName(termStore As TermStore, groupName As String) As TermGroup
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupByName*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupById(Microsoft.SharePoint.Client.Site,System.Guid)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupById(Microsoft.SharePoint.Client.Site,System.Guid)
+  id: GetTermGroupById(Microsoft.SharePoint.Client.Site,System.Guid)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetTermGroupById(Site, Guid)
+  nameWithType: TaxonomyExtensions.GetTermGroupById(Site, Guid)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupById(Microsoft.SharePoint.Client.Site, System.Guid)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetTermGroupById
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 425
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nFinds a termgroup by its ID\n"
+  example: []
+  syntax:
+    content: public static TermGroup GetTermGroupById(this Site site, Guid termGroupId)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: The current site
+    - id: termGroupId
+      type: System.Guid
+      description: The ID of the termgroup
+    return:
+      type: Microsoft.SharePoint.Client.Taxonomy.TermGroup
+      description: Returns TermGroup object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetTermGroupById(site As Site, termGroupId As Guid) As TermGroup
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupById*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermByName(Microsoft.SharePoint.Client.Site,System.Guid,System.String)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermByName(Microsoft.SharePoint.Client.Site,System.Guid,System.String)
+  id: GetTermByName(Microsoft.SharePoint.Client.Site,System.Guid,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetTermByName(Site, Guid, String)
+  nameWithType: TaxonomyExtensions.GetTermByName(Site, Guid, String)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermByName(Microsoft.SharePoint.Client.Site, System.Guid, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetTermByName
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 446
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets a Taxonomy Term by Name\n"
+  example: []
+  syntax:
+    content: public static Term GetTermByName(this Site site, Guid termSetId, string term)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: The site to process
+    - id: termSetId
+      type: System.Guid
+      description: Guid of a TermSet
+    - id: term
+      type: System.String
+      description: Term name
+    return:
+      type: Microsoft.SharePoint.Client.Taxonomy.Term
+      description: Returns Term object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetTermByName(site As Site, termSetId As Guid, term As String) As Term
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermByName*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.AddTermToTermset(Microsoft.SharePoint.Client.Site,System.Guid,System.String)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.AddTermToTermset(Microsoft.SharePoint.Client.Site,System.Guid,System.String)
+  id: AddTermToTermset(Microsoft.SharePoint.Client.Site,System.Guid,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddTermToTermset(Site, Guid, String)
+  nameWithType: TaxonomyExtensions.AddTermToTermset(Site, Guid, String)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.AddTermToTermset(Microsoft.SharePoint.Client.Site, System.Guid, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddTermToTermset
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 491
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdds a term to a given termset\n"
+  example: []
+  syntax:
+    content: public static Term AddTermToTermset(this Site site, Guid termSetId, string term)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: The current site
+    - id: termSetId
+      type: System.Guid
+      description: The ID of the termset
+    - id: term
+      type: System.String
+      description: The label of the new term to create
+    return:
+      type: Microsoft.SharePoint.Client.Taxonomy.Term
+      description: Returns Term object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddTermToTermset(site As Site, termSetId As Guid, term As String) As Term
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.AddTermToTermset*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.AddTermToTermset(Microsoft.SharePoint.Client.Site,System.Guid,System.String,System.Guid)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.AddTermToTermset(Microsoft.SharePoint.Client.Site,System.Guid,System.String,System.Guid)
+  id: AddTermToTermset(Microsoft.SharePoint.Client.Site,System.Guid,System.String,System.Guid)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddTermToTermset(Site, Guid, String, Guid)
+  nameWithType: TaxonomyExtensions.AddTermToTermset(Site, Guid, String, Guid)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.AddTermToTermset(Microsoft.SharePoint.Client.Site, System.Guid, System.String, System.Guid)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddTermToTermset
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 504
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdds a term to a given termset\n"
+  example: []
+  syntax:
+    content: public static Term AddTermToTermset(this Site site, Guid termSetId, string term, Guid termId)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: The current site
+    - id: termSetId
+      type: System.Guid
+      description: The ID of the termset
+    - id: term
+      type: System.String
+      description: The label of the new term to create
+    - id: termId
+      type: System.Guid
+      description: The ID of the term to create
+    return:
+      type: Microsoft.SharePoint.Client.Taxonomy.Term
+      description: Returns Term object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddTermToTermset(site As Site, termSetId As Guid, term As String, termId As Guid) As Term
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.AddTermToTermset*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTerms(Microsoft.SharePoint.Client.Site,System.String[],System.Int32,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTerms(Microsoft.SharePoint.Client.Site,System.String[],System.Int32,System.String,System.Boolean)
+  id: ImportTerms(Microsoft.SharePoint.Client.Site,System.String[],System.Int32,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: ImportTerms(Site, String[], Int32, String, Boolean)
+  nameWithType: TaxonomyExtensions.ImportTerms(Site, String[], Int32, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTerms(Microsoft.SharePoint.Client.Site, System.String[], System.Int32, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ImportTerms
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 534
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nImports an array of | delimited strings into the deafult site collection termstore. Specify strings in this format:\nTermGroup|TermSet|Term\n\nE.g. &quot;Locations|Nordics|Sweden&quot;\n\n"
+  example: []
+  syntax:
+    content: public static void ImportTerms(this Site site, string[] termLines, int lcid, string delimiter = "|", bool synchronizeDeletions = false)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: The current site
+    - id: termLines
+      type: System.String[]
+      description: Array of TermLines
+    - id: lcid
+      type: System.Int32
+      description: Locale identifier (LCID) for the language
+    - id: delimiter
+      type: System.String
+      description: delimeter which seperates terms
+    - id: synchronizeDeletions
+      type: System.Boolean
+      description: Remove tags that are not present in the import
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub ImportTerms(site As Site, termLines As String(), lcid As Integer, delimiter As String = "|", synchronizeDeletions As Boolean = False)
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTerms*
+  nameWithType.vb: TaxonomyExtensions.ImportTerms(Site, String(), Int32, String, Boolean)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTerms(Microsoft.SharePoint.Client.Site, System.String(), System.Int32, System.String, System.Boolean)
+  name.vb: ImportTerms(Site, String(), Int32, String, Boolean)
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTerms(Microsoft.SharePoint.Client.Site,System.String[],System.Int32,Microsoft.SharePoint.Client.Taxonomy.TermStore,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTerms(Microsoft.SharePoint.Client.Site,System.String[],System.Int32,Microsoft.SharePoint.Client.Taxonomy.TermStore,System.String,System.Boolean)
+  id: ImportTerms(Microsoft.SharePoint.Client.Site,System.String[],System.Int32,Microsoft.SharePoint.Client.Taxonomy.TermStore,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: ImportTerms(Site, String[], Int32, TermStore, String, Boolean)
+  nameWithType: TaxonomyExtensions.ImportTerms(Site, String[], Int32, TermStore, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTerms(Microsoft.SharePoint.Client.Site, System.String[], System.Int32, Microsoft.SharePoint.Client.Taxonomy.TermStore, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ImportTerms
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 559
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nImports an array of | delimited strings into the deafult site collection termstore. Specify strings in this format:\nTermGroup|TermSet|Term\n\nE.g. &quot;Locations|Nordics|Sweden&quot;\n\n"
+  example: []
+  syntax:
+    content: public static void ImportTerms(this Site site, string[] termLines, int lcid, TermStore termStore, string delimiter = "|", bool synchronizeDeletions = false)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: The current site
+    - id: termLines
+      type: System.String[]
+      description: Array of TermLines
+    - id: lcid
+      type: System.Int32
+      description: Locale identifier (LCID) for the language
+    - id: termStore
+      type: Microsoft.SharePoint.Client.Taxonomy.TermStore
+      description: The termstore to import the terms into
+    - id: delimiter
+      type: System.String
+      description: delimeter which seperates terms
+    - id: synchronizeDeletions
+      type: System.Boolean
+      description: Remove tags that are not present in the import
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub ImportTerms(site As Site, termLines As String(), lcid As Integer, termStore As TermStore, delimiter As String = "|", synchronizeDeletions As Boolean = False)
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTerms*
+  nameWithType.vb: TaxonomyExtensions.ImportTerms(Site, String(), Int32, TermStore, String, Boolean)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTerms(Microsoft.SharePoint.Client.Site, System.String(), System.Int32, Microsoft.SharePoint.Client.Taxonomy.TermStore, System.String, System.Boolean)
+  name.vb: ImportTerms(Site, String(), Int32, TermStore, String, Boolean)
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTermSet(Microsoft.SharePoint.Client.Taxonomy.TermGroup,System.String,System.Guid,System.Boolean,System.Nullable{System.Boolean},System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTermSet(Microsoft.SharePoint.Client.Taxonomy.TermGroup,System.String,System.Guid,System.Boolean,System.Nullable{System.Boolean},System.String,System.String)
+  id: ImportTermSet(Microsoft.SharePoint.Client.Taxonomy.TermGroup,System.String,System.Guid,System.Boolean,System.Nullable{System.Boolean},System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: ImportTermSet(TermGroup, String, Guid, Boolean, Nullable<Boolean>, String, String)
+  nameWithType: TaxonomyExtensions.ImportTermSet(TermGroup, String, Guid, Boolean, Nullable<Boolean>, String, String)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTermSet(Microsoft.SharePoint.Client.Taxonomy.TermGroup, System.String, System.Guid, System.Boolean, System.Nullable<System.Boolean>, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ImportTermSet
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 785
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nImports terms from a term set file, updating with any new terms, in the same format at that used by the web interface import ability.\n"
+  remarks: "\n<p>\nThe format of the file is the same as that used by the import function in the \nweb interface. A sample file can be obtained from the web interface.\n</p>\n<p>\nThis is a CSV file, with the following headings:\n</p>\n<p>\n<pre><code>Term Set Name,Term Set Description,LCID,Available for Tagging,Term Description,Level 1 Term,Level 2 Term,Level 3 Term,Level 4 Term,Level 5 Term,Level 6 Term,Level 7 Term</code></pre>\n</p>\n<p>\nThe first data row must contain the Term Set Name, Term Set Description, and LCID, and should also contain the first term. \n</p>\n<p>\nIt is recommended that a fixed GUID be used as the termSetId, to allow the term set to be easily updated (so do not pass Guid.Empty).\n</p>\n<p>\nIn contrast to the web interface import, this is not a one-off import but runs synchronisation logic allowing updating of an existing Term Set.\nWhen synchronising, any existing terms are matched (with Term Description and Available for Tagging updated as necessary),\nany new terms are added in the correct place in the hierarchy, and (if synchroniseDeletions is set) any terms not in the imported file \nare removed.\n</p>\n<p>\nThe import file also supports an expanded syntax for the Term Set Name and term names (Level 1 Term, Level 2 Term, etc).\nThese columns support values with the format &quot;Name|GUID&quot;, with the name and GUID separated by a pipe character (note that the pipe character is invalid to use within a taxomony item name).\nThis expanded syntax is not required, but can be used to ensure all terms have fixed IDs.\n</p>\n"
+  example: []
+  syntax:
+    content: public static TermSet ImportTermSet(this TermGroup termGroup, string filePath, Guid termSetId = default(Guid), bool synchroniseDeletions = false, bool? termSetIsOpen = null, string termSetContact = null, string termSetOwner = null)
+    parameters:
+    - id: termGroup
+      type: Microsoft.SharePoint.Client.Taxonomy.TermGroup
+      description: Group to create the term set within
+    - id: filePath
+      type: System.String
+      description: Local path to the file to import
+    - id: termSetId
+      type: System.Guid
+      description: GUID to use for the term set; if Guid.Empty is passed then a random GUID is generated and used
+    - id: synchroniseDeletions
+      type: System.Boolean
+      description: (Optional) Whether to also synchronise deletions; that is, remove any terms not in the import file; default is no (false)
+    - id: termSetIsOpen
+      type: System.Nullable{System.Boolean}
+      description: (Optional) Whether the term set should be marked open; if not passed, then the existing setting is not changed
+    - id: termSetContact
+      type: System.String
+      description: (Optional) Contact for the term set; if not provided, the existing setting is retained
+    - id: termSetOwner
+      type: System.String
+      description: (Optional) Owner for the term set; if not provided, the existing setting is retained
+    return:
+      type: Microsoft.SharePoint.Client.Taxonomy.TermSet
+      description: The created, or updated, term set
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ImportTermSet(termGroup As TermGroup, filePath As String, termSetId As Guid = Nothing, synchroniseDeletions As Boolean = False, termSetIsOpen As Boolean? = Nothing, termSetContact As String = Nothing, termSetOwner As String = Nothing) As TermSet
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTermSet*
+  nameWithType.vb: TaxonomyExtensions.ImportTermSet(TermGroup, String, Guid, Boolean, Nullable(Of Boolean), String, String)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTermSet(Microsoft.SharePoint.Client.Taxonomy.TermGroup, System.String, System.Guid, System.Boolean, System.Nullable(Of System.Boolean), System.String, System.String)
+  name.vb: ImportTermSet(TermGroup, String, Guid, Boolean, Nullable(Of Boolean), String, String)
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTermSet(Microsoft.SharePoint.Client.Taxonomy.TermGroup,System.IO.Stream,System.Guid,System.Boolean,System.Nullable{System.Boolean},System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTermSet(Microsoft.SharePoint.Client.Taxonomy.TermGroup,System.IO.Stream,System.Guid,System.Boolean,System.Nullable{System.Boolean},System.String,System.String)
+  id: ImportTermSet(Microsoft.SharePoint.Client.Taxonomy.TermGroup,System.IO.Stream,System.Guid,System.Boolean,System.Nullable{System.Boolean},System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: ImportTermSet(TermGroup, Stream, Guid, Boolean, Nullable<Boolean>, String, String)
+  nameWithType: TaxonomyExtensions.ImportTermSet(TermGroup, Stream, Guid, Boolean, Nullable<Boolean>, String, String)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTermSet(Microsoft.SharePoint.Client.Taxonomy.TermGroup, System.IO.Stream, System.Guid, System.Boolean, System.Nullable<System.Boolean>, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ImportTermSet
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 839
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nImports terms from a term set stream, updating with any new terms, in the same format at that used by the web interface import ability.\n"
+  remarks: "\n<p>\nThe format of the file is the same as that used by the import function in the \nweb interface. A sample file can be obtained from the web interface.\n</p>\n<p>\nThis is a CSV file, with the following headings:\n</p>\n<p>\n<pre><code>Term Set Name,Term Set Description,LCID,Available for Tagging,Term Description,Level 1 Term,Level 2 Term,Level 3 Term,Level 4 Term,Level 5 Term,Level 6 Term,Level 7 Term</code></pre>\n</p>\n<p>\nThe first data row must contain the Term Set Name, Term Set Description, and LCID, and should also contain the first term. \n</p>\n<p>\nIt is recommended that a fixed GUID be used as the termSetId, to allow the term set to be easily updated (so do not pass Guid.Empty).\n</p>\n<p>\nIn contrast to the web interface import, this is not a one-off import but runs synchronisation logic allowing updating of an existing Term Set.\nWhen synchronising, any existing terms are matched (with Term Description and Available for Tagging updated as necessary),\nany new terms are added in the correct place in the hierarchy, and (if synchroniseDeletions is set) any terms not in the imported file \nare removed.\n</p>\n<p>\nThe import file also supports an expanded syntax for the Term Set Name and term names (Level 1 Term, Level 2 Term, etc).\nThese columns support values with the format &quot;Name|GUID&quot;, with the name and GUID separated by a pipe character (note that the pipe character is invalid to use within a taxomony item name).\nThis expanded syntax is not required, but can be used to ensure all terms have fixed IDs.\n</p>\n"
+  example: []
+  syntax:
+    content: public static TermSet ImportTermSet(this TermGroup termGroup, Stream termSetData, Guid termSetId = default(Guid), bool synchroniseDeletions = false, bool? termSetIsOpen = null, string termSetContact = null, string termSetOwner = null)
+    parameters:
+    - id: termGroup
+      type: Microsoft.SharePoint.Client.Taxonomy.TermGroup
+      description: Group to create the term set within
+    - id: termSetData
+      type: System.IO.Stream
+      description: Stream containing the data to import
+    - id: termSetId
+      type: System.Guid
+      description: GUID to use for the term set; if Guid.Empty is passed then a random GUID is generated and used
+    - id: synchroniseDeletions
+      type: System.Boolean
+      description: (Optional) Whether to also synchronise deletions; that is, remove any terms not in the import file; default is no (false)
+    - id: termSetIsOpen
+      type: System.Nullable{System.Boolean}
+      description: (Optional) Whether the term set should be marked open; if not passed, then the existing setting is not changed
+    - id: termSetContact
+      type: System.String
+      description: (Optional) Contact for the term set; if not provided, the existing setting is retained
+    - id: termSetOwner
+      type: System.String
+      description: (Optional) Owner for the term set; if not provided, the existing setting is retained
+    return:
+      type: Microsoft.SharePoint.Client.Taxonomy.TermSet
+      description: The created, or updated, term set
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ImportTermSet(termGroup As TermGroup, termSetData As Stream, termSetId As Guid = Nothing, synchroniseDeletions As Boolean = False, termSetIsOpen As Boolean? = Nothing, termSetContact As String = Nothing, termSetOwner As String = Nothing) As TermSet
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTermSet*
+  nameWithType.vb: TaxonomyExtensions.ImportTermSet(TermGroup, Stream, Guid, Boolean, Nullable(Of Boolean), String, String)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTermSet(Microsoft.SharePoint.Client.Taxonomy.TermGroup, System.IO.Stream, System.Guid, System.Boolean, System.Nullable(Of System.Boolean), System.String, System.String)
+  name.vb: ImportTermSet(TermGroup, Stream, Guid, Boolean, Nullable(Of Boolean), String, String)
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.ExportTermSet(Microsoft.SharePoint.Client.Site,System.Guid,System.Boolean,System.String,System.Int32)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.ExportTermSet(Microsoft.SharePoint.Client.Site,System.Guid,System.Boolean,System.String,System.Int32)
+  id: ExportTermSet(Microsoft.SharePoint.Client.Site,System.Guid,System.Boolean,System.String,System.Int32)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: ExportTermSet(Site, Guid, Boolean, String, Int32)
+  nameWithType: TaxonomyExtensions.ExportTermSet(Site, Guid, Boolean, String, Int32)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.ExportTermSet(Microsoft.SharePoint.Client.Site, System.Guid, System.Boolean, System.String, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ExportTermSet
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 1293
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nExports the full list of terms from all termsets in all termstores.\n"
+  example: []
+  syntax:
+    content: public static List<string> ExportTermSet(this Site site, Guid termSetId, bool includeId, string delimiter = "|", int lcid = 0)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: The site to process
+    - id: termSetId
+      type: System.Guid
+      description: The ID of the termset to export
+    - id: includeId
+      type: System.Boolean
+      description: if true, Ids of the the taxonomy items will be included
+    - id: delimiter
+      type: System.String
+      description: if specified, this delimiter will be used. Notice that IDs will be delimited with ;# from the label
+    - id: lcid
+      type: System.Int32
+      description: if specified, retrieve terms in the specificed language
+    return:
+      type: System.Collections.Generic.List{System.String}
+      description: Returns list of Termset strings
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ExportTermSet(site As Site, termSetId As Guid, includeId As Boolean, delimiter As String = "|", lcid As Integer = 0) As List(Of String)
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.ExportTermSet*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.ExportTermSet(Microsoft.SharePoint.Client.Site,System.Guid,System.Boolean,Microsoft.SharePoint.Client.Taxonomy.TermStore,System.String,System.Int32)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.ExportTermSet(Microsoft.SharePoint.Client.Site,System.Guid,System.Boolean,Microsoft.SharePoint.Client.Taxonomy.TermStore,System.String,System.Int32)
+  id: ExportTermSet(Microsoft.SharePoint.Client.Site,System.Guid,System.Boolean,Microsoft.SharePoint.Client.Taxonomy.TermStore,System.String,System.Int32)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: ExportTermSet(Site, Guid, Boolean, TermStore, String, Int32)
+  nameWithType: TaxonomyExtensions.ExportTermSet(Site, Guid, Boolean, TermStore, String, Int32)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.ExportTermSet(Microsoft.SharePoint.Client.Site, System.Guid, System.Boolean, Microsoft.SharePoint.Client.Taxonomy.TermStore, System.String, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ExportTermSet
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 1310
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nExports the full list of terms from all termsets in all termstores.\n"
+  example: []
+  syntax:
+    content: public static List<string> ExportTermSet(this Site site, Guid termSetId, bool includeId, TermStore termStore, string delimiter = "|", int lcid = 0)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: The site to export the termsets from
+    - id: termSetId
+      type: System.Guid
+      description: The ID of the termset to export
+    - id: includeId
+      type: System.Boolean
+      description: if true, Ids of the the taxonomy items will be included
+    - id: termStore
+      type: Microsoft.SharePoint.Client.Taxonomy.TermStore
+      description: The term store to export the termset from
+    - id: delimiter
+      type: System.String
+      description: if specified, this delimiter will be used. Notice that IDs will be delimited with ;# from the label
+    - id: lcid
+      type: System.Int32
+      description: if specified, retrieve terms in the specificed language
+    return:
+      type: System.Collections.Generic.List{System.String}
+      description: Returns list of Termset strings
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ExportTermSet(site As Site, termSetId As Guid, includeId As Boolean, termStore As TermStore, delimiter As String = "|", lcid As Integer = 0) As List(Of String)
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.ExportTermSet*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.ExportAllTerms(Microsoft.SharePoint.Client.Site,System.Boolean,System.String)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.ExportAllTerms(Microsoft.SharePoint.Client.Site,System.Boolean,System.String)
+  id: ExportAllTerms(Microsoft.SharePoint.Client.Site,System.Boolean,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: ExportAllTerms(Site, Boolean, String)
+  nameWithType: TaxonomyExtensions.ExportAllTerms(Site, Boolean, String)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.ExportAllTerms(Microsoft.SharePoint.Client.Site, System.Boolean, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ExportAllTerms
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 1382
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nExports the full list of terms from all termsets in all termstores.\n"
+  example: []
+  syntax:
+    content: public static List<string> ExportAllTerms(this Site site, bool includeId, string delimiter = "|")
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: The site to process
+    - id: includeId
+      type: System.Boolean
+      description: if true, Ids of the the taxonomy items will be included
+    - id: delimiter
+      type: System.String
+      description: if specified, this delimiter will be used. Notice that IDs will be delimited with ;# from the label
+    return:
+      type: System.Collections.Generic.List{System.String}
+      description: Returns list of Term strings
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ExportAllTerms(site As Site, includeId As Boolean, delimiter As String = "|") As List(Of String)
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.ExportAllTerms*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.NormalizeName(System.String)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.NormalizeName(System.String)
+  id: NormalizeName(System.String)
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: NormalizeName(String)
+  nameWithType: TaxonomyExtensions.NormalizeName(String)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.NormalizeName(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: NormalizeName
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 1458
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nNormalizes a Taxonomy name\n"
+  example: []
+  syntax:
+    content: public static string NormalizeName(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: ''
+    return:
+      type: System.String
+      description: ''
+    content.vb: Public Shared Function NormalizeName(name As String) As String
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.NormalizeName*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.DenormalizeName(System.String)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.DenormalizeName(System.String)
+  id: DenormalizeName(System.String)
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: DenormalizeName(String)
+  nameWithType: TaxonomyExtensions.DenormalizeName(String)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.DenormalizeName(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DenormalizeName
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 1480
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDenormalizes a Taxonomy name\n"
+  example: []
+  syntax:
+    content: public static string DenormalizeName(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: ''
+    return:
+      type: System.String
+      description: ''
+    content.vb: Public Shared Function DenormalizeName(name As String) As String
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.DenormalizeName*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTaxonomyItemByPath(Microsoft.SharePoint.Client.Site,System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.GetTaxonomyItemByPath(Microsoft.SharePoint.Client.Site,System.String,System.String)
+  id: GetTaxonomyItemByPath(Microsoft.SharePoint.Client.Site,System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetTaxonomyItemByPath(Site, String, String)
+  nameWithType: TaxonomyExtensions.GetTaxonomyItemByPath(Site, String, String)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTaxonomyItemByPath(Microsoft.SharePoint.Client.Site, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetTaxonomyItemByPath
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 1500
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns a taxonomy item by it&apos;s path, e.g. Group|Set|Term\n"
+  example: []
+  syntax:
+    content: public static TaxonomyItem GetTaxonomyItemByPath(this Site site, string path, string delimiter = "|")
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: The current site
+    - id: path
+      type: System.String
+      description: The path of the item to return
+    - id: delimiter
+      type: System.String
+      description: The delimeter separating groups, sets and term in the path. Defaults to |
+    return:
+      type: Microsoft.SharePoint.Client.Taxonomy.TaxonomyItem
+      description: Returns TaxonomyItem object
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetTaxonomyItemByPath(site As Site, path As String, delimiter As String = "|") As TaxonomyItem
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTaxonomyItemByPath*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureLabel(Microsoft.SharePoint.Client.Taxonomy.Term,System.Int32,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureLabel(Microsoft.SharePoint.Client.Taxonomy.Term,System.Int32,System.String,System.Boolean)
+  id: EnsureLabel(Microsoft.SharePoint.Client.Taxonomy.Term,System.Int32,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: EnsureLabel(Term, Int32, String, Boolean)
+  nameWithType: TaxonomyExtensions.EnsureLabel(Term, Int32, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureLabel(Microsoft.SharePoint.Client.Taxonomy.Term, System.Int32, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnsureLabel
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 1596
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nEnsures the specified label for the specified lcid exists.\n"
+  example: []
+  syntax:
+    content: public static void EnsureLabel(this Term term, int lcid, string labelName, bool isDefault)
+    parameters:
+    - id: term
+      type: Microsoft.SharePoint.Client.Taxonomy.Term
+      description: The term to ensure the label for
+    - id: lcid
+      type: System.Int32
+      description: The LCID of the label to ensure
+    - id: labelName
+      type: System.String
+      description: The name of the label to ensure
+    - id: isDefault
+      type: System.Boolean
+      description: Determines if the label should be the default
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub EnsureLabel(term As Term, lcid As Integer, labelName As String, isDefault As Boolean)
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureLabel*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValueByTermPath(Microsoft.SharePoint.Client.ListItem,System.String,System.Guid,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValueByTermPath(Microsoft.SharePoint.Client.ListItem,System.String,System.Guid,System.Boolean)
+  id: SetTaxonomyFieldValueByTermPath(Microsoft.SharePoint.Client.ListItem,System.String,System.Guid,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetTaxonomyFieldValueByTermPath(ListItem, String, Guid, Boolean)
+  nameWithType: TaxonomyExtensions.SetTaxonomyFieldValueByTermPath(ListItem, String, Guid, Boolean)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValueByTermPath(Microsoft.SharePoint.Client.ListItem, System.String, System.Guid, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetTaxonomyFieldValueByTermPath
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 1627
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nSets a value in a taxonomy field\n"
+  example: []
+  syntax:
+    content: public static void SetTaxonomyFieldValueByTermPath(this ListItem item, string TermPath, Guid fieldId, bool systemUpdate = false)
+    parameters:
+    - id: item
+      type: Microsoft.SharePoint.Client.ListItem
+      description: The item to set the value to
+    - id: TermPath
+      type: System.String
+      description: The path of the term in the shape of &quot;TermGroupName|TermSetName|TermName&quot;
+    - id: fieldId
+      type: System.Guid
+      description: The id of the field
+    - id: systemUpdate
+      type: System.Boolean
+      description: If set to true, will do a system udpate to the item. Default value is false.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetTaxonomyFieldValueByTermPath(item As ListItem, TermPath As String, fieldId As Guid, systemUpdate As Boolean = False)
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValueByTermPath*
+  exceptions:
+  - type: System.Collections.Generic.KeyNotFoundException
+    commentId: T:System.Collections.Generic.KeyNotFoundException
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValue(Microsoft.SharePoint.Client.ListItem,System.Guid,System.String,System.Guid,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValue(Microsoft.SharePoint.Client.ListItem,System.Guid,System.String,System.Guid,System.Boolean)
+  id: SetTaxonomyFieldValue(Microsoft.SharePoint.Client.ListItem,System.Guid,System.String,System.Guid,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetTaxonomyFieldValue(ListItem, Guid, String, Guid, Boolean)
+  nameWithType: TaxonomyExtensions.SetTaxonomyFieldValue(ListItem, Guid, String, Guid, Boolean)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValue(Microsoft.SharePoint.Client.ListItem, System.Guid, System.String, System.Guid, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetTaxonomyFieldValue
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 1649
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nSets a value of a taxonomy field. To set an empty value set label to an empty string and termGuid to an empty GUID.\n"
+  example: []
+  syntax:
+    content: public static void SetTaxonomyFieldValue(this ListItem item, Guid fieldId, string label, Guid termGuid, bool systemUpdate = false)
+    parameters:
+    - id: item
+      type: Microsoft.SharePoint.Client.ListItem
+      description: The item to process
+    - id: fieldId
+      type: System.Guid
+      description: The ID of the field to set
+    - id: label
+      type: System.String
+      description: The label of the term to set
+    - id: termGuid
+      type: System.Guid
+      description: The id of the term to set
+    - id: systemUpdate
+      type: System.Boolean
+      description: If set to true, will do a system udpate to the item. Default value is false.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetTaxonomyFieldValue(item As ListItem, fieldId As Guid, label As String, termGuid As Guid, systemUpdate As Boolean = False)
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValue*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValues(Microsoft.SharePoint.Client.ListItem,System.Guid,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.Guid,System.String}},System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValues(Microsoft.SharePoint.Client.ListItem,System.Guid,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.Guid,System.String}},System.Boolean)
+  id: SetTaxonomyFieldValues(Microsoft.SharePoint.Client.ListItem,System.Guid,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.Guid,System.String}},System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetTaxonomyFieldValues(ListItem, Guid, IEnumerable<KeyValuePair<Guid, String>>, Boolean)
+  nameWithType: TaxonomyExtensions.SetTaxonomyFieldValues(ListItem, Guid, IEnumerable<KeyValuePair<Guid, String>>, Boolean)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValues(Microsoft.SharePoint.Client.ListItem, System.Guid, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<System.Guid, System.String>>, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetTaxonomyFieldValues
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 1674
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nSets a value of a taxonomy field that supports multiple values\n"
+  example: []
+  syntax:
+    content: public static void SetTaxonomyFieldValues(this ListItem item, Guid fieldId, IEnumerable<KeyValuePair<Guid, string>> termValues, bool systemUpdate = false)
+    parameters:
+    - id: item
+      type: Microsoft.SharePoint.Client.ListItem
+      description: The item to process
+    - id: fieldId
+      type: System.Guid
+      description: The ID of the field to set
+    - id: termValues
+      type: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.Guid,System.String}}
+      description: The key and values of terms to set
+    - id: systemUpdate
+      type: System.Boolean
+      description: If set to true, will do a system udpate to the item. Default value is false.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetTaxonomyFieldValues(item As ListItem, fieldId As Guid, termValues As IEnumerable(Of KeyValuePair(Of Guid, String)), systemUpdate As Boolean = False)
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValues*
+  nameWithType.vb: TaxonomyExtensions.SetTaxonomyFieldValues(ListItem, Guid, IEnumerable(Of KeyValuePair(Of Guid, String)), Boolean)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValues(Microsoft.SharePoint.Client.ListItem, System.Guid, System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of System.Guid, System.String)), System.Boolean)
+  name.vb: SetTaxonomyFieldValues(ListItem, Guid, IEnumerable(Of KeyValuePair(Of Guid, String)), Boolean)
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.SetFieldValueByLabelGuidPair(Microsoft.SharePoint.Client.Taxonomy.TaxonomyField,Microsoft.SharePoint.Client.ListItem,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.SetFieldValueByLabelGuidPair(Microsoft.SharePoint.Client.Taxonomy.TaxonomyField,Microsoft.SharePoint.Client.ListItem,System.String,System.Boolean)
+  id: SetFieldValueByLabelGuidPair(Microsoft.SharePoint.Client.Taxonomy.TaxonomyField,Microsoft.SharePoint.Client.ListItem,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetFieldValueByLabelGuidPair(TaxonomyField, ListItem, String, Boolean)
+  nameWithType: TaxonomyExtensions.SetFieldValueByLabelGuidPair(TaxonomyField, ListItem, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.SetFieldValueByLabelGuidPair(Microsoft.SharePoint.Client.Taxonomy.TaxonomyField, Microsoft.SharePoint.Client.ListItem, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetFieldValueByLabelGuidPair
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 1718
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nSets a value of a taxonomy field.\nValue parameter is one or more label GUID pairs:\nSingle value field (TaxonomyFieldType) - term label|term GUID\nMulti value field (TaxonomyFieldTypeMulti) - term label|term GUID;term label|term GUID;term label|term GUID...\n"
+  example: []
+  syntax:
+    content: public static void SetFieldValueByLabelGuidPair(this TaxonomyField taxonomyField, ListItem item, string value, bool systemUpdate = false)
+    parameters:
+    - id: taxonomyField
+      type: Microsoft.SharePoint.Client.Taxonomy.TaxonomyField
+      description: The field to set
+    - id: item
+      type: Microsoft.SharePoint.Client.ListItem
+      description: The item to process
+    - id: value
+      type: System.String
+      description: The value to set on the taxonomy field
+    - id: systemUpdate
+      type: System.Boolean
+      description: If set to true, will do a system udpate to the item. Default value is false.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetFieldValueByLabelGuidPair(taxonomyField As TaxonomyField, item As ListItem, value As String, systemUpdate As Boolean = False)
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.SetFieldValueByLabelGuidPair*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTaxonomyField(Microsoft.SharePoint.Client.Web,PnP.Framework.Entities.TaxonomyFieldCreationInformation)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTaxonomyField(Microsoft.SharePoint.Client.Web,PnP.Framework.Entities.TaxonomyFieldCreationInformation)
+  id: CreateTaxonomyField(Microsoft.SharePoint.Client.Web,PnP.Framework.Entities.TaxonomyFieldCreationInformation)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: CreateTaxonomyField(Web, TaxonomyFieldCreationInformation)
+  nameWithType: TaxonomyExtensions.CreateTaxonomyField(Web, TaxonomyFieldCreationInformation)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTaxonomyField(Microsoft.SharePoint.Client.Web, PnP.Framework.Entities.TaxonomyFieldCreationInformation)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateTaxonomyField
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 1814
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCan be used to create taxonomy field remotely to web.\n"
+  example: []
+  syntax:
+    content: public static Field CreateTaxonomyField(this Web web, TaxonomyFieldCreationInformation fieldCreationInformation)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: fieldCreationInformation
+      type: PnP.Framework.Entities.TaxonomyFieldCreationInformation
+      description: Creation Information of the field
+    return:
+      type: Microsoft.SharePoint.Client.Field
+      description: New taxonomy field
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function CreateTaxonomyField(web As Web, fieldCreationInformation As TaxonomyFieldCreationInformation) As Field
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTaxonomyField*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.RemoveTaxonomyFieldByInternalName(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.RemoveTaxonomyFieldByInternalName(Microsoft.SharePoint.Client.Web,System.String)
+  id: RemoveTaxonomyFieldByInternalName(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: RemoveTaxonomyFieldByInternalName(Web, String)
+  nameWithType: TaxonomyExtensions.RemoveTaxonomyFieldByInternalName(Web, String)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.RemoveTaxonomyFieldByInternalName(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemoveTaxonomyFieldByInternalName
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 1857
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nRemoves a taxonomy field (site column) and its associated hidden field by internal name\n"
+  example: []
+  syntax:
+    content: public static void RemoveTaxonomyFieldByInternalName(this Web web, string internalName)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web object were the field (site column) exists
+    - id: internalName
+      type: System.String
+      description: Internal name of the taxonomy field (site column) to be removed
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub RemoveTaxonomyFieldByInternalName(web As Web, internalName As String)
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.RemoveTaxonomyFieldByInternalName*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.RemoveTaxonomyFieldById(Microsoft.SharePoint.Client.Web,System.Guid)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.RemoveTaxonomyFieldById(Microsoft.SharePoint.Client.Web,System.Guid)
+  id: RemoveTaxonomyFieldById(Microsoft.SharePoint.Client.Web,System.Guid)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: RemoveTaxonomyFieldById(Web, Guid)
+  nameWithType: TaxonomyExtensions.RemoveTaxonomyFieldById(Web, Guid)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.RemoveTaxonomyFieldById(Microsoft.SharePoint.Client.Web, System.Guid)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemoveTaxonomyFieldById
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 1881
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nRemoves a taxonomy field (site column) and its associated hidden field by id\n"
+  example: []
+  syntax:
+    content: public static void RemoveTaxonomyFieldById(this Web web, Guid id)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web object were the field (site column) exists
+    - id: id
+      type: System.Guid
+      description: Guid representing the id of the taxonomy field (site column) to be removed
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub RemoveTaxonomyFieldById(web As Web, id As Guid)
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.RemoveTaxonomyFieldById*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTaxonomyField(Microsoft.SharePoint.Client.List,PnP.Framework.Entities.TaxonomyFieldCreationInformation)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTaxonomyField(Microsoft.SharePoint.Client.List,PnP.Framework.Entities.TaxonomyFieldCreationInformation)
+  id: CreateTaxonomyField(Microsoft.SharePoint.Client.List,PnP.Framework.Entities.TaxonomyFieldCreationInformation)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: CreateTaxonomyField(List, TaxonomyFieldCreationInformation)
+  nameWithType: TaxonomyExtensions.CreateTaxonomyField(List, TaxonomyFieldCreationInformation)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTaxonomyField(Microsoft.SharePoint.Client.List, PnP.Framework.Entities.TaxonomyFieldCreationInformation)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateTaxonomyField
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 1906
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCan be used to create taxonomy field remotely in a list. \n"
+  example: []
+  syntax:
+    content: public static Field CreateTaxonomyField(this List list, TaxonomyFieldCreationInformation fieldCreationInformation)
+    parameters:
+    - id: list
+      type: Microsoft.SharePoint.Client.List
+      description: List to be processed
+    - id: fieldCreationInformation
+      type: PnP.Framework.Entities.TaxonomyFieldCreationInformation
+      description: Creation information of the field
+    return:
+      type: Microsoft.SharePoint.Client.Field
+      description: New taxonomy field
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function CreateTaxonomyField(list As List, fieldCreationInformation As TaxonomyFieldCreationInformation) As Field
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTaxonomyField*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Field,System.String,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Field,System.String,System.String,System.Boolean)
+  id: WireUpTaxonomyField(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Field,System.String,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: WireUpTaxonomyField(Web, Field, String, String, Boolean)
+  nameWithType: TaxonomyExtensions.WireUpTaxonomyField(Web, Field, String, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.Web, Microsoft.SharePoint.Client.Field, System.String, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WireUpTaxonomyField
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 1949
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nWires up MMS field to the specified term set.\n"
+  example: []
+  syntax:
+    content: public static void WireUpTaxonomyField(this Web web, Field field, string mmsGroupName, string mmsTermSetName, bool multiValue = false)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: field
+      type: Microsoft.SharePoint.Client.Field
+      description: Field to be wired up
+    - id: mmsGroupName
+      type: System.String
+      description: Taxonomy group
+    - id: mmsTermSetName
+      type: System.String
+      description: Term set name
+    - id: multiValue
+      type: System.Boolean
+      description: If true, create a multivalue field
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub WireUpTaxonomyField(web As Web, field As Field, mmsGroupName As String, mmsTermSetName As String, multiValue As Boolean = False)
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Field,Microsoft.SharePoint.Client.Taxonomy.TermSet,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Field,Microsoft.SharePoint.Client.Taxonomy.TermSet,System.Boolean)
+  id: WireUpTaxonomyField(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Field,Microsoft.SharePoint.Client.Taxonomy.TermSet,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: WireUpTaxonomyField(Web, Field, TermSet, Boolean)
+  nameWithType: TaxonomyExtensions.WireUpTaxonomyField(Web, Field, TermSet, Boolean)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.Web, Microsoft.SharePoint.Client.Field, Microsoft.SharePoint.Client.Taxonomy.TermSet, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WireUpTaxonomyField
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 1976
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nWires up MMS field to the specified term set.\n"
+  example: []
+  syntax:
+    content: public static void WireUpTaxonomyField(this Web web, Field field, TermSet termSet, bool multiValue = false)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: field
+      type: Microsoft.SharePoint.Client.Field
+      description: Field to be wired up
+    - id: termSet
+      type: Microsoft.SharePoint.Client.Taxonomy.TermSet
+      description: Taxonomy TermSet
+    - id: multiValue
+      type: System.Boolean
+      description: If true, create a multivalue field
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub WireUpTaxonomyField(web As Web, field As Field, termSet As TermSet, multiValue As Boolean = False)
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Field,Microsoft.SharePoint.Client.Taxonomy.Term,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Field,Microsoft.SharePoint.Client.Taxonomy.Term,System.Boolean)
+  id: WireUpTaxonomyField(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Field,Microsoft.SharePoint.Client.Taxonomy.Term,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: WireUpTaxonomyField(Web, Field, Term, Boolean)
+  nameWithType: TaxonomyExtensions.WireUpTaxonomyField(Web, Field, Term, Boolean)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.Web, Microsoft.SharePoint.Client.Field, Microsoft.SharePoint.Client.Taxonomy.Term, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WireUpTaxonomyField
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 1988
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nWires up MMS field to the specified term.\n"
+  example: []
+  syntax:
+    content: public static void WireUpTaxonomyField(this Web web, Field field, Term anchorTerm, bool multiValue = false)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: field
+      type: Microsoft.SharePoint.Client.Field
+      description: Field to be wired up
+    - id: anchorTerm
+      type: Microsoft.SharePoint.Client.Taxonomy.Term
+      description: Taxonomy Term
+    - id: multiValue
+      type: System.Boolean
+      description: If true, create a multivalue field
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub WireUpTaxonomyField(web As Web, field As Field, anchorTerm As Term, multiValue As Boolean = False)
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.Web,System.Guid,System.String,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.Web,System.Guid,System.String,System.String,System.Boolean)
+  id: WireUpTaxonomyField(Microsoft.SharePoint.Client.Web,System.Guid,System.String,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: WireUpTaxonomyField(Web, Guid, String, String, Boolean)
+  nameWithType: TaxonomyExtensions.WireUpTaxonomyField(Web, Guid, String, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.Web, System.Guid, System.String, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WireUpTaxonomyField
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 2001
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nWires up MMS field to the specified term set.\n"
+  example: []
+  syntax:
+    content: public static void WireUpTaxonomyField(this Web web, Guid id, string mmsGroupName, string mmsTermSetName, bool multiValue = false)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: id
+      type: System.Guid
+      description: Field ID to be wired up
+    - id: mmsGroupName
+      type: System.String
+      description: Taxonomy group
+    - id: mmsTermSetName
+      type: System.String
+      description: Term set name
+    - id: multiValue
+      type: System.Boolean
+      description: If true, create a multivalue field
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub WireUpTaxonomyField(web As Web, id As Guid, mmsGroupName As String, mmsTermSetName As String, multiValue As Boolean = False)
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.List,Microsoft.SharePoint.Client.Field,Microsoft.SharePoint.Client.Taxonomy.TermSet,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.List,Microsoft.SharePoint.Client.Field,Microsoft.SharePoint.Client.Taxonomy.TermSet,System.Boolean)
+  id: WireUpTaxonomyField(Microsoft.SharePoint.Client.List,Microsoft.SharePoint.Client.Field,Microsoft.SharePoint.Client.Taxonomy.TermSet,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: WireUpTaxonomyField(List, Field, TermSet, Boolean)
+  nameWithType: TaxonomyExtensions.WireUpTaxonomyField(List, Field, TermSet, Boolean)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.List, Microsoft.SharePoint.Client.Field, Microsoft.SharePoint.Client.Taxonomy.TermSet, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WireUpTaxonomyField
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 2015
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nWires up MMS field to the specified term set.\n"
+  example: []
+  syntax:
+    content: public static void WireUpTaxonomyField(this List list, Field field, TermSet termSet, bool multiValue = false)
+    parameters:
+    - id: list
+      type: Microsoft.SharePoint.Client.List
+      description: List to be processed
+    - id: field
+      type: Microsoft.SharePoint.Client.Field
+      description: Field to be wired up
+    - id: termSet
+      type: Microsoft.SharePoint.Client.Taxonomy.TermSet
+      description: Taxonomy TermSet
+    - id: multiValue
+      type: System.Boolean
+      description: Term set name
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub WireUpTaxonomyField(list As List, field As Field, termSet As TermSet, multiValue As Boolean = False)
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.List,Microsoft.SharePoint.Client.Field,Microsoft.SharePoint.Client.Taxonomy.Term,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.List,Microsoft.SharePoint.Client.Field,Microsoft.SharePoint.Client.Taxonomy.Term,System.Boolean)
+  id: WireUpTaxonomyField(Microsoft.SharePoint.Client.List,Microsoft.SharePoint.Client.Field,Microsoft.SharePoint.Client.Taxonomy.Term,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: WireUpTaxonomyField(List, Field, Term, Boolean)
+  nameWithType: TaxonomyExtensions.WireUpTaxonomyField(List, Field, Term, Boolean)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.List, Microsoft.SharePoint.Client.Field, Microsoft.SharePoint.Client.Taxonomy.Term, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WireUpTaxonomyField
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 2027
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nWires up MMS field to the specified term.\n"
+  example: []
+  syntax:
+    content: public static void WireUpTaxonomyField(this List list, Field field, Term anchorTerm, bool multiValue = false)
+    parameters:
+    - id: list
+      type: Microsoft.SharePoint.Client.List
+      description: List to be processed
+    - id: field
+      type: Microsoft.SharePoint.Client.Field
+      description: Field to be wired up
+    - id: anchorTerm
+      type: Microsoft.SharePoint.Client.Taxonomy.Term
+      description: Taxonomy Term
+    - id: multiValue
+      type: System.Boolean
+      description: Allow multiple selection
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub WireUpTaxonomyField(list As List, field As Field, anchorTerm As Term, multiValue As Boolean = False)
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.List,Microsoft.SharePoint.Client.Field,System.String,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.List,Microsoft.SharePoint.Client.Field,System.String,System.String,System.Boolean)
+  id: WireUpTaxonomyField(Microsoft.SharePoint.Client.List,Microsoft.SharePoint.Client.Field,System.String,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: WireUpTaxonomyField(List, Field, String, String, Boolean)
+  nameWithType: TaxonomyExtensions.WireUpTaxonomyField(List, Field, String, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.List, Microsoft.SharePoint.Client.Field, System.String, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WireUpTaxonomyField
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 2040
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nWires up MMS field to the specified term set.\n"
+  example: []
+  syntax:
+    content: public static void WireUpTaxonomyField(this List list, Field field, string mmsGroupName, string mmsTermSetName, bool multiValue = false)
+    parameters:
+    - id: list
+      type: Microsoft.SharePoint.Client.List
+      description: List to be processed
+    - id: field
+      type: Microsoft.SharePoint.Client.Field
+      description: Field to be wired up
+    - id: mmsGroupName
+      type: System.String
+      description: Taxonomy group
+    - id: mmsTermSetName
+      type: System.String
+      description: Term set name
+    - id: multiValue
+      type: System.Boolean
+      description: Allow multiple selection
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub WireUpTaxonomyField(list As List, field As Field, mmsGroupName As String, mmsTermSetName As String, multiValue As Boolean = False)
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.List,System.Guid,System.String,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.List,System.Guid,System.String,System.String,System.Boolean)
+  id: WireUpTaxonomyField(Microsoft.SharePoint.Client.List,System.Guid,System.String,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: WireUpTaxonomyField(List, Guid, String, String, Boolean)
+  nameWithType: TaxonomyExtensions.WireUpTaxonomyField(List, Guid, String, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.List, System.Guid, System.String, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WireUpTaxonomyField
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 2069
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nWires up MMS field to the specified term set.\n"
+  example: []
+  syntax:
+    content: public static void WireUpTaxonomyField(this List list, Guid id, string mmsGroupName, string mmsTermSetName, bool multiValue = false)
+    parameters:
+    - id: list
+      type: Microsoft.SharePoint.Client.List
+      description: List to be processed
+    - id: id
+      type: System.Guid
+      description: Field ID to be wired up
+    - id: mmsGroupName
+      type: System.String
+      description: Taxonomy group
+    - id: mmsTermSetName
+      type: System.String
+      description: Term set name
+    - id: multiValue
+      type: System.Boolean
+      description: Allow multiple selection
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub WireUpTaxonomyField(list As List, id As Guid, mmsGroupName As String, mmsTermSetName As String, multiValue As Boolean = False)
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.GetWssIdForTerm(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Taxonomy.Term)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.GetWssIdForTerm(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Taxonomy.Term)
+  id: GetWssIdForTerm(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Taxonomy.Term)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetWssIdForTerm(Web, Term)
+  nameWithType: TaxonomyExtensions.GetWssIdForTerm(Web, Term)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.GetWssIdForTerm(Microsoft.SharePoint.Client.Web, Microsoft.SharePoint.Client.Taxonomy.Term)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetWssIdForTerm
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 2125
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns the Id for a term if present in the TaxonomyHiddenList. Otherwise returns -1;\n"
+  example: []
+  syntax:
+    content: public static int GetWssIdForTerm(this Web web, Term term)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: ''
+    - id: term
+      type: Microsoft.SharePoint.Client.Taxonomy.Term
+      description: ''
+    return:
+      type: System.Int32
+      description: ''
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetWssIdForTerm(web As Web, term As Term) As Integer
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.GetWssIdForTerm*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldDefaultValue(Microsoft.SharePoint.Client.Field,Microsoft.SharePoint.Client.Taxonomy.TaxonomyItem,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldDefaultValue(Microsoft.SharePoint.Client.Field,Microsoft.SharePoint.Client.Taxonomy.TaxonomyItem,System.String,System.Boolean)
+  id: SetTaxonomyFieldDefaultValue(Microsoft.SharePoint.Client.Field,Microsoft.SharePoint.Client.Taxonomy.TaxonomyItem,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.TaxonomyExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetTaxonomyFieldDefaultValue(Field, TaxonomyItem, String, Boolean)
+  nameWithType: TaxonomyExtensions.SetTaxonomyFieldDefaultValue(Field, TaxonomyItem, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldDefaultValue(Microsoft.SharePoint.Client.Field, Microsoft.SharePoint.Client.Taxonomy.TaxonomyItem, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetTaxonomyFieldDefaultValue
+    path: ../src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs
+    startLine: 2156
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nSets the default value for a managed metadata field\n"
+  example: []
+  syntax:
+    content: public static void SetTaxonomyFieldDefaultValue(this Field field, TaxonomyItem taxonomyItem, string defaultValue, bool pushChangesToLists = false)
+    parameters:
+    - id: field
+      type: Microsoft.SharePoint.Client.Field
+      description: Field to be wired up
+    - id: taxonomyItem
+      type: Microsoft.SharePoint.Client.Taxonomy.TaxonomyItem
+      description: Taxonomy TermSet or Term
+    - id: defaultValue
+      type: System.String
+      description: default value for the field
+    - id: pushChangesToLists
+      type: System.Boolean
+      description: push changes to lists
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetTaxonomyFieldDefaultValue(field As Field, taxonomyItem As TaxonomyItem, defaultValue As String, pushChangesToLists As Boolean = False)
+  overload: Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldDefaultValue*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: Microsoft.SharePoint.Client
+  commentId: N:Microsoft.SharePoint.Client
+  name: Microsoft.SharePoint.Client
+  nameWithType: Microsoft.SharePoint.Client
+  fullName: Microsoft.SharePoint.Client
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTermGroup*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTermGroup
+  name: CreateTermGroup
+  nameWithType: TaxonomyExtensions.CreateTermGroup
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTermGroup
+- uid: Microsoft.SharePoint.Client.Taxonomy.TermStore
+  commentId: T:Microsoft.SharePoint.Client.Taxonomy.TermStore
+  parent: Microsoft.SharePoint.Client.Taxonomy
+  isExternal: true
+  name: TermStore
+  nameWithType: TermStore
+  fullName: Microsoft.SharePoint.Client.Taxonomy.TermStore
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Microsoft.SharePoint.Client.Taxonomy.TermGroup
+  commentId: T:Microsoft.SharePoint.Client.Taxonomy.TermGroup
+  parent: Microsoft.SharePoint.Client.Taxonomy
+  isExternal: true
+  name: TermGroup
+  nameWithType: TermGroup
+  fullName: Microsoft.SharePoint.Client.Taxonomy.TermGroup
+- uid: Microsoft.SharePoint.Client.Taxonomy
+  commentId: N:Microsoft.SharePoint.Client.Taxonomy
+  isExternal: true
+  name: Microsoft.SharePoint.Client.Taxonomy
+  nameWithType: Microsoft.SharePoint.Client.Taxonomy
+  fullName: Microsoft.SharePoint.Client.Taxonomy
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureTermGroup*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureTermGroup
+  name: EnsureTermGroup
+  nameWithType: TaxonomyExtensions.EnsureTermGroup
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureTermGroup
+- uid: Microsoft.SharePoint.Client.Site
+  commentId: T:Microsoft.SharePoint.Client.Site
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: Site
+  nameWithType: Site
+  fullName: Microsoft.SharePoint.Client.Site
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureTermSet*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureTermSet
+  name: EnsureTermSet
+  nameWithType: TaxonomyExtensions.EnsureTermSet
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureTermSet
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<Int32>
+  nameWithType: Nullable<Int32>
+  fullName: System.Nullable<System.Int32>
+  nameWithType.vb: Nullable(Of Int32)
+  fullName.vb: System.Nullable(Of System.Int32)
+  name.vb: Nullable(Of Int32)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Nullable{System.Boolean}
+  commentId: T:System.Nullable{System.Boolean}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<Boolean>
+  nameWithType: Nullable<Boolean>
+  fullName: System.Nullable<System.Boolean>
+  nameWithType.vb: Nullable(Of Boolean)
+  fullName.vb: System.Nullable(Of System.Boolean)
+  name.vb: Nullable(Of Boolean)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.SharePoint.Client.Taxonomy.TermSet
+  commentId: T:Microsoft.SharePoint.Client.Taxonomy.TermSet
+  parent: Microsoft.SharePoint.Client.Taxonomy
+  isExternal: true
+  name: TermSet
+  nameWithType: TermSet
+  fullName: Microsoft.SharePoint.Client.Taxonomy.TermSet
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTaxonomySession*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.GetTaxonomySession
+  name: GetTaxonomySession
+  nameWithType: TaxonomyExtensions.GetTaxonomySession
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTaxonomySession
+- uid: Microsoft.SharePoint.Client.Taxonomy.TaxonomySession
+  commentId: T:Microsoft.SharePoint.Client.Taxonomy.TaxonomySession
+  parent: Microsoft.SharePoint.Client.Taxonomy
+  isExternal: true
+  name: TaxonomySession
+  nameWithType: TaxonomySession
+  fullName: Microsoft.SharePoint.Client.Taxonomy.TaxonomySession
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.GetDefaultKeywordsTermStore*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.GetDefaultKeywordsTermStore
+  name: GetDefaultKeywordsTermStore
+  nameWithType: TaxonomyExtensions.GetDefaultKeywordsTermStore
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.GetDefaultKeywordsTermStore
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.GetDefaultSiteCollectionTermStore*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.GetDefaultSiteCollectionTermStore
+  name: GetDefaultSiteCollectionTermStore
+  nameWithType: TaxonomyExtensions.GetDefaultSiteCollectionTermStore
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.GetDefaultSiteCollectionTermStore
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermSetsByName*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermSetsByName
+  name: GetTermSetsByName
+  nameWithType: TaxonomyExtensions.GetTermSetsByName
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermSetsByName
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: Microsoft.SharePoint.Client.Taxonomy.TermSetCollection
+  commentId: T:Microsoft.SharePoint.Client.Taxonomy.TermSetCollection
+  parent: Microsoft.SharePoint.Client.Taxonomy
+  isExternal: true
+  name: TermSetCollection
+  nameWithType: TermSetCollection
+  fullName: Microsoft.SharePoint.Client.Taxonomy.TermSetCollection
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupByName*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupByName
+  name: GetTermGroupByName
+  nameWithType: TaxonomyExtensions.GetTermGroupByName
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupByName
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupById*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupById
+  name: GetTermGroupById
+  nameWithType: TaxonomyExtensions.GetTermGroupById
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupById
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermByName*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermByName
+  name: GetTermByName
+  nameWithType: TaxonomyExtensions.GetTermByName
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermByName
+- uid: Microsoft.SharePoint.Client.Taxonomy.Term
+  commentId: T:Microsoft.SharePoint.Client.Taxonomy.Term
+  parent: Microsoft.SharePoint.Client.Taxonomy
+  isExternal: true
+  name: Term
+  nameWithType: Term
+  fullName: Microsoft.SharePoint.Client.Taxonomy.Term
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.AddTermToTermset*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.AddTermToTermset
+  name: AddTermToTermset
+  nameWithType: TaxonomyExtensions.AddTermToTermset
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.AddTermToTermset
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTerms*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTerms
+  name: ImportTerms
+  nameWithType: TaxonomyExtensions.ImportTerms
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTerms
+- uid: System.String[]
+  isExternal: true
+  name: String[]
+  nameWithType: String[]
+  fullName: System.String[]
+  nameWithType.vb: String()
+  fullName.vb: System.String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTermSet*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTermSet
+  name: ImportTermSet
+  nameWithType: TaxonomyExtensions.ImportTermSet
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTermSet
+- uid: System.IO.Stream
+  commentId: T:System.IO.Stream
+  parent: System.IO
+  isExternal: true
+  name: Stream
+  nameWithType: Stream
+  fullName: System.IO.Stream
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.ExportTermSet*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.ExportTermSet
+  name: ExportTermSet
+  nameWithType: TaxonomyExtensions.ExportTermSet
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.ExportTermSet
+- uid: System.Collections.Generic.List{System.String}
+  commentId: T:System.Collections.Generic.List{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<String>
+  nameWithType: List<String>
+  fullName: System.Collections.Generic.List<System.String>
+  nameWithType.vb: List(Of String)
+  fullName.vb: System.Collections.Generic.List(Of System.String)
+  name.vb: List(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.ExportAllTerms*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.ExportAllTerms
+  name: ExportAllTerms
+  nameWithType: TaxonomyExtensions.ExportAllTerms
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.ExportAllTerms
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.NormalizeName*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.NormalizeName
+  name: NormalizeName
+  nameWithType: TaxonomyExtensions.NormalizeName
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.NormalizeName
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.DenormalizeName*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.DenormalizeName
+  name: DenormalizeName
+  nameWithType: TaxonomyExtensions.DenormalizeName
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.DenormalizeName
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTaxonomyItemByPath*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.GetTaxonomyItemByPath
+  name: GetTaxonomyItemByPath
+  nameWithType: TaxonomyExtensions.GetTaxonomyItemByPath
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.GetTaxonomyItemByPath
+- uid: Microsoft.SharePoint.Client.Taxonomy.TaxonomyItem
+  commentId: T:Microsoft.SharePoint.Client.Taxonomy.TaxonomyItem
+  parent: Microsoft.SharePoint.Client.Taxonomy
+  isExternal: true
+  name: TaxonomyItem
+  nameWithType: TaxonomyItem
+  fullName: Microsoft.SharePoint.Client.Taxonomy.TaxonomyItem
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureLabel*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureLabel
+  name: EnsureLabel
+  nameWithType: TaxonomyExtensions.EnsureLabel
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureLabel
+- uid: System.Collections.Generic.KeyNotFoundException
+  commentId: T:System.Collections.Generic.KeyNotFoundException
+  isExternal: true
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValueByTermPath*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValueByTermPath
+  name: SetTaxonomyFieldValueByTermPath
+  nameWithType: TaxonomyExtensions.SetTaxonomyFieldValueByTermPath
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValueByTermPath
+- uid: Microsoft.SharePoint.Client.ListItem
+  commentId: T:Microsoft.SharePoint.Client.ListItem
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: ListItem
+  nameWithType: ListItem
+  fullName: Microsoft.SharePoint.Client.ListItem
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValue*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValue
+  name: SetTaxonomyFieldValue
+  nameWithType: TaxonomyExtensions.SetTaxonomyFieldValue
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValue
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValues*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValues
+  name: SetTaxonomyFieldValues
+  nameWithType: TaxonomyExtensions.SetTaxonomyFieldValues
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValues
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.Guid,System.String}}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.Guid,System.String}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<KeyValuePair<Guid, String>>
+  nameWithType: IEnumerable<KeyValuePair<Guid, String>>
+  fullName: System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<System.Guid, System.String>>
+  nameWithType.vb: IEnumerable(Of KeyValuePair(Of Guid, String))
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of System.Guid, System.String))
+  name.vb: IEnumerable(Of KeyValuePair(Of Guid, String))
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    nameWithType: KeyValuePair
+    fullName: System.Collections.Generic.KeyValuePair
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Guid
+    name: Guid
+    nameWithType: Guid
+    fullName: System.Guid
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    nameWithType: KeyValuePair
+    fullName: System.Collections.Generic.KeyValuePair
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Guid
+    name: Guid
+    nameWithType: Guid
+    fullName: System.Guid
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.SetFieldValueByLabelGuidPair*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.SetFieldValueByLabelGuidPair
+  name: SetFieldValueByLabelGuidPair
+  nameWithType: TaxonomyExtensions.SetFieldValueByLabelGuidPair
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.SetFieldValueByLabelGuidPair
+- uid: Microsoft.SharePoint.Client.Taxonomy.TaxonomyField
+  commentId: T:Microsoft.SharePoint.Client.Taxonomy.TaxonomyField
+  parent: Microsoft.SharePoint.Client.Taxonomy
+  isExternal: true
+  name: TaxonomyField
+  nameWithType: TaxonomyField
+  fullName: Microsoft.SharePoint.Client.Taxonomy.TaxonomyField
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTaxonomyField*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTaxonomyField
+  name: CreateTaxonomyField
+  nameWithType: TaxonomyExtensions.CreateTaxonomyField
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTaxonomyField
+- uid: Microsoft.SharePoint.Client.Web
+  commentId: T:Microsoft.SharePoint.Client.Web
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: Web
+  nameWithType: Web
+  fullName: Microsoft.SharePoint.Client.Web
+- uid: PnP.Framework.Entities.TaxonomyFieldCreationInformation
+  commentId: T:PnP.Framework.Entities.TaxonomyFieldCreationInformation
+  parent: PnP.Framework.Entities
+  name: TaxonomyFieldCreationInformation
+  nameWithType: TaxonomyFieldCreationInformation
+  fullName: PnP.Framework.Entities.TaxonomyFieldCreationInformation
+- uid: Microsoft.SharePoint.Client.Field
+  commentId: T:Microsoft.SharePoint.Client.Field
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: Field
+  nameWithType: Field
+  fullName: Microsoft.SharePoint.Client.Field
+- uid: PnP.Framework.Entities
+  commentId: N:PnP.Framework.Entities
+  name: PnP.Framework.Entities
+  nameWithType: PnP.Framework.Entities
+  fullName: PnP.Framework.Entities
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.RemoveTaxonomyFieldByInternalName*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.RemoveTaxonomyFieldByInternalName
+  name: RemoveTaxonomyFieldByInternalName
+  nameWithType: TaxonomyExtensions.RemoveTaxonomyFieldByInternalName
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.RemoveTaxonomyFieldByInternalName
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.RemoveTaxonomyFieldById*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.RemoveTaxonomyFieldById
+  name: RemoveTaxonomyFieldById
+  nameWithType: TaxonomyExtensions.RemoveTaxonomyFieldById
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.RemoveTaxonomyFieldById
+- uid: Microsoft.SharePoint.Client.List
+  commentId: T:Microsoft.SharePoint.Client.List
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: List
+  nameWithType: List
+  fullName: Microsoft.SharePoint.Client.List
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField
+  name: WireUpTaxonomyField
+  nameWithType: TaxonomyExtensions.WireUpTaxonomyField
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.GetWssIdForTerm*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.GetWssIdForTerm
+  name: GetWssIdForTerm
+  nameWithType: TaxonomyExtensions.GetWssIdForTerm
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.GetWssIdForTerm
+- uid: Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldDefaultValue*
+  commentId: Overload:Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldDefaultValue
+  name: SetTaxonomyFieldDefaultValue
+  nameWithType: TaxonomyExtensions.SetTaxonomyFieldDefaultValue
+  fullName: Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldDefaultValue

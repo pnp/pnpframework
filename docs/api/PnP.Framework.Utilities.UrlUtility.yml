@@ -1,0 +1,1017 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Utilities.UrlUtility
+  commentId: T:PnP.Framework.Utilities.UrlUtility
+  id: UrlUtility
+  parent: PnP.Framework.Utilities
+  children:
+  - PnP.Framework.Utilities.UrlUtility.AppendQueryString(System.String,System.String)
+  - PnP.Framework.Utilities.UrlUtility.Combine(System.String,System.String)
+  - PnP.Framework.Utilities.UrlUtility.Combine(System.String,System.String[])
+  - PnP.Framework.Utilities.UrlUtility.ContainsInvalidFileFolderChars(System.String)
+  - PnP.Framework.Utilities.UrlUtility.ContainsInvalidUrlChars(System.String)
+  - PnP.Framework.Utilities.UrlUtility.EnsureTrailingSlash(System.String)
+  - PnP.Framework.Utilities.UrlUtility.IsIisVirtualDirectory(System.String)
+  - PnP.Framework.Utilities.UrlUtility.MakeRelativeUrl(System.String)
+  - PnP.Framework.Utilities.UrlUtility.RemoveUnallowedCharacters(System.String)
+  - PnP.Framework.Utilities.UrlUtility.ReplaceAccentedCharactersWithLatin(System.String)
+  - PnP.Framework.Utilities.UrlUtility.ReplaceInvalidUrlChars(System.String,System.String)
+  - PnP.Framework.Utilities.UrlUtility.StripInvalidUrlChars(System.String)
+  - PnP.Framework.Utilities.UrlUtility.UrlPathEncode(System.String)
+  langs:
+  - csharp
+  - vb
+  name: UrlUtility
+  nameWithType: UrlUtility
+  fullName: PnP.Framework.Utilities.UrlUtility
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/UrlUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UrlUtility
+    path: ../src/lib/PnP.Framework/Utilities/UrlUtility.cs
+    startLine: 9
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nStatic methods to modify URL paths.\n"
+  example: []
+  syntax:
+    content: public static class UrlUtility
+    content.vb: Public Module UrlUtility
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: PnP.Framework.Utilities.UrlUtility.Combine(System.String,System.String[])
+  commentId: M:PnP.Framework.Utilities.UrlUtility.Combine(System.String,System.String[])
+  id: Combine(System.String,System.String[])
+  parent: PnP.Framework.Utilities.UrlUtility
+  langs:
+  - csharp
+  - vb
+  name: Combine(String, String[])
+  nameWithType: UrlUtility.Combine(String, String[])
+  fullName: PnP.Framework.Utilities.UrlUtility.Combine(System.String, System.String[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/UrlUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Combine
+    path: ../src/lib/PnP.Framework/Utilities/UrlUtility.cs
+    startLine: 24
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nCombines a path and a relative path.\n"
+  example: []
+  syntax:
+    content: public static string Combine(string path, params string[] relativePaths)
+    parameters:
+    - id: path
+      type: System.String
+      description: A SharePoint URL
+    - id: relativePaths
+      type: System.String[]
+      description: SharePoint relative URLs
+    return:
+      type: System.String
+      description: Returns comibed path with a relative paths
+    content.vb: Public Shared Function Combine(path As String, ParamArray relativePaths As String()) As String
+  overload: PnP.Framework.Utilities.UrlUtility.Combine*
+  nameWithType.vb: UrlUtility.Combine(String, String())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Utilities.UrlUtility.Combine(System.String, System.String())
+  name.vb: Combine(String, String())
+- uid: PnP.Framework.Utilities.UrlUtility.Combine(System.String,System.String)
+  commentId: M:PnP.Framework.Utilities.UrlUtility.Combine(System.String,System.String)
+  id: Combine(System.String,System.String)
+  parent: PnP.Framework.Utilities.UrlUtility
+  langs:
+  - csharp
+  - vb
+  name: Combine(String, String)
+  nameWithType: UrlUtility.Combine(String, String)
+  fullName: PnP.Framework.Utilities.UrlUtility.Combine(System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/UrlUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Combine
+    path: ../src/lib/PnP.Framework/Utilities/UrlUtility.cs
+    startLine: 43
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nCombines a path and a relative path.\n"
+  example: []
+  syntax:
+    content: public static string Combine(string path, string relative)
+    parameters:
+    - id: path
+      type: System.String
+      description: A SharePoint URL
+    - id: relative
+      type: System.String
+      description: SharePoint relative URL
+    return:
+      type: System.String
+      description: Returns comibed path with a relative path
+    content.vb: Public Shared Function Combine(path As String, relative As String) As String
+  overload: PnP.Framework.Utilities.UrlUtility.Combine*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.UrlUtility.AppendQueryString(System.String,System.String)
+  commentId: M:PnP.Framework.Utilities.UrlUtility.AppendQueryString(System.String,System.String)
+  id: AppendQueryString(System.String,System.String)
+  parent: PnP.Framework.Utilities.UrlUtility
+  langs:
+  - csharp
+  - vb
+  name: AppendQueryString(String, String)
+  nameWithType: UrlUtility.AppendQueryString(String, String)
+  fullName: PnP.Framework.Utilities.UrlUtility.AppendQueryString(System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/UrlUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AppendQueryString
+    path: ../src/lib/PnP.Framework/Utilities/UrlUtility.cs
+    startLine: 74
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nAdds query string parameters to the end of a querystring and guarantees the proper concatenation with <strong>?</strong> and <strong>&amp;.</strong>\n"
+  example: []
+  syntax:
+    content: public static string AppendQueryString(string path, string queryString)
+    parameters:
+    - id: path
+      type: System.String
+      description: A SharePoint URL
+    - id: queryString
+      type: System.String
+      description: Query string value that need to append to the URL
+    return:
+      type: System.String
+      description: Returns URL along with appended query string
+    content.vb: Public Shared Function AppendQueryString(path As String, queryString As String) As String
+  overload: PnP.Framework.Utilities.UrlUtility.AppendQueryString*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.UrlUtility.MakeRelativeUrl(System.String)
+  commentId: M:PnP.Framework.Utilities.UrlUtility.MakeRelativeUrl(System.String)
+  id: MakeRelativeUrl(System.String)
+  parent: PnP.Framework.Utilities.UrlUtility
+  langs:
+  - csharp
+  - vb
+  name: MakeRelativeUrl(String)
+  nameWithType: UrlUtility.MakeRelativeUrl(String)
+  fullName: PnP.Framework.Utilities.UrlUtility.MakeRelativeUrl(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/UrlUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MakeRelativeUrl
+    path: ../src/lib/PnP.Framework/Utilities/UrlUtility.cs
+    startLine: 93
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nReturns realtive URL of given URL\n"
+  example: []
+  syntax:
+    content: public static string MakeRelativeUrl(string urlToProcess)
+    parameters:
+    - id: urlToProcess
+      type: System.String
+      description: SharePoint URL to process
+    return:
+      type: System.String
+      description: Returns realtive URL of given URL
+    content.vb: Public Shared Function MakeRelativeUrl(urlToProcess As String) As String
+  overload: PnP.Framework.Utilities.UrlUtility.MakeRelativeUrl*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.UrlUtility.EnsureTrailingSlash(System.String)
+  commentId: M:PnP.Framework.Utilities.UrlUtility.EnsureTrailingSlash(System.String)
+  id: EnsureTrailingSlash(System.String)
+  parent: PnP.Framework.Utilities.UrlUtility
+  langs:
+  - csharp
+  - vb
+  name: EnsureTrailingSlash(String)
+  nameWithType: UrlUtility.EnsureTrailingSlash(String)
+  fullName: PnP.Framework.Utilities.UrlUtility.EnsureTrailingSlash(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/UrlUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnsureTrailingSlash
+    path: ../src/lib/PnP.Framework/Utilities/UrlUtility.cs
+    startLine: 104
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nEnsures that there is a trailing slash at the end of the URL\n"
+  example: []
+  syntax:
+    content: public static string EnsureTrailingSlash(string urlToProcess)
+    parameters:
+    - id: urlToProcess
+      type: System.String
+      description: ''
+    return:
+      type: System.String
+      description: ''
+    content.vb: Public Shared Function EnsureTrailingSlash(urlToProcess As String) As String
+  overload: PnP.Framework.Utilities.UrlUtility.EnsureTrailingSlash*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.UrlUtility.ContainsInvalidUrlChars(System.String)
+  commentId: M:PnP.Framework.Utilities.UrlUtility.ContainsInvalidUrlChars(System.String)
+  id: ContainsInvalidUrlChars(System.String)
+  isExtensionMethod: true
+  parent: PnP.Framework.Utilities.UrlUtility
+  langs:
+  - csharp
+  - vb
+  name: ContainsInvalidUrlChars(String)
+  nameWithType: UrlUtility.ContainsInvalidUrlChars(String)
+  fullName: PnP.Framework.Utilities.UrlUtility.ContainsInvalidUrlChars(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/UrlUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ContainsInvalidUrlChars
+    path: ../src/lib/PnP.Framework/Utilities/UrlUtility.cs
+    startLine: 120
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nChecks if URL contains invalid characters or not\n"
+  example: []
+  syntax:
+    content: public static bool ContainsInvalidUrlChars(this string content)
+    parameters:
+    - id: content
+      type: System.String
+      description: Url value
+    return:
+      type: System.Boolean
+      description: Returns true if URL contains invalid characters. Otherwise returns false.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ContainsInvalidUrlChars(content As String) As Boolean
+  overload: PnP.Framework.Utilities.UrlUtility.ContainsInvalidUrlChars*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.UrlUtility.ContainsInvalidFileFolderChars(System.String)
+  commentId: M:PnP.Framework.Utilities.UrlUtility.ContainsInvalidFileFolderChars(System.String)
+  id: ContainsInvalidFileFolderChars(System.String)
+  isExtensionMethod: true
+  parent: PnP.Framework.Utilities.UrlUtility
+  langs:
+  - csharp
+  - vb
+  name: ContainsInvalidFileFolderChars(String)
+  nameWithType: UrlUtility.ContainsInvalidFileFolderChars(String)
+  fullName: PnP.Framework.Utilities.UrlUtility.ContainsInvalidFileFolderChars(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/UrlUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ContainsInvalidFileFolderChars
+    path: ../src/lib/PnP.Framework/Utilities/UrlUtility.cs
+    startLine: 130
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nChecks if file or folder contains invalid characters or not\n"
+  example: []
+  syntax:
+    content: public static bool ContainsInvalidFileFolderChars(this string content)
+    parameters:
+    - id: content
+      type: System.String
+      description: File or folder name to check
+    return:
+      type: System.Boolean
+      description: True if contains invalid chars, false otherwise
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ContainsInvalidFileFolderChars(content As String) As Boolean
+  overload: PnP.Framework.Utilities.UrlUtility.ContainsInvalidFileFolderChars*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.UrlUtility.StripInvalidUrlChars(System.String)
+  commentId: M:PnP.Framework.Utilities.UrlUtility.StripInvalidUrlChars(System.String)
+  id: StripInvalidUrlChars(System.String)
+  isExtensionMethod: true
+  parent: PnP.Framework.Utilities.UrlUtility
+  langs:
+  - csharp
+  - vb
+  name: StripInvalidUrlChars(String)
+  nameWithType: UrlUtility.StripInvalidUrlChars(String)
+  fullName: PnP.Framework.Utilities.UrlUtility.StripInvalidUrlChars(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/UrlUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: StripInvalidUrlChars
+    path: ../src/lib/PnP.Framework/Utilities/UrlUtility.cs
+    startLine: 140
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nRemoves invalid characters\n"
+  example: []
+  syntax:
+    content: public static string StripInvalidUrlChars(this string content)
+    parameters:
+    - id: content
+      type: System.String
+      description: Url value
+    return:
+      type: System.String
+      description: Returns URL without invalid characters
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function StripInvalidUrlChars(content As String) As String
+  overload: PnP.Framework.Utilities.UrlUtility.StripInvalidUrlChars*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.UrlUtility.ReplaceInvalidUrlChars(System.String,System.String)
+  commentId: M:PnP.Framework.Utilities.UrlUtility.ReplaceInvalidUrlChars(System.String,System.String)
+  id: ReplaceInvalidUrlChars(System.String,System.String)
+  isExtensionMethod: true
+  parent: PnP.Framework.Utilities.UrlUtility
+  langs:
+  - csharp
+  - vb
+  name: ReplaceInvalidUrlChars(String, String)
+  nameWithType: UrlUtility.ReplaceInvalidUrlChars(String, String)
+  fullName: PnP.Framework.Utilities.UrlUtility.ReplaceInvalidUrlChars(System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/UrlUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ReplaceInvalidUrlChars
+    path: ../src/lib/PnP.Framework/Utilities/UrlUtility.cs
+    startLine: 150
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nReplaces invalid characters with other characters\n"
+  example: []
+  syntax:
+    content: public static string ReplaceInvalidUrlChars(this string content, string replacer)
+    parameters:
+    - id: content
+      type: System.String
+      description: Url value
+    - id: replacer
+      type: System.String
+      description: string need to replace with invalid characters
+    return:
+      type: System.String
+      description: Returns replaced invalid characters from URL
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ReplaceInvalidUrlChars(content As String, replacer As String) As String
+  overload: PnP.Framework.Utilities.UrlUtility.ReplaceInvalidUrlChars*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.UrlUtility.UrlPathEncode(System.String)
+  commentId: M:PnP.Framework.Utilities.UrlUtility.UrlPathEncode(System.String)
+  id: UrlPathEncode(System.String)
+  isExtensionMethod: true
+  parent: PnP.Framework.Utilities.UrlUtility
+  langs:
+  - csharp
+  - vb
+  name: UrlPathEncode(String)
+  nameWithType: UrlUtility.UrlPathEncode(String)
+  fullName: PnP.Framework.Utilities.UrlUtility.UrlPathEncode(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/UrlUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UrlPathEncode
+    path: ../src/lib/PnP.Framework/Utilities/UrlUtility.cs
+    startLine: 160
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nEncodes URL encoded in a way that SharePoint expected URLs to be encoded in client_LocationBasedDefaults.html\n"
+  example: []
+  syntax:
+    content: public static string UrlPathEncode(this string content)
+    parameters:
+    - id: content
+      type: System.String
+      description: Url value
+    return:
+      type: System.String
+      description: Returns URL encoded in a way that SharePoint expected URLs to be encoded in client_LocationBasedDefaults.html
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function UrlPathEncode(content As String) As String
+  overload: PnP.Framework.Utilities.UrlUtility.UrlPathEncode*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.UrlUtility.IsIisVirtualDirectory(System.String)
+  commentId: M:PnP.Framework.Utilities.UrlUtility.IsIisVirtualDirectory(System.String)
+  id: IsIisVirtualDirectory(System.String)
+  parent: PnP.Framework.Utilities.UrlUtility
+  langs:
+  - csharp
+  - vb
+  name: IsIisVirtualDirectory(String)
+  nameWithType: UrlUtility.IsIisVirtualDirectory(String)
+  fullName: PnP.Framework.Utilities.UrlUtility.IsIisVirtualDirectory(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/UrlUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsIisVirtualDirectory
+    path: ../src/lib/PnP.Framework/Utilities/UrlUtility.cs
+    startLine: 170
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nTells URL is virtual directory or not\n"
+  example: []
+  syntax:
+    content: public static bool IsIisVirtualDirectory(string url)
+    parameters:
+    - id: url
+      type: System.String
+      description: SharePoint URL
+    return:
+      type: System.Boolean
+      description: Returns true if URL is virtual directory. Otherwise returns false.
+    content.vb: Public Shared Function IsIisVirtualDirectory(url As String) As Boolean
+  overload: PnP.Framework.Utilities.UrlUtility.IsIisVirtualDirectory*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.UrlUtility.RemoveUnallowedCharacters(System.String)
+  commentId: M:PnP.Framework.Utilities.UrlUtility.RemoveUnallowedCharacters(System.String)
+  id: RemoveUnallowedCharacters(System.String)
+  parent: PnP.Framework.Utilities.UrlUtility
+  langs:
+  - csharp
+  - vb
+  name: RemoveUnallowedCharacters(String)
+  nameWithType: UrlUtility.RemoveUnallowedCharacters(String)
+  fullName: PnP.Framework.Utilities.UrlUtility.RemoveUnallowedCharacters(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/UrlUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemoveUnallowedCharacters
+    path: ../src/lib/PnP.Framework/Utilities/UrlUtility.cs
+    startLine: 221
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  syntax:
+    content: public static string RemoveUnallowedCharacters(string str)
+    parameters:
+    - id: str
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Shared Function RemoveUnallowedCharacters(str As String) As String
+  overload: PnP.Framework.Utilities.UrlUtility.RemoveUnallowedCharacters*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.UrlUtility.ReplaceAccentedCharactersWithLatin(System.String)
+  commentId: M:PnP.Framework.Utilities.UrlUtility.ReplaceAccentedCharactersWithLatin(System.String)
+  id: ReplaceAccentedCharactersWithLatin(System.String)
+  parent: PnP.Framework.Utilities.UrlUtility
+  langs:
+  - csharp
+  - vb
+  name: ReplaceAccentedCharactersWithLatin(String)
+  nameWithType: UrlUtility.ReplaceAccentedCharactersWithLatin(String)
+  fullName: PnP.Framework.Utilities.UrlUtility.ReplaceAccentedCharactersWithLatin(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/UrlUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ReplaceAccentedCharactersWithLatin
+    path: ../src/lib/PnP.Framework/Utilities/UrlUtility.cs
+    startLine: 228
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  syntax:
+    content: public static string ReplaceAccentedCharactersWithLatin(string str)
+    parameters:
+    - id: str
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Shared Function ReplaceAccentedCharactersWithLatin(str As String) As String
+  overload: PnP.Framework.Utilities.UrlUtility.ReplaceAccentedCharactersWithLatin*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: PnP.Framework.Utilities
+  commentId: N:PnP.Framework.Utilities
+  name: PnP.Framework.Utilities
+  nameWithType: PnP.Framework.Utilities
+  fullName: PnP.Framework.Utilities
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: PnP.Framework.Utilities.UrlUtility.Combine*
+  commentId: Overload:PnP.Framework.Utilities.UrlUtility.Combine
+  name: Combine
+  nameWithType: UrlUtility.Combine
+  fullName: PnP.Framework.Utilities.UrlUtility.Combine
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.String[]
+  isExternal: true
+  name: String[]
+  nameWithType: String[]
+  fullName: System.String[]
+  nameWithType.vb: String()
+  fullName.vb: System.String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: PnP.Framework.Utilities.UrlUtility.AppendQueryString*
+  commentId: Overload:PnP.Framework.Utilities.UrlUtility.AppendQueryString
+  name: AppendQueryString
+  nameWithType: UrlUtility.AppendQueryString
+  fullName: PnP.Framework.Utilities.UrlUtility.AppendQueryString
+- uid: PnP.Framework.Utilities.UrlUtility.MakeRelativeUrl*
+  commentId: Overload:PnP.Framework.Utilities.UrlUtility.MakeRelativeUrl
+  name: MakeRelativeUrl
+  nameWithType: UrlUtility.MakeRelativeUrl
+  fullName: PnP.Framework.Utilities.UrlUtility.MakeRelativeUrl
+- uid: PnP.Framework.Utilities.UrlUtility.EnsureTrailingSlash*
+  commentId: Overload:PnP.Framework.Utilities.UrlUtility.EnsureTrailingSlash
+  name: EnsureTrailingSlash
+  nameWithType: UrlUtility.EnsureTrailingSlash
+  fullName: PnP.Framework.Utilities.UrlUtility.EnsureTrailingSlash
+- uid: PnP.Framework.Utilities.UrlUtility.ContainsInvalidUrlChars*
+  commentId: Overload:PnP.Framework.Utilities.UrlUtility.ContainsInvalidUrlChars
+  name: ContainsInvalidUrlChars
+  nameWithType: UrlUtility.ContainsInvalidUrlChars
+  fullName: PnP.Framework.Utilities.UrlUtility.ContainsInvalidUrlChars
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: PnP.Framework.Utilities.UrlUtility.ContainsInvalidFileFolderChars*
+  commentId: Overload:PnP.Framework.Utilities.UrlUtility.ContainsInvalidFileFolderChars
+  name: ContainsInvalidFileFolderChars
+  nameWithType: UrlUtility.ContainsInvalidFileFolderChars
+  fullName: PnP.Framework.Utilities.UrlUtility.ContainsInvalidFileFolderChars
+- uid: PnP.Framework.Utilities.UrlUtility.StripInvalidUrlChars*
+  commentId: Overload:PnP.Framework.Utilities.UrlUtility.StripInvalidUrlChars
+  name: StripInvalidUrlChars
+  nameWithType: UrlUtility.StripInvalidUrlChars
+  fullName: PnP.Framework.Utilities.UrlUtility.StripInvalidUrlChars
+- uid: PnP.Framework.Utilities.UrlUtility.ReplaceInvalidUrlChars*
+  commentId: Overload:PnP.Framework.Utilities.UrlUtility.ReplaceInvalidUrlChars
+  name: ReplaceInvalidUrlChars
+  nameWithType: UrlUtility.ReplaceInvalidUrlChars
+  fullName: PnP.Framework.Utilities.UrlUtility.ReplaceInvalidUrlChars
+- uid: PnP.Framework.Utilities.UrlUtility.UrlPathEncode*
+  commentId: Overload:PnP.Framework.Utilities.UrlUtility.UrlPathEncode
+  name: UrlPathEncode
+  nameWithType: UrlUtility.UrlPathEncode
+  fullName: PnP.Framework.Utilities.UrlUtility.UrlPathEncode
+- uid: PnP.Framework.Utilities.UrlUtility.IsIisVirtualDirectory*
+  commentId: Overload:PnP.Framework.Utilities.UrlUtility.IsIisVirtualDirectory
+  name: IsIisVirtualDirectory
+  nameWithType: UrlUtility.IsIisVirtualDirectory
+  fullName: PnP.Framework.Utilities.UrlUtility.IsIisVirtualDirectory
+- uid: PnP.Framework.Utilities.UrlUtility.RemoveUnallowedCharacters*
+  commentId: Overload:PnP.Framework.Utilities.UrlUtility.RemoveUnallowedCharacters
+  name: RemoveUnallowedCharacters
+  nameWithType: UrlUtility.RemoveUnallowedCharacters
+  fullName: PnP.Framework.Utilities.UrlUtility.RemoveUnallowedCharacters
+- uid: PnP.Framework.Utilities.UrlUtility.ReplaceAccentedCharactersWithLatin*
+  commentId: Overload:PnP.Framework.Utilities.UrlUtility.ReplaceAccentedCharactersWithLatin
+  name: ReplaceAccentedCharactersWithLatin
+  nameWithType: UrlUtility.ReplaceAccentedCharactersWithLatin
+  fullName: PnP.Framework.Utilities.UrlUtility.ReplaceAccentedCharactersWithLatin

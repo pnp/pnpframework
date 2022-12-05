@@ -1,0 +1,34 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.ALM
+  commentId: N:PnP.Framework.ALM
+  id: PnP.Framework.ALM
+  children:
+  - PnP.Framework.ALM.AppManager
+  - PnP.Framework.ALM.AppMetadata
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.ALM
+  nameWithType: PnP.Framework.ALM
+  fullName: PnP.Framework.ALM
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.ALM.AppManager
+  commentId: T:PnP.Framework.ALM.AppManager
+  name: AppManager
+  nameWithType: AppManager
+  fullName: PnP.Framework.ALM.AppManager
+- uid: PnP.Framework.ALM.AppMetadata
+  commentId: T:PnP.Framework.ALM.AppMetadata
+  parent: PnP.Framework.ALM
+  name: AppMetadata
+  nameWithType: AppMetadata
+  fullName: PnP.Framework.ALM.AppMetadata
+- uid: PnP.Framework.ALM
+  commentId: N:PnP.Framework.ALM
+  name: PnP.Framework.ALM
+  nameWithType: PnP.Framework.ALM
+  fullName: PnP.Framework.ALM

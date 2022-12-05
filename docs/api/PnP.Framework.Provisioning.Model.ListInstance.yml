@@ -1,0 +1,4521 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.ListInstance
+  commentId: T:PnP.Framework.Provisioning.Model.ListInstance
+  id: ListInstance
+  parent: PnP.Framework.Provisioning.Model
+  children:
+  - PnP.Framework.Provisioning.Model.ListInstance.#ctor
+  - PnP.Framework.Provisioning.Model.ListInstance.#ctor(System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.ContentTypeBinding},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.View},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.Field},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.FieldRef},System.Collections.Generic.List{PnP.Framework.Provisioning.Model.DataRow})
+  - PnP.Framework.Provisioning.Model.ListInstance.#ctor(System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.ContentTypeBinding},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.View},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.Field},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.FieldRef},System.Collections.Generic.List{PnP.Framework.Provisioning.Model.DataRow},System.Collections.Generic.Dictionary{System.String,System.String},PnP.Framework.Provisioning.Model.ObjectSecurity)
+  - PnP.Framework.Provisioning.Model.ListInstance.#ctor(System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.ContentTypeBinding},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.View},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.Field},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.FieldRef},System.Collections.Generic.List{PnP.Framework.Provisioning.Model.DataRow},System.Collections.Generic.Dictionary{System.String,System.String},PnP.Framework.Provisioning.Model.ObjectSecurity,System.Collections.Generic.List{PnP.Framework.Provisioning.Model.Folder})
+  - PnP.Framework.Provisioning.Model.ListInstance.#ctor(System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.ContentTypeBinding},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.View},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.Field},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.FieldRef},System.Collections.Generic.List{PnP.Framework.Provisioning.Model.DataRow},System.Collections.Generic.Dictionary{System.String,System.String},PnP.Framework.Provisioning.Model.ObjectSecurity,System.Collections.Generic.List{PnP.Framework.Provisioning.Model.Folder},System.Collections.Generic.List{PnP.Framework.Provisioning.Model.CustomAction})
+  - PnP.Framework.Provisioning.Model.ListInstance.ContentTypeBindings
+  - PnP.Framework.Provisioning.Model.ListInstance.ContentTypesEnabled
+  - PnP.Framework.Provisioning.Model.ListInstance.DataRows
+  - PnP.Framework.Provisioning.Model.ListInstance.DataSource
+  - PnP.Framework.Provisioning.Model.ListInstance.DefaultColumnValues
+  - PnP.Framework.Provisioning.Model.ListInstance.DefaultDisplayFormUrl
+  - PnP.Framework.Provisioning.Model.ListInstance.DefaultEditFormUrl
+  - PnP.Framework.Provisioning.Model.ListInstance.DefaultNewFormUrl
+  - PnP.Framework.Provisioning.Model.ListInstance.Description
+  - PnP.Framework.Provisioning.Model.ListInstance.Direction
+  - PnP.Framework.Provisioning.Model.ListInstance.DocumentTemplate
+  - PnP.Framework.Provisioning.Model.ListInstance.DraftVersionVisibility
+  - PnP.Framework.Provisioning.Model.ListInstance.EnableAttachments
+  - PnP.Framework.Provisioning.Model.ListInstance.EnableAudienceTargeting
+  - PnP.Framework.Provisioning.Model.ListInstance.EnableClassicAudienceTargeting
+  - PnP.Framework.Provisioning.Model.ListInstance.EnableFolderCreation
+  - PnP.Framework.Provisioning.Model.ListInstance.EnableMinorVersions
+  - PnP.Framework.Provisioning.Model.ListInstance.EnableModeration
+  - PnP.Framework.Provisioning.Model.ListInstance.EnableVersioning
+  - PnP.Framework.Provisioning.Model.ListInstance.Equals(PnP.Framework.Provisioning.Model.ListInstance)
+  - PnP.Framework.Provisioning.Model.ListInstance.Equals(System.Object)
+  - PnP.Framework.Provisioning.Model.ListInstance.FieldDefaults
+  - PnP.Framework.Provisioning.Model.ListInstance.FieldRefs
+  - PnP.Framework.Provisioning.Model.ListInstance.Fields
+  - PnP.Framework.Provisioning.Model.ListInstance.Folders
+  - PnP.Framework.Provisioning.Model.ListInstance.ForceCheckout
+  - PnP.Framework.Provisioning.Model.ListInstance.GetHashCode
+  - PnP.Framework.Provisioning.Model.ListInstance.Hidden
+  - PnP.Framework.Provisioning.Model.ListInstance.ImageUrl
+  - PnP.Framework.Provisioning.Model.ListInstance.IrmExpire
+  - PnP.Framework.Provisioning.Model.ListInstance.IrmReject
+  - PnP.Framework.Provisioning.Model.ListInstance.IRMSettings
+  - PnP.Framework.Provisioning.Model.ListInstance.IsApplicationList
+  - PnP.Framework.Provisioning.Model.ListInstance.ListExperience
+  - PnP.Framework.Provisioning.Model.ListInstance.MaxVersionLimit
+  - PnP.Framework.Provisioning.Model.ListInstance.MinorVersionLimit
+  - PnP.Framework.Provisioning.Model.ListInstance.NoCrawl
+  - PnP.Framework.Provisioning.Model.ListInstance.OnQuickLaunch
+  - PnP.Framework.Provisioning.Model.ListInstance.PropertyBagEntries
+  - PnP.Framework.Provisioning.Model.ListInstance.ReadSecurity
+  - PnP.Framework.Provisioning.Model.ListInstance.RemoveExistingContentTypes
+  - PnP.Framework.Provisioning.Model.ListInstance.RemoveExistingViews
+  - PnP.Framework.Provisioning.Model.ListInstance.Security
+  - PnP.Framework.Provisioning.Model.ListInstance.TemplateFeatureID
+  - PnP.Framework.Provisioning.Model.ListInstance.TemplateInternalName
+  - PnP.Framework.Provisioning.Model.ListInstance.TemplateType
+  - PnP.Framework.Provisioning.Model.ListInstance.Title
+  - PnP.Framework.Provisioning.Model.ListInstance.Url
+  - PnP.Framework.Provisioning.Model.ListInstance.UserCustomActions
+  - PnP.Framework.Provisioning.Model.ListInstance.ValidationFormula
+  - PnP.Framework.Provisioning.Model.ListInstance.ValidationMessage
+  - PnP.Framework.Provisioning.Model.ListInstance.Views
+  - PnP.Framework.Provisioning.Model.ListInstance.Webhooks
+  - PnP.Framework.Provisioning.Model.ListInstance.WriteSecurity
+  langs:
+  - csharp
+  - vb
+  name: ListInstance
+  nameWithType: ListInstance
+  fullName: PnP.Framework.Provisioning.Model.ListInstance
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ListInstance
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 10
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDomain Object that specifies the properties of the new list.\n"
+  example: []
+  syntax:
+    content: 'public class ListInstance : BaseModel, IProvisioningTemplateDescendant, IEquatable<ListInstance>'
+    content.vb: >-
+      Public Class ListInstance
+          Inherits BaseModel
+          Implements IProvisioningTemplateDescendant, IEquatable(Of ListInstance)
+  inheritance:
+  - System.Object
+  - PnP.Framework.Provisioning.Model.BaseModel
+  implements:
+  - PnP.Framework.Provisioning.Model.IProvisioningTemplateDescendant
+  - System.IEquatable{PnP.Framework.Provisioning.Model.ListInstance}
+  inheritedMembers:
+  - PnP.Framework.Provisioning.Model.BaseModel.ParentTemplate
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - PnP.Framework.Provisioning.Model.ListInstance.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - PnP.Framework.Provisioning.Model.ListInstance.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Model.ListInstance,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: PnP.Framework.Provisioning.Model.ListInstance.#ctor
+  commentId: M:PnP.Framework.Provisioning.Model.ListInstance.#ctor
+  id: '#ctor'
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: ListInstance()
+  nameWithType: ListInstance.ListInstance()
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.ListInstance()
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 16
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nConstructor for ListInstance class\n"
+  example: []
+  syntax:
+    content: public ListInstance()
+    content.vb: Public Sub New
+  overload: PnP.Framework.Provisioning.Model.ListInstance.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.#ctor(System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.ContentTypeBinding},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.View},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.Field},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.FieldRef},System.Collections.Generic.List{PnP.Framework.Provisioning.Model.DataRow})
+  commentId: M:PnP.Framework.Provisioning.Model.ListInstance.#ctor(System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.ContentTypeBinding},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.View},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.Field},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.FieldRef},System.Collections.Generic.List{PnP.Framework.Provisioning.Model.DataRow})
+  id: '#ctor(System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.ContentTypeBinding},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.View},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.Field},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.FieldRef},System.Collections.Generic.List{PnP.Framework.Provisioning.Model.DataRow})'
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: ListInstance(IEnumerable<ContentTypeBinding>, IEnumerable<View>, IEnumerable<Field>, IEnumerable<FieldRef>, List<DataRow>)
+  nameWithType: ListInstance.ListInstance(IEnumerable<ContentTypeBinding>, IEnumerable<View>, IEnumerable<Field>, IEnumerable<FieldRef>, List<DataRow>)
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.ListInstance(System.Collections.Generic.IEnumerable<PnP.Framework.Provisioning.Model.ContentTypeBinding>, System.Collections.Generic.IEnumerable<PnP.Framework.Provisioning.Model.View>, System.Collections.Generic.IEnumerable<PnP.Framework.Provisioning.Model.Field>, System.Collections.Generic.IEnumerable<PnP.Framework.Provisioning.Model.FieldRef>, System.Collections.Generic.List<PnP.Framework.Provisioning.Model.DataRow>)
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 37
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nConstructor for ListInstance class\n"
+  example: []
+  syntax:
+    content: public ListInstance(IEnumerable<ContentTypeBinding> contentTypeBindings, IEnumerable<View> views, IEnumerable<Field> fields, IEnumerable<FieldRef> fieldRefs, List<DataRow> dataRows)
+    parameters:
+    - id: contentTypeBindings
+      type: System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.ContentTypeBinding}
+      description: ContentType Bindings of the list
+    - id: views
+      type: System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.View}
+      description: Views of the list
+    - id: fields
+      type: System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.Field}
+      description: Fields of the list
+    - id: fieldRefs
+      type: System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.FieldRef}
+      description: FieldRefs of the list
+    - id: dataRows
+      type: System.Collections.Generic.List{PnP.Framework.Provisioning.Model.DataRow}
+      description: DataRows of the list
+    content.vb: Public Sub New(contentTypeBindings As IEnumerable(Of ContentTypeBinding), views As IEnumerable(Of View), fields As IEnumerable(Of Field), fieldRefs As IEnumerable(Of FieldRef), dataRows As List(Of DataRow))
+  overload: PnP.Framework.Provisioning.Model.ListInstance.#ctor*
+  nameWithType.vb: ListInstance.ListInstance(IEnumerable(Of ContentTypeBinding), IEnumerable(Of View), IEnumerable(Of Field), IEnumerable(Of FieldRef), List(Of DataRow))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: PnP.Framework.Provisioning.Model.ListInstance.ListInstance(System.Collections.Generic.IEnumerable(Of PnP.Framework.Provisioning.Model.ContentTypeBinding), System.Collections.Generic.IEnumerable(Of PnP.Framework.Provisioning.Model.View), System.Collections.Generic.IEnumerable(Of PnP.Framework.Provisioning.Model.Field), System.Collections.Generic.IEnumerable(Of PnP.Framework.Provisioning.Model.FieldRef), System.Collections.Generic.List(Of PnP.Framework.Provisioning.Model.DataRow))
+  name.vb: ListInstance(IEnumerable(Of ContentTypeBinding), IEnumerable(Of View), IEnumerable(Of Field), IEnumerable(Of FieldRef), List(Of DataRow))
+- uid: PnP.Framework.Provisioning.Model.ListInstance.#ctor(System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.ContentTypeBinding},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.View},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.Field},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.FieldRef},System.Collections.Generic.List{PnP.Framework.Provisioning.Model.DataRow},System.Collections.Generic.Dictionary{System.String,System.String},PnP.Framework.Provisioning.Model.ObjectSecurity)
+  commentId: M:PnP.Framework.Provisioning.Model.ListInstance.#ctor(System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.ContentTypeBinding},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.View},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.Field},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.FieldRef},System.Collections.Generic.List{PnP.Framework.Provisioning.Model.DataRow},System.Collections.Generic.Dictionary{System.String,System.String},PnP.Framework.Provisioning.Model.ObjectSecurity)
+  id: '#ctor(System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.ContentTypeBinding},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.View},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.Field},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.FieldRef},System.Collections.Generic.List{PnP.Framework.Provisioning.Model.DataRow},System.Collections.Generic.Dictionary{System.String,System.String},PnP.Framework.Provisioning.Model.ObjectSecurity)'
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: ListInstance(IEnumerable<ContentTypeBinding>, IEnumerable<View>, IEnumerable<Field>, IEnumerable<FieldRef>, List<DataRow>, Dictionary<String, String>, ObjectSecurity)
+  nameWithType: ListInstance.ListInstance(IEnumerable<ContentTypeBinding>, IEnumerable<View>, IEnumerable<Field>, IEnumerable<FieldRef>, List<DataRow>, Dictionary<String, String>, ObjectSecurity)
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.ListInstance(System.Collections.Generic.IEnumerable<PnP.Framework.Provisioning.Model.ContentTypeBinding>, System.Collections.Generic.IEnumerable<PnP.Framework.Provisioning.Model.View>, System.Collections.Generic.IEnumerable<PnP.Framework.Provisioning.Model.Field>, System.Collections.Generic.IEnumerable<PnP.Framework.Provisioning.Model.FieldRef>, System.Collections.Generic.List<PnP.Framework.Provisioning.Model.DataRow>, System.Collections.Generic.Dictionary<System.String, System.String>, PnP.Framework.Provisioning.Model.ObjectSecurity)
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 53
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nConstructor for ListInstance class\n"
+  example: []
+  syntax:
+    content: public ListInstance(IEnumerable<ContentTypeBinding> contentTypeBindings, IEnumerable<View> views, IEnumerable<Field> fields, IEnumerable<FieldRef> fieldRefs, List<DataRow> dataRows, Dictionary<string, string> fieldDefaults, ObjectSecurity security)
+    parameters:
+    - id: contentTypeBindings
+      type: System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.ContentTypeBinding}
+      description: ContentType Bindings of the list
+    - id: views
+      type: System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.View}
+      description: View of the list
+    - id: fields
+      type: System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.Field}
+      description: Fields of the list
+    - id: fieldRefs
+      type: System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.FieldRef}
+      description: FieldRefs of the list
+    - id: dataRows
+      type: System.Collections.Generic.List{PnP.Framework.Provisioning.Model.DataRow}
+      description: DataRows of the list
+    - id: fieldDefaults
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: FieldDefaults of the list
+    - id: security
+      type: PnP.Framework.Provisioning.Model.ObjectSecurity
+      description: Security Rules of the list
+    content.vb: Public Sub New(contentTypeBindings As IEnumerable(Of ContentTypeBinding), views As IEnumerable(Of View), fields As IEnumerable(Of Field), fieldRefs As IEnumerable(Of FieldRef), dataRows As List(Of DataRow), fieldDefaults As Dictionary(Of String, String), security As ObjectSecurity)
+  overload: PnP.Framework.Provisioning.Model.ListInstance.#ctor*
+  nameWithType.vb: ListInstance.ListInstance(IEnumerable(Of ContentTypeBinding), IEnumerable(Of View), IEnumerable(Of Field), IEnumerable(Of FieldRef), List(Of DataRow), Dictionary(Of String, String), ObjectSecurity)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: PnP.Framework.Provisioning.Model.ListInstance.ListInstance(System.Collections.Generic.IEnumerable(Of PnP.Framework.Provisioning.Model.ContentTypeBinding), System.Collections.Generic.IEnumerable(Of PnP.Framework.Provisioning.Model.View), System.Collections.Generic.IEnumerable(Of PnP.Framework.Provisioning.Model.Field), System.Collections.Generic.IEnumerable(Of PnP.Framework.Provisioning.Model.FieldRef), System.Collections.Generic.List(Of PnP.Framework.Provisioning.Model.DataRow), System.Collections.Generic.Dictionary(Of System.String, System.String), PnP.Framework.Provisioning.Model.ObjectSecurity)
+  name.vb: ListInstance(IEnumerable(Of ContentTypeBinding), IEnumerable(Of View), IEnumerable(Of Field), IEnumerable(Of FieldRef), List(Of DataRow), Dictionary(Of String, String), ObjectSecurity)
+- uid: PnP.Framework.Provisioning.Model.ListInstance.#ctor(System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.ContentTypeBinding},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.View},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.Field},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.FieldRef},System.Collections.Generic.List{PnP.Framework.Provisioning.Model.DataRow},System.Collections.Generic.Dictionary{System.String,System.String},PnP.Framework.Provisioning.Model.ObjectSecurity,System.Collections.Generic.List{PnP.Framework.Provisioning.Model.Folder})
+  commentId: M:PnP.Framework.Provisioning.Model.ListInstance.#ctor(System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.ContentTypeBinding},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.View},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.Field},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.FieldRef},System.Collections.Generic.List{PnP.Framework.Provisioning.Model.DataRow},System.Collections.Generic.Dictionary{System.String,System.String},PnP.Framework.Provisioning.Model.ObjectSecurity,System.Collections.Generic.List{PnP.Framework.Provisioning.Model.Folder})
+  id: '#ctor(System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.ContentTypeBinding},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.View},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.Field},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.FieldRef},System.Collections.Generic.List{PnP.Framework.Provisioning.Model.DataRow},System.Collections.Generic.Dictionary{System.String,System.String},PnP.Framework.Provisioning.Model.ObjectSecurity,System.Collections.Generic.List{PnP.Framework.Provisioning.Model.Folder})'
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: ListInstance(IEnumerable<ContentTypeBinding>, IEnumerable<View>, IEnumerable<Field>, IEnumerable<FieldRef>, List<DataRow>, Dictionary<String, String>, ObjectSecurity, List<Folder>)
+  nameWithType: ListInstance.ListInstance(IEnumerable<ContentTypeBinding>, IEnumerable<View>, IEnumerable<Field>, IEnumerable<FieldRef>, List<DataRow>, Dictionary<String, String>, ObjectSecurity, List<Folder>)
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.ListInstance(System.Collections.Generic.IEnumerable<PnP.Framework.Provisioning.Model.ContentTypeBinding>, System.Collections.Generic.IEnumerable<PnP.Framework.Provisioning.Model.View>, System.Collections.Generic.IEnumerable<PnP.Framework.Provisioning.Model.Field>, System.Collections.Generic.IEnumerable<PnP.Framework.Provisioning.Model.FieldRef>, System.Collections.Generic.List<PnP.Framework.Provisioning.Model.DataRow>, System.Collections.Generic.Dictionary<System.String, System.String>, PnP.Framework.Provisioning.Model.ObjectSecurity, System.Collections.Generic.List<PnP.Framework.Provisioning.Model.Folder>)
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 70
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nConstructor for ListInstance class\n"
+  example: []
+  syntax:
+    content: public ListInstance(IEnumerable<ContentTypeBinding> contentTypeBindings, IEnumerable<View> views, IEnumerable<Field> fields, IEnumerable<FieldRef> fieldRefs, List<DataRow> dataRows, Dictionary<string, string> fieldDefaults, ObjectSecurity security, List<Folder> folders)
+    parameters:
+    - id: contentTypeBindings
+      type: System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.ContentTypeBinding}
+      description: ContentTypeBindings  of the list
+    - id: views
+      type: System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.View}
+      description: Views of the list
+    - id: fields
+      type: System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.Field}
+      description: Fields of the list
+    - id: fieldRefs
+      type: System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.FieldRef}
+      description: FieldRefs of the list
+    - id: dataRows
+      type: System.Collections.Generic.List{PnP.Framework.Provisioning.Model.DataRow}
+      description: DataRows of the list
+    - id: fieldDefaults
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: FieldDefaults of the list
+    - id: security
+      type: PnP.Framework.Provisioning.Model.ObjectSecurity
+      description: Security Rules of the list
+    - id: folders
+      type: System.Collections.Generic.List{PnP.Framework.Provisioning.Model.Folder}
+      description: List Folders
+    content.vb: Public Sub New(contentTypeBindings As IEnumerable(Of ContentTypeBinding), views As IEnumerable(Of View), fields As IEnumerable(Of Field), fieldRefs As IEnumerable(Of FieldRef), dataRows As List(Of DataRow), fieldDefaults As Dictionary(Of String, String), security As ObjectSecurity, folders As List(Of Folder))
+  overload: PnP.Framework.Provisioning.Model.ListInstance.#ctor*
+  nameWithType.vb: ListInstance.ListInstance(IEnumerable(Of ContentTypeBinding), IEnumerable(Of View), IEnumerable(Of Field), IEnumerable(Of FieldRef), List(Of DataRow), Dictionary(Of String, String), ObjectSecurity, List(Of Folder))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: PnP.Framework.Provisioning.Model.ListInstance.ListInstance(System.Collections.Generic.IEnumerable(Of PnP.Framework.Provisioning.Model.ContentTypeBinding), System.Collections.Generic.IEnumerable(Of PnP.Framework.Provisioning.Model.View), System.Collections.Generic.IEnumerable(Of PnP.Framework.Provisioning.Model.Field), System.Collections.Generic.IEnumerable(Of PnP.Framework.Provisioning.Model.FieldRef), System.Collections.Generic.List(Of PnP.Framework.Provisioning.Model.DataRow), System.Collections.Generic.Dictionary(Of System.String, System.String), PnP.Framework.Provisioning.Model.ObjectSecurity, System.Collections.Generic.List(Of PnP.Framework.Provisioning.Model.Folder))
+  name.vb: ListInstance(IEnumerable(Of ContentTypeBinding), IEnumerable(Of View), IEnumerable(Of Field), IEnumerable(Of FieldRef), List(Of DataRow), Dictionary(Of String, String), ObjectSecurity, List(Of Folder))
+- uid: PnP.Framework.Provisioning.Model.ListInstance.#ctor(System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.ContentTypeBinding},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.View},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.Field},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.FieldRef},System.Collections.Generic.List{PnP.Framework.Provisioning.Model.DataRow},System.Collections.Generic.Dictionary{System.String,System.String},PnP.Framework.Provisioning.Model.ObjectSecurity,System.Collections.Generic.List{PnP.Framework.Provisioning.Model.Folder},System.Collections.Generic.List{PnP.Framework.Provisioning.Model.CustomAction})
+  commentId: M:PnP.Framework.Provisioning.Model.ListInstance.#ctor(System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.ContentTypeBinding},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.View},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.Field},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.FieldRef},System.Collections.Generic.List{PnP.Framework.Provisioning.Model.DataRow},System.Collections.Generic.Dictionary{System.String,System.String},PnP.Framework.Provisioning.Model.ObjectSecurity,System.Collections.Generic.List{PnP.Framework.Provisioning.Model.Folder},System.Collections.Generic.List{PnP.Framework.Provisioning.Model.CustomAction})
+  id: '#ctor(System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.ContentTypeBinding},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.View},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.Field},System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.FieldRef},System.Collections.Generic.List{PnP.Framework.Provisioning.Model.DataRow},System.Collections.Generic.Dictionary{System.String,System.String},PnP.Framework.Provisioning.Model.ObjectSecurity,System.Collections.Generic.List{PnP.Framework.Provisioning.Model.Folder},System.Collections.Generic.List{PnP.Framework.Provisioning.Model.CustomAction})'
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: ListInstance(IEnumerable<ContentTypeBinding>, IEnumerable<View>, IEnumerable<Field>, IEnumerable<FieldRef>, List<DataRow>, Dictionary<String, String>, ObjectSecurity, List<Folder>, List<CustomAction>)
+  nameWithType: ListInstance.ListInstance(IEnumerable<ContentTypeBinding>, IEnumerable<View>, IEnumerable<Field>, IEnumerable<FieldRef>, List<DataRow>, Dictionary<String, String>, ObjectSecurity, List<Folder>, List<CustomAction>)
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.ListInstance(System.Collections.Generic.IEnumerable<PnP.Framework.Provisioning.Model.ContentTypeBinding>, System.Collections.Generic.IEnumerable<PnP.Framework.Provisioning.Model.View>, System.Collections.Generic.IEnumerable<PnP.Framework.Provisioning.Model.Field>, System.Collections.Generic.IEnumerable<PnP.Framework.Provisioning.Model.FieldRef>, System.Collections.Generic.List<PnP.Framework.Provisioning.Model.DataRow>, System.Collections.Generic.Dictionary<System.String, System.String>, PnP.Framework.Provisioning.Model.ObjectSecurity, System.Collections.Generic.List<PnP.Framework.Provisioning.Model.Folder>, System.Collections.Generic.List<PnP.Framework.Provisioning.Model.CustomAction>)
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 88
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nConstructor for the ListInstance class\n"
+  example: []
+  syntax:
+    content: public ListInstance(IEnumerable<ContentTypeBinding> contentTypeBindings, IEnumerable<View> views, IEnumerable<Field> fields, IEnumerable<FieldRef> fieldRefs, List<DataRow> dataRows, Dictionary<string, string> fieldDefaults, ObjectSecurity security, List<Folder> folders, List<CustomAction> userCustomActions)
+    parameters:
+    - id: contentTypeBindings
+      type: System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.ContentTypeBinding}
+      description: ContentTypeBindings of the list
+    - id: views
+      type: System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.View}
+      description: Views of the list
+    - id: fields
+      type: System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.Field}
+      description: Fields of the list
+    - id: fieldRefs
+      type: System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.FieldRef}
+      description: FieldRefs of the list
+    - id: dataRows
+      type: System.Collections.Generic.List{PnP.Framework.Provisioning.Model.DataRow}
+      description: DataRows of the list
+    - id: fieldDefaults
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: FieldDefaults of the list
+    - id: security
+      type: PnP.Framework.Provisioning.Model.ObjectSecurity
+      description: Security Rules of the list
+    - id: folders
+      type: System.Collections.Generic.List{PnP.Framework.Provisioning.Model.Folder}
+      description: List Folders
+    - id: userCustomActions
+      type: System.Collections.Generic.List{PnP.Framework.Provisioning.Model.CustomAction}
+      description: UserCustomActions of the list
+    content.vb: Public Sub New(contentTypeBindings As IEnumerable(Of ContentTypeBinding), views As IEnumerable(Of View), fields As IEnumerable(Of Field), fieldRefs As IEnumerable(Of FieldRef), dataRows As List(Of DataRow), fieldDefaults As Dictionary(Of String, String), security As ObjectSecurity, folders As List(Of Folder), userCustomActions As List(Of CustomAction))
+  overload: PnP.Framework.Provisioning.Model.ListInstance.#ctor*
+  nameWithType.vb: ListInstance.ListInstance(IEnumerable(Of ContentTypeBinding), IEnumerable(Of View), IEnumerable(Of Field), IEnumerable(Of FieldRef), List(Of DataRow), Dictionary(Of String, String), ObjectSecurity, List(Of Folder), List(Of CustomAction))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: PnP.Framework.Provisioning.Model.ListInstance.ListInstance(System.Collections.Generic.IEnumerable(Of PnP.Framework.Provisioning.Model.ContentTypeBinding), System.Collections.Generic.IEnumerable(Of PnP.Framework.Provisioning.Model.View), System.Collections.Generic.IEnumerable(Of PnP.Framework.Provisioning.Model.Field), System.Collections.Generic.IEnumerable(Of PnP.Framework.Provisioning.Model.FieldRef), System.Collections.Generic.List(Of PnP.Framework.Provisioning.Model.DataRow), System.Collections.Generic.Dictionary(Of System.String, System.String), PnP.Framework.Provisioning.Model.ObjectSecurity, System.Collections.Generic.List(Of PnP.Framework.Provisioning.Model.Folder), System.Collections.Generic.List(Of PnP.Framework.Provisioning.Model.CustomAction))
+  name.vb: ListInstance(IEnumerable(Of ContentTypeBinding), IEnumerable(Of View), IEnumerable(Of Field), IEnumerable(Of FieldRef), List(Of DataRow), Dictionary(Of String, String), ObjectSecurity, List(Of Folder), List(Of CustomAction))
+- uid: PnP.Framework.Provisioning.Model.ListInstance.Title
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.Title
+  id: Title
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: Title
+  nameWithType: ListInstance.Title
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.Title
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Title
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 134
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets the list title\n"
+  example: []
+  syntax:
+    content: public string Title { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Title As String
+  overload: PnP.Framework.Provisioning.Model.ListInstance.Title*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.Description
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.Description
+  id: Description
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: ListInstance.Description
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.Description
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Description
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 139
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets the description of the list\n"
+  example: []
+  syntax:
+    content: public string Description { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Description As String
+  overload: PnP.Framework.Provisioning.Model.ListInstance.Description*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.DocumentTemplate
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.DocumentTemplate
+  id: DocumentTemplate
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: DocumentTemplate
+  nameWithType: ListInstance.DocumentTemplate
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.DocumentTemplate
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DocumentTemplate
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 144
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets a value that specifies the identifier of the document template for the new list.\n"
+  example: []
+  syntax:
+    content: public string DocumentTemplate { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property DocumentTemplate As String
+  overload: PnP.Framework.Provisioning.Model.ListInstance.DocumentTemplate*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.OnQuickLaunch
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.OnQuickLaunch
+  id: OnQuickLaunch
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: OnQuickLaunch
+  nameWithType: ListInstance.OnQuickLaunch
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.OnQuickLaunch
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: OnQuickLaunch
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 149
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets a value that specifies whether the new list is displayed on the Quick Launch of the site.\n"
+  example: []
+  syntax:
+    content: public bool OnQuickLaunch { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property OnQuickLaunch As Boolean
+  overload: PnP.Framework.Provisioning.Model.ListInstance.OnQuickLaunch*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.TemplateType
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.TemplateType
+  id: TemplateType
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: TemplateType
+  nameWithType: ListInstance.TemplateType
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.TemplateType
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TemplateType
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 155
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets a value that specifies the list server template of the new list.\nhttps://msdn.microsoft.com/en-us/library/office/microsoft.sharepoint.client.listtemplatetype.aspx\n"
+  example: []
+  syntax:
+    content: public int TemplateType { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property TemplateType As Integer
+  overload: PnP.Framework.Provisioning.Model.ListInstance.TemplateType*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.Url
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.Url
+  id: Url
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: Url
+  nameWithType: ListInstance.Url
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.Url
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Url
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 160
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets a value that specifies whether the new list is displayed on the Quick Launch of the site.\n"
+  example: []
+  syntax:
+    content: public string Url { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Url As String
+  overload: PnP.Framework.Provisioning.Model.ListInstance.Url*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.EnableVersioning
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.EnableVersioning
+  id: EnableVersioning
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: EnableVersioning
+  nameWithType: ListInstance.EnableVersioning
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.EnableVersioning
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnableVersioning
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 165
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets whether verisioning is enabled on the list\n"
+  example: []
+  syntax:
+    content: public bool EnableVersioning { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property EnableVersioning As Boolean
+  overload: PnP.Framework.Provisioning.Model.ListInstance.EnableVersioning*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.EnableMinorVersions
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.EnableMinorVersions
+  id: EnableMinorVersions
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: EnableMinorVersions
+  nameWithType: ListInstance.EnableMinorVersions
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.EnableMinorVersions
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnableMinorVersions
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 170
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets whether minor verisioning is enabled on the list\n"
+  example: []
+  syntax:
+    content: public bool EnableMinorVersions { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property EnableMinorVersions As Boolean
+  overload: PnP.Framework.Provisioning.Model.ListInstance.EnableMinorVersions*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.DraftVersionVisibility
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.DraftVersionVisibility
+  id: DraftVersionVisibility
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: DraftVersionVisibility
+  nameWithType: ListInstance.DraftVersionVisibility
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.DraftVersionVisibility
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DraftVersionVisibility
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 175
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets the DraftVersionVisibility for the list\n"
+  example: []
+  syntax:
+    content: public int DraftVersionVisibility { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property DraftVersionVisibility As Integer
+  overload: PnP.Framework.Provisioning.Model.ListInstance.DraftVersionVisibility*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.EnableModeration
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.EnableModeration
+  id: EnableModeration
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: EnableModeration
+  nameWithType: ListInstance.EnableModeration
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.EnableModeration
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnableModeration
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 180
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets whether moderation/content approval is enabled on the list\n"
+  example: []
+  syntax:
+    content: public bool EnableModeration { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property EnableModeration As Boolean
+  overload: PnP.Framework.Provisioning.Model.ListInstance.EnableModeration*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.MinorVersionLimit
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.MinorVersionLimit
+  id: MinorVersionLimit
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: MinorVersionLimit
+  nameWithType: ListInstance.MinorVersionLimit
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.MinorVersionLimit
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MinorVersionLimit
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 185
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets the MinorVersionLimit  for versioning, just in case it is enabled on the list\n"
+  example: []
+  syntax:
+    content: public int MinorVersionLimit { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MinorVersionLimit As Integer
+  overload: PnP.Framework.Provisioning.Model.ListInstance.MinorVersionLimit*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.MaxVersionLimit
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.MaxVersionLimit
+  id: MaxVersionLimit
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: MaxVersionLimit
+  nameWithType: ListInstance.MaxVersionLimit
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.MaxVersionLimit
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MaxVersionLimit
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 190
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets the MinorVersionLimit  for verisioning, just in case it is enabled on the list\n"
+  example: []
+  syntax:
+    content: public int MaxVersionLimit { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaxVersionLimit As Integer
+  overload: PnP.Framework.Provisioning.Model.ListInstance.MaxVersionLimit*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.RemoveExistingContentTypes
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.RemoveExistingContentTypes
+  id: RemoveExistingContentTypes
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: RemoveExistingContentTypes
+  nameWithType: ListInstance.RemoveExistingContentTypes
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.RemoveExistingContentTypes
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemoveExistingContentTypes
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 195
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets whether existing content types should be removed\n"
+  example: []
+  syntax:
+    content: public bool RemoveExistingContentTypes { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property RemoveExistingContentTypes As Boolean
+  overload: PnP.Framework.Provisioning.Model.ListInstance.RemoveExistingContentTypes*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.RemoveExistingViews
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.RemoveExistingViews
+  id: RemoveExistingViews
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: RemoveExistingViews
+  nameWithType: ListInstance.RemoveExistingViews
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.RemoveExistingViews
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemoveExistingViews
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 200
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets whether existing views should be removed\n"
+  example: []
+  syntax:
+    content: public bool RemoveExistingViews { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property RemoveExistingViews As Boolean
+  overload: PnP.Framework.Provisioning.Model.ListInstance.RemoveExistingViews*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.ContentTypesEnabled
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.ContentTypesEnabled
+  id: ContentTypesEnabled
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: ContentTypesEnabled
+  nameWithType: ListInstance.ContentTypesEnabled
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.ContentTypesEnabled
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ContentTypesEnabled
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 205
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets whether content types are enabled\n"
+  example: []
+  syntax:
+    content: public bool ContentTypesEnabled { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property ContentTypesEnabled As Boolean
+  overload: PnP.Framework.Provisioning.Model.ListInstance.ContentTypesEnabled*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.Hidden
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.Hidden
+  id: Hidden
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: Hidden
+  nameWithType: ListInstance.Hidden
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.Hidden
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Hidden
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 210
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets whether to hide the list\n"
+  example: []
+  syntax:
+    content: public bool Hidden { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property Hidden As Boolean
+  overload: PnP.Framework.Provisioning.Model.ListInstance.Hidden*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.ForceCheckout
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.ForceCheckout
+  id: ForceCheckout
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: ForceCheckout
+  nameWithType: ListInstance.ForceCheckout
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.ForceCheckout
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ForceCheckout
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 215
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets whether to force checkout of documents in the library\n"
+  example: []
+  syntax:
+    content: public bool ForceCheckout { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property ForceCheckout As Boolean
+  overload: PnP.Framework.Provisioning.Model.ListInstance.ForceCheckout*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.EnableAttachments
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.EnableAttachments
+  id: EnableAttachments
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: EnableAttachments
+  nameWithType: ListInstance.EnableAttachments
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.EnableAttachments
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnableAttachments
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 220
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets whether attachments are enabled. Defaults to true.\n"
+  example: []
+  syntax:
+    content: public bool EnableAttachments { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property EnableAttachments As Boolean
+  overload: PnP.Framework.Provisioning.Model.ListInstance.EnableAttachments*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.EnableFolderCreation
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.EnableFolderCreation
+  id: EnableFolderCreation
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: EnableFolderCreation
+  nameWithType: ListInstance.EnableFolderCreation
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.EnableFolderCreation
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnableFolderCreation
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 229
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets whether folder is enabled. Defaults to true.\n"
+  example: []
+  syntax:
+    content: public bool EnableFolderCreation { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property EnableFolderCreation As Boolean
+  overload: PnP.Framework.Provisioning.Model.ListInstance.EnableFolderCreation*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.ContentTypeBindings
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.ContentTypeBindings
+  id: ContentTypeBindings
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: ContentTypeBindings
+  nameWithType: ListInstance.ContentTypeBindings
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.ContentTypeBindings
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ContentTypeBindings
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 237
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets the content types to associate to the list\n"
+  example: []
+  syntax:
+    content: public ContentTypeBindingCollection ContentTypeBindings { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.ContentTypeBindingCollection
+    content.vb: Public ReadOnly Property ContentTypeBindings As ContentTypeBindingCollection
+  overload: PnP.Framework.Provisioning.Model.ListInstance.ContentTypeBindings*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ListInstance.Views
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.Views
+  id: Views
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: Views
+  nameWithType: ListInstance.Views
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.Views
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Views
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 246
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets the views associated to the list\n"
+  example: []
+  syntax:
+    content: public ViewCollection Views { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.ViewCollection
+    content.vb: Public ReadOnly Property Views As ViewCollection
+  overload: PnP.Framework.Provisioning.Model.ListInstance.Views*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ListInstance.Fields
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.Fields
+  id: Fields
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: Fields
+  nameWithType: ListInstance.Fields
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.Fields
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Fields
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 255
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets the Fields associated to the list\n"
+  example: []
+  syntax:
+    content: public FieldCollection Fields { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.FieldCollection
+    content.vb: Public ReadOnly Property Fields As FieldCollection
+  overload: PnP.Framework.Provisioning.Model.ListInstance.Fields*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ListInstance.FieldRefs
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.FieldRefs
+  id: FieldRefs
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: FieldRefs
+  nameWithType: ListInstance.FieldRefs
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.FieldRefs
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FieldRefs
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 264
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets the FieldRefs associated to the list\n"
+  example: []
+  syntax:
+    content: public FieldRefCollection FieldRefs { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.FieldRefCollection
+    content.vb: Public ReadOnly Property FieldRefs As FieldRefCollection
+  overload: PnP.Framework.Provisioning.Model.ListInstance.FieldRefs*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ListInstance.TemplateFeatureID
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.TemplateFeatureID
+  id: TemplateFeatureID
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: TemplateFeatureID
+  nameWithType: ListInstance.TemplateFeatureID
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.TemplateFeatureID
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TemplateFeatureID
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 273
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets the Guid for TemplateFeature\n"
+  example: []
+  syntax:
+    content: public Guid TemplateFeatureID { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property TemplateFeatureID As Guid
+  overload: PnP.Framework.Provisioning.Model.ListInstance.TemplateFeatureID*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.DataRows
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.DataRows
+  id: DataRows
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: DataRows
+  nameWithType: ListInstance.DataRows
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.DataRows
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DataRows
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 278
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets the DataRows associated to the list\n"
+  example: []
+  syntax:
+    content: public DataRowCollection DataRows { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.DataRowCollection
+    content.vb: Public ReadOnly Property DataRows As DataRowCollection
+  overload: PnP.Framework.Provisioning.Model.ListInstance.DataRows*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ListInstance.FieldDefaults
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.FieldDefaults
+  id: FieldDefaults
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: FieldDefaults
+  nameWithType: ListInstance.FieldDefaults
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.FieldDefaults
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FieldDefaults
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 287
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines a list of default values for the Fields of the List Instance\n"
+  example: []
+  syntax:
+    content: public Dictionary<string, string> FieldDefaults { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+    content.vb: Public ReadOnly Property FieldDefaults As Dictionary(Of String, String)
+  overload: PnP.Framework.Provisioning.Model.ListInstance.FieldDefaults*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ListInstance.Security
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.Security
+  id: Security
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: Security
+  nameWithType: ListInstance.Security
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.Security
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Security
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 296
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines the Security rules for the List Instance\n"
+  example: []
+  syntax:
+    content: public ObjectSecurity Security { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.ObjectSecurity
+    content.vb: Public Property Security As ObjectSecurity
+  overload: PnP.Framework.Provisioning.Model.ListInstance.Security*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.Folders
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.Folders
+  id: Folders
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: Folders
+  nameWithType: ListInstance.Folders
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.Folders
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Folders
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 317
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines a collection of folders (eventually nested) that \nwill be provisioned into the target list/library\n"
+  example: []
+  syntax:
+    content: public FolderCollection Folders { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.FolderCollection
+    content.vb: Public ReadOnly Property Folders As FolderCollection
+  overload: PnP.Framework.Provisioning.Model.ListInstance.Folders*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ListInstance.UserCustomActions
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.UserCustomActions
+  id: UserCustomActions
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: UserCustomActions
+  nameWithType: ListInstance.UserCustomActions
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.UserCustomActions
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UserCustomActions
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 327
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines a collection of user custom actions that \nwill be provisioned into the target list/library\n"
+  example: []
+  syntax:
+    content: public CustomActionCollection UserCustomActions { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.CustomActionCollection
+    content.vb: Public ReadOnly Property UserCustomActions As CustomActionCollection
+  overload: PnP.Framework.Provisioning.Model.ListInstance.UserCustomActions*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ListInstance.Webhooks
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.Webhooks
+  id: Webhooks
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: Webhooks
+  nameWithType: ListInstance.Webhooks
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.Webhooks
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Webhooks
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 333
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  syntax:
+    content: public WebhookCollection Webhooks { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.WebhookCollection
+    content.vb: Public ReadOnly Property Webhooks As WebhookCollection
+  overload: PnP.Framework.Provisioning.Model.ListInstance.Webhooks*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ListInstance.IRMSettings
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.IRMSettings
+  id: IRMSettings
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: IRMSettings
+  nameWithType: ListInstance.IRMSettings
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.IRMSettings
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IRMSettings
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 339
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  syntax:
+    content: public IRMSettings IRMSettings { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.IRMSettings
+    content.vb: Public Property IRMSettings As IRMSettings
+  overload: PnP.Framework.Provisioning.Model.ListInstance.IRMSettings*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.NoCrawl
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.NoCrawl
+  id: NoCrawl
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: NoCrawl
+  nameWithType: ListInstance.NoCrawl
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.NoCrawl
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: NoCrawl
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 359
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines if the current list or library has to be included in crawling, optional attribute.\n"
+  example: []
+  syntax:
+    content: public bool NoCrawl { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property NoCrawl As Boolean
+  overload: PnP.Framework.Provisioning.Model.ListInstance.NoCrawl*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.ListExperience
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.ListExperience
+  id: ListExperience
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: ListExperience
+  nameWithType: ListInstance.ListExperience
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.ListExperience
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ListExperience
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 364
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines the current list UI/UX experience (valid for SPO only).\n"
+  example: []
+  syntax:
+    content: public ListExperience ListExperience { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.ListExperience
+    content.vb: Public Property ListExperience As ListExperience
+  overload: PnP.Framework.Provisioning.Model.ListInstance.ListExperience*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.DefaultDisplayFormUrl
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.DefaultDisplayFormUrl
+  id: DefaultDisplayFormUrl
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: DefaultDisplayFormUrl
+  nameWithType: ListInstance.DefaultDisplayFormUrl
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.DefaultDisplayFormUrl
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DefaultDisplayFormUrl
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 369
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines a value that specifies the location of the default display form for the list.\n"
+  example: []
+  syntax:
+    content: public string DefaultDisplayFormUrl { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property DefaultDisplayFormUrl As String
+  overload: PnP.Framework.Provisioning.Model.ListInstance.DefaultDisplayFormUrl*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.DefaultEditFormUrl
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.DefaultEditFormUrl
+  id: DefaultEditFormUrl
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: DefaultEditFormUrl
+  nameWithType: ListInstance.DefaultEditFormUrl
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.DefaultEditFormUrl
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DefaultEditFormUrl
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 374
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines a value that specifies the URL of the edit form to use for list items in the list.\n"
+  example: []
+  syntax:
+    content: public string DefaultEditFormUrl { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property DefaultEditFormUrl As String
+  overload: PnP.Framework.Provisioning.Model.ListInstance.DefaultEditFormUrl*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.DefaultNewFormUrl
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.DefaultNewFormUrl
+  id: DefaultNewFormUrl
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: DefaultNewFormUrl
+  nameWithType: ListInstance.DefaultNewFormUrl
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.DefaultNewFormUrl
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DefaultNewFormUrl
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 379
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines a value that specifies the location of the default new form for the list.\n"
+  example: []
+  syntax:
+    content: public string DefaultNewFormUrl { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property DefaultNewFormUrl As String
+  overload: PnP.Framework.Provisioning.Model.ListInstance.DefaultNewFormUrl*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.Direction
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.Direction
+  id: Direction
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: Direction
+  nameWithType: ListInstance.Direction
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.Direction
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Direction
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 384
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines a value that specifies the reading order of the list.\n"
+  example: []
+  syntax:
+    content: public ListReadingDirection Direction { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.ListReadingDirection
+    content.vb: Public Property Direction As ListReadingDirection
+  overload: PnP.Framework.Provisioning.Model.ListInstance.Direction*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.ImageUrl
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.ImageUrl
+  id: ImageUrl
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: ImageUrl
+  nameWithType: ListInstance.ImageUrl
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.ImageUrl
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ImageUrl
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 389
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines a value that specifies the URI for the icon of the list, optional attribute.\n"
+  example: []
+  syntax:
+    content: public string ImageUrl { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ImageUrl As String
+  overload: PnP.Framework.Provisioning.Model.ListInstance.ImageUrl*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.IrmExpire
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.IrmExpire
+  id: IrmExpire
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: IrmExpire
+  nameWithType: ListInstance.IrmExpire
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.IrmExpire
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IrmExpire
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 394
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines if IRM Expire property, optional attribute.\n"
+  example: []
+  syntax:
+    content: public bool IrmExpire { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IrmExpire As Boolean
+  overload: PnP.Framework.Provisioning.Model.ListInstance.IrmExpire*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.IrmReject
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.IrmReject
+  id: IrmReject
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: IrmReject
+  nameWithType: ListInstance.IrmReject
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.IrmReject
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IrmReject
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 399
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines the IRM Reject property, optional attribute.\n"
+  example: []
+  syntax:
+    content: public bool IrmReject { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IrmReject As Boolean
+  overload: PnP.Framework.Provisioning.Model.ListInstance.IrmReject*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.IsApplicationList
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.IsApplicationList
+  id: IsApplicationList
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: IsApplicationList
+  nameWithType: ListInstance.IsApplicationList
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.IsApplicationList
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsApplicationList
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 404
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines a value that specifies a flag that a client application can use to determine whether to display the list, optional attribute.\n"
+  example: []
+  syntax:
+    content: public bool IsApplicationList { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsApplicationList As Boolean
+  overload: PnP.Framework.Provisioning.Model.ListInstance.IsApplicationList*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.ReadSecurity
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.ReadSecurity
+  id: ReadSecurity
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: ReadSecurity
+  nameWithType: ListInstance.ReadSecurity
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.ReadSecurity
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ReadSecurity
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 409
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines the Read Security property, optional attribute.\n"
+  example: []
+  syntax:
+    content: public int ReadSecurity { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ReadSecurity As Integer
+  overload: PnP.Framework.Provisioning.Model.ListInstance.ReadSecurity*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.WriteSecurity
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.WriteSecurity
+  id: WriteSecurity
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: WriteSecurity
+  nameWithType: ListInstance.WriteSecurity
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.WriteSecurity
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WriteSecurity
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 414
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines the Write Security property, optional attribute.\n"
+  example: []
+  syntax:
+    content: public int WriteSecurity { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property WriteSecurity As Integer
+  overload: PnP.Framework.Provisioning.Model.ListInstance.WriteSecurity*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.ValidationFormula
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.ValidationFormula
+  id: ValidationFormula
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: ValidationFormula
+  nameWithType: ListInstance.ValidationFormula
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.ValidationFormula
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ValidationFormula
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 419
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines a value that specifies the data validation criteria for a list item, optional attribute.\n"
+  example: []
+  syntax:
+    content: public string ValidationFormula { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ValidationFormula As String
+  overload: PnP.Framework.Provisioning.Model.ListInstance.ValidationFormula*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.ValidationMessage
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.ValidationMessage
+  id: ValidationMessage
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: ValidationMessage
+  nameWithType: ListInstance.ValidationMessage
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.ValidationMessage
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ValidationMessage
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 424
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines a value that specifies the error message returned when data validation fails for a list item, optional attribute.\n"
+  example: []
+  syntax:
+    content: public string ValidationMessage { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ValidationMessage As String
+  overload: PnP.Framework.Provisioning.Model.ListInstance.ValidationMessage*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.DataSource
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.DataSource
+  id: DataSource
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: DataSource
+  nameWithType: ListInstance.DataSource
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.DataSource
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DataSource
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 429
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines a list of Data Source properties for the List Instance\n"
+  example: []
+  syntax:
+    content: public Dictionary<string, string> DataSource { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+    content.vb: Public ReadOnly Property DataSource As Dictionary(Of String, String)
+  overload: PnP.Framework.Provisioning.Model.ListInstance.DataSource*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ListInstance.PropertyBagEntries
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.PropertyBagEntries
+  id: PropertyBagEntries
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: PropertyBagEntries
+  nameWithType: ListInstance.PropertyBagEntries
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.PropertyBagEntries
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PropertyBagEntries
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 438
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines the property bag properties for the root folder of the list\n"
+  example: []
+  syntax:
+    content: public PropertyBagEntryCollection PropertyBagEntries { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.PropertyBagEntryCollection
+    content.vb: Public ReadOnly Property PropertyBagEntries As PropertyBagEntryCollection
+  overload: PnP.Framework.Provisioning.Model.ListInstance.PropertyBagEntries*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ListInstance.TemplateInternalName
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.TemplateInternalName
+  id: TemplateInternalName
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: TemplateInternalName
+  nameWithType: ListInstance.TemplateInternalName
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.TemplateInternalName
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TemplateInternalName
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 447
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines the alternate template internal name for a list based on a .STP file/list definition\n"
+  example: []
+  syntax:
+    content: public string TemplateInternalName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property TemplateInternalName As String
+  overload: PnP.Framework.Provisioning.Model.ListInstance.TemplateInternalName*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.DefaultColumnValues
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.DefaultColumnValues
+  id: DefaultColumnValues
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: DefaultColumnValues
+  nameWithType: ListInstance.DefaultColumnValues
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.DefaultColumnValues
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DefaultColumnValues
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 452
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nThe Default Columne Values entries of the Folder, optional collection of elements.\n"
+  example: []
+  syntax:
+    content: public Dictionary<string, string> DefaultColumnValues { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+    content.vb: Public ReadOnly Property DefaultColumnValues As Dictionary(Of String, String)
+  overload: PnP.Framework.Provisioning.Model.ListInstance.DefaultColumnValues*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ListInstance.EnableAudienceTargeting
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.EnableAudienceTargeting
+  id: EnableAudienceTargeting
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: EnableAudienceTargeting
+  nameWithType: ListInstance.EnableAudienceTargeting
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.EnableAudienceTargeting
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnableAudienceTargeting
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 461
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nEnables Audience Targeting for the list, optional attribute.\n"
+  example: []
+  syntax:
+    content: public bool EnableAudienceTargeting { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property EnableAudienceTargeting As Boolean
+  overload: PnP.Framework.Provisioning.Model.ListInstance.EnableAudienceTargeting*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.EnableClassicAudienceTargeting
+  commentId: P:PnP.Framework.Provisioning.Model.ListInstance.EnableClassicAudienceTargeting
+  id: EnableClassicAudienceTargeting
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: EnableClassicAudienceTargeting
+  nameWithType: ListInstance.EnableClassicAudienceTargeting
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.EnableClassicAudienceTargeting
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnableClassicAudienceTargeting
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 466
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nEnables Classic Audience Targeting for the list, optional attribute.\n"
+  example: []
+  syntax:
+    content: public bool EnableClassicAudienceTargeting { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property EnableClassicAudienceTargeting As Boolean
+  overload: PnP.Framework.Provisioning.Model.ListInstance.EnableClassicAudienceTargeting*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ListInstance.GetHashCode
+  commentId: M:PnP.Framework.Provisioning.Model.ListInstance.GetHashCode
+  id: GetHashCode
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode()
+  nameWithType: ListInstance.GetHashCode()
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.GetHashCode()
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetHashCode
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 476
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets the hash code\n"
+  example: []
+  syntax:
+    content: public override int GetHashCode()
+    return:
+      type: System.Int32
+      description: Returns HashCode
+    content.vb: Public Overrides Function GetHashCode As Integer
+  overridden: System.Object.GetHashCode
+  overload: PnP.Framework.Provisioning.Model.ListInstance.GetHashCode*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: PnP.Framework.Provisioning.Model.ListInstance.Equals(System.Object)
+  commentId: M:PnP.Framework.Provisioning.Model.ListInstance.Equals(System.Object)
+  id: Equals(System.Object)
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: Equals(Object)
+  nameWithType: ListInstance.Equals(Object)
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.Equals(System.Object)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Equals
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 536
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nCompares object with ListInstance\n"
+  example: []
+  syntax:
+    content: public override bool Equals(object obj)
+    parameters:
+    - id: obj
+      type: System.Object
+      description: Object that represents ListInstance
+    return:
+      type: System.Boolean
+      description: true if the current object is equal to the ListInstance
+    content.vb: Public Overrides Function Equals(obj As Object) As Boolean
+  overridden: System.Object.Equals(System.Object)
+  overload: PnP.Framework.Provisioning.Model.ListInstance.Equals*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: PnP.Framework.Provisioning.Model.ListInstance.Equals(PnP.Framework.Provisioning.Model.ListInstance)
+  commentId: M:PnP.Framework.Provisioning.Model.ListInstance.Equals(PnP.Framework.Provisioning.Model.ListInstance)
+  id: Equals(PnP.Framework.Provisioning.Model.ListInstance)
+  parent: PnP.Framework.Provisioning.Model.ListInstance
+  langs:
+  - csharp
+  - vb
+  name: Equals(ListInstance)
+  nameWithType: ListInstance.Equals(ListInstance)
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.Equals(PnP.Framework.Provisioning.Model.ListInstance)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Equals
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/InformationArchitecture/ListInstance.cs
+    startLine: 554
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nCompares ListInstance object based on ContentTypesEnabled, Description, DocumentTemplate, EnableVersioning, EnableMinorVersions, EnableModeration, Hidden, \nMaxVersionLimit, MinorVersionLimit, OnQuickLaunch, EnableAttachments, EnableFolderCreation, ForceCheckOut, RemoveExistingContentTypes, TemplateType,\nTitle, Url, TemplateFeatureID, RemoveExistingViews, ContentTypeBindings, View, Fields, FieldRefs, FieldDefaults, Security, Folders, UserCustomActions, \nWebhooks, IRMSettings, DefaultDisplayFormUrl, DefaultEditFormUrl, DefaultNewFormUrl, Direction, ImageUrl, IrmExpire, IrmReject, IsApplicationList,\nReadSecurity, ValidationFormula, ValidationMessage, DataSource, WriteSecurity, TemplateInternalName, and DefaultColumnValues properties.\n"
+  example: []
+  syntax:
+    content: public bool Equals(ListInstance other)
+    parameters:
+    - id: other
+      type: PnP.Framework.Provisioning.Model.ListInstance
+      description: ListInstance object
+    return:
+      type: System.Boolean
+      description: true if the ListInstance object is equal to the current object; otherwise, false.
+    content.vb: Public Function Equals(other As ListInstance) As Boolean
+  overload: PnP.Framework.Provisioning.Model.ListInstance.Equals*
+  implements:
+  - System.IEquatable{PnP.Framework.Provisioning.Model.ListInstance}.Equals(PnP.Framework.Provisioning.Model.ListInstance)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: PnP.Framework.Provisioning.Model
+  commentId: N:PnP.Framework.Provisioning.Model
+  name: PnP.Framework.Provisioning.Model
+  nameWithType: PnP.Framework.Provisioning.Model
+  fullName: PnP.Framework.Provisioning.Model
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: PnP.Framework.Provisioning.Model.BaseModel
+  commentId: T:PnP.Framework.Provisioning.Model.BaseModel
+  parent: PnP.Framework.Provisioning.Model
+  name: BaseModel
+  nameWithType: BaseModel
+  fullName: PnP.Framework.Provisioning.Model.BaseModel
+- uid: PnP.Framework.Provisioning.Model.IProvisioningTemplateDescendant
+  commentId: T:PnP.Framework.Provisioning.Model.IProvisioningTemplateDescendant
+  parent: PnP.Framework.Provisioning.Model
+  name: IProvisioningTemplateDescendant
+  nameWithType: IProvisioningTemplateDescendant
+  fullName: PnP.Framework.Provisioning.Model.IProvisioningTemplateDescendant
+- uid: System.IEquatable{PnP.Framework.Provisioning.Model.ListInstance}
+  commentId: T:System.IEquatable{PnP.Framework.Provisioning.Model.ListInstance}
+  parent: System
+  definition: System.IEquatable`1
+  name: IEquatable<ListInstance>
+  nameWithType: IEquatable<ListInstance>
+  fullName: System.IEquatable<PnP.Framework.Provisioning.Model.ListInstance>
+  nameWithType.vb: IEquatable(Of ListInstance)
+  fullName.vb: System.IEquatable(Of PnP.Framework.Provisioning.Model.ListInstance)
+  name.vb: IEquatable(Of ListInstance)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    nameWithType: IEquatable
+    fullName: System.IEquatable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Model.ListInstance
+    name: ListInstance
+    nameWithType: ListInstance
+    fullName: PnP.Framework.Provisioning.Model.ListInstance
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    nameWithType: IEquatable
+    fullName: System.IEquatable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Model.ListInstance
+    name: ListInstance
+    nameWithType: ListInstance
+    fullName: PnP.Framework.Provisioning.Model.ListInstance
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.BaseModel.ParentTemplate
+  commentId: P:PnP.Framework.Provisioning.Model.BaseModel.ParentTemplate
+  parent: PnP.Framework.Provisioning.Model.BaseModel
+  name: ParentTemplate
+  nameWithType: BaseModel.ParentTemplate
+  fullName: PnP.Framework.Provisioning.Model.BaseModel.ParentTemplate
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.ListInstance.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<ListInstance>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<ListInstance>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Model.ListInstance>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of ListInstance)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Model.ListInstance)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of ListInstance)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<ListInstance>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<ListInstance>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Model.ListInstance>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of ListInstance)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of ListInstance)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Model.ListInstance)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.ListInstance.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Model.ListInstance,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<ListInstance, T>(Expression<Func<ListInstance, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<ListInstance, T>(Expression<Func<ListInstance, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Model.ListInstance, T>(System.Linq.Expressions.Expression<System.Func<PnP.Framework.Provisioning.Model.ListInstance, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of ListInstance, T)(Expression(Of Func(Of ListInstance, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Model.ListInstance, T)(System.Linq.Expressions.Expression(Of System.Func(Of PnP.Framework.Provisioning.Model.ListInstance, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of ListInstance, T)(Expression(Of Func(Of ListInstance, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<ListInstance, T>
+    nameWithType: ObjectExtensions.Set<ListInstance, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Model.ListInstance, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Model.ListInstance
+    name: ListInstance
+    nameWithType: ListInstance
+    fullName: PnP.Framework.Provisioning.Model.ListInstance
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of ListInstance, T)
+    nameWithType: ObjectExtensions.Set(Of ListInstance, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Model.ListInstance, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Model.ListInstance
+    name: ListInstance
+    nameWithType: ListInstance
+    fullName: PnP.Framework.Provisioning.Model.ListInstance
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    nameWithType: IEquatable
+    fullName: System.IEquatable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    nameWithType: IEquatable
+    fullName: System.IEquatable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: PnP.Framework.Provisioning.Model.ListInstance.#ctor*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.#ctor
+  name: ListInstance
+  nameWithType: ListInstance.ListInstance
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.ListInstance
+- uid: System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.ContentTypeBinding}
+  commentId: T:System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.ContentTypeBinding}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<ContentTypeBinding>
+  nameWithType: IEnumerable<ContentTypeBinding>
+  fullName: System.Collections.Generic.IEnumerable<PnP.Framework.Provisioning.Model.ContentTypeBinding>
+  nameWithType.vb: IEnumerable(Of ContentTypeBinding)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of PnP.Framework.Provisioning.Model.ContentTypeBinding)
+  name.vb: IEnumerable(Of ContentTypeBinding)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Model.ContentTypeBinding
+    name: ContentTypeBinding
+    nameWithType: ContentTypeBinding
+    fullName: PnP.Framework.Provisioning.Model.ContentTypeBinding
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Model.ContentTypeBinding
+    name: ContentTypeBinding
+    nameWithType: ContentTypeBinding
+    fullName: PnP.Framework.Provisioning.Model.ContentTypeBinding
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.View}
+  commentId: T:System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.View}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<View>
+  nameWithType: IEnumerable<View>
+  fullName: System.Collections.Generic.IEnumerable<PnP.Framework.Provisioning.Model.View>
+  nameWithType.vb: IEnumerable(Of View)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of PnP.Framework.Provisioning.Model.View)
+  name.vb: IEnumerable(Of View)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Model.View
+    name: View
+    nameWithType: View
+    fullName: PnP.Framework.Provisioning.Model.View
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Model.View
+    name: View
+    nameWithType: View
+    fullName: PnP.Framework.Provisioning.Model.View
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.Field}
+  commentId: T:System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.Field}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<Field>
+  nameWithType: IEnumerable<Field>
+  fullName: System.Collections.Generic.IEnumerable<PnP.Framework.Provisioning.Model.Field>
+  nameWithType.vb: IEnumerable(Of Field)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of PnP.Framework.Provisioning.Model.Field)
+  name.vb: IEnumerable(Of Field)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Model.Field
+    name: Field
+    nameWithType: Field
+    fullName: PnP.Framework.Provisioning.Model.Field
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Model.Field
+    name: Field
+    nameWithType: Field
+    fullName: PnP.Framework.Provisioning.Model.Field
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.FieldRef}
+  commentId: T:System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.FieldRef}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<FieldRef>
+  nameWithType: IEnumerable<FieldRef>
+  fullName: System.Collections.Generic.IEnumerable<PnP.Framework.Provisioning.Model.FieldRef>
+  nameWithType.vb: IEnumerable(Of FieldRef)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of PnP.Framework.Provisioning.Model.FieldRef)
+  name.vb: IEnumerable(Of FieldRef)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Model.FieldRef
+    name: FieldRef
+    nameWithType: FieldRef
+    fullName: PnP.Framework.Provisioning.Model.FieldRef
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Model.FieldRef
+    name: FieldRef
+    nameWithType: FieldRef
+    fullName: PnP.Framework.Provisioning.Model.FieldRef
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.List{PnP.Framework.Provisioning.Model.DataRow}
+  commentId: T:System.Collections.Generic.List{PnP.Framework.Provisioning.Model.DataRow}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<DataRow>
+  nameWithType: List<DataRow>
+  fullName: System.Collections.Generic.List<PnP.Framework.Provisioning.Model.DataRow>
+  nameWithType.vb: List(Of DataRow)
+  fullName.vb: System.Collections.Generic.List(Of PnP.Framework.Provisioning.Model.DataRow)
+  name.vb: List(Of DataRow)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Model.DataRow
+    name: DataRow
+    nameWithType: DataRow
+    fullName: PnP.Framework.Provisioning.Model.DataRow
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Model.DataRow
+    name: DataRow
+    nameWithType: DataRow
+    fullName: PnP.Framework.Provisioning.Model.DataRow
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.Dictionary{System.String,System.String}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  name: Dictionary<String, String>
+  nameWithType: Dictionary<String, String>
+  fullName: System.Collections.Generic.Dictionary<System.String, System.String>
+  nameWithType.vb: Dictionary(Of String, String)
+  fullName.vb: System.Collections.Generic.Dictionary(Of System.String, System.String)
+  name.vb: Dictionary(Of String, String)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.ObjectSecurity
+  commentId: T:PnP.Framework.Provisioning.Model.ObjectSecurity
+  parent: PnP.Framework.Provisioning.Model
+  name: ObjectSecurity
+  nameWithType: ObjectSecurity
+  fullName: PnP.Framework.Provisioning.Model.ObjectSecurity
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.List{PnP.Framework.Provisioning.Model.Folder}
+  commentId: T:System.Collections.Generic.List{PnP.Framework.Provisioning.Model.Folder}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<Folder>
+  nameWithType: List<Folder>
+  fullName: System.Collections.Generic.List<PnP.Framework.Provisioning.Model.Folder>
+  nameWithType.vb: List(Of Folder)
+  fullName.vb: System.Collections.Generic.List(Of PnP.Framework.Provisioning.Model.Folder)
+  name.vb: List(Of Folder)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Model.Folder
+    name: Folder
+    nameWithType: Folder
+    fullName: PnP.Framework.Provisioning.Model.Folder
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Model.Folder
+    name: Folder
+    nameWithType: Folder
+    fullName: PnP.Framework.Provisioning.Model.Folder
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.List{PnP.Framework.Provisioning.Model.CustomAction}
+  commentId: T:System.Collections.Generic.List{PnP.Framework.Provisioning.Model.CustomAction}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<CustomAction>
+  nameWithType: List<CustomAction>
+  fullName: System.Collections.Generic.List<PnP.Framework.Provisioning.Model.CustomAction>
+  nameWithType.vb: List(Of CustomAction)
+  fullName.vb: System.Collections.Generic.List(Of PnP.Framework.Provisioning.Model.CustomAction)
+  name.vb: List(Of CustomAction)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Model.CustomAction
+    name: CustomAction
+    nameWithType: CustomAction
+    fullName: PnP.Framework.Provisioning.Model.CustomAction
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Model.CustomAction
+    name: CustomAction
+    nameWithType: CustomAction
+    fullName: PnP.Framework.Provisioning.Model.CustomAction
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.ListInstance.Title*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.Title
+  name: Title
+  nameWithType: ListInstance.Title
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.Title
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: PnP.Framework.Provisioning.Model.ListInstance.Description*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.Description
+  name: Description
+  nameWithType: ListInstance.Description
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.Description
+- uid: PnP.Framework.Provisioning.Model.ListInstance.DocumentTemplate*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.DocumentTemplate
+  name: DocumentTemplate
+  nameWithType: ListInstance.DocumentTemplate
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.DocumentTemplate
+- uid: PnP.Framework.Provisioning.Model.ListInstance.OnQuickLaunch*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.OnQuickLaunch
+  name: OnQuickLaunch
+  nameWithType: ListInstance.OnQuickLaunch
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.OnQuickLaunch
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: PnP.Framework.Provisioning.Model.ListInstance.TemplateType*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.TemplateType
+  name: TemplateType
+  nameWithType: ListInstance.TemplateType
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.TemplateType
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: PnP.Framework.Provisioning.Model.ListInstance.Url*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.Url
+  name: Url
+  nameWithType: ListInstance.Url
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.Url
+- uid: PnP.Framework.Provisioning.Model.ListInstance.EnableVersioning*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.EnableVersioning
+  name: EnableVersioning
+  nameWithType: ListInstance.EnableVersioning
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.EnableVersioning
+- uid: PnP.Framework.Provisioning.Model.ListInstance.EnableMinorVersions*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.EnableMinorVersions
+  name: EnableMinorVersions
+  nameWithType: ListInstance.EnableMinorVersions
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.EnableMinorVersions
+- uid: PnP.Framework.Provisioning.Model.ListInstance.DraftVersionVisibility*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.DraftVersionVisibility
+  name: DraftVersionVisibility
+  nameWithType: ListInstance.DraftVersionVisibility
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.DraftVersionVisibility
+- uid: PnP.Framework.Provisioning.Model.ListInstance.EnableModeration*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.EnableModeration
+  name: EnableModeration
+  nameWithType: ListInstance.EnableModeration
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.EnableModeration
+- uid: PnP.Framework.Provisioning.Model.ListInstance.MinorVersionLimit*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.MinorVersionLimit
+  name: MinorVersionLimit
+  nameWithType: ListInstance.MinorVersionLimit
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.MinorVersionLimit
+- uid: PnP.Framework.Provisioning.Model.ListInstance.MaxVersionLimit*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.MaxVersionLimit
+  name: MaxVersionLimit
+  nameWithType: ListInstance.MaxVersionLimit
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.MaxVersionLimit
+- uid: PnP.Framework.Provisioning.Model.ListInstance.RemoveExistingContentTypes*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.RemoveExistingContentTypes
+  name: RemoveExistingContentTypes
+  nameWithType: ListInstance.RemoveExistingContentTypes
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.RemoveExistingContentTypes
+- uid: PnP.Framework.Provisioning.Model.ListInstance.RemoveExistingViews*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.RemoveExistingViews
+  name: RemoveExistingViews
+  nameWithType: ListInstance.RemoveExistingViews
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.RemoveExistingViews
+- uid: PnP.Framework.Provisioning.Model.ListInstance.ContentTypesEnabled*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.ContentTypesEnabled
+  name: ContentTypesEnabled
+  nameWithType: ListInstance.ContentTypesEnabled
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.ContentTypesEnabled
+- uid: PnP.Framework.Provisioning.Model.ListInstance.Hidden*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.Hidden
+  name: Hidden
+  nameWithType: ListInstance.Hidden
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.Hidden
+- uid: PnP.Framework.Provisioning.Model.ListInstance.ForceCheckout*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.ForceCheckout
+  name: ForceCheckout
+  nameWithType: ListInstance.ForceCheckout
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.ForceCheckout
+- uid: PnP.Framework.Provisioning.Model.ListInstance.EnableAttachments*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.EnableAttachments
+  name: EnableAttachments
+  nameWithType: ListInstance.EnableAttachments
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.EnableAttachments
+- uid: PnP.Framework.Provisioning.Model.ListInstance.EnableFolderCreation*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.EnableFolderCreation
+  name: EnableFolderCreation
+  nameWithType: ListInstance.EnableFolderCreation
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.EnableFolderCreation
+- uid: PnP.Framework.Provisioning.Model.ListInstance.ContentTypeBindings*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.ContentTypeBindings
+  name: ContentTypeBindings
+  nameWithType: ListInstance.ContentTypeBindings
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.ContentTypeBindings
+- uid: PnP.Framework.Provisioning.Model.ContentTypeBindingCollection
+  commentId: T:PnP.Framework.Provisioning.Model.ContentTypeBindingCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: ContentTypeBindingCollection
+  nameWithType: ContentTypeBindingCollection
+  fullName: PnP.Framework.Provisioning.Model.ContentTypeBindingCollection
+- uid: PnP.Framework.Provisioning.Model.ListInstance.Views*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.Views
+  name: Views
+  nameWithType: ListInstance.Views
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.Views
+- uid: PnP.Framework.Provisioning.Model.ViewCollection
+  commentId: T:PnP.Framework.Provisioning.Model.ViewCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: ViewCollection
+  nameWithType: ViewCollection
+  fullName: PnP.Framework.Provisioning.Model.ViewCollection
+- uid: PnP.Framework.Provisioning.Model.ListInstance.Fields*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.Fields
+  name: Fields
+  nameWithType: ListInstance.Fields
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.Fields
+- uid: PnP.Framework.Provisioning.Model.FieldCollection
+  commentId: T:PnP.Framework.Provisioning.Model.FieldCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: FieldCollection
+  nameWithType: FieldCollection
+  fullName: PnP.Framework.Provisioning.Model.FieldCollection
+- uid: PnP.Framework.Provisioning.Model.ListInstance.FieldRefs*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.FieldRefs
+  name: FieldRefs
+  nameWithType: ListInstance.FieldRefs
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.FieldRefs
+- uid: PnP.Framework.Provisioning.Model.FieldRefCollection
+  commentId: T:PnP.Framework.Provisioning.Model.FieldRefCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: FieldRefCollection
+  nameWithType: FieldRefCollection
+  fullName: PnP.Framework.Provisioning.Model.FieldRefCollection
+- uid: PnP.Framework.Provisioning.Model.ListInstance.TemplateFeatureID*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.TemplateFeatureID
+  name: TemplateFeatureID
+  nameWithType: ListInstance.TemplateFeatureID
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.TemplateFeatureID
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: PnP.Framework.Provisioning.Model.ListInstance.DataRows*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.DataRows
+  name: DataRows
+  nameWithType: ListInstance.DataRows
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.DataRows
+- uid: PnP.Framework.Provisioning.Model.DataRowCollection
+  commentId: T:PnP.Framework.Provisioning.Model.DataRowCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: DataRowCollection
+  nameWithType: DataRowCollection
+  fullName: PnP.Framework.Provisioning.Model.DataRowCollection
+- uid: PnP.Framework.Provisioning.Model.ListInstance.FieldDefaults*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.FieldDefaults
+  name: FieldDefaults
+  nameWithType: ListInstance.FieldDefaults
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.FieldDefaults
+- uid: PnP.Framework.Provisioning.Model.ListInstance.Security*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.Security
+  name: Security
+  nameWithType: ListInstance.Security
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.Security
+- uid: PnP.Framework.Provisioning.Model.ListInstance.Folders*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.Folders
+  name: Folders
+  nameWithType: ListInstance.Folders
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.Folders
+- uid: PnP.Framework.Provisioning.Model.FolderCollection
+  commentId: T:PnP.Framework.Provisioning.Model.FolderCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: FolderCollection
+  nameWithType: FolderCollection
+  fullName: PnP.Framework.Provisioning.Model.FolderCollection
+- uid: PnP.Framework.Provisioning.Model.ListInstance.UserCustomActions*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.UserCustomActions
+  name: UserCustomActions
+  nameWithType: ListInstance.UserCustomActions
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.UserCustomActions
+- uid: PnP.Framework.Provisioning.Model.CustomActionCollection
+  commentId: T:PnP.Framework.Provisioning.Model.CustomActionCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: CustomActionCollection
+  nameWithType: CustomActionCollection
+  fullName: PnP.Framework.Provisioning.Model.CustomActionCollection
+- uid: PnP.Framework.Provisioning.Model.ListInstance.Webhooks*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.Webhooks
+  name: Webhooks
+  nameWithType: ListInstance.Webhooks
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.Webhooks
+- uid: PnP.Framework.Provisioning.Model.WebhookCollection
+  commentId: T:PnP.Framework.Provisioning.Model.WebhookCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: WebhookCollection
+  nameWithType: WebhookCollection
+  fullName: PnP.Framework.Provisioning.Model.WebhookCollection
+- uid: PnP.Framework.Provisioning.Model.ListInstance.IRMSettings*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.IRMSettings
+  name: IRMSettings
+  nameWithType: ListInstance.IRMSettings
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.IRMSettings
+- uid: PnP.Framework.Provisioning.Model.IRMSettings
+  commentId: T:PnP.Framework.Provisioning.Model.IRMSettings
+  parent: PnP.Framework.Provisioning.Model
+  name: IRMSettings
+  nameWithType: IRMSettings
+  fullName: PnP.Framework.Provisioning.Model.IRMSettings
+- uid: PnP.Framework.Provisioning.Model.ListInstance.NoCrawl*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.NoCrawl
+  name: NoCrawl
+  nameWithType: ListInstance.NoCrawl
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.NoCrawl
+- uid: PnP.Framework.Provisioning.Model.ListInstance.ListExperience*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.ListExperience
+  name: ListExperience
+  nameWithType: ListInstance.ListExperience
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.ListExperience
+- uid: PnP.Framework.Provisioning.Model.ListExperience
+  commentId: T:PnP.Framework.Provisioning.Model.ListExperience
+  parent: PnP.Framework.Provisioning.Model
+  name: ListExperience
+  nameWithType: ListExperience
+  fullName: PnP.Framework.Provisioning.Model.ListExperience
+- uid: PnP.Framework.Provisioning.Model.ListInstance.DefaultDisplayFormUrl*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.DefaultDisplayFormUrl
+  name: DefaultDisplayFormUrl
+  nameWithType: ListInstance.DefaultDisplayFormUrl
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.DefaultDisplayFormUrl
+- uid: PnP.Framework.Provisioning.Model.ListInstance.DefaultEditFormUrl*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.DefaultEditFormUrl
+  name: DefaultEditFormUrl
+  nameWithType: ListInstance.DefaultEditFormUrl
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.DefaultEditFormUrl
+- uid: PnP.Framework.Provisioning.Model.ListInstance.DefaultNewFormUrl*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.DefaultNewFormUrl
+  name: DefaultNewFormUrl
+  nameWithType: ListInstance.DefaultNewFormUrl
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.DefaultNewFormUrl
+- uid: PnP.Framework.Provisioning.Model.ListInstance.Direction*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.Direction
+  name: Direction
+  nameWithType: ListInstance.Direction
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.Direction
+- uid: PnP.Framework.Provisioning.Model.ListReadingDirection
+  commentId: T:PnP.Framework.Provisioning.Model.ListReadingDirection
+  parent: PnP.Framework.Provisioning.Model
+  name: ListReadingDirection
+  nameWithType: ListReadingDirection
+  fullName: PnP.Framework.Provisioning.Model.ListReadingDirection
+- uid: PnP.Framework.Provisioning.Model.ListInstance.ImageUrl*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.ImageUrl
+  name: ImageUrl
+  nameWithType: ListInstance.ImageUrl
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.ImageUrl
+- uid: PnP.Framework.Provisioning.Model.ListInstance.IrmExpire*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.IrmExpire
+  name: IrmExpire
+  nameWithType: ListInstance.IrmExpire
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.IrmExpire
+- uid: PnP.Framework.Provisioning.Model.ListInstance.IrmReject*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.IrmReject
+  name: IrmReject
+  nameWithType: ListInstance.IrmReject
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.IrmReject
+- uid: PnP.Framework.Provisioning.Model.ListInstance.IsApplicationList*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.IsApplicationList
+  name: IsApplicationList
+  nameWithType: ListInstance.IsApplicationList
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.IsApplicationList
+- uid: PnP.Framework.Provisioning.Model.ListInstance.ReadSecurity*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.ReadSecurity
+  name: ReadSecurity
+  nameWithType: ListInstance.ReadSecurity
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.ReadSecurity
+- uid: PnP.Framework.Provisioning.Model.ListInstance.WriteSecurity*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.WriteSecurity
+  name: WriteSecurity
+  nameWithType: ListInstance.WriteSecurity
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.WriteSecurity
+- uid: PnP.Framework.Provisioning.Model.ListInstance.ValidationFormula*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.ValidationFormula
+  name: ValidationFormula
+  nameWithType: ListInstance.ValidationFormula
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.ValidationFormula
+- uid: PnP.Framework.Provisioning.Model.ListInstance.ValidationMessage*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.ValidationMessage
+  name: ValidationMessage
+  nameWithType: ListInstance.ValidationMessage
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.ValidationMessage
+- uid: PnP.Framework.Provisioning.Model.ListInstance.DataSource*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.DataSource
+  name: DataSource
+  nameWithType: ListInstance.DataSource
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.DataSource
+- uid: PnP.Framework.Provisioning.Model.ListInstance.PropertyBagEntries*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.PropertyBagEntries
+  name: PropertyBagEntries
+  nameWithType: ListInstance.PropertyBagEntries
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.PropertyBagEntries
+- uid: PnP.Framework.Provisioning.Model.PropertyBagEntryCollection
+  commentId: T:PnP.Framework.Provisioning.Model.PropertyBagEntryCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: PropertyBagEntryCollection
+  nameWithType: PropertyBagEntryCollection
+  fullName: PnP.Framework.Provisioning.Model.PropertyBagEntryCollection
+- uid: PnP.Framework.Provisioning.Model.ListInstance.TemplateInternalName*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.TemplateInternalName
+  name: TemplateInternalName
+  nameWithType: ListInstance.TemplateInternalName
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.TemplateInternalName
+- uid: PnP.Framework.Provisioning.Model.ListInstance.DefaultColumnValues*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.DefaultColumnValues
+  name: DefaultColumnValues
+  nameWithType: ListInstance.DefaultColumnValues
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.DefaultColumnValues
+- uid: PnP.Framework.Provisioning.Model.ListInstance.EnableAudienceTargeting*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.EnableAudienceTargeting
+  name: EnableAudienceTargeting
+  nameWithType: ListInstance.EnableAudienceTargeting
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.EnableAudienceTargeting
+- uid: PnP.Framework.Provisioning.Model.ListInstance.EnableClassicAudienceTargeting*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.EnableClassicAudienceTargeting
+  name: EnableClassicAudienceTargeting
+  nameWithType: ListInstance.EnableClassicAudienceTargeting
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.EnableClassicAudienceTargeting
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.ListInstance.GetHashCode*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.GetHashCode
+  name: GetHashCode
+  nameWithType: ListInstance.GetHashCode
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.GetHashCode
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.ListInstance.Equals*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ListInstance.Equals
+  name: Equals
+  nameWithType: ListInstance.Equals
+  fullName: PnP.Framework.Provisioning.Model.ListInstance.Equals
+- uid: System.IEquatable{PnP.Framework.Provisioning.Model.ListInstance}.Equals(PnP.Framework.Provisioning.Model.ListInstance)
+  commentId: M:System.IEquatable{PnP.Framework.Provisioning.Model.ListInstance}.Equals(PnP.Framework.Provisioning.Model.ListInstance)
+  parent: System.IEquatable{PnP.Framework.Provisioning.Model.ListInstance}
+  definition: System.IEquatable`1.Equals(`0)
+  name: Equals(ListInstance)
+  nameWithType: IEquatable<ListInstance>.Equals(ListInstance)
+  fullName: System.IEquatable<PnP.Framework.Provisioning.Model.ListInstance>.Equals(PnP.Framework.Provisioning.Model.ListInstance)
+  nameWithType.vb: IEquatable(Of ListInstance).Equals(ListInstance)
+  fullName.vb: System.IEquatable(Of PnP.Framework.Provisioning.Model.ListInstance).Equals(PnP.Framework.Provisioning.Model.ListInstance)
+  spec.csharp:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    nameWithType: IEquatable<ListInstance>.Equals
+    fullName: System.IEquatable<PnP.Framework.Provisioning.Model.ListInstance>.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.ListInstance
+    name: ListInstance
+    nameWithType: ListInstance
+    fullName: PnP.Framework.Provisioning.Model.ListInstance
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    nameWithType: IEquatable(Of ListInstance).Equals
+    fullName: System.IEquatable(Of PnP.Framework.Provisioning.Model.ListInstance).Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.ListInstance
+    name: ListInstance
+    nameWithType: ListInstance
+    fullName: PnP.Framework.Provisioning.Model.ListInstance
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.ListInstance
+  commentId: T:PnP.Framework.Provisioning.Model.ListInstance
+  parent: PnP.Framework.Provisioning.Model
+  name: ListInstance
+  nameWithType: ListInstance
+  fullName: PnP.Framework.Provisioning.Model.ListInstance
+- uid: System.IEquatable`1.Equals(`0)
+  commentId: M:System.IEquatable`1.Equals(`0)
+  isExternal: true
+  name: Equals(T)
+  nameWithType: IEquatable<T>.Equals(T)
+  fullName: System.IEquatable<T>.Equals(T)
+  nameWithType.vb: IEquatable(Of T).Equals(T)
+  fullName.vb: System.IEquatable(Of T).Equals(T)
+  spec.csharp:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    nameWithType: IEquatable<T>.Equals
+    fullName: System.IEquatable<T>.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    nameWithType: IEquatable(Of T).Equals
+    fullName: System.IEquatable(Of T).Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )

@@ -1,0 +1,55 @@
+### YamlMime:ManagedReference
+items:
+- uid: System
+  commentId: N:System
+  id: System
+  children:
+  - System.EnumerationExtensions
+  - System.ExceptionExtensions
+  - System.ExceptionOptions
+  - System.SafeConvertExtensions
+  - System.ValidationExtensions
+  langs:
+  - csharp
+  - vb
+  name: System
+  nameWithType: System
+  fullName: System
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: System.EnumerationExtensions
+  commentId: T:System.EnumerationExtensions
+  parent: System
+  name: EnumerationExtensions
+  nameWithType: EnumerationExtensions
+  fullName: System.EnumerationExtensions
+- uid: System.ExceptionExtensions
+  commentId: T:System.ExceptionExtensions
+  parent: System
+  name: ExceptionExtensions
+  nameWithType: ExceptionExtensions
+  fullName: System.ExceptionExtensions
+- uid: System.ExceptionOptions
+  commentId: T:System.ExceptionOptions
+  parent: System
+  name: ExceptionOptions
+  nameWithType: ExceptionOptions
+  fullName: System.ExceptionOptions
+- uid: System.SafeConvertExtensions
+  commentId: T:System.SafeConvertExtensions
+  name: SafeConvertExtensions
+  nameWithType: SafeConvertExtensions
+  fullName: System.SafeConvertExtensions
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System

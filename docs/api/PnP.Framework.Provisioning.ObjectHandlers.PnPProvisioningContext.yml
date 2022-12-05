@@ -1,0 +1,1845 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext
+  id: PnPProvisioningContext
+  parent: PnP.Framework.Provisioning.ObjectHandlers
+  children:
+  - PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.#ctor(PnP.Framework.Provisioning.ObjectHandlers.AcquireTokenAsyncDelegate,PnP.Framework.Provisioning.ObjectHandlers.AcquireCookieAsyncDelegate,System.Collections.Generic.Dictionary{System.String,System.Object},PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireCookie(System.String)
+  - PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireCookieAsync
+  - PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireToken(System.String,System.String)
+  - PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireTokenAsync
+  - PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireTokenWithMultipleScopes(System.String,System.String[])
+  - PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AzureEnvironment
+  - PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Current
+  - PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Dispose
+  - PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Finalize
+  - PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Properties
+  langs:
+  - csharp
+  - vb
+  name: PnPProvisioningContext
+  nameWithType: PnPProvisioningContext
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PnPProvisioningContext
+    path: ../src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs
+    startLine: 25
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.ObjectHandlers
+  summary: "\nClass to wrap any PnP Provisioning process in order to share the same security context across different Object Handlers\n"
+  example: []
+  syntax:
+    content: 'public class PnPProvisioningContext : IDisposable'
+    content.vb: >-
+      Public Class PnPProvisioningContext
+          Implements IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireTokenAsync
+  commentId: P:PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireTokenAsync
+  id: AcquireTokenAsync
+  parent: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext
+  langs:
+  - csharp
+  - vb
+  name: AcquireTokenAsync
+  nameWithType: PnPProvisioningContext.AcquireTokenAsync
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireTokenAsync
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AcquireTokenAsync
+    path: ../src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs
+    startLine: 33
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.ObjectHandlers
+  summary: "\nAsynchronous delegate to acquire an access token for a specific resource and with a specific scope\n"
+  example: []
+  syntax:
+    content: public AcquireTokenAsyncDelegate AcquireTokenAsync { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.ObjectHandlers.AcquireTokenAsyncDelegate
+    content.vb: Public ReadOnly Property AcquireTokenAsync As AcquireTokenAsyncDelegate
+  overload: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireTokenAsync*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireCookieAsync
+  commentId: P:PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireCookieAsync
+  id: AcquireCookieAsync
+  parent: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext
+  langs:
+  - csharp
+  - vb
+  name: AcquireCookieAsync
+  nameWithType: PnPProvisioningContext.AcquireCookieAsync
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireCookieAsync
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AcquireCookieAsync
+    path: ../src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs
+    startLine: 38
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.ObjectHandlers
+  summary: "\nAsynchronous delegate to acquire a cookie for a specific resource\n"
+  example: []
+  syntax:
+    content: public AcquireCookieAsyncDelegate AcquireCookieAsync { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.ObjectHandlers.AcquireCookieAsyncDelegate
+    content.vb: Public ReadOnly Property AcquireCookieAsync As AcquireCookieAsyncDelegate
+  overload: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireCookieAsync*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Properties
+  commentId: P:PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Properties
+  id: Properties
+  parent: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext
+  langs:
+  - csharp
+  - vb
+  name: Properties
+  nameWithType: PnPProvisioningContext.Properties
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Properties
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Properties
+    path: ../src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs
+    startLine: 43
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.ObjectHandlers
+  summary: "\nProperty Bag of properties for the current context\n"
+  example: []
+  syntax:
+    content: public Dictionary<string, object> Properties { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.Object}
+    content.vb: Public ReadOnly Property Properties As Dictionary(Of String, Object)
+  overload: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Properties*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AzureEnvironment
+  commentId: P:PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AzureEnvironment
+  id: AzureEnvironment
+  parent: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext
+  langs:
+  - csharp
+  - vb
+  name: AzureEnvironment
+  nameWithType: PnPProvisioningContext.AzureEnvironment
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AzureEnvironment
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AzureEnvironment
+    path: ../src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs
+    startLine: 49
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.ObjectHandlers
+  summary: "\nDefines the Cloud Deployment the current user is connected to.\n"
+  example: []
+  syntax:
+    content: public AzureEnvironment AzureEnvironment { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.AzureEnvironment
+    content.vb: Public ReadOnly Property AzureEnvironment As AzureEnvironment
+  overload: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AzureEnvironment*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.#ctor(PnP.Framework.Provisioning.ObjectHandlers.AcquireTokenAsyncDelegate,PnP.Framework.Provisioning.ObjectHandlers.AcquireCookieAsyncDelegate,System.Collections.Generic.Dictionary{System.String,System.Object},PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.#ctor(PnP.Framework.Provisioning.ObjectHandlers.AcquireTokenAsyncDelegate,PnP.Framework.Provisioning.ObjectHandlers.AcquireCookieAsyncDelegate,System.Collections.Generic.Dictionary{System.String,System.Object},PnP.Framework.AzureEnvironment)
+  id: '#ctor(PnP.Framework.Provisioning.ObjectHandlers.AcquireTokenAsyncDelegate,PnP.Framework.Provisioning.ObjectHandlers.AcquireCookieAsyncDelegate,System.Collections.Generic.Dictionary{System.String,System.Object},PnP.Framework.AzureEnvironment)'
+  parent: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext
+  langs:
+  - csharp
+  - vb
+  name: PnPProvisioningContext(AcquireTokenAsyncDelegate, AcquireCookieAsyncDelegate, Dictionary<String, Object>, AzureEnvironment)
+  nameWithType: PnPProvisioningContext.PnPProvisioningContext(AcquireTokenAsyncDelegate, AcquireCookieAsyncDelegate, Dictionary<String, Object>, AzureEnvironment)
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.PnPProvisioningContext(PnP.Framework.Provisioning.ObjectHandlers.AcquireTokenAsyncDelegate, PnP.Framework.Provisioning.ObjectHandlers.AcquireCookieAsyncDelegate, System.Collections.Generic.Dictionary<System.String, System.Object>, PnP.Framework.AzureEnvironment)
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs
+    startLine: 57
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.ObjectHandlers
+  summary: "\nConstructor for the content\n"
+  example: []
+  syntax:
+    content: public PnPProvisioningContext(AcquireTokenAsyncDelegate acquireTokenAsyncDelegate = null, AcquireCookieAsyncDelegate acquireCookieAsyncDelegate = null, Dictionary<string, object> properties = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: acquireTokenAsyncDelegate
+      type: PnP.Framework.Provisioning.ObjectHandlers.AcquireTokenAsyncDelegate
+      description: Asynchronous delegate to acquire an access token for a specific resource and with a specific scope
+    - id: acquireCookieAsyncDelegate
+      type: PnP.Framework.Provisioning.ObjectHandlers.AcquireCookieAsyncDelegate
+      description: Asynchronous delegate to acquire a cookie for a specific resource
+    - id: properties
+      type: System.Collections.Generic.Dictionary{System.String,System.Object}
+      description: Properties to add to the Property Bag of the current context
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: The Azure Cloud Deployment to use. This is used to determine the Graph endpoint. Defaults to &apos;Production&apos; / &apos;Global&apos;
+    content.vb: Public Sub New(acquireTokenAsyncDelegate As AcquireTokenAsyncDelegate = Nothing, acquireCookieAsyncDelegate As AcquireCookieAsyncDelegate = Nothing, properties As Dictionary(Of String, Object) = Nothing, azureEnvironment As AzureEnvironment = AzureEnvironment.Production)
+  overload: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.#ctor*
+  nameWithType.vb: PnPProvisioningContext.PnPProvisioningContext(AcquireTokenAsyncDelegate, AcquireCookieAsyncDelegate, Dictionary(Of String, Object), AzureEnvironment)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.PnPProvisioningContext(PnP.Framework.Provisioning.ObjectHandlers.AcquireTokenAsyncDelegate, PnP.Framework.Provisioning.ObjectHandlers.AcquireCookieAsyncDelegate, System.Collections.Generic.Dictionary(Of System.String, System.Object), PnP.Framework.AzureEnvironment)
+  name.vb: PnPProvisioningContext(AcquireTokenAsyncDelegate, AcquireCookieAsyncDelegate, Dictionary(Of String, Object), AzureEnvironment)
+- uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireToken(System.String,System.String)
+  commentId: M:PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireToken(System.String,System.String)
+  id: AcquireToken(System.String,System.String)
+  parent: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext
+  langs:
+  - csharp
+  - vb
+  name: AcquireToken(String, String)
+  nameWithType: PnPProvisioningContext.AcquireToken(String, String)
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireToken(System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AcquireToken
+    path: ../src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs
+    startLine: 92
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.ObjectHandlers
+  summary: "\nSynchronous delegate to acquire an access token for a specific resource and with a specific scope\n"
+  example: []
+  syntax:
+    content: public string AcquireToken(string resource, string scope)
+    parameters:
+    - id: resource
+      type: System.String
+      description: The target resource
+    - id: scope
+      type: System.String
+      description: The scope for the target resource
+    return:
+      type: System.String
+      description: The Access Token for the requested resource, with the requested scope
+    content.vb: Public Function AcquireToken(resource As String, scope As String) As String
+  overload: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireToken*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireTokenWithMultipleScopes(System.String,System.String[])
+  commentId: M:PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireTokenWithMultipleScopes(System.String,System.String[])
+  id: AcquireTokenWithMultipleScopes(System.String,System.String[])
+  parent: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext
+  langs:
+  - csharp
+  - vb
+  name: AcquireTokenWithMultipleScopes(String, String[])
+  nameWithType: PnPProvisioningContext.AcquireTokenWithMultipleScopes(String, String[])
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireTokenWithMultipleScopes(System.String, System.String[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AcquireTokenWithMultipleScopes
+    path: ../src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs
+    startLine: 104
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.ObjectHandlers
+  syntax:
+    content: public string AcquireTokenWithMultipleScopes(string resource, params string[] scope)
+    parameters:
+    - id: resource
+      type: System.String
+    - id: scope
+      type: System.String[]
+    return:
+      type: System.String
+    content.vb: Public Function AcquireTokenWithMultipleScopes(resource As String, ParamArray scope As String()) As String
+  overload: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireTokenWithMultipleScopes*
+  nameWithType.vb: PnPProvisioningContext.AcquireTokenWithMultipleScopes(String, String())
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireTokenWithMultipleScopes(System.String, System.String())
+  name.vb: AcquireTokenWithMultipleScopes(String, String())
+- uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireCookie(System.String)
+  commentId: M:PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireCookie(System.String)
+  id: AcquireCookie(System.String)
+  parent: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext
+  langs:
+  - csharp
+  - vb
+  name: AcquireCookie(String)
+  nameWithType: PnPProvisioningContext.AcquireCookie(String)
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireCookie(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AcquireCookie
+    path: ../src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs
+    startLine: 119
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.ObjectHandlers
+  summary: "\nSynchronous delegate to acquire a cookie for a specific resource\n"
+  example: []
+  syntax:
+    content: public string AcquireCookie(string resource)
+    parameters:
+    - id: resource
+      type: System.String
+      description: The target resource
+    return:
+      type: System.String
+      description: The Cookie for the requested resource
+    content.vb: Public Function AcquireCookie(resource As String) As String
+  overload: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireCookie*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Finalize
+  commentId: M:PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Finalize
+  id: Finalize
+  parent: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext
+  langs:
+  - csharp
+  - vb
+  name: Finalize()
+  nameWithType: PnPProvisioningContext.Finalize()
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Finalize()
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Finalize
+    path: ../src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs
+    startLine: 124
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.ObjectHandlers
+  syntax:
+    content: protected void Finalize()
+    content.vb: Protected Sub Finalize
+  overload: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Finalize*
+  modifiers.csharp:
+  - protected
+  modifiers.vb:
+  - Protected
+- uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Dispose
+  commentId: M:PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Dispose
+  id: Dispose
+  parent: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: PnPProvisioningContext.Dispose()
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Dispose()
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Dispose
+    path: ../src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs
+    startLine: 132
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.ObjectHandlers
+  summary: "\nPerforms application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.\n"
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose
+  overload: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Current
+  commentId: P:PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Current
+  id: Current
+  parent: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext
+  langs:
+  - csharp
+  - vb
+  name: Current
+  nameWithType: PnPProvisioningContext.Current
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Current
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Current
+    path: ../src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs
+    startLine: 148
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.ObjectHandlers
+  syntax:
+    content: public static PnPProvisioningContext Current { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext
+    content.vb: Public Shared Property Current As PnPProvisioningContext
+  overload: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Current*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  - set
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: PnP.Framework.Provisioning.ObjectHandlers
+  commentId: N:PnP.Framework.Provisioning.ObjectHandlers
+  name: PnP.Framework.Provisioning.ObjectHandlers
+  nameWithType: PnP.Framework.Provisioning.ObjectHandlers
+  fullName: PnP.Framework.Provisioning.ObjectHandlers
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<PnPProvisioningContext>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<PnPProvisioningContext>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of PnPProvisioningContext)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of PnPProvisioningContext)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<PnPProvisioningContext>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<PnPProvisioningContext>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of PnPProvisioningContext)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of PnPProvisioningContext)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<PnPProvisioningContext, T>(Expression<Func<PnPProvisioningContext, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<PnPProvisioningContext, T>(Expression<Func<PnPProvisioningContext, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext, T>(System.Linq.Expressions.Expression<System.Func<PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of PnPProvisioningContext, T)(Expression(Of Func(Of PnPProvisioningContext, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext, T)(System.Linq.Expressions.Expression(Of System.Func(Of PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of PnPProvisioningContext, T)(Expression(Of Func(Of PnPProvisioningContext, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<PnPProvisioningContext, T>
+    nameWithType: ObjectExtensions.Set<PnPProvisioningContext, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext
+    name: PnPProvisioningContext
+    nameWithType: PnPProvisioningContext
+    fullName: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of PnPProvisioningContext, T)
+    nameWithType: ObjectExtensions.Set(Of PnPProvisioningContext, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext
+    name: PnPProvisioningContext
+    nameWithType: PnPProvisioningContext
+    fullName: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireTokenAsync*
+  commentId: Overload:PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireTokenAsync
+  name: AcquireTokenAsync
+  nameWithType: PnPProvisioningContext.AcquireTokenAsync
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireTokenAsync
+- uid: PnP.Framework.Provisioning.ObjectHandlers.AcquireTokenAsyncDelegate
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.AcquireTokenAsyncDelegate
+  parent: PnP.Framework.Provisioning.ObjectHandlers
+  name: AcquireTokenAsyncDelegate
+  nameWithType: AcquireTokenAsyncDelegate
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.AcquireTokenAsyncDelegate
+- uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireCookieAsync*
+  commentId: Overload:PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireCookieAsync
+  name: AcquireCookieAsync
+  nameWithType: PnPProvisioningContext.AcquireCookieAsync
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireCookieAsync
+- uid: PnP.Framework.Provisioning.ObjectHandlers.AcquireCookieAsyncDelegate
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.AcquireCookieAsyncDelegate
+  parent: PnP.Framework.Provisioning.ObjectHandlers
+  name: AcquireCookieAsyncDelegate
+  nameWithType: AcquireCookieAsyncDelegate
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.AcquireCookieAsyncDelegate
+- uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Properties*
+  commentId: Overload:PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Properties
+  name: Properties
+  nameWithType: PnPProvisioningContext.Properties
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Properties
+- uid: System.Collections.Generic.Dictionary{System.String,System.Object}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.Object}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  name: Dictionary<String, Object>
+  nameWithType: Dictionary<String, Object>
+  fullName: System.Collections.Generic.Dictionary<System.String, System.Object>
+  nameWithType.vb: Dictionary(Of String, Object)
+  fullName.vb: System.Collections.Generic.Dictionary(Of System.String, System.Object)
+  name.vb: Dictionary(Of String, Object)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AzureEnvironment*
+  commentId: Overload:PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AzureEnvironment
+  name: AzureEnvironment
+  nameWithType: PnPProvisioningContext.AzureEnvironment
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AzureEnvironment
+- uid: PnP.Framework.AzureEnvironment
+  commentId: T:PnP.Framework.AzureEnvironment
+  parent: PnP.Framework
+  name: AzureEnvironment
+  nameWithType: AzureEnvironment
+  fullName: PnP.Framework.AzureEnvironment
+- uid: PnP.Framework
+  commentId: N:PnP.Framework
+  name: PnP.Framework
+  nameWithType: PnP.Framework
+  fullName: PnP.Framework
+- uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.#ctor*
+  commentId: Overload:PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.#ctor
+  name: PnPProvisioningContext
+  nameWithType: PnPProvisioningContext.PnPProvisioningContext
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.PnPProvisioningContext
+- uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireToken*
+  commentId: Overload:PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireToken
+  name: AcquireToken
+  nameWithType: PnPProvisioningContext.AcquireToken
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireToken
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireTokenWithMultipleScopes*
+  commentId: Overload:PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireTokenWithMultipleScopes
+  name: AcquireTokenWithMultipleScopes
+  nameWithType: PnPProvisioningContext.AcquireTokenWithMultipleScopes
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireTokenWithMultipleScopes
+- uid: System.String[]
+  isExternal: true
+  name: String[]
+  nameWithType: String[]
+  fullName: System.String[]
+  nameWithType.vb: String()
+  fullName.vb: System.String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireCookie*
+  commentId: Overload:PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireCookie
+  name: AcquireCookie
+  nameWithType: PnPProvisioningContext.AcquireCookie
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireCookie
+- uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Finalize*
+  commentId: Overload:PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Finalize
+  name: Finalize
+  nameWithType: PnPProvisioningContext.Finalize
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Finalize
+- uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Dispose*
+  commentId: Overload:PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Dispose
+  name: Dispose
+  nameWithType: PnPProvisioningContext.Dispose
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    nameWithType: IDisposable.Dispose
+    fullName: System.IDisposable.Dispose
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    nameWithType: IDisposable.Dispose
+    fullName: System.IDisposable.Dispose
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Current*
+  commentId: Overload:PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Current
+  name: Current
+  nameWithType: PnPProvisioningContext.Current
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Current
+- uid: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext
+  parent: PnP.Framework.Provisioning.ObjectHandlers
+  name: PnPProvisioningContext
+  nameWithType: PnPProvisioningContext
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext

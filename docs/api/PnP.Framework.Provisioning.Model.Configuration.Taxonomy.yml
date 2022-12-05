@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.Configuration.Taxonomy
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.Taxonomy
+  id: PnP.Framework.Provisioning.Model.Configuration.Taxonomy
+  children:
+  - PnP.Framework.Provisioning.Model.Configuration.Taxonomy.ExtractTaxonomyConfiguration
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Model.Configuration.Taxonomy
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.Taxonomy
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Taxonomy
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Model.Configuration.Taxonomy.ExtractTaxonomyConfiguration
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.Taxonomy.ExtractTaxonomyConfiguration
+  parent: PnP.Framework.Provisioning.Model.Configuration.Taxonomy
+  name: ExtractTaxonomyConfiguration
+  nameWithType: ExtractTaxonomyConfiguration
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Taxonomy.ExtractTaxonomyConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.Taxonomy
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.Taxonomy
+  name: PnP.Framework.Provisioning.Model.Configuration.Taxonomy
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.Taxonomy
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Taxonomy

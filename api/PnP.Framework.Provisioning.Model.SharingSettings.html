@@ -1,0 +1,835 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class SharingSettings
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class SharingSettings
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PnP.Framework.Provisioning.Model.SharingSettings">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/TenantSettings/SharingSettings.cs/#L11" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_SharingSettings.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.SharingSettings%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="PnP_Framework_Provisioning_Model_SharingSettings" data-uid="PnP.Framework.Provisioning.Model.SharingSettings">Class SharingSettings
+  </h1>
+  <div class="markdown level0 summary"><p>Defines a SharingSettings object</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><a class="xref" href="PnP.Framework.Provisioning.Model.BaseModel.html">BaseModel</a></div>
+    <div class="level2"><span class="xref">SharingSettings</span></div>
+  </div>
+  
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="PnP.Framework.Provisioning.Model.BaseModel.html#PnP_Framework_Provisioning_Model_BaseModel_ParentTemplate">BaseModel.ParentTemplate</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="PnP.Framework.Provisioning.Model.html">PnP.Framework.Provisioning.Model</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="PnP_Framework_Provisioning_Model_SharingSettings_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class SharingSettings : BaseModel, IProvisioningTemplateDescendant, IEquatable&lt;SharingSettings&gt;</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_SharingSettings__ctor.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.SharingSettings.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/TenantSettings/SharingSettings.cs/#L69" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_SharingSettings__ctor_" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.#ctor*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_SharingSettings__ctor" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.#ctor"><a href="#collapsible-PnP_Framework_Provisioning_Model_SharingSettings__ctor" class="expander" data-toggle="collapse">SharingSettings()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_SharingSettings__ctor" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SharingSettings()</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_SharingSettings_AllowedDomainList.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.SharingSettings.AllowedDomainList%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/TenantSettings/SharingSettings.cs/#L58" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_SharingSettings_AllowedDomainList_" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.AllowedDomainList*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_SharingSettings_AllowedDomainList" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.AllowedDomainList"><a href="#collapsible-PnP_Framework_Provisioning_Model_SharingSettings_AllowedDomainList" class="expander" data-toggle="collapse">AllowedDomainList</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_SharingSettings_AllowedDomainList" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines a comma separated list of allowed domains for sharing. It is considered if and only if SharingDomainRestrictionMode=AllowList.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; AllowedDomainList { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_SharingSettings_BlockedDomainList.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.SharingSettings.BlockedDomainList%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/TenantSettings/SharingSettings.cs/#L63" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_SharingSettings_BlockedDomainList_" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.BlockedDomainList*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_SharingSettings_BlockedDomainList" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.BlockedDomainList"><a href="#collapsible-PnP_Framework_Provisioning_Model_SharingSettings_BlockedDomainList" class="expander" data-toggle="collapse">BlockedDomainList</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_SharingSettings_BlockedDomainList" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines a comma separated list of blocked domains for sharing. It is considered if and only if SharingDomainRestrictionMode=BlockList.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; BlockedDomainList { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_SharingSettings_DefaultSharingLinkType.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.SharingSettings.DefaultSharingLinkType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/TenantSettings/SharingSettings.cs/#L38" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_SharingSettings_DefaultSharingLinkType_" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.DefaultSharingLinkType*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_SharingSettings_DefaultSharingLinkType" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.DefaultSharingLinkType"><a href="#collapsible-PnP_Framework_Provisioning_Model_SharingSettings_DefaultSharingLinkType" class="expander" data-toggle="collapse">DefaultSharingLinkType</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_SharingSettings_DefaultSharingLinkType" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines the default type of a sharing link</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SharingLinkType DefaultSharingLinkType { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.SharingLinkType.html">SharingLinkType</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_SharingSettings_FileAnonymousLinkType.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.SharingSettings.FileAnonymousLinkType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/TenantSettings/SharingSettings.cs/#L28" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_SharingSettings_FileAnonymousLinkType_" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.FileAnonymousLinkType*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_SharingSettings_FileAnonymousLinkType" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.FileAnonymousLinkType"><a href="#collapsible-PnP_Framework_Provisioning_Model_SharingSettings_FileAnonymousLinkType" class="expander" data-toggle="collapse">FileAnonymousLinkType</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_SharingSettings_FileAnonymousLinkType" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines the permissions for anonymous links for files</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AnonymousLinkType FileAnonymousLinkType { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.AnonymousLinkType.html">AnonymousLinkType</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_SharingSettings_FolderAnonymousLinkType.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.SharingSettings.FolderAnonymousLinkType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/TenantSettings/SharingSettings.cs/#L33" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_SharingSettings_FolderAnonymousLinkType_" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.FolderAnonymousLinkType*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_SharingSettings_FolderAnonymousLinkType" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.FolderAnonymousLinkType"><a href="#collapsible-PnP_Framework_Provisioning_Model_SharingSettings_FolderAnonymousLinkType" class="expander" data-toggle="collapse">FolderAnonymousLinkType</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_SharingSettings_FolderAnonymousLinkType" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines the permissions for anonymous links for folders</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AnonymousLinkType FolderAnonymousLinkType { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.AnonymousLinkType.html">AnonymousLinkType</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_SharingSettings_PreventExternalUsersFromResharing.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.SharingSettings.PreventExternalUsersFromResharing%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/TenantSettings/SharingSettings.cs/#L43" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_SharingSettings_PreventExternalUsersFromResharing_" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.PreventExternalUsersFromResharing*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_SharingSettings_PreventExternalUsersFromResharing" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.PreventExternalUsersFromResharing"><a href="#collapsible-PnP_Framework_Provisioning_Model_SharingSettings_PreventExternalUsersFromResharing" class="expander" data-toggle="collapse">PreventExternalUsersFromResharing</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_SharingSettings_PreventExternalUsersFromResharing" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines whether external users are allowed to reshare the content</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool PreventExternalUsersFromResharing { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_SharingSettings_RequireAcceptingAccountMatchInvitedAccount.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.SharingSettings.RequireAcceptingAccountMatchInvitedAccount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/TenantSettings/SharingSettings.cs/#L48" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_SharingSettings_RequireAcceptingAccountMatchInvitedAccount_" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.RequireAcceptingAccountMatchInvitedAccount*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_SharingSettings_RequireAcceptingAccountMatchInvitedAccount" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.RequireAcceptingAccountMatchInvitedAccount"><a href="#collapsible-PnP_Framework_Provisioning_Model_SharingSettings_RequireAcceptingAccountMatchInvitedAccount" class="expander" data-toggle="collapse">RequireAcceptingAccountMatchInvitedAccount</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_SharingSettings_RequireAcceptingAccountMatchInvitedAccount" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines whether invited external users need to use the same account used as the target for the invite</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool RequireAcceptingAccountMatchInvitedAccount { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_SharingSettings_RequireAnonymousLinksExpireInDays.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.SharingSettings.RequireAnonymousLinksExpireInDays%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/TenantSettings/SharingSettings.cs/#L23" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_SharingSettings_RequireAnonymousLinksExpireInDays_" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.RequireAnonymousLinksExpireInDays*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_SharingSettings_RequireAnonymousLinksExpireInDays" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.RequireAnonymousLinksExpireInDays"><a href="#collapsible-PnP_Framework_Provisioning_Model_SharingSettings_RequireAnonymousLinksExpireInDays" class="expander" data-toggle="collapse">RequireAnonymousLinksExpireInDays</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_SharingSettings_RequireAnonymousLinksExpireInDays" class="collapse in">
+  <div class="markdown level1 summary"><p>Number of days before expiration of anonymous sharing links</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int RequireAnonymousLinksExpireInDays { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_SharingSettings_SharingCapability.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.SharingSettings.SharingCapability%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/TenantSettings/SharingSettings.cs/#L18" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_SharingSettings_SharingCapability_" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.SharingCapability*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_SharingSettings_SharingCapability" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.SharingCapability"><a href="#collapsible-PnP_Framework_Provisioning_Model_SharingSettings_SharingCapability" class="expander" data-toggle="collapse">SharingCapability</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_SharingSettings_SharingCapability" class="collapse in">
+  <div class="markdown level1 summary"><p>Configures the sharing capability for the tenant</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SharingCapability SharingCapability { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.SharingCapability.html">SharingCapability</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_SharingSettings_SharingDomainRestrictionMode.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.SharingSettings.SharingDomainRestrictionMode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/TenantSettings/SharingSettings.cs/#L53" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_SharingSettings_SharingDomainRestrictionMode_" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.SharingDomainRestrictionMode*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_SharingSettings_SharingDomainRestrictionMode" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.SharingDomainRestrictionMode"><a href="#collapsible-PnP_Framework_Provisioning_Model_SharingSettings_SharingDomainRestrictionMode" class="expander" data-toggle="collapse">SharingDomainRestrictionMode</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_SharingSettings_SharingDomainRestrictionMode" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines domains restrictions for sharing</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SharingDomainRestrictionMode SharingDomainRestrictionMode { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.SharingDomainRestrictionMode.html">SharingDomainRestrictionMode</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_SharingSettings_Equals_PnP_Framework_Provisioning_Model_SharingSettings_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.SharingSettings.Equals(PnP.Framework.Provisioning.Model.SharingSettings)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/TenantSettings/SharingSettings.cs/#L119" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_SharingSettings_Equals_" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.Equals*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_SharingSettings_Equals_PnP_Framework_Provisioning_Model_SharingSettings_" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.Equals(PnP.Framework.Provisioning.Model.SharingSettings)"><a href="#collapsible-PnP_Framework_Provisioning_Model_SharingSettings_Equals_PnP_Framework_Provisioning_Model_SharingSettings_" class="expander" data-toggle="collapse">Equals(SharingSettings)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_SharingSettings_Equals_PnP_Framework_Provisioning_Model_SharingSettings_" class="collapse in">
+  <div class="markdown level1 summary"><p>Compares SharingSettings object based on SharingCapability, RequireAnonymousLinksExpireInDays,
+FileAnonymousLinkType, FolderAnonymousLinkType, DefaultSharingLinkType, PreventExternalUsersFromResharing
+RequireAcceptingAccountMatchInvitedAccount, SharingDomainRestrictionMode, AllowedDomainList,
+and BlockedDomainList</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(SharingSettings other)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Provisioning.Model.SharingSettings.html">SharingSettings</a></span>
+        <span class="parametername">other</span>
+        <p><p>SharingSettings Class object</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p><p>true if the SharingSettings object is equal to the current object; otherwise, false.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  <h5 class="implements">Implements</h5>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals#system-iequatable-1-equals(-0)">IEquatable&lt;T&gt;.Equals(T)</a></div>
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_SharingSettings_Equals_System_Object_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.SharingSettings.Equals(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/TenantSettings/SharingSettings.cs/#L102" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_SharingSettings_Equals_" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.Equals*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_SharingSettings_Equals_System_Object_" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.Equals(System.Object)"><a href="#collapsible-PnP_Framework_Provisioning_Model_SharingSettings_Equals_System_Object_" class="expander" data-toggle="collapse">Equals(Object)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_SharingSettings_Equals_System_Object_" class="collapse in">
+  <div class="markdown level1 summary"><p>Compares object with SharingSettings class</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></span>
+        <span class="parametername">obj</span>
+        <p><p>Object that represents SharingSettings</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p><p>Checks whether object is SharingSettings class</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a></div>
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_SharingSettings_GetHashCode.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.SharingSettings.GetHashCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/TenantSettings/SharingSettings.cs/#L81" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_SharingSettings_GetHashCode_" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.GetHashCode*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_SharingSettings_GetHashCode" data-uid="PnP.Framework.Provisioning.Model.SharingSettings.GetHashCode"><a href="#collapsible-PnP_Framework_Provisioning_Model_SharingSettings_GetHashCode" class="expander" data-toggle="collapse">GetHashCode()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_SharingSettings_GetHashCode" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets the hash code</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+  
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>
+        <p><p>Returns HashCode</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a></div>
+  
+  
+  
+  
+  
+  </div>
+  
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="System.ValidationExtensions.html#System_ValidationExtensions_ValidateNotNullOrEmpty__1___0_System_String_">ValidationExtensions.ValidateNotNullOrEmpty&lt;T&gt;(T, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_Set__2___0_System_Linq_Expressions_Expression_System_Func___0___1_____1_System_Boolean_System_Boolean_">ObjectExtensions.Set&lt;TObject, T&gt;(TObject, Expression&lt;Func&lt;TObject, T&gt;&gt;, T, Boolean, Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstancePropertyValue_System_Object_System_String_">ObjectExtensions.GetPublicInstancePropertyValue(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstanceProperty_System_Object_System_String_">ObjectExtensions.GetPublicInstanceProperty(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_SetPublicInstancePropertyValue_System_Object_System_String_System_Object_">ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Modernization.Cache.Extensions.html#PnP_Framework_Modernization_Cache_Extensions_ToByteArray_System_Object_">Extensions.ToByteArray(Object)</a>
+  </div>
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

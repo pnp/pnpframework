@@ -1,0 +1,960 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class IRMSettings
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class IRMSettings
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs/#L7576" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings">Class IRMSettings
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">IRMSettings</span></div>
+  </div>
+  
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="PnP.Framework.Provisioning.Providers.Xml.V202103.html">PnP.Framework.Provisioning.Providers.Xml.V202103</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Serializable]
+public class IRMSettings</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings__ctor.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs/#L7617" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings__ctor_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.#ctor*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings__ctor" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.#ctor"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings__ctor" class="expander" data-toggle="collapse">IRMSettings()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings__ctor" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IRMSettings()</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_AllowPrint.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.AllowPrint%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs/#L7640" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_AllowPrint_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.AllowPrint*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_AllowPrint" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.AllowPrint"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_AllowPrint" class="expander" data-toggle="collapse">AllowPrint</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_AllowPrint" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AllowPrint { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_AllowScript.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.AllowScript%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs/#L7652" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_AllowScript_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.AllowScript*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_AllowScript" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.AllowScript"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_AllowScript" class="expander" data-toggle="collapse">AllowScript</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_AllowScript" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AllowScript { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_AllowWriteCopy.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.AllowWriteCopy%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs/#L7664" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_AllowWriteCopy_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.AllowWriteCopy*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_AllowWriteCopy" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.AllowWriteCopy"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_AllowWriteCopy" class="expander" data-toggle="collapse">AllowWriteCopy</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_AllowWriteCopy" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AllowWriteCopy { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_DisableDocumentBrowserView.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.DisableDocumentBrowserView%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs/#L7676" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_DisableDocumentBrowserView_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.DisableDocumentBrowserView*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_DisableDocumentBrowserView" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.DisableDocumentBrowserView"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_DisableDocumentBrowserView" class="expander" data-toggle="collapse">DisableDocumentBrowserView</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_DisableDocumentBrowserView" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DisableDocumentBrowserView { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_DocumentAccessExpireDays.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.DocumentAccessExpireDays%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs/#L7688" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_DocumentAccessExpireDays_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.DocumentAccessExpireDays*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_DocumentAccessExpireDays" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.DocumentAccessExpireDays"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_DocumentAccessExpireDays" class="expander" data-toggle="collapse">DocumentAccessExpireDays</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_DocumentAccessExpireDays" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int DocumentAccessExpireDays { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_DocumentAccessExpireDaysSpecified.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.DocumentAccessExpireDaysSpecified%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs/#L7699" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_DocumentAccessExpireDaysSpecified_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.DocumentAccessExpireDaysSpecified*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_DocumentAccessExpireDaysSpecified" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.DocumentAccessExpireDaysSpecified"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_DocumentAccessExpireDaysSpecified" class="expander" data-toggle="collapse">DocumentAccessExpireDaysSpecified</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_DocumentAccessExpireDaysSpecified" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DocumentAccessExpireDaysSpecified { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_DocumentLibraryProtectionExpiresInDays.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.DocumentLibraryProtectionExpiresInDays%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs/#L7710" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_DocumentLibraryProtectionExpiresInDays_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.DocumentLibraryProtectionExpiresInDays*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_DocumentLibraryProtectionExpiresInDays" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.DocumentLibraryProtectionExpiresInDays"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_DocumentLibraryProtectionExpiresInDays" class="expander" data-toggle="collapse">DocumentLibraryProtectionExpiresInDays</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_DocumentLibraryProtectionExpiresInDays" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string DocumentLibraryProtectionExpiresInDays { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_Enabled.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.Enabled%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs/#L7629" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_Enabled_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.Enabled*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_Enabled" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.Enabled"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_Enabled" class="expander" data-toggle="collapse">Enabled</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_Enabled" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Enabled { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_EnableDocumentAccessExpire.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.EnableDocumentAccessExpire%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs/#L7721" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_EnableDocumentAccessExpire_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.EnableDocumentAccessExpire*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_EnableDocumentAccessExpire" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.EnableDocumentAccessExpire"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_EnableDocumentAccessExpire" class="expander" data-toggle="collapse">EnableDocumentAccessExpire</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_EnableDocumentAccessExpire" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool EnableDocumentAccessExpire { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_EnableDocumentBrowserPublishingView.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.EnableDocumentBrowserPublishingView%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs/#L7733" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_EnableDocumentBrowserPublishingView_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.EnableDocumentBrowserPublishingView*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_EnableDocumentBrowserPublishingView" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.EnableDocumentBrowserPublishingView"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_EnableDocumentBrowserPublishingView" class="expander" data-toggle="collapse">EnableDocumentBrowserPublishingView</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_EnableDocumentBrowserPublishingView" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool EnableDocumentBrowserPublishingView { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_EnableGroupProtection.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.EnableGroupProtection%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs/#L7745" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_EnableGroupProtection_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.EnableGroupProtection*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_EnableGroupProtection" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.EnableGroupProtection"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_EnableGroupProtection" class="expander" data-toggle="collapse">EnableGroupProtection</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_EnableGroupProtection" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool EnableGroupProtection { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_EnableLicenseCacheExpire.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.EnableLicenseCacheExpire%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs/#L7757" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_EnableLicenseCacheExpire_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.EnableLicenseCacheExpire*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_EnableLicenseCacheExpire" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.EnableLicenseCacheExpire"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_EnableLicenseCacheExpire" class="expander" data-toggle="collapse">EnableLicenseCacheExpire</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_EnableLicenseCacheExpire" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool EnableLicenseCacheExpire { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_GroupName.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.GroupName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs/#L7769" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_GroupName_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.GroupName*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_GroupName" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.GroupName"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_GroupName" class="expander" data-toggle="collapse">GroupName</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_GroupName" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GroupName { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_LicenseCacheExpireDays.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.LicenseCacheExpireDays%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs/#L7780" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_LicenseCacheExpireDays_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.LicenseCacheExpireDays*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_LicenseCacheExpireDays" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.LicenseCacheExpireDays"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_LicenseCacheExpireDays" class="expander" data-toggle="collapse">LicenseCacheExpireDays</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_LicenseCacheExpireDays" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int LicenseCacheExpireDays { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_LicenseCacheExpireDaysSpecified.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.LicenseCacheExpireDaysSpecified%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs/#L7791" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_LicenseCacheExpireDaysSpecified_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.LicenseCacheExpireDaysSpecified*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_LicenseCacheExpireDaysSpecified" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.LicenseCacheExpireDaysSpecified"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_LicenseCacheExpireDaysSpecified" class="expander" data-toggle="collapse">LicenseCacheExpireDaysSpecified</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_LicenseCacheExpireDaysSpecified" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool LicenseCacheExpireDaysSpecified { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_PolicyDescription.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.PolicyDescription%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs/#L7802" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_PolicyDescription_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.PolicyDescription*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_PolicyDescription" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.PolicyDescription"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_PolicyDescription" class="expander" data-toggle="collapse">PolicyDescription</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_PolicyDescription" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string PolicyDescription { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_PolicyTitle.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.PolicyTitle%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs/#L7813" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_PolicyTitle_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.PolicyTitle*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_PolicyTitle" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202103.IRMSettings.PolicyTitle"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_PolicyTitle" class="expander" data-toggle="collapse">PolicyTitle</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202103_IRMSettings_PolicyTitle" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string PolicyTitle { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="System.ValidationExtensions.html#System_ValidationExtensions_ValidateNotNullOrEmpty__1___0_System_String_">ValidationExtensions.ValidateNotNullOrEmpty&lt;T&gt;(T, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_Set__2___0_System_Linq_Expressions_Expression_System_Func___0___1_____1_System_Boolean_System_Boolean_">ObjectExtensions.Set&lt;TObject, T&gt;(TObject, Expression&lt;Func&lt;TObject, T&gt;&gt;, T, Boolean, Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstancePropertyValue_System_Object_System_String_">ObjectExtensions.GetPublicInstancePropertyValue(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstanceProperty_System_Object_System_String_">ObjectExtensions.GetPublicInstanceProperty(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_SetPublicInstancePropertyValue_System_Object_System_String_System_Object_">ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Modernization.Cache.Extensions.html#PnP_Framework_Modernization_Cache_Extensions_ToByteArray_System_Object_">Extensions.ToByteArray(Object)</a>
+  </div>
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

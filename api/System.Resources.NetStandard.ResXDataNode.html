@@ -1,0 +1,861 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ResXDataNode
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ResXDataNode
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="System.Resources.NetStandard.ResXDataNode">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/SystemResources/ResXDataNode.cs/#L24" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=System_Resources_NetStandard_ResXDataNode.md&amp;value=---%0Auid%3A%20System.Resources.NetStandard.ResXDataNode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="System_Resources_NetStandard_ResXDataNode" data-uid="System.Resources.NetStandard.ResXDataNode">Class ResXDataNode
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">ResXDataNode</span></div>
+  </div>
+  
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="System.Resources.NetStandard.html">System.Resources.NetStandard</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="System_Resources_NetStandard_ResXDataNode_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class ResXDataNode : ISerializable</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=System_Resources_NetStandard_ResXDataNode__ctor_System_String_System_Object_.md&amp;value=---%0Auid%3A%20System.Resources.NetStandard.ResXDataNode.%23ctor(System.String%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/SystemResources/ResXDataNode.cs/#L76" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="System_Resources_NetStandard_ResXDataNode__ctor_" data-uid="System.Resources.NetStandard.ResXDataNode.#ctor*"></a>
+  
+  <h4 id="System_Resources_NetStandard_ResXDataNode__ctor_System_String_System_Object_" data-uid="System.Resources.NetStandard.ResXDataNode.#ctor(System.String,System.Object)"><a href="#collapsible-System_Resources_NetStandard_ResXDataNode__ctor_System_String_System_Object_" class="expander" data-toggle="collapse">ResXDataNode(String, Object)</a></h4>
+  
+  <div id="collapsible-System_Resources_NetStandard_ResXDataNode__ctor_System_String_System_Object_" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ResXDataNode(string name, object value)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">name</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></span>
+        <span class="parametername">value</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=System_Resources_NetStandard_ResXDataNode__ctor_System_String_System_Object_System_Func_System_Type_System_String__.md&amp;value=---%0Auid%3A%20System.Resources.NetStandard.ResXDataNode.%23ctor(System.String%2CSystem.Object%2CSystem.Func%7BSystem.Type%2CSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/SystemResources/ResXDataNode.cs/#L80" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="System_Resources_NetStandard_ResXDataNode__ctor_" data-uid="System.Resources.NetStandard.ResXDataNode.#ctor*"></a>
+  
+  <h4 id="System_Resources_NetStandard_ResXDataNode__ctor_System_String_System_Object_System_Func_System_Type_System_String__" data-uid="System.Resources.NetStandard.ResXDataNode.#ctor(System.String,System.Object,System.Func{System.Type,System.String})"><a href="#collapsible-System_Resources_NetStandard_ResXDataNode__ctor_System_String_System_Object_System_Func_System_Type_System_String__" class="expander" data-toggle="collapse">ResXDataNode(String, Object, Func&lt;Type, String&gt;)</a></h4>
+  
+  <div id="collapsible-System_Resources_NetStandard_ResXDataNode__ctor_System_String_System_Object_System_Func_System_Type_System_String__" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ResXDataNode(string name, object value, Func&lt;Type, string&gt; typeNameConverter)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">name</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></span>
+        <span class="parametername">value</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;</span>
+        <span class="parametername">typeNameConverter</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=System_Resources_NetStandard_ResXDataNode__ctor_System_String_System_Resources_NetStandard_ResXFileRef_.md&amp;value=---%0Auid%3A%20System.Resources.NetStandard.ResXDataNode.%23ctor(System.String%2CSystem.Resources.NetStandard.ResXFileRef)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/SystemResources/ResXDataNode.cs/#L107" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="System_Resources_NetStandard_ResXDataNode__ctor_" data-uid="System.Resources.NetStandard.ResXDataNode.#ctor*"></a>
+  
+  <h4 id="System_Resources_NetStandard_ResXDataNode__ctor_System_String_System_Resources_NetStandard_ResXFileRef_" data-uid="System.Resources.NetStandard.ResXDataNode.#ctor(System.String,System.Resources.NetStandard.ResXFileRef)"><a href="#collapsible-System_Resources_NetStandard_ResXDataNode__ctor_System_String_System_Resources_NetStandard_ResXFileRef_" class="expander" data-toggle="collapse">ResXDataNode(String, ResXFileRef)</a></h4>
+  
+  <div id="collapsible-System_Resources_NetStandard_ResXDataNode__ctor_System_String_System_Resources_NetStandard_ResXFileRef_" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ResXDataNode(string name, ResXFileRef fileRef)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">name</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="System.Resources.NetStandard.ResXFileRef.html">ResXFileRef</a></span>
+        <span class="parametername">fileRef</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=System_Resources_NetStandard_ResXDataNode__ctor_System_String_System_Resources_NetStandard_ResXFileRef_System_Func_System_Type_System_String__.md&amp;value=---%0Auid%3A%20System.Resources.NetStandard.ResXDataNode.%23ctor(System.String%2CSystem.Resources.NetStandard.ResXFileRef%2CSystem.Func%7BSystem.Type%2CSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/SystemResources/ResXDataNode.cs/#L111" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="System_Resources_NetStandard_ResXDataNode__ctor_" data-uid="System.Resources.NetStandard.ResXDataNode.#ctor*"></a>
+  
+  <h4 id="System_Resources_NetStandard_ResXDataNode__ctor_System_String_System_Resources_NetStandard_ResXFileRef_System_Func_System_Type_System_String__" data-uid="System.Resources.NetStandard.ResXDataNode.#ctor(System.String,System.Resources.NetStandard.ResXFileRef,System.Func{System.Type,System.String})"><a href="#collapsible-System_Resources_NetStandard_ResXDataNode__ctor_System_String_System_Resources_NetStandard_ResXFileRef_System_Func_System_Type_System_String__" class="expander" data-toggle="collapse">ResXDataNode(String, ResXFileRef, Func&lt;Type, String&gt;)</a></h4>
+  
+  <div id="collapsible-System_Resources_NetStandard_ResXDataNode__ctor_System_String_System_Resources_NetStandard_ResXFileRef_System_Func_System_Type_System_String__" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ResXDataNode(string name, ResXFileRef fileRef, Func&lt;Type, string&gt; typeNameConverter)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">name</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="System.Resources.NetStandard.ResXFileRef.html">ResXFileRef</a></span>
+        <span class="parametername">fileRef</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;</span>
+        <span class="parametername">typeNameConverter</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=System_Resources_NetStandard_ResXDataNode_Comment.md&amp;value=---%0Auid%3A%20System.Resources.NetStandard.ResXDataNode.Comment%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/SystemResources/ResXDataNode.cs/#L166" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="System_Resources_NetStandard_ResXDataNode_Comment_" data-uid="System.Resources.NetStandard.ResXDataNode.Comment*"></a>
+  
+  <h4 id="System_Resources_NetStandard_ResXDataNode_Comment" data-uid="System.Resources.NetStandard.ResXDataNode.Comment"><a href="#collapsible-System_Resources_NetStandard_ResXDataNode_Comment" class="expander" data-toggle="collapse">Comment</a></h4>
+  
+  <div id="collapsible-System_Resources_NetStandard_ResXDataNode_Comment" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Comment { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=System_Resources_NetStandard_ResXDataNode_FileRef.md&amp;value=---%0Auid%3A%20System.Resources.NetStandard.ResXDataNode.FileRef%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/SystemResources/ResXDataNode.cs/#L210" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="System_Resources_NetStandard_ResXDataNode_FileRef_" data-uid="System.Resources.NetStandard.ResXDataNode.FileRef*"></a>
+  
+  <h4 id="System_Resources_NetStandard_ResXDataNode_FileRef" data-uid="System.Resources.NetStandard.ResXDataNode.FileRef"><a href="#collapsible-System_Resources_NetStandard_ResXDataNode_FileRef" class="expander" data-toggle="collapse">FileRef</a></h4>
+  
+  <div id="collapsible-System_Resources_NetStandard_ResXDataNode_FileRef" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ResXFileRef FileRef { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="System.Resources.NetStandard.ResXFileRef.html">ResXFileRef</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=System_Resources_NetStandard_ResXDataNode_Name.md&amp;value=---%0Auid%3A%20System.Resources.NetStandard.ResXDataNode.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/SystemResources/ResXDataNode.cs/#L185" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="System_Resources_NetStandard_ResXDataNode_Name_" data-uid="System.Resources.NetStandard.ResXDataNode.Name*"></a>
+  
+  <h4 id="System_Resources_NetStandard_ResXDataNode_Name" data-uid="System.Resources.NetStandard.ResXDataNode.Name"><a href="#collapsible-System_Resources_NetStandard_ResXDataNode_Name" class="expander" data-toggle="collapse">Name</a></h4>
+  
+  <div id="collapsible-System_Resources_NetStandard_ResXDataNode_Name" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Name { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=System_Resources_NetStandard_ResXDataNode_GetNodePosition.md&amp;value=---%0Auid%3A%20System.Resources.NetStandard.ResXDataNode.GetNodePosition%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/SystemResources/ResXDataNode.cs/#L528" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="System_Resources_NetStandard_ResXDataNode_GetNodePosition_" data-uid="System.Resources.NetStandard.ResXDataNode.GetNodePosition*"></a>
+  
+  <h4 id="System_Resources_NetStandard_ResXDataNode_GetNodePosition" data-uid="System.Resources.NetStandard.ResXDataNode.GetNodePosition"><a href="#collapsible-System_Resources_NetStandard_ResXDataNode_GetNodePosition" class="expander" data-toggle="collapse">GetNodePosition()</a></h4>
+  
+  <div id="collapsible-System_Resources_NetStandard_ResXDataNode_GetNodePosition" class="collapse in">
+  <div class="markdown level1 summary"><p>Might return the position in the resx file of the current node, if known
+otherwise, will return Point(0,0) since point is a struct</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Point GetNodePosition()</code></pre>
+  </div>
+  
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.drawing.point">Point</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=System_Resources_NetStandard_ResXDataNode_GetValue_System_ComponentModel_Design_ITypeResolutionService_.md&amp;value=---%0Auid%3A%20System.Resources.NetStandard.ResXDataNode.GetValue(System.ComponentModel.Design.ITypeResolutionService)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/SystemResources/ResXDataNode.cs/#L625" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="System_Resources_NetStandard_ResXDataNode_GetValue_" data-uid="System.Resources.NetStandard.ResXDataNode.GetValue*"></a>
+  
+  <h4 id="System_Resources_NetStandard_ResXDataNode_GetValue_System_ComponentModel_Design_ITypeResolutionService_" data-uid="System.Resources.NetStandard.ResXDataNode.GetValue(System.ComponentModel.Design.ITypeResolutionService)"><a href="#collapsible-System_Resources_NetStandard_ResXDataNode_GetValue_System_ComponentModel_Design_ITypeResolutionService_" class="expander" data-toggle="collapse">GetValue(ITypeResolutionService)</a></h4>
+  
+  <div id="collapsible-System_Resources_NetStandard_ResXDataNode_GetValue_System_ComponentModel_Design_ITypeResolutionService_" class="collapse in">
+  <div class="markdown level1 summary"><p>Get the value contained in this datanode</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object GetValue(ITypeResolutionService typeResolver)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.componentmodel.design.ityperesolutionservice">ITypeResolutionService</a></span>
+        <span class="parametername">typeResolver</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=System_Resources_NetStandard_ResXDataNode_GetValue_System_Reflection_AssemblyName___.md&amp;value=---%0Auid%3A%20System.Resources.NetStandard.ResXDataNode.GetValue(System.Reflection.AssemblyName%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/SystemResources/ResXDataNode.cs/#L671" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="System_Resources_NetStandard_ResXDataNode_GetValue_" data-uid="System.Resources.NetStandard.ResXDataNode.GetValue*"></a>
+  
+  <h4 id="System_Resources_NetStandard_ResXDataNode_GetValue_System_Reflection_AssemblyName___" data-uid="System.Resources.NetStandard.ResXDataNode.GetValue(System.Reflection.AssemblyName[])"><a href="#collapsible-System_Resources_NetStandard_ResXDataNode_GetValue_System_Reflection_AssemblyName___" class="expander" data-toggle="collapse">GetValue(AssemblyName[])</a></h4>
+  
+  <div id="collapsible-System_Resources_NetStandard_ResXDataNode_GetValue_System_Reflection_AssemblyName___" class="collapse in">
+  <div class="markdown level1 summary"><p>Get the value contained in this datanode</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object GetValue(AssemblyName[] names)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.reflection.assemblyname">AssemblyName</a>[]</span>
+        <span class="parametername">names</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=System_Resources_NetStandard_ResXDataNode_GetValueTypeName_System_ComponentModel_Design_ITypeResolutionService_.md&amp;value=---%0Auid%3A%20System.Resources.NetStandard.ResXDataNode.GetValueTypeName(System.ComponentModel.Design.ITypeResolutionService)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/SystemResources/ResXDataNode.cs/#L537" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="System_Resources_NetStandard_ResXDataNode_GetValueTypeName_" data-uid="System.Resources.NetStandard.ResXDataNode.GetValueTypeName*"></a>
+  
+  <h4 id="System_Resources_NetStandard_ResXDataNode_GetValueTypeName_System_ComponentModel_Design_ITypeResolutionService_" data-uid="System.Resources.NetStandard.ResXDataNode.GetValueTypeName(System.ComponentModel.Design.ITypeResolutionService)"><a href="#collapsible-System_Resources_NetStandard_ResXDataNode_GetValueTypeName_System_ComponentModel_Design_ITypeResolutionService_" class="expander" data-toggle="collapse">GetValueTypeName(ITypeResolutionService)</a></h4>
+  
+  <div id="collapsible-System_Resources_NetStandard_ResXDataNode_GetValueTypeName_System_ComponentModel_Design_ITypeResolutionService_" class="collapse in">
+  <div class="markdown level1 summary"><p>Get the FQ type name for this datanode.
+We return typeof(object) for ResXNullRef</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetValueTypeName(ITypeResolutionService typeResolver)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.componentmodel.design.ityperesolutionservice">ITypeResolutionService</a></span>
+        <span class="parametername">typeResolver</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=System_Resources_NetStandard_ResXDataNode_GetValueTypeName_System_Reflection_AssemblyName___.md&amp;value=---%0Auid%3A%20System.Resources.NetStandard.ResXDataNode.GetValueTypeName(System.Reflection.AssemblyName%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/SystemResources/ResXDataNode.cs/#L617" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="System_Resources_NetStandard_ResXDataNode_GetValueTypeName_" data-uid="System.Resources.NetStandard.ResXDataNode.GetValueTypeName*"></a>
+  
+  <h4 id="System_Resources_NetStandard_ResXDataNode_GetValueTypeName_System_Reflection_AssemblyName___" data-uid="System.Resources.NetStandard.ResXDataNode.GetValueTypeName(System.Reflection.AssemblyName[])"><a href="#collapsible-System_Resources_NetStandard_ResXDataNode_GetValueTypeName_System_Reflection_AssemblyName___" class="expander" data-toggle="collapse">GetValueTypeName(AssemblyName[])</a></h4>
+  
+  <div id="collapsible-System_Resources_NetStandard_ResXDataNode_GetValueTypeName_System_Reflection_AssemblyName___" class="collapse in">
+  <div class="markdown level1 summary"><p>Get the FQ type name for this datanode</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetValueTypeName(AssemblyName[] names)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.reflection.assemblyname">AssemblyName</a>[]</span>
+        <span class="parametername">names</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="eii">Explicit Interface Implementations
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=System_Resources_NetStandard_ResXDataNode_System_Runtime_Serialization_ISerializable_GetObjectData_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_.md&amp;value=---%0Auid%3A%20System.Resources.NetStandard.ResXDataNode.System%23Runtime%23Serialization%23ISerializable%23GetObjectData(System.Runtime.Serialization.SerializationInfo%2CSystem.Runtime.Serialization.StreamingContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/SystemResources/ResXDataNode.cs/#L737" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="System_Resources_NetStandard_ResXDataNode_System_Runtime_Serialization_ISerializable_GetObjectData_" data-uid="System.Resources.NetStandard.ResXDataNode.System#Runtime#Serialization#ISerializable#GetObjectData*"></a>
+  
+  <h4 id="System_Resources_NetStandard_ResXDataNode_System_Runtime_Serialization_ISerializable_GetObjectData_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_" data-uid="System.Resources.NetStandard.ResXDataNode.System#Runtime#Serialization#ISerializable#GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)"><a href="#collapsible-System_Resources_NetStandard_ResXDataNode_System_Runtime_Serialization_ISerializable_GetObjectData_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_" class="expander" data-toggle="collapse">ISerializable.GetObjectData(SerializationInfo, StreamingContext)</a></h4>
+  
+  <div id="collapsible-System_Resources_NetStandard_ResXDataNode_System_Runtime_Serialization_ISerializable_GetObjectData_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_" class="collapse in">
+  <div class="markdown level1 summary"><p>Get the value contained in this datanode</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ISerializable.GetObjectData(SerializationInfo si, StreamingContext context)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.runtime.serialization.serializationinfo">SerializationInfo</a></span>
+        <span class="parametername">si</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.runtime.serialization.streamingcontext">StreamingContext</a></span>
+        <span class="parametername">context</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  <h5 class="implements">Implements</h5>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.runtime.serialization.iserializable.getobjectdata#system-runtime-serialization-iserializable-getobjectdata(system-runtime-serialization-serializationinfo-system-runtime-serialization-streamingcontext)">ISerializable.GetObjectData(SerializationInfo, StreamingContext)</a></div>
+  
+  
+  
+  
+  </div>
+  
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="System.ValidationExtensions.html#System_ValidationExtensions_ValidateNotNullOrEmpty__1___0_System_String_">ValidationExtensions.ValidateNotNullOrEmpty&lt;T&gt;(T, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_Set__2___0_System_Linq_Expressions_Expression_System_Func___0___1_____1_System_Boolean_System_Boolean_">ObjectExtensions.Set&lt;TObject, T&gt;(TObject, Expression&lt;Func&lt;TObject, T&gt;&gt;, T, Boolean, Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstancePropertyValue_System_Object_System_String_">ObjectExtensions.GetPublicInstancePropertyValue(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstanceProperty_System_Object_System_String_">ObjectExtensions.GetPublicInstanceProperty(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_SetPublicInstancePropertyValue_System_Object_System_String_System_Object_">ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Modernization.Cache.Extensions.html#PnP_Framework_Modernization_Cache_Extensions_ToByteArray_System_Object_">Extensions.ToByteArray(Object)</a>
+  </div>
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

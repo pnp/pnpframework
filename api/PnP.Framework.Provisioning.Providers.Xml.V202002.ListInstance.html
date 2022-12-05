@@ -1,0 +1,2508 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ListInstance
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ListInstance
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L7857" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance">Class ListInstance
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">ListInstance</span></div>
+  </div>
+  
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="PnP.Framework.Provisioning.Providers.Xml.V202002.html">PnP.Framework.Provisioning.Providers.Xml.V202002</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Serializable]
+public class ListInstance</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance__ctor.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L7970" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance__ctor_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.#ctor*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance__ctor" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.#ctor"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance__ctor" class="expander" data-toggle="collapse">ListInstance()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance__ctor" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ListInstance()</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ContentTypeBindings.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.ContentTypeBindings%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8000" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ContentTypeBindings_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.ContentTypeBindings*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ContentTypeBindings" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.ContentTypeBindings"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ContentTypeBindings" class="expander" data-toggle="collapse">ContentTypeBindings</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ContentTypeBindings" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ContentTypeBinding[] ContentTypeBindings { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Providers.Xml.V202002.ContentTypeBinding.html">ContentTypeBinding</a>[]
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ContentTypesEnabled.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.ContentTypesEnabled%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8331" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ContentTypesEnabled_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.ContentTypesEnabled*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ContentTypesEnabled" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.ContentTypesEnabled"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ContentTypesEnabled" class="expander" data-toggle="collapse">ContentTypesEnabled</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ContentTypesEnabled" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ContentTypesEnabled { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DataRows.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.DataRows%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8042" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DataRows_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.DataRows*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DataRows" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.DataRows"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DataRows" class="expander" data-toggle="collapse">DataRows</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DataRows" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ListInstanceDataRows DataRows { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstanceDataRows.html">ListInstanceDataRows</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DataSource.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.DataSource%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8116" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DataSource_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.DataSource*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DataSource" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.DataSource"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DataSource" class="expander" data-toggle="collapse">DataSource</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DataSource" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public StringDictionaryItem[] DataSource { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Providers.Xml.V202002.StringDictionaryItem.html">StringDictionaryItem</a>[]
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DefaultDisplayFormUrl.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.DefaultDisplayFormUrl%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8403" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DefaultDisplayFormUrl_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.DefaultDisplayFormUrl*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DefaultDisplayFormUrl" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.DefaultDisplayFormUrl"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DefaultDisplayFormUrl" class="expander" data-toggle="collapse">DefaultDisplayFormUrl</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DefaultDisplayFormUrl" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string DefaultDisplayFormUrl { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DefaultEditFormUrl.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.DefaultEditFormUrl%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8414" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DefaultEditFormUrl_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.DefaultEditFormUrl*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DefaultEditFormUrl" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.DefaultEditFormUrl"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DefaultEditFormUrl" class="expander" data-toggle="collapse">DefaultEditFormUrl</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DefaultEditFormUrl" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string DefaultEditFormUrl { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DefaultNewFormUrl.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.DefaultNewFormUrl%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8425" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DefaultNewFormUrl_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.DefaultNewFormUrl*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DefaultNewFormUrl" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.DefaultNewFormUrl"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DefaultNewFormUrl" class="expander" data-toggle="collapse">DefaultNewFormUrl</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DefaultNewFormUrl" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string DefaultNewFormUrl { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Description.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Description%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8138" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Description_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Description*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Description" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Description"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Description" class="expander" data-toggle="collapse">Description</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Description" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Description { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Direction.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Direction%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8436" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Direction_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Direction*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Direction" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Direction"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Direction" class="expander" data-toggle="collapse">Direction</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Direction" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ListInstanceDirection Direction { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstanceDirection.html">ListInstanceDirection</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DocumentTemplate.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.DocumentTemplate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8149" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DocumentTemplate_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.DocumentTemplate*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DocumentTemplate" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.DocumentTemplate"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DocumentTemplate" class="expander" data-toggle="collapse">DocumentTemplate</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DocumentTemplate" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string DocumentTemplate { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DraftVersionVisibility.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.DraftVersionVisibility%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8286" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DraftVersionVisibility_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.DraftVersionVisibility*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DraftVersionVisibility" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.DraftVersionVisibility"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DraftVersionVisibility" class="expander" data-toggle="collapse">DraftVersionVisibility</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DraftVersionVisibility" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int DraftVersionVisibility { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DraftVersionVisibilitySpecified.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.DraftVersionVisibilitySpecified%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8297" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DraftVersionVisibilitySpecified_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.DraftVersionVisibilitySpecified*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DraftVersionVisibilitySpecified" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.DraftVersionVisibilitySpecified"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DraftVersionVisibilitySpecified" class="expander" data-toggle="collapse">DraftVersionVisibilitySpecified</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_DraftVersionVisibilitySpecified" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DraftVersionVisibilitySpecified { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_EnableAttachments.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.EnableAttachments%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8355" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_EnableAttachments_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.EnableAttachments*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_EnableAttachments" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.EnableAttachments"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_EnableAttachments" class="expander" data-toggle="collapse">EnableAttachments</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_EnableAttachments" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool EnableAttachments { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_EnableFolderCreation.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.EnableFolderCreation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8367" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_EnableFolderCreation_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.EnableFolderCreation*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_EnableFolderCreation" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.EnableFolderCreation"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_EnableFolderCreation" class="expander" data-toggle="collapse">EnableFolderCreation</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_EnableFolderCreation" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool EnableFolderCreation { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_EnableMinorVersions.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.EnableMinorVersions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8218" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_EnableMinorVersions_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.EnableMinorVersions*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_EnableMinorVersions" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.EnableMinorVersions"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_EnableMinorVersions" class="expander" data-toggle="collapse">EnableMinorVersions</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_EnableMinorVersions" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool EnableMinorVersions { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_EnableModeration.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.EnableModeration%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8230" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_EnableModeration_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.EnableModeration*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_EnableModeration" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.EnableModeration"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_EnableModeration" class="expander" data-toggle="collapse">EnableModeration</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_EnableModeration" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool EnableModeration { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_EnableVersioning.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.EnableVersioning%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8206" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_EnableVersioning_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.EnableVersioning*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_EnableVersioning" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.EnableVersioning"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_EnableVersioning" class="expander" data-toggle="collapse">EnableVersioning</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_EnableVersioning" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool EnableVersioning { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_FieldDefaults.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.FieldDefaults%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8063" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_FieldDefaults_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.FieldDefaults*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_FieldDefaults" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.FieldDefaults"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_FieldDefaults" class="expander" data-toggle="collapse">FieldDefaults</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_FieldDefaults" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FieldDefault[] FieldDefaults { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Providers.Xml.V202002.FieldDefault.html">FieldDefault</a>[]
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_FieldRefs.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.FieldRefs%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8031" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_FieldRefs_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.FieldRefs*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_FieldRefs" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.FieldRefs"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_FieldRefs" class="expander" data-toggle="collapse">FieldRefs</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_FieldRefs" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ListInstanceFieldRef[] FieldRefs { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstanceFieldRef.html">ListInstanceFieldRef</a>[]
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Fields.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Fields%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8021" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Fields_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Fields*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Fields" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Fields"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Fields" class="expander" data-toggle="collapse">Fields</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Fields" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ListInstanceFields Fields { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstanceFields.html">ListInstanceFields</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Folders.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Folders%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8052" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Folders_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Folders*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Folders" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Folders"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Folders" class="expander" data-toggle="collapse">Folders</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Folders" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Folder[] Folders { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Providers.Xml.V202002.Folder.html">Folder</a>[]
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ForceCheckout.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.ForceCheckout%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8194" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ForceCheckout_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.ForceCheckout*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ForceCheckout" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.ForceCheckout"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ForceCheckout" class="expander" data-toggle="collapse">ForceCheckout</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ForceCheckout" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ForceCheckout { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Hidden.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Hidden%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8343" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Hidden_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Hidden*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Hidden" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Hidden"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Hidden" class="expander" data-toggle="collapse">Hidden</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Hidden" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Hidden { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ImageUrl.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.ImageUrl%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8448" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ImageUrl_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.ImageUrl*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ImageUrl" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.ImageUrl"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ImageUrl" class="expander" data-toggle="collapse">ImageUrl</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ImageUrl" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ImageUrl { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IrmExpire.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.IrmExpire%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8459" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IrmExpire_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.IrmExpire*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IrmExpire" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.IrmExpire"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IrmExpire" class="expander" data-toggle="collapse">IrmExpire</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IrmExpire" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IrmExpire { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IrmExpireSpecified.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.IrmExpireSpecified%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8470" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IrmExpireSpecified_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.IrmExpireSpecified*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IrmExpireSpecified" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.IrmExpireSpecified"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IrmExpireSpecified" class="expander" data-toggle="collapse">IrmExpireSpecified</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IrmExpireSpecified" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IrmExpireSpecified { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IrmReject.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.IrmReject%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8481" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IrmReject_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.IrmReject*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IrmReject" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.IrmReject"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IrmReject" class="expander" data-toggle="collapse">IrmReject</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IrmReject" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IrmReject { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IrmRejectSpecified.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.IrmRejectSpecified%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8492" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IrmRejectSpecified_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.IrmRejectSpecified*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IrmRejectSpecified" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.IrmRejectSpecified"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IrmRejectSpecified" class="expander" data-toggle="collapse">IrmRejectSpecified</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IrmRejectSpecified" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IrmRejectSpecified { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IRMSettings.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.IRMSettings%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8106" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IRMSettings_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.IRMSettings*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IRMSettings" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.IRMSettings"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IRMSettings" class="expander" data-toggle="collapse">IRMSettings</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IRMSettings" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IRMSettings IRMSettings { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Providers.Xml.V202002.IRMSettings.html">IRMSettings</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IsApplicationList.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.IsApplicationList%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8503" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IsApplicationList_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.IsApplicationList*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IsApplicationList" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.IsApplicationList"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IsApplicationList" class="expander" data-toggle="collapse">IsApplicationList</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IsApplicationList" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsApplicationList { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IsApplicationListSpecified.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.IsApplicationListSpecified%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8514" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IsApplicationListSpecified_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.IsApplicationListSpecified*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IsApplicationListSpecified" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.IsApplicationListSpecified"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IsApplicationListSpecified" class="expander" data-toggle="collapse">IsApplicationListSpecified</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_IsApplicationListSpecified" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsApplicationListSpecified { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ListExperience.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.ListExperience%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8391" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ListExperience_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.ListExperience*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ListExperience" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.ListExperience"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ListExperience" class="expander" data-toggle="collapse">ListExperience</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ListExperience" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ListInstanceListExperience ListExperience { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstanceListExperience.html">ListInstanceListExperience</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_MaxVersionLimit.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.MaxVersionLimit%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8264" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_MaxVersionLimit_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.MaxVersionLimit*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_MaxVersionLimit" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.MaxVersionLimit"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_MaxVersionLimit" class="expander" data-toggle="collapse">MaxVersionLimit</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_MaxVersionLimit" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaxVersionLimit { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_MaxVersionLimitSpecified.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.MaxVersionLimitSpecified%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8275" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_MaxVersionLimitSpecified_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.MaxVersionLimitSpecified*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_MaxVersionLimitSpecified" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.MaxVersionLimitSpecified"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_MaxVersionLimitSpecified" class="expander" data-toggle="collapse">MaxVersionLimitSpecified</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_MaxVersionLimitSpecified" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool MaxVersionLimitSpecified { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_MinorVersionLimit.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.MinorVersionLimit%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8242" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_MinorVersionLimit_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.MinorVersionLimit*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_MinorVersionLimit" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.MinorVersionLimit"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_MinorVersionLimit" class="expander" data-toggle="collapse">MinorVersionLimit</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_MinorVersionLimit" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MinorVersionLimit { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_MinorVersionLimitSpecified.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.MinorVersionLimitSpecified%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8253" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_MinorVersionLimitSpecified_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.MinorVersionLimitSpecified*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_MinorVersionLimitSpecified" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.MinorVersionLimitSpecified"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_MinorVersionLimitSpecified" class="expander" data-toggle="collapse">MinorVersionLimitSpecified</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_MinorVersionLimitSpecified" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool MinorVersionLimitSpecified { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_NoCrawl.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.NoCrawl%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8379" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_NoCrawl_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.NoCrawl*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_NoCrawl" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.NoCrawl"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_NoCrawl" class="expander" data-toggle="collapse">NoCrawl</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_NoCrawl" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool NoCrawl { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_OnQuickLaunch.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.OnQuickLaunch%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8160" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_OnQuickLaunch_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.OnQuickLaunch*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_OnQuickLaunch" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.OnQuickLaunch"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_OnQuickLaunch" class="expander" data-toggle="collapse">OnQuickLaunch</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_OnQuickLaunch" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool OnQuickLaunch { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_PropertyBagEntries.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.PropertyBagEntries%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L7989" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_PropertyBagEntries_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.PropertyBagEntries*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_PropertyBagEntries" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.PropertyBagEntries"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_PropertyBagEntries" class="expander" data-toggle="collapse">PropertyBagEntries</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_PropertyBagEntries" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PropertyBagEntry[] PropertyBagEntries { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Providers.Xml.V202002.PropertyBagEntry.html">PropertyBagEntry</a>[]
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ReadSecurity.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.ReadSecurity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8525" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ReadSecurity_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.ReadSecurity*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ReadSecurity" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.ReadSecurity"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ReadSecurity" class="expander" data-toggle="collapse">ReadSecurity</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ReadSecurity" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ReadSecurity { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_RemoveExistingContentTypes.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.RemoveExistingContentTypes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8308" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_RemoveExistingContentTypes_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.RemoveExistingContentTypes*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_RemoveExistingContentTypes" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.RemoveExistingContentTypes"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_RemoveExistingContentTypes" class="expander" data-toggle="collapse">RemoveExistingContentTypes</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_RemoveExistingContentTypes" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool RemoveExistingContentTypes { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Security.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Security%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8074" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Security_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Security*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Security" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Security"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Security" class="expander" data-toggle="collapse">Security</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Security" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ObjectSecurity Security { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Providers.Xml.V202002.ObjectSecurity.html">ObjectSecurity</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_TemplateFeatureID.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.TemplateFeatureID%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8320" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_TemplateFeatureID_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.TemplateFeatureID*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_TemplateFeatureID" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.TemplateFeatureID"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_TemplateFeatureID" class="expander" data-toggle="collapse">TemplateFeatureID</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_TemplateFeatureID" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string TemplateFeatureID { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_TemplateInternalName.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.TemplateInternalName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8571" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_TemplateInternalName_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.TemplateInternalName*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_TemplateInternalName" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.TemplateInternalName"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_TemplateInternalName" class="expander" data-toggle="collapse">TemplateInternalName</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_TemplateInternalName" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string TemplateInternalName { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_TemplateType.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.TemplateType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8172" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_TemplateType_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.TemplateType*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_TemplateType" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.TemplateType"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_TemplateType" class="expander" data-toggle="collapse">TemplateType</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_TemplateType" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int TemplateType { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Title.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Title%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8127" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Title_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Title*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Title" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Title"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Title" class="expander" data-toggle="collapse">Title</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Title" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Title { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Url.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Url%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8183" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Url_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Url*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Url" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Url"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Url" class="expander" data-toggle="collapse">Url</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Url" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Url { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_UserCustomActions.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.UserCustomActions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8084" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_UserCustomActions_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.UserCustomActions*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_UserCustomActions" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.UserCustomActions"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_UserCustomActions" class="expander" data-toggle="collapse">UserCustomActions</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_UserCustomActions" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CustomAction[] UserCustomActions { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Providers.Xml.V202002.CustomAction.html">CustomAction</a>[]
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ValidationFormula.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.ValidationFormula%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8549" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ValidationFormula_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.ValidationFormula*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ValidationFormula" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.ValidationFormula"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ValidationFormula" class="expander" data-toggle="collapse">ValidationFormula</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ValidationFormula" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ValidationFormula { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ValidationMessage.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.ValidationMessage%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8560" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ValidationMessage_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.ValidationMessage*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ValidationMessage" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.ValidationMessage"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ValidationMessage" class="expander" data-toggle="collapse">ValidationMessage</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_ValidationMessage" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ValidationMessage { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Views.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Views%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8011" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Views_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Views*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Views" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Views"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Views" class="expander" data-toggle="collapse">Views</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Views" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ListInstanceViews Views { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstanceViews.html">ListInstanceViews</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Webhooks.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Webhooks%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8095" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Webhooks_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Webhooks*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Webhooks" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.Webhooks"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Webhooks" class="expander" data-toggle="collapse">Webhooks</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_Webhooks" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Webhook[] Webhooks { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Providers.Xml.V202002.Webhook.html">Webhook</a>[]
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_WriteSecurity.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.WriteSecurity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2020-02.cs/#L8537" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_WriteSecurity_" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.WriteSecurity*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_WriteSecurity" data-uid="PnP.Framework.Provisioning.Providers.Xml.V202002.ListInstance.WriteSecurity"><a href="#collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_WriteSecurity" class="expander" data-toggle="collapse">WriteSecurity</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Providers_Xml_V202002_ListInstance_WriteSecurity" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int WriteSecurity { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="System.ValidationExtensions.html#System_ValidationExtensions_ValidateNotNullOrEmpty__1___0_System_String_">ValidationExtensions.ValidateNotNullOrEmpty&lt;T&gt;(T, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_Set__2___0_System_Linq_Expressions_Expression_System_Func___0___1_____1_System_Boolean_System_Boolean_">ObjectExtensions.Set&lt;TObject, T&gt;(TObject, Expression&lt;Func&lt;TObject, T&gt;&gt;, T, Boolean, Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstancePropertyValue_System_Object_System_String_">ObjectExtensions.GetPublicInstancePropertyValue(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstanceProperty_System_Object_System_String_">ObjectExtensions.GetPublicInstanceProperty(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_SetPublicInstancePropertyValue_System_Object_System_String_System_Object_">ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Modernization.Cache.Extensions.html#PnP_Framework_Modernization_Cache_Extensions_ToByteArray_System_Object_">Extensions.ToByteArray(Object)</a>
+  </div>
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

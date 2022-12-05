@@ -1,0 +1,2549 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class CacheManager
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class CacheManager
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PnP.Framework.Modernization.Cache.CacheManager">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L25" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="PnP_Framework_Modernization_Cache_CacheManager" data-uid="PnP.Framework.Modernization.Cache.CacheManager">Class CacheManager
+  </h1>
+  <div class="markdown level0 summary"><p>Caching manager, singleton
+Important: don't cache SharePoint Client objects as these are tied to a specific client context and hence will fail when there's context switching!</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">CacheManager</span></div>
+  </div>
+  
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="PnP.Framework.Modernization.Cache.html">PnP.Framework.Modernization.Cache</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="PnP_Framework_Modernization_Cache_CacheManager_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class CacheManager</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_Instance.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.Instance%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L65" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_Instance_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.Instance*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_Instance" data-uid="PnP.Framework.Modernization.Cache.CacheManager.Instance"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_Instance" class="expander" data-toggle="collapse">Instance</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_Instance" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets the single cachemanager instance, singleton pattern</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static CacheManager Instance { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Modernization.Cache.CacheManager.html">CacheManager</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_Store.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.Store%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L87" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_Store_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.Store*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_Store" data-uid="PnP.Framework.Modernization.Cache.CacheManager.Store"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_Store" class="expander" data-toggle="collapse">Store</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_Store" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDistributedCache Store { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache">IDistributedCache</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_StoreOptions.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.StoreOptions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L88" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_StoreOptions_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.StoreOptions*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_StoreOptions" data-uid="PnP.Framework.Modernization.Cache.CacheManager.StoreOptions"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_StoreOptions" class="expander" data-toggle="collapse">StoreOptions</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_StoreOptions" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICacheOptions StoreOptions { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Modernization.Cache.ICacheOptions.html">ICacheOptions</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_AddAssetTransferredEntity_PnP_Framework_Modernization_Entities_AssetTransferredEntity_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.AddAssetTransferredEntity(PnP.Framework.Modernization.Entities.AssetTransferredEntity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L196" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_AddAssetTransferredEntity_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.AddAssetTransferredEntity*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_AddAssetTransferredEntity_PnP_Framework_Modernization_Entities_AssetTransferredEntity_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.AddAssetTransferredEntity(PnP.Framework.Modernization.Entities.AssetTransferredEntity)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_AddAssetTransferredEntity_PnP_Framework_Modernization_Entities_AssetTransferredEntity_" class="expander" data-toggle="collapse">AddAssetTransferredEntity(AssetTransferredEntity)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_AddAssetTransferredEntity_PnP_Framework_Modernization_Entities_AssetTransferredEntity_" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddAssetTransferredEntity(AssetTransferredEntity asset)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Modernization.Entities.AssetTransferredEntity.html">AssetTransferredEntity</a></span>
+        <span class="parametername">asset</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_AddMappedUser_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.AddMappedUser(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L849" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_AddMappedUser_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.AddMappedUser*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_AddMappedUser_System_String_System_String_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.AddMappedUser(System.String,System.String)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_AddMappedUser_System_String_System_String_" class="expander" data-toggle="collapse">AddMappedUser(String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_AddMappedUser_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Adds a user to the dictionary of mapped users</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddMappedUser(string principal, string user)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">principal</span>
+        <p><p>Principal to map</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">user</span>
+        <p><p>mapped user</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_ClearAllCaches.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.ClearAllCaches%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L798" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_ClearAllCaches_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.ClearAllCaches*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_ClearAllCaches" data-uid="PnP.Framework.Modernization.Cache.CacheManager.ClearAllCaches"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_ClearAllCaches" class="expander" data-toggle="collapse">ClearAllCaches()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_ClearAllCaches" class="collapse in">
+  <div class="markdown level1 summary"><p>Clear all the caches</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearAllCaches()</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_ClearBaseTemplate.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.ClearBaseTemplate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L314" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_ClearBaseTemplate_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.ClearBaseTemplate*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_ClearBaseTemplate" data-uid="PnP.Framework.Modernization.Cache.CacheManager.ClearBaseTemplate"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_ClearBaseTemplate" class="expander" data-toggle="collapse">ClearBaseTemplate()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_ClearBaseTemplate" class="collapse in">
+  <div class="markdown level1 summary"><p>Clear base template cache</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearBaseTemplate()</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_ClearClientSideComponents.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.ClearClientSideComponents%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L271" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_ClearClientSideComponents_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.ClearClientSideComponents*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_ClearClientSideComponents" data-uid="PnP.Framework.Modernization.Cache.CacheManager.ClearClientSideComponents"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_ClearClientSideComponents" class="expander" data-toggle="collapse">ClearClientSideComponents()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_ClearClientSideComponents" class="collapse in">
+  <div class="markdown level1 summary"><p>Clear the clientside component cache</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearClientSideComponents()</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_ClearFieldsToCopy.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.ClearFieldsToCopy%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L455" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_ClearFieldsToCopy_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.ClearFieldsToCopy*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_ClearFieldsToCopy" data-uid="PnP.Framework.Modernization.Cache.CacheManager.ClearFieldsToCopy"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_ClearFieldsToCopy" class="expander" data-toggle="collapse">ClearFieldsToCopy()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_ClearFieldsToCopy" class="collapse in">
+  <div class="markdown level1 summary"><p>Clear the fields to copy cache</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearFieldsToCopy()</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_ClearGeneratedPageLayoutMappings.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.ClearGeneratedPageLayoutMappings%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L826" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_ClearGeneratedPageLayoutMappings_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.ClearGeneratedPageLayoutMappings*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_ClearGeneratedPageLayoutMappings" data-uid="PnP.Framework.Modernization.Cache.CacheManager.ClearGeneratedPageLayoutMappings"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_ClearGeneratedPageLayoutMappings" class="expander" data-toggle="collapse">ClearGeneratedPageLayoutMappings()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_ClearGeneratedPageLayoutMappings" class="collapse in">
+  <div class="markdown level1 summary"><p>Clears the cache of generated page layout mappings</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearGeneratedPageLayoutMappings()</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_ClearSharePointVersions.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.ClearSharePointVersions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L818" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_ClearSharePointVersions_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.ClearSharePointVersions*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_ClearSharePointVersions" data-uid="PnP.Framework.Modernization.Cache.CacheManager.ClearSharePointVersions"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_ClearSharePointVersions" class="expander" data-toggle="collapse">ClearSharePointVersions()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_ClearSharePointVersions" class="collapse in">
+  <div class="markdown level1 summary"><p>Clears Cached SharePoint versions</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearSharePointVersions()</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_GetAADTenantId_System_Uri_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.GetAADTenantId(System.Uri)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L159" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_GetAADTenantId_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetAADTenantId*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_GetAADTenantId_System_Uri_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetAADTenantId(System.Uri)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetAADTenantId_System_Uri_" class="expander" data-toggle="collapse">GetAADTenantId(Uri)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetAADTenantId_System_Uri_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns the used AzureAD tenant id</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Guid GetAADTenantId(Uri site)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uri">Uri</a></span>
+        <span class="parametername">site</span>
+        <p><p>Url of the site</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a>
+        <p><p>Azure AD tenant id</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_GetAssetsTransferred.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.GetAssetsTransferred%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L191" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_GetAssetsTransferred_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetAssetsTransferred*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_GetAssetsTransferred" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetAssetsTransferred"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetAssetsTransferred" class="expander" data-toggle="collapse">GetAssetsTransferred()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetAssetsTransferred" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;AssetTransferredEntity&gt; GetAssetsTransferred()</code></pre>
+  </div>
+  
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="PnP.Framework.Modernization.Entities.AssetTransferredEntity.html">AssetTransferredEntity</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_GetBaseTemplate_Microsoft_SharePoint_Client_Web_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.GetBaseTemplate(Microsoft.SharePoint.Client.Web)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L284" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_GetBaseTemplate_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetBaseTemplate*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_GetBaseTemplate_Microsoft_SharePoint_Client_Web_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetBaseTemplate(Microsoft.SharePoint.Client.Web)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetBaseTemplate_Microsoft_SharePoint_Client_Web_" class="expander" data-toggle="collapse">GetBaseTemplate(Web)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetBaseTemplate_Microsoft_SharePoint_Client_Web_" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets the base template that will be used to filter out &quot;OOB&quot; fields</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ProvisioningTemplate GetBaseTemplate(Web web)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>web to operate against</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.ProvisioningTemplate.html">ProvisioningTemplate</a>
+        <p><p>Provisioning template of the base template of STS#0</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_GetBlogListName_Microsoft_SharePoint_Client_ClientContext_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.GetBlogListName(Microsoft.SharePoint.Client.ClientContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L627" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_GetBlogListName_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetBlogListName*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_GetBlogListName_Microsoft_SharePoint_Client_ClientContext_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetBlogListName(Microsoft.SharePoint.Client.ClientContext)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetBlogListName_Microsoft_SharePoint_Client_ClientContext_" class="expander" data-toggle="collapse">GetBlogListName(ClientContext)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetBlogListName_Microsoft_SharePoint_Client_ClientContext_" class="collapse in">
+  <div class="markdown level1 summary"><p>Get translation for the blog list name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetBlogListName(ClientContext context)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">context</span>
+        <p><p>Context of the site</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>Translated name of the blog list</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_GetContentTypeId_Microsoft_SharePoint_Client_List_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.GetContentTypeId(Microsoft.SharePoint.Client.List%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L1157" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_GetContentTypeId_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetContentTypeId*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_GetContentTypeId_Microsoft_SharePoint_Client_List_System_String_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetContentTypeId(Microsoft.SharePoint.Client.List,System.String)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetContentTypeId_Microsoft_SharePoint_Client_List_System_String_" class="expander" data-toggle="collapse">GetContentTypeId(List, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetContentTypeId_Microsoft_SharePoint_Client_List_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets the ID of a contenttype</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetContentTypeId(List pagesLibrary, string contentTypeName)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.list">List</a></span>
+        <span class="parametername">pagesLibrary</span>
+        <p><p>Pages library holding the content type</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">contentTypeName</span>
+        <p><p>Name of the content type</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>ID of the content type</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_GetEnsuredUser_Microsoft_SharePoint_Client_ClientContext_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.GetEnsuredUser(Microsoft.SharePoint.Client.ClientContext%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L865" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_GetEnsuredUser_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetEnsuredUser*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_GetEnsuredUser_Microsoft_SharePoint_Client_ClientContext_System_String_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetEnsuredUser(Microsoft.SharePoint.Client.ClientContext,System.String)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetEnsuredUser_Microsoft_SharePoint_Client_ClientContext_System_String_" class="expander" data-toggle="collapse">GetEnsuredUser(ClientContext, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetEnsuredUser_Microsoft_SharePoint_Client_ClientContext_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Run and cache the output value of EnsureUser for a given user</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ResolvedUser GetEnsuredUser(ClientContext context, string userValue)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">context</span>
+        <p><p>ClientContext to operate on</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">userValue</span>
+        <p><p>User name of user to ensure</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Modernization.Entities.ResolvedUser.html">ResolvedUser</a>
+        <p><p>ResolvedUser instance holding information about the ensured user</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_GetExactSharePointVersion_System_Uri_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.GetExactSharePointVersion(System.Uri)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L128" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_GetExactSharePointVersion_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetExactSharePointVersion*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_GetExactSharePointVersion_System_Uri_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetExactSharePointVersion(System.Uri)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetExactSharePointVersion_System_Uri_" class="expander" data-toggle="collapse">GetExactSharePointVersion(Uri)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetExactSharePointVersion_System_Uri_" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets the exact SharePoint version from cache</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetExactSharePointVersion(Uri site)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uri">Uri</a></span>
+        <span class="parametername">site</span>
+        <p><p>Site to get the exact version for</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>Exact version from cache</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_GetFieldsToCopy_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_List_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.GetFieldsToCopy(Microsoft.SharePoint.Client.Web%2CMicrosoft.SharePoint.Client.List%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L326" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_GetFieldsToCopy_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetFieldsToCopy*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_GetFieldsToCopy_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_List_System_String_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetFieldsToCopy(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.List,System.String)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetFieldsToCopy_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_List_System_String_" class="expander" data-toggle="collapse">GetFieldsToCopy(Web, List, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetFieldsToCopy_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_List_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Get the list of fields that need to be copied from cache. If cache is empty the list will be calculated</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;FieldData&gt; GetFieldsToCopy(Web web, List sourceLibrary, string pageType)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Web to operate against</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.list">List</a></span>
+        <span class="parametername">sourceLibrary</span>
+        <p><p>Pages library instance</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">pageType</span>
+        <p><p>Type of page</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="PnP.Framework.Modernization.Cache.FieldData.html">FieldData</a>&gt;
+        <p><p>List of fields that need to be copied</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_GetLastUsedTransformator.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.GetLastUsedTransformator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L1334" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_GetLastUsedTransformator_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetLastUsedTransformator*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_GetLastUsedTransformator" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetLastUsedTransformator"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetLastUsedTransformator" class="expander" data-toggle="collapse">GetLastUsedTransformator()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetLastUsedTransformator" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets the last used page transformator instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BasePageTransformator GetLastUsedTransformator()</code></pre>
+  </div>
+  
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Modernization.Transform.BasePageTransformator.html">BasePageTransformator</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_GetMappedUsers.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.GetMappedUsers%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L838" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_GetMappedUsers_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetMappedUsers*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_GetMappedUsers" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetMappedUsers"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetMappedUsers" class="expander" data-toggle="collapse">GetMappedUsers()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetMappedUsers" class="collapse in">
+  <div class="markdown level1 summary"><p>Mapped users</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, string&gt; GetMappedUsers()</code></pre>
+  </div>
+  
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;
+        <p><p>A dictionary of mapped users</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_GetPageLayoutMapping_Microsoft_SharePoint_Client_ListItem_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.GetPageLayoutMapping(Microsoft.SharePoint.Client.ListItem)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L768" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_GetPageLayoutMapping_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetPageLayoutMapping*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_GetPageLayoutMapping_Microsoft_SharePoint_Client_ListItem_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetPageLayoutMapping(Microsoft.SharePoint.Client.ListItem)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetPageLayoutMapping_Microsoft_SharePoint_Client_ListItem_" class="expander" data-toggle="collapse">GetPageLayoutMapping(ListItem)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetPageLayoutMapping_Microsoft_SharePoint_Client_ListItem_" class="collapse in">
+  <div class="markdown level1 summary"><p>Generate pagelayout mapping file for given publishing page</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PageLayout GetPageLayoutMapping(ListItem page)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.listitem">ListItem</a></span>
+        <span class="parametername">page</span>
+        <p><p>Publishing page</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Modernization.Publishing.PageLayout.html">PageLayout</a>
+        <p><p>Page layout mapping model</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_GetPublishingContentTypeField_Microsoft_SharePoint_Client_List_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.GetPublishingContentTypeField(Microsoft.SharePoint.Client.List%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L392" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_GetPublishingContentTypeField_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetPublishingContentTypeField*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_GetPublishingContentTypeField_Microsoft_SharePoint_Client_List_System_String_System_String_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetPublishingContentTypeField(Microsoft.SharePoint.Client.List,System.String,System.String)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetPublishingContentTypeField_Microsoft_SharePoint_Client_List_System_String_System_String_" class="expander" data-toggle="collapse">GetPublishingContentTypeField(List, String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetPublishingContentTypeField_Microsoft_SharePoint_Client_List_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Get field information of a content type field</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FieldData GetPublishingContentTypeField(List pagesLibrary, string contentTypeId, string fieldName)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.list">List</a></span>
+        <span class="parametername">pagesLibrary</span>
+        <p><p>Pages library list</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">contentTypeId</span>
+        <p><p>ID of the content type</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">fieldName</span>
+        <p><p>Name of the field to get information from</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Modernization.Cache.FieldData.html">FieldData</a>
+        <p><p>FieldData object holding field information</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_GetPublishingPagesLibraryName_Microsoft_SharePoint_Client_ClientContext_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.GetPublishingPagesLibraryName(Microsoft.SharePoint.Client.ClientContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L544" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_GetPublishingPagesLibraryName_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetPublishingPagesLibraryName*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_GetPublishingPagesLibraryName_Microsoft_SharePoint_Client_ClientContext_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetPublishingPagesLibraryName(Microsoft.SharePoint.Client.ClientContext)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetPublishingPagesLibraryName_Microsoft_SharePoint_Client_ClientContext_" class="expander" data-toggle="collapse">GetPublishingPagesLibraryName(ClientContext)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetPublishingPagesLibraryName_Microsoft_SharePoint_Client_ClientContext_" class="collapse in">
+  <div class="markdown level1 summary"><p>Get translation for the publishing pages library</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetPublishingPagesLibraryName(ClientContext context)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">context</span>
+        <p><p>Context of the site</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>Translated name of the pages library</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_GetResourceString_Microsoft_SharePoint_Client_ClientContext_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.GetResourceString(Microsoft.SharePoint.Client.ClientContext%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L687" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_GetResourceString_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetResourceString*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_GetResourceString_Microsoft_SharePoint_Client_ClientContext_System_String_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetResourceString(Microsoft.SharePoint.Client.ClientContext,System.String)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetResourceString_Microsoft_SharePoint_Client_ClientContext_System_String_" class="expander" data-toggle="collapse">GetResourceString(ClientContext, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetResourceString_Microsoft_SharePoint_Client_ClientContext_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns the translated value for a resource string</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetResourceString(ClientContext context, string resource)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">context</span>
+        <p><p>Context of the site</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">resource</span>
+        <p><p>Key of the resource (e.g. $Resources:core,ScriptEditorWebPartDescription;)</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>Translated string</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_GetSharePointVersion_System_Uri_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.GetSharePointVersion(System.Uri)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L97" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_GetSharePointVersion_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetSharePointVersion*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_GetSharePointVersion_System_Uri_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetSharePointVersion(System.Uri)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetSharePointVersion_System_Uri_" class="expander" data-toggle="collapse">GetSharePointVersion(Uri)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetSharePointVersion_System_Uri_" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets the cached SharePoint version for a given site</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SPVersion GetSharePointVersion(Uri site)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uri">Uri</a></span>
+        <span class="parametername">site</span>
+        <p><p>Site to get the SharePoint version for</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Modernization.Transform.SPVersion.html">SPVersion</a>
+        <p><p>Found SharePoint version or &quot;Unknown&quot; if not found in cache</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_GetTermFromId_Microsoft_SharePoint_Client_ClientContext_System_Guid_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.GetTermFromId(Microsoft.SharePoint.Client.ClientContext%2CSystem.Guid)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L1200" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_GetTermFromId_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetTermFromId*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_GetTermFromId_Microsoft_SharePoint_Client_ClientContext_System_Guid_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetTermFromId(Microsoft.SharePoint.Client.ClientContext,System.Guid)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetTermFromId_Microsoft_SharePoint_Client_ClientContext_System_Guid_" class="expander" data-toggle="collapse">GetTermFromId(ClientContext, Guid)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetTermFromId_Microsoft_SharePoint_Client_ClientContext_System_Guid_" class="collapse in">
+  <div class="markdown level1 summary"><p>Return information for the given term</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetTermFromId(ClientContext context, Guid termId)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">context</span>
+        <p><p>ClientContext object to operate on</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></span>
+        <span class="parametername">termId</span>
+        <p><p>Id of the term to lookup</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>Term label</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_GetTermMapping_System_String_System_Collections_Generic_IList_PnP_Framework_Modernization_Telemetry_ILogObserver__.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.GetTermMapping(System.String%2CSystem.Collections.Generic.IList%7BPnP.Framework.Modernization.Telemetry.ILogObserver%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L1393" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_GetTermMapping_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetTermMapping*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_GetTermMapping_System_String_System_Collections_Generic_IList_PnP_Framework_Modernization_Telemetry_ILogObserver__" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetTermMapping(System.String,System.Collections.Generic.IList{PnP.Framework.Modernization.Telemetry.ILogObserver})"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetTermMapping_System_String_System_Collections_Generic_IList_PnP_Framework_Modernization_Telemetry_ILogObserver__" class="expander" data-toggle="collapse">GetTermMapping(String, IList&lt;ILogObserver&gt;)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetTermMapping_System_String_System_Collections_Generic_IList_PnP_Framework_Modernization_Telemetry_ILogObserver__" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns a cached list of mapped items</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;TermMapping&gt; GetTermMapping(string mappingFile, IList&lt;ILogObserver&gt; logObservers = null)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">mappingFile</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="PnP.Framework.Modernization.Telemetry.ILogObserver.html">ILogObserver</a>&gt;</span>
+        <span class="parametername">logObservers</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="PnP.Framework.Modernization.Entities.TermMapping.html">TermMapping</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_GetTransformTermCacheTermById_Microsoft_SharePoint_Client_ClientContext_System_Guid_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.GetTransformTermCacheTermById(Microsoft.SharePoint.Client.ClientContext%2CSystem.Guid)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L1265" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_GetTransformTermCacheTermById_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetTransformTermCacheTermById*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_GetTransformTermCacheTermById_Microsoft_SharePoint_Client_ClientContext_System_Guid_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetTransformTermCacheTermById(Microsoft.SharePoint.Client.ClientContext,System.Guid)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetTransformTermCacheTermById_Microsoft_SharePoint_Client_ClientContext_System_Guid_" class="expander" data-toggle="collapse">GetTransformTermCacheTermById(ClientContext, Guid)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetTransformTermCacheTermById_Microsoft_SharePoint_Client_ClientContext_System_Guid_" class="collapse in">
+  <div class="markdown level1 summary"><p>Get Term from Term Cache</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TermData GetTransformTermCacheTermById(ClientContext context, Guid termId)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">context</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></span>
+        <span class="parametername">termId</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Modernization.Entities.TermData.html">TermData</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_GetTransformTermCacheTermByName_Microsoft_SharePoint_Client_ClientContext_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.GetTransformTermCacheTermByName(Microsoft.SharePoint.Client.ClientContext%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L1284" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_GetTransformTermCacheTermByName_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetTransformTermCacheTermByName*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_GetTransformTermCacheTermByName_Microsoft_SharePoint_Client_ClientContext_System_String_System_String_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetTransformTermCacheTermByName(Microsoft.SharePoint.Client.ClientContext,System.String,System.String)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetTransformTermCacheTermByName_Microsoft_SharePoint_Client_ClientContext_System_String_System_String_" class="expander" data-toggle="collapse">GetTransformTermCacheTermByName(ClientContext, String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetTransformTermCacheTermByName_Microsoft_SharePoint_Client_ClientContext_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Search Cached term by name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;TermData&gt; GetTransformTermCacheTermByName(ClientContext context, string termLabel = &quot;&quot;, string termPath = &quot;&quot;)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">context</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">termLabel</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">termPath</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="PnP.Framework.Modernization.Entities.TermData.html">TermData</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_GetTransformTermCacheTermsByTermSet_Microsoft_SharePoint_Client_ClientContext_System_Guid_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.GetTransformTermCacheTermsByTermSet(Microsoft.SharePoint.Client.ClientContext%2CSystem.Guid)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L1303" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_GetTransformTermCacheTermsByTermSet_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetTransformTermCacheTermsByTermSet*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_GetTransformTermCacheTermsByTermSet_Microsoft_SharePoint_Client_ClientContext_System_Guid_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetTransformTermCacheTermsByTermSet(Microsoft.SharePoint.Client.ClientContext,System.Guid)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetTransformTermCacheTermsByTermSet_Microsoft_SharePoint_Client_ClientContext_System_Guid_" class="expander" data-toggle="collapse">GetTransformTermCacheTermsByTermSet(ClientContext, Guid)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetTransformTermCacheTermsByTermSet_Microsoft_SharePoint_Client_ClientContext_System_Guid_" class="collapse in">
+  <div class="markdown level1 summary"><p>Get Term by Term Set Id</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;Guid, TermData&gt; GetTransformTermCacheTermsByTermSet(ClientContext context, Guid termSetId)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">context</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></span>
+        <span class="parametername">termSetId</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a>, <a class="xref" href="PnP.Framework.Modernization.Entities.TermData.html">TermData</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_GetUrlMapping_System_String_System_Collections_Generic_IList_PnP_Framework_Modernization_Telemetry_ILogObserver__.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.GetUrlMapping(System.String%2CSystem.Collections.Generic.IList%7BPnP.Framework.Modernization.Telemetry.ILogObserver%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L1347" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_GetUrlMapping_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetUrlMapping*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_GetUrlMapping_System_String_System_Collections_Generic_IList_PnP_Framework_Modernization_Telemetry_ILogObserver__" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetUrlMapping(System.String,System.Collections.Generic.IList{PnP.Framework.Modernization.Telemetry.ILogObserver})"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetUrlMapping_System_String_System_Collections_Generic_IList_PnP_Framework_Modernization_Telemetry_ILogObserver__" class="expander" data-toggle="collapse">GetUrlMapping(String, IList&lt;ILogObserver&gt;)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetUrlMapping_System_String_System_Collections_Generic_IList_PnP_Framework_Modernization_Telemetry_ILogObserver__" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns a list of url mappings</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;UrlMapping&gt; GetUrlMapping(string urlMappingFile, IList&lt;ILogObserver&gt; logObservers = null)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">urlMappingFile</span>
+        <p><p>File with url mappings</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="PnP.Framework.Modernization.Telemetry.ILogObserver.html">ILogObserver</a>&gt;</span>
+        <span class="parametername">logObservers</span>
+        <p><p>Attached list of log observers</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="PnP.Framework.Modernization.Entities.UrlMapping.html">UrlMapping</a>&gt;
+        <p><p>List of url mappings</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_GetUserFromUserList_Microsoft_SharePoint_Client_ClientContext_System_Int32_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.GetUserFromUserList(Microsoft.SharePoint.Client.ClientContext%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L1052" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_GetUserFromUserList_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetUserFromUserList*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_GetUserFromUserList_Microsoft_SharePoint_Client_ClientContext_System_Int32_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetUserFromUserList(Microsoft.SharePoint.Client.ClientContext,System.Int32)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetUserFromUserList_Microsoft_SharePoint_Client_ClientContext_System_Int32_" class="expander" data-toggle="collapse">GetUserFromUserList(ClientContext, Int32)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetUserFromUserList_Microsoft_SharePoint_Client_ClientContext_System_Int32_" class="collapse in">
+  <div class="markdown level1 summary"><p>Lookup a user from the site's user list based upon the user's id</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public UserEntity GetUserFromUserList(ClientContext context, int userListId)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">context</span>
+        <p><p>Context of the web holding the user list</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">userListId</span>
+        <p><p>Id of the user to fetch</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Modernization.Entities.UserEntity.html">UserEntity</a>
+        <p><p>A UserEntity instance holding information about the user</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_GetUserFromUserList_Microsoft_SharePoint_Client_ClientContext_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.GetUserFromUserList(Microsoft.SharePoint.Client.ClientContext%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L938" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_GetUserFromUserList_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetUserFromUserList*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_GetUserFromUserList_Microsoft_SharePoint_Client_ClientContext_System_String_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetUserFromUserList(Microsoft.SharePoint.Client.ClientContext,System.String)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetUserFromUserList_Microsoft_SharePoint_Client_ClientContext_System_String_" class="expander" data-toggle="collapse">GetUserFromUserList(ClientContext, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetUserFromUserList_Microsoft_SharePoint_Client_ClientContext_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Lookup a user from the site's user list based upon the user's upn</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public UserEntity GetUserFromUserList(ClientContext context, string userUpn)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">context</span>
+        <p><p>Context of the web holding the user list</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">userUpn</span>
+        <p><p>Upn of the user to fetch</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Modernization.Entities.UserEntity.html">UserEntity</a>
+        <p><p>A UserEntity instance holding information about the user</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_GetUserMapping_System_String_System_Collections_Generic_IList_PnP_Framework_Modernization_Telemetry_ILogObserver__.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.GetUserMapping(System.String%2CSystem.Collections.Generic.IList%7BPnP.Framework.Modernization.Telemetry.ILogObserver%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L1370" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_GetUserMapping_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetUserMapping*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_GetUserMapping_System_String_System_Collections_Generic_IList_PnP_Framework_Modernization_Telemetry_ILogObserver__" data-uid="PnP.Framework.Modernization.Cache.CacheManager.GetUserMapping(System.String,System.Collections.Generic.IList{PnP.Framework.Modernization.Telemetry.ILogObserver})"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetUserMapping_System_String_System_Collections_Generic_IList_PnP_Framework_Modernization_Telemetry_ILogObserver__" class="expander" data-toggle="collapse">GetUserMapping(String, IList&lt;ILogObserver&gt;)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_GetUserMapping_System_String_System_Collections_Generic_IList_PnP_Framework_Modernization_Telemetry_ILogObserver__" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets the list of user mappings, if first time file will be laoded</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;UserMappingEntity&gt; GetUserMapping(string userMappingFile, IList&lt;ILogObserver&gt; logObservers = null)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">userMappingFile</span>
+        <p><p>File with the user mappings</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="PnP.Framework.Modernization.Telemetry.ILogObserver.html">ILogObserver</a>&gt;</span>
+        <span class="parametername">logObservers</span>
+        <p><p>Attached list of log observers</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="PnP.Framework.Modernization.Entities.UserMappingEntity.html">UserMappingEntity</a>&gt;
+        <p><p>List of user mappings</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_IsBlogWeb_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.IsBlogWeb(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L520" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_IsBlogWeb_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.IsBlogWeb*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_IsBlogWeb_System_String_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.IsBlogWeb(System.String)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_IsBlogWeb_System_String_" class="expander" data-toggle="collapse">IsBlogWeb(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_IsBlogWeb_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Checks if this is blog web</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsBlogWeb(string webUrl)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">webUrl</span>
+        <p><p>Web url to check</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p><p>True if blog, false otherwise</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_IsPublishingWeb_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.IsPublishingWeb(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L498" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_IsPublishingWeb_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.IsPublishingWeb*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_IsPublishingWeb_System_String_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.IsPublishingWeb(System.String)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_IsPublishingWeb_System_String_" class="expander" data-toggle="collapse">IsPublishingWeb(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_IsPublishingWeb_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Checks if this is publishing web</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsPublishingWeb(string webUrl)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">webUrl</span>
+        <p><p>Web url to check</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p><p>True if publishing, false otherwise</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_SetAADTenantId_System_Guid_System_Uri_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.SetAADTenantId(System.Guid%2CSystem.Uri)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L178" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_SetAADTenantId_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.SetAADTenantId*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_SetAADTenantId_System_Guid_System_Uri_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.SetAADTenantId(System.Guid,System.Uri)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_SetAADTenantId_System_Guid_System_Uri_" class="expander" data-toggle="collapse">SetAADTenantId(Guid, Uri)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_SetAADTenantId_System_Guid_System_Uri_" class="collapse in">
+  <div class="markdown level1 summary"><p>Sets the Azure AD tenant Id in cache</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetAADTenantId(Guid tenantId, Uri site)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></span>
+        <span class="parametername">tenantId</span>
+        <p><p>Tenant Id</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uri">Uri</a></span>
+        <span class="parametername">site</span>
+        <p><p>Site url</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_SetBlogWeb_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.SetBlogWeb(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L483" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_SetBlogWeb_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.SetBlogWeb*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_SetBlogWeb_System_String_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.SetBlogWeb(System.String)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_SetBlogWeb_System_String_" class="expander" data-toggle="collapse">SetBlogWeb(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_SetBlogWeb_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Marks this web as a blog web</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetBlogWeb(string webUrl)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">webUrl</span>
+        <p><p>Url of the web</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_SetExactSharePointVersion_System_Uri_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.SetExactSharePointVersion(System.Uri%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L144" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_SetExactSharePointVersion_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.SetExactSharePointVersion*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_SetExactSharePointVersion_System_Uri_System_String_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.SetExactSharePointVersion(System.Uri,System.String)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_SetExactSharePointVersion_System_Uri_System_String_" class="expander" data-toggle="collapse">SetExactSharePointVersion(Uri, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_SetExactSharePointVersion_System_Uri_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Adds exact SharePoint version for a given site to cache</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetExactSharePointVersion(Uri site, string version)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uri">Uri</a></span>
+        <span class="parametername">site</span>
+        <p><p>Site to add the SharePoint version for to cache</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">version</span>
+        <p><p>Version to add</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_SetLastUsedTransformator_PnP_Framework_Modernization_Transform_BasePageTransformator_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.SetLastUsedTransformator(PnP.Framework.Modernization.Transform.BasePageTransformator)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L1325" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_SetLastUsedTransformator_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.SetLastUsedTransformator*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_SetLastUsedTransformator_PnP_Framework_Modernization_Transform_BasePageTransformator_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.SetLastUsedTransformator(PnP.Framework.Modernization.Transform.BasePageTransformator)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_SetLastUsedTransformator_PnP_Framework_Modernization_Transform_BasePageTransformator_" class="expander" data-toggle="collapse">SetLastUsedTransformator(BasePageTransformator)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_SetLastUsedTransformator_PnP_Framework_Modernization_Transform_BasePageTransformator_" class="collapse in">
+  <div class="markdown level1 summary"><p>Caches the last used page transformator instance, needed to postpone log writing when transforming multiple pages</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetLastUsedTransformator(BasePageTransformator transformator)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Modernization.Transform.BasePageTransformator.html">BasePageTransformator</a></span>
+        <span class="parametername">transformator</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_SetPublishingWeb_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.SetPublishingWeb(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L468" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_SetPublishingWeb_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.SetPublishingWeb*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_SetPublishingWeb_System_String_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.SetPublishingWeb(System.String)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_SetPublishingWeb_System_String_" class="expander" data-toggle="collapse">SetPublishingWeb(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_SetPublishingWeb_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Marks this web as a publishing web</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetPublishingWeb(string webUrl)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">webUrl</span>
+        <p><p>Url of the web</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_SetSharePointVersion_System_Uri_PnP_Framework_Modernization_Transform_SPVersion_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.SetSharePointVersion(System.Uri%2CPnP.Framework.Modernization.Transform.SPVersion)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L113" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_SetSharePointVersion_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.SetSharePointVersion*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_SetSharePointVersion_System_Uri_PnP_Framework_Modernization_Transform_SPVersion_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.SetSharePointVersion(System.Uri,PnP.Framework.Modernization.Transform.SPVersion)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_SetSharePointVersion_System_Uri_PnP_Framework_Modernization_Transform_SPVersion_" class="expander" data-toggle="collapse">SetSharePointVersion(Uri, SPVersion)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_SetSharePointVersion_System_Uri_PnP_Framework_Modernization_Transform_SPVersion_" class="collapse in">
+  <div class="markdown level1 summary"><p>Sets the SharePoint version in cache</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetSharePointVersion(Uri site, SPVersion version)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uri">Uri</a></span>
+        <span class="parametername">site</span>
+        <p><p>Site to the set the SharePoint version for</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Modernization.Transform.SPVersion.html">SPVersion</a></span>
+        <span class="parametername">version</span>
+        <p><p>SharePoint version of the site</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Cache_CacheManager_StoreTermSetTerms_Microsoft_SharePoint_Client_ClientContext_System_Guid_System_Guid_System_Boolean_System_Boolean_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Cache.CacheManager.StoreTermSetTerms(Microsoft.SharePoint.Client.ClientContext%2CSystem.Guid%2CSystem.Guid%2CSystem.Boolean%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Cache/CacheManager.cs/#L1240" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Cache_CacheManager_StoreTermSetTerms_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.StoreTermSetTerms*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Cache_CacheManager_StoreTermSetTerms_Microsoft_SharePoint_Client_ClientContext_System_Guid_System_Guid_System_Boolean_System_Boolean_" data-uid="PnP.Framework.Modernization.Cache.CacheManager.StoreTermSetTerms(Microsoft.SharePoint.Client.ClientContext,System.Guid,System.Guid,System.Boolean,System.Boolean)"><a href="#collapsible-PnP_Framework_Modernization_Cache_CacheManager_StoreTermSetTerms_Microsoft_SharePoint_Client_ClientContext_System_Guid_System_Guid_System_Boolean_System_Boolean_" class="expander" data-toggle="collapse">StoreTermSetTerms(ClientContext, Guid, Guid, Boolean, Boolean)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Cache_CacheManager_StoreTermSetTerms_Microsoft_SharePoint_Client_ClientContext_System_Guid_System_Guid_System_Boolean_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Get Term Path by ID</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StoreTermSetTerms(ClientContext context, Guid termSetId, Guid sourceSspId, bool isSP2010, bool isSourceTerm)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">context</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></span>
+        <span class="parametername">termSetId</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></span>
+        <span class="parametername">sourceSspId</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">isSP2010</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">isSourceTerm</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="System.ValidationExtensions.html#System_ValidationExtensions_ValidateNotNullOrEmpty__1___0_System_String_">ValidationExtensions.ValidateNotNullOrEmpty&lt;T&gt;(T, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_Set__2___0_System_Linq_Expressions_Expression_System_Func___0___1_____1_System_Boolean_System_Boolean_">ObjectExtensions.Set&lt;TObject, T&gt;(TObject, Expression&lt;Func&lt;TObject, T&gt;&gt;, T, Boolean, Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstancePropertyValue_System_Object_System_String_">ObjectExtensions.GetPublicInstancePropertyValue(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstanceProperty_System_Object_System_String_">ObjectExtensions.GetPublicInstanceProperty(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_SetPublicInstancePropertyValue_System_Object_System_String_System_Object_">ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Modernization.Cache.Extensions.html#PnP_Framework_Modernization_Cache_Extensions_ToByteArray_System_Object_">Extensions.ToByteArray(Object)</a>
+  </div>
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

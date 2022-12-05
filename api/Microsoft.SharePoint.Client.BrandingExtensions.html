@@ -1,0 +1,2387 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class BrandingExtensions
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class BrandingExtensions
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Microsoft.SharePoint.Client.BrandingExtensions">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/Deprecated/BrandingExtensions.deprecated.cs/#L9" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="Microsoft_SharePoint_Client_BrandingExtensions" data-uid="Microsoft.SharePoint.Client.BrandingExtensions">Class BrandingExtensions
+  </h1>
+  <div class="markdown level0 summary"><p>Class that deals with branding features</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">BrandingExtensions</span></div>
+  </div>
+  
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="Microsoft.SharePoint.Client.html">Microsoft.SharePoint.Client</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="Microsoft_SharePoint_Client_BrandingExtensions_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class BrandingExtensions</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_AllowAllPageLayouts_Microsoft_SharePoint_Client_Web_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.AllowAllPageLayouts(Microsoft.SharePoint.Client.Web)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L1394" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_AllowAllPageLayouts_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.AllowAllPageLayouts*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_AllowAllPageLayouts_Microsoft_SharePoint_Client_Web_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.AllowAllPageLayouts(Microsoft.SharePoint.Client.Web)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_AllowAllPageLayouts_Microsoft_SharePoint_Client_Web_" class="expander" data-toggle="collapse">AllowAllPageLayouts(Web)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_AllowAllPageLayouts_Microsoft_SharePoint_Client_Web_" class="collapse in">
+  <div class="markdown level1 summary"><p>Allow the web to use all available page layouts</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void AllowAllPageLayouts(this Web web)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Web to operate against</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_ClearAvailableWebTemplates_Microsoft_SharePoint_Client_Web_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.ClearAvailableWebTemplates(Microsoft.SharePoint.Client.Web)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L1465" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_ClearAvailableWebTemplates_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.ClearAvailableWebTemplates*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_ClearAvailableWebTemplates_Microsoft_SharePoint_Client_Web_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.ClearAvailableWebTemplates(Microsoft.SharePoint.Client.Web)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_ClearAvailableWebTemplates_Microsoft_SharePoint_Client_Web_" class="expander" data-toggle="collapse">ClearAvailableWebTemplates(Web)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_ClearAvailableWebTemplates_Microsoft_SharePoint_Client_Web_" class="collapse in">
+  <div class="markdown level1 summary"><p>Can be used to remote filters from the available web template</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void ClearAvailableWebTemplates(this Web web)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Web to process</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_ComposedLookExists_Microsoft_SharePoint_Client_Web_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.ComposedLookExists(Microsoft.SharePoint.Client.Web%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L48" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_ComposedLookExists_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.ComposedLookExists*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_ComposedLookExists_Microsoft_SharePoint_Client_Web_System_String_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.ComposedLookExists(Microsoft.SharePoint.Client.Web,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_ComposedLookExists_Microsoft_SharePoint_Client_Web_System_String_" class="expander" data-toggle="collapse">ComposedLookExists(Web, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_ComposedLookExists_Microsoft_SharePoint_Client_Web_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Checks if a composed look exists.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool ComposedLookExists(this Web web, string composedLookName)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Web to check</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">composedLookName</span>
+        <p><p>Name of the composed look</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p><p>true if it exists; otherwise false</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_CreateComposedLookByName_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_String_System_String_System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.CreateComposedLookByName(Microsoft.SharePoint.Client.Web%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Int32%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L65" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_CreateComposedLookByName_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.CreateComposedLookByName*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_CreateComposedLookByName_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_String_System_String_System_Int32_System_Boolean_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.CreateComposedLookByName(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Boolean)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_CreateComposedLookByName_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_String_System_String_System_Int32_System_Boolean_" class="expander" data-toggle="collapse">CreateComposedLookByName(Web, String, String, String, String, String, Int32, Boolean)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_CreateComposedLookByName_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_String_System_String_System_Int32_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Creates (or updates) a composed look in the web site; usually this is done in the root site of the collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void CreateComposedLookByName(this Web web, string lookName, string paletteFileName, string fontFileName, string backgroundFileName, string masterFileName, int displayOrder = 1, bool replaceContent = true)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Web to create the composed look in</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">lookName</span>
+        <p><p>Name of the theme</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">paletteFileName</span>
+        <p><p>File name of the palette file in the theme catalog of the site collection; path component ignored.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">fontFileName</span>
+        <p><p>File name of the font file in the theme catalog of the site collection; path component ignored.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">backgroundFileName</span>
+        <p><p>File name of the background image file in the theme catalog of the site collection; path component ignored.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">masterFileName</span>
+        <p><p>File name of the master page in the mastepage catalog of the web site; path component ignored.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">displayOrder</span>
+        <p><p>Display order of the composed look</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">replaceContent</span>
+        <p><p>Replace composed look if it already exists (default true)</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_CreateComposedLookByUrl_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_String_System_String_System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.CreateComposedLookByUrl(Microsoft.SharePoint.Client.Web%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Int32%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L106" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_CreateComposedLookByUrl_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.CreateComposedLookByUrl*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_CreateComposedLookByUrl_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_String_System_String_System_Int32_System_Boolean_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.CreateComposedLookByUrl(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Boolean)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_CreateComposedLookByUrl_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_String_System_String_System_Int32_System_Boolean_" class="expander" data-toggle="collapse">CreateComposedLookByUrl(Web, String, String, String, String, String, Int32, Boolean)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_CreateComposedLookByUrl_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_String_System_String_System_Int32_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Creates (or updates) a composed look in the web site; usually this is done in the root site of the collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void CreateComposedLookByUrl(this Web web, string lookName, string paletteServerRelativeUrl, string fontServerRelativeUrl, string backgroundServerRelativeUrl, string masterServerRelativeUrl, int displayOrder = 1, bool replaceContent = true)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Web to create the composed look in</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">lookName</span>
+        <p><p>Name of the theme</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">paletteServerRelativeUrl</span>
+        <p><p>URL of the palette file, usually in the theme catalog of the site collection</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">fontServerRelativeUrl</span>
+        <p><p>URL of the font file, usually in the theme catalog of the site collection</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">backgroundServerRelativeUrl</span>
+        <p><p>URL of the background image file, usually in /_layouts/15/images</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">masterServerRelativeUrl</span>
+        <p><p>URL of the master page, usually in the masterpage catalog of the web site</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">displayOrder</span>
+        <p><p>Display order of the composed look</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">replaceContent</span>
+        <p><p>Replace composed look if it already exists (default true)</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_DeployHtmlPageLayout_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.DeployHtmlPageLayout(Microsoft.SharePoint.Client.Web%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L428" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_DeployHtmlPageLayout_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.DeployHtmlPageLayout*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_DeployHtmlPageLayout_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_String_System_String_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.DeployHtmlPageLayout(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_DeployHtmlPageLayout_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_String_System_String_" class="expander" data-toggle="collapse">DeployHtmlPageLayout(Web, String, String, String, String, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_DeployHtmlPageLayout_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Can be used to deploy html page layouts to master page gallery.
+<remarks>Should be only used with root web of site collection where publishing features are enabled.</remarks></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void DeployHtmlPageLayout(this Web web, string sourceFilePath, string title, string description, string associatedContentTypeID, string folderHierarchy = &quot;&quot;)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Web as the root site of the publishing site collection</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">sourceFilePath</span>
+        <p><p>Full path to the file which will be uploaded</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">title</span>
+        <p><p>Title for the page layout</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">description</span>
+        <p><p>Description for the page layout</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">associatedContentTypeID</span>
+        <p><p>Associated content type ID</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">folderHierarchy</span>
+        <p><p>Folder hierarchy where the html page layouts will be deployed</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_DeployMasterPage_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.DeployMasterPage(Microsoft.SharePoint.Client.Web%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L528" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_DeployMasterPage_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.DeployMasterPage*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_DeployMasterPage_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_String_System_String_System_String_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.DeployMasterPage(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_DeployMasterPage_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_String_System_String_System_String_" class="expander" data-toggle="collapse">DeployMasterPage(Web, String, String, String, String, String, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_DeployMasterPage_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_String_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Deploys a new masterpage</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static File DeployMasterPage(this Web web, string sourceFilePath, string title, string description, string uiVersion = &quot;15&quot;, string defaultCSSFile = &quot;&quot;, string folderPath = &quot;&quot;)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>The web to process</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">sourceFilePath</span>
+        <p><p>The path to the source file</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">title</span>
+        <p><p>The title of the masterpage</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">description</span>
+        <p><p>The description of the masterpage</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">uiVersion</span>
+        <p><p>UIVersion of the masterpage</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">defaultCSSFile</span>
+        <p><p>DefaultCSSFile of the masterpage</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">folderPath</span>
+        <p><p>FolderPath of the masterpage</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.file">File</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_DeployPageLayout_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.DeployPageLayout(Microsoft.SharePoint.Client.Web%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L413" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_DeployPageLayout_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.DeployPageLayout*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_DeployPageLayout_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_String_System_String_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.DeployPageLayout(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_DeployPageLayout_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_String_System_String_" class="expander" data-toggle="collapse">DeployPageLayout(Web, String, String, String, String, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_DeployPageLayout_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Can be used to deploy page layouts to master page gallery.
+<remarks>Should be only used with root web of site collection where publishing features are enabled.</remarks></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void DeployPageLayout(this Web web, string sourceFilePath, string title, string description, string associatedContentTypeID, string folderHierarchy = &quot;&quot;)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Web as the root site of the publishing site collection</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">sourceFilePath</span>
+        <p><p>Full path to the file which will be uploaded</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">title</span>
+        <p><p>Title for the page layout</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">description</span>
+        <p><p>Description for the page layout</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">associatedContentTypeID</span>
+        <p><p>Associated content type ID</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">folderHierarchy</span>
+        <p><p>Folder hierarchy where the page layouts will be deployed</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_DisableReponsiveUI_Microsoft_SharePoint_Client_Site_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.DisableReponsiveUI(Microsoft.SharePoint.Client.Site)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/Deprecated/BrandingExtensions.deprecated.cs/#L18" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_DisableReponsiveUI_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.DisableReponsiveUI*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_DisableReponsiveUI_Microsoft_SharePoint_Client_Site_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.DisableReponsiveUI(Microsoft.SharePoint.Client.Site)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_DisableReponsiveUI_Microsoft_SharePoint_Client_Site_" class="expander" data-toggle="collapse">DisableReponsiveUI(Site)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_DisableReponsiveUI_Microsoft_SharePoint_Client_Site_" class="collapse in">
+  <div class="markdown level1 summary"><p>Disables the Responsive UI on a Classic SharePoint Site</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use DisableResponsiveUI(site)&quot;)]
+public static void DisableReponsiveUI(this Site site)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>The Site to disable the Responsive UI on</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_DisableReponsiveUI_Microsoft_SharePoint_Client_Web_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.DisableReponsiveUI(Microsoft.SharePoint.Client.Web)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/Deprecated/BrandingExtensions.deprecated.cs/#L35" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_DisableReponsiveUI_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.DisableReponsiveUI*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_DisableReponsiveUI_Microsoft_SharePoint_Client_Web_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.DisableReponsiveUI(Microsoft.SharePoint.Client.Web)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_DisableReponsiveUI_Microsoft_SharePoint_Client_Web_" class="expander" data-toggle="collapse">DisableReponsiveUI(Web)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_DisableReponsiveUI_Microsoft_SharePoint_Client_Web_" class="collapse in">
+  <div class="markdown level1 summary"><p>Disables the Responsive UI on a Classic SharePoint Web</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use DisableResponsiveUI(web)&quot;)]
+public static void DisableReponsiveUI(this Web web)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>The Web to disable the Responsive UI on</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_DisableResponsiveUI_Microsoft_SharePoint_Client_Site_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.DisableResponsiveUI(Microsoft.SharePoint.Client.Site)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L1547" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_DisableResponsiveUI_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.DisableResponsiveUI*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_DisableResponsiveUI_Microsoft_SharePoint_Client_Site_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.DisableResponsiveUI(Microsoft.SharePoint.Client.Site)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_DisableResponsiveUI_Microsoft_SharePoint_Client_Site_" class="expander" data-toggle="collapse">DisableResponsiveUI(Site)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_DisableResponsiveUI_Microsoft_SharePoint_Client_Site_" class="collapse in">
+  <div class="markdown level1 summary"><p>Disables the Responsive UI on a Classic SharePoint Site</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Responsive UI is not applicable anymore to SharePoint Online&quot;)]
+public static void DisableResponsiveUI(this Site site)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>The Site to disable the Responsive UI on</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_DisableResponsiveUI_Microsoft_SharePoint_Client_Web_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.DisableResponsiveUI(Microsoft.SharePoint.Client.Web)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L1530" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_DisableResponsiveUI_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.DisableResponsiveUI*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_DisableResponsiveUI_Microsoft_SharePoint_Client_Web_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.DisableResponsiveUI(Microsoft.SharePoint.Client.Web)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_DisableResponsiveUI_Microsoft_SharePoint_Client_Web_" class="expander" data-toggle="collapse">DisableResponsiveUI(Web)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_DisableResponsiveUI_Microsoft_SharePoint_Client_Web_" class="collapse in">
+  <div class="markdown level1 summary"><p>Disables the Responsive UI on a Classic SharePoint Web</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Responsive UI is not applicable anymore to SharePoint Online&quot;)]
+public static void DisableResponsiveUI(this Web web)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>The Web to disable the Responsive UI on</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_GetComposedLook_Microsoft_SharePoint_Client_Web_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.GetComposedLook(Microsoft.SharePoint.Client.Web%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L758" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_GetComposedLook_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.GetComposedLook*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_GetComposedLook_Microsoft_SharePoint_Client_Web_System_String_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.GetComposedLook(Microsoft.SharePoint.Client.Web,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_GetComposedLook_Microsoft_SharePoint_Client_Web_System_String_" class="expander" data-toggle="collapse">GetComposedLook(Web, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_GetComposedLook_Microsoft_SharePoint_Client_Web_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns the named composed look from the web gallery</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ThemeEntity GetComposedLook(this Web web, string composedLookName)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Web to check</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">composedLookName</span>
+        <p><p>Name of the composed look to retrieve</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Entities.ThemeEntity.html">ThemeEntity</a>
+        <p><p>Entity with the attributes of the composed look, or null if the composed look does not exists or cannot be determined</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_GetCurrentComposedLook_Microsoft_SharePoint_Client_Web_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.GetCurrentComposedLook(Microsoft.SharePoint.Client.Web)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L746" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_GetCurrentComposedLook_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.GetCurrentComposedLook*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_GetCurrentComposedLook_Microsoft_SharePoint_Client_Web_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.GetCurrentComposedLook(Microsoft.SharePoint.Client.Web)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_GetCurrentComposedLook_Microsoft_SharePoint_Client_Web_" class="expander" data-toggle="collapse">GetCurrentComposedLook(Web)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_GetCurrentComposedLook_Microsoft_SharePoint_Client_Web_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns the current theme of a web</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ThemeEntity GetCurrentComposedLook(this Web web)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Web to check</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Entities.ThemeEntity.html">ThemeEntity</a>
+        <p><p>Entity with attributes of current composed look, or null if none</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_GetPageLayoutListItemByName_Microsoft_SharePoint_Client_Web_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.GetPageLayoutListItemByName(Microsoft.SharePoint.Client.Web%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L1149" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_GetPageLayoutListItemByName_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.GetPageLayoutListItemByName*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_GetPageLayoutListItemByName_Microsoft_SharePoint_Client_Web_System_String_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.GetPageLayoutListItemByName(Microsoft.SharePoint.Client.Web,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_GetPageLayoutListItemByName_Microsoft_SharePoint_Client_Web_System_String_" class="expander" data-toggle="collapse">GetPageLayoutListItemByName(Web, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_GetPageLayoutListItemByName_Microsoft_SharePoint_Client_Web_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets a page layout from the master page catalog. Can be called with paramter as &quot;pagelayout.aspx&quot; or as full path like &quot;_catalog/masterpage/pagelayout.aspx&quot;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ListItem GetPageLayoutListItemByName(this Web web, string pageLayoutName)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>root web</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">pageLayoutName</span>
+        <p><p>name of the page layout to retrieve</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.listitem">ListItem</a>
+        <p><p>ListItem holding the page layout, null if not found</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_GetRelativeUrlForMasterByName_Microsoft_SharePoint_Client_Web_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.GetRelativeUrlForMasterByName(Microsoft.SharePoint.Client.Web%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L704" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_GetRelativeUrlForMasterByName_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.GetRelativeUrlForMasterByName*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_GetRelativeUrlForMasterByName_Microsoft_SharePoint_Client_Web_System_String_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.GetRelativeUrlForMasterByName(Microsoft.SharePoint.Client.Web,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_GetRelativeUrlForMasterByName_Microsoft_SharePoint_Client_Web_System_String_" class="expander" data-toggle="collapse">GetRelativeUrlForMasterByName(Web, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_GetRelativeUrlForMasterByName_Microsoft_SharePoint_Client_Web_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns the relative URL for a masterpage</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string GetRelativeUrlForMasterByName(this Web web, string masterPageName)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Web to process</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">masterPageName</span>
+        <p><p>The name of the masterpage, e.g. 'default' or 'seattle'</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_SetAvailablePageLayouts_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_Web_System_Collections_Generic_IEnumerable_System_String__.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.SetAvailablePageLayouts(Microsoft.SharePoint.Client.Web%2CMicrosoft.SharePoint.Client.Web%2CSystem.Collections.Generic.IEnumerable%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L1405" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_SetAvailablePageLayouts_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.SetAvailablePageLayouts*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_SetAvailablePageLayouts_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_Web_System_Collections_Generic_IEnumerable_System_String__" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.SetAvailablePageLayouts(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Web,System.Collections.Generic.IEnumerable{System.String})"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_SetAvailablePageLayouts_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_Web_System_Collections_Generic_IEnumerable_System_String__" class="expander" data-toggle="collapse">SetAvailablePageLayouts(Web, Web, IEnumerable&lt;String&gt;)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_SetAvailablePageLayouts_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_Web_System_Collections_Generic_IEnumerable_System_String__" class="collapse in">
+  <div class="markdown level1 summary"><p>Sets the available page layouts</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetAvailablePageLayouts(this Web web, Web rootWeb, IEnumerable&lt;string&gt; pageLayouts)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>The web to process</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">rootWeb</span>
+        <p><p>The rootweb</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;</span>
+        <span class="parametername">pageLayouts</span>
+        <p><p>The page layouts to make available</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_SetAvailableWebTemplates_Microsoft_SharePoint_Client_Web_System_Collections_Generic_List_PnP_Framework_Entities_WebTemplateEntity__.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.SetAvailableWebTemplates(Microsoft.SharePoint.Client.Web%2CSystem.Collections.Generic.List%7BPnP.Framework.Entities.WebTemplateEntity%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L1423" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_SetAvailableWebTemplates_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.SetAvailableWebTemplates*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_SetAvailableWebTemplates_Microsoft_SharePoint_Client_Web_System_Collections_Generic_List_PnP_Framework_Entities_WebTemplateEntity__" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.SetAvailableWebTemplates(Microsoft.SharePoint.Client.Web,System.Collections.Generic.List{PnP.Framework.Entities.WebTemplateEntity})"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_SetAvailableWebTemplates_Microsoft_SharePoint_Client_Web_System_Collections_Generic_List_PnP_Framework_Entities_WebTemplateEntity__" class="expander" data-toggle="collapse">SetAvailableWebTemplates(Web, List&lt;WebTemplateEntity&gt;)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_SetAvailableWebTemplates_Microsoft_SharePoint_Client_Web_System_Collections_Generic_List_PnP_Framework_Entities_WebTemplateEntity__" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines which templates are available for subsite creation</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetAvailableWebTemplates(this Web web, List&lt;WebTemplateEntity&gt; availableTemplates)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Web to operate against</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="PnP.Framework.Entities.WebTemplateEntity.html">WebTemplateEntity</a>&gt;</span>
+        <span class="parametername">availableTemplates</span>
+        <p><p>List of <a class="xref" href="PnP.Framework.Entities.WebTemplateEntity.html">WebTemplateEntity</a> objects that define the templates that are allowed</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_SetComposedLookByUrl_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_String_System_String_System_Boolean_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.SetComposedLookByUrl(Microsoft.SharePoint.Client.Web%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L177" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_SetComposedLookByUrl_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.SetComposedLookByUrl*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_SetComposedLookByUrl_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_String_System_String_System_Boolean_System_Boolean_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.SetComposedLookByUrl(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_SetComposedLookByUrl_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_String_System_String_System_Boolean_System_Boolean_" class="expander" data-toggle="collapse">SetComposedLookByUrl(Web, String, String, String, String, String, Boolean, Boolean)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_SetComposedLookByUrl_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_String_System_String_System_Boolean_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Retrieves the named composed look, overrides with specified palette, font, background and master page, and then recursively sets the specified values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetComposedLookByUrl(this Web web, string lookName, string paletteServerRelativeUrl = null, string fontServerRelativeUrl = null, string backgroundServerRelativeUrl = null, string masterServerRelativeUrl = null, bool resetSubsitesToInherit = false, bool updateRootOnly = true)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Web to apply composed look to</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">lookName</span>
+        <p><p>Name of the composed look to apply; null will apply the override values only</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">paletteServerRelativeUrl</span>
+        <p><p>Override palette file URL to use</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">fontServerRelativeUrl</span>
+        <p><p>Override font file URL to use</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">backgroundServerRelativeUrl</span>
+        <p><p>Override background image file URL to use</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">masterServerRelativeUrl</span>
+        <p><p>Override master page file URL to use</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">resetSubsitesToInherit</span>
+        <p><p>false (default) to apply to currently inheriting subsites only; true to force all subsites to inherit</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">updateRootOnly</span>
+        <p><p>false to apply to subsites; true (default) to only apply to specified site</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_SetCustomMasterPageByName_Microsoft_SharePoint_Client_Web_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.SetCustomMasterPageByName(Microsoft.SharePoint.Client.Web%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L682" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_SetCustomMasterPageByName_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.SetCustomMasterPageByName*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_SetCustomMasterPageByName_Microsoft_SharePoint_Client_Web_System_String_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.SetCustomMasterPageByName(Microsoft.SharePoint.Client.Web,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_SetCustomMasterPageByName_Microsoft_SharePoint_Client_Web_System_String_" class="expander" data-toggle="collapse">SetCustomMasterPageByName(Web, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_SetCustomMasterPageByName_Microsoft_SharePoint_Client_Web_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Master page is set by using master page name. Master page is set from the current web.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetCustomMasterPageByName(this Web web, string masterPageName)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Current web</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">masterPageName</span>
+        <p><p>Name of the master page. Path is resolved from this.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h5 class="exceptions">Exceptions</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a>
+        <p><p>Thrown when masterPageName is a zero-length string or contains only white space</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a>
+        <p><p>Thrown when masterPageName is null</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_SetCustomMasterPageByUrl_Microsoft_SharePoint_Client_Web_System_String_System_Boolean_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.SetCustomMasterPageByUrl(Microsoft.SharePoint.Client.Web%2CSystem.String%2CSystem.Boolean%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L1255" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_SetCustomMasterPageByUrl_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.SetCustomMasterPageByUrl*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_SetCustomMasterPageByUrl_Microsoft_SharePoint_Client_Web_System_String_System_Boolean_System_Boolean_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.SetCustomMasterPageByUrl(Microsoft.SharePoint.Client.Web,System.String,System.Boolean,System.Boolean)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_SetCustomMasterPageByUrl_Microsoft_SharePoint_Client_Web_System_String_System_Boolean_System_Boolean_" class="expander" data-toggle="collapse">SetCustomMasterPageByUrl(Web, String, Boolean, Boolean)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_SetCustomMasterPageByUrl_Microsoft_SharePoint_Client_Web_System_String_System_Boolean_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Set Custom master page by using given URL as parameter. Suitable for example in cases where you want sub sites to reference root site master page gallery. This is typical with publishing sites.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetCustomMasterPageByUrl(this Web web, string masterPageServerRelativeUrl, bool resetSubsitesToInherit = false, bool updateRootOnly = false)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Context web</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">masterPageServerRelativeUrl</span>
+        <p><p>URL to the master page.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">resetSubsitesToInherit</span>
+        <p><p>false (default) to apply to currently inheriting subsites only; true to force all subsites to inherit</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">updateRootOnly</span>
+        <p><p>false (default) to apply to subsites; true to only apply to specified site</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_SetDefaultPageLayoutForSite_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_Web_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.SetDefaultPageLayoutForSite(Microsoft.SharePoint.Client.Web%2CMicrosoft.SharePoint.Client.Web%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L1314" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_SetDefaultPageLayoutForSite_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.SetDefaultPageLayoutForSite*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_SetDefaultPageLayoutForSite_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_Web_System_String_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.SetDefaultPageLayoutForSite(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Web,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_SetDefaultPageLayoutForSite_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_Web_System_String_" class="expander" data-toggle="collapse">SetDefaultPageLayoutForSite(Web, Web, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_SetDefaultPageLayoutForSite_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_Web_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Sets specific page layout the default page layout for the particular site</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetDefaultPageLayoutForSite(this Web web, Web rootWeb, string pageLayoutName)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Web to process</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">rootWeb</span>
+        <p><p>The rootWeb</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">pageLayoutName</span>
+        <p><p>Name of the page layout</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_SetHomePage_Microsoft_SharePoint_Client_Web_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.SetHomePage(Microsoft.SharePoint.Client.Web%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L1494" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_SetHomePage_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.SetHomePage*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_SetHomePage_Microsoft_SharePoint_Client_Web_System_String_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.SetHomePage(Microsoft.SharePoint.Client.Web,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_SetHomePage_Microsoft_SharePoint_Client_Web_System_String_" class="expander" data-toggle="collapse">SetHomePage(Web, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_SetHomePage_Microsoft_SharePoint_Client_Web_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Sets the web home page</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetHomePage(this Web web, string rootFolderRelativePath)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>The Web to process</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">rootFolderRelativePath</span>
+        <p><p>The path relative to the root folder of the site, e.g. SitePages/Home.aspx</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_SetMasterPageByName_Microsoft_SharePoint_Client_Web_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPageByName(Microsoft.SharePoint.Client.Web%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L659" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_SetMasterPageByName_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPageByName*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_SetMasterPageByName_Microsoft_SharePoint_Client_Web_System_String_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPageByName(Microsoft.SharePoint.Client.Web,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_SetMasterPageByName_Microsoft_SharePoint_Client_Web_System_String_" class="expander" data-toggle="collapse">SetMasterPageByName(Web, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_SetMasterPageByName_Microsoft_SharePoint_Client_Web_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Master page is set by using master page name. Master page is set from the current web.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetMasterPageByName(this Web web, string masterPageName)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Current web</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">masterPageName</span>
+        <p><p>Name of the master page. Path is resolved from this.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h5 class="exceptions">Exceptions</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a>
+        <p><p>Thrown when masterPageName is a zero-length string or contains only white space</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a>
+        <p><p>Thrown when masterPageName is null</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_SetMasterPageByUrl_Microsoft_SharePoint_Client_Web_System_String_System_Boolean_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPageByUrl(Microsoft.SharePoint.Client.Web%2CSystem.String%2CSystem.Boolean%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L1196" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_SetMasterPageByUrl_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPageByUrl*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_SetMasterPageByUrl_Microsoft_SharePoint_Client_Web_System_String_System_Boolean_System_Boolean_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPageByUrl(Microsoft.SharePoint.Client.Web,System.String,System.Boolean,System.Boolean)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_SetMasterPageByUrl_Microsoft_SharePoint_Client_Web_System_String_System_Boolean_System_Boolean_" class="expander" data-toggle="collapse">SetMasterPageByUrl(Web, String, Boolean, Boolean)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_SetMasterPageByUrl_Microsoft_SharePoint_Client_Web_System_String_System_Boolean_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Set master page by using given URL as parameter. Suitable for example in cases where you want sub sites to reference root site master page gallery. This is typical with publishing sites.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetMasterPageByUrl(this Web web, string masterPageServerRelativeUrl, bool resetSubsitesToInherit = false, bool updateRootOnly = false)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Context web</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">masterPageServerRelativeUrl</span>
+        <p><p>URL to the master page.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">resetSubsitesToInherit</span>
+        <p><p>false (default) to apply to currently inheriting subsites only; true to force all subsites to inherit</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">updateRootOnly</span>
+        <p><p>false (default) to apply to subsites; true to only apply to specified site</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_SetMasterPagesByName_Microsoft_SharePoint_Client_Web_System_String_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPagesByName(Microsoft.SharePoint.Client.Web%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L605" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_SetMasterPagesByName_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPagesByName*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_SetMasterPagesByName_Microsoft_SharePoint_Client_Web_System_String_System_String_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPagesByName(Microsoft.SharePoint.Client.Web,System.String,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_SetMasterPagesByName_Microsoft_SharePoint_Client_Web_System_String_System_String_" class="expander" data-toggle="collapse">SetMasterPagesByName(Web, String, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_SetMasterPagesByName_Microsoft_SharePoint_Client_Web_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Can be used to set master page and custom master page in single command</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetMasterPagesByName(this Web web, string masterPageName, string customMasterPageName)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Current web</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">masterPageName</span>
+        <p><p>Name of the master page</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">customMasterPageName</span>
+        <p><p>Name of the custom master page</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h5 class="exceptions">Exceptions</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a>
+        <p><p>Thrown when masterPageName or customMasterPageName is a zero-length string or contains only white space</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a>
+        <p><p>Thrown when masterPageName or customMasterPageName is null</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_SetMasterPagesByUrl_Microsoft_SharePoint_Client_Web_System_String_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPagesByUrl(Microsoft.SharePoint.Client.Web%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L633" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_SetMasterPagesByUrl_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPagesByUrl*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_SetMasterPagesByUrl_Microsoft_SharePoint_Client_Web_System_String_System_String_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.SetMasterPagesByUrl(Microsoft.SharePoint.Client.Web,System.String,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_SetMasterPagesByUrl_Microsoft_SharePoint_Client_Web_System_String_System_String_" class="expander" data-toggle="collapse">SetMasterPagesByUrl(Web, String, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_SetMasterPagesByUrl_Microsoft_SharePoint_Client_Web_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Can be used to set master page and custom master page in single command</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetMasterPagesByUrl(this Web web, string masterPageUrl, string customMasterPageUrl)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Current web</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">masterPageUrl</span>
+        <p><p>Url of the master page</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">customMasterPageUrl</span>
+        <p><p>Url of the custom master page</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h5 class="exceptions">Exceptions</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a>
+        <p><p>Thrown when masterPageName or customMasterPageName is a zero-length string or contains only white space</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a>
+        <p><p>Thrown when masterPageName or customMasterPageName is null</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_SetSiteToInheritPageLayouts_Microsoft_SharePoint_Client_Web_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.SetSiteToInheritPageLayouts(Microsoft.SharePoint.Client.Web)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L1385" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_SetSiteToInheritPageLayouts_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.SetSiteToInheritPageLayouts*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_SetSiteToInheritPageLayouts_Microsoft_SharePoint_Client_Web_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.SetSiteToInheritPageLayouts(Microsoft.SharePoint.Client.Web)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_SetSiteToInheritPageLayouts_Microsoft_SharePoint_Client_Web_" class="expander" data-toggle="collapse">SetSiteToInheritPageLayouts(Web)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_SetSiteToInheritPageLayouts_Microsoft_SharePoint_Client_Web_" class="collapse in">
+  <div class="markdown level1 summary"><p>Can be used to set the site to inherit the default page layout option from parent. Cannot be used for root site of the site collection</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetSiteToInheritPageLayouts(this Web web)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Web to operate against</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_SetThemeByUrl_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_Boolean_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.SetThemeByUrl(Microsoft.SharePoint.Client.Web%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L276" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_SetThemeByUrl_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.SetThemeByUrl*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_SetThemeByUrl_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_Boolean_System_Boolean_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.SetThemeByUrl(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String,System.Boolean,System.Boolean)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_SetThemeByUrl_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_Boolean_System_Boolean_" class="expander" data-toggle="collapse">SetThemeByUrl(Web, String, String, String, Boolean, Boolean)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_SetThemeByUrl_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_System_Boolean_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Recursively applies the specified palette, font, and background image.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetThemeByUrl(this Web web, string paletteServerRelativeUrl, string fontServerRelativeUrl, string backgroundServerRelativeUrl, bool resetSubsitesToInherit = false, bool updateRootOnly = false)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Web to apply to</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">paletteServerRelativeUrl</span>
+        <p><p>URL of palette file to apply</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">fontServerRelativeUrl</span>
+        <p><p>URL of font file to apply</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">backgroundServerRelativeUrl</span>
+        <p><p>URL of background image to apply</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">resetSubsitesToInherit</span>
+        <p><p>false (default) to apply to currently inheriting subsites only; true to force all subsites to inherit</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">updateRootOnly</span>
+        <p><p>false (default) to apply to subsites; true to only apply to specified site</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_UploadThemeFile_Microsoft_SharePoint_Client_Web_System_String_System_IO_Stream_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.UploadThemeFile(Microsoft.SharePoint.Client.Web%2CSystem.String%2CSystem.IO.Stream%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L387" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_UploadThemeFile_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.UploadThemeFile*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_UploadThemeFile_Microsoft_SharePoint_Client_Web_System_String_System_IO_Stream_System_String_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.UploadThemeFile(Microsoft.SharePoint.Client.Web,System.String,System.IO.Stream,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_UploadThemeFile_Microsoft_SharePoint_Client_Web_System_String_System_IO_Stream_System_String_" class="expander" data-toggle="collapse">UploadThemeFile(Web, String, Stream, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_UploadThemeFile_Microsoft_SharePoint_Client_Web_System_String_System_IO_Stream_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Uploads the specified file (usually an spcolor or spfont file) to the web site themes gallery
+(usually only exists in the root web of a site collection).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static File UploadThemeFile(this Web web, string fileName, Stream localStream, string themeFolderVersion = &quot;15&quot;)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Web site to upload to</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">fileName</span>
+        <p><p>Name of the file to upload</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></span>
+        <span class="parametername">localStream</span>
+        <p><p>Stream containing the contents of the file</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">themeFolderVersion</span>
+        <p><p>Leaf folder name to upload to; default is &quot;15&quot;</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.file">File</a>
+        <p><p>The uploaded file, with at least the ServerRelativeUrl property available</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_UploadThemeFile_Microsoft_SharePoint_Client_Web_System_String_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.UploadThemeFile(Microsoft.SharePoint.Client.Web%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L343" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_UploadThemeFile_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.UploadThemeFile*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_UploadThemeFile_Microsoft_SharePoint_Client_Web_System_String_System_String_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.UploadThemeFile(Microsoft.SharePoint.Client.Web,System.String,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_UploadThemeFile_Microsoft_SharePoint_Client_Web_System_String_System_String_" class="expander" data-toggle="collapse">UploadThemeFile(Web, String, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_UploadThemeFile_Microsoft_SharePoint_Client_Web_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Uploads the specified file (usually an spcolor or spfont file) to the web site themes gallery
+(usually only exists in the root web of a site collection).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static File UploadThemeFile(this Web web, string localFilePath, string themeFolderVersion = &quot;15&quot;)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Web site to upload to</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">localFilePath</span>
+        <p><p>Location of the file to be uploaded</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">themeFolderVersion</span>
+        <p><p>Leaf folder name to upload to; default is &quot;15&quot;</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.file">File</a>
+        <p><p>The uploaded file, with at least the ServerRelativeUrl property available</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_BrandingExtensions_UploadThemeFile_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.BrandingExtensions.UploadThemeFile(Microsoft.SharePoint.Client.Web%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/BrandingExtensions.cs/#L364" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_BrandingExtensions_UploadThemeFile_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.UploadThemeFile*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_BrandingExtensions_UploadThemeFile_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_" data-uid="Microsoft.SharePoint.Client.BrandingExtensions.UploadThemeFile(Microsoft.SharePoint.Client.Web,System.String,System.String,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_BrandingExtensions_UploadThemeFile_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_" class="expander" data-toggle="collapse">UploadThemeFile(Web, String, String, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_BrandingExtensions_UploadThemeFile_Microsoft_SharePoint_Client_Web_System_String_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Uploads the specified file (usually an spcolor or spfont file) to the web site themes gallery
+(usually only exists in the root web of a site collection).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static File UploadThemeFile(this Web web, string fileName, string localFilePath, string themeFolderVersion = &quot;15&quot;)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Web site to upload to</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">fileName</span>
+        <p><p>Name of the file to upload</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">localFilePath</span>
+        <p><p>Location of the file to be uploaded</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">themeFolderVersion</span>
+        <p><p>Leaf folder name to upload to; default is &quot;15&quot;</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.file">File</a>
+        <p><p>The uploaded file, with at least the ServerRelativeUrl property available</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

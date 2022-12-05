@@ -1,0 +1,948 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class TreeNode&lt;T&gt;
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class TreeNode&lt;T&gt;
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Diagnostics/Tree/TreeNode.cs/#L10" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Diagnostics_Tree_TreeNode_1.md&amp;value=---%0Auid%3A%20PnP.Framework.Diagnostics.Tree.TreeNode%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="PnP_Framework_Diagnostics_Tree_TreeNode_1" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1">Class TreeNode&lt;T&gt;
+  </h1>
+  <div class="markdown level0 summary"><p>Defnines methods for TreeNode</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">TreeNode&lt;T&gt;</span></div>
+  </div>
+  
+      <div class="level2"><a class="xref" href="PnP.Framework.Diagnostics.PnPMonitoredScope.html">PnPMonitoredScope</a></div>
+      <div class="level2"><a class="xref" href="PnP.Framework.Diagnostics.Tree.Tree-1.html">Tree&lt;T&gt;</a></div>
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="PnP.Framework.Diagnostics.Tree.html">PnP.Framework.Diagnostics.Tree</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="PnP_Framework_Diagnostics_Tree_TreeNode_1_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class TreeNode&lt;T&gt; : ITreeNode&lt;T&gt;, ITreeNode where T : new()</code></pre>
+  </div>
+  
+  
+  
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="parametername">T</span>
+        <p><p>Generic type</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Diagnostics_Tree_TreeNode_1__ctor.md&amp;value=---%0Auid%3A%20PnP.Framework.Diagnostics.Tree.TreeNode%601.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Diagnostics/Tree/TreeNode.cs/#L16" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Diagnostics_Tree_TreeNode_1__ctor_" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.#ctor*"></a>
+  
+  <h4 id="PnP_Framework_Diagnostics_Tree_TreeNode_1__ctor" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.#ctor"><a href="#collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1__ctor" class="expander" data-toggle="collapse">TreeNode()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1__ctor" class="collapse in">
+  <div class="markdown level1 summary"><p>Defalt Constructor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TreeNode()</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Diagnostics_Tree_TreeNode_1__ctor__0_.md&amp;value=---%0Auid%3A%20PnP.Framework.Diagnostics.Tree.TreeNode%601.%23ctor(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Diagnostics/Tree/TreeNode.cs/#L26" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Diagnostics_Tree_TreeNode_1__ctor_" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.#ctor*"></a>
+  
+  <h4 id="PnP_Framework_Diagnostics_Tree_TreeNode_1__ctor__0_" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.#ctor(`0)"><a href="#collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1__ctor__0_" class="expander" data-toggle="collapse">TreeNode(T)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1__ctor__0_" class="collapse in">
+  <div class="markdown level1 summary"><p>Constructor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TreeNode(T Value)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">T</span></span>
+        <span class="parametername">Value</span>
+        <p><p>Generic type value</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Diagnostics_Tree_TreeNode_1__ctor__0_PnP_Framework_Diagnostics_Tree_TreeNode__0__.md&amp;value=---%0Auid%3A%20PnP.Framework.Diagnostics.Tree.TreeNode%601.%23ctor(%600%2CPnP.Framework.Diagnostics.Tree.TreeNode%7B%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Diagnostics/Tree/TreeNode.cs/#L38" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Diagnostics_Tree_TreeNode_1__ctor_" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.#ctor*"></a>
+  
+  <h4 id="PnP_Framework_Diagnostics_Tree_TreeNode_1__ctor__0_PnP_Framework_Diagnostics_Tree_TreeNode__0__" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.#ctor(`0,PnP.Framework.Diagnostics.Tree.TreeNode{`0})"><a href="#collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1__ctor__0_PnP_Framework_Diagnostics_Tree_TreeNode__0__" class="expander" data-toggle="collapse">TreeNode(T, TreeNode&lt;T&gt;)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1__ctor__0_PnP_Framework_Diagnostics_Tree_TreeNode__0__" class="collapse in">
+  <div class="markdown level1 summary"><p>Constructor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TreeNode(T Value, TreeNode&lt;T&gt; Parent)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">T</span></span>
+        <span class="parametername">Value</span>
+        <p><p>Generic type value</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Diagnostics.Tree.TreeNode-1.html">TreeNode</a>&lt;T&gt;</span>
+        <span class="parametername">Parent</span>
+        <p><p>TreeNode</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Diagnostics_Tree_TreeNode_1_Ancestors.md&amp;value=---%0Auid%3A%20PnP.Framework.Diagnostics.Tree.TreeNode%601.Ancestors%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Diagnostics/Tree/TreeNode.cs/#L167" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Diagnostics_Tree_TreeNode_1_Ancestors_" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.Ancestors*"></a>
+  
+  <h4 id="PnP_Framework_Diagnostics_Tree_TreeNode_1_Ancestors" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.Ancestors"><a href="#collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1_Ancestors" class="expander" data-toggle="collapse">Ancestors</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1_Ancestors" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets list of ancestors</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;ITreeNode&gt; Ancestors { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="PnP.Framework.Diagnostics.Tree.ITreeNode.html">ITreeNode</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  <h5 class="implements">Implements</h5>
+      <div><a class="xref" href="PnP.Framework.Diagnostics.Tree.ITreeNode.html#PnP_Framework_Diagnostics_Tree_ITreeNode_Ancestors">ITreeNode.Ancestors</a></div>
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Diagnostics_Tree_TreeNode_1_ChildNodes.md&amp;value=---%0Auid%3A%20PnP.Framework.Diagnostics.Tree.TreeNode%601.ChildNodes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Diagnostics/Tree/TreeNode.cs/#L118" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Diagnostics_Tree_TreeNode_1_ChildNodes_" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.ChildNodes*"></a>
+  
+  <h4 id="PnP_Framework_Diagnostics_Tree_TreeNode_1_ChildNodes" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.ChildNodes"><a href="#collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1_ChildNodes" class="expander" data-toggle="collapse">ChildNodes</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1_ChildNodes" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets list of Child nodes</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;ITreeNode&gt; ChildNodes { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="PnP.Framework.Diagnostics.Tree.ITreeNode.html">ITreeNode</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  <h5 class="implements">Implements</h5>
+      <div><a class="xref" href="PnP.Framework.Diagnostics.Tree.ITreeNode.html#PnP_Framework_Diagnostics_Tree_ITreeNode_ChildNodes">ITreeNode.ChildNodes</a></div>
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Diagnostics_Tree_TreeNode_1_Children.md&amp;value=---%0Auid%3A%20PnP.Framework.Diagnostics.Tree.TreeNode%601.Children%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Diagnostics/Tree/TreeNode.cs/#L110" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Diagnostics_Tree_TreeNode_1_Children_" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.Children*"></a>
+  
+  <h4 id="PnP_Framework_Diagnostics_Tree_TreeNode_1_Children" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.Children"><a href="#collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1_Children" class="expander" data-toggle="collapse">Children</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1_Children" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets children node</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TreeNodeList&lt;T&gt; Children { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Diagnostics.Tree.TreeNodeList-1.html">TreeNodeList</a>&lt;T&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  <h5 class="implements">Implements</h5>
+      <div><a class="xref" href="PnP.Framework.Diagnostics.Tree.ITreeNode-1.html#PnP_Framework_Diagnostics_Tree_ITreeNode_1_Children">ITreeNode&lt;T&gt;.Children</a></div>
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Diagnostics_Tree_TreeNode_1_Depth.md&amp;value=---%0Auid%3A%20PnP.Framework.Diagnostics.Tree.TreeNode%601.Depth%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Diagnostics/Tree/TreeNode.cs/#L218" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Diagnostics_Tree_TreeNode_1_Depth_" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.Depth*"></a>
+  
+  <h4 id="PnP_Framework_Diagnostics_Tree_TreeNode_1_Depth" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.Depth"><a href="#collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1_Depth" class="expander" data-toggle="collapse">Depth</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1_Depth" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets depth of a tree</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Depth { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  <h5 class="implements">Implements</h5>
+      <div><a class="xref" href="PnP.Framework.Diagnostics.Tree.ITreeNode.html#PnP_Framework_Diagnostics_Tree_ITreeNode_Depth">ITreeNode.Depth</a></div>
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Diagnostics_Tree_TreeNode_1_Descendants.md&amp;value=---%0Auid%3A%20PnP.Framework.Diagnostics.Tree.TreeNode%601.Descendants%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Diagnostics/Tree/TreeNode.cs/#L132" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Diagnostics_Tree_TreeNode_1_Descendants_" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.Descendants*"></a>
+  
+  <h4 id="PnP_Framework_Diagnostics_Tree_TreeNode_1_Descendants" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.Descendants"><a href="#collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1_Descendants" class="expander" data-toggle="collapse">Descendants</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1_Descendants" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets list of descendants</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;ITreeNode&gt; Descendants { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="PnP.Framework.Diagnostics.Tree.ITreeNode.html">ITreeNode</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  <h5 class="implements">Implements</h5>
+      <div><a class="xref" href="PnP.Framework.Diagnostics.Tree.ITreeNode.html#PnP_Framework_Diagnostics_Tree_ITreeNode_Descendants">ITreeNode.Descendants</a></div>
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Diagnostics_Tree_TreeNode_1_Height.md&amp;value=---%0Auid%3A%20PnP.Framework.Diagnostics.Tree.TreeNode%601.Height%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Diagnostics/Tree/TreeNode.cs/#L186" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Diagnostics_Tree_TreeNode_1_Height_" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.Height*"></a>
+  
+  <h4 id="PnP_Framework_Diagnostics_Tree_TreeNode_1_Height" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.Height"><a href="#collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1_Height" class="expander" data-toggle="collapse">Height</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1_Height" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets height of a tree</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Height { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  <h5 class="implements">Implements</h5>
+      <div><a class="xref" href="PnP.Framework.Diagnostics.Tree.ITreeNode.html#PnP_Framework_Diagnostics_Tree_ITreeNode_Height">ITreeNode.Height</a></div>
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Diagnostics_Tree_TreeNode_1_Parent.md&amp;value=---%0Auid%3A%20PnP.Framework.Diagnostics.Tree.TreeNode%601.Parent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Diagnostics/Tree/TreeNode.cs/#L58" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Diagnostics_Tree_TreeNode_1_Parent_" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.Parent*"></a>
+  
+  <h4 id="PnP_Framework_Diagnostics_Tree_TreeNode_1_Parent" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.Parent"><a href="#collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1_Parent" class="expander" data-toggle="collapse">Parent</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1_Parent" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets or sets parent of a node</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ITreeNode&lt;T&gt; Parent { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Diagnostics.Tree.ITreeNode-1.html">ITreeNode</a>&lt;T&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  <h5 class="implements">Implements</h5>
+      <div><a class="xref" href="PnP.Framework.Diagnostics.Tree.ITreeNode-1.html#PnP_Framework_Diagnostics_Tree_ITreeNode_1_Parent">ITreeNode&lt;T&gt;.Parent</a></div>
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Diagnostics_Tree_TreeNode_1_ParentNode.md&amp;value=---%0Auid%3A%20PnP.Framework.Diagnostics.Tree.TreeNode%601.ParentNode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Diagnostics/Tree/TreeNode.cs/#L48" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Diagnostics_Tree_TreeNode_1_ParentNode_" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.ParentNode*"></a>
+  
+  <h4 id="PnP_Framework_Diagnostics_Tree_TreeNode_1_ParentNode" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.ParentNode"><a href="#collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1_ParentNode" class="expander" data-toggle="collapse">ParentNode</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1_ParentNode" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets parent node</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ITreeNode ParentNode { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Diagnostics.Tree.ITreeNode.html">ITreeNode</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  <h5 class="implements">Implements</h5>
+      <div><a class="xref" href="PnP.Framework.Diagnostics.Tree.ITreeNode.html#PnP_Framework_Diagnostics_Tree_ITreeNode_ParentNode">ITreeNode.ParentNode</a></div>
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Diagnostics_Tree_TreeNode_1_Root.md&amp;value=---%0Auid%3A%20PnP.Framework.Diagnostics.Tree.TreeNode%601.Root%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Diagnostics/Tree/TreeNode.cs/#L100" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Diagnostics_Tree_TreeNode_1_Root_" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.Root*"></a>
+  
+  <h4 id="PnP_Framework_Diagnostics_Tree_TreeNode_1_Root" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.Root"><a href="#collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1_Root" class="expander" data-toggle="collapse">Root</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1_Root" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets root node</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ITreeNode&lt;T&gt; Root { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Diagnostics.Tree.ITreeNode-1.html">ITreeNode</a>&lt;T&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  <h5 class="implements">Implements</h5>
+      <div><a class="xref" href="PnP.Framework.Diagnostics.Tree.ITreeNode-1.html#PnP_Framework_Diagnostics_Tree_ITreeNode_1_Root">ITreeNode&lt;T&gt;.Root</a></div>
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Diagnostics_Tree_TreeNode_1_Subtree.md&amp;value=---%0Auid%3A%20PnP.Framework.Diagnostics.Tree.TreeNode%601.Subtree%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Diagnostics/Tree/TreeNode.cs/#L151" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Diagnostics_Tree_TreeNode_1_Subtree_" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.Subtree*"></a>
+  
+  <h4 id="PnP_Framework_Diagnostics_Tree_TreeNode_1_Subtree" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.Subtree"><a href="#collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1_Subtree" class="expander" data-toggle="collapse">Subtree</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1_Subtree" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets sub tree nodes</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;ITreeNode&gt; Subtree { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="PnP.Framework.Diagnostics.Tree.ITreeNode.html">ITreeNode</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Diagnostics_Tree_TreeNode_1_Value.md&amp;value=---%0Auid%3A%20PnP.Framework.Diagnostics.Tree.TreeNode%601.Value%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Diagnostics/Tree/TreeNode.cs/#L196" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Diagnostics_Tree_TreeNode_1_Value_" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.Value*"></a>
+  
+  <h4 id="PnP_Framework_Diagnostics_Tree_TreeNode_1_Value" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.Value"><a href="#collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1_Value" class="expander" data-toggle="collapse">Value</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1_Value" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets or sets node value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T Value { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="xref">T</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  <h5 class="implements">Implements</h5>
+      <div><a class="xref" href="PnP.Framework.Diagnostics.Tree.ITreeNode-1.html#PnP_Framework_Diagnostics_Tree_ITreeNode_1_Value">ITreeNode&lt;T&gt;.Value</a></div>
+  
+  
+  
+  
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Diagnostics_Tree_TreeNode_1_SetParent_PnP_Framework_Diagnostics_Tree_ITreeNode__0__System_Boolean_.md&amp;value=---%0Auid%3A%20PnP.Framework.Diagnostics.Tree.TreeNode%601.SetParent(PnP.Framework.Diagnostics.Tree.ITreeNode%7B%600%7D%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Diagnostics/Tree/TreeNode.cs/#L69" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Diagnostics_Tree_TreeNode_1_SetParent_" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.SetParent*"></a>
+  
+  <h4 id="PnP_Framework_Diagnostics_Tree_TreeNode_1_SetParent_PnP_Framework_Diagnostics_Tree_ITreeNode__0__System_Boolean_" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.SetParent(PnP.Framework.Diagnostics.Tree.ITreeNode{`0},System.Boolean)"><a href="#collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1_SetParent_PnP_Framework_Diagnostics_Tree_ITreeNode__0__System_Boolean_" class="expander" data-toggle="collapse">SetParent(ITreeNode&lt;T&gt;, Boolean)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1_SetParent_PnP_Framework_Diagnostics_Tree_ITreeNode__0__System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Sets parent node</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetParent(ITreeNode&lt;T&gt; node, bool updateChildNodes = true)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Diagnostics.Tree.ITreeNode-1.html">ITreeNode</a>&lt;T&gt;</span>
+        <span class="parametername">node</span>
+        <p><p>Tree node to set as parent</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">updateChildNodes</span>
+        <p><p>Based on boolean value updates child nodes</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  <h5 class="implements">Implements</h5>
+      <div><a class="xref" href="PnP.Framework.Diagnostics.Tree.ITreeNode-1.html#PnP_Framework_Diagnostics_Tree_ITreeNode_1_SetParent_PnP_Framework_Diagnostics_Tree_ITreeNode__0__System_Boolean_">ITreeNode&lt;T&gt;.SetParent(ITreeNode&lt;T&gt;, Boolean)</a></div>
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Diagnostics_Tree_TreeNode_1_ToString.md&amp;value=---%0Auid%3A%20PnP.Framework.Diagnostics.Tree.TreeNode%601.ToString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Diagnostics/Tree/TreeNode.cs/#L283" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Diagnostics_Tree_TreeNode_1_ToString_" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.ToString*"></a>
+  
+  <h4 id="PnP_Framework_Diagnostics_Tree_TreeNode_1_ToString" data-uid="PnP.Framework.Diagnostics.Tree.TreeNode`1.ToString"><a href="#collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1_ToString" class="expander" data-toggle="collapse">ToString()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Diagnostics_Tree_TreeNode_1_ToString" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns comma seperated Depth, height and number of children of a tree as a string</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+  
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>Returns comma seperated Depth, height and number of children of a tree as a string</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a></div>
+  
+  
+  
+  
+  
+  </div>
+  
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="System.ValidationExtensions.html#System_ValidationExtensions_ValidateNotNullOrEmpty__1___0_System_String_">ValidationExtensions.ValidateNotNullOrEmpty&lt;T&gt;(T, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_Set__2___0_System_Linq_Expressions_Expression_System_Func___0___1_____1_System_Boolean_System_Boolean_">ObjectExtensions.Set&lt;TObject, T&gt;(TObject, Expression&lt;Func&lt;TObject, T&gt;&gt;, T, Boolean, Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstancePropertyValue_System_Object_System_String_">ObjectExtensions.GetPublicInstancePropertyValue(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstanceProperty_System_Object_System_String_">ObjectExtensions.GetPublicInstanceProperty(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_SetPublicInstancePropertyValue_System_Object_System_String_System_Object_">ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Modernization.Cache.Extensions.html#PnP_Framework_Modernization_Cache_Extensions_ToByteArray_System_Object_">Extensions.ToByteArray(Object)</a>
+  </div>
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

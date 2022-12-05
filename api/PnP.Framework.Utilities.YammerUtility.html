@@ -1,0 +1,957 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class YammerUtility
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class YammerUtility
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PnP.Framework.Utilities.YammerUtility">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/YammerUtility.cs/#L13" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_YammerUtility.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.YammerUtility%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="PnP_Framework_Utilities_YammerUtility" data-uid="PnP.Framework.Utilities.YammerUtility">Class YammerUtility
+  </h1>
+  <div class="markdown level0 summary"><p>Holds yammer operation methods</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">YammerUtility</span></div>
+  </div>
+  
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="PnP.Framework.Utilities.html">PnP.Framework.Utilities</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="PnP_Framework_Utilities_YammerUtility_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class YammerUtility</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_YammerUtility_CreateYammerDiscussionPartXml_System_String_System_Int32_System_Boolean_System_Boolean_System_Boolean_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.YammerUtility.CreateYammerDiscussionPartXml(System.String%2CSystem.Int32%2CSystem.Boolean%2CSystem.Boolean%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/YammerUtility.cs/#L164" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_YammerUtility_CreateYammerDiscussionPartXml_" data-uid="PnP.Framework.Utilities.YammerUtility.CreateYammerDiscussionPartXml*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_YammerUtility_CreateYammerDiscussionPartXml_System_String_System_Int32_System_Boolean_System_Boolean_System_Boolean_" data-uid="PnP.Framework.Utilities.YammerUtility.CreateYammerDiscussionPartXml(System.String,System.Int32,System.Boolean,System.Boolean,System.Boolean)"><a href="#collapsible-PnP_Framework_Utilities_YammerUtility_CreateYammerDiscussionPartXml_System_String_System_Int32_System_Boolean_System_Boolean_System_Boolean_" class="expander" data-toggle="collapse">CreateYammerDiscussionPartXml(String, Int32, Boolean, Boolean, Boolean)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_YammerUtility_CreateYammerDiscussionPartXml_System_String_System_Int32_System_Boolean_System_Boolean_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Constructs the webpart XML for yammer group needed to inject as Yammer web part to SharePoint page</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string CreateYammerDiscussionPartXml(string yammerNetworkName, int yammerGroupId, bool showHeader, bool showFooter, bool useSSO = true)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">yammerNetworkName</span>
+        <p><p>Yammer network name</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">yammerGroupId</span>
+        <p><p>Group ID</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">showHeader</span>
+        <p><p>Shows header based on value</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">showFooter</span>
+        <p><p>Shows footer based on value</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">useSSO</span>
+        <p><p>uses given Single Sign-on information to create webpart</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>The constructed web part XML</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_YammerUtility_CreateYammerGroup_System_String_System_Boolean_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.YammerUtility.CreateYammerGroup(System.String%2CSystem.Boolean%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/YammerUtility.cs/#L100" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_YammerUtility_CreateYammerGroup_" data-uid="PnP.Framework.Utilities.YammerUtility.CreateYammerGroup*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_YammerUtility_CreateYammerGroup_System_String_System_Boolean_System_String_" data-uid="PnP.Framework.Utilities.YammerUtility.CreateYammerGroup(System.String,System.Boolean,System.String)"><a href="#collapsible-PnP_Framework_Utilities_YammerUtility_CreateYammerGroup_System_String_System_Boolean_System_String_" class="expander" data-toggle="collapse">CreateYammerGroup(String, Boolean, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_YammerUtility_CreateYammerGroup_System_String_System_Boolean_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Can be used to create Yammer group to the Yammer network</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static YammerGroup CreateYammerGroup(string groupName, bool isPrivate, string accessToken)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupName</span>
+        <p><p>Creates yammer group with given name</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">isPrivate</span>
+        <p><p>Sets yammer groups as private if the value is true. Otherwise sets as public group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>accessToken will have all the required permissions to update or retrieve data to Yammer on behalf of the user</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Entities.YammerGroup.html">YammerGroup</a>
+        <p><p>Returns YammerGroup created</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_YammerUtility_CreateYammerGroupDiscussionPartXml_System_String_System_Int32_System_Boolean_System_Boolean_System_Boolean_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.YammerUtility.CreateYammerGroupDiscussionPartXml(System.String%2CSystem.Int32%2CSystem.Boolean%2CSystem.Boolean%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/YammerUtility.cs/#L178" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_YammerUtility_CreateYammerGroupDiscussionPartXml_" data-uid="PnP.Framework.Utilities.YammerUtility.CreateYammerGroupDiscussionPartXml*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_YammerUtility_CreateYammerGroupDiscussionPartXml_System_String_System_Int32_System_Boolean_System_Boolean_System_Boolean_" data-uid="PnP.Framework.Utilities.YammerUtility.CreateYammerGroupDiscussionPartXml(System.String,System.Int32,System.Boolean,System.Boolean,System.Boolean)"><a href="#collapsible-PnP_Framework_Utilities_YammerUtility_CreateYammerGroupDiscussionPartXml_System_String_System_Int32_System_Boolean_System_Boolean_System_Boolean_" class="expander" data-toggle="collapse">CreateYammerGroupDiscussionPartXml(String, Int32, Boolean, Boolean, Boolean)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_YammerUtility_CreateYammerGroupDiscussionPartXml_System_String_System_Int32_System_Boolean_System_Boolean_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Constructs the webpart XML for yammer group needed to inject as Yammer web part to SharePoint page</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string CreateYammerGroupDiscussionPartXml(string yammerNetworkName, int yammerGroupId, bool showHeader, bool showFooter, bool useSSO = true)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">yammerNetworkName</span>
+        <p><p>Yammer network name</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">yammerGroupId</span>
+        <p><p>Group ID</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">showHeader</span>
+        <p><p>Shows header based on value</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">showFooter</span>
+        <p><p>Shows footer based on value</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">useSSO</span>
+        <p><p>uses given Single Sign-on information to create webpart</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>The constructed web part XML</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_YammerUtility_CreateYammerOpenGraphDiscussionPartXml_System_String_System_String_System_Boolean_System_Boolean_System_String_System_String_System_Boolean_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.YammerUtility.CreateYammerOpenGraphDiscussionPartXml(System.String%2CSystem.String%2CSystem.Boolean%2CSystem.Boolean%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/YammerUtility.cs/#L225" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_YammerUtility_CreateYammerOpenGraphDiscussionPartXml_" data-uid="PnP.Framework.Utilities.YammerUtility.CreateYammerOpenGraphDiscussionPartXml*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_YammerUtility_CreateYammerOpenGraphDiscussionPartXml_System_String_System_String_System_Boolean_System_Boolean_System_String_System_String_System_Boolean_System_String_" data-uid="PnP.Framework.Utilities.YammerUtility.CreateYammerOpenGraphDiscussionPartXml(System.String,System.String,System.Boolean,System.Boolean,System.String,System.String,System.Boolean,System.String)"><a href="#collapsible-PnP_Framework_Utilities_YammerUtility_CreateYammerOpenGraphDiscussionPartXml_System_String_System_String_System_Boolean_System_Boolean_System_String_System_String_System_Boolean_System_String_" class="expander" data-toggle="collapse">CreateYammerOpenGraphDiscussionPartXml(String, String, Boolean, Boolean, String, String, Boolean, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_YammerUtility_CreateYammerOpenGraphDiscussionPartXml_System_String_System_String_System_Boolean_System_Boolean_System_String_System_String_System_Boolean_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Constructs web part definition for Open Graph discussion web part definition</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string CreateYammerOpenGraphDiscussionPartXml(string yammerNetworkName, string url, bool showHeader, bool showFooter, string postTitle = &quot;&quot;, string postImageUrl = &quot;&quot;, bool useSso = true, string groupId = &quot;&quot;)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">yammerNetworkName</span>
+        <p><p>Yammer network name</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">url</span>
+        <p><p>Yammer URL</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">showHeader</span>
+        <p><p>Shows header based on value</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">showFooter</span>
+        <p><p>Shows footer based on value</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">postTitle</span>
+        <p><p>creates webpart with given post title</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">postImageUrl</span>
+        <p><p>creates webpart with given post title</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">useSso</span>
+        <p><p>uses given Single Sign-on information to create webpart</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>yammer group id</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>The constructed Open Graph Discussion Part XML</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_YammerUtility_GetYammerGroupById_System_Int32_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.YammerUtility.GetYammerGroupById(System.Int32%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/YammerUtility.cs/#L42" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_YammerUtility_GetYammerGroupById_" data-uid="PnP.Framework.Utilities.YammerUtility.GetYammerGroupById*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_YammerUtility_GetYammerGroupById_System_Int32_System_String_" data-uid="PnP.Framework.Utilities.YammerUtility.GetYammerGroupById(System.Int32,System.String)"><a href="#collapsible-PnP_Framework_Utilities_YammerUtility_GetYammerGroupById_System_Int32_System_String_" class="expander" data-toggle="collapse">GetYammerGroupById(Int32, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_YammerUtility_GetYammerGroupById_System_Int32_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns Yammer Group if group exists. If the group does not exist, returns null.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static YammerGroup GetYammerGroupById(int groupId, string accessToken)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>Group Id to search for</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>accessToken will have all the required permissions to update or retrieve data to Yammer on behalf of the user</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Entities.YammerGroup.html">YammerGroup</a>
+        <p><p>Returns Yammer Group is group exists. If group does not exists, returns null.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_YammerUtility_GetYammerGroupByName_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.YammerUtility.GetYammerGroupByName(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/YammerUtility.cs/#L21" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_YammerUtility_GetYammerGroupByName_" data-uid="PnP.Framework.Utilities.YammerUtility.GetYammerGroupByName*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_YammerUtility_GetYammerGroupByName_System_String_System_String_" data-uid="PnP.Framework.Utilities.YammerUtility.GetYammerGroupByName(System.String,System.String)"><a href="#collapsible-PnP_Framework_Utilities_YammerUtility_GetYammerGroupByName_System_String_System_String_" class="expander" data-toggle="collapse">GetYammerGroupByName(String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_YammerUtility_GetYammerGroupByName_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns Yammer Group if group exists. If the group does not exist, returns null.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static YammerGroup GetYammerGroupByName(string groupName, string accessToken)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupName</span>
+        <p><p>Group name to search for</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>accessToken will have all the required permissions to update or retrieve data to Yammer on behalf of the user</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Entities.YammerGroup.html">YammerGroup</a>
+        <p><p>Returns Yammer Group is group exists. If group does not exists, returns null.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_YammerUtility_GetYammerGroupDiscussionPart_System_String_System_Int32_System_Boolean_System_Boolean_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.YammerUtility.GetYammerGroupDiscussionPart(System.String%2CSystem.Int32%2CSystem.Boolean%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/YammerUtility.cs/#L122" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_YammerUtility_GetYammerGroupDiscussionPart_" data-uid="PnP.Framework.Utilities.YammerUtility.GetYammerGroupDiscussionPart*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_YammerUtility_GetYammerGroupDiscussionPart_System_String_System_Int32_System_Boolean_System_Boolean_" data-uid="PnP.Framework.Utilities.YammerUtility.GetYammerGroupDiscussionPart(System.String,System.Int32,System.Boolean,System.Boolean)"><a href="#collapsible-PnP_Framework_Utilities_YammerUtility_GetYammerGroupDiscussionPart_System_String_System_Int32_System_Boolean_System_Boolean_" class="expander" data-toggle="collapse">GetYammerGroupDiscussionPart(String, Int32, Boolean, Boolean)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_YammerUtility_GetYammerGroupDiscussionPart_System_String_System_Int32_System_Boolean_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Creates web part entity with the Yammer group structure on it</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static WebPartEntity GetYammerGroupDiscussionPart(string yammerNetworkName, int yammerGroupId, bool showHeader, bool showFooter)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">yammerNetworkName</span>
+        <p><p>Yammer group network name</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">yammerGroupId</span>
+        <p><p>Yammer group id</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">showHeader</span>
+        <p><p>Shows header of webpart based on the value</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">showFooter</span>
+        <p><p>Shows footer of webpart based on value</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Entities.WebPartEntity.html">WebPartEntity</a>
+        <p><p>Returns created WebPartEntity</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_YammerUtility_GetYammerGroups_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.YammerUtility.GetYammerGroups(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/YammerUtility.cs/#L62" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_YammerUtility_GetYammerGroups_" data-uid="PnP.Framework.Utilities.YammerUtility.GetYammerGroups*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_YammerUtility_GetYammerGroups_System_String_" data-uid="PnP.Framework.Utilities.YammerUtility.GetYammerGroups(System.String)"><a href="#collapsible-PnP_Framework_Utilities_YammerUtility_GetYammerGroups_System_String_" class="expander" data-toggle="collapse">GetYammerGroups(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_YammerUtility_GetYammerGroups_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns Yammer groups based on the access token. All groups are returned for registered apps.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;YammerGroup&gt; GetYammerGroups(string accessToken)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>accessToken will have all the required permissions to update or retrieve data to Yammer on behalf of the user</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="PnP.Framework.Entities.YammerGroup.html">YammerGroup</a>&gt;
+        <p><p>All groups in the network</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_YammerUtility_GetYammerOpenGraphDiscussionPart_System_String_System_String_System_Boolean_System_Boolean_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.YammerUtility.GetYammerOpenGraphDiscussionPart(System.String%2CSystem.String%2CSystem.Boolean%2CSystem.Boolean%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/YammerUtility.cs/#L144" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_YammerUtility_GetYammerOpenGraphDiscussionPart_" data-uid="PnP.Framework.Utilities.YammerUtility.GetYammerOpenGraphDiscussionPart*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_YammerUtility_GetYammerOpenGraphDiscussionPart_System_String_System_String_System_Boolean_System_Boolean_System_String_System_String_System_String_" data-uid="PnP.Framework.Utilities.YammerUtility.GetYammerOpenGraphDiscussionPart(System.String,System.String,System.Boolean,System.Boolean,System.String,System.String,System.String)"><a href="#collapsible-PnP_Framework_Utilities_YammerUtility_GetYammerOpenGraphDiscussionPart_System_String_System_String_System_Boolean_System_Boolean_System_String_System_String_System_String_" class="expander" data-toggle="collapse">GetYammerOpenGraphDiscussionPart(String, String, Boolean, Boolean, String, String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_YammerUtility_GetYammerOpenGraphDiscussionPart_System_String_System_String_System_Boolean_System_Boolean_System_String_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Creates web part entity with the Yammer OpenGraph structure on it for specific URL</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static WebPartEntity GetYammerOpenGraphDiscussionPart(string yammerNetworkName, string url, bool showHeader, bool showFooter, string postTitle = &quot;&quot;, string postImageUrl = &quot;&quot;, string defaultGroupId = &quot;&quot;)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">yammerNetworkName</span>
+        <p><p>Yammer network name</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">url</span>
+        <p><p>yammer URL</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">showHeader</span>
+        <p><p>Shows header based on value</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">showFooter</span>
+        <p><p>Shows footer based on value</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">postTitle</span>
+        <p><p>creates webpart with given post title</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">postImageUrl</span>
+        <p><p>creates webpart with given post title</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">defaultGroupId</span>
+        <p><p>creates webpart with givne group id</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Entities.WebPartEntity.html">WebPartEntity</a>
+        <p><p>Returns created WebPartEntity</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_YammerUtility_GetYammerUser_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.YammerUtility.GetYammerUser(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/YammerUtility.cs/#L86" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_YammerUtility_GetYammerUser_" data-uid="PnP.Framework.Utilities.YammerUtility.GetYammerUser*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_YammerUtility_GetYammerUser_System_String_" data-uid="PnP.Framework.Utilities.YammerUtility.GetYammerUser(System.String)"><a href="#collapsible-PnP_Framework_Utilities_YammerUtility_GetYammerUser_System_String_" class="expander" data-toggle="collapse">GetYammerUser(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_YammerUtility_GetYammerUser_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns yammer user if user exists. If the user doesn't exist, returns null</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static YammerUser GetYammerUser(string accessToken)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>accessToken will have all the required permissions to update or retrieve data to Yammer on behalf of the user</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Entities.YammerUser.html">YammerUser</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

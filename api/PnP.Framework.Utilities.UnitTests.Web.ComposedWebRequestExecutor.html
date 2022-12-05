@@ -1,0 +1,820 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ComposedWebRequestExecutor
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ComposedWebRequestExecutor
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UnitTests/Web/ComposedWebRequestExecutor.cs/#L11" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor">Class ComposedWebRequestExecutor
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">Microsoft.SharePoint.Client.WebRequestExecutor</span></div>
+    <div class="level2"><span class="xref">ComposedWebRequestExecutor</span></div>
+  </div>
+  
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">Microsoft.SharePoint.Client.WebRequestExecutor.ExecuteAsync()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.SharePoint.Client.WebRequestExecutor.Dispose()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="PnP.Framework.Utilities.UnitTests.Web.html">PnP.Framework.Utilities.UnitTests.Web</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ComposedWebRequestExecutor : WebRequestExecutor, IDisposable</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor__ctor_Microsoft_SharePoint_Client_WebRequestExecutor_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.%23ctor(Microsoft.SharePoint.Client.WebRequestExecutor)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UnitTests/Web/ComposedWebRequestExecutor.cs/#L83" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor__ctor_" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.#ctor*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor__ctor_Microsoft_SharePoint_Client_WebRequestExecutor_" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.#ctor(Microsoft.SharePoint.Client.WebRequestExecutor)"><a href="#collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor__ctor_Microsoft_SharePoint_Client_WebRequestExecutor_" class="expander" data-toggle="collapse">ComposedWebRequestExecutor(WebRequestExecutor)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor__ctor_Microsoft_SharePoint_Client_WebRequestExecutor_" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ComposedWebRequestExecutor(WebRequestExecutor executor)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">Microsoft.SharePoint.Client.WebRequestExecutor</span></span>
+        <span class="parametername">executor</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_Executor.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.Executor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UnitTests/Web/ComposedWebRequestExecutor.cs/#L13" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_Executor_" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.Executor*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_Executor" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.Executor"><a href="#collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_Executor" class="expander" data-toggle="collapse">Executor</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_Executor" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WebRequestExecutor Executor { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="xref">Microsoft.SharePoint.Client.WebRequestExecutor</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_RequestContentType.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.RequestContentType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UnitTests/Web/ComposedWebRequestExecutor.cs/#L14" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_RequestContentType_" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.RequestContentType*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_RequestContentType" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.RequestContentType"><a href="#collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_RequestContentType" class="expander" data-toggle="collapse">RequestContentType</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_RequestContentType" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string RequestContentType { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Microsoft.SharePoint.Client.WebRequestExecutor.RequestContentType</span></div>
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_RequestHeaders.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.RequestHeaders%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UnitTests/Web/ComposedWebRequestExecutor.cs/#L26" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_RequestHeaders_" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.RequestHeaders*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_RequestHeaders" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.RequestHeaders"><a href="#collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_RequestHeaders" class="expander" data-toggle="collapse">RequestHeaders</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_RequestHeaders" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override WebHeaderCollection RequestHeaders { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.webheadercollection">WebHeaderCollection</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Microsoft.SharePoint.Client.WebRequestExecutor.RequestHeaders</span></div>
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_RequestKeepAlive.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.RequestKeepAlive%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UnitTests/Web/ComposedWebRequestExecutor.cs/#L45" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_RequestKeepAlive_" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.RequestKeepAlive*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_RequestKeepAlive" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.RequestKeepAlive"><a href="#collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_RequestKeepAlive" class="expander" data-toggle="collapse">RequestKeepAlive</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_RequestKeepAlive" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool RequestKeepAlive { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Microsoft.SharePoint.Client.WebRequestExecutor.RequestKeepAlive</span></div>
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_RequestMethod.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.RequestMethod%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UnitTests/Web/ComposedWebRequestExecutor.cs/#L34" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_RequestMethod_" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.RequestMethod*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_RequestMethod" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.RequestMethod"><a href="#collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_RequestMethod" class="expander" data-toggle="collapse">RequestMethod</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_RequestMethod" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string RequestMethod { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Microsoft.SharePoint.Client.WebRequestExecutor.RequestMethod</span></div>
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_ResponseContentType.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.ResponseContentType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UnitTests/Web/ComposedWebRequestExecutor.cs/#L65" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_ResponseContentType_" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.ResponseContentType*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_ResponseContentType" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.ResponseContentType"><a href="#collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_ResponseContentType" class="expander" data-toggle="collapse">ResponseContentType</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_ResponseContentType" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ResponseContentType { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Microsoft.SharePoint.Client.WebRequestExecutor.ResponseContentType</span></div>
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_ResponseHeaders.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.ResponseHeaders%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UnitTests/Web/ComposedWebRequestExecutor.cs/#L73" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_ResponseHeaders_" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.ResponseHeaders*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_ResponseHeaders" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.ResponseHeaders"><a href="#collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_ResponseHeaders" class="expander" data-toggle="collapse">ResponseHeaders</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_ResponseHeaders" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override WebHeaderCollection ResponseHeaders { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.webheadercollection">WebHeaderCollection</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Microsoft.SharePoint.Client.WebRequestExecutor.ResponseHeaders</span></div>
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_StatusCode.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.StatusCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UnitTests/Web/ComposedWebRequestExecutor.cs/#L57" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_StatusCode_" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.StatusCode*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_StatusCode" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.StatusCode"><a href="#collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_StatusCode" class="expander" data-toggle="collapse">StatusCode</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_StatusCode" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override HttpStatusCode StatusCode { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.httpstatuscode">HttpStatusCode</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Microsoft.SharePoint.Client.WebRequestExecutor.StatusCode</span></div>
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_WebRequest.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.WebRequest%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UnitTests/Web/ComposedWebRequestExecutor.cs/#L92" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_WebRequest_" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.WebRequest*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_WebRequest" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.WebRequest"><a href="#collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_WebRequest" class="expander" data-toggle="collapse">WebRequest</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_WebRequest" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override HttpWebRequest WebRequest { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.httpwebrequest">HttpWebRequest</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Microsoft.SharePoint.Client.WebRequestExecutor.WebRequest</span></div>
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_Execute.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.Execute%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UnitTests/Web/ComposedWebRequestExecutor.cs/#L110" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_Execute_" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.Execute*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_Execute" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.Execute"><a href="#collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_Execute" class="expander" data-toggle="collapse">Execute()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_Execute" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Execute()</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Microsoft.SharePoint.Client.WebRequestExecutor.Execute()</span></div>
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_GetRequestStream.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.GetRequestStream%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UnitTests/Web/ComposedWebRequestExecutor.cs/#L88" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_GetRequestStream_" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.GetRequestStream*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_GetRequestStream" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.GetRequestStream"><a href="#collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_GetRequestStream" class="expander" data-toggle="collapse">GetRequestStream()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_GetRequestStream" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Stream GetRequestStream()</code></pre>
+  </div>
+  
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Microsoft.SharePoint.Client.WebRequestExecutor.GetRequestStream()</span></div>
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_GetResponseStream.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.GetResponseStream%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UnitTests/Web/ComposedWebRequestExecutor.cs/#L137" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_GetResponseStream_" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.GetResponseStream*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_GetResponseStream" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.GetResponseStream"><a href="#collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_GetResponseStream" class="expander" data-toggle="collapse">GetResponseStream()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_GetResponseStream" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Stream GetResponseStream()</code></pre>
+  </div>
+  
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Microsoft.SharePoint.Client.WebRequestExecutor.GetResponseStream()</span></div>
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="events">Events
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_OnRequestExecuted.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.OnRequestExecuted%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UnitTests/Web/ComposedWebRequestExecutor.cs/#L81" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_OnRequestExecuted" data-uid="PnP.Framework.Utilities.UnitTests.Web.ComposedWebRequestExecutor.OnRequestExecuted"><a href="#collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_OnRequestExecuted" class="expander" data-toggle="collapse">OnRequestExecuted</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_UnitTests_Web_ComposedWebRequestExecutor_OnRequestExecuted" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;RequestExecutedArgs&gt; OnRequestExecuted</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  
+  <h5 class="eventType">Event Type</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventhandler-1">EventHandler</a>&lt;<a class="xref" href="PnP.Framework.Utilities.UnitTests.Model.RequestExecutedArgs.html">RequestExecutedArgs</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="System.ValidationExtensions.html#System_ValidationExtensions_ValidateNotNullOrEmpty__1___0_System_String_">ValidationExtensions.ValidateNotNullOrEmpty&lt;T&gt;(T, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_Set__2___0_System_Linq_Expressions_Expression_System_Func___0___1_____1_System_Boolean_System_Boolean_">ObjectExtensions.Set&lt;TObject, T&gt;(TObject, Expression&lt;Func&lt;TObject, T&gt;&gt;, T, Boolean, Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstancePropertyValue_System_Object_System_String_">ObjectExtensions.GetPublicInstancePropertyValue(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstanceProperty_System_Object_System_String_">ObjectExtensions.GetPublicInstanceProperty(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_SetPublicInstancePropertyValue_System_Object_System_String_System_Object_">ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Modernization.Cache.Extensions.html#PnP_Framework_Modernization_Cache_Extensions_ToByteArray_System_Object_">Extensions.ToByteArray(Object)</a>
+  </div>
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

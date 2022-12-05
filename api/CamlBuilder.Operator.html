@@ -1,0 +1,2076 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Operator
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Operator
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="CamlBuilder.Operator">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L11" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="CamlBuilder_Operator" data-uid="CamlBuilder.Operator">Class Operator
+  </h1>
+  <div class="markdown level0 summary"><p>Defines a CAML operator. This is an abstract class. To instanciate an operator use public static methods.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><a class="xref" href="CamlBuilder.Statement.html">Statement</a></div>
+    <div class="level2"><span class="xref">Operator</span></div>
+  </div>
+  
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="CamlBuilder.Statement.html#CamlBuilder_Statement_GetCaml">Statement.GetCaml()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="CamlBuilder.html">CamlBuilder</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="CamlBuilder_Operator_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class Operator : Statement</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator__ctor_CamlBuilder_OperatorType_CamlBuilder_FieldReference_.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.%23ctor(CamlBuilder.OperatorType%2CCamlBuilder.FieldReference)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L26" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator__ctor_" data-uid="CamlBuilder.Operator.#ctor*"></a>
+  
+  <h4 id="CamlBuilder_Operator__ctor_CamlBuilder_OperatorType_CamlBuilder_FieldReference_" data-uid="CamlBuilder.Operator.#ctor(CamlBuilder.OperatorType,CamlBuilder.FieldReference)"><a href="#collapsible-CamlBuilder_Operator__ctor_CamlBuilder_OperatorType_CamlBuilder_FieldReference_" class="expander" data-toggle="collapse">Operator(OperatorType, FieldReference)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator__ctor_CamlBuilder_OperatorType_CamlBuilder_FieldReference_" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Operator(OperatorType operatorType, FieldReference fieldRef)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.OperatorType.html">OperatorType</a></span>
+        <span class="parametername">operatorType</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a></span>
+        <span class="parametername">fieldRef</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_FieldReference.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.FieldReference%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L24" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_FieldReference_" data-uid="CamlBuilder.Operator.FieldReference*"></a>
+  
+  <h4 id="CamlBuilder_Operator_FieldReference" data-uid="CamlBuilder.Operator.FieldReference"><a href="#collapsible-CamlBuilder_Operator_FieldReference" class="expander" data-toggle="collapse">FieldReference</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_FieldReference" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets the name of the field on which this operator acts on.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FieldReference FieldReference { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_OperatorType.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.OperatorType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L19" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_OperatorType_" data-uid="CamlBuilder.Operator.OperatorType*"></a>
+  
+  <h4 id="CamlBuilder_Operator_OperatorType" data-uid="CamlBuilder.Operator.OperatorType"><a href="#collapsible-CamlBuilder_Operator_OperatorType" class="expander" data-toggle="collapse">OperatorType</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_OperatorType" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets the operator type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public OperatorType OperatorType { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.OperatorType.html">OperatorType</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_BeginsWith_CamlBuilder_FieldReference_CamlBuilder_Value_.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.BeginsWith(CamlBuilder.FieldReference%2CCamlBuilder.Value)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L153" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_BeginsWith_" data-uid="CamlBuilder.Operator.BeginsWith*"></a>
+  
+  <h4 id="CamlBuilder_Operator_BeginsWith_CamlBuilder_FieldReference_CamlBuilder_Value_" data-uid="CamlBuilder.Operator.BeginsWith(CamlBuilder.FieldReference,CamlBuilder.Value)"><a href="#collapsible-CamlBuilder_Operator_BeginsWith_CamlBuilder_FieldReference_CamlBuilder_Value_" class="expander" data-toggle="collapse">BeginsWith(FieldReference, Value)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_BeginsWith_CamlBuilder_FieldReference_CamlBuilder_Value_" class="collapse in">
+  <div class="markdown level1 summary"><p>Instanciates a new <em>BeginsWith</em> operator which will perform on specified <code data-dev-comment-type="paramref" class="paramref">fieldRef</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Operator BeginsWith(FieldReference fieldRef, Value value)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a></span>
+        <span class="parametername">fieldRef</span>
+        <p><p>Reference to the field to operate on.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.Value.html">Value</a></span>
+        <span class="parametername">value</span>
+        <p><p>Value against which the value returned by the field element is compared to.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.Operator.html">Operator</a>
+        <p><p>BeginsWith operator instance.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_BeginsWith_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.BeginsWith(CamlBuilder.FieldReference%2CCamlBuilder.ValueType%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L142" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_BeginsWith_" data-uid="CamlBuilder.Operator.BeginsWith*"></a>
+  
+  <h4 id="CamlBuilder_Operator_BeginsWith_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" data-uid="CamlBuilder.Operator.BeginsWith(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)"><a href="#collapsible-CamlBuilder_Operator_BeginsWith_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" class="expander" data-toggle="collapse">BeginsWith(FieldReference, ValueType, Object)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_BeginsWith_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" class="collapse in">
+  <div class="markdown level1 summary"><p>Instanciates a new <em>BeginsWith</em> operator which will perform on specified <code data-dev-comment-type="paramref" class="paramref">fieldRef</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Operator BeginsWith(FieldReference fieldRef, ValueType valueType, object value)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a></span>
+        <span class="parametername">fieldRef</span>
+        <p><p>Reference to the field to operate on.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.ValueType.html">ValueType</a></span>
+        <span class="parametername">valueType</span>
+        <p><p>Field type</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></span>
+        <span class="parametername">value</span>
+        <p><p>Value against which the value returned by the field element is compared to.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.Operator.html">Operator</a>
+        <p><p>BeginsWith operator instance.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_Contains_CamlBuilder_FieldReference_CamlBuilder_Value_.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.Contains(CamlBuilder.FieldReference%2CCamlBuilder.Value)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L176" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_Contains_" data-uid="CamlBuilder.Operator.Contains*"></a>
+  
+  <h4 id="CamlBuilder_Operator_Contains_CamlBuilder_FieldReference_CamlBuilder_Value_" data-uid="CamlBuilder.Operator.Contains(CamlBuilder.FieldReference,CamlBuilder.Value)"><a href="#collapsible-CamlBuilder_Operator_Contains_CamlBuilder_FieldReference_CamlBuilder_Value_" class="expander" data-toggle="collapse">Contains(FieldReference, Value)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_Contains_CamlBuilder_FieldReference_CamlBuilder_Value_" class="collapse in">
+  <div class="markdown level1 summary"><p>Instanciates a new <em>Contains</em> operator which will perform on specified <code data-dev-comment-type="paramref" class="paramref">fieldRef</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Operator Contains(FieldReference fieldRef, Value value)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a></span>
+        <span class="parametername">fieldRef</span>
+        <p><p>Reference to the field to operate on.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.Value.html">Value</a></span>
+        <span class="parametername">value</span>
+        <p><p>Value against which the value returned by the field element is compared to.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.Operator.html">Operator</a>
+        <p><p>Contains operator instance.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_Contains_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.Contains(CamlBuilder.FieldReference%2CCamlBuilder.ValueType%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L165" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_Contains_" data-uid="CamlBuilder.Operator.Contains*"></a>
+  
+  <h4 id="CamlBuilder_Operator_Contains_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" data-uid="CamlBuilder.Operator.Contains(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)"><a href="#collapsible-CamlBuilder_Operator_Contains_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" class="expander" data-toggle="collapse">Contains(FieldReference, ValueType, Object)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_Contains_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" class="collapse in">
+  <div class="markdown level1 summary"><p>Instanciates a new <em>Contains</em> operator which will perform on specified <code data-dev-comment-type="paramref" class="paramref">fieldRef</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Operator Contains(FieldReference fieldRef, ValueType valueType, object value)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a></span>
+        <span class="parametername">fieldRef</span>
+        <p><p>Reference to the field to operate on.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.ValueType.html">ValueType</a></span>
+        <span class="parametername">valueType</span>
+        <p><p>Field type</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></span>
+        <span class="parametername">value</span>
+        <p><p>Value against which the value returned by the field element is compared to.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.Operator.html">Operator</a>
+        <p><p>Contains operator instance.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_DateRangesOverlap_CamlBuilder_FieldReference_CamlBuilder_Value_.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.DateRangesOverlap(CamlBuilder.FieldReference%2CCamlBuilder.Value)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L199" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_DateRangesOverlap_" data-uid="CamlBuilder.Operator.DateRangesOverlap*"></a>
+  
+  <h4 id="CamlBuilder_Operator_DateRangesOverlap_CamlBuilder_FieldReference_CamlBuilder_Value_" data-uid="CamlBuilder.Operator.DateRangesOverlap(CamlBuilder.FieldReference,CamlBuilder.Value)"><a href="#collapsible-CamlBuilder_Operator_DateRangesOverlap_CamlBuilder_FieldReference_CamlBuilder_Value_" class="expander" data-toggle="collapse">DateRangesOverlap(FieldReference, Value)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_DateRangesOverlap_CamlBuilder_FieldReference_CamlBuilder_Value_" class="collapse in">
+  <div class="markdown level1 summary"><p>Instanciates a new <em>DateRangesOverlap</em> operator which will perform on specified <code data-dev-comment-type="paramref" class="paramref">fieldRef</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Operator DateRangesOverlap(FieldReference fieldRef, Value value)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a></span>
+        <span class="parametername">fieldRef</span>
+        <p><p>Reference to the field to operate on.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.Value.html">Value</a></span>
+        <span class="parametername">value</span>
+        <p><p>Value against which the value returned by the field element is compared to.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.Operator.html">Operator</a>
+        <p><p>DateRangesOverlap operator instance.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_DateRangesOverlap_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.DateRangesOverlap(CamlBuilder.FieldReference%2CCamlBuilder.ValueType%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L188" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_DateRangesOverlap_" data-uid="CamlBuilder.Operator.DateRangesOverlap*"></a>
+  
+  <h4 id="CamlBuilder_Operator_DateRangesOverlap_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" data-uid="CamlBuilder.Operator.DateRangesOverlap(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)"><a href="#collapsible-CamlBuilder_Operator_DateRangesOverlap_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" class="expander" data-toggle="collapse">DateRangesOverlap(FieldReference, ValueType, Object)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_DateRangesOverlap_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" class="collapse in">
+  <div class="markdown level1 summary"><p>Instanciates a new <em>DateRangesOverlap</em> operator which will perform on specified <code data-dev-comment-type="paramref" class="paramref">fieldRef</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Operator DateRangesOverlap(FieldReference fieldRef, ValueType valueType, object value)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a></span>
+        <span class="parametername">fieldRef</span>
+        <p><p>Reference to the field to operate on.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.ValueType.html">ValueType</a></span>
+        <span class="parametername">valueType</span>
+        <p><p>Field type</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></span>
+        <span class="parametername">value</span>
+        <p><p>Value against which the value returned by the field element is compared to.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.Operator.html">Operator</a>
+        <p><p>DateRangesOverlap operator instance.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_Equal_CamlBuilder_FieldReference_CamlBuilder_Value_.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.Equal(CamlBuilder.FieldReference%2CCamlBuilder.Value)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L107" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_Equal_" data-uid="CamlBuilder.Operator.Equal*"></a>
+  
+  <h4 id="CamlBuilder_Operator_Equal_CamlBuilder_FieldReference_CamlBuilder_Value_" data-uid="CamlBuilder.Operator.Equal(CamlBuilder.FieldReference,CamlBuilder.Value)"><a href="#collapsible-CamlBuilder_Operator_Equal_CamlBuilder_FieldReference_CamlBuilder_Value_" class="expander" data-toggle="collapse">Equal(FieldReference, Value)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_Equal_CamlBuilder_FieldReference_CamlBuilder_Value_" class="collapse in">
+  <div class="markdown level1 summary"><p>Instanciates a new <em>Equal</em> operator which will perform on specified <code data-dev-comment-type="paramref" class="paramref">fieldRef</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Operator Equal(FieldReference fieldRef, Value value)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a></span>
+        <span class="parametername">fieldRef</span>
+        <p><p>Reference to the field to operate on.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.Value.html">Value</a></span>
+        <span class="parametername">value</span>
+        <p><p>Value against which the value returned by the field element is compared to.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.Operator.html">Operator</a>
+        <p><p>Equal operator instance.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_Equal_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.Equal(CamlBuilder.FieldReference%2CCamlBuilder.ValueType%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L96" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_Equal_" data-uid="CamlBuilder.Operator.Equal*"></a>
+  
+  <h4 id="CamlBuilder_Operator_Equal_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" data-uid="CamlBuilder.Operator.Equal(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)"><a href="#collapsible-CamlBuilder_Operator_Equal_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" class="expander" data-toggle="collapse">Equal(FieldReference, ValueType, Object)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_Equal_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" class="collapse in">
+  <div class="markdown level1 summary"><p>Instanciates a new <em>Equal</em> operator which will perform on specified <code data-dev-comment-type="paramref" class="paramref">fieldRef</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Operator Equal(FieldReference fieldRef, ValueType valueType, object value)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a></span>
+        <span class="parametername">fieldRef</span>
+        <p><p>Reference to the field to operate on.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.ValueType.html">ValueType</a></span>
+        <span class="parametername">valueType</span>
+        <p><p>Field type</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></span>
+        <span class="parametername">value</span>
+        <p><p>Value against which the value returned by the field element is compared to.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.Operator.html">Operator</a>
+        <p><p>Equal operator instance.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_GreaterThan_CamlBuilder_FieldReference_CamlBuilder_Value_.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.GreaterThan(CamlBuilder.FieldReference%2CCamlBuilder.Value)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L222" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_GreaterThan_" data-uid="CamlBuilder.Operator.GreaterThan*"></a>
+  
+  <h4 id="CamlBuilder_Operator_GreaterThan_CamlBuilder_FieldReference_CamlBuilder_Value_" data-uid="CamlBuilder.Operator.GreaterThan(CamlBuilder.FieldReference,CamlBuilder.Value)"><a href="#collapsible-CamlBuilder_Operator_GreaterThan_CamlBuilder_FieldReference_CamlBuilder_Value_" class="expander" data-toggle="collapse">GreaterThan(FieldReference, Value)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_GreaterThan_CamlBuilder_FieldReference_CamlBuilder_Value_" class="collapse in">
+  <div class="markdown level1 summary"><p>Instanciates a new <em>GreaterThan</em> operator which will perform on specified <code data-dev-comment-type="paramref" class="paramref">fieldRef</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Operator GreaterThan(FieldReference fieldRef, Value value)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a></span>
+        <span class="parametername">fieldRef</span>
+        <p><p>Reference to the field to operate on.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.Value.html">Value</a></span>
+        <span class="parametername">value</span>
+        <p><p>Value against which the value returned by the field element is compared to.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.Operator.html">Operator</a>
+        <p><p>GreaterThan operator instance.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_GreaterThan_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.GreaterThan(CamlBuilder.FieldReference%2CCamlBuilder.ValueType%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L211" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_GreaterThan_" data-uid="CamlBuilder.Operator.GreaterThan*"></a>
+  
+  <h4 id="CamlBuilder_Operator_GreaterThan_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" data-uid="CamlBuilder.Operator.GreaterThan(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)"><a href="#collapsible-CamlBuilder_Operator_GreaterThan_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" class="expander" data-toggle="collapse">GreaterThan(FieldReference, ValueType, Object)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_GreaterThan_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" class="collapse in">
+  <div class="markdown level1 summary"><p>Instanciates a new <em>GreaterThan</em> operator which will perform on specified <code data-dev-comment-type="paramref" class="paramref">fieldRef</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Operator GreaterThan(FieldReference fieldRef, ValueType valueType, object value)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a></span>
+        <span class="parametername">fieldRef</span>
+        <p><p>Reference to the field to operate on.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.ValueType.html">ValueType</a></span>
+        <span class="parametername">valueType</span>
+        <p><p>Field type</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></span>
+        <span class="parametername">value</span>
+        <p><p>Value against which the value returned by the field element is compared to.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.Operator.html">Operator</a>
+        <p><p>GreaterThan operator instance.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_GreaterThanOrEqualTo_CamlBuilder_FieldReference_CamlBuilder_Value_.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.GreaterThanOrEqualTo(CamlBuilder.FieldReference%2CCamlBuilder.Value)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L245" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_GreaterThanOrEqualTo_" data-uid="CamlBuilder.Operator.GreaterThanOrEqualTo*"></a>
+  
+  <h4 id="CamlBuilder_Operator_GreaterThanOrEqualTo_CamlBuilder_FieldReference_CamlBuilder_Value_" data-uid="CamlBuilder.Operator.GreaterThanOrEqualTo(CamlBuilder.FieldReference,CamlBuilder.Value)"><a href="#collapsible-CamlBuilder_Operator_GreaterThanOrEqualTo_CamlBuilder_FieldReference_CamlBuilder_Value_" class="expander" data-toggle="collapse">GreaterThanOrEqualTo(FieldReference, Value)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_GreaterThanOrEqualTo_CamlBuilder_FieldReference_CamlBuilder_Value_" class="collapse in">
+  <div class="markdown level1 summary"><p>Instanciates a new <em>GreaterThanOrEqualTo</em> operator which will perform on specified <code data-dev-comment-type="paramref" class="paramref">fieldRef</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Operator GreaterThanOrEqualTo(FieldReference fieldRef, Value value)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a></span>
+        <span class="parametername">fieldRef</span>
+        <p><p>Reference to the field to operate on.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.Value.html">Value</a></span>
+        <span class="parametername">value</span>
+        <p><p>Value against which the value returned by the field element is compared to.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.Operator.html">Operator</a>
+        <p><p>GreaterThanOrEqualTo operator instance.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_GreaterThanOrEqualTo_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.GreaterThanOrEqualTo(CamlBuilder.FieldReference%2CCamlBuilder.ValueType%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L234" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_GreaterThanOrEqualTo_" data-uid="CamlBuilder.Operator.GreaterThanOrEqualTo*"></a>
+  
+  <h4 id="CamlBuilder_Operator_GreaterThanOrEqualTo_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" data-uid="CamlBuilder.Operator.GreaterThanOrEqualTo(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)"><a href="#collapsible-CamlBuilder_Operator_GreaterThanOrEqualTo_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" class="expander" data-toggle="collapse">GreaterThanOrEqualTo(FieldReference, ValueType, Object)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_GreaterThanOrEqualTo_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" class="collapse in">
+  <div class="markdown level1 summary"><p>Instanciates a new <em>GreaterThanOrEqualTo</em> operator which will perform on specified <code data-dev-comment-type="paramref" class="paramref">fieldRef</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Operator GreaterThanOrEqualTo(FieldReference fieldRef, ValueType valueType, object value)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a></span>
+        <span class="parametername">fieldRef</span>
+        <p><p>Reference to the field to operate on.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.ValueType.html">ValueType</a></span>
+        <span class="parametername">valueType</span>
+        <p><p>Field type</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></span>
+        <span class="parametername">value</span>
+        <p><p>Value against which the value returned by the field element is compared to.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.Operator.html">Operator</a>
+        <p><p>GreaterThanOrEqualTo operator instance.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_In_CamlBuilder_FieldReference_System_Collections_Generic_IEnumerable_CamlBuilder_Value__.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.In(CamlBuilder.FieldReference%2CSystem.Collections.Generic.IEnumerable%7BCamlBuilder.Value%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L348" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_In_" data-uid="CamlBuilder.Operator.In*"></a>
+  
+  <h4 id="CamlBuilder_Operator_In_CamlBuilder_FieldReference_System_Collections_Generic_IEnumerable_CamlBuilder_Value__" data-uid="CamlBuilder.Operator.In(CamlBuilder.FieldReference,System.Collections.Generic.IEnumerable{CamlBuilder.Value})"><a href="#collapsible-CamlBuilder_Operator_In_CamlBuilder_FieldReference_System_Collections_Generic_IEnumerable_CamlBuilder_Value__" class="expander" data-toggle="collapse">In(FieldReference, IEnumerable&lt;Value&gt;)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_In_CamlBuilder_FieldReference_System_Collections_Generic_IEnumerable_CamlBuilder_Value__" class="collapse in">
+  <div class="markdown level1 summary"><p>Instanciates a new <em>In</em> operator which will perform on specified <code data-dev-comment-type="paramref" class="paramref">fieldRef</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Operator In(FieldReference fieldRef, IEnumerable&lt;Value&gt; values)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a></span>
+        <span class="parametername">fieldRef</span>
+        <p><p>Reference to the field to operate on.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="CamlBuilder.Value.html">Value</a>&gt;</span>
+        <span class="parametername">values</span>
+        <p><p>Values against which the value returned by the field element is compared to.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.Operator.html">Operator</a>
+        <p><p>In operator instance.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_Includes_CamlBuilder_FieldReference_CamlBuilder_Value_.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.Includes(CamlBuilder.FieldReference%2CCamlBuilder.Value)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L314" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_Includes_" data-uid="CamlBuilder.Operator.Includes*"></a>
+  
+  <h4 id="CamlBuilder_Operator_Includes_CamlBuilder_FieldReference_CamlBuilder_Value_" data-uid="CamlBuilder.Operator.Includes(CamlBuilder.FieldReference,CamlBuilder.Value)"><a href="#collapsible-CamlBuilder_Operator_Includes_CamlBuilder_FieldReference_CamlBuilder_Value_" class="expander" data-toggle="collapse">Includes(FieldReference, Value)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_Includes_CamlBuilder_FieldReference_CamlBuilder_Value_" class="collapse in">
+  <div class="markdown level1 summary"><p>Instanciates a new <em>Includes</em> operator which will perform on specified <code data-dev-comment-type="paramref" class="paramref">fieldRef</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Operator Includes(FieldReference fieldRef, Value value)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a></span>
+        <span class="parametername">fieldRef</span>
+        <p><p>Reference to the field to operate on.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.Value.html">Value</a></span>
+        <span class="parametername">value</span>
+        <p><p>Value against which the value returned by the field element is compared to.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.Operator.html">Operator</a>
+        <p><p>Includes operator instance.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_Includes_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.Includes(CamlBuilder.FieldReference%2CCamlBuilder.ValueType%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L303" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_Includes_" data-uid="CamlBuilder.Operator.Includes*"></a>
+  
+  <h4 id="CamlBuilder_Operator_Includes_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" data-uid="CamlBuilder.Operator.Includes(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)"><a href="#collapsible-CamlBuilder_Operator_Includes_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" class="expander" data-toggle="collapse">Includes(FieldReference, ValueType, Object)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_Includes_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" class="collapse in">
+  <div class="markdown level1 summary"><p>Instanciates a new <em>Includes</em> operator which will perform on specified <code data-dev-comment-type="paramref" class="paramref">fieldRef</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Operator Includes(FieldReference fieldRef, ValueType valueType, object value)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a></span>
+        <span class="parametername">fieldRef</span>
+        <p><p>Reference to the field to operate on.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.ValueType.html">ValueType</a></span>
+        <span class="parametername">valueType</span>
+        <p><p>Field type</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></span>
+        <span class="parametername">value</span>
+        <p><p>Value against which the value returned by the field element is compared to.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.Operator.html">Operator</a>
+        <p><p>Includes operator instance.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_IsNotNull_CamlBuilder_FieldReference_.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.IsNotNull(CamlBuilder.FieldReference)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L84" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_IsNotNull_" data-uid="CamlBuilder.Operator.IsNotNull*"></a>
+  
+  <h4 id="CamlBuilder_Operator_IsNotNull_CamlBuilder_FieldReference_" data-uid="CamlBuilder.Operator.IsNotNull(CamlBuilder.FieldReference)"><a href="#collapsible-CamlBuilder_Operator_IsNotNull_CamlBuilder_FieldReference_" class="expander" data-toggle="collapse">IsNotNull(FieldReference)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_IsNotNull_CamlBuilder_FieldReference_" class="collapse in">
+  <div class="markdown level1 summary"><p>Instanciates a new <em>IsNotNull</em> operator to perform on specified <code data-dev-comment-type="paramref" class="paramref">fieldRef</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Operator IsNotNull(FieldReference fieldRef)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a></span>
+        <span class="parametername">fieldRef</span>
+        <p><p>Reference to the field to operate on.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.Operator.html">Operator</a>
+        <p><p>IsNotNull operator instance.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_IsNull_CamlBuilder_FieldReference_.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.IsNull(CamlBuilder.FieldReference)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L74" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_IsNull_" data-uid="CamlBuilder.Operator.IsNull*"></a>
+  
+  <h4 id="CamlBuilder_Operator_IsNull_CamlBuilder_FieldReference_" data-uid="CamlBuilder.Operator.IsNull(CamlBuilder.FieldReference)"><a href="#collapsible-CamlBuilder_Operator_IsNull_CamlBuilder_FieldReference_" class="expander" data-toggle="collapse">IsNull(FieldReference)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_IsNull_CamlBuilder_FieldReference_" class="collapse in">
+  <div class="markdown level1 summary"><p>Instanciates a new <em>IsNull</em> operator to perform on specified <code data-dev-comment-type="paramref" class="paramref">fieldRef</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Operator IsNull(FieldReference fieldRef)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a></span>
+        <span class="parametername">fieldRef</span>
+        <p><p>Reference to the field to operate on.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.Operator.html">Operator</a>
+        <p><p>IsNull operator instance.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_LowerThan_CamlBuilder_FieldReference_CamlBuilder_Value_.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.LowerThan(CamlBuilder.FieldReference%2CCamlBuilder.Value)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L268" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_LowerThan_" data-uid="CamlBuilder.Operator.LowerThan*"></a>
+  
+  <h4 id="CamlBuilder_Operator_LowerThan_CamlBuilder_FieldReference_CamlBuilder_Value_" data-uid="CamlBuilder.Operator.LowerThan(CamlBuilder.FieldReference,CamlBuilder.Value)"><a href="#collapsible-CamlBuilder_Operator_LowerThan_CamlBuilder_FieldReference_CamlBuilder_Value_" class="expander" data-toggle="collapse">LowerThan(FieldReference, Value)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_LowerThan_CamlBuilder_FieldReference_CamlBuilder_Value_" class="collapse in">
+  <div class="markdown level1 summary"><p>Instanciates a new <em>LowerThan</em> operator which will perform on specified <code data-dev-comment-type="paramref" class="paramref">fieldRef</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Operator LowerThan(FieldReference fieldRef, Value value)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a></span>
+        <span class="parametername">fieldRef</span>
+        <p><p>Reference to the field to operate on.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.Value.html">Value</a></span>
+        <span class="parametername">value</span>
+        <p><p>Value against which the value returned by the field element is compared to.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.Operator.html">Operator</a>
+        <p><p>LowerThan operator instance.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_LowerThan_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.LowerThan(CamlBuilder.FieldReference%2CCamlBuilder.ValueType%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L257" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_LowerThan_" data-uid="CamlBuilder.Operator.LowerThan*"></a>
+  
+  <h4 id="CamlBuilder_Operator_LowerThan_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" data-uid="CamlBuilder.Operator.LowerThan(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)"><a href="#collapsible-CamlBuilder_Operator_LowerThan_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" class="expander" data-toggle="collapse">LowerThan(FieldReference, ValueType, Object)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_LowerThan_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" class="collapse in">
+  <div class="markdown level1 summary"><p>Instanciates a new <em>LowerThan</em> operator which will perform on specified <code data-dev-comment-type="paramref" class="paramref">fieldRef</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Operator LowerThan(FieldReference fieldRef, ValueType valueType, object value)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a></span>
+        <span class="parametername">fieldRef</span>
+        <p><p>Reference to the field to operate on.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.ValueType.html">ValueType</a></span>
+        <span class="parametername">valueType</span>
+        <p><p>Field type</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></span>
+        <span class="parametername">value</span>
+        <p><p>Value against which the value returned by the field element is compared to.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.Operator.html">Operator</a>
+        <p><p>LowerThan operator instance.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_LowerThanOrEqualTo_CamlBuilder_FieldReference_CamlBuilder_Value_.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.LowerThanOrEqualTo(CamlBuilder.FieldReference%2CCamlBuilder.Value)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L291" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_LowerThanOrEqualTo_" data-uid="CamlBuilder.Operator.LowerThanOrEqualTo*"></a>
+  
+  <h4 id="CamlBuilder_Operator_LowerThanOrEqualTo_CamlBuilder_FieldReference_CamlBuilder_Value_" data-uid="CamlBuilder.Operator.LowerThanOrEqualTo(CamlBuilder.FieldReference,CamlBuilder.Value)"><a href="#collapsible-CamlBuilder_Operator_LowerThanOrEqualTo_CamlBuilder_FieldReference_CamlBuilder_Value_" class="expander" data-toggle="collapse">LowerThanOrEqualTo(FieldReference, Value)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_LowerThanOrEqualTo_CamlBuilder_FieldReference_CamlBuilder_Value_" class="collapse in">
+  <div class="markdown level1 summary"><p>Instanciates a new <em>LowerThanOrEqualTo</em> operator which will perform on specified <code data-dev-comment-type="paramref" class="paramref">fieldRef</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Operator LowerThanOrEqualTo(FieldReference fieldRef, Value value)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a></span>
+        <span class="parametername">fieldRef</span>
+        <p><p>Reference to the field to operate on.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.Value.html">Value</a></span>
+        <span class="parametername">value</span>
+        <p><p>Value against which the value returned by the field element is compared to.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.Operator.html">Operator</a>
+        <p><p>LowerThanOrEqualTo operator instance.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_LowerThanOrEqualTo_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.LowerThanOrEqualTo(CamlBuilder.FieldReference%2CCamlBuilder.ValueType%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L280" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_LowerThanOrEqualTo_" data-uid="CamlBuilder.Operator.LowerThanOrEqualTo*"></a>
+  
+  <h4 id="CamlBuilder_Operator_LowerThanOrEqualTo_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" data-uid="CamlBuilder.Operator.LowerThanOrEqualTo(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)"><a href="#collapsible-CamlBuilder_Operator_LowerThanOrEqualTo_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" class="expander" data-toggle="collapse">LowerThanOrEqualTo(FieldReference, ValueType, Object)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_LowerThanOrEqualTo_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" class="collapse in">
+  <div class="markdown level1 summary"><p>Instanciates a new <em>LowerThanOrEqualTo</em> operator which will perform on specified <code data-dev-comment-type="paramref" class="paramref">fieldRef</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Operator LowerThanOrEqualTo(FieldReference fieldRef, ValueType valueType, object value)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a></span>
+        <span class="parametername">fieldRef</span>
+        <p><p>Reference to the field to operate on.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.ValueType.html">ValueType</a></span>
+        <span class="parametername">valueType</span>
+        <p><p>Field type</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></span>
+        <span class="parametername">value</span>
+        <p><p>Value against which the value returned by the field element is compared to.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.Operator.html">Operator</a>
+        <p><p>LowerThanOrEqualTo operator instance.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_Membership_CamlBuilder_FieldReference_CamlBuilder_MembershipType_.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.Membership(CamlBuilder.FieldReference%2CCamlBuilder.MembershipType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L359" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_Membership_" data-uid="CamlBuilder.Operator.Membership*"></a>
+  
+  <h4 id="CamlBuilder_Operator_Membership_CamlBuilder_FieldReference_CamlBuilder_MembershipType_" data-uid="CamlBuilder.Operator.Membership(CamlBuilder.FieldReference,CamlBuilder.MembershipType)"><a href="#collapsible-CamlBuilder_Operator_Membership_CamlBuilder_FieldReference_CamlBuilder_MembershipType_" class="expander" data-toggle="collapse">Membership(FieldReference, MembershipType)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_Membership_CamlBuilder_FieldReference_CamlBuilder_MembershipType_" class="collapse in">
+  <div class="markdown level1 summary"><p>Instanciates a new <em>Membership</em> operator which will perform on specified <code data-dev-comment-type="paramref" class="paramref">fieldRef</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Operator Membership(FieldReference fieldRef, MembershipType membershipType)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a></span>
+        <span class="parametername">fieldRef</span>
+        <p><p>Reference to the field to operate on.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.MembershipType.html">MembershipType</a></span>
+        <span class="parametername">membershipType</span>
+        <p><p>Type of membership for the operator to use to filter for.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.Operator.html">Operator</a>
+        <p><p>Membership operator instance.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_NotEqual_CamlBuilder_FieldReference_CamlBuilder_Value_.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.NotEqual(CamlBuilder.FieldReference%2CCamlBuilder.Value)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L130" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_NotEqual_" data-uid="CamlBuilder.Operator.NotEqual*"></a>
+  
+  <h4 id="CamlBuilder_Operator_NotEqual_CamlBuilder_FieldReference_CamlBuilder_Value_" data-uid="CamlBuilder.Operator.NotEqual(CamlBuilder.FieldReference,CamlBuilder.Value)"><a href="#collapsible-CamlBuilder_Operator_NotEqual_CamlBuilder_FieldReference_CamlBuilder_Value_" class="expander" data-toggle="collapse">NotEqual(FieldReference, Value)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_NotEqual_CamlBuilder_FieldReference_CamlBuilder_Value_" class="collapse in">
+  <div class="markdown level1 summary"><p>Instanciates a new <em>NotEqual</em> operator which will perform on specified <code data-dev-comment-type="paramref" class="paramref">fieldRef</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Operator NotEqual(FieldReference fieldRef, Value value)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a></span>
+        <span class="parametername">fieldRef</span>
+        <p><p>Reference to the field to operate on.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.Value.html">Value</a></span>
+        <span class="parametername">value</span>
+        <p><p>Value against which the value returned by the field element is compared to.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.Operator.html">Operator</a>
+        <p><p>NotEqual operator instance.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_NotEqual_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.NotEqual(CamlBuilder.FieldReference%2CCamlBuilder.ValueType%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L119" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_NotEqual_" data-uid="CamlBuilder.Operator.NotEqual*"></a>
+  
+  <h4 id="CamlBuilder_Operator_NotEqual_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" data-uid="CamlBuilder.Operator.NotEqual(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)"><a href="#collapsible-CamlBuilder_Operator_NotEqual_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" class="expander" data-toggle="collapse">NotEqual(FieldReference, ValueType, Object)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_NotEqual_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" class="collapse in">
+  <div class="markdown level1 summary"><p>Instanciates a new <em>NotEqual</em> operator which will perform on specified <code data-dev-comment-type="paramref" class="paramref">fieldRef</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Operator NotEqual(FieldReference fieldRef, ValueType valueType, object value)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a></span>
+        <span class="parametername">fieldRef</span>
+        <p><p>Reference to the field to operate on.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.ValueType.html">ValueType</a></span>
+        <span class="parametername">valueType</span>
+        <p><p>Field type</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></span>
+        <span class="parametername">value</span>
+        <p><p>Value against which the value returned by the field element is compared to.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.Operator.html">Operator</a>
+        <p><p>NotEqual operator instance.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_NotIncludes_CamlBuilder_FieldReference_CamlBuilder_Value_.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.NotIncludes(CamlBuilder.FieldReference%2CCamlBuilder.Value)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L337" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_NotIncludes_" data-uid="CamlBuilder.Operator.NotIncludes*"></a>
+  
+  <h4 id="CamlBuilder_Operator_NotIncludes_CamlBuilder_FieldReference_CamlBuilder_Value_" data-uid="CamlBuilder.Operator.NotIncludes(CamlBuilder.FieldReference,CamlBuilder.Value)"><a href="#collapsible-CamlBuilder_Operator_NotIncludes_CamlBuilder_FieldReference_CamlBuilder_Value_" class="expander" data-toggle="collapse">NotIncludes(FieldReference, Value)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_NotIncludes_CamlBuilder_FieldReference_CamlBuilder_Value_" class="collapse in">
+  <div class="markdown level1 summary"><p>Instanciates a new <em>NotIncludes</em> operator which will perform on specified <code data-dev-comment-type="paramref" class="paramref">fieldRef</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Operator NotIncludes(FieldReference fieldRef, Value value)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a></span>
+        <span class="parametername">fieldRef</span>
+        <p><p>Reference to the field to operate on.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.Value.html">Value</a></span>
+        <span class="parametername">value</span>
+        <p><p>Value against which the value returned by the field element is compared to.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.Operator.html">Operator</a>
+        <p><p>NotIncludes operator instance.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_Operator_NotIncludes_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_.md&amp;value=---%0Auid%3A%20CamlBuilder.Operator.NotIncludes(CamlBuilder.FieldReference%2CCamlBuilder.ValueType%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/Operator.cs/#L326" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_Operator_NotIncludes_" data-uid="CamlBuilder.Operator.NotIncludes*"></a>
+  
+  <h4 id="CamlBuilder_Operator_NotIncludes_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" data-uid="CamlBuilder.Operator.NotIncludes(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)"><a href="#collapsible-CamlBuilder_Operator_NotIncludes_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" class="expander" data-toggle="collapse">NotIncludes(FieldReference, ValueType, Object)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_Operator_NotIncludes_CamlBuilder_FieldReference_CamlBuilder_ValueType_System_Object_" class="collapse in">
+  <div class="markdown level1 summary"><p>Instanciates a new <em>NotIncludes</em> operator which will perform on specified <code data-dev-comment-type="paramref" class="paramref">fieldRef</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Operator NotIncludes(FieldReference fieldRef, ValueType valueType, object value)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.FieldReference.html">FieldReference</a></span>
+        <span class="parametername">fieldRef</span>
+        <p><p>Reference to the field to operate on.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="CamlBuilder.ValueType.html">ValueType</a></span>
+        <span class="parametername">valueType</span>
+        <p><p>Field type</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></span>
+        <span class="parametername">value</span>
+        <p><p>Value against which the value returned by the field element is compared to.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="CamlBuilder.Operator.html">Operator</a>
+        <p><p>NotIncludes operator instance.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="System.ValidationExtensions.html#System_ValidationExtensions_ValidateNotNullOrEmpty__1___0_System_String_">ValidationExtensions.ValidateNotNullOrEmpty&lt;T&gt;(T, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_Set__2___0_System_Linq_Expressions_Expression_System_Func___0___1_____1_System_Boolean_System_Boolean_">ObjectExtensions.Set&lt;TObject, T&gt;(TObject, Expression&lt;Func&lt;TObject, T&gt;&gt;, T, Boolean, Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstancePropertyValue_System_Object_System_String_">ObjectExtensions.GetPublicInstancePropertyValue(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstanceProperty_System_Object_System_String_">ObjectExtensions.GetPublicInstanceProperty(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_SetPublicInstancePropertyValue_System_Object_System_String_System_Object_">ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Modernization.Cache.Extensions.html#PnP_Framework_Modernization_Cache_Extensions_ToByteArray_System_Object_">Extensions.ToByteArray(Object)</a>
+  </div>
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

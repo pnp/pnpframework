@@ -1,0 +1,1750 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class SiteCollection
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class SiteCollection
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PnP.Framework.Sites.SiteCollection">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Sites/SiteCollection.cs/#L24" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Sites_SiteCollection.md&amp;value=---%0Auid%3A%20PnP.Framework.Sites.SiteCollection%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="PnP_Framework_Sites_SiteCollection" data-uid="PnP.Framework.Sites.SiteCollection">Class SiteCollection
+  </h1>
+  <div class="markdown level0 summary"><p>This class can be used to create modern site collections</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">SiteCollection</span></div>
+  </div>
+  
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="PnP.Framework.Sites.html">PnP.Framework.Sites</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="PnP_Framework_Sites_SiteCollection_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class SiteCollection</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Sites_SiteCollection_AliasExistsAsync_Microsoft_SharePoint_Client_ClientContext_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Sites.SiteCollection.AliasExistsAsync(Microsoft.SharePoint.Client.ClientContext%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Sites/SiteCollection.cs/#L1054" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Sites_SiteCollection_AliasExistsAsync_" data-uid="PnP.Framework.Sites.SiteCollection.AliasExistsAsync*"></a>
+  
+  <h4 id="PnP_Framework_Sites_SiteCollection_AliasExistsAsync_Microsoft_SharePoint_Client_ClientContext_System_String_" data-uid="PnP.Framework.Sites.SiteCollection.AliasExistsAsync(Microsoft.SharePoint.Client.ClientContext,System.String)"><a href="#collapsible-PnP_Framework_Sites_SiteCollection_AliasExistsAsync_Microsoft_SharePoint_Client_ClientContext_System_String_" class="expander" data-toggle="collapse">AliasExistsAsync(ClientContext, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Sites_SiteCollection_AliasExistsAsync_Microsoft_SharePoint_Client_ClientContext_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Checks if a given alias is already in use or not</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;bool&gt; AliasExistsAsync(ClientContext context, string alias)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">context</span>
+        <p><p>Context to operate against</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">alias</span>
+        <p><p>Alias to check</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;
+        <p><p>True if in use, false otherwise</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Sites_SiteCollection_Create_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_CommunicationSiteCollectionCreationInformation_System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20PnP.Framework.Sites.SiteCollection.Create(Microsoft.SharePoint.Client.ClientContext%2CPnP.Framework.Sites.CommunicationSiteCollectionCreationInformation%2CSystem.Int32%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Sites/SiteCollection.cs/#L34" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Sites_SiteCollection_Create_" data-uid="PnP.Framework.Sites.SiteCollection.Create*"></a>
+  
+  <h4 id="PnP_Framework_Sites_SiteCollection_Create_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_CommunicationSiteCollectionCreationInformation_System_Int32_System_Boolean_" data-uid="PnP.Framework.Sites.SiteCollection.Create(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation,System.Int32,System.Boolean)"><a href="#collapsible-PnP_Framework_Sites_SiteCollection_Create_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_CommunicationSiteCollectionCreationInformation_System_Int32_System_Boolean_" class="expander" data-toggle="collapse">Create(ClientContext, CommunicationSiteCollectionCreationInformation, Int32, Boolean)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Sites_SiteCollection_Create_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_CommunicationSiteCollectionCreationInformation_System_Int32_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Creates a new Communication Site Collection and waits for it to be created</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ClientContext Create(ClientContext clientContext, CommunicationSiteCollectionCreationInformation siteCollectionCreationInformation, int delayAfterCreation = 0, bool noWait = false)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p><p>ClientContext object of a regular site</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation.html">CommunicationSiteCollectionCreationInformation</a></span>
+        <span class="parametername">siteCollectionCreationInformation</span>
+        <p><p>information about the site to create</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delayAfterCreation</span>
+        <p><p>Defines the number of seconds to wait after creation</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">noWait</span>
+        <p><p>If specified the site will be created and the process will be finished asynchronously</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a>
+        <p><p>ClientContext object for the created site collection</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Sites_SiteCollection_Create_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamNoGroupSiteCollectionCreationInformation_System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20PnP.Framework.Sites.SiteCollection.Create(Microsoft.SharePoint.Client.ClientContext%2CPnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation%2CSystem.Int32%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Sites/SiteCollection.cs/#L56" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Sites_SiteCollection_Create_" data-uid="PnP.Framework.Sites.SiteCollection.Create*"></a>
+  
+  <h4 id="PnP_Framework_Sites_SiteCollection_Create_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamNoGroupSiteCollectionCreationInformation_System_Int32_System_Boolean_" data-uid="PnP.Framework.Sites.SiteCollection.Create(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation,System.Int32,System.Boolean)"><a href="#collapsible-PnP_Framework_Sites_SiteCollection_Create_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamNoGroupSiteCollectionCreationInformation_System_Int32_System_Boolean_" class="expander" data-toggle="collapse">Create(ClientContext, TeamNoGroupSiteCollectionCreationInformation, Int32, Boolean)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Sites_SiteCollection_Create_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamNoGroupSiteCollectionCreationInformation_System_Int32_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Creates a new Team Site Collection with no group and waits for it to be created</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ClientContext Create(ClientContext clientContext, TeamNoGroupSiteCollectionCreationInformation siteCollectionCreationInformation, int delayAfterCreation = 0, bool noWait = false)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p><p>ClientContext object of a regular site</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation.html">TeamNoGroupSiteCollectionCreationInformation</a></span>
+        <span class="parametername">siteCollectionCreationInformation</span>
+        <p><p>information about the site to create</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delayAfterCreation</span>
+        <p><p>Defines the number of seconds to wait after creation</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">noWait</span>
+        <p><p>If specified the site will be created and the process will be finished asynchronously</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a>
+        <p><p>ClientContext object for the created site collection</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Sites_SiteCollection_Create_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamSiteCollectionCreationInformation_System_Int32_System_Boolean_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Sites.SiteCollection.Create(Microsoft.SharePoint.Client.ClientContext%2CPnP.Framework.Sites.TeamSiteCollectionCreationInformation%2CSystem.Int32%2CSystem.Boolean%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Sites/SiteCollection.cs/#L79" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Sites_SiteCollection_Create_" data-uid="PnP.Framework.Sites.SiteCollection.Create*"></a>
+  
+  <h4 id="PnP_Framework_Sites_SiteCollection_Create_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamSiteCollectionCreationInformation_System_Int32_System_Boolean_System_String_" data-uid="PnP.Framework.Sites.SiteCollection.Create(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionCreationInformation,System.Int32,System.Boolean,System.String)"><a href="#collapsible-PnP_Framework_Sites_SiteCollection_Create_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamSiteCollectionCreationInformation_System_Int32_System_Boolean_System_String_" class="expander" data-toggle="collapse">Create(ClientContext, TeamSiteCollectionCreationInformation, Int32, Boolean, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Sites_SiteCollection_Create_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamSiteCollectionCreationInformation_System_Int32_System_Boolean_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Creates a new Team Site Collection and waits for it to be created</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ClientContext Create(ClientContext clientContext, TeamSiteCollectionCreationInformation siteCollectionCreationInformation, int delayAfterCreation = 0, bool noWait = false, string graphAccessToken = null)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p><p>ClientContext object of a regular site</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Sites.TeamSiteCollectionCreationInformation.html">TeamSiteCollectionCreationInformation</a></span>
+        <span class="parametername">siteCollectionCreationInformation</span>
+        <p><p>information about the site to create</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delayAfterCreation</span>
+        <p><p>Defines the number of seconds to wait after creation</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">noWait</span>
+        <p><p>If specified the site will be created and the process will be finished asynchronously</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">graphAccessToken</span>
+        <p><p>An optional Access Token for Microsoft Graph to use for creeating the site within an App-Only context</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a>
+        <p><p>ClientContext object for the created site collection</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Sites_SiteCollection_CreateAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_CommunicationSiteCollectionCreationInformation_System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20PnP.Framework.Sites.SiteCollection.CreateAsync(Microsoft.SharePoint.Client.ClientContext%2CPnP.Framework.Sites.CommunicationSiteCollectionCreationInformation%2CSystem.Int32%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Sites/SiteCollection.cs/#L98" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Sites_SiteCollection_CreateAsync_" data-uid="PnP.Framework.Sites.SiteCollection.CreateAsync*"></a>
+  
+  <h4 id="PnP_Framework_Sites_SiteCollection_CreateAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_CommunicationSiteCollectionCreationInformation_System_Int32_System_Boolean_" data-uid="PnP.Framework.Sites.SiteCollection.CreateAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation,System.Int32,System.Boolean)"><a href="#collapsible-PnP_Framework_Sites_SiteCollection_CreateAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_CommunicationSiteCollectionCreationInformation_System_Int32_System_Boolean_" class="expander" data-toggle="collapse">CreateAsync(ClientContext, CommunicationSiteCollectionCreationInformation, Int32, Boolean)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Sites_SiteCollection_CreateAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_CommunicationSiteCollectionCreationInformation_System_Int32_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Creates a new Communication Site Collection</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;ClientContext&gt; CreateAsync(ClientContext clientContext, CommunicationSiteCollectionCreationInformation siteCollectionCreationInformation, int delayAfterCreation = 0, bool noWait = false)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p><p>ClientContext object of a regular site</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation.html">CommunicationSiteCollectionCreationInformation</a></span>
+        <span class="parametername">siteCollectionCreationInformation</span>
+        <p><p>information about the site to create</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delayAfterCreation</span>
+        <p><p>Defines the number of seconds to wait after creation</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">noWait</span>
+        <p><p>If specified the site will be created and the process will be finished asynchronously</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a>&gt;
+        <p><p>ClientContext object for the created site collection</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Sites_SiteCollection_CreateAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamNoGroupSiteCollectionCreationInformation_System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20PnP.Framework.Sites.SiteCollection.CreateAsync(Microsoft.SharePoint.Client.ClientContext%2CPnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation%2CSystem.Int32%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Sites/SiteCollection.cs/#L156" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Sites_SiteCollection_CreateAsync_" data-uid="PnP.Framework.Sites.SiteCollection.CreateAsync*"></a>
+  
+  <h4 id="PnP_Framework_Sites_SiteCollection_CreateAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamNoGroupSiteCollectionCreationInformation_System_Int32_System_Boolean_" data-uid="PnP.Framework.Sites.SiteCollection.CreateAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation,System.Int32,System.Boolean)"><a href="#collapsible-PnP_Framework_Sites_SiteCollection_CreateAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamNoGroupSiteCollectionCreationInformation_System_Int32_System_Boolean_" class="expander" data-toggle="collapse">CreateAsync(ClientContext, TeamNoGroupSiteCollectionCreationInformation, Int32, Boolean)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Sites_SiteCollection_CreateAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamNoGroupSiteCollectionCreationInformation_System_Int32_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Creates a new Team Site Collection with no group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;ClientContext&gt; CreateAsync(ClientContext clientContext, TeamNoGroupSiteCollectionCreationInformation siteCollectionCreationInformation, int delayAfterCreation = 0, bool noWait = false)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p><p>ClientContext object of a regular site</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation.html">TeamNoGroupSiteCollectionCreationInformation</a></span>
+        <span class="parametername">siteCollectionCreationInformation</span>
+        <p><p>information about the site to create</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delayAfterCreation</span>
+        <p><p>Defines the number of seconds to wait after creation</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">noWait</span>
+        <p><p>If specified the site will be created and the process will be finished asynchronously</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a>&gt;
+        <p><p>ClientContext object for the created site collection</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Sites_SiteCollection_CreateAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamSiteCollectionCreationInformation_System_Int32_System_Int32_System_Int32_System_Boolean_System_String_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Sites.SiteCollection.CreateAsync(Microsoft.SharePoint.Client.ClientContext%2CPnP.Framework.Sites.TeamSiteCollectionCreationInformation%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Boolean%2CSystem.String%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Sites/SiteCollection.cs/#L213" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Sites_SiteCollection_CreateAsync_" data-uid="PnP.Framework.Sites.SiteCollection.CreateAsync*"></a>
+  
+  <h4 id="PnP_Framework_Sites_SiteCollection_CreateAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamSiteCollectionCreationInformation_System_Int32_System_Int32_System_Int32_System_Boolean_System_String_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Sites.SiteCollection.CreateAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionCreationInformation,System.Int32,System.Int32,System.Int32,System.Boolean,System.String,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Sites_SiteCollection_CreateAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamSiteCollectionCreationInformation_System_Int32_System_Int32_System_Int32_System_Boolean_System_String_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">CreateAsync(ClientContext, TeamSiteCollectionCreationInformation, Int32, Int32, Int32, Boolean, String, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Sites_SiteCollection_CreateAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamSiteCollectionCreationInformation_System_Int32_System_Int32_System_Int32_System_Boolean_System_String_PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Creates a new Modern Team Site Collection (so with an Office 365 group connected)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;ClientContext&gt; CreateAsync(ClientContext clientContext, TeamSiteCollectionCreationInformation siteCollectionCreationInformation, int delayAfterCreation = 0, int maxRetryCount = 12, int retryDelay = 10000, bool noWait = false, string graphAccessToken = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p><p>ClientContext object of a regular site</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Sites.TeamSiteCollectionCreationInformation.html">TeamSiteCollectionCreationInformation</a></span>
+        <span class="parametername">siteCollectionCreationInformation</span>
+        <p><p>information about the site to create</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delayAfterCreation</span>
+        <p><p>Defines the number of seconds to wait after creation</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">maxRetryCount</span>
+        <p><p>Maximum number of retries for a pending site provisioning. Default 12 retries.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryDelay</span>
+        <p><p>Delay between retries for a pending site provisioning. Default 10 seconds.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">noWait</span>
+        <p><p>If specified the site will be created and the process will be finished asynchronously</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">graphAccessToken</span>
+        <p><p>An optional Access Token for Microsoft Graph to use for creeating the site within an App-Only context</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a>&gt;
+        <p><p>ClientContext object for the created site collection</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Sites_SiteCollection_CreateTeamSiteViaGraphAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamSiteCollectionCreationInformation_System_Int32_System_Int32_System_Int32_System_Boolean_System_String_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Sites.SiteCollection.CreateTeamSiteViaGraphAsync(Microsoft.SharePoint.Client.ClientContext%2CPnP.Framework.Sites.TeamSiteCollectionCreationInformation%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Boolean%2CSystem.String%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Sites/SiteCollection.cs/#L503" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Sites_SiteCollection_CreateTeamSiteViaGraphAsync_" data-uid="PnP.Framework.Sites.SiteCollection.CreateTeamSiteViaGraphAsync*"></a>
+  
+  <h4 id="PnP_Framework_Sites_SiteCollection_CreateTeamSiteViaGraphAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamSiteCollectionCreationInformation_System_Int32_System_Int32_System_Int32_System_Boolean_System_String_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Sites.SiteCollection.CreateTeamSiteViaGraphAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionCreationInformation,System.Int32,System.Int32,System.Int32,System.Boolean,System.String,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Sites_SiteCollection_CreateTeamSiteViaGraphAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamSiteCollectionCreationInformation_System_Int32_System_Int32_System_Int32_System_Boolean_System_String_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">CreateTeamSiteViaGraphAsync(ClientContext, TeamSiteCollectionCreationInformation, Int32, Int32, Int32, Boolean, String, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Sites_SiteCollection_CreateTeamSiteViaGraphAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamSiteCollectionCreationInformation_System_Int32_System_Int32_System_Int32_System_Boolean_System_String_PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Creates a new Modern Team Site Collection (so with an Office 365 group connected) using Microsoft Graph</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;ClientContext&gt; CreateTeamSiteViaGraphAsync(ClientContext clientContext, TeamSiteCollectionCreationInformation siteCollectionCreationInformation, int delayAfterCreation = 0, int maxRetryCount = 12, int retryDelay = 10000, bool noWait = false, string graphAccessToken = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p><p>ClientContext object of a regular site</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Sites.TeamSiteCollectionCreationInformation.html">TeamSiteCollectionCreationInformation</a></span>
+        <span class="parametername">siteCollectionCreationInformation</span>
+        <p><p>information about the site to create</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delayAfterCreation</span>
+        <p><p>Defines the number of seconds to wait after creation</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">maxRetryCount</span>
+        <p><p>Maximum number of retries for a pending site provisioning. Default 12 retries.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryDelay</span>
+        <p><p>Delay between retries for a pending site provisioning. Default 10 seconds.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">noWait</span>
+        <p><p>If specified the site will be created and the process will be finished asynchronously</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">graphAccessToken</span>
+        <p><p>An optional Access Token for Microsoft Graph to use for creeating the site within an App-Only context</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a>&gt;
+        <p><p>ClientContext object for the created site collection</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Sites_SiteCollection_DeleteSiteAsync_Microsoft_SharePoint_Client_ClientContext_.md&amp;value=---%0Auid%3A%20PnP.Framework.Sites.SiteCollection.DeleteSiteAsync(Microsoft.SharePoint.Client.ClientContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Sites/SiteCollection.cs/#L1512" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Sites_SiteCollection_DeleteSiteAsync_" data-uid="PnP.Framework.Sites.SiteCollection.DeleteSiteAsync*"></a>
+  
+  <h4 id="PnP_Framework_Sites_SiteCollection_DeleteSiteAsync_Microsoft_SharePoint_Client_ClientContext_" data-uid="PnP.Framework.Sites.SiteCollection.DeleteSiteAsync(Microsoft.SharePoint.Client.ClientContext)"><a href="#collapsible-PnP_Framework_Sites_SiteCollection_DeleteSiteAsync_Microsoft_SharePoint_Client_ClientContext_" class="expander" data-toggle="collapse">DeleteSiteAsync(ClientContext)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Sites_SiteCollection_DeleteSiteAsync_Microsoft_SharePoint_Client_ClientContext_" class="collapse in">
+  <div class="markdown level1 summary"><p>Deletes a Communication site or a Group-less Modern team site.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;bool&gt; DeleteSiteAsync(ClientContext context)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">context</span>
+        <p><p>Context to operate against</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Sites_SiteCollection_EnableCommunicationSite_Microsoft_SharePoint_Client_ClientContext_.md&amp;value=---%0Auid%3A%20PnP.Framework.Sites.SiteCollection.EnableCommunicationSite(Microsoft.SharePoint.Client.ClientContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Sites/SiteCollection.cs/#L1394" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Sites_SiteCollection_EnableCommunicationSite_" data-uid="PnP.Framework.Sites.SiteCollection.EnableCommunicationSite*"></a>
+  
+  <h4 id="PnP_Framework_Sites_SiteCollection_EnableCommunicationSite_Microsoft_SharePoint_Client_ClientContext_" data-uid="PnP.Framework.Sites.SiteCollection.EnableCommunicationSite(Microsoft.SharePoint.Client.ClientContext)"><a href="#collapsible-PnP_Framework_Sites_SiteCollection_EnableCommunicationSite_Microsoft_SharePoint_Client_ClientContext_" class="expander" data-toggle="collapse">EnableCommunicationSite(ClientContext)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Sites_SiteCollection_EnableCommunicationSite_Microsoft_SharePoint_Client_ClientContext_" class="collapse in">
+  <div class="markdown level1 summary"><p>Turns a team site into a communication site</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task EnableCommunicationSite(ClientContext context)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">context</span>
+        <p><p>ClientContext of the team site to update to a communication site</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Sites_SiteCollection_EnableCommunicationSite_Microsoft_SharePoint_Client_ClientContext_System_Guid_.md&amp;value=---%0Auid%3A%20PnP.Framework.Sites.SiteCollection.EnableCommunicationSite(Microsoft.SharePoint.Client.ClientContext%2CSystem.Guid)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Sites/SiteCollection.cs/#L1405" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Sites_SiteCollection_EnableCommunicationSite_" data-uid="PnP.Framework.Sites.SiteCollection.EnableCommunicationSite*"></a>
+  
+  <h4 id="PnP_Framework_Sites_SiteCollection_EnableCommunicationSite_Microsoft_SharePoint_Client_ClientContext_System_Guid_" data-uid="PnP.Framework.Sites.SiteCollection.EnableCommunicationSite(Microsoft.SharePoint.Client.ClientContext,System.Guid)"><a href="#collapsible-PnP_Framework_Sites_SiteCollection_EnableCommunicationSite_Microsoft_SharePoint_Client_ClientContext_System_Guid_" class="expander" data-toggle="collapse">EnableCommunicationSite(ClientContext, Guid)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Sites_SiteCollection_EnableCommunicationSite_Microsoft_SharePoint_Client_ClientContext_System_Guid_" class="collapse in">
+  <div class="markdown level1 summary"><p>Turns a team site into a communication site</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task EnableCommunicationSite(ClientContext context, Guid designPackageId)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">context</span>
+        <p><p>ClientContext of the team site to update to a communication site</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></span>
+        <span class="parametername">designPackageId</span>
+        <p><p>Design package id to be applied, 96c933ac-3698-44c7-9f4a-5fd17d71af9e (Topic = default), 6142d2a0-63a5-4ba0-aede-d9fefca2c767 (Showcase) or f6cc5403-0d63-442e-96c0-285923709ffc (Blank)</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Sites_SiteCollection_GetGroupInfo_Microsoft_SharePoint_Client_ClientContext_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Sites.SiteCollection.GetGroupInfo(Microsoft.SharePoint.Client.ClientContext%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Sites/SiteCollection.cs/#L1103" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Sites_SiteCollection_GetGroupInfo_" data-uid="PnP.Framework.Sites.SiteCollection.GetGroupInfo*"></a>
+  
+  <h4 id="PnP_Framework_Sites_SiteCollection_GetGroupInfo_Microsoft_SharePoint_Client_ClientContext_System_String_" data-uid="PnP.Framework.Sites.SiteCollection.GetGroupInfo(Microsoft.SharePoint.Client.ClientContext,System.String)"><a href="#collapsible-PnP_Framework_Sites_SiteCollection_GetGroupInfo_Microsoft_SharePoint_Client_ClientContext_System_String_" class="expander" data-toggle="collapse">GetGroupInfo(ClientContext, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Sites_SiteCollection_GetGroupInfo_Microsoft_SharePoint_Client_ClientContext_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Checks if a given alias is already in use or not</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use GetGroupInfoAsync instead of GetGroupInfo&quot;)]
+public static async Task&lt;Dictionary&lt;string, string&gt;&gt; GetGroupInfo(ClientContext context, string alias)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">context</span>
+        <p><p>Context to operate against</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">alias</span>
+        <p><p>Alias to check</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;&gt;
+        <p><p>True if in use, false otherwise</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Sites_SiteCollection_GetGroupInfoAsync_Microsoft_SharePoint_Client_ClientContext_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Sites.SiteCollection.GetGroupInfoAsync(Microsoft.SharePoint.Client.ClientContext%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Sites/SiteCollection.cs/#L1115" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Sites_SiteCollection_GetGroupInfoAsync_" data-uid="PnP.Framework.Sites.SiteCollection.GetGroupInfoAsync*"></a>
+  
+  <h4 id="PnP_Framework_Sites_SiteCollection_GetGroupInfoAsync_Microsoft_SharePoint_Client_ClientContext_System_String_" data-uid="PnP.Framework.Sites.SiteCollection.GetGroupInfoAsync(Microsoft.SharePoint.Client.ClientContext,System.String)"><a href="#collapsible-PnP_Framework_Sites_SiteCollection_GetGroupInfoAsync_Microsoft_SharePoint_Client_ClientContext_System_String_" class="expander" data-toggle="collapse">GetGroupInfoAsync(ClientContext, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Sites_SiteCollection_GetGroupInfoAsync_Microsoft_SharePoint_Client_ClientContext_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Checks if a given alias is already in use or not</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;Dictionary&lt;string, string&gt;&gt; GetGroupInfoAsync(ClientContext context, string alias)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">context</span>
+        <p><p>Context to operate against</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">alias</span>
+        <p><p>Alias to check</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;&gt;
+        <p><p>True if in use, false otherwise</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Sites_SiteCollection_GetGroupInfoByGroupIdAsync_Microsoft_SharePoint_Client_ClientContext_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Sites.SiteCollection.GetGroupInfoByGroupIdAsync(Microsoft.SharePoint.Client.ClientContext%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Sites/SiteCollection.cs/#L1464" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Sites_SiteCollection_GetGroupInfoByGroupIdAsync_" data-uid="PnP.Framework.Sites.SiteCollection.GetGroupInfoByGroupIdAsync*"></a>
+  
+  <h4 id="PnP_Framework_Sites_SiteCollection_GetGroupInfoByGroupIdAsync_Microsoft_SharePoint_Client_ClientContext_System_String_" data-uid="PnP.Framework.Sites.SiteCollection.GetGroupInfoByGroupIdAsync(Microsoft.SharePoint.Client.ClientContext,System.String)"><a href="#collapsible-PnP_Framework_Sites_SiteCollection_GetGroupInfoByGroupIdAsync_Microsoft_SharePoint_Client_ClientContext_System_String_" class="expander" data-toggle="collapse">GetGroupInfoByGroupIdAsync(ClientContext, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Sites_SiteCollection_GetGroupInfoByGroupIdAsync_Microsoft_SharePoint_Client_ClientContext_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets group alias information by group Id</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;Dictionary&lt;string, object&gt;&gt; GetGroupInfoByGroupIdAsync(ClientContext context, string groupId)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">context</span>
+        <p><p>Context to operate against</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>Id of the group</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a>&gt;&gt;
+        <p><p>True if in use, false otherwise</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Sites_SiteCollection_GetIsAliasAvailableAsync_Microsoft_SharePoint_Client_ClientContext_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Sites.SiteCollection.GetIsAliasAvailableAsync(Microsoft.SharePoint.Client.ClientContext%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Sites/SiteCollection.cs/#L1207" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Sites_SiteCollection_GetIsAliasAvailableAsync_" data-uid="PnP.Framework.Sites.SiteCollection.GetIsAliasAvailableAsync*"></a>
+  
+  <h4 id="PnP_Framework_Sites_SiteCollection_GetIsAliasAvailableAsync_Microsoft_SharePoint_Client_ClientContext_System_String_" data-uid="PnP.Framework.Sites.SiteCollection.GetIsAliasAvailableAsync(Microsoft.SharePoint.Client.ClientContext,System.String)"><a href="#collapsible-PnP_Framework_Sites_SiteCollection_GetIsAliasAvailableAsync_Microsoft_SharePoint_Client_ClientContext_System_String_" class="expander" data-toggle="collapse">GetIsAliasAvailableAsync(ClientContext, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Sites_SiteCollection_GetIsAliasAvailableAsync_Microsoft_SharePoint_Client_ClientContext_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Allows validation if the provided <code data-dev-comment-type="paramref" class="paramref">alias</code> is valid to be used to create a new site collection</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;bool&gt; GetIsAliasAvailableAsync(ClientContext context, string alias)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">context</span>
+        <p><p>SharePoint ClientContext to use to communicate with SharePoint</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">alias</span>
+        <p><p>The alias to check for availability</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;
+        <p><p>True if the provided alias is available to be used, false if it is not</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Sites_SiteCollection_GetValidSiteUrlFromAliasAsync_Microsoft_SharePoint_Client_ClientContext_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Sites.SiteCollection.GetValidSiteUrlFromAliasAsync(Microsoft.SharePoint.Client.ClientContext%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Sites/SiteCollection.cs/#L1219" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Sites_SiteCollection_GetValidSiteUrlFromAliasAsync_" data-uid="PnP.Framework.Sites.SiteCollection.GetValidSiteUrlFromAliasAsync*"></a>
+  
+  <h4 id="PnP_Framework_Sites_SiteCollection_GetValidSiteUrlFromAliasAsync_Microsoft_SharePoint_Client_ClientContext_System_String_" data-uid="PnP.Framework.Sites.SiteCollection.GetValidSiteUrlFromAliasAsync(Microsoft.SharePoint.Client.ClientContext,System.String)"><a href="#collapsible-PnP_Framework_Sites_SiteCollection_GetValidSiteUrlFromAliasAsync_Microsoft_SharePoint_Client_ClientContext_System_String_" class="expander" data-toggle="collapse">GetValidSiteUrlFromAliasAsync(ClientContext, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Sites_SiteCollection_GetValidSiteUrlFromAliasAsync_Microsoft_SharePoint_Client_ClientContext_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Checks if the provided <code data-dev-comment-type="paramref" class="paramref">alias</code> is valid to be used to create a new site collection and will return an alternative available proposal if it is not. Use <a class="xref" href="PnP.Framework.Sites.SiteCollection.html#PnP_Framework_Sites_SiteCollection_GetIsAliasAvailableAsync_Microsoft_SharePoint_Client_ClientContext_System_String_">GetIsAliasAvailableAsync(ClientContext, String)</a> instead if you are just interested in knowing whether or not a certain alias is still available to be used.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;string&gt; GetValidSiteUrlFromAliasAsync(ClientContext context, string alias)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">context</span>
+        <p><p>SharePoint ClientContext to use to communicate with SharePoint</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">alias</span>
+        <p><p>The alias to check for availability</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;
+        <p><p>The full SharePoint URL proposed to be used. If that URL ends with the alias you provided, it means it is still available. If its not available, it will return an alternative proposal to use.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Sites_SiteCollection_GroupifyAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamSiteCollectionGroupifyInformation_.md&amp;value=---%0Auid%3A%20PnP.Framework.Sites.SiteCollection.GroupifyAsync(Microsoft.SharePoint.Client.ClientContext%2CPnP.Framework.Sites.TeamSiteCollectionGroupifyInformation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Sites/SiteCollection.cs/#L907" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Sites_SiteCollection_GroupifyAsync_" data-uid="PnP.Framework.Sites.SiteCollection.GroupifyAsync*"></a>
+  
+  <h4 id="PnP_Framework_Sites_SiteCollection_GroupifyAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamSiteCollectionGroupifyInformation_" data-uid="PnP.Framework.Sites.SiteCollection.GroupifyAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation)"><a href="#collapsible-PnP_Framework_Sites_SiteCollection_GroupifyAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamSiteCollectionGroupifyInformation_" class="expander" data-toggle="collapse">GroupifyAsync(ClientContext, TeamSiteCollectionGroupifyInformation)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Sites_SiteCollection_GroupifyAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamSiteCollectionGroupifyInformation_" class="collapse in">
+  <div class="markdown level1 summary"><p>Groupifies a classic team site by creating a group for it and connecting the site with the newly created group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;ClientContext&gt; GroupifyAsync(ClientContext clientContext, TeamSiteCollectionGroupifyInformation siteCollectionGroupifyInformation)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p><p>ClientContext object of a regular site</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation.html">TeamSiteCollectionGroupifyInformation</a></span>
+        <span class="parametername">siteCollectionGroupifyInformation</span>
+        <p><p>information about the site to create</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a>&gt;
+        <p><p>ClientContext object for the created site collection</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Sites_SiteCollection_HideTeamifyPromptAsync_Microsoft_SharePoint_Client_ClientContext_.md&amp;value=---%0Auid%3A%20PnP.Framework.Sites.SiteCollection.HideTeamifyPromptAsync(Microsoft.SharePoint.Client.ClientContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Sites/SiteCollection.cs/#L1367" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Sites_SiteCollection_HideTeamifyPromptAsync_" data-uid="PnP.Framework.Sites.SiteCollection.HideTeamifyPromptAsync*"></a>
+  
+  <h4 id="PnP_Framework_Sites_SiteCollection_HideTeamifyPromptAsync_Microsoft_SharePoint_Client_ClientContext_" data-uid="PnP.Framework.Sites.SiteCollection.HideTeamifyPromptAsync(Microsoft.SharePoint.Client.ClientContext)"><a href="#collapsible-PnP_Framework_Sites_SiteCollection_HideTeamifyPromptAsync_Microsoft_SharePoint_Client_ClientContext_" class="expander" data-toggle="collapse">HideTeamifyPromptAsync(ClientContext)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Sites_SiteCollection_HideTeamifyPromptAsync_Microsoft_SharePoint_Client_ClientContext_" class="collapse in">
+  <div class="markdown level1 summary"><p>Hide the teamify prompt/banner displayed in O365 group connected sites</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;bool&gt; HideTeamifyPromptAsync(ClientContext context)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">context</span>
+        <p><p>ClientContext of the site to operate against</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Sites_SiteCollection_IsTeamifyPromptHiddenAsync_Microsoft_SharePoint_Client_ClientContext_.md&amp;value=---%0Auid%3A%20PnP.Framework.Sites.SiteCollection.IsTeamifyPromptHiddenAsync(Microsoft.SharePoint.Client.ClientContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Sites/SiteCollection.cs/#L1340" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Sites_SiteCollection_IsTeamifyPromptHiddenAsync_" data-uid="PnP.Framework.Sites.SiteCollection.IsTeamifyPromptHiddenAsync*"></a>
+  
+  <h4 id="PnP_Framework_Sites_SiteCollection_IsTeamifyPromptHiddenAsync_Microsoft_SharePoint_Client_ClientContext_" data-uid="PnP.Framework.Sites.SiteCollection.IsTeamifyPromptHiddenAsync(Microsoft.SharePoint.Client.ClientContext)"><a href="#collapsible-PnP_Framework_Sites_SiteCollection_IsTeamifyPromptHiddenAsync_Microsoft_SharePoint_Client_ClientContext_" class="expander" data-toggle="collapse">IsTeamifyPromptHiddenAsync(ClientContext)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Sites_SiteCollection_IsTeamifyPromptHiddenAsync_Microsoft_SharePoint_Client_ClientContext_" class="collapse in">
+  <div class="markdown level1 summary"><p>Checks if the Teamify prompt/banner is displayed in the O365 group connected sites.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;bool&gt; IsTeamifyPromptHiddenAsync(ClientContext context)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">context</span>
+        <p><p>ClientContext of the site to operate against</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Sites_SiteCollection_SetGroupImage_Microsoft_SharePoint_Client_ClientContext_System_Byte___System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Sites.SiteCollection.SetGroupImage(Microsoft.SharePoint.Client.ClientContext%2CSystem.Byte%5B%5D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Sites/SiteCollection.cs/#L1158" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Sites_SiteCollection_SetGroupImage_" data-uid="PnP.Framework.Sites.SiteCollection.SetGroupImage*"></a>
+  
+  <h4 id="PnP_Framework_Sites_SiteCollection_SetGroupImage_Microsoft_SharePoint_Client_ClientContext_System_Byte___System_String_" data-uid="PnP.Framework.Sites.SiteCollection.SetGroupImage(Microsoft.SharePoint.Client.ClientContext,System.Byte[],System.String)"><a href="#collapsible-PnP_Framework_Sites_SiteCollection_SetGroupImage_Microsoft_SharePoint_Client_ClientContext_System_Byte___System_String_" class="expander" data-toggle="collapse">SetGroupImage(ClientContext, Byte[], String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Sites_SiteCollection_SetGroupImage_Microsoft_SharePoint_Client_ClientContext_System_Byte___System_String_" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use SetGroupImageAsync instead of SetGroupImage&quot;)]
+public static async Task&lt;bool&gt; SetGroupImage(ClientContext context, byte[] file, string mimeType)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">context</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">Byte</a>[]</span>
+        <span class="parametername">file</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">mimeType</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Sites_SiteCollection_SetGroupImageAsync_Microsoft_SharePoint_Client_ClientContext_System_Byte___System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Sites.SiteCollection.SetGroupImageAsync(Microsoft.SharePoint.Client.ClientContext%2CSystem.Byte%5B%5D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Sites/SiteCollection.cs/#L1171" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Sites_SiteCollection_SetGroupImageAsync_" data-uid="PnP.Framework.Sites.SiteCollection.SetGroupImageAsync*"></a>
+  
+  <h4 id="PnP_Framework_Sites_SiteCollection_SetGroupImageAsync_Microsoft_SharePoint_Client_ClientContext_System_Byte___System_String_" data-uid="PnP.Framework.Sites.SiteCollection.SetGroupImageAsync(Microsoft.SharePoint.Client.ClientContext,System.Byte[],System.String)"><a href="#collapsible-PnP_Framework_Sites_SiteCollection_SetGroupImageAsync_Microsoft_SharePoint_Client_ClientContext_System_Byte___System_String_" class="expander" data-toggle="collapse">SetGroupImageAsync(ClientContext, Byte[], String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Sites_SiteCollection_SetGroupImageAsync_Microsoft_SharePoint_Client_ClientContext_System_Byte___System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Sets the image for an Office 365 group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;bool&gt; SetGroupImageAsync(ClientContext context, byte[] file, string mimeType)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">context</span>
+        <p><p>Context to operate on</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">Byte</a>[]</span>
+        <span class="parametername">file</span>
+        <p><p>Byte array containing the group image</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">mimeType</span>
+        <p><p>Image mime type</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;
+        <p><p>true if succeeded</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Sites_SiteCollection_TeamifySiteAsync_Microsoft_SharePoint_Client_ClientContext_System_String_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Sites.SiteCollection.TeamifySiteAsync(Microsoft.SharePoint.Client.ClientContext%2CSystem.String%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Sites/SiteCollection.cs/#L1266" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Sites_SiteCollection_TeamifySiteAsync_" data-uid="PnP.Framework.Sites.SiteCollection.TeamifySiteAsync*"></a>
+  
+  <h4 id="PnP_Framework_Sites_SiteCollection_TeamifySiteAsync_Microsoft_SharePoint_Client_ClientContext_System_String_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Sites.SiteCollection.TeamifySiteAsync(Microsoft.SharePoint.Client.ClientContext,System.String,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Sites_SiteCollection_TeamifySiteAsync_Microsoft_SharePoint_Client_ClientContext_System_String_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">TeamifySiteAsync(ClientContext, String, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Sites_SiteCollection_TeamifySiteAsync_Microsoft_SharePoint_Client_ClientContext_System_String_PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Enable Microsoft Teams team in an O365 group connected team site
+Will also enable it on a newly Groupified classic site</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;string&gt; TeamifySiteAsync(ClientContext context, string graphAccessToken = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">context</span>
+        <p><p>Context to operate against</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">graphAccessToken</span>
+        <p><p>Graph Access token</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Azure environment to operate</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

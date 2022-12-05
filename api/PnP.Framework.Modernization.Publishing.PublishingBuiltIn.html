@@ -1,0 +1,1035 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class PublishingBuiltIn
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class PublishingBuiltIn
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Publishing/PublishingBuiltIn.cs/#L15" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Publishing_PublishingBuiltIn.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Publishing.PublishingBuiltIn%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn">Class PublishingBuiltIn
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html">BaseTransform</a></div>
+    <div class="level2"><a class="xref" href="PnP.Framework.Modernization.Functions.FunctionsBase.html">FunctionsBase</a></div>
+    <div class="level3"><span class="xref">PublishingBuiltIn</span></div>
+  </div>
+  
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Functions.FunctionsBase.html#PnP_Framework_Modernization_Functions_FunctionsBase_clientContext">FunctionsBase.clientContext</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_RegisteredLogObservers">BaseTransform.RegisteredLogObservers</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_RegisterObserver_PnP_Framework_Modernization_Telemetry_ILogObserver_">BaseTransform.RegisterObserver(ILogObserver)</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_FlushObservers">BaseTransform.FlushObservers()</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_FlushSpecificObserver__1">BaseTransform.FlushSpecificObserver&lt;T&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_LogError_System_String_System_String_System_Exception_System_Boolean_System_Boolean_">BaseTransform.LogError(String, String, Exception, Boolean, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_LogInfo_System_String_System_String_PnP_Framework_Modernization_Telemetry_LogEntrySignificance_">BaseTransform.LogInfo(String, String, LogEntrySignificance)</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_LogWarning_System_String_System_String_">BaseTransform.LogWarning(String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_LogDebug_System_String_System_String_">BaseTransform.LogDebug(String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_Log_PnP_Framework_Modernization_Telemetry_LogEntry_PnP_Framework_Modernization_Telemetry_LogLevel_">BaseTransform.Log(LogEntry, LogLevel)</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_SetPageId_System_String_">BaseTransform.SetPageId(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_GetExactVersion_Microsoft_SharePoint_Client_ClientRuntimeContext_">BaseTransform.GetExactVersion(ClientRuntimeContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_GetVersion_Microsoft_SharePoint_Client_ClientRuntimeContext_">BaseTransform.GetVersion(ClientRuntimeContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="PnP.Framework.Modernization.Publishing.html">PnP.Framework.Modernization.Publishing</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class PublishingBuiltIn : FunctionsBase</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Publishing_PublishingBuiltIn__ctor_PnP_Framework_Modernization_Transform_BaseTransformationInformation_Microsoft_SharePoint_Client_ClientContext_Microsoft_SharePoint_Client_ClientContext_System_Collections_Generic_IList_PnP_Framework_Modernization_Telemetry_ILogObserver__.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Publishing.PublishingBuiltIn.%23ctor(PnP.Framework.Modernization.Transform.BaseTransformationInformation%2CMicrosoft.SharePoint.Client.ClientContext%2CMicrosoft.SharePoint.Client.ClientContext%2CSystem.Collections.Generic.IList%7BPnP.Framework.Modernization.Telemetry.ILogObserver%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Publishing/PublishingBuiltIn.cs/#L32" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn__ctor_" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn.#ctor*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn__ctor_PnP_Framework_Modernization_Transform_BaseTransformationInformation_Microsoft_SharePoint_Client_ClientContext_Microsoft_SharePoint_Client_ClientContext_System_Collections_Generic_IList_PnP_Framework_Modernization_Telemetry_ILogObserver__" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn.#ctor(PnP.Framework.Modernization.Transform.BaseTransformationInformation,Microsoft.SharePoint.Client.ClientContext,Microsoft.SharePoint.Client.ClientContext,System.Collections.Generic.IList{PnP.Framework.Modernization.Telemetry.ILogObserver})"><a href="#collapsible-PnP_Framework_Modernization_Publishing_PublishingBuiltIn__ctor_PnP_Framework_Modernization_Transform_BaseTransformationInformation_Microsoft_SharePoint_Client_ClientContext_Microsoft_SharePoint_Client_ClientContext_System_Collections_Generic_IList_PnP_Framework_Modernization_Telemetry_ILogObserver__" class="expander" data-toggle="collapse">PublishingBuiltIn(BaseTransformationInformation, ClientContext, ClientContext, IList&lt;ILogObserver&gt;)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Publishing_PublishingBuiltIn__ctor_PnP_Framework_Modernization_Transform_BaseTransformationInformation_Microsoft_SharePoint_Client_ClientContext_Microsoft_SharePoint_Client_ClientContext_System_Collections_Generic_IList_PnP_Framework_Modernization_Telemetry_ILogObserver__" class="collapse in">
+  <div class="markdown level1 summary"><p>Instantiates the base builtin function library</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PublishingBuiltIn(BaseTransformationInformation baseTransformationInformation, ClientContext sourceClientContext, ClientContext targetClientContext, IList&lt;ILogObserver&gt; logObservers = null)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransformationInformation.html">BaseTransformationInformation</a></span>
+        <span class="parametername">baseTransformationInformation</span>
+        <p><p>Page transformation information</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">sourceClientContext</span>
+        <p><p>The ClientContext for the source</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">targetClientContext</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="PnP.Framework.Modernization.Telemetry.ILogObserver.html">ILogObserver</a>&gt;</span>
+        <span class="parametername">logObservers</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Publishing_PublishingBuiltIn_DefaultTaxonomyFieldValue_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Publishing.PublishingBuiltIn.DefaultTaxonomyFieldValue(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Publishing/PublishingBuiltIn.cs/#L501" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn_DefaultTaxonomyFieldValue_" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn.DefaultTaxonomyFieldValue*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn_DefaultTaxonomyFieldValue_System_String_System_String_System_String_" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn.DefaultTaxonomyFieldValue(System.String,System.String,System.String)"><a href="#collapsible-PnP_Framework_Modernization_Publishing_PublishingBuiltIn_DefaultTaxonomyFieldValue_System_String_System_String_System_String_" class="expander" data-toggle="collapse">DefaultTaxonomyFieldValue(String, String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Publishing_PublishingBuiltIn_DefaultTaxonomyFieldValue_System_String_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Populate a taxonomy field based upon provided term id's. You can configure to optionally overwrite existing values</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string DefaultTaxonomyFieldValue(string fieldValue, string termIdString, string overwriteString)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">fieldValue</span>
+        <p><p>List of term id's to set, multiple values can also be used when the taxonomy field is configured to accept multiple terms</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">termIdString</span>
+        <p><p>Static bool ('true', 'false') to indicate if the default term values have to be set in case the fiels already contains terms</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">overwriteString</span>
+        <p><p>String with term information needed to set the taxonomy field</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Publishing_PublishingBuiltIn_EmptyString.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Publishing.PublishingBuiltIn.EmptyString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Publishing/PublishingBuiltIn.cs/#L56" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn_EmptyString_" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn.EmptyString*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn_EmptyString" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn.EmptyString"><a href="#collapsible-PnP_Framework_Modernization_Publishing_PublishingBuiltIn_EmptyString" class="expander" data-toggle="collapse">EmptyString()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Publishing_PublishingBuiltIn_EmptyString" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns an empty string</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string EmptyString()</code></pre>
+  </div>
+  
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>Empty string</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Publishing_PublishingBuiltIn_Prefix_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Publishing.PublishingBuiltIn.Prefix(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Publishing/PublishingBuiltIn.cs/#L86" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn_Prefix_" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn.Prefix*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn_Prefix_System_String_System_String_System_String_" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn.Prefix(System.String,System.String,System.String)"><a href="#collapsible-PnP_Framework_Modernization_Publishing_PublishingBuiltIn_Prefix_System_String_System_String_System_String_" class="expander" data-toggle="collapse">Prefix(String, String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Publishing_PublishingBuiltIn_Prefix_System_String_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Prefixes a string</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Prefix(string prefix, string content, string applyIfContentIsEmpty)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">prefix</span>
+        <p><p>Prefix to be applied</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">content</span>
+        <p><p>Value to apply the prefix to</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">applyIfContentIsEmpty</span>
+        <p><p>Apply prefix also when the content field is empty</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>Prefixed string</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Publishing_PublishingBuiltIn_PrefixAndSuffix_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Publishing.PublishingBuiltIn.PrefixAndSuffix(System.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Publishing/PublishingBuiltIn.cs/#L177" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn_PrefixAndSuffix_" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn.PrefixAndSuffix*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn_PrefixAndSuffix_System_String_System_String_System_String_System_String_" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn.PrefixAndSuffix(System.String,System.String,System.String,System.String)"><a href="#collapsible-PnP_Framework_Modernization_Publishing_PublishingBuiltIn_PrefixAndSuffix_System_String_System_String_System_String_System_String_" class="expander" data-toggle="collapse">PrefixAndSuffix(String, String, String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Publishing_PublishingBuiltIn_PrefixAndSuffix_System_String_System_String_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Prefixes and suffixes a string</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string PrefixAndSuffix(string prefix, string suffix, string content, string applyIfContentIsEmpty)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">prefix</span>
+        <p><p>Prefix to be applied</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">suffix</span>
+        <p><p>Suffix to be applied</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">content</span>
+        <p><p>Value to apply the prefix/suffix to</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">applyIfContentIsEmpty</span>
+        <p><p>Apply prefix/suffix also when the content field is empty</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>Prefixed string</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Publishing_PublishingBuiltIn_StaticString_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Publishing.PublishingBuiltIn.StaticString(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Publishing/PublishingBuiltIn.cs/#L70" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn_StaticString_" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn.StaticString*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn_StaticString_System_String_" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn.StaticString(System.String)"><a href="#collapsible-PnP_Framework_Modernization_Publishing_PublishingBuiltIn_StaticString_System_String_" class="expander" data-toggle="collapse">StaticString(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Publishing_PublishingBuiltIn_StaticString_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns an the (static) string provided as input</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string StaticString(string staticString)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">staticString</span>
+        <p><p>Static string that will be returned</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>String provided as input</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Publishing_PublishingBuiltIn_Suffix_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Publishing.PublishingBuiltIn.Suffix(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Publishing/PublishingBuiltIn.cs/#L131" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn_Suffix_" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn.Suffix*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn_Suffix_System_String_System_String_System_String_" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn.Suffix(System.String,System.String,System.String)"><a href="#collapsible-PnP_Framework_Modernization_Publishing_PublishingBuiltIn_Suffix_System_String_System_String_System_String_" class="expander" data-toggle="collapse">Suffix(String, String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Publishing_PublishingBuiltIn_Suffix_System_String_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Suffixes a string</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Suffix(string suffix, string content, string applyIfContentIsEmpty)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">suffix</span>
+        <p><p>Suffix to be applied</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">content</span>
+        <p><p>Value to apply the suffix to</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">applyIfContentIsEmpty</span>
+        <p><p>Apply suffix also when the content field is empty</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>Prefixed string</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToAuthors_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Publishing.PublishingBuiltIn.ToAuthors(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Publishing/PublishingBuiltIn.cs/#L441" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToAuthors_" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn.ToAuthors*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToAuthors_System_String_" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn.ToAuthors(System.String)"><a href="#collapsible-PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToAuthors_System_String_" class="expander" data-toggle="collapse">ToAuthors(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToAuthors_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Looks up user information for passed user id</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ToAuthors(string userId)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">userId</span>
+        <p><p>The id (int) of a user</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>A formatted json blob describing the user's details</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToImageAltText_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Publishing.PublishingBuiltIn.ToImageAltText(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Publishing/PublishingBuiltIn.cs/#L279" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToImageAltText_" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn.ToImageAltText*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToImageAltText_System_String_" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn.ToImageAltText(System.String)"><a href="#collapsible-PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToImageAltText_System_String_" class="expander" data-toggle="collapse">ToImageAltText(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToImageAltText_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns the image alternate text of a Publishing Image field value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ToImageAltText(string htmlImage)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">htmlImage</span>
+        <p><p>PublishingPageImage</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>Image alternate text</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToImageAnchor_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Publishing.PublishingBuiltIn.ToImageAnchor(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Publishing/PublishingBuiltIn.cs/#L310" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToImageAnchor_" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn.ToImageAnchor*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToImageAnchor_System_String_" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn.ToImageAnchor(System.String)"><a href="#collapsible-PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToImageAnchor_System_String_" class="expander" data-toggle="collapse">ToImageAnchor(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToImageAnchor_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns the image anchor url of a Publishing Image field value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ToImageAnchor(string htmlImage)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">htmlImage</span>
+        <p><p>Publishing Image field value</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>Image anchor url</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToImageCaption_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Publishing.PublishingBuiltIn.ToImageCaption(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Publishing/PublishingBuiltIn.cs/#L347" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToImageCaption_" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn.ToImageCaption*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToImageCaption_System_String_" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn.ToImageCaption(System.String)"><a href="#collapsible-PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToImageCaption_System_String_" class="expander" data-toggle="collapse">ToImageCaption(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToImageCaption_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns the image caption of a Publishing Html image caption field</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ToImageCaption(string htmlField)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">htmlField</span>
+        <p><p>Publishing Html image caption field value</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>Image caption</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToImageUrl_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Publishing.PublishingBuiltIn.ToImageUrl(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Publishing/PublishingBuiltIn.cs/#L242" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToImageUrl_" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn.ToImageUrl*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToImageUrl_System_String_" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn.ToImageUrl(System.String)"><a href="#collapsible-PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToImageUrl_System_String_" class="expander" data-toggle="collapse">ToImageUrl(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToImageUrl_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns the server relative image url of a Publishing Image field value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ToImageUrl(string htmlImage)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">htmlImage</span>
+        <p><p>Publishing Image field value</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>Server relative image url</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToPreviewImageUrl_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Publishing.PublishingBuiltIn.ToPreviewImageUrl(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Publishing/PublishingBuiltIn.cs/#L389" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToPreviewImageUrl_" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn.ToPreviewImageUrl*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToPreviewImageUrl_System_String_" data-uid="PnP.Framework.Modernization.Publishing.PublishingBuiltIn.ToPreviewImageUrl(System.String)"><a href="#collapsible-PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToPreviewImageUrl_System_String_" class="expander" data-toggle="collapse">ToPreviewImageUrl(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Publishing_PublishingBuiltIn_ToPreviewImageUrl_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns a page preview image url</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ToPreviewImageUrl(string image)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">image</span>
+        <p><p>A publishing image field value or a string containing a server relative image path</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>A formatted preview image url</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="System.ValidationExtensions.html#System_ValidationExtensions_ValidateNotNullOrEmpty__1___0_System_String_">ValidationExtensions.ValidateNotNullOrEmpty&lt;T&gt;(T, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_Set__2___0_System_Linq_Expressions_Expression_System_Func___0___1_____1_System_Boolean_System_Boolean_">ObjectExtensions.Set&lt;TObject, T&gt;(TObject, Expression&lt;Func&lt;TObject, T&gt;&gt;, T, Boolean, Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstancePropertyValue_System_Object_System_String_">ObjectExtensions.GetPublicInstancePropertyValue(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstanceProperty_System_Object_System_String_">ObjectExtensions.GetPublicInstanceProperty(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_SetPublicInstancePropertyValue_System_Object_System_String_System_Object_">ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Modernization.Cache.Extensions.html#PnP_Framework_Modernization_Cache_Extensions_ToByteArray_System_Object_">Extensions.ToByteArray(Object)</a>
+  </div>
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

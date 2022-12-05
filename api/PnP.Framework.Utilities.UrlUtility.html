@@ -1,0 +1,926 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class UrlUtility
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class UrlUtility
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PnP.Framework.Utilities.UrlUtility">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UrlUtility.cs/#L10" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UrlUtility.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UrlUtility%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="PnP_Framework_Utilities_UrlUtility" data-uid="PnP.Framework.Utilities.UrlUtility">Class UrlUtility
+  </h1>
+  <div class="markdown level0 summary"><p>Static methods to modify URL paths.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">UrlUtility</span></div>
+  </div>
+  
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="PnP.Framework.Utilities.html">PnP.Framework.Utilities</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="PnP_Framework_Utilities_UrlUtility_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class UrlUtility</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UrlUtility_AppendQueryString_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UrlUtility.AppendQueryString(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UrlUtility.cs/#L75" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_UrlUtility_AppendQueryString_" data-uid="PnP.Framework.Utilities.UrlUtility.AppendQueryString*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_UrlUtility_AppendQueryString_System_String_System_String_" data-uid="PnP.Framework.Utilities.UrlUtility.AppendQueryString(System.String,System.String)"><a href="#collapsible-PnP_Framework_Utilities_UrlUtility_AppendQueryString_System_String_System_String_" class="expander" data-toggle="collapse">AppendQueryString(String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_UrlUtility_AppendQueryString_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Adds query string parameters to the end of a querystring and guarantees the proper concatenation with <strong>?</strong> and <strong>&amp;.</strong></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string AppendQueryString(string path, string queryString)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">path</span>
+        <p><p>A SharePoint URL</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">queryString</span>
+        <p><p>Query string value that need to append to the URL</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>Returns URL along with appended query string</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UrlUtility_Combine_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UrlUtility.Combine(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UrlUtility.cs/#L44" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_UrlUtility_Combine_" data-uid="PnP.Framework.Utilities.UrlUtility.Combine*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_UrlUtility_Combine_System_String_System_String_" data-uid="PnP.Framework.Utilities.UrlUtility.Combine(System.String,System.String)"><a href="#collapsible-PnP_Framework_Utilities_UrlUtility_Combine_System_String_System_String_" class="expander" data-toggle="collapse">Combine(String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_UrlUtility_Combine_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Combines a path and a relative path.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string Combine(string path, string relative)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">path</span>
+        <p><p>A SharePoint URL</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">relative</span>
+        <p><p>SharePoint relative URL</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>Returns comibed path with a relative path</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UrlUtility_Combine_System_String_System_String___.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UrlUtility.Combine(System.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UrlUtility.cs/#L25" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_UrlUtility_Combine_" data-uid="PnP.Framework.Utilities.UrlUtility.Combine*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_UrlUtility_Combine_System_String_System_String___" data-uid="PnP.Framework.Utilities.UrlUtility.Combine(System.String,System.String[])"><a href="#collapsible-PnP_Framework_Utilities_UrlUtility_Combine_System_String_System_String___" class="expander" data-toggle="collapse">Combine(String, String[])</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_UrlUtility_Combine_System_String_System_String___" class="collapse in">
+  <div class="markdown level1 summary"><p>Combines a path and a relative path.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string Combine(string path, params string[] relativePaths)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">path</span>
+        <p><p>A SharePoint URL</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">relativePaths</span>
+        <p><p>SharePoint relative URLs</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>Returns comibed path with a relative paths</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UrlUtility_ContainsInvalidFileFolderChars_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UrlUtility.ContainsInvalidFileFolderChars(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UrlUtility.cs/#L131" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_UrlUtility_ContainsInvalidFileFolderChars_" data-uid="PnP.Framework.Utilities.UrlUtility.ContainsInvalidFileFolderChars*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_UrlUtility_ContainsInvalidFileFolderChars_System_String_" data-uid="PnP.Framework.Utilities.UrlUtility.ContainsInvalidFileFolderChars(System.String)"><a href="#collapsible-PnP_Framework_Utilities_UrlUtility_ContainsInvalidFileFolderChars_System_String_" class="expander" data-toggle="collapse">ContainsInvalidFileFolderChars(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_UrlUtility_ContainsInvalidFileFolderChars_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Checks if file or folder contains invalid characters or not</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool ContainsInvalidFileFolderChars(this string content)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">content</span>
+        <p><p>File or folder name to check</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p><p>True if contains invalid chars, false otherwise</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UrlUtility_ContainsInvalidUrlChars_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UrlUtility.ContainsInvalidUrlChars(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UrlUtility.cs/#L121" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_UrlUtility_ContainsInvalidUrlChars_" data-uid="PnP.Framework.Utilities.UrlUtility.ContainsInvalidUrlChars*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_UrlUtility_ContainsInvalidUrlChars_System_String_" data-uid="PnP.Framework.Utilities.UrlUtility.ContainsInvalidUrlChars(System.String)"><a href="#collapsible-PnP_Framework_Utilities_UrlUtility_ContainsInvalidUrlChars_System_String_" class="expander" data-toggle="collapse">ContainsInvalidUrlChars(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_UrlUtility_ContainsInvalidUrlChars_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Checks if URL contains invalid characters or not</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool ContainsInvalidUrlChars(this string content)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">content</span>
+        <p><p>Url value</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p><p>Returns true if URL contains invalid characters. Otherwise returns false.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UrlUtility_EnsureTrailingSlash_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UrlUtility.EnsureTrailingSlash(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UrlUtility.cs/#L105" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_UrlUtility_EnsureTrailingSlash_" data-uid="PnP.Framework.Utilities.UrlUtility.EnsureTrailingSlash*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_UrlUtility_EnsureTrailingSlash_System_String_" data-uid="PnP.Framework.Utilities.UrlUtility.EnsureTrailingSlash(System.String)"><a href="#collapsible-PnP_Framework_Utilities_UrlUtility_EnsureTrailingSlash_System_String_" class="expander" data-toggle="collapse">EnsureTrailingSlash(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_UrlUtility_EnsureTrailingSlash_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Ensures that there is a trailing slash at the end of the URL</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string EnsureTrailingSlash(string urlToProcess)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">urlToProcess</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UrlUtility_IsIisVirtualDirectory_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UrlUtility.IsIisVirtualDirectory(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UrlUtility.cs/#L171" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_UrlUtility_IsIisVirtualDirectory_" data-uid="PnP.Framework.Utilities.UrlUtility.IsIisVirtualDirectory*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_UrlUtility_IsIisVirtualDirectory_System_String_" data-uid="PnP.Framework.Utilities.UrlUtility.IsIisVirtualDirectory(System.String)"><a href="#collapsible-PnP_Framework_Utilities_UrlUtility_IsIisVirtualDirectory_System_String_" class="expander" data-toggle="collapse">IsIisVirtualDirectory(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_UrlUtility_IsIisVirtualDirectory_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Tells URL is virtual directory or not</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsIisVirtualDirectory(string url)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">url</span>
+        <p><p>SharePoint URL</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p><p>Returns true if URL is virtual directory. Otherwise returns false.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UrlUtility_MakeRelativeUrl_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UrlUtility.MakeRelativeUrl(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UrlUtility.cs/#L94" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_UrlUtility_MakeRelativeUrl_" data-uid="PnP.Framework.Utilities.UrlUtility.MakeRelativeUrl*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_UrlUtility_MakeRelativeUrl_System_String_" data-uid="PnP.Framework.Utilities.UrlUtility.MakeRelativeUrl(System.String)"><a href="#collapsible-PnP_Framework_Utilities_UrlUtility_MakeRelativeUrl_System_String_" class="expander" data-toggle="collapse">MakeRelativeUrl(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_UrlUtility_MakeRelativeUrl_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns realtive URL of given URL</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string MakeRelativeUrl(string urlToProcess)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">urlToProcess</span>
+        <p><p>SharePoint URL to process</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>Returns realtive URL of given URL</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UrlUtility_RemoveUnallowedCharacters_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UrlUtility.RemoveUnallowedCharacters(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UrlUtility.cs/#L222" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_UrlUtility_RemoveUnallowedCharacters_" data-uid="PnP.Framework.Utilities.UrlUtility.RemoveUnallowedCharacters*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_UrlUtility_RemoveUnallowedCharacters_System_String_" data-uid="PnP.Framework.Utilities.UrlUtility.RemoveUnallowedCharacters(System.String)"><a href="#collapsible-PnP_Framework_Utilities_UrlUtility_RemoveUnallowedCharacters_System_String_" class="expander" data-toggle="collapse">RemoveUnallowedCharacters(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_UrlUtility_RemoveUnallowedCharacters_System_String_" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string RemoveUnallowedCharacters(string str)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">str</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UrlUtility_ReplaceAccentedCharactersWithLatin_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UrlUtility.ReplaceAccentedCharactersWithLatin(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UrlUtility.cs/#L229" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_UrlUtility_ReplaceAccentedCharactersWithLatin_" data-uid="PnP.Framework.Utilities.UrlUtility.ReplaceAccentedCharactersWithLatin*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_UrlUtility_ReplaceAccentedCharactersWithLatin_System_String_" data-uid="PnP.Framework.Utilities.UrlUtility.ReplaceAccentedCharactersWithLatin(System.String)"><a href="#collapsible-PnP_Framework_Utilities_UrlUtility_ReplaceAccentedCharactersWithLatin_System_String_" class="expander" data-toggle="collapse">ReplaceAccentedCharactersWithLatin(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_UrlUtility_ReplaceAccentedCharactersWithLatin_System_String_" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ReplaceAccentedCharactersWithLatin(string str)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">str</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UrlUtility_ReplaceInvalidUrlChars_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UrlUtility.ReplaceInvalidUrlChars(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UrlUtility.cs/#L151" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_UrlUtility_ReplaceInvalidUrlChars_" data-uid="PnP.Framework.Utilities.UrlUtility.ReplaceInvalidUrlChars*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_UrlUtility_ReplaceInvalidUrlChars_System_String_System_String_" data-uid="PnP.Framework.Utilities.UrlUtility.ReplaceInvalidUrlChars(System.String,System.String)"><a href="#collapsible-PnP_Framework_Utilities_UrlUtility_ReplaceInvalidUrlChars_System_String_System_String_" class="expander" data-toggle="collapse">ReplaceInvalidUrlChars(String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_UrlUtility_ReplaceInvalidUrlChars_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Replaces invalid characters with other characters</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ReplaceInvalidUrlChars(this string content, string replacer)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">content</span>
+        <p><p>Url value</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">replacer</span>
+        <p><p>string need to replace with invalid characters</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>Returns replaced invalid characters from URL</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UrlUtility_StripInvalidUrlChars_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UrlUtility.StripInvalidUrlChars(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UrlUtility.cs/#L141" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_UrlUtility_StripInvalidUrlChars_" data-uid="PnP.Framework.Utilities.UrlUtility.StripInvalidUrlChars*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_UrlUtility_StripInvalidUrlChars_System_String_" data-uid="PnP.Framework.Utilities.UrlUtility.StripInvalidUrlChars(System.String)"><a href="#collapsible-PnP_Framework_Utilities_UrlUtility_StripInvalidUrlChars_System_String_" class="expander" data-toggle="collapse">StripInvalidUrlChars(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_UrlUtility_StripInvalidUrlChars_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Removes invalid characters</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string StripInvalidUrlChars(this string content)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">content</span>
+        <p><p>Url value</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>Returns URL without invalid characters</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_UrlUtility_UrlPathEncode_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.UrlUtility.UrlPathEncode(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/UrlUtility.cs/#L161" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_UrlUtility_UrlPathEncode_" data-uid="PnP.Framework.Utilities.UrlUtility.UrlPathEncode*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_UrlUtility_UrlPathEncode_System_String_" data-uid="PnP.Framework.Utilities.UrlUtility.UrlPathEncode(System.String)"><a href="#collapsible-PnP_Framework_Utilities_UrlUtility_UrlPathEncode_System_String_" class="expander" data-toggle="collapse">UrlPathEncode(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_UrlUtility_UrlPathEncode_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Encodes URL encoded in a way that SharePoint expected URLs to be encoded in client_LocationBasedDefaults.html</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string UrlPathEncode(this string content)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">content</span>
+        <p><p>Url value</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>Returns URL encoded in a way that SharePoint expected URLs to be encoded in client_LocationBasedDefaults.html</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

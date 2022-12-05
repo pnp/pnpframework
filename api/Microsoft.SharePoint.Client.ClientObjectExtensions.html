@@ -1,0 +1,885 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ClientObjectExtensions
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ClientObjectExtensions
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Microsoft.SharePoint.Client.ClientObjectExtensions">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientObjectExtensions.cs/#L12" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientObjectExtensions.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientObjectExtensions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="Microsoft_SharePoint_Client_ClientObjectExtensions" data-uid="Microsoft.SharePoint.Client.ClientObjectExtensions">Class ClientObjectExtensions
+  </h1>
+  <div class="markdown level0 summary"><p>Class for client object extension methods</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">ClientObjectExtensions</span></div>
+  </div>
+  
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="Microsoft.SharePoint.Client.html">Microsoft.SharePoint.Client</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="Microsoft_SharePoint_Client_ClientObjectExtensions_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class ClientObjectExtensions</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientObjectExtensions_ClearObjectData_Microsoft_SharePoint_Client_ClientObject_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientObjectExtensions.ClearObjectData(Microsoft.SharePoint.Client.ClientObject)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientObjectExtensions.cs/#L256" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientObjectExtensions_ClearObjectData_" data-uid="Microsoft.SharePoint.Client.ClientObjectExtensions.ClearObjectData*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientObjectExtensions_ClearObjectData_Microsoft_SharePoint_Client_ClientObject_" data-uid="Microsoft.SharePoint.Client.ClientObjectExtensions.ClearObjectData(Microsoft.SharePoint.Client.ClientObject)"><a href="#collapsible-Microsoft_SharePoint_Client_ClientObjectExtensions_ClearObjectData_Microsoft_SharePoint_Client_ClientObject_" class="expander" data-toggle="collapse">ClearObjectData(ClientObject)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientObjectExtensions_ClearObjectData_Microsoft_SharePoint_Client_ClientObject_" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void ClearObjectData(this ClientObject clientObject)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientobject">ClientObject</a></span>
+        <span class="parametername">clientObject</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientObjectExtensions_EnsureProperties__1___0_System_Linq_Expressions_Expression_System_Func___0_System_Object_____.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientObjectExtensions.EnsureProperties%60%601(%60%600%2CSystem.Linq.Expressions.Expression%7BSystem.Func%7B%60%600%2CSystem.Object%7D%7D%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientObjectExtensions.cs/#L135" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientObjectExtensions_EnsureProperties_" data-uid="Microsoft.SharePoint.Client.ClientObjectExtensions.EnsureProperties*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientObjectExtensions_EnsureProperties__1___0_System_Linq_Expressions_Expression_System_Func___0_System_Object_____" data-uid="Microsoft.SharePoint.Client.ClientObjectExtensions.EnsureProperties``1(``0,System.Linq.Expressions.Expression{System.Func{``0,System.Object}}[])"><a href="#collapsible-Microsoft_SharePoint_Client_ClientObjectExtensions_EnsureProperties__1___0_System_Linq_Expressions_Expression_System_Func___0_System_Object_____" class="expander" data-toggle="collapse">EnsureProperties&lt;T&gt;(T, Expression&lt;Func&lt;T, Object&gt;&gt;[])</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientObjectExtensions_EnsureProperties__1___0_System_Linq_Expressions_Expression_System_Func___0_System_Object_____" class="collapse in">
+  <div class="markdown level1 summary"><p>Ensures that particular properties are loaded on the <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientobject">ClientObject</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void EnsureProperties&lt;T&gt;(this T clientObject, params Expression&lt;Func&lt;T, object&gt;&gt;[] propertySelector)
+    where T : ClientObject</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">T</span></span>
+        <span class="parametername">clientObject</span>
+        <p><p><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientobject">ClientObject</a></p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a>&gt;&gt;[]</span>
+        <span class="parametername">propertySelector</span>
+        <p><p>Lamda expressions containing the properties to ensure (e.g. w =&gt; w.HasUniqueRoleAssignments, w =&gt; w.ServerRelativeUrl)</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="parametername">T</span>
+        <p><p><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientobject">ClientObject</a> type</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientObjectExtensions_EnsurePropertiesAsync__1___0_System_Linq_Expressions_Expression_System_Func___0_System_Object_____.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientObjectExtensions.EnsurePropertiesAsync%60%601(%60%600%2CSystem.Linq.Expressions.Expression%7BSystem.Func%7B%60%600%2CSystem.Object%7D%7D%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientObjectExtensions.cs/#L147" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientObjectExtensions_EnsurePropertiesAsync_" data-uid="Microsoft.SharePoint.Client.ClientObjectExtensions.EnsurePropertiesAsync*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientObjectExtensions_EnsurePropertiesAsync__1___0_System_Linq_Expressions_Expression_System_Func___0_System_Object_____" data-uid="Microsoft.SharePoint.Client.ClientObjectExtensions.EnsurePropertiesAsync``1(``0,System.Linq.Expressions.Expression{System.Func{``0,System.Object}}[])"><a href="#collapsible-Microsoft_SharePoint_Client_ClientObjectExtensions_EnsurePropertiesAsync__1___0_System_Linq_Expressions_Expression_System_Func___0_System_Object_____" class="expander" data-toggle="collapse">EnsurePropertiesAsync&lt;T&gt;(T, Expression&lt;Func&lt;T, Object&gt;&gt;[])</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientObjectExtensions_EnsurePropertiesAsync__1___0_System_Linq_Expressions_Expression_System_Func___0_System_Object_____" class="collapse in">
+  <div class="markdown level1 summary"><p>Ensures that particular properties are loaded on the <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientobject">ClientObject</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task EnsurePropertiesAsync&lt;T&gt;(this T clientObject, params Expression&lt;Func&lt;T, object&gt;&gt;[] propertySelector)
+    where T : ClientObject</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">T</span></span>
+        <span class="parametername">clientObject</span>
+        <p><p><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientobject">ClientObject</a></p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a>&gt;&gt;[]</span>
+        <span class="parametername">propertySelector</span>
+        <p><p>Lamda expressions containing the properties to ensure (e.g. w =&gt; w.HasUniqueRoleAssignments, w =&gt; w.ServerRelativeUrl)</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>
+        <p><p>Property value</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="parametername">T</span>
+        <p><p><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientobject">ClientObject</a> type</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientObjectExtensions_EnsureProperty__2___0_System_Linq_Expressions_Expression_System_Func___0___1___.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientObjectExtensions.EnsureProperty%60%602(%60%600%2CSystem.Linq.Expressions.Expression%7BSystem.Func%7B%60%600%2C%60%601%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientObjectExtensions.cs/#L67" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientObjectExtensions_EnsureProperty_" data-uid="Microsoft.SharePoint.Client.ClientObjectExtensions.EnsureProperty*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientObjectExtensions_EnsureProperty__2___0_System_Linq_Expressions_Expression_System_Func___0___1___" data-uid="Microsoft.SharePoint.Client.ClientObjectExtensions.EnsureProperty``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}})"><a href="#collapsible-Microsoft_SharePoint_Client_ClientObjectExtensions_EnsureProperty__2___0_System_Linq_Expressions_Expression_System_Func___0___1___" class="expander" data-toggle="collapse">EnsureProperty&lt;T, TResult&gt;(T, Expression&lt;Func&lt;T, TResult&gt;&gt;)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientObjectExtensions_EnsureProperty__2___0_System_Linq_Expressions_Expression_System_Func___0___1___" class="collapse in">
+  <div class="markdown level1 summary"><p>Ensures that particular property is loaded on the <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientobject">ClientObject</a> and immediately returns this property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TResult EnsureProperty&lt;T, TResult&gt;(this T clientObject, Expression&lt;Func&lt;T, TResult&gt;&gt; propertySelector)
+    where T : ClientObject</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">T</span></span>
+        <span class="parametername">clientObject</span>
+        <p><p><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientobject">ClientObject</a></p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, TResult&gt;&gt;</span>
+        <span class="parametername">propertySelector</span>
+        <p><p>Lamda expression containing the property to ensure (e.g. w =&gt; w.HasUniqueRoleAssignments)</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="xref">TResult</span>
+        <p><p>Property value</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="parametername">T</span>
+        <p><p><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientobject">ClientObject</a> type</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="parametername">TResult</span>
+        <p><p>Property type</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientObjectExtensions_EnsurePropertyAsync__2___0_System_Linq_Expressions_Expression_System_Func___0___1___.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientObjectExtensions.EnsurePropertyAsync%60%602(%60%600%2CSystem.Linq.Expressions.Expression%7BSystem.Func%7B%60%600%2C%60%601%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientObjectExtensions.cs/#L80" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientObjectExtensions_EnsurePropertyAsync_" data-uid="Microsoft.SharePoint.Client.ClientObjectExtensions.EnsurePropertyAsync*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientObjectExtensions_EnsurePropertyAsync__2___0_System_Linq_Expressions_Expression_System_Func___0___1___" data-uid="Microsoft.SharePoint.Client.ClientObjectExtensions.EnsurePropertyAsync``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}})"><a href="#collapsible-Microsoft_SharePoint_Client_ClientObjectExtensions_EnsurePropertyAsync__2___0_System_Linq_Expressions_Expression_System_Func___0___1___" class="expander" data-toggle="collapse">EnsurePropertyAsync&lt;T, TResult&gt;(T, Expression&lt;Func&lt;T, TResult&gt;&gt;)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientObjectExtensions_EnsurePropertyAsync__2___0_System_Linq_Expressions_Expression_System_Func___0___1___" class="collapse in">
+  <div class="markdown level1 summary"><p>Ensures that particular property is loaded on the <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientobject">ClientObject</a> and immediately returns this property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;TResult&gt; EnsurePropertyAsync&lt;T, TResult&gt;(this T clientObject, Expression&lt;Func&lt;T, TResult&gt;&gt; propertySelector)
+    where T : ClientObject</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">T</span></span>
+        <span class="parametername">clientObject</span>
+        <p><p><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientobject">ClientObject</a></p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, TResult&gt;&gt;</span>
+        <span class="parametername">propertySelector</span>
+        <p><p>Lamda expression containing the property to ensure (e.g. w =&gt; w.HasUniqueRoleAssignments)</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;TResult&gt;
+        <p><p>Property value</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="parametername">T</span>
+        <p><p><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientobject">ClientObject</a> type</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="parametername">TResult</span>
+        <p><p>Property type</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientObjectExtensions_IsObjectPropertyInstantiated__1___0_System_Linq_Expressions_Expression_System_Func___0_System_Object___.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientObjectExtensions.IsObjectPropertyInstantiated%60%601(%60%600%2CSystem.Linq.Expressions.Expression%7BSystem.Func%7B%60%600%2CSystem.Object%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientObjectExtensions.cs/#L52" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientObjectExtensions_IsObjectPropertyInstantiated_" data-uid="Microsoft.SharePoint.Client.ClientObjectExtensions.IsObjectPropertyInstantiated*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientObjectExtensions_IsObjectPropertyInstantiated__1___0_System_Linq_Expressions_Expression_System_Func___0_System_Object___" data-uid="Microsoft.SharePoint.Client.ClientObjectExtensions.IsObjectPropertyInstantiated``1(``0,System.Linq.Expressions.Expression{System.Func{``0,System.Object}})"><a href="#collapsible-Microsoft_SharePoint_Client_ClientObjectExtensions_IsObjectPropertyInstantiated__1___0_System_Linq_Expressions_Expression_System_Func___0_System_Object___" class="expander" data-toggle="collapse">IsObjectPropertyInstantiated&lt;T&gt;(T, Expression&lt;Func&lt;T, Object&gt;&gt;)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientObjectExtensions_IsObjectPropertyInstantiated__1___0_System_Linq_Expressions_Expression_System_Func___0_System_Object___" class="collapse in">
+  <div class="markdown level1 summary"><p>Check if a property is instantiated on a object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsObjectPropertyInstantiated&lt;T&gt;(this T clientObject, Expression&lt;Func&lt;T, object&gt;&gt; propertySelector)
+    where T : ClientObject</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">T</span></span>
+        <span class="parametername">clientObject</span>
+        <p><p>Object to operate on</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a>&gt;&gt;</span>
+        <span class="parametername">propertySelector</span>
+        <p><p>Lamda expression containing the properties to check (e.g. w =&gt; w.HasUniqueRoleAssignments)</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p><p>True if the property is instantiated, false otherwise</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="parametername">T</span>
+        <p><p>Type of object to operate on</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientObjectExtensions_IsPropertyAvailable__1___0_System_Linq_Expressions_Expression_System_Func___0_System_Object___.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientObjectExtensions.IsPropertyAvailable%60%601(%60%600%2CSystem.Linq.Expressions.Expression%7BSystem.Func%7B%60%600%2CSystem.Object%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientObjectExtensions.cs/#L38" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientObjectExtensions_IsPropertyAvailable_" data-uid="Microsoft.SharePoint.Client.ClientObjectExtensions.IsPropertyAvailable*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientObjectExtensions_IsPropertyAvailable__1___0_System_Linq_Expressions_Expression_System_Func___0_System_Object___" data-uid="Microsoft.SharePoint.Client.ClientObjectExtensions.IsPropertyAvailable``1(``0,System.Linq.Expressions.Expression{System.Func{``0,System.Object}})"><a href="#collapsible-Microsoft_SharePoint_Client_ClientObjectExtensions_IsPropertyAvailable__1___0_System_Linq_Expressions_Expression_System_Func___0_System_Object___" class="expander" data-toggle="collapse">IsPropertyAvailable&lt;T&gt;(T, Expression&lt;Func&lt;T, Object&gt;&gt;)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientObjectExtensions_IsPropertyAvailable__1___0_System_Linq_Expressions_Expression_System_Func___0_System_Object___" class="collapse in">
+  <div class="markdown level1 summary"><p>Check if a property is available on a object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsPropertyAvailable&lt;T&gt;(this T clientObject, Expression&lt;Func&lt;T, object&gt;&gt; propertySelector)
+    where T : ClientObject</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">T</span></span>
+        <span class="parametername">clientObject</span>
+        <p><p>Object to operate on</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a>&gt;&gt;</span>
+        <span class="parametername">propertySelector</span>
+        <p><p>Lamda expression containing the properties to check (e.g. w =&gt; w.HasUniqueRoleAssignments)</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p><p>True if the property is available, false otherwise</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="parametername">T</span>
+        <p><p>Type of object to operate on</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientObjectExtensions_ServerObjectIsNull__1___0_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientObjectExtensions.ServerObjectIsNull%60%601(%60%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientObjectExtensions.cs/#L20" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientObjectExtensions_ServerObjectIsNull_" data-uid="Microsoft.SharePoint.Client.ClientObjectExtensions.ServerObjectIsNull*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientObjectExtensions_ServerObjectIsNull__1___0_" data-uid="Microsoft.SharePoint.Client.ClientObjectExtensions.ServerObjectIsNull``1(``0)"><a href="#collapsible-Microsoft_SharePoint_Client_ClientObjectExtensions_ServerObjectIsNull__1___0_" class="expander" data-toggle="collapse">ServerObjectIsNull&lt;T&gt;(T)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientObjectExtensions_ServerObjectIsNull__1___0_" class="collapse in">
+  <div class="markdown level1 summary"><p>Checks if the ClientObject is null</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool ServerObjectIsNull&lt;T&gt;(this T clientObject)
+    where T : ClientObject</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">T</span></span>
+        <span class="parametername">clientObject</span>
+        <p><p>Object to operate on</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p><p>True if the server object is null, otherwise false</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="parametername">T</span>
+        <p><p>Type of object to operate on</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientObjectExtensions_ToUntypedPropertyExpression__2_System_Linq_Expressions_Expression_System_Func___0___1___.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientObjectExtensions.ToUntypedPropertyExpression%60%602(System.Linq.Expressions.Expression%7BSystem.Func%7B%60%600%2C%60%601%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientObjectExtensions.cs/#L223" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientObjectExtensions_ToUntypedPropertyExpression_" data-uid="Microsoft.SharePoint.Client.ClientObjectExtensions.ToUntypedPropertyExpression*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientObjectExtensions_ToUntypedPropertyExpression__2_System_Linq_Expressions_Expression_System_Func___0___1___" data-uid="Microsoft.SharePoint.Client.ClientObjectExtensions.ToUntypedPropertyExpression``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})"><a href="#collapsible-Microsoft_SharePoint_Client_ClientObjectExtensions_ToUntypedPropertyExpression__2_System_Linq_Expressions_Expression_System_Func___0___1___" class="expander" data-toggle="collapse">ToUntypedPropertyExpression&lt;TInput, TOutput&gt;(Expression&lt;Func&lt;TInput, TOutput&gt;&gt;)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientObjectExtensions_ToUntypedPropertyExpression__2_System_Linq_Expressions_Expression_System_Func___0___1___" class="collapse in">
+  <div class="markdown level1 summary"><p>Converts generic  Expression&lt;Func&lt;TInput, TOutput&gt;&gt;  to Expression with object return type -  Expression&lt;Func&lt;TInput, object&gt;&gt;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Expression&lt;Func&lt;TInput, object&gt;&gt; ToUntypedPropertyExpression&lt;TInput, TOutput&gt;(this Expression&lt;Func&lt;TInput, TOutput&gt;&gt; expression)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TInput, TOutput&gt;&gt;</span>
+        <span class="parametername">expression</span>
+        <p><p><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a> to convert</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TInput, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a>&gt;&gt;
+        <p><p>New Expression where return type is object and not generic</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="parametername">TInput</span>
+        <p><p>Input type</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="parametername">TOutput</span>
+        <p><p>Returns type</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientObjectExtensions_ToUntypedStaticMethodCallExpression__2_System_Linq_Expressions_Expression_System_Func___0___1___.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientObjectExtensions.ToUntypedStaticMethodCallExpression%60%602(System.Linq.Expressions.Expression%7BSystem.Func%7B%60%600%2C%60%601%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientObjectExtensions.cs/#L204" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientObjectExtensions_ToUntypedStaticMethodCallExpression_" data-uid="Microsoft.SharePoint.Client.ClientObjectExtensions.ToUntypedStaticMethodCallExpression*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientObjectExtensions_ToUntypedStaticMethodCallExpression__2_System_Linq_Expressions_Expression_System_Func___0___1___" data-uid="Microsoft.SharePoint.Client.ClientObjectExtensions.ToUntypedStaticMethodCallExpression``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})"><a href="#collapsible-Microsoft_SharePoint_Client_ClientObjectExtensions_ToUntypedStaticMethodCallExpression__2_System_Linq_Expressions_Expression_System_Func___0___1___" class="expander" data-toggle="collapse">ToUntypedStaticMethodCallExpression&lt;TInput, TOutput&gt;(Expression&lt;Func&lt;TInput, TOutput&gt;&gt;)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientObjectExtensions_ToUntypedStaticMethodCallExpression__2_System_Linq_Expressions_Expression_System_Func___0___1___" class="collapse in">
+  <div class="markdown level1 summary"><p>Converts generic  Expression&lt;Func&lt;TInput, TOutput&gt;&gt;  to Expression with object return type -  Expression&lt;Func&lt;TInput, object&gt;&gt;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Expression&lt;Func&lt;TInput, object&gt;&gt; ToUntypedStaticMethodCallExpression&lt;TInput, TOutput&gt;(this Expression&lt;Func&lt;TInput, TOutput&gt;&gt; expression)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TInput, TOutput&gt;&gt;</span>
+        <span class="parametername">expression</span>
+        <p><p><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a> to convert</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TInput, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a>&gt;&gt;
+        <p><p>New Expression where return type is object and not generic</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="parametername">TInput</span>
+        <p><p>Input type</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="parametername">TOutput</span>
+        <p><p>Returns type</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

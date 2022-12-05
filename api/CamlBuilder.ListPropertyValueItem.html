@@ -1,0 +1,689 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ListPropertyValueItem
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ListPropertyValueItem
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="CamlBuilder.ListPropertyValueItem">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/ListPropertyValueItem.cs/#L8" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_ListPropertyValueItem.md&amp;value=---%0Auid%3A%20CamlBuilder.ListPropertyValueItem%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="CamlBuilder_ListPropertyValueItem" data-uid="CamlBuilder.ListPropertyValueItem">Class ListPropertyValueItem
+  </h1>
+  <div class="markdown level0 summary"><p>Represents an item to be used by ListProperty value.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">ListPropertyValueItem</span></div>
+  </div>
+  
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="CamlBuilder.html">CamlBuilder</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="CamlBuilder_ListPropertyValueItem_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ListPropertyValueItem</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_ListPropertyValueItem__ctor_System_String_.md&amp;value=---%0Auid%3A%20CamlBuilder.ListPropertyValueItem.%23ctor(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/ListPropertyValueItem.cs/#L72" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_ListPropertyValueItem__ctor_" data-uid="CamlBuilder.ListPropertyValueItem.#ctor*"></a>
+  
+  <h4 id="CamlBuilder_ListPropertyValueItem__ctor_System_String_" data-uid="CamlBuilder.ListPropertyValueItem.#ctor(System.String)"><a href="#collapsible-CamlBuilder_ListPropertyValueItem__ctor_System_String_" class="expander" data-toggle="collapse">ListPropertyValueItem(String)</a></h4>
+  
+  <div id="collapsible-CamlBuilder_ListPropertyValueItem__ctor_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Creates an instance of ListPropertyValueItem with initial specified <code data-dev-comment-type="paramref" class="paramref">select</code></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ListPropertyValueItem(string select)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">select</span>
+        <p><p>Specifies a field in the List of Lists table.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_ListPropertyValueItem_AutoHyperLink.md&amp;value=---%0Auid%3A%20CamlBuilder.ListPropertyValueItem.AutoHyperLink%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/ListPropertyValueItem.cs/#L14" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_ListPropertyValueItem_AutoHyperLink_" data-uid="CamlBuilder.ListPropertyValueItem.AutoHyperLink*"></a>
+  
+  <h4 id="CamlBuilder_ListPropertyValueItem_AutoHyperLink" data-uid="CamlBuilder.ListPropertyValueItem.AutoHyperLink"><a href="#collapsible-CamlBuilder_ListPropertyValueItem_AutoHyperLink" class="expander" data-toggle="collapse">AutoHyperLink</a></h4>
+  
+  <div id="collapsible-CamlBuilder_ListPropertyValueItem_AutoHyperLink" class="collapse in">
+  <div class="markdown level1 summary"><p>True to surround text with anchor tags if the text appears like a
+hyperlink, for example, <a href="http://www.microsoft.com">www.microsoft.com</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool? AutoHyperLink { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_ListPropertyValueItem_AutoHyperLinkNoEncoding.md&amp;value=---%0Auid%3A%20CamlBuilder.ListPropertyValueItem.AutoHyperLinkNoEncoding%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/ListPropertyValueItem.cs/#L20" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_ListPropertyValueItem_AutoHyperLinkNoEncoding_" data-uid="CamlBuilder.ListPropertyValueItem.AutoHyperLinkNoEncoding*"></a>
+  
+  <h4 id="CamlBuilder_ListPropertyValueItem_AutoHyperLinkNoEncoding" data-uid="CamlBuilder.ListPropertyValueItem.AutoHyperLinkNoEncoding"><a href="#collapsible-CamlBuilder_ListPropertyValueItem_AutoHyperLinkNoEncoding" class="expander" data-toggle="collapse">AutoHyperLinkNoEncoding</a></h4>
+  
+  <div id="collapsible-CamlBuilder_ListPropertyValueItem_AutoHyperLinkNoEncoding" class="collapse in">
+  <div class="markdown level1 summary"><p>True to surround text with anchor tags if the text appears like a
+hyperlink (for example, <a href="http://www.microsoft.com">www.microsoft.com</a>) but without HTML encoding.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool? AutoHyperLinkNoEncoding { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_ListPropertyValueItem_AutoNewLine.md&amp;value=---%0Auid%3A%20CamlBuilder.ListPropertyValueItem.AutoNewLine%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/ListPropertyValueItem.cs/#L26" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_ListPropertyValueItem_AutoNewLine_" data-uid="CamlBuilder.ListPropertyValueItem.AutoNewLine*"></a>
+  
+  <h4 id="CamlBuilder_ListPropertyValueItem_AutoNewLine" data-uid="CamlBuilder.ListPropertyValueItem.AutoNewLine"><a href="#collapsible-CamlBuilder_ListPropertyValueItem_AutoNewLine" class="expander" data-toggle="collapse">AutoNewLine</a></h4>
+  
+  <div id="collapsible-CamlBuilder_ListPropertyValueItem_AutoNewLine" class="collapse in">
+  <div class="markdown level1 summary"><p>True to insert break-line tags into the text stream and to
+replace multiple spaces with a nonbreaking space (&amp;nbsp;).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool? AutoNewLine { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_ListPropertyValueItem_Default.md&amp;value=---%0Auid%3A%20CamlBuilder.ListPropertyValueItem.Default%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/ListPropertyValueItem.cs/#L31" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_ListPropertyValueItem_Default_" data-uid="CamlBuilder.ListPropertyValueItem.Default*"></a>
+  
+  <h4 id="CamlBuilder_ListPropertyValueItem_Default" data-uid="CamlBuilder.ListPropertyValueItem.Default"><a href="#collapsible-CamlBuilder_ListPropertyValueItem_Default" class="expander" data-toggle="collapse">Default</a></h4>
+  
+  <div id="collapsible-CamlBuilder_ListPropertyValueItem_Default" class="collapse in">
+  <div class="markdown level1 summary"><p>Sets the default ProgID for the application that created the list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Default { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_ListPropertyValueItem_ExpandXml.md&amp;value=---%0Auid%3A%20CamlBuilder.ListPropertyValueItem.ExpandXml%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/ListPropertyValueItem.cs/#L37" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_ListPropertyValueItem_ExpandXml_" data-uid="CamlBuilder.ListPropertyValueItem.ExpandXml*"></a>
+  
+  <h4 id="CamlBuilder_ListPropertyValueItem_ExpandXml" data-uid="CamlBuilder.ListPropertyValueItem.ExpandXml"><a href="#collapsible-CamlBuilder_ListPropertyValueItem_ExpandXml" class="expander" data-toggle="collapse">ExpandXml</a></h4>
+  
+  <div id="collapsible-CamlBuilder_ListPropertyValueItem_ExpandXml" class="collapse in">
+  <div class="markdown level1 summary"><p>True to re-pass the rendered content through the Collaborative Application
+Markup Language (CAML) interpreter, which allows CAML to render CAML.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool? ExpandXml { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_ListPropertyValueItem_HtmlEncode.md&amp;value=---%0Auid%3A%20CamlBuilder.ListPropertyValueItem.HtmlEncode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/ListPropertyValueItem.cs/#L44" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_ListPropertyValueItem_HtmlEncode_" data-uid="CamlBuilder.ListPropertyValueItem.HtmlEncode*"></a>
+  
+  <h4 id="CamlBuilder_ListPropertyValueItem_HtmlEncode" data-uid="CamlBuilder.ListPropertyValueItem.HtmlEncode"><a href="#collapsible-CamlBuilder_ListPropertyValueItem_HtmlEncode" class="expander" data-toggle="collapse">HtmlEncode</a></h4>
+  
+  <div id="collapsible-CamlBuilder_ListPropertyValueItem_HtmlEncode" class="collapse in">
+  <div class="markdown level1 summary"><p>True to convert embedded characters so that they are displayed as text in the
+browser. In other words, characters that could be confused with HTML tags are
+converted to entities.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool? HtmlEncode { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_ListPropertyValueItem_Select.md&amp;value=---%0Auid%3A%20CamlBuilder.ListPropertyValueItem.Select%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/ListPropertyValueItem.cs/#L49" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_ListPropertyValueItem_Select_" data-uid="CamlBuilder.ListPropertyValueItem.Select*"></a>
+  
+  <h4 id="CamlBuilder_ListPropertyValueItem_Select" data-uid="CamlBuilder.ListPropertyValueItem.Select"><a href="#collapsible-CamlBuilder_ListPropertyValueItem_Select" class="expander" data-toggle="collapse">Select</a></h4>
+  
+  <div id="collapsible-CamlBuilder_ListPropertyValueItem_Select" class="collapse in">
+  <div class="markdown level1 summary"><p>Specifies a field in the List of Lists table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Select { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_ListPropertyValueItem_StripWs.md&amp;value=---%0Auid%3A%20CamlBuilder.ListPropertyValueItem.StripWs%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/ListPropertyValueItem.cs/#L54" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_ListPropertyValueItem_StripWs_" data-uid="CamlBuilder.ListPropertyValueItem.StripWs*"></a>
+  
+  <h4 id="CamlBuilder_ListPropertyValueItem_StripWs" data-uid="CamlBuilder.ListPropertyValueItem.StripWs"><a href="#collapsible-CamlBuilder_ListPropertyValueItem_StripWs" class="expander" data-toggle="collapse">StripWs</a></h4>
+  
+  <div id="collapsible-CamlBuilder_ListPropertyValueItem_StripWs" class="collapse in">
+  <div class="markdown level1 summary"><p>True to remove white space from the beginning and end of the value returned by the element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool? StripWs { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_ListPropertyValueItem_UrlEncode.md&amp;value=---%0Auid%3A%20CamlBuilder.ListPropertyValueItem.UrlEncode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/ListPropertyValueItem.cs/#L60" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_ListPropertyValueItem_UrlEncode_" data-uid="CamlBuilder.ListPropertyValueItem.UrlEncode*"></a>
+  
+  <h4 id="CamlBuilder_ListPropertyValueItem_UrlEncode" data-uid="CamlBuilder.ListPropertyValueItem.UrlEncode"><a href="#collapsible-CamlBuilder_ListPropertyValueItem_UrlEncode" class="expander" data-toggle="collapse">UrlEncode</a></h4>
+  
+  <div id="collapsible-CamlBuilder_ListPropertyValueItem_UrlEncode" class="collapse in">
+  <div class="markdown level1 summary"><p>True to convert special characters, such as spaces, to quoted UTF-8 format,
+for example, %c3%ab for character ë.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool? UrlEncode { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=CamlBuilder_ListPropertyValueItem_UrlEncodeAsUrl.md&amp;value=---%0Auid%3A%20CamlBuilder.ListPropertyValueItem.UrlEncodeAsUrl%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Caml/ListPropertyValueItem.cs/#L66" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="CamlBuilder_ListPropertyValueItem_UrlEncodeAsUrl_" data-uid="CamlBuilder.ListPropertyValueItem.UrlEncodeAsUrl*"></a>
+  
+  <h4 id="CamlBuilder_ListPropertyValueItem_UrlEncodeAsUrl" data-uid="CamlBuilder.ListPropertyValueItem.UrlEncodeAsUrl"><a href="#collapsible-CamlBuilder_ListPropertyValueItem_UrlEncodeAsUrl" class="expander" data-toggle="collapse">UrlEncodeAsUrl</a></h4>
+  
+  <div id="collapsible-CamlBuilder_ListPropertyValueItem_UrlEncodeAsUrl" class="collapse in">
+  <div class="markdown level1 summary"><p>Like URLEncode, but true to specify that the string to encode is a path component of a
+URL and not to encode the forward slash (/).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool? UrlEncodeAsUrl { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="System.ValidationExtensions.html#System_ValidationExtensions_ValidateNotNullOrEmpty__1___0_System_String_">ValidationExtensions.ValidateNotNullOrEmpty&lt;T&gt;(T, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_Set__2___0_System_Linq_Expressions_Expression_System_Func___0___1_____1_System_Boolean_System_Boolean_">ObjectExtensions.Set&lt;TObject, T&gt;(TObject, Expression&lt;Func&lt;TObject, T&gt;&gt;, T, Boolean, Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstancePropertyValue_System_Object_System_String_">ObjectExtensions.GetPublicInstancePropertyValue(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstanceProperty_System_Object_System_String_">ObjectExtensions.GetPublicInstanceProperty(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_SetPublicInstancePropertyValue_System_Object_System_String_System_Object_">ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Modernization.Cache.Extensions.html#PnP_Framework_Modernization_Cache_Extensions_ToByteArray_System_Object_">Extensions.ToByteArray(Object)</a>
+  </div>
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

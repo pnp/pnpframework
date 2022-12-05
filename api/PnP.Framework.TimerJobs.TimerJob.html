@@ -1,0 +1,2297 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class TimerJob
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class TimerJob
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PnP.Framework.TimerJobs.TimerJob">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L32" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="PnP_Framework_TimerJobs_TimerJob" data-uid="PnP.Framework.TimerJobs.TimerJob">Class TimerJob
+  </h1>
+  <div class="markdown level0 summary"><p>Abstract base class for creating timer jobs (background processes) that operate against SharePoint sites. These timer jobs
+are designed to use the CSOM API and thus can run on any server that can communicate with SharePoint.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">TimerJob</span></div>
+  </div>
+  
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="PnP.Framework.TimerJobs.html">PnP.Framework.TimerJobs</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="PnP_Framework_TimerJobs_TimerJob_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class TimerJob</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob__ctor_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.%23ctor(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L89" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob__ctor_" data-uid="PnP.Framework.TimerJobs.TimerJob.#ctor*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob__ctor_System_String_" data-uid="PnP.Framework.TimerJobs.TimerJob.#ctor(System.String)"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob__ctor_System_String_" class="expander" data-toggle="collapse">TimerJob(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob__ctor_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Simpliefied constructor for timer job, version is always set to &quot;1.0&quot;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TimerJob(string name)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">name</span>
+        <p><p>Name of the timer job</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob__ctor_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.%23ctor(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L99" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob__ctor_" data-uid="PnP.Framework.TimerJobs.TimerJob.#ctor*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob__ctor_System_String_System_String_" data-uid="PnP.Framework.TimerJobs.TimerJob.#ctor(System.String,System.String)"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob__ctor_System_String_System_String_" class="expander" data-toggle="collapse">TimerJob(String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob__ctor_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Simpliefied constructor for timer job, sets given version to timer job</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TimerJob(string name, string version)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">name</span>
+        <p><p>Name of the timer job</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">version</span>
+        <p><p>Version of the timer job</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob__ctor_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.%23ctor(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L110" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob__ctor_" data-uid="PnP.Framework.TimerJobs.TimerJob.#ctor*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob__ctor_System_String_System_String_System_String_" data-uid="PnP.Framework.TimerJobs.TimerJob.#ctor(System.String,System.String,System.String)"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob__ctor_System_String_System_String_System_String_" class="expander" data-toggle="collapse">TimerJob(String, String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob__ctor_System_String_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Default constructor for timer job</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TimerJob(string name, string version, string configurationData)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">name</span>
+        <p><p>Name of the timer job</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">version</span>
+        <p><p>Version of the timer job</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">configurationData</span>
+        <p><p>Timer job configuration data</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_AuthenticationType.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.AuthenticationType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L565" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_AuthenticationType_" data-uid="PnP.Framework.TimerJobs.TimerJob.AuthenticationType*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_AuthenticationType" data-uid="PnP.Framework.TimerJobs.TimerJob.AuthenticationType"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_AuthenticationType" class="expander" data-toggle="collapse">AuthenticationType</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_AuthenticationType" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets the authentication type that the timer job will use. This will be set as part
+of the UseOffice365Authentication and UseNetworkCredentialsAuthentication methods</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AuthenticationType AuthenticationType { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.TimerJobs.Enums.AuthenticationType.html">AuthenticationType</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_AzureEnvironment.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.AzureEnvironment%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L615" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_AzureEnvironment_" data-uid="PnP.Framework.TimerJobs.TimerJob.AzureEnvironment*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_AzureEnvironment" data-uid="PnP.Framework.TimerJobs.TimerJob.AzureEnvironment"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_AzureEnvironment" class="expander" data-toggle="collapse">AzureEnvironment</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_AzureEnvironment" class="collapse in">
+  <div class="markdown level1 summary"><p>Azure environment that will be used</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AzureEnvironment AzureEnvironment { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_ConfigurationData.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.ConfigurationData%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L153" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_ConfigurationData_" data-uid="PnP.Framework.TimerJobs.TimerJob.ConfigurationData*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_ConfigurationData" data-uid="PnP.Framework.TimerJobs.TimerJob.ConfigurationData"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_ConfigurationData" class="expander" data-toggle="collapse">ConfigurationData</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_ConfigurationData" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets or sets additional timer job configuration data</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ConfigurationData { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_ExcludeOD4B.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.ExcludeOD4B%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L977" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_ExcludeOD4B_" data-uid="PnP.Framework.TimerJobs.TimerJob.ExcludeOD4B*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_ExcludeOD4B" data-uid="PnP.Framework.TimerJobs.TimerJob.ExcludeOD4B"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_ExcludeOD4B" class="expander" data-toggle="collapse">ExcludeOD4B</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_ExcludeOD4B" class="collapse in">
+  <div class="markdown level1 summary"><p>Does the TimerJob also need to enumerate OD4B site collections</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ExcludeOD4B { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_ExpandSubSites.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.ExpandSubSites%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L993" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_ExpandSubSites_" data-uid="PnP.Framework.TimerJobs.TimerJob.ExpandSubSites*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_ExpandSubSites" data-uid="PnP.Framework.TimerJobs.TimerJob.ExpandSubSites"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_ExpandSubSites" class="expander" data-toggle="collapse">ExpandSubSites</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_ExpandSubSites" class="collapse in">
+  <div class="markdown level1 summary"><p>Does the TimerJob need to fire as well for every sub site in the site?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ExpandSubSites { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_IsRunning.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.IsRunning%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L185" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_IsRunning_" data-uid="PnP.Framework.TimerJobs.TimerJob.IsRunning*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_IsRunning" data-uid="PnP.Framework.TimerJobs.TimerJob.IsRunning"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_IsRunning" class="expander" data-toggle="collapse">IsRunning</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_IsRunning" class="collapse in">
+  <div class="markdown level1 summary"><p>Is this timer job running?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsRunning { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_ManageState.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.ManageState%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L169" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_ManageState_" data-uid="PnP.Framework.TimerJobs.TimerJob.ManageState*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_ManageState" data-uid="PnP.Framework.TimerJobs.TimerJob.ManageState"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_ManageState" class="expander" data-toggle="collapse">ManageState</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_ManageState" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets and sets the state management value: when true the timer job will automatically handle state by
+storing a json serialized class as a web property bag entry. Default value is false</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ManageState { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_MaximumThreads.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.MaximumThreads%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L212" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_MaximumThreads_" data-uid="PnP.Framework.TimerJobs.TimerJob.MaximumThreads*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_MaximumThreads" data-uid="PnP.Framework.TimerJobs.TimerJob.MaximumThreads"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_MaximumThreads" class="expander" data-toggle="collapse">MaximumThreads</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_MaximumThreads" class="collapse in">
+  <div class="markdown level1 summary"><p>How many threads can be used by this timer job. Default value is 5.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaximumThreads { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_Name.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L131" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_Name_" data-uid="PnP.Framework.TimerJobs.TimerJob.Name*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_Name" data-uid="PnP.Framework.TimerJobs.TimerJob.Name"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_Name" class="expander" data-toggle="collapse">Name</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_Name" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets the name of this timer job</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Name { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_Realm.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.Realm%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L599" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_Realm_" data-uid="PnP.Framework.TimerJobs.TimerJob.Realm*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_Realm" data-uid="PnP.Framework.TimerJobs.TimerJob.Realm"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_Realm" class="expander" data-toggle="collapse">Realm</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_Realm" class="collapse in">
+  <div class="markdown level1 summary"><p>Realm will be automatically defined, but there's an option to manually specify it which may
+be needed when did an override of ResolveAddedSites and specify your sites.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Realm { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_SharePointVersion.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.SharePointVersion%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L577" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_SharePointVersion_" data-uid="PnP.Framework.TimerJobs.TimerJob.SharePointVersion*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_SharePointVersion" data-uid="PnP.Framework.TimerJobs.TimerJob.SharePointVersion"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_SharePointVersion" class="expander" data-toggle="collapse">SharePointVersion</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_SharePointVersion" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets or sets the SharePoint version. Default value is detected based on the laoded CSOM assembly version, but can be overriden
+in case you want to for example use v16 assemblies in v15 (on-premises)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int SharePointVersion { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_TenantAdminSite.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.TenantAdminSite%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L630" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_TenantAdminSite_" data-uid="PnP.Framework.TimerJobs.TimerJob.TenantAdminSite*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_TenantAdminSite" data-uid="PnP.Framework.TimerJobs.TimerJob.TenantAdminSite"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_TenantAdminSite" class="expander" data-toggle="collapse">TenantAdminSite</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_TenantAdminSite" class="collapse in">
+  <div class="markdown level1 summary"><p>Option to specify the tenant admin site. For MT this typically is not needed since we can detect the tenant admin site, but for on premises and DvNext this is needed</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string TenantAdminSite { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_UseThreading.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.UseThreading%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L196" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_UseThreading_" data-uid="PnP.Framework.TimerJobs.TimerJob.UseThreading*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_UseThreading" data-uid="PnP.Framework.TimerJobs.TimerJob.UseThreading"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_UseThreading" class="expander" data-toggle="collapse">UseThreading</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_UseThreading" class="collapse in">
+  <div class="markdown level1 summary"><p>Can this timer job use multiple threads. Defaults to true</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool UseThreading { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_Version.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.Version%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L142" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_Version_" data-uid="PnP.Framework.TimerJobs.TimerJob.Version*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_Version" data-uid="PnP.Framework.TimerJobs.TimerJob.Version"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_Version" class="expander" data-toggle="collapse">Version</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_Version" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets the version of this timer job</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Version { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_AddSite_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.AddSite(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L1207" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_AddSite_" data-uid="PnP.Framework.TimerJobs.TimerJob.AddSite*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_AddSite_System_String_" data-uid="PnP.Framework.TimerJobs.TimerJob.AddSite(System.String)"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_AddSite_System_String_" class="expander" data-toggle="collapse">AddSite(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_AddSite_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Adds a site Url or wildcard site Url to the collection of sites that the timer job will process</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddSite(string site)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">site</span>
+        <p><p>Site Url or wildcard site Url to be processed by the timer job</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_ClearAddedSites.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.ClearAddedSites%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L1231" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_ClearAddedSites_" data-uid="PnP.Framework.TimerJobs.TimerJob.ClearAddedSites*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_ClearAddedSites" data-uid="PnP.Framework.TimerJobs.TimerJob.ClearAddedSites"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_ClearAddedSites" class="expander" data-toggle="collapse">ClearAddedSites()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_ClearAddedSites" class="collapse in">
+  <div class="markdown level1 summary"><p>Clears the list of added site Url's and/or wildcard site Url's</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearAddedSites()</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_Clone_PnP_Framework_TimerJobs_TimerJob_.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.Clone(PnP.Framework.TimerJobs.TimerJob)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L910" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_Clone_" data-uid="PnP.Framework.TimerJobs.TimerJob.Clone*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_Clone_PnP_Framework_TimerJobs_TimerJob_" data-uid="PnP.Framework.TimerJobs.TimerJob.Clone(PnP.Framework.TimerJobs.TimerJob)"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_Clone_PnP_Framework_TimerJobs_TimerJob_" class="expander" data-toggle="collapse">Clone(TimerJob)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_Clone_PnP_Framework_TimerJobs_TimerJob_" class="collapse in">
+  <div class="markdown level1 summary"><p>Takes over the settings from the passed timer job. Is useful when you run multiple jobs in a row or chain
+job execution. Settings that are taken over are all the authentication, enumeration settings and SharePointVersion</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Clone(TimerJob job)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.TimerJobs.TimerJob.html">TimerJob</a></span>
+        <span class="parametername">job</span>
+        <p><p>TimerJob</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_CreateClientContext_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.CreateClientContext(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L1434" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_CreateClientContext_" data-uid="PnP.Framework.TimerJobs.TimerJob.CreateClientContext*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_CreateClientContext_System_String_" data-uid="PnP.Framework.TimerJobs.TimerJob.CreateClientContext(System.String)"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_CreateClientContext_System_String_" class="expander" data-toggle="collapse">CreateClientContext(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_CreateClientContext_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Creates a ClientContext object based on the set AuthenticationType and the used version of SharePoint</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ClientContext CreateClientContext(string site)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">site</span>
+        <p><p>Site Url to create a ClientContext for</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a>
+        <p><p>The created ClientContext object. Returns null if no ClientContext was created</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_GetAllSubSites_Microsoft_SharePoint_Client_Site_.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.GetAllSubSites(Microsoft.SharePoint.Client.Site)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L1485" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_GetAllSubSites_" data-uid="PnP.Framework.TimerJobs.TimerJob.GetAllSubSites*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_GetAllSubSites_Microsoft_SharePoint_Client_Site_" data-uid="PnP.Framework.TimerJobs.TimerJob.GetAllSubSites(Microsoft.SharePoint.Client.Site)"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_GetAllSubSites_Microsoft_SharePoint_Client_Site_" class="expander" data-toggle="collapse">GetAllSubSites(Site)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_GetAllSubSites_Microsoft_SharePoint_Client_Site_" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets all sub sites for a given site</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt; GetAllSubSites(Site site)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>Site to find all sub site for</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;
+        <p><p>IEnumerable of strings holding the sub site URLs</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_ResolveAddedSites_System_Collections_Generic_List_System_String__.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.ResolveAddedSites(System.Collections.Generic.List%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L1254" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_ResolveAddedSites_" data-uid="PnP.Framework.TimerJobs.TimerJob.ResolveAddedSites*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_ResolveAddedSites_System_Collections_Generic_List_System_String__" data-uid="PnP.Framework.TimerJobs.TimerJob.ResolveAddedSites(System.Collections.Generic.List{System.String})"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_ResolveAddedSites_System_Collections_Generic_List_System_String__" class="expander" data-toggle="collapse">ResolveAddedSites(List&lt;String&gt;)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_ResolveAddedSites_System_Collections_Generic_List_System_String__" class="collapse in">
+  <div class="markdown level1 summary"><p>Virtual method that can be overriden to control the list of resolved sites</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual List&lt;string&gt; ResolveAddedSites(List&lt;string&gt; addedSites)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;</span>
+        <span class="parametername">addedSites</span>
+        <p><p>List of added site Url's and/or wildcard site Url's</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;
+        <p><p>List of resolved sites</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_Run.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.Run%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L244" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_Run_" data-uid="PnP.Framework.TimerJobs.TimerJob.Run*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_Run" data-uid="PnP.Framework.TimerJobs.TimerJob.Run"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_Run" class="expander" data-toggle="collapse">Run()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_Run" class="collapse in">
+  <div class="markdown level1 summary"><p>Triggers the timer job to start running</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Run()</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_SetEnumerationCredentials_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L1158" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_SetEnumerationCredentials_" data-uid="PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_SetEnumerationCredentials_System_String_" data-uid="PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String)"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_SetEnumerationCredentials_System_String_" class="expander" data-toggle="collapse">SetEnumerationCredentials(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_SetEnumerationCredentials_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Provides the timer job with the enumeration credentials. For SharePoint on-premises username, password and domain are needed</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetEnumerationCredentials(string credentialName)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">credentialName</span>
+        <p><p>Name of the credential manager registration</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_SetEnumerationCredentials_System_String_System_Security_SecureString_.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String%2CSystem.Security.SecureString)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L1092" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_SetEnumerationCredentials_" data-uid="PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_SetEnumerationCredentials_System_String_System_Security_SecureString_" data-uid="PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String,System.Security.SecureString)"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_SetEnumerationCredentials_System_String_System_Security_SecureString_" class="expander" data-toggle="collapse">SetEnumerationCredentials(String, SecureString)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_SetEnumerationCredentials_System_String_System_Security_SecureString_" class="collapse in">
+  <div class="markdown level1 summary"><p>Provides the timer job with the enumeration credentials. For Office 365 username and password is sufficient</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetEnumerationCredentials(string userUPN, SecureString password)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">userUPN</span>
+        <p><p>user name</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.security.securestring">SecureString</a></span>
+        <span class="parametername">password</span>
+        <p><p>Password of the enumeration user</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_SetEnumerationCredentials_System_String_System_Security_SecureString_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String%2CSystem.Security.SecureString%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L1131" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_SetEnumerationCredentials_" data-uid="PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_SetEnumerationCredentials_System_String_System_Security_SecureString_System_String_" data-uid="PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String,System.Security.SecureString,System.String)"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_SetEnumerationCredentials_System_String_System_Security_SecureString_System_String_" class="expander" data-toggle="collapse">SetEnumerationCredentials(String, SecureString, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_SetEnumerationCredentials_System_String_System_Security_SecureString_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Provides the timer job with the enumeration credentials. For SharePoint on-premises username, password and domain are needed</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetEnumerationCredentials(string samAccountName, SecureString password, string domain)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">samAccountName</span>
+        <p><p>Account name of the enumeration user</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.security.securestring">SecureString</a></span>
+        <span class="parametername">password</span>
+        <p><p>Password of the enumeration user</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">domain</span>
+        <p><p>Domain of the enumeration user</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_SetEnumerationCredentials_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L1077" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_SetEnumerationCredentials_" data-uid="PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_SetEnumerationCredentials_System_String_System_String_" data-uid="PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String,System.String)"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_SetEnumerationCredentials_System_String_System_String_" class="expander" data-toggle="collapse">SetEnumerationCredentials(String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_SetEnumerationCredentials_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Provides the timer job with the enumeration credentials. For Office 365 username and password is sufficient</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetEnumerationCredentials(string userUPN, string password)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">userUPN</span>
+        <p><p>user name</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">password</span>
+        <p><p>Password of the enumeration user</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_SetEnumerationCredentials_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L1115" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_SetEnumerationCredentials_" data-uid="PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_SetEnumerationCredentials_System_String_System_String_System_String_" data-uid="PnP.Framework.TimerJobs.TimerJob.SetEnumerationCredentials(System.String,System.String,System.String)"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_SetEnumerationCredentials_System_String_System_String_System_String_" class="expander" data-toggle="collapse">SetEnumerationCredentials(String, String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_SetEnumerationCredentials_System_String_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Provides the timer job with the enumeration credentials. For SharePoint on-premises username, password and domain are needed</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetEnumerationCredentials(string samAccountName, string password, string domain)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">samAccountName</span>
+        <p><p>UPN of the enumeration user</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">password</span>
+        <p><p>Password of the enumeration user</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">domain</span>
+        <p><p>Domain of the enumeration user</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_UpdateAddedSites_System_Collections_Generic_List_System_String__.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.UpdateAddedSites(System.Collections.Generic.List%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L1243" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_UpdateAddedSites_" data-uid="PnP.Framework.TimerJobs.TimerJob.UpdateAddedSites*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_UpdateAddedSites_System_Collections_Generic_List_System_String__" data-uid="PnP.Framework.TimerJobs.TimerJob.UpdateAddedSites(System.Collections.Generic.List{System.String})"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_UpdateAddedSites_System_Collections_Generic_List_System_String__" class="expander" data-toggle="collapse">UpdateAddedSites(List&lt;String&gt;)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_UpdateAddedSites_System_Collections_Generic_List_System_String__" class="collapse in">
+  <div class="markdown level1 summary"><p>Virtual method that can be overriden to allow the timer job itself to control the list of sites to operate against.
+Scenario is for example timer job that reads this data from a database instead of being fed by the calling program</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual List&lt;string&gt; UpdateAddedSites(List&lt;string&gt; addedSites)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;</span>
+        <span class="parametername">addedSites</span>
+        <p><p>List of added site Url's and/or wildcard site Url's</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;
+        <p><p>List of added site Url's and/or wildcard site Url's</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_UseAccessTokenAuthentication_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.UseAccessTokenAuthentication(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L890" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_UseAccessTokenAuthentication_" data-uid="PnP.Framework.TimerJobs.TimerJob.UseAccessTokenAuthentication*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_UseAccessTokenAuthentication_System_String_" data-uid="PnP.Framework.TimerJobs.TimerJob.UseAccessTokenAuthentication(System.String)"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_UseAccessTokenAuthentication_System_String_" class="expander" data-toggle="collapse">UseAccessTokenAuthentication(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_UseAccessTokenAuthentication_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Prepares the TimerJob to operate against SharePoint Only with a provided access token. Sets AuthenticationType
+to AuthenticationType.AccessToken</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UseAccessTokenAuthentication(string accessToken)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>Provided access token</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_UseAppOnlyAuthentication_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.UseAppOnlyAuthentication(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L721" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_UseAppOnlyAuthentication_" data-uid="PnP.Framework.TimerJobs.TimerJob.UseAppOnlyAuthentication*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_UseAppOnlyAuthentication_System_String_System_String_" data-uid="PnP.Framework.TimerJobs.TimerJob.UseAppOnlyAuthentication(System.String,System.String)"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_UseAppOnlyAuthentication_System_String_System_String_" class="expander" data-toggle="collapse">UseAppOnlyAuthentication(String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_UseAppOnlyAuthentication_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Prepares the TimerJob to operate against SharePoint on-premises with app-only credentials. Sets AuthenticationType
+to AuthenticationType.AppOnly</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UseAppOnlyAuthentication(string clientId, string clientSecret)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">clientId</span>
+        <p><p>Client ID of the app</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">clientSecret</span>
+        <p><p>Client Secret of the app</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_UseAppOnlyAuthentication_System_String_System_String_System_Security_SecureString_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.UseAppOnlyAuthentication(System.String%2CSystem.String%2CSystem.Security.SecureString%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L748" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_UseAppOnlyAuthentication_" data-uid="PnP.Framework.TimerJobs.TimerJob.UseAppOnlyAuthentication*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_UseAppOnlyAuthentication_System_String_System_String_System_Security_SecureString_System_String_" data-uid="PnP.Framework.TimerJobs.TimerJob.UseAppOnlyAuthentication(System.String,System.String,System.Security.SecureString,System.String)"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_UseAppOnlyAuthentication_System_String_System_String_System_Security_SecureString_System_String_" class="expander" data-toggle="collapse">UseAppOnlyAuthentication(String, String, SecureString, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_UseAppOnlyAuthentication_System_String_System_String_System_Security_SecureString_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Prepares the timerjob to operate against SharePoint on-premises with app-only client Id and certificate in High Trust mode.
+Sets AuthenticationType to AuthenticationType.AppOnly</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UseAppOnlyAuthentication(string clientId, string certificatePath, SecureString certificatePassword, string certificateIssuerId)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">clientId</span>
+        <p><p>Client ID of the app</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">certificatePath</span>
+        <p><p>Path of the Certificate file</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.security.securestring">SecureString</a></span>
+        <span class="parametername">certificatePassword</span>
+        <p><p>Password of the Certificate</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">certificateIssuerId</span>
+        <p><p>The Issuer ID of the certificate</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_UseAppOnlyAuthentication_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.UseAppOnlyAuthentication(System.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L787" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_UseAppOnlyAuthentication_" data-uid="PnP.Framework.TimerJobs.TimerJob.UseAppOnlyAuthentication*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_UseAppOnlyAuthentication_System_String_System_String_System_String_System_String_" data-uid="PnP.Framework.TimerJobs.TimerJob.UseAppOnlyAuthentication(System.String,System.String,System.String,System.String)"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_UseAppOnlyAuthentication_System_String_System_String_System_String_System_String_" class="expander" data-toggle="collapse">UseAppOnlyAuthentication(String, String, String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_UseAppOnlyAuthentication_System_String_System_String_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Prepares the timerjob to operate against SharePoint on-premises with app-only client Id and certificate in High Trust mode.
+Sets AuthenticationType to AuthenticationType.AppOnly</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UseAppOnlyAuthentication(string clientId, string certificatePath, string certificatePassword, string certificateIssuerId)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">clientId</span>
+        <p><p>Client ID of the app</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">certificatePath</span>
+        <p><p>Path of the Certificate file</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">certificatePassword</span>
+        <p><p>Password of the Certificate</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">certificateIssuerId</span>
+        <p><p>The Issuer ID of the certificate</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_UseAzureADAppOnlyAuthentication_System_String_System_String_System_Security_Cryptography_X509Certificates_X509Certificate2_.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.UseAzureADAppOnlyAuthentication(System.String%2CSystem.String%2CSystem.Security.Cryptography.X509Certificates.X509Certificate2)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L860" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_UseAzureADAppOnlyAuthentication_" data-uid="PnP.Framework.TimerJobs.TimerJob.UseAzureADAppOnlyAuthentication*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_UseAzureADAppOnlyAuthentication_System_String_System_String_System_Security_Cryptography_X509Certificates_X509Certificate2_" data-uid="PnP.Framework.TimerJobs.TimerJob.UseAzureADAppOnlyAuthentication(System.String,System.String,System.Security.Cryptography.X509Certificates.X509Certificate2)"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_UseAzureADAppOnlyAuthentication_System_String_System_String_System_Security_Cryptography_X509Certificates_X509Certificate2_" class="expander" data-toggle="collapse">UseAzureADAppOnlyAuthentication(String, String, X509Certificate2)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_UseAzureADAppOnlyAuthentication_System_String_System_String_System_Security_Cryptography_X509Certificates_X509Certificate2_" class="collapse in">
+  <div class="markdown level1 summary"><p>Prepares the TimerJob to operate against SharePoint Only with Azure AD app-only credentials. Sets AuthenticationType
+to AuthenticationType.AzureADAppOnly</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UseAzureADAppOnlyAuthentication(string clientId, string azureTenant, X509Certificate2 certificate)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">clientId</span>
+        <p><p>Client ID of the app</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">azureTenant</span>
+        <p><p>The Azure tenant name, like contoso.com</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.security.cryptography.x509certificates.x509certificate2">X509Certificate2</a></span>
+        <span class="parametername">certificate</span>
+        <p><p>The X.509 Certificate to use for AppOnly Authentication</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_UseAzureADAppOnlyAuthentication_System_String_System_String_System_String_System_Security_SecureString_.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.UseAzureADAppOnlyAuthentication(System.String%2CSystem.String%2CSystem.String%2CSystem.Security.SecureString)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L823" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_UseAzureADAppOnlyAuthentication_" data-uid="PnP.Framework.TimerJobs.TimerJob.UseAzureADAppOnlyAuthentication*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_UseAzureADAppOnlyAuthentication_System_String_System_String_System_String_System_Security_SecureString_" data-uid="PnP.Framework.TimerJobs.TimerJob.UseAzureADAppOnlyAuthentication(System.String,System.String,System.String,System.Security.SecureString)"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_UseAzureADAppOnlyAuthentication_System_String_System_String_System_String_System_Security_SecureString_" class="expander" data-toggle="collapse">UseAzureADAppOnlyAuthentication(String, String, String, SecureString)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_UseAzureADAppOnlyAuthentication_System_String_System_String_System_String_System_Security_SecureString_" class="collapse in">
+  <div class="markdown level1 summary"><p>Prepares the TimerJob to operate against SharePoint Only with Azure AD app-only credentials. Sets AuthenticationType
+to AuthenticationType.AzureADAppOnly</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UseAzureADAppOnlyAuthentication(string clientId, string azureTenant, string certificatePath, SecureString certificatePassword)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">clientId</span>
+        <p><p>Client ID of the app</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">azureTenant</span>
+        <p><p>The Azure tenant name, like contoso.com</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">certificatePath</span>
+        <p><p>The path to the *.pfx certicate file</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.security.securestring">SecureString</a></span>
+        <span class="parametername">certificatePassword</span>
+        <p><p>The password to the certificate</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_UseAzureADAppOnlyAuthentication_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.UseAzureADAppOnlyAuthentication(System.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L806" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_UseAzureADAppOnlyAuthentication_" data-uid="PnP.Framework.TimerJobs.TimerJob.UseAzureADAppOnlyAuthentication*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_UseAzureADAppOnlyAuthentication_System_String_System_String_System_String_System_String_" data-uid="PnP.Framework.TimerJobs.TimerJob.UseAzureADAppOnlyAuthentication(System.String,System.String,System.String,System.String)"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_UseAzureADAppOnlyAuthentication_System_String_System_String_System_String_System_String_" class="expander" data-toggle="collapse">UseAzureADAppOnlyAuthentication(String, String, String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_UseAzureADAppOnlyAuthentication_System_String_System_String_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Prepares the TimerJob to operate against SharePoint Only with Azure AD app-only credentials. Sets AuthenticationType
+to AuthenticationType.AzureADAppOnly</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UseAzureADAppOnlyAuthentication(string clientId, string azureTenant, string certificatePath, string certificatePassword)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">clientId</span>
+        <p><p>Client ID of the app</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">azureTenant</span>
+        <p><p>The Azure tenant name, like contoso.com</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">certificatePath</span>
+        <p><p>The path to the *.pfx certicate file</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">certificatePassword</span>
+        <p><p>The password to the certificate</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_UseOffice365Authentication_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.UseOffice365Authentication(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L689" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_UseOffice365Authentication_" data-uid="PnP.Framework.TimerJobs.TimerJob.UseOffice365Authentication*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_UseOffice365Authentication_System_String_" data-uid="PnP.Framework.TimerJobs.TimerJob.UseOffice365Authentication(System.String)"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_UseOffice365Authentication_System_String_" class="expander" data-toggle="collapse">UseOffice365Authentication(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_UseOffice365Authentication_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Prepares the TimerJob to operate against Office 365 with user and password credentials which are retrieved via
+the windows Credential Manager. Also sets AuthenticationType to AuthenticationType.Office365</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UseOffice365Authentication(string credentialName)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">credentialName</span>
+        <p><p>Name of the credential manager registration</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_UseOffice365Authentication_System_String_System_Security_SecureString_.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.UseOffice365Authentication(System.String%2CSystem.Security.SecureString)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L665" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_UseOffice365Authentication_" data-uid="PnP.Framework.TimerJobs.TimerJob.UseOffice365Authentication*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_UseOffice365Authentication_System_String_System_Security_SecureString_" data-uid="PnP.Framework.TimerJobs.TimerJob.UseOffice365Authentication(System.String,System.Security.SecureString)"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_UseOffice365Authentication_System_String_System_Security_SecureString_" class="expander" data-toggle="collapse">UseOffice365Authentication(String, SecureString)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_UseOffice365Authentication_System_String_System_Security_SecureString_" class="collapse in">
+  <div class="markdown level1 summary"><p>Prepares the TimerJob to operate against Office 365 with user and password credentials. Sets AuthenticationType
+to AuthenticationType.Office365</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UseOffice365Authentication(string userUPN, SecureString password)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">userUPN</span>
+        <p><p>user name</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.security.securestring">SecureString</a></span>
+        <span class="parametername">password</span>
+        <p><p>Password of the user that will be used to operate the timer job work</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_UseOffice365Authentication_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.UseOffice365Authentication(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L649" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_TimerJobs_TimerJob_UseOffice365Authentication_" data-uid="PnP.Framework.TimerJobs.TimerJob.UseOffice365Authentication*"></a>
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_UseOffice365Authentication_System_String_System_String_" data-uid="PnP.Framework.TimerJobs.TimerJob.UseOffice365Authentication(System.String,System.String)"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_UseOffice365Authentication_System_String_System_String_" class="expander" data-toggle="collapse">UseOffice365Authentication(String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_UseOffice365Authentication_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Prepares the TimerJob to operate against Office 365 with user and password credentials. Sets AuthenticationType
+to AuthenticationType.Office365</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UseOffice365Authentication(string userUPN, string password)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">userUPN</span>
+        <p><p>user name</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">password</span>
+        <p><p>Password of the user that will be used to operate the timer job work</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="events">Events
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_TimerJobs_TimerJob_TimerJobRun.md&amp;value=---%0Auid%3A%20PnP.Framework.TimerJobs.TimerJob.TimerJobRun%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/TimerJobs/TimerJob.cs/#L81" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="PnP_Framework_TimerJobs_TimerJob_TimerJobRun" data-uid="PnP.Framework.TimerJobs.TimerJob.TimerJobRun"><a href="#collapsible-PnP_Framework_TimerJobs_TimerJob_TimerJobRun" class="expander" data-toggle="collapse">TimerJobRun</a></h4>
+  
+  <div id="collapsible-PnP_Framework_TimerJobs_TimerJob_TimerJobRun" class="collapse in">
+  <div class="markdown level1 summary"><p>TimerJobRun event</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event TimerJobRunHandler TimerJobRun</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  
+  <h5 class="eventType">Event Type</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.TimerJobs.TimerJobRunHandler.html">TimerJobRunHandler</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="System.ValidationExtensions.html#System_ValidationExtensions_ValidateNotNullOrEmpty__1___0_System_String_">ValidationExtensions.ValidateNotNullOrEmpty&lt;T&gt;(T, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_Set__2___0_System_Linq_Expressions_Expression_System_Func___0___1_____1_System_Boolean_System_Boolean_">ObjectExtensions.Set&lt;TObject, T&gt;(TObject, Expression&lt;Func&lt;TObject, T&gt;&gt;, T, Boolean, Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstancePropertyValue_System_Object_System_String_">ObjectExtensions.GetPublicInstancePropertyValue(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstanceProperty_System_Object_System_String_">ObjectExtensions.GetPublicInstanceProperty(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_SetPublicInstancePropertyValue_System_Object_System_String_System_Object_">ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Modernization.Cache.Extensions.html#PnP_Framework_Modernization_Cache_Extensions_ToByteArray_System_Object_">Extensions.ToByteArray(Object)</a>
+  </div>
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

@@ -1,0 +1,873 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class BaseTransform
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class BaseTransform
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PnP.Framework.Modernization.Transform.BaseTransform">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/BaseTransform.cs/#L15" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_BaseTransform.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.BaseTransform%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="PnP_Framework_Modernization_Transform_BaseTransform" data-uid="PnP.Framework.Modernization.Transform.BaseTransform">Class BaseTransform
+  </h1>
+  <div class="markdown level0 summary"><p>Base logging implementation</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">BaseTransform</span></div>
+  </div>
+  
+      <div class="level2"><a class="xref" href="PnP.Framework.Modernization.Functions.BaseFunctionProcessor.html">BaseFunctionProcessor</a></div>
+      <div class="level2"><a class="xref" href="PnP.Framework.Modernization.Functions.FunctionsBase.html">FunctionsBase</a></div>
+      <div class="level2"><a class="xref" href="PnP.Framework.Modernization.Pages.BasePage.html">BasePage</a></div>
+      <div class="level2"><a class="xref" href="PnP.Framework.Modernization.Publishing.PageLayoutAnalyser.html">PageLayoutAnalyser</a></div>
+      <div class="level2"><a class="xref" href="PnP.Framework.Modernization.Publishing.PageLayoutManager.html">PageLayoutManager</a></div>
+      <div class="level2"><a class="xref" href="PnP.Framework.Modernization.Publishing.PublishingLayoutTransformator.html">PublishingLayoutTransformator</a></div>
+      <div class="level2"><a class="xref" href="PnP.Framework.Modernization.Publishing.PublishingMetadataTransformator.html">PublishingMetadataTransformator</a></div>
+      <div class="level2"><a class="xref" href="PnP.Framework.Modernization.Publishing.PublishingPageHeaderTransformator.html">PublishingPageHeaderTransformator</a></div>
+      <div class="level2"><a class="xref" href="PnP.Framework.Modernization.Transform.AssetTransfer.html">AssetTransfer</a></div>
+      <div class="level2"><a class="xref" href="PnP.Framework.Modernization.Transform.BasePageTransformator.html">BasePageTransformator</a></div>
+      <div class="level2"><a class="xref" href="PnP.Framework.Modernization.Transform.ContentTransformator.html">ContentTransformator</a></div>
+      <div class="level2"><a class="xref" href="PnP.Framework.Modernization.Transform.HtmlTransformator.html">HtmlTransformator</a></div>
+      <div class="level2"><a class="xref" href="PnP.Framework.Modernization.Transform.QuickLinksTransformator.html">QuickLinksTransformator</a></div>
+      <div class="level2"><a class="xref" href="PnP.Framework.Modernization.Transform.TermTransformator.html">TermTransformator</a></div>
+      <div class="level2"><a class="xref" href="PnP.Framework.Modernization.Transform.UrlTransformator.html">UrlTransformator</a></div>
+      <div class="level2"><a class="xref" href="PnP.Framework.Modernization.Transform.UserTransformator.html">UserTransformator</a></div>
+      <div class="level2"><a class="xref" href="PnP.Framework.Modernization.Transform.WikiHtmlTransformator.html">WikiHtmlTransformator</a></div>
+      <div class="level2"><a class="xref" href="PnP.Framework.Modernization.Utilities.FileManager.html">FileManager</a></div>
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="PnP.Framework.Modernization.Transform.html">PnP.Framework.Modernization.Transform</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="PnP_Framework_Modernization_Transform_BaseTransform_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class BaseTransform</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_BaseTransform__ctor.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.BaseTransform.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/BaseTransform.cs/#L32" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Transform_BaseTransform__ctor_" data-uid="PnP.Framework.Modernization.Transform.BaseTransform.#ctor*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Transform_BaseTransform__ctor" data-uid="PnP.Framework.Modernization.Transform.BaseTransform.#ctor"><a href="#collapsible-PnP_Framework_Modernization_Transform_BaseTransform__ctor" class="expander" data-toggle="collapse">BaseTransform()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Transform_BaseTransform__ctor" class="collapse in">
+  <div class="markdown level1 summary"><p>Instantiation of base transform class</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BaseTransform()</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_BaseTransform_RegisteredLogObservers.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.BaseTransform.RegisteredLogObservers%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/BaseTransform.cs/#L23" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Transform_BaseTransform_RegisteredLogObservers_" data-uid="PnP.Framework.Modernization.Transform.BaseTransform.RegisteredLogObservers*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Transform_BaseTransform_RegisteredLogObservers" data-uid="PnP.Framework.Modernization.Transform.BaseTransform.RegisteredLogObservers"><a href="#collapsible-PnP_Framework_Modernization_Transform_BaseTransform_RegisteredLogObservers" class="expander" data-toggle="collapse">RegisteredLogObservers</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Transform_BaseTransform_RegisteredLogObservers" class="collapse in">
+  <div class="markdown level1 summary"><p>List of registered log observers</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;ILogObserver&gt; RegisteredLogObservers { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="PnP.Framework.Modernization.Telemetry.ILogObserver.html">ILogObserver</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_BaseTransform_FlushObservers.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.BaseTransform.FlushObservers%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/BaseTransform.cs/#L53" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Transform_BaseTransform_FlushObservers_" data-uid="PnP.Framework.Modernization.Transform.BaseTransform.FlushObservers*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Transform_BaseTransform_FlushObservers" data-uid="PnP.Framework.Modernization.Transform.BaseTransform.FlushObservers"><a href="#collapsible-PnP_Framework_Modernization_Transform_BaseTransform_FlushObservers" class="expander" data-toggle="collapse">FlushObservers()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Transform_BaseTransform_FlushObservers" class="collapse in">
+  <div class="markdown level1 summary"><p>Flush all log observers</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void FlushObservers()</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_BaseTransform_FlushSpecificObserver__1.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.BaseTransform.FlushSpecificObserver%60%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/BaseTransform.cs/#L75" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Transform_BaseTransform_FlushSpecificObserver_" data-uid="PnP.Framework.Modernization.Transform.BaseTransform.FlushSpecificObserver*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Transform_BaseTransform_FlushSpecificObserver__1" data-uid="PnP.Framework.Modernization.Transform.BaseTransform.FlushSpecificObserver``1"><a href="#collapsible-PnP_Framework_Modernization_Transform_BaseTransform_FlushSpecificObserver__1" class="expander" data-toggle="collapse">FlushSpecificObserver&lt;T&gt;()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Transform_BaseTransform_FlushSpecificObserver__1" class="collapse in">
+  <div class="markdown level1 summary"><p>Flush Specific Observer of a type</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void FlushSpecificObserver&lt;T&gt;()</code></pre>
+  </div>
+  
+  
+  
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="parametername">T</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_BaseTransform_GetExactVersion_Microsoft_SharePoint_Client_ClientRuntimeContext_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.BaseTransform.GetExactVersion(Microsoft.SharePoint.Client.ClientRuntimeContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/BaseTransform.cs/#L203" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Transform_BaseTransform_GetExactVersion_" data-uid="PnP.Framework.Modernization.Transform.BaseTransform.GetExactVersion*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Transform_BaseTransform_GetExactVersion_Microsoft_SharePoint_Client_ClientRuntimeContext_" data-uid="PnP.Framework.Modernization.Transform.BaseTransform.GetExactVersion(Microsoft.SharePoint.Client.ClientRuntimeContext)"><a href="#collapsible-PnP_Framework_Modernization_Transform_BaseTransform_GetExactVersion_Microsoft_SharePoint_Client_ClientRuntimeContext_" class="expander" data-toggle="collapse">GetExactVersion(ClientRuntimeContext)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Transform_BaseTransform_GetExactVersion_Microsoft_SharePoint_Client_ClientRuntimeContext_" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets exact version of SharePoint</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string GetExactVersion(ClientRuntimeContext clientContext)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientruntimecontext">ClientRuntimeContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_BaseTransform_GetVersion_Microsoft_SharePoint_Client_ClientRuntimeContext_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.BaseTransform.GetVersion(Microsoft.SharePoint.Client.ClientRuntimeContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/BaseTransform.cs/#L223" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Transform_BaseTransform_GetVersion_" data-uid="PnP.Framework.Modernization.Transform.BaseTransform.GetVersion*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Transform_BaseTransform_GetVersion_Microsoft_SharePoint_Client_ClientRuntimeContext_" data-uid="PnP.Framework.Modernization.Transform.BaseTransform.GetVersion(Microsoft.SharePoint.Client.ClientRuntimeContext)"><a href="#collapsible-PnP_Framework_Modernization_Transform_BaseTransform_GetVersion_Microsoft_SharePoint_Client_ClientRuntimeContext_" class="expander" data-toggle="collapse">GetVersion(ClientRuntimeContext)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Transform_BaseTransform_GetVersion_Microsoft_SharePoint_Client_ClientRuntimeContext_" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets the version of SharePoint</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static SPVersion GetVersion(ClientRuntimeContext clientContext)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientruntimecontext">ClientRuntimeContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Modernization.Transform.SPVersion.html">SPVersion</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_BaseTransform_Log_PnP_Framework_Modernization_Telemetry_LogEntry_PnP_Framework_Modernization_Telemetry_LogLevel_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.BaseTransform.Log(PnP.Framework.Modernization.Telemetry.LogEntry%2CPnP.Framework.Modernization.Telemetry.LogLevel)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/BaseTransform.cs/#L158" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Transform_BaseTransform_Log_" data-uid="PnP.Framework.Modernization.Transform.BaseTransform.Log*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Transform_BaseTransform_Log_PnP_Framework_Modernization_Telemetry_LogEntry_PnP_Framework_Modernization_Telemetry_LogLevel_" data-uid="PnP.Framework.Modernization.Transform.BaseTransform.Log(PnP.Framework.Modernization.Telemetry.LogEntry,PnP.Framework.Modernization.Telemetry.LogLevel)"><a href="#collapsible-PnP_Framework_Modernization_Transform_BaseTransform_Log_PnP_Framework_Modernization_Telemetry_LogEntry_PnP_Framework_Modernization_Telemetry_LogLevel_" class="expander" data-toggle="collapse">Log(LogEntry, LogLevel)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Transform_BaseTransform_Log_PnP_Framework_Modernization_Telemetry_LogEntry_PnP_Framework_Modernization_Telemetry_LogLevel_" class="collapse in">
+  <div class="markdown level1 summary"><p>Log entries into the observers</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Log(LogEntry entry, LogLevel level)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Modernization.Telemetry.LogEntry.html">LogEntry</a></span>
+        <span class="parametername">entry</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Modernization.Telemetry.LogLevel.html">LogLevel</a></span>
+        <span class="parametername">level</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_BaseTransform_LogDebug_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.BaseTransform.LogDebug(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/BaseTransform.cs/#L145" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Transform_BaseTransform_LogDebug_" data-uid="PnP.Framework.Modernization.Transform.BaseTransform.LogDebug*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Transform_BaseTransform_LogDebug_System_String_System_String_" data-uid="PnP.Framework.Modernization.Transform.BaseTransform.LogDebug(System.String,System.String)"><a href="#collapsible-PnP_Framework_Modernization_Transform_BaseTransform_LogDebug_System_String_System_String_" class="expander" data-toggle="collapse">LogDebug(String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Transform_BaseTransform_LogDebug_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Notifies the observers of debug messages</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LogDebug(string message, string heading = &quot;&quot;)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">message</span>
+        <p><p>The message.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">heading</span>
+        <p><p>The logical grouping for the messages based on the stage of transformation</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_BaseTransform_LogError_System_String_System_String_System_Exception_System_Boolean_System_Boolean_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.BaseTransform.LogError(System.String%2CSystem.String%2CSystem.Exception%2CSystem.Boolean%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/BaseTransform.cs/#L97" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Transform_BaseTransform_LogError_" data-uid="PnP.Framework.Modernization.Transform.BaseTransform.LogError*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Transform_BaseTransform_LogError_System_String_System_String_System_Exception_System_Boolean_System_Boolean_" data-uid="PnP.Framework.Modernization.Transform.BaseTransform.LogError(System.String,System.String,System.Exception,System.Boolean,System.Boolean)"><a href="#collapsible-PnP_Framework_Modernization_Transform_BaseTransform_LogError_System_String_System_String_System_Exception_System_Boolean_System_Boolean_" class="expander" data-toggle="collapse">LogError(String, String, Exception, Boolean, Boolean)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Transform_BaseTransform_LogError_System_String_System_String_System_Exception_System_Boolean_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Notifies the observers of error messages</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LogError(string message, string heading = &quot;&quot;, Exception exception = null, bool ignoreException = false, bool isCriticalException = false)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">message</span>
+        <p><p>The message.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">heading</span>
+        <p><p>The logical grouping for the messages based on the stage of transformation</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></span>
+        <span class="parametername">exception</span>
+        <p><p>Exception object</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">ignoreException</span>
+        <p><p>For those areas where we swallow errors or they are non-critical to report</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">isCriticalException</span>
+        <p><p>Marks this error as a critical exception that prevents transformation</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_BaseTransform_LogInfo_System_String_System_String_PnP_Framework_Modernization_Telemetry_LogEntrySignificance_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.BaseTransform.LogInfo(System.String%2CSystem.String%2CPnP.Framework.Modernization.Telemetry.LogEntrySignificance)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/BaseTransform.cs/#L119" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Transform_BaseTransform_LogInfo_" data-uid="PnP.Framework.Modernization.Transform.BaseTransform.LogInfo*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Transform_BaseTransform_LogInfo_System_String_System_String_PnP_Framework_Modernization_Telemetry_LogEntrySignificance_" data-uid="PnP.Framework.Modernization.Transform.BaseTransform.LogInfo(System.String,System.String,PnP.Framework.Modernization.Telemetry.LogEntrySignificance)"><a href="#collapsible-PnP_Framework_Modernization_Transform_BaseTransform_LogInfo_System_String_System_String_PnP_Framework_Modernization_Telemetry_LogEntrySignificance_" class="expander" data-toggle="collapse">LogInfo(String, String, LogEntrySignificance)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Transform_BaseTransform_LogInfo_System_String_System_String_PnP_Framework_Modernization_Telemetry_LogEntrySignificance_" class="collapse in">
+  <div class="markdown level1 summary"><p>Notifies the observers of info messages</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LogInfo(string message, string heading = &quot;&quot;, LogEntrySignificance significance = LogEntrySignificance.None)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">message</span>
+        <p><p>The message.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">heading</span>
+        <p><p>The logical grouping for the messages based on the stage of transformation</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Modernization.Telemetry.LogEntrySignificance.html">LogEntrySignificance</a></span>
+        <span class="parametername">significance</span>
+        <p><p>Extra significance of the entry for the logs</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_BaseTransform_LogWarning_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.BaseTransform.LogWarning(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/BaseTransform.cs/#L132" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Transform_BaseTransform_LogWarning_" data-uid="PnP.Framework.Modernization.Transform.BaseTransform.LogWarning*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Transform_BaseTransform_LogWarning_System_String_System_String_" data-uid="PnP.Framework.Modernization.Transform.BaseTransform.LogWarning(System.String,System.String)"><a href="#collapsible-PnP_Framework_Modernization_Transform_BaseTransform_LogWarning_System_String_System_String_" class="expander" data-toggle="collapse">LogWarning(String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Transform_BaseTransform_LogWarning_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Notifies the observers of warning messages</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LogWarning(string message, string heading = &quot;&quot;)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">message</span>
+        <p><p>The message.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">heading</span>
+        <p><p>The logical grouping for the messages based on the stage of transformation</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_BaseTransform_RegisterObserver_PnP_Framework_Modernization_Telemetry_ILogObserver_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.BaseTransform.RegisterObserver(PnP.Framework.Modernization.Telemetry.ILogObserver)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/BaseTransform.cs/#L42" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Transform_BaseTransform_RegisterObserver_" data-uid="PnP.Framework.Modernization.Transform.BaseTransform.RegisterObserver*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Transform_BaseTransform_RegisterObserver_PnP_Framework_Modernization_Telemetry_ILogObserver_" data-uid="PnP.Framework.Modernization.Transform.BaseTransform.RegisterObserver(PnP.Framework.Modernization.Telemetry.ILogObserver)"><a href="#collapsible-PnP_Framework_Modernization_Transform_BaseTransform_RegisterObserver_PnP_Framework_Modernization_Telemetry_ILogObserver_" class="expander" data-toggle="collapse">RegisterObserver(ILogObserver)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Transform_BaseTransform_RegisterObserver_PnP_Framework_Modernization_Telemetry_ILogObserver_" class="collapse in">
+  <div class="markdown level1 summary"><p>Registers the observer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RegisterObserver(ILogObserver observer)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Modernization.Telemetry.ILogObserver.html">ILogObserver</a></span>
+        <span class="parametername">observer</span>
+        <p><p>The observer.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_BaseTransform_SetPageId_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.BaseTransform.SetPageId(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/BaseTransform.cs/#L188" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Transform_BaseTransform_SetPageId_" data-uid="PnP.Framework.Modernization.Transform.BaseTransform.SetPageId*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Transform_BaseTransform_SetPageId_System_String_" data-uid="PnP.Framework.Modernization.Transform.BaseTransform.SetPageId(System.String)"><a href="#collapsible-PnP_Framework_Modernization_Transform_BaseTransform_SetPageId_System_String_" class="expander" data-toggle="collapse">SetPageId(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Transform_BaseTransform_SetPageId_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Sets the page name of the page being transformed</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetPageId(string pageId)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">pageId</span>
+        <p><p>Name of the page being transformed</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="System.ValidationExtensions.html#System_ValidationExtensions_ValidateNotNullOrEmpty__1___0_System_String_">ValidationExtensions.ValidateNotNullOrEmpty&lt;T&gt;(T, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_Set__2___0_System_Linq_Expressions_Expression_System_Func___0___1_____1_System_Boolean_System_Boolean_">ObjectExtensions.Set&lt;TObject, T&gt;(TObject, Expression&lt;Func&lt;TObject, T&gt;&gt;, T, Boolean, Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstancePropertyValue_System_Object_System_String_">ObjectExtensions.GetPublicInstancePropertyValue(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstanceProperty_System_Object_System_String_">ObjectExtensions.GetPublicInstanceProperty(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_SetPublicInstancePropertyValue_System_Object_System_String_System_Object_">ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Modernization.Cache.Extensions.html#PnP_Framework_Modernization_Cache_Extensions_ToByteArray_System_Object_">Extensions.ToByteArray(Object)</a>
+  </div>
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

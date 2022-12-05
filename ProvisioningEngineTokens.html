@@ -1,0 +1,522 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Office 365 Developer PnP Core Component Provisioning Engine Tokens | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Office 365 Developer PnP Core Component Provisioning Engine Tokens | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/docs/ProvisioningEngineTokens.md/#L1" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                    <h1 id="office-365-developer-pnp-core-component-provisioning-engine-tokens">Office 365 Developer PnP Core Component Provisioning Engine Tokens</h1>
+
+<h3 id="summary">Summary</h3>
+<p>The SharePoint PnP Core Provisioning Engine supports certain tokens which will be replaced by corresponding values during provisioning. These tokens can be used to make the template site collection independent for instance.</p>
+<p>Below all the supported tokens are listed:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Token</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Example</th>
+<th style="text-align: left;">Returns</th>
+<th style="text-align: left;"></th>
+<th style="text-align: left;"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">{apppackageid:[packagename]}</td>
+<td style="text-align: left;">Returns the ID of an app package given its title</td>
+<td style="text-align: left;">{apppackageid:MyPackageTitle}</td>
+<td style="text-align: left;">55898e77-a7bf-4799-8034-506db5521b98</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{associatedmembergroup}</td>
+<td style="text-align: left;">Returns the title of the associated members SharePoint group of a site</td>
+<td style="text-align: left;">{associatedmembergroup}</td>
+<td style="text-align: left;">My Site Members Group Title</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{associatedownergroup}</td>
+<td style="text-align: left;">Returns the title of the associated owners SharePoint group of a site</td>
+<td style="text-align: left;">{associatedownergroup}</td>
+<td style="text-align: left;">My Site Owners Group Title</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{associatedvisitorgroup}</td>
+<td style="text-align: left;">Returns the title of the associated visitors SharePoint group of a site</td>
+<td style="text-align: left;">{associatedvisitorgroup}</td>
+<td style="text-align: left;">My Site Visitors Group Title</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{authenticationrealm}</td>
+<td style="text-align: left;">Returns the authentication ID of the current tenant/farm</td>
+<td style="text-align: left;">{authenticationrealm}</td>
+<td style="text-align: left;">55898e77-a7bf-4799-8034-506db5521b98</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{contenttypeid:[contenttypename]}</td>
+<td style="text-align: left;">Returns the ID of the specified content type</td>
+<td style="text-align: left;">{contenttypeid:My Content Type}</td>
+<td style="text-align: left;">0x0102004F51EFDEA49C49668EF9C6744C8CF87D</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{currentuserfullname}</td>
+<td style="text-align: left;">Returns the full name of the current user e.g. the user using the engine.</td>
+<td style="text-align: left;">{currentuserfullname}</td>
+<td style="text-align: left;">John Doe</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{currentuserid}</td>
+<td style="text-align: left;">Returns the ID of the current user e.g. the user using the engine.</td>
+<td style="text-align: left;">{currentuserid}</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{currentuserloginname}</td>
+<td style="text-align: left;">Returns the login name of the current user e.g. the user using the engine.</td>
+<td style="text-align: left;">{currentuserloginname}</td>
+<td style="text-align: left;">i:0#.f</td>
+<td style="text-align: left;">membership</td>
+<td style="text-align: left;">user@domain.com</td>
+</tr>
+<tr>
+<td style="text-align: left;">{fieldtitle:[internalname]}</td>
+<td style="text-align: left;">Returns the title/displayname of a field given its internalname</td>
+<td style="text-align: left;">{fieldtitle:LeaveEarly}</td>
+<td style="text-align: left;">Leaving Early</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{fileuniqueid:[siteRelativePath]}</td>
+<td style="text-align: left;">Returns the unique id of a file which is being provisioned by the current template.</td>
+<td style="text-align: left;">{fileuniqueid:/sitepages/home.aspx}</td>
+<td style="text-align: left;">f2cd6d5b-1391-480e-a3dc-7f7f96137382</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{fileuniqueidencoded:[siteRelativePath]}</td>
+<td style="text-align: left;">Returns the html safe encoded unique id of a file which is being provisioned by the current template.</td>
+<td style="text-align: left;">{fileuniqueid:/sitepages/home.aspx}</td>
+<td style="text-align: left;">f2cd6d5b%2D1391%2D480e%2Da3dc%2D7f7f96137382</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{groupid:[groupname]}</td>
+<td style="text-align: left;">Returns the id of a SharePoint group given its name</td>
+<td style="text-align: left;">{groupid:My Site Owners}</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{guid}</td>
+<td style="text-align: left;">Returns a newly generated GUID</td>
+<td style="text-align: left;">{guid}</td>
+<td style="text-align: left;">f2cd6d5b-1391-480e-a3dc-7f7f96137382</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{hosturl}</td>
+<td style="text-align: left;">Returns a full url of the current host</td>
+<td style="text-align: left;">{hosturl}</td>
+<td style="text-align: left;">https://mycompany.sharepoint.com</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{keywordstermstoreid}</td>
+<td style="text-align: left;">Returns a id of the default keywords term store</td>
+<td style="text-align: left;">{keywordstermstoreid}</td>
+<td style="text-align: left;">f2cd6d5b-1391-480e-a3dc-7f7f96137382</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{listid:[name]}</td>
+<td style="text-align: left;">Returns a id of the list given its name</td>
+<td style="text-align: left;">{listid:My List}</td>
+<td style="text-align: left;">f2cd6d5b-1391-480e-a3dc-7f7f96137382</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{listurl:[name]}</td>
+<td style="text-align: left;">Returns a site relative url of the list given its name</td>
+<td style="text-align: left;">{listid:My List}</td>
+<td style="text-align: left;">Lists/MyList</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{localization:[key]}</td>
+<td style="text-align: left;">Returns a value from a in the template provided resource file given the locale of the site that the template is applied to</td>
+<td style="text-align: left;">{localization:MyListTitle}</td>
+<td style="text-align: left;">My List Title</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{masterpagecatalog}</td>
+<td style="text-align: left;">Returns a server relative url of the master page catalog</td>
+<td style="text-align: left;">{masterpagecatalog}</td>
+<td style="text-align: left;">/sites/mysite/_catalogs/masterpage</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{now}</td>
+<td style="text-align: left;">Returns the current date in universal date time format: yyyy-MM-ddTHH:mm:ss.fffK</td>
+<td style="text-align: left;">{now}</td>
+<td style="text-align: left;">2018-04-18T15:44:45.898+02:00</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{pageuniqueid:[siterelativepath]}</td>
+<td style="text-align: left;">Returns the id of a client side page that is being provisioned through the current template</td>
+<td style="text-align: left;">{pageuniqueid:SitePages/Home.aspx}</td>
+<td style="text-align: left;">767bc144-e605-4d8c-885a-3a980feb39c6</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{pageuniqueidencoded:[siterelativepath]}</td>
+<td style="text-align: left;">Returns the HTML safe encoded id of a client side page that is being provisioned through the current template</td>
+<td style="text-align: left;">{pageuniqueidencoded:SitePages/Home.aspx}</td>
+<td style="text-align: left;">767bc144%2De605%2D4d8c%2D885a%2D3a980feb39c6</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{parameter:[parametername]}</td>
+<td style="text-align: left;">Returns the value of a parameter defined in the template</td>
+<td style="text-align: left;">{parameter:MyParameter}</td>
+<td style="text-align: left;">the value of the parameter</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{realm}</td>
+<td style="text-align: left;">Returns the authentication ID of the current tenant/farm</td>
+<td style="text-align: left;">{realm}</td>
+<td style="text-align: left;">55898e77-a7bf-4799-8034-506db5521b98</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{roledefinition:[roletype]}</td>
+<td style="text-align: left;">Returns the name of role definition given the role type</td>
+<td style="text-align: left;">{roledefinition:Editor}</td>
+<td style="text-align: left;">Editors</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{roledefinitionid:[rolename]}</td>
+<td style="text-align: left;">Returns the id of the given role definition name</td>
+<td style="text-align: left;">{roledefinitionid:My Role Definition}</td>
+<td style="text-align: left;">23</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{sequencesiteurl:[provisioningid]}</td>
+<td style="text-align: left;">Returns a full url of the site given its provisioning ID from the sequence</td>
+<td style="text-align: left;">{sequencesiteurl:MYID}</td>
+<td style="text-align: left;">https://contoso.sharepoint.com/sites/mynewsite</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{site}</td>
+<td style="text-align: left;">Returns the server relative url of the current site</td>
+<td style="text-align: left;">{site}</td>
+<td style="text-align: left;">/sites/mysitecollection/mysite</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{sitecollection}</td>
+<td style="text-align: left;">Returns the server relative url of the site collection</td>
+<td style="text-align: left;">{sitecollection}</td>
+<td style="text-align: left;">/sites/mysitecollection</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{sitecollectionconnectedoffice365groupid}</td>
+<td style="text-align: left;">Returns the ID of the Office 365 group connected to the current site</td>
+<td style="text-align: left;">{sitecollectionconnectedoffice365groupid}</td>
+<td style="text-align: left;">767bc144-e605-4d8c-885a-3a980feb39c6</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{sitecollectionidencoded}</td>
+<td style="text-align: left;">Returns the HTML safe id of the site collection</td>
+<td style="text-align: left;">{sitecollectionidencoded}</td>
+<td style="text-align: left;">767bc144%2De605%2D4d8c%2D885a%2D3a980feb39c6</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{sitecollectionid}</td>
+<td style="text-align: left;">Returns the id of the site collection</td>
+<td style="text-align: left;">{sitecollectionid}</td>
+<td style="text-align: left;">767bc144-e605-4d8c-885a-3a980feb39c6</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{sitecollectiontermgroupid}</td>
+<td style="text-align: left;">Returns the id of the site collection term group</td>
+<td style="text-align: left;">{sitecollectiontermgroupid}</td>
+<td style="text-align: left;">767bc144-e605-4d8c-885a-3a980feb39c6</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{sitecollectiontermgroupname}</td>
+<td style="text-align: left;">Returns the name of the site collection term group</td>
+<td style="text-align: left;">{sitecollectiontermgroupname}</td>
+<td style="text-align: left;">Site Collection - mytenant.sharepoint.com-sites-mysite</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{sitecollectiontermsetid:[termsetname]}</td>
+<td style="text-align: left;">Returns the id of the given termset name located in the sitecollection termgroup</td>
+<td style="text-align: left;">{sitecollectiontermsetid:MyTermset}</td>
+<td style="text-align: left;">9188a794-cfcf-48b6-9ac5-df2048e8aa5d</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{sitecollectiontermstoreid}</td>
+<td style="text-align: left;">Returns the id of the given default site collection term store</td>
+<td style="text-align: left;">{sitecollectiontermstoreid}</td>
+<td style="text-align: left;">9188a794-cfcf-48b6-9ac5-df2048e8aa5d</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{sitedesignid:[designtitle]}</td>
+<td style="text-align: left;">Returns the id of the given site design</td>
+<td style="text-align: left;">{sitedesignid:My Site Design}</td>
+<td style="text-align: left;">9188a794-cfcf-48b6-9ac5-df2048e8aa5d</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{siteid}</td>
+<td style="text-align: left;">Returns the id of the current site</td>
+<td style="text-align: left;">{siteid}</td>
+<td style="text-align: left;">9188a794-cfcf-48b6-9ac5-df2048e8aa5d</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{siteidencoded}</td>
+<td style="text-align: left;">Returns the id of the current site</td>
+<td style="text-align: left;">{siteidencoded}</td>
+<td style="text-align: left;">9188a794%2Dcfcf%2D48b6%2D9ac5%2Ddf2048e8aa5d</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{sitename}</td>
+<td style="text-align: left;">Returns the title of the current site</td>
+<td style="text-align: left;">{sitename}</td>
+<td style="text-align: left;">My Company Portal</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{siteowner}</td>
+<td style="text-align: left;">Returns the login name of the current site owner</td>
+<td style="text-align: left;">{siteowner}</td>
+<td style="text-align: left;">i:0#.f</td>
+<td style="text-align: left;">membership</td>
+<td style="text-align: left;">user@domain.com</td>
+</tr>
+<tr>
+<td style="text-align: left;">{sitescriptid:[scripttitle]}</td>
+<td style="text-align: left;">Returns the id of the given site script</td>
+<td style="text-align: left;">{sitescriptid:My Site Script}</td>
+<td style="text-align: left;">9188a794-cfcf-48b6-9ac5-df2048e8aa5d</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{storageentityvalue:[key]}</td>
+<td style="text-align: left;">Returns the value of a storage entity provided by the key</td>
+<td style="text-align: left;">{storageentityvalue:MyKey}</td>
+<td style="text-align: left;">My Value</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{termsetid:[groupname]:[termsetname]}</td>
+<td style="text-align: left;">Returns the id of a term set given its name and its parent group</td>
+<td style="text-align: left;">{termsetid:MyGroup:MyTermset}</td>
+<td style="text-align: left;">9188a794-cfcf-48b6-9ac5-df2048e8aa5d</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{termstoreid:[storename]}</td>
+<td style="text-align: left;">Returns the id of a term store given its name</td>
+<td style="text-align: left;">{termstoreid:MyTermStore}</td>
+<td style="text-align: left;">9188a794-cfcf-48b6-9ac5-df2048e8aa5d</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{themecatalog}</td>
+<td style="text-align: left;">Returns the server relative url of the theme catalog</td>
+<td style="text-align: left;">{themecatalog}</td>
+<td style="text-align: left;">/sites/sitecollection/_catalogs/theme</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{viewid:[listname],[viewname]}</td>
+<td style="text-align: left;">Returns a id of the view given its name for a given list</td>
+<td style="text-align: left;">{viewid:My List,My View}</td>
+<td style="text-align: left;">f2cd6d5b-1391-480e-a3dc-7f7f96137382</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{webname}</td>
+<td style="text-align: left;">Returns the name part of the URL of the Server Relative URL of the Web</td>
+<td style="text-align: left;">{webname}</td>
+<td style="text-align: left;">MyWeb</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">{webpartid:[webpartname]}</td>
+<td style="text-align: left;">Returns the id of a webpart that is being provisioned to a page through a template</td>
+<td style="text-align: left;">{webpartid:mywebpart}</td>
+<td style="text-align: left;">66e2b037-f749-402d-90b2-afd643850c26</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://telemetry.sharepointpnp.com/@pnp.github.io/index/" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>  </body>
+</html>

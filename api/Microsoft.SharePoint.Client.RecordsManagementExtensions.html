@@ -1,0 +1,1432 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class RecordsManagementExtensions
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class RecordsManagementExtensions
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/RecordsManagementExtensions.cs/#L11" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_RecordsManagementExtensions.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.RecordsManagementExtensions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="Microsoft_SharePoint_Client_RecordsManagementExtensions" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions">Class RecordsManagementExtensions
+  </h1>
+  <div class="markdown level0 summary"><p>Class that deals with records management functionality</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">RecordsManagementExtensions</span></div>
+  </div>
+  
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="Microsoft.SharePoint.Client.html">Microsoft.SharePoint.Client</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="Microsoft_SharePoint_Client_RecordsManagementExtensions_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class RecordsManagementExtensions</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="fields">Fields
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_ALLOW_MANUAL_DECLARATION.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.RecordsManagementExtensions.ECM_ALLOW_MANUAL_DECLARATION%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/RecordsManagementExtensions.cs/#L36" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_ALLOW_MANUAL_DECLARATION" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.ECM_ALLOW_MANUAL_DECLARATION"><a href="#collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_ALLOW_MANUAL_DECLARATION" class="expander" data-toggle="collapse">ECM_ALLOW_MANUAL_DECLARATION</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_ALLOW_MANUAL_DECLARATION" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines the name of the ECM Allow Manual Declaration propertybag value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string ECM_ALLOW_MANUAL_DECLARATION = &quot;ecm_AllowManualDeclaration&quot;</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_AUTO_DECLARE_RECORDS.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.RecordsManagementExtensions.ECM_AUTO_DECLARE_RECORDS%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/RecordsManagementExtensions.cs/#L44" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_AUTO_DECLARE_RECORDS" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.ECM_AUTO_DECLARE_RECORDS"><a href="#collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_AUTO_DECLARE_RECORDS" class="expander" data-toggle="collapse">ECM_AUTO_DECLARE_RECORDS</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_AUTO_DECLARE_RECORDS" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines the name of the ECM auto declare records propertybag value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string ECM_AUTO_DECLARE_RECORDS = &quot;ecm_AutoDeclareRecords&quot;</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_IPR_LIST_USE_LIST_SPECIFIC.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.RecordsManagementExtensions.ECM_IPR_LIST_USE_LIST_SPECIFIC%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/RecordsManagementExtensions.cs/#L40" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_IPR_LIST_USE_LIST_SPECIFIC" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.ECM_IPR_LIST_USE_LIST_SPECIFIC"><a href="#collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_IPR_LIST_USE_LIST_SPECIFIC" class="expander" data-toggle="collapse">ECM_IPR_LIST_USE_LIST_SPECIFIC</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_IPR_LIST_USE_LIST_SPECIFIC" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines the name of the ECM IPR List use List Specific propertybag value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string ECM_IPR_LIST_USE_LIST_SPECIFIC = &quot;ecm_IPRListUseListSpecific&quot;</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_SITE_RECORD_DECLARATION_BY.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.RecordsManagementExtensions.ECM_SITE_RECORD_DECLARATION_BY%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/RecordsManagementExtensions.cs/#L28" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_SITE_RECORD_DECLARATION_BY" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.ECM_SITE_RECORD_DECLARATION_BY"><a href="#collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_SITE_RECORD_DECLARATION_BY" class="expander" data-toggle="collapse">ECM_SITE_RECORD_DECLARATION_BY</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_SITE_RECORD_DECLARATION_BY" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines the name of the ECM Site Record Declaration by propertybag value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string ECM_SITE_RECORD_DECLARATION_BY = &quot;ecm_siterecorddeclarationby&quot;</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_SITE_RECORD_DECLARATION_DEFAULT.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.RecordsManagementExtensions.ECM_SITE_RECORD_DECLARATION_DEFAULT%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/RecordsManagementExtensions.cs/#L20" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_SITE_RECORD_DECLARATION_DEFAULT" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.ECM_SITE_RECORD_DECLARATION_DEFAULT"><a href="#collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_SITE_RECORD_DECLARATION_DEFAULT" class="expander" data-toggle="collapse">ECM_SITE_RECORD_DECLARATION_DEFAULT</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_SITE_RECORD_DECLARATION_DEFAULT" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines the name of the ECM Site Record Declaration Default propertybag value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string ECM_SITE_RECORD_DECLARATION_DEFAULT = &quot;ecm_siterecorddeclarationdefault&quot;</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_SITE_RECORD_RESTRICTIONS.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.RecordsManagementExtensions.ECM_SITE_RECORD_RESTRICTIONS%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/RecordsManagementExtensions.cs/#L24" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_SITE_RECORD_RESTRICTIONS" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.ECM_SITE_RECORD_RESTRICTIONS"><a href="#collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_SITE_RECORD_RESTRICTIONS" class="expander" data-toggle="collapse">ECM_SITE_RECORD_RESTRICTIONS</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_SITE_RECORD_RESTRICTIONS" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines the name of the ECM Site Record Restrictions propertybag value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string ECM_SITE_RECORD_RESTRICTIONS = &quot;ecm_siterecordrestrictions&quot;</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_SITE_RECORD_UNDECLARATION_BY.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.RecordsManagementExtensions.ECM_SITE_RECORD_UNDECLARATION_BY%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/RecordsManagementExtensions.cs/#L32" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_SITE_RECORD_UNDECLARATION_BY" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.ECM_SITE_RECORD_UNDECLARATION_BY"><a href="#collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_SITE_RECORD_UNDECLARATION_BY" class="expander" data-toggle="collapse">ECM_SITE_RECORD_UNDECLARATION_BY</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_ECM_SITE_RECORD_UNDECLARATION_BY" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines the name of the ECM Site Record Undeclaration by propertybag value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string ECM_SITE_RECORD_UNDECLARATION_BY = &quot;ecm_siterecordundeclarationby&quot;</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_RecordsManagementExtensions_INPLACE_RECORDS_MANAGEMENT_FEATURE_ID.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.RecordsManagementExtensions.INPLACE_RECORDS_MANAGEMENT_FEATURE_ID%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/RecordsManagementExtensions.cs/#L16" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="Microsoft_SharePoint_Client_RecordsManagementExtensions_INPLACE_RECORDS_MANAGEMENT_FEATURE_ID" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.INPLACE_RECORDS_MANAGEMENT_FEATURE_ID"><a href="#collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_INPLACE_RECORDS_MANAGEMENT_FEATURE_ID" class="expander" data-toggle="collapse">INPLACE_RECORDS_MANAGEMENT_FEATURE_ID</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_INPLACE_RECORDS_MANAGEMENT_FEATURE_ID" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines the ID of the Inplace Records Management Feature</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string INPLACE_RECORDS_MANAGEMENT_FEATURE_ID = &quot;da2e115b-07e4-49d9-bb2c-35e93bb9fca9&quot;</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_RecordsManagementExtensions_ActivateInPlaceRecordsManagementFeature_Microsoft_SharePoint_Client_Site_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.RecordsManagementExtensions.ActivateInPlaceRecordsManagementFeature(Microsoft.SharePoint.Client.Site)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/RecordsManagementExtensions.cs/#L78" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_RecordsManagementExtensions_ActivateInPlaceRecordsManagementFeature_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.ActivateInPlaceRecordsManagementFeature*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_RecordsManagementExtensions_ActivateInPlaceRecordsManagementFeature_Microsoft_SharePoint_Client_Site_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.ActivateInPlaceRecordsManagementFeature(Microsoft.SharePoint.Client.Site)"><a href="#collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_ActivateInPlaceRecordsManagementFeature_Microsoft_SharePoint_Client_Site_" class="expander" data-toggle="collapse">ActivateInPlaceRecordsManagementFeature(Site)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_ActivateInPlaceRecordsManagementFeature_Microsoft_SharePoint_Client_Site_" class="collapse in">
+  <div class="markdown level1 summary"><p>Activate the in place records management feature</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void ActivateInPlaceRecordsManagementFeature(this Site site)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>Site collection to operate on</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_RecordsManagementExtensions_DisableInPlaceRecordsManagementFeature_Microsoft_SharePoint_Client_Site_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.RecordsManagementExtensions.DisableInPlaceRecordsManagementFeature(Microsoft.SharePoint.Client.Site)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/RecordsManagementExtensions.cs/#L87" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_RecordsManagementExtensions_DisableInPlaceRecordsManagementFeature_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.DisableInPlaceRecordsManagementFeature*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_RecordsManagementExtensions_DisableInPlaceRecordsManagementFeature_Microsoft_SharePoint_Client_Site_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.DisableInPlaceRecordsManagementFeature(Microsoft.SharePoint.Client.Site)"><a href="#collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_DisableInPlaceRecordsManagementFeature_Microsoft_SharePoint_Client_Site_" class="expander" data-toggle="collapse">DisableInPlaceRecordsManagementFeature(Site)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_DisableInPlaceRecordsManagementFeature_Microsoft_SharePoint_Client_Site_" class="collapse in">
+  <div class="markdown level1 summary"><p>Deactivate the in place records management feature</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void DisableInPlaceRecordsManagementFeature(this Site site)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>Site collection to operate on</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_RecordsManagementExtensions_EnableSiteForInPlaceRecordsManagement_Microsoft_SharePoint_Client_Site_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.RecordsManagementExtensions.EnableSiteForInPlaceRecordsManagement(Microsoft.SharePoint.Client.Site)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/RecordsManagementExtensions.cs/#L98" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_RecordsManagementExtensions_EnableSiteForInPlaceRecordsManagement_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.EnableSiteForInPlaceRecordsManagement*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_RecordsManagementExtensions_EnableSiteForInPlaceRecordsManagement_Microsoft_SharePoint_Client_Site_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.EnableSiteForInPlaceRecordsManagement(Microsoft.SharePoint.Client.Site)"><a href="#collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_EnableSiteForInPlaceRecordsManagement_Microsoft_SharePoint_Client_Site_" class="expander" data-toggle="collapse">EnableSiteForInPlaceRecordsManagement(Site)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_EnableSiteForInPlaceRecordsManagement_Microsoft_SharePoint_Client_Site_" class="collapse in">
+  <div class="markdown level1 summary"><p>Enable in place records management. The in place records management feature will be enabled and
+the in place record management will be enabled in all locations with record declaration allowed
+by all contributors and undeclaration by site admins</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void EnableSiteForInPlaceRecordsManagement(this Site site)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>Site collection to operate on</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_RecordsManagementExtensions_GetListAutoRecordDeclaration_Microsoft_SharePoint_Client_List_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.RecordsManagementExtensions.GetListAutoRecordDeclaration(Microsoft.SharePoint.Client.List)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/RecordsManagementExtensions.cs/#L465" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_RecordsManagementExtensions_GetListAutoRecordDeclaration_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.GetListAutoRecordDeclaration*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_RecordsManagementExtensions_GetListAutoRecordDeclaration_Microsoft_SharePoint_Client_List_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.GetListAutoRecordDeclaration(Microsoft.SharePoint.Client.List)"><a href="#collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_GetListAutoRecordDeclaration_Microsoft_SharePoint_Client_List_" class="expander" data-toggle="collapse">GetListAutoRecordDeclaration(List)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_GetListAutoRecordDeclaration_Microsoft_SharePoint_Client_List_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns if auto record declaration is active for this list</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool GetListAutoRecordDeclaration(this List list)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.list">List</a></span>
+        <span class="parametername">list</span>
+        <p><p>List to operate against</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p><p>True if auto record declaration is active, false otherwise</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_RecordsManagementExtensions_GetListManualRecordDeclaration_Microsoft_SharePoint_Client_List_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.RecordsManagementExtensions.GetListManualRecordDeclaration(Microsoft.SharePoint.Client.List)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/RecordsManagementExtensions.cs/#L342" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_RecordsManagementExtensions_GetListManualRecordDeclaration_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.GetListManualRecordDeclaration*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_RecordsManagementExtensions_GetListManualRecordDeclaration_Microsoft_SharePoint_Client_List_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.GetListManualRecordDeclaration(Microsoft.SharePoint.Client.List)"><a href="#collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_GetListManualRecordDeclaration_Microsoft_SharePoint_Client_List_" class="expander" data-toggle="collapse">GetListManualRecordDeclaration(List)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_GetListManualRecordDeclaration_Microsoft_SharePoint_Client_List_" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets the manual in place record declaration for this list</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static EcmListManualRecordDeclaration GetListManualRecordDeclaration(this List list)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.list">List</a></span>
+        <span class="parametername">list</span>
+        <p><p>List to operate against</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.EcmListManualRecordDeclaration.html">EcmListManualRecordDeclaration</a>
+        <p><p><a class="xref" href="PnP.Framework.EcmListManualRecordDeclaration.html">EcmListManualRecordDeclaration</a> enum that defines the manual in place record declaration settings for this list</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_RecordsManagementExtensions_GetManualRecordDeclarationInAllLocations_Microsoft_SharePoint_Client_Site_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.RecordsManagementExtensions.GetManualRecordDeclarationInAllLocations(Microsoft.SharePoint.Client.Site)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/RecordsManagementExtensions.cs/#L137" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_RecordsManagementExtensions_GetManualRecordDeclarationInAllLocations_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.GetManualRecordDeclarationInAllLocations*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_RecordsManagementExtensions_GetManualRecordDeclarationInAllLocations_Microsoft_SharePoint_Client_Site_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.GetManualRecordDeclarationInAllLocations(Microsoft.SharePoint.Client.Site)"><a href="#collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_GetManualRecordDeclarationInAllLocations_Microsoft_SharePoint_Client_Site_" class="expander" data-toggle="collapse">GetManualRecordDeclarationInAllLocations(Site)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_GetManualRecordDeclarationInAllLocations_Microsoft_SharePoint_Client_Site_" class="collapse in">
+  <div class="markdown level1 summary"><p>Get the value of the records management is allowed in all places setting</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool GetManualRecordDeclarationInAllLocations(this Site site)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>Site collection to operate on</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p><p>True if records management is allowed in all places, false otherwise</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_RecordsManagementExtensions_GetRecordDeclarationBy_Microsoft_SharePoint_Client_Site_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.RecordsManagementExtensions.GetRecordDeclarationBy(Microsoft.SharePoint.Client.Site)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/RecordsManagementExtensions.cs/#L227" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_RecordsManagementExtensions_GetRecordDeclarationBy_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.GetRecordDeclarationBy*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_RecordsManagementExtensions_GetRecordDeclarationBy_Microsoft_SharePoint_Client_Site_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.GetRecordDeclarationBy(Microsoft.SharePoint.Client.Site)"><a href="#collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_GetRecordDeclarationBy_Microsoft_SharePoint_Client_Site_" class="expander" data-toggle="collapse">GetRecordDeclarationBy(Site)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_GetRecordDeclarationBy_Microsoft_SharePoint_Client_Site_" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets who can declare records</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static EcmRecordDeclarationBy GetRecordDeclarationBy(this Site site)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>Site collection to operate on</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.EcmRecordDeclarationBy.html">EcmRecordDeclarationBy</a>
+        <p><p><a class="xref" href="PnP.Framework.EcmRecordDeclarationBy.html">EcmRecordDeclarationBy</a> enum that defines who can declare a record</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_RecordsManagementExtensions_GetRecordRestrictions_Microsoft_SharePoint_Client_Site_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.RecordsManagementExtensions.GetRecordRestrictions(Microsoft.SharePoint.Client.Site)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/RecordsManagementExtensions.cs/#L186" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_RecordsManagementExtensions_GetRecordRestrictions_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.GetRecordRestrictions*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_RecordsManagementExtensions_GetRecordRestrictions_Microsoft_SharePoint_Client_Site_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.GetRecordRestrictions(Microsoft.SharePoint.Client.Site)"><a href="#collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_GetRecordRestrictions_Microsoft_SharePoint_Client_Site_" class="expander" data-toggle="collapse">GetRecordRestrictions(Site)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_GetRecordRestrictions_Microsoft_SharePoint_Client_Site_" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets the current restrictions on declared records</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static EcmSiteRecordRestrictions GetRecordRestrictions(this Site site)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>Site collection to operate on</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.EcmSiteRecordRestrictions.html">EcmSiteRecordRestrictions</a>
+        <p><p><a class="xref" href="PnP.Framework.EcmSiteRecordRestrictions.html">EcmSiteRecordRestrictions</a> enum that defines the current restrictions</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_RecordsManagementExtensions_GetRecordUnDeclarationBy_Microsoft_SharePoint_Client_Site_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.RecordsManagementExtensions.GetRecordUnDeclarationBy(Microsoft.SharePoint.Client.Site)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/RecordsManagementExtensions.cs/#L260" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_RecordsManagementExtensions_GetRecordUnDeclarationBy_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.GetRecordUnDeclarationBy*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_RecordsManagementExtensions_GetRecordUnDeclarationBy_Microsoft_SharePoint_Client_Site_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.GetRecordUnDeclarationBy(Microsoft.SharePoint.Client.Site)"><a href="#collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_GetRecordUnDeclarationBy_Microsoft_SharePoint_Client_Site_" class="expander" data-toggle="collapse">GetRecordUnDeclarationBy(Site)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_GetRecordUnDeclarationBy_Microsoft_SharePoint_Client_Site_" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets who can undeclare records</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static EcmRecordDeclarationBy GetRecordUnDeclarationBy(this Site site)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>Site collection to operate on</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.EcmRecordDeclarationBy.html">EcmRecordDeclarationBy</a>
+        <p><p><a class="xref" href="PnP.Framework.EcmRecordDeclarationBy.html">EcmRecordDeclarationBy</a> enum that defines who can undeclare a record</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_RecordsManagementExtensions_IsInPlaceRecordsManagementActive_Microsoft_SharePoint_Client_Site_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.RecordsManagementExtensions.IsInPlaceRecordsManagementActive(Microsoft.SharePoint.Client.Site)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/RecordsManagementExtensions.cs/#L53" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_RecordsManagementExtensions_IsInPlaceRecordsManagementActive_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.IsInPlaceRecordsManagementActive*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_RecordsManagementExtensions_IsInPlaceRecordsManagementActive_Microsoft_SharePoint_Client_Site_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.IsInPlaceRecordsManagementActive(Microsoft.SharePoint.Client.Site)"><a href="#collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_IsInPlaceRecordsManagementActive_Microsoft_SharePoint_Client_Site_" class="expander" data-toggle="collapse">IsInPlaceRecordsManagementActive(Site)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_IsInPlaceRecordsManagementActive_Microsoft_SharePoint_Client_Site_" class="collapse in">
+  <div class="markdown level1 summary"><p>Checks if in place records management functionality is enabled for this site collection</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsInPlaceRecordsManagementActive(this Site site)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>Site collection to operate on</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p><p>True if in place records management is enabled, false otherwise</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_RecordsManagementExtensions_IsListRecordSettingDefined_Microsoft_SharePoint_Client_List_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.RecordsManagementExtensions.IsListRecordSettingDefined(Microsoft.SharePoint.Client.List)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/RecordsManagementExtensions.cs/#L284" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_RecordsManagementExtensions_IsListRecordSettingDefined_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.IsListRecordSettingDefined*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_RecordsManagementExtensions_IsListRecordSettingDefined_Microsoft_SharePoint_Client_List_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.IsListRecordSettingDefined(Microsoft.SharePoint.Client.List)"><a href="#collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_IsListRecordSettingDefined_Microsoft_SharePoint_Client_List_" class="expander" data-toggle="collapse">IsListRecordSettingDefined(List)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_IsListRecordSettingDefined_Microsoft_SharePoint_Client_List_" class="collapse in">
+  <div class="markdown level1 summary"><p>Checks if this list has active in place records management settings defined</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsListRecordSettingDefined(this List list)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.list">List</a></span>
+        <span class="parametername">list</span>
+        <p><p>List to operate against</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p><p>True if in place records management settings are active for this list</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_RecordsManagementExtensions_SetListAutoRecordDeclaration_Microsoft_SharePoint_Client_List_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.RecordsManagementExtensions.SetListAutoRecordDeclaration(Microsoft.SharePoint.Client.List%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/RecordsManagementExtensions.cs/#L377" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_RecordsManagementExtensions_SetListAutoRecordDeclaration_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.SetListAutoRecordDeclaration*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_RecordsManagementExtensions_SetListAutoRecordDeclaration_Microsoft_SharePoint_Client_List_System_Boolean_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.SetListAutoRecordDeclaration(Microsoft.SharePoint.Client.List,System.Boolean)"><a href="#collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_SetListAutoRecordDeclaration_Microsoft_SharePoint_Client_List_System_Boolean_" class="expander" data-toggle="collapse">SetListAutoRecordDeclaration(List, Boolean)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_SetListAutoRecordDeclaration_Microsoft_SharePoint_Client_List_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines if auto record declaration is active for this list: all added items will be automatically declared as a record if active</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetListAutoRecordDeclaration(this List list, bool autoDeclareRecords)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.list">List</a></span>
+        <span class="parametername">list</span>
+        <p><p>List to operate on</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">autoDeclareRecords</span>
+        <p><p>True to automatically declare all added items as record, false otherwise</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_RecordsManagementExtensions_SetListManualRecordDeclaration_Microsoft_SharePoint_Client_List_PnP_Framework_EcmListManualRecordDeclaration_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.RecordsManagementExtensions.SetListManualRecordDeclaration(Microsoft.SharePoint.Client.List%2CPnP.Framework.EcmListManualRecordDeclaration)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/RecordsManagementExtensions.cs/#L305" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_RecordsManagementExtensions_SetListManualRecordDeclaration_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.SetListManualRecordDeclaration*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_RecordsManagementExtensions_SetListManualRecordDeclaration_Microsoft_SharePoint_Client_List_PnP_Framework_EcmListManualRecordDeclaration_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.SetListManualRecordDeclaration(Microsoft.SharePoint.Client.List,PnP.Framework.EcmListManualRecordDeclaration)"><a href="#collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_SetListManualRecordDeclaration_Microsoft_SharePoint_Client_List_PnP_Framework_EcmListManualRecordDeclaration_" class="expander" data-toggle="collapse">SetListManualRecordDeclaration(List, EcmListManualRecordDeclaration)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_SetListManualRecordDeclaration_Microsoft_SharePoint_Client_List_PnP_Framework_EcmListManualRecordDeclaration_" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines the manual in place record declaration for this list</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetListManualRecordDeclaration(this List list, EcmListManualRecordDeclaration settings)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.list">List</a></span>
+        <span class="parametername">list</span>
+        <p><p>List to operate against</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.EcmListManualRecordDeclaration.html">EcmListManualRecordDeclaration</a></span>
+        <span class="parametername">settings</span>
+        <p><p><a class="xref" href="PnP.Framework.EcmListManualRecordDeclaration.html">EcmListManualRecordDeclaration</a> enum that defines the manual in place record declaration settings for this list</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_RecordsManagementExtensions_SetManualRecordDeclarationInAllLocations_Microsoft_SharePoint_Client_Site_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.RecordsManagementExtensions.SetManualRecordDeclarationInAllLocations(Microsoft.SharePoint.Client.Site%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/RecordsManagementExtensions.cs/#L127" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_RecordsManagementExtensions_SetManualRecordDeclarationInAllLocations_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.SetManualRecordDeclarationInAllLocations*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_RecordsManagementExtensions_SetManualRecordDeclarationInAllLocations_Microsoft_SharePoint_Client_Site_System_Boolean_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.SetManualRecordDeclarationInAllLocations(Microsoft.SharePoint.Client.Site,System.Boolean)"><a href="#collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_SetManualRecordDeclarationInAllLocations_Microsoft_SharePoint_Client_Site_System_Boolean_" class="expander" data-toggle="collapse">SetManualRecordDeclarationInAllLocations(Site, Boolean)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_SetManualRecordDeclarationInAllLocations_Microsoft_SharePoint_Client_Site_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines if in place records management is allowed in all places</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetManualRecordDeclarationInAllLocations(this Site site, bool inAllPlaces)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>Site collection to operate on</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">inAllPlaces</span>
+        <p><p>True if allowed in all places, false otherwise</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_RecordsManagementExtensions_SetRecordDeclarationBy_Microsoft_SharePoint_Client_Site_PnP_Framework_EcmRecordDeclarationBy_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.RecordsManagementExtensions.SetRecordDeclarationBy(Microsoft.SharePoint.Client.Site%2CPnP.Framework.EcmRecordDeclarationBy)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/RecordsManagementExtensions.cs/#L217" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_RecordsManagementExtensions_SetRecordDeclarationBy_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.SetRecordDeclarationBy*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_RecordsManagementExtensions_SetRecordDeclarationBy_Microsoft_SharePoint_Client_Site_PnP_Framework_EcmRecordDeclarationBy_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.SetRecordDeclarationBy(Microsoft.SharePoint.Client.Site,PnP.Framework.EcmRecordDeclarationBy)"><a href="#collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_SetRecordDeclarationBy_Microsoft_SharePoint_Client_Site_PnP_Framework_EcmRecordDeclarationBy_" class="expander" data-toggle="collapse">SetRecordDeclarationBy(Site, EcmRecordDeclarationBy)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_SetRecordDeclarationBy_Microsoft_SharePoint_Client_Site_PnP_Framework_EcmRecordDeclarationBy_" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines who can declare records</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetRecordDeclarationBy(this Site site, EcmRecordDeclarationBy by)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>Site collection to operate on</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.EcmRecordDeclarationBy.html">EcmRecordDeclarationBy</a></span>
+        <span class="parametername">by</span>
+        <p><p><a class="xref" href="PnP.Framework.EcmRecordDeclarationBy.html">EcmRecordDeclarationBy</a> enum that defines who can declare a record</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_RecordsManagementExtensions_SetRecordRestrictions_Microsoft_SharePoint_Client_Site_PnP_Framework_EcmSiteRecordRestrictions_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.RecordsManagementExtensions.SetRecordRestrictions(Microsoft.SharePoint.Client.Site%2CPnP.Framework.EcmSiteRecordRestrictions)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/RecordsManagementExtensions.cs/#L159" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_RecordsManagementExtensions_SetRecordRestrictions_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.SetRecordRestrictions*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_RecordsManagementExtensions_SetRecordRestrictions_Microsoft_SharePoint_Client_Site_PnP_Framework_EcmSiteRecordRestrictions_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.SetRecordRestrictions(Microsoft.SharePoint.Client.Site,PnP.Framework.EcmSiteRecordRestrictions)"><a href="#collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_SetRecordRestrictions_Microsoft_SharePoint_Client_Site_PnP_Framework_EcmSiteRecordRestrictions_" class="expander" data-toggle="collapse">SetRecordRestrictions(Site, EcmSiteRecordRestrictions)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_SetRecordRestrictions_Microsoft_SharePoint_Client_Site_PnP_Framework_EcmSiteRecordRestrictions_" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines the restrictions that are placed on a document once it's declared as a record</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetRecordRestrictions(this Site site, EcmSiteRecordRestrictions restrictions)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>Site collection to operate on</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.EcmSiteRecordRestrictions.html">EcmSiteRecordRestrictions</a></span>
+        <span class="parametername">restrictions</span>
+        <p><p><a class="xref" href="PnP.Framework.EcmSiteRecordRestrictions.html">EcmSiteRecordRestrictions</a> enum that holds the restrictions to be applied</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_RecordsManagementExtensions_SetRecordUnDeclarationBy_Microsoft_SharePoint_Client_Site_PnP_Framework_EcmRecordDeclarationBy_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.RecordsManagementExtensions.SetRecordUnDeclarationBy(Microsoft.SharePoint.Client.Site%2CPnP.Framework.EcmRecordDeclarationBy)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/RecordsManagementExtensions.cs/#L249" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_RecordsManagementExtensions_SetRecordUnDeclarationBy_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.SetRecordUnDeclarationBy*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_RecordsManagementExtensions_SetRecordUnDeclarationBy_Microsoft_SharePoint_Client_Site_PnP_Framework_EcmRecordDeclarationBy_" data-uid="Microsoft.SharePoint.Client.RecordsManagementExtensions.SetRecordUnDeclarationBy(Microsoft.SharePoint.Client.Site,PnP.Framework.EcmRecordDeclarationBy)"><a href="#collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_SetRecordUnDeclarationBy_Microsoft_SharePoint_Client_Site_PnP_Framework_EcmRecordDeclarationBy_" class="expander" data-toggle="collapse">SetRecordUnDeclarationBy(Site, EcmRecordDeclarationBy)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_RecordsManagementExtensions_SetRecordUnDeclarationBy_Microsoft_SharePoint_Client_Site_PnP_Framework_EcmRecordDeclarationBy_" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines who can undeclare records</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetRecordUnDeclarationBy(this Site site, EcmRecordDeclarationBy by)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>Site collection to operate on</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.EcmRecordDeclarationBy.html">EcmRecordDeclarationBy</a></span>
+        <span class="parametername">by</span>
+        <p><p><a class="xref" href="PnP.Framework.EcmRecordDeclarationBy.html">EcmRecordDeclarationBy</a> enum that defines who can undeclare a record</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

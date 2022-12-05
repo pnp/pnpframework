@@ -1,0 +1,1136 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class TokenParser
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class TokenParser
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/TokenParser.cs/#L26" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_TokenParser.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.TokenParser%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser">Class TokenParser
+  </h1>
+  <div class="markdown level0 summary"><p>Handles methods for token parser</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">TokenParser</span></div>
+  </div>
+  
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="PnP.Framework.Provisioning.ObjectHandlers.html">PnP.Framework.Provisioning.ObjectHandlers</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class TokenParser : ICloneable</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_TokenParser__ctor_Microsoft_Online_SharePoint_TenantAdministration_Tenant_PnP_Framework_Provisioning_Model_ProvisioningHierarchy_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.TokenParser.%23ctor(Microsoft.Online.SharePoint.TenantAdministration.Tenant%2CPnP.Framework.Provisioning.Model.ProvisioningHierarchy)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/TokenParser.cs/#L123" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser__ctor_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.#ctor*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser__ctor_Microsoft_Online_SharePoint_TenantAdministration_Tenant_PnP_Framework_Provisioning_Model_ProvisioningHierarchy_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.#ctor(Microsoft.Online.SharePoint.TenantAdministration.Tenant,PnP.Framework.Provisioning.Model.ProvisioningHierarchy)"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser__ctor_Microsoft_Online_SharePoint_TenantAdministration_Tenant_PnP_Framework_Provisioning_Model_ProvisioningHierarchy_" class="expander" data-toggle="collapse">TokenParser(Tenant, ProvisioningHierarchy)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser__ctor_Microsoft_Online_SharePoint_TenantAdministration_Tenant_PnP_Framework_Provisioning_Model_ProvisioningHierarchy_" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TokenParser(Tenant tenant, ProvisioningHierarchy hierarchy)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">Microsoft.Online.SharePoint.TenantAdministration.Tenant</span></span>
+        <span class="parametername">tenant</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Provisioning.Model.ProvisioningHierarchy.html">ProvisioningHierarchy</a></span>
+        <span class="parametername">hierarchy</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_TokenParser__ctor_Microsoft_Online_SharePoint_TenantAdministration_Tenant_PnP_Framework_Provisioning_Model_ProvisioningHierarchy_PnP_Framework_Provisioning_ObjectHandlers_ProvisioningTemplateApplyingInformation_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.TokenParser.%23ctor(Microsoft.Online.SharePoint.TenantAdministration.Tenant%2CPnP.Framework.Provisioning.Model.ProvisioningHierarchy%2CPnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/TokenParser.cs/#L128" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser__ctor_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.#ctor*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser__ctor_Microsoft_Online_SharePoint_TenantAdministration_Tenant_PnP_Framework_Provisioning_Model_ProvisioningHierarchy_PnP_Framework_Provisioning_ObjectHandlers_ProvisioningTemplateApplyingInformation_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.#ctor(Microsoft.Online.SharePoint.TenantAdministration.Tenant,PnP.Framework.Provisioning.Model.ProvisioningHierarchy,PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation)"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser__ctor_Microsoft_Online_SharePoint_TenantAdministration_Tenant_PnP_Framework_Provisioning_Model_ProvisioningHierarchy_PnP_Framework_Provisioning_ObjectHandlers_ProvisioningTemplateApplyingInformation_" class="expander" data-toggle="collapse">TokenParser(Tenant, ProvisioningHierarchy, ProvisioningTemplateApplyingInformation)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser__ctor_Microsoft_Online_SharePoint_TenantAdministration_Tenant_PnP_Framework_Provisioning_Model_ProvisioningHierarchy_PnP_Framework_Provisioning_ObjectHandlers_ProvisioningTemplateApplyingInformation_" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TokenParser(Tenant tenant, ProvisioningHierarchy hierarchy, ProvisioningTemplateApplyingInformation applyingInformation)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">Microsoft.Online.SharePoint.TenantAdministration.Tenant</span></span>
+        <span class="parametername">tenant</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Provisioning.Model.ProvisioningHierarchy.html">ProvisioningHierarchy</a></span>
+        <span class="parametername">hierarchy</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation.html">ProvisioningTemplateApplyingInformation</a></span>
+        <span class="parametername">applyingInformation</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_TokenParser__ctor_Microsoft_SharePoint_Client_Web_PnP_Framework_Provisioning_Model_ProvisioningTemplate_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.TokenParser.%23ctor(Microsoft.SharePoint.Client.Web%2CPnP.Framework.Provisioning.Model.ProvisioningTemplate)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/TokenParser.cs/#L167" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser__ctor_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.#ctor*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser__ctor_Microsoft_SharePoint_Client_Web_PnP_Framework_Provisioning_Model_ProvisioningTemplate_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.#ctor(Microsoft.SharePoint.Client.Web,PnP.Framework.Provisioning.Model.ProvisioningTemplate)"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser__ctor_Microsoft_SharePoint_Client_Web_PnP_Framework_Provisioning_Model_ProvisioningTemplate_" class="expander" data-toggle="collapse">TokenParser(Web, ProvisioningTemplate)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser__ctor_Microsoft_SharePoint_Client_Web_PnP_Framework_Provisioning_Model_ProvisioningTemplate_" class="collapse in">
+  <div class="markdown level1 summary"><p>Constructor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TokenParser(Web web, ProvisioningTemplate template)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>A SharePoint site or subsite</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Provisioning.Model.ProvisioningTemplate.html">ProvisioningTemplate</a></span>
+        <span class="parametername">template</span>
+        <p><p>a provisioning template</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_TokenParser__ctor_Microsoft_SharePoint_Client_Web_PnP_Framework_Provisioning_Model_ProvisioningTemplate_PnP_Framework_Provisioning_ObjectHandlers_ProvisioningTemplateApplyingInformation_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.TokenParser.%23ctor(Microsoft.SharePoint.Client.Web%2CPnP.Framework.Provisioning.Model.ProvisioningTemplate%2CPnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/TokenParser.cs/#L178" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser__ctor_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.#ctor*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser__ctor_Microsoft_SharePoint_Client_Web_PnP_Framework_Provisioning_Model_ProvisioningTemplate_PnP_Framework_Provisioning_ObjectHandlers_ProvisioningTemplateApplyingInformation_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.#ctor(Microsoft.SharePoint.Client.Web,PnP.Framework.Provisioning.Model.ProvisioningTemplate,PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation)"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser__ctor_Microsoft_SharePoint_Client_Web_PnP_Framework_Provisioning_Model_ProvisioningTemplate_PnP_Framework_Provisioning_ObjectHandlers_ProvisioningTemplateApplyingInformation_" class="expander" data-toggle="collapse">TokenParser(Web, ProvisioningTemplate, ProvisioningTemplateApplyingInformation)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser__ctor_Microsoft_SharePoint_Client_Web_PnP_Framework_Provisioning_Model_ProvisioningTemplate_PnP_Framework_Provisioning_ObjectHandlers_ProvisioningTemplateApplyingInformation_" class="collapse in">
+  <div class="markdown level1 summary"><p>Constructor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TokenParser(Web web, ProvisioningTemplate template, ProvisioningTemplateApplyingInformation applyingInformation)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>A SharePoint site or subsite</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Provisioning.Model.ProvisioningTemplate.html">ProvisioningTemplate</a></span>
+        <span class="parametername">template</span>
+        <p><p>a provisioning template</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation.html">ProvisioningTemplateApplyingInformation</a></span>
+        <span class="parametername">applyingInformation</span>
+        <p><p>The provisioning template applying information</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_TokenParser__web.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.TokenParser._web%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/TokenParser.cs/#L28" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser__web" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser._web"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser__web" class="expander" data-toggle="collapse">_web</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser__web" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Web _web</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_TokenParser_Tokens.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.TokenParser.Tokens%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/TokenParser.cs/#L37" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser_Tokens_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.Tokens*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser_Tokens" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.Tokens"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser_Tokens" class="expander" data-toggle="collapse">Tokens</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser_Tokens" class="collapse in">
+  <div class="markdown level1 summary"><p>List of token definitions</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;TokenDefinition&gt; Tokens { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.TokenDefinition.html">TokenDefinition</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_TokenParser_AddToken_PnP_Framework_Provisioning_ObjectHandlers_TokenDefinitions_TokenDefinition_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.TokenParser.AddToken(PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.TokenDefinition)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/TokenParser.cs/#L50" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser_AddToken_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.AddToken*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser_AddToken_PnP_Framework_Provisioning_ObjectHandlers_TokenDefinitions_TokenDefinition_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.AddToken(PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.TokenDefinition)"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser_AddToken_PnP_Framework_Provisioning_ObjectHandlers_TokenDefinitions_TokenDefinition_" class="expander" data-toggle="collapse">AddToken(TokenDefinition)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser_AddToken_PnP_Framework_Provisioning_ObjectHandlers_TokenDefinitions_TokenDefinition_" class="collapse in">
+  <div class="markdown level1 summary"><p>adds token definition</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddToken(TokenDefinition tokenDefinition)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.TokenDefinition.html">TokenDefinition</a></span>
+        <span class="parametername">tokenDefinition</span>
+        <p><p>A TokenDefinition object</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_TokenParser_Clone.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.TokenParser.Clone%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/TokenParser.cs/#L1255" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser_Clone_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.Clone*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser_Clone" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.Clone"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser_Clone" class="expander" data-toggle="collapse">Clone()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser_Clone" class="collapse in">
+  <div class="markdown level1 summary"><p>Clones the current TokenParser instance into a new instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object Clone()</code></pre>
+  </div>
+  
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a>
+        <p><p>New cloned instance of the TokenParser</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  <h5 class="implements">Implements</h5>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icloneable.clone#system-icloneable-clone">ICloneable.Clone()</a></div>
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_TokenParser_GetLeftOverTokens_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.TokenParser.GetLeftOverTokens(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/TokenParser.cs/#L850" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser_GetLeftOverTokens_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.GetLeftOverTokens*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser_GetLeftOverTokens_System_String_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.GetLeftOverTokens(System.String)"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser_GetLeftOverTokens_System_String_" class="expander" data-toggle="collapse">GetLeftOverTokens(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser_GetLeftOverTokens_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets left over tokens</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt; GetLeftOverTokens(string input)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">input</span>
+        <p><p>input string</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;
+        <p><p>Returns collections of left over tokens</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_TokenParser_GetResourceTokenResourceValues_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.TokenParser.GetResourceTokenResourceValues(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/TokenParser.cs/#L817" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser_GetResourceTokenResourceValues_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.GetResourceTokenResourceValues*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser_GetResourceTokenResourceValues_System_String_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.GetResourceTokenResourceValues(System.String)"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser_GetResourceTokenResourceValues_System_String_" class="expander" data-toggle="collapse">GetResourceTokenResourceValues(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser_GetResourceTokenResourceValues_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets list of token resource values</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Tuple&lt;string, string&gt;&gt; GetResourceTokenResourceValues(string tokenValue)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">tokenValue</span>
+        <p><p>Token value</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.tuple-2">Tuple</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;&gt;
+        <p><p>Returns list of token resource values</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_TokenParser_ParseString_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.TokenParser.ParseString(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/TokenParser.cs/#L839" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser_ParseString_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.ParseString*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser_ParseString_System_String_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.ParseString(System.String)"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser_ParseString_System_String_" class="expander" data-toggle="collapse">ParseString(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser_ParseString_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Parses the string</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ParseString(string input)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">input</span>
+        <p><p>input string to parse</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>Returns parsed string</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_TokenParser_ParseString_System_String_System_String___.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.TokenParser.ParseString(System.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/TokenParser.cs/#L990" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser_ParseString_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.ParseString*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser_ParseString_System_String_System_String___" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.ParseString(System.String,System.String[])"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser_ParseString_System_String_System_String___" class="expander" data-toggle="collapse">ParseString(String, String[])</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser_ParseString_System_String_System_String___" class="collapse in">
+  <div class="markdown level1 summary"><p>Parses given string</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ParseString(string input, params string[] tokensToSkip)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">input</span>
+        <p><p>input string</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">tokensToSkip</span>
+        <p><p>array of tokens to skip</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>Returns parsed string</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_TokenParser_ParseStringWebPart_System_String_Microsoft_SharePoint_Client_Web_System_String___.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.TokenParser.ParseStringWebPart(System.String%2CMicrosoft.SharePoint.Client.Web%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/TokenParser.cs/#L872" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser_ParseStringWebPart_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.ParseStringWebPart*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser_ParseStringWebPart_System_String_Microsoft_SharePoint_Client_Web_System_String___" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.ParseStringWebPart(System.String,Microsoft.SharePoint.Client.Web,System.String[])"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser_ParseStringWebPart_System_String_Microsoft_SharePoint_Client_Web_System_String___" class="expander" data-toggle="collapse">ParseStringWebPart(String, Web, String[])</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser_ParseStringWebPart_System_String_Microsoft_SharePoint_Client_Web_System_String___" class="collapse in">
+  <div class="markdown level1 summary"><p>Parses given string for a webpart making sure we only parse the token for a given web</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ParseStringWebPart(string input, Web web, params string[] tokensToSkip)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">input</span>
+        <p><p>input string</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>filters the tokens on web id</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">tokensToSkip</span>
+        <p><p>array of tokens to skip</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>Returns parsed string for a webpart</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_TokenParser_ParseXmlString_System_String_System_String___.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.TokenParser.ParseXmlString(System.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/TokenParser.cs/#L1089" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser_ParseXmlString_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.ParseXmlString*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser_ParseXmlString_System_String_System_String___" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.ParseXmlString(System.String,System.String[])"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser_ParseXmlString_System_String_System_String___" class="expander" data-toggle="collapse">ParseXmlString(String, String[])</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser_ParseXmlString_System_String_System_String___" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ParseXmlString(string inputXml, params string[] tokensToSkip)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">inputXml</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">tokensToSkip</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_TokenParser_ParseXmlStringWebpart_System_String_Microsoft_SharePoint_Client_Web_System_String___.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.TokenParser.ParseXmlStringWebpart(System.String%2CMicrosoft.SharePoint.Client.Web%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/TokenParser.cs/#L1055" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser_ParseXmlStringWebpart_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.ParseXmlStringWebpart*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser_ParseXmlStringWebpart_System_String_Microsoft_SharePoint_Client_Web_System_String___" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.ParseXmlStringWebpart(System.String,Microsoft.SharePoint.Client.Web,System.String[])"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser_ParseXmlStringWebpart_System_String_Microsoft_SharePoint_Client_Web_System_String___" class="expander" data-toggle="collapse">ParseXmlStringWebpart(String, Web, String[])</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser_ParseXmlStringWebpart_System_String_Microsoft_SharePoint_Client_Web_System_String___" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ParseXmlStringWebpart(string inputXml, Web web, params string[] tokensToSkip)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">inputXml</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">tokensToSkip</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_TokenParser_Rebase_Microsoft_SharePoint_Client_Web_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.TokenParser.Rebase(Microsoft.SharePoint.Client.Web)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/TokenParser.cs/#L63" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser_Rebase_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.Rebase*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser_Rebase_Microsoft_SharePoint_Client_Web_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.Rebase(Microsoft.SharePoint.Client.Web)"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser_Rebase_Microsoft_SharePoint_Client_Web_" class="expander" data-toggle="collapse">Rebase(Web)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser_Rebase_Microsoft_SharePoint_Client_Web_" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Rebase(Web web)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_TokenParser_Rebase_Microsoft_SharePoint_Client_Web_PnP_Framework_Provisioning_Model_ProvisioningTemplate_PnP_Framework_Provisioning_ObjectHandlers_ProvisioningTemplateApplyingInformation_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.TokenParser.Rebase(Microsoft.SharePoint.Client.Web%2CPnP.Framework.Provisioning.Model.ProvisioningTemplate%2CPnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/TokenParser.cs/#L71" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser_Rebase_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.Rebase*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_TokenParser_Rebase_Microsoft_SharePoint_Client_Web_PnP_Framework_Provisioning_Model_ProvisioningTemplate_PnP_Framework_Provisioning_ObjectHandlers_ProvisioningTemplateApplyingInformation_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.TokenParser.Rebase(Microsoft.SharePoint.Client.Web,PnP.Framework.Provisioning.Model.ProvisioningTemplate,PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation)"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser_Rebase_Microsoft_SharePoint_Client_Web_PnP_Framework_Provisioning_Model_ProvisioningTemplate_PnP_Framework_Provisioning_ObjectHandlers_ProvisioningTemplateApplyingInformation_" class="expander" data-toggle="collapse">Rebase(Web, ProvisioningTemplate, ProvisioningTemplateApplyingInformation)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_TokenParser_Rebase_Microsoft_SharePoint_Client_Web_PnP_Framework_Provisioning_Model_ProvisioningTemplate_PnP_Framework_Provisioning_ObjectHandlers_ProvisioningTemplateApplyingInformation_" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Rebase(Web web, ProvisioningTemplate template, ProvisioningTemplateApplyingInformation applyingInformation = null)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Provisioning.Model.ProvisioningTemplate.html">ProvisioningTemplate</a></span>
+        <span class="parametername">template</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation.html">ProvisioningTemplateApplyingInformation</a></span>
+        <span class="parametername">applyingInformation</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="System.ValidationExtensions.html#System_ValidationExtensions_ValidateNotNullOrEmpty__1___0_System_String_">ValidationExtensions.ValidateNotNullOrEmpty&lt;T&gt;(T, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_Set__2___0_System_Linq_Expressions_Expression_System_Func___0___1_____1_System_Boolean_System_Boolean_">ObjectExtensions.Set&lt;TObject, T&gt;(TObject, Expression&lt;Func&lt;TObject, T&gt;&gt;, T, Boolean, Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstancePropertyValue_System_Object_System_String_">ObjectExtensions.GetPublicInstancePropertyValue(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstanceProperty_System_Object_System_String_">ObjectExtensions.GetPublicInstanceProperty(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_SetPublicInstancePropertyValue_System_Object_System_String_System_Object_">ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Modernization.Cache.Extensions.html#PnP_Framework_Modernization_Cache_Extensions_ToByteArray_System_Object_">Extensions.ToByteArray(Object)</a>
+  </div>
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

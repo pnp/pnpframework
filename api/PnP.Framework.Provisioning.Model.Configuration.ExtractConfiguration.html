@@ -1,0 +1,1192 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ExtractConfiguration
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ExtractConfiguration
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Configuration/ExtractConfiguration.cs/#L12" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration">Class ExtractConfiguration
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">ExtractConfiguration</span></div>
+  </div>
+  
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="PnP.Framework.Provisioning.Model.Configuration.html">PnP.Framework.Provisioning.Model.Configuration</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ExtractConfiguration</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_ContentTypes.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.ContentTypes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Configuration/ExtractConfiguration.cs/#L52" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_ContentTypes_" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.ContentTypes*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_ContentTypes" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.ContentTypes"><a href="#collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_ContentTypes" class="expander" data-toggle="collapse">ContentTypes</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_ContentTypes" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;contentTypes&quot;)]
+public ExtractContentTypeConfiguration ContentTypes { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.Configuration.ContentTypes.ExtractContentTypeConfiguration.html">ExtractContentTypeConfiguration</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Extensibility.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.Extensibility%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Configuration/ExtractConfiguration.cs/#L58" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Extensibility_" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.Extensibility*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Extensibility" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.Extensibility"><a href="#collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Extensibility" class="expander" data-toggle="collapse">Extensibility</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Extensibility" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;extensibility&quot;)]
+public ExtractExtensibilityConfiguration Extensibility { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.Configuration.Extensibility.ExtractExtensibilityConfiguration.html">ExtractExtensibilityConfiguration</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_FileConnector.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.FileConnector%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Configuration/ExtractConfiguration.cs/#L18" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_FileConnector_" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.FileConnector*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_FileConnector" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.FileConnector"><a href="#collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_FileConnector" class="expander" data-toggle="collapse">FileConnector</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_FileConnector" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonIgnore]
+public FileConnectorBase FileConnector { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Connectors.FileConnectorBase.html">FileConnectorBase</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Handlers.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.Handlers%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Configuration/ExtractConfiguration.cs/#L30" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Handlers_" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.Handlers*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Handlers" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.Handlers"><a href="#collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Handlers" class="expander" data-toggle="collapse">Handlers</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Handlers" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;handlers&quot;)]
+[JsonConverter(typeof(ListEnumConverter&lt;ConfigurationHandler&gt;))]
+public List&lt;ConfigurationHandler&gt; Handlers { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="PnP.Framework.Provisioning.Model.Configuration.ConfigurationHandler.html">ConfigurationHandler</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Lists.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.Lists%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Configuration/ExtractConfiguration.cs/#L34" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Lists_" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.Lists*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Lists" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.Lists"><a href="#collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Lists" class="expander" data-toggle="collapse">Lists</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Lists" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;lists&quot;)]
+public ExtractListsConfiguration Lists { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.Configuration.Lists.ExtractListsConfiguration.html">ExtractListsConfiguration</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_MessagesDelegate.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.MessagesDelegate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Configuration/ExtractConfiguration.cs/#L24" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_MessagesDelegate_" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.MessagesDelegate*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_MessagesDelegate" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.MessagesDelegate"><a href="#collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_MessagesDelegate" class="expander" data-toggle="collapse">MessagesDelegate</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_MessagesDelegate" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonIgnore]
+public ProvisioningMessagesDelegate MessagesDelegate { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.ObjectHandlers.ProvisioningMessagesDelegate.html">ProvisioningMessagesDelegate</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_MultiLanguage.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.MultiLanguage%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Configuration/ExtractConfiguration.cs/#L70" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_MultiLanguage_" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.MultiLanguage*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_MultiLanguage" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.MultiLanguage"><a href="#collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_MultiLanguage" class="expander" data-toggle="collapse">MultiLanguage</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_MultiLanguage" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;multiLanguage&quot;)]
+public ExtractMultiLanguageConfiguration MultiLanguage { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.Configuration.MultiLanguage.ExtractMultiLanguageConfiguration.html">ExtractMultiLanguageConfiguration</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Navigation.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.Navigation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Configuration/ExtractConfiguration.cs/#L46" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Navigation_" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.Navigation*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Navigation" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.Navigation"><a href="#collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Navigation" class="expander" data-toggle="collapse">Navigation</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Navigation" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;navigation&quot;)]
+public ExtractNavigationConfiguration Navigation { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.Configuration.Navigation.ExtractNavigationConfiguration.html">ExtractNavigationConfiguration</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Pages.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.Pages%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Configuration/ExtractConfiguration.cs/#L37" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Pages_" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.Pages*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Pages" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.Pages"><a href="#collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Pages" class="expander" data-toggle="collapse">Pages</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Pages" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;pages&quot;)]
+public ExtractPagesConfiguration Pages { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.Configuration.Pages.ExtractPagesConfiguration.html">ExtractPagesConfiguration</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_PersistAssetFiles.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.PersistAssetFiles%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Configuration/ExtractConfiguration.cs/#L27" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_PersistAssetFiles_" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.PersistAssetFiles*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_PersistAssetFiles" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.PersistAssetFiles"><a href="#collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_PersistAssetFiles" class="expander" data-toggle="collapse">PersistAssetFiles</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_PersistAssetFiles" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;persistAssetFiles&quot;)]
+public bool PersistAssetFiles { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_ProgressDelegate.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.ProgressDelegate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Configuration/ExtractConfiguration.cs/#L21" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_ProgressDelegate_" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.ProgressDelegate*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_ProgressDelegate" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.ProgressDelegate"><a href="#collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_ProgressDelegate" class="expander" data-toggle="collapse">ProgressDelegate</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_ProgressDelegate" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonIgnore]
+public ProvisioningProgressDelegate ProgressDelegate { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.ObjectHandlers.ProvisioningProgressDelegate.html">ProvisioningProgressDelegate</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_PropertyBag.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.PropertyBag%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Configuration/ExtractConfiguration.cs/#L67" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_PropertyBag_" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.PropertyBag*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_PropertyBag" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.PropertyBag"><a href="#collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_PropertyBag" class="expander" data-toggle="collapse">PropertyBag</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_PropertyBag" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;propertyBag&quot;)]
+public ExtractPropertyBagConfiguration PropertyBag { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.Configuration.PropertyBag.ExtractPropertyBagConfiguration.html">ExtractPropertyBagConfiguration</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Publishing.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.Publishing%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Configuration/ExtractConfiguration.cs/#L73" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Publishing_" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.Publishing*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Publishing" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.Publishing"><a href="#collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Publishing" class="expander" data-toggle="collapse">Publishing</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Publishing" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;publishing&quot;)]
+public ExtractPublishingConfiguration Publishing { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.Configuration.Publishing.ExtractPublishingConfiguration.html">ExtractPublishingConfiguration</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_SearchSettings.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.SearchSettings%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Configuration/ExtractConfiguration.cs/#L55" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_SearchSettings_" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.SearchSettings*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_SearchSettings" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.SearchSettings"><a href="#collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_SearchSettings" class="expander" data-toggle="collapse">SearchSettings</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_SearchSettings" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;searchSettings&quot;)]
+public ExtractSearchConfiguration SearchSettings { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.Configuration.SearchSettings.ExtractSearchConfiguration.html">ExtractSearchConfiguration</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_SiteFooter.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.SiteFooter%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Configuration/ExtractConfiguration.cs/#L49" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_SiteFooter_" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.SiteFooter*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_SiteFooter" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.SiteFooter"><a href="#collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_SiteFooter" class="expander" data-toggle="collapse">SiteFooter</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_SiteFooter" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;siteFooter&quot;)]
+public ExtractSiteFooterConfiguration SiteFooter { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.Configuration.SiteFooter.ExtractSiteFooterConfiguration.html">ExtractSiteFooterConfiguration</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_SiteSecurity.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.SiteSecurity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Configuration/ExtractConfiguration.cs/#L40" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_SiteSecurity_" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.SiteSecurity*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_SiteSecurity" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.SiteSecurity"><a href="#collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_SiteSecurity" class="expander" data-toggle="collapse">SiteSecurity</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_SiteSecurity" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;siteSecurity&quot;)]
+public ExtractConfiguration SiteSecurity { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.Configuration.SiteSecurity.ExtractConfiguration.html">ExtractConfiguration</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_SyntexModels.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.SyntexModels%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Configuration/ExtractConfiguration.cs/#L76" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_SyntexModels_" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.SyntexModels*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_SyntexModels" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.SyntexModels"><a href="#collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_SyntexModels" class="expander" data-toggle="collapse">SyntexModels</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_SyntexModels" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;syntexModels&quot;)]
+public ExtractSyntexModelsConfiguration SyntexModels { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.Configuration.SyntexModels.ExtractSyntexModelsConfiguration.html">ExtractSyntexModelsConfiguration</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Taxonomy.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.Taxonomy%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Configuration/ExtractConfiguration.cs/#L43" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Taxonomy_" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.Taxonomy*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Taxonomy" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.Taxonomy"><a href="#collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Taxonomy" class="expander" data-toggle="collapse">Taxonomy</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Taxonomy" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;taxonomy&quot;)]
+public ExtractTaxonomyConfiguration Taxonomy { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.Configuration.Taxonomy.ExtractTaxonomyConfiguration.html">ExtractTaxonomyConfiguration</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Tenant.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.Tenant%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Configuration/ExtractConfiguration.cs/#L64" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Tenant_" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.Tenant*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Tenant" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.Tenant"><a href="#collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Tenant" class="expander" data-toggle="collapse">Tenant</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_Tenant" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines Tenant Extraction Settings</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;tenant&quot;)]
+public ExtractTenantConfiguration Tenant { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.Configuration.Tenant.ExtractTenantConfiguration.html">ExtractTenantConfiguration</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_FromCreationInformation_PnP_Framework_Provisioning_ObjectHandlers_ProvisioningTemplateCreationInformation_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.FromCreationInformation(PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Configuration/ExtractConfiguration.cs/#L79" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_FromCreationInformation_" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.FromCreationInformation*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_FromCreationInformation_PnP_Framework_Provisioning_ObjectHandlers_ProvisioningTemplateCreationInformation_" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.FromCreationInformation(PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation)"><a href="#collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_FromCreationInformation_PnP_Framework_Provisioning_ObjectHandlers_ProvisioningTemplateCreationInformation_" class="expander" data-toggle="collapse">FromCreationInformation(ProvisioningTemplateCreationInformation)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_FromCreationInformation_PnP_Framework_Provisioning_ObjectHandlers_ProvisioningTemplateCreationInformation_" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ExtractConfiguration FromCreationInformation(ProvisioningTemplateCreationInformation information)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.html">ProvisioningTemplateCreationInformation</a></span>
+        <span class="parametername">information</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.html">ExtractConfiguration</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_FromString_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.FromString(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Configuration/ExtractConfiguration.cs/#L224" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_FromString_" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.FromString*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_FromString_System_String_" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.FromString(System.String)"><a href="#collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_FromString_System_String_" class="expander" data-toggle="collapse">FromString(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_FromString_System_String_" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ExtractConfiguration FromString(string input)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">input</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.html">ExtractConfiguration</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_ToCreationInformation_Microsoft_SharePoint_Client_Web_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.ToCreationInformation(Microsoft.SharePoint.Client.Web)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Configuration/ExtractConfiguration.cs/#L150" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_ToCreationInformation_" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.ToCreationInformation*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_ToCreationInformation_Microsoft_SharePoint_Client_Web_" data-uid="PnP.Framework.Provisioning.Model.Configuration.ExtractConfiguration.ToCreationInformation(Microsoft.SharePoint.Client.Web)"><a href="#collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_ToCreationInformation_Microsoft_SharePoint_Client_Web_" class="expander" data-toggle="collapse">ToCreationInformation(Web)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Configuration_ExtractConfiguration_ToCreationInformation_Microsoft_SharePoint_Client_Web_" class="collapse in">
+  <div class="markdown level1 summary"><p>Converts the Configuration to a ProvisioningTemplateCreationInformation object for backwards compatibility</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ProvisioningTemplateCreationInformation ToCreationInformation(Web web)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.html">ProvisioningTemplateCreationInformation</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="System.ValidationExtensions.html#System_ValidationExtensions_ValidateNotNullOrEmpty__1___0_System_String_">ValidationExtensions.ValidateNotNullOrEmpty&lt;T&gt;(T, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_Set__2___0_System_Linq_Expressions_Expression_System_Func___0___1_____1_System_Boolean_System_Boolean_">ObjectExtensions.Set&lt;TObject, T&gt;(TObject, Expression&lt;Func&lt;TObject, T&gt;&gt;, T, Boolean, Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstancePropertyValue_System_Object_System_String_">ObjectExtensions.GetPublicInstancePropertyValue(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstanceProperty_System_Object_System_String_">ObjectExtensions.GetPublicInstanceProperty(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_SetPublicInstancePropertyValue_System_Object_System_String_System_Object_">ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Modernization.Cache.Extensions.html#PnP_Framework_Modernization_Cache_Extensions_ToByteArray_System_Object_">Extensions.ToByteArray(Object)</a>
+  </div>
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

@@ -1,0 +1,766 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class AssetTransfer
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class AssetTransfer
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PnP.Framework.Modernization.Transform.AssetTransfer">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/AssetTransfer.cs/#L16" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_AssetTransfer.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.AssetTransfer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="PnP_Framework_Modernization_Transform_AssetTransfer" data-uid="PnP.Framework.Modernization.Transform.AssetTransfer">Class AssetTransfer
+  </h1>
+  <div class="markdown level0 summary"><p>Class for operations for transferring the assets over to the target site collection</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html">BaseTransform</a></div>
+    <div class="level2"><span class="xref">AssetTransfer</span></div>
+  </div>
+  
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_RegisteredLogObservers">BaseTransform.RegisteredLogObservers</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_RegisterObserver_PnP_Framework_Modernization_Telemetry_ILogObserver_">BaseTransform.RegisterObserver(ILogObserver)</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_FlushObservers">BaseTransform.FlushObservers()</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_FlushSpecificObserver__1">BaseTransform.FlushSpecificObserver&lt;T&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_LogError_System_String_System_String_System_Exception_System_Boolean_System_Boolean_">BaseTransform.LogError(String, String, Exception, Boolean, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_LogInfo_System_String_System_String_PnP_Framework_Modernization_Telemetry_LogEntrySignificance_">BaseTransform.LogInfo(String, String, LogEntrySignificance)</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_LogWarning_System_String_System_String_">BaseTransform.LogWarning(String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_LogDebug_System_String_System_String_">BaseTransform.LogDebug(String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_Log_PnP_Framework_Modernization_Telemetry_LogEntry_PnP_Framework_Modernization_Telemetry_LogLevel_">BaseTransform.Log(LogEntry, LogLevel)</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_SetPageId_System_String_">BaseTransform.SetPageId(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_GetExactVersion_Microsoft_SharePoint_Client_ClientRuntimeContext_">BaseTransform.GetExactVersion(ClientRuntimeContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_GetVersion_Microsoft_SharePoint_Client_ClientRuntimeContext_">BaseTransform.GetVersion(ClientRuntimeContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="PnP.Framework.Modernization.Transform.html">PnP.Framework.Modernization.Transform</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="PnP_Framework_Modernization_Transform_AssetTransfer_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class AssetTransfer : BaseTransform</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_AssetTransfer__ctor_Microsoft_SharePoint_Client_ClientContext_Microsoft_SharePoint_Client_ClientContext_System_Collections_Generic_IList_PnP_Framework_Modernization_Telemetry_ILogObserver__.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.AssetTransfer.%23ctor(Microsoft.SharePoint.Client.ClientContext%2CMicrosoft.SharePoint.Client.ClientContext%2CSystem.Collections.Generic.IList%7BPnP.Framework.Modernization.Telemetry.ILogObserver%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/AssetTransfer.cs/#L29" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Transform_AssetTransfer__ctor_" data-uid="PnP.Framework.Modernization.Transform.AssetTransfer.#ctor*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Transform_AssetTransfer__ctor_Microsoft_SharePoint_Client_ClientContext_Microsoft_SharePoint_Client_ClientContext_System_Collections_Generic_IList_PnP_Framework_Modernization_Telemetry_ILogObserver__" data-uid="PnP.Framework.Modernization.Transform.AssetTransfer.#ctor(Microsoft.SharePoint.Client.ClientContext,Microsoft.SharePoint.Client.ClientContext,System.Collections.Generic.IList{PnP.Framework.Modernization.Telemetry.ILogObserver})"><a href="#collapsible-PnP_Framework_Modernization_Transform_AssetTransfer__ctor_Microsoft_SharePoint_Client_ClientContext_Microsoft_SharePoint_Client_ClientContext_System_Collections_Generic_IList_PnP_Framework_Modernization_Telemetry_ILogObserver__" class="expander" data-toggle="collapse">AssetTransfer(ClientContext, ClientContext, IList&lt;ILogObserver&gt;)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Transform_AssetTransfer__ctor_Microsoft_SharePoint_Client_ClientContext_Microsoft_SharePoint_Client_ClientContext_System_Collections_Generic_IList_PnP_Framework_Modernization_Telemetry_ILogObserver__" class="collapse in">
+  <div class="markdown level1 summary"><p>Constructor for the asset transfer class</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AssetTransfer(ClientContext source, ClientContext target, IList&lt;ILogObserver&gt; logObservers = null)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">source</span>
+        <p><p>Source connection to SharePoint</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">target</span>
+        <p><p>Target connection to SharePoint</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="PnP.Framework.Modernization.Telemetry.ILogObserver.html">ILogObserver</a>&gt;</span>
+        <span class="parametername">logObservers</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_AssetTransfer_ConvertFileToFolderFriendlyName_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.AssetTransfer.ConvertFileToFolderFriendlyName(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/AssetTransfer.cs/#L466" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Transform_AssetTransfer_ConvertFileToFolderFriendlyName_" data-uid="PnP.Framework.Modernization.Transform.AssetTransfer.ConvertFileToFolderFriendlyName*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Transform_AssetTransfer_ConvertFileToFolderFriendlyName_System_String_" data-uid="PnP.Framework.Modernization.Transform.AssetTransfer.ConvertFileToFolderFriendlyName(System.String)"><a href="#collapsible-PnP_Framework_Modernization_Transform_AssetTransfer_ConvertFileToFolderFriendlyName_System_String_" class="expander" data-toggle="collapse">ConvertFileToFolderFriendlyName(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Transform_AssetTransfer_ConvertFileToFolderFriendlyName_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Converts the file name into a friendly format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ConvertFileToFolderFriendlyName(string fileName)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">fileName</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_AssetTransfer_CopyAssetToTargetLocation_System_String_System_String_System_Int32_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.AssetTransfer.CopyAssetToTargetLocation(System.String%2CSystem.String%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/AssetTransfer.cs/#L230" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Transform_AssetTransfer_CopyAssetToTargetLocation_" data-uid="PnP.Framework.Modernization.Transform.AssetTransfer.CopyAssetToTargetLocation*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Transform_AssetTransfer_CopyAssetToTargetLocation_System_String_System_String_System_Int32_" data-uid="PnP.Framework.Modernization.Transform.AssetTransfer.CopyAssetToTargetLocation(System.String,System.String,System.Int32)"><a href="#collapsible-PnP_Framework_Modernization_Transform_AssetTransfer_CopyAssetToTargetLocation_System_String_System_String_System_Int32_" class="expander" data-toggle="collapse">CopyAssetToTargetLocation(String, String, Int32)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Transform_AssetTransfer_CopyAssetToTargetLocation_System_String_System_String_System_Int32_" class="collapse in">
+  <div class="markdown level1 summary"><p>Copy the file from the source to the target location</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string CopyAssetToTargetLocation(string sourceFileUrl, string targetLocationUrl, int fileChunkSizeInMB = 3)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">sourceFileUrl</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">targetLocationUrl</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">fileChunkSizeInMB</span>
+        <p><p>Size of chunks in MB in which the file will be split to be copied</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  <h5 id="PnP_Framework_Modernization_Transform_AssetTransfer_CopyAssetToTargetLocation_System_String_System_String_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Based on the documentation: <a href="https://docs.microsoft.com/en-us/sharepoint/dev/solution-guidance/upload-large-files-sample-app-for-sharepoint">https://docs.microsoft.com/en-us/sharepoint/dev/solution-guidance/upload-large-files-sample-app-for-sharepoint</a></p>
+</div>
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_AssetTransfer_EnsureDestination_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.AssetTransfer.EnsureDestination(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/AssetTransfer.cs/#L182" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Transform_AssetTransfer_EnsureDestination_" data-uid="PnP.Framework.Modernization.Transform.AssetTransfer.EnsureDestination*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Transform_AssetTransfer_EnsureDestination_System_String_" data-uid="PnP.Framework.Modernization.Transform.AssetTransfer.EnsureDestination(System.String)"><a href="#collapsible-PnP_Framework_Modernization_Transform_AssetTransfer_EnsureDestination_System_String_" class="expander" data-toggle="collapse">EnsureDestination(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Transform_AssetTransfer_EnsureDestination_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Ensure the site assets and page sub-folder exists in the target location</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string EnsureDestination(string pageFileName)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">pageFileName</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_AssetTransfer_EnsureSiteAssetsLibrary.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.AssetTransfer.EnsureSiteAssetsLibrary%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/AssetTransfer.cs/#L203" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Transform_AssetTransfer_EnsureSiteAssetsLibrary_" data-uid="PnP.Framework.Modernization.Transform.AssetTransfer.EnsureSiteAssetsLibrary*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Transform_AssetTransfer_EnsureSiteAssetsLibrary" data-uid="PnP.Framework.Modernization.Transform.AssetTransfer.EnsureSiteAssetsLibrary"><a href="#collapsible-PnP_Framework_Modernization_Transform_AssetTransfer_EnsureSiteAssetsLibrary" class="expander" data-toggle="collapse">EnsureSiteAssetsLibrary()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Transform_AssetTransfer_EnsureSiteAssetsLibrary" class="collapse in">
+  <div class="markdown level1 summary"><p>Create a site assets library</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List EnsureSiteAssetsLibrary()</code></pre>
+  </div>
+  
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.list">List</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_AssetTransfer_GetAssetTransferredIfExists_PnP_Framework_Modernization_Entities_AssetTransferredEntity_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.AssetTransfer.GetAssetTransferredIfExists(PnP.Framework.Modernization.Entities.AssetTransferredEntity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/AssetTransfer.cs/#L437" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Transform_AssetTransfer_GetAssetTransferredIfExists_" data-uid="PnP.Framework.Modernization.Transform.AssetTransfer.GetAssetTransferredIfExists*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Transform_AssetTransfer_GetAssetTransferredIfExists_PnP_Framework_Modernization_Entities_AssetTransferredEntity_" data-uid="PnP.Framework.Modernization.Transform.AssetTransfer.GetAssetTransferredIfExists(PnP.Framework.Modernization.Entities.AssetTransferredEntity)"><a href="#collapsible-PnP_Framework_Modernization_Transform_AssetTransfer_GetAssetTransferredIfExists_PnP_Framework_Modernization_Entities_AssetTransferredEntity_" class="expander" data-toggle="collapse">GetAssetTransferredIfExists(AssetTransferredEntity)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Transform_AssetTransfer_GetAssetTransferredIfExists_PnP_Framework_Modernization_Entities_AssetTransferredEntity_" class="collapse in">
+  <div class="markdown level1 summary"><p>Get asset transfer details if they already exist</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AssetTransferredEntity GetAssetTransferredIfExists(AssetTransferredEntity assetTransferredEntity)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Modernization.Entities.AssetTransferredEntity.html">AssetTransferredEntity</a></span>
+        <span class="parametername">assetTransferredEntity</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Modernization.Entities.AssetTransferredEntity.html">AssetTransferredEntity</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_AssetTransfer_StoreAssetTransferred_PnP_Framework_Modernization_Entities_AssetTransferredEntity_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.AssetTransfer.StoreAssetTransferred(PnP.Framework.Modernization.Entities.AssetTransferredEntity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/AssetTransfer.cs/#L420" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Transform_AssetTransfer_StoreAssetTransferred_" data-uid="PnP.Framework.Modernization.Transform.AssetTransfer.StoreAssetTransferred*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Transform_AssetTransfer_StoreAssetTransferred_PnP_Framework_Modernization_Entities_AssetTransferredEntity_" data-uid="PnP.Framework.Modernization.Transform.AssetTransfer.StoreAssetTransferred(PnP.Framework.Modernization.Entities.AssetTransferredEntity)"><a href="#collapsible-PnP_Framework_Modernization_Transform_AssetTransfer_StoreAssetTransferred_PnP_Framework_Modernization_Entities_AssetTransferredEntity_" class="expander" data-toggle="collapse">StoreAssetTransferred(AssetTransferredEntity)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Transform_AssetTransfer_StoreAssetTransferred_PnP_Framework_Modernization_Entities_AssetTransferredEntity_" class="collapse in">
+  <div class="markdown level1 summary"><p>Stores an asset transfer reference</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StoreAssetTransferred(AssetTransferredEntity assetTransferredEntity)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Modernization.Entities.AssetTransferredEntity.html">AssetTransferredEntity</a></span>
+        <span class="parametername">assetTransferredEntity</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_AssetTransfer_TransferAsset_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.AssetTransfer.TransferAsset(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/AssetTransfer.cs/#L66" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Transform_AssetTransfer_TransferAsset_" data-uid="PnP.Framework.Modernization.Transform.AssetTransfer.TransferAsset*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Transform_AssetTransfer_TransferAsset_System_String_System_String_" data-uid="PnP.Framework.Modernization.Transform.AssetTransfer.TransferAsset(System.String,System.String)"><a href="#collapsible-PnP_Framework_Modernization_Transform_AssetTransfer_TransferAsset_System_String_System_String_" class="expander" data-toggle="collapse">TransferAsset(String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Transform_AssetTransfer_TransferAsset_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Main entry point to perform the series of operations to transfer related assets</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string TransferAsset(string sourceAssetRelativeUrl, string pageFileName)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">sourceAssetRelativeUrl</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">pageFileName</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_AssetTransfer_Validate.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.AssetTransfer.Validate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/AssetTransfer.cs/#L54" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Transform_AssetTransfer_Validate_" data-uid="PnP.Framework.Modernization.Transform.AssetTransfer.Validate*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Transform_AssetTransfer_Validate" data-uid="PnP.Framework.Modernization.Transform.AssetTransfer.Validate"><a href="#collapsible-PnP_Framework_Modernization_Transform_AssetTransfer_Validate" class="expander" data-toggle="collapse">Validate()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Transform_AssetTransfer_Validate" class="collapse in">
+  <div class="markdown level1 summary"><p>Perform validation</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Validate()</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_AssetTransfer_ValidateAssetInSupportedLocation_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.AssetTransfer.ValidateAssetInSupportedLocation(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/AssetTransfer.cs/#L127" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Transform_AssetTransfer_ValidateAssetInSupportedLocation_" data-uid="PnP.Framework.Modernization.Transform.AssetTransfer.ValidateAssetInSupportedLocation*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Transform_AssetTransfer_ValidateAssetInSupportedLocation_System_String_" data-uid="PnP.Framework.Modernization.Transform.AssetTransfer.ValidateAssetInSupportedLocation(System.String)"><a href="#collapsible-PnP_Framework_Modernization_Transform_AssetTransfer_ValidateAssetInSupportedLocation_System_String_" class="expander" data-toggle="collapse">ValidateAssetInSupportedLocation(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Transform_AssetTransfer_ValidateAssetInSupportedLocation_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Checks if the URL is located in a supported location</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ValidateAssetInSupportedLocation(string sourceUrl)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">sourceUrl</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="System.ValidationExtensions.html#System_ValidationExtensions_ValidateNotNullOrEmpty__1___0_System_String_">ValidationExtensions.ValidateNotNullOrEmpty&lt;T&gt;(T, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_Set__2___0_System_Linq_Expressions_Expression_System_Func___0___1_____1_System_Boolean_System_Boolean_">ObjectExtensions.Set&lt;TObject, T&gt;(TObject, Expression&lt;Func&lt;TObject, T&gt;&gt;, T, Boolean, Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstancePropertyValue_System_Object_System_String_">ObjectExtensions.GetPublicInstancePropertyValue(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstanceProperty_System_Object_System_String_">ObjectExtensions.GetPublicInstanceProperty(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_SetPublicInstancePropertyValue_System_Object_System_String_System_Object_">ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Modernization.Cache.Extensions.html#PnP_Framework_Modernization_Cache_Extensions_ToByteArray_System_Object_">Extensions.ToByteArray(Object)</a>
+  </div>
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

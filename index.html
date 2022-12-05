@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>PnP Framework documentation | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="PnP Framework documentation | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/docs/index.md/#L1" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                    <h1 id="pnp-framework-documentation">PnP Framework documentation</h1>
+
+<p><strong>PnP Framework</strong> is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions. This library is the cross platform successor of the <a href="https://github.com/PnP/PnP-Sites-Core">PnP-Sites-Core</a> library. The original <a href="https://github.com/PnP/PnP-Sites-Core">PnP-Sites-Core</a> library only works on Windows (due to the dependency on .Net Framework) and supports SharePoint on-premises and SharePoint Online, while this library will work cross platform but only supports SharePoint Online. Going forward we'll only be <strong>actively maintaining PnP Framework</strong>, the <a href="https://github.com/PnP/PnP-Sites-Core">PnP-Sites-Core</a> library is retired and archived.</p>
+<p>Next to PnP Framework that will be replacing <a href="https://github.com/PnP/PnP-Sites-Core">PnP-Sites-Core</a> we're also building a brand new <a href="https://github.com/pnp/pnpcore">PnP Core SDK</a> that targets modern .NET development and which will work everywhere where .NET will run. This library is the long term evolution of PnP Framework, we'll enable a phased transition from PnP Framework to <a href="https://github.com/pnp/pnpcore">PnP Core SDK</a> without impacting PnP Framework users.</p>
+<h2 id="getting-started">Getting started</h2>
+<p>Pull down the latest version of PnP Framework here:</p>
+<table>
+<thead>
+<tr>
+<th>Nuget package</th>
+<th>Description</th>
+<th>Latest release</th>
+<th>Latest nightly development version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PnP.Framework</td>
+<td>The PnP Framework library</td>
+<td><a href="https://www.nuget.org/packages/PnP.Framework/"><img src="https://img.shields.io/nuget/v/PnP.Framework.svg" alt="PnP.Framework Nuget package"></a></td>
+<td><a href="https://www.nuget.org/packages/PnP.Framework/"><img src="https://img.shields.io/nuget/vpre/PnP.Framework.svg" alt="PnP.Framework Nuget package"></a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="migrating-from-pnp-sites-core">Migrating from PnP Sites Core</h2>
+<p>This library is the cross platform successor of the <a href="https://github.com/PnP/PnP-Sites-Core">PnP-Sites-Core</a>, see the <a href="using-the-framework/MigratingFromPnPSitesCore.html">Migrating from PnP Sites Core to PnP Framework guide</a> to learn how to switch over.</p>
+<h2 id="ive-found-a-bug-where-do-i-need-to-log-an-issue-or-create-a-pr">I've found a bug, where do I need to log an issue or create a PR</h2>
+<p>Issues and PR's need to be created in the PnP Framework repo, the PnP Sites Core repo has been archived.</p>
+<h2 id="supportability-and-sla">Supportability and SLA</h2>
+<p>This library is open-source and community provided component with active community providing support for it. This is not Microsoft provided component so there's no SLA or direct support for this open-source component from Microsoft. Please report any issues using the <a href="https://github.com/pnp/pnpframework/issues">issues list</a>.</p>
+<h2 id="building-and-contributing">Building and contributing</h2>
+<p>To build PnP Framework you need the following minimal components installed:</p>
+<ul>
+<li><a href="https://visualstudio.microsoft.com/vs/">Visual Studio 2022</a></li>
+<li><a href="https://dotnet.microsoft.com/en-us/download/dotnet/7.0">.NET SDK version 7.0</a></li>
+</ul>
+<p>Contributions should be made against the <strong>dev</strong> branch of the repository.</p>
+<p><strong>Community rocks, sharing is caring!</strong></p>
+<p>This project has adopted the <a href="https://opensource.microsoft.com/codeofconduct/">Microsoft Open Source Code of Conduct</a>. For more information see the <a href="https://opensource.microsoft.com/codeofconduct/faq/">Code of Conduct FAQ</a> or contact <a href="mailto:opencode@microsoft.com">opencode@microsoft.com</a> with any additional questions or comments.</p>
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>  </body>
+</html>

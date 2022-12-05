@@ -1,0 +1,3347 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class TaxonomyExtensions
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class TaxonomyExtensions
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L19" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="Microsoft_SharePoint_Client_TaxonomyExtensions" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions">Class TaxonomyExtensions
+  </h1>
+  <div class="markdown level0 summary"><p>Class for taxonomy extension methods</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">TaxonomyExtensions</span></div>
+  </div>
+  
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="Microsoft.SharePoint.Client.html">Microsoft.SharePoint.Client</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="Microsoft_SharePoint_Client_TaxonomyExtensions_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Guid(&quot;8A8AEA7A-7C25-4138-9C83-2584028868C5&quot;)]
+public static class TaxonomyExtensions</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="fields">Fields
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_TaxonomyGuidLabelDelimiter.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.TaxonomyGuidLabelDelimiter%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L32" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_TaxonomyGuidLabelDelimiter" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.TaxonomyGuidLabelDelimiter"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_TaxonomyGuidLabelDelimiter" class="expander" data-toggle="collapse">TaxonomyGuidLabelDelimiter</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_TaxonomyGuidLabelDelimiter" class="collapse in">
+  <div class="markdown level1 summary"><p>The default Taxonomy Guid Label Delimiter</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string TaxonomyGuidLabelDelimiter = &quot;|&quot;</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_AddTermToTermset_Microsoft_SharePoint_Client_Site_System_Guid_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.AddTermToTermset(Microsoft.SharePoint.Client.Site%2CSystem.Guid%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L492" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_AddTermToTermset_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.AddTermToTermset*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_AddTermToTermset_Microsoft_SharePoint_Client_Site_System_Guid_System_String_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.AddTermToTermset(Microsoft.SharePoint.Client.Site,System.Guid,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_AddTermToTermset_Microsoft_SharePoint_Client_Site_System_Guid_System_String_" class="expander" data-toggle="collapse">AddTermToTermset(Site, Guid, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_AddTermToTermset_Microsoft_SharePoint_Client_Site_System_Guid_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Adds a term to a given termset</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Term AddTermToTermset(this Site site, Guid termSetId, string term)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>The current site</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></span>
+        <span class="parametername">termSetId</span>
+        <p><p>The ID of the termset</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">term</span>
+        <p><p>The label of the new term to create</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.term">Term</a>
+        <p><p>Returns Term object</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_AddTermToTermset_Microsoft_SharePoint_Client_Site_System_Guid_System_String_System_Guid_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.AddTermToTermset(Microsoft.SharePoint.Client.Site%2CSystem.Guid%2CSystem.String%2CSystem.Guid)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L505" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_AddTermToTermset_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.AddTermToTermset*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_AddTermToTermset_Microsoft_SharePoint_Client_Site_System_Guid_System_String_System_Guid_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.AddTermToTermset(Microsoft.SharePoint.Client.Site,System.Guid,System.String,System.Guid)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_AddTermToTermset_Microsoft_SharePoint_Client_Site_System_Guid_System_String_System_Guid_" class="expander" data-toggle="collapse">AddTermToTermset(Site, Guid, String, Guid)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_AddTermToTermset_Microsoft_SharePoint_Client_Site_System_Guid_System_String_System_Guid_" class="collapse in">
+  <div class="markdown level1 summary"><p>Adds a term to a given termset</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Term AddTermToTermset(this Site site, Guid termSetId, string term, Guid termId)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>The current site</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></span>
+        <span class="parametername">termSetId</span>
+        <p><p>The ID of the termset</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">term</span>
+        <p><p>The label of the new term to create</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></span>
+        <span class="parametername">termId</span>
+        <p><p>The ID of the term to create</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.term">Term</a>
+        <p><p>Returns Term object</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_CreateTaxonomyField_Microsoft_SharePoint_Client_List_PnP_Framework_Entities_TaxonomyFieldCreationInformation_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTaxonomyField(Microsoft.SharePoint.Client.List%2CPnP.Framework.Entities.TaxonomyFieldCreationInformation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L1907" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_CreateTaxonomyField_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTaxonomyField*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_CreateTaxonomyField_Microsoft_SharePoint_Client_List_PnP_Framework_Entities_TaxonomyFieldCreationInformation_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTaxonomyField(Microsoft.SharePoint.Client.List,PnP.Framework.Entities.TaxonomyFieldCreationInformation)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_CreateTaxonomyField_Microsoft_SharePoint_Client_List_PnP_Framework_Entities_TaxonomyFieldCreationInformation_" class="expander" data-toggle="collapse">CreateTaxonomyField(List, TaxonomyFieldCreationInformation)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_CreateTaxonomyField_Microsoft_SharePoint_Client_List_PnP_Framework_Entities_TaxonomyFieldCreationInformation_" class="collapse in">
+  <div class="markdown level1 summary"><p>Can be used to create taxonomy field remotely in a list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Field CreateTaxonomyField(this List list, TaxonomyFieldCreationInformation fieldCreationInformation)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.list">List</a></span>
+        <span class="parametername">list</span>
+        <p><p>List to be processed</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Entities.TaxonomyFieldCreationInformation.html">TaxonomyFieldCreationInformation</a></span>
+        <span class="parametername">fieldCreationInformation</span>
+        <p><p>Creation information of the field</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.field">Field</a>
+        <p><p>New taxonomy field</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_CreateTaxonomyField_Microsoft_SharePoint_Client_Web_PnP_Framework_Entities_TaxonomyFieldCreationInformation_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTaxonomyField(Microsoft.SharePoint.Client.Web%2CPnP.Framework.Entities.TaxonomyFieldCreationInformation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L1815" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_CreateTaxonomyField_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTaxonomyField*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_CreateTaxonomyField_Microsoft_SharePoint_Client_Web_PnP_Framework_Entities_TaxonomyFieldCreationInformation_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTaxonomyField(Microsoft.SharePoint.Client.Web,PnP.Framework.Entities.TaxonomyFieldCreationInformation)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_CreateTaxonomyField_Microsoft_SharePoint_Client_Web_PnP_Framework_Entities_TaxonomyFieldCreationInformation_" class="expander" data-toggle="collapse">CreateTaxonomyField(Web, TaxonomyFieldCreationInformation)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_CreateTaxonomyField_Microsoft_SharePoint_Client_Web_PnP_Framework_Entities_TaxonomyFieldCreationInformation_" class="collapse in">
+  <div class="markdown level1 summary"><p>Can be used to create taxonomy field remotely to web.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Field CreateTaxonomyField(this Web web, TaxonomyFieldCreationInformation fieldCreationInformation)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Site to be processed - can be root web or sub site</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Entities.TaxonomyFieldCreationInformation.html">TaxonomyFieldCreationInformation</a></span>
+        <span class="parametername">fieldCreationInformation</span>
+        <p><p>Creation Information of the field</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.field">Field</a>
+        <p><p>New taxonomy field</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_CreateTermGroup_Microsoft_SharePoint_Client_Taxonomy_TermStore_System_String_System_Guid_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTermGroup(Microsoft.SharePoint.Client.Taxonomy.TermStore%2CSystem.String%2CSystem.Guid%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L42" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_CreateTermGroup_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTermGroup*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_CreateTermGroup_Microsoft_SharePoint_Client_Taxonomy_TermStore_System_String_System_Guid_System_String_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.CreateTermGroup(Microsoft.SharePoint.Client.Taxonomy.TermStore,System.String,System.Guid,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_CreateTermGroup_Microsoft_SharePoint_Client_Taxonomy_TermStore_System_String_System_Guid_System_String_" class="expander" data-toggle="collapse">CreateTermGroup(TermStore, String, Guid, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_CreateTermGroup_Microsoft_SharePoint_Client_Taxonomy_TermStore_System_String_System_Guid_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Creates a new term group, in the specified term store.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TermGroup CreateTermGroup(this TermStore termStore, string groupName, Guid groupId = default(Guid), string groupDescription = null)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.termstore">TermStore</a></span>
+        <span class="parametername">termStore</span>
+        <p><p>the term store to use</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupName</span>
+        <p><p>Name of the term group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>(Optional) ID of the group; if not provided a random GUID is used</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupDescription</span>
+        <p><p>(Optional) Description of the term group</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.termgroup">TermGroup</a>
+        <p><p>The created term group</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_DenormalizeName_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.DenormalizeName(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L1481" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_DenormalizeName_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.DenormalizeName*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_DenormalizeName_System_String_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.DenormalizeName(System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_DenormalizeName_System_String_" class="expander" data-toggle="collapse">DenormalizeName(String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_DenormalizeName_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Denormalizes a Taxonomy name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string DenormalizeName(string name)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">name</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_EnsureLabel_Microsoft_SharePoint_Client_Taxonomy_Term_System_Int32_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureLabel(Microsoft.SharePoint.Client.Taxonomy.Term%2CSystem.Int32%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L1597" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_EnsureLabel_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureLabel*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_EnsureLabel_Microsoft_SharePoint_Client_Taxonomy_Term_System_Int32_System_String_System_Boolean_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureLabel(Microsoft.SharePoint.Client.Taxonomy.Term,System.Int32,System.String,System.Boolean)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_EnsureLabel_Microsoft_SharePoint_Client_Taxonomy_Term_System_Int32_System_String_System_Boolean_" class="expander" data-toggle="collapse">EnsureLabel(Term, Int32, String, Boolean)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_EnsureLabel_Microsoft_SharePoint_Client_Taxonomy_Term_System_Int32_System_String_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Ensures the specified label for the specified lcid exists.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void EnsureLabel(this Term term, int lcid, string labelName, bool isDefault)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.term">Term</a></span>
+        <span class="parametername">term</span>
+        <p><p>The term to ensure the label for</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">lcid</span>
+        <p><p>The LCID of the label to ensure</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">labelName</span>
+        <p><p>The name of the label to ensure</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">isDefault</span>
+        <p><p>Determines if the label should be the default</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_EnsureTermGroup_Microsoft_SharePoint_Client_Site_System_String_System_Guid_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureTermGroup(Microsoft.SharePoint.Client.Site%2CSystem.String%2CSystem.Guid%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L101" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_EnsureTermGroup_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureTermGroup*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_EnsureTermGroup_Microsoft_SharePoint_Client_Site_System_String_System_Guid_System_String_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureTermGroup(Microsoft.SharePoint.Client.Site,System.String,System.Guid,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_EnsureTermGroup_Microsoft_SharePoint_Client_Site_System_String_System_Guid_System_String_" class="expander" data-toggle="collapse">EnsureTermGroup(Site, String, Guid, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_EnsureTermGroup_Microsoft_SharePoint_Client_Site_System_String_System_Guid_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Ensures the named group exists, returning a reference to the group, and creating or updating as necessary.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TermGroup EnsureTermGroup(this Site site, string groupName, Guid groupId = default(Guid), string groupDescription = null)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>Site connected to the term store to use</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupName</span>
+        <p><p>Name of the term group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>(Optional) ID of the group; if not provided the parameter is ignored, a random GUID is used if necessary to create the group, otherwise if the ID differs a warning is logged</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupDescription</span>
+        <p><p>(Optional) Description of the term group; if null or not provided the parameter is ignored, otherwise the group is updated as necessary to match the description; passing an empty string will clear the description</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.termgroup">TermGroup</a>
+        <p><p>The required term group</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_EnsureTermSet_Microsoft_SharePoint_Client_Taxonomy_TermGroup_System_String_System_Guid_System_Nullable_System_Int32__System_String_System_Nullable_System_Boolean__System_String_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureTermSet(Microsoft.SharePoint.Client.Taxonomy.TermGroup%2CSystem.String%2CSystem.Guid%2CSystem.Nullable%7BSystem.Int32%7D%2CSystem.String%2CSystem.Nullable%7BSystem.Boolean%7D%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L187" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_EnsureTermSet_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureTermSet*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_EnsureTermSet_Microsoft_SharePoint_Client_Taxonomy_TermGroup_System_String_System_Guid_System_Nullable_System_Int32__System_String_System_Nullable_System_Boolean__System_String_System_String_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.EnsureTermSet(Microsoft.SharePoint.Client.Taxonomy.TermGroup,System.String,System.Guid,System.Nullable{System.Int32},System.String,System.Nullable{System.Boolean},System.String,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_EnsureTermSet_Microsoft_SharePoint_Client_Taxonomy_TermGroup_System_String_System_Guid_System_Nullable_System_Int32__System_String_System_Nullable_System_Boolean__System_String_System_String_" class="expander" data-toggle="collapse">EnsureTermSet(TermGroup, String, Guid, Nullable&lt;Int32&gt;, String, Nullable&lt;Boolean&gt;, String, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_EnsureTermSet_Microsoft_SharePoint_Client_Taxonomy_TermGroup_System_String_System_Guid_System_Nullable_System_Int32__System_String_System_Nullable_System_Boolean__System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Ensures the named term set exists, returning a reference to the set, and creating or updating as necessary.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TermSet EnsureTermSet(this TermGroup parentGroup, string termSetName, Guid termSetId = default(Guid), int? lcid = null, string description = null, bool? isOpen = null, string termSetContact = null, string termSetOwner = null)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.termgroup">TermGroup</a></span>
+        <span class="parametername">parentGroup</span>
+        <p><p>Group to check or create the term set in</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">termSetName</span>
+        <p><p>Name of the term set</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></span>
+        <span class="parametername">termSetId</span>
+        <p><p>(Optional) ID of the term set; if not provided the parameter is ignored, a random GUID is used if necessary to create the term set, otherwise if the ID differs a warning is logged</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>&gt;</span>
+        <span class="parametername">lcid</span>
+        <p><p>(Optional) Default language of the term set; if not provided the default of the associate term store is used</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">description</span>
+        <p><p>(Optional) Description of the term set; if null or not provided the parameter is ignored, otherwise the term set is updated as necessary to match the description; passing an empty string will clear the description</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</span>
+        <span class="parametername">isOpen</span>
+        <p><p>(Optional) Whether the term store is open for new term creation or not</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">termSetContact</span>
+        <p><p>(Optional) E-mail address for term suggestions and feedback</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">termSetOwner</span>
+        <p><p>Owner of termset</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.termset">TermSet</a>
+        <p><p>The required term set</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_ExportAllTerms_Microsoft_SharePoint_Client_Site_System_Boolean_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.ExportAllTerms(Microsoft.SharePoint.Client.Site%2CSystem.Boolean%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L1383" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_ExportAllTerms_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.ExportAllTerms*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_ExportAllTerms_Microsoft_SharePoint_Client_Site_System_Boolean_System_String_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.ExportAllTerms(Microsoft.SharePoint.Client.Site,System.Boolean,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_ExportAllTerms_Microsoft_SharePoint_Client_Site_System_Boolean_System_String_" class="expander" data-toggle="collapse">ExportAllTerms(Site, Boolean, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_ExportAllTerms_Microsoft_SharePoint_Client_Site_System_Boolean_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Exports the full list of terms from all termsets in all termstores.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;string&gt; ExportAllTerms(this Site site, bool includeId, string delimiter = &quot;|&quot;)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>The site to process</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">includeId</span>
+        <p><p>if true, Ids of the the taxonomy items will be included</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">delimiter</span>
+        <p><p>if specified, this delimiter will be used. Notice that IDs will be delimited with ;# from the label</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;
+        <p><p>Returns list of Term strings</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_ExportTermSet_Microsoft_SharePoint_Client_Site_System_Guid_System_Boolean_Microsoft_SharePoint_Client_Taxonomy_TermStore_System_String_System_Int32_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.ExportTermSet(Microsoft.SharePoint.Client.Site%2CSystem.Guid%2CSystem.Boolean%2CMicrosoft.SharePoint.Client.Taxonomy.TermStore%2CSystem.String%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L1311" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_ExportTermSet_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.ExportTermSet*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_ExportTermSet_Microsoft_SharePoint_Client_Site_System_Guid_System_Boolean_Microsoft_SharePoint_Client_Taxonomy_TermStore_System_String_System_Int32_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.ExportTermSet(Microsoft.SharePoint.Client.Site,System.Guid,System.Boolean,Microsoft.SharePoint.Client.Taxonomy.TermStore,System.String,System.Int32)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_ExportTermSet_Microsoft_SharePoint_Client_Site_System_Guid_System_Boolean_Microsoft_SharePoint_Client_Taxonomy_TermStore_System_String_System_Int32_" class="expander" data-toggle="collapse">ExportTermSet(Site, Guid, Boolean, TermStore, String, Int32)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_ExportTermSet_Microsoft_SharePoint_Client_Site_System_Guid_System_Boolean_Microsoft_SharePoint_Client_Taxonomy_TermStore_System_String_System_Int32_" class="collapse in">
+  <div class="markdown level1 summary"><p>Exports the full list of terms from all termsets in all termstores.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;string&gt; ExportTermSet(this Site site, Guid termSetId, bool includeId, TermStore termStore, string delimiter = &quot;|&quot;, int lcid = 0)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>The site to export the termsets from</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></span>
+        <span class="parametername">termSetId</span>
+        <p><p>The ID of the termset to export</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">includeId</span>
+        <p><p>if true, Ids of the the taxonomy items will be included</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.termstore">TermStore</a></span>
+        <span class="parametername">termStore</span>
+        <p><p>The term store to export the termset from</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">delimiter</span>
+        <p><p>if specified, this delimiter will be used. Notice that IDs will be delimited with ;# from the label</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">lcid</span>
+        <p><p>if specified, retrieve terms in the specificed language</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;
+        <p><p>Returns list of Termset strings</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_ExportTermSet_Microsoft_SharePoint_Client_Site_System_Guid_System_Boolean_System_String_System_Int32_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.ExportTermSet(Microsoft.SharePoint.Client.Site%2CSystem.Guid%2CSystem.Boolean%2CSystem.String%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L1294" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_ExportTermSet_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.ExportTermSet*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_ExportTermSet_Microsoft_SharePoint_Client_Site_System_Guid_System_Boolean_System_String_System_Int32_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.ExportTermSet(Microsoft.SharePoint.Client.Site,System.Guid,System.Boolean,System.String,System.Int32)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_ExportTermSet_Microsoft_SharePoint_Client_Site_System_Guid_System_Boolean_System_String_System_Int32_" class="expander" data-toggle="collapse">ExportTermSet(Site, Guid, Boolean, String, Int32)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_ExportTermSet_Microsoft_SharePoint_Client_Site_System_Guid_System_Boolean_System_String_System_Int32_" class="collapse in">
+  <div class="markdown level1 summary"><p>Exports the full list of terms from all termsets in all termstores.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;string&gt; ExportTermSet(this Site site, Guid termSetId, bool includeId, string delimiter = &quot;|&quot;, int lcid = 0)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>The site to process</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></span>
+        <span class="parametername">termSetId</span>
+        <p><p>The ID of the termset to export</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">includeId</span>
+        <p><p>if true, Ids of the the taxonomy items will be included</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">delimiter</span>
+        <p><p>if specified, this delimiter will be used. Notice that IDs will be delimited with ;# from the label</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">lcid</span>
+        <p><p>if specified, retrieve terms in the specificed language</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;
+        <p><p>Returns list of Termset strings</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_GetDefaultKeywordsTermStore_Microsoft_SharePoint_Client_Site_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.GetDefaultKeywordsTermStore(Microsoft.SharePoint.Client.Site)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L334" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_GetDefaultKeywordsTermStore_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.GetDefaultKeywordsTermStore*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_GetDefaultKeywordsTermStore_Microsoft_SharePoint_Client_Site_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.GetDefaultKeywordsTermStore(Microsoft.SharePoint.Client.Site)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_GetDefaultKeywordsTermStore_Microsoft_SharePoint_Client_Site_" class="expander" data-toggle="collapse">GetDefaultKeywordsTermStore(Site)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_GetDefaultKeywordsTermStore_Microsoft_SharePoint_Client_Site_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns the default keywords termstore for the current site</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TermStore GetDefaultKeywordsTermStore(this Site site)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>Site to be processed</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.termstore">TermStore</a>
+        <p><p>Returns TermStore object</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_GetDefaultSiteCollectionTermStore_Microsoft_SharePoint_Client_Site_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.GetDefaultSiteCollectionTermStore(Microsoft.SharePoint.Client.Site)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L349" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_GetDefaultSiteCollectionTermStore_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.GetDefaultSiteCollectionTermStore*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_GetDefaultSiteCollectionTermStore_Microsoft_SharePoint_Client_Site_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.GetDefaultSiteCollectionTermStore(Microsoft.SharePoint.Client.Site)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_GetDefaultSiteCollectionTermStore_Microsoft_SharePoint_Client_Site_" class="expander" data-toggle="collapse">GetDefaultSiteCollectionTermStore(Site)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_GetDefaultSiteCollectionTermStore_Microsoft_SharePoint_Client_Site_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns the default site collection termstore</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TermStore GetDefaultSiteCollectionTermStore(this Site site)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>Site to be processed</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.termstore">TermStore</a>
+        <p><p>Returns TermStore object</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_GetTaxonomyItemByPath_Microsoft_SharePoint_Client_Site_System_String_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.GetTaxonomyItemByPath(Microsoft.SharePoint.Client.Site%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L1501" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_GetTaxonomyItemByPath_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.GetTaxonomyItemByPath*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_GetTaxonomyItemByPath_Microsoft_SharePoint_Client_Site_System_String_System_String_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.GetTaxonomyItemByPath(Microsoft.SharePoint.Client.Site,System.String,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_GetTaxonomyItemByPath_Microsoft_SharePoint_Client_Site_System_String_System_String_" class="expander" data-toggle="collapse">GetTaxonomyItemByPath(Site, String, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_GetTaxonomyItemByPath_Microsoft_SharePoint_Client_Site_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns a taxonomy item by it's path, e.g. Group|Set|Term</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TaxonomyItem GetTaxonomyItemByPath(this Site site, string path, string delimiter = &quot;|&quot;)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>The current site</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">path</span>
+        <p><p>The path of the item to return</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">delimiter</span>
+        <p><p>The delimeter separating groups, sets and term in the path. Defaults to |</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.taxonomyitem">TaxonomyItem</a>
+        <p><p>Returns TaxonomyItem object</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_GetTaxonomySession_Microsoft_SharePoint_Client_Site_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.GetTaxonomySession(Microsoft.SharePoint.Client.Site)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L321" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_GetTaxonomySession_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.GetTaxonomySession*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_GetTaxonomySession_Microsoft_SharePoint_Client_Site_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.GetTaxonomySession(Microsoft.SharePoint.Client.Site)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_GetTaxonomySession_Microsoft_SharePoint_Client_Site_" class="expander" data-toggle="collapse">GetTaxonomySession(Site)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_GetTaxonomySession_Microsoft_SharePoint_Client_Site_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns a new taxonomy session for the current site</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TaxonomySession GetTaxonomySession(this Site site)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>Site to be processed</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.taxonomysession">TaxonomySession</a>
+        <p><p>Returns TaxonomySession object</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_GetTermByName_Microsoft_SharePoint_Client_Site_System_Guid_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermByName(Microsoft.SharePoint.Client.Site%2CSystem.Guid%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L447" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_GetTermByName_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermByName*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_GetTermByName_Microsoft_SharePoint_Client_Site_System_Guid_System_String_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermByName(Microsoft.SharePoint.Client.Site,System.Guid,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_GetTermByName_Microsoft_SharePoint_Client_Site_System_Guid_System_String_" class="expander" data-toggle="collapse">GetTermByName(Site, Guid, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_GetTermByName_Microsoft_SharePoint_Client_Site_System_Guid_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets a Taxonomy Term by Name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Term GetTermByName(this Site site, Guid termSetId, string term)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>The site to process</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></span>
+        <span class="parametername">termSetId</span>
+        <p><p>Guid of a TermSet</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">term</span>
+        <p><p>Term name</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.term">Term</a>
+        <p><p>Returns Term object</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_GetTermGroupById_Microsoft_SharePoint_Client_Site_System_Guid_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupById(Microsoft.SharePoint.Client.Site%2CSystem.Guid)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L426" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_GetTermGroupById_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupById*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_GetTermGroupById_Microsoft_SharePoint_Client_Site_System_Guid_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupById(Microsoft.SharePoint.Client.Site,System.Guid)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_GetTermGroupById_Microsoft_SharePoint_Client_Site_System_Guid_" class="expander" data-toggle="collapse">GetTermGroupById(Site, Guid)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_GetTermGroupById_Microsoft_SharePoint_Client_Site_System_Guid_" class="collapse in">
+  <div class="markdown level1 summary"><p>Finds a termgroup by its ID</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TermGroup GetTermGroupById(this Site site, Guid termGroupId)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>The current site</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></span>
+        <span class="parametername">termGroupId</span>
+        <p><p>The ID of the termgroup</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.termgroup">TermGroup</a>
+        <p><p>Returns TermGroup object</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_GetTermGroupByName_Microsoft_SharePoint_Client_Site_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupByName(Microsoft.SharePoint.Client.Site%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L387" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_GetTermGroupByName_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupByName*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_GetTermGroupByName_Microsoft_SharePoint_Client_Site_System_String_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupByName(Microsoft.SharePoint.Client.Site,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_GetTermGroupByName_Microsoft_SharePoint_Client_Site_System_String_" class="expander" data-toggle="collapse">GetTermGroupByName(Site, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_GetTermGroupByName_Microsoft_SharePoint_Client_Site_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Finds a termgroup by name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TermGroup GetTermGroupByName(this Site site, string name)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>The current site</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">name</span>
+        <p><p>The name of the termgroup</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.termgroup">TermGroup</a>
+        <p><p>Returns TermGroup object</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_GetTermGroupByName_Microsoft_SharePoint_Client_Taxonomy_TermStore_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupByName(Microsoft.SharePoint.Client.Taxonomy.TermStore%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L405" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_GetTermGroupByName_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupByName*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_GetTermGroupByName_Microsoft_SharePoint_Client_Taxonomy_TermStore_System_String_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermGroupByName(Microsoft.SharePoint.Client.Taxonomy.TermStore,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_GetTermGroupByName_Microsoft_SharePoint_Client_Taxonomy_TermStore_System_String_" class="expander" data-toggle="collapse">GetTermGroupByName(TermStore, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_GetTermGroupByName_Microsoft_SharePoint_Client_Taxonomy_TermStore_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets the named term group, if it exists in the term store.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TermGroup GetTermGroupByName(this TermStore termStore, string groupName)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.termstore">TermStore</a></span>
+        <span class="parametername">termStore</span>
+        <p><p>The term store to use</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupName</span>
+        <p><p>Name of the term group</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.termgroup">TermGroup</a>
+        <p><p>The requested term group, or null if it does not exist</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_GetTermSetsByName_Microsoft_SharePoint_Client_Site_System_String_System_Int32_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermSetsByName(Microsoft.SharePoint.Client.Site%2CSystem.String%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L367" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_GetTermSetsByName_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermSetsByName*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_GetTermSetsByName_Microsoft_SharePoint_Client_Site_System_String_System_Int32_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.GetTermSetsByName(Microsoft.SharePoint.Client.Site,System.String,System.Int32)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_GetTermSetsByName_Microsoft_SharePoint_Client_Site_System_String_System_Int32_" class="expander" data-toggle="collapse">GetTermSetsByName(Site, String, Int32)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_GetTermSetsByName_Microsoft_SharePoint_Client_Site_System_String_System_Int32_" class="collapse in">
+  <div class="markdown level1 summary"><p>Finds a termset by name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TermSetCollection GetTermSetsByName(this Site site, string name, int lcid = 1033)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>The current site</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">name</span>
+        <p><p>The name of the termset</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">lcid</span>
+        <p><p>The locale ID for the termset to return, defaults to 1033</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.termsetcollection">TermSetCollection</a>
+        <p><p>Returns collection of TermSet</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_GetWssIdForTerm_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_Taxonomy_Term_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.GetWssIdForTerm(Microsoft.SharePoint.Client.Web%2CMicrosoft.SharePoint.Client.Taxonomy.Term)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L2126" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_GetWssIdForTerm_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.GetWssIdForTerm*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_GetWssIdForTerm_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_Taxonomy_Term_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.GetWssIdForTerm(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Taxonomy.Term)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_GetWssIdForTerm_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_Taxonomy_Term_" class="expander" data-toggle="collapse">GetWssIdForTerm(Web, Term)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_GetWssIdForTerm_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_Taxonomy_Term_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns the Id for a term if present in the TaxonomyHiddenList. Otherwise returns -1;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GetWssIdForTerm(this Web web, Term term)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.term">Term</a></span>
+        <span class="parametername">term</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_ImportTerms_Microsoft_SharePoint_Client_Site_System_String___System_Int32_Microsoft_SharePoint_Client_Taxonomy_TermStore_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTerms(Microsoft.SharePoint.Client.Site%2CSystem.String%5B%5D%2CSystem.Int32%2CMicrosoft.SharePoint.Client.Taxonomy.TermStore%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L560" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_ImportTerms_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTerms*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_ImportTerms_Microsoft_SharePoint_Client_Site_System_String___System_Int32_Microsoft_SharePoint_Client_Taxonomy_TermStore_System_String_System_Boolean_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTerms(Microsoft.SharePoint.Client.Site,System.String[],System.Int32,Microsoft.SharePoint.Client.Taxonomy.TermStore,System.String,System.Boolean)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_ImportTerms_Microsoft_SharePoint_Client_Site_System_String___System_Int32_Microsoft_SharePoint_Client_Taxonomy_TermStore_System_String_System_Boolean_" class="expander" data-toggle="collapse">ImportTerms(Site, String[], Int32, TermStore, String, Boolean)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_ImportTerms_Microsoft_SharePoint_Client_Site_System_String___System_Int32_Microsoft_SharePoint_Client_Taxonomy_TermStore_System_String_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Imports an array of | delimited strings into the deafult site collection termstore. Specify strings in this format:
+TermGroup|TermSet|Term</p>
+<p>E.g. &quot;Locations|Nordics|Sweden&quot;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void ImportTerms(this Site site, string[] termLines, int lcid, TermStore termStore, string delimiter = &quot;|&quot;, bool synchronizeDeletions = false)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>The current site</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">termLines</span>
+        <p><p>Array of TermLines</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">lcid</span>
+        <p><p>Locale identifier (LCID) for the language</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.termstore">TermStore</a></span>
+        <span class="parametername">termStore</span>
+        <p><p>The termstore to import the terms into</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">delimiter</span>
+        <p><p>delimeter which seperates terms</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">synchronizeDeletions</span>
+        <p><p>Remove tags that are not present in the import</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_ImportTerms_Microsoft_SharePoint_Client_Site_System_String___System_Int32_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTerms(Microsoft.SharePoint.Client.Site%2CSystem.String%5B%5D%2CSystem.Int32%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L535" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_ImportTerms_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTerms*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_ImportTerms_Microsoft_SharePoint_Client_Site_System_String___System_Int32_System_String_System_Boolean_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTerms(Microsoft.SharePoint.Client.Site,System.String[],System.Int32,System.String,System.Boolean)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_ImportTerms_Microsoft_SharePoint_Client_Site_System_String___System_Int32_System_String_System_Boolean_" class="expander" data-toggle="collapse">ImportTerms(Site, String[], Int32, String, Boolean)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_ImportTerms_Microsoft_SharePoint_Client_Site_System_String___System_Int32_System_String_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Imports an array of | delimited strings into the deafult site collection termstore. Specify strings in this format:
+TermGroup|TermSet|Term</p>
+<p>E.g. &quot;Locations|Nordics|Sweden&quot;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void ImportTerms(this Site site, string[] termLines, int lcid, string delimiter = &quot;|&quot;, bool synchronizeDeletions = false)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.site">Site</a></span>
+        <span class="parametername">site</span>
+        <p><p>The current site</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">termLines</span>
+        <p><p>Array of TermLines</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">lcid</span>
+        <p><p>Locale identifier (LCID) for the language</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">delimiter</span>
+        <p><p>delimeter which seperates terms</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">synchronizeDeletions</span>
+        <p><p>Remove tags that are not present in the import</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_ImportTermSet_Microsoft_SharePoint_Client_Taxonomy_TermGroup_System_IO_Stream_System_Guid_System_Boolean_System_Nullable_System_Boolean__System_String_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTermSet(Microsoft.SharePoint.Client.Taxonomy.TermGroup%2CSystem.IO.Stream%2CSystem.Guid%2CSystem.Boolean%2CSystem.Nullable%7BSystem.Boolean%7D%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L840" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_ImportTermSet_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTermSet*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_ImportTermSet_Microsoft_SharePoint_Client_Taxonomy_TermGroup_System_IO_Stream_System_Guid_System_Boolean_System_Nullable_System_Boolean__System_String_System_String_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTermSet(Microsoft.SharePoint.Client.Taxonomy.TermGroup,System.IO.Stream,System.Guid,System.Boolean,System.Nullable{System.Boolean},System.String,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_ImportTermSet_Microsoft_SharePoint_Client_Taxonomy_TermGroup_System_IO_Stream_System_Guid_System_Boolean_System_Nullable_System_Boolean__System_String_System_String_" class="expander" data-toggle="collapse">ImportTermSet(TermGroup, Stream, Guid, Boolean, Nullable&lt;Boolean&gt;, String, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_ImportTermSet_Microsoft_SharePoint_Client_Taxonomy_TermGroup_System_IO_Stream_System_Guid_System_Boolean_System_Nullable_System_Boolean__System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Imports terms from a term set stream, updating with any new terms, in the same format at that used by the web interface import ability.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TermSet ImportTermSet(this TermGroup termGroup, Stream termSetData, Guid termSetId = default(Guid), bool synchroniseDeletions = false, bool? termSetIsOpen = null, string termSetContact = null, string termSetOwner = null)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.termgroup">TermGroup</a></span>
+        <span class="parametername">termGroup</span>
+        <p><p>Group to create the term set within</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></span>
+        <span class="parametername">termSetData</span>
+        <p><p>Stream containing the data to import</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></span>
+        <span class="parametername">termSetId</span>
+        <p><p>GUID to use for the term set; if Guid.Empty is passed then a random GUID is generated and used</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">synchroniseDeletions</span>
+        <p><p>(Optional) Whether to also synchronise deletions; that is, remove any terms not in the import file; default is no (false)</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</span>
+        <span class="parametername">termSetIsOpen</span>
+        <p><p>(Optional) Whether the term set should be marked open; if not passed, then the existing setting is not changed</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">termSetContact</span>
+        <p><p>(Optional) Contact for the term set; if not provided, the existing setting is retained</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">termSetOwner</span>
+        <p><p>(Optional) Owner for the term set; if not provided, the existing setting is retained</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.termset">TermSet</a>
+        <p><p>The created, or updated, term set</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  <h5 id="Microsoft_SharePoint_Client_TaxonomyExtensions_ImportTermSet_Microsoft_SharePoint_Client_Taxonomy_TermGroup_System_IO_Stream_System_Guid_System_Boolean_System_Nullable_System_Boolean__System_String_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+The format of the file is the same as that used by the import function in the 
+web interface. A sample file can be obtained from the web interface.
+</p>
+<p>
+This is a CSV file, with the following headings:
+</p>
+<p>
+<pre><code>Term Set Name,Term Set Description,LCID,Available for Tagging,Term Description,Level 1 Term,Level 2 Term,Level 3 Term,Level 4 Term,Level 5 Term,Level 6 Term,Level 7 Term</code></pre>
+</p>
+<p>
+The first data row must contain the Term Set Name, Term Set Description, and LCID, and should also contain the first term. 
+</p>
+<p>
+It is recommended that a fixed GUID be used as the termSetId, to allow the term set to be easily updated (so do not pass Guid.Empty).
+</p>
+<p>
+In contrast to the web interface import, this is not a one-off import but runs synchronisation logic allowing updating of an existing Term Set.
+When synchronising, any existing terms are matched (with Term Description and Available for Tagging updated as necessary),
+any new terms are added in the correct place in the hierarchy, and (if synchroniseDeletions is set) any terms not in the imported file 
+are removed.
+</p>
+<p>
+The import file also supports an expanded syntax for the Term Set Name and term names (Level 1 Term, Level 2 Term, etc).
+These columns support values with the format &quot;Name|GUID&quot;, with the name and GUID separated by a pipe character (note that the pipe character is invalid to use within a taxomony item name).
+This expanded syntax is not required, but can be used to ensure all terms have fixed IDs.
+</p>
+</div>
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_ImportTermSet_Microsoft_SharePoint_Client_Taxonomy_TermGroup_System_String_System_Guid_System_Boolean_System_Nullable_System_Boolean__System_String_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTermSet(Microsoft.SharePoint.Client.Taxonomy.TermGroup%2CSystem.String%2CSystem.Guid%2CSystem.Boolean%2CSystem.Nullable%7BSystem.Boolean%7D%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L786" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_ImportTermSet_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTermSet*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_ImportTermSet_Microsoft_SharePoint_Client_Taxonomy_TermGroup_System_String_System_Guid_System_Boolean_System_Nullable_System_Boolean__System_String_System_String_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.ImportTermSet(Microsoft.SharePoint.Client.Taxonomy.TermGroup,System.String,System.Guid,System.Boolean,System.Nullable{System.Boolean},System.String,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_ImportTermSet_Microsoft_SharePoint_Client_Taxonomy_TermGroup_System_String_System_Guid_System_Boolean_System_Nullable_System_Boolean__System_String_System_String_" class="expander" data-toggle="collapse">ImportTermSet(TermGroup, String, Guid, Boolean, Nullable&lt;Boolean&gt;, String, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_ImportTermSet_Microsoft_SharePoint_Client_Taxonomy_TermGroup_System_String_System_Guid_System_Boolean_System_Nullable_System_Boolean__System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Imports terms from a term set file, updating with any new terms, in the same format at that used by the web interface import ability.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TermSet ImportTermSet(this TermGroup termGroup, string filePath, Guid termSetId = default(Guid), bool synchroniseDeletions = false, bool? termSetIsOpen = null, string termSetContact = null, string termSetOwner = null)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.termgroup">TermGroup</a></span>
+        <span class="parametername">termGroup</span>
+        <p><p>Group to create the term set within</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">filePath</span>
+        <p><p>Local path to the file to import</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></span>
+        <span class="parametername">termSetId</span>
+        <p><p>GUID to use for the term set; if Guid.Empty is passed then a random GUID is generated and used</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">synchroniseDeletions</span>
+        <p><p>(Optional) Whether to also synchronise deletions; that is, remove any terms not in the import file; default is no (false)</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</span>
+        <span class="parametername">termSetIsOpen</span>
+        <p><p>(Optional) Whether the term set should be marked open; if not passed, then the existing setting is not changed</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">termSetContact</span>
+        <p><p>(Optional) Contact for the term set; if not provided, the existing setting is retained</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">termSetOwner</span>
+        <p><p>(Optional) Owner for the term set; if not provided, the existing setting is retained</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.termset">TermSet</a>
+        <p><p>The created, or updated, term set</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  <h5 id="Microsoft_SharePoint_Client_TaxonomyExtensions_ImportTermSet_Microsoft_SharePoint_Client_Taxonomy_TermGroup_System_String_System_Guid_System_Boolean_System_Nullable_System_Boolean__System_String_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+The format of the file is the same as that used by the import function in the 
+web interface. A sample file can be obtained from the web interface.
+</p>
+<p>
+This is a CSV file, with the following headings:
+</p>
+<p>
+<pre><code>Term Set Name,Term Set Description,LCID,Available for Tagging,Term Description,Level 1 Term,Level 2 Term,Level 3 Term,Level 4 Term,Level 5 Term,Level 6 Term,Level 7 Term</code></pre>
+</p>
+<p>
+The first data row must contain the Term Set Name, Term Set Description, and LCID, and should also contain the first term. 
+</p>
+<p>
+It is recommended that a fixed GUID be used as the termSetId, to allow the term set to be easily updated (so do not pass Guid.Empty).
+</p>
+<p>
+In contrast to the web interface import, this is not a one-off import but runs synchronisation logic allowing updating of an existing Term Set.
+When synchronising, any existing terms are matched (with Term Description and Available for Tagging updated as necessary),
+any new terms are added in the correct place in the hierarchy, and (if synchroniseDeletions is set) any terms not in the imported file 
+are removed.
+</p>
+<p>
+The import file also supports an expanded syntax for the Term Set Name and term names (Level 1 Term, Level 2 Term, etc).
+These columns support values with the format &quot;Name|GUID&quot;, with the name and GUID separated by a pipe character (note that the pipe character is invalid to use within a taxomony item name).
+This expanded syntax is not required, but can be used to ensure all terms have fixed IDs.
+</p>
+</div>
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_NormalizeName_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.NormalizeName(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L1459" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_NormalizeName_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.NormalizeName*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_NormalizeName_System_String_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.NormalizeName(System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_NormalizeName_System_String_" class="expander" data-toggle="collapse">NormalizeName(String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_NormalizeName_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Normalizes a Taxonomy name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string NormalizeName(string name)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">name</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_RemoveTaxonomyFieldById_Microsoft_SharePoint_Client_Web_System_Guid_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.RemoveTaxonomyFieldById(Microsoft.SharePoint.Client.Web%2CSystem.Guid)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L1882" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_RemoveTaxonomyFieldById_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.RemoveTaxonomyFieldById*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_RemoveTaxonomyFieldById_Microsoft_SharePoint_Client_Web_System_Guid_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.RemoveTaxonomyFieldById(Microsoft.SharePoint.Client.Web,System.Guid)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_RemoveTaxonomyFieldById_Microsoft_SharePoint_Client_Web_System_Guid_" class="expander" data-toggle="collapse">RemoveTaxonomyFieldById(Web, Guid)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_RemoveTaxonomyFieldById_Microsoft_SharePoint_Client_Web_System_Guid_" class="collapse in">
+  <div class="markdown level1 summary"><p>Removes a taxonomy field (site column) and its associated hidden field by id</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RemoveTaxonomyFieldById(this Web web, Guid id)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Web object were the field (site column) exists</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></span>
+        <span class="parametername">id</span>
+        <p><p>Guid representing the id of the taxonomy field (site column) to be removed</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_RemoveTaxonomyFieldByInternalName_Microsoft_SharePoint_Client_Web_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.RemoveTaxonomyFieldByInternalName(Microsoft.SharePoint.Client.Web%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L1858" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_RemoveTaxonomyFieldByInternalName_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.RemoveTaxonomyFieldByInternalName*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_RemoveTaxonomyFieldByInternalName_Microsoft_SharePoint_Client_Web_System_String_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.RemoveTaxonomyFieldByInternalName(Microsoft.SharePoint.Client.Web,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_RemoveTaxonomyFieldByInternalName_Microsoft_SharePoint_Client_Web_System_String_" class="expander" data-toggle="collapse">RemoveTaxonomyFieldByInternalName(Web, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_RemoveTaxonomyFieldByInternalName_Microsoft_SharePoint_Client_Web_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Removes a taxonomy field (site column) and its associated hidden field by internal name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RemoveTaxonomyFieldByInternalName(this Web web, string internalName)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Web object were the field (site column) exists</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">internalName</span>
+        <p><p>Internal name of the taxonomy field (site column) to be removed</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_SetFieldValueByLabelGuidPair_Microsoft_SharePoint_Client_Taxonomy_TaxonomyField_Microsoft_SharePoint_Client_ListItem_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.SetFieldValueByLabelGuidPair(Microsoft.SharePoint.Client.Taxonomy.TaxonomyField%2CMicrosoft.SharePoint.Client.ListItem%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L1719" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_SetFieldValueByLabelGuidPair_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.SetFieldValueByLabelGuidPair*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_SetFieldValueByLabelGuidPair_Microsoft_SharePoint_Client_Taxonomy_TaxonomyField_Microsoft_SharePoint_Client_ListItem_System_String_System_Boolean_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.SetFieldValueByLabelGuidPair(Microsoft.SharePoint.Client.Taxonomy.TaxonomyField,Microsoft.SharePoint.Client.ListItem,System.String,System.Boolean)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_SetFieldValueByLabelGuidPair_Microsoft_SharePoint_Client_Taxonomy_TaxonomyField_Microsoft_SharePoint_Client_ListItem_System_String_System_Boolean_" class="expander" data-toggle="collapse">SetFieldValueByLabelGuidPair(TaxonomyField, ListItem, String, Boolean)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_SetFieldValueByLabelGuidPair_Microsoft_SharePoint_Client_Taxonomy_TaxonomyField_Microsoft_SharePoint_Client_ListItem_System_String_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Sets a value of a taxonomy field.
+Value parameter is one or more label GUID pairs:
+Single value field (TaxonomyFieldType) - term label|term GUID
+Multi value field (TaxonomyFieldTypeMulti) - term label|term GUID;term label|term GUID;term label|term GUID...</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetFieldValueByLabelGuidPair(this TaxonomyField taxonomyField, ListItem item, string value, bool systemUpdate = false)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.taxonomyfield">TaxonomyField</a></span>
+        <span class="parametername">taxonomyField</span>
+        <p><p>The field to set</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.listitem">ListItem</a></span>
+        <span class="parametername">item</span>
+        <p><p>The item to process</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">value</span>
+        <p><p>The value to set on the taxonomy field</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">systemUpdate</span>
+        <p><p>If set to true, will do a system udpate to the item. Default value is false.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_SetTaxonomyFieldDefaultValue_Microsoft_SharePoint_Client_Field_Microsoft_SharePoint_Client_Taxonomy_TaxonomyItem_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldDefaultValue(Microsoft.SharePoint.Client.Field%2CMicrosoft.SharePoint.Client.Taxonomy.TaxonomyItem%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L2157" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_SetTaxonomyFieldDefaultValue_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldDefaultValue*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_SetTaxonomyFieldDefaultValue_Microsoft_SharePoint_Client_Field_Microsoft_SharePoint_Client_Taxonomy_TaxonomyItem_System_String_System_Boolean_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldDefaultValue(Microsoft.SharePoint.Client.Field,Microsoft.SharePoint.Client.Taxonomy.TaxonomyItem,System.String,System.Boolean)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_SetTaxonomyFieldDefaultValue_Microsoft_SharePoint_Client_Field_Microsoft_SharePoint_Client_Taxonomy_TaxonomyItem_System_String_System_Boolean_" class="expander" data-toggle="collapse">SetTaxonomyFieldDefaultValue(Field, TaxonomyItem, String, Boolean)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_SetTaxonomyFieldDefaultValue_Microsoft_SharePoint_Client_Field_Microsoft_SharePoint_Client_Taxonomy_TaxonomyItem_System_String_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Sets the default value for a managed metadata field</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetTaxonomyFieldDefaultValue(this Field field, TaxonomyItem taxonomyItem, string defaultValue, bool pushChangesToLists = false)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.field">Field</a></span>
+        <span class="parametername">field</span>
+        <p><p>Field to be wired up</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.taxonomyitem">TaxonomyItem</a></span>
+        <span class="parametername">taxonomyItem</span>
+        <p><p>Taxonomy TermSet or Term</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">defaultValue</span>
+        <p><p>default value for the field</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">pushChangesToLists</span>
+        <p><p>push changes to lists</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_SetTaxonomyFieldValue_Microsoft_SharePoint_Client_ListItem_System_Guid_System_String_System_Guid_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValue(Microsoft.SharePoint.Client.ListItem%2CSystem.Guid%2CSystem.String%2CSystem.Guid%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L1650" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_SetTaxonomyFieldValue_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValue*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_SetTaxonomyFieldValue_Microsoft_SharePoint_Client_ListItem_System_Guid_System_String_System_Guid_System_Boolean_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValue(Microsoft.SharePoint.Client.ListItem,System.Guid,System.String,System.Guid,System.Boolean)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_SetTaxonomyFieldValue_Microsoft_SharePoint_Client_ListItem_System_Guid_System_String_System_Guid_System_Boolean_" class="expander" data-toggle="collapse">SetTaxonomyFieldValue(ListItem, Guid, String, Guid, Boolean)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_SetTaxonomyFieldValue_Microsoft_SharePoint_Client_ListItem_System_Guid_System_String_System_Guid_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Sets a value of a taxonomy field. To set an empty value set label to an empty string and termGuid to an empty GUID.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetTaxonomyFieldValue(this ListItem item, Guid fieldId, string label, Guid termGuid, bool systemUpdate = false)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.listitem">ListItem</a></span>
+        <span class="parametername">item</span>
+        <p><p>The item to process</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></span>
+        <span class="parametername">fieldId</span>
+        <p><p>The ID of the field to set</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">label</span>
+        <p><p>The label of the term to set</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></span>
+        <span class="parametername">termGuid</span>
+        <p><p>The id of the term to set</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">systemUpdate</span>
+        <p><p>If set to true, will do a system udpate to the item. Default value is false.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_SetTaxonomyFieldValueByTermPath_Microsoft_SharePoint_Client_ListItem_System_String_System_Guid_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValueByTermPath(Microsoft.SharePoint.Client.ListItem%2CSystem.String%2CSystem.Guid%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L1628" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_SetTaxonomyFieldValueByTermPath_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValueByTermPath*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_SetTaxonomyFieldValueByTermPath_Microsoft_SharePoint_Client_ListItem_System_String_System_Guid_System_Boolean_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValueByTermPath(Microsoft.SharePoint.Client.ListItem,System.String,System.Guid,System.Boolean)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_SetTaxonomyFieldValueByTermPath_Microsoft_SharePoint_Client_ListItem_System_String_System_Guid_System_Boolean_" class="expander" data-toggle="collapse">SetTaxonomyFieldValueByTermPath(ListItem, String, Guid, Boolean)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_SetTaxonomyFieldValueByTermPath_Microsoft_SharePoint_Client_ListItem_System_String_System_Guid_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Sets a value in a taxonomy field</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetTaxonomyFieldValueByTermPath(this ListItem item, string TermPath, Guid fieldId, bool systemUpdate = false)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.listitem">ListItem</a></span>
+        <span class="parametername">item</span>
+        <p><p>The item to set the value to</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">TermPath</span>
+        <p><p>The path of the term in the shape of &quot;TermGroupName|TermSetName|TermName&quot;</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></span>
+        <span class="parametername">fieldId</span>
+        <p><p>The id of the field</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">systemUpdate</span>
+        <p><p>If set to true, will do a system udpate to the item. Default value is false.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h5 class="exceptions">Exceptions</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keynotfoundexception">KeyNotFoundException</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_SetTaxonomyFieldValues_Microsoft_SharePoint_Client_ListItem_System_Guid_System_Collections_Generic_IEnumerable_System_Collections_Generic_KeyValuePair_System_Guid_System_String___System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValues(Microsoft.SharePoint.Client.ListItem%2CSystem.Guid%2CSystem.Collections.Generic.IEnumerable%7BSystem.Collections.Generic.KeyValuePair%7BSystem.Guid%2CSystem.String%7D%7D%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L1675" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_SetTaxonomyFieldValues_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValues*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_SetTaxonomyFieldValues_Microsoft_SharePoint_Client_ListItem_System_Guid_System_Collections_Generic_IEnumerable_System_Collections_Generic_KeyValuePair_System_Guid_System_String___System_Boolean_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.SetTaxonomyFieldValues(Microsoft.SharePoint.Client.ListItem,System.Guid,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.Guid,System.String}},System.Boolean)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_SetTaxonomyFieldValues_Microsoft_SharePoint_Client_ListItem_System_Guid_System_Collections_Generic_IEnumerable_System_Collections_Generic_KeyValuePair_System_Guid_System_String___System_Boolean_" class="expander" data-toggle="collapse">SetTaxonomyFieldValues(ListItem, Guid, IEnumerable&lt;KeyValuePair&lt;Guid, String&gt;&gt;, Boolean)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_SetTaxonomyFieldValues_Microsoft_SharePoint_Client_ListItem_System_Guid_System_Collections_Generic_IEnumerable_System_Collections_Generic_KeyValuePair_System_Guid_System_String___System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Sets a value of a taxonomy field that supports multiple values</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetTaxonomyFieldValues(this ListItem item, Guid fieldId, IEnumerable&lt;KeyValuePair&lt;Guid, string&gt;&gt; termValues, bool systemUpdate = false)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.listitem">ListItem</a></span>
+        <span class="parametername">item</span>
+        <p><p>The item to process</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></span>
+        <span class="parametername">fieldId</span>
+        <p><p>The ID of the field to set</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;&gt;</span>
+        <span class="parametername">termValues</span>
+        <p><p>The key and values of terms to set</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">systemUpdate</span>
+        <p><p>If set to true, will do a system udpate to the item. Default value is false.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_List_Microsoft_SharePoint_Client_Field_Microsoft_SharePoint_Client_Taxonomy_Term_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.List%2CMicrosoft.SharePoint.Client.Field%2CMicrosoft.SharePoint.Client.Taxonomy.Term%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L2028" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_List_Microsoft_SharePoint_Client_Field_Microsoft_SharePoint_Client_Taxonomy_Term_System_Boolean_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.List,Microsoft.SharePoint.Client.Field,Microsoft.SharePoint.Client.Taxonomy.Term,System.Boolean)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_List_Microsoft_SharePoint_Client_Field_Microsoft_SharePoint_Client_Taxonomy_Term_System_Boolean_" class="expander" data-toggle="collapse">WireUpTaxonomyField(List, Field, Term, Boolean)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_List_Microsoft_SharePoint_Client_Field_Microsoft_SharePoint_Client_Taxonomy_Term_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Wires up MMS field to the specified term.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void WireUpTaxonomyField(this List list, Field field, Term anchorTerm, bool multiValue = false)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.list">List</a></span>
+        <span class="parametername">list</span>
+        <p><p>List to be processed</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.field">Field</a></span>
+        <span class="parametername">field</span>
+        <p><p>Field to be wired up</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.term">Term</a></span>
+        <span class="parametername">anchorTerm</span>
+        <p><p>Taxonomy Term</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">multiValue</span>
+        <p><p>Allow multiple selection</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_List_Microsoft_SharePoint_Client_Field_Microsoft_SharePoint_Client_Taxonomy_TermSet_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.List%2CMicrosoft.SharePoint.Client.Field%2CMicrosoft.SharePoint.Client.Taxonomy.TermSet%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L2016" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_List_Microsoft_SharePoint_Client_Field_Microsoft_SharePoint_Client_Taxonomy_TermSet_System_Boolean_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.List,Microsoft.SharePoint.Client.Field,Microsoft.SharePoint.Client.Taxonomy.TermSet,System.Boolean)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_List_Microsoft_SharePoint_Client_Field_Microsoft_SharePoint_Client_Taxonomy_TermSet_System_Boolean_" class="expander" data-toggle="collapse">WireUpTaxonomyField(List, Field, TermSet, Boolean)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_List_Microsoft_SharePoint_Client_Field_Microsoft_SharePoint_Client_Taxonomy_TermSet_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Wires up MMS field to the specified term set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void WireUpTaxonomyField(this List list, Field field, TermSet termSet, bool multiValue = false)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.list">List</a></span>
+        <span class="parametername">list</span>
+        <p><p>List to be processed</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.field">Field</a></span>
+        <span class="parametername">field</span>
+        <p><p>Field to be wired up</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.termset">TermSet</a></span>
+        <span class="parametername">termSet</span>
+        <p><p>Taxonomy TermSet</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">multiValue</span>
+        <p><p>Term set name</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_List_Microsoft_SharePoint_Client_Field_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.List%2CMicrosoft.SharePoint.Client.Field%2CSystem.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L2041" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_List_Microsoft_SharePoint_Client_Field_System_String_System_String_System_Boolean_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.List,Microsoft.SharePoint.Client.Field,System.String,System.String,System.Boolean)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_List_Microsoft_SharePoint_Client_Field_System_String_System_String_System_Boolean_" class="expander" data-toggle="collapse">WireUpTaxonomyField(List, Field, String, String, Boolean)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_List_Microsoft_SharePoint_Client_Field_System_String_System_String_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Wires up MMS field to the specified term set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void WireUpTaxonomyField(this List list, Field field, string mmsGroupName, string mmsTermSetName, bool multiValue = false)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.list">List</a></span>
+        <span class="parametername">list</span>
+        <p><p>List to be processed</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.field">Field</a></span>
+        <span class="parametername">field</span>
+        <p><p>Field to be wired up</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">mmsGroupName</span>
+        <p><p>Taxonomy group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">mmsTermSetName</span>
+        <p><p>Term set name</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">multiValue</span>
+        <p><p>Allow multiple selection</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_List_System_Guid_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.List%2CSystem.Guid%2CSystem.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L2070" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_List_System_Guid_System_String_System_String_System_Boolean_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.List,System.Guid,System.String,System.String,System.Boolean)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_List_System_Guid_System_String_System_String_System_Boolean_" class="expander" data-toggle="collapse">WireUpTaxonomyField(List, Guid, String, String, Boolean)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_List_System_Guid_System_String_System_String_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Wires up MMS field to the specified term set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void WireUpTaxonomyField(this List list, Guid id, string mmsGroupName, string mmsTermSetName, bool multiValue = false)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.list">List</a></span>
+        <span class="parametername">list</span>
+        <p><p>List to be processed</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></span>
+        <span class="parametername">id</span>
+        <p><p>Field ID to be wired up</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">mmsGroupName</span>
+        <p><p>Taxonomy group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">mmsTermSetName</span>
+        <p><p>Term set name</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">multiValue</span>
+        <p><p>Allow multiple selection</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_Field_Microsoft_SharePoint_Client_Taxonomy_Term_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.Web%2CMicrosoft.SharePoint.Client.Field%2CMicrosoft.SharePoint.Client.Taxonomy.Term%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L1989" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_Field_Microsoft_SharePoint_Client_Taxonomy_Term_System_Boolean_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Field,Microsoft.SharePoint.Client.Taxonomy.Term,System.Boolean)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_Field_Microsoft_SharePoint_Client_Taxonomy_Term_System_Boolean_" class="expander" data-toggle="collapse">WireUpTaxonomyField(Web, Field, Term, Boolean)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_Field_Microsoft_SharePoint_Client_Taxonomy_Term_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Wires up MMS field to the specified term.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void WireUpTaxonomyField(this Web web, Field field, Term anchorTerm, bool multiValue = false)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Site to be processed - can be root web or sub site</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.field">Field</a></span>
+        <span class="parametername">field</span>
+        <p><p>Field to be wired up</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.term">Term</a></span>
+        <span class="parametername">anchorTerm</span>
+        <p><p>Taxonomy Term</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">multiValue</span>
+        <p><p>If true, create a multivalue field</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_Field_Microsoft_SharePoint_Client_Taxonomy_TermSet_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.Web%2CMicrosoft.SharePoint.Client.Field%2CMicrosoft.SharePoint.Client.Taxonomy.TermSet%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L1977" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_Field_Microsoft_SharePoint_Client_Taxonomy_TermSet_System_Boolean_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Field,Microsoft.SharePoint.Client.Taxonomy.TermSet,System.Boolean)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_Field_Microsoft_SharePoint_Client_Taxonomy_TermSet_System_Boolean_" class="expander" data-toggle="collapse">WireUpTaxonomyField(Web, Field, TermSet, Boolean)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_Field_Microsoft_SharePoint_Client_Taxonomy_TermSet_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Wires up MMS field to the specified term set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void WireUpTaxonomyField(this Web web, Field field, TermSet termSet, bool multiValue = false)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Site to be processed - can be root web or sub site</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.field">Field</a></span>
+        <span class="parametername">field</span>
+        <p><p>Field to be wired up</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.taxonomy.termset">TermSet</a></span>
+        <span class="parametername">termSet</span>
+        <p><p>Taxonomy TermSet</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">multiValue</span>
+        <p><p>If true, create a multivalue field</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_Field_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.Web%2CMicrosoft.SharePoint.Client.Field%2CSystem.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L1950" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_Field_System_String_System_String_System_Boolean_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Field,System.String,System.String,System.Boolean)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_Field_System_String_System_String_System_Boolean_" class="expander" data-toggle="collapse">WireUpTaxonomyField(Web, Field, String, String, Boolean)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_Web_Microsoft_SharePoint_Client_Field_System_String_System_String_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Wires up MMS field to the specified term set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void WireUpTaxonomyField(this Web web, Field field, string mmsGroupName, string mmsTermSetName, bool multiValue = false)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Site to be processed - can be root web or sub site</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.field">Field</a></span>
+        <span class="parametername">field</span>
+        <p><p>Field to be wired up</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">mmsGroupName</span>
+        <p><p>Taxonomy group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">mmsTermSetName</span>
+        <p><p>Term set name</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">multiValue</span>
+        <p><p>If true, create a multivalue field</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_Web_System_Guid_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.Web%2CSystem.Guid%2CSystem.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/TaxonomyExtensions.cs/#L2002" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_Web_System_Guid_System_String_System_String_System_Boolean_" data-uid="Microsoft.SharePoint.Client.TaxonomyExtensions.WireUpTaxonomyField(Microsoft.SharePoint.Client.Web,System.Guid,System.String,System.String,System.Boolean)"><a href="#collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_Web_System_Guid_System_String_System_String_System_Boolean_" class="expander" data-toggle="collapse">WireUpTaxonomyField(Web, Guid, String, String, Boolean)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_TaxonomyExtensions_WireUpTaxonomyField_Microsoft_SharePoint_Client_Web_System_Guid_System_String_System_String_System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Wires up MMS field to the specified term set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void WireUpTaxonomyField(this Web web, Guid id, string mmsGroupName, string mmsTermSetName, bool multiValue = false)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.web">Web</a></span>
+        <span class="parametername">web</span>
+        <p><p>Site to be processed - can be root web or sub site</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></span>
+        <span class="parametername">id</span>
+        <p><p>Field ID to be wired up</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">mmsGroupName</span>
+        <p><p>Taxonomy group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">mmsTermSetName</span>
+        <p><p>Term set name</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">multiValue</span>
+        <p><p>If true, create a multivalue field</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

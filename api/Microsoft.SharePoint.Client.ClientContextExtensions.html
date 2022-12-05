@@ -1,0 +1,1509 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ClientContextExtensions
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ClientContextExtensions
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/Deprecated/ClientContextExtensions.deprecated.cs/#L9" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientContextExtensions.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientContextExtensions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="Microsoft_SharePoint_Client_ClientContextExtensions" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions">Class ClientContextExtensions
+  </h1>
+  <div class="markdown level0 summary"><p>Class that deals with cloning client context object, getting access token and validates server version</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">ClientContextExtensions</span></div>
+  </div>
+  
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="Microsoft.SharePoint.Client.html">Microsoft.SharePoint.Client</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="Microsoft_SharePoint_Client_ClientContextExtensions_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class ClientContextExtensions</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientContextExtensions_AliasExistsAsync_Microsoft_SharePoint_Client_ClientContext_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientContextExtensions.AliasExistsAsync(Microsoft.SharePoint.Client.ClientContext%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs/#L1083" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientContextExtensions_AliasExistsAsync_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.AliasExistsAsync*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientContextExtensions_AliasExistsAsync_Microsoft_SharePoint_Client_ClientContext_System_String_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.AliasExistsAsync(Microsoft.SharePoint.Client.ClientContext,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_AliasExistsAsync_Microsoft_SharePoint_Client_ClientContext_System_String_" class="expander" data-toggle="collapse">AliasExistsAsync(ClientContext, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_AliasExistsAsync_Microsoft_SharePoint_Client_ClientContext_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Checks if an alias is already used for an office 365 group or not</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;bool&gt; AliasExistsAsync(this ClientContext clientContext, string alias)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p><p>ClientContext of the site to operate against</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">alias</span>
+        <p><p>Alias to verify</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;
+        <p><p>True if in use, false otherwise</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientContextExtensions_Clone_Microsoft_SharePoint_Client_ClientRuntimeContext_System_String_System_Collections_Generic_Dictionary_System_String_System_String__.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientContextExtensions.Clone(Microsoft.SharePoint.Client.ClientRuntimeContext%2CSystem.String%2CSystem.Collections.Generic.Dictionary%7BSystem.String%2CSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs/#L67" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientContextExtensions_Clone_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.Clone*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientContextExtensions_Clone_Microsoft_SharePoint_Client_ClientRuntimeContext_System_String_System_Collections_Generic_Dictionary_System_String_System_String__" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.Clone(Microsoft.SharePoint.Client.ClientRuntimeContext,System.String,System.Collections.Generic.Dictionary{System.String,System.String})"><a href="#collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_Clone_Microsoft_SharePoint_Client_ClientRuntimeContext_System_String_System_Collections_Generic_Dictionary_System_String_System_String__" class="expander" data-toggle="collapse">Clone(ClientRuntimeContext, String, Dictionary&lt;String, String&gt;)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_Clone_Microsoft_SharePoint_Client_ClientRuntimeContext_System_String_System_Collections_Generic_Dictionary_System_String_System_String__" class="collapse in">
+  <div class="markdown level1 summary"><p>Clones a ClientContext object while &quot;taking over&quot; the security context of the existing ClientContext instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ClientContext Clone(this ClientRuntimeContext clientContext, string siteUrl, Dictionary&lt;string, string&gt; accessTokens = null)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientruntimecontext">ClientRuntimeContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p><p>ClientContext to be cloned</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">siteUrl</span>
+        <p><p>Site URL to be used for cloned ClientContext</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;</span>
+        <span class="parametername">accessTokens</span>
+        <p><p>Dictionary of access tokens for sites URLs</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a>
+        <p><p>A ClientContext object created for the passed site URL</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientContextExtensions_Clone_Microsoft_SharePoint_Client_ClientRuntimeContext_System_Uri_System_Collections_Generic_Dictionary_System_String_System_String__.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientContextExtensions.Clone(Microsoft.SharePoint.Client.ClientRuntimeContext%2CSystem.Uri%2CSystem.Collections.Generic.Dictionary%7BSystem.String%2CSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs/#L342" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientContextExtensions_Clone_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.Clone*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientContextExtensions_Clone_Microsoft_SharePoint_Client_ClientRuntimeContext_System_Uri_System_Collections_Generic_Dictionary_System_String_System_String__" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.Clone(Microsoft.SharePoint.Client.ClientRuntimeContext,System.Uri,System.Collections.Generic.Dictionary{System.String,System.String})"><a href="#collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_Clone_Microsoft_SharePoint_Client_ClientRuntimeContext_System_Uri_System_Collections_Generic_Dictionary_System_String_System_String__" class="expander" data-toggle="collapse">Clone(ClientRuntimeContext, Uri, Dictionary&lt;String, String&gt;)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_Clone_Microsoft_SharePoint_Client_ClientRuntimeContext_System_Uri_System_Collections_Generic_Dictionary_System_String_System_String__" class="collapse in">
+  <div class="markdown level1 summary"><p>Clones a ClientContext object while &quot;taking over&quot; the security context of the existing ClientContext instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ClientContext Clone(this ClientRuntimeContext clientContext, Uri siteUrl, Dictionary&lt;string, string&gt; accessTokens = null)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientruntimecontext">ClientRuntimeContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p><p>ClientContext to be cloned</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uri">Uri</a></span>
+        <span class="parametername">siteUrl</span>
+        <p><p>Site URL to be used for cloned ClientContext</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;</span>
+        <span class="parametername">accessTokens</span>
+        <p><p>Dictionary of access tokens for sites URLs</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a>
+        <p><p>A ClientContext object created for the passed site URL</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientContextExtensions_CreateSiteAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_CommunicationSiteCollectionCreationInformation_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientContextExtensions.CreateSiteAsync(Microsoft.SharePoint.Client.ClientContext%2CPnP.Framework.Sites.CommunicationSiteCollectionCreationInformation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs/#L1031" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientContextExtensions_CreateSiteAsync_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.CreateSiteAsync*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientContextExtensions_CreateSiteAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_CommunicationSiteCollectionCreationInformation_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.CreateSiteAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation)"><a href="#collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_CreateSiteAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_CommunicationSiteCollectionCreationInformation_" class="expander" data-toggle="collapse">CreateSiteAsync(ClientContext, CommunicationSiteCollectionCreationInformation)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_CreateSiteAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_CommunicationSiteCollectionCreationInformation_" class="collapse in">
+  <div class="markdown level1 summary"><p>BETA: Creates a Communication Site Collection</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;ClientContext&gt; CreateSiteAsync(this ClientContext clientContext, CommunicationSiteCollectionCreationInformation siteCollectionCreationInformation)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation.html">CommunicationSiteCollectionCreationInformation</a></span>
+        <span class="parametername">siteCollectionCreationInformation</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientContextExtensions_CreateSiteAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamNoGroupSiteCollectionCreationInformation_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientContextExtensions.CreateSiteAsync(Microsoft.SharePoint.Client.ClientContext%2CPnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs/#L1044" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientContextExtensions_CreateSiteAsync_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.CreateSiteAsync*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientContextExtensions_CreateSiteAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamNoGroupSiteCollectionCreationInformation_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.CreateSiteAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation)"><a href="#collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_CreateSiteAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamNoGroupSiteCollectionCreationInformation_" class="expander" data-toggle="collapse">CreateSiteAsync(ClientContext, TeamNoGroupSiteCollectionCreationInformation)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_CreateSiteAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamNoGroupSiteCollectionCreationInformation_" class="collapse in">
+  <div class="markdown level1 summary"><p>BETA: Creates a Team Site Collection with no group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;ClientContext&gt; CreateSiteAsync(this ClientContext clientContext, TeamNoGroupSiteCollectionCreationInformation siteCollectionCreationInformation)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation.html">TeamNoGroupSiteCollectionCreationInformation</a></span>
+        <span class="parametername">siteCollectionCreationInformation</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientContextExtensions_CreateSiteAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamSiteCollectionCreationInformation_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientContextExtensions.CreateSiteAsync(Microsoft.SharePoint.Client.ClientContext%2CPnP.Framework.Sites.TeamSiteCollectionCreationInformation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs/#L1057" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientContextExtensions_CreateSiteAsync_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.CreateSiteAsync*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientContextExtensions_CreateSiteAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamSiteCollectionCreationInformation_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.CreateSiteAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionCreationInformation)"><a href="#collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_CreateSiteAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamSiteCollectionCreationInformation_" class="expander" data-toggle="collapse">CreateSiteAsync(ClientContext, TeamSiteCollectionCreationInformation)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_CreateSiteAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamSiteCollectionCreationInformation_" class="collapse in">
+  <div class="markdown level1 summary"><p>BETA: Creates a Team Site Collection</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;ClientContext&gt; CreateSiteAsync(this ClientContext clientContext, TeamSiteCollectionCreationInformation siteCollectionCreationInformation)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Sites.TeamSiteCollectionCreationInformation.html">TeamSiteCollectionCreationInformation</a></span>
+        <span class="parametername">siteCollectionCreationInformation</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientContextExtensions_DeleteSiteAsync_Microsoft_SharePoint_Client_ClientContext_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientContextExtensions.DeleteSiteAsync(Microsoft.SharePoint.Client.ClientContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs/#L1138" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientContextExtensions_DeleteSiteAsync_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.DeleteSiteAsync*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientContextExtensions_DeleteSiteAsync_Microsoft_SharePoint_Client_ClientContext_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.DeleteSiteAsync(Microsoft.SharePoint.Client.ClientContext)"><a href="#collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_DeleteSiteAsync_Microsoft_SharePoint_Client_ClientContext_" class="expander" data-toggle="collapse">DeleteSiteAsync(ClientContext)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_DeleteSiteAsync_Microsoft_SharePoint_Client_ClientContext_" class="collapse in">
+  <div class="markdown level1 summary"><p>Deletes a Communication site or a group-less Modern team site</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;bool&gt; DeleteSiteAsync(this ClientContext clientContext)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientContextExtensions_ExecuteQueryRetry_Microsoft_SharePoint_Client_ClientRuntimeContext_System_Int32_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientContextExtensions.ExecuteQueryRetry(Microsoft.SharePoint.Client.ClientRuntimeContext%2CSystem.Int32%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs/#L95" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientContextExtensions_ExecuteQueryRetry_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.ExecuteQueryRetry*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientContextExtensions_ExecuteQueryRetry_Microsoft_SharePoint_Client_ClientRuntimeContext_System_Int32_System_String_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.ExecuteQueryRetry(Microsoft.SharePoint.Client.ClientRuntimeContext,System.Int32,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_ExecuteQueryRetry_Microsoft_SharePoint_Client_ClientRuntimeContext_System_Int32_System_String_" class="expander" data-toggle="collapse">ExecuteQueryRetry(ClientRuntimeContext, Int32, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_ExecuteQueryRetry_Microsoft_SharePoint_Client_ClientRuntimeContext_System_Int32_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Executes the current set of data retrieval queries and method invocations and retries it if needed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void ExecuteQueryRetry(this ClientRuntimeContext clientContext, int retryCount = 10, string userAgent = null)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientruntimecontext">ClientRuntimeContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p><p>clientContext to operate on</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">userAgent</span>
+        <p><p>UserAgent string value to insert for this request. You can define this value in your app's config file using key=&quot;SharePointPnPUserAgent&quot; value=&quot;PnPRocks&quot;&gt;</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientContextExtensions_ExecuteQueryRetryAsync_Microsoft_SharePoint_Client_ClientRuntimeContext_System_Int32_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientContextExtensions.ExecuteQueryRetryAsync(Microsoft.SharePoint.Client.ClientRuntimeContext%2CSystem.Int32%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs/#L83" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientContextExtensions_ExecuteQueryRetryAsync_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.ExecuteQueryRetryAsync*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientContextExtensions_ExecuteQueryRetryAsync_Microsoft_SharePoint_Client_ClientRuntimeContext_System_Int32_System_String_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.ExecuteQueryRetryAsync(Microsoft.SharePoint.Client.ClientRuntimeContext,System.Int32,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_ExecuteQueryRetryAsync_Microsoft_SharePoint_Client_ClientRuntimeContext_System_Int32_System_String_" class="expander" data-toggle="collapse">ExecuteQueryRetryAsync(ClientRuntimeContext, Int32, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_ExecuteQueryRetryAsync_Microsoft_SharePoint_Client_ClientRuntimeContext_System_Int32_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Executes the current set of data retrieval queries and method invocations and retries it if needed using the Task Library.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Task ExecuteQueryRetryAsync(this ClientRuntimeContext clientContext, int retryCount = 10, string userAgent = null)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientruntimecontext">ClientRuntimeContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p><p>clientContext to operate on</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">userAgent</span>
+        <p><p>UserAgent string value to insert for this request. You can define this value in your app's config file using key=&quot;SharePointPnPUserAgent&quot; value=&quot;PnPRocks&quot;&gt;</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientContextExtensions_GetAccessToken_Microsoft_SharePoint_Client_ClientRuntimeContext_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientContextExtensions.GetAccessToken(Microsoft.SharePoint.Client.ClientRuntimeContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs/#L626" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientContextExtensions_GetAccessToken_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.GetAccessToken*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientContextExtensions_GetAccessToken_Microsoft_SharePoint_Client_ClientRuntimeContext_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.GetAccessToken(Microsoft.SharePoint.Client.ClientRuntimeContext)"><a href="#collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_GetAccessToken_Microsoft_SharePoint_Client_ClientRuntimeContext_" class="expander" data-toggle="collapse">GetAccessToken(ClientRuntimeContext)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_GetAccessToken_Microsoft_SharePoint_Client_ClientRuntimeContext_" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets an access token from a <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a> instance. Only works when using an add-in or app-only authentication flow.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string GetAccessToken(this ClientRuntimeContext clientContext)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientruntimecontext">ClientRuntimeContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p><p><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a> instance to obtain an access token for</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>Access token for the given <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a> instance</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientContextExtensions_GetRequestDigestAsync_Microsoft_SharePoint_Client_ClientContext_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientContextExtensions.GetRequestDigestAsync(Microsoft.SharePoint.Client.ClientContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs/#L856" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientContextExtensions_GetRequestDigestAsync_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.GetRequestDigestAsync*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientContextExtensions_GetRequestDigestAsync_Microsoft_SharePoint_Client_ClientContext_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.GetRequestDigestAsync(Microsoft.SharePoint.Client.ClientContext)"><a href="#collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_GetRequestDigestAsync_Microsoft_SharePoint_Client_ClientContext_" class="expander" data-toggle="collapse">GetRequestDigestAsync(ClientContext)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_GetRequestDigestAsync_Microsoft_SharePoint_Client_ClientContext_" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;string&gt; GetRequestDigestAsync(this ClientContext context)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">context</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientContextExtensions_GetRequestDigestAsync_Microsoft_SharePoint_Client_ClientContext_System_Net_CookieContainer_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientContextExtensions.GetRequestDigestAsync(Microsoft.SharePoint.Client.ClientContext%2CSystem.Net.CookieContainer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs/#L781" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientContextExtensions_GetRequestDigestAsync_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.GetRequestDigestAsync*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientContextExtensions_GetRequestDigestAsync_Microsoft_SharePoint_Client_ClientContext_System_Net_CookieContainer_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.GetRequestDigestAsync(Microsoft.SharePoint.Client.ClientContext,System.Net.CookieContainer)"><a href="#collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_GetRequestDigestAsync_Microsoft_SharePoint_Client_ClientContext_System_Net_CookieContainer_" class="expander" data-toggle="collapse">GetRequestDigestAsync(ClientContext, CookieContainer)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_GetRequestDigestAsync_Microsoft_SharePoint_Client_ClientContext_System_Net_CookieContainer_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns the request digest from the current session/site given cookie based auth</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;string&gt; GetRequestDigestAsync(this ClientContext context, CookieContainer cookieContainer)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">context</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.cookiecontainer">CookieContainer</a></span>
+        <span class="parametername">cookieContainer</span>
+        <p><p>A cookiecontainer containing FedAuth cookies</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientContextExtensions_GetSiteCollectionContext_Microsoft_SharePoint_Client_ClientRuntimeContext_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientContextExtensions.GetSiteCollectionContext(Microsoft.SharePoint.Client.ClientRuntimeContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs/#L547" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientContextExtensions_GetSiteCollectionContext_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.GetSiteCollectionContext*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientContextExtensions_GetSiteCollectionContext_Microsoft_SharePoint_Client_ClientRuntimeContext_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.GetSiteCollectionContext(Microsoft.SharePoint.Client.ClientRuntimeContext)"><a href="#collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_GetSiteCollectionContext_Microsoft_SharePoint_Client_ClientRuntimeContext_" class="expander" data-toggle="collapse">GetSiteCollectionContext(ClientRuntimeContext)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_GetSiteCollectionContext_Microsoft_SharePoint_Client_ClientRuntimeContext_" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets a site collection context for the passed web. This site collection client context uses the same credentials
+as the passed client context</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ClientContext GetSiteCollectionContext(this ClientRuntimeContext clientContext)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientruntimecontext">ClientRuntimeContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p><p>Client context to take the credentials from</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a>
+        <p><p>A site collection client context object for the site collection</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientContextExtensions_GroupifySiteAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamSiteCollectionGroupifyInformation_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientContextExtensions.GroupifySiteAsync(Microsoft.SharePoint.Client.ClientContext%2CPnP.Framework.Sites.TeamSiteCollectionGroupifyInformation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs/#L1070" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientContextExtensions_GroupifySiteAsync_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.GroupifySiteAsync*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientContextExtensions_GroupifySiteAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamSiteCollectionGroupifyInformation_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.GroupifySiteAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation)"><a href="#collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_GroupifySiteAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamSiteCollectionGroupifyInformation_" class="expander" data-toggle="collapse">GroupifySiteAsync(ClientContext, TeamSiteCollectionGroupifyInformation)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_GroupifySiteAsync_Microsoft_SharePoint_Client_ClientContext_PnP_Framework_Sites_TeamSiteCollectionGroupifyInformation_" class="collapse in">
+  <div class="markdown level1 summary"><p>BETA: Groupifies a classic Team Site Collection</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;ClientContext&gt; GroupifySiteAsync(this ClientContext clientContext, TeamSiteCollectionGroupifyInformation siteCollectionGroupifyInformation)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p><p>ClientContext instance of the site to be groupified</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation.html">TeamSiteCollectionGroupifyInformation</a></span>
+        <span class="parametername">siteCollectionGroupifyInformation</span>
+        <p><p>Information needed to groupify this site</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a>&gt;
+        <p><p>The clientcontext of the groupified site</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientContextExtensions_HasMinimalServerLibraryVersion_Microsoft_SharePoint_Client_ClientRuntimeContext_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientContextExtensions.HasMinimalServerLibraryVersion(Microsoft.SharePoint.Client.ClientRuntimeContext%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs/#L712" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientContextExtensions_HasMinimalServerLibraryVersion_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.HasMinimalServerLibraryVersion*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientContextExtensions_HasMinimalServerLibraryVersion_Microsoft_SharePoint_Client_ClientRuntimeContext_System_String_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.HasMinimalServerLibraryVersion(Microsoft.SharePoint.Client.ClientRuntimeContext,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_HasMinimalServerLibraryVersion_Microsoft_SharePoint_Client_ClientRuntimeContext_System_String_" class="expander" data-toggle="collapse">HasMinimalServerLibraryVersion(ClientRuntimeContext, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_HasMinimalServerLibraryVersion_Microsoft_SharePoint_Client_ClientRuntimeContext_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Checks the server library version of the context for a minimally required version</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool HasMinimalServerLibraryVersion(this ClientRuntimeContext clientContext, string minimallyRequiredVersion)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientruntimecontext">ClientRuntimeContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p><p>clientContext to operate on</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">minimallyRequiredVersion</span>
+        <p><p>provide version to validate</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p><p>True if it has minimal required version, false otherwise</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientContextExtensions_HasMinimalServerLibraryVersion_Microsoft_SharePoint_Client_ClientRuntimeContext_System_Version_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientContextExtensions.HasMinimalServerLibraryVersion(Microsoft.SharePoint.Client.ClientRuntimeContext%2CSystem.Version)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs/#L723" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientContextExtensions_HasMinimalServerLibraryVersion_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.HasMinimalServerLibraryVersion*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientContextExtensions_HasMinimalServerLibraryVersion_Microsoft_SharePoint_Client_ClientRuntimeContext_System_Version_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.HasMinimalServerLibraryVersion(Microsoft.SharePoint.Client.ClientRuntimeContext,System.Version)"><a href="#collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_HasMinimalServerLibraryVersion_Microsoft_SharePoint_Client_ClientRuntimeContext_System_Version_" class="expander" data-toggle="collapse">HasMinimalServerLibraryVersion(ClientRuntimeContext, Version)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_HasMinimalServerLibraryVersion_Microsoft_SharePoint_Client_ClientRuntimeContext_System_Version_" class="collapse in">
+  <div class="markdown level1 summary"><p>Checks the server library version of the context for a minimally required version</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool HasMinimalServerLibraryVersion(this ClientRuntimeContext clientContext, Version minimallyRequiredVersion)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientruntimecontext">ClientRuntimeContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p><p>clientContext to operate on</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.version">Version</a></span>
+        <span class="parametername">minimallyRequiredVersion</span>
+        <p><p>provide version to validate</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p><p>True if it has minimal required version, false otherwise</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientContextExtensions_HideTeamifyPromptAsync_Microsoft_SharePoint_Client_ClientContext_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientContextExtensions.HideTeamifyPromptAsync(Microsoft.SharePoint.Client.ClientContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs/#L1127" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientContextExtensions_HideTeamifyPromptAsync_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.HideTeamifyPromptAsync*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientContextExtensions_HideTeamifyPromptAsync_Microsoft_SharePoint_Client_ClientContext_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.HideTeamifyPromptAsync(Microsoft.SharePoint.Client.ClientContext)"><a href="#collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_HideTeamifyPromptAsync_Microsoft_SharePoint_Client_ClientContext_" class="expander" data-toggle="collapse">HideTeamifyPromptAsync(ClientContext)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_HideTeamifyPromptAsync_Microsoft_SharePoint_Client_ClientContext_" class="collapse in">
+  <div class="markdown level1 summary"><p>Hide the teamify prompt displayed in O365 group connected sites</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;bool&gt; HideTeamifyPromptAsync(this ClientContext clientContext)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p><p>ClientContext of the site to operate against</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientContextExtensions_IsAppOnly_Microsoft_SharePoint_Client_ClientRuntimeContext_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientContextExtensions.IsAppOnly(Microsoft.SharePoint.Client.ClientRuntimeContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs/#L563" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientContextExtensions_IsAppOnly_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.IsAppOnly*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientContextExtensions_IsAppOnly_Microsoft_SharePoint_Client_ClientRuntimeContext_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.IsAppOnly(Microsoft.SharePoint.Client.ClientRuntimeContext)"><a href="#collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_IsAppOnly_Microsoft_SharePoint_Client_ClientRuntimeContext_" class="expander" data-toggle="collapse">IsAppOnly(ClientRuntimeContext)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_IsAppOnly_Microsoft_SharePoint_Client_ClientRuntimeContext_" class="collapse in">
+  <div class="markdown level1 summary"><p>Checks if the used ClientContext is app-only</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsAppOnly(this ClientRuntimeContext clientContext)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientruntimecontext">ClientRuntimeContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p><p>The ClientContext to inspect</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p><p>True if app-only, false otherwise</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientContextExtensions_IsTeamifyPromptHidden_Microsoft_SharePoint_Client_ClientContext_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientContextExtensions.IsTeamifyPromptHidden(Microsoft.SharePoint.Client.ClientContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs/#L1116" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientContextExtensions_IsTeamifyPromptHidden_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.IsTeamifyPromptHidden*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientContextExtensions_IsTeamifyPromptHidden_Microsoft_SharePoint_Client_ClientContext_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.IsTeamifyPromptHidden(Microsoft.SharePoint.Client.ClientContext)"><a href="#collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_IsTeamifyPromptHidden_Microsoft_SharePoint_Client_ClientContext_" class="expander" data-toggle="collapse">IsTeamifyPromptHidden(ClientContext)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_IsTeamifyPromptHidden_Microsoft_SharePoint_Client_ClientContext_" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use IsTeamifyPromptHiddenAsync&quot;)]
+public static async Task&lt;bool&gt; IsTeamifyPromptHidden(this ClientContext clientContext)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientContextExtensions_IsTeamifyPromptHiddenAsync_Microsoft_SharePoint_Client_ClientContext_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientContextExtensions.IsTeamifyPromptHiddenAsync(Microsoft.SharePoint.Client.ClientContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs/#L1109" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientContextExtensions_IsTeamifyPromptHiddenAsync_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.IsTeamifyPromptHiddenAsync*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientContextExtensions_IsTeamifyPromptHiddenAsync_Microsoft_SharePoint_Client_ClientContext_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.IsTeamifyPromptHiddenAsync(Microsoft.SharePoint.Client.ClientContext)"><a href="#collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_IsTeamifyPromptHiddenAsync_Microsoft_SharePoint_Client_ClientContext_" class="expander" data-toggle="collapse">IsTeamifyPromptHiddenAsync(ClientContext)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_IsTeamifyPromptHiddenAsync_Microsoft_SharePoint_Client_ClientContext_" class="collapse in">
+  <div class="markdown level1 summary"><p>Checks whether the teamify prompt is hidden in O365 Group connected sites</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;bool&gt; IsTeamifyPromptHiddenAsync(this ClientContext clientContext)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p><p>ClientContext of the site to operate against</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientContextExtensions_PendingRequestCount_Microsoft_SharePoint_Client_ClientRuntimeContext_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientContextExtensions.PendingRequestCount(Microsoft.SharePoint.Client.ClientRuntimeContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs/#L521" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientContextExtensions_PendingRequestCount_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.PendingRequestCount*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientContextExtensions_PendingRequestCount_Microsoft_SharePoint_Client_ClientRuntimeContext_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.PendingRequestCount(Microsoft.SharePoint.Client.ClientRuntimeContext)"><a href="#collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_PendingRequestCount_Microsoft_SharePoint_Client_ClientRuntimeContext_" class="expander" data-toggle="collapse">PendingRequestCount(ClientRuntimeContext)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_PendingRequestCount_Microsoft_SharePoint_Client_ClientRuntimeContext_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns the number of pending requests</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int PendingRequestCount(this ClientRuntimeContext clientContext)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientruntimecontext">ClientRuntimeContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p><p>Client context to check the pending requests for</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>
+        <p><p>The number of pending requests</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=Microsoft_SharePoint_Client_ClientContextExtensions_TeamifyAsync_Microsoft_SharePoint_Client_ClientContext_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.SharePoint.Client.ClientContextExtensions.TeamifyAsync(Microsoft.SharePoint.Client.ClientContext%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs/#L1096" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="Microsoft_SharePoint_Client_ClientContextExtensions_TeamifyAsync_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.TeamifyAsync*"></a>
+  
+  <h4 id="Microsoft_SharePoint_Client_ClientContextExtensions_TeamifyAsync_Microsoft_SharePoint_Client_ClientContext_System_String_" data-uid="Microsoft.SharePoint.Client.ClientContextExtensions.TeamifyAsync(Microsoft.SharePoint.Client.ClientContext,System.String)"><a href="#collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_TeamifyAsync_Microsoft_SharePoint_Client_ClientContext_System_String_" class="expander" data-toggle="collapse">TeamifyAsync(ClientContext, String)</a></h4>
+  
+  <div id="collapsible-Microsoft_SharePoint_Client_ClientContextExtensions_TeamifyAsync_Microsoft_SharePoint_Client_ClientContext_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Enable MS Teams team on a group connected team site</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;string&gt; TeamifyAsync(this ClientContext clientContext, string graphAccessToken = null)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientcontext">ClientContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">graphAccessToken</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

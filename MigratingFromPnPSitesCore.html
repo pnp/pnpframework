@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Migrating from PnP Sites Core to PnP Framework | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Migrating from PnP Sites Core to PnP Framework | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/docs/MigratingFromPnPSitesCore.md/#L1" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                    <h1 id="migrating-from-pnp-sites-core-to-pnp-framework">Migrating from PnP Sites Core to PnP Framework</h1>
+
+<p>PnP Sites Core has been archived and will no longer be maintained, PnP Framework however contains almost all PnP Sites Core features and will be actively maintained, so it's highly recommended to switch your application from PnP Sites Core to PnP Framework.</p>
+<h2 id="who-should-switch-to-pnp-framework">Who should switch to PnP Framework?</h2>
+<p>PnP Framework supports .NET Standard 2.0 and .NET 5.0 and as such can be used in .NET Core and .NET 5 applications, but also still with .NET Framework 4.6.1 or higher. PnP Framework however depends on CSOM for .NET Standard 2.0 and as such it only supports SharePoint Online. <strong>Anyone using PnP Sites Core with SharePoint Online should consider upgrading to PnP Framework</strong>, if you're using an on-premises version (2013, 2016 or 2019) of PnP Framework then you can keep on using that.</p>
+<h2 id="how-to-upgrade">How to upgrade?</h2>
+<p>Upgrading can be done by:</p>
+<ul>
+<li>Removing the references to the PnP Sites Core NuGet package</li>
+<li>Adding a reference to the latest GA version of PnP Framework: <a href="https://www.nuget.org/packages/PnP.Framework/"><img src="https://img.shields.io/nuget/v/PnP.Framework.svg" alt="PnP.Framework Nuget package"></a></li>
+<li>Setting up an Azure AD app that will be used to get an SharePoint Online / Microsoft Graph access token: PnP Framework requires you to use Azure AD for authentication as the underlying CSOM for .NET Standard library only supports access token based auth</li>
+<li>Apply minimal code changes to make authentication work</li>
+</ul>
+<h2 id="setting-up-an-azure-ad-app">Setting up an Azure AD app</h2>
+<h3 id="delegated-permissions-acting-in-the-name-of-the-user">Delegated Permissions (acting in the name of the user)</h3>
+<p>In this section you can learn how to register an application in Azure Active Directory.</p>
+<h4 id="configuring-the-application-in-azure-ad">Configuring the application in Azure AD</h4>
+<p>In this step by step guide you will register an application in Azure Active Directory, in order to consume PnP Framework in the name of the user connected to your app (i.e. with a delegated access token). Follow below steps to configure an application in Azure AD:</p>
+<ol>
+<li><p>Navigate to <a href="https://aad.portal.azure.com/">https://aad.portal.azure.com/</a></p>
+</li>
+<li><p>Click on <strong>Azure Active Directory</strong> from the left navigation</p>
+</li>
+<li><p>Click on <strong>App registrations</strong> in the <strong>Manage</strong> left navigation group</p>
+</li>
+<li><p>Click on <strong>New registration</strong></p>
+</li>
+<li><p>Give the application a name (e.g. PnP Framework) and click on <strong>Register</strong></p>
+</li>
+<li><p>Copy the <strong>Application ID</strong> (Client ID) from the <strong>Overview</strong> page, you'll need this GUID value later on</p>
+</li>
+<li><p>Copy the <strong>Directory ID</strong> (Tenant ID) from the <strong>Overview</strong> page, you'll need this GUID value later on</p>
+</li>
+<li><p>Click on the <strong>API Permissions</strong> in the <strong>Manage</strong> left navigation group</p>
+</li>
+<li><p>Click on <strong>Add Permissions</strong> and add the permissions you want to give to this application. Below list is a recommendation, you can grant less permissions but that might result in some calls to fail due getting access denied errors.</p>
+<ul>
+<li>SharePoint -&gt; Delegated Permissions -&gt; AllSites -&gt; AllSites.FullControl</li>
+<li>SharePoint -&gt; Delegated Permissions -&gt; Sites -&gt; Sites.Search.All</li>
+<li>SharePoint -&gt; Delegated Permissions -&gt; TermStore -&gt; TermStore.ReadWrite.All</li>
+<li>SharePoint -&gt; Delegated Permissions -&gt; User -&gt; User.ReadWrite.All</li>
+<li>Microsoft Graph -&gt; Delegated Permissions -&gt; User -&gt; User.Read</li>
+<li>Microsoft Graph -&gt; Delegated Permissions -&gt; Directory -&gt; Directory.ReadWrite.All</li>
+<li>Microsoft Graph -&gt; Delegated Permissions -&gt; Directory -&gt; Directory.AccessAsUser.All</li>
+<li>Microsoft Graph -&gt; Delegated Permissions -&gt; Group -&gt; Group.ReadWrite.All</li>
+</ul>
+</li>
+<li><p>Click on the <strong>Grant admin consent for</strong> button to consent to these permissions for the users in your organization</p>
+</li>
+<li><p>Click on <strong>Authentication</strong> in the <strong>Manage</strong> left navigation group</p>
+</li>
+<li><p>Change <strong>Default client type</strong> to <strong>Treat application as public client</strong> and hit <strong>Save</strong> (this step is optional and you should do that if and only if you are planning to use username + password for authentication)</p>
+</li>
+</ol>
+<p>If you want to configure support for interactive login you should also configure the <em>Platform</em> and the <em>redirect URI</em> in the <strong>Authentication</strong> panel. You can read <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app#add-a-redirect-uri">further details here</a>.</p>
+<ol start="13">
+<li>Click on <strong>Authentication</strong> and then click on <strong>Add a platform</strong>, choose <strong>Mobile and desktop applications</strong> and provide http://localhost as the <strong>Redirect URI</strong></li>
+</ol>
+<h3 id="application-permissions-acting-as-an-app-account-with-app-only-permissions">Application Permissions (acting as an app account with app-only permissions)</h3>
+<p>In this section you can learn how to register an application in Azure Active Directory and how to use it in your .NET code, in order to use the PnP Framework within a background job/service/function, running your requests with an app account.</p>
+<h4 id="configuring-the-application-in-azure-ad-1">Configuring the application in Azure AD</h4>
+<p>The easiest way to register an application in Azure Active Directory for app-only is to use the <a href="https://pnp.github.io/powershell">PnP PowerShell</a> cmdlets. Specifically you can use the <a href="https://github.com/pnp/powershell/blob/dev/documentation/Register-PnPAzureADApp.md"><code>Register-PnPAzureADApp</code> command</a> with the following syntax:</p>
+<pre><code class="lang-powershell">$app = Register-PnPAzureADApp -ApplicationName &quot;PnP.Framework.Consumer&quot; -Tenant contoso.onmicrosoft.com -OutPath c:\temp -CertificatePassword (ConvertTo-SecureString -String &quot;password&quot; -AsPlainText -Force)  -GraphApplicationPermissions &quot;Group.ReadWrite.All&quot;, &quot;User.ReadWrite.All&quot; -SharePointApplicationPermissions &quot;Sites.FullControl.All&quot;, &quot;TermStore.ReadWrite.All&quot;, &quot;User.ReadWrite.All&quot;  -Store CurrentUser -DeviceLogin
+</code></pre>
+<p>The above command will register for you in Azure Active Directory an app with name <code>PnP.Framework.Consumer</code>, with a self-signed certificate that will be also saved on your filesystem under the <code>c:\temp</code> folder (remember to create the folder or to provide the path of an already existing folder), with a certificate password value of <code>password</code> (you should provide your own strong password, indeed). Remember to replace <code>contoso.onmicrosoft.com</code> with your Azure AD tenant name, which typically is <code>company.onmicrosoft.com</code>. The permissions granted to the app will be:</p>
+<ul>
+<li>SharePoint -&gt; Application Permissions -&gt; Sites -&gt; Sites.FullControl.All</li>
+<li>SharePoint -&gt; Application Permissions -&gt; TermStore -&gt; TermStore.ReadWrite.All</li>
+<li>SharePoint -&gt; Application Permissions -&gt; User -&gt; User.ReadWrite.All</li>
+<li>Microsoft Graph -&gt; Application Permissions -&gt; User -&gt; User.ReadWrite.All</li>
+<li>Microsoft Graph -&gt; Application Permissions -&gt; Group -&gt; Group.ReadWrite.All</li>
+</ul>
+<p>Executing the command you will first have to authenticate against the target tenant, providing the credentials of a Global Tenant Admin. Then you will see a message like the following one:</p>
+<pre><code class="lang-text">Waiting 60 seconds to launch consent flow in a browser window. This wait is required to make sure that Azure AD is able to initialize all required artifacts.........
+</code></pre>
+<p>Almost 60 seconds later, the command will prompt you for authentication again and to grant the selected permissions to the app you are registering. Once you have done that, in the <code>$app</code> variable you will find information about the just registered app. You can copy in your clipboard the <strong>Application ID</strong> (Client ID) executing the following command:</p>
+<pre><code class="lang-powershell">$app.AzureAppId | clip
+</code></pre>
+<p>And you can copy in your clipboard the thumbprint of the generated X.509 certificate executing the following command:</p>
+<pre><code class="lang-powershell">$app.'Certificate Thumbprint' | clip
+</code></pre>
+<p>Paste this copied values in a safe place, because you will need them later on to setup authentication. In the <code>c:\temp</code> folder (or whatever else folder you will choose) there will also be a file named <code>PnP.Framework.Consumer.pfx</code>, which includes the private key of the self-signed certificate generated for you, as well as a file named <code>PnP.Framework.Consumer.cer</code>, which includes the public key of the self-signed certificate generated for you.</p>
+<h2 id="what-are-the-typical-code-changes-i-need-to-make">What are the typical code changes I need to make?</h2>
+<p>PnP Framework is for 90% identical to PnP Sites Core, we did drop some legacy components and everything that was specific for on-premises but most folks will not be impacted by that. The main change that will require changes in your code is due to authentication: the underlying CSOM for .NET Standard library only supports access token based authentication so we had to refactor the AuthenticationManager class so that we use Microsoft Azure AD based OAuth to authenticate.</p>
+<p>We unified authentication between PnP Framework, PnP PowerShell and PnP Core SDK to use [Microsoft.Identity.Client (MSAL)](<a href="https://github.com/AzureAD/">https://github.com/AzureAD/</a> microsoft-authentication-library-for-dotnet) as underlying model. Whereas in PnP Sites Core you would provide the needed auth information when invoking an AuthenticationManager method call you now pass that information via the constructor and then use a generic method to request an access token:</p>
+<h3 id="delegated-authentication">Delegated authentication</h3>
+<p>PnP Sites Core:</p>
+<pre><code class="lang-csharp">var authManager = new AuthenticationManager();
+
+using (var context = authManager.GetSharePointOnlineAuthenticatedContextTenant(&quot;https://contoso.sharepoint.com&quot;, &quot;joe@contoso.onmicrosoft.com&quot;, &quot;pwd&quot;))
+{
+
+}
+</code></pre>
+<p>PnP Framework:</p>
+<pre><code class="lang-csharp">var authManager = new AuthenticationManager(&quot;&lt;Azure AD client id&gt;&quot;, &quot;joe@contoso.onmicrosoft.com&quot;, &quot;Pwd as SecureString&quot;);
+
+using (var context = authManager.GetContext(&quot;https://contoso.sharepoint.com&quot;))
+{
+    
+}
+</code></pre>
+<h3 id="app-only-authentication">App-only authentication</h3>
+<p>PnP Sites Core:</p>
+<pre><code class="lang-csharp">var authManager = new AuthenticationManager();
+
+using (var context = authManager.GetSharePointOnlineAuthenticatedContextTenant(&quot;https://contoso.sharepoint.com&quot;, &quot;&lt;Azure AD client id&gt;&quot;, &quot;contoso.onmicrosoft.com&quot;, &quot;c:\\temp\\mycert.pfx&quot;, &quot;pfx pwd&quot;))
+{
+
+}
+</code></pre>
+<p>PnP Framework:</p>
+<pre><code class="lang-csharp">var authManager = new AuthenticationManager(&quot;&lt;Azure AD client id&gt;&quot;, &quot;c:\\temp\\mycert.pfx&quot;, &quot;pfx pwd&quot;, &quot;contoso.onmicrosoft.com&quot;);
+
+using (var context = authManager.GetContext(&quot;https://contoso.sharepoint.com&quot;))
+{
+    
+}
+</code></pre>
+<h2 id="faq">FAQ</h2>
+<h3 id="i-dont-see-the-weblogin-option-anymore">I don't see the weblogin option anymore</h3>
+<p>That's correct, web login depends on .NET API's which are not available in .NET Standard 2.0 hence we did drop this feature from PnP Framework. If you need this option you however <a href="https://github.com/pnp/powershell/blob/dev/src/Commands/Utilities/BrowserHelper.cs">copy the implementation from PnP PowerShell</a> and use that in your application in combination with PnP Framework's authentication manager class.</p>
+<h3 id="im-not-using-authenticationmanager-today-is-that-an-issue">I'm not using AuthenticationManager today, is that an issue?</h3>
+<p>You'll get the best experience by creating your ClientContext's using the AuthenticationManager class as it embeds information inside the created context which ensures that context cloning that happens in PnP Framework can correctly create a new context. Conclusion: if possible, use AuthenticationManager for all your ClientContext creations.</p>
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://telemetry.sharepointpnp.com/@pnp.github.io/index/" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>  </body>
+</html>

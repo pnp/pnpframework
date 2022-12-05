@@ -1,0 +1,965 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class TeamChannel
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class TeamChannel
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Teams/TeamChannel.cs/#L10" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Teams_TeamChannel.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Teams.TeamChannel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="PnP_Framework_Provisioning_Model_Teams_TeamChannel" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel">Class TeamChannel
+  </h1>
+  <div class="markdown level0 summary"><p>Defines a Channel for a Team</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><a class="xref" href="PnP.Framework.Provisioning.Model.BaseModel.html">BaseModel</a></div>
+    <div class="level2"><span class="xref">TeamChannel</span></div>
+  </div>
+  
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="PnP.Framework.Provisioning.Model.BaseModel.html#PnP_Framework_Provisioning_Model_BaseModel_ParentTemplate">BaseModel.ParentTemplate</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="PnP.Framework.Provisioning.Model.Teams.html">PnP.Framework.Provisioning.Model.Teams</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class TeamChannel : BaseModel, IProvisioningTemplateDescendant, IEquatable&lt;TeamChannel&gt;</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Teams_TeamChannel__ctor.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Teams.TeamChannel.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Teams/TeamChannel.cs/#L90" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Teams_TeamChannel__ctor_" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.#ctor*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Teams_TeamChannel__ctor" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.#ctor"><a href="#collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel__ctor" class="expander" data-toggle="collapse">TeamChannel()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel__ctor" class="collapse in">
+  <div class="markdown level1 summary"><p>Constructor for TeamChannel</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TeamChannel()</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Teams_TeamChannel_AllowNewMessageFromBots.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Teams.TeamChannel.AllowNewMessageFromBots%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Teams/TeamChannel.cs/#L66" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_AllowNewMessageFromBots_" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.AllowNewMessageFromBots*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_AllowNewMessageFromBots" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.AllowNewMessageFromBots"><a href="#collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_AllowNewMessageFromBots" class="expander" data-toggle="collapse">AllowNewMessageFromBots</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_AllowNewMessageFromBots" class="collapse in">
+  <div class="markdown level1 summary"><p>Declares whether the Channel allows messages from BOTs or not, optional attribute (default false).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AllowNewMessageFromBots { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Teams_TeamChannel_AllowNewMessageFromConnectors.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Teams.TeamChannel.AllowNewMessageFromConnectors%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Teams/TeamChannel.cs/#L71" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_AllowNewMessageFromConnectors_" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.AllowNewMessageFromConnectors*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_AllowNewMessageFromConnectors" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.AllowNewMessageFromConnectors"><a href="#collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_AllowNewMessageFromConnectors" class="expander" data-toggle="collapse">AllowNewMessageFromConnectors</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_AllowNewMessageFromConnectors" class="collapse in">
+  <div class="markdown level1 summary"><p>Declares whether the Channel allows messages from Connectors or not, optional attribute (default false).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AllowNewMessageFromConnectors { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Teams_TeamChannel_Description.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Teams.TeamChannel.Description%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Teams/TeamChannel.cs/#L37" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_Description_" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.Description*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_Description" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.Description"><a href="#collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_Description" class="expander" data-toggle="collapse">Description</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_Description" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines the Description of the Channel</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Description { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Teams_TeamChannel_DisplayName.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Teams.TeamChannel.DisplayName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Teams/TeamChannel.cs/#L32" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_DisplayName_" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.DisplayName*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_DisplayName" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.DisplayName"><a href="#collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_DisplayName" class="expander" data-toggle="collapse">DisplayName</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_DisplayName" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines the Display Name of the Channel</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string DisplayName { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Teams_TeamChannel_ID.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Teams.TeamChannel.ID%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Teams/TeamChannel.cs/#L47" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_ID_" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.ID*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_ID" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.ID"><a href="#collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_ID" class="expander" data-toggle="collapse">ID</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_ID" class="collapse in">
+  <div class="markdown level1 summary"><p>Declares the ID for the Channel</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ID { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Teams_TeamChannel_IsFavoriteByDefault.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Teams.TeamChannel.IsFavoriteByDefault%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Teams/TeamChannel.cs/#L42" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_IsFavoriteByDefault_" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.IsFavoriteByDefault*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_IsFavoriteByDefault" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.IsFavoriteByDefault"><a href="#collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_IsFavoriteByDefault" class="expander" data-toggle="collapse">IsFavoriteByDefault</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_IsFavoriteByDefault" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines whether the Channel is Favorite by default for all members of the Team</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool? IsFavoriteByDefault { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Teams_TeamChannel_MembershipType.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Teams.TeamChannel.MembershipType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Teams/TeamChannel.cs/#L61" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_MembershipType_" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.MembershipType*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_MembershipType" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.MembershipType"><a href="#collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_MembershipType" class="expander" data-toggle="collapse">MembershipType</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_MembershipType" class="collapse in">
+  <div class="markdown level1 summary"><p>Declares whether the Channel is Public, Private, or Shared, optional attribute (default public).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MembershipType MembershipType { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.Teams.MembershipType.html">MembershipType</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Teams_TeamChannel_Messages.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Teams.TeamChannel.Messages%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Teams/TeamChannel.cs/#L27" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_Messages_" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.Messages*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_Messages" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.Messages"><a href="#collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_Messages" class="expander" data-toggle="collapse">Messages</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_Messages" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines a collection of Messages for a Team Channe</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TeamChannelMessageCollection Messages { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.Teams.TeamChannelMessageCollection.html">TeamChannelMessageCollection</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Teams_TeamChannel_Private.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Teams.TeamChannel.Private%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Teams/TeamChannel.cs/#L53" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_Private_" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.Private*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_Private" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.Private"><a href="#collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_Private" class="expander" data-toggle="collapse">Private</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_Private" class="collapse in">
+  <div class="markdown level1 summary"><p>Declares whether the Channel is private or not</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Private { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Teams_TeamChannel_ReplyRestriction.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Teams.TeamChannel.ReplyRestriction%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Teams/TeamChannel.cs/#L76" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_ReplyRestriction_" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.ReplyRestriction*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_ReplyRestriction" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.ReplyRestriction"><a href="#collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_ReplyRestriction" class="expander" data-toggle="collapse">ReplyRestriction</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_ReplyRestriction" class="collapse in">
+  <div class="markdown level1 summary"><p>Declares the Channel reply restrictions, optional attribute (default everyone).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ReplyRestriction ReplyRestriction { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.Teams.ReplyRestriction.html">ReplyRestriction</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Teams_TeamChannel_TabResources.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Teams.TeamChannel.TabResources%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Teams/TeamChannel.cs/#L22" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_TabResources_" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.TabResources*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_TabResources" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.TabResources"><a href="#collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_TabResources" class="expander" data-toggle="collapse">TabResources</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_TabResources" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines a collection of Resources for Tabs in a Team Channel</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TeamTabResourceCollection TabResources { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.Teams.TeamTabResourceCollection.html">TeamTabResourceCollection</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Teams_TeamChannel_Tabs.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Teams.TeamChannel.Tabs%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Teams/TeamChannel.cs/#L17" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_Tabs_" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.Tabs*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_Tabs" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.Tabs"><a href="#collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_Tabs" class="expander" data-toggle="collapse">Tabs</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_Tabs" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines a collection of Tabs for a Channel in a Team</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TeamTabCollection Tabs { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.Teams.TeamTabCollection.html">TeamTabCollection</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Teams_TeamChannel_UserNewMessageRestriction.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Teams.TeamChannel.UserNewMessageRestriction%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Teams/TeamChannel.cs/#L81" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_UserNewMessageRestriction_" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.UserNewMessageRestriction*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_UserNewMessageRestriction" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.UserNewMessageRestriction"><a href="#collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_UserNewMessageRestriction" class="expander" data-toggle="collapse">UserNewMessageRestriction</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_UserNewMessageRestriction" class="collapse in">
+  <div class="markdown level1 summary"><p>Declares the Channel reply restrictions, optional attribute (default everyone).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public UserNewMessageRestriction UserNewMessageRestriction { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Model.Teams.UserNewMessageRestriction.html">UserNewMessageRestriction</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Teams_TeamChannel_Equals_PnP_Framework_Provisioning_Model_Teams_TeamChannel_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Teams.TeamChannel.Equals(PnP.Framework.Provisioning.Model.Teams.TeamChannel)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Teams/TeamChannel.cs/#L142" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_Equals_" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.Equals*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_Equals_PnP_Framework_Provisioning_Model_Teams_TeamChannel_" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.Equals(PnP.Framework.Provisioning.Model.Teams.TeamChannel)"><a href="#collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_Equals_PnP_Framework_Provisioning_Model_Teams_TeamChannel_" class="expander" data-toggle="collapse">Equals(TeamChannel)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_Equals_PnP_Framework_Provisioning_Model_Teams_TeamChannel_" class="collapse in">
+  <div class="markdown level1 summary"><p>Compares TeamChannel object based on Tabs, TabResources, Messages, DisplayName, Description, and IsFavoriteByDefault</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(TeamChannel other)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Provisioning.Model.Teams.TeamChannel.html">TeamChannel</a></span>
+        <span class="parametername">other</span>
+        <p><p>TeamChannel Class object</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p><p>true if the TeamChannel object is equal to the current object; otherwise, false.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  <h5 class="implements">Implements</h5>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals#system-iequatable-1-equals(-0)">IEquatable&lt;T&gt;.Equals(T)</a></div>
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Teams_TeamChannel_Equals_System_Object_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Teams.TeamChannel.Equals(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Teams/TeamChannel.cs/#L128" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_Equals_" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.Equals*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_Equals_System_Object_" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.Equals(System.Object)"><a href="#collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_Equals_System_Object_" class="expander" data-toggle="collapse">Equals(Object)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_Equals_System_Object_" class="collapse in">
+  <div class="markdown level1 summary"><p>Compares object with TeamChannel class</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></span>
+        <span class="parametername">obj</span>
+        <p><p>Object that represents TeamChannel</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p><p>Checks whether object is TeamChannel class</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a></div>
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Teams_TeamChannel_GetHashCode.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Teams.TeamChannel.GetHashCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Teams/TeamChannel.cs/#L105" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_GetHashCode_" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.GetHashCode*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Model_Teams_TeamChannel_GetHashCode" data-uid="PnP.Framework.Provisioning.Model.Teams.TeamChannel.GetHashCode"><a href="#collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_GetHashCode" class="expander" data-toggle="collapse">GetHashCode()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Model_Teams_TeamChannel_GetHashCode" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets the hash code</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+  
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>
+        <p><p>Returns HashCode</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a></div>
+  
+  
+  
+  
+  
+  </div>
+  
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="System.ValidationExtensions.html#System_ValidationExtensions_ValidateNotNullOrEmpty__1___0_System_String_">ValidationExtensions.ValidateNotNullOrEmpty&lt;T&gt;(T, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_Set__2___0_System_Linq_Expressions_Expression_System_Func___0___1_____1_System_Boolean_System_Boolean_">ObjectExtensions.Set&lt;TObject, T&gt;(TObject, Expression&lt;Func&lt;TObject, T&gt;&gt;, T, Boolean, Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstancePropertyValue_System_Object_System_String_">ObjectExtensions.GetPublicInstancePropertyValue(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstanceProperty_System_Object_System_String_">ObjectExtensions.GetPublicInstanceProperty(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_SetPublicInstancePropertyValue_System_Object_System_String_System_Object_">ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Modernization.Cache.Extensions.html#PnP_Framework_Modernization_Cache_Extensions_ToByteArray_System_Object_">Extensions.ToByteArray(Object)</a>
+  </div>
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

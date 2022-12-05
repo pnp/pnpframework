@@ -1,0 +1,737 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class PnPProvisioningContext
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class PnPProvisioningContext
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs/#L26" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext" data-uid="PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext">Class PnPProvisioningContext
+  </h1>
+  <div class="markdown level0 summary"><p>Class to wrap any PnP Provisioning process in order to share the same security context across different Object Handlers</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">PnPProvisioningContext</span></div>
+  </div>
+  
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="PnP.Framework.Provisioning.ObjectHandlers.html">PnP.Framework.Provisioning.ObjectHandlers</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class PnPProvisioningContext : IDisposable</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext__ctor_PnP_Framework_Provisioning_ObjectHandlers_AcquireTokenAsyncDelegate_PnP_Framework_Provisioning_ObjectHandlers_AcquireCookieAsyncDelegate_System_Collections_Generic_Dictionary_System_String_System_Object__PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.%23ctor(PnP.Framework.Provisioning.ObjectHandlers.AcquireTokenAsyncDelegate%2CPnP.Framework.Provisioning.ObjectHandlers.AcquireCookieAsyncDelegate%2CSystem.Collections.Generic.Dictionary%7BSystem.String%2CSystem.Object%7D%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs/#L58" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext__ctor_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.#ctor*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext__ctor_PnP_Framework_Provisioning_ObjectHandlers_AcquireTokenAsyncDelegate_PnP_Framework_Provisioning_ObjectHandlers_AcquireCookieAsyncDelegate_System_Collections_Generic_Dictionary_System_String_System_Object__PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.#ctor(PnP.Framework.Provisioning.ObjectHandlers.AcquireTokenAsyncDelegate,PnP.Framework.Provisioning.ObjectHandlers.AcquireCookieAsyncDelegate,System.Collections.Generic.Dictionary{System.String,System.Object},PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext__ctor_PnP_Framework_Provisioning_ObjectHandlers_AcquireTokenAsyncDelegate_PnP_Framework_Provisioning_ObjectHandlers_AcquireCookieAsyncDelegate_System_Collections_Generic_Dictionary_System_String_System_Object__PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">PnPProvisioningContext(AcquireTokenAsyncDelegate, AcquireCookieAsyncDelegate, Dictionary&lt;String, Object&gt;, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext__ctor_PnP_Framework_Provisioning_ObjectHandlers_AcquireTokenAsyncDelegate_PnP_Framework_Provisioning_ObjectHandlers_AcquireCookieAsyncDelegate_System_Collections_Generic_Dictionary_System_String_System_Object__PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Constructor for the content</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PnPProvisioningContext(AcquireTokenAsyncDelegate acquireTokenAsyncDelegate = null, AcquireCookieAsyncDelegate acquireCookieAsyncDelegate = null, Dictionary&lt;string, object&gt; properties = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Provisioning.ObjectHandlers.AcquireTokenAsyncDelegate.html">AcquireTokenAsyncDelegate</a></span>
+        <span class="parametername">acquireTokenAsyncDelegate</span>
+        <p><p>Asynchronous delegate to acquire an access token for a specific resource and with a specific scope</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Provisioning.ObjectHandlers.AcquireCookieAsyncDelegate.html">AcquireCookieAsyncDelegate</a></span>
+        <span class="parametername">acquireCookieAsyncDelegate</span>
+        <p><p>Asynchronous delegate to acquire a cookie for a specific resource</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a>&gt;</span>
+        <span class="parametername">properties</span>
+        <p><p>Properties to add to the Property Bag of the current context</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>The Azure Cloud Deployment to use. This is used to determine the Graph endpoint. Defaults to 'Production' / 'Global'</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AcquireCookieAsync.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireCookieAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs/#L39" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AcquireCookieAsync_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireCookieAsync*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AcquireCookieAsync" data-uid="PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireCookieAsync"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AcquireCookieAsync" class="expander" data-toggle="collapse">AcquireCookieAsync</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AcquireCookieAsync" class="collapse in">
+  <div class="markdown level1 summary"><p>Asynchronous delegate to acquire a cookie for a specific resource</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AcquireCookieAsyncDelegate AcquireCookieAsync { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.ObjectHandlers.AcquireCookieAsyncDelegate.html">AcquireCookieAsyncDelegate</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AcquireTokenAsync.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireTokenAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs/#L34" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AcquireTokenAsync_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireTokenAsync*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AcquireTokenAsync" data-uid="PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireTokenAsync"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AcquireTokenAsync" class="expander" data-toggle="collapse">AcquireTokenAsync</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AcquireTokenAsync" class="collapse in">
+  <div class="markdown level1 summary"><p>Asynchronous delegate to acquire an access token for a specific resource and with a specific scope</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AcquireTokenAsyncDelegate AcquireTokenAsync { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.ObjectHandlers.AcquireTokenAsyncDelegate.html">AcquireTokenAsyncDelegate</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AzureEnvironment.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AzureEnvironment%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs/#L50" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AzureEnvironment_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AzureEnvironment*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AzureEnvironment" data-uid="PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AzureEnvironment"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AzureEnvironment" class="expander" data-toggle="collapse">AzureEnvironment</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AzureEnvironment" class="collapse in">
+  <div class="markdown level1 summary"><p>Defines the Cloud Deployment the current user is connected to.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AzureEnvironment AzureEnvironment { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_Current.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Current%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs/#L149" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_Current_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Current*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_Current" data-uid="PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Current"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_Current" class="expander" data-toggle="collapse">Current</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_Current" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static PnPProvisioningContext Current { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.html">PnPProvisioningContext</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_Properties.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Properties%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs/#L44" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_Properties_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Properties*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_Properties" data-uid="PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Properties"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_Properties" class="expander" data-toggle="collapse">Properties</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_Properties" class="collapse in">
+  <div class="markdown level1 summary"><p>Property Bag of properties for the current context</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, object&gt; Properties { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AcquireCookie_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireCookie(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs/#L120" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AcquireCookie_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireCookie*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AcquireCookie_System_String_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireCookie(System.String)"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AcquireCookie_System_String_" class="expander" data-toggle="collapse">AcquireCookie(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AcquireCookie_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Synchronous delegate to acquire a cookie for a specific resource</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string AcquireCookie(string resource)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">resource</span>
+        <p><p>The target resource</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>The Cookie for the requested resource</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AcquireToken_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireToken(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs/#L93" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AcquireToken_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireToken*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AcquireToken_System_String_System_String_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireToken(System.String,System.String)"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AcquireToken_System_String_System_String_" class="expander" data-toggle="collapse">AcquireToken(String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AcquireToken_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Synchronous delegate to acquire an access token for a specific resource and with a specific scope</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string AcquireToken(string resource, string scope)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">resource</span>
+        <p><p>The target resource</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">scope</span>
+        <p><p>The scope for the target resource</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>The Access Token for the requested resource, with the requested scope</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AcquireTokenWithMultipleScopes_System_String_System_String___.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireTokenWithMultipleScopes(System.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs/#L105" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AcquireTokenWithMultipleScopes_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireTokenWithMultipleScopes*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AcquireTokenWithMultipleScopes_System_String_System_String___" data-uid="PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.AcquireTokenWithMultipleScopes(System.String,System.String[])"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AcquireTokenWithMultipleScopes_System_String_System_String___" class="expander" data-toggle="collapse">AcquireTokenWithMultipleScopes(String, String[])</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_AcquireTokenWithMultipleScopes_System_String_System_String___" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string AcquireTokenWithMultipleScopes(string resource, params string[] scope)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">resource</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">scope</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_Dispose.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs/#L133" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_Dispose_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Dispose*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_Dispose" data-uid="PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Dispose"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_Dispose" class="expander" data-toggle="collapse">Dispose()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_Dispose" class="collapse in">
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  <h5 class="implements">Implements</h5>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable.dispose#system-idisposable-dispose">IDisposable.Dispose()</a></div>
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_Finalize.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Finalize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/ObjectHandlers/PnPProvisioningContext.cs/#L125" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_Finalize_" data-uid="PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Finalize*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_Finalize" data-uid="PnP.Framework.Provisioning.ObjectHandlers.PnPProvisioningContext.Finalize"><a href="#collapsible-PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_Finalize" class="expander" data-toggle="collapse">Finalize()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_ObjectHandlers_PnPProvisioningContext_Finalize" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void Finalize()</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="System.ValidationExtensions.html#System_ValidationExtensions_ValidateNotNullOrEmpty__1___0_System_String_">ValidationExtensions.ValidateNotNullOrEmpty&lt;T&gt;(T, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_Set__2___0_System_Linq_Expressions_Expression_System_Func___0___1_____1_System_Boolean_System_Boolean_">ObjectExtensions.Set&lt;TObject, T&gt;(TObject, Expression&lt;Func&lt;TObject, T&gt;&gt;, T, Boolean, Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstancePropertyValue_System_Object_System_String_">ObjectExtensions.GetPublicInstancePropertyValue(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstanceProperty_System_Object_System_String_">ObjectExtensions.GetPublicInstanceProperty(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_SetPublicInstancePropertyValue_System_Object_System_String_System_Object_">ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Modernization.Cache.Extensions.html#PnP_Framework_Modernization_Cache_Extensions_ToByteArray_System_Object_">Extensions.ToByteArray(Object)</a>
+  </div>
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

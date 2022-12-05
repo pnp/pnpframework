@@ -1,0 +1,371 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Enum Handlers
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Enum Handlers
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PnP.Framework.Provisioning.Model.Handlers">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Model/Handlers.cs/#L8" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Model_Handlers.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Model.Handlers%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="PnP_Framework_Provisioning_Model_Handlers" data-uid="PnP.Framework.Provisioning.Model.Handlers">Enum Handlers
+  </h1>
+  <div class="markdown level0 summary"><p>Handlers to be processed on the template</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  
+  
+  
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="PnP.Framework.Provisioning.Model.html">PnP.Framework.Provisioning.Model</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="PnP_Framework_Provisioning_Model_Handlers_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Flags]
+public enum Handlers</code></pre>
+  </div>
+  
+  
+  
+  
+  
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_All"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_All" class="expander" data-toggle="collapse">All</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_All" class="collapse in">
+        <p><p>Takes all handlers</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_ApplicationLifecycleManagement"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_ApplicationLifecycleManagement" class="expander" data-toggle="collapse">ApplicationLifecycleManagement</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_ApplicationLifecycleManagement" class="collapse in">
+        <p><p>Value 8388608, represents Application Lifecycle Management</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_AuditSettings"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_AuditSettings" class="expander" data-toggle="collapse">AuditSettings</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_AuditSettings" class="collapse in">
+        <p><p>Value 1, represents AuditSettings</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_ComposedLook"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_ComposedLook" class="expander" data-toggle="collapse">ComposedLook</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_ComposedLook" class="collapse in">
+        <p><p>Value 2, represents ComposedLook</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_ContentTypes"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_ContentTypes" class="expander" data-toggle="collapse">ContentTypes</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_ContentTypes" class="collapse in">
+        <p><p>Value 131072, represents ContentTypes</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_CustomActions"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_CustomActions" class="expander" data-toggle="collapse">CustomActions</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_CustomActions" class="collapse in">
+        <p><p>Value 4, represents CustomActions</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_ExtensibilityProviders"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_ExtensibilityProviders" class="expander" data-toggle="collapse">ExtensibilityProviders</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_ExtensibilityProviders" class="collapse in">
+        <p><p>Value 8, represents ExtensibilityProviders</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_Features"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_Features" class="expander" data-toggle="collapse">Features</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_Features" class="collapse in">
+        <p><p>Value 16, represents Features</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_Fields"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_Fields" class="expander" data-toggle="collapse">Fields</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_Fields" class="collapse in">
+        <p><p>Value 32, represents Fields</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_Files"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_Files" class="expander" data-toggle="collapse">Files</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_Files" class="collapse in">
+        <p><p>Value 64, represents Files</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_ImageRenditions"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_ImageRenditions" class="expander" data-toggle="collapse">ImageRenditions</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_ImageRenditions" class="collapse in">
+        <p><p>Value 4194304, represents Image Renditions</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_Lists"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_Lists" class="expander" data-toggle="collapse">Lists</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_Lists" class="collapse in">
+        <p><p>Value 128, represents Lists</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_Navigation"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_Navigation" class="expander" data-toggle="collapse">Navigation</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_Navigation" class="collapse in">
+        <p><p>Value 2097152, represents Navigation</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_None"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_None" class="expander" data-toggle="collapse">None</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_None" class="collapse in">
+        <p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_PageContents"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_PageContents" class="expander" data-toggle="collapse">PageContents</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_PageContents" class="collapse in">
+        <p><p>Value 524288, represents PageContents</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_Pages"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_Pages" class="expander" data-toggle="collapse">Pages</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_Pages" class="collapse in">
+        <p><p>Value 256, represents Pages</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_PropertyBagEntries"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_PropertyBagEntries" class="expander" data-toggle="collapse">PropertyBagEntries</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_PropertyBagEntries" class="collapse in">
+        <p><p>Value 262144, represents PropertyBagEntries</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_Publishing"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_Publishing" class="expander" data-toggle="collapse">Publishing</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_Publishing" class="collapse in">
+        <p><p>Value 512, represents Publishing</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_RegionalSettings"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_RegionalSettings" class="expander" data-toggle="collapse">RegionalSettings</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_RegionalSettings" class="collapse in">
+        <p><p>Value 1024, represents RegionalSettings</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_SearchSettings"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_SearchSettings" class="expander" data-toggle="collapse">SearchSettings</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_SearchSettings" class="collapse in">
+        <p><p>Value 2048, represents SearchSettings</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_SiteFooter"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_SiteFooter" class="expander" data-toggle="collapse">SiteFooter</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_SiteFooter" class="collapse in">
+        <p><p>Value 134217728, represents Site Footer</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_SiteHeader"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_SiteHeader" class="expander" data-toggle="collapse">SiteHeader</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_SiteHeader" class="collapse in">
+        <p><p>Value 67108864, represents Site Header</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_SitePolicy"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_SitePolicy" class="expander" data-toggle="collapse">SitePolicy</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_SitePolicy" class="collapse in">
+        <p><p>Value 4096, represents SitePolicy</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_SiteSecurity"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_SiteSecurity" class="expander" data-toggle="collapse">SiteSecurity</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_SiteSecurity" class="collapse in">
+        <p><p>Value 65536, represents SiteSecurity</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_SiteSettings"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_SiteSettings" class="expander" data-toggle="collapse">SiteSettings</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_SiteSettings" class="collapse in">
+        <p><p>Value 536870912, represents SiteSettings</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_SupportedUILanguages"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_SupportedUILanguages" class="expander" data-toggle="collapse">SupportedUILanguages</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_SupportedUILanguages" class="collapse in">
+        <p><p>Value 8192, represents SupportedUILanguages</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_SyntexModels"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_SyntexModels" class="expander" data-toggle="collapse">SyntexModels</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_SyntexModels" class="collapse in">
+        <p><p>Value 1073741824 represents Syntex models</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_Tenant"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_Tenant" class="expander" data-toggle="collapse">Tenant</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_Tenant" class="collapse in">
+        <p><p>Value 16777216, represents Tenant</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_TermGroups"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_TermGroups" class="expander" data-toggle="collapse">TermGroups</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_TermGroups" class="collapse in">
+        <p><p>Value 16384, represents TermGroups</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_Theme"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_Theme" class="expander" data-toggle="collapse">Theme</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_Theme" class="collapse in">
+        <p><p>Value 268435456, represents Theme</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_WebApiPermissions"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_WebApiPermissions" class="expander" data-toggle="collapse">WebApiPermissions</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_WebApiPermissions" class="collapse in">
+        <p><p>Value 33554432, represents Web API Permissions</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_WebSettings"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_WebSettings" class="expander" data-toggle="collapse">WebSettings</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_WebSettings" class="collapse in">
+        <p><p>Value 1048576, represents WebSettings</p>
+</p>
+      </div>
+      <h4 id="PnP_Framework_Provisioning_Model_Handlers_Workflows"><a href="#collapsible-PnP_Framework_Provisioning_Model_Handlers_Workflows" class="expander" data-toggle="collapse">Workflows</a></h4>
+  
+      <div id="collapsible-PnP_Framework_Provisioning_Model_Handlers_Workflows" class="collapse in">
+        <p><p>Value 32768, represents Workflows</p>
+</p>
+      </div>
+  
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="System.EnumerationExtensions.html#System_EnumerationExtensions_Include__1_System_Enum___0_">EnumerationExtensions.Include&lt;T&gt;(T)</a>
+  </div>
+  <div>
+      <a class="xref" href="System.EnumerationExtensions.html#System_EnumerationExtensions_Remove__1_System_Enum___0_">EnumerationExtensions.Remove&lt;T&gt;(T)</a>
+  </div>
+  <div>
+      <a class="xref" href="System.EnumerationExtensions.html#System_EnumerationExtensions_Has__1_System_Enum___0_">EnumerationExtensions.Has&lt;T&gt;(T)</a>
+  </div>
+  <div>
+      <a class="xref" href="System.EnumerationExtensions.html#System_EnumerationExtensions_Missing__1_System_Enum___0_">EnumerationExtensions.Missing&lt;T&gt;(T)</a>
+  </div>
+  <div>
+      <a class="xref" href="System.ValidationExtensions.html#System_ValidationExtensions_ValidateNotNullOrEmpty__1___0_System_String_">ValidationExtensions.ValidateNotNullOrEmpty&lt;Handlers&gt;(String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_Set__2___0_System_Linq_Expressions_Expression_System_Func___0___1_____1_System_Boolean_System_Boolean_">ObjectExtensions.Set&lt;Handlers, T&gt;(Expression&lt;Func&lt;Handlers, T&gt;&gt;, T, Boolean, Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstancePropertyValue_System_Object_System_String_">ObjectExtensions.GetPublicInstancePropertyValue(String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstanceProperty_System_Object_System_String_">ObjectExtensions.GetPublicInstanceProperty(String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_SetPublicInstancePropertyValue_System_Object_System_String_System_Object_">ObjectExtensions.SetPublicInstancePropertyValue(String, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Modernization.Cache.Extensions.html#PnP_Framework_Modernization_Cache_Extensions_ToByteArray_System_Object_">Extensions.ToByteArray()</a>
+  </div>
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

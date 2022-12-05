@@ -1,0 +1,1660 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class PnPPackage
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class PnPPackage
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L13" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage">Class PnPPackage
+  </h1>
+  <div class="markdown level0 summary"><p>Defines a PnP OpenXML package file</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">PnPPackage</span></div>
+  </div>
+  
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="PnP.Framework.Provisioning.Connectors.OpenXML.html">PnP.Framework.Provisioning.Connectors.OpenXML</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class PnPPackage : IDisposable</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="fields">Fields
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_CT_FILE.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.CT_FILE%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L33" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_CT_FILE" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.CT_FILE"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_CT_FILE" class="expander" data-toggle="collapse">CT_FILE</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_CT_FILE" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string CT_FILE = &quot;application/unknown&quot;</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_CT_ORIGIN.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.CT_ORIGIN%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L32" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_CT_ORIGIN" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.CT_ORIGIN"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_CT_ORIGIN" class="expander" data-toggle="collapse">CT_ORIGIN</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_CT_ORIGIN" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string CT_ORIGIN = &quot;application/pnpprovisioningtemplate.origin&quot;</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_CT_PROVISIONINGTEMPLATE_BODY.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.CT_PROVISIONINGTEMPLATE_BODY%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L29" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_CT_PROVISIONINGTEMPLATE_BODY" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.CT_PROVISIONINGTEMPLATE_BODY"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_CT_PROVISIONINGTEMPLATE_BODY" class="expander" data-toggle="collapse">CT_PROVISIONINGTEMPLATE_BODY</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_CT_PROVISIONINGTEMPLATE_BODY" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string CT_PROVISIONINGTEMPLATE_BODY = &quot;application/pnpprovisioningtemplate.body&quot;</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_CT_PROVISIONINGTEMPLATE_FILES_MAP.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.CT_PROVISIONINGTEMPLATE_FILES_MAP%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L31" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_CT_PROVISIONINGTEMPLATE_FILES_MAP" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.CT_PROVISIONINGTEMPLATE_FILES_MAP"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_CT_PROVISIONINGTEMPLATE_FILES_MAP" class="expander" data-toggle="collapse">CT_PROVISIONINGTEMPLATE_FILES_MAP</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_CT_PROVISIONINGTEMPLATE_FILES_MAP" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string CT_PROVISIONINGTEMPLATE_FILES_MAP = &quot;application/pnpprovisioningtemplate.files.map&quot;</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_CT_PROVISIONINGTEMPLATE_MANIFEST.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.CT_PROVISIONINGTEMPLATE_MANIFEST%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L28" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_CT_PROVISIONINGTEMPLATE_MANIFEST" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.CT_PROVISIONINGTEMPLATE_MANIFEST"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_CT_PROVISIONINGTEMPLATE_MANIFEST" class="expander" data-toggle="collapse">CT_PROVISIONINGTEMPLATE_MANIFEST</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_CT_PROVISIONINGTEMPLATE_MANIFEST" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string CT_PROVISIONINGTEMPLATE_MANIFEST = &quot;application/pnpprovisioningtemplate.manifest&quot;</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_CT_PROVISIONINGTEMPLATE_PROPERTIES.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.CT_PROVISIONINGTEMPLATE_PROPERTIES%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L30" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_CT_PROVISIONINGTEMPLATE_PROPERTIES" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.CT_PROVISIONINGTEMPLATE_PROPERTIES"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_CT_PROVISIONINGTEMPLATE_PROPERTIES" class="expander" data-toggle="collapse">CT_PROVISIONINGTEMPLATE_PROPERTIES</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_CT_PROVISIONINGTEMPLATE_PROPERTIES" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string CT_PROVISIONINGTEMPLATE_PROPERTIES = &quot;application/pnpprovisioningtemplate.properties&quot;</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_EXT_PROVISIONINGTEMPLATE.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.EXT_PROVISIONINGTEMPLATE%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L45" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_EXT_PROVISIONINGTEMPLATE" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.EXT_PROVISIONINGTEMPLATE"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_EXT_PROVISIONINGTEMPLATE" class="expander" data-toggle="collapse">EXT_PROVISIONINGTEMPLATE</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_EXT_PROVISIONINGTEMPLATE" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string EXT_PROVISIONINGTEMPLATE = &quot;.pnp&quot;</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_PACKAGE_COMPRESSION_LEVEL.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.PACKAGE_COMPRESSION_LEVEL%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L49" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_PACKAGE_COMPRESSION_LEVEL" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.PACKAGE_COMPRESSION_LEVEL"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_PACKAGE_COMPRESSION_LEVEL" class="expander" data-toggle="collapse">PACKAGE_COMPRESSION_LEVEL</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_PACKAGE_COMPRESSION_LEVEL" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const CompressionOption PACKAGE_COMPRESSION_LEVEL = CompressionOption.Maximum</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.packaging.compressionoption">CompressionOption</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_R_PROVISIONINGTEMPLATE_BODY.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.R_PROVISIONINGTEMPLATE_BODY%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L19" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_R_PROVISIONINGTEMPLATE_BODY" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.R_PROVISIONINGTEMPLATE_BODY"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_R_PROVISIONINGTEMPLATE_BODY" class="expander" data-toggle="collapse">R_PROVISIONINGTEMPLATE_BODY</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_R_PROVISIONINGTEMPLATE_BODY" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string R_PROVISIONINGTEMPLATE_BODY = &quot;http://schemas.dev.office.com/pnp/provisioningtemplate/v1/body&quot;</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_R_PROVISIONINGTEMPLATE_FILE.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.R_PROVISIONINGTEMPLATE_FILE%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L25" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_R_PROVISIONINGTEMPLATE_FILE" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.R_PROVISIONINGTEMPLATE_FILE"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_R_PROVISIONINGTEMPLATE_FILE" class="expander" data-toggle="collapse">R_PROVISIONINGTEMPLATE_FILE</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_R_PROVISIONINGTEMPLATE_FILE" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string R_PROVISIONINGTEMPLATE_FILE = &quot;http://schemas.dev.office.com/pnp/provisioningtemplate/v1/file&quot;</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_R_PROVISIONINGTEMPLATE_FILES_MAP.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.R_PROVISIONINGTEMPLATE_FILES_MAP%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L21" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_R_PROVISIONINGTEMPLATE_FILES_MAP" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.R_PROVISIONINGTEMPLATE_FILES_MAP"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_R_PROVISIONINGTEMPLATE_FILES_MAP" class="expander" data-toggle="collapse">R_PROVISIONINGTEMPLATE_FILES_MAP</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_R_PROVISIONINGTEMPLATE_FILES_MAP" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string R_PROVISIONINGTEMPLATE_FILES_MAP = &quot;http://schemas.dev.office.com/pnp/provisioningtemplate/v1/files.map&quot;</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_R_PROVISIONINGTEMPLATE_FILES_ORIGIN.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.R_PROVISIONINGTEMPLATE_FILES_ORIGIN%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L24" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_R_PROVISIONINGTEMPLATE_FILES_ORIGIN" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.R_PROVISIONINGTEMPLATE_FILES_ORIGIN"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_R_PROVISIONINGTEMPLATE_FILES_ORIGIN" class="expander" data-toggle="collapse">R_PROVISIONINGTEMPLATE_FILES_ORIGIN</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_R_PROVISIONINGTEMPLATE_FILES_ORIGIN" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string R_PROVISIONINGTEMPLATE_FILES_ORIGIN = &quot;http://schemas.dev.office.com/pnp/provisioningtemplate/v1/files.origin&quot;</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_R_PROVISIONINGTEMPLATE_MANIFEST.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.R_PROVISIONINGTEMPLATE_MANIFEST%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L18" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_R_PROVISIONINGTEMPLATE_MANIFEST" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.R_PROVISIONINGTEMPLATE_MANIFEST"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_R_PROVISIONINGTEMPLATE_MANIFEST" class="expander" data-toggle="collapse">R_PROVISIONINGTEMPLATE_MANIFEST</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_R_PROVISIONINGTEMPLATE_MANIFEST" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string R_PROVISIONINGTEMPLATE_MANIFEST = &quot;http://schemas.dev.office.com/pnp/provisioningtemplate/v1/manifest&quot;</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_R_PROVISIONINGTEMPLATE_PROPERTIES.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.R_PROVISIONINGTEMPLATE_PROPERTIES%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L20" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_R_PROVISIONINGTEMPLATE_PROPERTIES" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.R_PROVISIONINGTEMPLATE_PROPERTIES"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_R_PROVISIONINGTEMPLATE_PROPERTIES" class="expander" data-toggle="collapse">R_PROVISIONINGTEMPLATE_PROPERTIES</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_R_PROVISIONINGTEMPLATE_PROPERTIES" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string R_PROVISIONINGTEMPLATE_PROPERTIES = &quot;http://schemas.dev.office.com/pnp/provisioningtemplate/v1/properties&quot;</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_U_DIR_FILES.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.U_DIR_FILES%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L42" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_U_DIR_FILES" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.U_DIR_FILES"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_U_DIR_FILES" class="expander" data-toggle="collapse">U_DIR_FILES</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_U_DIR_FILES" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string U_DIR_FILES</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_U_DIR_PROVISIONINGTEMPLATE.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.U_DIR_PROVISIONINGTEMPLATE%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L38" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_U_DIR_PROVISIONINGTEMPLATE" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.U_DIR_PROVISIONINGTEMPLATE"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_U_DIR_PROVISIONINGTEMPLATE" class="expander" data-toggle="collapse">U_DIR_PROVISIONINGTEMPLATE</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_U_DIR_PROVISIONINGTEMPLATE" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string U_DIR_PROVISIONINGTEMPLATE</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_U_FILES_ORIGIN.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.U_FILES_ORIGIN%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L41" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_U_FILES_ORIGIN" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.U_FILES_ORIGIN"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_U_FILES_ORIGIN" class="expander" data-toggle="collapse">U_FILES_ORIGIN</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_U_FILES_ORIGIN" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string U_FILES_ORIGIN</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_U_PROVISIONINGTEMPLATE_FILES_MAP.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.U_PROVISIONINGTEMPLATE_FILES_MAP%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L40" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_U_PROVISIONINGTEMPLATE_FILES_MAP" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.U_PROVISIONINGTEMPLATE_FILES_MAP"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_U_PROVISIONINGTEMPLATE_FILES_MAP" class="expander" data-toggle="collapse">U_PROVISIONINGTEMPLATE_FILES_MAP</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_U_PROVISIONINGTEMPLATE_FILES_MAP" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string U_PROVISIONINGTEMPLATE_FILES_MAP</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_U_PROVISIONINGTEMPLATE_MANIFEST.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.U_PROVISIONINGTEMPLATE_MANIFEST%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L36" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_U_PROVISIONINGTEMPLATE_MANIFEST" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.U_PROVISIONINGTEMPLATE_MANIFEST"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_U_PROVISIONINGTEMPLATE_MANIFEST" class="expander" data-toggle="collapse">U_PROVISIONINGTEMPLATE_MANIFEST</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_U_PROVISIONINGTEMPLATE_MANIFEST" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string U_PROVISIONINGTEMPLATE_MANIFEST</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_U_PROVISIONINGTEMPLATE_PROPERTIES.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.U_PROVISIONINGTEMPLATE_PROPERTIES%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L39" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_U_PROVISIONINGTEMPLATE_PROPERTIES" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.U_PROVISIONINGTEMPLATE_PROPERTIES"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_U_PROVISIONINGTEMPLATE_PROPERTIES" class="expander" data-toggle="collapse">U_PROVISIONINGTEMPLATE_PROPERTIES</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_U_PROVISIONINGTEMPLATE_PROPERTIES" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string U_PROVISIONINGTEMPLATE_PROPERTIES</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Files.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.Files%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L144" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Files_" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.Files*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Files" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.Files"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Files" class="expander" data-toggle="collapse">Files</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Files" class="collapse in">
+  <div class="markdown level1 summary"><p>The Files of the package</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDictionary&lt;string, PnPPackageFileItem&gt; Files { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>, <a class="xref" href="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackageFileItem.html">PnPPackageFileItem</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_FilesMap.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.FilesMap%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L105" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_FilesMap_" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.FilesMap*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_FilesMap" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.FilesMap"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_FilesMap" class="expander" data-toggle="collapse">FilesMap</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_FilesMap" class="collapse in">
+  <div class="markdown level1 summary"><p>The File Map for files stored in the OpenXML file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PnPFilesMap FilesMap { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPFilesMap.html">PnPFilesMap</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_FilesOriginPart.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.FilesOriginPart%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L122" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_FilesOriginPart_" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.FilesOriginPart*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_FilesOriginPart" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.FilesOriginPart"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_FilesOriginPart" class="expander" data-toggle="collapse">FilesOriginPart</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_FilesOriginPart" class="collapse in">
+  <div class="markdown level1 summary"><p>The Files origin</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PackagePart FilesOriginPart { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.packaging.packagepart">PackagePart</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_FilesPackageParts.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.FilesPackageParts%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L133" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_FilesPackageParts_" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.FilesPackageParts*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_FilesPackageParts" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.FilesPackageParts"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_FilesPackageParts" class="expander" data-toggle="collapse">FilesPackageParts</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_FilesPackageParts" class="collapse in">
+  <div class="markdown level1 summary"><p>The Files Parts of the package</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;PackagePart&gt; FilesPackageParts { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.packaging.packagepart">PackagePart</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Manifest.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.Manifest%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L72" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Manifest_" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.Manifest*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Manifest" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.Manifest"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Manifest" class="expander" data-toggle="collapse">Manifest</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Manifest" class="collapse in">
+  <div class="markdown level1 summary"><p>The Manifest of the package file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PnPManifest Manifest { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPManifest.html">PnPManifest</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_ManifestPart.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.ManifestPart%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L61" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_ManifestPart_" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.ManifestPart*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_ManifestPart" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.ManifestPart"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_ManifestPart" class="expander" data-toggle="collapse">ManifestPart</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_ManifestPart" class="collapse in">
+  <div class="markdown level1 summary"><p>The Manifest Part of the package file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PackagePart ManifestPart { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.packaging.packagepart">PackagePart</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Package.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.Package%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L56" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Package_" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.Package*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Package" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.Package"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Package" class="expander" data-toggle="collapse">Package</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Package" class="collapse in">
+  <div class="markdown level1 summary"><p>The complete package object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Package Package { get; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.packaging.package">Package</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Properties.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.Properties%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L88" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Properties_" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.Properties*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Properties" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.Properties"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Properties" class="expander" data-toggle="collapse">Properties</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Properties" class="collapse in">
+  <div class="markdown level1 summary"><p>The Properties of the package</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PnPProperties Properties { get; set; }</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPProperties.html">PnPProperties</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_AddFile_System_String_System_Byte___.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.AddFile(System.String%2CSystem.Byte%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L223" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_AddFile_" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.AddFile*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_AddFile_System_String_System_Byte___" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.AddFile(System.String,System.Byte[])"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_AddFile_System_String_System_Byte___" class="expander" data-toggle="collapse">AddFile(String, Byte[])</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_AddFile_System_String_System_Byte___" class="collapse in">
+  <div class="markdown level1 summary"><p>Adds file to the package</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddFile(string fileName, byte[] value)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">fileName</span>
+        <p><p>Name of the file</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">Byte</a>[]</span>
+        <span class="parametername">value</span>
+        <p><p>Value of the file</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_ClearFiles.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.ClearFiles%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L234" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_ClearFiles_" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.ClearFiles*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_ClearFiles" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.ClearFiles"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_ClearFiles" class="expander" data-toggle="collapse">ClearFiles()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_ClearFiles" class="collapse in">
+  <div class="markdown level1 summary"><p>Clear the files having package parts with specific relationship type</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearFiles()</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Open_System_IO_Stream_System_IO_FileMode_System_IO_FileAccess_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.Open(System.IO.Stream%2CSystem.IO.FileMode%2CSystem.IO.FileAccess)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L208" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Open_" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.Open*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Open_System_IO_Stream_System_IO_FileMode_System_IO_FileAccess_" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.Open(System.IO.Stream,System.IO.FileMode,System.IO.FileAccess)"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Open_System_IO_Stream_System_IO_FileMode_System_IO_FileAccess_" class="expander" data-toggle="collapse">Open(Stream, FileMode, FileAccess)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Open_System_IO_Stream_System_IO_FileMode_System_IO_FileAccess_" class="collapse in">
+  <div class="markdown level1 summary"><p>Opens the package and returns it based on the stream</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static PnPPackage Open(Stream stream, FileMode mode, FileAccess access)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></span>
+        <span class="parametername">stream</span>
+        <p><p>The stream</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.filemode">FileMode</a></span>
+        <span class="parametername">mode</span>
+        <p><p>File Mode of the package</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.fileaccess">FileAccess</a></span>
+        <span class="parametername">access</span>
+        <p><p>File Access</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.html">PnPPackage</a>
+        <p><p>Package</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Open_System_String_System_IO_FileMode_System_IO_FileAccess_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.Open(System.String%2CSystem.IO.FileMode%2CSystem.IO.FileAccess)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L191" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Open_" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.Open*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Open_System_String_System_IO_FileMode_System_IO_FileAccess_" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.Open(System.String,System.IO.FileMode,System.IO.FileAccess)"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Open_System_String_System_IO_FileMode_System_IO_FileAccess_" class="expander" data-toggle="collapse">Open(String, FileMode, FileAccess)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_Open_System_String_System_IO_FileMode_System_IO_FileAccess_" class="collapse in">
+  <div class="markdown level1 summary"><p>Opens the package and returns it based on the path</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static PnPPackage Open(string path, FileMode mode, FileAccess access)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">path</span>
+        <p><p>Path of the package</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.filemode">FileMode</a></span>
+        <span class="parametername">mode</span>
+        <p><p>File Mode of the package</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.fileaccess">FileAccess</a></span>
+        <span class="parametername">access</span>
+        <p><p>File Access</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.html">PnPPackage</a>
+        <p><p>Package</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="eii">Explicit Interface Implementations
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_System_IDisposable_Dispose.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.System%23IDisposable%23Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/OpenXML/PnPPackage.cs/#L481" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_System_IDisposable_Dispose_" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.System#IDisposable#Dispose*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_System_IDisposable_Dispose" data-uid="PnP.Framework.Provisioning.Connectors.OpenXML.PnPPackage.System#IDisposable#Dispose"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_System_IDisposable_Dispose" class="expander" data-toggle="collapse">IDisposable.Dispose()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_OpenXML_PnPPackage_System_IDisposable_Dispose" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void IDisposable.Dispose()</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  <h5 class="implements">Implements</h5>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable.dispose#system-idisposable-dispose">IDisposable.Dispose()</a></div>
+  
+  
+  
+  
+  </div>
+  
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="System.ValidationExtensions.html#System_ValidationExtensions_ValidateNotNullOrEmpty__1___0_System_String_">ValidationExtensions.ValidateNotNullOrEmpty&lt;T&gt;(T, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_Set__2___0_System_Linq_Expressions_Expression_System_Func___0___1_____1_System_Boolean_System_Boolean_">ObjectExtensions.Set&lt;TObject, T&gt;(TObject, Expression&lt;Func&lt;TObject, T&gt;&gt;, T, Boolean, Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstancePropertyValue_System_Object_System_String_">ObjectExtensions.GetPublicInstancePropertyValue(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstanceProperty_System_Object_System_String_">ObjectExtensions.GetPublicInstanceProperty(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_SetPublicInstancePropertyValue_System_Object_System_String_System_Object_">ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Modernization.Cache.Extensions.html#PnP_Framework_Modernization_Cache_Extensions_ToByteArray_System_Object_">Extensions.ToByteArray(Object)</a>
+  </div>
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

@@ -1,0 +1,2754 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class UnifiedGroupsUtility
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class UnifiedGroupsUtility
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L29" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="PnP_Framework_Graph_UnifiedGroupsUtility" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility">Class UnifiedGroupsUtility
+  </h1>
+  <div class="markdown level0 summary"><p>Class that deals with Unified group CRUD operations.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">UnifiedGroupsUtility</span></div>
+  </div>
+  
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="PnP.Framework.Graph.html">PnP.Framework.Graph</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="PnP_Framework_Graph_UnifiedGroupsUtility_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class UnifiedGroupsUtility</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility_AddUnifiedGroupMembers_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility.AddUnifiedGroupMembers(System.String%2CSystem.String%5B%5D%2CSystem.String%2CSystem.Boolean%2CSystem.Int32%2CSystem.Int32%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L1334" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_UnifiedGroupsUtility_AddUnifiedGroupMembers_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.AddUnifiedGroupMembers*"></a>
+  
+  <h4 id="PnP_Framework_Graph_UnifiedGroupsUtility_AddUnifiedGroupMembers_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.AddUnifiedGroupMembers(System.String,System.String[],System.String,System.Boolean,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_AddUnifiedGroupMembers_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">AddUnifiedGroupMembers(String, String[], String, Boolean, Int32, Int32, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_AddUnifiedGroupMembers_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Adds members to a Microsoft 365 group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void AddUnifiedGroupMembers(string groupId, string[] members, string accessToken, bool removeExistingMembers = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>Id of the Microsoft 365 group to add the members to</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">members</span>
+        <p><p>String array with the UPNs of the users that need to be added as members to the group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">removeExistingMembers</span>
+        <p><p>If true, all existing members will be removed and only those provided will become members. If false, existing members will remain and the ones provided will be added to the list with existing members.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility_AddUnifiedGroupOwners_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility.AddUnifiedGroupOwners(System.String%2CSystem.String%5B%5D%2CSystem.String%2CSystem.Boolean%2CSystem.Int32%2CSystem.Int32%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L1300" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_UnifiedGroupsUtility_AddUnifiedGroupOwners_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.AddUnifiedGroupOwners*"></a>
+  
+  <h4 id="PnP_Framework_Graph_UnifiedGroupsUtility_AddUnifiedGroupOwners_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.AddUnifiedGroupOwners(System.String,System.String[],System.String,System.Boolean,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_AddUnifiedGroupOwners_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">AddUnifiedGroupOwners(String, String[], String, Boolean, Int32, Int32, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_AddUnifiedGroupOwners_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Adds owners to a Microsoft 365 group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void AddUnifiedGroupOwners(string groupId, string[] owners, string accessToken, bool removeExistingOwners = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>Id of the Microsoft 365 group to add the owners to</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">owners</span>
+        <p><p>String array with the UPNs of the users that need to be added as owners to the group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">removeExistingOwners</span>
+        <p><p>If true, all existing owners will be removed and only those provided will become owners. If false, existing owners will remain and the ones provided will be added to the list with existing owners.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility_ClearUnifiedGroupMembers_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility.ClearUnifiedGroupMembers(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L1517" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_UnifiedGroupsUtility_ClearUnifiedGroupMembers_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.ClearUnifiedGroupMembers*"></a>
+  
+  <h4 id="PnP_Framework_Graph_UnifiedGroupsUtility_ClearUnifiedGroupMembers_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.ClearUnifiedGroupMembers(System.String,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_ClearUnifiedGroupMembers_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">ClearUnifiedGroupMembers(String, String, Int32, Int32, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_ClearUnifiedGroupMembers_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Removes all members of a Microsoft 365 group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void ClearUnifiedGroupMembers(string groupId, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>Id of the Microsoft 365 group to remove all the current members of</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility_ClearUnifiedGroupOwners_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility.ClearUnifiedGroupOwners(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L1490" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_UnifiedGroupsUtility_ClearUnifiedGroupOwners_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.ClearUnifiedGroupOwners*"></a>
+  
+  <h4 id="PnP_Framework_Graph_UnifiedGroupsUtility_ClearUnifiedGroupOwners_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.ClearUnifiedGroupOwners(System.String,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_ClearUnifiedGroupOwners_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">ClearUnifiedGroupOwners(String, String, Int32, Int32, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_ClearUnifiedGroupOwners_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Removes all owners of a Microsoft 365 group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void ClearUnifiedGroupOwners(string groupId, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>Id of the Microsoft 365 group to remove all the current owners of</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility_CreateTeam_System_String_System_String_System_Int32_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility.CreateTeam(System.String%2CSystem.String%2CSystem.Int32%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L1840" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_UnifiedGroupsUtility_CreateTeam_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.CreateTeam*"></a>
+  
+  <h4 id="PnP_Framework_Graph_UnifiedGroupsUtility_CreateTeam_System_String_System_String_System_Int32_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.CreateTeam(System.String,System.String,System.Int32,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_CreateTeam_System_String_System_String_System_Int32_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">CreateTeam(String, String, Int32, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_CreateTeam_System_String_System_String_System_Int32_PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Creates a team associated with an Office 365 group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task CreateTeam(string groupId, string accessToken, int timeoutSeconds = 300, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>The ID of the Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">timeoutSeconds</span>
+        <p><p>Time to wait till Team is created. Default is 300 seconds (5 mins)</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility_CreateUnifiedGroup_System_String_System_String_System_String_System_String_System_String___System_String___System_Boolean_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_System_Nullable_PnP_Framework_Enums_Office365Geography__.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%5B%5D%2CSystem.String%5B%5D%2CSystem.Boolean%2CSystem.Boolean%2CSystem.Int32%2CSystem.Int32%2CPnP.Framework.AzureEnvironment%2CSystem.Nullable%7BPnP.Framework.Enums.Office365Geography%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L765" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_UnifiedGroupsUtility_CreateUnifiedGroup_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup*"></a>
+  
+  <h4 id="PnP_Framework_Graph_UnifiedGroupsUtility_CreateUnifiedGroup_System_String_System_String_System_String_System_String_System_String___System_String___System_Boolean_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_System_Nullable_PnP_Framework_Enums_Office365Geography__" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup(System.String,System.String,System.String,System.String,System.String[],System.String[],System.Boolean,System.Boolean,System.Int32,System.Int32,PnP.Framework.AzureEnvironment,System.Nullable{PnP.Framework.Enums.Office365Geography})"><a href="#collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_CreateUnifiedGroup_System_String_System_String_System_String_System_String_System_String___System_String___System_Boolean_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_System_Nullable_PnP_Framework_Enums_Office365Geography__" class="expander" data-toggle="collapse">CreateUnifiedGroup(String, String, String, String, String[], String[], Boolean, Boolean, Int32, Int32, AzureEnvironment, Nullable&lt;Office365Geography&gt;)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_CreateUnifiedGroup_System_String_System_String_System_String_System_String_System_String___System_String___System_Boolean_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_System_Nullable_PnP_Framework_Enums_Office365Geography__" class="collapse in">
+  <div class="markdown level1 summary"><p>Creates a new Office 365 Group (i.e. Unified Group) with its backing Modern SharePoint Site</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnifiedGroupEntity CreateUnifiedGroup(string displayName, string description, string mailNickname, string accessToken, string[] owners = null, string[] members = null, bool isPrivate = false, bool createTeam = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Office365Geography? preferredDataLocation = null)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">displayName</span>
+        <p><p>The Display Name for the Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">description</span>
+        <p><p>The Description for the Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">mailNickname</span>
+        <p><p>The Mail Nickname for the Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">owners</span>
+        <p><p>A list of UPNs for group owners, if any</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">members</span>
+        <p><p>A list of UPNs for group members, if any</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">isPrivate</span>
+        <p><p>Defines whether the group will be private or public, optional with default false (i.e. public)</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">createTeam</span>
+        <p><p>Defines whether to create MS Teams team associated with the group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="PnP.Framework.Enums.Office365Geography.html">Office365Geography</a>&gt;</span>
+        <span class="parametername">preferredDataLocation</span>
+        <p><p>Defines the codes of geographies in which there is Office 365 presence. Used for multi-geo enabled tenants. List with available geographies is available at <a href="https://docs.microsoft.com/office365/enterprise/multi-geo-add-group-with-pdl#geo-location-codes">https://docs.microsoft.com/office365/enterprise/multi-geo-add-group-with-pdl#geo-location-codes</a>.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Entities.UnifiedGroupEntity.html">UnifiedGroupEntity</a>
+        <p><p>The just created Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility_CreateUnifiedGroup_System_String_System_String_System_String_System_String_System_String___System_String___System_IO_Stream_System_Boolean_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_System_Nullable_PnP_Framework_Enums_Office365Geography__System_Guid___System_Boolean_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%5B%5D%2CSystem.String%5B%5D%2CSystem.IO.Stream%2CSystem.Boolean%2CSystem.Boolean%2CSystem.Int32%2CSystem.Int32%2CPnP.Framework.AzureEnvironment%2CSystem.Nullable%7BPnP.Framework.Enums.Office365Geography%7D%2CSystem.Guid%5B%5D%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L120" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_UnifiedGroupsUtility_CreateUnifiedGroup_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup*"></a>
+  
+  <h4 id="PnP_Framework_Graph_UnifiedGroupsUtility_CreateUnifiedGroup_System_String_System_String_System_String_System_String_System_String___System_String___System_IO_Stream_System_Boolean_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_System_Nullable_PnP_Framework_Enums_Office365Geography__System_Guid___System_Boolean_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup(System.String,System.String,System.String,System.String,System.String[],System.String[],System.IO.Stream,System.Boolean,System.Boolean,System.Int32,System.Int32,PnP.Framework.AzureEnvironment,System.Nullable{PnP.Framework.Enums.Office365Geography},System.Guid[],System.Boolean)"><a href="#collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_CreateUnifiedGroup_System_String_System_String_System_String_System_String_System_String___System_String___System_IO_Stream_System_Boolean_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_System_Nullable_PnP_Framework_Enums_Office365Geography__System_Guid___System_Boolean_" class="expander" data-toggle="collapse">CreateUnifiedGroup(String, String, String, String, String[], String[], Stream, Boolean, Boolean, Int32, Int32, AzureEnvironment, Nullable&lt;Office365Geography&gt;, Guid[], Boolean)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_CreateUnifiedGroup_System_String_System_String_System_String_System_String_System_String___System_String___System_IO_Stream_System_Boolean_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_System_Nullable_PnP_Framework_Enums_Office365Geography__System_Guid___System_Boolean_" class="collapse in">
+  <div class="markdown level1 summary"><p>Creates a new Office 365 Group (i.e. Unified Group) with its backing Modern SharePoint Site</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnifiedGroupEntity CreateUnifiedGroup(string displayName, string description, string mailNickname, string accessToken, string[] owners = null, string[] members = null, Stream groupLogo = null, bool isPrivate = false, bool createTeam = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Office365Geography? preferredDataLocation = null, Guid[] assignedLabels = null, bool welcomeEmailDisabled = false)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">displayName</span>
+        <p><p>The Display Name for the Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">description</span>
+        <p><p>The Description for the Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">mailNickname</span>
+        <p><p>The Mail Nickname for the Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">owners</span>
+        <p><p>A list of UPNs for group owners, if any</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">members</span>
+        <p><p>A list of UPNs for group members, if any</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></span>
+        <span class="parametername">groupLogo</span>
+        <p><p>The binary stream of the logo for the Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">isPrivate</span>
+        <p><p>Defines whether the group will be private or public, optional with default false (i.e. public)</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">createTeam</span>
+        <p><p>Defines whether to create MS Teams team associated with the group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="PnP.Framework.Enums.Office365Geography.html">Office365Geography</a>&gt;</span>
+        <span class="parametername">preferredDataLocation</span>
+        <p><p>Defines the codes of geographies in which there is Office 365 presence. Used for multi-geo enabled tenants. List with available geographies is available at <a href="https://docs.microsoft.com/office365/enterprise/multi-geo-add-group-with-pdl#geo-location-codes">https://docs.microsoft.com/office365/enterprise/multi-geo-add-group-with-pdl#geo-location-codes</a>.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a>[]</span>
+        <span class="parametername">assignedLabels</span>
+        <p><p>AIP Labels which should be applied to the group (does not work for App-Only)</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">welcomeEmailDisabled</span>
+        <p><p>Option to prevent sending of default welcome emails to new members.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Entities.UnifiedGroupEntity.html">UnifiedGroupEntity</a>
+        <p><p>The just created Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility_CreateUnifiedGroup_System_String_System_String_System_String_System_String_System_String___System_String___System_String_System_Boolean_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_System_Nullable_PnP_Framework_Enums_Office365Geography__.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%5B%5D%2CSystem.String%5B%5D%2CSystem.String%2CSystem.Boolean%2CSystem.Boolean%2CSystem.Int32%2CSystem.Int32%2CPnP.Framework.AzureEnvironment%2CSystem.Nullable%7BPnP.Framework.Enums.Office365Geography%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L722" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_UnifiedGroupsUtility_CreateUnifiedGroup_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup*"></a>
+  
+  <h4 id="PnP_Framework_Graph_UnifiedGroupsUtility_CreateUnifiedGroup_System_String_System_String_System_String_System_String_System_String___System_String___System_String_System_Boolean_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_System_Nullable_PnP_Framework_Enums_Office365Geography__" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.CreateUnifiedGroup(System.String,System.String,System.String,System.String,System.String[],System.String[],System.String,System.Boolean,System.Boolean,System.Int32,System.Int32,PnP.Framework.AzureEnvironment,System.Nullable{PnP.Framework.Enums.Office365Geography})"><a href="#collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_CreateUnifiedGroup_System_String_System_String_System_String_System_String_System_String___System_String___System_String_System_Boolean_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_System_Nullable_PnP_Framework_Enums_Office365Geography__" class="expander" data-toggle="collapse">CreateUnifiedGroup(String, String, String, String, String[], String[], String, Boolean, Boolean, Int32, Int32, AzureEnvironment, Nullable&lt;Office365Geography&gt;)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_CreateUnifiedGroup_System_String_System_String_System_String_System_String_System_String___System_String___System_String_System_Boolean_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_System_Nullable_PnP_Framework_Enums_Office365Geography__" class="collapse in">
+  <div class="markdown level1 summary"><p>Creates a new Office 365 Group (i.e. Unified Group) with its backing Modern SharePoint Site</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnifiedGroupEntity CreateUnifiedGroup(string displayName, string description, string mailNickname, string accessToken, string[] owners = null, string[] members = null, string groupLogoPath = null, bool isPrivate = false, bool createTeam = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Office365Geography? preferredDataLocation = null)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">displayName</span>
+        <p><p>The Display Name for the Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">description</span>
+        <p><p>The Description for the Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">mailNickname</span>
+        <p><p>The Mail Nickname for the Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">owners</span>
+        <p><p>A list of UPNs for group owners, if any</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">members</span>
+        <p><p>A list of UPNs for group members, if any</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupLogoPath</span>
+        <p><p>The path of the logo for the Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">isPrivate</span>
+        <p><p>Defines whether the group will be private or public, optional with default false (i.e. public)</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">createTeam</span>
+        <p><p>Defines whether to create MS Teams team associated with the group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="PnP.Framework.Enums.Office365Geography.html">Office365Geography</a>&gt;</span>
+        <span class="parametername">preferredDataLocation</span>
+        <p><p>Defines the codes of geographies in which there is Office 365 presence. Used for multi-geo enabled tenants. List with available geographies is available at <a href="https://docs.microsoft.com/office365/enterprise/multi-geo-add-group-with-pdl#geo-location-codes">https://docs.microsoft.com/office365/enterprise/multi-geo-add-group-with-pdl#geo-location-codes</a>.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Entities.UnifiedGroupEntity.html">UnifiedGroupEntity</a>
+        <p><p>The just created Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility_DeleteUnifiedGroup_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility.DeleteUnifiedGroup(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L783" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_UnifiedGroupsUtility_DeleteUnifiedGroup_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.DeleteUnifiedGroup*"></a>
+  
+  <h4 id="PnP_Framework_Graph_UnifiedGroupsUtility_DeleteUnifiedGroup_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.DeleteUnifiedGroup(System.String,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_DeleteUnifiedGroup_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">DeleteUnifiedGroup(String, String, Int32, Int32, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_DeleteUnifiedGroup_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Deletes an Office 365 Group (i.e. Unified Group)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void DeleteUnifiedGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>The ID of the Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility_GetDeletedUnifiedGroup_System_String_System_String_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility.GetDeletedUnifiedGroup(System.String%2CSystem.String%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L1893" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_UnifiedGroupsUtility_GetDeletedUnifiedGroup_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.GetDeletedUnifiedGroup*"></a>
+  
+  <h4 id="PnP_Framework_Graph_UnifiedGroupsUtility_GetDeletedUnifiedGroup_System_String_System_String_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.GetDeletedUnifiedGroup(System.String,System.String,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_GetDeletedUnifiedGroup_System_String_System_String_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">GetDeletedUnifiedGroup(String, String, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_GetDeletedUnifiedGroup_System_String_System_String_PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets one deleted unified group based on its ID.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnifiedGroupEntity GetDeletedUnifiedGroup(string groupId, string accessToken, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>The ID of the deleted group.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>Access token for accessing Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Entities.UnifiedGroupEntity.html">UnifiedGroupEntity</a>
+        <p><p>The unified group object of the deleted group that matches the provided ID.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility_GetGroupClassification_System_String_System_String_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility.GetGroupClassification(System.String%2CSystem.String%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L1745" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_UnifiedGroupsUtility_GetGroupClassification_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.GetGroupClassification*"></a>
+  
+  <h4 id="PnP_Framework_Graph_UnifiedGroupsUtility_GetGroupClassification_System_String_System_String_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.GetGroupClassification(System.String,System.String,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_GetGroupClassification_System_String_System_String_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">GetGroupClassification(String, String, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_GetGroupClassification_System_String_System_String_PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns the classification value of an Office 365 Group.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string GetGroupClassification(string groupId, string accessToken, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>ID of the unified Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>Classification value of a Unified group</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility_GetNestedUnifiedGroupMembers_PnP_Framework_Entities_UnifiedGroupEntity_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility.GetNestedUnifiedGroupMembers(PnP.Framework.Entities.UnifiedGroupEntity%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L1217" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_UnifiedGroupsUtility_GetNestedUnifiedGroupMembers_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.GetNestedUnifiedGroupMembers*"></a>
+  
+  <h4 id="PnP_Framework_Graph_UnifiedGroupsUtility_GetNestedUnifiedGroupMembers_PnP_Framework_Entities_UnifiedGroupEntity_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.GetNestedUnifiedGroupMembers(PnP.Framework.Entities.UnifiedGroupEntity,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_GetNestedUnifiedGroupMembers_PnP_Framework_Entities_UnifiedGroupEntity_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">GetNestedUnifiedGroupMembers(UnifiedGroupEntity, String, Int32, Int32, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_GetNestedUnifiedGroupMembers_PnP_Framework_Entities_UnifiedGroupEntity_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns all the Members of an Office 365 group (including nested groups).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;UnifiedGroupUser&gt; GetNestedUnifiedGroupMembers(UnifiedGroupEntity group, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Entities.UnifiedGroupEntity.html">UnifiedGroupEntity</a></span>
+        <span class="parametername">group</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="PnP.Framework.Entities.UnifiedGroupUser.html">UnifiedGroupUser</a>&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility_GetUnifiedGroup_System_String_System_String_System_Int32_System_Int32_System_Boolean_System_Boolean_System_Boolean_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroup(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CSystem.Boolean%2CSystem.Boolean%2CSystem.Boolean%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L822" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_UnifiedGroupsUtility_GetUnifiedGroup_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroup*"></a>
+  
+  <h4 id="PnP_Framework_Graph_UnifiedGroupsUtility_GetUnifiedGroup_System_String_System_String_System_Int32_System_Int32_System_Boolean_System_Boolean_System_Boolean_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroup(System.String,System.String,System.Int32,System.Int32,System.Boolean,System.Boolean,System.Boolean,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_GetUnifiedGroup_System_String_System_String_System_Int32_System_Int32_System_Boolean_System_Boolean_System_Boolean_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">GetUnifiedGroup(String, String, Int32, Int32, Boolean, Boolean, Boolean, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_GetUnifiedGroup_System_String_System_String_System_Int32_System_Int32_System_Boolean_System_Boolean_System_Boolean_PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Get an Office 365 Group (i.e. Unified Group) by Id</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnifiedGroupEntity GetUnifiedGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500, bool includeSite = true, bool includeClassification = false, bool includeHasTeam = false, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>The ID of the Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">includeSite</span>
+        <p><p>Defines whether to return details about the Modern SharePoint Site backing the group. Default is true.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">includeClassification</span>
+        <p><p>Defines whether to return classification value of the unified group. Default is false.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">includeHasTeam</span>
+        <p><p>Defines whether to check for each unified group if it has a Microsoft Team provisioned for it. Default is false.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Entities.UnifiedGroupEntity.html">UnifiedGroupEntity</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility_GetUnifiedGroupMembers_PnP_Framework_Entities_UnifiedGroupEntity_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupMembers(PnP.Framework.Entities.UnifiedGroupEntity%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L1134" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_UnifiedGroupsUtility_GetUnifiedGroupMembers_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupMembers*"></a>
+  
+  <h4 id="PnP_Framework_Graph_UnifiedGroupsUtility_GetUnifiedGroupMembers_PnP_Framework_Entities_UnifiedGroupEntity_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupMembers(PnP.Framework.Entities.UnifiedGroupEntity,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_GetUnifiedGroupMembers_PnP_Framework_Entities_UnifiedGroupEntity_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">GetUnifiedGroupMembers(UnifiedGroupEntity, String, Int32, Int32, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_GetUnifiedGroupMembers_PnP_Framework_Entities_UnifiedGroupEntity_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns all the Members of an Office 365 group.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;UnifiedGroupUser&gt; GetUnifiedGroupMembers(UnifiedGroupEntity group, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Entities.UnifiedGroupEntity.html">UnifiedGroupEntity</a></span>
+        <span class="parametername">group</span>
+        <p><p>The Office 365 group object of type UnifiedGroupEntity</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="PnP.Framework.Entities.UnifiedGroupUser.html">UnifiedGroupUser</a>&gt;
+        <p><p>Members of an Office 365 group as a list of UnifiedGroupUser entity</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility_GetUnifiedGroupOwners_PnP_Framework_Entities_UnifiedGroupEntity_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupOwners(PnP.Framework.Entities.UnifiedGroupEntity%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L1545" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_UnifiedGroupsUtility_GetUnifiedGroupOwners_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupOwners*"></a>
+  
+  <h4 id="PnP_Framework_Graph_UnifiedGroupsUtility_GetUnifiedGroupOwners_PnP_Framework_Entities_UnifiedGroupEntity_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupOwners(PnP.Framework.Entities.UnifiedGroupEntity,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_GetUnifiedGroupOwners_PnP_Framework_Entities_UnifiedGroupEntity_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">GetUnifiedGroupOwners(UnifiedGroupEntity, String, Int32, Int32, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_GetUnifiedGroupOwners_PnP_Framework_Entities_UnifiedGroupEntity_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns all the Owners of an Office 365 group.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;UnifiedGroupUser&gt; GetUnifiedGroupOwners(UnifiedGroupEntity group, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Entities.UnifiedGroupEntity.html">UnifiedGroupEntity</a></span>
+        <span class="parametername">group</span>
+        <p><p>The Office 365 group object of type UnifiedGroupEntity</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="PnP.Framework.Entities.UnifiedGroupUser.html">UnifiedGroupUser</a>&gt;
+        <p><p>Owners of an Office 365 group as a list of UnifiedGroupUser entity</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility_GetUnifiedGroups_System_String_System_String_System_String_System_Int32_System_Nullable_System_Int32__System_Boolean_System_Int32_System_Int32_System_Boolean_System_Boolean_System_Int32_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroups(System.String%2CSystem.String%2CSystem.String%2CSystem.Int32%2CSystem.Nullable%7BSystem.Int32%7D%2CSystem.Boolean%2CSystem.Int32%2CSystem.Int32%2CSystem.Boolean%2CSystem.Boolean%2CSystem.Int32%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L1025" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_UnifiedGroupsUtility_GetUnifiedGroups_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroups*"></a>
+  
+  <h4 id="PnP_Framework_Graph_UnifiedGroupsUtility_GetUnifiedGroups_System_String_System_String_System_String_System_Int32_System_Nullable_System_Int32__System_Boolean_System_Int32_System_Int32_System_Boolean_System_Boolean_System_Int32_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroups(System.String,System.String,System.String,System.Int32,System.Nullable{System.Int32},System.Boolean,System.Int32,System.Int32,System.Boolean,System.Boolean,System.Int32,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_GetUnifiedGroups_System_String_System_String_System_String_System_Int32_System_Nullable_System_Int32__System_Boolean_System_Int32_System_Int32_System_Boolean_System_Boolean_System_Int32_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">GetUnifiedGroups(String, String, String, Int32, Nullable&lt;Int32&gt;, Boolean, Int32, Int32, Boolean, Boolean, Int32, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_GetUnifiedGroups_System_String_System_String_System_String_System_Int32_System_Nullable_System_Int32__System_Boolean_System_Int32_System_Int32_System_Boolean_System_Boolean_System_Int32_PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns all the Office 365 Groups in the current Tenant based on a startIndex. IncludeSite adds additional properties about the Modern SharePoint Site backing the group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;UnifiedGroupEntity&gt; GetUnifiedGroups(string accessToken, string displayName = null, string mailNickname = null, int startIndex = 0, int? endIndex = null, bool includeSite = true, int retryCount = 10, int delay = 500, bool includeClassification = false, bool includeHasTeam = false, int pageSize = 999, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">displayName</span>
+        <p><p>The DisplayName of the Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">mailNickname</span>
+        <p><p>The MailNickname of the Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">startIndex</span>
+        <p><p>If not specified, method will start with the first group.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>&gt;</span>
+        <span class="parametername">endIndex</span>
+        <p><p>If not specified, method will return all groups.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">includeSite</span>
+        <p><p>Defines whether to return details about the Modern SharePoint Site backing the group. Default is true.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">includeClassification</span>
+        <p><p>Defines whether or not to return details about the Modern Site classification value.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">includeHasTeam</span>
+        <p><p>Defines whether to check for each unified group if it has a Microsoft Team provisioned for it. Default is false.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">pageSize</span>
+        <p><p>Page size used for the individual requests to Micrsoft Graph. Defaults to 999 which is currently the maximum value.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="PnP.Framework.Entities.UnifiedGroupEntity.html">UnifiedGroupEntity</a>&gt;
+        <p><p>An IList of SiteEntity objects</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility_GetUnifiedGroupSiteUrl_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupSiteUrl(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L74" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_UnifiedGroupsUtility_GetUnifiedGroupSiteUrl_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupSiteUrl*"></a>
+  
+  <h4 id="PnP_Framework_Graph_UnifiedGroupsUtility_GetUnifiedGroupSiteUrl_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.GetUnifiedGroupSiteUrl(System.String,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_GetUnifiedGroupSiteUrl_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">GetUnifiedGroupSiteUrl(String, String, Int32, Int32, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_GetUnifiedGroupSiteUrl_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns the URL of the Modern SharePoint Site backing an Office 365 Group (i.e. Unified Group)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string GetUnifiedGroupSiteUrl(string groupId, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>The ID of the Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>The URL of the modern site backing the Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility_HasTeamsTeam_System_String_System_String_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility.HasTeamsTeam(System.String%2CSystem.String%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L1790" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_UnifiedGroupsUtility_HasTeamsTeam_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.HasTeamsTeam*"></a>
+  
+  <h4 id="PnP_Framework_Graph_UnifiedGroupsUtility_HasTeamsTeam_System_String_System_String_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.HasTeamsTeam(System.String,System.String,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_HasTeamsTeam_System_String_System_String_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">HasTeamsTeam(String, String, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_HasTeamsTeam_System_String_System_String_PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Does this group have a Teams team?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool HasTeamsTeam(string groupId, string accessToken, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>Id of the group to check</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>Access token with scope Group.Read.All</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p><p>True if there's a Teams linked to this group</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility_ListDeletedUnifiedGroups_System_String_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility.ListDeletedUnifiedGroups(System.String%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L1927" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_UnifiedGroupsUtility_ListDeletedUnifiedGroups_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.ListDeletedUnifiedGroups*"></a>
+  
+  <h4 id="PnP_Framework_Graph_UnifiedGroupsUtility_ListDeletedUnifiedGroups_System_String_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.ListDeletedUnifiedGroups(System.String,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_ListDeletedUnifiedGroups_System_String_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">ListDeletedUnifiedGroups(String, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_ListDeletedUnifiedGroups_System_String_PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Lists deleted unified groups.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;UnifiedGroupEntity&gt; ListDeletedUnifiedGroups(string accessToken, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>Access token for accessing Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="PnP.Framework.Entities.UnifiedGroupEntity.html">UnifiedGroupEntity</a>&gt;
+        <p><p>A list of unified group objects for the deleted groups.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility_ListUnifiedGroups_System_String_System_String_System_String_System_Int32_System_Int32_System_Boolean_System_Int32_System_Int32_System_Boolean_System_Boolean_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility.ListUnifiedGroups(System.String%2CSystem.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CSystem.Boolean%2CSystem.Int32%2CSystem.Int32%2CSystem.Boolean%2CSystem.Boolean%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L907" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_UnifiedGroupsUtility_ListUnifiedGroups_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.ListUnifiedGroups*"></a>
+  
+  <h4 id="PnP_Framework_Graph_UnifiedGroupsUtility_ListUnifiedGroups_System_String_System_String_System_String_System_Int32_System_Int32_System_Boolean_System_Int32_System_Int32_System_Boolean_System_Boolean_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.ListUnifiedGroups(System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean,System.Int32,System.Int32,System.Boolean,System.Boolean,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_ListUnifiedGroups_System_String_System_String_System_String_System_Int32_System_Int32_System_Boolean_System_Int32_System_Int32_System_Boolean_System_Boolean_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">ListUnifiedGroups(String, String, String, Int32, Int32, Boolean, Int32, Int32, Boolean, Boolean, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_ListUnifiedGroups_System_String_System_String_System_String_System_Int32_System_Int32_System_Boolean_System_Int32_System_Int32_System_Boolean_System_Boolean_PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns all the Office 365 Groups in the current Tenant based on a startIndex. IncludeSite adds additional properties about the Modern SharePoint Site backing the group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;ListUnifiedGroups is deprecated, please use GetUnifiedGroups instead.&quot;)]
+public static List&lt;UnifiedGroupEntity&gt; ListUnifiedGroups(string accessToken, string displayName = null, string mailNickname = null, int startIndex = 0, int endIndex = 999, bool includeSite = true, int retryCount = 10, int delay = 500, bool includeClassification = false, bool includeHasTeam = false, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">displayName</span>
+        <p><p>The DisplayName of the Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">mailNickname</span>
+        <p><p>The MailNickname of the Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">startIndex</span>
+        <p><p>Not relevant anymore</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">endIndex</span>
+        <p><p>Not relevant anymore</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">includeSite</span>
+        <p><p>Defines whether to return details about the Modern SharePoint Site backing the group. Default is true.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">includeClassification</span>
+        <p><p>Defines whether or not to return details about the Modern Site classification value.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">includeHasTeam</span>
+        <p><p>Defines whether to check for each unified group if it has a Microsoft Team provisioned for it. Default is false.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="PnP.Framework.Entities.UnifiedGroupEntity.html">UnifiedGroupEntity</a>&gt;
+        <p><p>An IList of SiteEntity objects</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility_PermanentlyDeleteUnifiedGroup_System_String_System_String_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility.PermanentlyDeleteUnifiedGroup(System.String%2CSystem.String%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L1996" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_UnifiedGroupsUtility_PermanentlyDeleteUnifiedGroup_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.PermanentlyDeleteUnifiedGroup*"></a>
+  
+  <h4 id="PnP_Framework_Graph_UnifiedGroupsUtility_PermanentlyDeleteUnifiedGroup_System_String_System_String_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.PermanentlyDeleteUnifiedGroup(System.String,System.String,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_PermanentlyDeleteUnifiedGroup_System_String_System_String_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">PermanentlyDeleteUnifiedGroup(String, String, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_PermanentlyDeleteUnifiedGroup_System_String_System_String_PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Permanently deletes one deleted unified group based on its ID.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PermanentlyDeleteUnifiedGroup(string groupId, string accessToken, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>The ID of the deleted group.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>Access token for accessing Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility_RemoveUnifiedGroupMembers_System_String_System_String___System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility.RemoveUnifiedGroupMembers(System.String%2CSystem.String%5B%5D%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L1367" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_UnifiedGroupsUtility_RemoveUnifiedGroupMembers_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.RemoveUnifiedGroupMembers*"></a>
+  
+  <h4 id="PnP_Framework_Graph_UnifiedGroupsUtility_RemoveUnifiedGroupMembers_System_String_System_String___System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.RemoveUnifiedGroupMembers(System.String,System.String[],System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_RemoveUnifiedGroupMembers_System_String_System_String___System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">RemoveUnifiedGroupMembers(String, String[], String, Int32, Int32, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_RemoveUnifiedGroupMembers_System_String_System_String___System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Removes members from a Microsoft 365 group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RemoveUnifiedGroupMembers(string groupId, string[] members, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>Id of the Microsoft 365 group to remove the members from</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">members</span>
+        <p><p>String array with the UPNs of the users that need to be removed as members from the group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility_RemoveUnifiedGroupOwners_System_String_System_String___System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility.RemoveUnifiedGroupOwners(System.String%2CSystem.String%5B%5D%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L1429" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_UnifiedGroupsUtility_RemoveUnifiedGroupOwners_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.RemoveUnifiedGroupOwners*"></a>
+  
+  <h4 id="PnP_Framework_Graph_UnifiedGroupsUtility_RemoveUnifiedGroupOwners_System_String_System_String___System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.RemoveUnifiedGroupOwners(System.String,System.String[],System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_RemoveUnifiedGroupOwners_System_String_System_String___System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">RemoveUnifiedGroupOwners(String, String[], String, Int32, Int32, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_RemoveUnifiedGroupOwners_System_String_System_String___System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Removes owners from a Microsoft 365 group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RemoveUnifiedGroupOwners(string groupId, string[] owners, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>Id of the Microsoft 365 group to remove the owners from</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">owners</span>
+        <p><p>String array with the UPNs of the users that need to be removed as owners from the group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility_RenewUnifiedGroup_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility.RenewUnifiedGroup(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L557" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_UnifiedGroupsUtility_RenewUnifiedGroup_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.RenewUnifiedGroup*"></a>
+  
+  <h4 id="PnP_Framework_Graph_UnifiedGroupsUtility_RenewUnifiedGroup_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.RenewUnifiedGroup(System.String,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_RenewUnifiedGroup_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">RenewUnifiedGroup(String, String, Int32, Int32, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_RenewUnifiedGroup_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Renews the Office 365 Group by extending its expiration with the number of days defined in the group expiration policy set on the Azure Active Directory</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RenewUnifiedGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>The ID of the Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility_RestoreDeletedUnifiedGroup_System_String_System_String_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility.RestoreDeletedUnifiedGroup(System.String%2CSystem.String%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L1976" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_UnifiedGroupsUtility_RestoreDeletedUnifiedGroup_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.RestoreDeletedUnifiedGroup*"></a>
+  
+  <h4 id="PnP_Framework_Graph_UnifiedGroupsUtility_RestoreDeletedUnifiedGroup_System_String_System_String_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.RestoreDeletedUnifiedGroup(System.String,System.String,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_RestoreDeletedUnifiedGroup_System_String_System_String_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">RestoreDeletedUnifiedGroup(String, String, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_RestoreDeletedUnifiedGroup_System_String_System_String_PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Restores one deleted unified group based on its ID.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RestoreDeletedUnifiedGroup(string groupId, string accessToken, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>The ID of the deleted group.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>Access token for accessing Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility_SetUnifiedGroupVisibility_System_String_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility.SetUnifiedGroupVisibility(System.String%2CSystem.String%2CSystem.Nullable%7BSystem.Boolean%7D%2CSystem.Nullable%7BSystem.Boolean%7D%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L509" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_UnifiedGroupsUtility_SetUnifiedGroupVisibility_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.SetUnifiedGroupVisibility*"></a>
+  
+  <h4 id="PnP_Framework_Graph_UnifiedGroupsUtility_SetUnifiedGroupVisibility_System_String_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.SetUnifiedGroupVisibility(System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_SetUnifiedGroupVisibility_System_String_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">SetUnifiedGroupVisibility(String, String, Nullable&lt;Boolean&gt;, Nullable&lt;Boolean&gt;, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_SetUnifiedGroupVisibility_System_String_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Sets the visibility of a Group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetUnifiedGroupVisibility(string groupId, string accessToken, bool? hideFromAddressLists, bool? hideFromOutlookClients, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>Id of the Microsoft 365 Group to set the visibility state for</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</span>
+        <span class="parametername">hideFromAddressLists</span>
+        <p><p>True if the group should not be displayed in certain parts of the Outlook UI: the Address Book, address lists for selecting message recipients, and the Browse Groups dialog for searching groups; otherwise, false. Default value is false.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</span>
+        <span class="parametername">hideFromOutlookClients</span>
+        <p><p>True if the group should not be displayed in Outlook clients, such as Outlook for Windows and Outlook on the web; otherwise, false. Default value is false.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_UnifiedGroupsUtility_UpdateUnifiedGroup_System_String_System_String_System_Int32_System_Int32_System_String_System_String_System_String___System_String___System_IO_Stream_System_Nullable_System_Boolean__System_Boolean_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.UnifiedGroupsUtility.UpdateUnifiedGroup(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CSystem.String%2CSystem.String%2CSystem.String%5B%5D%2CSystem.String%5B%5D%2CSystem.IO.Stream%2CSystem.Nullable%7BSystem.Boolean%7D%2CSystem.Boolean%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs/#L596" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_UnifiedGroupsUtility_UpdateUnifiedGroup_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.UpdateUnifiedGroup*"></a>
+  
+  <h4 id="PnP_Framework_Graph_UnifiedGroupsUtility_UpdateUnifiedGroup_System_String_System_String_System_Int32_System_Int32_System_String_System_String_System_String___System_String___System_IO_Stream_System_Nullable_System_Boolean__System_Boolean_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.UnifiedGroupsUtility.UpdateUnifiedGroup(System.String,System.String,System.Int32,System.Int32,System.String,System.String,System.String[],System.String[],System.IO.Stream,System.Nullable{System.Boolean},System.Boolean,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_UpdateUnifiedGroup_System_String_System_String_System_Int32_System_Int32_System_String_System_String_System_String___System_String___System_IO_Stream_System_Nullable_System_Boolean__System_Boolean_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">UpdateUnifiedGroup(String, String, Int32, Int32, String, String, String[], String[], Stream, Nullable&lt;Boolean&gt;, Boolean, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_UnifiedGroupsUtility_UpdateUnifiedGroup_System_String_System_String_System_Int32_System_Int32_System_String_System_String_System_String___System_String___System_IO_Stream_System_Nullable_System_Boolean__System_Boolean_PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Updates the logo, members or visibility state of an Office 365 Group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool UpdateUnifiedGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500, string displayName = null, string description = null, string[] owners = null, string[] members = null, Stream groupLogo = null, bool? isPrivate = null, bool createTeam = false, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>The ID of the Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">displayName</span>
+        <p><p>The Display Name for the Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">description</span>
+        <p><p>The Description for the Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">owners</span>
+        <p><p>A list of UPNs for group owners, if any, to be added to the site</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">members</span>
+        <p><p>A list of UPNs for group members, if any, to be added to the site</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></span>
+        <span class="parametername">groupLogo</span>
+        <p><p>The binary stream of the logo for the Office 365 Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</span>
+        <span class="parametername">isPrivate</span>
+        <p><p>Defines whether the group will be private or public, optional with default false (i.e. public)</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">createTeam</span>
+        <p><p>Defines whether to create MS Teams team associated with the group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p><p>Declares whether the Office 365 Group has been updated or not</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

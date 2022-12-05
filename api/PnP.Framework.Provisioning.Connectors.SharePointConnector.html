@@ -1,0 +1,1092 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class SharePointConnector
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class SharePointConnector
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/SharePointConnector.cs/#L16" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_SharePointConnector.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.SharePointConnector%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="PnP_Framework_Provisioning_Connectors_SharePointConnector" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector">Class SharePointConnector
+  </h1>
+  <div class="markdown level0 summary"><p>Connector for files in SharePoint</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><a class="xref" href="PnP.Framework.Provisioning.Connectors.FileConnectorBase.html">FileConnectorBase</a></div>
+    <div class="level2"><span class="xref">SharePointConnector</span></div>
+  </div>
+  
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="PnP.Framework.Provisioning.Connectors.FileConnectorBase.html#PnP_Framework_Provisioning_Connectors_FileConnectorBase_CONNECTIONSTRING">FileConnectorBase.CONNECTIONSTRING</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Provisioning.Connectors.FileConnectorBase.html#PnP_Framework_Provisioning_Connectors_FileConnectorBase_CONTAINER">FileConnectorBase.CONTAINER</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Provisioning.Connectors.FileConnectorBase.html#PnP_Framework_Provisioning_Connectors_FileConnectorBase_Parameters">FileConnectorBase.Parameters</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Provisioning.Connectors.FileConnectorBase.html#PnP_Framework_Provisioning_Connectors_FileConnectorBase_AddParameterAsString_System_String_System_String_">FileConnectorBase.AddParameterAsString(String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Provisioning.Connectors.FileConnectorBase.html#PnP_Framework_Provisioning_Connectors_FileConnectorBase_AddParameter_System_String_System_Object_">FileConnectorBase.AddParameter(String, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="PnP.Framework.Provisioning.Connectors.html">PnP.Framework.Provisioning.Connectors</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="PnP_Framework_Provisioning_Connectors_SharePointConnector_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class SharePointConnector : FileConnectorBase</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_SharePointConnector__ctor.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.SharePointConnector.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/SharePointConnector.cs/#L26" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_SharePointConnector__ctor_" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.#ctor*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_SharePointConnector__ctor" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.#ctor"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector__ctor" class="expander" data-toggle="collapse">SharePointConnector()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector__ctor" class="collapse in">
+  <div class="markdown level1 summary"><p>Base constructor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SharePointConnector()</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_SharePointConnector__ctor_Microsoft_SharePoint_Client_ClientRuntimeContext_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.SharePointConnector.%23ctor(Microsoft.SharePoint.Client.ClientRuntimeContext%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/SharePointConnector.cs/#L38" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_SharePointConnector__ctor_" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.#ctor*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_SharePointConnector__ctor_Microsoft_SharePoint_Client_ClientRuntimeContext_System_String_System_String_" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.#ctor(Microsoft.SharePoint.Client.ClientRuntimeContext,System.String,System.String)"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector__ctor_Microsoft_SharePoint_Client_ClientRuntimeContext_System_String_System_String_" class="expander" data-toggle="collapse">SharePointConnector(ClientRuntimeContext, String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector__ctor_Microsoft_SharePoint_Client_ClientRuntimeContext_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>SharePointConnector constructor. Allows to directly set root folder and sub folder</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SharePointConnector(ClientRuntimeContext clientContext, string connectionString, string container)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.sharepoint.client.clientruntimecontext">ClientRuntimeContext</a></span>
+        <span class="parametername">clientContext</span>
+        <p><p>Client context for SharePoint connection</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">connectionString</span>
+        <p><p>Site collection URL (e.g. <a href="https://yourtenant.sharepoint.com/sites/dev">https://yourtenant.sharepoint.com/sites/dev</a>)</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">container</span>
+        <p><p>Library + folder that holds the files (mydocs/myfolder)</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_SharePointConnector_CLIENTCONTEXT.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.SharePointConnector.CLIENTCONTEXT%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/SharePointConnector.cs/#L19" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_SharePointConnector_CLIENTCONTEXT" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.CLIENTCONTEXT"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_CLIENTCONTEXT" class="expander" data-toggle="collapse">CLIENTCONTEXT</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_CLIENTCONTEXT" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string CLIENTCONTEXT = &quot;ClientContext&quot;</code></pre>
+  </div>
+  
+  
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_SharePointConnector_DeleteFile_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.SharePointConnector.DeleteFile(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/SharePointConnector.cs/#L328" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_SharePointConnector_DeleteFile_" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.DeleteFile*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_SharePointConnector_DeleteFile_System_String_" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.DeleteFile(System.String)"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_DeleteFile_System_String_" class="expander" data-toggle="collapse">DeleteFile(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_DeleteFile_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Deletes a file from the default container</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void DeleteFile(string fileName)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">fileName</span>
+        <p><p>Name of the file to delete</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="PnP.Framework.Provisioning.Connectors.FileConnectorBase.html#PnP_Framework_Provisioning_Connectors_FileConnectorBase_DeleteFile_System_String_">FileConnectorBase.DeleteFile(String)</a></div>
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_SharePointConnector_DeleteFile_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.SharePointConnector.DeleteFile(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/SharePointConnector.cs/#L338" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_SharePointConnector_DeleteFile_" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.DeleteFile*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_SharePointConnector_DeleteFile_System_String_System_String_" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.DeleteFile(System.String,System.String)"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_DeleteFile_System_String_System_String_" class="expander" data-toggle="collapse">DeleteFile(String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_DeleteFile_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Deletes a file from the specified container</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void DeleteFile(string fileName, string container)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">fileName</span>
+        <p><p>Name of the file to delete</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">container</span>
+        <p><p>Name of the container to delete the file from</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="PnP.Framework.Provisioning.Connectors.FileConnectorBase.html#PnP_Framework_Provisioning_Connectors_FileConnectorBase_DeleteFile_System_String_System_String_">FileConnectorBase.DeleteFile(String, String)</a></div>
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFile_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.SharePointConnector.GetFile(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/SharePointConnector.cs/#L174" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFile_" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.GetFile*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFile_System_String_" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.GetFile(System.String)"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFile_System_String_" class="expander" data-toggle="collapse">GetFile(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFile_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets a file as string from the default container</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string GetFile(string fileName)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">fileName</span>
+        <p><p>Name of the file to get</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>String containing the file contents</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="PnP.Framework.Provisioning.Connectors.FileConnectorBase.html#PnP_Framework_Provisioning_Connectors_FileConnectorBase_GetFile_System_String_">FileConnectorBase.GetFile(String)</a></div>
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFile_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.SharePointConnector.GetFile(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/SharePointConnector.cs/#L185" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFile_" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.GetFile*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFile_System_String_System_String_" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.GetFile(System.String,System.String)"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFile_System_String_System_String_" class="expander" data-toggle="collapse">GetFile(String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFile_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets a file as string from the specified container</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string GetFile(string fileName, string container)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">fileName</span>
+        <p><p>Name of the file to get</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">container</span>
+        <p><p>Name of the container to get the file from</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>String containing the file contents</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="PnP.Framework.Provisioning.Connectors.FileConnectorBase.html#PnP_Framework_Provisioning_Connectors_FileConnectorBase_GetFile_System_String_System_String_">FileConnectorBase.GetFile(String, String)</a></div>
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFilenamePart_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.SharePointConnector.GetFilenamePart(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/SharePointConnector.cs/#L378" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFilenamePart_" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.GetFilenamePart*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFilenamePart_System_String_" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.GetFilenamePart(System.String)"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFilenamePart_System_String_" class="expander" data-toggle="collapse">GetFilenamePart(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFilenamePart_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns a filename without a path</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string GetFilenamePart(string fileName)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">fileName</span>
+        <p><p>Name of the file</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>
+        <p><p>Returns a filename without a path</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="PnP.Framework.Provisioning.Connectors.FileConnectorBase.html#PnP_Framework_Provisioning_Connectors_FileConnectorBase_GetFilenamePart_System_String_">FileConnectorBase.GetFilenamePart(String)</a></div>
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFiles.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.SharePointConnector.GetFiles%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/SharePointConnector.cs/#L69" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFiles_" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.GetFiles*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFiles" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.GetFiles"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFiles" class="expander" data-toggle="collapse">GetFiles()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFiles" class="collapse in">
+  <div class="markdown level1 summary"><p>Get the files available in the default container</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override List&lt;string&gt; GetFiles()</code></pre>
+  </div>
+  
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;
+        <p><p>List of files</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="PnP.Framework.Provisioning.Connectors.FileConnectorBase.html#PnP_Framework_Provisioning_Connectors_FileConnectorBase_GetFiles">FileConnectorBase.GetFiles()</a></div>
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFiles_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.SharePointConnector.GetFiles(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/SharePointConnector.cs/#L79" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFiles_" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.GetFiles*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFiles_System_String_" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.GetFiles(System.String)"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFiles_System_String_" class="expander" data-toggle="collapse">GetFiles(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFiles_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Get the files available in the specified container</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override List&lt;string&gt; GetFiles(string container)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">container</span>
+        <p><p>Name of the container to get the files from</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;
+        <p><p>List of files</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="PnP.Framework.Provisioning.Connectors.FileConnectorBase.html#PnP_Framework_Provisioning_Connectors_FileConnectorBase_GetFiles_System_String_">FileConnectorBase.GetFiles(String)</a></div>
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFileStream_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.SharePointConnector.GetFileStream(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/SharePointConnector.cs/#L226" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFileStream_" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.GetFileStream*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFileStream_System_String_" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.GetFileStream(System.String)"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFileStream_System_String_" class="expander" data-toggle="collapse">GetFileStream(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFileStream_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets a file as stream from the default container</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Stream GetFileStream(string fileName)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">fileName</span>
+        <p><p>Name of the file to get</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a>
+        <p><p>String containing the file contents</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="PnP.Framework.Provisioning.Connectors.FileConnectorBase.html#PnP_Framework_Provisioning_Connectors_FileConnectorBase_GetFileStream_System_String_">FileConnectorBase.GetFileStream(String)</a></div>
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFileStream_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.SharePointConnector.GetFileStream(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/SharePointConnector.cs/#L237" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFileStream_" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.GetFileStream*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFileStream_System_String_System_String_" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.GetFileStream(System.String,System.String)"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFileStream_System_String_System_String_" class="expander" data-toggle="collapse">GetFileStream(String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFileStream_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets a file as stream from the specified container</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Stream GetFileStream(string fileName, string container)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">fileName</span>
+        <p><p>Name of the file to get</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">container</span>
+        <p><p>Name of the container to get the file from</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a>
+        <p><p>String containing the file contents</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="PnP.Framework.Provisioning.Connectors.FileConnectorBase.html#PnP_Framework_Provisioning_Connectors_FileConnectorBase_GetFileStream_System_String_System_String_">FileConnectorBase.GetFileStream(String, String)</a></div>
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFolders.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.SharePointConnector.GetFolders%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/SharePointConnector.cs/#L121" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFolders_" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.GetFolders*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFolders" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.GetFolders"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFolders" class="expander" data-toggle="collapse">GetFolders()</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFolders" class="collapse in">
+  <div class="markdown level1 summary"><p>Get the folders of the default container</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override List&lt;string&gt; GetFolders()</code></pre>
+  </div>
+  
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;
+        <p><p>List of folders</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="PnP.Framework.Provisioning.Connectors.FileConnectorBase.html#PnP_Framework_Provisioning_Connectors_FileConnectorBase_GetFolders">FileConnectorBase.GetFolders()</a></div>
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFolders_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.SharePointConnector.GetFolders(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/SharePointConnector.cs/#L131" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFolders_" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.GetFolders*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFolders_System_String_" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.GetFolders(System.String)"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFolders_System_String_" class="expander" data-toggle="collapse">GetFolders(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_GetFolders_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Get the folders of a specified container</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override List&lt;string&gt; GetFolders(string container)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">container</span>
+        <p><p>Name of the container to get the folders from</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;
+        <p><p>List of folders</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="PnP.Framework.Provisioning.Connectors.FileConnectorBase.html#PnP_Framework_Provisioning_Connectors_FileConnectorBase_GetFolders_System_String_">FileConnectorBase.GetFolders(String)</a></div>
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_SharePointConnector_SaveFileStream_System_String_System_IO_Stream_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.SharePointConnector.SaveFileStream(System.String%2CSystem.IO.Stream)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/SharePointConnector.cs/#L258" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_SharePointConnector_SaveFileStream_" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.SaveFileStream*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_SharePointConnector_SaveFileStream_System_String_System_IO_Stream_" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.SaveFileStream(System.String,System.IO.Stream)"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_SaveFileStream_System_String_System_IO_Stream_" class="expander" data-toggle="collapse">SaveFileStream(String, Stream)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_SaveFileStream_System_String_System_IO_Stream_" class="collapse in">
+  <div class="markdown level1 summary"><p>Saves a stream to the default container with the given name. If the file exists it will be overwritten</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void SaveFileStream(string fileName, Stream stream)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">fileName</span>
+        <p><p>Name of the file to save</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></span>
+        <span class="parametername">stream</span>
+        <p><p>Stream containing the file contents</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="PnP.Framework.Provisioning.Connectors.FileConnectorBase.html#PnP_Framework_Provisioning_Connectors_FileConnectorBase_SaveFileStream_System_String_System_IO_Stream_">FileConnectorBase.SaveFileStream(String, Stream)</a></div>
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Provisioning_Connectors_SharePointConnector_SaveFileStream_System_String_System_String_System_IO_Stream_.md&amp;value=---%0Auid%3A%20PnP.Framework.Provisioning.Connectors.SharePointConnector.SaveFileStream(System.String%2CSystem.String%2CSystem.IO.Stream)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Provisioning/Connectors/SharePointConnector.cs/#L269" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Provisioning_Connectors_SharePointConnector_SaveFileStream_" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.SaveFileStream*"></a>
+  
+  <h4 id="PnP_Framework_Provisioning_Connectors_SharePointConnector_SaveFileStream_System_String_System_String_System_IO_Stream_" data-uid="PnP.Framework.Provisioning.Connectors.SharePointConnector.SaveFileStream(System.String,System.String,System.IO.Stream)"><a href="#collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_SaveFileStream_System_String_System_String_System_IO_Stream_" class="expander" data-toggle="collapse">SaveFileStream(String, String, Stream)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Provisioning_Connectors_SharePointConnector_SaveFileStream_System_String_System_String_System_IO_Stream_" class="collapse in">
+  <div class="markdown level1 summary"><p>Saves a stream to the specified container with the given name. If the file exists it will be overwritten</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void SaveFileStream(string fileName, string container, Stream stream)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">fileName</span>
+        <p><p>Name of the file to save</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">container</span>
+        <p><p>Name of the container to save the file to</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></span>
+        <span class="parametername">stream</span>
+        <p><p>Stream containing the file contents</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="PnP.Framework.Provisioning.Connectors.FileConnectorBase.html#PnP_Framework_Provisioning_Connectors_FileConnectorBase_SaveFileStream_System_String_System_String_System_IO_Stream_">FileConnectorBase.SaveFileStream(String, String, Stream)</a></div>
+  
+  
+  
+  
+  
+  </div>
+  
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="System.ValidationExtensions.html#System_ValidationExtensions_ValidateNotNullOrEmpty__1___0_System_String_">ValidationExtensions.ValidateNotNullOrEmpty&lt;T&gt;(T, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_Set__2___0_System_Linq_Expressions_Expression_System_Func___0___1_____1_System_Boolean_System_Boolean_">ObjectExtensions.Set&lt;TObject, T&gt;(TObject, Expression&lt;Func&lt;TObject, T&gt;&gt;, T, Boolean, Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstancePropertyValue_System_Object_System_String_">ObjectExtensions.GetPublicInstancePropertyValue(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstanceProperty_System_Object_System_String_">ObjectExtensions.GetPublicInstanceProperty(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_SetPublicInstancePropertyValue_System_Object_System_String_System_Object_">ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="PnP.Framework.Modernization.Cache.Extensions.html#PnP_Framework_Modernization_Cache_Extensions_ToByteArray_System_Object_">Extensions.ToByteArray(Object)</a>
+  </div>
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

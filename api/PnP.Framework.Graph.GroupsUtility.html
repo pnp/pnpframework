@@ -1,0 +1,1626 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class GroupsUtility
+   | PnP Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class GroupsUtility
+   | PnP Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "etrmmrwwrp");
+  </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <label class="glyphicon glyphicon-search" for="search-query"></label>
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PnP.Framework.Graph.GroupsUtility">
+                  <div class="contribution-panel mobile-hide pull-right">
+                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L21" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                  </div>
+                      <h1 id="PnP_Framework_Graph_GroupsUtility" data-uid="PnP.Framework.Graph.GroupsUtility">Class GroupsUtility
+  </h1>
+  <div class="markdown level0 summary"><p>Class that deals with Azure Active Directory group CRUD operations.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">GroupsUtility</span></div>
+  </div>
+  
+  
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  
+  <h6><strong>Namespace</strong>: <a class="xref" href="PnP.Framework.Graph.html">PnP.Framework.Graph</a></h6>
+  <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
+  
+  <h5 id="PnP_Framework_Graph_GroupsUtility_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class GroupsUtility</code></pre>
+  </div>
+  
+  
+  
+  
+  
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_AddGroupMembers_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.AddGroupMembers(System.String%2CSystem.String%5B%5D%2CSystem.String%2CSystem.Boolean%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L807" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_GroupsUtility_AddGroupMembers_" data-uid="PnP.Framework.Graph.GroupsUtility.AddGroupMembers*"></a>
+  
+  <h4 id="PnP_Framework_Graph_GroupsUtility_AddGroupMembers_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_" data-uid="PnP.Framework.Graph.GroupsUtility.AddGroupMembers(System.String,System.String[],System.String,System.Boolean,System.Int32,System.Int32)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_AddGroupMembers_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_" class="expander" data-toggle="collapse">AddGroupMembers(String, String[], String, Boolean, Int32, Int32)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_AddGroupMembers_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_" class="collapse in">
+  <div class="markdown level1 summary"><p>Adds members to an Azure Active Directory group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void AddGroupMembers(string groupId, string[] members, string accessToken, bool removeExistingMembers = false, int retryCount = 10, int delay = 500)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>Id of the Azure Active Directory group to add the members to</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">members</span>
+        <p><p>String array with the UPNs of the users that need to be added as members to the group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">removeExistingMembers</span>
+        <p><p>If true, all existing members will be removed and only those provided will become members. If false, existing members will remain and the ones provided will be added to the list with existing members.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_AddGroupOwners_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.AddGroupOwners(System.String%2CSystem.String%5B%5D%2CSystem.String%2CSystem.Boolean%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L774" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_GroupsUtility_AddGroupOwners_" data-uid="PnP.Framework.Graph.GroupsUtility.AddGroupOwners*"></a>
+  
+  <h4 id="PnP_Framework_Graph_GroupsUtility_AddGroupOwners_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_" data-uid="PnP.Framework.Graph.GroupsUtility.AddGroupOwners(System.String,System.String[],System.String,System.Boolean,System.Int32,System.Int32)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_AddGroupOwners_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_" class="expander" data-toggle="collapse">AddGroupOwners(String, String[], String, Boolean, Int32, Int32)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_AddGroupOwners_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_" class="collapse in">
+  <div class="markdown level1 summary"><p>Adds owners to an Azure Active Directory group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void AddGroupOwners(string groupId, string[] owners, string accessToken, bool removeExistingOwners = false, int retryCount = 10, int delay = 500)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>Id of the Azure Active Directory Group to add the owners to</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">owners</span>
+        <p><p>String array with the UPNs of the users that need to be added as owners to the group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">removeExistingOwners</span>
+        <p><p>If true, all existing owners will be removed and only those provided will become owners. If false, existing owners will remain and the ones provided will be added to the list with existing owners.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_ClearGroupMembers_System_String_System_String_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.ClearGroupMembers(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L972" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_GroupsUtility_ClearGroupMembers_" data-uid="PnP.Framework.Graph.GroupsUtility.ClearGroupMembers*"></a>
+  
+  <h4 id="PnP_Framework_Graph_GroupsUtility_ClearGroupMembers_System_String_System_String_System_Int32_System_Int32_" data-uid="PnP.Framework.Graph.GroupsUtility.ClearGroupMembers(System.String,System.String,System.Int32,System.Int32)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_ClearGroupMembers_System_String_System_String_System_Int32_System_Int32_" class="expander" data-toggle="collapse">ClearGroupMembers(String, String, Int32, Int32)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_ClearGroupMembers_System_String_System_String_System_Int32_System_Int32_" class="collapse in">
+  <div class="markdown level1 summary"><p>Removes all members of an Azure Active Directory group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void ClearGroupMembers(string groupId, string accessToken, int retryCount = 10, int delay = 500)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>Id of the Azure Active Directory group to remove all the current members of</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_ClearGroupOwners_System_String_System_String_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.ClearGroupOwners(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L946" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_GroupsUtility_ClearGroupOwners_" data-uid="PnP.Framework.Graph.GroupsUtility.ClearGroupOwners*"></a>
+  
+  <h4 id="PnP_Framework_Graph_GroupsUtility_ClearGroupOwners_System_String_System_String_System_Int32_System_Int32_" data-uid="PnP.Framework.Graph.GroupsUtility.ClearGroupOwners(System.String,System.String,System.Int32,System.Int32)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_ClearGroupOwners_System_String_System_String_System_Int32_System_Int32_" class="expander" data-toggle="collapse">ClearGroupOwners(String, String, Int32, Int32)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_ClearGroupOwners_System_String_System_String_System_Int32_System_Int32_" class="collapse in">
+  <div class="markdown level1 summary"><p>Removes all owners of an Azure Active Directory group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void ClearGroupOwners(string groupId, string accessToken, int retryCount = 10, int delay = 500)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>Id of the Azure Active Directory group to remove all the current owners of</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_CreateGroup_System_String_System_String_System_String_System_Boolean_System_Boolean_System_String_System_String___System_String___System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.CreateGroup(System.String%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.Boolean%2CSystem.String%2CSystem.String%5B%5D%2CSystem.String%5B%5D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L68" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_GroupsUtility_CreateGroup_" data-uid="PnP.Framework.Graph.GroupsUtility.CreateGroup*"></a>
+  
+  <h4 id="PnP_Framework_Graph_GroupsUtility_CreateGroup_System_String_System_String_System_String_System_Boolean_System_Boolean_System_String_System_String___System_String___System_Int32_System_Int32_" data-uid="PnP.Framework.Graph.GroupsUtility.CreateGroup(System.String,System.String,System.String,System.Boolean,System.Boolean,System.String,System.String[],System.String[],System.Int32,System.Int32)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_CreateGroup_System_String_System_String_System_String_System_Boolean_System_Boolean_System_String_System_String___System_String___System_Int32_System_Int32_" class="expander" data-toggle="collapse">CreateGroup(String, String, String, Boolean, Boolean, String, String[], String[], Int32, Int32)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_CreateGroup_System_String_System_String_System_String_System_Boolean_System_Boolean_System_String_System_String___System_String___System_Int32_System_Int32_" class="collapse in">
+  <div class="markdown level1 summary"><p>Creates a new Azure Active Directory Group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static GroupEntity CreateGroup(string displayName, string description, string mailNickname, bool mailEnabled, bool securityEnabled, string accessToken, string[] owners = null, string[] members = null, int retryCount = 10, int delay = 500)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">displayName</span>
+        <p><p>The Display Name for the Azure Active Directory Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">description</span>
+        <p><p>The Description for the Azure Active Directory Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">mailNickname</span>
+        <p><p>The Mail Nickname for the Azure Active Directory Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">mailEnabled</span>
+        <p><p>Boolean indicating if the group will be mail enabled</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">securityEnabled</span>
+        <p><p>Boolean indicating if the group will be security enabled</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">owners</span>
+        <p><p>A list of UPNs for group owners, if any</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">members</span>
+        <p><p>A list of UPNs for group members, if any</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Entities.GroupEntity.html">GroupEntity</a>
+        <p><p>The just created Azure Active Directory Group</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_DeleteGroup_System_String_System_String_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.DeleteGroup(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L499" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_GroupsUtility_DeleteGroup_" data-uid="PnP.Framework.Graph.GroupsUtility.DeleteGroup*"></a>
+  
+  <h4 id="PnP_Framework_Graph_GroupsUtility_DeleteGroup_System_String_System_String_System_Int32_System_Int32_" data-uid="PnP.Framework.Graph.GroupsUtility.DeleteGroup(System.String,System.String,System.Int32,System.Int32)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_DeleteGroup_System_String_System_String_System_Int32_System_Int32_" class="expander" data-toggle="collapse">DeleteGroup(String, String, Int32, Int32)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_DeleteGroup_System_String_System_String_System_Int32_System_Int32_" class="collapse in">
+  <div class="markdown level1 summary"><p>Deletes an Azure Active Directory Group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void DeleteGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>The ID of the Azure Active Directory Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_GetDeletedGroup_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.GetDeletedGroup(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L1207" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_GroupsUtility_GetDeletedGroup_" data-uid="PnP.Framework.Graph.GroupsUtility.GetDeletedGroup*"></a>
+  
+  <h4 id="PnP_Framework_Graph_GroupsUtility_GetDeletedGroup_System_String_System_String_" data-uid="PnP.Framework.Graph.GroupsUtility.GetDeletedGroup(System.String,System.String)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_GetDeletedGroup_System_String_System_String_" class="expander" data-toggle="collapse">GetDeletedGroup(String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_GetDeletedGroup_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Gets one deleted Azure Active Directory group based on its ID</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static GroupEntity GetDeletedGroup(string groupId, string accessToken)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>The ID of the deleted group.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>Access token for accessing Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Entities.GroupEntity.html">GroupEntity</a>
+        <p><p>The unified group object of the deleted group that matches the provided ID.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_GetGroup_System_String_System_String_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.GetGroup(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L535" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_GroupsUtility_GetGroup_" data-uid="PnP.Framework.Graph.GroupsUtility.GetGroup*"></a>
+  
+  <h4 id="PnP_Framework_Graph_GroupsUtility_GetGroup_System_String_System_String_System_Int32_System_Int32_" data-uid="PnP.Framework.Graph.GroupsUtility.GetGroup(System.String,System.String,System.Int32,System.Int32)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_GetGroup_System_String_System_String_System_Int32_System_Int32_" class="expander" data-toggle="collapse">GetGroup(String, String, Int32, Int32)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_GetGroup_System_String_System_String_System_Int32_System_Int32_" class="collapse in">
+  <div class="markdown level1 summary"><p>Get an Azure Active Directory Group by Id</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static GroupEntity GetGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>The ID of the Azure Active Directory Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="PnP.Framework.Entities.GroupEntity.html">GroupEntity</a>
+        <p><p>Group instance if found</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_GetGroupMembers_PnP_Framework_Entities_GroupEntity_System_String_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.GetGroupMembers(PnP.Framework.Entities.GroupEntity%2CSystem.String%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L683" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_GroupsUtility_GetGroupMembers_" data-uid="PnP.Framework.Graph.GroupsUtility.GetGroupMembers*"></a>
+  
+  <h4 id="PnP_Framework_Graph_GroupsUtility_GetGroupMembers_PnP_Framework_Entities_GroupEntity_System_String_System_Int32_System_Int32_" data-uid="PnP.Framework.Graph.GroupsUtility.GetGroupMembers(PnP.Framework.Entities.GroupEntity,System.String,System.Int32,System.Int32)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_GetGroupMembers_PnP_Framework_Entities_GroupEntity_System_String_System_Int32_System_Int32_" class="expander" data-toggle="collapse">GetGroupMembers(GroupEntity, String, Int32, Int32)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_GetGroupMembers_PnP_Framework_Entities_GroupEntity_System_String_System_Int32_System_Int32_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns all the Members of an Azure Active Directory group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;GroupUser&gt; GetGroupMembers(GroupEntity group, string accessToken, int retryCount = 10, int delay = 500)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Entities.GroupEntity.html">GroupEntity</a></span>
+        <span class="parametername">group</span>
+        <p><p>The Azure Active Directory group to return its members of</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="PnP.Framework.Entities.GroupUser.html">GroupUser</a>&gt;
+        <p><p>Members of an Azure Active Directory group</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_GetGroupOwners_PnP_Framework_Entities_GroupEntity_System_String_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.GetGroupOwners(PnP.Framework.Entities.GroupEntity%2CSystem.String%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L1001" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_GroupsUtility_GetGroupOwners_" data-uid="PnP.Framework.Graph.GroupsUtility.GetGroupOwners*"></a>
+  
+  <h4 id="PnP_Framework_Graph_GroupsUtility_GetGroupOwners_PnP_Framework_Entities_GroupEntity_System_String_System_Int32_System_Int32_" data-uid="PnP.Framework.Graph.GroupsUtility.GetGroupOwners(PnP.Framework.Entities.GroupEntity,System.String,System.Int32,System.Int32)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_GetGroupOwners_PnP_Framework_Entities_GroupEntity_System_String_System_Int32_System_Int32_" class="expander" data-toggle="collapse">GetGroupOwners(GroupEntity, String, Int32, Int32)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_GetGroupOwners_PnP_Framework_Entities_GroupEntity_System_String_System_Int32_System_Int32_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns all the Owners of an Azure Active Directory group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;GroupUser&gt; GetGroupOwners(GroupEntity group, string accessToken, int retryCount = 10, int delay = 500)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.Entities.GroupEntity.html">GroupEntity</a></span>
+        <span class="parametername">group</span>
+        <p><p>The Azure Active Directory group object</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="PnP.Framework.Entities.GroupUser.html">GroupUser</a>&gt;
+        <p><p>Owners of an Azure Active Directory group</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_GetGroups_System_String_System_String_System_String_System_Int32_System_Nullable_System_Int32__System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.GetGroups(System.String%2CSystem.String%2CSystem.String%2CSystem.Int32%2CSystem.Nullable%7BSystem.Int32%7D%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L595" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_GroupsUtility_GetGroups_" data-uid="PnP.Framework.Graph.GroupsUtility.GetGroups*"></a>
+  
+  <h4 id="PnP_Framework_Graph_GroupsUtility_GetGroups_System_String_System_String_System_String_System_Int32_System_Nullable_System_Int32__System_Int32_System_Int32_System_Int32_" data-uid="PnP.Framework.Graph.GroupsUtility.GetGroups(System.String,System.String,System.String,System.Int32,System.Nullable{System.Int32},System.Int32,System.Int32,System.Int32)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_GetGroups_System_String_System_String_System_String_System_Int32_System_Nullable_System_Int32__System_Int32_System_Int32_System_Int32_" class="expander" data-toggle="collapse">GetGroups(String, String, String, Int32, Nullable&lt;Int32&gt;, Int32, Int32, Int32)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_GetGroups_System_String_System_String_System_String_System_Int32_System_Nullable_System_Int32__System_Int32_System_Int32_System_Int32_" class="collapse in">
+  <div class="markdown level1 summary"><p>Returns all the Azure Active Directory Groups in the current Tenant based on a startIndex.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;GroupEntity&gt; GetGroups(string accessToken, string displayName = null, string mailNickname = null, int startIndex = 0, int? endIndex = null, int retryCount = 10, int delay = 500, int pageSize = 999)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">displayName</span>
+        <p><p>The DisplayName of the Azure Active Directory Group. Leave NULL if you do not want to filter by display name.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">mailNickname</span>
+        <p><p>The MailNickname of the Azure Active Directory Group. Leave NULL if you do not want to filter by mail nickname.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">startIndex</span>
+        <p><p>If not specified, method will start with the first group.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>&gt;</span>
+        <span class="parametername">endIndex</span>
+        <p><p>If not specified, method will return all groups.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">pageSize</span>
+        <p><p>Page size used for the individual requests to Micrsoft Graph. Defaults to 999 which is currently the maximum value.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="PnP.Framework.Entities.GroupEntity.html">GroupEntity</a>&gt;
+        <p><p>List of GroupEntity objects</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_ListDeletedGroups_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.ListDeletedGroups(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L1241" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_GroupsUtility_ListDeletedGroups_" data-uid="PnP.Framework.Graph.GroupsUtility.ListDeletedGroups*"></a>
+  
+  <h4 id="PnP_Framework_Graph_GroupsUtility_ListDeletedGroups_System_String_" data-uid="PnP.Framework.Graph.GroupsUtility.ListDeletedGroups(System.String)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_ListDeletedGroups_System_String_" class="expander" data-toggle="collapse">ListDeletedGroups(String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_ListDeletedGroups_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Lists deleted Azure Active Directory groups</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;GroupEntity&gt; ListDeletedGroups(string accessToken)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>Access token for accessing Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="PnP.Framework.Entities.GroupEntity.html">GroupEntity</a>&gt;
+        <p><p>A list of Azure Active Directory group objects that have been deleted</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_PermanentlyDeleteGroup_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.PermanentlyDeleteGroup(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L1309" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_GroupsUtility_PermanentlyDeleteGroup_" data-uid="PnP.Framework.Graph.GroupsUtility.PermanentlyDeleteGroup*"></a>
+  
+  <h4 id="PnP_Framework_Graph_GroupsUtility_PermanentlyDeleteGroup_System_String_System_String_" data-uid="PnP.Framework.Graph.GroupsUtility.PermanentlyDeleteGroup(System.String,System.String)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_PermanentlyDeleteGroup_System_String_System_String_" class="expander" data-toggle="collapse">PermanentlyDeleteGroup(String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_PermanentlyDeleteGroup_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Permanently deletes one deleted Azure Active Directory group based on its ID</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PermanentlyDeleteGroup(string groupId, string accessToken)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>The ID of the group to permanently delete</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>Access token for accessing Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_RemoveGroupMembers_System_String_System_String___System_String_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.RemoveGroupMembers(System.String%2CSystem.String%5B%5D%2CSystem.String%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L839" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_GroupsUtility_RemoveGroupMembers_" data-uid="PnP.Framework.Graph.GroupsUtility.RemoveGroupMembers*"></a>
+  
+  <h4 id="PnP_Framework_Graph_GroupsUtility_RemoveGroupMembers_System_String_System_String___System_String_System_Int32_System_Int32_" data-uid="PnP.Framework.Graph.GroupsUtility.RemoveGroupMembers(System.String,System.String[],System.String,System.Int32,System.Int32)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_RemoveGroupMembers_System_String_System_String___System_String_System_Int32_System_Int32_" class="expander" data-toggle="collapse">RemoveGroupMembers(String, String[], String, Int32, Int32)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_RemoveGroupMembers_System_String_System_String___System_String_System_Int32_System_Int32_" class="collapse in">
+  <div class="markdown level1 summary"><p>Removes members from an Azure Active Directory group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RemoveGroupMembers(string groupId, string[] members, string accessToken, int retryCount = 10, int delay = 500)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>Id of the Azure Active Directory group to remove the members from</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">members</span>
+        <p><p>String array with the UPNs of the users that need to be removed as members from the group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_RemoveGroupOwners_System_String_System_String___System_String_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.RemoveGroupOwners(System.String%2CSystem.String%5B%5D%2CSystem.String%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L900" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_GroupsUtility_RemoveGroupOwners_" data-uid="PnP.Framework.Graph.GroupsUtility.RemoveGroupOwners*"></a>
+  
+  <h4 id="PnP_Framework_Graph_GroupsUtility_RemoveGroupOwners_System_String_System_String___System_String_System_Int32_System_Int32_" data-uid="PnP.Framework.Graph.GroupsUtility.RemoveGroupOwners(System.String,System.String[],System.String,System.Int32,System.Int32)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_RemoveGroupOwners_System_String_System_String___System_String_System_Int32_System_Int32_" class="expander" data-toggle="collapse">RemoveGroupOwners(String, String[], String, Int32, Int32)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_RemoveGroupOwners_System_String_System_String___System_String_System_Int32_System_Int32_" class="collapse in">
+  <div class="markdown level1 summary"><p>Removes owners from an Azure Active Directory group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RemoveGroupOwners(string groupId, string[] owners, string accessToken, int retryCount = 10, int delay = 500)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>Id of the Azure Active Directory group to remove the owners from</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">owners</span>
+        <p><p>String array with the UPNs of the users that need to be removed as owners from the group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_RestoreDeletedGroup_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.RestoreDeletedGroup(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L1290" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_GroupsUtility_RestoreDeletedGroup_" data-uid="PnP.Framework.Graph.GroupsUtility.RestoreDeletedGroup*"></a>
+  
+  <h4 id="PnP_Framework_Graph_GroupsUtility_RestoreDeletedGroup_System_String_System_String_" data-uid="PnP.Framework.Graph.GroupsUtility.RestoreDeletedGroup(System.String,System.String)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_RestoreDeletedGroup_System_String_System_String_" class="expander" data-toggle="collapse">RestoreDeletedGroup(String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_RestoreDeletedGroup_System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Restores one deleted Azure Active Directory group based on its ID</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RestoreDeletedGroup(string groupId, string accessToken)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>The ID of the deleted group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>Access token for accessing Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_SetGroupVisibility_System_String_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.SetGroupVisibility(System.String%2CSystem.String%2CSystem.Nullable%7BSystem.Boolean%7D%2CSystem.Nullable%7BSystem.Boolean%7D%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L342" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_GroupsUtility_SetGroupVisibility_" data-uid="PnP.Framework.Graph.GroupsUtility.SetGroupVisibility*"></a>
+  
+  <h4 id="PnP_Framework_Graph_GroupsUtility_SetGroupVisibility_System_String_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.GroupsUtility.SetGroupVisibility(System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_SetGroupVisibility_System_String_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">SetGroupVisibility(String, String, Nullable&lt;Boolean&gt;, Nullable&lt;Boolean&gt;, AzureEnvironment)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_SetGroupVisibility_System_String_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__PnP_Framework_AzureEnvironment_" class="collapse in">
+  <div class="markdown level1 summary"><p>Sets the visibility of an Azure Active Directory Group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetGroupVisibility(string groupId, string accessToken, bool? hideFromAddressLists, bool? hideFromOutlookClients, AzureEnvironment azureEnvironment = AzureEnvironment.Production)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>Id of the Azure Active Directory Group to set the visibility state for</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</span>
+        <span class="parametername">hideFromAddressLists</span>
+        <p><p>True if the group should not be displayed in certain parts of the Outlook UI: the Address Book, address lists for selecting message recipients, and the Browse Groups dialog for searching groups; otherwise, false. Default value is false.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</span>
+        <span class="parametername">hideFromOutlookClients</span>
+        <p><p>True if the group should not be displayed in Outlook clients, such as Outlook for Windows and Outlook on the web; otherwise, false. Default value is false.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_UpdateGroup_System_String_System_String_System_Int32_System_Int32_System_String_System_String_System_String___System_String___System_Nullable_System_Boolean__System_Nullable_System_Boolean__.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.UpdateGroup(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CSystem.String%2CSystem.String%2CSystem.String%5B%5D%2CSystem.String%5B%5D%2CSystem.Nullable%7BSystem.Boolean%7D%2CSystem.Nullable%7BSystem.Boolean%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L396" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_GroupsUtility_UpdateGroup_" data-uid="PnP.Framework.Graph.GroupsUtility.UpdateGroup*"></a>
+  
+  <h4 id="PnP_Framework_Graph_GroupsUtility_UpdateGroup_System_String_System_String_System_Int32_System_Int32_System_String_System_String_System_String___System_String___System_Nullable_System_Boolean__System_Nullable_System_Boolean__" data-uid="PnP.Framework.Graph.GroupsUtility.UpdateGroup(System.String,System.String,System.Int32,System.Int32,System.String,System.String,System.String[],System.String[],System.Nullable{System.Boolean},System.Nullable{System.Boolean})"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_UpdateGroup_System_String_System_String_System_Int32_System_Int32_System_String_System_String_System_String___System_String___System_Nullable_System_Boolean__System_Nullable_System_Boolean__" class="expander" data-toggle="collapse">UpdateGroup(String, String, Int32, Int32, String, String, String[], String[], Nullable&lt;Boolean&gt;, Nullable&lt;Boolean&gt;)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_UpdateGroup_System_String_System_String_System_Int32_System_Int32_System_String_System_String_System_String___System_String___System_Nullable_System_Boolean__System_Nullable_System_Boolean__" class="collapse in">
+  <div class="markdown level1 summary"><p>Updates the Azure Active Directory Group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool UpdateGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500, string displayName = null, string description = null, string[] owners = null, string[] members = null, bool? securityEnabled = null, bool? mailEnabled = null)</code></pre>
+  </div>
+  
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">groupId</span>
+        <p><p>The ID of the Azure Active Directory Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">accessToken</span>
+        <p><p>The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of times to retry the request in case of throttling</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">displayName</span>
+        <p><p>The Display Name for the Azure Active Directory Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">description</span>
+        <p><p>The Description for the Azure Active Directory Group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">owners</span>
+        <p><p>A list of UPNs for group owners, if any, to be added to the group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>[]</span>
+        <span class="parametername">members</span>
+        <p><p>A list of UPNs for group members, if any, to be added to the group</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</span>
+        <span class="parametername">securityEnabled</span>
+        <p><p>Boolean indicating if the group is enabled for setting permissions</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</span>
+        <span class="parametername">mailEnabled</span>
+        <p><p>Boolean indicating if the group is enabled for distributing mail</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+        <p><p>Boolean indicating whether the Azure Active Directory Group has been updated or not</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  
+</article>
+          </div>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              </nav>
+            </div>
+          </div>        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>PnP Framework<br>Generated by <strong><a href='https://dotnet.github.io/docfx' alt='Doc FX Website'>DocFX</a></strong> with <strong><a href='https://ovasquez.github.io/docfx-material' alt='DocFx Material Theme'>Material UI</a></strong></span>
+            
+            <img src="https://pnptelemetry.azurewebsites.net/pnpframework" alt="spacer">
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>  </body>
+</html>

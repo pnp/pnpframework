@@ -87,166 +87,31 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="PnP.Framework.Utilities.PnPHttpProvider">
                   <div class="contribution-panel mobile-hide pull-right">
-                      <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/PnPHttpProvider.cs/#L12" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
-                      <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_PnPHttpProvider.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.PnPHttpProvider%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                      <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/PnPHttpProvider.cs/#L12" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_PnPHttpProvider.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.PnPHttpProvider%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
                   </div>
                       <h1 id="PnP_Framework_Utilities_PnPHttpProvider" data-uid="PnP.Framework.Utilities.PnPHttpProvider">Class PnPHttpProvider
   </h1>
   <div class="markdown level0 summary"><p>PnP http client which implements setting of User-Agent + retry mechanismn on throttling</p>
 </div>
   <div class="markdown level0 conceptual"></div>
-  
+
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpmessageinvoker">HttpMessageInvoker</a></div>
-    <div class="level2"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient">HttpClient</a></div>
-    <div class="level3"><span class="xref">PnPHttpProvider</span></div>
+    <div class="level1"><span class="xref">PnPHttpProvider</span></div>
   </div>
   
   
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.cancelpendingrequests#system-net-http-httpclient-cancelpendingrequests">HttpClient.CancelPendingRequests()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.deleteasync#system-net-http-httpclient-deleteasync(system-string)">HttpClient.DeleteAsync(String)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.deleteasync#system-net-http-httpclient-deleteasync(system-string-system-threading-cancellationtoken)">HttpClient.DeleteAsync(String, CancellationToken)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.deleteasync#system-net-http-httpclient-deleteasync(system-uri)">HttpClient.DeleteAsync(Uri)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.deleteasync#system-net-http-httpclient-deleteasync(system-uri-system-threading-cancellationtoken)">HttpClient.DeleteAsync(Uri, CancellationToken)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.dispose#system-net-http-httpclient-dispose(system-boolean)">HttpClient.Dispose(Boolean)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.getasync#system-net-http-httpclient-getasync(system-string)">HttpClient.GetAsync(String)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.getasync#system-net-http-httpclient-getasync(system-string-system-net-http-httpcompletionoption)">HttpClient.GetAsync(String, HttpCompletionOption)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.getasync#system-net-http-httpclient-getasync(system-string-system-net-http-httpcompletionoption-system-threading-cancellationtoken)">HttpClient.GetAsync(String, HttpCompletionOption, CancellationToken)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.getasync#system-net-http-httpclient-getasync(system-string-system-threading-cancellationtoken)">HttpClient.GetAsync(String, CancellationToken)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.getasync#system-net-http-httpclient-getasync(system-uri)">HttpClient.GetAsync(Uri)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.getasync#system-net-http-httpclient-getasync(system-uri-system-net-http-httpcompletionoption)">HttpClient.GetAsync(Uri, HttpCompletionOption)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.getasync#system-net-http-httpclient-getasync(system-uri-system-net-http-httpcompletionoption-system-threading-cancellationtoken)">HttpClient.GetAsync(Uri, HttpCompletionOption, CancellationToken)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.getasync#system-net-http-httpclient-getasync(system-uri-system-threading-cancellationtoken)">HttpClient.GetAsync(Uri, CancellationToken)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.getbytearrayasync#system-net-http-httpclient-getbytearrayasync(system-string)">HttpClient.GetByteArrayAsync(String)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.getbytearrayasync#system-net-http-httpclient-getbytearrayasync(system-uri)">HttpClient.GetByteArrayAsync(Uri)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.getstreamasync#system-net-http-httpclient-getstreamasync(system-string)">HttpClient.GetStreamAsync(String)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.getstreamasync#system-net-http-httpclient-getstreamasync(system-uri)">HttpClient.GetStreamAsync(Uri)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.getstringasync#system-net-http-httpclient-getstringasync(system-string)">HttpClient.GetStringAsync(String)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.getstringasync#system-net-http-httpclient-getstringasync(system-uri)">HttpClient.GetStringAsync(Uri)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.postasync#system-net-http-httpclient-postasync(system-string-system-net-http-httpcontent)">HttpClient.PostAsync(String, HttpContent)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.postasync#system-net-http-httpclient-postasync(system-string-system-net-http-httpcontent-system-threading-cancellationtoken)">HttpClient.PostAsync(String, HttpContent, CancellationToken)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.postasync#system-net-http-httpclient-postasync(system-uri-system-net-http-httpcontent)">HttpClient.PostAsync(Uri, HttpContent)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.postasync#system-net-http-httpclient-postasync(system-uri-system-net-http-httpcontent-system-threading-cancellationtoken)">HttpClient.PostAsync(Uri, HttpContent, CancellationToken)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.putasync#system-net-http-httpclient-putasync(system-string-system-net-http-httpcontent)">HttpClient.PutAsync(String, HttpContent)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.putasync#system-net-http-httpclient-putasync(system-string-system-net-http-httpcontent-system-threading-cancellationtoken)">HttpClient.PutAsync(String, HttpContent, CancellationToken)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.putasync#system-net-http-httpclient-putasync(system-uri-system-net-http-httpcontent)">HttpClient.PutAsync(Uri, HttpContent)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.putasync#system-net-http-httpclient-putasync(system-uri-system-net-http-httpcontent-system-threading-cancellationtoken)">HttpClient.PutAsync(Uri, HttpContent, CancellationToken)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.sendasync#system-net-http-httpclient-sendasync(system-net-http-httprequestmessage)">HttpClient.SendAsync(HttpRequestMessage)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.sendasync#system-net-http-httpclient-sendasync(system-net-http-httprequestmessage-system-net-http-httpcompletionoption)">HttpClient.SendAsync(HttpRequestMessage, HttpCompletionOption)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.sendasync#system-net-http-httpclient-sendasync(system-net-http-httprequestmessage-system-net-http-httpcompletionoption-system-threading-cancellationtoken)">HttpClient.SendAsync(HttpRequestMessage, HttpCompletionOption, CancellationToken)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.baseaddress#system-net-http-httpclient-baseaddress">HttpClient.BaseAddress</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.defaultrequestheaders#system-net-http-httpclient-defaultrequestheaders">HttpClient.DefaultRequestHeaders</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.maxresponsecontentbuffersize#system-net-http-httpclient-maxresponsecontentbuffersize">HttpClient.MaxResponseContentBufferSize</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.timeout#system-net-http-httpclient-timeout">HttpClient.Timeout</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpmessageinvoker.dispose#system-net-http-httpmessageinvoker-dispose">HttpMessageInvoker.Dispose()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
-    </div>
-  </div>
   
   <h6><strong>Namespace</strong>: <a class="xref" href="PnP.Framework.Utilities.html">PnP.Framework.Utilities</a></h6>
   <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
   
   <h5 id="PnP_Framework_Utilities_PnPHttpProvider_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Please use PnPHttpClient.Instance.GetHttpClient and PnPHttpClient.AuthenticateRequestAsync instead.&quot;)]
-public class PnPHttpProvider : HttpClient, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">public class PnPHttpProvider : HttpClient</code></pre>
   </div>
-  
+
   
   
   
@@ -256,93 +121,31 @@ public class PnPHttpProvider : HttpClient, IDisposable</code></pre>
   
   <span class="small pull-right mobile-hide">
     <span class="divider"> </span>
-    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_PnPHttpProvider__ctor_System_Int32_System_Int32_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.PnPHttpProvider.%23ctor(System.Int32%2CSystem.Int32%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_PnPHttpProvider__ctor_HttpMessageHandler_System_Boolean_System_Int32_System_Int32_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.PnPHttpProvider.%23ctor(HttpMessageHandler%2CSystem.Boolean%2CSystem.Int32%2CSystem.Int32%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/PnPHttpProvider.cs/#L24" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/PnPHttpProvider.cs/#L47" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
   <a id="PnP_Framework_Utilities_PnPHttpProvider__ctor_" data-uid="PnP.Framework.Utilities.PnPHttpProvider.#ctor*"></a>
   
-  <h4 id="PnP_Framework_Utilities_PnPHttpProvider__ctor_System_Int32_System_Int32_System_String_" data-uid="PnP.Framework.Utilities.PnPHttpProvider.#ctor(System.Int32,System.Int32,System.String)"><a href="#collapsible-PnP_Framework_Utilities_PnPHttpProvider__ctor_System_Int32_System_Int32_System_String_" class="expander" data-toggle="collapse">PnPHttpProvider(Int32, Int32, String)</a></h4>
+  <h4 id="PnP_Framework_Utilities_PnPHttpProvider__ctor_HttpMessageHandler_System_Boolean_System_Int32_System_Int32_System_String_" data-uid="PnP.Framework.Utilities.PnPHttpProvider.#ctor(HttpMessageHandler,System.Boolean,System.Int32,System.Int32,System.String)"><a href="#collapsible-PnP_Framework_Utilities_PnPHttpProvider__ctor_HttpMessageHandler_System_Boolean_System_Int32_System_Int32_System_String_" class="expander" data-toggle="collapse">PnPHttpProvider(HttpMessageHandler, Boolean, Int32, Int32, String)</a></h4>
   
-  <div id="collapsible-PnP_Framework_Utilities_PnPHttpProvider__ctor_System_Int32_System_Int32_System_String_" class="collapse in">
-  <div class="markdown level1 summary"><p>Constructor without HttpMessageHandler</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PnPHttpProvider(int retryCount = 10, int delay = 500, string userAgent = null)</code></pre>
-  </div>
-  
-  <h5 class="parameters">Parameters</h5>
-  <table>
-    <tr>
-      <td>
-        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
-        <span class="parametername">retryCount</span>
-        <p><p>Number of retries, defaults to 10</p>
-</p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
-        <span class="parametername">delay</span>
-        <p><p>Incremental delay increase in milliseconds</p>
-</p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
-        <span class="parametername">userAgent</span>
-        <p><p>User-Agent string to set</p>
-</p>
-      </td>
-    </tr>
-  </table>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  </div>
-  
-  <span class="small pull-right mobile-hide">
-    <span class="divider"> </span>
-    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_PnPHttpProvider__ctor_System_Net_Http_HttpMessageHandler_System_Boolean_System_Int32_System_Int32_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.PnPHttpProvider.%23ctor(System.Net.Http.HttpMessageHandler%2CSystem.Boolean%2CSystem.Int32%2CSystem.Int32%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/PnPHttpProvider.cs/#L47" title="View Source"><i class="fa fa-code"></i></a>
-  </span>
-  
-  <a id="PnP_Framework_Utilities_PnPHttpProvider__ctor_" data-uid="PnP.Framework.Utilities.PnPHttpProvider.#ctor*"></a>
-  
-  <h4 id="PnP_Framework_Utilities_PnPHttpProvider__ctor_System_Net_Http_HttpMessageHandler_System_Boolean_System_Int32_System_Int32_System_String_" data-uid="PnP.Framework.Utilities.PnPHttpProvider.#ctor(System.Net.Http.HttpMessageHandler,System.Boolean,System.Int32,System.Int32,System.String)"><a href="#collapsible-PnP_Framework_Utilities_PnPHttpProvider__ctor_System_Net_Http_HttpMessageHandler_System_Boolean_System_Int32_System_Int32_System_String_" class="expander" data-toggle="collapse">PnPHttpProvider(HttpMessageHandler, Boolean, Int32, Int32, String)</a></h4>
-  
-  <div id="collapsible-PnP_Framework_Utilities_PnPHttpProvider__ctor_System_Net_Http_HttpMessageHandler_System_Boolean_System_Int32_System_Int32_System_String_" class="collapse in">
+  <div id="collapsible-PnP_Framework_Utilities_PnPHttpProvider__ctor_HttpMessageHandler_System_Boolean_System_Int32_System_Int32_System_String_" class="collapse in">
   <div class="markdown level1 summary"><p>Constructor with HttpMessageHandler</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
-  
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public PnPHttpProvider(HttpMessageHandler innerHandler, bool disposeHandler, int retryCount = 10, int delay = 500, string userAgent = null)</code></pre>
   </div>
-  
+
   <h5 class="parameters">Parameters</h5>
   <table>
     <tr>
       <td>
-        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpmessagehandler">HttpMessageHandler</a></span>
+        <span class="pull-right"><span class="xref">HttpMessageHandler</span></span>
         <span class="parametername">innerHandler</span>
         <p><p>HttpMessageHandler instance to pass along</p>
 </p>
@@ -396,31 +199,31 @@ public class PnPHttpProvider : HttpClient, IDisposable</code></pre>
   
   <span class="small pull-right mobile-hide">
     <span class="divider"> </span>
-    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_PnPHttpProvider__ctor_System_Net_Http_HttpMessageHandler_System_Int32_System_Int32_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.PnPHttpProvider.%23ctor(System.Net.Http.HttpMessageHandler%2CSystem.Int32%2CSystem.Int32%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_PnPHttpProvider__ctor_HttpMessageHandler_System_Int32_System_Int32_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.PnPHttpProvider.%23ctor(HttpMessageHandler%2CSystem.Int32%2CSystem.Int32%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/PnPHttpProvider.cs/#L35" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/PnPHttpProvider.cs/#L35" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
   <a id="PnP_Framework_Utilities_PnPHttpProvider__ctor_" data-uid="PnP.Framework.Utilities.PnPHttpProvider.#ctor*"></a>
   
-  <h4 id="PnP_Framework_Utilities_PnPHttpProvider__ctor_System_Net_Http_HttpMessageHandler_System_Int32_System_Int32_System_String_" data-uid="PnP.Framework.Utilities.PnPHttpProvider.#ctor(System.Net.Http.HttpMessageHandler,System.Int32,System.Int32,System.String)"><a href="#collapsible-PnP_Framework_Utilities_PnPHttpProvider__ctor_System_Net_Http_HttpMessageHandler_System_Int32_System_Int32_System_String_" class="expander" data-toggle="collapse">PnPHttpProvider(HttpMessageHandler, Int32, Int32, String)</a></h4>
+  <h4 id="PnP_Framework_Utilities_PnPHttpProvider__ctor_HttpMessageHandler_System_Int32_System_Int32_System_String_" data-uid="PnP.Framework.Utilities.PnPHttpProvider.#ctor(HttpMessageHandler,System.Int32,System.Int32,System.String)"><a href="#collapsible-PnP_Framework_Utilities_PnPHttpProvider__ctor_HttpMessageHandler_System_Int32_System_Int32_System_String_" class="expander" data-toggle="collapse">PnPHttpProvider(HttpMessageHandler, Int32, Int32, String)</a></h4>
   
-  <div id="collapsible-PnP_Framework_Utilities_PnPHttpProvider__ctor_System_Net_Http_HttpMessageHandler_System_Int32_System_Int32_System_String_" class="collapse in">
+  <div id="collapsible-PnP_Framework_Utilities_PnPHttpProvider__ctor_HttpMessageHandler_System_Int32_System_Int32_System_String_" class="collapse in">
   <div class="markdown level1 summary"><p>Constructor with HttpMessageHandler</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
-  
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public PnPHttpProvider(HttpMessageHandler innerHandler, int retryCount = 10, int delay = 500, string userAgent = null)</code></pre>
   </div>
-  
+
   <h5 class="parameters">Parameters</h5>
   <table>
     <tr>
       <td>
-        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpmessagehandler">HttpMessageHandler</a></span>
+        <span class="pull-right"><span class="xref">HttpMessageHandler</span></span>
         <span class="parametername">innerHandler</span>
         <p><p>HttpMessageHandler instance to pass along</p>
 </p>
@@ -463,36 +266,98 @@ public class PnPHttpProvider : HttpClient, IDisposable</code></pre>
   
   
   </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_PnPHttpProvider__ctor_System_Int32_System_Int32_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.PnPHttpProvider.%23ctor(System.Int32%2CSystem.Int32%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/PnPHttpProvider.cs/#L24" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_PnPHttpProvider__ctor_" data-uid="PnP.Framework.Utilities.PnPHttpProvider.#ctor*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_PnPHttpProvider__ctor_System_Int32_System_Int32_System_String_" data-uid="PnP.Framework.Utilities.PnPHttpProvider.#ctor(System.Int32,System.Int32,System.String)"><a href="#collapsible-PnP_Framework_Utilities_PnPHttpProvider__ctor_System_Int32_System_Int32_System_String_" class="expander" data-toggle="collapse">PnPHttpProvider(Int32, Int32, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_PnPHttpProvider__ctor_System_Int32_System_Int32_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Constructor without HttpMessageHandler</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PnPHttpProvider(int retryCount = 10, int delay = 500, string userAgent = null)</code></pre>
+  </div>
+
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">retryCount</span>
+        <p><p>Number of retries, defaults to 10</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></span>
+        <span class="parametername">delay</span>
+        <p><p>Incremental delay increase in milliseconds</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">userAgent</span>
+        <p><p>User-Agent string to set</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
   <h3 id="methods">Methods
   </h3>
   
   <span class="small pull-right mobile-hide">
     <span class="divider"> </span>
-    <a href="https://github.com/pkbullock/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_PnPHttpProvider_SendAsync_System_Net_Http_HttpRequestMessage_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.PnPHttpProvider.SendAsync(System.Net.Http.HttpRequestMessage%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_PnPHttpProvider_SendAsync_HttpRequestMessage_CancellationToken_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.PnPHttpProvider.SendAsync(HttpRequestMessage%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pkbullock/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/PnPHttpProvider.cs/#L63" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/PnPHttpProvider.cs/#L63" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
   <a id="PnP_Framework_Utilities_PnPHttpProvider_SendAsync_" data-uid="PnP.Framework.Utilities.PnPHttpProvider.SendAsync*"></a>
   
-  <h4 id="PnP_Framework_Utilities_PnPHttpProvider_SendAsync_System_Net_Http_HttpRequestMessage_System_Threading_CancellationToken_" data-uid="PnP.Framework.Utilities.PnPHttpProvider.SendAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)"><a href="#collapsible-PnP_Framework_Utilities_PnPHttpProvider_SendAsync_System_Net_Http_HttpRequestMessage_System_Threading_CancellationToken_" class="expander" data-toggle="collapse">SendAsync(HttpRequestMessage, CancellationToken)</a></h4>
+  <h4 id="PnP_Framework_Utilities_PnPHttpProvider_SendAsync_HttpRequestMessage_CancellationToken_" data-uid="PnP.Framework.Utilities.PnPHttpProvider.SendAsync(HttpRequestMessage,CancellationToken)"><a href="#collapsible-PnP_Framework_Utilities_PnPHttpProvider_SendAsync_HttpRequestMessage_CancellationToken_" class="expander" data-toggle="collapse">SendAsync(HttpRequestMessage, CancellationToken)</a></h4>
   
-  <div id="collapsible-PnP_Framework_Utilities_PnPHttpProvider_SendAsync_System_Net_Http_HttpRequestMessage_System_Threading_CancellationToken_" class="collapse in">
+  <div id="collapsible-PnP_Framework_Utilities_PnPHttpProvider_SendAsync_HttpRequestMessage_CancellationToken_" class="collapse in">
   <div class="markdown level1 summary"><p>Perform async http request</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
-  
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override async Task&lt;HttpResponseMessage&gt; SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)</code></pre>
   </div>
-  
+
   <h5 class="parameters">Parameters</h5>
   <table>
     <tr>
       <td>
-        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httprequestmessage">HttpRequestMessage</a></span>
+        <span class="pull-right"><span class="xref">HttpRequestMessage</span></span>
         <span class="parametername">request</span>
         <p><p>Http request to execute</p>
 </p>
@@ -500,7 +365,7 @@ public class PnPHttpProvider : HttpClient, IDisposable</code></pre>
     </tr>
     <tr>
       <td>
-        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></span>
+        <span class="pull-right"><span class="xref">CancellationToken</span></span>
         <span class="parametername">cancellationToken</span>
         <p><p>cancellation token</p>
 </p>
@@ -512,7 +377,7 @@ public class PnPHttpProvider : HttpClient, IDisposable</code></pre>
   <table>
     <tr>
       <td>
-        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpresponsemessage">HttpResponseMessage</a>&gt;
+        <span class="xref">Task</span>&lt;<span class="xref">HttpResponseMessage</span>&gt;
         <p><p>Response object from http request</p>
 </p>
       </td>
@@ -523,8 +388,6 @@ public class PnPHttpProvider : HttpClient, IDisposable</code></pre>
   
   
   
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient.sendasync#system-net-http-httpclient-sendasync(system-net-http-httprequestmessage-system-threading-cancellationtoken)">HttpClient.SendAsync(HttpRequestMessage, CancellationToken)</a></div>
   
   
   
@@ -537,7 +400,7 @@ public class PnPHttpProvider : HttpClient, IDisposable</code></pre>
       <a class="xref" href="System.ValidationExtensions.html#System_ValidationExtensions_ValidateNotNullOrEmpty__1___0_System_String_">ValidationExtensions.ValidateNotNullOrEmpty&lt;T&gt;(T, String)</a>
   </div>
   <div>
-      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_Set__2___0_System_Linq_Expressions_Expression_System_Func___0___1_____1_System_Boolean_System_Boolean_">ObjectExtensions.Set&lt;TObject, T&gt;(TObject, Expression&lt;Func&lt;TObject, T&gt;&gt;, T, Boolean, Boolean)</a>
+      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_Set__2___0_Expression_Func___0___1_____1_System_Boolean_System_Boolean_">ObjectExtensions.Set&lt;TObject, T&gt;(TObject, Expression&lt;Func&lt;TObject, T&gt;&gt;, T, Boolean, Boolean)</a>
   </div>
   <div>
       <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstancePropertyValue_System_Object_System_String_">ObjectExtensions.GetPublicInstancePropertyValue(Object, String)</a>

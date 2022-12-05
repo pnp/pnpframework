@@ -25,5 +25,5 @@ docfx build ./dev/docs/docfx.json --warningsAsErrors $args
 Remove-Item ./gh-pages/api/* -Recurse -Force
 Remove-Item ./gh-pages/using-the-framework/* -Recurse -Force
 Remove-Item ./gh-pages/contributing/* -Recurse -Force
-Remove-Item ./gh-pages/images/* -Recurse -Force
+# Remove-Item ./gh-pages/images/* -Recurse -Force
 copy-item -Force -Recurse ./dev/docs/_site/* -Destination ./gh-pages

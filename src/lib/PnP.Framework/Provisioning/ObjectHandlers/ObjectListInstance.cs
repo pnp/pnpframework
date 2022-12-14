@@ -764,6 +764,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 var viewInnerXml = reader.ReadInnerXml();
 
                 var createdView = createdList.Views.Add(viewCI);
+                createdList.Update();
+                web.Context.ExecuteQueryRetry();
+
+                // Edit the view settings after creating it to avoid issues with some creation properties being ignored, for example ViewTypeKind
                 createdView.ListViewXml = viewInnerXml;
                 if (hidden) createdView.Hidden = hidden;
                 createdView.Update();

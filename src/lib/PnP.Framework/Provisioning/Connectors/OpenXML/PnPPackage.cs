@@ -212,7 +212,6 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
             {
                 Package = Package.Open(stream, mode, access)
             };
-
             if (mode != FileMode.Create)
             {
                 package.EnsureMandatoryPackageComponents();
@@ -238,11 +237,13 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
         /// </summary>
         /// <param name="fileName">Name of the file</param>
         /// <param name="stream">Stream of the file</param>
-        public void AddFile(string fileName, Stream stream)
+        public void AddFilePart(string fileName, Stream stream)
         {
             fileName = fileName.TrimStart('/');
             string uriStr = U_DIR_FILES + fileName;
-            PackagePart part = CreatePackagePart(R_PROVISIONINGTEMPLATE_FILE, CT_FILE, uriStr, FilesOriginPart);
+            // create part
+            Uri uri = GetUri(uriStr);
+            PackagePart part = Package.CreatePart(uri, CT_FILE, PACKAGE_COMPRESSION_LEVEL);
             SetPackagePartValue(stream, part);
         }
 
@@ -381,7 +382,7 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
             return obj;
         }
 
-        private void SetXamlSerializedPackagePartValue(object value, PackagePart part)
+        static public void SetXamlSerializedPackagePartValue(object value, PackagePart part)
         {
             if (value == null)
                 return;

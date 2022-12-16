@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace PnP.Framework.Provisioning.Connectors.OpenXML.Model
 {

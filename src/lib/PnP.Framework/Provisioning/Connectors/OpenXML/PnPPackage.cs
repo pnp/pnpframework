@@ -111,6 +111,7 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
             }
             set
             {
+                EnsurePackagePartWithRelationshipType(R_PROVISIONINGTEMPLATE_FILES_ORIGIN, CT_ORIGIN, U_FILES_ORIGIN, ManifestPart);
                 PackagePart propsPart = EnsurePackagePartWithRelationshipType(R_PROVISIONINGTEMPLATE_FILES_MAP, CT_PROVISIONINGTEMPLATE_FILES_MAP, U_PROVISIONINGTEMPLATE_FILES_MAP, ManifestPart);
                 SetXamlSerializedPackagePartValue(value, propsPart);
             }
@@ -211,7 +212,11 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
             {
                 Package = Package.Open(stream, mode, access)
             };
-            package.EnsureMandatoryPackageComponents();
+
+            if (mode != FileMode.Create)
+            {
+                package.EnsureMandatoryPackageComponents();
+            }
             return package;
         }
 
@@ -226,6 +231,19 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
             string uriStr = U_DIR_FILES + fileName;
             PackagePart part = CreatePackagePart(R_PROVISIONINGTEMPLATE_FILE, CT_FILE, uriStr, FilesOriginPart);
             SetPackagePartValue(value, part);
+        }
+
+        /// <summary>
+        /// Adds file to the package
+        /// </summary>
+        /// <param name="fileName">Name of the file</param>
+        /// <param name="stream">Stream of the file</param>
+        public void AddFile(string fileName, Stream stream)
+        {
+            fileName = fileName.TrimStart('/');
+            string uriStr = U_DIR_FILES + fileName;
+            PackagePart part = CreatePackagePart(R_PROVISIONINGTEMPLATE_FILE, CT_FILE, uriStr, FilesOriginPart);
+            SetPackagePartValue(stream, part);
         }
 
         /// <summary>
@@ -283,7 +301,14 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
 
         private PackagePart GetSinglePackagePartWithRelationshipType(string relType, PackagePart parent)
         {
-            PackageRelationshipCollection rels = parent == null ? Package.GetRelationshipsByType(relType) : parent.GetRelationshipsByType(relType);
+            PackageRelationshipCollection rels = null;
+            try
+            {
+                rels = parent == null ? Package.GetRelationshipsByType(relType) : parent.GetRelationshipsByType(relType);
+            }
+            catch { }
+
+            if (rels == null) return null;
             PackageRelationship rel = null;
             foreach (PackageRelationship r in rels)
             {
@@ -302,8 +327,15 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
 
         private List<PackagePart> GetAllPackagePartsWithRelationshipType(string relType, PackagePart parent)
         {
-            PackageRelationshipCollection rels = parent == null ? Package.GetRelationshipsByType(relType) : parent.GetRelationshipsByType(relType);
+            PackageRelationshipCollection rels = null;
+            try
+            {
+                rels = parent == null ? Package.GetRelationshipsByType(relType) : parent.GetRelationshipsByType(relType);
+            }
+            catch { }
+
             List<PackagePart> pkgList = new List<PackagePart>();
+            if (rels == null) return pkgList;
             foreach (PackageRelationship rel in rels)
             {
                 if (rel.TargetMode == TargetMode.Internal)
@@ -383,6 +415,15 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
             }
         }
 
+        private void SetPackagePartValue(Stream stream, PackagePart part)
+        {
+            using (Stream destStream = part.GetStream(FileMode.OpenOrCreate))
+            {
+                stream.Position = 0;
+                stream.CopyTo(destStream);
+            }
+        }
+
         private PackagePart CreatePackagePart(string relType, string contentType, string uriStr, PackagePart parent)
         {
             // create part & relationship
@@ -406,7 +447,14 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
 
         private void ClearPackagePartsWithRelationshipType(string relType, PackagePart parent, string partUri)
         {
-            PackageRelationshipCollection rels = parent == null ? Package.GetRelationshipsByType(relType) : parent.GetRelationshipsByType(relType);
+            PackageRelationshipCollection rels = null;
+            try
+            {
+                rels = parent == null ? Package.GetRelationshipsByType(relType) : parent.GetRelationshipsByType(relType);
+            }
+            catch { }
+
+            if (rels == null) return;
             List<string> relIds = new List<string>();
             foreach (PackageRelationship r in rels)
             {

@@ -28,6 +28,14 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
             return stream;
         }
 
+        public static void PackTemplateToStream(this PnPInfo pnpInfo, Stream stream)
+        {
+            using (PnPPackage package = PnPPackage.Open(stream, FileMode.Create, FileAccess.Write))
+            {
+                SavePnPPackage(pnpInfo, package);
+            }
+        }
+
         /// <summary>
         /// Packs template as a stream array
         /// </summary>
@@ -122,7 +130,22 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
             {
                 foreach (PnPFileInfo file in pnpInfo.Files)
                 {
-                    package.AddFile(file.InternalName, file.Content);
+                    if (pnpInfo.UseFileStreams)
+                    {
+#if NET6_0_OR_GREATER                       
+                        var fileStreamOptions = new FileStreamOptions { Mode = FileMode.Open, Access = FileAccess.Read, Options = FileOptions.DeleteOnClose, Share = FileShare.Delete };
+                        using (FileStream fs = File.Open(Path.Combine(pnpInfo.PnPFilesPath, file.InternalName).Replace('\\', '/').TrimStart('/'), fileStreamOptions))
+#else
+                        using (FileStream fs = File.OpenRead(Path.Combine(pnpInfo.PnPFilesPath, file.InternalName).Replace('\\', '/').TrimStart('/')))
+#endif
+                        {
+                            package.AddFile(file.InternalName, fs);
+                        }
+                    }
+                    else
+                    {
+                        package.AddFile(file.InternalName, file.Content);
+                    }
                 }
             }
         }

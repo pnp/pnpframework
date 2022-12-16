@@ -259,13 +259,14 @@ namespace PnP.Framework.Provisioning.Providers.Xml
             }
             formatter.Initialize(this);
 
-            var stream = ((IProvisioningHierarchyFormatter)formatter).ToFormattedHierarchy(hierarchy);
-
-            this.Connector.SaveFileStream(uri, stream);
-
-            if (this.Connector is ICommitableFileConnector)
+            using (var stream = ((IProvisioningHierarchyFormatter)formatter).ToFormattedHierarchy(hierarchy))
             {
-                ((ICommitableFileConnector)this.Connector).Commit();
+                this.Connector.SaveFileStream(uri, stream);
+
+                if (this.Connector is ICommitableFileConnector)
+                {
+                    ((ICommitableFileConnector)this.Connector).Commit();
+                }
             }
         }
 

@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 ## Changed
 
 - When `PnPContext` is created with a existing, externally provided, `IPnPContextFactory` then this `IPnPContextFactory` will be used for all PnP Framework internal `PnPContext` creations [jansenbe - Bert Jansen]
+- Fix ViewTypeKind property being ignored when provisioning views #816 [jackpoz - Giacomo Pozzoni]
 
 ## [1.11.0]
 

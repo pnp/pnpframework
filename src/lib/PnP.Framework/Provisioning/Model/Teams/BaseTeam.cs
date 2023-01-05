@@ -39,6 +39,8 @@ namespace PnP.Framework.Provisioning.Model.Teams
         /// </summary>
         public bool HiddenGroupMembershipEnabled { get; set; }
 
+        public string ProvisioningTemplateId { get; set; }
+
         #endregion
 
         #region Comparison code

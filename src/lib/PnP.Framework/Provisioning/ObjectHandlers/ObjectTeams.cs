@@ -18,6 +18,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -1597,6 +1598,29 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return _willExtract.Value;
         }
 
+        private static async Task WaitForSharepointProcess(Tenant tenant, string alias)
+        {
+            // Wait for the Team to be ready
+            bool wait = true;
+            int iterations = 0;
+            while (wait)
+            {
+                iterations++;
+                if (iterations > 24)
+                {
+                    throw new Exception($"Sharepoint alias {alias} was not registered or the Sharepoint site was not set up within the timeout.");
+                }
+                Dictionary<string, object> groupInfo = null;
+                var rootSiteUrl = tenant.Context.Url.Replace("-admin", "");
+                using (ClientContext context = tenant.Context.Clone(rootSiteUrl))
+                {
+                    groupInfo = await Sites.SiteCollection.GetGroupInfoByGroupIdAsync(context, alias, true);
+                    if (groupInfo == null)
+                        wait = true;
+                }
+            }
+        }
+
         public override TokenParser ProvisionObjects(Tenant tenant, ProvisioningHierarchy hierarchy, string sequenceId, TokenParser parser, ApplyConfiguration configuration)
         {
             using (var scope = new PnPMonitoredScope(Name))
@@ -1647,9 +1671,37 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             {
                                 // Create the Team starting from the XML PnP Provisioning Schema definition
                                 CreateTeamFromProvisioningSchema(scope, parser, hierarchy.Connector, team, accessToken);
+                                if (!string.IsNullOrWhiteSpace(team.ProvisioningTemplateId))
+                                {
+                                    WaitForTeamToBeReady(accessToken, team.GroupId);
+                                    ProvisioningSequenceCollection backup = null;
+                                    string teamSequenceId = team.ProvisioningTemplateId;
+
+                                    if (!hierarchy.Sequences.Any(s => s.ID == teamSequenceId))
+                                    {
+                                        backup = hierarchy.Sequences;
+                                        hierarchy.Sequences.Clear();
+                                        var siteCollection = new TeamSiteCollection()
+                                        {
+                                            Alias = parser.ParseString(team.MailNickname),
+                                            Title = parser.ParseString(team.DisplayName)
+                                        };
+                                        siteCollection.Templates.Add(team.ProvisioningTemplateId);
+                                        teamSequenceId = siteCollection.Alias;
+                                        var sequence = new ProvisioningSequence()
+                                        {
+                                            ID = teamSequenceId
+                                        };
+                                        sequence.SiteCollections.Add(siteCollection);
+                                        hierarchy.Sequences.Add(sequence);
+                                    }
+                                    WaitForSharepointProcess(tenant, parser.ParseString(team.MailNickname)).Wait();
+                                    new ObjectHierarchySequenceSites().ProvisionObjects(tenant, hierarchy, teamSequenceId, parser, configuration);
+                                    hierarchy.Sequences.Clear();
+                                    hierarchy.Sequences.AddRange(backup);
+                                }
                             }
                         }
-
                         currentProgress++;
                     }
                 }

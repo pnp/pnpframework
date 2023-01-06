@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 - When `PnPContext` is created with a existing, externally provided, `IPnPContextFactory` then this `IPnPContextFactory` will be used for all PnP Framework internal `PnPContext` creations [jansenbe - Bert Jansen]
 - Fix ViewTypeKind property being ignored when provisioning views #816 [jackpoz - Giacomo Pozzoni]
+- Fix page transformation asset transfer when source asset url contains characters that are encoded [jansenbe - Bert Jansen]
 
 ## [1.11.0]
 

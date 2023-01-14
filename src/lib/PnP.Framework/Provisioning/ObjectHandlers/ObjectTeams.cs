@@ -925,12 +925,73 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     if (!SetTeamTabs(scope, parser, channel.Tabs, teamId, channelId, accessToken)) return false;
                 }
 
-                // TODO: Handle TabResources
-                // We need to define a "schema" for their settings
+                // Experimental implementation of Planner Tab Resource
+                SetTabResources(scope, parser, channel.TabResources, teamId, channelId, accessToken);
 
                 if (channel.Messages != null && channel.Messages.Any())
                 {
                     if (!SetTeamChannelMessages(scope, parser, channel.Messages, teamId, channelId, accessToken)) return false;
+                }
+            }
+
+            return true;
+        }
+
+        private static JToken GetExistingPlans(string teamId, string accessToken)
+        {
+            return JToken.Parse(HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}beta/groups/{teamId}/planner/plans", accessToken))["value"];
+        }
+
+        public static JToken CreatePlan(PnPMonitoredScope scope, TokenParser parser, string teamId, string accessToken, TeamTabResource resource)
+        {
+            var config = JToken.Parse(resource.TabResourceSettings);
+            var title = config["displayName"].ToString();
+            var owner = teamId;
+            var payload = new
+            {
+                title,
+                owner
+            };
+            return JToken.Parse(HttpHelper.MakePostRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/planner/plans", payload, HttpHelper.JsonContentType, accessToken));
+        }
+
+        private static bool SetTabResources(PnPMonitoredScope scope, TokenParser parser, TeamTabResourceCollection tabResources, string teamId, string channelId, string accessToken)
+        {
+            foreach (var resource in tabResources)
+            {
+                switch (resource.Type)
+                {
+                    case TabResourceType.Planner:
+                        var config = JToken.Parse(resource.TabResourceSettings);
+                        var title = config["displayName"].ToString();
+                        var existingPlans = GetExistingPlans(teamId, accessToken);
+                        var plan = existingPlans.SingleOrDefault(r => r["displayName"].ToString() == title);
+                        // If exists, get it, if not create it and return it  
+                        if (plan == null)
+                        {
+                            plan = CreatePlan(scope, parser, teamId, accessToken, resource);
+                        }
+                        var planId = plan["id"].ToString();
+                        var tenantId = parser.ParseString("{$authority}");
+                        var tabId = parser.ParseString(resource.TargetTabId);
+
+                        string template = "https://tasks.teams.microsoft.com/teamsui/" + tenantId + "/Home/PlannerFrame?page={pageId}&planId=" + planId + "&auth_pvr=Orgid&auth_upn={userPrincipalName}&groupId={groupId}&entityId={entityId}&tid={tid}&userObjectId={userObjectId}&channelId={channelId}&sessionId={sessionId}&theme={theme}&mkt={locale}&ringId={ringId}&PlannerRouteHint=" + tenantId;
+
+                        UpdateTeamTab(new TeamTab()
+                        {
+                            Configuration = new TeamTabConfiguration()
+                            {
+                                EntityId = planId,
+                                ContentUrl = template.Replace("{pageId}", "7"),
+                                RemoveUrl = template.Replace("{pageId}", "13"),
+                                WebsiteUrl = "https://tasks.office.com/" + tenantId + "/Home/PlanViews/" + planId
+                            },
+                            DisplayName = parser.ParseString(title)
+                        }, parser, teamId, channelId, tabId, accessToken); ;
+
+                        break;
+                    default:
+                        break;
                 }
             }
 

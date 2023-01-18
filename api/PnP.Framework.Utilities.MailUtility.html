@@ -109,7 +109,7 @@
   
   <h5 id="PnP_Framework_Utilities_MailUtility_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class MailUtility : object</code></pre>
+    <pre><code class="lang-csharp hljs">public static class MailUtility : object</code></pre>
   </div>
 
   
@@ -121,10 +121,96 @@
   
   <span class="small pull-right mobile-hide">
     <span class="divider"> </span>
+    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_MailUtility_SendEmail_ClientContext_IEnumerable_String__IEnumerable_String__IEnumerable_String__System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.MailUtility.SendEmail(ClientContext%2CIEnumerable%7BString%7D%2CIEnumerable%7BString%7D%2CIEnumerable%7BString%7D%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/MailUtility.cs/#L231" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_MailUtility_SendEmail_" data-uid="PnP.Framework.Utilities.MailUtility.SendEmail*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_MailUtility_SendEmail_ClientContext_IEnumerable_String__IEnumerable_String__IEnumerable_String__System_String_System_String_" data-uid="PnP.Framework.Utilities.MailUtility.SendEmail(ClientContext,IEnumerable{String},IEnumerable{String},IEnumerable{String},System.String,System.String)"><a href="#collapsible-PnP_Framework_Utilities_MailUtility_SendEmail_ClientContext_IEnumerable_String__IEnumerable_String__IEnumerable_String__System_String_System_String_" class="expander" data-toggle="collapse">SendEmail(ClientContext, IEnumerable&lt;String&gt;, IEnumerable&lt;String&gt;, IEnumerable&lt;String&gt;, String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_MailUtility_SendEmail_ClientContext_IEnumerable_String__IEnumerable_String__IEnumerable_String__System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Sends an email using the SharePoint SendEmail method</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SendEmail(ClientContext context, IEnumerable&lt;String&gt; to, IEnumerable&lt;String&gt; cc, IEnumerable&lt;String&gt; bcc, string subject, string body)</code></pre>
+  </div>
+
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">ClientContext</span></span>
+        <span class="parametername">context</span>
+        <p><p>Context for SharePoint objects and operations</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</span>
+        <span class="parametername">to</span>
+        <p><p>List of TO addresses.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</span>
+        <span class="parametername">cc</span>
+        <p><p>List of CC addresses.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</span>
+        <span class="parametername">bcc</span>
+        <p><p>List of BCC addresses.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">subject</span>
+        <p><p>Subject of the mail.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">body</span>
+        <p><p>HTML body of the mail.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
     <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_MailUtility_SendEmail_ClientContext_IEnumerable_String__IEnumerable_String__System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.MailUtility.SendEmail(ClientContext%2CIEnumerable%7BString%7D%2CIEnumerable%7BString%7D%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/MailUtility.cs/#L149" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/MailUtility.cs/#L217" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
   <a id="PnP_Framework_Utilities_MailUtility_SendEmail_" data-uid="PnP.Framework.Utilities.MailUtility.SendEmail*"></a>
@@ -199,10 +285,128 @@
   
   <span class="small pull-right mobile-hide">
     <span class="divider"> </span>
+    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_MailUtility_SendEmail_System_String_System_String_SecureString_IEnumerable_String__IEnumerable_String__IEnumerable_String__System_String_System_String_System_Boolean_System_Object_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.MailUtility.SendEmail(System.String%2CSystem.String%2CSecureString%2CIEnumerable%7BString%7D%2CIEnumerable%7BString%7D%2CIEnumerable%7BString%7D%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/MailUtility.cs/#L89" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_MailUtility_SendEmail_" data-uid="PnP.Framework.Utilities.MailUtility.SendEmail*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_MailUtility_SendEmail_System_String_System_String_SecureString_IEnumerable_String__IEnumerable_String__IEnumerable_String__System_String_System_String_System_Boolean_System_Object_" data-uid="PnP.Framework.Utilities.MailUtility.SendEmail(System.String,System.String,SecureString,IEnumerable{String},IEnumerable{String},IEnumerable{String},System.String,System.String,System.Boolean,System.Object)"><a href="#collapsible-PnP_Framework_Utilities_MailUtility_SendEmail_System_String_System_String_SecureString_IEnumerable_String__IEnumerable_String__IEnumerable_String__System_String_System_String_System_Boolean_System_Object_" class="expander" data-toggle="collapse">SendEmail(String, String, SecureString, IEnumerable&lt;String&gt;, IEnumerable&lt;String&gt;, IEnumerable&lt;String&gt;, String, String, Boolean, Object)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_MailUtility_SendEmail_System_String_System_String_SecureString_IEnumerable_String__IEnumerable_String__IEnumerable_String__System_String_System_String_System_Boolean_System_Object_" class="collapse in">
+  <div class="markdown level1 summary"><p>Sends an email via Office 365 SMTP</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SendEmail(string servername, string fromAddress, SecureString fromUserPassword, IEnumerable&lt;String&gt; to, IEnumerable&lt;String&gt; cc, IEnumerable&lt;String&gt; bcc, string subject, string body, bool sendAsync = false, object asyncUserToken = null)</code></pre>
+  </div>
+
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">servername</span>
+        <p><p>Office 365 SMTP address. By default this is smtp.office365.com.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">fromAddress</span>
+        <p><p>The user setting up the SMTP connection. This user must have an EXO license.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">SecureString</span></span>
+        <span class="parametername">fromUserPassword</span>
+        <p><p>The secure password of the user.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</span>
+        <span class="parametername">to</span>
+        <p><p>List of TO addresses.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</span>
+        <span class="parametername">cc</span>
+        <p><p>List of CC addresses.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</span>
+        <span class="parametername">bcc</span>
+        <p><p>List of BCC addresses.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">subject</span>
+        <p><p>Subject of the mail.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">body</span>
+        <p><p>HTML body of the mail.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">sendAsync</span>
+        <p><p>Sends the email asynchronous so as to not block the current thread (default: false).</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></span>
+        <span class="parametername">asyncUserToken</span>
+        <p><p>The user token that is used to correlate the asynchronous email message.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
     <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_MailUtility_SendEmail_System_String_System_String_SecureString_IEnumerable_String__IEnumerable_String__System_String_System_String_System_Boolean_System_Object_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.MailUtility.SendEmail(System.String%2CSystem.String%2CSecureString%2CIEnumerable%7BString%7D%2CIEnumerable%7BString%7D%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/MailUtility.cs/#L53" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/MailUtility.cs/#L71" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
   <a id="PnP_Framework_Utilities_MailUtility_SendEmail_" data-uid="PnP.Framework.Utilities.MailUtility.SendEmail*"></a>
@@ -258,6 +462,124 @@
         <span class="pull-right"><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</span>
         <span class="parametername">cc</span>
         <p><p>List of CC addresses.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">subject</span>
+        <p><p>Subject of the mail.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">body</span>
+        <p><p>HTML body of the mail.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
+        <span class="parametername">sendAsync</span>
+        <p><p>Sends the email asynchronous so as to not block the current thread (default: false).</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></span>
+        <span class="parametername">asyncUserToken</span>
+        <p><p>The user token that is used to correlate the asynchronous email message.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_MailUtility_SendEmail_System_String_System_String_System_String_IEnumerable_String__IEnumerable_String__IEnumerable_String__System_String_System_String_System_Boolean_System_Object_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.MailUtility.SendEmail(System.String%2CSystem.String%2CSystem.String%2CIEnumerable%7BString%7D%2CIEnumerable%7BString%7D%2CIEnumerable%7BString%7D%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/MailUtility.cs/#L47" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_MailUtility_SendEmail_" data-uid="PnP.Framework.Utilities.MailUtility.SendEmail*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_MailUtility_SendEmail_System_String_System_String_System_String_IEnumerable_String__IEnumerable_String__IEnumerable_String__System_String_System_String_System_Boolean_System_Object_" data-uid="PnP.Framework.Utilities.MailUtility.SendEmail(System.String,System.String,System.String,IEnumerable{String},IEnumerable{String},IEnumerable{String},System.String,System.String,System.Boolean,System.Object)"><a href="#collapsible-PnP_Framework_Utilities_MailUtility_SendEmail_System_String_System_String_System_String_IEnumerable_String__IEnumerable_String__IEnumerable_String__System_String_System_String_System_Boolean_System_Object_" class="expander" data-toggle="collapse">SendEmail(String, String, String, IEnumerable&lt;String&gt;, IEnumerable&lt;String&gt;, IEnumerable&lt;String&gt;, String, String, Boolean, Object)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_MailUtility_SendEmail_System_String_System_String_System_String_IEnumerable_String__IEnumerable_String__IEnumerable_String__System_String_System_String_System_Boolean_System_Object_" class="collapse in">
+  <div class="markdown level1 summary"><p>Sends an email via Office 365 SMTP</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SendEmail(string servername, string fromAddress, string fromUserPassword, IEnumerable&lt;String&gt; to, IEnumerable&lt;String&gt; cc, IEnumerable&lt;String&gt; bcc, string subject, string body, bool sendAsync = false, object asyncUserToken = null)</code></pre>
+  </div>
+
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">servername</span>
+        <p><p>Office 365 SMTP address. By default this is smtp.office365.com.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">fromAddress</span>
+        <p><p>The user setting up the SMTP connection. This user must have an EXO license.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">fromUserPassword</span>
+        <p><p>The password of the user.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</span>
+        <span class="parametername">to</span>
+        <p><p>List of TO addresses.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</span>
+        <span class="parametername">cc</span>
+        <p><p>List of CC addresses.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</span>
+        <span class="parametername">bcc</span>
+        <p><p>List of BCC addresses.</p>
 </p>
       </td>
     </tr>
@@ -419,10 +741,121 @@
   
   <span class="small pull-right mobile-hide">
     <span class="divider"> </span>
+    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_MailUtility_SendEmailAsync_System_String_System_String_SecureString_IEnumerable_String__IEnumerable_String__IEnumerable_String__System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.MailUtility.SendEmailAsync(System.String%2CSystem.String%2CSecureString%2CIEnumerable%7BString%7D%2CIEnumerable%7BString%7D%2CIEnumerable%7BString%7D%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/MailUtility.cs/#L190" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_MailUtility_SendEmailAsync_" data-uid="PnP.Framework.Utilities.MailUtility.SendEmailAsync*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_MailUtility_SendEmailAsync_System_String_System_String_SecureString_IEnumerable_String__IEnumerable_String__IEnumerable_String__System_String_System_String_" data-uid="PnP.Framework.Utilities.MailUtility.SendEmailAsync(System.String,System.String,SecureString,IEnumerable{String},IEnumerable{String},IEnumerable{String},System.String,System.String)"><a href="#collapsible-PnP_Framework_Utilities_MailUtility_SendEmailAsync_System_String_System_String_SecureString_IEnumerable_String__IEnumerable_String__IEnumerable_String__System_String_System_String_" class="expander" data-toggle="collapse">SendEmailAsync(String, String, SecureString, IEnumerable&lt;String&gt;, IEnumerable&lt;String&gt;, IEnumerable&lt;String&gt;, String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_MailUtility_SendEmailAsync_System_String_System_String_SecureString_IEnumerable_String__IEnumerable_String__IEnumerable_String__System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Sends an email via Office 365 SMTP as an asynchronous operation</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task SendEmailAsync(string servername, string fromAddress, SecureString fromUserPassword, IEnumerable&lt;String&gt; to, IEnumerable&lt;String&gt; cc, IEnumerable&lt;String&gt; bcc, string subject, string body)</code></pre>
+  </div>
+
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">servername</span>
+        <p><p>Office 365 SMTP address. By default this is smtp.office365.com.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">fromAddress</span>
+        <p><p>The user setting up the SMTP connection. This user must have an EXO license.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">SecureString</span></span>
+        <span class="parametername">fromUserPassword</span>
+        <p><p>The secure password of the user.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</span>
+        <span class="parametername">to</span>
+        <p><p>List of TO addresses.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</span>
+        <span class="parametername">cc</span>
+        <p><p>List of CC addresses.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</span>
+        <span class="parametername">bcc</span>
+        <p><p>List of BCC addresses.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">subject</span>
+        <p><p>Subject of the mail.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">body</span>
+        <p><p>HTML body of the mail.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="xref">Task</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
     <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_MailUtility_SendEmailAsync_System_String_System_String_SecureString_IEnumerable_String__IEnumerable_String__System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.MailUtility.SendEmailAsync(System.String%2CSystem.String%2CSecureString%2CIEnumerable%7BString%7D%2CIEnumerable%7BString%7D%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/MailUtility.cs/#L122" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/MailUtility.cs/#L174" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
   <a id="PnP_Framework_Utilities_MailUtility_SendEmailAsync_" data-uid="PnP.Framework.Utilities.MailUtility.SendEmailAsync*"></a>
@@ -522,10 +955,121 @@
   
   <span class="small pull-right mobile-hide">
     <span class="divider"> </span>
+    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_MailUtility_SendEmailAsync_System_String_System_String_System_String_IEnumerable_String__IEnumerable_String__IEnumerable_String__System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.MailUtility.SendEmailAsync(System.String%2CSystem.String%2CSystem.String%2CIEnumerable%7BString%7D%2CIEnumerable%7BString%7D%2CIEnumerable%7BString%7D%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/MailUtility.cs/#L152" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Utilities_MailUtility_SendEmailAsync_" data-uid="PnP.Framework.Utilities.MailUtility.SendEmailAsync*"></a>
+  
+  <h4 id="PnP_Framework_Utilities_MailUtility_SendEmailAsync_System_String_System_String_System_String_IEnumerable_String__IEnumerable_String__IEnumerable_String__System_String_System_String_" data-uid="PnP.Framework.Utilities.MailUtility.SendEmailAsync(System.String,System.String,System.String,IEnumerable{String},IEnumerable{String},IEnumerable{String},System.String,System.String)"><a href="#collapsible-PnP_Framework_Utilities_MailUtility_SendEmailAsync_System_String_System_String_System_String_IEnumerable_String__IEnumerable_String__IEnumerable_String__System_String_System_String_" class="expander" data-toggle="collapse">SendEmailAsync(String, String, String, IEnumerable&lt;String&gt;, IEnumerable&lt;String&gt;, IEnumerable&lt;String&gt;, String, String)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Utilities_MailUtility_SendEmailAsync_System_String_System_String_System_String_IEnumerable_String__IEnumerable_String__IEnumerable_String__System_String_System_String_" class="collapse in">
+  <div class="markdown level1 summary"><p>Sends an email via Office 365 SMTP as an asynchronous operation</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task SendEmailAsync(string servername, string fromAddress, string fromUserPassword, IEnumerable&lt;String&gt; to, IEnumerable&lt;String&gt; cc, IEnumerable&lt;String&gt; bcc, string subject, string body)</code></pre>
+  </div>
+
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">servername</span>
+        <p><p>Office 365 SMTP address. By default this is smtp.office365.com.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">fromAddress</span>
+        <p><p>The user setting up the SMTP connection. This user must have an EXO license.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">fromUserPassword</span>
+        <p><p>The password of the user.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</span>
+        <span class="parametername">to</span>
+        <p><p>List of TO addresses.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</span>
+        <span class="parametername">cc</span>
+        <p><p>List of CC addresses.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</span>
+        <span class="parametername">bcc</span>
+        <p><p>List of BCC addresses.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">subject</span>
+        <p><p>Subject of the mail.</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
+        <span class="parametername">body</span>
+        <p><p>HTML body of the mail.</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="xref">Task</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
     <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Utilities_MailUtility_SendEmailAsync_System_String_System_String_System_String_IEnumerable_String__IEnumerable_String__System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Utilities.MailUtility.SendEmailAsync(System.String%2CSystem.String%2CSystem.String%2CIEnumerable%7BString%7D%2CIEnumerable%7BString%7D%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/MailUtility.cs/#L100" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Utilities/MailUtility.cs/#L136" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
   <a id="PnP_Framework_Utilities_MailUtility_SendEmailAsync_" data-uid="PnP.Framework.Utilities.MailUtility.SendEmailAsync*"></a>
@@ -623,25 +1167,6 @@
   
   </div>
   
-  <h3 id="extensionmethods">Extension Methods</h3>
-  <div>
-      <a class="xref" href="System.ValidationExtensions.html#System_ValidationExtensions_ValidateNotNullOrEmpty__1___0_System_String_">ValidationExtensions.ValidateNotNullOrEmpty&lt;T&gt;(T, String)</a>
-  </div>
-  <div>
-      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_Set__2___0_Expression_Func___0___1_____1_System_Boolean_System_Boolean_">ObjectExtensions.Set&lt;TObject, T&gt;(TObject, Expression&lt;Func&lt;TObject, T&gt;&gt;, T, Boolean, Boolean)</a>
-  </div>
-  <div>
-      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstancePropertyValue_System_Object_System_String_">ObjectExtensions.GetPublicInstancePropertyValue(Object, String)</a>
-  </div>
-  <div>
-      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_GetPublicInstanceProperty_System_Object_System_String_">ObjectExtensions.GetPublicInstanceProperty(Object, String)</a>
-  </div>
-  <div>
-      <a class="xref" href="PnP.Framework.Extensions.ObjectExtensions.html#PnP_Framework_Extensions_ObjectExtensions_SetPublicInstancePropertyValue_System_Object_System_String_System_Object_">ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)</a>
-  </div>
-  <div>
-      <a class="xref" href="PnP.Framework.Modernization.Cache.Extensions.html#PnP_Framework_Modernization_Cache_Extensions_ToByteArray_System_Object_">Extensions.ToByteArray(Object)</a>
-  </div>
   
 </article>
           </div>

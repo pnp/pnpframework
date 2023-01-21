@@ -51,6 +51,16 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
         #region Public Properties
 
         /// <summary>
+        /// Specifies whether the file streams should be used for file contenets instead of the MemoryStream.
+        /// </summary>
+        public bool UseFileStreams { get; set; } = false;
+
+        /// <summary>
+        /// Path to be used for saving file contenets instead of the MemoryStream.
+        /// </summary>
+        public string PnPFilesPath { get; set; }
+
+        /// <summary>
         /// The complete package object
         /// </summary>
         public Package Package { get; private set; }
@@ -162,6 +172,25 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
                         var originalName = map[fileName].Replace(@"\", "/");
                         folder = originalName.LastIndexOf('/') >= 0 ?
                             originalName.Substring(0, originalName.LastIndexOf('/')) : string.Empty;
+                    }
+
+                    if (UseFileStreams && p != null)
+                    {
+                        using (Stream stream = p.GetStream())
+                        {
+                            using (FileStream fs = File.Create(Path.Combine(PnPFilesPath, fileName).Replace('\\', '/').TrimStart('/')))
+                            {
+                                stream.CopyTo(fs);
+                            }
+                        }
+
+                        result[fileName] = new PnPPackageFileItem
+                        {
+                            Name = fileName,
+                            Folder = folder,
+                        };
+
+                        continue;
                     }
 
                     Byte[] content = ReadPackagePartBytes(p);
@@ -355,12 +384,15 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
                     }
                     else
                     {
-                        stream.Seek(0, SeekOrigin.Begin);
-                        if (stream.Length == 0)
-                        {
+                        if (string.IsNullOrEmpty(textContent)) {
                             return null;
                         }
-                        obj = (T)XamlServices.Load(stream);
+
+                        var contentBytes = System.Text.Encoding.UTF8.GetBytes(textContent);
+                        using (var memoryStream = new MemoryStream(contentBytes))
+                        {
+                            obj = (T)XamlServices.Load(memoryStream);
+                        }
                     }
                 }
             }

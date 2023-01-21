@@ -51,6 +51,27 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
         }
 
         /// <summary>
+        /// Unpacks template into PnP OpenXML package info object based on file stream
+        /// </summary>
+        /// <param name="stream">Stream</param>
+        /// <param name="useFileStreams">Use FileStreams</param>
+        /// <param name="pnpFilesPath">Temp pnp Files Path</param>
+        /// <returns>Returns site template</returns>
+        public static PnPInfo UnpackTemplate(this Stream stream, bool useFileStreams = false, string pnpFilesPath = null)
+        {
+            PnPInfo siteTemplate;
+            using (PnPPackage package = PnPPackage.Open(stream, FileMode.Open, FileAccess.Read))
+            {
+                if (useFileStreams) {
+                    package.UseFileStreams = useFileStreams;
+                    package.PnPFilesPath = pnpFilesPath;
+                }
+                siteTemplate = LoadPnPPackage(package);
+            }
+            return siteTemplate;
+        }
+
+        /// <summary>
         /// Unpacks template into PnP OpenXML package info object based on memory stream
         /// </summary>
         /// <param name="stream">MemoryStream</param>
@@ -98,6 +119,8 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
                 Manifest = package.Manifest,
                 Properties = package.Properties,
                 FilesMap = package.FilesMap,
+                UseFileStreams = package.UseFileStreams,
+                PnPFilesPath = package.PnPFilesPath,
 
                 Files = new List<PnPFileInfo>()
             };

@@ -83,8 +83,15 @@ namespace PnP.Framework.Provisioning.Connectors
             if (packageStream != null)
             {
                 // If the .PNP package exists unpack it into PnP OpenXML package info object
-                MemoryStream ms = packageStream.ToMemoryStream();
-                this.pnpInfo = ms.UnpackTemplate();
+                if (!useFileStreams)
+                {
+                    MemoryStream ms = packageStream.ToMemoryStream();
+                    this.pnpInfo = ms.UnpackTemplate();
+                }
+                else
+                {
+                    this.pnpInfo = packageStream.UnpackTemplate(useFileStreams, useFileStreams ? (string.IsNullOrEmpty(pnpFilesPath) ? persistenceConnector.GetConnectionString() : pnpFilesPath) : string.Empty);
+                }
             }
             else
             {
@@ -258,7 +265,42 @@ namespace PnP.Framework.Provisioning.Connectors
                 container = "";
             }
 
-            return GetFileFromStorage(fileName, container);
+            if (!pnpInfo.UseFileStreams)
+            {
+                return GetFileFromStorage(fileName, container);
+            }
+
+            try
+            {
+                var file = GetFileFromInsidePackage(fileName, container);
+
+                if (file != null)
+                {
+                    Log.Info(Constants.LOGGING_SOURCE, CoreResources.Provisioning_Connectors_OpenXML_FileRetrieved, fileName, container);
+#if NET6_0_OR_GREATER
+                    // Set the file stream options to delete the file automatically once closed.
+                    var fileStreamOptions = new FileStreamOptions { Mode = FileMode.Open, Access = FileAccess.Read, Options = FileOptions.DeleteOnClose, Share = FileShare.Delete };
+                    FileStream fs = File.Open(Path.Combine(pnpInfo.PnPFilesPath, file.InternalName).Replace('\\', '/').TrimStart('/'), fileStreamOptions);
+#else
+                    FileStream fs = File.OpenRead(Path.Combine(pnpInfo.PnPFilesPath, file.InternalName).Replace('\\', '/').TrimStart('/'));
+#endif
+                    return fs;
+                }
+                else
+                {
+                    throw new FileNotFoundException();
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex is FileNotFoundException || ex is DirectoryNotFoundException)
+                {
+                    Log.Error(Constants.LOGGING_SOURCE, CoreResources.Provisioning_Connectors_OpenXML_FileNotFound, fileName, container, ex.Message);
+                    return null;
+                }
+
+                throw;
+            }
         }
 
         /// <summary>
@@ -408,6 +450,15 @@ namespace PnP.Framework.Provisioning.Connectors
                 if (file != null)
                 {
                     Log.Info(Constants.LOGGING_SOURCE, CoreResources.Provisioning_Connectors_OpenXML_FileRetrieved, fileName, container);
+
+                    if (pnpInfo.UseFileStreams)
+                    {
+                        using (FileStream fs = File.OpenRead(Path.Combine(pnpInfo.PnPFilesPath, file.InternalName).Replace('\\', '/').TrimStart('/')))
+                        {
+                            return fs.ToMemoryStream();
+                        }
+                    }
+
                     var stream = new MemoryStream(file.Content);
                     return stream;
                 }
